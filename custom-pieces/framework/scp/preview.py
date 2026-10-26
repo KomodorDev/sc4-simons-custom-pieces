@@ -11,6 +11,7 @@ import json
 import hashlib
 import inspect
 import math
+import os
 from pathlib import Path
 import struct
 import sys
@@ -372,13 +373,22 @@ def render_package(output: Path, plugins: Path, destination: Path, *, piece_ids=
     return render_contact_sheet(items, textures, destination, title="Simon's Custom Pieces · actual models")
 
 
+def font_fingerprint(face):
+    """Hash file-backed or Pillow-cached font bytes without consuming streams."""
+    source=getattr(face,'path',None)
+    if isinstance(source,(str,bytes,os.PathLike)):
+        path=Path(os.fsdecode(source))
+        raw=path.read_bytes() if path.is_file() else None
+    else:
+        # Pillow's built-in TrueType font has a BytesIO path. FreeTypeFont
+        # caches the exact bytes it loaded, independent of stream position.
+        raw=getattr(face,'font_bytes',None)
+    return {'name':list(face.getname()),
+            'file_sha256':_sha(raw) if raw is not None else None}
+
+
 def renderer_settings():
-    fonts=[]
-    for bold in (False,True):
-        face=font(24,bold)
-        path=Path(face.path) if getattr(face,'path',None) else None
-        fonts.append({'name':list(face.getname()),
-                      'file_sha256':_sha(path.read_bytes()) if path and path.is_file() else None})
+    fonts=[font_fingerprint(font(24,bold)) for bold in (False,True)]
     # Documentation/selection changes do not change rendered pixels. Include
     # every rendering helper here; newly factored render helpers must join
     # this list so a changed algorithm can never reuse stale artwork.

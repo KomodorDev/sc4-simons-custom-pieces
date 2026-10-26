@@ -615,7 +615,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     from .export import compiled_manifest_sha256
     from .models import pack_s3d, parse_s3d, positions, validate_s3d
     from .piece_previews import local_piece_grid
-    from .preview import TextureLibrary, font, read_piece_preview, render_fast_view, renderer_settings
+    from .preview import TextureLibrary, font, font_fingerprint, read_piece_preview, render_fast_view, renderer_settings
 
     root = Path(custom_root).resolve()
     if resolved is None:
@@ -709,8 +709,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
             "figure_typography": {
                 "body_pixels": BODY_SIZE, "card_title_pixels": 36, "piece_title_pixels": 44,
                 "bold_usage": "Piece and card titles, and section headings only",
-                "fonts": [{"name": list(face.getname()),
-                           "file_sha256": sha256(Path(face.path).read_bytes()) if getattr(face, "path", None) else None}
+                "fonts": [font_fingerprint(face)
                           for face in (font(BODY_SIZE), font(BODY_SIZE, True), mono_font(BODY_SIZE, font))],
             },
             "shared_framework_sources": {

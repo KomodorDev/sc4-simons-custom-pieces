@@ -678,7 +678,7 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     for key, digest_key in compiled_sources:
         _need(_sha(_safe_relative(root, evidence[key]).read_bytes()) == evidence[digest_key], f"{piece_id}: stale overview compiled source")
     from .connector_overview import BODY_SIZE, mono_font
-    from .preview import TextureLibrary, renderer_settings, font
+    from .preview import TextureLibrary, renderer_settings, font, font_fingerprint
     from .models import parse_s3d
     from .dbpf import decompress, entries
     if plugins is None:
@@ -689,7 +689,7 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     model = parse_s3d(decompress(payload[0x5ad0e817,0xbadb57f1,int(evidence["source_preview_id"],16)]))
     _, textures = TextureLibrary(Path(plugins).expanduser()).for_model(model)
     _need(textures == evidence["textures"], f"{piece_id}: stale overview texture inputs")
-    current_fonts = [{"name":list(face.getname()), "file_sha256":_sha(Path(face.path).read_bytes()) if getattr(face,"path",None) else None}
+    current_fonts = [font_fingerprint(face)
                      for face in (font(BODY_SIZE),font(BODY_SIZE,True),mono_font(BODY_SIZE,font))]
     _need(current_fonts == evidence["figure_typography"]["fonts"], "Stale overview font inputs")
     _need(renderer_settings() == evidence["renderer"], "Stale overview runtime renderer settings")

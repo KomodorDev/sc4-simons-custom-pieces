@@ -147,7 +147,10 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(report.returncode, 0, report.stderr)
         self.assertFalse(json.loads(report.stdout)['public_release_ready'])
         self.assertIn(slug+': in-game test matrix', json.loads(report.stdout)['blocked'])
-        built = self.call('build', '--include', slug)
+        # Selection must reject this piece before reading any NAM donor assets.
+        plugins = self.root.parent / 'Plugins'
+        plugins.mkdir()
+        built = self.call('build', '--plugins', str(plugins), '--include', slug)
         self.assertNotEqual(built.returncode, 0)
         self.assertIn('failed placement tests', built.stderr)
 
