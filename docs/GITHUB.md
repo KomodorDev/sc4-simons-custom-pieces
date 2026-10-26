@@ -11,7 +11,7 @@ document_type: "procedure"
 
 **Git** records versions of selected project files on your computer. A **repository** is the folder whose versions Git manages. A **commit** is one saved version with a descriptive message. **GitHub** stores a remote copy of those commits. A **push** uploads local commits; a **pull** downloads and incorporates remote commits. A **branch** is a named line of work; `main` holds the accepted version. A **pull request**, or **PR**, proposes merging a branch into another branch on GitHub.
 
-The intended GitHub destination is the existing public repository [KomodorDev/sc4-simons-custom-pieces](https://github.com/KomodorDev/sc4-simons-custom-pieces). Public means uploaded files can be read by anyone. The repository contains this entire maintained project, including `custom-pieces/`, `scp-planner/`, guides, plans, research, and authored setup helpers.
+The GitHub destination is the public repository [KomodorDev/sc4-simons-custom-pieces](https://github.com/KomodorDev/sc4-simons-custom-pieces). Public means uploaded files can be read by anyone. The initial source upload was completed on 26 October 2026. The repository contains this entire maintained project, including `custom-pieces/`, `scp-planner/`, guides, plans, research, and authored setup helpers. For normal changes, use the [daily branch and pull-request procedure](#daily-local-work-and-pull-requests).
 
 The working folder on this Mac remains `/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City`. Existing local paths, launchers, game settings, and build outputs continue to use that folder. An older empty checkout exists in `/Users/simonhinterreiter/Library/CloudStorage/Dropbox/06 - Coding/01 - Local Git Repos/02 - Mac/sc4-simons-custom-pieces`; it is not the working folder prepared here. Open the `Project_Sim_City` folder when editing or running commands. Use one working copy consistently to avoid editing two different versions by accident.
 
@@ -37,7 +37,7 @@ git check-ignore -v custom-pieces/local/settings.json
 
 The output identifies the ignore file, matching rule, and excluded path. Do not use `git add -f` to bypass these rules for local game inputs or downloaded archives. Preserve existing imported documents and frozen evidence rather than rewriting them during migration. Downloaded third-party source checkouts retain their own upstream history; the project's authored patches and build notes remain tracked beside them.
 
-## Check the local preparation
+## Check the current local copy
 
 1. Open Terminal, then enter the exact command below. `cd` changes the folder in which subsequent commands run; the quotes preserve spaces in paths.
 
@@ -65,9 +65,9 @@ The output identifies the ignore file, matching rule, and excluded path. Do not 
 
    Use Python 3.11 or newer. If Python requires a virtual environment, create an isolated dependency folder with `python3 -m venv .venv`, run `source .venv/bin/activate`, and repeat the two install/test commands. A **virtual environment** keeps this project's installed Python packages separate from other projects. Existing working Python installations can continue to be used.
 
-## Upload the initial version
+## Initial upload reference (already completed)
 
-Perform this step when the initial public upload has been approved. It publishes every tracked file in the initial commit to the existing public repository. It does not upload ignored local files or install anything into the game.
+The initial public upload is complete. The steps below record that one-time setup for reference; use pull requests for subsequent changes. The upload published every tracked file in the initial commit to the existing public repository. It did not upload ignored local files or install anything into the game.
 
 1. From the working folder, confirm that `git status --short --branch` reports the intended commit and no unexpected pending changes.
 2. Upload `main` and remember its remote branch:
@@ -88,7 +88,7 @@ The initial upload establishes the repository's first branch. Subsequent accepte
 
 **Continuous integration**, or **CI**, means running automated checks whenever proposed code changes arrive. A **status check** is GitHub's reported outcome for one such job. A **branch protection rule** makes selected conditions mandatory before changes enter `main`.
 
-After `Tests` has run successfully on GitHub, apply the prepared [branch protection settings](../.github/branch-protection.json) from the working folder using GitHub CLI, the `gh` command-line tool:
+Branch protection is enabled on `main` and has been read back from GitHub to verify its settings. The successful Ubuntu pull-request run on 26 October 2026 reported 876 tests, 76 skips for unavailable native inputs or build fixtures, and no failures. The [branch protection settings](../.github/branch-protection.json) are the saved template for the active rule. To deliberately reapply those settings, use GitHub CLI, the `gh` command-line tool, from the working folder:
 
 ```sh
 gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/main/protection --input .github/branch-protection.json
@@ -178,7 +178,7 @@ For local native integration checks, keep the existing private Plugins settings 
 
 ## Start from a fresh clone on another computer
 
-After the initial upload, a **clone** downloads the repository's tracked files and Git history into a new folder. It does not recreate ignored files from this workstation.
+A **clone** downloads the repository's tracked files and Git history into a new folder. It does not recreate ignored files from this workstation. Use this procedure when starting a separate working copy on another computer.
 
 ```sh
 git clone https://github.com/KomodorDev/sc4-simons-custom-pieces.git
