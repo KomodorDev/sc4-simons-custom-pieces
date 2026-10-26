@@ -30,7 +30,7 @@ A documentation reorganization alone does not authorize changing models, PATH tr
 1. Identify the owning piece README and `piece.json`, or the assembly README, `TESTING.md`, and machine-readable placement plan. Read the domain's network specification for actual transport facts. A layout plan must retain exact piece IDs, instance IDs, poses, owned cells, and the current compiled source fingerprints.
 2. Confirm the intended build has passed its relevant independent saved-resource checks. A **DAT** is the game's resource archive, **S3D** contains model triangles, **FSH** contains texture images, and **PATH** describes traffic routes. A missing built piece remains pending; an older or similar-looking model is not its replacement.
 3. Finish concurrent geometry work and the integrated checks before starting the final render pass. Render the accepted current result, rather than several competing intermediate copies.
-4. Open a terminal. On macOS, press **Command + Space**, type **Terminal**, and press **Return**. A **checkout** is your local copy of the repository, and its **root** is the folder containing both `custom-pieces/` and `scp-planner/`. Replace `/path/to/sc4-simons-custom-pieces` below with your checkout's full path, keep the quotation marks so spaces work, and press **Return** to select that root directory.
+4. Open a terminal. On macOS, press **Command + Space**, type **Terminal**, and press **Return**. A **checkout** is your local copy of the repository, and its **root** is the folder containing `custom-pieces/` and the repository README. Replace `/path/to/sc4-simons-custom-pieces` below with your checkout's full path, keep the quotation marks so spaces work, and press **Return** to select that root directory.
 
 ```sh
 cd '/path/to/sc4-simons-custom-pieces'
@@ -180,7 +180,7 @@ An **overview** is a generated explanation of a reusable piece's exposed connect
 | `piece.json` | Existing authoritative type, resource identities, and occupied source cells. |
 | `connections.json` | Existing measured directional ports, resource fingerprints, and internal journeys. Connector commands read and verify this file. |
 | `connector-groups.jsonc` | Authored stable component, group, channel, cut, and member associations, permissions, boundary bundles, and optional defaults. References measured ports rather than copying their coordinates. |
-| `connector-data.json` | Generated resolved connector export, including measured geometry, permissions, journeys, and full source PATH polylines. Planner reads this file; exports and overview generation use the same complete resolved representation. Do not hand-edit it. |
+| `connector-data.json` | Generated resolved connector export, including measured geometry, permissions, journeys, and full source PATH polylines. Consumer applications can read this file; exports and overview generation use the same complete resolved representation. Do not hand-edit it. |
 | `connection-overview.png` | Fresh compiled-model scene, boundary markers, and complete cards. This image supplements the existing canonical previews. |
 | `evidence/connection-overview.json` | Generated provenance: the source evidence and fingerprints tying that overview to its inputs and output image. |
 | `README.md` | Existing single piece guide. Its `CONNECTOR OVERVIEW` block is generated; maintained explanations stay outside the markers. |
@@ -189,7 +189,7 @@ Use the [connector reference](CONNECTOR_METADATA.md#6-stable-identity-reuse-and-
 
 The source pipeline resolves the declaration and measured records once and uses that complete representation for both export and overview generation. It can pass the resolved records directly to the renderer, so the renderer need not reread a just-written export. Standalone library rendering resolves the same authoring inputs through the shared API. No separate overview-only measurement or manually copied card geometry is introduced.
 
-Keep the outputs beside the piece and refresh its existing README block; do not create another per-piece connection or checklist Markdown page. [STRUCTURE.md](../STRUCTURE.md) owns the full file map, and [TESTING.md](TESTING.md) owns manual observations. Planner reads the generated export and keeps application reports separately.
+Keep the outputs beside the piece and refresh its existing README block; do not create another per-piece connection or checklist Markdown page. [STRUCTURE.md](../STRUCTURE.md) owns the full file map, and [TESTING.md](TESTING.md) owns manual observations. Consumer applications must read the generated export and keep their reports separately.
 
 ### Before refreshing
 
@@ -222,7 +222,7 @@ Open a terminal. On macOS, press **Command + Space**, type **Terminal**, and pre
 cd '/path/to/sc4-simons-custom-pieces/custom-pieces'
 ```
 
-The checkout root is the folder containing both `custom-pieces/` and `scp-planner/`; the final `/custom-pieces` selects the library inside it.
+The checkout root is the folder containing `custom-pieces/` and the repository README; the final `/custom-pieces` selects the library inside it.
 
 Type `python3 --version` and press **Return**. Python must be version 3.11 or newer. Use the existing project dependencies; the [build instructions](BUILD_AND_INSTALL.md#build-a-selected-collection) explain editable installation, Pillow, and NumPy when preparing a new source checkout.
 
@@ -280,7 +280,7 @@ A reusable piece has one README; an assembly has README plus TESTING. Keep a pla
 
 ### Piece README
 
-Keep a piece's useful function, exact identifier and menu name, network services, footprint, supported rotations, intended interface families and required adapters, limitations, and current evidence in its existing README. Show canonical angled and top views for new or geometrically revised types under the [standalone contract](#reusable-names-and-standalone-type-pictures), preserve unchanged types' current previews, and include the generated connection overview for intentionally migrated types. Reference the exact measured connection and manual records instead of hand-copying their coordinates or checkbox state into maintained prose. Generated intrinsic connection tables do not publish legacy neighbour shortlists or a mandatory port/counterpart manual matrix. Complete-boundary compatibility discovery is the separate [Planner operation](../../scp-planner/README.md), with explicit coverage exclusions for incomplete or stale inputs.
+Keep a piece's useful function, exact identifier and menu name, network services, footprint, supported rotations, intended interface families and required adapters, limitations, and current evidence in its existing README. Show canonical angled and top views for new or geometrically revised types under the [standalone contract](#reusable-names-and-standalone-type-pictures), preserve unchanged types' current previews, and include the generated connection overview for intentionally migrated types. Reference the exact measured connection and manual records instead of hand-copying their coordinates or checkbox state into maintained prose. Generated intrinsic connection tables do not publish legacy neighbour shortlists or a mandatory port/counterpart manual matrix. Automatic complete-boundary compatibility discovery is not supplied by the current library; any future consumer must exclude incomplete or stale inputs explicitly.
 
 The connection overview's image and selectable Markdown details come from the same complete resolved records used for `connector-data.json`. Keep those generated details in the existing `CONNECTOR OVERVIEW` block so full IDs, numerical fields, permissions, and source references remain readable and copyable without extracting text from a PNG. Maintain shape-specific explanations and unresolved limitations outside generated markers. Do not copy the shared metadata format or generation procedure into each subject README.
 
@@ -305,7 +305,7 @@ A **generated block** is a section bounded by named HTML comments, such as `<!--
 
 `scp.content` owns `PIECE OVERVIEW`, `CONNECTIONS`, `MANUAL SUMMARY`, and `MANUAL CHECKS` views; connector refresh owns `CONNECTOR OVERVIEW`; inventory generation owns domain `COLLECTIONS` navigation and the illustrated inventories. Keep the connector block outside other generated markers. Assembly manual checks belong in its `TESTING.md`, while a piece's checks stay in its single README. Source definitions, placements, measured connections, source-port identities, class records, and human observations remain authoritative JSON, not Markdown checkboxes.
 
-For a prose-only or generator-presentation refresh, return to the repository root containing `custom-pieces/` and `scp-planner/`. Replace the placeholder path in the first command with your checkout's full path, keep the quotation marks, and run both commands:
+For a prose-only or generator-presentation refresh, return to the repository root containing `custom-pieces/` and the root README. Replace the placeholder path in the first command with your checkout's full path, keep the quotation marks, and run both commands:
 
 ```sh
 cd '/path/to/sc4-simons-custom-pieces'
