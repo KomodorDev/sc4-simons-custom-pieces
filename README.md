@@ -22,7 +22,7 @@ A **piece** is one reusable construction type. An **assembly** is a layout made 
 
 ## Get the source
 
-A **clone** is a local copy of the repository and its Git history. Clone the project into any directory where you keep source code:
+A **clone** is a local copy of the repository and its Git history. Install [Git](https://git-scm.com/downloads/) if needed, then open a terminal and type `git --version` to confirm that it is available. Clone the project into any directory where you keep source code:
 
 ```sh
 git clone https://github.com/KomodorDev/sc4-simons-custom-pieces.git
@@ -33,7 +33,7 @@ The folder containing `custom-pieces/` and this README is the **repository root*
 
 ## Prepare Python and run the tests
 
-Use Python 3.11 or newer. A **virtual environment** keeps the project's Python dependencies separate from other projects. Create and activate one using the commands for your operating system.
+Use Python 3.11 or newer; [official Python downloads](https://www.python.org/downloads/) are available if it is not installed. CI uses Python 3.11. A **virtual environment** keeps the project's Python dependencies separate from other projects. Create and activate one using the commands for your operating system.
 
 On macOS or Linux:
 
