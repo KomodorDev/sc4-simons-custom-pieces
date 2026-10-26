@@ -1,0 +1,38 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Continue building the HSR line
+    A->>C: Resume the current plan under its recovery policy
+    C->>R: Record operation H1-042, city, revision and expected starting state
+    C->>G: Place the station for operation H1-042
+    Note over C,G: No usable reply arrives before the timeout
+    C->>C: Stop dispatching further changes
+    C->>R: Mark H1-042 uncertain
+    C->>D: Show interrupted station placement and last confirmed work
+    C->>C: Check game liveness and whether the operation is still running
+    C->>G: Reconnect or restart under the selected recovery policy
+    G-->>C: Confirm readiness and actual region and city
+    C->>G: Inspect station site, paths, terrain and relevant budget evidence
+    G-->>C: Return observed current state
+    alt Complete result is proved
+        C->>R: Record the operation's observed result without replaying it
+        C->>G: Verify required persistence and continue with the next operation
+        C->>D: Show recovered with station retained
+    else No change is proved and no old operation can still execute
+        C->>C: Recheck conditions and bounded retry allowance
+        C->>R: Record a new attempt for the same logical operation
+        C->>G: Retry placement once within the configured retry limit
+    else A partial result is proved
+        C-->>A: Return the actual partial construction for a repair plan
+        A->>D: Show what remains and what repair would change
+    else The outcome cannot be established
+        C->>D: Show stopped with the missing evidence identified
+        C-->>A: Keep dependent construction blocked
+        A-->>U: Explain the unresolved operation and recovery options
+    end

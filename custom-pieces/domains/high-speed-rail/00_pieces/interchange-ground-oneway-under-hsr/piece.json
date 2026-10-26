@@ -1,0 +1,123 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for Ground One-Way Track under HSR.",
+  "schema_version": 1,
+  "id": "interchange-ground-oneway-under-hsr",
+  "name": "Ground One-Way Track under HSR",
+  "description": "Actual rail geometry and directed train paths at two heights. The one-way track and two-way track cross without a transfer. Experimental fixed piece; test rendering, traffic and shadows in the game. The lower track is one-way and the upper track is two-way; there is no transfer.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_ground_oneway_under_hsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f852",
+  "tile_ids": [
+    "7f5e0000",
+    "7f5e0010",
+    "7f5e0020"
+  ],
+  "preview_id": "7f5e0ff5",
+  "effect_name": "preview_scp_interchg_f852_0",
+  "footprint": [
+    1,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f852",
+    "order": "7011f852",
+    "style": "interchange-ground-oneway-under-hsr"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f5e0000",
+      "source": "7f5e0000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e0010",
+      "source": "7f5e0010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e0020",
+      "source": "7f5e0020",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "true-flyovers",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8,
+        -16.0,
+        1.0
+      ],
+      [
+        -2.0,
+        8,
+        15.5
+      ],
+      [
+        2.0,
+        -40,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -40,
+        15.5
+      ],
+      [
+        2.0,
+        8,
+        15.5
+      ],
+      [
+        8,
+        -16.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "flyover_crossing",
+    "height": 1.0,
+    "lower_level": "ground",
+    "one_way_position": "lower"
+  }
+}

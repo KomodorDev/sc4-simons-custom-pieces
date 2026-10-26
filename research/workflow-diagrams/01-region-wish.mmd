@@ -1,0 +1,38 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant R as Records
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant D as Display
+
+    U->>A: Build Meridia from pins A and B, with HSR and protected land
+    A->>R: Read region, saved preferences, map marks and available recipes
+    R-->>A: Layout, observations, permissions and capability gaps
+    opt Essential location or funding information is missing
+        A-->>U: Ask for the specific missing decision
+        U->>A: Supply the missing information
+    end
+    A->>C: Survey areas whose information is missing or stale
+    loop Each city requiring a fresh observation
+        C->>G: Load city and wait until ready
+        G-->>C: Confirm city identity and return supported observations
+        C->>R: Store observation with city, game date and capture time
+        C->>D: Highlight surveyed city and observation coverage
+    end
+    A->>P: Plan centres, HSR, feeders, utilities and growth phases
+    P->>R: Read terrain, assets and tested construction rules
+    R-->>P: Data with units, versions and uncertainty
+    P-->>A: Candidate plan, costs, dependencies and unresolved constraints
+    alt A required feature has no feasible implementation
+        A-->>U: Explain the blocked requirement and concrete alternatives
+        Note over A,C: Hold affected construction until the requirement is resolved
+    else The plan fits the brief and available capabilities
+        A->>R: Store masterplan revision 1 and inherited limits
+        A->>D: Show city centres, reserved routes and development phases
+        A->>C: Start authorized phase 1 using revision 1
+        C->>D: Show the active city, work area and next operation
+        C->>G: Begin the first tested construction recipe
+    end

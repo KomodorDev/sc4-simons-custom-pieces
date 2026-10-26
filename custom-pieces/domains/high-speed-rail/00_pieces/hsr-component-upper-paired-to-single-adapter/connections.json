@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "purpose": "Actual saved-resource ports, service roles, directed journeys and scoped candidate counterpart poses.",
+  "subject_id": "hsr-component-upper-paired-to-single-adapter",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:hsr-component-upper-paired-to-single-adapter:ea5118b0-ea5118b1-7f515ff5": "ad4669153b2631fa357d8b8bc4bf3a62e9b6423f46eb8678d59ada26ca50852b",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515000": "35a43d0a821b9f4321250404d05f5d1a431c82cad62c0360f61e3049d78ce6ba",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515010": "45ad660a4ddb830d0970eaba2c3ba8177a7cd457bb865bbe8894a624ffd20e8d",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515020": "ac7bdc2da4c36e01bb013b7c88a9998d49620c2f5428faf7fed246262c8f993b",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515030": "c698f3560e4abfcd7e887589d39bbf17aa7c52a6a6ab48ee2e374d9dc8935a55",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515040": "56c9da9edae2aef4e8b0780d97ddb3dad28f6244fe4e4b762228002ad773e7aa",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515050": "82ac64e5d3dd4cd64459c6cf5634cb0f1851aa9975e478097f63b031f30c7a91",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515060": "51aede2d6e681dee736a9eae73a37c1d12477868f42e16ec38793f6df2e84caa",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515070": "6c9b94b159c622b8584256433b123b991cc27603f3d0fe3c7074d70607a27950",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515100": "fd899235fee12e1b2e71aebf70037252990efd9a163664e3db146dd6b68966a5",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515110": "a8369fa81532f0a1b351d9b846a09b58b87078349cff715946a6e5a1b939c567",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515120": "378ef2c8fd27731baedef180d3e8d1a2af667ded10cd4084a62038eed98d7b3b",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515130": "7ef3f2cbce324936f7a2c04d8208d1fa84e2cda6e1426ed80391c044ccefba10",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515140": "d022ee1700f9fee2e0d0cf1e57e9d568d660c9f24398f76523f16687cd591540",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515150": "7e30197abc8a8c7bf686d97d85f6368a2f836c0c711c65ed35f39c37fb82d4c6",
+      "exemplar:hsr-component-upper-paired-to-single-adapter:6534284a-a8434037-7f515160": "20356c8052a1d504003ba5de0126312a26c861b4cc5593b24d82ace98388f080",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515000": "7da513e08f3a676b0ee6150f227a4b8ee926f3d8d66fda24ccba0e69d201c09f",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515001": "7da513e08f3a676b0ee6150f227a4b8ee926f3d8d66fda24ccba0e69d201c09f",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515002": "7da513e08f3a676b0ee6150f227a4b8ee926f3d8d66fda24ccba0e69d201c09f",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515003": "7da513e08f3a676b0ee6150f227a4b8ee926f3d8d66fda24ccba0e69d201c09f",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515004": "7da513e08f3a676b0ee6150f227a4b8ee926f3d8d66fda24ccba0e69d201c09f",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515010": "dbe857af81d9ea577dbb68d3f3064df8cfe29c48235e2f8c64244fcd566d3e4c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515011": "dbe857af81d9ea577dbb68d3f3064df8cfe29c48235e2f8c64244fcd566d3e4c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515012": "dbe857af81d9ea577dbb68d3f3064df8cfe29c48235e2f8c64244fcd566d3e4c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515013": "dbe857af81d9ea577dbb68d3f3064df8cfe29c48235e2f8c64244fcd566d3e4c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515014": "dbe857af81d9ea577dbb68d3f3064df8cfe29c48235e2f8c64244fcd566d3e4c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515020": "119e9acaf20381bf7ca67c359934e0bd58f6018bd7270fc112ce8742eac1adfc",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515021": "119e9acaf20381bf7ca67c359934e0bd58f6018bd7270fc112ce8742eac1adfc",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515022": "119e9acaf20381bf7ca67c359934e0bd58f6018bd7270fc112ce8742eac1adfc",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515023": "119e9acaf20381bf7ca67c359934e0bd58f6018bd7270fc112ce8742eac1adfc",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515024": "119e9acaf20381bf7ca67c359934e0bd58f6018bd7270fc112ce8742eac1adfc",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515030": "739231b37e51049d183373023b24c4f0f0b78273ccb2557a08247529a00b928c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515031": "739231b37e51049d183373023b24c4f0f0b78273ccb2557a08247529a00b928c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515032": "739231b37e51049d183373023b24c4f0f0b78273ccb2557a08247529a00b928c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515033": "739231b37e51049d183373023b24c4f0f0b78273ccb2557a08247529a00b928c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515034": "739231b37e51049d183373023b24c4f0f0b78273ccb2557a08247529a00b928c",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515040": "5a70bc6c9fccc6eb300745df2d178e1ff1e5c7a1b65a240a5544a35b323b6d67",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515041": "5a70bc6c9fccc6eb300745df2d178e1ff1e5c7a1b65a240a5544a35b323b6d67",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515042": "5a70bc6c9fccc6eb300745df2d178e1ff1e5c7a1b65a240a5544a35b323b6d67",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515043": "5a70bc6c9fccc6eb300745df2d178e1ff1e5c7a1b65a240a5544a35b323b6d67",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515044": "5a70bc6c9fccc6eb300745df2d178e1ff1e5c7a1b65a240a5544a35b323b6d67",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515050": "cd1f776f5591a52b70b281da234fc2a785ab32ed3e75a2d5ba6ba4460b87cdf2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515051": "cd1f776f5591a52b70b281da234fc2a785ab32ed3e75a2d5ba6ba4460b87cdf2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515052": "cd1f776f5591a52b70b281da234fc2a785ab32ed3e75a2d5ba6ba4460b87cdf2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515053": "cd1f776f5591a52b70b281da234fc2a785ab32ed3e75a2d5ba6ba4460b87cdf2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515054": "cd1f776f5591a52b70b281da234fc2a785ab32ed3e75a2d5ba6ba4460b87cdf2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515060": "027dfa56c585d0760f6fd9efc17d92e3785a62a36edc5a8903d701f2522983f5",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515061": "027dfa56c585d0760f6fd9efc17d92e3785a62a36edc5a8903d701f2522983f5",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515062": "027dfa56c585d0760f6fd9efc17d92e3785a62a36edc5a8903d701f2522983f5",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515063": "027dfa56c585d0760f6fd9efc17d92e3785a62a36edc5a8903d701f2522983f5",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515064": "027dfa56c585d0760f6fd9efc17d92e3785a62a36edc5a8903d701f2522983f5",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515070": "22065a76acc3bdaed324b6e2fadf49700297ede6665cc0fda4853619d5bdf3a2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515071": "22065a76acc3bdaed324b6e2fadf49700297ede6665cc0fda4853619d5bdf3a2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515072": "22065a76acc3bdaed324b6e2fadf49700297ede6665cc0fda4853619d5bdf3a2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515073": "22065a76acc3bdaed324b6e2fadf49700297ede6665cc0fda4853619d5bdf3a2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515074": "22065a76acc3bdaed324b6e2fadf49700297ede6665cc0fda4853619d5bdf3a2",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515100": "6d32e3a2aa94c0e7a2e8155560a7b42037141d9380d5183969c39c97e4d78340",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515101": "6d32e3a2aa94c0e7a2e8155560a7b42037141d9380d5183969c39c97e4d78340",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515102": "6d32e3a2aa94c0e7a2e8155560a7b42037141d9380d5183969c39c97e4d78340",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515103": "6d32e3a2aa94c0e7a2e8155560a7b42037141d9380d5183969c39c97e4d78340",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515104": "6d32e3a2aa94c0e7a2e8155560a7b42037141d9380d5183969c39c97e4d78340",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515110": "2f43720661cfa835414b597432c966e4fc27e9ffc1bdf21b22d50832ac505d42",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515111": "2f43720661cfa835414b597432c966e4fc27e9ffc1bdf21b22d50832ac505d42",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515112": "2f43720661cfa835414b597432c966e4fc27e9ffc1bdf21b22d50832ac505d42",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515113": "2f43720661cfa835414b597432c966e4fc27e9ffc1bdf21b22d50832ac505d42",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515114": "2f43720661cfa835414b597432c966e4fc27e9ffc1bdf21b22d50832ac505d42",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515120": "649f40868f332674bcc24ecd3e3e682f1f244947498da4a16ea72e36adca08df",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515121": "649f40868f332674bcc24ecd3e3e682f1f244947498da4a16ea72e36adca08df",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515122": "649f40868f332674bcc24ecd3e3e682f1f244947498da4a16ea72e36adca08df",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515123": "649f40868f332674bcc24ecd3e3e682f1f244947498da4a16ea72e36adca08df",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515124": "649f40868f332674bcc24ecd3e3e682f1f244947498da4a16ea72e36adca08df",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515130": "349c81efa70679bb794c7c3128c112a7f29927a49b862b5a8d7a9251f2c01a33",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515131": "349c81efa70679bb794c7c3128c112a7f29927a49b862b5a8d7a9251f2c01a33",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515132": "349c81efa70679bb794c7c3128c112a7f29927a49b862b5a8d7a9251f2c01a33",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515133": "349c81efa70679bb794c7c3128c112a7f29927a49b862b5a8d7a9251f2c01a33",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515134": "349c81efa70679bb794c7c3128c112a7f29927a49b862b5a8d7a9251f2c01a33",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515140": "ba1a215a382b89f94e8754ac86d3b3ae4c848aaa3dde9ebe912fcbcca17e4950",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515141": "ba1a215a382b89f94e8754ac86d3b3ae4c848aaa3dde9ebe912fcbcca17e4950",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515142": "ba1a215a382b89f94e8754ac86d3b3ae4c848aaa3dde9ebe912fcbcca17e4950",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515143": "ba1a215a382b89f94e8754ac86d3b3ae4c848aaa3dde9ebe912fcbcca17e4950",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515144": "ba1a215a382b89f94e8754ac86d3b3ae4c848aaa3dde9ebe912fcbcca17e4950",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515150": "52b20ea988179d34335d21f5474b36d6d3386ee7df69e69ee2bf44b32ff701e6",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515151": "52b20ea988179d34335d21f5474b36d6d3386ee7df69e69ee2bf44b32ff701e6",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515152": "52b20ea988179d34335d21f5474b36d6d3386ee7df69e69ee2bf44b32ff701e6",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515153": "52b20ea988179d34335d21f5474b36d6d3386ee7df69e69ee2bf44b32ff701e6",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515154": "52b20ea988179d34335d21f5474b36d6d3386ee7df69e69ee2bf44b32ff701e6",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515160": "f4b09538b283baa7a84012c4aa74dd08c890ca50ed21428be5ffe4de96da0b72",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515161": "f4b09538b283baa7a84012c4aa74dd08c890ca50ed21428be5ffe4de96da0b72",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515162": "f4b09538b283baa7a84012c4aa74dd08c890ca50ed21428be5ffe4de96da0b72",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515163": "f4b09538b283baa7a84012c4aa74dd08c890ca50ed21428be5ffe4de96da0b72",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515164": "f4b09538b283baa7a84012c4aa74dd08c890ca50ed21428be5ffe4de96da0b72",
+      "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515ff5": "12a458b52f6bb49dffaa14a8f1299ee59f171d4805175fbb8f7cfe5d24e792b4",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515000": "eda73538022308219031daf54f3d9ee3e143fca5bd8d606b760d8e923a8f0480",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515010": "487dd9cbb38d24d5ba88dec13ea7104f89d16a04140f2d3845077232ce9b23f8",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515020": "1b033d89d877fca0fd0a559a6f01b983eeaaa02628e2edd9c2b37046bac42cee",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515030": "31cba35fc81084ed617bced483df089b995e4bd39d1cd93dc3b2584310518b32",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515040": "f189bf5385449b27311308d012a0760551c7ed8cb3e40643833be723fb94806a",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515050": "8fbdfa4ef899b3e5a9d2ccacdfe492810ffd72841d8bd169f84482ac9821817a",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515060": "cc31df13a5f92049878c2c942b3ae379f85dc58ba4d26cfa242eccbe1f840930",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515070": "4df0113045c77a7d6824cce8cd769f6ca6eb6bbcc4512fb48a1e3b75579af0f8",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515100": "551a811e5c95e7a3188f304c74fb352ac0defd8f7a311b86c549716aa42ffcf5",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515110": "f1dd259bb9d3f861f68657b0405d53da3f998a05530ef5949009588cb147d69e",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515120": "5231ca9341fa3fbf4c2809809b9593bf44dbf23fa7a79e7d86ede4e9647cb525",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515130": "78ff3bc8fcd0a6eddea675f67d30682846bb913eac7a52ae3a9c707dd9c30721",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515140": "8e23293b4e7c72b5fcbff5a3cf4667edc488414999710d690e3782294badf904",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515150": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515160": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515000": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515001": "34876aacc271c9799452a37ebd64d75d926be1c2a99e1a6a23e9ec45eb0ebf9c",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515002": "36e6cd42f814f34b57783d8b190f82da91771d3b58f78198dab34ae75a9366c0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515003": "4cb8a40eecd6f95e84d0bfeec729f755d9e6088d5f27f815adfbe5230b5bb390",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515004": "5fd77f5cfc40e7c934d19dc558eaacbeed0e968d53bc3c09f55ff4773ccf81ac",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515010": "c439f0ab83c06c1d9e25b4fd46045874866a999a60a60ecafdd5356a5bb36951",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515011": "d768da6107482a373be785131bc30c6cde328c64e66157b2cf678dded0beda37",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515012": "1b441e4e246ef60d46aa24380ca1c91ebef0e1f3c7ca6d9a0ed27a7b24f09a1d",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515013": "cf13105b9bf4437e7d1ed8d96b15a2f1b74a5cbdbf8bf9f91de1588a0a881b3d",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515014": "77fc6df33707bb5c1e55e08df5ea2ecbd53653e5ae753f94abd17abb16166dc7",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515020": "eaa82b703b983d77ce20c93c23c2ae81e0545091d65da7c84b014fa49c147926",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515021": "ca31d5638b1ff3237a3eb75f2e39a26a92a81589263323b1210f3894c8b682b0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515022": "b8974c5c00f454a793b29af28d4fb30149c58d0aa5acbf709a33cba2c6d55a88",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515023": "0894353ae7dc6f9cacf335d3d57d0f22f18d12515a7ebd538cc6b12ae6c0745a",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515024": "679aee6a2814df2fe54a583f064398cfd7431c132b31fd37f1c8842b4ce1ebc4",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515030": "6d95a294041ad136024ff8edd7ce2d7627cc49c262cbda70d75189c07be5f9f0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515031": "2563e7f40831a84c939bef4e522d25e70b35633b5296c4dd34c3365cd779b2d7",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515032": "19c9ed2ed671f0bf7e6572157e4dbfe01e2ec4552834c6d83953e4ef8b40b60e",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515033": "e6cda6a9b9c5ecd1fee61cb05afdc5fd20c772d537390e57862e55edf8edf115",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515034": "29a0683131076a20d1b89b828182e68dc7ff878ba198bf45ee306c588a2e9a15",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515040": "a1a42d9ba07361d806eeaa4d84cc1c6cf4c73978a4426be4e321925a7f9f7780",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515041": "033cab542816474986a81d282cb49beb20aed7c6aae2477a97a6fd10b060e8f8",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515042": "0b0532688429fe00bf5cb5ebcca24cfe4152eb7b6291d70bc0a2a4ae12942ada",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515043": "2cb81f5821d3404b4552f794ca187bd288260850fc8220b27bdc5136acf4cc6d",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515044": "b95305e4d2ad5232d6039c7d259684911b3914adac663e8c633e95171b95ec7f",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515050": "4f5ec571ba42ff0aff2c921e14f5598171c94916007c612b56cd3e2077bb9e46",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515051": "5ef21aa4242cfea7d3cf06f3b4edb8a79a30c146b904b1b0694abc3b391fbf2f",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515052": "195c4adf22739164e6b13b63702da21fb6ac4d447d12189fd95adaabcb68e417",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515053": "6364ed6bbd0f52e8547137410f6f8b9c6c20a63ccf881911a066f1bb6cd7c676",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515054": "8cc2382411847f4851fe53f19d93ae015d5d6f8075a66e8a87a41c35ce7ef5ca",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515060": "3c8b1ea2de8735b6f1b2bdfaadbe81128d9574ccb07bf0377683f20abc4d8743",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515061": "25eb36794ab3144073e9366278a19f059db543a1a5c0b736f4cdfe4401fa7900",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515062": "77239c7de107c2053cca2cb353a409d8ac452effb1146661ec703ead615682c6",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515063": "adb608f205e023e4bbe3db55c642ede0600ad4acfcfdbe2f9ee1d5ede6d38ec1",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515064": "4d17367bd1140e3512d92093db81f0a717b6b0aad183d6972bfe18eddbc8e620",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515070": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515071": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515072": "4a613fcdda7535cb000b289f3a9ffa6c4fd2f6790740e46fe772b65327ff5201",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515073": "bf3d5c6a6719d0772211fb5d0a9b33316830611e97abcfb334c2e346d4405683",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515074": "7ff46d7f57df9d406fd0cf28c00385ae98d33a7e6648be73993564e933bbed12",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515100": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515101": "34876aacc271c9799452a37ebd64d75d926be1c2a99e1a6a23e9ec45eb0ebf9c",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515102": "34cdc499b7785be26660028e369fb086a52eab53b4f381c78ed472e98083e04f",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515103": "f45e46c846c7ba49df6e4fb28e1b547d900dbc87f61c29be46452d4555ef7a48",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515104": "1f7028033ae5b757b412ff16e2babc739d8ccb7f8f00f9e56f03a58d9d26e3c0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515110": "4493aa05a55eadee0a537fc1eb93fa0b13ae93f32b469abd414cb7d9770d99fc",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515111": "6f44bd4509599a662cedb28979a3a6308f082ee2216715351dd75633949a85cb",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515112": "36ffdace67b207a58a4a8b4ce5547681e4f339b1244ccbf5046d84e31a95537a",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515113": "1380169cacacd73b4ef516d9cf7fa905a3fe636a48c7aca4161d05538b10425b",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515114": "b4cf0ae89a153ca9da1512f2cad2f2e8af599a190bdc1266b164d8c972fe1262",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515120": "f983b3876a5c295890b20947fe87a2a7911d6f74072eaff8d41afa360a6d33e2",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515121": "e01320da87610f45eb53c580274c7d91ef5a66be75e2e4e52933c4c71cb0859c",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515122": "e1ec09f049fc531866bc783251cfad9fbc3fe7260b5f1d4428e4ac440fc54cf7",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515123": "692c70c7423f9f03a298b0069427c6262842c3b3ac617a2f9c58190b9bb61bb0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515124": "0a7fa8664ce3463437e828db3ddde9a5a0499140c3bce3d22d65011f21159e57",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515130": "3631fd134171ea59f937f457d3dd71a3f931f8d2b829c304dc972634fd90eada",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515131": "a7cd160ac1fa7f86df1b1b7c4a57a5727fe641a0fbe7c515a335490a05a6665b",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515132": "60d2048f5066a24f508a543fec58ca1ed949d57eda41babe2baa3c714fd7a90a",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515133": "9dea13218b83aafad6110621d8a528816cc21d6722d54048c6967b6df95ca133",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515134": "5ecd1f2ae26d9bc411b1923aa65b2dd138073e5617786f13ea6a56ddafc34bd7",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515140": "2c31fad6daedf73304f0e9f297ee82ea5c59e478c03d6f6c10b6f44975c63e82",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515141": "d4b3ac3777739d5f3f315a47755e5f77fcec69263fb548a66970b193b680c1e0",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515142": "f5e63ff8e56bacd861e62a717e0abb9f62f953459495d015465a76c2c111dcba",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515143": "3a7a43067cc013169d58c2e9b952cb55b0f7c53929be7dfbde86442d8ad2fdd2",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515144": "b43d602201db8eeabbe02a9984d283bf666e042ed4cb4def3191fda229c9cdc9",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515150": "845c2411668fd5459e71fefdfb6460958183d10dc5d2163ae4ee8305f07a57ba",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515151": "67df71bd27858ac0e60279634a06027d84565c9c24164880655214b0b699e0ef",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515152": "ba9337892f1a4a3c0f4262d9f9002d32f8f333b772972c19a48592e777a86a1d",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515153": "3d6054f17490192599ec9bd7d603b92e97bea899629fed3e0060a4f139918866",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515154": "2576c3cde0541494064b9bf9cb45733033cb07391840ceff284a8ddfd9487e6c",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515160": "127b370f9222a9f261e698a5c5602a2af99b82f51550df65804aea91aeb62a8b",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515161": "38df699f06838cc26b40173ac032f18952548b3b7620ebb49b5baad54ec35710",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515162": "16b92e086135442e8b91e4b5aaf49f02c2744c7aaf00860867085e76505b45fc",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515163": "2d2b163c9a0c256eb0f48cb801e83ce64336972905fba9ddc5b67383bd480023",
+      "shadow:hsr-component-upper-paired-to-single-adapter:7ab50e44-2bc2759a-7f515164": "0cbb4af8a09b6bfa92dd46dcb5bc7148f7b7bea65f8816a667f9c48270ee1fc2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515000": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515010": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515020": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515030": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515040": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515050": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515060": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515070": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515100": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515110": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515120": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515130": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515140": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515150": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "text:hsr-component-upper-paired-to-single-adapter:2026960b-2a592fd1-7f515160": "7d3abb7e85b06c97f8f4ad266e11569843c0b34f07f8566cd021e0ebff32dec2",
+      "construction:hsr-component-upper-paired-to-single-adapter": "d1b9c8f554dc15aedd2fd998ba08c35a0f97ea7b0829bafbb9d98d54dedc3412"
+    },
+    "reviewed_contract_available": true,
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "Sout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        -2.0,
+        -120.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515070",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515071",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515072",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515073",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515074",
+        "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515070",
+        "construction:hsr-component-upper-paired-to-single-adapter"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Nin",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Sin",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-upper-paired-straight",
+          "port_id": "Nin",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503000",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503001",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503002",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503003",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503004",
+            "path:hsr-component-upper-paired-straight:296678f7-a966883f-7f503000",
+            "construction:hsr-component-upper-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-ce3ccdc10e5e243d11ae",
+      "candidate_counterpart_count": 16,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        0.0,
+        8.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515000",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515001",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515002",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515003",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515004",
+        "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515000",
+        "construction:hsr-component-upper-paired-to-single-adapter"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-l4-straight",
+          "port_id": "out",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530000",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530001",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530002",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530003",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530004",
+            "path:interchange-oneway-l4-straight:296678f7-a966883f-7f530000",
+            "construction:interchange-oneway-l4-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-in-left",
+          "port_id": "out",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536000",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536001",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536002",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536003",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536004",
+            "path:interchange-oneway-l4-curve-in-left:296678f7-a966883f-7f536000",
+            "construction:interchange-oneway-l4-curve-in-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-in-right",
+          "port_id": "out",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537000",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537001",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537002",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537003",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537004",
+            "path:interchange-oneway-l4-curve-in-right:296678f7-a966883f-7f537000",
+            "construction:interchange-oneway-l4-curve-in-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-a11c9f8debd0ee1c3a94",
+      "candidate_counterpart_count": 45,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Sin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        2.0,
+        -120.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515070",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515071",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515072",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515073",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515074",
+        "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515070",
+        "construction:hsr-component-upper-paired-to-single-adapter"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Nout",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Sout",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-upper-paired-straight",
+          "port_id": "Nout",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503000",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503001",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503002",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503003",
+            "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503004",
+            "path:hsr-component-upper-paired-straight:296678f7-a966883f-7f503000",
+            "construction:hsr-component-upper-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-9b897a8bacb659f807fe",
+      "candidate_counterpart_count": 16,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        16.0,
+        8.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515100",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515101",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515102",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515103",
+        "model:hsr-component-upper-paired-to-single-adapter:5ad0e817-badb57f1-7f515104",
+        "path:hsr-component-upper-paired-to-single-adapter:296678f7-a966883f-7f515100",
+        "construction:hsr-component-upper-paired-to-single-adapter"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-l4-straight",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530000",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530001",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530002",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530003",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530004",
+            "path:interchange-oneway-l4-straight:296678f7-a966883f-7f530000",
+            "construction:interchange-oneway-l4-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-out-left",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535010",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535011",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535012",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535013",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535014",
+            "path:interchange-oneway-l4-curve-out-left:296678f7-a966883f-7f535010",
+            "construction:interchange-oneway-l4-curve-out-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-out-right",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534010",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534011",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534012",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534013",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534014",
+            "path:interchange-oneway-l4-curve-out-right:296678f7-a966883f-7f534010",
+            "construction:interchange-oneway-l4-curve-out-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-90a5bcd3e5d324374d48",
+      "candidate_counterpart_count": 45,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    }
+  ],
+  "journeys": [
+    {
+      "id": "7:Nin>Sout",
+      "entry_port": "Nin",
+      "exit_port": "Sout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Sin>Nout",
+      "entry_port": "Sin",
+      "exit_port": "Nout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "Nin",
+      "to_port": "Nout",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "Sin",
+      "to_port": "Sout",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    }
+  ],
+  "compatibility_policy": "Concrete PATH-aligned candidates only; physical seam review and in-game tests remain separate.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7af",
+        "0004f7af"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7af",
+        "0007f7af"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7af",
+        "0006f7af"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7af",
+        "0005f7af"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

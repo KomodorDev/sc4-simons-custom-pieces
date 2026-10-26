@@ -1,0 +1,93 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way HSR L2 Curve In Right.",
+  "schema_version": 1,
+  "id": "interchange-oneway-hsr-curve-in-right",
+  "name": "One-Way HSR L2 Curve In Right",
+  "description": "One-Way HSR L2 Curve In Right. Fixed click-to-place piece in a 1 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_hsr_curve_in_right",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f811",
+  "tile_ids": [
+    "7f56f000",
+    "7f56f010"
+  ],
+  "preview_id": "7f56fff5",
+  "effect_name": "preview_scp_interchg_f811_0",
+  "footprint": [
+    1,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f811",
+    "order": "7011f811",
+    "style": "interchange-oneway-hsr-curve-in-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f56f000",
+      "source": "7f56f000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f56f010",
+      "source": "7f56f010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        8.0,
+        -16.0,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8.0,
+        15.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "hsr",
+    "height": 15.5,
+    "radius": "compact"
+  }
+}

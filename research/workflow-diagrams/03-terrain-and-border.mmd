@@ -1,0 +1,45 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Shape a gentle rail approach while preserving river and forest
+    A->>C: Refresh terrain and occupied land on both sides of the border
+    C->>G: Read each affected city at a safe observation point
+    G-->>C: Return heights, water level, occupied cells and identity
+    C->>R: Store both observations with their dates
+    A->>P: Calculate a permitted terrain profile and earthworks
+    P->>R: Read protected areas and tested rail slope constraints
+    R-->>P: Current limits and construction rules
+    P-->>A: Target heights, shared edge values and estimated cut and fill
+    alt No terrain profile satisfies the limits
+        A->>D: Mark the conflicting hillside, river or occupied area
+        A-->>U: Explain the conflict and ask which constraint may change
+    else The profile fits the wish
+        A->>D: Preview the changed area and before-and-after terrain profile
+        A->>C: Apply the bounded terrain stage
+        C->>R: Create a consistent checkpoint for both cities
+        loop Each affected city
+            C->>G: Load city, verify identity and focus the camera
+            loop Each small terrain patch in this city
+                C->>G: Change permitted heights and allow the screen to render
+                G-->>C: Return observed terrain and nearby object state
+                C->>C: Compare against the expected patch and protected areas
+                C->>R: Record patch result and stop the stage on mismatch
+                C->>D: Highlight completed earthworks and any pending shared edge
+            end
+            C->>G: Save this city's edits before changing cities
+            G-->>C: Confirm the save has completed
+        end
+        C->>G: Revisit both cities to inspect the persisted shared border
+        G-->>C: Return persisted heights and affected network state
+        C->>R: Commit stage only after both sides pass
+        C->>D: Show terrain verified and release the next rail operation
+        C-->>A: Return measured changes and estimated earthworks totals
+        A-->>U: Report the completed approach and any remaining limits
+    end

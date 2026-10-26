@@ -1,0 +1,2753 @@
+{
+  "purpose": "Preserve the measured original51-cell atomization review for the retained V4 design; current checks validate frozen decisions without reopening deleted predecessors.",
+  "schema_version": 1,
+  "assembly_id": "straight-stem-trumpet-v4",
+  "source_ledger": "../checks/atomization.json",
+  "source_ledger_sha256": "1c39199a99dc56edcf82ce0e338430e03bdc889571e957baedfd63dc5adc42c4",
+  "reviewed_source_inventory_cells": 51,
+  "reviewed_candidate_decisions": 17,
+  "coordinate_conventions": {
+    "standalone_xy": "Original reusable type\u2019s southwest-zero X/Y grid; these coordinates intentionally identify the original source rather than the shortened V4 type.",
+    "assembly_xy": "Fixed complete assembly southwest-zero X/Y tile-centre grid,16m per tile.",
+    "construction_column_row": "Column=X; row=original footprint depth\u22121\u2212standaloneY. Construction rows increase southward.",
+    "path_axes": "Decoded SC4PATH points are east,north,height in metres relative to their tile.",
+    "model_axes": "Saved S3D vertices are east,height,south, where south=\u2212north."
+  },
+  "measurement": {
+    "candidate_limit_m_exclusive": 0.005,
+    "ordinary_straight_line_angles_degrees_ccw_from_east": [
+      0,
+      45,
+      90,
+      135
+    ],
+    "angle_assumption": "Available ordinary orthogonal and45degree diagonal HSR lines under proper90degree rotations. Undirected line angles cover both traffic directions for this optimistic geometric lower bound; actual allowed travel direction/ports remain separate requirements. Arbitrary-angle custom straights are not assumed to exist.",
+    "projection_formula": "s(theta,p)=\u2212sin(theta)*p.east+cos(theta)*p.north",
+    "fixed_angle_best_offset_formula": "c(theta)=(max_p s(theta,p)+min_p s(theta,p))/2",
+    "fixed_angle_minimax_distance_formula": "D(theta)=(max_p s(theta,p)\u2212min_p s(theta,p))/2",
+    "fragment_lower_bound_formula": "min over theta in{0,45,90,135} of D(theta)",
+    "cell_lower_bound_formula": "max over all saved route fragments of that fragment\u2019s lower bound",
+    "continuous_polyline_scope": "Projection is linear on every encoded segment, so all extrema occur at encoded vertices. This computes the continuous-polyline bound, rather than checking a sparse resampling.",
+    "optimism_and_limit": "Every fragment may choose its own free offset and angle. A real ordinary piece must additionally match fixed native track offsets, full-tile ports, train direction, level, deck, walls and supports. Thus this value is a lower bound on ordinary substitution error, not proof that a small fitted value alone makes a tile replaceable."
+  },
+  "summary": {
+    "generic_cells": 34,
+    "generic_structural_only_cells": 8,
+    "generic_curved_cells": 26,
+    "all_generic_traffic_cells_exceed_5mm_even_under_optimistic_fit": true,
+    "minimum_generic_curved_lower_bound_m": 0.07295542253665666,
+    "minimum_generic_curved_lower_bound_mm": 72.95542253665666,
+    "minimum_occurs_at_cell_ids": [
+      "P01B/X3,Y6",
+      "P03D/X1,Y6"
+    ],
+    "remaining_entirely_straight_PATH_cells": 2,
+    "remaining_entirely_straight_PATH_cell_ids": [
+      "P01A/X4,Y0",
+      "P02A/X1,Y3"
+    ],
+    "missed_ordinary_straight_candidates_found": 0
+  },
+  "generic_cells": [
+    {
+      "cell_id": "P01A/X1,Y0",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "original_standalone_xy": [
+        1,
+        0
+      ],
+      "assembly_xy": [
+        1,
+        13
+      ],
+      "construction_column_row": [
+        1,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f586100"
+      ],
+      "path_sha256": "62524f2ba6b964877846587e20f04b730d099a11e5eaf7428f7a5b7f4647b8b6",
+      "model_zoom0_sha256": "45424b3f90f57a9651fb695d8da5f31b33a67aeae56b175d112166bcf530c947",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 3,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 40,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.145193731,
+              "maximum_perpendicular_distance_m": 0.14117531999999988
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.5168810341489705,
+              "maximum_perpendicular_distance_m": 5.75668027560056
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.5168810341489705,
+              "maximum_perpendicular_distance_m": 5.5570282233842
+            }
+          ],
+          "best_straight_lower_bound_m": 0.14117531999999988,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.14117531999999988,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01A/X2,Y0",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "original_standalone_xy": [
+        2,
+        0
+      ],
+      "assembly_xy": [
+        2,
+        13
+      ],
+      "construction_column_row": [
+        2,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f586200"
+      ],
+      "path_sha256": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
+      "model_zoom0_sha256": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 3,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 40,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -3.116634504,
+              "maximum_perpendicular_distance_m": 0.830265453
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -2.203793392258372,
+              "maximum_perpendicular_distance_m": 6.2439405814936
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 2.2037933922583717,
+              "maximum_perpendicular_distance_m": 5.06976791749116
+            }
+          ],
+          "best_straight_lower_bound_m": 0.830265453,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.830265453,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01A/X3,Y0",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "original_standalone_xy": [
+        3,
+        0
+      ],
+      "assembly_xy": [
+        3,
+        13
+      ],
+      "construction_column_row": [
+        3,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f586300"
+      ],
+      "path_sha256": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
+      "model_zoom0_sha256": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 3,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 37,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -5.9734499785,
+              "maximum_perpendicular_distance_m": 2.0265500215000003
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -3.657657790963361,
+              "maximum_perpendicular_distance_m": 6.523632316196148
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.8007407239999997,
+              "maximum_perpendicular_distance_m": 7.199259276
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 4.790076182788612,
+              "maximum_perpendicular_distance_m": 3.657657790963361
+            }
+          ],
+          "best_straight_lower_bound_m": 2.0265500215000003,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.0265500215000003,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X0,Y4",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        0,
+        4
+      ],
+      "assembly_xy": [
+        6,
+        4
+      ],
+      "construction_column_row": [
+        0,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c010"
+      ],
+      "path_sha256": "4a1ff37f92144e7203c00e0ec8ce154bae022a7c4c6e38333b1ed61de4ab33fe",
+      "model_zoom0_sha256": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "L>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -0.849574655460013,
+              "maximum_perpendicular_distance_m": 6.421689228294998
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -1.2014799999999999,
+              "maximum_perpendicular_distance_m": 1.0816400000000004
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -0.849574655460013,
+              "maximum_perpendicular_distance_m": 4.8920192706897625
+            }
+          ],
+          "best_straight_lower_bound_m": 1.0816400000000004,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 1.0816400000000004,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X2,Y4",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        2,
+        4
+      ],
+      "assembly_xy": [
+        8,
+        4
+      ],
+      "construction_column_row": [
+        2,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c210"
+      ],
+      "path_sha256": "539ae1321bc013a4be32763822114bd0f5133a008cb3f82c8a4ea481bd9fefe6",
+      "model_zoom0_sha256": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>R",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 0.849574655460013,
+              "maximum_perpendicular_distance_m": 4.892019270689763
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 1.2014799999999999,
+              "maximum_perpendicular_distance_m": 1.0816399999999995
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 0.849574655460013,
+              "maximum_perpendicular_distance_m": 6.421689228294997
+            }
+          ],
+          "best_straight_lower_bound_m": 1.0816399999999995,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 1.0816399999999995,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X0,Y3",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        0,
+        3
+      ],
+      "assembly_xy": [
+        6,
+        3
+      ],
+      "construction_column_row": [
+        0,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c020"
+      ],
+      "path_sha256": "ed2a2544e09b01494183e666ff7eba86fda3170a00b532d4eb6afc99cc85a9a2",
+      "model_zoom0_sha256": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "L>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -3.2820785512842314,
+              "maximum_perpendicular_distance_m": 7.324523166513982
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -4.64156,
+              "maximum_perpendicular_distance_m": 2.3584400000000008
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -3.2820785512842314,
+              "maximum_perpendicular_distance_m": 3.9891853324707784
+            }
+          ],
+          "best_straight_lower_bound_m": 2.3584400000000008,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.3584400000000008,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X2,Y3",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        2,
+        3
+      ],
+      "assembly_xy": [
+        8,
+        3
+      ],
+      "construction_column_row": [
+        2,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c220"
+      ],
+      "path_sha256": "4b405030208a18f79f4dfd40db9177742d111c3aa560a505e8b817c726c7b2a9",
+      "model_zoom0_sha256": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>R",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 3.282078551284231,
+              "maximum_perpendicular_distance_m": 3.9891853324707798
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 4.64156,
+              "maximum_perpendicular_distance_m": 2.3584399999999994
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 3.282078551284232,
+              "maximum_perpendicular_distance_m": 7.324523166513981
+            }
+          ],
+          "best_straight_lower_bound_m": 2.3584399999999994,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.3584399999999994,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X0,Y2",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        0,
+        2
+      ],
+      "assembly_xy": [
+        6,
+        2
+      ],
+      "construction_column_row": [
+        0,
+        3
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c030"
+      ],
+      "path_sha256": "538f2d3de32668efc611434a734abcd49112e4247ef4982938ca65727f7684da",
+      "model_zoom0_sha256": "36296490f4afc12bde43a0e40fa6ee1164297eb77cb440d846d17e75c63a3d55",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "L>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 8,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 6.4701818135,
+              "maximum_perpendicular_distance_m": 1.5298181865
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -0.7281914230633817,
+              "maximum_perpendicular_distance_m": 1.4352982042499305
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -7.5,
+              "maximum_perpendicular_distance_m": 0.5000000000000004
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -9.878410294734831,
+              "maximum_perpendicular_distance_m": 0.7281914230633824
+            }
+          ],
+          "best_straight_lower_bound_m": 0.5000000000000004,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.5000000000000004,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X1,Y2",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        1,
+        2
+      ],
+      "assembly_xy": [
+        7,
+        2
+      ],
+      "construction_column_row": [
+        1,
+        3
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c130"
+      ],
+      "path_sha256": "633f6abdadd63f9b0977e184c8ce3645dd29e605749e2801a5bcf5ac3f8ebf1f",
+      "model_zoom0_sha256": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 4,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>N",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 4.440892098500626e-16
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            }
+          ],
+          "best_straight_lower_bound_m": 4.440892098500626e-16,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "N>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 4.440892098500626e-16
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            }
+          ],
+          "best_straight_lower_bound_m": 4.440892098500626e-16,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "S>R",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 27,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -1.5298181865,
+              "maximum_perpendicular_distance_m": 6.4701818135
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -5.424483536720709,
+              "maximum_perpendicular_distance_m": 3.2609939094073965
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -6.14156,
+              "maximum_perpendicular_distance_m": 1.8584399999999994
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -3.2609939094073974,
+              "maximum_perpendicular_distance_m": 5.889224962264051
+            }
+          ],
+          "best_straight_lower_bound_m": 1.8584399999999994,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 3,
+          "movement": "L>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 27,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -1.5298181865,
+              "maximum_perpendicular_distance_m": 6.4701818135
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 3.2609939094073956,
+              "maximum_perpendicular_distance_m": 5.889224962264051
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 6.14156,
+              "maximum_perpendicular_distance_m": 1.8584400000000003
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 5.424483536720709,
+              "maximum_perpendicular_distance_m": 3.260993909407396
+            }
+          ],
+          "best_straight_lower_bound_m": 1.8584400000000003,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 1.8584400000000003,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X2,Y2",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        2,
+        2
+      ],
+      "assembly_xy": [
+        8,
+        2
+      ],
+      "construction_column_row": [
+        2,
+        3
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c230"
+      ],
+      "path_sha256": "f1c7870216ddec17a487a3bed91b275c235780ef3210935d197fe21257152e43",
+      "model_zoom0_sha256": "d688b44d98b4c49194e97dbd40e962b492500fa9bbd6f1c07b1a6183333b3400",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>R",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 8,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 6.4701818135,
+              "maximum_perpendicular_distance_m": 1.5298181865
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 9.878410294734831,
+              "maximum_perpendicular_distance_m": 0.7281914230633832
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 7.5,
+              "maximum_perpendicular_distance_m": 0.49999999999999956
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 0.7281914230633832,
+              "maximum_perpendicular_distance_m": 1.4352982042499303
+            }
+          ],
+          "best_straight_lower_bound_m": 0.49999999999999956,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.49999999999999956,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X0,Y1",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        0,
+        1
+      ],
+      "assembly_xy": [
+        6,
+        1
+      ],
+      "construction_column_row": [
+        0,
+        4
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c040"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "01996dcdd494c7f5cb05395d66c10e7a95c67a6379011d3b39406bb9fc4f8504",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 82,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P02A/X1,Y1",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        1,
+        1
+      ],
+      "assembly_xy": [
+        7,
+        1
+      ],
+      "construction_column_row": [
+        1,
+        4
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c140"
+      ],
+      "path_sha256": "349274fb078b2ed1948642972e7c2306c02067556bc09ef357329ce34cd24619",
+      "model_zoom0_sha256": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 4,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>N",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 4.440892098500626e-16
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            }
+          ],
+          "best_straight_lower_bound_m": 4.440892098500626e-16,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "N>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 4.440892098500626e-16
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            }
+          ],
+          "best_straight_lower_bound_m": 4.440892098500626e-16,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "S>R",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -2.263788217833108,
+              "maximum_perpendicular_distance_m": 4.892019270689763
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -3.20148,
+              "maximum_perpendicular_distance_m": 1.0816399999999995
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -2.2637882178331084,
+              "maximum_perpendicular_distance_m": 6.421689228294998
+            }
+          ],
+          "best_straight_lower_bound_m": 1.0816399999999995,
+          "best_angle_degrees": 90
+        },
+        {
+          "route_index_zero_based": 3,
+          "movement": "L>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 2.263788217833108,
+              "maximum_perpendicular_distance_m": 6.421689228294998
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 3.20148,
+              "maximum_perpendicular_distance_m": 1.0816400000000008
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 2.2637882178331084,
+              "maximum_perpendicular_distance_m": 4.892019270689762
+            }
+          ],
+          "best_straight_lower_bound_m": 1.0816400000000008,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 1.0816400000000008,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P02A/X2,Y1",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        2,
+        1
+      ],
+      "assembly_xy": [
+        8,
+        1
+      ],
+      "construction_column_row": [
+        2,
+        4
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58c240"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "7b48a785f888af4c8a246cc7d77f3016ddc1dc5db08f8f6ec12e3f413ffc0ed7",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 63,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P03B/X1,Y0",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "original_standalone_xy": [
+        1,
+        0
+      ],
+      "assembly_xy": [
+        10,
+        13
+      ],
+      "construction_column_row": [
+        1,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f589100"
+      ],
+      "path_sha256": "00f06a3e85294ee9bd6e9c1f1efc957a5ee7a4e06a4c7898add8fcd68e04f9b0",
+      "model_zoom0_sha256": "3dfbd53c5d977734acabcbdf0603c41590ee842535f80e7607a769a0e116a062",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 3,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "N>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 48,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.2261410870000002,
+              "maximum_perpendicular_distance_m": 0.21970403299999997
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.5741194584956921,
+              "maximum_perpendicular_distance_m": 5.501500037904046
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.5741194584956921,
+              "maximum_perpendicular_distance_m": 5.812208461080713
+            }
+          ],
+          "best_straight_lower_bound_m": 0.21970403299999997,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.21970403299999997,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03B/X2,Y0",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "original_standalone_xy": [
+        2,
+        0
+      ],
+      "assembly_xy": [
+        11,
+        13
+      ],
+      "construction_column_row": [
+        2,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f589200"
+      ],
+      "path_sha256": "a85f96090348b7e9d4cccc26c3516ab9ccfc3d6fc9495a88c41061f88a8a67c1",
+      "model_zoom0_sha256": "857c41fc75c81e345535f4746e2532486548c2b33b054fd8dc80c69c00dee7a4",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 4,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "N>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 49,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 3.701267498,
+              "maximum_perpendicular_distance_m": 1.2554223780000002
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 2.6171913468211665,
+              "maximum_perpendicular_distance_m": 4.769136572755238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -2.6171913468211665,
+              "maximum_perpendicular_distance_m": 6.544571926229522
+            }
+          ],
+          "best_straight_lower_bound_m": 1.2554223780000002,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 3,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 37,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -5.9734499785,
+              "maximum_perpendicular_distance_m": 2.0265500215000003
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -4.790076182788613,
+              "maximum_perpendicular_distance_m": 3.65765779096336
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -0.8007407240000006,
+              "maximum_perpendicular_distance_m": 7.199259275999999
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 3.65765779096336,
+              "maximum_perpendicular_distance_m": 6.5236323161961485
+            }
+          ],
+          "best_straight_lower_bound_m": 2.0265500215000003,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.0265500215000003,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03B/X3,Y0",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "original_standalone_xy": [
+        3,
+        0
+      ],
+      "assembly_xy": [
+        12,
+        13
+      ],
+      "construction_column_row": [
+        3,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f589300"
+      ],
+      "path_sha256": "a3122dff8e51b88b8e75ce25ac61ebda4322ce4b180a64f373c2e4d13b1c84fe",
+      "model_zoom0_sha256": "ebc9f7552129f3571b748093d232085e5869f6c38280a61caa4829febd271555",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 4,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 1,
+          "movement": "E>W",
+          "transport": 7,
+          "entry_edge": 2,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 2,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.0,
+              "maximum_perpendicular_distance_m": 0.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.65685424949238
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.414213562373095,
+              "maximum_perpendicular_distance_m": 5.656854249492381
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 2,
+          "movement": "N>W",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 0,
+          "junction_flag": 0,
+          "encoded_point_count": 28,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 6.478344938,
+              "maximum_perpendicular_distance_m": 1.5216550619999998
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 7.210368264952226,
+              "maximum_perpendicular_distance_m": 1.9513950080984617
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 3.7186556520000003,
+              "maximum_perpendicular_distance_m": 4.281344348
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.951395008098461,
+              "maximum_perpendicular_distance_m": 4.103340234032534
+            }
+          ],
+          "best_straight_lower_bound_m": 1.5216550619999998,
+          "best_angle_degrees": 0
+        },
+        {
+          "route_index_zero_based": 3,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 40,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -3.116634504,
+              "maximum_perpendicular_distance_m": 0.830265453
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -2.203793392258372,
+              "maximum_perpendicular_distance_m": 5.069767917491159
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 2.2037933922583717,
+              "maximum_perpendicular_distance_m": 6.243940581493601
+            }
+          ],
+          "best_straight_lower_bound_m": 0.830265453,
+          "best_angle_degrees": 0
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 1.5216550619999998,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X0,Y6",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        0,
+        6
+      ],
+      "assembly_xy": [
+        2,
+        12
+      ],
+      "construction_column_row": [
+        0,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587000"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 29,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P01B/X1,Y6",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        1,
+        6
+      ],
+      "assembly_xy": [
+        3,
+        12
+      ],
+      "construction_column_row": [
+        1,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587100"
+      ],
+      "path_sha256": "c72c6f512f3afb22ceb8095dd5bdcc2f40e34c2b6f183018464b1c643d79969a",
+      "model_zoom0_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 6,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 7.665223345499999,
+              "maximum_perpendicular_distance_m": 0.33477665450000016
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 0.3294863533327308,
+              "maximum_perpendicular_distance_m": 0.8029320384925218
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -7.199259275999999,
+              "maximum_perpendicular_distance_m": 0.8007407240000002
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -10.510776460492238,
+              "maximum_perpendicular_distance_m": 0.32948635333272946
+            }
+          ],
+          "best_straight_lower_bound_m": 0.32948635333272946,
+          "best_angle_degrees": 135
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.32948635333272946,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X2,Y6",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        2,
+        6
+      ],
+      "assembly_xy": [
+        4,
+        12
+      ],
+      "construction_column_row": [
+        2,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587200"
+      ],
+      "path_sha256": "fad2e9b2afb3667b9636675dbf3d078fda876aaf5877080376c1adbbdbffa437",
+      "model_zoom0_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 45,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.1962365805,
+              "maximum_perpendicular_distance_m": 5.1342101105
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.5529737791615048,
+              "maximum_perpendicular_distance_m": 9.287289034663463
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.5529737791615048,
+              "maximum_perpendicular_distance_m": 2.0264194643212976
+            }
+          ],
+          "best_straight_lower_bound_m": 2.0264194643212976,
+          "best_angle_degrees": 135
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.0264194643212976,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X3,Y6",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        3,
+        6
+      ],
+      "assembly_xy": [
+        5,
+        12
+      ],
+      "construction_column_row": [
+        3,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587300"
+      ],
+      "path_sha256": "a2575eb6aa6fbeaf662989dadaa491f69614903d94f240506688d6923fff80ef",
+      "model_zoom0_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 18,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -5.468986765,
+              "maximum_perpendicular_distance_m": 2.531013235
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 0.03581809625343957,
+              "maximum_perpendicular_distance_m": 3.5435751472293617
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 5.5196412025,
+              "maximum_perpendicular_distance_m": 2.4803587975
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 7.732996025472183,
+              "maximum_perpendicular_distance_m": 0.07295542253665666
+            }
+          ],
+          "best_straight_lower_bound_m": 0.07295542253665666,
+          "best_angle_degrees": 135
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.07295542253665666,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X2,Y5",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        2,
+        5
+      ],
+      "assembly_xy": [
+        4,
+        11
+      ],
+      "construction_column_row": [
+        2,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587210"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 53,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P01B/X3,Y5",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        3,
+        5
+      ],
+      "assembly_xy": [
+        5,
+        11
+      ],
+      "construction_column_row": [
+        3,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587310"
+      ],
+      "path_sha256": "f8b539856215992ebb9c72498ac2493b21b64dd3ca70b488a386547fbacd85a8",
+      "model_zoom0_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 43,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -1.4447844214358891,
+              "maximum_perpendicular_distance_m": 9.250735869444728
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -2.0432337235,
+              "maximum_perpendicular_distance_m": 5.082516128500001
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.4447844214358894,
+              "maximum_perpendicular_distance_m": 2.062972629540031
+            }
+          ],
+          "best_straight_lower_bound_m": 2.062972629540031,
+          "best_angle_degrees": 135
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.062972629540031,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X4,Y5",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        4,
+        5
+      ],
+      "assembly_xy": [
+        6,
+        11
+      ],
+      "construction_column_row": [
+        4,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587410"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 514,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P01B/X3,Y4",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        3,
+        4
+      ],
+      "assembly_xy": [
+        5,
+        10
+      ],
+      "construction_column_row": [
+        3,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587320"
+      ],
+      "path_sha256": "ccc4b74726e47dfb9f204417b4d6f556c46769be178efb86c6c82df45482f2dc",
+      "model_zoom0_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 1,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 6,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 6.9985558235,
+              "maximum_perpendicular_distance_m": 1.0014441765000002
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -0.3990338641308555,
+              "maximum_perpendicular_distance_m": 1.0172220722349992
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -7.562874925999999,
+              "maximum_perpendicular_distance_m": 0.43712507400000034
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -10.296486426749762,
+              "maximum_perpendicular_distance_m": 0.39903386413085595
+            }
+          ],
+          "best_straight_lower_bound_m": 0.39903386413085595,
+          "best_angle_degrees": 135
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.39903386413085595,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P01B/X4,Y4",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "original_standalone_xy": [
+        4,
+        4
+      ],
+      "assembly_xy": [
+        6,
+        10
+      ],
+      "construction_column_row": [
+        4,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f587420"
+      ],
+      "path_sha256": "cb15369b9be1627e41d3b33344139ad821597dedbf09355d3ff36de152d20333",
+      "model_zoom0_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "W>S",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 3,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -1.0014441765000002,
+              "maximum_perpendicular_distance_m": 6.9985558235
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 3.3730448122668575,
+              "maximum_perpendicular_distance_m": 6.524407750352048
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 5.7716498965,
+              "maximum_perpendicular_distance_m": 2.2283501035000004
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 4.789300748632714,
+              "maximum_perpendicular_distance_m": 3.373044812266857
+            }
+          ],
+          "best_straight_lower_bound_m": 2.2283501035000004,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.2283501035000004,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X1,Y6",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        1,
+        6
+      ],
+      "assembly_xy": [
+        9,
+        12
+      ],
+      "construction_column_row": [
+        1,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b100"
+      ],
+      "path_sha256": "dbb3fef57a366367f8cc7c39dfe8d79b4c6762a4078b9c4589acc3fce603f8da",
+      "model_zoom0_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 18,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -5.468986765,
+              "maximum_perpendicular_distance_m": 2.531013235
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -7.732996025472183,
+              "maximum_perpendicular_distance_m": 0.0729554225366571
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -5.5196412025,
+              "maximum_perpendicular_distance_m": 2.4803587975
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -0.0358180962534409,
+              "maximum_perpendicular_distance_m": 3.5435751472293617
+            }
+          ],
+          "best_straight_lower_bound_m": 0.0729554225366571,
+          "best_angle_degrees": 45
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.0729554225366571,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X2,Y6",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        2,
+        6
+      ],
+      "assembly_xy": [
+        10,
+        12
+      ],
+      "construction_column_row": [
+        2,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b200"
+      ],
+      "path_sha256": "ae3f2c0b7fbebe9d7258b3dc110912c562bed713f0db0685c7f990da1695d522",
+      "model_zoom0_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 45,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 2.1962365805,
+              "maximum_perpendicular_distance_m": 5.1342101105
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.552973779161505,
+              "maximum_perpendicular_distance_m": 2.026419464321296
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 4.440892098500626e-16,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -1.5529737791615044,
+              "maximum_perpendicular_distance_m": 9.287289034663463
+            }
+          ],
+          "best_straight_lower_bound_m": 2.026419464321296,
+          "best_angle_degrees": 45
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.026419464321296,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X3,Y6",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        3,
+        6
+      ],
+      "assembly_xy": [
+        11,
+        12
+      ],
+      "construction_column_row": [
+        3,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b300"
+      ],
+      "path_sha256": "a1c1f34e6eb384059ec4d9731158d5b7607174bd9331d15333f2203ad5f88e94",
+      "model_zoom0_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 6,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 7.665223345499999,
+              "maximum_perpendicular_distance_m": 0.33477665450000016
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 10.510776460492238,
+              "maximum_perpendicular_distance_m": 0.32948635333272946
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 7.199259276,
+              "maximum_perpendicular_distance_m": 0.8007407239999997
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -0.329486353332729,
+              "maximum_perpendicular_distance_m": 0.8029320384925218
+            }
+          ],
+          "best_straight_lower_bound_m": 0.32948635333272946,
+          "best_angle_degrees": 45
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.32948635333272946,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X4,Y6",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        4,
+        6
+      ],
+      "assembly_xy": [
+        12,
+        12
+      ],
+      "construction_column_row": [
+        4,
+        0
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b400"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 29,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P03D/X0,Y5",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        0,
+        5
+      ],
+      "assembly_xy": [
+        8,
+        11
+      ],
+      "construction_column_row": [
+        0,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b010"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 559,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P03D/X1,Y5",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        1,
+        5
+      ],
+      "assembly_xy": [
+        9,
+        11
+      ],
+      "construction_column_row": [
+        1,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b110"
+      ],
+      "path_sha256": "e9353cb56918bceed0e60bf8cae1eee06a0a116468e67b5541d1f1eed432a7b8",
+      "model_zoom0_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 43,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 0.0,
+              "maximum_perpendicular_distance_m": 8.0
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 1.4447844214358891,
+              "maximum_perpendicular_distance_m": 2.062972629540033
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 2.0432337235,
+              "maximum_perpendicular_distance_m": 5.082516128499999
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 1.4447844214358891,
+              "maximum_perpendicular_distance_m": 9.250735869444728
+            }
+          ],
+          "best_straight_lower_bound_m": 2.062972629540033,
+          "best_angle_degrees": 45
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.062972629540033,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X2,Y5",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        2,
+        5
+      ],
+      "assembly_xy": [
+        10,
+        11
+      ],
+      "construction_column_row": [
+        2,
+        1
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b210"
+      ],
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_zoom0_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
+      "linked_candidate_id": null,
+      "classification": "structural-only-retained",
+      "route_count": 0,
+      "declared_structural_cell": true,
+      "saved_model_triangle_count": 51,
+      "ordinary_straight_lower_bound_m": null,
+      "reason": "The saved PATH resource contains zero routes while the saved S3D contains real structural geometry. An ordinary straight would introduce a full train route and replace the existing platform/wall ownership."
+    },
+    {
+      "cell_id": "P03D/X0,Y4",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        0,
+        4
+      ],
+      "assembly_xy": [
+        8,
+        10
+      ],
+      "construction_column_row": [
+        0,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b020"
+      ],
+      "path_sha256": "8131d804215b61cddd10e0f1129dbe9debf676c43597e9aa58f241dcb91b9789",
+      "model_zoom0_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 3,
+          "exit_edge": 2,
+          "junction_flag": 0,
+          "encoded_point_count": 33,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": -1.0014441765000002,
+              "maximum_perpendicular_distance_m": 6.9985558235
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": -4.789300748632712,
+              "maximum_perpendicular_distance_m": 3.373044812266858
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": -5.7716498965000005,
+              "maximum_perpendicular_distance_m": 2.2283501034999995
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": -3.3730448122668584,
+              "maximum_perpendicular_distance_m": 6.524407750352047
+            }
+          ],
+          "best_straight_lower_bound_m": 2.2283501034999995,
+          "best_angle_degrees": 90
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 2.2283501034999995,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    },
+    {
+      "cell_id": "P03D/X1,Y4",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "original_standalone_xy": [
+        1,
+        4
+      ],
+      "assembly_xy": [
+        9,
+        10
+      ],
+      "construction_column_row": [
+        1,
+        2
+      ],
+      "path_resource_tgi": [
+        "296678f7",
+        "a966883f",
+        "7f58b120"
+      ],
+      "path_sha256": "b4354db00fd51681d80c039559b0ed5442a0dca7f45ec2dafbf4bfee4055d5ce",
+      "model_zoom0_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
+      "linked_candidate_id": null,
+      "classification": "curved-retained",
+      "route_count": 1,
+      "route_fragments": [
+        {
+          "route_index_zero_based": 0,
+          "movement": "S>E",
+          "transport": 7,
+          "entry_edge": 0,
+          "exit_edge": 1,
+          "junction_flag": 0,
+          "encoded_point_count": 6,
+          "candidate_line_fits": [
+            {
+              "line_angle_degrees_ccw_from_east": 0,
+              "best_free_perpendicular_offset_m": 6.9985558235,
+              "maximum_perpendicular_distance_m": 1.0014441765000002
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 45,
+              "best_free_perpendicular_offset_m": 10.296486426749762,
+              "maximum_perpendicular_distance_m": 0.39903386413085595
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 90,
+              "best_free_perpendicular_offset_m": 7.562874926000001,
+              "maximum_perpendicular_distance_m": 0.43712507399999945
+            },
+            {
+              "line_angle_degrees_ccw_from_east": 135,
+              "best_free_perpendicular_offset_m": 0.3990338641308573,
+              "maximum_perpendicular_distance_m": 1.0172220722349992
+            }
+          ],
+          "best_straight_lower_bound_m": 0.39903386413085595,
+          "best_angle_degrees": 45
+        }
+      ],
+      "ordinary_straight_lower_bound_m": 0.39903386413085595,
+      "strictly_above_eligibility_limit": true,
+      "reason": "At least one saved route fragment exceeds5mm from every cardinal/45degree straight even when each fragment receives its own optimally chosen lateral offset and angle. Ordinary native grid connections impose additional constraints."
+    }
+  ],
+  "ordinary_paired_comparison": {
+    "piece_id": "hsr-component-lower-paired-straight",
+    "model_zoom0_sha256": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "canonical_north_south_bed_east_interval_m": [
+      -7.5,
+      7.5
+    ],
+    "east_west_rotation_degrees_ccw": 270,
+    "rotated_east_west_bed_south_interval_m": [
+      -7.5,
+      7.5
+    ],
+    "outside_profile_width_m": 15.0
+  },
+  "explicit_straight_physical_rejections": [
+    {
+      "candidate_id": "p01a-east-platform-wing",
+      "cell_id": "P01A/X4,Y0",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "original_standalone_xy": [
+        4,
+        0
+      ],
+      "assembly_xy": [
+        4,
+        13
+      ],
+      "construction_column_row": [
+        4,
+        0
+      ],
+      "path_sha256": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+      "model_zoom0_sha256": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
+      "all_saved_paths_cardinal_straight": true,
+      "actual_path_deviation_m": 0.0,
+      "decision": "retain-physical-platform-and-wall-opening",
+      "required_clearance_half_width_m": 2.6,
+      "measured_bed_south_extent_m": 8.0,
+      "ordinary_paired_east_west_south_extent_m": 7.5,
+      "physical_extension_beyond_native_m": 0.5,
+      "nearby_branch_source_piece_id": "hsr-component-modular-west-curve",
+      "nearby_branch_path_sha256": "fad2e9b2afb3667b9636675dbf3d078fda876aaf5877080376c1adbbdbffa437",
+      "nearby_branch_path_world_enh_m": [
+        -56.0,
+        -8.669553309000001,
+        15.5
+      ],
+      "hypothetical_ordinary_parapet_corner_world_enh_m": [
+        -56.0,
+        -7.5,
+        16.189326
+      ],
+      "horizontal_gap_m": 1.1695533090000012,
+      "reason": "The retained slab/wing reaches the tile edge and opens the parapet beside the neighbouring departure curve. Restoring an ordinary straight\u2019s full southern wall puts concrete within1.169553309m of that branch PATH, inside its2.6m half-width train corridor."
+    },
+    {
+      "candidate_id": "p02a-middle-platform",
+      "cell_id": "P02A/X1,Y3",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "original_standalone_xy": [
+        1,
+        3
+      ],
+      "assembly_xy": [
+        7,
+        3
+      ],
+      "construction_column_row": [
+        1,
+        2
+      ],
+      "path_sha256": "a843f5f6246499f582076500d0d72c2f65b58f462187b86b1260fbba799a6194",
+      "model_zoom0_sha256": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
+      "all_saved_paths_cardinal_straight": true,
+      "actual_path_deviation_m": 0.0,
+      "decision": "retain-physical-platform-and-wall-opening",
+      "required_clearance_half_width_m": 2.6,
+      "measured_bed_east_interval_m": [
+        -8.0,
+        8.0
+      ],
+      "maximum_measured_bed_width_m": 16.0,
+      "ordinary_paired_width_m": 15.0,
+      "nearby_branch_path_sha256": "ed2a2544e09b01494183e666ff7eba86fda3170a00b532d4eb6afc99cc85a9a2",
+      "nearby_branch_path_relative_to_candidate_centre_enh_m": [
+        -9.0,
+        -8.0,
+        15.5
+      ],
+      "hypothetical_ordinary_parapet_corner_relative_enh_m": [
+        -7.5,
+        -8.0,
+        16.189326
+      ],
+      "horizontal_gap_m": 1.5,
+      "reason": "The central paired PATHs are straight but their platform widens to16m and has openings for both adjacent branches. At its southern edge the neighbouring branch is only1.5m from a restored ordinary western wall, inside the2.6m half-width corridor."
+    }
+  ],
+  "review_status": "Read-only actual saved-resource review passed; only this evidence file was added. No ledger, Markdown, geometry, models, installed files or renders were changed.",
+  "game_operation": "unverified",
+  "larger_redesigns": "This rules out additional ordinary-straight substitutions under the current5mm candidate policy and existing geometry. It does not claim that a separately approved larger platform/branch redesign is impossible.",
+  "evidence_status": "Historical measurements recorded before predecessor retirement; not rerun against deleted archives. Current acceptance uses ../checks/resources.json."
+}

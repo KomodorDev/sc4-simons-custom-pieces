@@ -1,0 +1,155 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for Diagonal One-Way L4 over GHSR.",
+  "schema_version": 1,
+  "id": "interchange-l4-upper-diag-lower-grid-over-ground",
+  "name": "Diagonal One-Way L4 over GHSR",
+  "description": "Actual rail geometry and directed train paths at two heights. The one-way track and two-way track cross without a transfer. Experimental fixed piece; test rendering, traffic and shadows in the game. The upper route crosses without transferring to the lower two-way route.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_upper_diag_lower_grid_over_ground",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f84d",
+  "tile_ids": [
+    "7f5db100",
+    "7f5db200",
+    "7f5db010",
+    "7f5db110",
+    "7f5db020",
+    "7f5db120"
+  ],
+  "preview_id": "7f5dbff5",
+  "effect_name": "preview_scp_interchg_f84d_0",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f84d",
+    "order": "7011f84d",
+    "style": "interchange-l4-upper-diag-lower-grid-over-ground"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f5db100",
+      "source": "7f5db100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5db200",
+      "source": "7f5db200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5db010",
+      "source": "7f5db010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5db110",
+      "source": "7f5db110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5db020",
+      "source": "7f5db020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5db120",
+      "source": "7f5db120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "true-flyovers",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8,
+        -32.0,
+        30.5
+      ],
+      [
+        14.0,
+        8,
+        1.0
+      ],
+      [
+        18.0,
+        -40,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        14.0,
+        -40,
+        1.0
+      ],
+      [
+        18.0,
+        8,
+        1.0
+      ],
+      [
+        32.0,
+        8,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "flyover_crossing",
+    "height": 30.5,
+    "lower_level": "ground",
+    "upper_heading": "diagonal",
+    "lower_heading": "straight",
+    "one_way_position": "upper"
+  }
+}

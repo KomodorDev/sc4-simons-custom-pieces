@@ -1,0 +1,94 @@
+{
+  "status": "installed and indexed in Plop and Paint",
+  "method": "manual dedicated folder; sc4pac profile unchanged",
+  "source": "https://community.simtropolis.com/files/file/14932-hillside-glr-to-subway-transition-by-morifari/",
+  "downloadedArchive": "/Users/simonhinterreiter/Downloads/morifari_GLR_to_subway.zip",
+  "preservedArchive": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/hillside-tram-portal/downloads/morifari_GLR_to_subway.zip",
+  "archiveSha256": "e77a88fab8203c76895a571c0a442916d84ab6afdc332a21030f84329b7918fd",
+  "installedAt": "2026-09-19T22:13:14.257497+00:00",
+  "pluginsFolder": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/700-transportation/Morifari - Hillside GLR to Subway",
+  "files": {
+    "Hillside_GLR_to_subway_prop.dat": "51209004649f12ae42d68d685dc2cbbaf70b46fb57f1a656fe51b72bc70cdbcb",
+    "Hillside_GLR_to_subway_urban.SC4Lot": "97c673835478249210ba5553e9389f0c7a12dcb8dc733c32efba14e49c59bdbf",
+    "Hillside_GLR_to_subway_rural.SC4Lot": "0ea58f200e7609545c92bf7fd3f4cdb1da41f589512cff1e7a28bc9c54a141f6"
+  },
+  "catalogueBackup": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/hillside-tram-portal/before-20260920-001314",
+  "citySavesModified": false,
+  "catalogueRefreshExitCode": 0,
+  "catalogueBuildingsTotal": 1106,
+  "verifiedCatalogueEntries": [
+    {
+      "instanceId": "cf459904",
+      "groupId": "cdfa20b8",
+      "name": "GLR-to-Subway tunnel entrance",
+      "description": "With this transition lot, you can connect GLR and subway. It should be placed next to a slope in order to simulate a flat tunnel entrance.",
+      "occupantGroups": [
+        4867,
+        6660,
+        4874,
+        4099
+      ],
+      "lots": [
+        {
+          "instanceId": "cf459904",
+          "groupId": "a8fbd372",
+          "name": "Hillside GLR to subway",
+          "sizeX": 1,
+          "sizeZ": 1,
+          "growthStage": 1,
+          "zoneType": 15
+        }
+      ]
+    },
+    {
+      "instanceId": "ef45a073",
+      "groupId": "cdfa20b8",
+      "name": "GLR-to-Subway tunnel entrance, rural version",
+      "description": "With this transition lot, you can connect GLR and subway. It should be placed next to a slope in order to simulate a flat tunnel entrance.\n\nThis version has a grass base texture, so it fits better in rural areas.",
+      "occupantGroups": [
+        4867,
+        6660,
+        4874,
+        4099
+      ],
+      "lots": [
+        {
+          "instanceId": "ef45a073",
+          "groupId": "a8fbd372",
+          "name": "Hillside GLR to subway (rural)",
+          "sizeX": 1,
+          "sizeZ": 1,
+          "growthStage": 1,
+          "zoneType": 15
+        }
+      ]
+    },
+    {
+      "instanceId": "7765b0f5",
+      "groupId": "d4c21cfc",
+      "name": "Tram in Ave to Subway/U-GLR Transition",
+      "description": "Transition between Tram in Avenue and Subway and/or Underground Tram.\n\nLot Size: 2x3\nMonthly Cost: \u00a75\nBulldoze Cost: \u00a710\nPower Consumption: 1\nWater Consumption: 0\nPassenger Capacity: 85000",
+      "occupantGroups": [
+        3049262585,
+        4866,
+        4867,
+        4874,
+        4099
+      ],
+      "lots": [
+        {
+          "instanceId": "7765b0f5",
+          "groupId": "a8fbd372",
+          "name": "Utils_RT_Tram_in_Ave_to_Underground",
+          "sizeX": 2,
+          "sizeZ": 3,
+          "growthStage": 255,
+          "zoneType": 15,
+          "wealthType": 0,
+          "purposeType": 0
+        }
+      ]
+    }
+  ],
+  "inGamePlacementTested": false
+}

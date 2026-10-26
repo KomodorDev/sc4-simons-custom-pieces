@@ -1,0 +1,54 @@
+group: local-scoty
+name: walls-sets
+version: "1.2.0"
+subfolder: "660-parks"
+info:
+  summary: Scoty Walls Sets
+  author: hugues aroux
+  website: https://community.simtropolis.com/files/file/35922-scoty-walls-sets/
+  description: |
+    210 slope-conforming wall lots in six materials, including pedestrian stairs.
+    Uses current v1.2 wall lots and submenu patches. The original underbridge
+    prop DAT omitted from the v1.2 ZIP is recovered unchanged from v1.1.
+    Local import: keep this channel and source archives for sc4pac reinstalls.
+    Future upstream updates require refreshing the local package metadata.
+    Known source limitation: five unidentified small prop references on ten
+    diagonal/end/scene lots are not supplied by the listed dependencies.
+    Main wall textures, ordinary concrete straight walls and stairs resolve.
+dependencies:
+  - bsc:mega-props-cp-vol01
+  - memo:submenus-dll
+  - memo:transparent-texture-fix-dll
+  - girafe:beeches
+  - girafe:bushes
+  - girafe:daisy
+  - girafe:feather-grass
+  - girafe:hedges
+  - girafe:rowan-trees
+  - girafe:sparaxis
+  - girafe:wheat
+  - namspopof:nams-mega-props
+  - neko:prop-set-vol03
+  - peg:spot
+  - shk:parking-pack
+  - wmp:mega-props-vol01
+  - local-mas71:japanese-walls-props
+assets:
+  - assetId: local-scoty-walls-sets
+  - assetId: local-scoty-walls-underbridge-props
+    include:
+      - "/MGB_UBprop_ScotyWalls.dat"
+---
+assetId: local-scoty-walls-sets
+version: "1.2.0"
+url: "file:///Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-local-channel/assets/Scoty%20Walls%20Sets_1-2.zip"
+nonPersistentUrl: https://community.simtropolis.com/files/file/35922-scoty-walls-sets/?do=download
+checksum:
+  sha256: fc700b9fef233ca7b3e273fd8b39421bd74b51eae15470da2d8f0afa99aa5e58
+---
+assetId: local-scoty-walls-underbridge-props
+version: "1.1.0"
+url: "file:///Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-local-channel/assets/Scoty%20Walls%20Sets_1-1.zip"
+nonPersistentUrl: https://community.simtropolis.com/files/file/35922-scoty-walls-sets/?changelog=4948
+checksum:
+  sha256: fe38eeee08a03e520b31e6a0e9dfed24c492ed9c29b9b555df44ffaf5eb52a4f

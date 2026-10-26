@@ -1,0 +1,22 @@
+[01:24:34] [info] SC4PlopAndPaint CLI v0.10.2-dirty
+  bin/SC4PlopAndPaintCacheBuilder {OPTIONS}
+
+    SC4PlopAndPaint CLI
+
+  OPTIONS:
+
+      -h, --help                        Show this help message
+      --version                         Print version
+      --scan                            Scan plugins and extract exemplars
+      --game=[path]                     Game root directory (plugins will be in
+                                        {path}/Plugins)
+      --plugins=[path]                  User plugins directory
+      --locale=[path]                   Locale directory under game root (e.g.,
+                                        English)
+      --render-thumbnails               Render 3D thumbnails for buildings
+                                        without icons
+      --thumbnail-size=[px]             Square thumbnail size in pixels for
+                                        cached thumbnails (22-176, default 44)
+
+    Inspect and extract Lot and Building exemplars from SimCity 4 plugins.
+

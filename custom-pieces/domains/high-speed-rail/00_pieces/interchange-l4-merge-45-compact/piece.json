@@ -1,0 +1,160 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for Rail L4 Merge 45 Degree Compact.",
+  "schema_version": 1,
+  "id": "interchange-l4-merge-45-compact",
+  "name": "Rail L4 Merge 45 Degree Compact",
+  "description": "Rail L4 Merge 45 Degree Compact. Fixed click-to-place piece in a 3 by 4 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The L4 mainline and branch are both one-way single tracks.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_merge_45_compact",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7f5",
+  "tile_ids": [
+    "7f553000",
+    "7f553010",
+    "7f553110",
+    "7f553020",
+    "7f553120",
+    "7f553220",
+    "7f553030",
+    "7f553230"
+  ],
+  "preview_id": "7f553ff5",
+  "effect_name": "preview_scp_interchg_f7f5_0",
+  "footprint": [
+    3,
+    4
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7f5",
+    "order": "7011f7f5",
+    "style": "interchange-l4-merge-45-compact"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f553000",
+      "source": "7f553000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553010",
+      "source": "7f553010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553110",
+      "source": "7f553110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553020",
+      "source": "7f553020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553120",
+      "source": "7f553120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553220",
+      "source": "7f553220",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553030",
+      "source": "7f553030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f553230",
+      "source": "7f553230",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -56,
+        30.5
+      ],
+      [
+        40,
+        -48.0,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "l4",
+    "height": 30.5,
+    "angle": 45,
+    "radius": "compact",
+    "mode": "merge"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "plopAndPaintVersion": "0.10.2",
+  "renderServicesVersion": "0.7.1",
+  "distribution": "Official release NSIS payloads, extracted without running Windows installer",
+  "management": "sc4pac tracks installer packages; actual runtime payloads installed separately because native macOS cache builder is used. Updating/uninstalling packages does not update/remove these payloads automatically.",
+  "files": [
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4RenderServices-0.7.1-Setup/$_13_/Apps/imgui.dll",
+      "path": "/Users/simonhinterreiter/Applications/SimCity 4 Windows.app/Contents/SharedSupport/prefix/drive_c/GOG Games/SimCity 4 Deluxe Edition/Apps/imgui.dll",
+      "sha256": "21698a079392cb539030015cba793b18d39cbc2dc81daf974a52fd2b2a2706d5",
+      "size": 920576
+    },
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4RenderServices-0.7.1-Setup/$_14_/SC4RenderServices.dll",
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/SC4RenderServices.dll",
+      "sha256": "a0ed0f12355514afad46aa394a463208911ee1cb11963c21fd6d5db0091dc55b",
+      "size": 640512
+    },
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4RenderServices-0.7.1-Setup/$_14_/SC4RenderServices.ini",
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/SC4RenderServices.ini",
+      "sha256": "30a1d60e152377f6bb7bce520b787bf2ec3386271cec446b6ba880b1a0710d7f",
+      "size": 1561
+    },
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4PlopAndPaint-0.10.2-Setup/$_14_/SC4PlopAndPaint.dll",
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/SC4PlopAndPaint.dll",
+      "sha256": "a95aa1533fcb46922b63c6ffa767aaa912c63557e73f2d157f1724e801f66623",
+      "size": 1507840
+    },
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4PlopAndPaint-0.10.2-Setup/$_14_/SC4PlopAndPaint.ini",
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/SC4PlopAndPaint.ini",
+      "sha256": "1f3ab2271b78fd25fda679e936bb1dcc497de092facdc0a6146714692dcd1b60",
+      "size": 1554
+    },
+    {
+      "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-downloads/SC4PlopAndPaint-0.10.2-Setup/$_14_/SC4PlopAndPaint.dat",
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/SC4PlopAndPaint.dat",
+      "sha256": "c1d87dd412d9a3c3ad71dbae08413db9ad93d9c462023e41db51914999d4e627",
+      "size": 387
+    }
+  ],
+  "runtimeTest": {
+    "checkedAt": "2026-09-07T01:33:21.203082+02:00",
+    "packageCount": 32,
+    "dllModCount": 13,
+    "old30PackageRecordsUnchanged": true,
+    "gameExecutableUnchanged": true,
+    "graphicsAndAutoSaveSettingsUnchanged": true,
+    "spacePortFixInstalled": true,
+    "runtimeMathDllLoadedFromGameApps": true,
+    "plopAndPaintLog": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/SC4PlopAndPaint.log",
+    "renderServicesLog": "/Users/simonhinterreiter/Applications/SimCity 4 Windows.app/Contents/SharedSupport/prefix/drive_c/users/Wineskin/Documents/SimCity 4/SC4RenderServices.log",
+    "visualUserConfirmation": "Pending: user has not answered the in-city O-panel check; Mac later locked.",
+    "cityEditingAndSaveCycle": "not tested",
+    "regionsUnchangedSinceBackup": true,
+    "gameState": "Exited normally after startup check; visual user confirmation not received."
+  },
+  "cacheBuild": {
+    "exitCode": 0,
+    "sourceTag": "v0.10.2",
+    "architecture": "native macOS arm64",
+    "binary": "/Users/simonhinterreiter/Applications/SC4 Plop and Paint Tools/SC4PlopAndPaintCacheBuilder",
+    "binarySha256": "e2eb58e61e63c6185189652f0e997b29d1b6c7944c326a723def7aab68161b4b",
+    "localPatch": "Apple Clang16 floating-point std::from_chars replaced by fast_float::from_chars; cache schemas unchanged",
+    "upstreamTests": "61 cases; 361 assertions passed",
+    "buildNotes": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/BUILD-NOTES.md",
+    "counts": {
+      "buildings": 486,
+      "lots": 1932,
+      "props": 2105,
+      "propFamilies": 408,
+      "flora": 22,
+      "parseErrors": 0
+    },
+    "thumbnailSize": 44,
+    "thumbnailCoverage": {
+      "buildings": 486,
+      "props": 1988,
+      "flora": 22,
+      "note": "Some special/composite/effect props have no generated previews."
+    }
+  },
+  "cacheFiles": [
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/lots.cbor",
+      "size": 298199,
+      "sha256": "e6b27cc2ac72e3026c36d5904a7b5b6c7cb1c914aceacbf79c6500eafc5e0e9b"
+    },
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/props.cbor",
+      "size": 491798,
+      "sha256": "2c9c7f06d66da68ab8c165ab616a10c0f577431e2eace8c78ec4847af1f74ede"
+    },
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/flora.cbor",
+      "size": 4995,
+      "sha256": "754f4bdbc880dd4b0290da6959f3341960595407a1d40067832c985f58d6a8f0"
+    },
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/lot_thumbnails.bin",
+      "size": 3767488,
+      "sha256": "0c67282881b239e52cb9a149deb6ac10effd4158c462599ac06fa8897bde0b4c"
+    },
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/prop_thumbnails.bin",
+      "size": 15410992,
+      "sha256": "36e8d323075fd1a59f44d1d5a348b3287f059f43cf06677a28c3423fe9102756"
+    },
+    {
+      "path": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins/flora_thumbnails.bin",
+      "size": 170560,
+      "sha256": "3843c425c3a638dd24a3e71ffea81cf00baa17ec9453d4e0ae2518437df65041"
+    }
+  ],
+  "runtimeCompatibility": {
+    "reason": "Wine4.12 math API-set stub lacks fmaf; new RenderServices imports fmaf",
+    "file": "/Users/simonhinterreiter/Applications/SimCity 4 Windows.app/Contents/SharedSupport/prefix/drive_c/GOG Games/SimCity 4 Deluxe Edition/Apps/api-ms-win-crt-math-l1-1-0.dll",
+    "sha256": "bece7bab83a5d0ec5c35f0841cbbf413e01ac878550fbdb34816ed55185dcfed",
+    "source": "Microsoft API-set forwarder in official Python.org Windows UCRT package; no Python installation performed",
+    "sourceUrl": "https://www.python.org/ftp/python/3.8.10/win32/ucrt.msi",
+    "registryKey": "HKCU\\Software\\Wine\\AppDefaults\\SimCity 4.exe\\DllOverrides",
+    "registryValue": "*api-ms-win-crt-math-l1-1-0",
+    "registryData": "native,builtin",
+    "scope": "SimCity 4.exe only; prefix system32 files unchanged",
+    "audit": "All 314 forwards exist in native ucrtbase; existing root mod math imports checked too."
+  },
+  "graphicalRebuildHelper": {
+    "app": "/Users/simonhinterreiter/Applications/Rebuild SimCity Content.app",
+    "desktopShortcut": "/Users/simonhinterreiter/Desktop/Rebuild SimCity Content.app",
+    "source": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-helper",
+    "status": "GUI rebuild completed exit0; final readable-progress build installed and verified",
+    "firstGuiRebuildSeconds": 35,
+    "log": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Setup logs/Plop and Paint cache rebuild.log",
+    "readableProgressVerification": "Actual successful rebuild log processed in 257-byte chunks; 14 readable milestones, warning notices preserved, no paths/hex IDs/debug lines in UI.",
+    "appExecutableSha256": "bc3046a4d5135dd13bdd0e6ffd0032ca4b01f2cd807eb85dafcdefaeb0721324",
+    "finalVisualCheck": "Initial app GUI rebuilt successfully. Refined progress display passed offline recorded-log check; final app build/signature verified. Final GUI reopen blocked by locked Mac."
+  },
+  "completedAt": "2026-09-07T02:01:18.561912+02:00",
+  "remainingValidation": [
+    "User visual confirmation of Advanced Plopping & Painting panel inside a city",
+    "Actual placement/painting and city save/reopen cycle"
+  ]
+}

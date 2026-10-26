@@ -1,0 +1,22 @@
+{
+  "purpose": "Resolve SC4RenderServices 0.7.1 fmaf import in Wine 4.12 CRT math API set. Prepared only; prefix/Apps/registry changes belong to root agent.",
+  "source_url": "https://www.python.org/ftp/python/3.8.10/win32/ucrt.msi",
+  "source_listing": "https://www.python.org/ftp/python/3.8.10/win32/",
+  "source_msi_sha256": "0bd8bcb247794cf7d367e5271590c1c720b22dd8c0426598ef92739154413208",
+  "source_cab_entry": "InstallDirectory_api_ms_win_crt_math_l1_1_0.dll",
+  "file": "api-ms-win-crt-math-l1-1-0.dll",
+  "file_version": "10.0.16299.15",
+  "architecture": "x86",
+  "size": 28984,
+  "sha256": "bece7bab83a5d0ec5c35f0841cbbf413e01ac878550fbdb34816ed55185dcfed",
+  "exports": 314,
+  "direct_imports": 0,
+  "forwarder_target": "ucrtbase",
+  "fmaf_forwarder": "ucrtbase.fmaf",
+  "all_forwarders_resolve_in_existing_native_ucrtbase": true,
+  "existing_plugin_math_imports_resolve": true,
+  "suggested_override_key": "HKCU\\Software\\Wine\\AppDefaults\\SimCity 4.exe\\DllOverrides",
+  "suggested_override_value": "*api-ms-win-crt-math-l1-1-0",
+  "suggested_override_data": "native,builtin",
+  "limitations": "Static export resolution confirms symbol availability, not successful in-game rendering or painting."
+}

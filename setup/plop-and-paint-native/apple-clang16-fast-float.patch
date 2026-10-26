@@ -1,0 +1,21 @@
+diff --git a/src/RUL0.cpp b/src/RUL0.cpp
+index b54efe2..d20018a 100644
+--- a/src/RUL0.cpp
++++ b/src/RUL0.cpp
+@@ -6,6 +6,7 @@
+ #include <cstring>
+ #include <format>
+ #include <ranges>
++#include "fast_float/fast_float.h"
+ 
+ #include "ParseTypes.h"
+ #include "ini.h"
+@@ -23,7 +24,7 @@ namespace RUL0::ParseHelpers {
+ 
+     bool ParseFloat(std::string_view s, float& out) {
+         s = Trim(s);
+-        const auto [ptr, ec] = std::from_chars(s.data(), s.data() + s.size(), out, std::chars_format::general);
++        const auto [ptr, ec] = fast_float::from_chars(s.data(), s.data() + s.size(), out, fast_float::chars_format::general);
+         return ec == std::errc() && ptr == s.data() + s.size();
+     }
+ 

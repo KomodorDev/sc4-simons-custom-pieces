@@ -1,0 +1,48 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Build HSR through Westhaven, Eastbank and Southport
+    A->>P: Expand corridor into ordered, tested construction recipes
+    P-->>A: Terrain, track, stations, feeders and paired border records
+    A->>C: Execute corridor H1 under current plan and funding limits
+    C->>R: Acquire exclusive ownership and record the intended stage
+    C->>G: Complete pending saves at safe points
+    G-->>C: Saves completed
+    C->>R: Create checkpoint for all affected cities and project records
+    loop Westhaven, then Eastbank, then Southport
+        C->>G: Load the named city and wait for readiness
+        G-->>C: Return verified identity and fresh local state
+        C->>G: Pause simulation clock and move camera to the work area
+        C->>D: Show city, corridor section and purpose of this work
+        loop Each small construction operation
+            C->>R: Record operation ID and expected starting state
+            C->>G: Apply terrain, track or station operation
+            G-->>C: Return result and observed local change
+            C->>C: Check geometry, paths, access and observed charge
+            C->>R: Record verified result or stop on mismatch
+            C->>D: Update completed section and latest game image
+        end
+        C->>G: Save the city without leaving during the save
+        G-->>C: Save completed
+        C->>R: Mark this city saved and keep incomplete border pairs pending
+    end
+    C->>G: Revisit border pairs and verify both endpoints
+    G-->>C: Return connection, height and supported route evidence
+    alt Suitable housing and jobs already exist
+        C->>G: Run bounded simulation visits in the affected cities
+        G-->>C: Return supported passenger and station observations
+        C->>R: Record usage evidence and its city and date coverage
+        C->>D: Show construction and traffic verification separately
+    else The corridor is built before demand exists
+        C->>D: Show built with passenger test awaiting development
+        C->>R: Schedule verification after the relevant districts grow
+    end
+    C-->>A: Return corridor results and unresolved items
+    A-->>U: Explain what is built, what works and what still awaits proof

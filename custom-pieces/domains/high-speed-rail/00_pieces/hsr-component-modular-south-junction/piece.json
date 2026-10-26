@@ -1,0 +1,303 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Modular Symmetric Split and Return.",
+  "schema_version": 1,
+  "id": "hsr-component-modular-south-junction",
+  "name": "HSR Modular Symmetric Split and Return",
+  "description": "Flat L2 paired split and return with three northern outlets for native paired or centred one-way HSR and one southern native paired connection.",
+  "domain": "high-speed-rail",
+  "recipe": "hsr_component_modular_south_junction",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f82e",
+  "tile_ids": [
+    "7f58c000",
+    "7f58c200",
+    "7f58c010",
+    "7f58c210",
+    "7f58c020",
+    "7f58c120",
+    "7f58c220",
+    "7f58c030",
+    "7f58c130",
+    "7f58c230",
+    "7f58c040",
+    "7f58c140",
+    "7f58c240",
+    "7f58c150"
+  ],
+  "preview_id": "7f58cff5",
+  "effect_name": "preview_scp_hsrcomp_f82e_00",
+  "footprint": [
+    3,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      1,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "structural_cells": [
+    [
+      0,
+      4
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f82e",
+    "order": "7012f82e",
+    "style": "hsr-component-modular-south-junction"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f58c000",
+      "source": "7f58c000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c200",
+      "source": "7f58c200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c010",
+      "source": "7f58c010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c210",
+      "source": "7f58c210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c020",
+      "source": "7f58c020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c120",
+      "source": "7f58c120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c220",
+      "source": "7f58c220",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c030",
+      "source": "7f58c030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c130",
+      "source": "7f58c130",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c230",
+      "source": "7f58c230",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c040",
+      "source": "7f58c040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c140",
+      "source": "7f58c140",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c240",
+      "source": "7f58c240",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58c150",
+      "source": "7f58c150",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+    "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "hsr-components",
+  "component": {
+    "kind": "partition_component",
+    "support_centers": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        32.0,
+        0.0
+      ],
+      [
+        0.0,
+        -16.0
+      ],
+      [
+        32.0,
+        -16.0
+      ],
+      [
+        16.0,
+        -32.0
+      ],
+      [
+        16.0,
+        -48.0
+      ],
+      [
+        16.0,
+        -64.0
+      ],
+      [
+        16.0,
+        -80.0
+      ]
+    ],
+    "support_foundation_width": 1.3,
+    "support_min_spacing": 16.0,
+    "custom_curved_interfaces": false
+  },
+  "ports": {
+    "L": {
+      "in": [
+        0.0,
+        8.0,
+        15.5
+      ]
+    },
+    "S": {
+      "out": [
+        14.0,
+        -88.0,
+        15.5
+      ],
+      "in": [
+        18.0,
+        -88.0,
+        15.5
+      ]
+    },
+    "R": {
+      "out": [
+        32.0,
+        8.0,
+        15.5
+      ]
+    },
+    "N": {
+      "out": [
+        18.0,
+        -24.0,
+        15.5
+      ],
+      "in": [
+        14.0,
+        -24.0,
+        15.5
+      ]
+    }
+  },
+  "movements": [
+    [
+      "L",
+      "S"
+    ],
+    [
+      "S",
+      "R"
+    ],
+    [
+      "S",
+      "N"
+    ],
+    [
+      "N",
+      "S"
+    ]
+  ],
+  "at_grade_conflicts": false,
+  "design_assessment": {
+    "stage": "reusable component prototype",
+    "scope": "Individual component; assembly and game operation unverified"
+  }
+}

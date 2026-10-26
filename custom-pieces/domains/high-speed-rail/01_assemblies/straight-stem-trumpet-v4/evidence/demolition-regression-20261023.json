@@ -1,0 +1,149 @@
+{
+  "purpose": "Preserve the exact human-reported single-tile demolition failure separately from existing whole-placement manual cases.",
+  "schema_version": 1,
+  "issue_id": "trumpet-connected-demolition-20261023",
+  "subject_id": "straight-stem-trumpet-v4",
+  "status": "open",
+  "severity": "connected_custom_pieces_revert_after_partial_demolition",
+  "reported_at": "2026-10-23",
+  "reporter": "user",
+  "explicit_user_confirmation": true,
+  "user_statements": [
+    "one problem i can immediately see while testing? deleting one piece of the assembly reverts everything back to monorail",
+    "ONLY CONNECTED. ONE TILE"
+  ],
+  "observed_facts": {
+    "demolition_selection": "one tile",
+    "affected_scope": "connected parts",
+    "disconnected_copies_changed": false,
+    "reported_appearance": "Monorail"
+  },
+  "unknown_facts": {
+    "deleted_piece_id": null,
+    "selected_cell": null,
+    "piece_or_assembly_rotation": null,
+    "menu_entry_point": null,
+    "whether_one_or_all_target_tiles_were_removed": null,
+    "whether_saved_network_or_paths_changed": null,
+    "game_version_confirmed_by_user": null,
+    "platform_confirmed_by_user": null,
+    "city_layout": null,
+    "screenshots": null,
+    "recovery_after_replacement": null,
+    "persistence_after_save_reload": null
+  },
+  "context_artifact": {
+    "association": "Installed menu trial present during this conversation; exact game-loaded bytes have not been independently confirmed.",
+    "manifest_sha256": "b72cc72f2713a370cfb8e77d09c784d594ecbae058957e03f0d7ea93e44de0c0",
+    "installed_controller_sha256": "74667e6a59e7ea4aa739db653f574f582f4755449b4dfce7e1b89055d3c9ec44",
+    "installed_menu_sha256": "f763870115a79d52cce9d64976446705d686d41bd54febf22bcc59518fc5170c",
+    "static_comparison_sha256": "7c8e46cc0a61d018fcacdda5443a1bb221f25977c2bf2ff1c43d405da27244bc",
+    "backup_id": "bc4f1d8ad67f4e0782f04203f52e2007"
+  },
+  "diagnosis": {
+    "state": "minimal_reproduction_confirmed_by_user",
+    "leading_hypothesis": "A connected network recalculation after demolition replaces custom geometry with the underlying Monorail network.",
+    "confirmed_cause": null,
+    "static_facts": [
+      "All 165 piece archives are byte-identical to the pre-menu installation.",
+      "NetworkINI and the appended construction definitions are unchanged.",
+      "The controller change groups existing construction states into a shared Tab family.",
+      "User confirmed the failure with three copies of the one-tile HSR L2 Two-Track Straight: after deleting the middle copy, both connected survivors appeared as Monorail."
+    ],
+    "unproven_alternatives": [
+      "Unexpected runtime interaction with shared Tab family.",
+      "Construction edge or static-cell bookkeeping that fails under partial demolition."
+    ],
+    "prohibited_inferences": [
+      "Do not call this fixed without an actual repeat of the reported action.",
+      "Do not mark old whole-placement demolition or save/reload cases failed or passed under an unknown orientation.",
+      "Do not assign this report to every type or orientation."
+    ],
+    "next_step": "Repeat the minimal straight deletion under the exact pre-menu installation after the game has fully exited.",
+    "additional_static_evidence": [
+      {
+        "finding": "Native and custom single-tile straight construction semantics and non-presentation exemplar properties match.",
+        "audit_sha256": "d8514152106a153862326f538599fdb61904cbf6dd71be2cfbbeb1cb021d9121",
+        "project_relative_path": "custom-pieces/local/menu-experiment-20261023/demolition-investigation/native-custom-straight-differential.json",
+        "distribution_scope": "Local diagnostic evidence; excluded from public source packages."
+      },
+      {
+        "finding": "Static-cell placement sets immovable protection; the ordinary network-rebuild path clears it. The trigger selecting the latter during the reported failure is unknown.",
+        "audit_sha256": "2b0c7391771a6425a771bc3ad4e9a51c05f8f9fe911df647ab42300513550dba",
+        "project_relative_path": "custom-pieces/local/menu-experiment-20261023/demolition-investigation/native-demolition-followup-audit.json",
+        "distribution_scope": "Local diagnostic evidence; excluded from public source packages."
+      },
+      {
+        "finding": "Native Ordering parsing changes rule navigation links rather than static-cell or network-flag construction fields. Unexpected runtime coupling still needs the pre-menu game comparison.",
+        "audit_sha256": "3598589ef2cd607ab3b825154c49c71691e15f16c822993ec526cea4f99391e4",
+        "project_relative_path": "custom-pieces/local/menu-experiment-20261023/demolition-menu-runtime-audit.json",
+        "distribution_scope": "Local diagnostic evidence; excluded from public source packages."
+      }
+    ]
+  },
+  "regression_cases": [
+    {
+      "id": "original-reproduction",
+      "status": "human_reported_failure",
+      "scope": "Only the reported one-tile, connected-only outcome; detailed layout unknown."
+    },
+    {
+      "id": "minimal-straight-connected-control",
+      "status": "human_reported_failure",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "piece_name": "HSR L2 Two-Track Straight",
+      "layout": "Three one-tile straight copies in one connected line, plus an identical disconnected copy at least eight empty tiles away. Delete only the middle tile.",
+      "expected": "The surviving two connected custom pieces and the disconnected control retain their custom identity; record appearance separately from actual path operation.",
+      "explicit_user_confirmation": true,
+      "confirmed_at": "2026-10-23",
+      "user_answer": "Yes, both connected survivors turn into Monorail",
+      "observed": {
+        "connected_survivors_changed": true,
+        "surviving_connected_copies": 2,
+        "deleted_middle_one_tile_copy": true,
+        "appearance": "Monorail",
+        "disconnected_control_outcome": null,
+        "orientation": null,
+        "platform": null,
+        "game_version": null
+      },
+      "limits": [
+        "Confirmation answers the two connected survivors question; it does not explicitly report the disconnected control outcome.",
+        "No additional rotations, other pieces, exact simulator environment, actual path state, or save/reload result are inferred."
+      ]
+    },
+    {
+      "id": "pre-menu-identical-layout-control",
+      "status": "pending",
+      "expected": "Repeat from a fresh baseline with exact pre-menu controller/menu and identical piece bytes; close the game completely before swapping builds."
+    },
+    {
+      "id": "replace-and-reload",
+      "status": "pending",
+      "expected": "Record immediate deletion, exact replacement, and reload results separately; preserve unrepaired and repaired states separately if both are tested."
+    }
+  ],
+  "manual_case_records_changed": false,
+  "fix_applied": false,
+  "clarifications": [
+    {
+      "date": "2026-10-24",
+      "explicit_user_confirmation": true,
+      "user_statement": "nah not the normal basic pieces. but the parts we do. also another note: i cannot drag the straight pieces via monorail into my custom pieces. instead i need to place a starter piece next to my custom pieces. any fix for that?",
+      "meaning": "Reports concern SCP custom parts. No demolition failure of ordinary native NAM pieces is asserted. The previously named custom straight remains a custom library part, not an ordinary NAM straight.",
+      "normal_native_piece_demolition_outcome": null
+    }
+  ],
+  "related_reported_issue": {
+    "id": "custom-hsr-needs-native-starter-20261024",
+    "status": "human_reported_failure",
+    "explicit_user_confirmation": true,
+    "observed": "Dragging Monorail does not produce the desired HSR continuation into custom parts unless a native starter is placed next to them.",
+    "part_ids": null,
+    "heights_or_endpoints_tested": null,
+    "drag_direction": null,
+    "game_environment_confirmed": null,
+    "fix_applied": false,
+    "relation_to_demolition": "Separate observed limitation; a common runtime cause has not been established."
+  }
+}

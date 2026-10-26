@@ -1,0 +1,500 @@
+Detecting compiler hash for triplet arm64-osx...
+Compiler found: /usr/bin/c++
+The following packages will be built and installed:
+    args:arm64-osx@6.4.7
+  * cgltf:arm64-osx@1.15
+    ctre:arm64-osx@3.10.0
+  * dirent:arm64-osx@1.26
+  * drlibs:arm64-osx@2026-01-16
+    fmt:arm64-osx@12.1.0
+    glfw3:arm64-osx@3.4#1
+    imgui:arm64-osx@1.91.9
+    jsoncons:arm64-osx@1.5.0
+  * miniaudio:arm64-osx@0.11.24
+  * mmx:arm64-osx@2025-03-19
+  * nanosvg:arm64-osx@2023-12-29
+    pugixml:arm64-osx@1.15#1
+  * qoi:arm64-osx@2023-08-10
+    raylib[audio,core]:arm64-osx@5.5#1
+    reflectcpp[cbor,core]:arm64-osx@0.23.0
+    spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0
+    stb:arm64-osx@2024-07-29#1
+    utfcpp:arm64-osx@4.0.9
+    vcpkg-cmake:arm64-osx@2024-04-23
+    vcpkg-cmake-config:arm64-osx@2024-05-23
+    wil:arm64-osx@1.0.260126.7
+    yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0
+Additional packages (*) will be modified to complete this operation.
+Restored 0 package(s) from /Users/simonhinterreiter/.cache/vcpkg/archives in 362 us. Use --debug to see more details.
+Installing 1/23 vcpkg-cmake-config:arm64-osx@2024-05-23...
+vcpkg-cmake-config:arm64-osx@2024-05-23 package ABI: afcd0f55c08372d3a3c8b59d08f37951e922efdb7b29fceed3908c995e759146
+Building vcpkg-cmake-config:arm64-osx@2024-05-23...
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/vcpkg-port-config.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake-config_arm64-osx/share/vcpkg-cmake-config/copyright
+-- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+Starting submission of vcpkg-cmake-config:arm64-osx@2024-05-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-config:arm64-osx: 25.7 ms
+Installing 2/23 vcpkg-cmake:arm64-osx@2024-04-23...
+vcpkg-cmake:arm64-osx@2024-04-23 package ABI: f93aa50c1d302aa581bc5a006e7365b24674c289893a79e65c67217459b5404b
+Building vcpkg-cmake:arm64-osx@2024-04-23...
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_configure.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_build.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg_cmake_install.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/vcpkg-port-config.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/vcpkg-cmake_arm64-osx/share/vcpkg-cmake/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake:arm64-osx@2024-04-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake:arm64-osx: 26.9 ms
+Completed submission of vcpkg-cmake-config:arm64-osx@2024-05-23 to 1 binary cache(s) in 8.79 ms
+Installing 3/23 args:arm64-osx@6.4.7...
+args:arm64-osx@6.4.7 package ABI: 07d93136a2e3f7253ba68152cf5caee2579444ddff85d4c943d2d8f70f1ca211
+Building args:arm64-osx@6.4.7...
+Downloading https://github.com/Taywee/args/archive/6.4.7.tar.gz -> Taywee-args-6.4.7.tar.gz
+Successfully downloaded Taywee-args-6.4.7.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/Taywee-args-6.4.7.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/args/src/6.4.7-b32a1e2944.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/args_arm64-osx/lib/pkgconfig/args.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/args_arm64-osx/share/args/copyright
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/args_arm64-osx/share/args/usage
+-- Performing post-build validation
+Starting submission of args:arm64-osx@6.4.7 to 1 binary cache(s) in the background
+Elapsed time to handle args:arm64-osx: 1.1 s
+Completed submission of vcpkg-cmake:arm64-osx@2024-04-23 to 1 binary cache(s) in 7.87 ms
+Installing 4/23 ctre:arm64-osx@3.10.0...
+ctre:arm64-osx@3.10.0 package ABI: ee01a193ba7e45db4e7c9cef90931d7847d1eee4d9b7fd4b73a169e9244fa0d7
+Building ctre:arm64-osx@3.10.0...
+Downloading https://github.com/hanickadot/compile-time-regular-expressions/archive/v3.10.0.tar.gz -> hanickadot-compile-time-regular-expressions-v3.10.0.tar.gz
+Successfully downloaded hanickadot-compile-time-regular-expressions-v3.10.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/hanickadot-compile-time-regular-expressions-v3.10.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/ctre/src/v3.10.0-e4b03d3559.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/ctre_arm64-osx/share/ctre/copyright
+-- Performing post-build validation
+Starting submission of ctre:arm64-osx@3.10.0 to 1 binary cache(s) in the background
+Elapsed time to handle ctre:arm64-osx: 1.3 s
+Completed submission of args:arm64-osx@6.4.7 to 1 binary cache(s) in 9.06 ms
+Installing 5/23 fmt:arm64-osx@12.1.0...
+fmt:arm64-osx@12.1.0 package ABI: 4a43cf30c0f6b7da9d4a4b208e1b8b8f6d141451c6a6b21f52cc53a68088ba2e
+Building fmt:arm64-osx@12.1.0...
+Downloading https://github.com/fmtlib/fmt/archive/12.1.0.tar.gz -> fmtlib-fmt-12.1.0.tar.gz
+Successfully downloaded fmtlib-fmt-12.1.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/fmtlib-fmt-12.1.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/fmt/src/12.1.0-54f1f91231.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/fmt_arm64-osx/lib/pkgconfig/fmt.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/fmt_arm64-osx/debug/lib/pkgconfig/fmt.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/fmt_arm64-osx/share/fmt/usage
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/fmt_arm64-osx/share/fmt/copyright
+-- Performing post-build validation
+Starting submission of fmt:arm64-osx@12.1.0 to 1 binary cache(s) in the background
+Elapsed time to handle fmt:arm64-osx: 3.5 s
+Completed submission of ctre:arm64-osx@3.10.0 to 1 binary cache(s) in 25.2 ms
+Installing 6/23 glfw3:arm64-osx@3.4#1...
+glfw3:arm64-osx@3.4#1 package ABI: d95a094d4dc6cfbce083655b41f73b4fc7ddcef33c4a63aa77777241e43c4942
+Building glfw3:arm64-osx@3.4#1...
+Downloading https://github.com/glfw/glfw/archive/3.4.tar.gz -> glfw-glfw-3.4.tar.gz
+Successfully downloaded glfw-glfw-3.4.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/glfw-glfw-3.4.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/glfw3/src/3.4-2448ff4533.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/glfw3_arm64-osx/lib/pkgconfig/glfw3.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/glfw3_arm64-osx/debug/lib/pkgconfig/glfw3.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/glfw3_arm64-osx/share/glfw3/copyright
+-- Performing post-build validation
+Starting submission of glfw3:arm64-osx@3.4#1 to 1 binary cache(s) in the background
+Elapsed time to handle glfw3:arm64-osx: 3.4 s
+Completed submission of fmt:arm64-osx@12.1.0 to 1 binary cache(s) in 63.2 ms
+Installing 7/23 imgui:arm64-osx@1.91.9...
+imgui:arm64-osx@1.91.9 package ABI: a29f5edb560ba21686fe9038cfc8a48760e68c3495a47addfd5a5884a32cefcf
+Building imgui:arm64-osx@1.91.9...
+Downloading https://github.com/ocornut/imgui/archive/v1.91.9.tar.gz -> ocornut-imgui-v1.91.9.tar.gz
+Successfully downloaded ocornut-imgui-v1.91.9.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/ocornut-imgui-v1.91.9.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/imgui/src/v1.91.9-afb09617a6.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/imgui_arm64-osx/share/imgui/copyright
+-- Performing post-build validation
+Starting submission of imgui:arm64-osx@1.91.9 to 1 binary cache(s) in the background
+Elapsed time to handle imgui:arm64-osx: 4.9 s
+Completed submission of glfw3:arm64-osx@3.4#1 to 1 binary cache(s) in 60.5 ms
+Installing 8/23 jsoncons:arm64-osx@1.5.0...
+jsoncons:arm64-osx@1.5.0 package ABI: ce4cf7f7c17cbfa905c3c497e169867882568305fd79b892849a932d4ac81c8f
+Building jsoncons:arm64-osx@1.5.0...
+Downloading https://github.com/danielaparker/jsoncons/archive/v1.5.0.tar.gz -> danielaparker-jsoncons-v1.5.0.tar.gz
+Successfully downloaded danielaparker-jsoncons-v1.5.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/danielaparker-jsoncons-v1.5.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/jsoncons/src/v1.5.0-ed2c4ae6c6.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/jsoncons_arm64-osx/share/jsoncons/copyright
+-- Performing post-build validation
+Starting submission of jsoncons:arm64-osx@1.5.0 to 1 binary cache(s) in the background
+Elapsed time to handle jsoncons:arm64-osx: 1.7 s
+Completed submission of imgui:arm64-osx@1.91.9 to 1 binary cache(s) in 264 ms
+Installing 9/23 pugixml:arm64-osx@1.15#1...
+pugixml:arm64-osx@1.15#1 package ABI: 17f105a077216158aaeefb789786bbddb703187a36ec267a77f7eeac343adc71
+Building pugixml:arm64-osx@1.15#1...
+Downloading https://github.com/zeux/pugixml/archive/v1.15.tar.gz -> zeux-pugixml-v1.15.tar.gz
+Successfully downloaded zeux-pugixml-v1.15.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/zeux-pugixml-v1.15.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/pugixml/src/v1.15-8a9beec4a5.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/pugixml_arm64-osx/lib/pkgconfig/pugixml.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/pugixml_arm64-osx/debug/lib/pkgconfig/pugixml.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/pugixml_arm64-osx/share/pugixml/copyright
+-- Performing post-build validation
+Starting submission of pugixml:arm64-osx@1.15#1 to 1 binary cache(s) in the background
+Elapsed time to handle pugixml:arm64-osx: 3.8 s
+Completed submission of jsoncons:arm64-osx@1.5.0 to 1 binary cache(s) in 57.8 ms
+Installing 10/23 stb:arm64-osx@2024-07-29#1...
+stb:arm64-osx@2024-07-29#1 package ABI: 985288902a8c2b287ec99c95cbd8e512f6929a826ee95e8543ac8d9f9038c7bc
+Building stb:arm64-osx@2024-07-29#1...
+Downloading https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz -> nothings-stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
+Successfully downloaded nothings-stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/nothings-stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/stb/src/4ef78b4e31-bf024d35de.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/stb_arm64-osx/share/stb/FindStb.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/stb_arm64-osx/share/stb/vcpkg-cmake-wrapper.cmake
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/stb_arm64-osx/share/stb/usage
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/stb_arm64-osx/share/stb/copyright
+-- Performing post-build validation
+Starting submission of stb:arm64-osx@2024-07-29#1 to 1 binary cache(s) in the background
+Elapsed time to handle stb:arm64-osx: 717 ms
+Completed submission of pugixml:arm64-osx@1.15#1 to 1 binary cache(s) in 49.5 ms
+Installing 11/23 qoi:arm64-osx@2023-08-10...
+qoi:arm64-osx@2023-08-10 package ABI: 1bf7f8e00edb865b248ebb94df3522e14f47baac0bc02ed8b69f7d747bd29a16
+Building qoi:arm64-osx@2023-08-10...
+Downloading https://github.com/phoboslab/qoi/archive/19b3b4087b66963a3699ee45f05ec9ef205d7c0e.tar.gz -> phoboslab-qoi-19b3b4087b66963a3699ee45f05ec9ef205d7c0e.tar.gz
+Successfully downloaded phoboslab-qoi-19b3b4087b66963a3699ee45f05ec9ef205d7c0e.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/phoboslab-qoi-19b3b4087b66963a3699ee45f05ec9ef205d7c0e.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/qoi/src/ef205d7c0e-98fb9778bd.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/qoi_arm64-osx/include/qoi.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/qoi_arm64-osx/share/qoi/copyright
+-- Performing post-build validation
+Starting submission of qoi:arm64-osx@2023-08-10 to 1 binary cache(s) in the background
+Elapsed time to handle qoi:arm64-osx: 564 ms
+Completed submission of stb:arm64-osx@2024-07-29#1 to 1 binary cache(s) in 49.3 ms
+Installing 12/23 nanosvg:arm64-osx@2023-12-29...
+nanosvg:arm64-osx@2023-12-29 package ABI: 9fa18c2cd4c563673ea8228933b65e22f3bdb0edd86064c87c5223c1b11d417d
+Building nanosvg:arm64-osx@2023-12-29...
+Downloading https://github.com/memononen/nanosvg/archive/93ce879dc4c04a3ef1758428ec80083c38610b1f.tar.gz -> memononen-nanosvg-93ce879dc4c04a3ef1758428ec80083c38610b1f.tar.gz
+Successfully downloaded memononen-nanosvg-93ce879dc4c04a3ef1758428ec80083c38610b1f.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/memononen-nanosvg-93ce879dc4c04a3ef1758428ec80083c38610b1f.tar.gz
+-- Applying patch fltk.patch
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/nanosvg/src/3c38610b1f-dc4edc4939.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/nanosvg_arm64-osx/share/nanosvg/copyright
+-- Performing post-build validation
+Starting submission of nanosvg:arm64-osx@2023-12-29 to 1 binary cache(s) in the background
+Elapsed time to handle nanosvg:arm64-osx: 1.9 s
+Completed submission of qoi:arm64-osx@2023-08-10 to 1 binary cache(s) in 9.29 ms
+Installing 13/23 mmx:arm64-osx@2025-03-19...
+mmx:arm64-osx@2025-03-19 package ABI: 38ef9df9aebe8c982ef799501d9d9e5a338bca852c72b2c7ee82f71454537ab4
+Building mmx:arm64-osx@2025-03-19...
+Downloading https://github.com/vurtun/mmx/archive/5a3f3aba052e63ffae8eb0214c6bb8ffffedea3c.tar.gz -> vurtun-mmx-5a3f3aba052e63ffae8eb0214c6bb8ffffedea3c.tar.gz
+Successfully downloaded vurtun-mmx-5a3f3aba052e63ffae8eb0214c6bb8ffffedea3c.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/vurtun-mmx-5a3f3aba052e63ffae8eb0214c6bb8ffffedea3c.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/mmx/src/ffffedea3c-abf696c451.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/include/mmx/json.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/include/mmx/sched.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/include/mmx/sdefl.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/include/mmx/sinfl.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/include/mmx/web.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/mmx_arm64-osx/share/mmx/copyright
+-- Performing post-build validation
+Starting submission of mmx:arm64-osx@2025-03-19 to 1 binary cache(s) in the background
+Elapsed time to handle mmx:arm64-osx: 795 ms
+Completed submission of nanosvg:arm64-osx@2023-12-29 to 1 binary cache(s) in 21.8 ms
+Installing 14/23 dirent:arm64-osx@1.26...
+dirent:arm64-osx@1.26 package ABI: 398e571bd9fc0232364a7dc2ef73832def30421aaee53427cdaa176a4bf1e476
+Building dirent:arm64-osx@1.26...
+-- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+Starting submission of dirent:arm64-osx@1.26 to 1 binary cache(s) in the background
+Elapsed time to handle dirent:arm64-osx: 25.9 ms
+Completed submission of mmx:arm64-osx@2025-03-19 to 1 binary cache(s) in 11.9 ms
+Installing 15/23 cgltf:arm64-osx@1.15...
+cgltf:arm64-osx@1.15 package ABI: 4fc8cee98c4f8c004f52d67e2cf243696f84d01786a5c0a2a518948fdc6d03b6
+Building cgltf:arm64-osx@1.15...
+Downloading https://github.com/jkuhlmann/cgltf/archive/v1.15.tar.gz -> jkuhlmann-cgltf-v1.15.tar.gz
+Successfully downloaded jkuhlmann-cgltf-v1.15.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/jkuhlmann-cgltf-v1.15.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/cgltf/src/v1.15-841da1ba58.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/cgltf_arm64-osx/share/cgltf/copyright
+-- Performing post-build validation
+Starting submission of cgltf:arm64-osx@1.15 to 1 binary cache(s) in the background
+Elapsed time to handle cgltf:arm64-osx: 654 ms
+Completed submission of dirent:arm64-osx@1.26 to 1 binary cache(s) in 6.91 ms
+Installing 16/23 miniaudio:arm64-osx@0.11.24...
+miniaudio:arm64-osx@0.11.24 package ABI: fb7d0b2966ce3c464bb022224388c33be2795cbe532621aa5f6a2ca1c6db494d
+Building miniaudio:arm64-osx@0.11.24...
+Downloading https://github.com/mackron/miniaudio/archive/0.11.24.tar.gz -> mackron-miniaudio-0.11.24.tar.gz
+Successfully downloaded mackron-miniaudio-0.11.24.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/mackron-miniaudio-0.11.24.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/miniaudio/src/0.11.24-57e994b684.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/miniaudio_arm64-osx/include/miniaudio.h
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/miniaudio_arm64-osx/share/miniaudio/copyright
+-- Performing post-build validation
+Starting submission of miniaudio:arm64-osx@0.11.24 to 1 binary cache(s) in the background
+Elapsed time to handle miniaudio:arm64-osx: 1 s
+Completed submission of cgltf:arm64-osx@1.15 to 1 binary cache(s) in 11.1 ms
+Installing 17/23 drlibs:arm64-osx@2026-01-16...
+drlibs:arm64-osx@2026-01-16 package ABI: 684ce2d8367ec284e010a0a9b9cb6c0613c8adf867e1ecec3708f824509f1ca0
+Building drlibs:arm64-osx@2026-01-16...
+Downloading https://github.com/mackron/dr_libs/archive/5690d4671d7ad07ae6021756d7222eb159745f06.tar.gz -> mackron-dr_libs-5690d4671d7ad07ae6021756d7222eb159745f06.tar.gz
+Successfully downloaded mackron-dr_libs-5690d4671d7ad07ae6021756d7222eb159745f06.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/mackron-dr_libs-5690d4671d7ad07ae6021756d7222eb159745f06.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/drlibs/src/b159745f06-6c9b6bc835.clean
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/drlibs_arm64-osx/share/drlibs/copyright
+-- Performing post-build validation
+Starting submission of drlibs:arm64-osx@2026-01-16 to 1 binary cache(s) in the background
+Elapsed time to handle drlibs:arm64-osx: 609 ms
+Completed submission of miniaudio:arm64-osx@0.11.24 to 1 binary cache(s) in 79.7 ms
+Installing 18/23 raylib[audio,core]:arm64-osx@5.5#1...
+raylib[audio,core]:arm64-osx@5.5#1 package ABI: 6c3f0b18a09cab76ae56750e5cb6ccf3cfafa8eff995e1051370996308158a8a
+Building raylib[audio,core]:arm64-osx@5.5#1...
+Downloading https://github.com/raysan5/raylib/archive/5.5.tar.gz -> raysan5-raylib-5.5.tar.gz
+Successfully downloaded raysan5-raylib-5.5.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/raysan5-raylib-5.5.tar.gz
+-- Applying patch android.diff
+-- Applying patch fix-link-path.patch
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/raylib/src/5.5-966575b391.clean
+-- De-vendoring 'cgltf.h'
+-- De-vendoring 'qoi.h'
+-- De-vendoring 'sdefl.h'
+-- De-vendoring 'sinfl.h'
+-- De-vendoring 'stb_image.h'
+-- De-vendoring 'stb_image_resize2.h'
+-- De-vendoring 'stb_image_write.h'
+-- De-vendoring 'stb_perlin.h'
+-- De-vendoring 'stb_rect_pack.h'
+-- De-vendoring 'stb_truetype.h'
+-- De-vendoring 'stb_vorbis.c'
+-- De-vendoring 'dr_flac.h'
+-- De-vendoring 'dr_mp3.h'
+-- De-vendoring 'dr_wav.h'
+-- De-vendoring 'miniaudio.h'
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/raylib_arm64-osx/lib/pkgconfig/raylib.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/raylib_arm64-osx/debug/lib/pkgconfig/raylib.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/raylib_arm64-osx/share/raylib/copyright
+-- Performing post-build validation
+Starting submission of raylib[audio,core]:arm64-osx@5.5#1 to 1 binary cache(s) in the background
+Elapsed time to handle raylib:arm64-osx: 11 s
+Completed submission of drlibs:arm64-osx@2026-01-16 to 1 binary cache(s) in 26.8 ms
+Installing 19/23 yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0...
+yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0 package ABI: 6cc0dda9d52079aba703ce62a6e3147db69e577e89e7f39069fe64c8a2711968
+Building yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0...
+Downloading https://github.com/ibireme/yyjson/archive/0.12.0.tar.gz -> ibireme-yyjson-0.12.0.tar.gz
+Successfully downloaded ibireme-yyjson-0.12.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/ibireme-yyjson-0.12.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/yyjson/src/0.12.0-00e53db1b7.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/yyjson_arm64-osx/lib/pkgconfig/yyjson.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/yyjson_arm64-osx/debug/lib/pkgconfig/yyjson.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/yyjson_arm64-osx/share/yyjson/copyright
+-- Performing post-build validation
+Starting submission of yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0 to 1 binary cache(s) in the background
+Elapsed time to handle yyjson:arm64-osx: 5.4 s
+Completed submission of raylib[audio,core]:arm64-osx@5.5#1 to 1 binary cache(s) in 299 ms
+Installing 20/23 reflectcpp[cbor,core]:arm64-osx@0.23.0...
+reflectcpp[cbor,core]:arm64-osx@0.23.0 package ABI: 314a42de9cc6ab5fbc9e2b893b990bc5af0f499b2a5f9741e37703184671faa7
+Building reflectcpp[cbor,core]:arm64-osx@0.23.0...
+Downloading https://github.com/getml/reflect-cpp/archive/v0.23.0.tar.gz -> getml-reflect-cpp-v0.23.0.tar.gz
+Successfully downloaded getml-reflect-cpp-v0.23.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/getml-reflect-cpp-v0.23.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/reflectcpp/src/v0.23.0-3d39484cae.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/reflectcpp_arm64-osx/share/reflectcpp/copyright
+-- Performing post-build validation
+Starting submission of reflectcpp[cbor,core]:arm64-osx@0.23.0 to 1 binary cache(s) in the background
+Elapsed time to handle reflectcpp:arm64-osx: 12 s
+Completed submission of yyjson[core,fast-fp-conv,non-standard,reader,writer]:arm64-osx@0.12.0 to 1 binary cache(s) in 86.9 ms
+Installing 21/23 spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0...
+spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0 package ABI: 4885e8806a3ee0f555cfe6b4ec5763c6542a86a3a0ce3ca1e1dd3ffbbc3e5e41
+Building spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0...
+Downloading https://github.com/gabime/spdlog/archive/v1.17.0.tar.gz -> gabime-spdlog-v1.17.0.tar.gz
+Successfully downloaded gabime-spdlog-v1.17.0.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/gabime-spdlog-v1.17.0.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/spdlog/src/v1.17.0-2617b3696e.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-dbg
+-- Building arm64-osx-rel
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/spdlog_arm64-osx/lib/pkgconfig/spdlog.pc
+-- Fixing pkgconfig file: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/spdlog_arm64-osx/debug/lib/pkgconfig/spdlog.pc
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/spdlog_arm64-osx/share/spdlog/usage
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/spdlog_arm64-osx/share/spdlog/copyright
+-- Performing post-build validation
+Starting submission of spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0 to 1 binary cache(s) in the background
+Elapsed time to handle spdlog:arm64-osx: 5.3 s
+Completed submission of reflectcpp[cbor,core]:arm64-osx@0.23.0 to 1 binary cache(s) in 345 ms
+Installing 22/23 utfcpp:arm64-osx@4.0.9...
+utfcpp:arm64-osx@4.0.9 package ABI: 01e191567f5d68cd3a3037734d9f5a4af26845fda4237e6b6bb15e07d338165c
+Building utfcpp:arm64-osx@4.0.9...
+Downloading https://github.com/nemtrif/utfcpp/archive/v4.0.9.tar.gz -> nemtrif-utfcpp-v4.0.9.tar.gz
+Successfully downloaded nemtrif-utfcpp-v4.0.9.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/nemtrif-utfcpp-v4.0.9.tar.gz
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/utfcpp/src/v4.0.9-56302ed389.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-rel
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/utfcpp_arm64-osx/share/utfcpp/copyright
+-- Performing post-build validation
+Starting submission of utfcpp:arm64-osx@4.0.9 to 1 binary cache(s) in the background
+Elapsed time to handle utfcpp:arm64-osx: 948 ms
+Completed submission of spdlog[core,fmt,tz-offset]:arm64-osx@1.17.0 to 1 binary cache(s) in 225 ms
+Installing 23/23 wil:arm64-osx@1.0.260126.7...
+wil:arm64-osx@1.0.260126.7 package ABI: 4138f936fceefa3d8103b4507f8629c76d5ee3cd2413a7fca55f87736b5af486
+Building wil:arm64-osx@1.0.260126.7...
+Downloading https://github.com/Microsoft/wil/archive/v1.0.260126.7.tar.gz -> Microsoft-wil-v1.0.260126.7.tar.gz
+Successfully downloaded Microsoft-wil-v1.0.260126.7.tar.gz
+-- Extracting source /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/downloads/Microsoft-wil-v1.0.260126.7.tar.gz
+-- Applying patch cpp14.patch
+-- Using source at /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/buildtrees/wil/src/0.260126.7-f396d2605e.clean
+-- Configuring arm64-osx
+-- Building arm64-osx-rel
+-- Up-to-date: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/wil_arm64-osx/share/wil/natvis
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/wil_arm64-osx/share/wil/natvis/wil.natvis
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/wil_arm64-osx/share/wil/natvis/wil.natstepfilter
+-- Installing: /Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/plop-and-paint-native/source/vendor/vcpkg/packages/wil_arm64-osx/share/wil/copyright
+-- Performing post-build validation
+Starting submission of wil:arm64-osx@1.0.260126.7 to 1 binary cache(s) in the background
+Elapsed time to handle wil:arm64-osx: 1.8 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+Packages installed in this vcpkg installation declare the following licenses:
+(MIT OR CC-PDDC)
+(Unlicense OR MIT-0)
+Apache-2.0
+BSL-1.0
+MIT
+Zlib
+args provides CMake targets:
+
+    find_package(args CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE taywee::args)
+
+ctre provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(ctre CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE ctre::ctre)
+
+The package fmt provides CMake targets:
+
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt)
+
+    # Or use the header-only version
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt-header-only)
+
+glfw3 provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(glfw3 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE glfw)
+
+glfw3 provides pkg-config modules:
+
+  # A multi-platform library for OpenGL, window and input
+  glfw3
+
+imgui provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(imgui CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE imgui::imgui)
+
+jsoncons provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(jsoncons CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE jsoncons::jsoncons)
+
+pugixml provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(pugixml CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE pugixml::static pugixml::pugixml)
+
+pugixml provides pkg-config modules:
+
+  # Light-weight, simple and fast XML parser for C++ with XPath support.
+  pugixml
+
+The package stb provides CMake targets:
+
+    find_package(Stb REQUIRED)
+    target_include_directories(main PRIVATE ${Stb_INCLUDE_DIR})
+raylib provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(raylib CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE raylib)
+
+raylib provides pkg-config modules:
+
+  # A simple and easy-to-use library to enjoy videogames programming
+  raylib
+
+yyjson provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(yyjson CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE yyjson::yyjson)
+
+yyjson provides pkg-config modules:
+
+  # Fastest JSON library in C
+  yyjson
+
+reflect-cpp provides CMake targets:
+
+    find_package(reflectcpp CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE reflectcpp::reflectcpp)
+
+The package spdlog provides CMake targets:
+
+    find_package(spdlog CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE spdlog::spdlog)
+
+    # Or use the header-only version
+    find_package(spdlog CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE spdlog::spdlog_header_only)
+
+utfcpp provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(utf8cpp CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE utf8::cpp utf8cpp::utf8cpp)
+
+wil provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(wil CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE WIL::WIL)
+
+Completed submission of utfcpp:arm64-osx@4.0.9 to 1 binary cache(s) in 8.02 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of wil:arm64-osx@1.0.260126.7 to 1 binary cache(s) in 39.2 ms (1/1)
+All requested installations completed successfully in: 1 min

@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-13T21:49:46.082139+02:00",
+  "status": "Accepted by user for built-in screen; external-monitor click alignment remains unresolved",
+  "symptom_observed": "Top toolbar clipped and lower strip repeated in direct game-window capture",
+  "window_bounds": {
+    "x": -1204,
+    "y": -1305,
+    "width": 1920,
+    "height": 1200
+  },
+  "external_display_bounds": {
+    "x": -1524,
+    "y": -1440,
+    "width": 2560,
+    "height": 1440
+  },
+  "proposed_change": {
+    "key": "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\SimCity 4.exe\\Mac Driver",
+    "value": "Decorated",
+    "type": "REG_SZ",
+    "data": "N"
+  },
+  "resolution_retained": [
+    1920,
+    1200
+  ],
+  "sources": [
+    "https://support.codeweavers.com/disable-window-decorations-in-the-mac-driver",
+    "https://github.com/wine-mirror/wine/blob/wine-4.12/dlls/winemac.drv/macdrv_main.c#L175"
+  ],
+  "verification": "User confirms normal Mac fullscreen, swiping and other screens work. Game clicks are accurate on MacBook screen; user accepts external-monitor limitation for now.",
+  "applied_at": "2026-09-13T21:50:10.135753+02:00",
+  "registry_verification": "\nHKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\SimCity 4.exe\\Mac Driver\n    Decorated    REG_SZ    N\n\n",
+  "alignment_confirmed_by_user": true,
+  "user_feedback": "well now it works. but the window borders look windows 2000 like and i cannot put it in fullscreen anymore",
+  "fullscreen_change": {
+    "mode": "FullScreen",
+    "resolution": [
+      1920,
+      1080
+    ],
+    "launcher_flag": "-f",
+    "decorated_setting_retained": "N",
+    "applied_at": "2026-09-13T21:53:19.691790+02:00"
+  },
+  "fullscreen_result": "Process exited before region view; no new hardware config log; not a usable result.",
+  "current_settings": {
+    "resolution": [
+      1920,
+      1200
+    ],
+    "window_mode": "Windowed",
+    "game_Decorated_value": "absent (normal native Mac controls)",
+    "ForceDrawOnScroll": true,
+    "Debug Mode": false
+  },
+  "startup_crashes": [
+    "1920x1080 fullscreen",
+    "1920x1080 windowed native borders"
+  ],
+  "verified_at": "2026-09-13T22:09:24.865397+02:00",
+  "fullscreen_history": [
+    {
+      "resolution": [
+        1920,
+        1080
+      ],
+      "result": "Startup crash at0x0098e9a6"
+    },
+    {
+      "resolution": [
+        1920,
+        1200
+      ],
+      "ForceDrawOnScroll": false,
+      "result": "Started but persistent cloud smears, stale splash image, missing upper toolbar and corrupt lower-right legend"
+    },
+    {
+      "resolution": [
+        1920,
+        1200
+      ],
+      "ForceDrawOnScroll": true,
+      "result": "Region renders correctly in both game-window and whole built-in display capture",
+      "game_pid": 95968,
+      "game_window": 2976,
+      "evidence": [
+        "full-redraw-test-window.png",
+        "full-redraw-test-display.png"
+      ]
+    }
+  ],
+  "external_display_workflow": "User can move window, but click alignment is not reliable on external displays. Use built-in screen for play until another requested repair.",
+  "fullscreen_user_feedback": "it works, but i am totally stuck in the game then. the rest of the screens turn black and i cannot even use three finger swipe to get out",
+  "fullscreen_pointer_confirmed_by_user": true,
+  "user_acceptance": "yeah it works, but the game only fully is clickable on the macbook screen. but that is fine for now",
+  "accepted_at": "2026-09-13T22:15:07.369928+02:00",
+  "external_monitor_click_alignment": "Unresolved; accepted by user for now"
+}

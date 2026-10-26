@@ -1,0 +1,6 @@
+# Purpose: Run every portable test, including the optional preview/render suites.
+-r custom-pieces/requirements-preview.txt
+
+# Keep CI reproducible while retaining the library's declared dependency ranges.
+Pillow==12.3.0
+NumPy==2.4.6

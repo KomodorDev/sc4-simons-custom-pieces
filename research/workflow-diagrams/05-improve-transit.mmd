@@ -1,0 +1,35 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Reduce driving into Westhaven without demolishing homes
+    A->>C: Refresh relevant cities and collect supported travel measurements
+    C->>G: Observe roads, stations, access, housing and jobs
+    G-->>C: Return evidence with measurement coverage and game dates
+    C->>R: Record the baseline and protected residential lots
+    C->>D: Show congestion, station access and areas lacking observations
+    A->>P: Diagnose barriers and compare changes within the constraints
+    P-->>A: Ranked options with expected effect, cost and uncertainty
+    A->>D: Explain the selected intervention and how it will be evaluated
+    A->>C: Build the selected feeder, interchange or capacity improvement
+    C->>R: Record the intervention and baseline checkpoint
+    C->>G: Execute and verify the required construction recipes
+    G-->>C: Return physical result and observed cost
+    loop Bounded follow-up simulation visits
+        C->>G: Advance and observe the affected cities
+        G-->>C: Return comparable observations and actual simulated dates
+        C->>R: Store post-change evidence
+        C->>D: Update results and their measurement coverage
+    end
+    C-->>A: Return the before-and-after measurements
+    alt The selected indicators improved
+        A-->>U: Report observed improvement and remaining weak points
+    else Improvement is absent or cannot be established
+        A-->>U: Explain the result, uncertainty and next diagnostic step
+    end

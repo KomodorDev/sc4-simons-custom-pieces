@@ -1,0 +1,124 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way Rail L3 90 Degree Right Compact Curve.",
+  "schema_version": 1,
+  "id": "interchange-oneway-l3-turn90-right",
+  "name": "One-Way Rail L3 90 Degree Right Compact Curve",
+  "description": "One-Way Rail L3 90 Degree Right Compact Curve. Fixed click-to-place piece in a 3 by 3 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_l3_turn90_right",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7d1",
+  "tile_ids": [
+    "7f52f100",
+    "7f52f200",
+    "7f52f010",
+    "7f52f110",
+    "7f52f020"
+  ],
+  "preview_id": "7f52fff5",
+  "effect_name": "preview_scp_interchg_f7d1_0",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7d1",
+    "order": "7011f7d1",
+    "style": "interchange-oneway-l3-turn90-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f52f100",
+      "source": "7f52f100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f52f200",
+      "source": "7f52f200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f52f010",
+      "source": "7f52f010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f52f110",
+      "source": "7f52f110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f52f020",
+      "source": "7f52f020",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -40,
+        23.0
+      ]
+    ],
+    "out": [
+      [
+        40,
+        0.0,
+        23.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_turn",
+    "level": "l3",
+    "height": 23.0,
+    "angle": 90,
+    "radius": "compact"
+  }
+}

@@ -1,0 +1,38 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Develop station towns for two hours within the current limits
+    A->>R: Record deadline, allowed actions and stopping conditions
+    A->>C: Start bounded regional development
+    loop While the run is active and time remains
+        C->>R: Read dependencies, oldest observations and unfinished work
+        R-->>C: Next city with a reason for visiting it
+        C->>G: Load the next city and wait for readiness
+        G-->>C: Confirm identity and supported current measurements
+        C->>D: Show active city, its game date and the visit's purpose
+        C-->>A: Report growth, transport, services and funds
+        A->>C: Select a permitted action or a bounded observation interval
+        C->>G: Execute checked work or advance simulation
+        G-->>C: Return result and actual simulation progress
+        C->>R: Record evidence, costs and affected neighbors
+        C->>D: Update completed work and measurement age
+        alt Deadline or a stopping condition is reached
+            C->>C: Stop dispatch after resolving the current operation
+            C->>C: Mark the run inactive so the loop cannot load another city
+            C->>D: Show stopping and the reason
+        else Further regional work is permitted
+            C->>G: Save and return to the region at a safe lifecycle point
+            G-->>C: Confirm save and region readiness
+        end
+    end
+    C->>G: Pause and save when responsive and the state is verified
+    G-->>C: Return final save result or unresolved condition
+    C->>R: Record the run's ending state and outstanding work
+    C-->>A: Return measured results and persistence status
+    A-->>U: Summarize built work, city dates, costs and remaining priorities

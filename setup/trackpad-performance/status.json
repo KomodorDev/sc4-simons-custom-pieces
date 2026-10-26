@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-13T22:25:31.232923+02:00",
+  "symptom": "Zoom in/out via button is slow, including empty God mode terrain",
+  "current_game_pid": 97565,
+  "macOS": "26.6.2 (25G83)",
+  "pinch": "Mac TrackpadPinch=1; Wine4.12 Macdriver has scrollWheel but no magnify input handler",
+  "game_mode": "User reports Command-Esc does nothing. Game Mode activation not verified; no wrapper metadata changed.",
+  "performance_observations": [
+    "Sample observed process CPU131.9% on macOS CPU scale; hardware DirectX renderer enabled",
+    "No thermal/performance warning recorded; power mode normal",
+    "memory_pressure -Q reports65% system-wide memory free",
+    "Hot addresses verified in RenderServices.dll, associated with custom terrain-decal clipping; more narrowly validating toggle before any live change"
+  ],
+  "live_changes_applied": true,
+  "status": "User confirms zoom buttons are much more fluent; performance settings retained. Pinch abandoned by user request; native Mac helper supplies working one-step two-finger scrolling.",
+  "trial": {
+    "EnableCustomTerrainDecalRenderer": false,
+    "LogLevel": "error",
+    "reason": "Profile hotspot in custom terrain-cell clipping. Disabled path emits per-call warnings so error log level avoids new logging cost.",
+    "feature_tradeoff": "Advanced ground-decal clipping, texture-region and depth-offset behavior disabled; PlopAndPaint building and other services retained.",
+    "applied_at": "2026-09-13T22:26:49.453911+02:00"
+  },
+  "performance_improvement_verified": true,
+  "trial_game_pid": 4326,
+  "runtime_verification": {
+    "city_load": "Fresh PlopAndPaint log acquired View3D and visible city capture after loading",
+    "renderer_library": "RenderServices still mapped at0x01d90000; plugin retained",
+    "profile": "Previously identified custom-clipping addresses absent in post-load trial sample",
+    "caveat": "Different view/activity during samples; no controlled zoom latency or CPU percentage comparison claimed"
+  },
+  "performance_verification": "User report: zoom button is much more fluent now",
+  "user_feedback": "okay pinch to zoom still not working. but zoom button is much more fluent now",
+  "confirmed_at": "2026-09-13T22:36:08.227937+02:00",
+  "two_finger_scroll": "Originally too sensitive; subsequently fixed with the native Mac helper. User confirmed it works. Helper starts hidden with SimCity and stops on wrapper shutdown.",
+  "documentation_updated_on": "2026-09-14",
+  "record_scope": "Performance investigation and historical process snapshots from 13 September. Current outcome updated on 14 September; stored PIDs and sampled values are not a live status check.",
+  "current_guide": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/SimCity 4 - Display and Zoom Fixes.md"
+}

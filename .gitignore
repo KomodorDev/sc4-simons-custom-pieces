@@ -1,0 +1,108 @@
+# Local operating-system metadata and language/tool caches.
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+node_modules/
+.coverage
+htmlcov/
+
+# Original workstation snapshots and disposable output stay on this computer.
+# The library and Planner also have their own local/ and dist/ exclusions.
+/backups/
+/tmp/
+/setup/backups/
+/setup/**/before-*/
+/setup/**/before-catalogue/
+/setup/**/catalogue-before/
+/setup/**/removed-*/
+
+# Download caches, extracted installers, and third-party source checkouts.
+# Keep authored notes, patches, scripts, manifests, and provenance beside them.
+/setup/sc4pac-cache/
+/setup/sc4pac-temp/
+/setup/winetricks-cache/
+/setup/mod-staging/
+/setup/plop-and-paint-downloads/
+/setup/plop-and-paint-native/source/
+/setup/plop-and-paint-native/fast_float/
+/setup/plop-and-paint-native/bin/
+/setup/nam-tram-ddrhw-source/
+/setup/tools/sc4pac-0.10.0/
+/setup/*/downloads/
+/setup/cam-install/official-downloads/
+/setup/cam-install/content-downloads/
+/setup/cam-install/misc-downloads/
+/setup/cam-install/user-downloads-verified/
+/setup/**/staging-temp/
+/setup/**/staging-plugins/
+/setup/tokyo-hub-install/staging/
+/setup/region-install/staging/
+/setup/slopes-and-canals/staged-canal-lots/
+/setup/slopes-and-canals/staged-manual-support/
+/setup/window-alignment/dxwrapper-staging/
+
+# Downloaded archives, game data, caches, and compiled binaries under setup/.
+# These patterns intentionally do not apply to canonical library artwork,
+# source evidence, plans, or research files elsewhere in the project.
+/setup/**/*.zip
+/setup/**/*.7z
+/setup/**/*.rar
+/setup/**/*.tar
+/setup/**/*.tar.gz
+/setup/**/*.tgz
+/setup/**/*.exe
+/setup/**/*.msi
+/setup/**/*.msu
+/setup/**/*.cab
+/setup/**/*.jar
+/setup/**/*.dll
+/setup/**/*.dylib
+/setup/**/*.dat
+/setup/**/*.sc4
+/setup/**/*.SC4Model
+/setup/**/*.SC4Lot
+/setup/**/*.SC4Desc
+/setup/**/*.sc4model
+/setup/**/*.sc4lot
+/setup/**/*.sc4desc
+/setup/**/*.bin
+/setup/**/*.cbor
+/setup/**/*.o
+/setup/**/*.a
+/setup/**/*.pch
+/setup/**/*.pcm
+/setup/**/*.swiftmodule
+/setup/**/dist/
+/setup/**/module-cache/
+/setup/plop-and-paint-helper/*.app/
+/setup/**/*.app/Contents/MacOS/
+/setup/**/*.app/Contents/_CodeSignature/
+
+# Executables without a filename extension, compiled from adjacent sources.
+/setup/pinch-zoom/sc4-*-test
+/setup/pinch-zoom/*-harness
+/setup/plop-and-paint-helper/verification/check-progress
+/setup/trackpad-zoom/StartTrackpadZoom
+/setup/trackpad-zoom/*-probe
+/setup/trackpad-zoom/*-harness
+/setup/trackpad-zoom/check-helper-visibility
+/setup/trackpad-zoom/hide-helper
+/setup/trackpad-zoom/sc4-*-test
+/setup/trackpad-zoom/fallback/*-test
+/setup/window-alignment/display-modes
+/setup/window-alignment/event-access
+/setup/window-alignment/inspect-displays
+
+# Keep common local credentials out of future commits; examples are source.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key

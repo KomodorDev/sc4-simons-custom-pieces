@@ -1,0 +1,851 @@
+{
+  "schema_version": 1,
+  "purpose": "Actual saved-resource ports, service roles, directed journeys and scoped candidate counterpart poses.",
+  "subject_id": "hsr-component-lower-zero-turn-split",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:hsr-component-lower-zero-turn-split:ea5118b0-ea5118b1-7f50aff5": "d71deae30be110aed0d3c9b6b1c9c67c2a840a770791eb06f83c0d484bbf2aa0",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a000": "537f615b73be2a3620e9b18f9bf83a1b177b0727e76480e86848754fe1f9d503",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a010": "0cef181c852676046ab2c6a12b7568ee52fc49a6d73db72208918a3780103542",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a020": "ccb43b7c5909fdf1553ce89f508006cbe920e3331f3d2fafc79f40386f0eb421",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a030": "5991d40e78a60a6c60e1c928007bfa992518d4774df149be1c0cd1db6d43312c",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a040": "a6ad48feeff5e1b9dc053a601a69c129f010d8a20ebc6be5f0c7a4cfe8113685",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a050": "0c1f507d458e5625acafd49df72b70cb98b2c4bad103d98a60a099c6de894d81",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a060": "14eca0a65961dd46a5c26b304ca21ba188bbf77e439c3a7884af8f796ce5f13f",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a070": "64ed9e071c79056aae984326a4704ff778ef61568bca25db721c63084835ad3b",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a100": "09bd14b8633d74174556e70a9410f4986b0825f5259e7b389b39e48e0f9fdbfc",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a110": "75a860ecf5abf741f9e85063629c733240fb426a9c4acb7f63e785cd4cb6edb9",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a120": "24ce6e91df3df578efe3a267be0adfcf8d3496904e575e64aa4db82d23de7183",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a130": "8dd7cecf352964e5a21e0124f001e3feeae900406a48d06f974b23872f01fa6b",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a140": "aa737423d4d5850759d8b9752eeb13d7c270335f79de91b83daa2bdc15641639",
+      "exemplar:hsr-component-lower-zero-turn-split:6534284a-a8434037-7f50a150": "c346f1a7573b40ed7112e7fd08f74f7e9a75c8ebefadf8fe314b98c98d605aed",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a000": "5f2872c53122ad25cd816bba0c438bd684bd6f3b64dd4e565ef8c05ce5e9e0c8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a001": "5f2872c53122ad25cd816bba0c438bd684bd6f3b64dd4e565ef8c05ce5e9e0c8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a002": "5f2872c53122ad25cd816bba0c438bd684bd6f3b64dd4e565ef8c05ce5e9e0c8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a003": "5f2872c53122ad25cd816bba0c438bd684bd6f3b64dd4e565ef8c05ce5e9e0c8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a004": "5f2872c53122ad25cd816bba0c438bd684bd6f3b64dd4e565ef8c05ce5e9e0c8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a010": "162b302ba259ba985482e7df560ddf28a84eb12aa0f5cef7940f2f5d54026a51",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a011": "162b302ba259ba985482e7df560ddf28a84eb12aa0f5cef7940f2f5d54026a51",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a012": "162b302ba259ba985482e7df560ddf28a84eb12aa0f5cef7940f2f5d54026a51",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a013": "162b302ba259ba985482e7df560ddf28a84eb12aa0f5cef7940f2f5d54026a51",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a014": "162b302ba259ba985482e7df560ddf28a84eb12aa0f5cef7940f2f5d54026a51",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a020": "0ddea0ee1ac8a6c7a6d2fece8db2a71f6ffeb5824990b71cf9858a8bf23fd715",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a021": "0ddea0ee1ac8a6c7a6d2fece8db2a71f6ffeb5824990b71cf9858a8bf23fd715",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a022": "0ddea0ee1ac8a6c7a6d2fece8db2a71f6ffeb5824990b71cf9858a8bf23fd715",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a023": "0ddea0ee1ac8a6c7a6d2fece8db2a71f6ffeb5824990b71cf9858a8bf23fd715",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a024": "0ddea0ee1ac8a6c7a6d2fece8db2a71f6ffeb5824990b71cf9858a8bf23fd715",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a030": "754f801b70164e5c077c2ff748112a83a6f10f21aa0f557a1a5de08aa2dd75eb",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a031": "754f801b70164e5c077c2ff748112a83a6f10f21aa0f557a1a5de08aa2dd75eb",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a032": "754f801b70164e5c077c2ff748112a83a6f10f21aa0f557a1a5de08aa2dd75eb",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a033": "754f801b70164e5c077c2ff748112a83a6f10f21aa0f557a1a5de08aa2dd75eb",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a034": "754f801b70164e5c077c2ff748112a83a6f10f21aa0f557a1a5de08aa2dd75eb",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a040": "14730770c1a3a4019986d878ab1810ebe64f655485362777fec2004cb1bc67f4",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a041": "14730770c1a3a4019986d878ab1810ebe64f655485362777fec2004cb1bc67f4",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a042": "14730770c1a3a4019986d878ab1810ebe64f655485362777fec2004cb1bc67f4",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a043": "14730770c1a3a4019986d878ab1810ebe64f655485362777fec2004cb1bc67f4",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a044": "14730770c1a3a4019986d878ab1810ebe64f655485362777fec2004cb1bc67f4",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a050": "577ac1b95926f06f04542dbb62662b996a900c199ceef30aaca1b63780e63332",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a051": "577ac1b95926f06f04542dbb62662b996a900c199ceef30aaca1b63780e63332",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a052": "577ac1b95926f06f04542dbb62662b996a900c199ceef30aaca1b63780e63332",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a053": "577ac1b95926f06f04542dbb62662b996a900c199ceef30aaca1b63780e63332",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a054": "577ac1b95926f06f04542dbb62662b996a900c199ceef30aaca1b63780e63332",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a060": "87c8b1cb199a8c7fb521f880ccbb74592d4f51554e600d6605f847d16caae701",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a061": "87c8b1cb199a8c7fb521f880ccbb74592d4f51554e600d6605f847d16caae701",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a062": "87c8b1cb199a8c7fb521f880ccbb74592d4f51554e600d6605f847d16caae701",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a063": "87c8b1cb199a8c7fb521f880ccbb74592d4f51554e600d6605f847d16caae701",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a064": "87c8b1cb199a8c7fb521f880ccbb74592d4f51554e600d6605f847d16caae701",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a070": "17fcdde30424b6881f857e8a44c5c4726b392b894f4a8b3e1cb3d0ffb12592e8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a071": "17fcdde30424b6881f857e8a44c5c4726b392b894f4a8b3e1cb3d0ffb12592e8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a072": "17fcdde30424b6881f857e8a44c5c4726b392b894f4a8b3e1cb3d0ffb12592e8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a073": "17fcdde30424b6881f857e8a44c5c4726b392b894f4a8b3e1cb3d0ffb12592e8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a074": "17fcdde30424b6881f857e8a44c5c4726b392b894f4a8b3e1cb3d0ffb12592e8",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a100": "cddbdfb1192b9c2dda7a6f569091e630f56a195ea5a5e22b697f31d10912c25f",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a101": "cddbdfb1192b9c2dda7a6f569091e630f56a195ea5a5e22b697f31d10912c25f",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a102": "cddbdfb1192b9c2dda7a6f569091e630f56a195ea5a5e22b697f31d10912c25f",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a103": "cddbdfb1192b9c2dda7a6f569091e630f56a195ea5a5e22b697f31d10912c25f",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a104": "cddbdfb1192b9c2dda7a6f569091e630f56a195ea5a5e22b697f31d10912c25f",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a110": "2b15e4edfda8b17f1c46cb62106414394427983f8cf6d7d244147a961815c1e5",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a111": "2b15e4edfda8b17f1c46cb62106414394427983f8cf6d7d244147a961815c1e5",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a112": "2b15e4edfda8b17f1c46cb62106414394427983f8cf6d7d244147a961815c1e5",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a113": "2b15e4edfda8b17f1c46cb62106414394427983f8cf6d7d244147a961815c1e5",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a114": "2b15e4edfda8b17f1c46cb62106414394427983f8cf6d7d244147a961815c1e5",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a120": "4a627bb885d28534c76532a69fe9f74b2bd76468f123fd7bcd125d75ec0e4768",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a121": "4a627bb885d28534c76532a69fe9f74b2bd76468f123fd7bcd125d75ec0e4768",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a122": "4a627bb885d28534c76532a69fe9f74b2bd76468f123fd7bcd125d75ec0e4768",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a123": "4a627bb885d28534c76532a69fe9f74b2bd76468f123fd7bcd125d75ec0e4768",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a124": "4a627bb885d28534c76532a69fe9f74b2bd76468f123fd7bcd125d75ec0e4768",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a130": "7deed42102bb912c88ce8df5576a875f27c0b1a14e4951a207ce7b2b5d5d9d03",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a131": "7deed42102bb912c88ce8df5576a875f27c0b1a14e4951a207ce7b2b5d5d9d03",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a132": "7deed42102bb912c88ce8df5576a875f27c0b1a14e4951a207ce7b2b5d5d9d03",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a133": "7deed42102bb912c88ce8df5576a875f27c0b1a14e4951a207ce7b2b5d5d9d03",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a134": "7deed42102bb912c88ce8df5576a875f27c0b1a14e4951a207ce7b2b5d5d9d03",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a140": "1e88031dea051b3ddf55e4832e2dbc18377305eeff81f50feec9093a1b099a88",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a141": "1e88031dea051b3ddf55e4832e2dbc18377305eeff81f50feec9093a1b099a88",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a142": "1e88031dea051b3ddf55e4832e2dbc18377305eeff81f50feec9093a1b099a88",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a143": "1e88031dea051b3ddf55e4832e2dbc18377305eeff81f50feec9093a1b099a88",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a144": "1e88031dea051b3ddf55e4832e2dbc18377305eeff81f50feec9093a1b099a88",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a150": "34d1ef3a3a969c357c28dca52608a0fa141b542d6308e9037b8fbdeb2a3da730",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a151": "34d1ef3a3a969c357c28dca52608a0fa141b542d6308e9037b8fbdeb2a3da730",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a152": "34d1ef3a3a969c357c28dca52608a0fa141b542d6308e9037b8fbdeb2a3da730",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a153": "34d1ef3a3a969c357c28dca52608a0fa141b542d6308e9037b8fbdeb2a3da730",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a154": "34d1ef3a3a969c357c28dca52608a0fa141b542d6308e9037b8fbdeb2a3da730",
+      "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50aff5": "34d692496eae2064f12f33b447ebdec9114d13b7906bd97cedffc46d781ce507",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a010": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a020": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a030": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a040": "a2fc2149758bf2b81403d722bdb9bf9226a834c02cd3028da8e16cf7718b3fd7",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a050": "ab6db2555be45ab94a707aa7828b086eda5656cdd34974a9b66ce32d3919fc64",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a060": "7c0d5ad6ccfa321379d436ff52f0c8ebc1103708a4cc2b901b6405a8820910d5",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a070": "87e81bc3a82f37425cbe7ed425a357a05602943c85909baba6aa60860efe47a1",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a100": "bf1aaf0a664358d7ab25b85f3855dc1728228b05341b203ec0668f47edab9db7",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a110": "762c84b815c4f755154dfe4a61c60ad6e89c62ec4772e58ea4858c88be56e539",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a120": "9f7b9eb227bd689c4e6f528292febca35e38dd52b1c7765ab98137b987fa231c",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a130": "9f9e0b7634a58dbc78f16d5918147b23c6520391080da2961b0c44617b1fa5f0",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a140": "34822065ef41aa7ee5ad5e2f02b688c8d5dc8cb2da683a1e37fc0cfdba94a5ce",
+      "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a150": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a010": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a011": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a012": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a013": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a014": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a020": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a021": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a022": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a023": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a024": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a030": "85f2b964e85ab833c148c557b95f086e479a4193e374284217f67e1b1c4e9968",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a031": "e4227009ac9d6b51718695c0a4fe47984e8f1fae009f997e6f0a260d72005554",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a032": "8fe3fe49a3629474961fbce7442194a9fce7468ae499e91cc0c78a1011e340ef",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a033": "75a7add89247664d8a06655cb598eb831d2828aa044a17c3917c9bcc27eb5086",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a034": "7b7b6b42ecfab4bd1069fe3a6f1d2b584bf433ee91a1dc3944d4e9a138193784",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a040": "6cdcb3788aed5a13ae8e4ec4e0ead1bcebfe93b467875290019a155384442828",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a041": "5f61424a3a093fe3c4a34cf94b1a9e9a42ebf0eb4ac9707690db9529bff79f79",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a042": "0a5f6812ffca41e109d634198055319e45553d188af5805dc0a76128a8ac74fb",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a043": "0255744e3fe7d3fc144e8e923f43bb4b8a45d07f408289fe66d266a2d8a95efe",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a044": "e3832a77534fd96b6beeb3645210138437bcd3f26f297b8b570f51fede14e9c0",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a050": "36e4ab48d57c3ae19d28cc90a379f9ee511180cc16c0fc0077e8f7c17aa516d3",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a051": "728b132758f596639ef8fddc394acb5220e375a89b6ac51484357650f10c4b49",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a052": "ad4de0109a883d20c596ce439d660f18392061ba6570f124674cd404d982874c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a053": "f9a1fa2599f1d4123b6834804f674076441cfb310d71264198bd378212c22665",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a054": "c7bb34693d1e8b5b0c72d843d676e8ac433caaa9908d36c9ac61a6e30c0653cb",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a060": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a061": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a062": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a063": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a064": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a070": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a071": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a072": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a073": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a074": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a100": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a101": "34876aacc271c9799452a37ebd64d75d926be1c2a99e1a6a23e9ec45eb0ebf9c",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a102": "4ba6ae5e7a7d9a159a064ae7f147379e4308779a716f814097a8073fabd6c218",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a103": "8938b9ac9e31e446217567de1f5603776b1a7be8dc01731738a3a81479e6c9fb",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a104": "ed2236d6b739e2de6692c8a1a3ca41079e70bdae9bbc68f1e9220e6f0f11ad6d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a110": "223a940f148ea4e98e556c0ff3e0627d0d3bd82ef09a9cbdab639efa56a504a7",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a111": "1c5c7c322effdf270d105f82a24276097eb7f7aacf1e8c3e5ac39309bd274f72",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a112": "ffe6a26041d424960eacce822c09034dfdcc85dd5f9395c549c6b8bc067d5bc6",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a113": "37a2a4259da61402afedbbe74433bda519743e741e36a7377cd1d2824ba1cec2",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a114": "abe936e5d17801071da7439560c34b18972b63e90ec7e7a42b079e979e0caba5",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a120": "c86fa6c06735a7baf54c21dde197916c69235df5e78dd045c40da0891242b177",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a121": "26e5dfcff07399b2242d3909e2fd59d3f12ceedc33ee7122afde69f463e149f4",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a122": "ffc4507de3c25b7f740ae3f49d780405a3145d29b91118fb7431679fd138dbaf",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a123": "449237132a855e1c7b2ff94190b7e0c2db53e811ff20ae040ce21570a5ca5378",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a124": "ba149605a756202ed7906018b0c2719ccde49ee1d7f012664133d0e85e5eeafa",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a130": "1095b9581062bfb73dde66ba88367f35fe37360061380fc4a5ae23ac77bccfaf",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a131": "c29a9932a57e95178ee60ba5d477a808c07b3efea3334978bfcbb7a6b80cd67d",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a132": "1109f3a9c11388bb0a7d4996146b29a1048a62e92c8fb811a65effdb470b1f26",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a133": "51ba5bfc01185d48ac2adb3328fcba408186f4a7547ddb6e39a828a2025830a5",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a134": "f2c6e6fbc7f69752fad1c665aa42d30b3021bfa8acf4ad2d9b2b9a7ee50dd732",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a140": "d1f272a5951c019ede255aac2596bdb0bdb5a01915dc185c01dfe2f480c5929e",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a141": "3f5d62d32ded14149855fd4f677be131ecb132da9e8c736584dd53932d45f007",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a142": "5086cef62f9b95fcb309eb4b420441741bdf126a2b9a4e6760967ca65c8dee8a",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a143": "f971eaed7d6c586a028db613a39df681c0bfdee697c7c8642dfb52b6a2b04aac",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a144": "87d2dd2465c2501b4b81e6fd65dffe7ab23acb26235bc07ef24ac68a4fb764ae",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a150": "7e8854833ca397e57528155bb034ca0cd4faf0791c89de511e4c4b6947d9305b",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a151": "0b6c3e1f5bffaeef810c93c977241c7c3ba2bb04f8aab3f133db071461213558",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a152": "34b3013575a232abb2cae8d3d56964cb396027cebb3d6a81b12de625e342c2cd",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a153": "d35b2183bdc9627251ca0e2668a8ac7c73c67d612fad2f758929fed7e878b9b9",
+      "shadow:hsr-component-lower-zero-turn-split:7ab50e44-2bc2759a-7f50a154": "3c05cdf1403436300d80af19da7ef7893a6f986a1b915c8086acef729f1e184b",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a000": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a010": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a020": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a030": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a040": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a050": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a060": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a070": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a100": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a110": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a120": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a130": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a140": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "text:hsr-component-lower-zero-turn-split:2026960b-2a592fd1-7f50a150": "8df18a8d2e980c69e61778019f1b553091a582378375d3eae3020e64fce5269e",
+      "construction:hsr-component-lower-zero-turn-split": "b129ad540f917be8fa615cb98768bff9792e37407a0752a2664113c1c4701787"
+    },
+    "reviewed_contract_available": true,
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "Sout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        -2.0,
+        -120.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a070",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a071",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a072",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a073",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a074",
+        "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a070",
+        "construction:hsr-component-lower-zero-turn-split"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Nin",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Sin",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Ein",
+          "relative_rotation_ccw": 90,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-12d12be31d2057c5763d",
+      "candidate_counterpart_count": 80,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        -2.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a000",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a001",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a002",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a003",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a004",
+        "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a000",
+        "construction:hsr-component-lower-zero-turn-split"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Nout",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Sout",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Eout",
+          "relative_rotation_ccw": 270,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-12d12be31d2057c5763d",
+      "candidate_counterpart_count": 79,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Sin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        2.0,
+        -120.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a070",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a071",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a072",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a073",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a074",
+        "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a070",
+        "construction:hsr-component-lower-zero-turn-split"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Nout",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Sout",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Eout",
+          "relative_rotation_ccw": 90,
+          "relative_position_m": [
+            0.0,
+            -128.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-fba09fbeb87ad95c667a",
+      "candidate_counterpart_count": 80,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        2.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a000",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a001",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a002",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a003",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a004",
+        "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a000",
+        "construction:hsr-component-lower-zero-turn-split"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Nin",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-lower-paired-straight",
+          "port_id": "Sin",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
+            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
+            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
+            "construction:hsr-component-lower-paired-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-component-modular-crossing-core",
+          "port_id": "Ein",
+          "relative_rotation_ccw": 270,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
+            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
+            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
+            "construction:hsr-component-modular-crossing-core"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-fba09fbeb87ad95c667a",
+      "candidate_counterpart_count": 79,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Bout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        16.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a100",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a101",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a102",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a103",
+        "model:hsr-component-lower-zero-turn-split:5ad0e817-badb57f1-7f50a104",
+        "path:hsr-component-lower-zero-turn-split:296678f7-a966883f-7f50a100",
+        "construction:hsr-component-lower-zero-turn-split"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-component-lower-oneway-straight",
+          "port_id": "Sin",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000",
+            "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001",
+            "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002",
+            "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003",
+            "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004",
+            "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000",
+            "construction:hsr-component-lower-oneway-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-hsr-straight",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568000",
+            "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568001",
+            "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568002",
+            "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568003",
+            "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568004",
+            "path:interchange-oneway-hsr-straight:296678f7-a966883f-7f568000",
+            "construction:interchange-oneway-hsr-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-hsr-curve-out-left",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            16.0,
+            32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d010",
+            "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d011",
+            "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d012",
+            "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d013",
+            "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d014",
+            "path:interchange-oneway-hsr-curve-out-left:296678f7-a966883f-7f56d010",
+            "construction:interchange-oneway-hsr-curve-out-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-ac60d237d23f01143255",
+      "candidate_counterpart_count": 26,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    }
+  ],
+  "journeys": [
+    {
+      "id": "7:Nin>Sout",
+      "entry_port": "Nin",
+      "exit_port": "Sout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Sin>Bout",
+      "entry_port": "Sin",
+      "exit_port": "Bout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Sin>Nout",
+      "entry_port": "Sin",
+      "exit_port": "Nout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "Nin",
+      "to_port": "Nout",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "Nin",
+      "to_port": "Bout",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "Sin",
+      "to_port": "Sout",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    }
+  ],
+  "compatibility_policy": "Concrete PATH-aligned candidates only; physical seam review and in-game tests remain separate.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7b7",
+        "0004f7b7"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7b7",
+        "0007f7b7"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7b7",
+        "0006f7b7"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7b7",
+        "0005f7b7"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

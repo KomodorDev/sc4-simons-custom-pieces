@@ -1,0 +1,39 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Move Eastbank Central to the new pin and preserve the hill
+    A->>C: Hold all new changes while revising the plan
+    C->>D: Show stopping after the current operation
+    C->>G: Establish the outcome of the operation already dispatched
+    G-->>C: Return observed construction or an unresolved outcome
+    alt The current operation remains uncertain
+        C->>R: Mark the operation uncertain and retain the hold
+        C->>D: Show that recovery is required before replanning
+    else The current state is established
+        C->>R: Record actual revision 4 work and refreshed local state
+        C->>D: Show construction paused and revision 5 being prepared
+        A->>P: Replan station, approaches, feeders and reserved development
+        P->>R: Read actual work, protected land, limits and user pin
+        R-->>P: Current geometry, assets and rebuilding policy
+        P-->>A: Revised layout with retained, removed and new work
+        alt The change exceeds policy or conflicts with protected land
+            A->>D: Highlight the precise conflict and feasible alternatives
+            A-->>U: Ask only for the unresolved location or rebuilding decision
+        else The revised work fits the authorized limits
+            A->>R: Store revision 5 and record why it changed
+            A->>D: Preview retained, removed and new construction
+            A->>C: Prepare the complete queue for revision 5
+            C->>R: Invalidate obsolete work and revalidate retained operations
+            C->>C: Switch to the new queue as one coordinated transition
+            C->>G: Check current conditions and execute the revised work
+            G-->>C: Return observed changes
+            C->>D: Follow the new site and show active revision 5
+        end
+    end

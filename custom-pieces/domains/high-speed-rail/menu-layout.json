@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "purpose": "Opt-in menu experiments only; normal piece builds keep their existing buttons and construction identifiers. These presentation IDs are reserved locally, not publicly registered.",
+  "layouts": {
+    "trumpet-menu-test": {
+      "assembly_id": "straight-stem-trumpet-v4",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fef0",
+        "order": "7010fef0",
+        "title": "SCP | TEST | Trumpet V4 - cycle parts",
+        "description": "Select one reusable trumpet component. Tab and Shift+Tab change component types; Home and End rotate the current component. This button does not place the complete assembly."
+      },
+      "submenu": {
+        "id": "d3c7a001",
+        "order": "7010fef1",
+        "title": "SCP | TEST | Trumpet V4 - individual parts",
+        "description": "Open separate buttons for the fourteen reusable types in the trumpet blueprint. Each button starts on its named type; Tab follows the same shared trumpet family."
+      }
+    }
+  }
+}

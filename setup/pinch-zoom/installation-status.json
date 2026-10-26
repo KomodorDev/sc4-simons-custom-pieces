@@ -1,0 +1,16 @@
+{
+  "status": "Removed at user request; replacing with scroll-only control",
+  "source_behavior": "One zoom step per pinch; local game events only",
+  "original_cli_custom_commands": "",
+  "created_at": "2026-09-13T22:40:15.902461+02:00",
+  "installed_library": "/Users/simonhinterreiter/Applications/SimCity 4 Windows.app/Contents/Resources/SC4PinchZoom.dylib",
+  "sha256": "b9381feef4597a7c1bfb2d9aee0ed4d8f0bb2fc3ac44ba72579239e948ae5512",
+  "cli_custom_commands": "export SC4_PINCH_ENABLED=1 SC4_PINCH_STATUS='/Users/simonhinterreiter/Documents/SimCity 4 Windows/Setup logs/Pinch Zoom status.json' DYLD_INSERT_LIBRARIES='/Users/simonhinterreiter/Applications/SimCity 4 Windows.app/Contents/Resources/SC4PinchZoom.dylib'\"${DYLD_INSERT_LIBRARIES:+:$DYLD_INSERT_LIBRARIES}\";",
+  "runtime_status_file": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Setup logs/Pinch Zoom status.json",
+  "installed_at": "2026-09-13T22:44:56.903602+02:00",
+  "isolated_tests": "Passed; gesture threshold/direction/gating and keypad events; no app instance or event posting during tests",
+  "user_gesture_verified": false,
+  "restart_at": "2026-09-13T22:47:07.425391+02:00",
+  "removed_at": "2026-09-13T22:59:50.039689+02:00",
+  "runtime_result": "Loaded in Wine, but no listener status was created; pinch was not verified"
+}

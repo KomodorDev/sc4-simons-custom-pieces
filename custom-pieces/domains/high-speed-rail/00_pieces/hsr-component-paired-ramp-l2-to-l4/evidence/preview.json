@@ -1,0 +1,1085 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "hsr-component-paired-ramp-l2-to-l4",
+  "menu_name": "HSR Two-Track L2 to L4 Ramp",
+  "source": {
+    "asset_file": "hsr-component-paired-ramp-l2-to-l4.dat",
+    "preview_id": "7f504ff5",
+    "source_dat_sha256": "be62aa0d293aac7d8a962e952e695a9788225b9f98feabd30c665d2fe36dd5eb",
+    "model_sha256": "d70d0c828ee6e676141bc9710d9fa687fe6100e41426c6436e362d68db8b35fd"
+  },
+  "file": "preview.png",
+  "sha256": "be1d231cb7cf06f9210e96030d68f71233e2704fb1e28c63dee59773154c4085",
+  "size": [
+    1600,
+    1200
+  ],
+  "thumbnail": {
+    "file": "preview-thumb.png",
+    "sha256": "ed111404834074a56d0ac946dbc83bf34e1243401e021a415f643631b2c3d392",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -112.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -120.0,
+      8.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        0
+      ],
+      "Y": [
+        0,
+        7
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        7
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      -39.597979746446654,
+      -6.775411673965632
+    ],
+    "pixels_per_metre": 9.914530848250564,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -120.0,
+      8.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -120.0,
+      8.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -112.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        0
+      ],
+      "north_index_range": [
+        0,
+        7
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      407.4046082754536,
+      822.2281214936088
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0
+    ],
+    "north_boundaries_m": [
+      -120.0,
+      -104.0,
+      -88.0,
+      -72.0,
+      -56.0,
+      -40.0,
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            295.23449635415454,
+            822.2281214936088
+          ],
+          [
+            1192.5953917245465,
+            360.0530934424796
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            407.4046082754536,
+            880.0
+          ],
+          [
+            1304.7655036458455,
+            417.82497194887077
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -120.0,
+        "pixels": [
+          [
+            295.23449635415454,
+            822.2281214936088
+          ],
+          [
+            407.4046082754536,
+            880.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -104.0,
+        "pixels": [
+          [
+            407.4046082754535,
+            764.4562429872177
+          ],
+          [
+            519.5747201967524,
+            822.2281214936088
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -88.0,
+        "pixels": [
+          [
+            519.5747201967524,
+            706.6843644808266
+          ],
+          [
+            631.7448321180515,
+            764.4562429872176
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -72.0,
+        "pixels": [
+          [
+            631.7448321180515,
+            648.9124859744354
+          ],
+          [
+            743.9149440393505,
+            706.6843644808265
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -56.0,
+        "pixels": [
+          [
+            743.9149440393505,
+            591.1406074680442
+          ],
+          [
+            856.0850559606495,
+            648.9124859744354
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -40.0,
+        "pixels": [
+          [
+            856.0850559606495,
+            533.368728961653
+          ],
+          [
+            968.2551678819484,
+            591.1406074680442
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            968.2551678819484,
+            475.5968504552619
+          ],
+          [
+            1080.4252798032473,
+            533.368728961653
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            1080.4252798032473,
+            417.82497194887077
+          ],
+          [
+            1192.5953917245465,
+            475.5968504552619
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            1192.5953917245465,
+            360.0530934424796
+          ],
+          [
+            1304.7655036458455,
+            417.82497194887077
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -120.0
+        ],
+        "pixel": [
+          336.20628694252974,
+          858.8979678497453
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -112.0
+        ],
+        "pixel": [
+          336.20628694252974,
+          785.5582751374723
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          -96.0
+        ],
+        "pixel": [
+          448.3763988638286,
+          727.7863966310812
+        ]
+      },
+      {
+        "text": "Y2",
+        "axis": "Y",
+        "tile_index": 2,
+        "world_m": [
+          -8.0,
+          -80.0
+        ],
+        "pixel": [
+          560.5465107851277,
+          670.0145181246901
+        ]
+      },
+      {
+        "text": "Y3",
+        "axis": "Y",
+        "tile_index": 3,
+        "world_m": [
+          -8.0,
+          -64.0
+        ],
+        "pixel": [
+          672.7166227064266,
+          612.2426396182989
+        ]
+      },
+      {
+        "text": "Y4",
+        "axis": "Y",
+        "tile_index": 4,
+        "world_m": [
+          -8.0,
+          -48.0
+        ],
+        "pixel": [
+          784.8867346277256,
+          554.4707611119077
+        ]
+      },
+      {
+        "text": "Y5",
+        "axis": "Y",
+        "tile_index": 5,
+        "world_m": [
+          -8.0,
+          -32.0
+        ],
+        "pixel": [
+          897.0568465490246,
+          496.6988826055166
+        ]
+      },
+      {
+        "text": "Y6",
+        "axis": "Y",
+        "tile_index": 6,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          1009.2269584703236,
+          438.9270040991254
+        ]
+      },
+      {
+        "text": "Y7",
+        "axis": "Y",
+        "tile_index": 7,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          1121.3970703916225,
+          381.15512559273424
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.978090643598
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.021909356402
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 126.17338845649637,
+      "north_pixels": 126.17338845649637,
+      "caption": "1 tile = 16 m"
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        -39.597979746446654,
+        -6.775411673965632
+      ],
+      "pixels_per_metre": 9.914530848250564,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -120.0,
+        8.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 7903,
+    "mesh_count": 31,
+    "bounds_xyz_m": [
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          28.698169708251953,
+          31.96979331970215
+        ],
+        [
+          2.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          28.991138458251953,
+          31.98932647705078
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          30.8768253326416,
+          31.1697940826416
+        ],
+        [
+          2.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          28.698169708251953,
+          31.1893253326416
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          29.009449005126953,
+          29.010669708251953
+        ],
+        [
+          -8.0,
+          0.5
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          29.010669708251953
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          26.510671615600586,
+          31.45099449157715
+        ],
+        [
+          10.5,
+          24.0
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          28.419849395751953,
+          31.67682647705078
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          28.6893253326416,
+          30.6509952545166
+        ],
+        [
+          10.5,
+          24.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          26.510669708251953,
+          30.8768253326416
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          27.859912872314453
+        ],
+        [
+          15.350000381469727,
+          16.649999618530273
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          24.010669708251953,
+          29.48932647705078
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          25.362232208251953
+        ],
+        [
+          31.350000381469727,
+          32.650001525878906
+        ]
+      ],
+      [
+        [
+          -7.500000476837158,
+          7.5
+        ],
+        [
+          21.510669708251953,
+          26.98932647705078
+        ],
+        [
+          40.0,
+          56.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          22.862232208251953
+        ],
+        [
+          47.349998474121094,
+          48.650001525878906
+        ]
+      ],
+      [
+        [
+          -7.500000476837158,
+          7.5
+        ],
+        [
+          19.010669708251953,
+          24.48932647705078
+        ],
+        [
+          56.0,
+          72.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          20.362232208251953
+        ],
+        [
+          63.349998474121094,
+          64.6500015258789
+        ]
+      ],
+      [
+        [
+          -7.500000476837158,
+          7.5
+        ],
+        [
+          16.510669708251953,
+          21.98932647705078
+        ],
+        [
+          72.0,
+          88.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          17.862232208251953
+        ],
+        [
+          79.3499984741211,
+          80.6500015258789
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          14.32317066192627,
+          17.87921714782715
+        ],
+        [
+          98.5,
+          104.0
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          14.90056324005127,
+          19.48932647705078
+        ],
+        [
+          88.0,
+          104.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          16.5018253326416,
+          18.689327239990234
+        ],
+        [
+          88.0,
+          104.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          14.32317066192627,
+          18.6893253326416
+        ],
+        [
+          88.0,
+          104.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          15.10930347442627,
+          16.510669708251953
+        ],
+        [
+          88.0,
+          97.0
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          15.36223316192627
+        ],
+        [
+          95.3499984741211,
+          96.6500015258789
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          14.01067066192627,
+          17.11139678955078
+        ],
+        [
+          107.0,
+          120.0
+        ]
+      ],
+      [
+        [
+          -7.500000953674316,
+          7.5
+        ],
+        [
+          14.01067066192627,
+          17.30182647705078
+        ],
+        [
+          104.0,
+          120.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          16.1893253326416,
+          16.50182342529297
+        ],
+        [
+          104.0,
+          120.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          14.01067066192627,
+          16.5018253326416
+        ],
+        [
+          104.0,
+          120.0
+        ]
+      ],
+      [
+        [
+          -7.5,
+          7.5
+        ],
+        [
+          14.15837574005127,
+          14.32317066192627
+        ],
+        [
+          104.0,
+          106.5
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          14.01298999786377
+        ],
+        [
+          111.3499984741211,
+          112.6500015258789
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b"
+    ]
+  },
+  "render_model_sha256": "d70d0c828ee6e676141bc9710d9fa687fe6100e41426c6436e362d68db8b35fd",
+  "textures": [
+    {
+      "instance": "0bf6e09b",
+      "fsh_sha256": "5231481a061ebfd0387dd7f58a925ec6f705b147fb396407039348b19f4323b4",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "captions": [
+    "HSR Two-Track L2 to L4 Ramp",
+    "Reusable piece | southeast view | default orientation: 0 degrees",
+    "Independent local X/Y grid | piece reference: X0, Y7 | 1 tile = 16 m",
+    "Complete reusable piece shown at its default orientation.",
+    "Software model preview; in-game placement and traffic remain unverified."
+  ],
+  "annotation_mode": "Exact reusable menu name in header; independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "tile_metres": 16.0,
+    "origin_marker_visible": false
+  },
+  "renderer_metadata_note": "View settings normalized from saved camera/grid facts; original image bytes retained. No new render or manual review is claimed."
+}

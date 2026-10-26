@@ -1,0 +1,194 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Adjacent Scissors Revised.",
+  "schema_version": 1,
+  "id": "rail-ghsr-adjacent-scissors-revised",
+  "name": "GHSR Adjacent Scissors Revised",
+  "description": "GHSR Adjacent Scissors Revised. Corrected rail deck union and branch openings; one shared support per occupied elevated tile, no ground-track pillars. Authored 5 m wide by 5 m high route clearance check. Experimental; actual game placement and train operation remain unverified.",
+  "recipe": "rail_ghsr_adjacent_scissors_revised",
+  "domain": "high-speed-rail",
+  "status": "experimental",
+  "enabled_by_default": true,
+  "puzzle_id": "f863",
+  "tile_ids": [
+    "7f5f1000",
+    "7f5f1100",
+    "7f5f1010",
+    "7f5f1110",
+    "7f5f1020",
+    "7f5f1120"
+  ],
+  "preview_id": "7f5f1ff5",
+  "effect_name": "preview_scp_railfix_f863_00",
+  "footprint": [
+    2,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f863",
+    "order": "7011f863",
+    "style": "rail-ghsr-scissors-revised"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f5f1000",
+      "source": "7f5f1000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5f1100",
+      "source": "7f5f1100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5f1010",
+      "source": "7f5f1010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5f1110",
+      "source": "7f5f1110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5f1020",
+      "source": "7f5f1020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5f1120",
+      "source": "7f5f1120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR profile and texture; authored union decks and consolidated supports.",
+    "construction": "Reviewed Monorail ports and directed movements; independent construction audit.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "revised-rail-junctions",
+  "ports": {
+    "AN": {
+      "in": [
+        -2.0,
+        8.0,
+        1.0
+      ],
+      "out": [
+        2.0,
+        8.0,
+        1.0
+      ]
+    },
+    "AS": {
+      "in": [
+        2.0,
+        -40.0,
+        1.0
+      ],
+      "out": [
+        -2.0,
+        -40.0,
+        1.0
+      ]
+    },
+    "BN": {
+      "in": [
+        14.0,
+        8.0,
+        1.0
+      ],
+      "out": [
+        18.0,
+        8.0,
+        1.0
+      ]
+    },
+    "BS": {
+      "in": [
+        18.0,
+        -40.0,
+        1.0
+      ],
+      "out": [
+        14.0,
+        -40.0,
+        1.0
+      ]
+    }
+  },
+  "movements": [
+    [
+      "AS",
+      "AN"
+    ],
+    [
+      "AN",
+      "AS"
+    ],
+    [
+      "BS",
+      "BN"
+    ],
+    [
+      "BN",
+      "BS"
+    ],
+    [
+      "AS",
+      "BN"
+    ],
+    [
+      "BN",
+      "AS"
+    ],
+    [
+      "BS",
+      "AN"
+    ],
+    [
+      "AN",
+      "BS"
+    ]
+  ]
+}

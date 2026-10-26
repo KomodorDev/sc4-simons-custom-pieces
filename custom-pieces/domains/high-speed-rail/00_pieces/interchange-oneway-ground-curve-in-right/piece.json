@@ -1,0 +1,93 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way GHSR Curve In Right.",
+  "schema_version": 1,
+  "id": "interchange-oneway-ground-curve-in-right",
+  "name": "One-Way GHSR Curve In Right",
+  "description": "One-Way GHSR Curve In Right. Fixed click-to-place piece in a 1 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_ground_curve_in_right",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7c5",
+  "tile_ids": [
+    "7f523000",
+    "7f523010"
+  ],
+  "preview_id": "7f523ff5",
+  "effect_name": "preview_scp_interchg_f7c5_0",
+  "footprint": [
+    1,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7c5",
+    "order": "7011f7c5",
+    "style": "interchange-oneway-ground-curve-in-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f523000",
+      "source": "7f523000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f523010",
+      "source": "7f523010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        8.0,
+        -16.0,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "ground",
+    "height": 1.0,
+    "radius": "compact"
+  }
+}

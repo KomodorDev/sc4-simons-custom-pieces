@@ -1,0 +1,44 @@
+{"phase": "current-actual-v4-verification", "build": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/custom-pieces/dist/straight-stem-trumpet-v4"}
+{"phase": "current-actual-v4-positive", "occupied_cells": 109, "strict_byte_identity_cells": 109, "triangles": 659271, "neighbour_fragments": {"full_width_bed_union_segments_checked": 4695, "bed_union_width_m": 5.0, "maximum_uncovered_bed_area_m2": 1.4606181053977707e-05, "height_aware_bed_union_checked": true, "owner_clipped_corridor_fragments_checked": 4695, "corridor_clipped_to_literal_ownership": false, "external_custom_collar_requires_unclipped_actual_assembly_check": false, "visible_native_rail_triangles_matched_to_paths": 104606, "visible_native_rail_centre_segments_matched_to_paths": 38097, "unused_visible_native_rails": false, "complete_train_clearance_segments_checked": 4695, "actual_module_instances_checked": 26, "actual_neighbour_models_used": 109, "strict_unclipped_actual_path_audit": true}, "elapsed_s": 472.06072175037116}
+test_complete_saved_candidate (test_hsr_trumpet_v4.ActualV4BuildIntegration.test_complete_saved_candidate) ... ok
+test_an_extra_accepted_candidate_is_rejected (test_hsr_trumpet_v4.AtomizationHistoryControls.test_an_extra_accepted_candidate_is_rejected) ... ok
+test_changed_replacement_geometry_stales_its_prior_decision (test_hsr_trumpet_v4.AtomizationHistoryControls.test_changed_replacement_geometry_stales_its_prior_decision) ... ok
+test_decisions_and_all_original_cell_reviews_remain_recorded (test_hsr_trumpet_v4.AtomizationHistoryControls.test_decisions_and_all_original_cell_reviews_remain_recorded) ... ok
+test_exactly_five_millimetres_is_ineligible (test_hsr_trumpet_v4.AtomizationHistoryControls.test_exactly_five_millimetres_is_ineligible) ... ok
+test_historical_measurements_cannot_silently_drift (test_hsr_trumpet_v4.AtomizationHistoryControls.test_historical_measurements_cannot_silently_drift) ... ok
+test_omitting_a_retained_owned_cell_is_rejected (test_hsr_trumpet_v4.AtomizationHistoryControls.test_omitting_a_retained_owned_cell_is_rejected) ... ok
+test_swapping_local_and_assembly_coordinates_is_rejected (test_hsr_trumpet_v4.AtomizationHistoryControls.test_swapping_local_and_assembly_coordinates_is_rejected) ... ok
+test_wrong_oneway_direction_is_rejected (test_hsr_trumpet_v4.AtomizationHistoryControls.test_wrong_oneway_direction_is_rejected) ... ok
+test_actual_existing_paired_straight_passes_native_sections_but_widening_fails (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_actual_existing_paired_straight_passes_native_sections_but_widening_fails) ... ok
+test_all_109_current_tile_resource_sets_are_frozen_exactly (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_all_109_current_tile_resource_sets_are_frozen_exactly) ... ok
+test_any_unapproved_track_bend_change_is_rejected (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_any_unapproved_track_bend_change_is_rejected) ... ok
+test_even_a_shadow_only_change_is_rejected (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_even_a_shadow_only_change_is_rejected) ... ok
+test_every_complete_current_journey_is_frozen (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_every_complete_current_journey_is_frozen) ... ok
+test_orientation_change_cannot_pass_on_identical_saved_model_bytes (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_orientation_change_cannot_pass_on_identical_saved_model_bytes) ... ok
+test_previously_reworked_tiles_have_no_current_edit_exemption (test_hsr_trumpet_v4.CurrentSavedResourceMutationControls.test_previously_reworked_tiles_have_no_current_edit_exemption) ... ok
+test_all_four_sources_satisfy_literal_routing_and_curve_quality (test_hsr_trumpet_v4.EncodedV4ModuleTests.test_all_four_sources_satisfy_literal_routing_and_curve_quality) ... ok
+test_extra_owned_tile_is_rejected (test_hsr_trumpet_v4.EncodedV4ModuleTests.test_extra_owned_tile_is_rejected) ... ok
+test_foreign_transport_is_rejected (test_hsr_trumpet_v4.EncodedV4ModuleTests.test_foreign_transport_is_rejected) ... ok
+test_one_way_height_change_is_rejected (test_hsr_trumpet_v4.EncodedV4ModuleTests.test_one_way_height_change_is_rejected) ... ok
+test_one_way_reversal_is_rejected (test_hsr_trumpet_v4.EncodedV4ModuleTests.test_one_way_reversal_is_rejected) ... ok
+test_actual_current_neighbour_paths_satisfy_the_strict_unclipped_audit (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_actual_current_neighbour_paths_satisfy_the_strict_unclipped_audit) ... ok
+test_both_frozen_current_models_pass_the_literal_mask (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_both_frozen_current_models_pass_the_literal_mask) ... ok
+test_complete_actual_neighbour_check_still_rejects_an_unused_rail_inside_the_cap (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_complete_actual_neighbour_check_still_rejects_an_unused_rail_inside_the_cap) ... ok
+test_current_custom_cuts_require_the_literal_2_65m_mask (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_current_custom_cuts_require_the_literal_2_65m_mask) ... ok
+test_even_one_changed_model_zoom_loses_the_inherited_exception (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_even_one_changed_model_zoom_loses_the_inherited_exception) ... ok
+test_interior_extra_rail_cannot_hide_in_the_outward_mask (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_interior_extra_rail_cannot_hide_in_the_outward_mask) ... ok
+test_rail_beyond_the_literal_cap_depth_is_rejected (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_rail_beyond_the_literal_cap_depth_is_rejected) ... ok
+test_rail_outside_the_existing_width_is_rejected (test_hsr_trumpet_v4.InheritedCustomCutRailControls.test_rail_outside_the_existing_width_is_rejected) ... ok
+test_a_moved_module_is_rejected (test_hsr_trumpet_v4.V4LiteralContractTests.test_a_moved_module_is_rejected) ... ok
+test_a_reflection_cannot_replace_a_proper_rotation (test_hsr_trumpet_v4.V4LiteralContractTests.test_a_reflection_cannot_replace_a_proper_rotation) ... ok
+test_current_acceptance_has_no_predecessor_resource_dependency (test_hsr_trumpet_v4.V4LiteralContractTests.test_current_acceptance_has_no_predecessor_resource_dependency) ... ok
+test_current_plan_preserves_approved_rectangle_grid_and_outside_ports (test_hsr_trumpet_v4.V4LiteralContractTests.test_current_plan_preserves_approved_rectangle_grid_and_outside_ports) ... ok
+test_outside_ports_are_independent_literals (test_hsr_trumpet_v4.V4LiteralContractTests.test_outside_ports_are_independent_literals) ... ok
+test_relaxing_a_physical_limit_or_threshold_is_rejected (test_hsr_trumpet_v4.V4LiteralContractTests.test_relaxing_a_physical_limit_or_threshold_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 159.380s
+
+OK
+{"phase": "audit-ready", "counts": {"tests": 35, "failures": 0, "errors": 0, "skipped": 0, "successful": true, "elapsed_s": 631.4560392922722, "validation_sha256": "83d781282385548d1e74ac31e71c25bb3bb7a8c11a0e8ace11b434fd677065a0", "resource_contract_sha256": "cf35ae0769d37ca98eefd913308d9b41f032bd64fc3a1f5da7e6945db6f7283a", "failure_details": []}, "waiting_for": "/tmp/scp-cleanup-v4-finalize-ready"}
+{"phase": "root-approved-finalization", "script": "/tmp/scp_cleanup_finalize.py"}

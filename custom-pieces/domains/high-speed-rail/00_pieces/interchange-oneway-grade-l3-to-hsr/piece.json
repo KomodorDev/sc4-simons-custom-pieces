@@ -1,0 +1,132 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way Rail L3 to HSR L2 Ramp.",
+  "schema_version": 1,
+  "id": "interchange-oneway-grade-l3-to-hsr",
+  "name": "One-Way Rail L3 to HSR L2 Ramp",
+  "description": "One-Way Rail L3 to HSR L2 Ramp. Fixed click-to-place piece in a 1 by 6 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_grade_l3_to_hsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f803",
+  "tile_ids": [
+    "7f561000",
+    "7f561010",
+    "7f561020",
+    "7f561030",
+    "7f561040",
+    "7f561050"
+  ],
+  "preview_id": "7f561ff5",
+  "effect_name": "preview_scp_interchg_f803_0",
+  "footprint": [
+    1,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f803",
+    "order": "7011f803",
+    "style": "interchange-oneway-grade-l3-to-hsr"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f561000",
+      "source": "7f561000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f561010",
+      "source": "7f561010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f561020",
+      "source": "7f561020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f561030",
+      "source": "7f561030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f561040",
+      "source": "7f561040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f561050",
+      "source": "7f561050",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-grades",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -88,
+        23.0
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8,
+        15.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_grade",
+    "from_level": "l3",
+    "to_level": "hsr"
+  }
+}

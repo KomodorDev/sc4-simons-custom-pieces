@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "title": "Black Hole Waste Management v2",
+  "author": "gshmails",
+  "source": "https://community.simtropolis.com/files/file/17907-black-hole-waste-management-v2/",
+  "source_display_version": "1.0",
+  "source_dependencies": "None",
+  "package_id": "local-gshmails:black-hole-waste-management-v2",
+  "planned_category": "500-utilities",
+  "installation_method": "Build a local sc4pac channel using a preserved local ZIP; stage with the installed sc4pac CLI; merge only generated new package/asset records and files into the active profile; rebuild O-menu catalogue after game exit.",
+  "blocker": null,
+  "active_profile": "/Users/simonhinterreiter/Library/Application Support/io.github.memo33.sc4pac/profiles/1",
+  "plugins": "/Users/simonhinterreiter/Documents/SimCity 4 Windows/Plugins",
+  "download_folder": "/Users/simonhinterreiter/Downloads",
+  "next_steps": [
+    "Inspect and hash downloaded ZIP; confirm included game files and readme.",
+    "Preserve original ZIP and create/build local channel metadata.",
+    "Run sc4pac in isolated staging profile.",
+    "After game exit: back up active profile and catalogue; copy new files and merge only new manager-generated records.",
+    "Rebuild catalogue and verify new lot and unchanged existing plugin payload."
+  ]
+}

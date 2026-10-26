@@ -1,0 +1,83 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way Rail L3 Diagonal East Half.",
+  "schema_version": 1,
+  "id": "interchange-oneway-l3-diagonal-east-half",
+  "name": "One-Way Rail L3 Diagonal East Half",
+  "description": "One-Way Rail L3 Diagonal East Half. Fixed click-to-place piece in a 1 by 1 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_l3_diagonal_east_half",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7cb",
+  "tile_ids": [
+    "7f529000"
+  ],
+  "preview_id": "7f529ff5",
+  "effect_name": "preview_scp_interchg_f7cb_0",
+  "footprint": [
+    1,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7cb",
+    "order": "7011f7cb",
+    "style": "interchange-oneway-l3-diagonal-east-half"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f529000",
+      "source": "7f529000",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -8.0,
+        23.0
+      ]
+    ],
+    "out": [
+      [
+        8.0,
+        0.0,
+        23.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "l3",
+    "height": 23.0,
+    "radius": "compact"
+  }
+}

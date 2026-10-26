@@ -1,0 +1,1704 @@
+{
+  "created_utc": "2026-09-07T13:20:11.534083+00:00",
+  "scope": "Read-only audit of requested user-downloaded assets; no installers run; no Downloads, active plugins, profiles or caches modified. This JSON is the only output written.",
+  "metadata_file": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/cam-install/resolved-assets.json",
+  "requested_variants": {
+    "CAM": "yes",
+    "nightmode": "standard",
+    "cam:universal-commercial-cap-fix:cap": "standard"
+  },
+  "requested_count": 15,
+  "matched_count": 15,
+  "missing_assets": [],
+  "ambiguous_assets": [],
+  "limitations": [
+    "Hashes record these local files; official asset metadata provides no reference archive checksum for independent source-identity verification. Matching uses requested source links, filenames, contents and selected package rules.",
+    "This audit does not test game/runtime behavior."
+  ],
+  "warnings": [
+    "AndisArt car props RAR needs an extractor supporting its RAR method; bsdtar successfully read all contents, whereas installed 7zz reports Unsupported Method.",
+    "Only the standard CAP Fix, Maxis zoning DAT, cars props DAT, museum dependencies and PLOP disease lot should be selected according to package filters; do not unpack complete source bundles into Plugins."
+  ],
+  "assets": [
+    {
+      "assetId": "cam-universal-commercial-cap-fix",
+      "name": "Universal Commercial CAP Fix",
+      "note": "Only one archive; the installer will select the standard version.",
+      "url": "https://community.simtropolis.com/files/file/37181-colossus-addon-mod-universal-commercial-cap-fix/?do=download",
+      "expected_asset_version": "2.0.0-1",
+      "expected_package_uses": [
+        {
+          "packageId": "cam:universal-commercial-cap-fix",
+          "version": "2.0.0-1",
+          "variant": {
+            "cam:universal-commercial-cap-fix:cap": "standard"
+          },
+          "asset_rules": {
+            "assetId": "cam-universal-commercial-cap-fix",
+            "include": [
+              "/CAM_Universal_CAP_Fix_Vanilla.dat"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/cam/universal-commercial-cap-fix/2.0.0-1/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/cam/commercial-cap.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Colossus Addon Mod - Universal Commercial CAP Fix.zip",
+          "bytes": 5791,
+          "sha256": "6e0d121da108c6e89848c3faacca77ceb5071042eb3f8e1f04c57b57747fdc55",
+          "modified_utc": "2026-09-07T13:11:04.627248+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme.css",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme_Colossus_Addon_Mod_Universal_CAP_Fixes.html"
+          ],
+          "game_payloads": [
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+              "bytes": 279,
+              "sha256": "23b866c89766f40e98cdfa81c436a847a5cbc4769438fc5addada8a9369dcd5d",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 239,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+              "bytes": 268,
+              "sha256": "ca95619326cf42d93169888f73ed95dcec87ef5f866589c401888e2542cfd46e",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 228,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "cam:universal-commercial-cap-fix",
+              "include_rules": [
+                "/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Colossus Addon Mod - Universal Commercial CAP Fix (1).zip",
+          "bytes": 5791,
+          "sha256": "6e0d121da108c6e89848c3faacca77ceb5071042eb3f8e1f04c57b57747fdc55",
+          "modified_utc": "2026-09-07T13:11:14.016409+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme.css",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme_Colossus_Addon_Mod_Universal_CAP_Fixes.html"
+          ],
+          "game_payloads": [
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+              "bytes": 279,
+              "sha256": "23b866c89766f40e98cdfa81c436a847a5cbc4769438fc5addada8a9369dcd5d",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 239,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+              "bytes": 268,
+              "sha256": "ca95619326cf42d93169888f73ed95dcec87ef5f866589c401888e2542cfd46e",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 228,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "cam:universal-commercial-cap-fix",
+              "include_rules": [
+                "/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Colossus Addon Mod - Universal Commercial CAP Fix (2).zip",
+          "bytes": 5791,
+          "sha256": "6e0d121da108c6e89848c3faacca77ceb5071042eb3f8e1f04c57b57747fdc55",
+          "modified_utc": "2026-09-07T13:11:40.168522+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme.css",
+            "Colossus Addon Mod - Universal Commercial CAP Fix/readme_Colossus_Addon_Mod_Universal_CAP_Fixes.html"
+          ],
+          "game_payloads": [
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix._Radical.dat",
+              "bytes": 279,
+              "sha256": "23b866c89766f40e98cdfa81c436a847a5cbc4769438fc5addada8a9369dcd5d",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 239,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat",
+              "bytes": 268,
+              "sha256": "ca95619326cf42d93169888f73ed95dcec87ef5f866589c401888e2542cfd46e",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 228,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "cam:universal-commercial-cap-fix",
+              "include_rules": [
+                "/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "Colossus Addon Mod - Universal Commercial CAP Fix/CAM/0 Universal Fixes/CAM_Universal_CAP_Fix_Vanilla.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/Colossus Addon Mod - Universal Commercial CAP Fix.zip",
+      "duplicate_candidates_byte_identical": true,
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "andisart-cam-building-pack",
+      "name": "AndisArt CAM Building Pack",
+      "note": "Current version 3.0.",
+      "url": "https://community.simtropolis.com/files/file/35516-andisart-cam-building-pack/?do=download",
+      "expected_asset_version": "3.0.0",
+      "expected_package_uses": [
+        {
+          "packageId": "ulisse-wolf:andisart-cam-building-pack",
+          "version": "3.0.0",
+          "variant": {
+            "CAM": "yes"
+          },
+          "asset_rules": {
+            "assetId": "andisart-cam-building-pack"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/ulisse-wolf/andisart-cam-building-pack/3.0.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/ulisse-wolf/35516-andisart-cam-building-pack.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - AndisArt CAM Building Pack V3.zip",
+          "bytes": 1374255,
+          "sha256": "965083ae4196817e5dd2bb78a8ac38f34a2c237fafa69294d2f6b6d6c8a3c7d7",
+          "modified_utc": "2026-09-07T13:11:46.371677+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Commercial.dat",
+            "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Residential.dat",
+            "AndisArt CAM Building Pack V3/readme.css",
+            "AndisArt CAM Building Pack V3/readme_andisart_cam_building_pack.html",
+            "AndisArt CAM Building Pack V3/~Documents/AndisArt CAM Building Pack Guide.txt",
+            "AndisArt CAM Building Pack V3/~Documents/CAM NIGHT.jpg",
+            "AndisArt CAM Building Pack V3/~Documents/CAM.jpg"
+          ],
+          "game_payloads": [
+            {
+              "path": "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Commercial.dat",
+              "bytes": 185734,
+              "sha256": "00659a420a02a26531ccfe275716b800f1258dafecb159aba4acdcbdcf27a3ce",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 32,
+              "index_offset": 185094,
+              "index_size": 640,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Residential.dat",
+              "bytes": 19228,
+              "sha256": "802931e129e5b26e27b34fd8f56ba77814c36abb29424d8c5d1290218a929755",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 8,
+              "index_offset": 19068,
+              "index_size": 160,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "ulisse-wolf:andisart-cam-building-pack",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Commercial.dat",
+                "AndisArt CAM Building Pack V3/CAM/AndisArt/AndisArt Residential.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - AndisArt CAM Building Pack V3.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "V3 archive contains AndisArt Commercial.dat and AndisArt Residential.dat; selected CAM=yes asset."
+      ]
+    },
+    {
+      "assetId": "ulisse-wolf-building-style-art-deco",
+      "name": "Art Deco building style",
+      "note": "Required by the AndisArt pack.",
+      "url": "https://community.simtropolis.com/files/file/36970-building-style-art-deco/?do=download",
+      "expected_asset_version": "2.0.1",
+      "expected_package_uses": [
+        {
+          "packageId": "ulisse-wolf:building-style-art-deco",
+          "version": "2.0.1",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "ulisse-wolf-building-style-art-deco"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/ulisse-wolf/building-style-art-deco/2.0.1/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/ulisse-wolf/36970-building-style-art-deco.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - Building Style Art Deco.zip",
+          "bytes": 4920,
+          "sha256": "dc51e763de511c9f238a4cb3feeaff22ce75e038b9b3dd2e991997c76f2fe32c",
+          "modified_utc": "2026-09-07T13:12:06.168296+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Ulisse Wolf - Building Style Art Deco/readme.css",
+            "Ulisse Wolf - Building Style Art Deco/readme_building_style_art_deco.html",
+            "Ulisse Wolf - Building Style Art Deco/Ulisse Wolf/Building Style/Building Style Art Deco.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "Ulisse Wolf - Building Style Art Deco/Ulisse Wolf/Building Style/Building Style Art Deco.dat",
+              "bytes": 544,
+              "sha256": "62edda80028106d56e08e3b6d2a8f51dd1d62df863deb2bddb679695352ef3a2",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 5,
+              "index_offset": 444,
+              "index_size": 100,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "ulisse-wolf:building-style-art-deco",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "Ulisse Wolf - Building Style Art Deco/Ulisse Wolf/Building Style/Building Style Art Deco.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - Building Style Art Deco.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "ulisse-wolf-building-style-neo-futurism",
+      "name": "Neo Futurism building style",
+      "note": "Required by the AndisArt pack.",
+      "url": "https://community.simtropolis.com/files/file/36965-building-style-neo-futurism/?do=download",
+      "expected_asset_version": "2.0.1",
+      "expected_package_uses": [
+        {
+          "packageId": "ulisse-wolf:building-style-neo-futurism",
+          "version": "2.0.1",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "ulisse-wolf-building-style-neo-futurism",
+            "include": [
+              "/Building Style Neo Futurism.dat"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/ulisse-wolf/building-style-neo-futurism/2.0.1/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/ulisse-wolf/36965-building-style-neo-futurism.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - Building Style Neo Futurism v2.zip",
+          "bytes": 6637,
+          "sha256": "e94dcb29866d8d2aac67713e2404d61ea3af14c5751dd6f7c7c5f3bf5e13119f",
+          "modified_utc": "2026-09-07T13:12:28.732128+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Ulisse Wolf - Building Style Neo Futurism/readme.css",
+            "Ulisse Wolf - Building Style Neo Futurism/readme_building_style_neo_futurism.html",
+            "Ulisse Wolf - Building Style Neo Futurism/Ulisse Wolf/Building Style/Building Style Neo Futurism.dat",
+            "Ulisse Wolf - Building Style Neo Futurism/Readme.txt"
+          ],
+          "game_payloads": [
+            {
+              "path": "Ulisse Wolf - Building Style Neo Futurism/Ulisse Wolf/Building Style/Building Style Neo Futurism.dat",
+              "bytes": 600,
+              "sha256": "b2f98ac0c5e36f6bffe6b354e66cb07da7b41b33826b0e58b964cded9d839779",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 5,
+              "index_offset": 500,
+              "index_size": 100,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "ulisse-wolf:building-style-neo-futurism",
+              "include_rules": [
+                "/Building Style Neo Futurism.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "Ulisse Wolf - Building Style Neo Futurism/Ulisse Wolf/Building Style/Building Style Neo Futurism.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/Ulisse Wolf - Building Style Neo Futurism v2.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "andisart-gt-tower-east-maxisnite",
+      "name": "GT Tower East \u2014 Maxis Night",
+      "note": "Choose Maxis Night / MN if a choice appears.",
+      "url": "https://community.simtropolis.com/files/file/29406-gt-tower-east/?do=download&r=163591",
+      "expected_asset_version": "1.0",
+      "expected_package_uses": [
+        {
+          "packageId": "andisart:gt-tower-east",
+          "version": "1.0",
+          "variant": {
+            "nightmode": "standard"
+          },
+          "asset_rules": {
+            "assetId": "andisart-gt-tower-east-maxisnite"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/andisart/gt-tower-east/1.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/andisart/29406-gt-tower-east.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/AndisArt - GT Tower East - MAXISNITE.zip",
+          "bytes": 3380760,
+          "sha256": "2748565e88713558205b90b5bfaff3244db23c5e9c7028a7e86aca36b564f006",
+          "modified_utc": "2026-09-07T13:12:34.807325+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "AndisArt - GT Tower East - MAXISNITE/AndisArt_GT-Tower-0x5ad0e817_0xc033b540_0x30000.SC4Model",
+            "AndisArt - GT Tower East - MAXISNITE/AndisArt_GT-Tower_East.jpg",
+            "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT-Tower-0x6534284a-0xa0100cf1-0xa04beeba.SC4Desc",
+            "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT_Tower_CO$$$7_4x2_a04bf382.sav",
+            "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT_Tower_CO$$$7_4x2_a04bf382.SC4Lot",
+            "AndisArt - GT Tower East - MAXISNITE/Landmark/AndisArt_GT_Tower_East_LM_a04c2c74.SC4Lot",
+            "AndisArt - GT Tower East - MAXISNITE/Ploppable with Jobs/AndisArt_GT_Tower_East_PLOP_a04c2aa0.SC4Lot",
+            "AndisArt - GT Tower East - MAXISNITE/ReadMe.rtf"
+          ],
+          "game_payloads": [
+            {
+              "path": "AndisArt - GT Tower East - MAXISNITE/AndisArt_GT-Tower-0x5ad0e817_0xc033b540_0x30000.SC4Model",
+              "bytes": 3168971,
+              "sha256": "1bda65284603a9a3e6b2390f2aef6e1e6a59c3b23abdbab79aae33e75b39b10e",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 158,
+              "index_offset": 3165811,
+              "index_size": 3160,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT-Tower-0x6534284a-0xa0100cf1-0xa04beeba.SC4Desc",
+              "bytes": 1663,
+              "sha256": "87688d174a38e38cd25b307b48fd28a60cdf6874aaeb78abd0d5c9d993faf38f",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 3,
+              "index_offset": 1603,
+              "index_size": 60,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT_Tower_CO$$$7_4x2_a04bf382.SC4Lot",
+              "bytes": 10185,
+              "sha256": "24b928536bcc9d5c5688049b7951bf24651e1ffd1314fff21a9784c5d0af294c",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 4,
+              "index_offset": 10105,
+              "index_size": 80,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt - GT Tower East - MAXISNITE/Landmark/AndisArt_GT_Tower_East_LM_a04c2c74.SC4Lot",
+              "bytes": 23553,
+              "sha256": "17cf2b13dbae782dd35f5b63b40d2401fdd302115f7ed98ef4a0fba64de6bd47",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 7,
+              "index_offset": 23413,
+              "index_size": 140,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt - GT Tower East - MAXISNITE/Ploppable with Jobs/AndisArt_GT_Tower_East_PLOP_a04c2aa0.SC4Lot",
+              "bytes": 23232,
+              "sha256": "bfc0e222373d9184ecbd52fa5be1d569264000bb382c3ad325a8b0e7adc28708",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 7,
+              "index_offset": 23092,
+              "index_size": 140,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "andisart:gt-tower-east",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "AndisArt - GT Tower East - MAXISNITE/AndisArt_GT-Tower-0x5ad0e817_0xc033b540_0x30000.SC4Model",
+                "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT-Tower-0x6534284a-0xa0100cf1-0xa04beeba.SC4Desc",
+                "AndisArt - GT Tower East - MAXISNITE/Growable CO$$$/AndisArt_GT_Tower_CO$$$7_4x2_a04bf382.SC4Lot",
+                "AndisArt - GT Tower East - MAXISNITE/Landmark/AndisArt_GT_Tower_East_LM_a04c2c74.SC4Lot",
+                "AndisArt - GT Tower East - MAXISNITE/Ploppable with Jobs/AndisArt_GT_Tower_East_PLOP_a04c2aa0.SC4Lot"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/AndisArt - GT Tower East - MAXISNITE.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "MaxisNite/MN appears in archive folder and/or model filename; matches nightmode=standard."
+      ]
+    },
+    {
+      "assetId": "andisart-tower-verre-53w53-maxisnite",
+      "name": "Tower Verre \u2014 Maxis Night",
+      "note": "Choose Maxis Night / MN if a choice appears.",
+      "url": "https://community.simtropolis.com/files/file/32106-tower-verre-53w53/?do=download&r=169929",
+      "expected_asset_version": "1.0-2",
+      "expected_package_uses": [
+        {
+          "packageId": "andisart:tower-verre",
+          "version": "1.0-3",
+          "variant": {
+            "nightmode": "standard"
+          },
+          "asset_rules": {
+            "assetId": "andisart-tower-verre-53w53-maxisnite"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/andisart/tower-verre/1.0-3/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/andisart/tower-verre-53w53.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/AndisArt_Tower-Verre_53W53_MN.zip",
+          "bytes": 4737842,
+          "sha256": "10a266ef8c0f0c515120d39b14cdc1b60b0eced8cc91d60aa7f499c993660ceb",
+          "modified_utc": "2026-09-07T13:12:49.439306+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "AndisArt_Tower-Verre_53W53_MN/AndisArt_Tower-Verre_53W53.jpg",
+            "AndisArt_Tower-Verre_53W53_MN/AndisArt_Tower-Verre_53W53_MN_-0x5ad0e817_0x677a4854_0x30000.SC4Model",
+            "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$8_8784f058.SC4Lot",
+            "AndisArt_Tower-Verre_53W53_MN/Landmark/AndisArt_Tower-Verre_53W53_LM_c7813592.SC4Lot",
+            "AndisArt_Tower-Verre_53W53_MN/Ploppable CS$$$/AndisArt_Tower-Verre_53W53_CS$$$_c7850385.SC4Lot",
+            "AndisArt_Tower-Verre_53W53_MN/ReadMe.rtf",
+            "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$-0x6534284a-0xc7795b1a-0xc784a114.SC4Desc"
+          ],
+          "game_payloads": [
+            {
+              "path": "AndisArt_Tower-Verre_53W53_MN/AndisArt_Tower-Verre_53W53_MN_-0x5ad0e817_0x677a4854_0x30000.SC4Model",
+              "bytes": 5053418,
+              "sha256": "a76d3da19151722782259e512789becd7c054fb4e0f2c19f58fbde4b81ae5af1",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 252,
+              "index_offset": 5048378,
+              "index_size": 5040,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$8_8784f058.SC4Lot",
+              "bytes": 5334,
+              "sha256": "be88fdee1c42130eb6a0aba92359b754e22035fbc53144f71b0a941c3b98ede9",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 4,
+              "index_offset": 5254,
+              "index_size": 80,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Tower-Verre_53W53_MN/Landmark/AndisArt_Tower-Verre_53W53_LM_c7813592.SC4Lot",
+              "bytes": 21312,
+              "sha256": "9c52b6c88e16c5de3718df62787e889f1758804100b09e5e3c1854fa2a0e0fa1",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 6,
+              "index_offset": 21192,
+              "index_size": 120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Tower-Verre_53W53_MN/Ploppable CS$$$/AndisArt_Tower-Verre_53W53_CS$$$_c7850385.SC4Lot",
+              "bytes": 19860,
+              "sha256": "330df6068209e651f633af59a977aae31ac2ca99f5c2c977d41ba64b602e872c",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 8,
+              "index_offset": 19700,
+              "index_size": 160,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$-0x6534284a-0xc7795b1a-0xc784a114.SC4Desc",
+              "bytes": 1841,
+              "sha256": "8f6e94855be7ba5a7f751a0d4ef002597bccf3ebfccf2ee68e054f5fd2ee5efe",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 3,
+              "index_offset": 1781,
+              "index_size": 60,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "andisart:tower-verre",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "AndisArt_Tower-Verre_53W53_MN/AndisArt_Tower-Verre_53W53_MN_-0x5ad0e817_0x677a4854_0x30000.SC4Model",
+                "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$8_8784f058.SC4Lot",
+                "AndisArt_Tower-Verre_53W53_MN/Landmark/AndisArt_Tower-Verre_53W53_LM_c7813592.SC4Lot",
+                "AndisArt_Tower-Verre_53W53_MN/Ploppable CS$$$/AndisArt_Tower-Verre_53W53_CS$$$_c7850385.SC4Lot",
+                "AndisArt_Tower-Verre_53W53_MN/Growable R$$$/AndisArt_Tower-Verre_53W53_R$$$-0x6534284a-0xc7795b1a-0xc784a114.SC4Desc"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/AndisArt_Tower-Verre_53W53_MN.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "MaxisNite/MN appears in archive folder and/or model filename; matches nightmode=standard."
+      ]
+    },
+    {
+      "assetId": "andisart-iris-bay-maxisnite",
+      "name": "Iris Bay \u2014 Maxis Night",
+      "note": "Choose Maxis Night / MN if a choice appears.",
+      "url": "https://community.simtropolis.com/files/file/32179-iris-bay/?do=download&r=170390",
+      "expected_asset_version": "1.0",
+      "expected_package_uses": [
+        {
+          "packageId": "andisart:iris-bay",
+          "version": "1.0",
+          "variant": {
+            "nightmode": "standard"
+          },
+          "asset_rules": {
+            "assetId": "andisart-iris-bay-maxisnite"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/andisart/iris-bay/1.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/andisart/32179-iris-bay.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/AndisArt_Iris-Bay_MAXISNITE.zip",
+          "bytes": 5139756,
+          "sha256": "2857b3b1a4fd40e0c018b3d08be2f8a6ed43b748d4f73ba11cb6185203877856",
+          "modified_utc": "2026-09-07T13:12:57.231204+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "AndisArt_Iris-Bay.jpg",
+            "ReadMe.rtf",
+            "AndisArt_Iris-Bay_CO$$$_27b9cf12.SC4Lot",
+            "AndisArt_Iris-Bay_LM_47b9cf0b.SC4Lot",
+            "AndisArt_Iris-Bay_MAXISNITE_-0x5ad0e817_0xe7a499c1_0x30000.SC4Model",
+            "AndisArt_Iris-Bay.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "AndisArt_Iris-Bay_CO$$$_27b9cf12.SC4Lot",
+              "bytes": 36311,
+              "sha256": "ad86f78067d3bcb85de4103368bc297a8f0248c312fa6ec8348a7753cfbc3284",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 7,
+              "index_offset": 36171,
+              "index_size": 140,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Iris-Bay_LM_47b9cf0b.SC4Lot",
+              "bytes": 35240,
+              "sha256": "4eaf9895923fdc70adf83089cce8b88cc9670abf834a3d2dc69c47754559eba1",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 7,
+              "index_offset": 35100,
+              "index_size": 140,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Iris-Bay_MAXISNITE_-0x5ad0e817_0xe7a499c1_0x30000.SC4Model",
+              "bytes": 5345337,
+              "sha256": "0b52c4182c624f427fc4ee6f57e222b5e60c0bc141fe654e624702f37629b5bd",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 244,
+              "index_offset": 5340457,
+              "index_size": 4880,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_Iris-Bay.dat",
+              "bytes": 138580,
+              "sha256": "954b95f5f7f0cfaed669fc763ab53216ad6862fb1cbe1b7f89f6ede36e548f62",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 196,
+              "index_offset": 134660,
+              "index_size": 3920,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "andisart:iris-bay",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "AndisArt_Iris-Bay_CO$$$_27b9cf12.SC4Lot",
+                "AndisArt_Iris-Bay_LM_47b9cf0b.SC4Lot",
+                "AndisArt_Iris-Bay_MAXISNITE_-0x5ad0e817_0xe7a499c1_0x30000.SC4Model",
+                "AndisArt_Iris-Bay.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/AndisArt_Iris-Bay_MAXISNITE.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "MaxisNite/MN appears in archive folder and/or model filename; matches nightmode=standard."
+      ]
+    },
+    {
+      "assetId": "andisart-modern-hd-car-props-incl-mmp",
+      "name": "Modern HD Car Props",
+      "note": "Supporting car models required by the building pack.",
+      "url": "https://community.simtropolis.com/files/file/32178-modern-hd-car-props-incl-mmp/?do=download&r=170439",
+      "expected_asset_version": "1.1",
+      "expected_package_uses": [
+        {
+          "packageId": "andisart:modern-hd-cars-props",
+          "version": "1.1",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "andisart-modern-hd-car-props-incl-mmp",
+            "include": [
+              "AndisArt_PROP_carpack.dat"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/sc4pac.simtropolis.com/metadata/andisart/modern-hd-cars-props/1.1/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/sebamarynissen/simtropolis-channel/blob/main/src/yaml/andisart/32178-modern-hd-car-props-incl-mmp.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/AndisArt_Modern-HD-Car-Props v1.1.rar",
+          "bytes": 684444,
+          "sha256": "2384011f163f769472833bf50fb47a5fdd02175d9149d955ba77807ec19a0718",
+          "modified_utc": "2026-09-07T13:13:18.011413+00:00",
+          "integrity": {
+            "format": "RAR4",
+            "full_read_test": "passed",
+            "tool": "/usr/bin/bsdtar -xOf (memory only)",
+            "entry_tests": [
+              {
+                "entry": "AndisArt_modern_HD_carpack.jpg",
+                "returncode": 0,
+                "bytes": 77798,
+                "stderr": ""
+              },
+              {
+                "entry": "testlot.jpg",
+                "returncode": 0,
+                "bytes": 191879,
+                "stderr": ""
+              },
+              {
+                "entry": "ReadMe.rtf",
+                "returncode": 0,
+                "bytes": 2905,
+                "stderr": ""
+              },
+              {
+                "entry": "AndisArt_PROP_carpack_testlot_67ba0db8.SC4Lot",
+                "returncode": 0,
+                "bytes": 48069,
+                "stderr": ""
+              },
+              {
+                "entry": "AndisArt_PROP_carpack.dat",
+                "returncode": 0,
+                "bytes": 752105,
+                "stderr": ""
+              },
+              {
+                "entry": "AndisArt_PROP_carpack_MMP.dat",
+                "returncode": 0,
+                "bytes": 40372,
+                "stderr": ""
+              }
+            ],
+            "warning": "Installed 7zz 26.03 lists this RAR but cannot decode its method; bsdtar can. This is an extractor limitation, not evidence of a damaged download."
+          },
+          "archive_entries": [
+            "AndisArt_modern_HD_carpack.jpg",
+            "testlot.jpg",
+            "ReadMe.rtf",
+            "AndisArt_PROP_carpack_testlot_67ba0db8.SC4Lot",
+            "AndisArt_PROP_carpack.dat",
+            "AndisArt_PROP_carpack_MMP.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "AndisArt_PROP_carpack_testlot_67ba0db8.SC4Lot",
+              "bytes": 48069,
+              "sha256": "1bfffc1aa3c1e606e408585f0bf2703bc619c0890354d6e41698996209e5cf1a",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 7,
+              "index_offset": 47929,
+              "index_size": 140,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_PROP_carpack.dat",
+              "bytes": 752105,
+              "sha256": "18e381c4abd34e9715c78591a7e509e3f374e6cf7597300807e11c548ca7197a",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 1462,
+              "index_offset": 722865,
+              "index_size": 29240,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "AndisArt_PROP_carpack_MMP.dat",
+              "bytes": 40372,
+              "sha256": "90169dd9acb2f3e2a7693b093af92e25a531799ab93119c6c2ec55fe36ed2a16",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 34,
+              "index_offset": 39692,
+              "index_size": 680,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "andisart:modern-hd-cars-props",
+              "include_rules": [
+                "AndisArt_PROP_carpack.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "AndisArt_PROP_carpack.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/AndisArt_Modern-HD-Car-Props v1.1.rar",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "null-45-building-style-control-ui-for-the-building-styles",
+      "name": "Building Style Control UI",
+      "note": "The interface needed to select the additional architectural styles.",
+      "url": "https://community.simtropolis.com/files/file/36962-building-style-control-ui-for-the-building-styles-dll/?do=download",
+      "expected_asset_version": "1.0.0-1",
+      "expected_package_uses": [
+        {
+          "packageId": "null-45:allow-more-building-styles-dll",
+          "version": "3.6.1-1",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "null-45-building-style-control-ui-for-the-building-styles"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/null-45/allow-more-building-styles-dll/3.6.1-1/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/null-45/allow-more-building-styles.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/CoriBoom 36 Slot Building Styles UI.zip",
+          "bytes": 8070,
+          "sha256": "2ba40e764008584873e8be5d0990bf79aa03017837bcca2ae275ea2606b9021b",
+          "modified_utc": "2026-09-07T13:13:32.971072+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "CoriBoom's 36 Slot Building Styles UI - v0.46 Beta HA250411.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "CoriBoom's 36 Slot Building Styles UI - v0.46 Beta HA250411.dat",
+              "bytes": 11711,
+              "sha256": "0022963fb4e10d338db52b933e8a7ba54f4acc3c3db50b1cce1a470edca87f89",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 35,
+              "index_offset": 11011,
+              "index_size": 700,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "null-45:allow-more-building-styles-dll",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "CoriBoom's 36 Slot Building Styles UI - v0.46 Beta HA250411.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/CoriBoom 36 Slot Building Styles UI.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "sims-geographic-museum-ii-props",
+      "name": "Sims Geographic Museum II",
+      "note": "The museum model is used by the Cerulean collection.",
+      "url": "https://community.simtropolis.com/files/file/4238-sims-geographic-museum-ii/?do=download",
+      "expected_asset_version": "2.0-1",
+      "expected_package_uses": [
+        {
+          "packageId": "torresprei:sims-geographic-museum-ii-props",
+          "version": "2.0-2",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "sims-geographic-museum-ii-props",
+            "include": [
+              "/Geographic Museum Props/"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/torresprei/sims-geographic-museum-ii-props/2.0-2/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/torresprei/sims-geographic-museum-ii-props.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/torresprei - Sims Geographic Museum II V2.zip",
+          "bytes": 1292918,
+          "sha256": "14b0ec2a4e370bc472cee3536404afd84325453db25093548605d5321693f462",
+          "modified_utc": "2026-09-07T13:13:57.745352+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "torresprei/Dependency/Geographic Museum Props/Espiral II-0x5ad0e817_0x6de68732_0x30000.SC4Model",
+            "torresprei/Dependency/Geographic Museum Props/Espiral II-0x6534284a-0x4d5aea19-0x0de687fa.SC4Desc",
+            "torresprei/Dependency/Geographic Museum Props/Torresprei VIII-0x5ad0e817_0x8de622b9_0x30000.SC4Model",
+            "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x5ad0e817_0x4dd760ac_0x30000.SC4Model",
+            "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x6534284a-0xedc7b3e1-0xcdd76344.SC4Desc",
+            "torresprei/Geographic Museum/PLOP_6x4_Torresprei Museum  II_ae47751c.SC4Lot"
+          ],
+          "game_payloads": [
+            {
+              "path": "torresprei/Dependency/Geographic Museum Props/Espiral II-0x5ad0e817_0x6de68732_0x30000.SC4Model",
+              "bytes": 46123,
+              "sha256": "92d7d9e525aa74389ee4c8aa103ca31092ed70de63320681f03671f19cc31ae9",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 66,
+              "index_offset": 44803,
+              "index_size": 1320,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "torresprei/Dependency/Geographic Museum Props/Espiral II-0x6534284a-0x4d5aea19-0x0de687fa.SC4Desc",
+              "bytes": 1280,
+              "sha256": "4ba1705ccf6dfa3e8d1a872a6d5190e7c1fd4782a798bb743b868abd15996824",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 3,
+              "index_offset": 1220,
+              "index_size": 60,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "torresprei/Dependency/Geographic Museum Props/Torresprei VIII-0x5ad0e817_0x8de622b9_0x30000.SC4Model",
+              "bytes": 1392790,
+              "sha256": "2bb0144c8fa6f4e89289baede1eeba3b3ade293ce93781029a49f170c64ff002",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 170,
+              "index_offset": 1389390,
+              "index_size": 3400,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x5ad0e817_0x4dd760ac_0x30000.SC4Model",
+              "bytes": 34515,
+              "sha256": "0722881b8045139a1f60ab4a88321a67dd082c5dfcb68fca8eb88be01ec8933f",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 66,
+              "index_offset": 33195,
+              "index_size": 1320,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x6534284a-0xedc7b3e1-0xcdd76344.SC4Desc",
+              "bytes": 1242,
+              "sha256": "8e861bb6dff28141e715c1233a592664d97a9f9890160eece8af325c0d36b080",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 3,
+              "index_offset": 1182,
+              "index_size": 60,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "torresprei/Geographic Museum/PLOP_6x4_Torresprei Museum  II_ae47751c.SC4Lot",
+              "bytes": 21705,
+              "sha256": "c51aa14771a6dc888e935e2b28d672f3cb3312922e23d600635d1eb168320ae1",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 5,
+              "index_offset": 21605,
+              "index_size": 100,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "torresprei:sims-geographic-museum-ii-props",
+              "include_rules": [
+                "/Geographic Museum Props/"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "torresprei/Dependency/Geographic Museum Props/Espiral II-0x5ad0e817_0x6de68732_0x30000.SC4Model",
+                "torresprei/Dependency/Geographic Museum Props/Espiral II-0x6534284a-0x4d5aea19-0x0de687fa.SC4Desc",
+                "torresprei/Dependency/Geographic Museum Props/Torresprei VIII-0x5ad0e817_0x8de622b9_0x30000.SC4Model",
+                "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x5ad0e817_0x4dd760ac_0x30000.SC4Model",
+                "torresprei/Dependency/Geographic Museum Props/Torresprei_Fountain-0x6534284a-0xedc7b3e1-0xcdd76344.SC4Desc"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/torresprei - Sims Geographic Museum II V2.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "memo-i-r-fix",
+      "name": "I-R Fix",
+      "note": "Agriculture correction required by CAM.",
+      "url": "https://community.simtropolis.com/files/file/36841-i-r-fix/?do=download",
+      "expected_asset_version": "1.0.0-1",
+      "expected_package_uses": [
+        {
+          "packageId": "memo:i-r-fix",
+          "version": "1.0.0-2",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "memo-i-r-fix"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/memo/i-r-fix/1.0.0-2/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/memo/i-r-fix.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/memo.I-R-fix.dat",
+          "bytes": 1113,
+          "sha256": "d685fbda32e85f508157f46b6ace66842f3eb4ee3c4d96636d3eb1a2614cb936",
+          "modified_utc": "2026-09-07T13:14:03.182973+00:00",
+          "integrity": {
+            "format": "raw DBPF",
+            "magic": "DBPF",
+            "version": "1.0",
+            "entries": 8,
+            "index_offset": 953,
+            "index_size": 160,
+            "valid_header_and_index": true,
+            "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+          },
+          "archive_entries": [
+            "memo.I-R-fix.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "memo.I-R-fix.dat",
+              "bytes": 1113,
+              "sha256": "d685fbda32e85f508157f46b6ace66842f3eb4ee3c4d96636d3eb1a2614cb936",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 8,
+              "index_offset": 953,
+              "index_size": 160,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "memo:i-r-fix",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "memo.I-R-fix.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/memo.I-R-fix.dat",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "Single-file asset requires no ZIP wrapper; memo.I-R-fix.dat has 8 DBPF entries, complete index and all payload ranges within file."
+      ]
+    },
+    {
+      "assetId": "cyclone-boom-save-warning-disable-exit-quit",
+      "name": "Save Warning \u2014 Disable Exit & Quit",
+      "note": "Use the Disable Exit & Quit archive, not the other variant.",
+      "url": "https://community.simtropolis.com/files/file/32812-save-warning/?do=download&r=175227",
+      "expected_asset_version": "1.0",
+      "expected_package_uses": [
+        {
+          "packageId": "cyclone-boom:save-warning",
+          "version": "1.0",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "cyclone-boom-save-warning-disable-exit-quit"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/cyclone-boom/save-warning/1.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/cyclone-boom/save-warning.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/SaveWarning_Disable_Exit_Quit.zip",
+          "bytes": 7522,
+          "sha256": "a3eca98124afd92d39a29bc15a1187242b8bca23a64414ff924035a7c3e5e0c0",
+          "modified_utc": "2026-09-07T13:14:18.608281+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Preview_SW Disable.png",
+            "Readme_SW Disable_v1.0.txt",
+            "SaveWarning_Disable_Exit_Quit.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "SaveWarning_Disable_Exit_Quit.dat",
+              "bytes": 2408,
+              "sha256": "317739108cc70d664196e6e44643340db33db04efbd54252db7c9be57d353faf",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 5,
+              "index_offset": 2308,
+              "index_size": 100,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "cyclone-boom:save-warning",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "SaveWarning_Disable_Exit_Quit.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/SaveWarning_Disable_Exit_Quit.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "scoty-zoning-mod",
+      "name": "Scoty Zoning Mod",
+      "note": "Download the archive; the installer selects the Maxis variant.",
+      "url": "https://community.simtropolis.com/files/file/33590-scoty-zoning-mod/?do=download",
+      "expected_asset_version": "2.0.0",
+      "expected_package_uses": [
+        {
+          "packageId": "scoty:zoning-mod-maxis",
+          "version": "2.0.0",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "scoty-zoning-mod",
+            "include": [
+              "/scoty_ZManag_maxis.dat"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/scoty/zoning-mod-maxis/2.0.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/scoty/zoning-mod.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/scotyZoningMod_v2.zip",
+          "bytes": 1161493,
+          "sha256": "c79495ad1aa98b3e5a462d1c923c0167830ebe42f47998703c5e4214cc19a6b6",
+          "modified_utc": "2026-09-07T13:14:26.859492+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "z__scotyZoningMod/scoty_ZManag_CBVD.dat",
+            "z__scotyZoningMod/scoty_ZManag_maxis.dat",
+            "z__scotyZoningMod/scoty_ZManag_ocher.dat",
+            "z__scotyZoningMod/scoty_ZManag_soften.dat",
+            "z__scotyZoningMod/scoty_ZManag_yard.dat",
+            "z__scotyZoningMod/scoty_ZM_2_readme_.pdf",
+            "z__scotyZoningMod/scoty_ZM_ground_landfill.dat",
+            "z__scotyZoningMod/scoty_ZM_ressources.dat",
+            "z__scotyZoningMod/scoty_ZM_tex_dot.dat",
+            "z__scotyZoningMod/scoty_ZM_tex_earthwork.dat",
+            "z__scotyZoningMod/scoty_ZM_tex_empty.dat",
+            "z__scotyZoningMod/scoty_ZM_tex_foundation_2.dat",
+            "z__scotyZoningMod/scoty_ZM_tex_foundation_3.dat"
+          ],
+          "game_payloads": [
+            {
+              "path": "z__scotyZoningMod/scoty_ZManag_CBVD.dat",
+              "bytes": 462,
+              "sha256": "520e4acc3a09abad9c0dc756857dd58f3f53eb565b10fcda86c95881823e129d",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 422,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZManag_maxis.dat",
+              "bytes": 459,
+              "sha256": "4d3281f677f5aa770034006396d4440464a1cfa15cf1a29dc425615821076cb8",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 419,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZManag_ocher.dat",
+              "bytes": 462,
+              "sha256": "2d10dfb73377c13877ce2841d6e6bd13ecbc41881d4b970aaf4e0e69124eef5a",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 422,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZManag_soften.dat",
+              "bytes": 462,
+              "sha256": "b7845b3ef386d553056751f89aad3c20b786e6466299142a8d7f1ac458b818bb",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 422,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZManag_yard.dat",
+              "bytes": 462,
+              "sha256": "6f0c87a4e6effcd62da6927d428d2aec4edb107337648e85db63f3118d23f584",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 422,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_ground_landfill.dat",
+              "bytes": 216,
+              "sha256": "cc323de758610ad72094ea5e4506029942337b3648abdfce46ca26a3a894c902",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 2,
+              "index_offset": 96,
+              "index_size": 40,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_ressources.dat",
+              "bytes": 318,
+              "sha256": "8a3ab09d0a3fb9d73254eaa2616c95e5af83115b4003bb397e8f4167f33ff438",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 3,
+              "index_offset": 96,
+              "index_size": 60,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_tex_dot.dat",
+              "bytes": 9164,
+              "sha256": "873f1975691883761015187f099fd203dfa3c77e5d4d8600128f2741f9397925",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 56,
+              "index_offset": 96,
+              "index_size": 1120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_tex_earthwork.dat",
+              "bytes": 19303,
+              "sha256": "191dda65890a8f7dd25a518f3864945781ab82f48be22b4cee6413ab5f15110f",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 56,
+              "index_offset": 96,
+              "index_size": 1120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_tex_empty.dat",
+              "bytes": 7345,
+              "sha256": "e6e57c3374c40af689893e043fedaf1f91719f3d49211f2430651e0ce2f4028b",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 56,
+              "index_offset": 96,
+              "index_size": 1120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_tex_foundation_2.dat",
+              "bytes": 19672,
+              "sha256": "fecd465a43afdde06c304acfb99e12509c6d0a737edbac4c5abdd209d8dc057b",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 56,
+              "index_offset": 96,
+              "index_size": 1120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "z__scotyZoningMod/scoty_ZM_tex_foundation_3.dat",
+              "bytes": 18765,
+              "sha256": "7c1fcfc25cbd2cb71f21aafca37871b916f325db38df400f5d3a8db5007750bc",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 56,
+              "index_offset": 96,
+              "index_size": 1120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "scoty:zoning-mod-maxis",
+              "include_rules": [
+                "/scoty_ZManag_maxis.dat"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "z__scotyZoningMod/scoty_ZManag_maxis.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/scotyZoningMod_v2.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "peg-security-fencing-kit",
+      "name": "PEG Security Fencing Kit",
+      "note": "Scenery dependency for the Disease Research Center.",
+      "url": "https://community.simtropolis.com/files/file/19338-peg-security-fencing-kit/?do=download",
+      "expected_asset_version": "1.0",
+      "expected_package_uses": [
+        {
+          "packageId": "peg:security-fencing-kit",
+          "version": "1.0",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "peg-security-fencing-kit"
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/peg/security-fencing-kit/1.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/peg/security-fencing-kit.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/PEG_SecurityFence_RESOURCE_100.zip",
+          "bytes": 227413,
+          "sha256": "555ed2486d8180e7dc25184a2e365a3586f1dee462896356cf966663e3f37a1f",
+          "modified_utc": "2026-09-07T13:14:34.486585+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "PEGPROD/MODs/Security Fencing/PEG_ChainLinkFence_RESOURCE.dat",
+            "PEGPROD/MODs/Security Fencing/product_image.jpg",
+            "PEGPROD/MODs/Security Fencing/readme_243.htm"
+          ],
+          "game_payloads": [
+            {
+              "path": "PEGPROD/MODs/Security Fencing/PEG_ChainLinkFence_RESOURCE.dat",
+              "bytes": 320312,
+              "sha256": "1cbf1e1e5e06af79572e9e23d8759cda3004d53edbeb75dd4a6eecb13f426388",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 704,
+              "index_offset": 306232,
+              "index_size": 14080,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "peg:security-fencing-kit",
+              "include_rules": null,
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "PEGPROD/MODs/Security Fencing/PEG_ChainLinkFence_RESOURCE.dat"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/PEG_SecurityFence_RESOURCE_100.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads."
+      ]
+    },
+    {
+      "assetId": "mattb325-disease-research-center-mac-fix",
+      "name": "Disease Research Center \u2014 Mac Fix.zip",
+      "note": "The package manager uses this corrected lot file even for Windows. Only this small fix is missing; the main model is already downloaded.",
+      "url": "https://community.simtropolis.com/files/file/28014-disease-research-center/?do=download&r=197672",
+      "expected_asset_version": "1.0.0",
+      "expected_package_uses": [
+        {
+          "packageId": "mattb325:disease-research-center",
+          "version": "1.0",
+          "variant": {},
+          "asset_rules": {
+            "assetId": "mattb325-disease-research-center-mac-fix",
+            "include": [
+              "(?=PLOP).*\\.SC4Lot$"
+            ]
+          },
+          "metadata_path": "/Users/simonhinterreiter/Documents/ChatGPT/Project_Sim_City/setup/sc4pac-cache/coursier/https/memo33.github.io/sc4pac/channel/metadata/mattb325/disease-research-center/1.0/pkg.json",
+          "metadata_source_urls": [
+            "https://github.com/memo33/sc4pac/blob/main/src/yaml/mattb325/civic/miscellaneous/disease-research-center.yaml"
+          ]
+        }
+      ],
+      "status": "verified_match",
+      "candidates": [
+        {
+          "path": "/Users/simonhinterreiter/Downloads/Disease Research Center - MAC Fix.zip",
+          "bytes": 55095,
+          "sha256": "f333195f3349a4d2f0e522043a426493a950bad41093afff9581846023e7c85c",
+          "modified_utc": "2026-09-07T13:14:40.385265+00:00",
+          "integrity": {
+            "format": "ZIP",
+            "crc_test": "passed",
+            "failed_entry": null
+          },
+          "archive_entries": [
+            "Mattb325_Disease_Research_Center(IHT)-0x6534284a-0x13a0bd51-0x9dd39a39.SC4Desc",
+            "PLOP_8x6_Mattb325_Disease_Research_Center_edd0c97b.SC4Lot"
+          ],
+          "game_payloads": [
+            {
+              "path": "Mattb325_Disease_Research_Center(IHT)-0x6534284a-0x13a0bd51-0x9dd39a39.SC4Desc",
+              "bytes": 1580,
+              "sha256": "5f5e1723260927b3cf6231506458bf045f17e769cb55462ef85cee70e9f2df63",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 1,
+              "index_offset": 1560,
+              "index_size": 20,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            },
+            {
+              "path": "PLOP_8x6_Mattb325_Disease_Research_Center_edd0c97b.SC4Lot",
+              "bytes": 55279,
+              "sha256": "7daeea7ed544147fcaebbc45720e023f54c46d6f12c014f4b919cb9a8d62469c",
+              "magic": "DBPF",
+              "version": "1.0",
+              "entries": 6,
+              "index_offset": 55159,
+              "index_size": 120,
+              "valid_header_and_index": true,
+              "scope": "Header/index/file-boundary validation; not full exemplar semantic validation."
+            }
+          ],
+          "metadata_filter_matches": [
+            {
+              "packageId": "mattb325:disease-research-center",
+              "include_rules": [
+                "(?=PLOP).*\\.SC4Lot$"
+              ],
+              "exclude_rules": [],
+              "matching_game_payloads": [
+                "PLOP_8x6_Mattb325_Disease_Research_Center_edd0c97b.SC4Lot"
+              ]
+            }
+          ]
+        }
+      ],
+      "ambiguities": [],
+      "selected_path": "/Users/simonhinterreiter/Downloads/Disease Research Center - MAC Fix.zip",
+      "matching_evidence": [
+        "Task-specific downloaded filename and game-content filenames match requested asset.",
+        "Cached selected-variant package include rules match game payloads.",
+        "PLOP_8x6_Mattb325_Disease_Research_Center_edd0c97b.SC4Lot matches package PLOP include filter; IHT SC4Desc is correctly excluded."
+      ]
+    }
+  ]
+}

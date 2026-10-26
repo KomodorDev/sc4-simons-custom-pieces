@@ -1,0 +1,36 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant P as Planner
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>A: Develop Southport Central with dense housing, jobs and services
+    A->>C: Inspect population, demand, access, utilities and civic services
+    C->>G: Read supported district and city measurements
+    G-->>C: Return measurements and identify unavailable fields
+    C-->>A: Summarize the current bottlenecks and data gaps
+    A->>P: Plan the next affordable and serviceable growth phase
+    P->>R: Find installed compatible lots and their capacity and cost
+    R-->>P: Catalogue candidates and tested placement capabilities
+    P-->>A: Street access, transit feeders, utilities, zoning and civic sites
+    A->>C: Execute the next bounded district phase
+    C->>R: Record plan revision and create the required checkpoint
+    C->>D: Show the district boundary and reserved service sites
+    C->>G: Build verified access, utilities and civic infrastructure
+    G-->>C: Return placements, connectivity and charges
+    C->>G: Apply the planned zones and save
+    G-->>C: Confirm zone layout and save completion
+    loop Until phase target or simulation budget is reached
+        C->>G: Advance a bounded simulation interval
+        G-->>C: Return growth, occupancy, service load and budget observations
+        C->>R: Store results with the simulated date
+        C->>D: Show new development and remaining bottlenecks
+        C-->>A: Report measured changes
+        A->>P: Evaluate whether to wait, expand services or revise the phase
+        P-->>A: Recommend the next action within the user's limits
+    end
+    A-->>U: Report observed growth, service headroom and unmet conditions

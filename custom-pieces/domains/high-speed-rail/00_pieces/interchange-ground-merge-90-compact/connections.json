@@ -1,0 +1,708 @@
+{
+  "schema_version": 1,
+  "purpose": "Actual saved-resource ports, service roles, directed journeys and scoped candidate counterpart poses.",
+  "subject_id": "interchange-ground-merge-90-compact",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:interchange-ground-merge-90-compact:ea5118b0-ea5118b1-7f53fff5": "305c21a7cc149a8a24bc90411a5e7e8493f9227add9f1d0a2933bbf1bb84f355",
+      "exemplar:interchange-ground-merge-90-compact:6534284a-a8434037-7f53f000": "c4af037a8eb4bc59d48f0e45aed838a86a19a2bbee5a4cf6b501fa4816e9c773",
+      "exemplar:interchange-ground-merge-90-compact:6534284a-a8434037-7f53f010": "2ea308820349a4e22f2b0a8f9c5ece10597b78578eb3304dff2afdd446a0f90e",
+      "exemplar:interchange-ground-merge-90-compact:6534284a-a8434037-7f53f110": "d19e42b8f917dc4807196f71d31cbf976737d68975032ac5161b8b42bf9c1956",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f000": "b05842e9330bde45b06e34e9f9bb5db904754f93aa6bc46406f9f7e0ef9d6d83",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f001": "b05842e9330bde45b06e34e9f9bb5db904754f93aa6bc46406f9f7e0ef9d6d83",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f002": "b05842e9330bde45b06e34e9f9bb5db904754f93aa6bc46406f9f7e0ef9d6d83",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f003": "b05842e9330bde45b06e34e9f9bb5db904754f93aa6bc46406f9f7e0ef9d6d83",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f004": "b05842e9330bde45b06e34e9f9bb5db904754f93aa6bc46406f9f7e0ef9d6d83",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f010": "ab80223a9f7f9031aa3520861e589f316308bbe16db87c90950754046f551c38",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f011": "ab80223a9f7f9031aa3520861e589f316308bbe16db87c90950754046f551c38",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f012": "ab80223a9f7f9031aa3520861e589f316308bbe16db87c90950754046f551c38",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f013": "ab80223a9f7f9031aa3520861e589f316308bbe16db87c90950754046f551c38",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f014": "ab80223a9f7f9031aa3520861e589f316308bbe16db87c90950754046f551c38",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f110": "168bcef45bf3dd58feafe62031978515d0315d4af9ab718e90b6ffde7c398719",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f111": "168bcef45bf3dd58feafe62031978515d0315d4af9ab718e90b6ffde7c398719",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f112": "168bcef45bf3dd58feafe62031978515d0315d4af9ab718e90b6ffde7c398719",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f113": "168bcef45bf3dd58feafe62031978515d0315d4af9ab718e90b6ffde7c398719",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f114": "168bcef45bf3dd58feafe62031978515d0315d4af9ab718e90b6ffde7c398719",
+      "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53fff5": "11223a72c4db0240a31185b8098a7595f1de4ee461f153e319604e1be314e753",
+      "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f000": "07afec425b4fd1955141cc10568f4e6e03682fdeb1c3aedaa66ed143bb30703a",
+      "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f010": "837586090f4b79978d10dd87b3111c972b031a1a2ffed52b934134332245bed8",
+      "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f110": "10b99c12e299eb2723b1f6bdf527a0251162213ea3896348b787c62b84f12fdf",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f000": "c8946b99bf4e19617855cc9464be4d2dff9020230bceb718674a7f52db160d6d",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f001": "4db39060565f60d06b68010538c999be44ac74affaf5c73cc9784ce6fa9ae720",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f002": "9c5f0961657477d8fa66b7e473a9095b394cd28b6958c56a95c5d2f4d1e07d33",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f003": "dd08bec2b30bf9be40a64a89eed1349cd5d9aa11b63b56dc0378a88d45bfac6c",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f004": "c3e413a3d533ecc6f2699373d67d1952e39596c489544b244098c434a4b6ea71",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f010": "1e350575d1a28553db39bf38c505686f242337e1d9abbe317c34bbb18a7479be",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f011": "6e38773c55a600d8727941efc7bf274bcaef9644768dc4fda0cb8edf0aa9c36d",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f012": "101f2239a425f4ed6f327f44cc519a3dd4759077bd9d9479a7595ff0a2a5f0ce",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f013": "f2b3f7fea29e6757f295d8949c483d9b2ddd218aa0aa0b7b14a2860f0bf058dc",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f014": "be5368b0ced906cdcfda30f00f2e43f36903621a4be0fa197c8441cc4cff4886",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f110": "fe6581c9b48624094f37be127554011e066c6694946d86e0df173342c5a64f9c",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f111": "7db758afe6568903d3f6838cb401080dc73dac48e9a8f4e2660dd97dd0f12ce1",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f112": "9257cbfb03f1356ef5226e33bd1fddda5284a954c333347bb29fafe9bf6b8435",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f113": "6f48c9357c32e6c0b6bc3be2c6575121897e9aaa9b12c506483461445738d11e",
+      "shadow:interchange-ground-merge-90-compact:7ab50e44-2bc2759a-7f53f114": "bcc4e9cfdbf61b8f6628abfb81f1e9453b4a9af4f11cb212021f8e476c708e43",
+      "text:interchange-ground-merge-90-compact:2026960b-2a592fd1-7f53f000": "ab73ddb09f89f17804132029b0192f58ce2fe3635daffc7e7c508af754517bee",
+      "text:interchange-ground-merge-90-compact:2026960b-2a592fd1-7f53f010": "ab73ddb09f89f17804132029b0192f58ce2fe3635daffc7e7c508af754517bee",
+      "text:interchange-ground-merge-90-compact:2026960b-2a592fd1-7f53f110": "ab73ddb09f89f17804132029b0192f58ce2fe3635daffc7e7c508af754517bee",
+      "construction:interchange-ground-merge-90-compact": "62d7b5c753ffcf3a9dc38da4f414db1fbac2b0658a8dec89d17f2b9a9f2114e2"
+    },
+    "reviewed_contract_available": true,
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "Sout",
+      "direction": "out",
+      "service_network": "ghsr",
+      "service_family": "high-speed-rail",
+      "variant": "ghsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        -2.0,
+        -24.0,
+        1.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f010",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f011",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f012",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f013",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f014",
+        "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f010",
+        "construction:interchange-ground-merge-90-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-N-in-4",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-S-in-5",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "diagonal-hsr-straight-ghsr",
+          "port_id": "7-N-in-4",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004",
+            "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000",
+            "construction:diagonal-hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-c78c5ac4b558d84b46f2",
+      "candidate_counterpart_count": 47,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nin",
+      "direction": "in",
+      "service_network": "ghsr",
+      "service_family": "high-speed-rail",
+      "variant": "ghsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        -2.0,
+        8.0,
+        1.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f000",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f001",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f002",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f003",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f004",
+        "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f000",
+        "construction:interchange-ground-merge-90-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-N-out-6",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-S-out-3",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "diagonal-hsr-straight-ghsr",
+          "port_id": "7-N-out-6",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004",
+            "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000",
+            "construction:diagonal-hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-c78c5ac4b558d84b46f2",
+      "candidate_counterpart_count": 47,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Sin",
+      "direction": "in",
+      "service_network": "ghsr",
+      "service_family": "high-speed-rail",
+      "variant": "ghsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        2.0,
+        -24.0,
+        1.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f010",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f011",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f012",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f013",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f014",
+        "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f010",
+        "construction:interchange-ground-merge-90-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-N-out-6",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-S-out-3",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "diagonal-hsr-straight-ghsr",
+          "port_id": "7-N-out-6",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004",
+            "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000",
+            "construction:diagonal-hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-fab587419de6b5848d74",
+      "candidate_counterpart_count": 47,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nout",
+      "direction": "out",
+      "service_network": "ghsr",
+      "service_family": "high-speed-rail",
+      "variant": "ghsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        2.0,
+        8.0,
+        1.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f000",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f001",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f002",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f003",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f004",
+        "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f000",
+        "construction:interchange-ground-merge-90-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-N-in-4",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "hsr-straight-ghsr",
+          "port_id": "7-S-in-5",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003",
+            "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004",
+            "path:hsr-straight-ghsr:296678f7-a966883f-7f500000",
+            "construction:hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "diagonal-hsr-straight-ghsr",
+          "port_id": "7-N-in-4",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003",
+            "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004",
+            "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000",
+            "construction:diagonal-hsr-straight-ghsr"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-fab587419de6b5848d74",
+      "candidate_counterpart_count": 47,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Bin",
+      "direction": "in",
+      "service_network": "ghsr",
+      "service_family": "high-speed-rail",
+      "variant": "ghsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 2,
+      "endpoint_m": [
+        24.0,
+        -16.0,
+        1.0
+      ],
+      "tangent": [
+        -1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f110",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f111",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f112",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f113",
+        "model:interchange-ground-merge-90-compact:5ad0e817-badb57f1-7f53f114",
+        "path:interchange-ground-merge-90-compact:296678f7-a966883f-7f53f110",
+        "construction:interchange-ground-merge-90-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-ground-straight",
+          "port_id": "out",
+          "relative_rotation_ccw": 90,
+          "relative_position_m": [
+            32.0,
+            -16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-ground-straight:5ad0e817-badb57f1-7f51c000",
+            "model:interchange-oneway-ground-straight:5ad0e817-badb57f1-7f51c001",
+            "model:interchange-oneway-ground-straight:5ad0e817-badb57f1-7f51c002",
+            "model:interchange-oneway-ground-straight:5ad0e817-badb57f1-7f51c003",
+            "model:interchange-oneway-ground-straight:5ad0e817-badb57f1-7f51c004",
+            "path:interchange-oneway-ground-straight:296678f7-a966883f-7f51c000",
+            "construction:interchange-oneway-ground-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-ground-curve-in-left",
+          "port_id": "out",
+          "relative_rotation_ccw": 90,
+          "relative_position_m": [
+            32.0,
+            -16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-ground-curve-in-left:5ad0e817-badb57f1-7f522000",
+            "model:interchange-oneway-ground-curve-in-left:5ad0e817-badb57f1-7f522001",
+            "model:interchange-oneway-ground-curve-in-left:5ad0e817-badb57f1-7f522002",
+            "model:interchange-oneway-ground-curve-in-left:5ad0e817-badb57f1-7f522003",
+            "model:interchange-oneway-ground-curve-in-left:5ad0e817-badb57f1-7f522004",
+            "path:interchange-oneway-ground-curve-in-left:296678f7-a966883f-7f522000",
+            "construction:interchange-oneway-ground-curve-in-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-ground-curve-in-right",
+          "port_id": "out",
+          "relative_rotation_ccw": 90,
+          "relative_position_m": [
+            32.0,
+            -16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-ground-curve-in-right:5ad0e817-badb57f1-7f523000",
+            "model:interchange-oneway-ground-curve-in-right:5ad0e817-badb57f1-7f523001",
+            "model:interchange-oneway-ground-curve-in-right:5ad0e817-badb57f1-7f523002",
+            "model:interchange-oneway-ground-curve-in-right:5ad0e817-badb57f1-7f523003",
+            "model:interchange-oneway-ground-curve-in-right:5ad0e817-badb57f1-7f523004",
+            "path:interchange-oneway-ground-curve-in-right:296678f7-a966883f-7f523000",
+            "construction:interchange-oneway-ground-curve-in-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-459a3d38a8ff1501aa51",
+      "candidate_counterpart_count": 11,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    }
+  ],
+  "journeys": [
+    {
+      "id": "7:Nin>Sout",
+      "entry_port": "Nin",
+      "exit_port": "Sout",
+      "service_network": "ghsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "ghsr",
+        "ghsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Sin>Nout",
+      "entry_port": "Sin",
+      "exit_port": "Nout",
+      "service_network": "ghsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "ghsr",
+        "ghsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Bin>Nout",
+      "entry_port": "Bin",
+      "exit_port": "Nout",
+      "service_network": "ghsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "ghsr",
+        "ghsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "Nin",
+      "to_port": "Nout",
+      "from_service": "ghsr",
+      "to_service": "ghsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "Sin",
+      "to_port": "Sout",
+      "from_service": "ghsr",
+      "to_service": "ghsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "Bin",
+      "to_port": "Sout",
+      "from_service": "ghsr",
+      "to_service": "ghsr",
+      "basis": "not reachable in actual saved PATH graph"
+    }
+  ],
+  "compatibility_policy": "Concrete PATH-aligned candidates only; physical seam review and in-game tests remain separate.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7e1",
+        "0004f7e1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7e1",
+        "0007f7e1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7e1",
+        "0006f7e1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7e1",
+        "0005f7e1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

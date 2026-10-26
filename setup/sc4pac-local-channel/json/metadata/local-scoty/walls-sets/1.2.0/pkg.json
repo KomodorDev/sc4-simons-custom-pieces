@@ -1,0 +1,124 @@
+{
+ "$type": "Package",
+ "group": "local-scoty",
+ "name": "walls-sets",
+ "version": "1.2.0",
+ "subfolder": "660-parks",
+ "info": {
+  "summary": "Scoty Walls Sets",
+  "description": "210 slope-conforming wall lots in six materials, including pedestrian stairs.\nUses current v1.2 wall lots and submenu patches. The original underbridge\nprop DAT omitted from the v1.2 ZIP is recovered unchanged from v1.1.\nLocal import: keep this channel and source archives for sc4pac reinstalls.\nFuture upstream updates require refreshing the local package metadata.\nKnown source limitation: five unidentified small prop references on ten\ndiagonal/end/scene lots are not supplied by the listed dependencies.\nMain wall textures, ordinary concrete straight walls and stairs resolve.\n",
+  "author": "hugues aroux",
+  "websites": [
+   "https://community.simtropolis.com/files/file/35922-scoty-walls-sets/"
+  ]
+ },
+ "variants": [
+  {
+   "variant": {},
+   "dependencies": [
+    {
+     "group": "bsc",
+     "name": "mega-props-cp-vol01",
+     "version": "latest.release"
+    },
+    {
+     "group": "memo",
+     "name": "submenus-dll",
+     "version": "latest.release"
+    },
+    {
+     "group": "memo",
+     "name": "transparent-texture-fix-dll",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "beeches",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "bushes",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "daisy",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "feather-grass",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "hedges",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "rowan-trees",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "sparaxis",
+     "version": "latest.release"
+    },
+    {
+     "group": "girafe",
+     "name": "wheat",
+     "version": "latest.release"
+    },
+    {
+     "group": "namspopof",
+     "name": "nams-mega-props",
+     "version": "latest.release"
+    },
+    {
+     "group": "neko",
+     "name": "prop-set-vol03",
+     "version": "latest.release"
+    },
+    {
+     "group": "peg",
+     "name": "spot",
+     "version": "latest.release"
+    },
+    {
+     "group": "shk",
+     "name": "parking-pack",
+     "version": "latest.release"
+    },
+    {
+     "group": "wmp",
+     "name": "mega-props-vol01",
+     "version": "latest.release"
+    },
+    {
+     "group": "local-mas71",
+     "name": "japanese-walls-props",
+     "version": "latest.release"
+    }
+   ],
+   "assets": [
+    {
+     "assetId": "local-scoty-walls-sets"
+    },
+    {
+     "assetId": "local-scoty-walls-underbridge-props",
+     "include": [
+      "/MGB_UBprop_ScotyWalls.dat"
+     ]
+    }
+   ]
+  }
+ ],
+ "metadataSource": [
+  "scoty-walls-sets.yaml"
+ ],
+ "channelLabel": [
+  "Local additions"
+ ]
+}

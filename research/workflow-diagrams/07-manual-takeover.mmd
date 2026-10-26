@@ -1,0 +1,33 @@
+sequenceDiagram
+    autonumber
+    actor U as You
+    participant A as Agent
+    participant C as Controller
+    participant G as SC4
+    participant R as Records
+    participant D as Display
+
+    U->>C: Take over to repair this bridge
+    C->>C: Stop new operations, city changes and automatic camera movement
+    C->>D: Show preparing manual control
+    C->>G: Resolve the current operation and pause simulation if responsive
+    G-->>C: Confirm the current city and operation outcome
+    C->>R: Record work state and the observation before handoff
+    C->>D: Show manual control ready in Eastbank
+    U->>G: Edit the bridge and play directly
+    Note over C,G: Controller observes where possible but issues no competing changes
+    U->>C: Resume agent and retain my bridge
+    C->>G: Verify actual region, city, simulation state and edited area
+    G-->>C: Return fresh observations and any inspection gaps
+    C->>R: Compare with the handoff observation and mark changed areas
+    C-->>A: Report user edits and affected planned work
+    A->>A: Revise the remaining plan while preserving the user's edits
+    alt The manual bridge conflicts with a required connection
+        A-->>U: Explain the specific conflict and request the missing decision
+        C->>D: Keep construction paused
+    else Remaining work can use the edited bridge
+        A->>C: Resume with a revised queue and current conditions
+        C->>R: Discard obsolete operations and record the retained bridge
+        C->>D: Show resuming with your bridge retained
+        C->>G: Continue the next verified construction operation
+    end

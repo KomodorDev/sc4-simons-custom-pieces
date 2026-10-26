@@ -1,0 +1,122 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way L4 over GHSR Crossing.",
+  "schema_version": 1,
+  "id": "interchange-l4-oneway-over-ground",
+  "name": "One-Way L4 over GHSR Crossing",
+  "description": "One-Way L4 over GHSR Crossing. Fixed click-to-place piece in a 3 by 1 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The upper route crosses without transferring to the lower two-way route.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_oneway_over_ground",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f808",
+  "tile_ids": [
+    "7f566000",
+    "7f566100",
+    "7f566200"
+  ],
+  "preview_id": "7f566ff5",
+  "effect_name": "preview_scp_interchg_f808_0",
+  "footprint": [
+    3,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f808",
+    "order": "7011f808",
+    "style": "interchange-l4-oneway-over-ground"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f566000",
+      "source": "7f566000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f566100",
+      "source": "7f566100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f566200",
+      "source": "7f566200",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "true-flyovers",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8,
+        0.0,
+        30.5
+      ],
+      [
+        14.0,
+        8,
+        1.0
+      ],
+      [
+        18.0,
+        -8,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        14.0,
+        -8,
+        1.0
+      ],
+      [
+        18.0,
+        8,
+        1.0
+      ],
+      [
+        40,
+        0.0,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "flyover_crossing",
+    "height": 30.5,
+    "lower_level": "ground"
+  }
+}
