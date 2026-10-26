@@ -13,7 +13,7 @@ Each piece has one README containing its preview, measured connection interfaces
 
 The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, with the modular crossing and tight curve as its final examples. Their generated overview cards live beside those two pieces. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); other types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
-The separate [Planner compatibility operation](../../../scp-planner/README.md) searches only pieces with complete, current connector exports and reports excluded coverage explicitly. Most existing pieces are not yet migrated to that format. Their absence from that search establishes neither compatibility nor incompatibility, and ordinary piece validation does not generate a manual test for every possible neighbour.
+The current library does not supply automatic compatibility discovery. Most existing pieces are not yet migrated to the new connector-export format; that absence establishes neither compatibility nor incompatibility. Ordinary piece validation does not generate a manual test for every possible neighbour.
 
 <!-- BEGIN COLLECTIONS -->
 

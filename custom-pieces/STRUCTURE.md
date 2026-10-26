@@ -41,7 +41,7 @@ custom-pieces/
     └── SKILL.md                      Agent entry point linking the human procedures
 ```
 
-The `00_` and `01_` prefixes keep pieces and assemblies first in a name-sorted folder view. Repeated instances share a reusable type and its canonical images; placement labels belong to the assembly. Planner has its own [README](../scp-planner/README.md) and consumes library exports.
+The `00_` and `01_` prefixes keep pieces and assemblies first in a name-sorted folder view. Repeated instances share a reusable type and its canonical images; placement labels belong to the assembly.
 
 ## Three levels of documentation
 
@@ -96,4 +96,4 @@ A **prose-only refresh** updates generated views without changing measured conne
 
 A piece has one README, and an assembly has README plus TESTING. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
 
-Compatibility discovery is a separate Planner consumer operation over current, source-validated connector exports. Its eligibility, excluded-source reasons, pairwise candidates, and reports belong in `scp-planner/`; they do not become authored neighbour lists or required manual checkboxes in piece definitions. Unmigrated pieces retain their existing registration and build eligibility without being described as compatible or incompatible by that discovery operation.
+Automatic compatibility discovery is outside the current library commands. A future consumer must use current, source-validated connector exports and keep its eligibility decisions, excluded-source reasons, pairwise candidates, and reports separate from the authored library. Consumer results do not become authored neighbour lists or required manual checkboxes in piece definitions. Unmigrated pieces retain their existing registration and build eligibility without being described as compatible or incompatible.

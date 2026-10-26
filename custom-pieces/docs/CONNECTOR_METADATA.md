@@ -1,7 +1,7 @@
 ---
 title: "Connector metadata: matching pieces at their shared edge"
 summary: "Define complete boundary matching, source authority, and coordinate rules, and distinguish route agreement, owned cells, physical projection, and unverified clearance."
-audience: "Piece authors, Planner developers, and maintainers"
+audience: "Piece authors, application developers, and maintainers"
 document_type: "reference"
 ---
 
@@ -13,7 +13,7 @@ document_type: "reference"
 
 **Metadata** means information describing a piece. A **piece** is one reusable construction type; an **instance** is one placed copy of that type. A **tile**, also called a plot in the discussion, is one 16 m × 16 m game square. A piece can own several tiles.
 
-**A connection exists when both pieces expose compatible network services and the same geometric continuation at their shared edge, with complementary permitted movements.** Each piece describes its own side. The Planner compares both descriptions after placing the pieces in the layout.
+**A connection exists when both pieces expose compatible network services and the same geometric continuation at their shared edge, with complementary permitted movements.** Each piece describes its own side. A consumer can compare both descriptions under one proposed placement in a layout.
 
 ### Network-neutral terms
 
@@ -93,7 +93,7 @@ The **construction rectangle** is the declared width and depth around a piece, a
 
 Derive physical-space evidence from saved models using triangle-to-tile intersection, record exact affected cells and geometric scope, and bind it to the inspected model fingerprints. State the clipping tolerance and whether boundary-only contact counts. A vertex-only count can miss a triangle crossing a cell without a vertex inside it. Keep support-foundation ownership, complete overhang projection, and dimensioned traffic-corridor clearance as separate measurements. Preserve the results in the owning piece's existing engineering notes and evidence; the current connector schemas do not define a physical-footprint or keep-clear export.
 
-Current Planner ownership comparisons reject conflicting claimed cells; they do not reserve unowned projections or prove model clearance there. A future consumer needs source-bound physical-space data alongside owned cells and construction restrictions before it can enforce those reservations. Even then, a conservative two-dimensional reservation cannot establish three-dimensional fit: height-dependent collisions, traffic corridors, supports, and native deck seams require the actual placed geometry and explicit check scope. The [piece-creation support procedure](WORKFLOW_PIECE_CREATION.md#check-complete-support-solids-and-physical-space) explains the authoring checks. Keep such results unverified wherever those checks have not run.
+Checking claimed cells for overlap does not reserve unowned projections or prove model clearance there. A future consumer needs source-bound physical-space data alongside owned cells and construction restrictions before it can enforce those reservations. Even then, a conservative two-dimensional reservation cannot establish three-dimensional fit: height-dependent collisions, traffic corridors, supports, and native deck seams require the actual placed geometry and explicit check scope. The [piece-creation support procedure](WORKFLOW_PIECE_CREATION.md#check-complete-support-solids-and-physical-space) explains the authoring checks. Keep such results unverified wherever those checks have not run.
 
 ## 3. Positions, headings, heights, and slopes use one comparison frame
 
@@ -252,11 +252,11 @@ The library uses three separate connector files so that authored meaning, measur
 
 The optional domain `connector-profiles.json` supplies shared defaults. After expansion, validation and matching use the resulting facts. A profile name, parent, or identical ID cannot erase a difference in service, channel arrangement, position, height, heading, slope, or permissions. Equivalent resolved geometry can have different labels, but its equivalence must be established from actual data. A profile reference is not mandatory for every group, and no code infers geometry or traffic rules by parsing a profile ID.
 
-The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [authoring skill](../skills/network-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Planner owns interactive placement, candidate discovery, and application reports, and reads the library's generated export through its adapter.
+The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [authoring skill](../skills/network-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Application-specific placement, candidate discovery, and reports belong in a separate consumer, using the generated export rather than another source parser.
 
 Only the two migrated pieces currently supply the new declaration/export set. Do not imply full-catalogue coverage from that subset, and do not manufacture missing geometry or channel associations to extend coverage. Current resolved exports omit legacy per-port counterpart shortlists and candidate counts, while unchanged measured files retain their original bytes. Piece validation and extraction do not compute neighbouring candidates or generate a manual pair-testing matrix.
 
-Run compatibility discovery separately through [Planner](../../scp-planner/README.md). It searches only registered pieces with source-valid declarations and fresh generated exports, and compares complete boundaries under one placement. Its report distinguishes unmigrated pieces from missing, stale, or invalid data. An excluded piece has unknown compatibility in that run, rather than a failed connection. Candidate results retain the limits of pairwise metadata and owned-cell checking; full-scene clearance and game operation remain separate evidence.
+The current library does not supply automatic compatibility discovery. A future consumer must consider only registered pieces with source-valid declarations and fresh generated exports, compare complete boundaries under one placement, and distinguish unmigrated pieces from missing, stale, or invalid data. An excluded piece has unknown compatibility, rather than a failed connection. Candidate results retain the limits of pairwise metadata and owned-cell checking; full-scene clearance and game operation remain separate evidence.
 
 ## 7. Current library format and implementation limits
 
@@ -268,15 +268,15 @@ A **source binding** uses SHA-256, an exact file-content fingerprint, to associa
 
 A group contains related directed members and explicit physical-channel associations. A boundary bundle collects the groups crossing one source cell and edge. Distinct measured cuts remain distinct even when they belong to one channel. Source port IDs remain references; stable library member IDs identify the resolved members and their journeys. Existing `connections.json` identities are preserved. Per-mode permissions are explicit declarations checked against their measured member directions; coincident source records do not automatically become a shared physical channel.
 
-The export and overview derive from the same complete resolved representation. Refresh can pass that representation directly to rendering before writing the export, and standalone source rendering can resolve the authored library inputs through the same API. Planner reads the resulting `connector-data.json`. The export preserves the full ordered points of each saved PATH route fragment, including repeated endpoints where fragments meet at tile seams; fragment or point counts do not define physical-channel counts or independent complete journeys.
+The export and overview derive from the same complete resolved representation. Refresh can pass that representation directly to rendering before writing the export, and standalone source rendering can resolve the authored library inputs through the same API. The resulting `connector-data.json` is the library-owned format for consumers. The export preserves the full ordered points of each saved PATH route fragment, including repeated endpoints where fragments meet at tile seams; fragment or point counts do not define physical-channel counts or independent complete journeys.
 
 The current validator resolves each member's actual tangent, height, grade, and source-tile boundary position, rather than requiring every route to cross its edge perpendicularly. This does not establish arbitrary diagonal construction or a verified shared car/tram source. The actual migrated inputs are two paired HSR types with flat orthogonal endpoints. Source-backed diagonal, bidirectional-channel, and shared-mode examples still need their own declarations, independent checks, and compiled evidence.
 
 The existing `section_offset_m` places an applicable section origin along its tile edge. Zero means centred, and positive means left when facing outward perpendicular to the edge. Lane or member offsets refer to that origin, rather than the whole-piece centre. Members retain their actual geometry, so no profile or offset can move a source endpoint to make it fit.
 
-The current Planner consumer compares complete shared boundaries under one placement, with an unambiguous one-to-one correspondence between physical channels and between their cuts. It compares measured geometry, channel kind, service key, game transport class, routing role, and normalized per-mode movement permissions; equal raw directed-member counts are not required. Profile IDs, names, and expected widths do not decide compatibility. It checks the whole pair's owned cells. Full-scene checks against third pieces, verified adapters for other source families, service transitions, terrain-aware placement, free vertical movement, reflections, and model-derived physical seam or collision checks are not established by this two-piece migration.
+A complete-boundary comparison must use one placement, with an unambiguous one-to-one correspondence between physical channels and between their cuts. It must compare measured geometry, channel kind, service key, game transport class, routing role, and normalized per-mode movement permissions; equal raw directed-member counts are not required. Profile IDs, names, and expected widths do not decide compatibility. It must check the whole pair's owned cells. Full-scene checks against third pieces, verified adapters for other source families, service transitions, terrain-aware placement, free vertical movement, reflections, and model-derived physical seam or collision checks are not established by this two-piece migration.
 
-Metadata validation, compiled-route agreement, occupied-tile fit, overview generation, physical clearance, and game operation remain separate evidence states. Artificial mixed-network tests exercise comparison rules without supplying verified Street geometry or construction contracts. No connector command builds a DAT, installs a plugin, edits a city, rewrites manual observations, or creates an in-game pass.
+Metadata validation, compiled-route agreement, occupied-tile fit, overview generation, physical clearance, and game operation remain separate evidence states. The two HSR examples do not supply verified Street geometry or construction contracts. No connector command builds a DAT, installs a plugin, edits a city, rewrites manual observations, or creates an in-game pass.
 
 ## 8. Examples: the two existing HSR pieces
 
@@ -294,7 +294,7 @@ Each table includes identity and component, source tile and edge, network and tr
 
 **Level versus height:** L2 denotes these measured 15.5 m ends, and L4 denotes these measured 30.5 m ends. The 23 m paired end has no assigned nominal level, so its entry says “Custom; no nominal level.” It must not be relabelled ordinary L3 because 23 m also occurs in another track family. A matching level label cannot replace the actual height or arrangement.
 
-Each piece owns a fresh compiled-model [connection overview](WORKFLOW_DOCUMENTATION_GENERATION.md#reading-an-overview), with short boundary markers, complete structured cards, a conventions-only legend, and separate evidence. The tables below retain the measured source facts for these worked examples; the export, cards, and generated README overview derive from the same complete resolved representation. Planner reads the generated `connector-data.json`.
+Each piece owns a fresh compiled-model [connection overview](WORKFLOW_DOCUMENTATION_GENERATION.md#reading-an-overview), with short boundary markers, complete structured cards, a conventions-only legend, and separate evidence. The tables below retain the measured source facts for these worked examples; the export, cards, and generated README overview derive from the same complete resolved representation. Consumers can read the generated `connector-data.json`.
 
 The current profile ID is an exact registry key. Its readable concrete naming pattern is:
 

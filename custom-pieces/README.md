@@ -21,7 +21,6 @@ A **piece** is one reusable menu type. An **assembly** places copies of types in
 | Create or revise one reusable piece | [WORKFLOW: Piece Creation](docs/WORKFLOW_PIECE_CREATION.md) |
 | Design or extend an assembly | [WORKFLOW: Assembly Creation](docs/WORKFLOW_ASSEMBLY_CREATION.md) |
 | Understand connector data and complete shared boundaries | [Connector metadata](docs/CONNECTOR_METADATA.md) |
-| Compute connection candidates and inspect excluded metadata coverage | [Separate Planner compatibility discovery](../scp-planner/README.md) |
 | Generate README files, renders, connector exports, and cards | [WORKFLOW: Documentation Generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md) |
 | Look up measured HSR/GHSR values and their implementation | [High-speed rail network specification](domains/high-speed-rail/NETWORK_SPEC.md) |
 | Maintain shared code or classify a crossing | [Framework engineering](docs/FRAMEWORK_ENGINEERING.md) |
@@ -31,4 +30,4 @@ For authoring, start with the relevant creation workflow and follow its document
 
 Each piece has one README with its previews, connections, and generated checks. Each assembly has a complete building README and a separate TESTING page. The underlying `checks/manual-tests.json` is the sole observation record. Software checks and model pictures do not confirm game behaviour; confirmed results remain tied to their exact resources, directions, rotations, and environment. Building, installing, and publishing are separate actions.
 
-Connector-generation coverage currently consists of the two [worked HSR examples](docs/CONNECTOR_METADATA.md#8-examples-the-two-existing-hsr-pieces). The [Planner](../scp-planner/README.md) consumes current validated exports in a separate compatibility search and reports older, missing, stale, or invalid inputs as excluded. Piece validation does not compute a neighbour list or create an automatic port/counterpart manual checklist. Planner's full browser interface remains unfinished.
+Connector-generation coverage currently consists of the two [worked HSR examples](docs/CONNECTOR_METADATA.md#8-examples-the-two-existing-hsr-pieces). These exports describe each piece's intrinsic connector facts; the library does not currently supply automatic compatibility discovery. Older, missing, stale, or invalid connector inputs do not establish compatibility or incompatibility. Piece validation does not compute a neighbour list or create an automatic port/counterpart manual checklist.

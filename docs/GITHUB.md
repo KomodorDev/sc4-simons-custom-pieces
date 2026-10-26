@@ -9,16 +9,16 @@ document_type: "procedure"
 
 ## Repository scope
 
-This repository contains the custom-piece library in `custom-pieces/`, SCP Planner in `scp-planner/`, and the shared instructions, documentation, Git rules, and automated-test support required by those projects. A **repository root** is the directory containing those two project folders and the root README. Its parent directory and name on your computer are your choice.
+This repository contains the custom-piece library in `custom-pieces/` and its instructions, documentation, Git rules, and automated-test support. A **repository root** is the directory containing `custom-pieces/` and the root README. Its parent directory and name on your computer are your choice.
 
 | Tracked content | Local content excluded from Git |
 | --- | --- |
 | Source code, schemas, registries, piece definitions, assembly definitions, and tests | Personal settings and native game inputs under `custom-pieces/local/` |
-| Library and Planner guides, canonical images, connector exports, and current evidence | Private Planner reports under `scp-planner/local/` |
-| `README.md`, `AGENTS.md`, `.gitignore`, `docs/GITHUB.md`, `requirements-ci.txt`, and `tools/run_tests.py` | Build output under each project's `dist/`, virtual environments, and caches |
+| Library guides, canonical images, connector exports, and current evidence | Private reports, captured game inputs, and temporary review workspaces under `custom-pieces/local/` |
+| `README.md`, `AGENTS.md`, `.gitignore`, `docs/GITHUB.md`, `requirements-ci.txt`, and `tools/run_tests.py` | Build output under `custom-pieces/dist/`, virtual environments, and caches |
 | `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/branch-protection.json`, and `.github/branch-protection-main.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
 
-The root [ignore rules](../.gitignore), [library rules](../custom-pieces/.gitignore), and [Planner rules](../scp-planner/.gitignore) keep this boundary explicit. An **ignored file** remains on disk but is omitted from ordinary `git add` commands. GitHub does not back up ignored files. Keep separate backups of game saves, local inputs, and private configuration. Do not force-add personal paths, credentials, downloaded game archives, or disposable outputs.
+The root [ignore rules](../.gitignore) and [library rules](../custom-pieces/.gitignore) keep this boundary explicit. An **ignored file** remains on disk but is omitted from ordinary `git add` commands. GitHub does not back up ignored files. Keep separate backups of game saves, local inputs, and private configuration. Do not force-add personal paths, credentials, downloaded game archives, or disposable outputs.
 
 To see which rule excludes a file, run this example from the repository root:
 
@@ -46,7 +46,7 @@ git check-ignore -v custom-pieces/local/settings.json
 
 4. For game builds or native integration checks, prepare the supported NAM inputs and private `custom-pieces/local/settings.json` using the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md). A clone does not contain installed game resources, personal Plugins paths, or existing development builds. Keep those inputs outside version control.
 
-An **editable installation**, created by `python -m pip install -e custom-pieces`, imports the source files directly. If you move the repository or switch to another clone, reinstall that editable package in the active virtual environment so module commands use the intended source tree. Keep `custom-pieces/` and `scp-planner/` beside each other; Planner's default configuration uses their relative locations.
+An **editable installation**, created by `python -m pip install -e custom-pieces`, imports the source files directly. If you move the repository or switch to another clone, create a fresh virtual environment and install that editable package there so module commands use the intended source tree. Existing build folders and caches are optional. The [local-input guide](../custom-pieces/docs/BUILD_AND_INSTALL.md#prepare-local-development-inputs) distinguishes the public settings example, private game inputs, and generated builds.
 
 ## Submit a change
 
@@ -128,7 +128,7 @@ The workflow has no file-path filters, so documentation-only changes also report
 
 The separate [release policy workflow](../.github/workflows/release-policy.yml) uses `pull_request_target` to inspect PR metadata from the trusted default-branch workflow. It runs when a PR into `main` is opened, updated, reopened, or edited, including a change of destination. It checks no source files out, executes no PR code, and receives no token permissions. Its only accepted source is the canonical repository's `dev` branch. Normal development PRs into `dev` do not require this release check. GitHub explains the event's execution context in its [workflow event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target).
 
-The library discovers its framework, registered domain, and registered assembly suites; Planner runs its complete test directory against the adjacent library source. Pillow and NumPy enable portable rendering checks. Tests requiring supported NAM archives or staged compiled builds report explicit skips when those inputs are absent. A successful hosted run does not establish game placement, traffic behavior, installation, or public binary release readiness, and it does not modify manual game observations.
+The library discovers its framework, registered domain, and registered assembly suites. Pillow and NumPy enable portable rendering checks. Tests requiring supported NAM archives or staged compiled builds report explicit skips when those inputs are absent. A successful hosted run does not establish game placement, traffic behavior, installation, or public binary release readiness, and it does not modify manual game observations.
 
 For local native integration checks, use private Plugins settings or set `SCP_TEST_NAM_PLUGINS` to the directory containing the exact audited inputs. Follow the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md) for input verification and saved-build requirements.
 

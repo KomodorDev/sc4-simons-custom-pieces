@@ -5,8 +5,9 @@ import sys
 import tempfile
 import unittest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from scp_planner import jsonc
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 
 
 class JsoncTests(unittest.TestCase):

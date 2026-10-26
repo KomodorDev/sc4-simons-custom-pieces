@@ -1,7 +1,6 @@
-"""Run the library and Planner test suites against this checkout's source."""
+"""Run every library test suite against this checkout's source."""
 from __future__ import annotations
 
-import os
 from pathlib import Path
 import shlex
 import subprocess
@@ -33,29 +32,12 @@ def main() -> int:
         "Software tests do not record manual game observations.",
         flush=True,
     )
-    environment = dict(os.environ)
-    environment["SCP_CUSTOM_PIECES_ROOT"] = str(ROOT / "custom-pieces")
-    suites = (
-        (
-            "Library (framework, domains, and assemblies)",
-            ROOT,
-            [sys.executable, "-B", "custom-pieces/scp.py", "check", "--scope", "all", "--verbose"],
-        ),
-        (
-            "Planner",
-            ROOT / "scp-planner",
-            [sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-v"],
-        ),
-    )
-    failed = []
-    for name, directory, command in suites:
-        print(f"\n{name}: {shlex.join(command)}", flush=True)
-        result = subprocess.run(command, cwd=directory, env=environment, check=False)
-        if result.returncode:
-            failed.append(name)
-    if failed:
-        print(f"\nFailed test suites: {', '.join(failed)}", file=sys.stderr)
-        return 1
+    command = [sys.executable, "-B", "custom-pieces/scp.py", "check", "--scope", "all", "--verbose"]
+    print(f"\nLibrary (framework, domains, and assemblies): {shlex.join(command)}", flush=True)
+    result = subprocess.run(command, cwd=ROOT, check=False)
+    if result.returncode:
+        print("\nFailed test suites: Library", file=sys.stderr)
+        return result.returncode
     print("\nAll test suites passed. Review the explicit skips above for unavailable game inputs.", flush=True)
     return 0
 

@@ -44,6 +44,22 @@ Open **Transportation → Rail** and hover over a button beginning **SCP |** to 
 
 The exact angle, height, handedness and footprint remain in the full name and tooltip; the small code is a browsing aid. The revised scissors retain their small green check beside the silhouette and their names still end in **Revised**. Recorded design-review warnings remain in titles and tooltips.
 
+## Prepare local development inputs
+
+The Git checkout supplies maintained source, canonical artwork, schemas, tests, and recorded evidence. Follow the repository's [Python setup](../../README.md#prepare-python-and-run-the-tests) to create a virtual environment and install its dependencies. A **template** is an example file that each contributor copies and fills in for their own machine. A fresh checkout can run the portable test suites without a game installation; cases requiring native game resources or saved builds report explicit skips.
+
+| Item | Provided in Git | Local use |
+| --- | --- | --- |
+| Workstation settings | [`config/local.example.json`](../config/local.example.json) | Copy to ignored `custom-pieces/local/settings.json`, then supply every active Plugins directory. |
+| Supported NAM input identities | [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json) | The filenames and SHA-256 fingerprints identify the exact supported core archives. A fingerprint checks file contents; it is not a download or a substitute archive. |
+| Python dependencies and package definitions | Root `requirements-ci.txt`, library requirements, and `pyproject.toml` | Install them in a newly created environment for this checkout. Do not copy an old environment. |
+| Isolated native inputs | No game archives | Optional private copies under `custom-pieces/local/validation-inputs/` support repeatable texture and verification work. Keep their provenance with them. |
+| Compiled builds, packages, and caches | No generated build templates | Generate them from source and matching NAM inputs. Existing `dist/` directories are convenient retained outputs, rather than prerequisites for starting source development. |
+
+For native builds, each contributor supplies the supported NAM installation and uses the settings-copy commands in the next section. Keep real filesystem paths in the ignored settings file. An empty `extra_plugins` list is correct only when there are no additional active Plugins directories. The `doctor` command verifies the selected dependencies and checks identifier conflicts; do not change recorded dependency fingerprints merely to make a different installation pass.
+
+An isolated input directory is useful but optional. Connector rendering prefers `local/validation-inputs/Plugins/` when it exists, so incomplete or outdated copies can affect checks. Some native tests also read `extra_plugins` from private settings even when `SCP_TEST_NAM_PLUGINS` selects another primary directory. That environment variable alone does not establish a fully isolated scan.
+
 ## Build a selected collection
 
 Run these commands from the project folder containing `custom-pieces`. First type `python3 --version`; the printed version must be 3.11 or newer. On the first use of a source checkout, install the Python dependencies and register its shared and domain packages:
@@ -114,6 +130,26 @@ python3 custom-pieces/scp.py build --set hsr-all-components --progress --output 
 python3 custom-pieces/scp.py verify --output custom-pieces/dist/hsr-all-components
 ```
 
+## Rebuild generated development outputs
+
+If you need a complete replacement for an existing installation, rebuild all retained types, rather than assuming the default selection contains them:
+
+```sh
+python3 custom-pieces/scp.py build --all --progress --output custom-pieces/dist/current
+python3 custom-pieces/scp.py verify --output custom-pieces/dist/current
+```
+
+Run these commands from the repository root. Building and verification do not install anything. The installer rejects a replacement that omits an installed piece, so a smaller default build is not automatically a replacement for a larger installed selection. A rebuild must be checked against the intended source and inputs; it does not inherit manual game approval from an older build.
+
+The optional saved-resource checks for the V4 assembly use a separate build, which can be prepared deliberately when needed:
+
+```sh
+python3 custom-pieces/scp.py build --set hsr-straight-stem-trumpet-v4 --progress --output custom-pieces/dist/straight-stem-trumpet-v4
+python3 custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet-v4
+```
+
+Keep original evidence and archived builds intact when they are needed to interpret recorded observations. Neither a new clone nor a fresh build requires copying old review workspaces, disposable reports, or Python caches into the active checkout.
+
 ## Install, remove, or roll back a test build
 
 Use a disposable city. Save and quit SimCity 4 first. Keep backups outside all Plugins folders. For example:
@@ -148,7 +184,7 @@ This optional experiment presents the fourteen unique reusable types in `straigh
 
 The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the experimental presentation names, locally reserved IDs, and assembly selection. Piece definitions retain their permanent IDs and capabilities. The type order follows first use in the assembly's placement plan, with repeated copies appearing only once. Normal builds do not read this opt-in layout and keep their existing menu arrangement.
 
-From the project directory, build from an existing verified selection that contains the assembly's components and every installed SCP type you need to retain. This workstation's `dist/current` contains all 165 installed types; the experiment preserves them and changes only the menu archive and the controller's generated ordering rows:
+From the project directory, build from an existing verified selection that contains the assembly's components and every installed SCP type you need to retain. The commands below use `dist/current` for that selection; the experiment preserves its types and changes only the menu archive and the controller's generated ordering rows:
 
 ```sh
 python3 custom-pieces/scp.py menu-test --source custom-pieces/dist/current --output custom-pieces/dist/trumpet-menu-test
