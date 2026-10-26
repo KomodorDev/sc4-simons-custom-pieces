@@ -1,6 +1,6 @@
 ---
 title: "Contributor workflow"
-summary: "Clone the project anywhere, keep local game inputs private, and submit changes with automated checks."
+summary: "Develop through tested pull requests into dev, promote releases into main, and keep local game inputs private."
 audience: "Contributors, maintainers, and coding agents"
 document_type: "procedure"
 ---
@@ -16,7 +16,7 @@ This repository contains the custom-piece library in `custom-pieces/`, SCP Plann
 | Source code, schemas, registries, piece definitions, assembly definitions, and tests | Personal settings and native game inputs under `custom-pieces/local/` |
 | Library and Planner guides, canonical images, connector exports, and current evidence | Private Planner reports under `scp-planner/local/` |
 | `README.md`, `AGENTS.md`, `.gitignore`, `docs/GITHUB.md`, `requirements-ci.txt`, and `tools/run_tests.py` | Build output under each project's `dist/`, virtual environments, and caches |
-| `.github/workflows/ci.yml` and `.github/branch-protection.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
+| `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/branch-protection.json`, and `.github/branch-protection-main.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
 
 The root [ignore rules](../.gitignore), [library rules](../custom-pieces/.gitignore), and [Planner rules](../scp-planner/.gitignore) keep this boundary explicit. An **ignored file** remains on disk but is omitted from ordinary `git add` commands. GitHub does not back up ignored files. Keep separate backups of game saves, local inputs, and private configuration. Do not force-add personal paths, credentials, downloaded game archives, or disposable outputs.
 
@@ -50,15 +50,16 @@ An **editable installation**, created by `python -m pip install -e custom-pieces
 
 ## Submit a change
 
-A **branch** is a named line of work. `main` holds the accepted project version. A **push** uploads commits, and a **pull** downloads and incorporates remote commits. A **pull request**, or **PR**, proposes merging one branch into another on GitHub. Agents may create PRs, but only human maintainers may merge them. Agents must not enable automatic merging or treat successful tests as merge authorization.
+A **branch** is a named line of work. `dev` is the default branch and holds accepted development changes; `main` holds deliberately promoted releases. A **push** uploads commits, and a **pull** downloads and incorporates remote commits. A **pull request**, or **PR**, proposes merging one branch into another on GitHub. Its **base** is the destination, and its **head** is the source. Agents may create PRs, but only human maintainers may merge them. Agents must not enable automatic merging or treat successful tests as merge authorization.
 
-The following example assumes that you can push branches to the canonical repository. If you cannot, fork the repository on GitHub, clone your fork, and create a pull request targeting the canonical repository's `main` branch. A **fork** is a repository copy under your own GitHub account. In a fork, `origin` usually refers to that copy rather than the canonical repository.
+The following example assumes that you can push branches to the canonical repository. If you cannot, fork the repository on GitHub, clone your fork, and create a pull request targeting the canonical repository's `dev` branch. A **fork** is a repository copy under your own GitHub account. In a fork, `origin` usually refers to that copy rather than the canonical repository.
 
 1. From the repository root, inspect current work before switching branches. Commit or otherwise preserve any unfinished edits first:
 
    ```sh
    git status --short --branch
-   git switch main
+   git fetch origin
+   git switch dev
    git pull --ff-only
    ```
 
@@ -89,17 +90,28 @@ The following example assumes that you can push branches to the canonical reposi
 
    Replace the file path, commit message, and branch name with your actual change. `git diff --cached` shows the selected changes before the commit. The `-u` option remembers the branch's remote counterpart for later pushes.
 
-5. On GitHub, open the repository receiving the change, select **Pull requests → New pull request**, choose `main` as the base, and choose your work branch as the comparison. Review **Files changed**, enter a descriptive title and explanation, and select **Create pull request**. For a fork, choose the option to compare across forks and select your fork's branch.
+5. On GitHub, open the repository receiving the change, select **Pull requests → New pull request**, choose `dev` as the base, and choose your work branch as the comparison. Review **Files changed**, enter a descriptive title and explanation, and select **Create pull request**. For a fork, choose the option to compare across forks and select your fork's branch.
 6. Wait for `Tests` to finish. Inspect failures and explicit skips. If the base branch changed, update the work branch with the accepted changes and wait for the new check. A previous commit's green result does not approve a newer commit.
-7. A human maintainer reviews and merges the PR when required checks and conversations are satisfied. GitHub then runs the tests again on the resulting `main` commit.
+7. A human maintainer reviews and merges the PR when required checks and conversations are satisfied. GitHub then runs the tests again on the resulting `dev` commit.
 8. After the merge, update your local accepted branch:
 
    ```sh
-   git switch main
+   git switch dev
    git pull --ff-only
    ```
 
 Local settings and ignored files stay outside Git throughout this workflow. A generated build belongs to the source version from which it was created; rebuild deliberately before installing outputs from a newer version. Build, install, source publication, and public plugin distribution remain separate operations.
+
+## Submit a release
+
+A **release promotion** accepts the tested development version into `main`. It is a source-history step; it does not install a game plugin or authorize public binary distribution. Ordinary work branches must first pass through `dev`.
+
+1. Confirm that the intended changes have been merged into the canonical repository's `dev` branch and that its `Tests` run has passed.
+2. On the canonical GitHub repository, select **Pull requests → New pull request**. Select **base: main** and **compare: dev**, both in the canonical repository. A fork's branch named `dev` is not an accepted release source.
+3. Review **Files changed**, enter the release title and explanation, and select **Create pull request**.
+4. Wait for both `Tests` and `Release policy` to pass. `Tests` checks the proposed merge, and `Release policy` checks that its source is this repository's `dev` branch. Resolve conversations and update the source through reviewed PRs if the current base has changed.
+5. A human maintainer reviews the release and selects **Create a merge commit**, then confirms the merge. Keep the long-lived `dev` and `main` branches. Agents must leave the merge to the human maintainer.
+6. If `dev` is now behind the release commit on `main`, open a synchronization PR with **base: dev** and **compare: main**. A human maintainer merges it after `Tests` passes. This brings the release history back into development without pushing directly to a protected branch.
 
 ## Automated checks and coverage
 
@@ -108,11 +120,13 @@ Local settings and ignored files stay outside Git throughout this workflow. A ge
 | Event | Revision tested |
 | --- | --- |
 | A pull request is opened, reopened, or updated | GitHub's proposed merge into the target branch |
-| A commit is pushed or merged into `main` | The resulting `main` commit |
+| A commit is pushed or merged into `dev` or `main` | The resulting branch commit |
 | A merge queue requests checks | The proposed combined merge-group commit |
 | **Actions → CI → Run workflow** | The branch selected in GitHub's manual-run form |
 
-The workflow has no file-path filters, so documentation-only changes also report the required check. The `merge_group` event supports repositories using a merge queue; the workflow does not enable that feature itself.
+The workflow has no file-path filters, so documentation-only changes also report the required check. The `merge_group` event supports tests for repositories using a merge queue; the workflow does not enable that feature itself. The separate release policy supports ordinary release PRs. Enabling a merge queue for `main` would also require a release-policy check for merge-group events.
+
+The separate [release policy workflow](../.github/workflows/release-policy.yml) uses `pull_request_target` to inspect PR metadata from the trusted default-branch workflow. It runs when a PR into `main` is opened, updated, reopened, or edited, including a change of destination. It checks no source files out, executes no PR code, and receives no token permissions. Its only accepted source is the canonical repository's `dev` branch. Normal development PRs into `dev` do not require this release check. GitHub explains the event's execution context in its [workflow event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target).
 
 The library discovers its framework, registered domain, and registered assembly suites; Planner runs its complete test directory against the adjacent library source. Pillow and NumPy enable portable rendering checks. Tests requiring supported NAM archives or staged compiled builds report explicit skips when those inputs are absent. A successful hosted run does not establish game placement, traffic behavior, installation, or public binary release readiness, and it does not modify manual game observations.
 
@@ -120,12 +134,17 @@ For local native integration checks, use private Plugins settings or set `SCP_TE
 
 ## Required checks for maintainers
 
-The canonical repository protects `main` with the `Tests` status check. A work branch must include the current base version, required conversations must be resolved, and the rule applies to administrators. No approving review is required by the saved template, so a human maintainer can merge a tested PR without a second reviewer. Fork owners manage their own repository settings; cloning or committing the template does not apply branch protection.
+The canonical repository uses `dev` as its default branch and protects both `dev` and `main`. `dev` requires the `Tests` check; `main` requires both `Tests` and `Release policy`. A work branch must include the current base version, required conversations must be resolved, and the rules apply to administrators. Force pushes and branch deletion are blocked. No approving review is required by the saved templates, so a human maintainer can merge a tested PR without a second reviewer. Fork owners manage their own repository settings; cloning or committing these templates does not apply branch protection.
 
-Maintainers with repository administration permission can deliberately apply the [saved protection template](../.github/branch-protection.json) to the canonical repository after `Tests` has run:
+Maintainers with repository administration permission can deliberately apply the [development protection template](../.github/branch-protection.json) and the [release protection template](../.github/branch-protection-main.json) from the repository root:
 
 ```sh
-gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/main/protection --input .github/branch-protection.json
+gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/dev/protection --input .github/branch-protection.json
+gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/main/protection --input .github/branch-protection-main.json
 ```
 
-Here, `gh` is GitHub's command-line tool. For a different repository, replace `KomodorDev/sc4-simons-custom-pieces` with that repository's owner and name. Keep the `Tests` job name stable, or update the protection rule when deliberately renaming it. GitHub documents the available settings in its [branch protection guide](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) and [required-check troubleshooting guide](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks).
+When introducing this setup, merge the workflow changes into the default `dev` branch through a tested PR before expecting release PRs to report `Release policy`. Requiring the check on `main` before that first human merge intentionally blocks release merges until the workflow is available. Do not bypass protection or merge the setup PR as an agent to install it.
+
+After installation, confirm that a `dev` → `main` release PR reports both required checks for its current revision. If `Release policy` remains **Expected**, inspect its event and revision association instead of bypassing protection.
+
+Here, `gh` is GitHub's command-line tool. For a different repository, replace `KomodorDev/sc4-simons-custom-pieces` with that repository's owner and name. The release template binds its checks to GitHub Actions. Keep the `Tests` and `Release policy` names stable, or update protection when deliberately renaming them. GitHub documents the available settings in its [branch protection guide](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) and [required-check troubleshooting guide](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks).

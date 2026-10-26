@@ -1,0 +1,43 @@
+name: Release policy
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+# Inspect GitHub's event metadata only. Never check out or execute PR code here.
+permissions: {}
+
+jobs:
+  release-policy:
+    name: Release policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require the repository's dev branch for releases
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+
+          with open(os.environ['GITHUB_EVENT_PATH']) as event_file:
+              event = json.load(event_file)
+          pr = event.get('pull_request') or {}
+          base = pr.get('base') or {}
+          head = pr.get('head') or {}
+          repository_id = (event.get('repository') or {}).get('id')
+          allowed = (
+              os.environ.get('GITHUB_EVENT_NAME') == 'pull_request_target'
+              and base.get('ref') == 'main'
+              and head.get('ref') == 'dev'
+              and isinstance(repository_id, int)
+              and repository_id > 0
+              and (base.get('repo') or {}).get('id') == repository_id
+              and (head.get('repo') or {}).get('id') == repository_id
+          )
+          if not allowed:
+              print('::error::Release PRs into main must come from this repository\'s dev branch. Send ordinary changes to dev.')
+              sys.exit(1)
+          print('Release source accepted: dev -> main in the same repository.')
+          PY
