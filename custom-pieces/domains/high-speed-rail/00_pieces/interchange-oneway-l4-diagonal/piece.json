@@ -1,0 +1,93 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for One-Way Rail L4 Diagonal.",
+  "schema_version": 1,
+  "id": "interchange-oneway-l4-diagonal",
+  "name": "One-Way Rail L4 Diagonal",
+  "description": "One-Way Rail L4 Diagonal. Fixed click-to-place piece in a 1 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_l4_diagonal",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7d3",
+  "tile_ids": [
+    "7f531000",
+    "7f531010"
+  ],
+  "preview_id": "7f531ff5",
+  "effect_name": "preview_scp_interchg_f7d3_0",
+  "footprint": [
+    1,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7d3",
+    "order": "7011f7d3",
+    "style": "interchange-oneway-l4-diagonal"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f531000",
+      "source": "7f531000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f531010",
+      "source": "7f531010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8.0,
+        -16.0,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        8.0,
+        0.0,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "l4",
+    "height": 30.5,
+    "radius": "compact"
+  }
+}

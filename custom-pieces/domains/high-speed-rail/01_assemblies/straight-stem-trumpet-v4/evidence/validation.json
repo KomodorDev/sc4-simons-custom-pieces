@@ -1,0 +1,2345 @@
+{
+  "purpose": "Audit the current trumpet directly against approved resource fingerprints.",
+  "schema_version": 2,
+  "status": "passed",
+  "scope": "actual approved current saved compiled resources; game operation unverified",
+  "scene_file": "assembly.json",
+  "scene_sha256": "b483dd04624167bfef5f4f7121ad8bab8675d2fdbfd4cd642f918ff49014dd4d",
+  "manifest_sha256": "932235ed506534244e655875b7e7893056c731d796d63b6286000c8981dccf1a",
+  "audited_manifest_file": "audited-build-manifest.json",
+  "manifest_hash_scope": "Exact input manifest at audit start. Documentation-only metadata may change later; actual DAT fingerprints are independently pinned.",
+  "current_resource_contract_sha256": "cf35ae0769d37ca98eefd913308d9b41f032bd64fc3a1f5da7e6945db6f7283a",
+  "deleted_predecessor_resource_inputs_required": false,
+  "reviewed_layout": {
+    "layout_sha256": "7d230df3d8697640ed5b197f448e041abd75cab62be2a9886562e4fc52909ee6",
+    "reviewed_placements": 26,
+    "approved_external_ports_rectangle_and_grid": true
+  },
+  "independent_quality_contract": {
+    "contract_sha256": "cb9cadc67e4af715c6631bad35f206a5ea7819b82564ef4ed96eb2ad6a733a45",
+    "candidate_eligibility_and_actual_edit_limits_are_separate": true,
+    "independent_ports_movements_clearance_and_budgets_checked": true,
+    "predecessor_resource_inputs_required": false
+  },
+  "atomization_decisions": {
+    "ledger_sha256": "1c39199a99dc56edcf82ce0e338430e03bdc889571e957baedfd63dc5adc42c4",
+    "eligible_atomized_candidates": {
+      "p01a-west-tail": {
+        "recorded_original_path_deviation_m": 0.004018411269782,
+        "recorded_original_visible_rail_deviation_m": 0.0040185610292082785,
+        "recorded_actual_rework_bound_m": 0.0245,
+        "current_replacement_geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0"
+      },
+      "p03b-east-tail": {
+        "recorded_original_path_deviation_m": 0.004018411269782,
+        "recorded_original_visible_rail_deviation_m": 0.004018597831425552,
+        "recorded_actual_rework_bound_m": 0.0245,
+        "current_replacement_geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833"
+      },
+      "p01b-south-tail": {
+        "recorded_original_path_deviation_m": 0.00205811399999,
+        "recorded_original_visible_rail_deviation_m": 0.0020580718453029998,
+        "recorded_actual_rework_bound_m": 0.0082,
+        "current_replacement_geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2"
+      },
+      "p03d-south-tail": {
+        "recorded_original_path_deviation_m": 0.00205811399999,
+        "recorded_original_visible_rail_deviation_m": 0.002058072026109692,
+        "recorded_actual_rework_bound_m": 0.0082,
+        "current_replacement_geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7"
+      }
+    },
+    "retained_candidates": 13,
+    "original_owned_cells_reviewed": 51,
+    "strict_original_threshold_m": 0.005,
+    "old_deviation_and_actual_work_recorded_separately": true,
+    "historical_measurements_are_frozen_not_remeasured": true,
+    "deleted_predecessor_resources_required": false
+  },
+  "geometry": {
+    "occupied_cells": 109,
+    "strict_byte_identity_cells": 109,
+    "actual_tile_triangles": 659271,
+    "tile_resource_fingerprints_checked": 1199,
+    "exact_current_ownership_and_rotations_checked": true,
+    "original_standard_straight_replacements": 4,
+    "complete_actual_assembly_corridors": {
+      "full_width_bed_union_segments_checked": 4695,
+      "bed_union_width_m": 5.0,
+      "maximum_uncovered_bed_area_m2": 1.4606181053977707e-05,
+      "height_aware_bed_union_checked": true,
+      "owner_clipped_corridor_fragments_checked": 4695,
+      "corridor_clipped_to_literal_ownership": false,
+      "external_custom_collar_requires_unclipped_actual_assembly_check": false,
+      "visible_native_rail_triangles_matched_to_paths": 104606,
+      "visible_native_rail_centre_segments_matched_to_paths": 38097,
+      "unused_visible_native_rails": false,
+      "complete_train_clearance_segments_checked": 4695,
+      "actual_module_instances_checked": 26,
+      "actual_neighbour_models_used": 109,
+      "strict_unclipped_actual_path_audit": true
+    }
+  },
+  "encoded_paths": {
+    "encoded_fragments": 167,
+    "approved_current_journeys": {
+      "complete_directed_journeys_frozen": 6,
+      "all_encoded_point_positions_and_counts_identical": true
+    },
+    "direct_slip_symmetry": {
+      "mirrored_encoded_points_checked": 537,
+      "maximum_3d_reflection_error_m": 0.0,
+      "south_east_length_m": 288.8797865328152,
+      "west_south_length_m": 288.8797865328156,
+      "external_approaches_included": false,
+      "reflection_axis_east_m": 0.0,
+      "native_fork_and_merge_connection_planes_included": true
+    },
+    "proper_rotations": [
+      {
+        "rotation_degrees_ccw": 0,
+        "unique_journeys": 6,
+        "grade_separated_crossings_checked": 4,
+        "grade_separated_projected_contacts_checked": 4,
+        "grade_separated_crossings": [
+          {
+            "xy": [
+              -2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              -2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              15.5,
+              30.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          }
+        ],
+        "same_direction_shared_tail_contacts_checked": 80,
+        "independent_at_grade_conflicts_checked": 0
+      },
+      {
+        "rotation_degrees_ccw": 90,
+        "unique_journeys": 6,
+        "grade_separated_crossings_checked": 4,
+        "grade_separated_projected_contacts_checked": 4,
+        "grade_separated_crossings": [
+          {
+            "xy": [
+              -2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              15.5,
+              30.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              -2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          }
+        ],
+        "same_direction_shared_tail_contacts_checked": 80,
+        "independent_at_grade_conflicts_checked": 0
+      },
+      {
+        "rotation_degrees_ccw": 180,
+        "unique_journeys": 6,
+        "grade_separated_crossings_checked": 4,
+        "grade_separated_projected_contacts_checked": 4,
+        "grade_separated_crossings": [
+          {
+            "xy": [
+              -2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              -2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              15.5,
+              30.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          }
+        ],
+        "same_direction_shared_tail_contacts_checked": 80,
+        "independent_at_grade_conflicts_checked": 0
+      },
+      {
+        "rotation_degrees_ccw": 270,
+        "unique_journeys": 6,
+        "grade_separated_crossings_checked": 4,
+        "grade_separated_projected_contacts_checked": 4,
+        "grade_separated_crossings": [
+          {
+            "xy": [
+              -2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              -2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              -2.0
+            ],
+            "path_heights_m": [
+              30.5,
+              15.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          },
+          {
+            "xy": [
+              2.0,
+              2.0
+            ],
+            "path_heights_m": [
+              15.5,
+              30.5
+            ],
+            "structural_clearance_m": 12.02134,
+            "collinear_projection": false
+          }
+        ],
+        "same_direction_shared_tail_contacts_checked": 80,
+        "independent_at_grade_conflicts_checked": 0
+      }
+    ],
+    "whole_route_quality": {
+      "direct_slips": {
+        "W_in>S_out": {
+          "length_m": 288.87978653279526,
+          "direct_distance_m": 244.37675830569486,
+          "length_ratio": 1.182108268133383,
+          "total_turn_degrees": 126.3183325415419,
+          "minimum_sampled_radius_m": 57.392744219677745,
+          "maximum_sample_turn_degrees": 1.9889032936864917,
+          "maximum_raw_encoded_turn_degrees": 0.4436251645219319,
+          "minimum_resolved_raw_radius_m": 58.123580352708764,
+          "maximum_endpoint_curvature_per_m": 0.0,
+          "maximum_curvature_change_per_m2": 0.0012901922309383111,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 1.9922743898813466,
+          "signed_turn_degrees": -89.99999692314726,
+          "maximum_raw_grade_change_per_m": 0.0
+        },
+        "S_in>E_out": {
+          "length_m": 368.8797865327951,
+          "direct_distance_m": 291.547594742265,
+          "length_ratio": 1.265247229560901,
+          "total_turn_degrees": 126.3183256969769,
+          "minimum_sampled_radius_m": 57.53492743427494,
+          "maximum_sample_turn_degrees": 1.9856511271524504,
+          "maximum_raw_encoded_turn_degrees": 0.4436251645219319,
+          "minimum_resolved_raw_radius_m": 58.123580352708764,
+          "maximum_endpoint_curvature_per_m": 0.0,
+          "maximum_curvature_change_per_m2": 0.0012892690184833238,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 1.9939447920691626,
+          "signed_turn_degrees": -89.99999941903388,
+          "maximum_raw_grade_change_per_m": 0.0
+        }
+      },
+      "other_complete_journeys_frozen_exactly": 4,
+      "radius_minimum_m": 24.0,
+      "curvature_change_limit_per_m2": 0.0015,
+      "native_endpoint_curvature_limit_per_m": 0.0005,
+      "constituent_module_quality_limits_remain_unchanged": true
+    }
+  },
+  "sources": [
+    {
+      "instance": "P01A",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "cells": 4,
+      "preview_triangles": 23304,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P01S",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P01B",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "cells": 12,
+      "preview_triangles": 58863,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P02A",
+      "piece_id": "hsr-component-modular-south-junction",
+      "dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "cells": 14,
+      "preview_triangles": 67808,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P02B",
+      "piece_id": "hsr-component-modular-paired-climb",
+      "dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "cells": 8,
+      "preview_triangles": 8097,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03A",
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "dat_sha256": "e801f34faa5d13f83fdb31e465a932a6fb5ea82bbe82bc1fe8731ac86d45f258",
+      "cells": 15,
+      "preview_triangles": 128816,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03B",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "dat_sha256": "9b322d9bd72170bb53402754bae5c69f966885ea8f943906689ad03d5db651b4",
+      "cells": 5,
+      "preview_triangles": 47676,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03CW",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03C",
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "dat_sha256": "309d4e411f043b9ca66ff3b80c4d0670eec4032f81114858bacdcf49d2ba1f04",
+      "cells": 3,
+      "preview_triangles": 27485,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03CE",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03D",
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "dat_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+      "cells": 12,
+      "preview_triangles": 66159,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P04A",
+      "piece_id": "hsr-component-modular-crossing-core",
+      "dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "cells": 1,
+      "preview_triangles": 624,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P04N",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P04S",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P04W",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P04E",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P05",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P06",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P07",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P08",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P09",
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "cells": 10,
+      "preview_triangles": 112881,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P10",
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "dat_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+      "cells": 10,
+      "preview_triangles": 112881,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P01AW",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03BE",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P01BS",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "cells": 1,
+      "preview_triangles": 252,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P03DS",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "cells": 1,
+      "preview_triangles": 252,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    }
+  ],
+  "independent_component_audits": [
+    {
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "audit": {
+        "paths": {
+          "tile_count": 4,
+          "encoded_routes_checked": 11,
+          "external_ports_checked": 5,
+          "permitted_movements_checked": 3,
+          "unique_complete_journeys_checked": 3,
+          "literal_port_tangents_checked": 5,
+          "journey_quality": {
+            "Win>Eout": {
+              "length_m": 64.0,
+              "direct_distance_m": 64.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Win": 0.0,
+                "Eout": 0.0
+              }
+            },
+            "Ein>Wout": {
+              "length_m": 64.0,
+              "direct_distance_m": 64.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Ein": 0.0,
+                "Wout": 0.0
+              }
+            },
+            "Win>Sout": {
+              "length_m": 47.086527336665014,
+              "direct_distance_m": 46.78485401701453,
+              "length_ratio": 1.0064480979152093,
+              "total_turn_degrees": 21.02871144578946,
+              "minimum_sampled_radius_m": 65.68040939653639,
+              "maximum_sample_turn_degrees": 1.7114775604833168,
+              "maximum_raw_encoded_turn_degrees": 0.38575697438252654,
+              "minimum_resolved_raw_radius_m": 41.802569768805526,
+              "maximum_endpoint_curvature_per_m": 0.01522524005541193,
+              "maximum_curvature_change_per_m2": 0.0010509823887540992,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.961938639027709,
+              "signed_turn_degrees": -21.028711445789458,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Win": 0.00024889828408203367
+              }
+            }
+          },
+          "maximum_encoded_grade": 0.0,
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 15,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "complete_native_join_sections_checked": 3,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_port_cap_depth_m": 2.6,
+          "custom_port_cap_labels": [
+            "Sout"
+          ],
+          "custom_port_cap_width_m": 5.2,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 123,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 3.4974808116317035e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 4.681197651734692e-07,
+          "maximum_uncovered_bed_area_m2": 8.56833048601402e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 570,
+          "models_checked": 21,
+          "native_join_profile_tolerance_m": 5e-05,
+          "native_join_widths_m": [
+            15.0
+          ],
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 129,
+          "path_nodes_covered_by_visible_bed": 134,
+          "positive_area_coplanar_bed_pairs": 2316,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 2,
+          "render_budget_models_checked": 21,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ],
+            [
+              16.0,
+              -0.0
+            ],
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 4,
+          "support_contact_points_checked": 36,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 123,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 1395,
+          "visible_native_rail_triangles_matched_to_paths": 5217
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "audit": {
+        "paths": {
+          "tile_count": 1,
+          "encoded_routes_checked": 2,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "native_facing_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.0,
+          "journey_quality": {
+            "Sin>Nout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            },
+            "Nin>Sout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            }
+          },
+          "native_port_heights_m": [
+            15.5
+          ],
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "full_width_bed_union_segments_checked": 2,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 7.793286016521961e-08,
+          "maximum_coplanar_bed_overlap_thickness_m": 7.427946790983242e-08,
+          "maximum_uncovered_bed_area_m2": 7.910219324003265e-08,
+          "minimum_support_centre_distance_m": null,
+          "models_checked": 6,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 4,
+          "positive_area_coplanar_bed_pairs": 3,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 6,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 1,
+          "support_contact_points_checked": 9,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 2,
+          "unused_visible_native_rails": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 22,
+          "visible_native_rail_triangles_matched_to_paths": 32
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "audit": {
+        "paths": {
+          "tile_count": 12,
+          "encoded_routes_checked": 9,
+          "external_ports_checked": 2,
+          "permitted_movements_checked": 1,
+          "unique_complete_journeys_checked": 1,
+          "literal_port_tangents_checked": 2,
+          "journey_quality": {
+            "Win>Sout": {
+              "length_m": 112.07658337429714,
+              "direct_distance_m": 104.62639830077953,
+              "length_ratio": 1.0712075078041,
+              "total_turn_degrees": 67.20838066582036,
+              "minimum_sampled_radius_m": 57.21938623477373,
+              "maximum_sample_turn_degrees": 1.968880396319329,
+              "maximum_raw_encoded_turn_degrees": 0.44362516452180617,
+              "minimum_resolved_raw_radius_m": 55.39721956738333,
+              "maximum_endpoint_curvature_per_m": 0.01613421283664405,
+              "maximum_curvature_change_per_m2": 0.0011088126089453185,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9662558486718797,
+              "signed_turn_degrees": -67.2083806658204,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Sout": 0.0004547614410498409
+              }
+            }
+          },
+          "maximum_encoded_grade": 0.0,
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "complete_native_join_sections_checked": 3,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_cap_scope": "Only the exact inherited saved northern port-tile model may use this literal outward mask. Both old V3 models fail the2.6m fan mask and pass with actual neighbouring PATHs; whole V4 checks remain fully unclipped.",
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 256,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "inherited_custom_cap_depth_m": 2.65,
+          "inherited_custom_cap_exact_model_cell": [
+            1,
+            0
+          ],
+          "inherited_custom_cap_exact_model_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "inherited_custom_cap_labels": [
+            "Win"
+          ],
+          "inherited_custom_cap_model_zooms_checked": 5,
+          "inherited_custom_cap_width_m": 5.2,
+          "maximum_coplanar_bed_overlap_area_m2": 5.018139290768886e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.174106334493445e-07,
+          "maximum_uncovered_bed_area_m2": 6.335763540477046e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 609,
+          "models_checked": 61,
+          "native_join_profile_tolerance_m": 5e-05,
+          "native_join_widths_m": [
+            8.0
+          ],
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 330,
+          "path_nodes_covered_by_visible_bed": 265,
+          "positive_area_coplanar_bed_pairs": 6837,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 61,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -16.0
+            ],
+            [
+              57.377596,
+              -29.524559
+            ],
+            [
+              64.0,
+              -80.0
+            ],
+            [
+              64.0,
+              -64.0
+            ],
+            [
+              64.0,
+              -48.0
+            ]
+          ],
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 256,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 3493,
+          "visible_native_rail_triangles_matched_to_paths": 8250
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-modular-south-junction",
+      "dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "audit": {
+        "paths": {
+          "tile_count": 14,
+          "encoded_routes_checked": 22,
+          "external_ports_checked": 6,
+          "permitted_movements_checked": 4,
+          "unique_complete_journeys_checked": 4,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.0,
+          "native_port_heights_m": [
+            15.5
+          ],
+          "literal_port_tangents_checked": 6,
+          "frozen_module_path_files_checked": 14,
+          "frozen_module_recipe": "hsr_component_modular_south_junction",
+          "frozen_module_source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+          "all_module_local_path_bytes_unchanged": true,
+          "custom_curved_interfaces_require_matching_continuation": false,
+          "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 6,
+          "independent_at_grade_conflicts_checked": 0,
+          "native_straight_eight_metre_collars_checked": 8
+        },
+        "models": {
+          "all_module_local_model_bytes_unchanged": true,
+          "all_module_local_path_bytes_unchanged": true,
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "custom_curve_ends_reswept": false,
+          "frozen_module_model_zooms_checked": 70,
+          "frozen_module_path_files_checked": 14,
+          "frozen_module_recipe": "hsr_component_modular_south_junction",
+          "frozen_module_source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+          "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+          "global_support_spacing_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 5.606683544101543e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 4.711239895982544e-07,
+          "minimum_support_centre_distance_m": 16.0,
+          "models_checked": 71,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 574,
+          "positive_area_coplanar_bed_pairs": 8223,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 30,
+          "render_budget_models_checked": 71,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -16.0
+            ],
+            [
+              0.0,
+              -0.0
+            ],
+            [
+              16.0,
+              -80.0
+            ],
+            [
+              16.0,
+              -64.0
+            ],
+            [
+              16.0,
+              -48.0
+            ],
+            [
+              16.0,
+              -32.0
+            ],
+            [
+              32.0,
+              -16.0
+            ],
+            [
+              32.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 8,
+          "support_contact_points_checked": 72,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 552
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-modular-paired-climb",
+      "dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "audit": {
+        "paths": {
+          "tile_count": 8,
+          "encoded_routes_checked": 16,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "unique_complete_journeys_checked": 2,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.15625,
+          "native_port_heights_m": [
+            15.5,
+            30.5
+          ],
+          "literal_port_tangents_checked": 4,
+          "frozen_module_path_files_checked": 8,
+          "frozen_module_recipe": "hsr_component_modular_paired_climb",
+          "frozen_module_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+          "all_module_local_path_bytes_unchanged": true,
+          "custom_curved_interfaces_require_matching_continuation": false,
+          "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0,
+          "native_straight_eight_metre_collars_checked": 4,
+          "paired_climb_profile_samples_checked": 484,
+          "paired_climb_flat_collar_samples_checked": 38,
+          "paired_climb_horizontal_length_m": 128.0,
+          "paired_climb_rise_m": 15.0,
+          "paired_climb_flat_collar_m": 8.0
+        },
+        "models": {
+          "all_module_local_model_bytes_unchanged": true,
+          "all_module_local_path_bytes_unchanged": true,
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "custom_curve_ends_reswept": false,
+          "frozen_module_model_zooms_checked": 40,
+          "frozen_module_path_files_checked": 8,
+          "frozen_module_recipe": "hsr_component_modular_paired_climb",
+          "frozen_module_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+          "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+          "global_support_spacing_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 1.4901143430279262e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 7.449671279857739e-08,
+          "minimum_support_centre_distance_m": 16.0,
+          "models_checked": 41,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 498,
+          "positive_area_coplanar_bed_pairs": 10,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 41,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 8,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -112.0
+            ],
+            [
+              0.0,
+              -96.0
+            ],
+            [
+              0.0,
+              -80.0
+            ],
+            [
+              0.0,
+              -64.0
+            ],
+            [
+              0.0,
+              -48.0
+            ],
+            [
+              0.0,
+              -32.0
+            ],
+            [
+              0.0,
+              -16.0
+            ],
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 8,
+          "support_contact_points_checked": 72,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 482
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "dat_sha256": "e801f34faa5d13f83fdb31e465a932a6fb5ea82bbe82bc1fe8731ac86d45f258",
+      "audit": {
+        "paths": {
+          "tile_count": 15,
+          "encoded_routes_checked": 14,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "literal_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "journey_quality": {
+            "Nin>Wout": {
+              "length_m": 91.22890689922146,
+              "direct_distance_m": 85.24409234023624,
+              "length_ratio": 1.0702079686073485,
+              "total_turn_degrees": 64.53693510512541,
+              "minimum_sampled_radius_m": 44.979479155642494,
+              "maximum_sample_turn_degrees": 2.5262842756972863,
+              "maximum_raw_encoded_turn_degrees": 0.4387645406790716,
+              "minimum_resolved_raw_radius_m": 30.757445237042052,
+              "maximum_endpoint_curvature_per_m": 0.01996637514608226,
+              "maximum_curvature_change_per_m2": 0.0005529410568088919,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9832371065048142,
+              "signed_turn_degrees": -64.53693510512501,
+              "maximum_raw_grade_change_per_m": 0.0
+            },
+            "Ein>Nout": {
+              "length_m": 91.22890689921108,
+              "direct_distance_m": 85.24409234023622,
+              "length_ratio": 1.070207968607227,
+              "total_turn_degrees": 64.53694778735127,
+              "minimum_sampled_radius_m": 44.97947915564434,
+              "maximum_sample_turn_degrees": 2.526284275696873,
+              "maximum_raw_encoded_turn_degrees": 0.4387645406803323,
+              "minimum_resolved_raw_radius_m": 30.757445237892696,
+              "maximum_endpoint_curvature_per_m": 0.019966375146085104,
+              "maximum_curvature_change_per_m2": 0.0005529410568137105,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9832371065045888,
+              "signed_turn_degrees": -64.53694778735124,
+              "maximum_raw_grade_change_per_m": 0.0
+            }
+          },
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "exact_3d_cell_seams": true,
+          "maximum_encoded_grade": 0.0,
+          "native_port_heights_m": [
+            15.5
+          ],
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_port_cap_depth_m": 2.6,
+          "custom_port_cap_labels": [
+            "Wout",
+            "Ein"
+          ],
+          "custom_port_cap_width_m": 5.2,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 498,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 4.073724539921386e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.102759246256028e-07,
+          "maximum_uncovered_bed_area_m2": 2.00489836732487e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 1650,
+          "models_checked": 76,
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 634,
+          "path_nodes_covered_by_visible_bed": 512,
+          "positive_area_coplanar_bed_pairs": 14075,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 76,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              32.0,
+              -64.0
+            ],
+            [
+              40.0,
+              -46.0
+            ],
+            [
+              48.0,
+              -32.0
+            ],
+            [
+              48.0,
+              -16.0
+            ],
+            [
+              48.0,
+              -0.0
+            ],
+            [
+              56.0,
+              -46.0
+            ],
+            [
+              64.0,
+              -64.0
+            ]
+          ],
+          "support_columns_checked": 7,
+          "support_contact_points_checked": 63,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 498,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 6580,
+          "visible_native_rail_triangles_matched_to_paths": 15986
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "dat_sha256": "9b322d9bd72170bb53402754bae5c69f966885ea8f943906689ad03d5db651b4",
+      "audit": {
+        "paths": {
+          "tile_count": 5,
+          "encoded_routes_checked": 17,
+          "external_ports_checked": 6,
+          "permitted_movements_checked": 4,
+          "unique_complete_journeys_checked": 4,
+          "literal_port_tangents_checked": 6,
+          "journey_quality": {
+            "Win>Eout": {
+              "length_m": 80.0,
+              "direct_distance_m": 80.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Win": 0.0,
+                "Eout": 0.0
+              }
+            },
+            "Ein>Wout": {
+              "length_m": 80.0,
+              "direct_distance_m": 80.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Ein": 0.0,
+                "Wout": 0.0
+              }
+            },
+            "Nin>Wout": {
+              "length_m": 57.32783567038449,
+              "direct_distance_m": 56.880029772414154,
+              "length_ratio": 1.0078728140572724,
+              "total_turn_degrees": 23.25561391639195,
+              "minimum_sampled_radius_m": 53.32713820515391,
+              "maximum_sample_turn_degrees": 2.123935568333459,
+              "maximum_raw_encoded_turn_degrees": 0.3811715076542172,
+              "minimum_resolved_raw_radius_m": 49.83527694731086,
+              "maximum_endpoint_curvature_per_m": 0.018752178227770585,
+              "maximum_curvature_change_per_m2": 0.0005421124092724782,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9768219196684307,
+              "signed_turn_degrees": -23.25561391639195,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Wout": 0.0
+              }
+            },
+            "Sin>Eout": {
+              "length_m": 47.08652733666502,
+              "direct_distance_m": 46.78485401701453,
+              "length_ratio": 1.0064480979152095,
+              "total_turn_degrees": 21.0287114457895,
+              "minimum_sampled_radius_m": 65.68040939653555,
+              "maximum_sample_turn_degrees": 1.7114775604833388,
+              "maximum_raw_encoded_turn_degrees": 0.38575697438350964,
+              "minimum_resolved_raw_radius_m": 41.802569768698326,
+              "maximum_endpoint_curvature_per_m": 0.015225240055412126,
+              "maximum_curvature_change_per_m2": 0.0010509823887540942,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9619386390277092,
+              "signed_turn_degrees": -21.028711445789504,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Eout": 0.000248898284082034
+              }
+            }
+          },
+          "maximum_encoded_grade": 0.0,
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 22,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "complete_native_join_sections_checked": 3,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_port_cap_depth_m": 2.6,
+          "custom_port_cap_labels": [
+            "Nin",
+            "Sin"
+          ],
+          "custom_port_cap_width_m": 5.2,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 272,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 4.242174664881304e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 4.748541648780247e-07,
+          "maximum_uncovered_bed_area_m2": 1.4606180968712579e-05,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 1086,
+          "models_checked": 26,
+          "native_join_profile_tolerance_m": 5e-05,
+          "native_join_widths_m": [
+            15.0
+          ],
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 289,
+          "path_nodes_covered_by_visible_bed": 289,
+          "positive_area_coplanar_bed_pairs": 5319,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 4,
+          "render_budget_models_checked": 26,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ],
+            [
+              16.0,
+              -0.0
+            ],
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -0.0
+            ],
+            [
+              64.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 5,
+          "support_contact_points_checked": 45,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 272,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 3327,
+          "visible_native_rail_triangles_matched_to_paths": 11991
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "dat_sha256": "309d4e411f043b9ca66ff3b80c4d0670eec4032f81114858bacdcf49d2ba1f04",
+      "audit": {
+        "paths": {
+          "tile_count": 3,
+          "encoded_routes_checked": 9,
+          "external_ports_checked": 5,
+          "permitted_movements_checked": 3,
+          "literal_port_tangents_checked": 5,
+          "unique_complete_journeys_checked": 3,
+          "journey_quality": {
+            "Win>Eout": {
+              "length_m": 48.0,
+              "direct_distance_m": 48.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            },
+            "Ein>Wout": {
+              "length_m": 48.0,
+              "direct_distance_m": 48.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            },
+            "Ein>Nout": {
+              "length_m": 41.32788199679099,
+              "direct_distance_m": 41.00404539689616,
+              "length_ratio": 1.0078976744065196,
+              "total_turn_degrees": 22.817278954245413,
+              "minimum_sampled_radius_m": 53.341959320808165,
+              "maximum_sample_turn_degrees": 2.1138630560994884,
+              "maximum_raw_encoded_turn_degrees": 0.38117150765419483,
+              "minimum_resolved_raw_radius_m": 49.83527694731481,
+              "maximum_endpoint_curvature_per_m": 0.018746967916679243,
+              "maximum_curvature_change_per_m2": 0.0011749779195221071,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.967994380799571,
+              "signed_turn_degrees": -22.817278954245413,
+              "maximum_raw_grade_change_per_m": 0.0
+            }
+          },
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "exact_3d_cell_seams": true,
+          "maximum_encoded_grade": 0.0,
+          "native_port_heights_m": [
+            15.5
+          ],
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 3,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_port_cap_depth_m": 2.6,
+          "custom_port_cap_labels": [
+            "Nout"
+          ],
+          "custom_port_cap_width_m": 5.2,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 144,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 2.6464219260446953e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 4.68103939610387e-07,
+          "maximum_uncovered_bed_area_m2": 1.3378089292359618e-05,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 723,
+          "models_checked": 16,
+          "native_mainline_sections_checked": 6,
+          "native_material_preserved": true,
+          "native_parapet_inner_offsets_m": [
+            -5.9965477,
+            5.9965477
+          ],
+          "native_slab_width_m": 15.0,
+          "owner_clipped_corridor_fragments_checked": 153,
+          "path_nodes_covered_by_visible_bed": 153,
+          "positive_area_coplanar_bed_pairs": 2769,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 2,
+          "render_budget_models_checked": 16,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ],
+            [
+              16.0,
+              -0.0
+            ],
+            [
+              32.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 3,
+          "support_contact_points_checked": 27,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 144,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 1667,
+          "visible_native_rail_triangles_matched_to_paths": 6148
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "dat_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+      "audit": {
+        "paths": {
+          "tile_count": 12,
+          "encoded_routes_checked": 9,
+          "external_ports_checked": 2,
+          "permitted_movements_checked": 1,
+          "unique_complete_journeys_checked": 1,
+          "literal_port_tangents_checked": 2,
+          "journey_quality": {
+            "Sin>Eout": {
+              "length_m": 112.07658337590229,
+              "direct_distance_m": 104.62639830077953,
+              "length_ratio": 1.0712075078194414,
+              "total_turn_degrees": 67.20838066580933,
+              "minimum_sampled_radius_m": 57.219386236600464,
+              "maximum_sample_turn_degrees": 1.9688803962846595,
+              "maximum_raw_encoded_turn_degrees": 0.4436251645215084,
+              "minimum_resolved_raw_radius_m": 55.397219567444054,
+              "maximum_endpoint_curvature_per_m": 0.016134212836696152,
+              "maximum_curvature_change_per_m2": 0.0011088126089195754,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.96625584870004,
+              "signed_turn_degrees": -67.20838066580932,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Sin": 0.00045476144108116186
+              }
+            }
+          },
+          "maximum_encoded_grade": 0.0,
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "complete_native_join_sections_checked": 3,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_cap_scope": "Only the exact inherited saved northern port-tile model may use this literal outward mask. Both old V3 models fail the2.6m fan mask and pass with actual neighbouring PATHs; whole V4 checks remain fully unclipped.",
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 256,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "inherited_custom_cap_depth_m": 2.65,
+          "inherited_custom_cap_exact_model_cell": [
+            3,
+            0
+          ],
+          "inherited_custom_cap_exact_model_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+          "inherited_custom_cap_labels": [
+            "Eout"
+          ],
+          "inherited_custom_cap_model_zooms_checked": 5,
+          "inherited_custom_cap_width_m": 5.2,
+          "maximum_coplanar_bed_overlap_area_m2": 4.402222799626543e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.260414539520752e-07,
+          "maximum_uncovered_bed_area_m2": 2.014371050851338e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "model_polygons_cut_at_custom_caps": 768,
+          "models_checked": 61,
+          "native_join_profile_tolerance_m": 5e-05,
+          "native_join_widths_m": [
+            8.0
+          ],
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 330,
+          "path_nodes_covered_by_visible_bed": 265,
+          "positive_area_coplanar_bed_pairs": 7852,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 61,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -80.0
+            ],
+            [
+              0.0,
+              -64.0
+            ],
+            [
+              0.0,
+              -48.0
+            ],
+            [
+              6.622404,
+              -29.524559
+            ],
+            [
+              16.0,
+              -16.0
+            ],
+            [
+              32.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 256,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 3434,
+          "visible_native_rail_triangles_matched_to_paths": 8100
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-modular-crossing-core",
+      "dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "audit": {
+        "paths": {
+          "tile_count": 1,
+          "encoded_routes_checked": 4,
+          "external_ports_checked": 8,
+          "permitted_movements_checked": 4,
+          "unique_complete_journeys_checked": 4,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.0,
+          "native_port_heights_m": [
+            15.5,
+            30.5
+          ],
+          "literal_port_tangents_checked": 8,
+          "frozen_module_path_files_checked": 1,
+          "frozen_module_recipe": "hsr_component_modular_crossing_core",
+          "frozen_module_source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+          "all_module_local_path_bytes_unchanged": true,
+          "custom_curved_interfaces_require_matching_continuation": false,
+          "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 4,
+          "grade_separated_projected_contacts_checked": 4,
+          "grade_separated_crossings": [
+            {
+              "xy": [
+                -2.0,
+                -2.0
+              ],
+              "path_heights_m": [
+                15.5,
+                30.5
+              ],
+              "structural_clearance_m": 12.02134,
+              "collinear_projection": false
+            },
+            {
+              "xy": [
+                -2.0,
+                2.0
+              ],
+              "path_heights_m": [
+                15.5,
+                30.5
+              ],
+              "structural_clearance_m": 12.02134,
+              "collinear_projection": false
+            },
+            {
+              "xy": [
+                2.0,
+                -2.0
+              ],
+              "path_heights_m": [
+                15.5,
+                30.5
+              ],
+              "structural_clearance_m": 12.02134,
+              "collinear_projection": false
+            },
+            {
+              "xy": [
+                2.0,
+                2.0
+              ],
+              "path_heights_m": [
+                15.5,
+                30.5
+              ],
+              "structural_clearance_m": 12.02134,
+              "collinear_projection": false
+            }
+          ],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0,
+          "native_straight_eight_metre_collars_checked": 8
+        },
+        "models": {
+          "all_module_local_model_bytes_unchanged": true,
+          "all_module_local_path_bytes_unchanged": true,
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "custom_curve_ends_reswept": false,
+          "frozen_module_model_zooms_checked": 5,
+          "frozen_module_path_files_checked": 1,
+          "frozen_module_recipe": "hsr_component_modular_crossing_core",
+          "frozen_module_source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+          "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+          "global_support_spacing_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 0.0,
+          "maximum_coplanar_bed_overlap_thickness_m": 0.0,
+          "minimum_support_centre_distance_m": null,
+          "models_checked": 6,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 8,
+          "positive_area_coplanar_bed_pairs": 0,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 6,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 1,
+          "support_contact_points_checked": 9,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 4
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "audit": {
+        "paths": {
+          "tile_count": 1,
+          "encoded_routes_checked": 2,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "native_facing_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.0,
+          "journey_quality": {
+            "Sin>Nout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            },
+            "Nin>Sout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            }
+          },
+          "native_port_heights_m": [
+            30.5
+          ],
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "full_width_bed_union_segments_checked": 2,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 7.793286016521961e-08,
+          "maximum_coplanar_bed_overlap_thickness_m": 7.427946790983242e-08,
+          "maximum_uncovered_bed_area_m2": 7.910219324003265e-08,
+          "minimum_support_centre_distance_m": null,
+          "models_checked": 6,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 4,
+          "positive_area_coplanar_bed_pairs": 3,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 6,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 1,
+          "support_contact_points_checked": 9,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 2,
+          "unused_visible_native_rails": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 22,
+          "visible_native_rail_triangles_matched_to_paths": 32
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "audit": {
+        "paths": {
+          "tile_count": 10,
+          "encoded_routes_checked": 14,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "native_facing_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.1238087741627496,
+          "journey_quality": {
+            "Sin>Eout": {
+              "length_m": 93.8074604210737,
+              "direct_distance_m": 76.36753236814714,
+              "length_ratio": 1.2283683590672199,
+              "total_turn_degrees": 89.99999999999997,
+              "minimum_sampled_radius_m": 27.760636187735017,
+              "maximum_sample_turn_degrees": 4.119383587380622,
+              "maximum_raw_encoded_turn_degrees": 0.30345326223275,
+              "minimum_resolved_raw_radius_m": 28.87861989202163,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0014540439409471797,
+              "maximum_grade_change_per_m": 0.007903247011657651,
+              "quality_sample_spacing_m": 1.995903413214334,
+              "signed_turn_degrees": -89.99999999999997,
+              "maximum_raw_grade_change_per_m": 0.007706933492536053
+            },
+            "Ein>Sout": {
+              "length_m": 100.09064077351678,
+              "direct_distance_m": 82.02438661763951,
+              "length_ratio": 1.2202546693838012,
+              "total_turn_degrees": 89.99999999999997,
+              "minimum_sampled_radius_m": 31.73863372750495,
+              "maximum_sample_turn_degrees": 3.5428865870052717,
+              "maximum_raw_encoded_turn_degrees": 0.3037542815575618,
+              "minimum_resolved_raw_radius_m": 32.856598767684474,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0012517286753891614,
+              "maximum_grade_change_per_m": 0.007161817315646187,
+              "quality_sample_spacing_m": 1.9625615837944468,
+              "signed_turn_degrees": 89.99999999999997,
+              "maximum_raw_grade_change_per_m": 0.006920686270008573
+            }
+          },
+          "native_port_heights_m": [
+            23.0,
+            30.5
+          ],
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0,
+          "paired_shared_sheet_points_checked": 1026,
+          "tile_boundary_cuts_checked_by_seam_and_bed_audits": 16,
+          "paired_track_spacing_m": 4.0,
+          "maximum_paired_spacing_error_m": 9.790911299489835e-07,
+          "maximum_paired_shared_height_error_m": 0.0,
+          "custom_midpoint_height_m": 23.0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "full_width_bed_union_segments_checked": 1040,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 5.269918688100006e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.278502266392593e-07,
+          "maximum_uncovered_bed_area_m2": 6.098295957546185e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "models_checked": 51,
+          "native_material_preserved": true,
+          "native_paired_slab_width_m": 15.0,
+          "native_tight_corner_physical_end_heights_m": [
+            30.5,
+            23.0
+          ],
+          "native_tight_corner_profile_sections_checked": 12,
+          "paired_collar_internal_walls": false,
+          "path_nodes_covered_by_visible_bed": 1054,
+          "positive_area_coplanar_bed_pairs": 10233,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 51,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 6,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -48.0
+            ],
+            [
+              0.0,
+              -32.0
+            ],
+            [
+              0.0,
+              -16.0
+            ],
+            [
+              16.0,
+              -0.0
+            ],
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 1040,
+          "unused_visible_native_rails": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 6403,
+          "visible_native_rail_triangles_matched_to_paths": 17155
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "dat_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+      "audit": {
+        "paths": {
+          "tile_count": 10,
+          "encoded_routes_checked": 14,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "native_facing_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.1238087741627496,
+          "journey_quality": {
+            "Sin>Eout": {
+              "length_m": 93.8074604210737,
+              "direct_distance_m": 76.36753236814714,
+              "length_ratio": 1.2283683590672199,
+              "total_turn_degrees": 89.99999999999997,
+              "minimum_sampled_radius_m": 27.760636187735017,
+              "maximum_sample_turn_degrees": 4.119383587380622,
+              "maximum_raw_encoded_turn_degrees": 0.30345326223275,
+              "minimum_resolved_raw_radius_m": 28.87861989202163,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0014540439409471797,
+              "maximum_grade_change_per_m": 0.007903247011657651,
+              "quality_sample_spacing_m": 1.995903413214334,
+              "signed_turn_degrees": -89.99999999999997,
+              "maximum_raw_grade_change_per_m": 0.007706933492536053
+            },
+            "Ein>Sout": {
+              "length_m": 100.09064077351678,
+              "direct_distance_m": 82.02438661763951,
+              "length_ratio": 1.2202546693838012,
+              "total_turn_degrees": 89.99999999999997,
+              "minimum_sampled_radius_m": 31.73863372750495,
+              "maximum_sample_turn_degrees": 3.5428865870052717,
+              "maximum_raw_encoded_turn_degrees": 0.3037542815575618,
+              "minimum_resolved_raw_radius_m": 32.856598767684474,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0012517286753891614,
+              "maximum_grade_change_per_m": 0.007161817315646187,
+              "quality_sample_spacing_m": 1.9625615837944468,
+              "signed_turn_degrees": 89.99999999999997,
+              "maximum_raw_grade_change_per_m": 0.006920686270008573
+            }
+          },
+          "native_port_heights_m": [
+            15.5,
+            23.0
+          ],
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0,
+          "paired_shared_sheet_points_checked": 1026,
+          "tile_boundary_cuts_checked_by_seam_and_bed_audits": 16,
+          "paired_track_spacing_m": 4.0,
+          "maximum_paired_spacing_error_m": 9.790911299489835e-07,
+          "maximum_paired_shared_height_error_m": 0.0,
+          "custom_midpoint_height_m": 23.0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "full_width_bed_union_segments_checked": 1040,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 5.269918688100006e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.278502266392593e-07,
+          "maximum_uncovered_bed_area_m2": 6.098295957546185e-06,
+          "minimum_support_centre_distance_m": 16.0,
+          "models_checked": 51,
+          "native_material_preserved": true,
+          "native_paired_slab_width_m": 15.0,
+          "native_tight_corner_physical_end_heights_m": [
+            23.0,
+            15.5
+          ],
+          "native_tight_corner_profile_sections_checked": 12,
+          "paired_collar_internal_walls": false,
+          "path_nodes_covered_by_visible_bed": 1054,
+          "positive_area_coplanar_bed_pairs": 10233,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 51,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 6,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -48.0
+            ],
+            [
+              0.0,
+              -32.0
+            ],
+            [
+              0.0,
+              -16.0
+            ],
+            [
+              16.0,
+              -0.0
+            ],
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 1040,
+          "unused_visible_native_rails": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 6403,
+          "visible_native_rail_triangles_matched_to_paths": 17155
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "audit": {
+        "paths": {
+          "tile_count": 1,
+          "encoded_routes_checked": 1,
+          "external_ports_checked": 2,
+          "permitted_movements_checked": 1,
+          "native_facing_port_tangents_checked": 2,
+          "unique_complete_journeys_checked": 1,
+          "rotations_checked": 4,
+          "exact_3d_cell_seams": true,
+          "all_encoded_tracks_used_by_intended_journeys": true,
+          "unwanted_u_turns": false,
+          "unwanted_cross_level_transfers": false,
+          "maximum_encoded_grade": 0.0,
+          "journey_quality": {
+            "Sin>Nout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
+              "maximum_raw_grade_change_per_m": 0.0
+            }
+          },
+          "native_port_heights_m": [
+            15.5
+          ],
+          "collision_free_operation_claimed": false,
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "full_width_bed_union_segments_checked": 1,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 1.1843748204398707e-08,
+          "maximum_coplanar_bed_overlap_thickness_m": 1.0016835583215311e-08,
+          "maximum_uncovered_bed_area_m2": 3.672036541502166e-08,
+          "minimum_support_centre_distance_m": null,
+          "models_checked": 6,
+          "native_material_preserved": true,
+          "path_nodes_covered_by_visible_bed": 2,
+          "positive_area_coplanar_bed_pairs": 2,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 6,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 1,
+          "support_contact_points_checked": 9,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 1,
+          "unused_visible_native_rails": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 30,
+          "visible_native_rail_triangles_matched_to_paths": 47
+        }
+      }
+    }
+  ],
+  "supports": {
+    "total_column_positions_preserved": 75,
+    "minimum_global_centre_spacing_m": 16.0
+  },
+  "game_tests": "unverified",
+  "scene_metadata_refresh": {
+    "purpose": "Bind the current assembly metadata after deletion of predecessor file pointers; physical placements, grid, outside ports, geometry and resource fingerprints are identical to the audited scene.",
+    "audited_scene_sha256": "a310975223f712f84bc0cbc11db94d41e4881987aa70ea09f3cc0d7cf022c8aa",
+    "current_scene_sha256": "b483dd04624167bfef5f4f7121ad8bab8675d2fdbfd4cd642f918ff49014dd4d",
+    "physical_layout_sha256": "7d230df3d8697640ed5b197f448e041abd75cab62be2a9886562e4fc52909ee6",
+    "physical_layout_exactly_unchanged": true,
+    "resources_recompiled": false
+  },
+  "audited_manifest_file_scope": "Current binary payload registry with generated documentation excluded; the full input manifest hash is recorded separately as audit-start metadata."
+}

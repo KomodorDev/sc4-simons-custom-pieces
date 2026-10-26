@@ -1,0 +1,44 @@
+# Only the custom-piece library, Planner, and named repository support belong in Git.
+# Additional top-level files require an explicit source-control decision.
+/*
+!/.gitignore
+!/AGENTS.md
+!/README.md
+!/requirements-ci.txt
+!/custom-pieces/
+!/scp-planner/
+
+# Permit only the repository's named CI, documentation, and test-runner files.
+!/.github/
+/.github/*
+!/.github/branch-protection.json
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/ci.yml
+!/docs/
+/docs/*
+!/docs/GITHUB.md
+!/tools/
+/tools/*
+!/tools/run_tests.py
+
+# Shared workstation metadata, Python/tool caches, and local credentials.
+# The library and Planner retain their additional local/ and dist/ exclusions.
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+node_modules/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key

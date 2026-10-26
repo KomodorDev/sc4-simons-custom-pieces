@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "rail-hsr-diagonal-s-left",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7b1",
+        "0004f7b1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7b1",
+        "0007f7b1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7b1",
+        "0006f7b1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7b1",
+        "0005f7b1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "fingerprints": {
+    "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+    "effect:rail-hsr-diagonal-s-left:ea5118b0-ea5118b1-7f50fff5": "fbe7508ec993a838162c93ddd8f33f914b3f0e6359883769a4305f426cf4a58a",
+    "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f120": "0e49a70fec0cae1eafdef8bf833ff1d2ddcd478d978b4ffac42d7b88dee644bc",
+    "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f200": "7f70786f00ab18045d76f086f7abe2447f95f4b412269a5d89c8b3f4e1bb2321",
+    "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f210": "dd6ab8f2dccfe9d30dcd9430fc215301b3797a41c5e6c6e6e8e5c229171e2b01",
+    "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f220": "259dbcfa2345833acd7fbff42994a5a43397bc8b270626bedd151220afe68602",
+    "graph:rail-hsr-diagonal-s-left": "d6b7d19dd9cbba4b6f38503d332458c29bbc9cf4324f34fe7f077ea7fe748392",
+    "image:rail-hsr-diagonal-s-left:canonical-southeast": "95ffede8aac6e88b5661fc5113cd751fbceb54f76b1e1463b58c894765959cc3",
+    "interface:rail-hsr-diagonal-s-left:Ein": "2064e7a66d26f99de7b97b6d74861c376e35e70a582a1a48306a302591f1fde6",
+    "interface:rail-hsr-diagonal-s-left:Eout": "5993d7445dfaf6958c8565099ed8d0753a9182fd7d6c0802c2bb52f3addb83d3",
+    "interface:rail-hsr-diagonal-s-left:Sin": "f6c9ad80cc31d80ef14ec99851c2321f3e43368c38b8fda1220eda37d08524ed",
+    "interface:rail-hsr-diagonal-s-left:Sout": "8c9099f418b50025a5fc73085947b8b22e426a3c8ca3200b3c1ed688dec7a0f5",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f120": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f121": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f122": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f123": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f124": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f200": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f201": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f202": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f203": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f204": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f210": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f211": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f212": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f213": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f214": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f220": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f221": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f222": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f223": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f224": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+    "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50fff5": "d49520fd328fba56f83b92784d172114be2ac93387fd9c51f041b01e42e06e7d",
+    "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f120": "425189fc227dbbba663eec7a88a3747c755627c264243be2ebb87336fb8fe2f2",
+    "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f200": "01264f5c9f6915e67f79a262d454beaa07f4d31289be275f016ab73889a7b3c7",
+    "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f210": "0b6073aa6679736322953c1d569fb91a77400f6c0465bfa6be07bfd4e4cbf86e",
+    "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f220": "6197ac9bfc8e5ce9fb5fb2162f247d770dcc8c4e1d3b078cd81f98c7ad72cfa3",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f120": "3e633467ae4de71c8785ba7d0ad8bc439df1ff8a9ca9bec42d3603ce95538599",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f121": "81dea9bb1e5d7a5133ca6b335fc03770ee3d0f1f0c9df03c76eb4212836a82fc",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f122": "dd59449facacaacdf03df285ac39d3f8da7ce7a471eac7ef9e4af8ef442b3237",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f123": "f86e88cdd669162ddb758f342ef3d7d8cbd700d948c949fe966a69a1248ae4da",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f124": "1a1c04fd821c9323147ad40c6e861b0bf629078cefd6c7dd8283946f143c2efc",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f200": "a123b9b86b3124b2e392cbbb0c7a4632eab3897028ba5de0e39f5d3533a85988",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f201": "e9af9860c94d25667fb05e41d0a76ff7571a860a42563cb98b638bf469152a98",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f202": "85a309294a0caaa0b76629556a736c8dbde2a331ff9f12b15ca1b2c9bef801e4",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f203": "85e189bbe533419edcee37fadc7f3b1078c1c55e891a7c90a63fa2a0bfde97c6",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f204": "327201b32e6a833f1e1ec69565b37e797abc04f6b308939add2b65184e95cec6",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f210": "e20f01e0afcb3176a4dfcfd5799f0a48ff550f92ce7017fdee3b06d163b9338d",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f211": "b54b46a58c6b7ec51b4d43ac0262647d14c911adfd53a779b3f15ce5f597b78c",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f212": "12b65325df9bf590ca35232862e58c4709437014425317b3915e4f482f2eb707",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f213": "f070f0aee266da21ecc319d7633849c7a9bb85385c3c0d75f73bf3abfdf2d3ea",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f214": "088fc2671c34729ba33bab116e5a3b0886c6194c1bda408803b6be38ad80a081",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f220": "02e2a21ddca9e315102c6e6c5a55e87f7245b7db9b3eb75737c5739d24599e2d",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f221": "e30c1a37924388a772689d5d3560d8adcbabb158ec0bf89ec575f63559173635",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f222": "51b093b786785486cba3fd3acba3b7794587dc562e92568c1eab022cd908eeec",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f223": "6e8b76d7fb4942dbcf081058e764820ce373f10686e52a2ff59ee3e7b477d0a3",
+    "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f224": "0b77ff8c332d8f21efdd8383d30c6986842ffaed8a2ab56c3e147c17215f1409",
+    "text:rail-hsr-diagonal-s-left:2026960b-2a592fd1-7f50f120": "2f05c5ad240b2cbf6c47e3eed315cc56e1a8a520bb8eae3df3451d5d00f347d9",
+    "text:rail-hsr-diagonal-s-left:2026960b-2a592fd1-7f50f200": "2f05c5ad240b2cbf6c47e3eed315cc56e1a8a520bb8eae3df3451d5d00f347d9",
+    "text:rail-hsr-diagonal-s-left:2026960b-2a592fd1-7f50f210": "2f05c5ad240b2cbf6c47e3eed315cc56e1a8a520bb8eae3df3451d5d00f347d9",
+    "text:rail-hsr-diagonal-s-left:2026960b-2a592fd1-7f50f220": "2f05c5ad240b2cbf6c47e3eed315cc56e1a8a520bb8eae3df3451d5d00f347d9"
+  },
+  "cases": [
+    {
+      "id": "software_resources-b872ee89e66b9285d22d",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c6901cfb7afe7c0a50c4b7d9f5a498f4820e4a99536a5153e2b8598d7a8f87c4",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "software_connectivity-b872ee89e66b9285d22d",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a9e13f763f2ca83d5e0492a600eff4dc9be3d9a634f7dfd49f7060563422b408",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "preview_review-4f86cc97079dd2abc52e",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "image_key": "image:rail-hsr-diagonal-s-left:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bcfd91dff5ad58e2cac90d1792918e8c2f23b7e9be7e8cb32a564ec52694cc01",
+      "dependency_ref": "57e9a78b6cb69f7ef872967a30d2f35a24e8218cc2eda55fec8dab25e3d15896"
+    },
+    {
+      "id": "in_game_render-c3a3b6726234ceede371",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8bf0b043fd21084d587a3703a246509c19899eedf7f9a4851c2fc3314ba79ea6",
+      "dependency_ref": "63f8b67cd9e97f42de11a3653431db14cd9386c7b18c66b86618d2ca7a3a5193"
+    },
+    {
+      "id": "in_game_placement-c3a3b6726234ceede371",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58b5e080c363c8bc1e86f49098ac949f207079e7690e12b2746893a7763c7e5a",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_demolition-c3a3b6726234ceede371",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58b5e080c363c8bc1e86f49098ac949f207079e7690e12b2746893a7763c7e5a",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_save_reload-c3a3b6726234ceede371",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58b5e080c363c8bc1e86f49098ac949f207079e7690e12b2746893a7763c7e5a",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_render-df1d5895ff7a6cac1918",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1c736fd0cbf2c4b76e2ad11be79d4567e6bd9e3320d13b3883e20e6758d04cc4",
+      "dependency_ref": "63f8b67cd9e97f42de11a3653431db14cd9386c7b18c66b86618d2ca7a3a5193"
+    },
+    {
+      "id": "in_game_placement-df1d5895ff7a6cac1918",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e629c958c846daaaa5a0a7e1a7e1ece97207aabf1203876737326dfc9513536b",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_demolition-df1d5895ff7a6cac1918",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e629c958c846daaaa5a0a7e1a7e1ece97207aabf1203876737326dfc9513536b",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_save_reload-df1d5895ff7a6cac1918",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e629c958c846daaaa5a0a7e1a7e1ece97207aabf1203876737326dfc9513536b",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_render-91448154d0d33dc5a361",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d297dd56543bab19f80522e90bfbdc45db7995b59d236a67a5ffcaef9cdb219c",
+      "dependency_ref": "63f8b67cd9e97f42de11a3653431db14cd9386c7b18c66b86618d2ca7a3a5193"
+    },
+    {
+      "id": "in_game_placement-91448154d0d33dc5a361",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "abffc4a995a23aa1f35bd351124c8429a252242b603e9371546f96c0775344f0",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_demolition-91448154d0d33dc5a361",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "abffc4a995a23aa1f35bd351124c8429a252242b603e9371546f96c0775344f0",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_save_reload-91448154d0d33dc5a361",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "abffc4a995a23aa1f35bd351124c8429a252242b603e9371546f96c0775344f0",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_render-6e43db371079172a4d33",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e885896a2cd4d3200ba9d5c38f101af5ac5589541582ffe0dd967757b839619f",
+      "dependency_ref": "63f8b67cd9e97f42de11a3653431db14cd9386c7b18c66b86618d2ca7a3a5193"
+    },
+    {
+      "id": "in_game_placement-6e43db371079172a4d33",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "795efc7ecf825022c2ffa9bca5a24bc95912fbe94a390ba4b0d2e850aa50bb64",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_demolition-6e43db371079172a4d33",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "795efc7ecf825022c2ffa9bca5a24bc95912fbe94a390ba4b0d2e850aa50bb64",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_save_reload-6e43db371079172a4d33",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "795efc7ecf825022c2ffa9bca5a24bc95912fbe94a390ba4b0d2e850aa50bb64",
+      "dependency_ref": "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121"
+    },
+    {
+      "id": "in_game_journey-d3ab04e22f508ad70f29",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Sin>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0133c6066024fe8b9d498e62e633985750071574bb7137fa81cba25358f43bba",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-4cb39822e7f4e7c778c6",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Sin>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "43c766d30e3f023b502325c5cf7ddb1ca1bf50055a54fcf6a615fab59de837b7",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-12f354b67da2e4a2ba7e",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Sin>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b692441fc464b2cde066c89c624e142253463c50e02c3427690601b8aefb23c3",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-99b45068b33d821b6bde",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Sin>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "300e72d6c2f07d0a2a5926edbb8a68e51bb544017674ba66fd7eccfb3e64cc39",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-f774a9967fde44e911ce",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Ein>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "98b0d2a2732069c0ebf5bc59df59ec38a0d5e1644bd75949966a33c065dbc137",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-e0ca46960023a2ffe1f5",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Ein>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3864784ab9e0e251e0eb2cf08c9c07934c78c27f0a9ffb0edef04c27898c04d8",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-6b8bb907f2d6d84c7b18",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Ein>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b4b03658745843812afaf4e86746d6181f9184fdc59def3bdd3a513d86a871d1",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_journey-2bd5c9460cf4ff45deb1",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "journey_id": "7:Ein>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9c0c97046bb797872cebef6cec8cdc43c219408d042d195414e30b356e1b73c5",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9aa9654a3039a6b4cb7f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bb3554cfd27913c660db9e127f1bd7e331e4af689b4748c6c11481db5b16b057",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-734b0e875885f002a8ee",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cc8e842675dcc5ad1f9cda375d97fd1d10a5d64c1f74040ce5b63e53fe01f667",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c3538f02fae56d344f5c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ef8e229fe2214921e94dde1188a87706fc8dfbee6dc662486605971f70c50681",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e1de7af1694298ed159f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5580d630b9b5403c932ec3718a2c76869ab667bdcec432cfb5d639f3418ef513",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0950c5b99967b9daa28a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5d22284f4b6396f5ba2cf5ddd0ac2bcee901b43f72fb9777c6823ede0ea13b23",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8b60331f677a92287bd5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e313e6608aaaffed6b4f0ef7c9ece92f5b929267a4acdede49fb698cb02e06a9",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b06520e7c34dd9cd2641",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "118151709097cdb46a22b458e215924137fe75401326e86580758620163d6333",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4170cf7bdd205df7b108",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-hsr-diagonal-s-left",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4073dc8496946cd1dfc0fca6073afdeb6f460609df7fa20ad250e4760878c890",
+      "dependency_ref": "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c"
+    }
+  ],
+  "dependency_sets": {
+    "ab5b06a2eebf0a6f54c68073a15588d5d3d378a759426b77d88899debe5dd121": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "effect:rail-hsr-diagonal-s-left:ea5118b0-ea5118b1-7f50fff5": "fbe7508ec993a838162c93ddd8f33f914b3f0e6359883769a4305f426cf4a58a",
+      "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f120": "0e49a70fec0cae1eafdef8bf833ff1d2ddcd478d978b4ffac42d7b88dee644bc",
+      "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f200": "7f70786f00ab18045d76f086f7abe2447f95f4b412269a5d89c8b3f4e1bb2321",
+      "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f210": "dd6ab8f2dccfe9d30dcd9430fc215301b3797a41c5e6c6e6e8e5c229171e2b01",
+      "exemplar:rail-hsr-diagonal-s-left:6534284a-a8434037-7f50f220": "259dbcfa2345833acd7fbff42994a5a43397bc8b270626bedd151220afe68602",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f120": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f121": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f122": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f123": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f124": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f200": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f201": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f202": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f203": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f204": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f210": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f211": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f212": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f213": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f214": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f220": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f221": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f222": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f223": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f224": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50fff5": "d49520fd328fba56f83b92784d172114be2ac93387fd9c51f041b01e42e06e7d",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f120": "425189fc227dbbba663eec7a88a3747c755627c264243be2ebb87336fb8fe2f2",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f200": "01264f5c9f6915e67f79a262d454beaa07f4d31289be275f016ab73889a7b3c7",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f210": "0b6073aa6679736322953c1d569fb91a77400f6c0465bfa6be07bfd4e4cbf86e",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f220": "6197ac9bfc8e5ce9fb5fb2162f247d770dcc8c4e1d3b078cd81f98c7ad72cfa3",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f120": "3e633467ae4de71c8785ba7d0ad8bc439df1ff8a9ca9bec42d3603ce95538599",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f121": "81dea9bb1e5d7a5133ca6b335fc03770ee3d0f1f0c9df03c76eb4212836a82fc",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f122": "dd59449facacaacdf03df285ac39d3f8da7ce7a471eac7ef9e4af8ef442b3237",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f123": "f86e88cdd669162ddb758f342ef3d7d8cbd700d948c949fe966a69a1248ae4da",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f124": "1a1c04fd821c9323147ad40c6e861b0bf629078cefd6c7dd8283946f143c2efc",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f200": "a123b9b86b3124b2e392cbbb0c7a4632eab3897028ba5de0e39f5d3533a85988",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f201": "e9af9860c94d25667fb05e41d0a76ff7571a860a42563cb98b638bf469152a98",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f202": "85a309294a0caaa0b76629556a736c8dbde2a331ff9f12b15ca1b2c9bef801e4",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f203": "85e189bbe533419edcee37fadc7f3b1078c1c55e891a7c90a63fa2a0bfde97c6",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f204": "327201b32e6a833f1e1ec69565b37e797abc04f6b308939add2b65184e95cec6",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f210": "e20f01e0afcb3176a4dfcfd5799f0a48ff550f92ce7017fdee3b06d163b9338d",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f211": "b54b46a58c6b7ec51b4d43ac0262647d14c911adfd53a779b3f15ce5f597b78c",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f212": "12b65325df9bf590ca35232862e58c4709437014425317b3915e4f482f2eb707",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f213": "f070f0aee266da21ecc319d7633849c7a9bb85385c3c0d75f73bf3abfdf2d3ea",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f214": "088fc2671c34729ba33bab116e5a3b0886c6194c1bda408803b6be38ad80a081",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f220": "02e2a21ddca9e315102c6e6c5a55e87f7245b7db9b3eb75737c5739d24599e2d",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f221": "e30c1a37924388a772689d5d3560d8adcbabb158ec0bf89ec575f63559173635",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f222": "51b093b786785486cba3fd3acba3b7794587dc562e92568c1eab022cd908eeec",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f223": "6e8b76d7fb4942dbcf081058e764820ce373f10686e52a2ff59ee3e7b477d0a3",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f224": "0b77ff8c332d8f21efdd8383d30c6986842ffaed8a2ab56c3e147c17215f1409"
+    },
+    "bd69257350a56a712d161658c5fd9858e7108f4dfa993b5a6de5a805620ea01c": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "graph:rail-hsr-diagonal-s-left": "d6b7d19dd9cbba4b6f38503d332458c29bbc9cf4324f34fe7f077ea7fe748392",
+      "interface:rail-hsr-diagonal-s-left:Ein": "2064e7a66d26f99de7b97b6d74861c376e35e70a582a1a48306a302591f1fde6",
+      "interface:rail-hsr-diagonal-s-left:Eout": "5993d7445dfaf6958c8565099ed8d0753a9182fd7d6c0802c2bb52f3addb83d3",
+      "interface:rail-hsr-diagonal-s-left:Sin": "f6c9ad80cc31d80ef14ec99851c2321f3e43368c38b8fda1220eda37d08524ed",
+      "interface:rail-hsr-diagonal-s-left:Sout": "8c9099f418b50025a5fc73085947b8b22e426a3c8ca3200b3c1ed688dec7a0f5",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f120": "425189fc227dbbba663eec7a88a3747c755627c264243be2ebb87336fb8fe2f2",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f200": "01264f5c9f6915e67f79a262d454beaa07f4d31289be275f016ab73889a7b3c7",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f210": "0b6073aa6679736322953c1d569fb91a77400f6c0465bfa6be07bfd4e4cbf86e",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f220": "6197ac9bfc8e5ce9fb5fb2162f247d770dcc8c4e1d3b078cd81f98c7ad72cfa3"
+    },
+    "57e9a78b6cb69f7ef872967a30d2f35a24e8218cc2eda55fec8dab25e3d15896": {
+      "image:rail-hsr-diagonal-s-left:canonical-southeast": "95ffede8aac6e88b5661fc5113cd751fbceb54f76b1e1463b58c894765959cc3"
+    },
+    "63f8b67cd9e97f42de11a3653431db14cd9386c7b18c66b86618d2ca7a3a5193": {
+      "effect:rail-hsr-diagonal-s-left:ea5118b0-ea5118b1-7f50fff5": "fbe7508ec993a838162c93ddd8f33f914b3f0e6359883769a4305f426cf4a58a",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f120": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f121": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f122": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f123": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f124": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f200": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f201": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f202": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f203": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f204": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f210": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f211": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f212": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f213": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f214": "d843acd6214f44f30d65b05354f4cf440071f69f11efdf6e7f6f6359c9bca300",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f220": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f221": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f222": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f223": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f224": "460e3fcfb09ed1f5cdc4d557f13d41a7391b3689ee41f24f1a6ffeb489110986",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50fff5": "d49520fd328fba56f83b92784d172114be2ac93387fd9c51f041b01e42e06e7d",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f120": "3e633467ae4de71c8785ba7d0ad8bc439df1ff8a9ca9bec42d3603ce95538599",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f121": "81dea9bb1e5d7a5133ca6b335fc03770ee3d0f1f0c9df03c76eb4212836a82fc",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f122": "dd59449facacaacdf03df285ac39d3f8da7ce7a471eac7ef9e4af8ef442b3237",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f123": "f86e88cdd669162ddb758f342ef3d7d8cbd700d948c949fe966a69a1248ae4da",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f124": "1a1c04fd821c9323147ad40c6e861b0bf629078cefd6c7dd8283946f143c2efc",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f200": "a123b9b86b3124b2e392cbbb0c7a4632eab3897028ba5de0e39f5d3533a85988",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f201": "e9af9860c94d25667fb05e41d0a76ff7571a860a42563cb98b638bf469152a98",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f202": "85a309294a0caaa0b76629556a736c8dbde2a331ff9f12b15ca1b2c9bef801e4",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f203": "85e189bbe533419edcee37fadc7f3b1078c1c55e891a7c90a63fa2a0bfde97c6",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f204": "327201b32e6a833f1e1ec69565b37e797abc04f6b308939add2b65184e95cec6",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f210": "e20f01e0afcb3176a4dfcfd5799f0a48ff550f92ce7017fdee3b06d163b9338d",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f211": "b54b46a58c6b7ec51b4d43ac0262647d14c911adfd53a779b3f15ce5f597b78c",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f212": "12b65325df9bf590ca35232862e58c4709437014425317b3915e4f482f2eb707",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f213": "f070f0aee266da21ecc319d7633849c7a9bb85385c3c0d75f73bf3abfdf2d3ea",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f214": "088fc2671c34729ba33bab116e5a3b0886c6194c1bda408803b6be38ad80a081",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f220": "02e2a21ddca9e315102c6e6c5a55e87f7245b7db9b3eb75737c5739d24599e2d",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f221": "e30c1a37924388a772689d5d3560d8adcbabb158ec0bf89ec575f63559173635",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f222": "51b093b786785486cba3fd3acba3b7794587dc562e92568c1eab022cd908eeec",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f223": "6e8b76d7fb4942dbcf081058e764820ce373f10686e52a2ff59ee3e7b477d0a3",
+      "shadow:rail-hsr-diagonal-s-left:7ab50e44-2bc2759a-7f50f224": "0b77ff8c332d8f21efdd8383d30c6986842ffaed8a2ab56c3e147c17215f1409"
+    },
+    "230cace60637ab33ba1bc802836e8ad003e45bf862d58aa21d5bd3fdc3281be5": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "interface:rail-hsr-diagonal-s-left:Sout": "8c9099f418b50025a5fc73085947b8b22e426a3c8ca3200b3c1ed688dec7a0f5",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f120": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f121": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f122": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f123": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f124": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f120": "425189fc227dbbba663eec7a88a3747c755627c264243be2ebb87336fb8fe2f2"
+    },
+    "46daa2fb71f55664f4ec364e59ccb6c02e9a9212fbec5411d6e162ff4a813e99": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "interface:rail-hsr-diagonal-s-left:Sin": "f6c9ad80cc31d80ef14ec99851c2321f3e43368c38b8fda1220eda37d08524ed",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f120": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f121": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f122": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f123": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f124": "02ad39383edecd5030af18d5a7341dd37219ec381150f8da78d4117dc726dd59",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f120": "425189fc227dbbba663eec7a88a3747c755627c264243be2ebb87336fb8fe2f2"
+    },
+    "c2ba2ea657f97a2023fea6f8087de95904cec58f4416e3c76ecf616debf80ca8": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "interface:rail-hsr-diagonal-s-left:Eout": "5993d7445dfaf6958c8565099ed8d0753a9182fd7d6c0802c2bb52f3addb83d3",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f200": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f201": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f202": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f203": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f204": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f200": "01264f5c9f6915e67f79a262d454beaa07f4d31289be275f016ab73889a7b3c7"
+    },
+    "dd92c092b6b7938bb3a84f7ef034d51b864ed9c643453524817fd3d601059fa0": {
+      "construction:rail-hsr-diagonal-s-left": "8cfd68699ff33fa15bc6b13fe2a9773cb61613c85a5df6d9048d3d60584460bb",
+      "interface:rail-hsr-diagonal-s-left:Ein": "2064e7a66d26f99de7b97b6d74861c376e35e70a582a1a48306a302591f1fde6",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f200": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f201": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f202": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f203": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "model:rail-hsr-diagonal-s-left:5ad0e817-badb57f1-7f50f204": "e47e9d789122d6ff1c460e1c174c2297553701c13699465bcd7e662d233d0062",
+      "path:rail-hsr-diagonal-s-left:296678f7-a966883f-7f50f200": "01264f5c9f6915e67f79a262d454beaa07f4d31289be275f016ab73889a7b3c7"
+    }
+  }
+}

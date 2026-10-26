@@ -1,0 +1,270 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Split 45 Degree Wide.",
+  "schema_version": 1,
+  "id": "interchange-ground-split-45-wide",
+  "name": "GHSR Split 45 Degree Wide",
+  "description": "GHSR Split 45 Degree Wide. Fixed click-to-place piece in a 6 by 9 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_ground_split_45_wide",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7de",
+  "tile_ids": [
+    "7f53c500",
+    "7f53c410",
+    "7f53c510",
+    "7f53c020",
+    "7f53c320",
+    "7f53c420",
+    "7f53c030",
+    "7f53c230",
+    "7f53c330",
+    "7f53c040",
+    "7f53c140",
+    "7f53c240",
+    "7f53c050",
+    "7f53c150",
+    "7f53c060",
+    "7f53c160",
+    "7f53c070",
+    "7f53c080"
+  ],
+  "preview_id": "7f53cff5",
+  "effect_name": "preview_scp_interchg_f7de_0",
+  "footprint": [
+    6,
+    9
+  ],
+  "cells": [
+    [
+      5,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7de",
+    "order": "7011f7de",
+    "style": "interchange-ground-split-45-wide"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f53c500",
+      "source": "7f53c500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c410",
+      "source": "7f53c410",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c510",
+      "source": "7f53c510",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c020",
+      "source": "7f53c020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c320",
+      "source": "7f53c320",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c420",
+      "source": "7f53c420",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c030",
+      "source": "7f53c030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c230",
+      "source": "7f53c230",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c330",
+      "source": "7f53c330",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c040",
+      "source": "7f53c040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c140",
+      "source": "7f53c140",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c240",
+      "source": "7f53c240",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c050",
+      "source": "7f53c050",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c150",
+      "source": "7f53c150",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c060",
+      "source": "7f53c060",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c160",
+      "source": "7f53c160",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c070",
+      "source": "7f53c070",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53c080",
+      "source": "7f53c080",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        -24,
+        1.0
+      ],
+      [
+        2.0,
+        -136,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -136,
+        1.0
+      ],
+      [
+        2.0,
+        -24,
+        1.0
+      ],
+      [
+        88,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "ground",
+    "height": 1.0,
+    "angle": 45,
+    "radius": "wide",
+    "mode": "split"
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "purpose": "Authoritative geometry for this reusable HSR module. Local PATH cells define traffic; surface context retains complete analytic sweep samples for exact boundary miters and unions, while only selected cells are emitted. No complete interchange or other selectable piece is generated.",
+  "schema_version": 1,
+  "metadata": {
+    "kind": "partition_component",
+    "name": "HSR Modular One-Tile Two-Level Crossing",
+    "description": "One city tile with north/south HSR at 30.5 m above east/west HSR at 15.5 m, four native paired connections and one lower support.",
+    "recipe": "hsr_component_modular_crossing_core",
+    "category": "hsr-components",
+    "height": 15.5,
+    "upper_height": 30.5,
+    "footprint": [
+      1,
+      1
+    ],
+    "cells": [
+      [
+        0,
+        0
+      ]
+    ],
+    "cost": 100,
+    "origin_shift": [
+      -16.0,
+      16.0
+    ],
+    "ports": {
+      "S": {
+        "in": [
+          2.0,
+          -8.0,
+          30.5
+        ],
+        "out": [
+          -2.0,
+          -8.0,
+          30.5
+        ]
+      },
+      "N": {
+        "out": [
+          2.0,
+          8.0,
+          30.5
+        ],
+        "in": [
+          -2.0,
+          8.0,
+          30.5
+        ]
+      },
+      "W": {
+        "in": [
+          -8.0,
+          -2.0,
+          15.5
+        ],
+        "out": [
+          -8.0,
+          2.0,
+          15.5
+        ]
+      },
+      "E": {
+        "out": [
+          8.0,
+          -2.0,
+          15.5
+        ],
+        "in": [
+          8.0,
+          2.0,
+          15.5
+        ]
+      }
+    },
+    "movements": [
+      [
+        "S",
+        "N"
+      ],
+      [
+        "N",
+        "S"
+      ],
+      [
+        "W",
+        "E"
+      ],
+      [
+        "E",
+        "W"
+      ]
+    ],
+    "construction_flags": [
+      [
+        [
+          0,
+          0
+        ],
+        33686018
+      ]
+    ],
+    "structural_cells": [],
+    "effect_donor": [
+      [
+        3931183280,
+        3931183281,
+        1574895872
+      ],
+      "preview_hsr_ofillerpiece000",
+      1574114560
+    ],
+    "effect_tag": "hsrcomp",
+    "support_foundation_width": 1.3,
+    "support_min_spacing": 16.0,
+    "clearance_width": 5.0,
+    "clearance_height": 5.0,
+    "maximum_grade": 0.25,
+    "minimum_radius_m": 24.0,
+    "at_grade_conflicts": false,
+    "orientation_policy": "rotate-only-preserve-direction",
+    "provenance": "Self-contained reusable HSR module with literal local paths, selected native-profile sweep cells and explicit supports; software checks do not establish game operation",
+    "custom_curved_interfaces": false,
+    "support_centers": [
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "authored_support_centers": [
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "port_vectors": {
+      "Sin": [
+        0.0,
+        1.0
+      ],
+      "Nout": [
+        0.0,
+        1.0
+      ],
+      "Nin": [
+        0.0,
+        -1.0
+      ],
+      "Sout": [
+        0.0,
+        -1.0
+      ],
+      "Win": [
+        1.0,
+        0.0
+      ],
+      "Eout": [
+        1.0,
+        0.0
+      ],
+      "Ein": [
+        -1.0,
+        0.0
+      ],
+      "Wout": [
+        -1.0,
+        0.0
+      ]
+    }
+  },
+  "layout": [
+    [
+      [
+        0,
+        0
+      ],
+      {
+        "routes": [
+          {
+            "transport": 7,
+            "entry": 3,
+            "exit": 1,
+            "points": [
+              [
+                2.0,
+                -8,
+                30.5
+              ],
+              [
+                2.0,
+                8,
+                30.5
+              ]
+            ],
+            "role": "main",
+            "movement": "S>N",
+            "junction": false,
+            "tangent_in": [
+              0.0,
+              1.0
+            ],
+            "tangent_out": [
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "transport": 7,
+            "entry": 1,
+            "exit": 3,
+            "points": [
+              [
+                -2.0,
+                8,
+                30.5
+              ],
+              [
+                -2.0,
+                -8,
+                30.5
+              ]
+            ],
+            "role": "main",
+            "movement": "N>S",
+            "junction": false,
+            "tangent_in": [
+              0.0,
+              -1.0
+            ],
+            "tangent_out": [
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "transport": 7,
+            "entry": 0,
+            "exit": 2,
+            "points": [
+              [
+                -8,
+                -2.0,
+                15.5
+              ],
+              [
+                8,
+                -2.0,
+                15.5
+              ]
+            ],
+            "role": "main",
+            "movement": "W>E",
+            "junction": false,
+            "tangent_in": [
+              1.0,
+              0.0
+            ],
+            "tangent_out": [
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "transport": 7,
+            "entry": 2,
+            "exit": 0,
+            "points": [
+              [
+                8,
+                2.0,
+                15.5
+              ],
+              [
+                -8,
+                2.0,
+                15.5
+              ]
+            ],
+            "role": "main",
+            "movement": "E>W",
+            "junction": false,
+            "tangent_in": [
+              -1.0,
+              0.0
+            ],
+            "tangent_out": [
+              -1.0,
+              0.0
+            ]
+          }
+        ],
+        "decks": []
+      }
+    ]
+  ],
+  "surface_context": {
+    "selected_cells": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    ],
+    "surface_decks": [
+      {
+        "name": "crossing_lower",
+        "points": [
+          [
+            -8.0,
+            -16.0,
+            15.5
+          ],
+          [
+            40.0,
+            -16.0,
+            15.5
+          ]
+        ],
+        "width": 15.0,
+        "geometry_id": "hsr_component_crossing_lower",
+        "profile": "hsr",
+        "start_tangent": [
+          1.0,
+          0.0
+        ],
+        "end_tangent": [
+          1.0,
+          0.0
+        ],
+        "precise_union": true,
+        "simplify_collinear": true,
+        "extend_endpoints": "ports",
+        "clearance_half_width": 2.6,
+        "support": false,
+        "support_route": [
+          [
+            -8.0,
+            -16.0,
+            15.5
+          ],
+          [
+            40.0,
+            -16.0,
+            15.5
+          ]
+        ],
+        "scoped_clip_planes": [
+          [
+            0,
+            -8,
+            1,
+            0
+          ],
+          [
+            0,
+            40,
+            -1,
+            -1
+          ]
+        ],
+        "uv_offset": -0.0
+      },
+      {
+        "name": "crossing_upper",
+        "points": [
+          [
+            16.0,
+            -40.0,
+            30.5
+          ],
+          [
+            16.0,
+            8.0,
+            30.5
+          ]
+        ],
+        "width": 15.0,
+        "geometry_id": "hsr_component_crossing_upper",
+        "profile": "hsr",
+        "start_tangent": [
+          0.0,
+          1.0
+        ],
+        "end_tangent": [
+          0.0,
+          1.0
+        ],
+        "precise_union": true,
+        "simplify_collinear": true,
+        "extend_endpoints": "ports",
+        "clearance_half_width": 2.6,
+        "support": false,
+        "support_route": [
+          [
+            16.0,
+            -40.0,
+            30.5
+          ],
+          [
+            16.0,
+            8.0,
+            30.5
+          ]
+        ],
+        "scoped_clip_planes": [
+          [
+            2,
+            40,
+            -1,
+            0
+          ],
+          [
+            2,
+            -8,
+            1,
+            -1
+          ]
+        ],
+        "uv_offset": -0.0
+      }
+    ],
+    "support_centers": [
+      [
+        16.0,
+        -16.0
+      ]
+    ],
+    "partition_cells": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "purpose": "Complete surface boundary ownership mask for deterministic overhang assignment; only selected module cells are packed into models."
+  }
+}

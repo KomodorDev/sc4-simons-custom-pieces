@@ -1,0 +1,53 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR over Straight GHSR.",
+  "schema_version": 1,
+  "id": "hsr-straight-ghsr",
+  "name": "HSR over Straight GHSR",
+  "description": "Straight elevated HSR crosses straight ground HSR at a right angle. One tile; no interchange.",
+  "recipe": "hsr_straight_ghsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7a2",
+  "tile_ids": [
+    "7f500000"
+  ],
+  "preview_id": "7f500ff5",
+  "effect_name": "preview_scp_hsr_cross_00001",
+  "footprint": [
+    1,
+    1
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr",
+    "urail"
+  ],
+  "menu": {
+    "id": "6a47f7a2",
+    "order": "7011f7a2",
+    "style": "cross-oo"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f500000",
+      "source": "5dd31500",
+      "rotation": 1
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team native HSR and GHSR model buffers",
+    "construction": "NAM AAC0/AAC2/AAC3 same-network two-height layout",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "domain": "high-speed-rail"
+}

@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "purpose": "Actual saved-resource ports, service roles, directed journeys and scoped candidate counterpart poses.",
+  "subject_id": "interchange-l4-split-135-compact",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:interchange-l4-split-135-compact:ea5118b0-ea5118b1-7f55aff5": "ef9a303a7cccc661220688940513844277d4998038171555a0f579dd5a6ac212",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a000": "3b50c8182d89dfce74e047f640f750be72e71cab53ce872d4968298545f26e20",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a010": "15072a37838f918b20dc3dc8904cece749c666ada7b639b8c4445a080614f4e7",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a020": "1b0e027157ff52d4a2d7bd7b3241e49bd43e6fc559ad06533f59fce3ba69c594",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a030": "b60e2708aeb31a8dcbf60f80b39679d6136dbe91af861be180378ea58c4eefc2",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a040": "9b40e04f6b1184e3e51f406a05221cc851418a597c8737497346daff4b968557",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a050": "2ed2e982abc585a2f853df6cecdb2decc9e347c58a718d9cd4262f7ba1d8b4c4",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a100": "04835b0e2ee773e3f813fc9ff2ab6e5e5e2a2c5fbe4608b371be47bfa189c4f2",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a110": "5c846c045c586e49d8a016b9ab72ca41d38a4208db7cf7a1538e52187912bf83",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a120": "99ae18149bc56fa75907a9e2ecaf1920cbf92f70ab4a68ffa014dfef846fc602",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a200": "e6d590f8c9e73183f22595b3b01e579be1192bef99bb461e52ade13e0916b11e",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a300": "59a8f9f35aeb3024d53070961fd84459885bcc77c041681490c2f724aba86d2c",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a400": "a2c3628e68a854f80582ae4a22839a8be5e697d5032a1e52e6ce2e495471e482",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a500": "c0d552cd6e4ffcc34ef9638092b3cd9ac9093776520ec82df1e8525dde56eb26",
+      "exemplar:interchange-l4-split-135-compact:6534284a-a8434037-7f55a510": "1164bb1ce311bf4f185493d624f139f28b26f64939f5d455b7fa33fbb6aa12af",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a000": "747ee9f83f94ed246280f2bb21244d6ecbdc6ee3d8fc5f084eaa8a538aec0385",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a001": "747ee9f83f94ed246280f2bb21244d6ecbdc6ee3d8fc5f084eaa8a538aec0385",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a002": "747ee9f83f94ed246280f2bb21244d6ecbdc6ee3d8fc5f084eaa8a538aec0385",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a003": "747ee9f83f94ed246280f2bb21244d6ecbdc6ee3d8fc5f084eaa8a538aec0385",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a004": "747ee9f83f94ed246280f2bb21244d6ecbdc6ee3d8fc5f084eaa8a538aec0385",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a010": "e51ffce89c15bd23c6ad65dcc2cf41f06e120930895d9695a17c557acf41a1e5",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a011": "e51ffce89c15bd23c6ad65dcc2cf41f06e120930895d9695a17c557acf41a1e5",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a012": "e51ffce89c15bd23c6ad65dcc2cf41f06e120930895d9695a17c557acf41a1e5",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a013": "e51ffce89c15bd23c6ad65dcc2cf41f06e120930895d9695a17c557acf41a1e5",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a014": "e51ffce89c15bd23c6ad65dcc2cf41f06e120930895d9695a17c557acf41a1e5",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a020": "814cbef066db9f05c4b5abb29fc3dc3b1d8c2466384236f000d123e0a4b15b7a",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a021": "814cbef066db9f05c4b5abb29fc3dc3b1d8c2466384236f000d123e0a4b15b7a",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a022": "814cbef066db9f05c4b5abb29fc3dc3b1d8c2466384236f000d123e0a4b15b7a",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a023": "814cbef066db9f05c4b5abb29fc3dc3b1d8c2466384236f000d123e0a4b15b7a",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a024": "814cbef066db9f05c4b5abb29fc3dc3b1d8c2466384236f000d123e0a4b15b7a",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a030": "82456b3be170ce930326da9fb9a77f5a0bfb2c073bf3d31a724d6de0f489bdb3",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a031": "82456b3be170ce930326da9fb9a77f5a0bfb2c073bf3d31a724d6de0f489bdb3",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a032": "82456b3be170ce930326da9fb9a77f5a0bfb2c073bf3d31a724d6de0f489bdb3",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a033": "82456b3be170ce930326da9fb9a77f5a0bfb2c073bf3d31a724d6de0f489bdb3",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a034": "82456b3be170ce930326da9fb9a77f5a0bfb2c073bf3d31a724d6de0f489bdb3",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a040": "fea1b951cfe0c69af132274e556b15ca3b930de1656ddef14e8fb99611bdc89d",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a041": "fea1b951cfe0c69af132274e556b15ca3b930de1656ddef14e8fb99611bdc89d",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a042": "fea1b951cfe0c69af132274e556b15ca3b930de1656ddef14e8fb99611bdc89d",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a043": "fea1b951cfe0c69af132274e556b15ca3b930de1656ddef14e8fb99611bdc89d",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a044": "fea1b951cfe0c69af132274e556b15ca3b930de1656ddef14e8fb99611bdc89d",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a050": "0cd4163989e06a56e49cf342afb3d4bb564720a65848f8b4eeb429069655643b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a051": "0cd4163989e06a56e49cf342afb3d4bb564720a65848f8b4eeb429069655643b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a052": "0cd4163989e06a56e49cf342afb3d4bb564720a65848f8b4eeb429069655643b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a053": "0cd4163989e06a56e49cf342afb3d4bb564720a65848f8b4eeb429069655643b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a054": "0cd4163989e06a56e49cf342afb3d4bb564720a65848f8b4eeb429069655643b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a100": "4eff26280f2c1c83b96efd91fb66734e01bf82c5f57a51f08c80abf0f1724722",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a101": "4eff26280f2c1c83b96efd91fb66734e01bf82c5f57a51f08c80abf0f1724722",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a102": "4eff26280f2c1c83b96efd91fb66734e01bf82c5f57a51f08c80abf0f1724722",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a103": "4eff26280f2c1c83b96efd91fb66734e01bf82c5f57a51f08c80abf0f1724722",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a104": "4eff26280f2c1c83b96efd91fb66734e01bf82c5f57a51f08c80abf0f1724722",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a110": "55350724c271c811622d5e097b07b1bf7582092072f1c8697139b0ea6072700e",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a111": "55350724c271c811622d5e097b07b1bf7582092072f1c8697139b0ea6072700e",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a112": "55350724c271c811622d5e097b07b1bf7582092072f1c8697139b0ea6072700e",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a113": "55350724c271c811622d5e097b07b1bf7582092072f1c8697139b0ea6072700e",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a114": "55350724c271c811622d5e097b07b1bf7582092072f1c8697139b0ea6072700e",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a120": "5610133b739e9f663e7eee6b501edd9e552029f9902bc35191cccd65b30292c0",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a121": "5610133b739e9f663e7eee6b501edd9e552029f9902bc35191cccd65b30292c0",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a122": "5610133b739e9f663e7eee6b501edd9e552029f9902bc35191cccd65b30292c0",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a123": "5610133b739e9f663e7eee6b501edd9e552029f9902bc35191cccd65b30292c0",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a124": "5610133b739e9f663e7eee6b501edd9e552029f9902bc35191cccd65b30292c0",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a200": "7674d396e8041411edb6c30416cf5a47670a46ae1949957b652d902ccac23d62",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a201": "7674d396e8041411edb6c30416cf5a47670a46ae1949957b652d902ccac23d62",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a202": "7674d396e8041411edb6c30416cf5a47670a46ae1949957b652d902ccac23d62",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a203": "7674d396e8041411edb6c30416cf5a47670a46ae1949957b652d902ccac23d62",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a204": "7674d396e8041411edb6c30416cf5a47670a46ae1949957b652d902ccac23d62",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a300": "bcbe8b05181ac1b89842bee3c8c2206ce0e0edc18e645cb32be172fa98d97f4b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a301": "bcbe8b05181ac1b89842bee3c8c2206ce0e0edc18e645cb32be172fa98d97f4b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a302": "bcbe8b05181ac1b89842bee3c8c2206ce0e0edc18e645cb32be172fa98d97f4b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a303": "bcbe8b05181ac1b89842bee3c8c2206ce0e0edc18e645cb32be172fa98d97f4b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a304": "bcbe8b05181ac1b89842bee3c8c2206ce0e0edc18e645cb32be172fa98d97f4b",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a400": "89224e9f049867a93430ffb796fb2b063731011b00164cbaac4393ceebe41e9f",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a401": "89224e9f049867a93430ffb796fb2b063731011b00164cbaac4393ceebe41e9f",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a402": "89224e9f049867a93430ffb796fb2b063731011b00164cbaac4393ceebe41e9f",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a403": "89224e9f049867a93430ffb796fb2b063731011b00164cbaac4393ceebe41e9f",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a404": "89224e9f049867a93430ffb796fb2b063731011b00164cbaac4393ceebe41e9f",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a500": "d2b7d6c26688a381e319a720460208bf78e67599ee301e54aecd995202a8cf07",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a501": "d2b7d6c26688a381e319a720460208bf78e67599ee301e54aecd995202a8cf07",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a502": "d2b7d6c26688a381e319a720460208bf78e67599ee301e54aecd995202a8cf07",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a503": "d2b7d6c26688a381e319a720460208bf78e67599ee301e54aecd995202a8cf07",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a504": "d2b7d6c26688a381e319a720460208bf78e67599ee301e54aecd995202a8cf07",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a510": "e4be8d3abb66de418033be333d5fc481a277cc012ac6d4795e6bf7f7e33d812c",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a511": "e4be8d3abb66de418033be333d5fc481a277cc012ac6d4795e6bf7f7e33d812c",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a512": "e4be8d3abb66de418033be333d5fc481a277cc012ac6d4795e6bf7f7e33d812c",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a513": "e4be8d3abb66de418033be333d5fc481a277cc012ac6d4795e6bf7f7e33d812c",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a514": "e4be8d3abb66de418033be333d5fc481a277cc012ac6d4795e6bf7f7e33d812c",
+      "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55aff5": "5ebe84f8ddb7952df78146ec47018fbab9bea2acd0888bfc0a4b604cd8ef6d0c",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a000": "34c3ebde580c63f5595da12cdc16b1cd47e54c0e31933770de02fce366cb8b5b",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a010": "34c3ebde580c63f5595da12cdc16b1cd47e54c0e31933770de02fce366cb8b5b",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a020": "fc0b982bf3d3b765349f4a925d4307392c8c434456524a136f1e162cc36f5b94",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a030": "3c3d214a0c53aa2a73f8071570240a3cfcb1e5dd43c678650b61681dfbd5244c",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a040": "05ab1bf4da8b6a97d85c10377f334109ce2db657ebad32b046782c45b3047f71",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a050": "657fe3d23b62b2c27ecdf72b2ce716d9d98fd5ba3423739560815cd94ceff55e",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a100": "f2a3756ca5bdee8709352dc2ce88732ec0c43f389469e069a2ae3c8af000d0dc",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a110": "50e917321946a64f86fd9cd24b6860f72a401a420f29ac42b2bc06983c327c81",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a120": "3db61e0adf3f5cd69b30045378a9b92f508657d2702839c836f65f82e9a441c7",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a200": "29ad9c9c89719c86c25954b842c4a4f5bc5ee56916cd4b6a905197bdee0da86e",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a300": "1c7070e77c3b070bbb2af3452919e68d4420b57333d3888246375205ffd6e634",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a400": "00ad140c302d70c4da99cb9caba59bf4ca4d0d056c3c95263e2b61992f3b84b7",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a500": "88553c4ab6f74b8b3ee11b1402684d623686ca1383f4a00041c51e83a6bf16c6",
+      "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a510": "6f0572133162c2e3772088977f11cef2aa0bddf5cbacdfe0d69c847135fd9e1b",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a000": "5974f416cb3cab19f30a3e277cdc5513dacc8414a71054b8293112ffe0a4c3c8",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a001": "dd8032279e6ad0bad4a5a71ac9a2de773fd65e6a47421009b7e3530af1d6815a",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a002": "15d0d2f03b5634364202c2549ad4b1fd0344f5e67c8d7f9a86facb819f9e81f2",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a003": "6b159cdc60832675a5d7e558d1b4bab4ff731323dff65e625cfa46aecdc8825a",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a004": "0dfa5488c19205156c35614a18e636e464e4b1c3e568e91567d09ebd67da46b1",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a010": "2d3d170772f698a515dd8dbe24811cf21a2dcdd472fe2f925b5f0a7c9d53f14a",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a011": "0b39bbcb4a640904e1d0266a6059ed271364ce2f9ec0ea75fa6bcbcd834e95d3",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a012": "9c151db044f57acc7cfed7a0c784523493e9ba329c92c2e55d23d69236caa678",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a013": "2e43806ca57ac09f6eefe0d21705f97330a1264d0ac39f0f4830f3308dc47dd1",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a014": "457a9622efce0ac08b5ff45e426b291bf038279079e77264710df01236e1666e",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a020": "73f5813f9bd041b2436d6ed0b9faa2dfe96f418c2e64a5447daa51f272fd2ca0",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a021": "dc583d9b72032172a857384275be2af788f648ada65a3d1d26a423dcca6defe6",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a022": "7368ee86f1c01cf8e825031a46bb175264f358b5b61546a6e12687e405e59def",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a023": "73825ad30d2d2c77d0071257cfc8129bb34694c7df40a08b786390f48ce7bc70",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a024": "87ff162d2816e2a8dee14ce8ff60e79c3aebc881b4ce260c621fcef6ce454fa3",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a030": "e512ec7a21a07555531a81f95841021b14c97efc2712c7bea7b1e89c76bb418b",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a031": "ae0f96be5fb2a7a3adac77acddffbc19afdb035462aca404b284f60bc720df92",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a032": "95fa596f5c12d8f8c9ce482dd1631469bf2a4a1cdc5174e552f7b053bd17a83c",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a033": "16de7ca18fdef6bbadbc0ecf79f7b8f04bd0d26c588d5853b160c72ba54a8e8b",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a034": "bd6948f2a5678a039282f35f01e4c03854263b6500281dac3cb3ecfbe1d98fec",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a040": "5cdf92dedfcef5cc2e66aa65dc838ed7456fa09e18a082c78b18938614be9a2e",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a041": "9d7582ddfee64b05e4cb17c5a73e5bc3e909b6e02b89ee75b8c95a463788b2ad",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a042": "72a31ef2661c352554e27b4e814f0e853086293456060cbc34c5f365862ab14e",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a043": "521f68cf7e9224cd58b080d0c89234508787d06ee2d5acffdeb0e58df630daf0",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a044": "fff99be8574b96dc98d5d5de11e278f9a9c5c08515adea6317ac59e4b6ecc1a0",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a050": "b5eda02d2ff6940c45bde133878ff12ab79ec6f13082431a7322b43466ca7936",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a051": "793fd0b522e747a1efb97b84ec4ac085d9f5a7ed246ee0427180ca98f06695e3",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a052": "5c85d945b9a91211b72829e71376b0a1383fb198f23154b4b96b2221b0b42f37",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a053": "c22b2486198abf4e3850d99d46824ae88955cb18eac87866c7e2ab360917c304",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a054": "f3be5f454d290fdb35727693e13b79f5dc17066d1165572da8499f694a221fb5",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a100": "397a790208debe33fc6b523935ed8c36e98a64c2aa32280136c91ae09b3f3fa4",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a101": "871df81d15537c39e6078bd53eea230fbe1994ed20bee41f101e94c982cc3ac5",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a102": "a2cb68e9762ef4ac8de75c426682161fd72241268ee9e56b6149171c2b54bb99",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a103": "56ac2f79f3a0f322c627252acc562adfaf93575451b5031d95dea92efaa1e131",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a104": "475eef3b3647eab3ef348457157c7e839f98e75c8b9e458de98ba3ffdb139624",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a110": "2b3a7172c944cf11532733979c5f0f96d12c69b1bc538d3c513094d3d9061cad",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a111": "2357d1b8a4b46879830f0540b2e6297fd586f9684ca2f3cbd76deaf10c2bb962",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a112": "2a5a1f2fb20cdb2a4c48611bbfc5001e15d9a771550b6eb4c34ad9f739150d17",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a113": "ad0d870adf1ba635f909be9356b1a9b16c04b97654404b5933eb3034cdc137f4",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a114": "b48a137b6005308bf4b82bb1caf77ba30af9a2f7d3d9797341e9aa506f133c67",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a120": "3887640efd34fe2c3af3a93f2720150dea129e8216882bdc9bb11f167adb3c7b",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a121": "dfd030359d4fbf12f806594e10a4802d6c2ce915e02f183214d2271d44bee217",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a122": "eb62e6d989d1a3e54463670f7ae6b00991435ca206c35deb9cdda7898ee84626",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a123": "d0d506165859fef2ad7bda6cebb3173e15baa3a1979060f0933ea1260255bbba",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a124": "a61f353d99b4a45be4fca6c06d5d9be2ecffd2f0a73deb8af9754c4421866112",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a200": "1c0ffacf693278d6d0b51f9c6c588d3fc64ddc75c95690278752012fe1bc0669",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a201": "db56f92549fc0f62ff1cf682de3d9d6ce398acd962d71971da376bdbaf355b4d",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a202": "e60b8d571f5aefe3fd68fda61c143ca06de582200c4108d3a563e82b8442a5f2",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a203": "042a7ced808c47ec21c03af48fbb621f60d5c716621286db6c478c2cd22a928f",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a204": "81bd8f90d9f3716ca24825c2628486c508f09e73b3023bef95444513282d4d68",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a300": "15ccd633ac8b617fc21c1ab1567c875b1b50bc5d959c6f15fb928994511b8dd2",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a301": "a47f8d51d2d88505b97b4de0ef3f12a2e173e0c3c9bd001e137feee7c5f5ee8b",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a302": "8141386a4afeee0ee6a987ac398b505d4db9da1cf61ebc974f40e54089e03dd4",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a303": "7862a08ece5096f96b9b4196a766bbb635672a6020a3b9fbb012e91db49eddb4",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a304": "35c817a97c61285c5217918daba04416a1f80bc2aabadc97c970b0826df42713",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a400": "8ed4a56f1d0b50b9493e0e19241cf271bac2ec397455ff7d77bbefbdca4da029",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a401": "885540cbeb4ef2bff11aa9a3a9398762870240a5a2a6a215de189ec0e8e0d26d",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a402": "d928e9da12f62d075ecce5456bbd6ea77effdf6b4a3a87c358188eeeac67b8fc",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a403": "11671ee8eb36d45f5ebb453e9ae1fdbb9e67f35553a0184991e40e52e80e6c99",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a404": "56ec21f715fb97d6520f419d55df45bafe8ce4188de8d2b8eb323f7ba0e09fe1",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a500": "d5f2e526d4445458c377fa6d3e15d4236f8fe5a9102a806ba213ded8e68579e3",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a501": "f7ec8fb01b722c171788da3eb07599be80ac6f62a59139185370c4caa7bf1649",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a502": "5d242ccca8bf33aabf366376c5c361f3b61c4bfca954448d32d961c4d45c89e7",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a503": "34dd0831e21de760a4644c93773e1077ff32ec662db099ea22f660d54f8e2b4e",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a504": "c90ab4942cb4a1a34ca6a24ba837d0281f476988c5d39357031b465f0ec7360c",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a510": "7c322daa2f29e02e3dc4428ad79cced47ca5c073f006e272d50de0541b08fa5e",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a511": "4bc1d4fc7114345b78b290be5f19e8a9b46a7fe9ae1cc13b67a157afecb42869",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a512": "f5ca727e755b26b27267c42d8af87a192e908f4cc5bd74ae5e9ff815c197c034",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a513": "0ad395deb56c7bd1eaaff65c70d965069a18fa7a4d08835fa8466c3881a36be3",
+      "shadow:interchange-l4-split-135-compact:7ab50e44-2bc2759a-7f55a514": "f087a15bcea0747177a09073aee2f93a8fd44dbe506fb901eb0144ef2d768f1d",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a000": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a010": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a020": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a030": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a040": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a050": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a100": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a110": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a120": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a200": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a300": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a400": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a500": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "text:interchange-l4-split-135-compact:2026960b-2a592fd1-7f55a510": "d30b00be81cc7b9aa8a12a8e883935e7dfce93e457e69b2653d89e3a9f0d2453",
+      "construction:interchange-l4-split-135-compact": "cbf9bc130420801987602d18ae32d4dc64585bdc54543feabd8a5585c231586d"
+    },
+    "reviewed_contract_available": true,
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "Sin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        0.0,
+        -88.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a050",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a051",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a052",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a053",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a054",
+        "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a050",
+        "construction:interchange-l4-split-135-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-l4-straight",
+          "port_id": "out",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -96.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530000",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530001",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530002",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530003",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530004",
+            "path:interchange-oneway-l4-straight:296678f7-a966883f-7f530000",
+            "construction:interchange-oneway-l4-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-in-left",
+          "port_id": "out",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -96.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536000",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536001",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536002",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536003",
+            "model:interchange-oneway-l4-curve-in-left:5ad0e817-badb57f1-7f536004",
+            "path:interchange-oneway-l4-curve-in-left:296678f7-a966883f-7f536000",
+            "construction:interchange-oneway-l4-curve-in-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-in-right",
+          "port_id": "out",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            -96.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537000",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537001",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537002",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537003",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537004",
+            "path:interchange-oneway-l4-curve-in-right:296678f7-a966883f-7f537000",
+            "construction:interchange-oneway-l4-curve-in-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-90a5bcd3e5d324374d48",
+      "candidate_counterpart_count": 45,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Nout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        0.0,
+        8.0,
+        30.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a000",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a001",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a002",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a003",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a004",
+        "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a000",
+        "construction:interchange-l4-split-135-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-l4-straight",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530000",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530001",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530002",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530003",
+            "model:interchange-oneway-l4-straight:5ad0e817-badb57f1-7f530004",
+            "path:interchange-oneway-l4-straight:296678f7-a966883f-7f530000",
+            "construction:interchange-oneway-l4-straight"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-out-left",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535010",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535011",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535012",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535013",
+            "model:interchange-oneway-l4-curve-out-left:5ad0e817-badb57f1-7f535014",
+            "path:interchange-oneway-l4-curve-out-left:296678f7-a966883f-7f535010",
+            "construction:interchange-oneway-l4-curve-out-left"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-out-right",
+          "port_id": "in",
+          "relative_rotation_ccw": 0,
+          "relative_position_m": [
+            0.0,
+            32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534010",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534011",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534012",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534013",
+            "model:interchange-oneway-l4-curve-out-right:5ad0e817-badb57f1-7f534014",
+            "path:interchange-oneway-l4-curve-out-right:296678f7-a966883f-7f534010",
+            "construction:interchange-oneway-l4-curve-out-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-90a5bcd3e5d324374d48",
+      "candidate_counterpart_count": 43,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    },
+    {
+      "id": "Bout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 2,
+      "endpoint_m": [
+        88.0,
+        -16.0,
+        30.5
+      ],
+      "tangent": [
+        0.7071067811865475,
+        -0.7071067811865475
+      ],
+      "sampled_tangent": [
+        0.7071067811865511,
+        -0.707106781186544
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a510",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a511",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a512",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a513",
+        "model:interchange-l4-split-135-compact:5ad0e817-badb57f1-7f55a514",
+        "path:interchange-l4-split-135-compact:296678f7-a966883f-7f55a510",
+        "construction:interchange-l4-split-135-compact"
+      ],
+      "compatible_counterparts": [
+        {
+          "piece_id": "interchange-oneway-l4-diagonal-east-half",
+          "port_id": "in",
+          "relative_rotation_ccw": 270,
+          "relative_position_m": [
+            96.0,
+            -16.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-diagonal-east-half:5ad0e817-badb57f1-7f533000",
+            "model:interchange-oneway-l4-diagonal-east-half:5ad0e817-badb57f1-7f533001",
+            "model:interchange-oneway-l4-diagonal-east-half:5ad0e817-badb57f1-7f533002",
+            "model:interchange-oneway-l4-diagonal-east-half:5ad0e817-badb57f1-7f533003",
+            "model:interchange-oneway-l4-diagonal-east-half:5ad0e817-badb57f1-7f533004",
+            "path:interchange-oneway-l4-diagonal-east-half:296678f7-a966883f-7f533000",
+            "construction:interchange-oneway-l4-diagonal-east-half"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-oneway-l4-curve-in-right",
+          "port_id": "in",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            96.0,
+            -32.0
+          ],
+          "resource_keys": [
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537010",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537011",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537012",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537013",
+            "model:interchange-oneway-l4-curve-in-right:5ad0e817-badb57f1-7f537014",
+            "path:interchange-oneway-l4-curve-in-right:296678f7-a966883f-7f537010",
+            "construction:interchange-oneway-l4-curve-in-right"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        },
+        {
+          "piece_id": "interchange-l4-merge-45-compact",
+          "port_id": "Bin",
+          "relative_rotation_ccw": 180,
+          "relative_position_m": [
+            128.0,
+            -64.0
+          ],
+          "resource_keys": [
+            "model:interchange-l4-merge-45-compact:5ad0e817-badb57f1-7f553230",
+            "model:interchange-l4-merge-45-compact:5ad0e817-badb57f1-7f553231",
+            "model:interchange-l4-merge-45-compact:5ad0e817-badb57f1-7f553232",
+            "model:interchange-l4-merge-45-compact:5ad0e817-badb57f1-7f553233",
+            "model:interchange-l4-merge-45-compact:5ad0e817-badb57f1-7f553234",
+            "path:interchange-l4-merge-45-compact:296678f7-a966883f-7f553230",
+            "construction:interchange-l4-merge-45-compact"
+          ],
+          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
+          "endpoint_error_m": 0.0,
+          "tangent_error": 0.0
+        }
+      ],
+      "connection_class": "path-interface-a70e777e6354823bc5c5",
+      "candidate_counterpart_count": 6,
+      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+    }
+  ],
+  "journeys": [
+    {
+      "id": "7:Sin>Bout",
+      "entry_port": "Sin",
+      "exit_port": "Bout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:Sin>Nout",
+      "entry_port": "Sin",
+      "exit_port": "Nout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [],
+  "compatibility_policy": "Concrete PATH-aligned candidates only; physical seam review and in-game tests remain separate.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7fc",
+        "0004f7fc"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7fc",
+        "0007f7fc"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7fc",
+        "0006f7fc"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7fc",
+        "0005f7fc"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

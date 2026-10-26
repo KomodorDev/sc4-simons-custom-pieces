@@ -1,0 +1,3422 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "hsr-diagonal-ghsr",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Actual emitted rules support four proper rotations and four distinct construction-transposed states; each has separate manual coverage. Counterpart reflection is never assumed.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": true,
+      "construction_section_ids": [
+        "0004f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": true,
+      "construction_section_ids": [
+        "0007f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": true,
+      "construction_section_ids": [
+        "0006f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": true,
+      "construction_section_ids": [
+        "0005f7a1"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+    "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+    "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+    "effect:hsr-diagonal-ghsr:ea5118b0-ea5118b1-5dd0f225": "9da4b4537a1c98109f15cf02a4200b15868eb31dcfbb7bb3d5e62a5d1f70b02c",
+    "exemplar:hsr-diagonal-ghsr:6534284a-a8434037-5dd0f200": "eb9d918e76aabd78d3899ed1d6a9b8f11af8e385f48958702fd28f9d8f327cfa",
+    "exemplar:hsr-diagonal-ghsr:6534284a-a8434037-5dd0f210": "b84c3366a9706c320138b7d0d5c47217c7bfa82fe8c5871fc511e29905e5ad81",
+    "graph:hsr-diagonal-ghsr": "6f8f9d505c0ab08c372b9ea4a4c24f6598b86b8ff2f7a7a1213eb354c057155e",
+    "image:hsr-diagonal-ghsr:canonical-southeast": "548b18c4396b7100bbc586b3f9f73db8083db7d1af9d4092c66087d295b40a71",
+    "interface:hsr-diagonal-ghsr:7-E-in-8": "542010f4b7973e79eb70e3a7d35642fc5f4dc4ccac919de1633212a5148f3bb1",
+    "interface:hsr-diagonal-ghsr:7-E-out-7": "1f52a3bafd31b00983dbf9b3d306dee75e652538ce21be7abf413988c926150a",
+    "interface:hsr-diagonal-ghsr:7-N-in-4": "520555350da906fc9529c9a04ec200957d826a36dc9b749a1f66d5725cc2972d",
+    "interface:hsr-diagonal-ghsr:7-N-out-6": "0a8464997f0e1926c09d1a9b9997551f225a1d03976b4670b2645844003f6081",
+    "interface:hsr-diagonal-ghsr:7-S-in-5": "4679558f9c75a0b5d887c64fbcbd5904a987ccd00d4d4a73df8ebf016c9f74c2",
+    "interface:hsr-diagonal-ghsr:7-S-out-3": "2c3c0066e6cefab4a4cac315972f50192e99978873f0d7ac84c63f8c43a22ae5",
+    "interface:hsr-diagonal-ghsr:7-W-in-1": "1c83d5eb34de9109fd0c284fe7ddbe896b26505e125519ea6139c8996fe9a01c",
+    "interface:hsr-diagonal-ghsr:7-W-out-2": "7424be296568a270083e3f8ef1e8bf6c1edf114ed099ccb0bfa09b1b755e8c70",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+    "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f225": "c71e96626dd88b574c855aa62cc57d99a0793599f0c29431fa5487ce568b03b6",
+    "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+    "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+    "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a",
+    "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914",
+    "text:hsr-diagonal-ghsr:2026960b-2a592fd1-5dd0f200": "1dea867231b185c0b4f8e6c9f47133db6634348f7291f3baaaec62c180818e50",
+    "text:hsr-diagonal-ghsr:2026960b-2a592fd1-5dd0f210": "1dea867231b185c0b4f8e6c9f47133db6634348f7291f3baaaec62c180818e50"
+  },
+  "cases": [
+    {
+      "id": "software_resources-f0618d4bf35ccfc7a9f5",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "76e9360f97c80b708a23ee2e3eaa22123bf7eb5c67f1b78dce48920129f04e45",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "software_connectivity-f0618d4bf35ccfc7a9f5",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d5a3cacbdcd5d1dc5041474bc7b703bb357d22f96baf21671a8a3d99783fa06",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "preview_review-8c9c77283aead5dcb2ca",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "image_key": "image:hsr-diagonal-ghsr:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f1a043aa8b61e83e360bf4d7e4244a6bd4d96e3fc28548cfa35b34b0d6727c3e",
+      "dependency_ref": "f5a2a08966120021efd9086c3a2dd939a6779cbaf84866e37f3b75cb682db9f9"
+    },
+    {
+      "id": "in_game_render-06f4be56856ee5ba9427",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bb7b5e406872f7af236c57b3d245e9a00cbf2f0a99db2d61635d30482ca95871",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-06f4be56856ee5ba9427",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd44ca2b84ff6d62ec7b74e55606ce6525abffabd7e6d3e91763f6bd13d0d522",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-06f4be56856ee5ba9427",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd44ca2b84ff6d62ec7b74e55606ce6525abffabd7e6d3e91763f6bd13d0d522",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-06f4be56856ee5ba9427",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd44ca2b84ff6d62ec7b74e55606ce6525abffabd7e6d3e91763f6bd13d0d522",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-1dff9c94d9d841c9440d",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4e6271fda7226186100d7dd3c5f35338a0bd56c678b9ef791940788a22957800",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-1dff9c94d9d841c9440d",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "16e84cb91e9cf3ee8a889f93b717fc4a6ed9d604d351db6b4e045bf2c22dfb0c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-1dff9c94d9d841c9440d",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "16e84cb91e9cf3ee8a889f93b717fc4a6ed9d604d351db6b4e045bf2c22dfb0c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-1dff9c94d9d841c9440d",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "16e84cb91e9cf3ee8a889f93b717fc4a6ed9d604d351db6b4e045bf2c22dfb0c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-69013c774d7cda134818",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d2cf8c9039cbfd747208ae5d55a04cf4f14975e8ba7e95592ad47eb4bfa4babd",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-69013c774d7cda134818",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d386f278eea9aec9e2ef556c54d09e60dfde02332efb344b7ff8fe28c665eff",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-69013c774d7cda134818",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d386f278eea9aec9e2ef556c54d09e60dfde02332efb344b7ff8fe28c665eff",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-69013c774d7cda134818",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d386f278eea9aec9e2ef556c54d09e60dfde02332efb344b7ff8fe28c665eff",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-667ff7175005a32d498b",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ffd6c0096836f0b12869770dcbb6663bf6f7fe8ee878fbe3255bb1242b4a719d",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-667ff7175005a32d498b",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b665dde573f7606538759d5656749ce3d10ac6e71cb96847604ed80bb643ca6",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-667ff7175005a32d498b",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b665dde573f7606538759d5656749ce3d10ac6e71cb96847604ed80bb643ca6",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-667ff7175005a32d498b",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b665dde573f7606538759d5656749ce3d10ac6e71cb96847604ed80bb643ca6",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-2dfdb15ec4b890fc580e",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd35934146b70708db454acc3ef7ab508602a4066bfd4723ab3e6bb74ff9d0b7",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-2dfdb15ec4b890fc580e",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7f206d0196b6ab6bea351bd3fc6b5eb1e2102ff2c3f33982d7f3115f2e930e1c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-2dfdb15ec4b890fc580e",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7f206d0196b6ab6bea351bd3fc6b5eb1e2102ff2c3f33982d7f3115f2e930e1c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-2dfdb15ec4b890fc580e",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7f206d0196b6ab6bea351bd3fc6b5eb1e2102ff2c3f33982d7f3115f2e930e1c",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-801e4bd02789a2dea433",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e393f4ae059e3a4658c4c5a4e61c718e8aaa34ff3a3e1e3f56e3e7d10ace3bad",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-801e4bd02789a2dea433",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2a48cdc36ecbc0c67907cdc40df1744e84090ab7a850787e936a4e5ed05055e3",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-801e4bd02789a2dea433",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2a48cdc36ecbc0c67907cdc40df1744e84090ab7a850787e936a4e5ed05055e3",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-801e4bd02789a2dea433",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2a48cdc36ecbc0c67907cdc40df1744e84090ab7a850787e936a4e5ed05055e3",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-fe4fe41ed0c1d93c32c5",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "378e8cc672cc45ad352b67056e374ac0b43bcda69305b8f1833e5110e42e1556",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-fe4fe41ed0c1d93c32c5",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "896d52bf7d6bc994a21518499b1fd1c900cc739865efba31748df96cc8027c7a",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-fe4fe41ed0c1d93c32c5",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "896d52bf7d6bc994a21518499b1fd1c900cc739865efba31748df96cc8027c7a",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-fe4fe41ed0c1d93c32c5",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "896d52bf7d6bc994a21518499b1fd1c900cc739865efba31748df96cc8027c7a",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_render-32729d617da30f68742a",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "28401f9cf8a5b316920a3098b69dd809da2e20dee01f2db53bbd0d0151b5fd50",
+      "dependency_ref": "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8"
+    },
+    {
+      "id": "in_game_placement-32729d617da30f68742a",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "36fa840cb343d376fb4ab6ed5b7618d05cf6c9c753a8f2cd80a6775dbb386725",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_demolition-32729d617da30f68742a",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "36fa840cb343d376fb4ab6ed5b7618d05cf6c9c753a8f2cd80a6775dbb386725",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_save_reload-32729d617da30f68742a",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "36fa840cb343d376fb4ab6ed5b7618d05cf6c9c753a8f2cd80a6775dbb386725",
+      "dependency_ref": "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29"
+    },
+    {
+      "id": "in_game_journey-4860649455771b444228",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d80d432f76133d0ae4e1cae61be50ba58bf8b38f284add85483f098d7efae32f",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-03ca24065ab03c672329",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "978f4ff86cfe7920e53aca751b12cec73f2d0beced593af27082eb6b70e00456",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-68fe51f93c5783395158",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5c0f93e2ef2aa29f2a4a21ba3b621b6ceeccc5630df1d4fdb59a719ce2aad3ef",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-a3d3159162e207510e91",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4865eb6f0f5e889b19666c0e39e4b0416a3b488c92ad764809d487124ca70022",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-0c3d4a8f35d7af681dfd",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6ed0e227414bb1b6511a1aed32321443789bdec09bc9ca0de6bd98c8145aa987",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-2b9643350a6bd6f5fbc8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ffe35eb6c3b5196eefa63ff053534d340aa1a8cf05178d9687d5dc56c06ecf58",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-26ccf8bd63a208d1a9a4",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "00ea0595b5036af27ff8f0ff488bf0850e29bb3e38c092b1d1aa18189c8b950d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-9d43cde8ad64344cad71",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-W-in-1>7-E-out-7",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-7",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c719dbf0a178678a0a5309091d52f9d0187cc7561d1a06c043b192047ff36f3c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-d0252cd18783c3f29b17",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0dba06a5d5242060e1fab98e9cc4ea6bc3cfdb1c5d7a800718369d935c621868",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-e04d53048f22316d5ed2",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8cf75e5c3f21172843ad45710e94e75f15ab5f7bc85711738f4b702681b76889",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-2f0c693f8ff032a6ca51",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "700fd9c8fe429556a5f339b5cd369c60c7f74587ec5bc178c8ba1d03ca96a3a0",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-7d551bd8a525083126c3",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9e702402c448d1c95a08948182e9f0f06bdcf6242324eabd35b82add575dde66",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-dd221dea12ae95889817",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8ee86da2428bb5504f8712a6885cdbb4d2550371a208d53e1ab9bdd79fafae86",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-b17b9ee33f457cda76f6",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b7fd43c20131db70b3192c73b6e9332f9a502e8bbb1410bec2b42bd82515299b",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-60c3690fa97135cd3c2f",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ca7427c9a473a06ca5d95ea89402f00638acac2ea424c7fbc99249e7b13af326",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-91f641b3a665819e71de",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-N-in-4>7-S-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-N-in-4",
+        "exit_port": "7-S-out-3",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f561c357018c5ba3c1c2640eb2212557299cc99ae71ac8b642c1d7bc198bc47c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-c3d741d07168588c0f8a",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cbbad6fc72a158f144b9647bcea662911aca0aa145f957db783c0a54339048d9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-dbcba32506b190f6380d",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6230afeafac7cd74c0af6930c0a410b9608070ffd2a69d684c68a1679fd9b38",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-3e2620fa3d1cf5d76077",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ed07efaef766c2a071bed2684a6943814de3236c15ba2bfc8eab67bdadf60f5c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-37536eba46eab558995d",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "96338c37023f3848e40218c3e0d8e52886f9a6b15d3ef3441edb94d424bb91f1",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-045af8134e67cf238d44",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4f68ea224660f1ecd1fc1f823d4645fdc680404875b1ba7fd6112f821085df08",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-54072b945f91a36e42f9",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4ebf0bc3d7819ae6468badeeb93f6ba1bb06d8360f0b1268359ed544378cda22",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-ca282bbe14ded87561f6",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aa7190540dea13dfcde9c2b10f5260448d81984cfc212fc0189d44ba23d2bf75",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-571f0564f43fd7ad855c",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-S-in-5>7-N-out-6",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-S-in-5",
+        "exit_port": "7-N-out-6",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d4b827a34ad01ad9ce834598d5d49950fcb66e98bc1cc0204fb881d468b2d3a1",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-c46198bdca634b638340",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f57f9d75e58f40cfa6456cbedefcde367877cc9f5f4a52be38ef78cb63170193",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-cc71a89b5d45800e6c5c",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "68d95c6e7e1450235a177a8b6098f42579d2222e27dcc5d0a573bd5dd1d4b6dc",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-20e66bdc20a4a0324097",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "90e34866d22a4f5cabb8bd0a16a4e67e5c10ffcdcd25460813f2be81666bd110",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-461b8035d0fc1a5290d1",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "efbe9f3d670969bb4170ec4735eb935941ca238608996e67625c7ee26e00f040",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-b89a63bba37bfe781d75",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9b646b31508c058fa7bb01495da0fb2ca18399f011bc43dd55f0284079409f24",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-e18b532c6a2d583191d1",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9df6c2d17f05ec403c1c718aa5b96268a868de1010f0bd47aa729dee54c9b8e9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-a4ef536009837f8463b7",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "29884765a5b8a5368fb608243663cb8fc31f00fc8fff90c4800186ab9f6644ff",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_journey-30904b2f8674c0ed6ca8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "journey_id": "7:7-E-in-8>7-W-out-2",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "7-E-in-8",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8a7d277314b81c5bd4dd966ffd94a25b68a2be2a6304962216d1d5ff841df52f",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b8ce0cbae944017ab5f7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4c9720f661dc5b4d9d92c30a384375788a62e107d3c216577e08eab2865abd84",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9195955e0bc7eceee80f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "70ad34d52d8a2ccc03f63075c57565ce830cba068167eb328161c5352f13ecfb",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-452fb4b088f76863c8fe",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "00969f8688857098bd4fe6249bc7d0964a387732918d3c3e5aff61119b079f04",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c73c6246aa73d1c3924a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b4b950a632f6d5cc3dde86f76222ed9b437b47aea4456f1ae1b353e30fe8a6d8",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5cf74f33c08b675fc667",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "61ed6677d2d3e08bd42ace0c042b8ceadb7683595c9aead0883e07fb324e0ba2",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-02e28073160ae5cb82ae",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "01a231e87e298566a6cbf0f1fa99ddc41629b3501f9075da0245239b383f06dc",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-baa6932605306dc7304d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "edeb5160faff3a3eda45ff9e7cfe471413e5d95735f36d6bb937b70737797c45",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2873e5e521a6b8dd165c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "340a626c7a3b7c3954942e37b69c900edff5a71dd3ad39af0f89319f2adb6b86",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4b6b8cef1074c1b42c3c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1b10135820856fcddc07b71dc8f311f09ac77865f8eaa6e397d371e30449740c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-68603832664cbb19f271",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df9aaff365b970cd99cfa34d821dc5a5e03096f25afa0cf301708f58c5e42d8b",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-98d579bd436f42f3f6d2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6fcba84089028a144371e924917132bd845c4dd8c61926a618516c02b946a4a3",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4daa0bf96a8a672be3fd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "62767aa7c483fe30ea27a052360d660332d5f0d4f73fc5af79fa2ded1307bbb3",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e2526d2e132da8763685",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "42eb73e6115b5715f71fbade6f7ccca10fe9283b08484ec79b7e4a63cbab5e09",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6200ffad933e559747d9",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "edf6960a19f06a48e6a0c870797a08460fab3c8afe6799dc1da42932c54d2129",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b683363480d994196cfc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "14f89f22c8d7cb0ec6f4ac2ff2d2b9a79af7c128cb69fca9a058d5913d1f198c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3dc3a26b11ac28b2ef12",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5071598395de4c428bb480c01df28b0d9aa4a59a9c1ad23b62cd26850bba35d1",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d4682b3f5dc11d01f039",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "660c7bb994738e06526d068c0a16be73b328592ba9bf4cc5df0173969080255d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-309dadf1f7aa62d8f8a1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b8d56cb67dedad75596633de83dcf14f00e518d62932c1fdeab6c3fab135519d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f3dc3032c7347320e1fc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "18c3a7a6f28d47a39609ae991f01603ba7abdac7295754f2295a493a27b8a02f",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c846ebca50f4171ccdb3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2c07e1cf180e9f94cf24a982729f141b906256ba522865a8f4da01f083562cd0",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f2b80b84a242407de64d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "61ddd63367266e8032801f0f57557e352a55dc16e0b489f1033580c4b7b8cc55",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b2761590ec4a92a8b2da",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0d84ba725c20ae7e4ae7ee95a95de3d28e1eb9c7d7c2f9ed9dbbfa11b2c35ef9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-15d3aaa3cb5aad723407",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3384ce9e28492be6fdb1f7299b00d27afca54f8e68d50afb6f54b6bcc1c26e80",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-06d432a4b3bdb2a440dd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d00e36e19ac78e65a2aa53e59224901eab30386f4ee8b19f0783f2313846c9a7",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5566c4e610d69aa29fd2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "af3ad388a256e7b19f03650937c2565bc96eb7ed6451cbe390faf27ac81afc2f",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1697d162f524c2b1aa7c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b347aa1b8399d5aae97b2f9be5c1808384013c7bba42ac0c648081934ad8d08b",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-698b9ac5b44c105168c3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3865d3f219ff74f68aa39e23a76e8914a8afd5aa0db992238a9c3aa728ec6a1e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3e778a7ed3cf5b17b6f3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e813425220a6a90fc3f8bebbe0967bfc494c29ac54cce806688085f608101086",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-beaa5a2ac3faaf67923d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "207ee5ae82d27a91f4c907f0d582a9527ddafcf954f42a174512097e71ef0cfe",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-97a07248d4eb9b336852",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "16022082248de08c2f53157737faefb17042690150dea2892fa1599585e1222c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1b681aa11023aa44e204",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f5a6e3e54da52182ee6f8a276d06e2c9e84ae4c89746e9461635891491782e57",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-984756fa6ec51fdbb7e1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a98abf44a99177e8a944b19b7eac7393a2aabe433bfc17ac04ae43d77a401bc7",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-08a6afdb5b83e7e9be07",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "703b5cb426ca3982ee1241ba91b6f87a0b31e99776b1876708942b81b6c6713e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2500963411456053cb01",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a83d3aa201cdd64d60d6a20ae96cc2fc791e7a7cedaf76f2e6587073db2bd11d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d4f39004b07a63c22690",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ba2daf390c8964edc9e016e7db321c869f80121dba7090b51d52905397312d76",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-da9b85b4165a25d27b1a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2c15355b26b2980ad48352fa42eccd124ee40be626b6ea4fa50ffc2a02265930",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0bfcf053908e9cdfee58",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d7faf1a040970e5e0ba4f5390c2e63a773374be4722138d46b077346715b092c",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e945097635592c0fbdb3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f92ba37dd7a0421275c2d1886e55c9fb3b9e286bfd10bc16418f674563e1613d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3be2072fb7a824842c8f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2be43eb4a50c6cc780fec6784b1382ac6c4d66f74ba379bdd8054339cae92f53",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-450526df644f188e094a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-N-out-6",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cc00487f161deda4ac82a7629c3d038839fffb45757ced6d2c645fe8832316cf",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d01068631773a7430e2d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "352e3c9e428fb1b4d80b4a2c960b95e82307cd088c0803ec3de33ae5c76d90fb",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e69f8fe029be3ec66be6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4da9cf8befa8d3853ee4b674cc42a26c6bb771352cdbbc07b9bf6bcd5a732492",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d7f771d16a83919beeac",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1f152f6bdd7aedcb60c389e9893961121cbf20c1e29ef69f2c9fb255dac439fe",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c0ede5ad2b76c64d5e69",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d93ddc2faaeb6494e419774feb7f03595bdfac99bae053a1af473ce6d629f61b",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-174f8a29aea1d85ecdb4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bab530f41f59a8381d1e19fa60e68a6757597fee033f89002ce23f05d86c8a4e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-90f262d70fb3e0702f82",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e03980971c032071cc25623179d02ce70923d692ab1d33bdf119cc1361050ee",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-95bd825cd26b06488363",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a5f98d97649f9df1fed8472a50688448da94f53c9296077d76a2cbbf85819aa9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8321ac2f1a9739481d42",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-N-in-4",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6b94e58fcd53774085f5566955f59cd248f88dd87e43d469793fb28abbd67a9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b51db037345cb1d9ab31",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2e083ee1bad8dd7adcd536c533b8df8a5c610fa08d26f806e3e39973328b2f78",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7ca19b5d2363e9591f1b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "68569f9e28c98fe8ca4927bc25e6455adc823d4db662b781c9f410ca1f79a694",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-56ca259513c081a08937",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f5cf19828bfd8488a5ae429bde275493401634989c641c2f9442816648266192",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5d328b8a23d379f6effc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "45337eea1d879b056fe768c553cc7c5010ca8c352f5dbc7155961dd775c4a8a5",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c9c2256960e3ec75d46d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7c3864a3d78c0483597c34c928e1a743443a47188b88e3c62035a97cca9af600",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d49126a581cba2f3f893",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3f9ecaa0acaa2303ec2c66ea203d233cfadb71c916d1c3edf679c0bbb4535c43",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-41d5303356a02a7e38a0",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "eae3f64e54b0a85821d611466d89fe73c06f7496b9b0b1c1297c3bf336b89a41",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-89339f2cbfca7147fbe9",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2ce79fbf0c6e28c0373c7b78c920840f1592d2884ff8c70576df5512bc932583",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-82a8a5d2eccc1809b3da",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "84d479c04e5c544263381665314f08266a70064d035a7c8b4c2f81faaaeb2da6",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b2d065c33bcd117fa2d5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3447c96964a2d8f483d101d65643d9ccd532a7531affa460deb62bb5e9300d72",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4f4ec0bb1b2db16c5224",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0c9b36f1ae239599a2b6428f7f7fd94d7b8830f8625d6b9ccb1a6ad2b660ccbe",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5469b62004fe5442181d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "adbef3f29878e26e689fc4416c0e96882d9c3ad941b0483535f479dd90aecbcd",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-582f2df3ad0f363f3b2c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d7f6448f4c83f574a67703927153d58a96a12bb28c9d3a14a3ab545911fdcc2b",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c00d81161de3944c5d44",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4f120754224ac6e97384aa1a18145b0c7dd43cab55bbdff739447e24f6fa8d45",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-fe7947cec098dfaf8991",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2090169ed25db58731f0240c8df01f3064ec91565224b7300ada0b0833f36e0",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8892bf87d0ba372535be",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-S-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5d68d44fb262a31907f25bd49e09b517557aad8dcec704e28ae9ae27c52eac88",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-db02d82ff29130bd760c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "713963196f797a8de591eb5b2bc56d1205be8af35bd089149c02889f9afb9840",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ce4aeeb491f8c33b83f4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "daeda9b3068000ae02d74909ad349085bfcd53a2eda9bc91ad47f8cde68572aa",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5eba996c15e2297bdd47",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a2b7fc558e226ea9c59bbc8444cd3c1d9144861da17e7bce82650c1a6db881b9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-89041279f341af113e39",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5fc37d31c22d955be441d495bc4da043700b84d81102a05efd47c7b70d59b6b9",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c184ccd7d46742f61688",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c71790bd3419c2e768f0ce6a0acc99b5fa8adbfa5fb30d60094fe0a4239477de",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9dbb6a6beba320debe63",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "238eb62b576b821692b5f1c9d465cc8da4b2c01aa1e1d40c37acb735a5cd93f5",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6a8dccdea3c1cb7d2309",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "825bc1d4171f251114d3c678202791f14a143a19d35ba7d5ee268e23d70a39be",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9b1ffb2e85f76c83ebf5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-S-in-5",
+          "to_port": "7-E-out-7",
+          "from_service": "hsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0ceac7bd9ba9f0de910645a9cf2fab9edf9ce3968c68e3194455312aaefd119d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b0f42f4d7a3f76fcbbf2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "90bd868c90b352ba6514675827978d1e61abbeb330a5f5e802e55251f4c4058a",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a6aaad724c77fa8575b7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8aa66c6abd77455e48f04f645653e53425909c8ccfff2d30b9e59cf86cf273dc",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ba00036717012dc18c16",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3e29459063e66a3fd978f9c299e1421e8ff2085ea02c07134e11f6e3a4149ac3",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-949f024ee9fb8c7d69b4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "954cbeda2e8673259e4e61a08aeb272d0b3c7f4d067f2088c702caea99efd013",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-03a0a20cb8f72b9cdffd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2fa83dbde1141c923892dfe85b76594e8d18d89105989b735f27c62e3fe1a84a",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4d31336a37f3a603204b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1eb5a4e240a00dfb7c859eafe0922ee9c36a2b1474e664654c28a88541a00282",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-576380de5a32ead43548",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "667e65e0c9ca9809e56566ac45cafa1c1a71c953ccd5d7c4fe9b591814c852ac",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0ffd1b72484c851534fb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-S-out-3",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8ca2dac1da4783bc8c69721db47eaca31a5627c043c2aa0b34d1e7937972a01f",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-bf584713f21cb3710d91",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "76ff66b874d7c973ff40be1d9a6080d63f14121b6e3fe85afe35c4081c21e8ab",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3269e071669ca1d7d477",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b952b7c80a1780b7dd84ae464aa6d0f2c3f57bbbcd326935fe9ae7c6df9bd56",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b2c6b14368fe4187d133",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "277fde7634a44cb15485e5718c008e0c9a311e141c2eb0d395485c2518eeea1e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-03c9ea0af1eb3c93a44c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c61c7a8c9d4d44135a8c2d99b3080b90a410e41ec0a1b205ef8513edf2e3ba4e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f86803e1b08ef423ec28",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6e6e42b150b3779544f733266149b68234bac4b4cc1c0bf59ee6bda94cdc46d5",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2635e7dda4145aad2e17",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "da6f6efcb02930620515dbcfacb303bdfd5b85c2743067602822deed38258f68",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3d55e3bec91c970f50a8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2b3815ad0cef99ec67d578350e08d2fb5916881bddcc47bd9627f0e34b91c84e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6930693355c57b9c4fdb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-N-out-6",
+          "from_service": "ghsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e932fcec6ae6a05d147c82fe235aaf4bad79209eb14c2b5b2b082a7f9dac66a5",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a07b3fffabdcc6d9ea86",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f9483c0f359fd8876797752508179fedfefbcd74842c9c35d53477242eb5d329",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5114cdc8993f32b296b7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a6c771a6bf07bee84bd2a2d890e40fa1d0eeccf15464abf9bc6a02914d54d160",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6df1e2bc091f108b2f22",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2f1668e237553589e3efbf0c20a49dd0ba23718e6be92336c41e0e3e0b3fab90",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f850665e375678a979d2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ab3ed9a366b672450f20f5e4a5da16f558d6f77555bb04c8e2e1ea70c19b7bba",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-bf4b006619164ad4a882",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "90fdc0055b731bfe67486c3f314d222ecb21b5018a07a9cc52419940f6723f31",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-129ecd20352fbcaa7343",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e96d6c73b86e722e89b4a744c5dd59daea3c4c419483ea1b9427decf66ce6b5d",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-54169e5aa7662397bf1b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "56cc8c189d128ff26f62eff830721c74186736cef570525767e352ca3988f78e",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    },
+    {
+      "id": "in_game_forbidden_transfer-785f9757010a8e4dab28",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-diagonal-ghsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-8",
+          "to_port": "7-E-out-7",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": true
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3474dc918ed397129d376d3f9e5e673d335b346f2c46044aded4d4d1f87cef00",
+      "dependency_ref": "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec"
+    }
+  ],
+  "dependency_sets": {
+    "5ff0efa1f81e58f37f2e9b8ace2090473184a7e5909eba8487a0fdac9e283f29": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "effect:hsr-diagonal-ghsr:ea5118b0-ea5118b1-5dd0f225": "9da4b4537a1c98109f15cf02a4200b15868eb31dcfbb7bb3d5e62a5d1f70b02c",
+      "exemplar:hsr-diagonal-ghsr:6534284a-a8434037-5dd0f200": "eb9d918e76aabd78d3899ed1d6a9b8f11af8e385f48958702fd28f9d8f327cfa",
+      "exemplar:hsr-diagonal-ghsr:6534284a-a8434037-5dd0f210": "b84c3366a9706c320138b7d0d5c47217c7bfa82fe8c5871fc511e29905e5ad81",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f225": "c71e96626dd88b574c855aa62cc57d99a0793599f0c29431fa5487ce568b03b6",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "225939a64c2a64f89b609876521dcb747a10ba875ea48295e2464331cfde31ec": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "graph:hsr-diagonal-ghsr": "6f8f9d505c0ab08c372b9ea4a4c24f6598b86b8ff2f7a7a1213eb354c057155e",
+      "interface:hsr-diagonal-ghsr:7-E-in-8": "542010f4b7973e79eb70e3a7d35642fc5f4dc4ccac919de1633212a5148f3bb1",
+      "interface:hsr-diagonal-ghsr:7-E-out-7": "1f52a3bafd31b00983dbf9b3d306dee75e652538ce21be7abf413988c926150a",
+      "interface:hsr-diagonal-ghsr:7-N-in-4": "520555350da906fc9529c9a04ec200957d826a36dc9b749a1f66d5725cc2972d",
+      "interface:hsr-diagonal-ghsr:7-N-out-6": "0a8464997f0e1926c09d1a9b9997551f225a1d03976b4670b2645844003f6081",
+      "interface:hsr-diagonal-ghsr:7-S-in-5": "4679558f9c75a0b5d887c64fbcbd5904a987ccd00d4d4a73df8ebf016c9f74c2",
+      "interface:hsr-diagonal-ghsr:7-S-out-3": "2c3c0066e6cefab4a4cac315972f50192e99978873f0d7ac84c63f8c43a22ae5",
+      "interface:hsr-diagonal-ghsr:7-W-in-1": "1c83d5eb34de9109fd0c284fe7ddbe896b26505e125519ea6139c8996fe9a01c",
+      "interface:hsr-diagonal-ghsr:7-W-out-2": "7424be296568a270083e3f8ef1e8bf6c1edf114ed099ccb0bfa09b1b755e8c70",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "f5a2a08966120021efd9086c3a2dd939a6779cbaf84866e37f3b75cb682db9f9": {
+      "image:hsr-diagonal-ghsr:canonical-southeast": "548b18c4396b7100bbc586b3f9f73db8083db7d1af9d4092c66087d295b40a71"
+    },
+    "8fc527a4994644b449fda2f1b783279274d07f419ba75f08f6fa660591b92be8": {
+      "effect:hsr-diagonal-ghsr:ea5118b0-ea5118b1-5dd0f225": "9da4b4537a1c98109f15cf02a4200b15868eb31dcfbb7bb3d5e62a5d1f70b02c",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f225": "c71e96626dd88b574c855aa62cc57d99a0793599f0c29431fa5487ce568b03b6"
+    },
+    "465e2467ef495fe58130bb4f0447980e632c60c4e0266c3e301df6977e094c43": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-W-in-1": "1c83d5eb34de9109fd0c284fe7ddbe896b26505e125519ea6139c8996fe9a01c",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "ce242309fd0cf73cd9e94387eaa5fb493686c829b65e2fc7ce8fc5b2d3167e10": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-W-out-2": "7424be296568a270083e3f8ef1e8bf6c1edf114ed099ccb0bfa09b1b755e8c70",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "68d603846677aff6c2b34877eb77f4a44abcfd99453e02d9a2f1b9316bda0a70": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-out-3": "2c3c0066e6cefab4a4cac315972f50192e99978873f0d7ac84c63f8c43a22ae5",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "ddc9cab964d38aa6b9cdcb1ea6c3dd2f965d034b167e6f7a864d0fee4a93db2e": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-out-3": "2c3c0066e6cefab4a4cac315972f50192e99978873f0d7ac84c63f8c43a22ae5",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "3c8f47b3d2a3cc94ce04589876f14461c17930a647bc95fd96cd2c1ef706ee10": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-out-3": "2c3c0066e6cefab4a4cac315972f50192e99978873f0d7ac84c63f8c43a22ae5",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "0e1fe23eb146b3252014b46feec3c16d511943c1e83b6a55486b063dd94ee0e4": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-in-4": "520555350da906fc9529c9a04ec200957d826a36dc9b749a1f66d5725cc2972d",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "2e64293001245c95708afcf6749eea0f75fa0367fbbe1873112dc3e36c5c9dac": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-in-4": "520555350da906fc9529c9a04ec200957d826a36dc9b749a1f66d5725cc2972d",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "2d0476fd0f5a8955f0405bfceb3b396eadec31a3721312088f9e30d06879bb53": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-in-4": "520555350da906fc9529c9a04ec200957d826a36dc9b749a1f66d5725cc2972d",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "3adb95c6750315aa1d14589e35cda5b5ae5246181d4bf710bfcb401c0c988439": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-in-5": "4679558f9c75a0b5d887c64fbcbd5904a987ccd00d4d4a73df8ebf016c9f74c2",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "2266c7d65834a607b1aac249a6f7f9feefe4fdef04014b5221773ae7b282d6c7": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-in-5": "4679558f9c75a0b5d887c64fbcbd5904a987ccd00d4d4a73df8ebf016c9f74c2",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "860955b0ab5c39dc212ed4bb8ead1aedcf690338704224529ec10b54a0690b1a": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-S-in-5": "4679558f9c75a0b5d887c64fbcbd5904a987ccd00d4d4a73df8ebf016c9f74c2",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f210": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f211": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f212": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f213": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f214": "6a5a868ec52b5c5a6888bec534dac6e437cfb03dea8bd29a7407e8c23dd9ed52",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f210": "3a7ed9ef965c75a9fe9188472868c73364faaabb49dc8fa341b889937a622914"
+    },
+    "bdff2c9d52b1f2a8b9163283fea76d863157b7ad95910912ba3e23655be96bcc": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-out-6": "0a8464997f0e1926c09d1a9b9997551f225a1d03976b4670b2645844003f6081",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "a5753f0287c12b1ce5c879e6ec9c485d0d708b0989cdb79fa1ce0c614de3639d": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-out-6": "0a8464997f0e1926c09d1a9b9997551f225a1d03976b4670b2645844003f6081",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "05d831773255283af4a8901eca40bd3510418ad2eab1631ac29c110797030b18": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-N-out-6": "0a8464997f0e1926c09d1a9b9997551f225a1d03976b4670b2645844003f6081",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "a70a6e00ab35c47780a605c37afa3283eb97b67cb23683dd1c964f9ac80ab15b": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-E-out-7": "1f52a3bafd31b00983dbf9b3d306dee75e652538ce21be7abf413988c926150a",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    },
+    "fb48ba1a43db19830a80fef2b6a608d516f2617258ea2d653048dd854f72ff35": {
+      "construction:hsr-diagonal-ghsr": "70a154db9763bd9b4a67e4b67a3c2c73c2243ca14642b9528cc71b6648c5a446",
+      "interface:hsr-diagonal-ghsr:7-E-in-8": "542010f4b7973e79eb70e3a7d35642fc5f4dc4ccac919de1633212a5148f3bb1",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f200": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f201": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f202": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f203": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "model:hsr-diagonal-ghsr:5ad0e817-badb57f1-5dd0f204": "1aae543aac52f035d745eb17aec9242a56f0956412cbb1b5c2034f3844a8605e",
+      "path:hsr-diagonal-ghsr:296678f7-a966883f-5dd0f200": "e0c611cd05d391dafa2f7910559a1136308be2e41500d4dd105dfc0aa718c23a"
+    }
+  }
+}

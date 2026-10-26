@@ -1,0 +1,2072 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "rail-ghsr-adjacent-crossover-left",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7b9",
+        "0004f7b9"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7b9",
+        "0007f7b9"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7b9",
+        "0006f7b9"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7b9",
+        "0005f7b9"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "fingerprints": {
+    "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+    "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+    "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+    "effect:rail-ghsr-adjacent-crossover-left:ea5118b0-ea5118b1-7f517ff5": "7979862a441cce9fe86305de004d22f2238f3a18e8a6e4bf789068bc8cf0a67b",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517000": "a4f491f0089ae309f435708593a7b04d955cce123059387561ecd285539d2413",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517010": "8f2ca7ca438a8a8f7dbb3a390693d59df94605f6663d5d0b02f197fc934d1a38",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517020": "7e68fa3e044ca32783ba850558002741f6f92fdfcbd16e2ebcdbd98d8217bf7d",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517100": "0ca815c2086030e5ea05a58cc7a93717cf09c600144a29abc562590f63dcfeae",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517110": "0859e215f60cef9d9c7086c8a6f5737642bec64ddd4a018852085e000a44a710",
+    "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517120": "ef0537b43f06e1bc3565c53862109d5011fac58449eb422fd353b83a07cd728e",
+    "graph:rail-ghsr-adjacent-crossover-left": "4a22241d59318ea870387f8684581c42ef366bf20a15597413cf2e69b56c098f",
+    "image:rail-ghsr-adjacent-crossover-left:canonical-southeast": "c92ba7ef605d8fd4e5ed06393e3678083178d5ee4b73c2385addcadd705df1fc",
+    "interface:rail-ghsr-adjacent-crossover-left:BNin": "6a4dd701f90e498935b6fe12600ecac1cd7fdae66f6da7ff066ca6cf68c38ced",
+    "interface:rail-ghsr-adjacent-crossover-left:BNout": "068b76f5a26cd5ce6698d4b549e0376852a96780b8ffe7b18ef54be34f2a9705",
+    "interface:rail-ghsr-adjacent-crossover-left:BSin": "4ec4a0e4130aad43297be3ef8162465015001e6f86e78532733b5b9362c2dec3",
+    "interface:rail-ghsr-adjacent-crossover-left:BSout": "f01f47b419f9e7f4854a2e09f058f0bd19ecee0c6c33bdc3eb9d07e29a813869",
+    "interface:rail-ghsr-adjacent-crossover-left:Nin": "513a608786121b63c01ff669c0f6f667ccb2df6f04cfa10872c94071c3c6be73",
+    "interface:rail-ghsr-adjacent-crossover-left:Nout": "f54abefecc928eb4d3e972830965dbce8dd598d7040dec1a9265842b2049d86b",
+    "interface:rail-ghsr-adjacent-crossover-left:Sin": "927b1ff7314c7b7ec0ec8be2f4dddfc58f2a303455144124a3c2a4251387d34c",
+    "interface:rail-ghsr-adjacent-crossover-left:Sout": "35cca4aca9b45e03b5eb901f19f498f10c5b3b2d553fe81e04391651bc662dbc",
+    "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+    "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+    "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+    "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+    "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+    "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+    "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+    "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+    "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+    "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517010": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517011": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517012": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517013": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517014": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517110": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517111": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517112": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517113": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517114": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+    "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517ff5": "93ab38c1c0f3ffa4718aa6770de1a5459b566b991bce2497b05fac4712906a19",
+    "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+    "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517010": "63c247a31cc2fac242c57e9a96969e52f8b07f1f7c40cfeae9309634eeda0267",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517110": "bc8c5e0206db5507d91dfd4d23e916c4f70f2448268f2853f918804a00d12f67",
+    "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517000": "98b6bfa9f8f45361ebfe0b790dadcff712af005ec7a4b10df2c2d2f0045d1f00",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517001": "da6d1c8c15f76211b6dfe2c1bc25c5808ef572b052175fbd0bb13ec7fbbe8086",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517002": "07e983a69af6e6ecd292d0f76305bf2942fdfe61b5e946b35a2e7deed5c6a0d9",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517003": "661c62f70d6eb6c111986fbfc814f4f91211bb26d5da324eda3b35e09fc27d7b",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517004": "6fc6d89ee789b1e0ab80d8ef124cb8175d6302a88b36649eb23c90a812a5d18d",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517010": "6cdcb3788aed5a13ae8e4ec4e0ead1bcebfe93b467875290019a155384442828",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517011": "5f61424a3a093fe3c4a34cf94b1a9e9a42ebf0eb4ac9707690db9529bff79f79",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517012": "0a5f6812ffca41e109d634198055319e45553d188af5805dc0a76128a8ac74fb",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517013": "0255744e3fe7d3fc144e8e923f43bb4b8a45d07f408289fe66d266a2d8a95efe",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517014": "e3832a77534fd96b6beeb3645210138437bcd3f26f297b8b570f51fede14e9c0",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517020": "0e1d4b41e11b627d4a87e244c52026fc63c567bd083e17be2e8559191cadf35e",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517021": "ae9cd421ecba93790421e9201c1e02079d31f80eab8678c99022a05adddaa26a",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517022": "f81f7c665728a43067a7876c014ba133c6a0f9d30bb79a05e521c5df01fefcfc",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517023": "e6e51ff90f66250cceca97fff4592dfa71a4feb16f743efff05bbb8c6e29fb90",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517024": "20c7ed253f4275d2b1ff03df7642aba5e725428a8a468d0874afb5479b2bc2de",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517100": "cd4585fe5929c73312d2c28d77192f3aa3830f18a547561507386da7b79c74dc",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517101": "9b4ffec97062baea63a44424875064c4de716127b676cab7eaebca12fdca1692",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517102": "6f1bbc2bda6e954ced6ae6e7cddc11d3c9c5a1c1b749b973b87431ba021ce7b9",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517103": "713f0cb670b82f6f54223fa85ca9b962385ec24ff9752aeabc5956856c89c7e0",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517104": "c68b06b4a8d98a203aec5135078609ab2b379e55408c58c0f547fb3c7e124100",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517110": "f6cbfee865ce8737c127eaf9df8c9d76fe4096786155247a32d785af1cfa7a08",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517111": "d99bbfcbe39f623cfab0baa7e19965296b7c1faa0e1c5dab1b3a1fc087031a51",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517112": "540c2f4a35c78266f2ca0dedbe18411c032594e1f092a325a6479490f03b0ac0",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517113": "f29a1d418dbe1cc90e96375c8bb4fda13d95c689a2691a37f7013861bfdcc94e",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517114": "6b5ac1985be7ddd2da92e5cd246346fc3c5d91dfaa0cb7639e9827a241aee721",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517120": "0f9cbe1cc9190b6c29f25b7e9f42240a77bab2852cf56ba7cd2043bf30f37259",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517121": "d18b31a365ef1adccbe093a9e43facdf63ef704e0a35b897afff82e5ae5589c4",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517122": "c5d394fb215ef2d24b69854c73a8511572077a41cc892b969d0659442def0424",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517123": "21a3ca23f679f598ee1c2fe42170f546fdbde759cf64df5a825d1d3cbedd8422",
+    "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517124": "5fe64b83aebc8b5431d498dd070d0ef476b830ed8f6048c6ef966d50f0d4550a",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517000": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517010": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517020": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517100": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517110": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc",
+    "text:rail-ghsr-adjacent-crossover-left:2026960b-2a592fd1-7f517120": "f38dd183f244820406358831d87e4fa528764dd9dd7925ed0fa8ecd1b417d8fc"
+  },
+  "cases": [
+    {
+      "id": "software_resources-bd15714cbf9c80ca9cdc",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "948582423faf0632791b434fcf05a33c7c14ae1c5f08b49ce30b26f28bd0c109",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "software_connectivity-bd15714cbf9c80ca9cdc",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "59c1bf63fd9358f22159869ee4966a1062fdf4f6ceaa08ac950e6fcd106f4629",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "preview_review-a56abc7a19291ac1f901",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "image_key": "image:rail-ghsr-adjacent-crossover-left:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1065d282316916535903be1f1035c48e0cc8e38911e64db0be791eaec6d4b7e8",
+      "dependency_ref": "a35804667d7b6e69f24f1b69f0853a6faa224d96d94befad7743b90eaaa60ef9"
+    },
+    {
+      "id": "in_game_render-a722c392de3fe34d4175",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "78be9bf23744ac76b1466ce62ce223f8e74b9bc969f0d43cd8c0e891120ac6bf",
+      "dependency_ref": "1a6024200ced7008db630d1f8716af3bd4d665cfb0663b4d108af76b92e7a41c"
+    },
+    {
+      "id": "in_game_placement-a722c392de3fe34d4175",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "519af8fa9c87e7f819a50e76a5690be7abd82c2eca9e3f74acfd2214d355738e",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_demolition-a722c392de3fe34d4175",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "519af8fa9c87e7f819a50e76a5690be7abd82c2eca9e3f74acfd2214d355738e",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_save_reload-a722c392de3fe34d4175",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "519af8fa9c87e7f819a50e76a5690be7abd82c2eca9e3f74acfd2214d355738e",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_render-d99d9f57d65d510da703",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d881107024ec8f7823a0ac2545e88a75130611cdb8613db22e59c18be9e8e346",
+      "dependency_ref": "1a6024200ced7008db630d1f8716af3bd4d665cfb0663b4d108af76b92e7a41c"
+    },
+    {
+      "id": "in_game_placement-d99d9f57d65d510da703",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "024166f1a458deb2701047e850e682e1dd8c71df91f111da98af8739a85c1ff9",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_demolition-d99d9f57d65d510da703",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "024166f1a458deb2701047e850e682e1dd8c71df91f111da98af8739a85c1ff9",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_save_reload-d99d9f57d65d510da703",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "024166f1a458deb2701047e850e682e1dd8c71df91f111da98af8739a85c1ff9",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_render-d489f9d57cbe0298d7f8",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c7de6b1c6ff607843e9d5aa5c760fca46aba44ddc9fe33661b0cda5587bd9b47",
+      "dependency_ref": "1a6024200ced7008db630d1f8716af3bd4d665cfb0663b4d108af76b92e7a41c"
+    },
+    {
+      "id": "in_game_placement-d489f9d57cbe0298d7f8",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "22f9e24efd6173e745926208b573eb0c429d3a347233d8ebe4414c1cd753762b",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_demolition-d489f9d57cbe0298d7f8",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "22f9e24efd6173e745926208b573eb0c429d3a347233d8ebe4414c1cd753762b",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_save_reload-d489f9d57cbe0298d7f8",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "22f9e24efd6173e745926208b573eb0c429d3a347233d8ebe4414c1cd753762b",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_render-4fed43454b1194433cd5",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "989bfb6e073b0b83c826e9372ab2acb9ef0a43bdc2664901931bb44c22e85042",
+      "dependency_ref": "1a6024200ced7008db630d1f8716af3bd4d665cfb0663b4d108af76b92e7a41c"
+    },
+    {
+      "id": "in_game_placement-4fed43454b1194433cd5",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d1daf0b6e1d3ea08350e0698c6308a4d959a30b9281fb5befac8571957c77994",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_demolition-4fed43454b1194433cd5",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d1daf0b6e1d3ea08350e0698c6308a4d959a30b9281fb5befac8571957c77994",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_save_reload-4fed43454b1194433cd5",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d1daf0b6e1d3ea08350e0698c6308a4d959a30b9281fb5befac8571957c77994",
+      "dependency_ref": "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d"
+    },
+    {
+      "id": "in_game_journey-7ad35fae5608fd55f22f",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7c7b5fa1a8bbb28410019c24f52c79770d1510c0993bfabc1ddb850b95586b31",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-9c441e66e5656dae4e1a",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b5906e43aa72d07796284b20a46af431558844bcd8bedcd5bb92d94f964546b2",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-443d5e86cacca9a167b8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ead40579e5d8e7daac2688bedbea0b295306d6da8bc03554b3bf22ad42a83f24",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-0b5403c2bbf49c37f4da",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1bbc6ef285c205608802f7867e46ca352e46018e1184389bd7ebd7a2c412a70b",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-4fd71bfd8b14d518635f",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aad5cf1bb2e1478ab3a81254c33aed697b6be73672832402fb6d699b35b5ed64",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-2535b331299b637368f8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6cdbc06450bdee33c9dbf652a99316320e0a5dea649bbb9aacb9b47df007e5a7",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-c642ad8877b2ce2e757c",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8bc12b098207627535a63b0c9528e8fee4539e4d3145f7d64247cf2e0d9923e0",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-344e4ecf5a7b6cbddfed",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e9f78f8142bfa55a3199bb40ad92497580cab5ba9db3e04cf2d3504fef9bbbb5",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-5985d992414a74b4f6c6",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9b457d40d1dd22b81af222d07fca6322d2b769306ef7b41c1aad90c7eec765a9",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-68cbe6dfc3bbc78a7e91",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0851fd7e024ae0b0e5c0f49307cf684882f212b214f00ec9d446ac3478d39f1a",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-ba2172bf42cfe2850d38",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "596e774e30820cfa71de187998221582660de22a3bd8926d2e34320ae8f2b0eb",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-303624f571e0d284e508",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "919e54184b3787a51aa37b6b27ccc43f97ee123a214336ae2467dea77cb3dd8f",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-ecb6cef5f00299e09bb2",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BNin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BNin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fa67269201e687a7986c14ff24e67f45cbad8493bf642391cb0e5167b90c51cb",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-1b4d6c537d135198da1c",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BNin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BNin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a79dae641fb3b800bbc4df05e4a7868326b6df938153b23ee1f6f7c0d589022c",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-0de0c062520f6d3fcf57",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BNin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BNin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2d177652ae5473bc586f8f5d05aef5b5b641bcd2de9a70c7ec5db09a78433f9a",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-d173f4ef7d48d858cb0c",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BNin>BSout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BNin",
+        "exit_port": "BSout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9e55ab52eaefb9186c2bdbcc2878292b90957e4d0797e226c338b35a2d408adf",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-65194e400c9d033b2e95",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>BNout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "BNout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "94fb8ac9945f79c731b3f71446782e85ce46b34d1c8b1890bc5237ff8903997c",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-3a2577739b2af98aecac",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>BNout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "BNout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3e21dc5f64a2a701fe0a732fc59dd7eaa27c795b2761f687313fb166cfb5dd26",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-725450578757d7ee1cb5",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>BNout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "BNout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "258a1bf6877a3255609aa9200de753bdfa3433b19c179a762d912f33061570ce",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-8dc3c0588ab876a7da86",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>BNout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "BNout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5124b575af63f81b63e20e71e07ce48c73feefee8aa8f1e5cc0f29242f27d675",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-37f68f9d9d360f1aaa06",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ba5564b1cf14235e5c784ddca2f92d6122ed557308c0ee38879ceeb1fd2ca03d",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-59a260d992f2c75b098a",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "106d3c19e87e1b668adf7ca5c6ae36ecf4630912b614d79f88c2b4a141fde669",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-74bf5b785aefff917d56",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bb942236753825e843f2e02652273b7b773fda58b7541a298d74ea4a0655b566",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_journey-6274bafcc544b37e1d71",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "journey_id": "7:BSin>Nout",
+        "service_network": "ghsr",
+        "role": "primary",
+        "entry_port": "BSin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b0e870554ddc627e7b835b215cd4c0859b2c412c15d3a7ec6c350f6c0d250d9d",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-44d3484a313bf5ad1ce4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5130b742749ef4e1c7a51e299d4e4a6908baa5794fba2d2a83fb3e7072bfd835",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-32245f7eb885286f1fa6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "783842483bfb09c80d4df82849572d5d20bca472d73d0f83efc4f408a0c28091",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-49c1922b36073e12434c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c19981f79b799022173c8310765acc2cd43e887d3d84e481c6ddd36906350035",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-85dc1b41a7cdbf627dca",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6985ca08d7f2cbf8d28a837effeead4e30a7f1dddcedf31ffbe9d316e1208dd5",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9d9e416805d9caf74464",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6ccffc29fb495e4d2fb47f17e6522c73c818c00d60939f8c5a0896e82bdff9ef",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d3bd9fa73245ab327ebe",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "724d5833c0856f36e4ee23a5fd3e3d31d3b72cd318d128adc13072b0761382d4",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e74c1ca1e753842037af",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3645d88bb157d4d6e4a0c24a8170f79f3164d024b67ccb6340eb6e896243610b",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c6f83dc79f4de851b537",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6a78d91155e1911c2d19114044cce56345da8bad66ba46f86427473c10662af9",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-34354e4f86eb70c194b8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "626ba790cd1b36200f3bfb51a34b95d9d1125834b925fb712836d4f9e89ce7e5",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-50bd33a0bf497d857dcb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "99acdbc8a7dceae6b52ece9f24f6899d3ba4fc2b8be1cf198161eed14ac5c3f8",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e2073d8de1df26ff20c4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "72476dc8c77787416e6b210f4b584918d6cfa4bdbd3b25f21eb325bc1b384554",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8cc3977d00f7eea6e13f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e8f3bbdb5a0719ab49b1cc356c4194ce30afbc8afa83fe9bb6e6a05d5275de5e",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-fd549c3b7d74018d6046",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7fb6110bbb54c7383338f2b164a22453b974472c0d16ec1fb1f568c0b4b77b64",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0fbde0862dc0a61f3c37",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9a92a89d669fc14279299cec0c037deb639cadfac6538c4146bd45bb7eacad1c",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4cafd41accb3f069800e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "382a422363f6548dd4569156c0c92f1d9da250762e1fbe288c038871191d5efd",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b0faa854a3a4c7a6e34b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8af6cfaf29cf21207381892a791a3164414f31bd3082e491431532d51aa3c476",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6b7e4269ffa9505178de",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a9d1aa19a8df5976979bf9952866f8232576e1a4ce8d6079d41b61b4bbd96068",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-df35755e9d15efecabc9",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "02d372d0b3d955e2ccf2118d9fbfd342343b438c0a3e75aeebd1cd492c44f162",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9567b66bf66e59f5c651",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c99469d2187cd4f3840ced8c16449c307641f6ed17b1acf17c19b7aeaba9034b",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f9ae97dd2c71249e5e5f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "29fe30a1f77ca50a8f2ab360fd87dc7e35b6c9cf62a010ed98ce68ca9e3dc7b8",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c90f65a27c42b92f7d4a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "51b73e149fef85c430cb051b48d2f7cd02e6c73ce355481cc7059874bc50ef04",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e7d6c8dafcdc7579a69c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "787b01b9a37f0ba638d3d84e2b5ed37514e8da1f09489837db3478847252e776",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a24ec02ed8d34fc28ad9",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e18f5ba9a677c39002e799f1b5d0670e3c738b0b8120b1f4a1c59bb402b409b2",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9204549528926fadcf25",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8b98aad7d1c22958d18468648434c57c8e6fe9e26b38a23a3f67ed47ddf72196",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6c1d5e2bc0720e408d3b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "519ade9724d793e278e328af0d13bb64c500919c300fe0edba478fa0b1bca5dd",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8f95ac5da37e07a3fb1f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "25cd9a5b78c9624401342c7cf5e17b0caa7e5f768792f07aa0aea45a09bfc303",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a9e618b7a60659a44625",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5785a16c01e13f0d671bd78952fa44bd5846706dc5622dfa9ed3e56927075e30",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4b29c9bfcb2509f6d89a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "Nout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fa6d0ced847aefd1c3c04121939bad24105f4474a0bfe80f6326e92329a4dc38",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-975ec26c23ef77495308",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8e5e5bf12d6bc886eaa92c961a1faffb4373492895179ca616ab342ea669fd52",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-587409368fb5110c7495",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c512b08c49c09f1bbd508c38dc2b96d29cd0fadababb5fcce83d3e9cbc46baa0",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8ee60951314f05679b89",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e3ee66d13621163e3846183e3ad5fa60a7887a15b659ffdd0bd8cca94b7b65db",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5c63fbdc510785fbeaa6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BNin",
+          "to_port": "BNout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6a98e415fa2fadd8df8edd34d81d398075a2c2eb0fe7cae38faaa1d08c836fd",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4641a105a5a0ad78ad48",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cb82a03ef444e396c10449ede6d54a6242b7e1b635a87950d60d50680989a607",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-298aef01399b70a439d8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d2856a374ca04bdecd2f7508564c14ed16808262ba19cb1b629f26f55c83e9d",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3f456847786f426f662b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1a69d8226eebea662f8b6d1d3c1918ca79566e642a2ac30aa92f016daa59afc1",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4e6a27b685e551d82c4a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "Sout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd8e853857bf9a7c458194481673c5ffee65b39c3ee87d7a2747f6ab06f671d3",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8238bb3a1a1f87790236",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "799904e4c93a630872d0059fe7e02be39c8c7b0391dc77cc5a93b71048b30e73",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3d38f46e62ef78285cfc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1db2fb02e9eeda2f17e19f28c919bd3ca07acff519b838100f10c84e4e121ed0",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8036c082644b911963ac",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cc7b7da907bd58c83e3e95cd6d1551b291766cdf621d19929185ae5e793457c8",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    },
+    {
+      "id": "in_game_forbidden_transfer-066f918c9f149671b9e4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "rail-ghsr-adjacent-crossover-left",
+        "forbidden_transfer": {
+          "from_port": "BSin",
+          "to_port": "BSout",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5ccfaebdabbf855f61a4ce9e0897e06780068f3c01c883abccc19847f9d7bde1",
+      "dependency_ref": "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d"
+    }
+  ],
+  "dependency_sets": {
+    "6659f07b28a67cf0ce270c3a53eeef48df25b64c06292bf3b635ce9e7e34296d": {
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "effect:rail-ghsr-adjacent-crossover-left:ea5118b0-ea5118b1-7f517ff5": "7979862a441cce9fe86305de004d22f2238f3a18e8a6e4bf789068bc8cf0a67b",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517000": "a4f491f0089ae309f435708593a7b04d955cce123059387561ecd285539d2413",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517010": "8f2ca7ca438a8a8f7dbb3a390693d59df94605f6663d5d0b02f197fc934d1a38",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517020": "7e68fa3e044ca32783ba850558002741f6f92fdfcbd16e2ebcdbd98d8217bf7d",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517100": "0ca815c2086030e5ea05a58cc7a93717cf09c600144a29abc562590f63dcfeae",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517110": "0859e215f60cef9d9c7086c8a6f5737642bec64ddd4a018852085e000a44a710",
+      "exemplar:rail-ghsr-adjacent-crossover-left:6534284a-a8434037-7f517120": "ef0537b43f06e1bc3565c53862109d5011fac58449eb422fd353b83a07cd728e",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517010": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517011": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517012": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517013": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517014": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517110": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517111": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517112": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517113": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517114": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517ff5": "93ab38c1c0f3ffa4718aa6770de1a5459b566b991bce2497b05fac4712906a19",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517010": "63c247a31cc2fac242c57e9a96969e52f8b07f1f7c40cfeae9309634eeda0267",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517110": "bc8c5e0206db5507d91dfd4d23e916c4f70f2448268f2853f918804a00d12f67",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517000": "98b6bfa9f8f45361ebfe0b790dadcff712af005ec7a4b10df2c2d2f0045d1f00",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517001": "da6d1c8c15f76211b6dfe2c1bc25c5808ef572b052175fbd0bb13ec7fbbe8086",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517002": "07e983a69af6e6ecd292d0f76305bf2942fdfe61b5e946b35a2e7deed5c6a0d9",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517003": "661c62f70d6eb6c111986fbfc814f4f91211bb26d5da324eda3b35e09fc27d7b",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517004": "6fc6d89ee789b1e0ab80d8ef124cb8175d6302a88b36649eb23c90a812a5d18d",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517010": "6cdcb3788aed5a13ae8e4ec4e0ead1bcebfe93b467875290019a155384442828",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517011": "5f61424a3a093fe3c4a34cf94b1a9e9a42ebf0eb4ac9707690db9529bff79f79",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517012": "0a5f6812ffca41e109d634198055319e45553d188af5805dc0a76128a8ac74fb",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517013": "0255744e3fe7d3fc144e8e923f43bb4b8a45d07f408289fe66d266a2d8a95efe",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517014": "e3832a77534fd96b6beeb3645210138437bcd3f26f297b8b570f51fede14e9c0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517020": "0e1d4b41e11b627d4a87e244c52026fc63c567bd083e17be2e8559191cadf35e",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517021": "ae9cd421ecba93790421e9201c1e02079d31f80eab8678c99022a05adddaa26a",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517022": "f81f7c665728a43067a7876c014ba133c6a0f9d30bb79a05e521c5df01fefcfc",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517023": "e6e51ff90f66250cceca97fff4592dfa71a4feb16f743efff05bbb8c6e29fb90",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517024": "20c7ed253f4275d2b1ff03df7642aba5e725428a8a468d0874afb5479b2bc2de",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517100": "cd4585fe5929c73312d2c28d77192f3aa3830f18a547561507386da7b79c74dc",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517101": "9b4ffec97062baea63a44424875064c4de716127b676cab7eaebca12fdca1692",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517102": "6f1bbc2bda6e954ced6ae6e7cddc11d3c9c5a1c1b749b973b87431ba021ce7b9",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517103": "713f0cb670b82f6f54223fa85ca9b962385ec24ff9752aeabc5956856c89c7e0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517104": "c68b06b4a8d98a203aec5135078609ab2b379e55408c58c0f547fb3c7e124100",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517110": "f6cbfee865ce8737c127eaf9df8c9d76fe4096786155247a32d785af1cfa7a08",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517111": "d99bbfcbe39f623cfab0baa7e19965296b7c1faa0e1c5dab1b3a1fc087031a51",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517112": "540c2f4a35c78266f2ca0dedbe18411c032594e1f092a325a6479490f03b0ac0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517113": "f29a1d418dbe1cc90e96375c8bb4fda13d95c689a2691a37f7013861bfdcc94e",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517114": "6b5ac1985be7ddd2da92e5cd246346fc3c5d91dfaa0cb7639e9827a241aee721",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517120": "0f9cbe1cc9190b6c29f25b7e9f42240a77bab2852cf56ba7cd2043bf30f37259",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517121": "d18b31a365ef1adccbe093a9e43facdf63ef704e0a35b897afff82e5ae5589c4",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517122": "c5d394fb215ef2d24b69854c73a8511572077a41cc892b969d0659442def0424",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517123": "21a3ca23f679f598ee1c2fe42170f546fdbde759cf64df5a825d1d3cbedd8422",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517124": "5fe64b83aebc8b5431d498dd070d0ef476b830ed8f6048c6ef966d50f0d4550a"
+    },
+    "296d3dccfe6af2b1a7c25751e0f1f26e67dd6ab0c41bf288844cb4fae8a9967d": {
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "graph:rail-ghsr-adjacent-crossover-left": "4a22241d59318ea870387f8684581c42ef366bf20a15597413cf2e69b56c098f",
+      "interface:rail-ghsr-adjacent-crossover-left:BNin": "6a4dd701f90e498935b6fe12600ecac1cd7fdae66f6da7ff066ca6cf68c38ced",
+      "interface:rail-ghsr-adjacent-crossover-left:BNout": "068b76f5a26cd5ce6698d4b549e0376852a96780b8ffe7b18ef54be34f2a9705",
+      "interface:rail-ghsr-adjacent-crossover-left:BSin": "4ec4a0e4130aad43297be3ef8162465015001e6f86e78532733b5b9362c2dec3",
+      "interface:rail-ghsr-adjacent-crossover-left:BSout": "f01f47b419f9e7f4854a2e09f058f0bd19ecee0c6c33bdc3eb9d07e29a813869",
+      "interface:rail-ghsr-adjacent-crossover-left:Nin": "513a608786121b63c01ff669c0f6f667ccb2df6f04cfa10872c94071c3c6be73",
+      "interface:rail-ghsr-adjacent-crossover-left:Nout": "f54abefecc928eb4d3e972830965dbce8dd598d7040dec1a9265842b2049d86b",
+      "interface:rail-ghsr-adjacent-crossover-left:Sin": "927b1ff7314c7b7ec0ec8be2f4dddfc58f2a303455144124a3c2a4251387d34c",
+      "interface:rail-ghsr-adjacent-crossover-left:Sout": "35cca4aca9b45e03b5eb901f19f498f10c5b3b2d553fe81e04391651bc662dbc",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517010": "63c247a31cc2fac242c57e9a96969e52f8b07f1f7c40cfeae9309634eeda0267",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517110": "bc8c5e0206db5507d91dfd4d23e916c4f70f2448268f2853f918804a00d12f67",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b"
+    },
+    "a35804667d7b6e69f24f1b69f0853a6faa224d96d94befad7743b90eaaa60ef9": {
+      "image:rail-ghsr-adjacent-crossover-left:canonical-southeast": "c92ba7ef605d8fd4e5ed06393e3678083178d5ee4b73c2385addcadd705df1fc"
+    },
+    "1a6024200ced7008db630d1f8716af3bd4d665cfb0663b4d108af76b92e7a41c": {
+      "effect:rail-ghsr-adjacent-crossover-left:ea5118b0-ea5118b1-7f517ff5": "7979862a441cce9fe86305de004d22f2238f3a18e8a6e4bf789068bc8cf0a67b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517010": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517011": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517012": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517013": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517014": "28b96cf861e39a9bf45bed7d556f6d44073e3b96eef46ec56dd59be166d6da20",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517110": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517111": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517112": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517113": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517114": "d8a554403ced5b062f7fe301055151e3134856cee215a91b2c2ca22611abe1be",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517ff5": "93ab38c1c0f3ffa4718aa6770de1a5459b566b991bce2497b05fac4712906a19",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517000": "98b6bfa9f8f45361ebfe0b790dadcff712af005ec7a4b10df2c2d2f0045d1f00",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517001": "da6d1c8c15f76211b6dfe2c1bc25c5808ef572b052175fbd0bb13ec7fbbe8086",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517002": "07e983a69af6e6ecd292d0f76305bf2942fdfe61b5e946b35a2e7deed5c6a0d9",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517003": "661c62f70d6eb6c111986fbfc814f4f91211bb26d5da324eda3b35e09fc27d7b",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517004": "6fc6d89ee789b1e0ab80d8ef124cb8175d6302a88b36649eb23c90a812a5d18d",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517010": "6cdcb3788aed5a13ae8e4ec4e0ead1bcebfe93b467875290019a155384442828",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517011": "5f61424a3a093fe3c4a34cf94b1a9e9a42ebf0eb4ac9707690db9529bff79f79",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517012": "0a5f6812ffca41e109d634198055319e45553d188af5805dc0a76128a8ac74fb",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517013": "0255744e3fe7d3fc144e8e923f43bb4b8a45d07f408289fe66d266a2d8a95efe",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517014": "e3832a77534fd96b6beeb3645210138437bcd3f26f297b8b570f51fede14e9c0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517020": "0e1d4b41e11b627d4a87e244c52026fc63c567bd083e17be2e8559191cadf35e",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517021": "ae9cd421ecba93790421e9201c1e02079d31f80eab8678c99022a05adddaa26a",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517022": "f81f7c665728a43067a7876c014ba133c6a0f9d30bb79a05e521c5df01fefcfc",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517023": "e6e51ff90f66250cceca97fff4592dfa71a4feb16f743efff05bbb8c6e29fb90",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517024": "20c7ed253f4275d2b1ff03df7642aba5e725428a8a468d0874afb5479b2bc2de",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517100": "cd4585fe5929c73312d2c28d77192f3aa3830f18a547561507386da7b79c74dc",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517101": "9b4ffec97062baea63a44424875064c4de716127b676cab7eaebca12fdca1692",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517102": "6f1bbc2bda6e954ced6ae6e7cddc11d3c9c5a1c1b749b973b87431ba021ce7b9",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517103": "713f0cb670b82f6f54223fa85ca9b962385ec24ff9752aeabc5956856c89c7e0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517104": "c68b06b4a8d98a203aec5135078609ab2b379e55408c58c0f547fb3c7e124100",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517110": "f6cbfee865ce8737c127eaf9df8c9d76fe4096786155247a32d785af1cfa7a08",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517111": "d99bbfcbe39f623cfab0baa7e19965296b7c1faa0e1c5dab1b3a1fc087031a51",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517112": "540c2f4a35c78266f2ca0dedbe18411c032594e1f092a325a6479490f03b0ac0",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517113": "f29a1d418dbe1cc90e96375c8bb4fda13d95c689a2691a37f7013861bfdcc94e",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517114": "6b5ac1985be7ddd2da92e5cd246346fc3c5d91dfaa0cb7639e9827a241aee721",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517120": "0f9cbe1cc9190b6c29f25b7e9f42240a77bab2852cf56ba7cd2043bf30f37259",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517121": "d18b31a365ef1adccbe093a9e43facdf63ef704e0a35b897afff82e5ae5589c4",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517122": "c5d394fb215ef2d24b69854c73a8511572077a41cc892b969d0659442def0424",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517123": "21a3ca23f679f598ee1c2fe42170f546fdbde759cf64df5a825d1d3cbedd8422",
+      "shadow:rail-ghsr-adjacent-crossover-left:7ab50e44-2bc2759a-7f517124": "5fe64b83aebc8b5431d498dd070d0ef476b830ed8f6048c6ef966d50f0d4550a"
+    },
+    "93e8c9899ea0ce76165d65fbd48661d7e307e73cd4d3035f6ad020cc1ff159f0": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Sout": "35cca4aca9b45e03b5eb901f19f498f10c5b3b2d553fe81e04391651bc662dbc",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "ad7f080a322847eee160d2a64730976b8b503288462ef401709f0e5446d33cbd": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Sout": "35cca4aca9b45e03b5eb901f19f498f10c5b3b2d553fe81e04391651bc662dbc",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "0e8a967bbedd59a404fd27c6ecffeeffcefbd50d1946b706c5314ae285675180": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Nin": "513a608786121b63c01ff669c0f6f667ccb2df6f04cfa10872c94071c3c6be73",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0"
+    },
+    "a4f36fb322a0cf6a4c9ad844589a2ff835d8468c879f8e0fa1644b2e2e6ee76e": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Nin": "513a608786121b63c01ff669c0f6f667ccb2df6f04cfa10872c94071c3c6be73",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0"
+    },
+    "0f7edd238effb478517688d18ebddb6d5f6fec90ddf21d4944531f221bd81abc": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Sin": "927b1ff7314c7b7ec0ec8be2f4dddfc58f2a303455144124a3c2a4251387d34c",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "6140a7a5a466a72c49961abdd1a23979761a7afab55cb45e49543e466ff3db23": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Sin": "927b1ff7314c7b7ec0ec8be2f4dddfc58f2a303455144124a3c2a4251387d34c",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517020": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517021": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517022": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517023": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517024": "246c1b64c81dddd2b3fee473d32b3b83f81541dcd156d15511da1c6943ce16c8",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517020": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "c4f63bfd4bd7b9ba3f2f0e4167cbf0f77562b6702d64a979ed886c7c57967d35": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Nout": "f54abefecc928eb4d3e972830965dbce8dd598d7040dec1a9265842b2049d86b",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0"
+    },
+    "e6bec3db88a2c5dd9e0a1292b49f8d072885bbd080df62f4185c8bfe1e76e073": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:Nout": "f54abefecc928eb4d3e972830965dbce8dd598d7040dec1a9265842b2049d86b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517000": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517001": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517002": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517003": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517004": "7f72de4e5bb3160b3ea06abeb8d121de37cf356b7c3abd668a5f1be54f9ac01f",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517000": "8052b0b58cac704877f938101361d3749b6d79fc583990e3b26c0431116561a0"
+    },
+    "243a6af6d8667c7677741ff2e9800d28a93b7482a21b62bf378e407dc1433d91": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BSout": "f01f47b419f9e7f4854a2e09f058f0bd19ecee0c6c33bdc3eb9d07e29a813869",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b"
+    },
+    "8293cabeb9b3f53244479f53d09a95100106335cdfb12b4ca1d750ae5516f4a8": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BSout": "f01f47b419f9e7f4854a2e09f058f0bd19ecee0c6c33bdc3eb9d07e29a813869",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b"
+    },
+    "615eb154100f099d113c62a77fed68349c4eaa07dc023a3bd5749d2d56d05779": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BNin": "6a4dd701f90e498935b6fe12600ecac1cd7fdae66f6da7ff066ca6cf68c38ced",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "68b3fefe2a5bc9f46d3330f9bc69c9349b6d80f80a62099556f324d10f3e6862": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BNin": "6a4dd701f90e498935b6fe12600ecac1cd7fdae66f6da7ff066ca6cf68c38ced",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "b774ec690f088ef152df076f053a16ec5ef06dae5c44e0ba31f38c4e0f86cf1b": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BSin": "4ec4a0e4130aad43297be3ef8162465015001e6f86e78532733b5b9362c2dec3",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b"
+    },
+    "60851c8421e39e4221d43a48213304bafa3120831807b9b31d4d0be787a3f46b": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BSin": "4ec4a0e4130aad43297be3ef8162465015001e6f86e78532733b5b9362c2dec3",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517120": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517121": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517122": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517123": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517124": "2e9a722ace27b870fddf5882084cb8e5077eb85bdc0614c549104f2f749b04f5",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517120": "33fa1ed045abd00e9f3ad215cc0748f2d655f5d5e8ec52cb31590b134e9c7d8b"
+    },
+    "f7fe5cd45c2d85f9fc86facdec6b8c2a86fb749943784fdc67313939e67b973b": {
+      "construction:hsr-straight-ghsr": "7ca39b603d6bd7ad6d22a6283b278e5f4c9921abd879789bc24fa8d06cc49b82",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BNout": "068b76f5a26cd5ce6698d4b549e0376852a96780b8ffe7b18ef54be34f2a9705",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500000": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500001": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500002": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500003": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:hsr-straight-ghsr:5ad0e817-badb57f1-7f500004": "751779277ad99fb71664801c617f2e724c0ec76a065338c823edce2488fdd468",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "path:hsr-straight-ghsr:296678f7-a966883f-7f500000": "3777c56d6e499f74e853ed760f0b8c4ed570b6a7344d94cf02cce1e6f4998964",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    },
+    "8712a3e2646345c3ee7d2cb2e6dde75b120e29273f31956a7dfbe91d970b1630": {
+      "construction:diagonal-hsr-straight-ghsr": "b2050869a1ac612d32f5f13fb502003adf944750b398df28f7905e6b5578094a",
+      "construction:rail-ghsr-adjacent-crossover-left": "c051dcc97cec288a6dfdcdd009fbdc2f1ad387951f135d7aee6110451bac9a59",
+      "interface:rail-ghsr-adjacent-crossover-left:BNout": "068b76f5a26cd5ce6698d4b549e0376852a96780b8ffe7b18ef54be34f2a9705",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501000": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501001": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501002": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501003": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:diagonal-hsr-straight-ghsr:5ad0e817-badb57f1-7f501004": "142911d9eae68566ee3d89713ba300964021ccf51c85190f9cd20407947c803b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517100": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517101": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517102": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517103": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "model:rail-ghsr-adjacent-crossover-left:5ad0e817-badb57f1-7f517104": "46def81946173e01e2f30438be8932bf13f6e1270dde3c2512d86673a641687b",
+      "path:diagonal-hsr-straight-ghsr:296678f7-a966883f-7f501000": "331e48a854519431e0c00b6c692fd6e7cb5909b7594fc05f6539969a90192596",
+      "path:rail-ghsr-adjacent-crossover-left:296678f7-a966883f-7f517100": "ea60e1fff9d1786fb6b26b7de173e4d43b9c29cfb8a594de996b9ddcb5201222"
+    }
+  }
+}

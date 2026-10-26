@@ -1,0 +1,46 @@
+{
+  "purpose": "Draft reusable piece definition; implement and independently verify before building.",
+  "schema_version": 1,
+  "orientation_count": 8,
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "id": "trial-hsr-diagonal-x-junction",
+  "name": "HSR Level 2 Fully Connected Diagonal X Junction",
+  "description": "Describe the upper/lower networks, geometry and limitations.",
+  "recipe": "trial_hsr_diagonal_x_junction",
+  "status": "draft",
+  "enabled_by_default": false,
+  "puzzle_id": "f829",
+  "tile_ids": [
+    "7f587000"
+  ],
+  "preview_id": "7f587ff5",
+  "effect_name": "preview_scp_f829________001",
+  "footprint": [
+    1,
+    1
+  ],
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f829",
+    "order": "7011f829",
+    "style": "diagonal-hsr"
+  },
+  "shadow_mappings": [],
+  "provenance": {
+    "geometry": "To be recorded",
+    "construction": "To be recorded",
+    "redistribution": "permission-pending"
+  },
+  "domain": "high-speed-rail"
+}

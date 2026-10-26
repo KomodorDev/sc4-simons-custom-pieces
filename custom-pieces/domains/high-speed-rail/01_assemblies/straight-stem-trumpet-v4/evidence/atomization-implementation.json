@@ -1,0 +1,2135 @@
+{
+  "purpose": "Durable final geometry-agent evidence: exact compiler inputs, retained model/shadow identity, strict native seams, route-quality measurements and actual standalone resource audits. Scratch filenames are provenance only; production uses the owned geometry sources.",
+  "schema_version": 1,
+  "geometry_agents_complete": true,
+  "source_tests": {
+    "junctions": 9,
+    "curves": 11
+  },
+  "reports": {
+    "scp-v4-atomic-final-model-audit.json": {
+      "original_report_sha256": "5bd6c14970c6664b6e4cf29b188b537502586bb03f69e15b291f5c3f38e555ad",
+      "report": [
+        {
+          "recipe": "hsr_component_l2_short_mainline_diverge_core",
+          "native_dat_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "paths": {
+            "tile_count": 4,
+            "encoded_routes_checked": 11,
+            "external_ports_checked": 5,
+            "permitted_movements_checked": 3,
+            "unique_complete_journeys_checked": 3,
+            "literal_port_tangents_checked": 5,
+            "journey_quality": {
+              "Win>Eout": {
+                "length_m": 64.0,
+                "direct_distance_m": 64.0,
+                "length_ratio": 1.0,
+                "total_turn_degrees": 0.0,
+                "minimum_sampled_radius_m": null,
+                "maximum_sample_turn_degrees": 0.0,
+                "maximum_raw_encoded_turn_degrees": 0.0,
+                "minimum_resolved_raw_radius_m": null,
+                "maximum_endpoint_curvature_per_m": 0.0,
+                "maximum_curvature_change_per_m2": 0.0,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 2.0,
+                "signed_turn_degrees": 0.0,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Win": 0.0,
+                  "Eout": 0.0
+                }
+              },
+              "Ein>Wout": {
+                "length_m": 64.0,
+                "direct_distance_m": 64.0,
+                "length_ratio": 1.0,
+                "total_turn_degrees": 0.0,
+                "minimum_sampled_radius_m": null,
+                "maximum_sample_turn_degrees": 0.0,
+                "maximum_raw_encoded_turn_degrees": 0.0,
+                "minimum_resolved_raw_radius_m": null,
+                "maximum_endpoint_curvature_per_m": 0.0,
+                "maximum_curvature_change_per_m2": 0.0,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 2.0,
+                "signed_turn_degrees": 0.0,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Ein": 0.0,
+                  "Wout": 0.0
+                }
+              },
+              "Win>Sout": {
+                "length_m": 47.086527336665014,
+                "direct_distance_m": 46.78485401701453,
+                "length_ratio": 1.0064480979152093,
+                "total_turn_degrees": 21.02871144578946,
+                "minimum_sampled_radius_m": 65.68040939653639,
+                "maximum_sample_turn_degrees": 1.7114775604833168,
+                "maximum_raw_encoded_turn_degrees": 0.38575697438252654,
+                "minimum_resolved_raw_radius_m": 41.802569768805526,
+                "maximum_endpoint_curvature_per_m": 0.01522524005541193,
+                "maximum_curvature_change_per_m2": 0.0010509823887540992,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 1.961938639027709,
+                "signed_turn_degrees": -21.028711445789458,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Win": 0.00024889828408203367
+                }
+              }
+            },
+            "maximum_encoded_grade": 0.0,
+            "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+            "game_operation": "unverified",
+            "grade_separated_crossings_checked": 0,
+            "grade_separated_projected_contacts_checked": 0,
+            "grade_separated_crossings": [],
+            "same_direction_shared_tail_contacts_checked": 15,
+            "independent_at_grade_conflicts_checked": 0
+          },
+          "models": {
+            "authored_clearance_height_m": 5.0,
+            "authored_clearance_width_m": 5.0,
+            "bed_union_width_m": 5.0,
+            "complete_native_join_sections_checked": 3,
+            "coplanar_overlap_meshing_tolerance_m": 0.0001,
+            "corridor_clipped_to_literal_ownership": true,
+            "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+            "custom_port_cap_depth_m": 2.6,
+            "custom_port_cap_labels": [
+              "Sout"
+            ],
+            "custom_port_cap_width_m": 5.2,
+            "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+            "full_width_bed_union_segments_checked": 123,
+            "global_support_spacing_checked": true,
+            "height_aware_bed_union_checked": true,
+            "maximum_coplanar_bed_overlap_area_m2": 3.4974808116317035e-07,
+            "maximum_coplanar_bed_overlap_thickness_m": 4.681197651734692e-07,
+            "maximum_uncovered_bed_area_m2": 8.56833048601402e-06,
+            "minimum_support_centre_distance_m": 16.0,
+            "model_polygons_cut_at_custom_caps": 570,
+            "models_checked": 21,
+            "native_join_profile_tolerance_m": 0.0001,
+            "native_join_widths_m": [
+              15.0
+            ],
+            "native_material_preserved": true,
+            "owner_clipped_corridor_fragments_checked": 129,
+            "path_nodes_covered_by_visible_bed": 134,
+            "positive_area_coplanar_bed_pairs": 2316,
+            "preview_matches_tiles": true,
+            "rail_crossing_ribbon_nodes": 2,
+            "render_budget_models_checked": 21,
+            "render_group_budget_checked": true,
+            "sloped_support_heads_checked": 0,
+            "support_centres_sc4path_xy": [
+              [
+                0.0,
+                -0.0
+              ],
+              [
+                16.0,
+                -0.0
+              ],
+              [
+                32.0,
+                -0.0
+              ],
+              [
+                48.0,
+                -0.0
+              ]
+            ],
+            "support_columns_checked": 4,
+            "support_contact_points_checked": 36,
+            "support_foundations_within_reserved_cells": true,
+            "support_tops_touch_deck": true,
+            "texture_ids": [
+              200728731
+            ],
+            "train_clearance_segments_checked": 123,
+            "unused_visible_rails_outside_declared_custom_caps": false,
+            "visible_native_rail_centre_segments_matched_to_paths": 1395,
+            "visible_native_rail_triangles_matched_to_paths": 5217
+          }
+        },
+        {
+          "recipe": "hsr_component_l2_short_opposed_merge_core",
+          "native_dat_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "paths": {
+            "tile_count": 5,
+            "encoded_routes_checked": 17,
+            "external_ports_checked": 6,
+            "permitted_movements_checked": 4,
+            "unique_complete_journeys_checked": 4,
+            "literal_port_tangents_checked": 6,
+            "journey_quality": {
+              "Win>Eout": {
+                "length_m": 80.0,
+                "direct_distance_m": 80.0,
+                "length_ratio": 1.0,
+                "total_turn_degrees": 0.0,
+                "minimum_sampled_radius_m": null,
+                "maximum_sample_turn_degrees": 0.0,
+                "maximum_raw_encoded_turn_degrees": 0.0,
+                "minimum_resolved_raw_radius_m": null,
+                "maximum_endpoint_curvature_per_m": 0.0,
+                "maximum_curvature_change_per_m2": 0.0,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 2.0,
+                "signed_turn_degrees": 0.0,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Win": 0.0,
+                  "Eout": 0.0
+                }
+              },
+              "Ein>Wout": {
+                "length_m": 80.0,
+                "direct_distance_m": 80.0,
+                "length_ratio": 1.0,
+                "total_turn_degrees": 0.0,
+                "minimum_sampled_radius_m": null,
+                "maximum_sample_turn_degrees": 0.0,
+                "maximum_raw_encoded_turn_degrees": 0.0,
+                "minimum_resolved_raw_radius_m": null,
+                "maximum_endpoint_curvature_per_m": 0.0,
+                "maximum_curvature_change_per_m2": 0.0,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 2.0,
+                "signed_turn_degrees": 0.0,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Ein": 0.0,
+                  "Wout": 0.0
+                }
+              },
+              "Nin>Wout": {
+                "length_m": 57.32783567038449,
+                "direct_distance_m": 56.880029772414154,
+                "length_ratio": 1.0078728140572724,
+                "total_turn_degrees": 23.25561391639195,
+                "minimum_sampled_radius_m": 53.32713820515391,
+                "maximum_sample_turn_degrees": 2.123935568333459,
+                "maximum_raw_encoded_turn_degrees": 0.3811715076542172,
+                "minimum_resolved_raw_radius_m": 49.83527694731086,
+                "maximum_endpoint_curvature_per_m": 0.018752178227770585,
+                "maximum_curvature_change_per_m2": 0.0005421124092724782,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 1.9768219196684307,
+                "signed_turn_degrees": -23.25561391639195,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Wout": 0.0
+                }
+              },
+              "Sin>Eout": {
+                "length_m": 47.08652733666502,
+                "direct_distance_m": 46.78485401701453,
+                "length_ratio": 1.0064480979152095,
+                "total_turn_degrees": 21.0287114457895,
+                "minimum_sampled_radius_m": 65.68040939653555,
+                "maximum_sample_turn_degrees": 1.7114775604833388,
+                "maximum_raw_encoded_turn_degrees": 0.38575697438350964,
+                "minimum_resolved_raw_radius_m": 41.802569768698326,
+                "maximum_endpoint_curvature_per_m": 0.015225240055412126,
+                "maximum_curvature_change_per_m2": 0.0010509823887540942,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 1.9619386390277092,
+                "signed_turn_degrees": -21.028711445789504,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Eout": 0.000248898284082034
+                }
+              }
+            },
+            "maximum_encoded_grade": 0.0,
+            "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+            "game_operation": "unverified",
+            "grade_separated_crossings_checked": 0,
+            "grade_separated_projected_contacts_checked": 0,
+            "grade_separated_crossings": [],
+            "same_direction_shared_tail_contacts_checked": 22,
+            "independent_at_grade_conflicts_checked": 0
+          },
+          "models": {
+            "authored_clearance_height_m": 5.0,
+            "authored_clearance_width_m": 5.0,
+            "bed_union_width_m": 5.0,
+            "complete_native_join_sections_checked": 3,
+            "coplanar_overlap_meshing_tolerance_m": 0.0001,
+            "corridor_clipped_to_literal_ownership": true,
+            "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+            "custom_port_cap_depth_m": 2.6,
+            "custom_port_cap_labels": [
+              "Nin",
+              "Sin"
+            ],
+            "custom_port_cap_width_m": 5.2,
+            "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+            "full_width_bed_union_segments_checked": 272,
+            "global_support_spacing_checked": true,
+            "height_aware_bed_union_checked": true,
+            "maximum_coplanar_bed_overlap_area_m2": 4.242174664881304e-07,
+            "maximum_coplanar_bed_overlap_thickness_m": 4.748541648780247e-07,
+            "maximum_uncovered_bed_area_m2": 1.4606180968712579e-05,
+            "minimum_support_centre_distance_m": 16.0,
+            "model_polygons_cut_at_custom_caps": 1086,
+            "models_checked": 26,
+            "native_join_profile_tolerance_m": 0.0001,
+            "native_join_widths_m": [
+              15.0
+            ],
+            "native_material_preserved": true,
+            "owner_clipped_corridor_fragments_checked": 289,
+            "path_nodes_covered_by_visible_bed": 289,
+            "positive_area_coplanar_bed_pairs": 5319,
+            "preview_matches_tiles": true,
+            "rail_crossing_ribbon_nodes": 4,
+            "render_budget_models_checked": 26,
+            "render_group_budget_checked": true,
+            "sloped_support_heads_checked": 0,
+            "support_centres_sc4path_xy": [
+              [
+                0.0,
+                -0.0
+              ],
+              [
+                16.0,
+                -0.0
+              ],
+              [
+                32.0,
+                -0.0
+              ],
+              [
+                48.0,
+                -0.0
+              ],
+              [
+                64.0,
+                -0.0
+              ]
+            ],
+            "support_columns_checked": 5,
+            "support_contact_points_checked": 45,
+            "support_foundations_within_reserved_cells": true,
+            "support_tops_touch_deck": true,
+            "texture_ids": [
+              200728731
+            ],
+            "train_clearance_segments_checked": 272,
+            "unused_visible_rails_outside_declared_custom_caps": false,
+            "visible_native_rail_centre_segments_matched_to_paths": 3327,
+            "visible_native_rail_triangles_matched_to_paths": 11991
+          }
+        }
+      ]
+    },
+    "scp-v4-atomic-final-retained-identity.json": {
+      "original_report_sha256": "4bcafe2bf1a360728e607d4725fb8cd283ca11a89c3810ca0ac5dcce2d25905c",
+      "report": [
+        {
+          "recipe": "hsr_component_l2_short_mainline_diverge_core",
+          "retained_cells": [
+            {
+              "new_local_cell": [
+                1,
+                0
+              ],
+              "old_local_cell": [
+                2,
+                0
+              ],
+              "model_sha256": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
+              "all_five_models_and_shadows_identical": true
+            },
+            {
+              "new_local_cell": [
+                2,
+                0
+              ],
+              "old_local_cell": [
+                3,
+                0
+              ],
+              "model_sha256": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
+              "all_five_models_and_shadows_identical": true
+            },
+            {
+              "new_local_cell": [
+                3,
+                0
+              ],
+              "old_local_cell": [
+                4,
+                0
+              ],
+              "model_sha256": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
+              "all_five_models_and_shadows_identical": true
+            }
+          ],
+          "seam_sections": [
+            {
+              "height": 16.189326,
+              "left": [
+                [
+                  -7.5,
+                  7.5
+                ]
+              ],
+              "right": [
+                [
+                  -7.499999912109325,
+                  7.5
+                ]
+              ],
+              "max_endpoint_difference_m": 8.789067518222282e-08,
+              "tolerance_m": 0.0001
+            },
+            {
+              "height": 14.01067,
+              "left": [
+                [
+                  -7.5,
+                  7.5
+                ]
+              ],
+              "right": [
+                [
+                  -7.5,
+                  7.5
+                ]
+              ],
+              "max_endpoint_difference_m": 0.0,
+              "tolerance_m": 0.0001
+            },
+            {
+              "height": 16.98933,
+              "left": [
+                [
+                  -7.499999523162842,
+                  -6.290499176265247
+                ],
+                [
+                  5.996547698974609,
+                  7.499999988254271
+                ]
+              ],
+              "right": [
+                [
+                  -7.499999523162842,
+                  -6.290499244447415
+                ],
+                [
+                  5.996547734211773,
+                  7.5
+                ]
+              ],
+              "max_endpoint_difference_m": 6.818216746751204e-08,
+              "tolerance_m": 0.0001
+            }
+          ],
+          "exact_path_seam": true
+        },
+        {
+          "recipe": "hsr_component_l2_short_opposed_merge_core",
+          "retained_cells": [
+            {
+              "new_local_cell": [
+                0,
+                0
+              ],
+              "old_local_cell": [
+                0,
+                0
+              ],
+              "model_sha256": "feebd7ef4fdaf084ea87ae46a847460a10782766a4185736b3a3ee6fc8df17ed",
+              "all_five_models_and_shadows_identical": true
+            },
+            {
+              "new_local_cell": [
+                1,
+                0
+              ],
+              "old_local_cell": [
+                1,
+                0
+              ],
+              "model_sha256": "3dfbd53c5d977734acabcbdf0603c41590ee842535f80e7607a769a0e116a062",
+              "all_five_models_and_shadows_identical": true
+            },
+            {
+              "new_local_cell": [
+                2,
+                0
+              ],
+              "old_local_cell": [
+                2,
+                0
+              ],
+              "model_sha256": "857c41fc75c81e345535f4746e2532486548c2b33b054fd8dc80c69c00dee7a4",
+              "all_five_models_and_shadows_identical": true
+            },
+            {
+              "new_local_cell": [
+                3,
+                0
+              ],
+              "old_local_cell": [
+                3,
+                0
+              ],
+              "model_sha256": "ebc9f7552129f3571b748093d232085e5869f6c38280a61caa4829febd271555",
+              "all_five_models_and_shadows_identical": true
+            }
+          ],
+          "seam_sections": [
+            {
+              "height": 16.189326,
+              "left": [
+                [
+                  -7.5,
+                  8.0
+                ]
+              ],
+              "right": [
+                [
+                  -7.4999999094460295,
+                  8.0
+                ]
+              ],
+              "max_endpoint_difference_m": 9.05539705442493e-08,
+              "tolerance_m": 0.0001
+            },
+            {
+              "height": 14.01067,
+              "left": [
+                [
+                  -7.5,
+                  8.0
+                ]
+              ],
+              "right": [
+                [
+                  -7.5,
+                  8.0
+                ]
+              ],
+              "max_endpoint_difference_m": 0.0,
+              "tolerance_m": 0.0001
+            },
+            {
+              "height": 16.98933,
+              "left": [
+                [
+                  -7.499999523162842,
+                  -6.290499244447415
+                ],
+                [
+                  5.996547698974609,
+                  7.410213012588295
+                ],
+                [
+                  7.5,
+                  8.0
+                ]
+              ],
+              "right": [
+                [
+                  -7.499999484722272,
+                  -6.290499176265247
+                ],
+                [
+                  5.996547698974609,
+                  7.410213928329763
+                ],
+                [
+                  7.5,
+                  8.0
+                ]
+              ],
+              "max_endpoint_difference_m": 9.157414684324294e-07,
+              "tolerance_m": 0.0001
+            }
+          ],
+          "exact_path_seam": true
+        }
+      ]
+    },
+    "scp-v4-junction-atomization-review.json": {
+      "original_report_sha256": "92b537d78a78dd763e1b720eff111902625b7201244abc7126e0089381b8da07",
+      "report": {
+        "purpose": "Record the independent eligibility decision and exact bounded junction-tail redesign; software analysis does not establish game operation.",
+        "schema_version": 1,
+        "old_candidate_tail_deviation_m": 0.004018411269782,
+        "candidate_eligibility_limit_m_exclusive": 0.005,
+        "maximum_changed_route_point_distance_m": 0.024332708305568218,
+        "independent_verifier_bound_m": 0.0245,
+        "native_flat_collar_m": 2.5,
+        "correction_end_source_east_m": 23.789600198193455,
+        "curve_coefficients_y_equals_minus2_plus_a3_t3_a4_t4_a5_t5": [
+          -0.00036850639725978903,
+          2.9983183161952616e-05,
+          -8.373768999247487e-07
+        ],
+        "polynomial_parameter_t": "P01A retained original source east minus10.5m",
+        "source_geometry_sha256": {
+          "hsr-component-l2-mainline-diverge-core": "7db5f289e75dd98728a7c9270f1b30ee3b89bb9b1b4395f694beda5958f7414a",
+          "hsr-component-modular-east-junction": "a3e50f4d3f07e748e71dc33ccbdba7d14ada363ae348c6d0c6cbb1864ed3b081"
+        },
+        "full_curve_quality": {
+          "length_m": 175.1630665430941,
+          "direct_distance_m": 147.20054347725758,
+          "length_ratio": 1.1899620912076097,
+          "total_turn_degrees": 90.00000000000003,
+          "minimum_sampled_radius_m": 57.422599115298155,
+          "maximum_sample_turn_degrees": 1.9860879862644805,
+          "maximum_raw_encoded_turn_degrees": 0.4435615871666334,
+          "minimum_resolved_raw_radius_m": 58.13518335568041,
+          "maximum_endpoint_curvature_per_m": 0.0002768350625756832,
+          "maximum_curvature_change_per_m2": 0.0010436054355632285,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 1.99048939253516
+        },
+        "scope": "One eligible16m approach tile replaced with existing paired straight; correction confined to next16m tile; every later original routepoint preserved. Mirror-reversed opposing junction correction preserves complete direct-slip symmetry.",
+        "physical_rejection": {
+          "piece_id": "hsr-component-l2-mainline-diverge-core",
+          "local_xy": [
+            4,
+            0
+          ],
+          "path_deviation_m": 0.0,
+          "deck_extension_beyond_native_width_m": 0.5,
+          "decision": "Retain: the real500mm branch-platform wing and open parapet continue into the neighbouring one-way curve. An ordinary straight restores a wall within1.17m of the branchPATH, inside its2.6m clearancehalfwidth; simple trimming does not preserve the physical connection.",
+          "ordinary_parapet_corner_world_en_m": [
+            -56.0,
+            -7.5
+          ],
+          "nearby_branch_path_world_en_m": [
+            -56.0,
+            -8.669553309
+          ],
+          "north_gap_m": 1.169553309,
+          "required_train_clearance_half_width_m": 2.6
+        }
+      }
+    },
+    "scp_atomic_curves_retained_model_proof.json": {
+      "original_report_sha256": "16bda32294ffc864613062cf03af303a6d9cbe4e92e8e1b42e61844d68cc1159",
+      "report": {
+        "hsr_component_l2_shortened_departure_curve": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+            "new_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77"
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+            "new_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536"
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+            "new_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d"
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+            "new_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b"
+          },
+          {
+            "cell": [
+              2,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+            "new_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e"
+          },
+          {
+            "cell": [
+              3,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+            "new_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3"
+          },
+          {
+            "cell": [
+              4,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+            "new_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153"
+          },
+          {
+            "cell": [
+              3,
+              2
+            ],
+            "identical": true,
+            "old_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+            "new_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4"
+          },
+          {
+            "cell": [
+              4,
+              2
+            ],
+            "identical": true,
+            "old_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+            "new_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf"
+          },
+          {
+            "cell": [
+              4,
+              3
+            ],
+            "identical": true,
+            "old_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+            "new_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449"
+          },
+          {
+            "cell": [
+              4,
+              4
+            ],
+            "identical": true,
+            "old_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+            "new_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18"
+          },
+          {
+            "cell": [
+              4,
+              5
+            ],
+            "identical": false,
+            "old_sha256": "9f9ca1ef2e7434b60750e04d0b8e6b336cca27eb628eeb10d5204544016a8cb9",
+            "new_sha256": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311"
+          }
+        ],
+        "hsr_component_l2_shortened_return_curve": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+            "new_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8"
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+            "new_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4"
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+            "new_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430"
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "identical": true,
+            "old_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+            "new_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
+            "new_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
+            "new_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9"
+          },
+          {
+            "cell": [
+              2,
+              1
+            ],
+            "identical": true,
+            "old_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
+            "new_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b"
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "identical": true,
+            "old_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
+            "new_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f"
+          },
+          {
+            "cell": [
+              1,
+              2
+            ],
+            "identical": true,
+            "old_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
+            "new_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414"
+          },
+          {
+            "cell": [
+              0,
+              3
+            ],
+            "identical": true,
+            "old_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
+            "new_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1"
+          },
+          {
+            "cell": [
+              0,
+              4
+            ],
+            "identical": true,
+            "old_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
+            "new_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255"
+          },
+          {
+            "cell": [
+              0,
+              5
+            ],
+            "identical": false,
+            "old_sha256": "53c985529012f41bee276ef53a162c7147dd7532933928421d40ff311503ab78",
+            "new_sha256": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad"
+          }
+        ]
+      }
+    },
+    "scp-v4-atomic-final-hsr_component_l2_short_mainline_diverge_core.json": {
+      "original_report_sha256": "eb9228470c30342d95e5a828ede909d307475a7cee9fa4e25b081f3309175598",
+      "report": {
+        "signature": {
+          "purpose": "Exact inputs to the final production writer for safe local cached-model reuse.",
+          "recipe": "hsr_component_l2_short_mainline_diverge_core",
+          "geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
+          "source_sha256": {
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          },
+          "component_function_sha256": {
+            "_cached_models": "5567f8866550eda9fbaf7db6e4b6a1151085cf1fbe48c8f9f01d262e822c597f",
+            "_sweep_component_profile": "ad1405d6c960fcc43dfc1928a95396aea88f8c2967ebdad0f7bfa8e3fca85be8"
+          },
+          "native_archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "parts": [
+            {
+              "mapping": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    0
+                  ]
+                ]
+              ],
+              "config_sha256": "e9eeb3cfbe2697140e64d454a26a43240858cbd9072f8b9ecdf10e117864b385"
+            },
+            {
+              "mapping": [
+                [
+                  [
+                    1,
+                    0
+                  ],
+                  [
+                    2,
+                    0
+                  ]
+                ],
+                [
+                  [
+                    2,
+                    0
+                  ],
+                  [
+                    3,
+                    0
+                  ]
+                ],
+                [
+                  [
+                    3,
+                    0
+                  ],
+                  [
+                    4,
+                    0
+                  ]
+                ]
+              ],
+              "config_sha256": "234fe25cb2d252c94efbc194777635fa1b4e2515fc8afd5515d3c6d28d373330"
+            }
+          ]
+        },
+        "started_utc": 1792491179.5110269,
+        "seconds": 121.81142087513581,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_mainline_diverge_core-0-0.s3d",
+            "sha256": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f"
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_mainline_diverge_core-1-0.s3d",
+            "sha256": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588"
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_mainline_diverge_core-2-0.s3d",
+            "sha256": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87"
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_mainline_diverge_core-3-0.s3d",
+            "sha256": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b"
+          }
+        ],
+        "additional_framework_inputs_unchanged_since_compile_start": {
+          "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+          "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+          "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+          "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08"
+        }
+      }
+    },
+    "scp-v4-atomic-final-hsr_component_l2_short_opposed_merge_core.json": {
+      "original_report_sha256": "c5d1002eb953409cb04331ad0a1414ee55cab9ac0e2cae8294d664071ea09992",
+      "report": {
+        "signature": {
+          "purpose": "Exact inputs to the final production writer for safe local cached-model reuse.",
+          "recipe": "hsr_component_l2_short_opposed_merge_core",
+          "geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833",
+          "source_sha256": {
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          },
+          "component_function_sha256": {
+            "_cached_models": "5567f8866550eda9fbaf7db6e4b6a1151085cf1fbe48c8f9f01d262e822c597f",
+            "_sweep_component_profile": "ad1405d6c960fcc43dfc1928a95396aea88f8c2967ebdad0f7bfa8e3fca85be8"
+          },
+          "native_archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "parts": [
+            {
+              "mapping": [
+                [
+                  [
+                    4,
+                    0
+                  ],
+                  [
+                    5,
+                    5
+                  ]
+                ]
+              ],
+              "config_sha256": "bcf5b8db75f4c1548223ea0a76b22987cc8d19e480e22d46dba1b9919eb8b3fa"
+            },
+            {
+              "mapping": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    1,
+                    0
+                  ],
+                  [
+                    2,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    2,
+                    0
+                  ],
+                  [
+                    3,
+                    5
+                  ]
+                ],
+                [
+                  [
+                    3,
+                    0
+                  ],
+                  [
+                    4,
+                    5
+                  ]
+                ]
+              ],
+              "config_sha256": "e61a0675ee2dd4e43650335f1c667089189363a9b4e87a8b3d731a89973abc05"
+            }
+          ]
+        },
+        "started_utc": 1792491180.679497,
+        "seconds": 483.9540460421704,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_opposed_merge_core-0-0.s3d",
+            "sha256": "feebd7ef4fdaf084ea87ae46a847460a10782766a4185736b3a3ee6fc8df17ed"
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_opposed_merge_core-1-0.s3d",
+            "sha256": "3dfbd53c5d977734acabcbdf0603c41590ee842535f80e7607a769a0e116a062"
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_opposed_merge_core-2-0.s3d",
+            "sha256": "857c41fc75c81e345535f4746e2532486548c2b33b054fd8dc80c69c00dee7a4"
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_opposed_merge_core-3-0.s3d",
+            "sha256": "ebc9f7552129f3571b748093d232085e5869f6c38280a61caa4829febd271555"
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "scratch_filename": "scp-v4-final-hsr_component_l2_short_opposed_merge_core-4-0.s3d",
+            "sha256": "15571d63519721d2b82e5cbc8e8dbc3868918d9477841400594697d7dd5a0c8f"
+          }
+        ],
+        "additional_framework_inputs_unchanged_since_compile_start": {
+          "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+          "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+          "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+          "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08"
+        }
+      }
+    },
+    "hsr_component_l2_shortened_departure_curve.json": {
+      "original_report_sha256": "897362593e0a3d96ee77890947f583c6277ebd959cf6ed4ecc34e387cbdb7f9d",
+      "report": {
+        "purpose": "Actual native-profile compiled-model proof for the new shortened curve. No rendering or installation was performed.",
+        "recipe": "hsr_component_l2_shortened_departure_curve",
+        "geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
+        "native_profile_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+        "model_dat_sha256": "601e7ec37e768182f2cb4b29612c47a2126d9b90b8fbc2d196739b6470ff538a",
+        "models": 12,
+        "triangles": 58863,
+        "native_south_sections": {
+          "87.99999925:16.189326": [
+            [
+              60.0,
+              68.0
+            ]
+          ],
+          "87.99999925:14.01067": [
+            [
+              60.0,
+              68.0
+            ]
+          ],
+          "87.99999925:16.989326": [
+            [
+              60.000001907340334,
+              61.40000009536743
+            ],
+            [
+              66.59999990463257,
+              67.99999904632568
+            ]
+          ],
+          "87.9375:16.189326": [
+            [
+              60.0,
+              68.0
+            ]
+          ],
+          "87.9375:14.01067": [
+            [
+              60.0,
+              68.0
+            ]
+          ],
+          "87.9375:16.989326": [
+            [
+              60.000001430511475,
+              61.40000009536743
+            ],
+            [
+              66.59999990463257,
+              67.99999904632568
+            ]
+          ]
+        },
+        "supports": {
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "sloped_support_heads_checked": 0,
+          "global_support_spacing_checked": true,
+          "minimum_support_centre_distance_m": 16.0,
+          "support_tops_touch_deck": true,
+          "support_centres_sc4path_xy": [
+            [
+              32.0,
+              -0.0
+            ],
+            [
+              48.0,
+              -16.0
+            ],
+            [
+              57.377596,
+              -29.524559
+            ],
+            [
+              64.0,
+              -80.0
+            ],
+            [
+              64.0,
+              -64.0
+            ],
+            [
+              64.0,
+              -48.0
+            ]
+          ]
+        },
+        "five_metre_corridors": {
+          "full_width_bed_union_segments_checked": 256,
+          "bed_union_width_m": 5.0,
+          "maximum_uncovered_bed_area_m2": 6.335747662511437e-06,
+          "height_aware_bed_union_checked": true,
+          "owner_clipped_corridor_fragments_checked": 330,
+          "corridor_clipped_to_literal_ownership": true,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true
+        },
+        "elapsed_seconds": 69.26444268226624,
+        "compiler_input_signature": {
+          "purpose": "Exact production model compiler and literal-input signature for cache reuse; full independently saved production DAT audits remain mandatory.",
+          "geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
+          "native_s3d_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "native_archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "compiler_source_sha256": {
+            "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+            "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+            "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          },
+          "model_input_config_sha256": "66ebd874d59051174c5af65962bfcc426735299c1e09c0d5fe9c2313c0844490",
+          "source_frame_mapping": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            [
+              [
+                1,
+                0
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                4,
+                1
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                5,
+                1
+              ]
+            ],
+            [
+              [
+                2,
+                1
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                3,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            [
+              [
+                4,
+                1
+              ],
+              [
+                6,
+                2
+              ]
+            ],
+            [
+              [
+                3,
+                2
+              ],
+              [
+                5,
+                3
+              ]
+            ],
+            [
+              [
+                4,
+                2
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            [
+              [
+                4,
+                3
+              ],
+              [
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                4,
+                4
+              ],
+              [
+                6,
+                5
+              ]
+            ],
+            [
+              [
+                4,
+                5
+              ],
+              [
+                6,
+                6
+              ]
+            ]
+          ],
+          "model_cache_dat_sha256": "601e7ec37e768182f2cb4b29612c47a2126d9b90b8fbc2d196739b6470ff538a",
+          "model_cache_iid_formula": "0x7ff00000 + local_column * 0x100 + local_row * 0x10",
+          "per_cell_model_sha256": {
+            "0,0": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+            "1,0": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+            "2,0": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+            "3,0": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+            "2,1": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+            "3,1": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+            "4,1": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+            "3,2": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+            "4,2": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+            "4,3": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+            "4,4": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+            "4,5": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311"
+          },
+          "source_loaded_before_compile_process_start_local": "2026-10-20 12:11:50 Europe/Berlin",
+          "compiler_sources_unchanged_since_process_start_checked": true
+        },
+        "compiler_inputs": {
+          "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "config_sha256": "66ebd874d59051174c5af65962bfcc426735299c1e09c0d5fe9c2313c0844490",
+          "source_sha256": {
+            "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+            "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+            "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          }
+        },
+        "retained_model_byte_identity": {
+          "purpose": "Direct comparison to the actual V3 compiled curve model resources; only the adjoining tail cell changes.",
+          "unchanged_retained_cells": 11,
+          "changed_retained_cells": 1,
+          "results": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+              "new_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77"
+            },
+            {
+              "cell": [
+                1,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+              "new_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536"
+            },
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+              "new_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d"
+            },
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+              "new_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b"
+            },
+            {
+              "cell": [
+                2,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+              "new_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e"
+            },
+            {
+              "cell": [
+                3,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+              "new_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3"
+            },
+            {
+              "cell": [
+                4,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+              "new_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153"
+            },
+            {
+              "cell": [
+                3,
+                2
+              ],
+              "identical": true,
+              "old_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+              "new_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4"
+            },
+            {
+              "cell": [
+                4,
+                2
+              ],
+              "identical": true,
+              "old_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+              "new_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf"
+            },
+            {
+              "cell": [
+                4,
+                3
+              ],
+              "identical": true,
+              "old_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+              "new_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449"
+            },
+            {
+              "cell": [
+                4,
+                4
+              ],
+              "identical": true,
+              "old_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+              "new_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18"
+            },
+            {
+              "cell": [
+                4,
+                5
+              ],
+              "identical": false,
+              "old_sha256": "9f9ca1ef2e7434b60750e04d0b8e6b336cca27eb628eeb10d5204544016a8cb9",
+              "new_sha256": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311"
+            }
+          ]
+        },
+        "independent_saved_resource_audit": {
+          "purpose": "Independent literal-contract audit of actual saved synthetic-ID native S3D/PATH/exemplar/preview resources. Production DAT/controller identity is checked separately by the full build. No image was rendered and no installation changed.",
+          "recipe": "hsr_component_l2_shortened_departure_curve",
+          "audit_dat_sha256": "83e8a884cb355b50fdea9a21dbc0e511d79679661dda990a57e5040a8d3ef16a",
+          "paths": {
+            "tile_count": 12,
+            "encoded_routes_checked": 9,
+            "external_ports_checked": 2,
+            "permitted_movements_checked": 1,
+            "unique_complete_journeys_checked": 1,
+            "literal_port_tangents_checked": 2,
+            "journey_quality": {
+              "Win>Sout": {
+                "length_m": 112.07658337429714,
+                "direct_distance_m": 104.62639830077953,
+                "length_ratio": 1.0712075078041,
+                "total_turn_degrees": 67.20838066582036,
+                "minimum_sampled_radius_m": 57.21938623477373,
+                "maximum_sample_turn_degrees": 1.968880396319329,
+                "maximum_raw_encoded_turn_degrees": 0.44362516452180617,
+                "minimum_resolved_raw_radius_m": 55.39721956738333,
+                "maximum_endpoint_curvature_per_m": 0.01613421283664405,
+                "maximum_curvature_change_per_m2": 0.0011088126089453185,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 1.9662558486718797,
+                "signed_turn_degrees": -67.2083806658204,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Sout": 0.0004547614410498409
+                }
+              }
+            },
+            "maximum_encoded_grade": 0.0,
+            "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+            "game_operation": "unverified",
+            "grade_separated_crossings_checked": 0,
+            "grade_separated_projected_contacts_checked": 0,
+            "grade_separated_crossings": [],
+            "same_direction_shared_tail_contacts_checked": 0,
+            "independent_at_grade_conflicts_checked": 0
+          },
+          "models": {
+            "authored_clearance_height_m": 5.0,
+            "authored_clearance_width_m": 5.0,
+            "bed_union_width_m": 5.0,
+            "complete_native_join_sections_checked": 3,
+            "coplanar_overlap_meshing_tolerance_m": 0.0001,
+            "corridor_clipped_to_literal_ownership": true,
+            "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+            "custom_cap_scope": "Only the exact inherited saved northern port-tile model may use this literal outward mask. Both old V3 models fail the2.6m fan mask and pass with actual neighbouring PATHs; whole V4 checks remain fully unclipped.",
+            "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+            "full_width_bed_union_segments_checked": 256,
+            "global_support_spacing_checked": true,
+            "height_aware_bed_union_checked": true,
+            "inherited_custom_cap_depth_m": 2.65,
+            "inherited_custom_cap_exact_model_cell": [
+              1,
+              0
+            ],
+            "inherited_custom_cap_exact_model_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+            "inherited_custom_cap_labels": [
+              "Win"
+            ],
+            "inherited_custom_cap_model_zooms_checked": 5,
+            "inherited_custom_cap_width_m": 5.2,
+            "maximum_coplanar_bed_overlap_area_m2": 5.018139290768886e-07,
+            "maximum_coplanar_bed_overlap_thickness_m": 5.174106334493445e-07,
+            "maximum_uncovered_bed_area_m2": 6.335763540477046e-06,
+            "minimum_support_centre_distance_m": 16.0,
+            "model_polygons_cut_at_custom_caps": 609,
+            "models_checked": 61,
+            "native_join_profile_tolerance_m": 0.0001,
+            "native_join_widths_m": [
+              8.0
+            ],
+            "native_material_preserved": true,
+            "owner_clipped_corridor_fragments_checked": 330,
+            "path_nodes_covered_by_visible_bed": 265,
+            "positive_area_coplanar_bed_pairs": 6837,
+            "preview_matches_tiles": true,
+            "rail_crossing_ribbon_nodes": 0,
+            "render_budget_models_checked": 61,
+            "render_group_budget_checked": true,
+            "sloped_support_heads_checked": 0,
+            "support_centres_sc4path_xy": [
+              [
+                32.0,
+                -0.0
+              ],
+              [
+                48.0,
+                -16.0
+              ],
+              [
+                57.377596,
+                -29.524559
+              ],
+              [
+                64.0,
+                -80.0
+              ],
+              [
+                64.0,
+                -64.0
+              ],
+              [
+                64.0,
+                -48.0
+              ]
+            ],
+            "support_columns_checked": 6,
+            "support_contact_points_checked": 54,
+            "support_foundations_within_reserved_cells": true,
+            "support_tops_touch_deck": true,
+            "texture_ids": [
+              200728731
+            ],
+            "train_clearance_segments_checked": 256,
+            "unused_visible_rails_outside_declared_custom_caps": false,
+            "visible_native_rail_centre_segments_matched_to_paths": 3493,
+            "visible_native_rail_triangles_matched_to_paths": 8250
+          }
+        }
+      }
+    },
+    "hsr_component_l2_shortened_return_curve.json": {
+      "original_report_sha256": "d2ac2851873bd648a088917afee44349a033d755a286ee2ff66257ff55bbc3f8",
+      "report": {
+        "purpose": "Actual native-profile compiled-model proof for the new shortened curve. No rendering or installation was performed.",
+        "recipe": "hsr_component_l2_shortened_return_curve",
+        "geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
+        "native_profile_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+        "model_dat_sha256": "7c8fccc0b84e4537420e92bb912914e221ef47642f91a86368c52acc5de05b78",
+        "models": 12,
+        "triangles": 66159,
+        "native_south_sections": {
+          "87.99999925:16.189326": [
+            [
+              -4.0,
+              4.0
+            ]
+          ],
+          "87.99999925:14.01067": [
+            [
+              -4.0,
+              4.0
+            ]
+          ],
+          "87.99999925:16.989326": [
+            [
+              -3.9999990463256836,
+              -2.5999999046325684
+            ],
+            [
+              2.5999999046325684,
+              3.9999990463256836
+            ]
+          ],
+          "87.9375:16.189326": [
+            [
+              -4.0,
+              4.0
+            ]
+          ],
+          "87.9375:14.01067": [
+            [
+              -4.0,
+              4.0
+            ]
+          ],
+          "87.9375:16.989326": [
+            [
+              -3.9999990463256836,
+              -2.5999999046325684
+            ],
+            [
+              2.5999999046325684,
+              3.9999985694885254
+            ]
+          ]
+        },
+        "supports": {
+          "support_columns_checked": 6,
+          "support_contact_points_checked": 54,
+          "sloped_support_heads_checked": 0,
+          "global_support_spacing_checked": true,
+          "minimum_support_centre_distance_m": 16.0,
+          "support_tops_touch_deck": true,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -80.0
+            ],
+            [
+              0.0,
+              -64.0
+            ],
+            [
+              0.0,
+              -48.0
+            ],
+            [
+              6.622404,
+              -29.524559
+            ],
+            [
+              16.0,
+              -16.0
+            ],
+            [
+              32.0,
+              -0.0
+            ]
+          ]
+        },
+        "five_metre_corridors": {
+          "full_width_bed_union_segments_checked": 256,
+          "bed_union_width_m": 5.0,
+          "maximum_uncovered_bed_area_m2": 2.0144072356842457e-06,
+          "height_aware_bed_union_checked": true,
+          "owner_clipped_corridor_fragments_checked": 330,
+          "corridor_clipped_to_literal_ownership": true,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true
+        },
+        "elapsed_seconds": 250.97749018669128,
+        "compiler_input_signature": {
+          "purpose": "Exact production model compiler and literal-input signature for cache reuse; full independently saved production DAT audits remain mandatory.",
+          "geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
+          "native_s3d_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "native_archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+          "compiler_source_sha256": {
+            "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+            "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+            "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          },
+          "model_input_config_sha256": "59b0f590117831637dfe85b2fade8280a54d2f1b831649f4403bc32ac6df44e2",
+          "source_frame_mapping": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                6
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                6
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                7
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                8
+              ]
+            ],
+            [
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                8
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                9
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                10
+              ]
+            ],
+            [
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                11
+              ]
+            ]
+          ],
+          "model_cache_dat_sha256": "7c8fccc0b84e4537420e92bb912914e221ef47642f91a86368c52acc5de05b78",
+          "model_cache_iid_formula": "0x7ff00000 + local_column * 0x100 + local_row * 0x10",
+          "per_cell_model_sha256": {
+            "1,0": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+            "2,0": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+            "3,0": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+            "4,0": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+            "0,1": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
+            "1,1": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
+            "2,1": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
+            "0,2": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
+            "1,2": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
+            "0,3": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
+            "0,4": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
+            "0,5": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad"
+          },
+          "source_loaded_before_compile_process_start_local": "2026-10-20 12:11:50 Europe/Berlin",
+          "compiler_sources_unchanged_since_process_start_checked": true
+        },
+        "compiler_inputs": {
+          "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+          "config_sha256": "59b0f590117831637dfe85b2fade8280a54d2f1b831649f4403bc32ac6df44e2",
+          "source_sha256": {
+            "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+            "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+            "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+            "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+            "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+            "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+            "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+          }
+        },
+        "retained_model_byte_identity": {
+          "purpose": "Direct comparison to the actual V3 compiled curve model resources; only the adjoining tail cell changes.",
+          "unchanged_retained_cells": 11,
+          "changed_retained_cells": 1,
+          "results": [
+            {
+              "cell": [
+                1,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+              "new_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8"
+            },
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+              "new_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4"
+            },
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+              "new_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430"
+            },
+            {
+              "cell": [
+                4,
+                0
+              ],
+              "identical": true,
+              "old_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+              "new_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c"
+            },
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
+              "new_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124"
+            },
+            {
+              "cell": [
+                1,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
+              "new_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9"
+            },
+            {
+              "cell": [
+                2,
+                1
+              ],
+              "identical": true,
+              "old_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
+              "new_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b"
+            },
+            {
+              "cell": [
+                0,
+                2
+              ],
+              "identical": true,
+              "old_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
+              "new_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f"
+            },
+            {
+              "cell": [
+                1,
+                2
+              ],
+              "identical": true,
+              "old_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
+              "new_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414"
+            },
+            {
+              "cell": [
+                0,
+                3
+              ],
+              "identical": true,
+              "old_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
+              "new_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1"
+            },
+            {
+              "cell": [
+                0,
+                4
+              ],
+              "identical": true,
+              "old_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
+              "new_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255"
+            },
+            {
+              "cell": [
+                0,
+                5
+              ],
+              "identical": false,
+              "old_sha256": "53c985529012f41bee276ef53a162c7147dd7532933928421d40ff311503ab78",
+              "new_sha256": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad"
+            }
+          ]
+        },
+        "independent_saved_resource_audit": {
+          "purpose": "Independent literal-contract audit of actual saved synthetic-ID native S3D/PATH/exemplar/preview resources. Production DAT/controller identity is checked separately by the full build. No image was rendered and no installation changed.",
+          "recipe": "hsr_component_l2_shortened_return_curve",
+          "audit_dat_sha256": "4ef53fa21d7bf01871379a406a0ab8e67981db975fe9654ed8d716ba6e697933",
+          "paths": {
+            "tile_count": 12,
+            "encoded_routes_checked": 9,
+            "external_ports_checked": 2,
+            "permitted_movements_checked": 1,
+            "unique_complete_journeys_checked": 1,
+            "literal_port_tangents_checked": 2,
+            "journey_quality": {
+              "Sin>Eout": {
+                "length_m": 112.07658337590229,
+                "direct_distance_m": 104.62639830077953,
+                "length_ratio": 1.0712075078194414,
+                "total_turn_degrees": 67.20838066580933,
+                "minimum_sampled_radius_m": 57.219386236600464,
+                "maximum_sample_turn_degrees": 1.9688803962846595,
+                "maximum_raw_encoded_turn_degrees": 0.4436251645215084,
+                "minimum_resolved_raw_radius_m": 55.397219567444054,
+                "maximum_endpoint_curvature_per_m": 0.016134212836696152,
+                "maximum_curvature_change_per_m2": 0.0011088126089195754,
+                "maximum_grade_change_per_m": 0.0,
+                "quality_sample_spacing_m": 1.96625584870004,
+                "signed_turn_degrees": -67.20838066580932,
+                "maximum_raw_grade_change_per_m": 0.0,
+                "native_endpoint_curvature_per_m": {
+                  "Sin": 0.00045476144108116186
+                }
+              }
+            },
+            "maximum_encoded_grade": 0.0,
+            "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+            "game_operation": "unverified",
+            "grade_separated_crossings_checked": 0,
+            "grade_separated_projected_contacts_checked": 0,
+            "grade_separated_crossings": [],
+            "same_direction_shared_tail_contacts_checked": 0,
+            "independent_at_grade_conflicts_checked": 0
+          },
+          "models": {
+            "authored_clearance_height_m": 5.0,
+            "authored_clearance_width_m": 5.0,
+            "bed_union_width_m": 5.0,
+            "complete_native_join_sections_checked": 3,
+            "coplanar_overlap_meshing_tolerance_m": 0.0001,
+            "corridor_clipped_to_literal_ownership": true,
+            "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+            "custom_cap_scope": "Only the exact inherited saved northern port-tile model may use this literal outward mask. Both old V3 models fail the2.6m fan mask and pass with actual neighbouring PATHs; whole V4 checks remain fully unclipped.",
+            "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+            "full_width_bed_union_segments_checked": 256,
+            "global_support_spacing_checked": true,
+            "height_aware_bed_union_checked": true,
+            "inherited_custom_cap_depth_m": 2.65,
+            "inherited_custom_cap_exact_model_cell": [
+              3,
+              0
+            ],
+            "inherited_custom_cap_exact_model_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+            "inherited_custom_cap_labels": [
+              "Eout"
+            ],
+            "inherited_custom_cap_model_zooms_checked": 5,
+            "inherited_custom_cap_width_m": 5.2,
+            "maximum_coplanar_bed_overlap_area_m2": 4.402222799626543e-07,
+            "maximum_coplanar_bed_overlap_thickness_m": 5.260414539520752e-07,
+            "maximum_uncovered_bed_area_m2": 2.014371050851338e-06,
+            "minimum_support_centre_distance_m": 16.0,
+            "model_polygons_cut_at_custom_caps": 768,
+            "models_checked": 61,
+            "native_join_profile_tolerance_m": 0.0001,
+            "native_join_widths_m": [
+              8.0
+            ],
+            "native_material_preserved": true,
+            "owner_clipped_corridor_fragments_checked": 330,
+            "path_nodes_covered_by_visible_bed": 265,
+            "positive_area_coplanar_bed_pairs": 7852,
+            "preview_matches_tiles": true,
+            "rail_crossing_ribbon_nodes": 0,
+            "render_budget_models_checked": 61,
+            "render_group_budget_checked": true,
+            "sloped_support_heads_checked": 0,
+            "support_centres_sc4path_xy": [
+              [
+                0.0,
+                -80.0
+              ],
+              [
+                0.0,
+                -64.0
+              ],
+              [
+                0.0,
+                -48.0
+              ],
+              [
+                6.622404,
+                -29.524559
+              ],
+              [
+                16.0,
+                -16.0
+              ],
+              [
+                32.0,
+                -0.0
+              ]
+            ],
+            "support_columns_checked": 6,
+            "support_contact_points_checked": 54,
+            "support_foundations_within_reserved_cells": true,
+            "support_tops_touch_deck": true,
+            "texture_ids": [
+              200728731
+            ],
+            "train_clearance_segments_checked": 256,
+            "unused_visible_rails_outside_declared_custom_caps": false,
+            "visible_native_rail_centre_segments_matched_to_paths": 3434,
+            "visible_native_rail_triangles_matched_to_paths": 8100
+          }
+        }
+      }
+    }
+  },
+  "game_tests": "unverified",
+  "images_rendered_by_geometry_agents": 0,
+  "evidence_status": "Historical construction and bounded-correction measurements for retained V4 modules. Current resource checks use ../checks/resources.json and validation.json; deleted source types are historical labels only."
+}

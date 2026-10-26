@@ -1,0 +1,3429 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "tram-under-hsr",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7a0",
+        "0004f7a0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7a0",
+        "0007f7a0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7a0",
+        "0006f7a0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7a0",
+        "0005f7a0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+    "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+    "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+    "effect:tram-under-hsr:ea5118b0-ea5118b1-5dd0f105": "1cb975a075819342feb0aa7a80509b9dc8ed2a39cae41ae6679e143874c16a98",
+    "exemplar:tram-under-hsr:6534284a-a8434037-5dd0f100": "00097f82bc7ecd004349ceb7a4c667cc8a5fe3f86c266559afe2d73926babf19",
+    "graph:tram-under-hsr": "73e1d2407a652ec04c29c8db0efbc20ce050562b1206a3007554f662a0eaf2ad",
+    "image:tram-under-hsr:canonical-southeast": "899f9e512253f17960781aa75b4b7dfa63cae1cca22d404d25fa34805e1ef1b4",
+    "interface:tram-under-hsr:3-N-in-2": "9667e45e069c193241f7aa5ea9fe01af406589cf0ee4b888ca36cbe4860b5972",
+    "interface:tram-under-hsr:3-N-out-4": "d4b8ad60baf64ce88576ce56ef6c8b00ca4742ec87b11623fcf2187294d41e6c",
+    "interface:tram-under-hsr:3-S-in-3": "bdc180988a6c41401b8c37e5c16d5bba121ef65f831b92b36b4ac7e233301d3a",
+    "interface:tram-under-hsr:3-S-out-1": "cfa04e56aebc039c01cd90005c99507576b2a95335abbce61970f66d456d1040",
+    "interface:tram-under-hsr:6-N-in-2": "457cde93097b5876769c0898a2f0e709dbb7b46a4f754b2ba9da1475b6e6c624",
+    "interface:tram-under-hsr:6-N-out-4": "25f3c377d9f03a503e017a758a5198cbfcc065776ca38fb540a3cb39df953ebb",
+    "interface:tram-under-hsr:6-S-in-3": "b86cb6c227328b336754108f07a7aaf4650b5ce92ee06757e88ab7478a0d5494",
+    "interface:tram-under-hsr:6-S-out-1": "8b1db029f1ec8018b3cc47a10fd77aad07ecd61417931635209cafea5ea83f99",
+    "interface:tram-under-hsr:7-E-in-4": "1138720e032c3596a5058af04e5306dfc70215b59cf14e6a178017478f8b9d3c",
+    "interface:tram-under-hsr:7-E-out-3": "1bbe5de8f466e317c98957ec2d4d7d16bf617c9f226efaa148baad92e32f5cfe",
+    "interface:tram-under-hsr:7-W-in-1": "bb5015d2c53c752dbbdefb9ddce74e7b2da9d15f73f2a23a1ac45b55e487ff43",
+    "interface:tram-under-hsr:7-W-out-2": "605490ab5e33903f6eff5224bdf7d6f50eb20526e3b553ba811d6423000d08d0",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f105": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+    "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+    "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+    "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c",
+    "text:tram-under-hsr:2026960b-2a592fd1-5dd0f100": "04296ab251bc51de62354709014d2986290177ac9523cf29e74241213becc3da"
+  },
+  "cases": [
+    {
+      "id": "software_resources-0c177969f0d9c89e082d",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "tram-under-hsr"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c33022eb85984875ae8cb2772611d58a6b50b2822663197bc8d21bd2e434a821",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "software_connectivity-0c177969f0d9c89e082d",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "tram-under-hsr"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a97a6433d88dc812412e98b358cdf06a03fa4ebcb5b87f3b50f4ab57634358fa",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "preview_review-5455779a5d980665007b",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "image_key": "image:tram-under-hsr:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ec55c753f23cdb0027465e64a3c80222d340c3eaaaa998c8b3c6cf6ccc3b32c3",
+      "dependency_ref": "6c98d9b570187dd0544154393c5c8e7831cf5fcdaeab58407fbfbe9e2b5fb2fd"
+    },
+    {
+      "id": "in_game_render-670a8b6fb4bd70848865",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9d0395f60f04c9fbd54ab73c5cabf3b235f7a93c5c2a94459357272925de368b",
+      "dependency_ref": "1e86c149d22137f6e0e176c441efcf330749f7ff4a8b987204998215309464b9"
+    },
+    {
+      "id": "in_game_placement-670a8b6fb4bd70848865",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1d910514b76cd97871b3aefa6ae4ad9316ae1ae1455084b07da96e843ee1bf66",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_demolition-670a8b6fb4bd70848865",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1d910514b76cd97871b3aefa6ae4ad9316ae1ae1455084b07da96e843ee1bf66",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_save_reload-670a8b6fb4bd70848865",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1d910514b76cd97871b3aefa6ae4ad9316ae1ae1455084b07da96e843ee1bf66",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_render-5cf8542162dea802ae93",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5bd2870baf8f746b24b461a40231620d281830a83cd9006a56870205e9e665cd",
+      "dependency_ref": "1e86c149d22137f6e0e176c441efcf330749f7ff4a8b987204998215309464b9"
+    },
+    {
+      "id": "in_game_placement-5cf8542162dea802ae93",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "53d8caf0e10bc92d73da7475ff7baab92090d90da7c1c01025ae23553f97c6d8",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_demolition-5cf8542162dea802ae93",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "53d8caf0e10bc92d73da7475ff7baab92090d90da7c1c01025ae23553f97c6d8",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_save_reload-5cf8542162dea802ae93",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "53d8caf0e10bc92d73da7475ff7baab92090d90da7c1c01025ae23553f97c6d8",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_render-cf5b16af90d3495a3e2a",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9c261a00af21efff81e01883bb209590222c723e8c9e4f73e54d5cca88a4c0c2",
+      "dependency_ref": "1e86c149d22137f6e0e176c441efcf330749f7ff4a8b987204998215309464b9"
+    },
+    {
+      "id": "in_game_placement-cf5b16af90d3495a3e2a",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c38214c66a3f0d546c047ccf63176124990dcc91bea40a6b9c6e20adea32677e",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_demolition-cf5b16af90d3495a3e2a",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c38214c66a3f0d546c047ccf63176124990dcc91bea40a6b9c6e20adea32677e",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_save_reload-cf5b16af90d3495a3e2a",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c38214c66a3f0d546c047ccf63176124990dcc91bea40a6b9c6e20adea32677e",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_render-6991cb6819357cc06dd2",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "54c0d6a37c3f57ddc04dc2a7b88c0bf1ef3e90f236caafe6bbd5f686c5774748",
+      "dependency_ref": "1e86c149d22137f6e0e176c441efcf330749f7ff4a8b987204998215309464b9"
+    },
+    {
+      "id": "in_game_placement-6991cb6819357cc06dd2",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "98008d495b1c3e9c7a452edf2fe18beb7814a9b5b005ee26f3dfb8202e7d1979",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_demolition-6991cb6819357cc06dd2",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "98008d495b1c3e9c7a452edf2fe18beb7814a9b5b005ee26f3dfb8202e7d1979",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_save_reload-6991cb6819357cc06dd2",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "98008d495b1c3e9c7a452edf2fe18beb7814a9b5b005ee26f3dfb8202e7d1979",
+      "dependency_ref": "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5"
+    },
+    {
+      "id": "in_game_journey-47ce5f6f8485a7cec74e",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-N-in-2>3-S-out-1",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-N-in-2",
+        "exit_port": "3-S-out-1",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ea47104ba7d3677746230981e64f94fae74d6697bb2832732da19020a27cf750",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-4b3a3635903bc3173391",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-N-in-2>3-S-out-1",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-N-in-2",
+        "exit_port": "3-S-out-1",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e67f817f5db61e94c94b284b447a57f616141cd9fcd09b0341ec0c90682a3964",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-ce0d389d3d2f207b4e77",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-N-in-2>3-S-out-1",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-N-in-2",
+        "exit_port": "3-S-out-1",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6047a2db08eddfa6e85b31a39c48d2543c2080b946526465a15862b83d508f77",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-1569e5a145bdd8daf557",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-N-in-2>3-S-out-1",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-N-in-2",
+        "exit_port": "3-S-out-1",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5621fb02b5f2929e0894ed57c7658418dbdfcd030a1777c1806e774c96a972b7",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-781c889e6f4e0ffed6c0",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-S-in-3>3-N-out-4",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-S-in-3",
+        "exit_port": "3-N-out-4",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0ae036cf9dbd7e6385be4068e276d2ea7978cd222e7c4645f05cd7c042ceebc4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-fb0e5e9d765f06abd52e",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-S-in-3>3-N-out-4",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-S-in-3",
+        "exit_port": "3-N-out-4",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5912c28983d1a7a051bf4129c58586b20f9056baa9eccef17a9f72c8d5c1c0f9",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-3dddc48aada3f895fc68",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-S-in-3>3-N-out-4",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-S-in-3",
+        "exit_port": "3-N-out-4",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "538db2455559e834dcb110e57212f6cfce2a4fc785f1becf074e77df96362b17",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-8a7ea957692380859693",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "3:3-S-in-3>3-N-out-4",
+        "service_network": "tram-udi",
+        "role": "auxiliary",
+        "entry_port": "3-S-in-3",
+        "exit_port": "3-N-out-4",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6c8a57a0ef95919de804905f53f16d2757f3e8e8bd6937fb78a9e9d1fe8578d8",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-7446a0d72a7d1f794777",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-N-in-2>6-S-out-1",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-N-in-2",
+        "exit_port": "6-S-out-1",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7a584d4bd2ac88aa22d39da101a62a61a0174186403b500687128aecfc1d0ee6",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-e2e856327f2b892a1d3e",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-N-in-2>6-S-out-1",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-N-in-2",
+        "exit_port": "6-S-out-1",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "861fd7aa55cc82997797b7854d72c12aaec78a37223c1093eff7e15940c8bd84",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-553e584864851ef10b13",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-N-in-2>6-S-out-1",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-N-in-2",
+        "exit_port": "6-S-out-1",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "57e71eeb9a12ddf4a55b52b6d089b539d0fe4afacb5b08f3c4ff086a8463ab4d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-8dafc1f9296da6f5368b",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-N-in-2>6-S-out-1",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-N-in-2",
+        "exit_port": "6-S-out-1",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8873e403da5eb2ea5f96732d4cd37ef216aaafd022b026a80a13b964de601849",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-fd57574d10611624066b",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-S-in-3>6-N-out-4",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-S-in-3",
+        "exit_port": "6-N-out-4",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9e4ffaed1ccf4c3440e249142fade943d94f4c4750c7cb572ba342bc4274e53",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-82c4f930927c53cd87e8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-S-in-3>6-N-out-4",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-S-in-3",
+        "exit_port": "6-N-out-4",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "239cf341bcd7cff36894f994a50122023c029f6d3e41d5da809a6582d7aedcec",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-8cef3ca0e5d1be0d0bb9",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-S-in-3>6-N-out-4",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-S-in-3",
+        "exit_port": "6-N-out-4",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e39debd3f775bce535105b55dfbdc4733e3b66a92c76e978c2fdf6d926afcffb",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-0ddef7460ea4adc40446",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "6:6-S-in-3>6-N-out-4",
+        "service_network": "tram",
+        "role": "primary",
+        "entry_port": "6-S-in-3",
+        "exit_port": "6-N-out-4",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "59113c55472b64b4d03f3724b6c6854a2f0b3f50ab4559b131d8274530dcd3a0",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-47adf514c8f2f95ef4d9",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-W-in-1>7-E-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-3",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "88962b33d1eb9d4251ebcaa5f14367964a20ae64f8930b62a8a7ca6bd1162c8f",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-00bb81c98035eed8c6ca",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-W-in-1>7-E-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-3",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "44669b5dc7d854af7a4ac66c04d5d952f5623d52f4b4b40ecdd880a95ad41dbb",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-8309f4485a1ba9891bf8",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-W-in-1>7-E-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-3",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "470f291002001d3d7673360fe451497976aef8174b52ed4d8200df5fdfa37042",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-27de451f502d8eb1c89f",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-W-in-1>7-E-out-3",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-W-in-1",
+        "exit_port": "7-E-out-3",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "08a9a5ebcfc39c7d40c0106eaacd8f5b804750dfd3abc31feff1911f1a477dd4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-42a469e05dda1734eebe",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-E-in-4>7-W-out-2",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-E-in-4",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e46db2ebf4cf16cfff2c3e6fb6f480e5f0ace14d38e2afac0d371fe208c9ca4a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-b58595d752519056be9d",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-E-in-4>7-W-out-2",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-E-in-4",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "27afa3127fe09e32f2d0ceafded79d897bfd335763798446c07445047d78bbf3",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-ca536ab5a0b33a47ae2b",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-E-in-4>7-W-out-2",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-E-in-4",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9b35df37af08182aab360f9251b9cec5e52ac770398b3758576a3c0bf35fc2f6",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_journey-04ef2e5ed039e045bb85",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "journey_id": "7:7-E-in-4>7-W-out-2",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "7-E-in-4",
+        "exit_port": "7-W-out-2",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7cdd14d448251c23c3aa16e75dd2a39e50cfc00c2fa2d06afca27717023514a4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5bff1086859d72e08428",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "61e5f90fddc8c275e1cbce2f882114039d9967cc90ba53b6bdeb7fe82023839e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ea51e430f8e2ee5fd140",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "488a50efb984722f2755ed5888ffa971046edb2cdabd873ab21544d77f02959d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-dc6bbd92d9cd59c9d1b4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7d2d1edc7a601e55e684c0c1e9422df52a35d17cdef7a181de5a253d3b762916",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3a2dc066978e2a32decc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "908d3da8ccf9fe660f415e22d20e3f5f3ecc03067c42d3c4b07f831313c062c1",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cb9ee361beea80a15165",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e92b2465a8c7f76c9d321a1922ec98fb38e7fb73fb1c84faa75f2f9bb00cf65",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8f4977b28b16cb870c52",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6efac27d3d36c0f58a37bb22e14e4c62c84e507af170cd609ab1516fda51334",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7629fbc197f3673cd910",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b2aa919be174240d9befaa256ce8c3b70de7a08f71a685c6d08f48eec2a8699b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3d9daa1718c12f0528c4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3dd2de352b828843977c5593f8d99ffa1742e08886fa00fc1401698ccfc4ada0",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1a9d03ac8707330d5b6c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f43f53545e6e7826bf8dd26657d412c3994e61f336b64fd35f17b2864827939b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a53bcda8329d5546d38d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58416e9f04c179d8be62be2f2009e568061818c98d5163d1e27ae731f545c220",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e6d3355dbd18e8296e7d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5047ef62648eca3e5ea65fd22300ac04eef1e94a23925a07086d8a34a8ecc9f1",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ebc3e9df53b4f97dbf10",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e496f63556014d00669a6a62197d71ba46d9b0b4075afca516321bca2a1a635c",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9f0ff5a6c7eb936395d7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "eb35535421df2a6a8c4178b82682badc8fb5290414588dadc68b020a2612a52d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a27d1299666fb7be07c5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f2940313ef8fc1869e71b3da95e5f24f666c1d2594d41c6414896f97c01cdf4b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-176835ed5c65189e37fa",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bd4d66c01923e977c93adf10e0e517aacfcd6417bceb658941063f6ba1691760",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9bbc724532807ad958e6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f43cca5997957291ff49a9e22919df9177632114d0fdb6606dda55d19634f715",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5973768d518b03d27823",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f197d8282ac4f0380f5e8098f731901783336e01a9983c32b1e0dee10014221c",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-056b96921434f12817a5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4f1bc45df005c1f38c2c0c7f10b4188fb9604b996793f77418b17f43bce24276",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cbe399d883a4f6cc975d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "054d80d4a1f85f26b7cc68eeefc27d70ee4349bbbcb7afd0f6981d1cceac169d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7a9536b3cdc42af184ca",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7eb0b351530b5acbf7566ab41622e6adb34ecd9745b212151c9fe29ad8fbfc3f",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ec4d0d1284db65b9ba39",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1c61cb60bdbd41a57c69f47eae84ff129d00aec2abc84097aeceb56effd7a757",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8f9e97049e64bde4b8b6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1dc1fe35e6b3aa3176420c1e4795aef09be17fc0997613879fe6fca68c5114fc",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ea774963edf20de6dfcc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "63132d5dbdccf2c746a25158c1d3b94e0506f273fb9b3fa2b208c395310544ff",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ae9a3aa14396c72106c5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "430949028c40d605c20d5afcbe56bf63fd839244c897a8e1143a0b482d16fd2e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5219436aa61f7e733cfa",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ff37e8bb5a68944238b47773ba058bde7accf46b0f1408e46b2763cd0b6928bd",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c2e14a510ca68a4c60cc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f7482a19ffed4839d36c8d7af5652b75d4b5cb11d8d802cf2ee9e6b2c1dc07b5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f9ca09f0eb21f6f45f31",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0cbb95e1e5966d53c83554fb3e7a57e44dd0da805bd923fbe97ac9e78d6df9d3",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9c6eaf58a27e005dce5e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dec4017f25c96124edf06ae5ef851519339f4ebac5a8ae61108af1129616d0d1",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-00f76af37b928367ac70",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "000b0205083a8aaffe574c973a66dc5b94a191ddbcc88d92b21d89033615230d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f329b4ecca9cb1880e12",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c0be94bdfa8f2ba50965004fe247c96bcdddd755bf53cc64f236a1a68ed4c8c5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-dc75c3c6e2c45ecc22af",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "152ec81ef09279789632db2814ceda9a89b2d05c96accec81d603427d794f341",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e0890e322e8a449a0a0f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "6-N-out-4",
+          "from_service": "tram-udi",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b9fc48a169782ca8d813844b1901ea3b356766d8c2d2db0b135a7446ea99a2e7",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9f2330b37683c4076947",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5f0bfe389c1c5723731b71f660fb61850f38102d61d90f71cdfbe628daa479ad",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cc4aff243b390847ab4d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6f71e1d1a2a96f21ef61a6892a6969bf69d43088f20749420af777ba120902d4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6174f3607c0613bb19d7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ae2f4dc28e4814259adc8e73d10708858a580887c15ab2ed8fc859603b08476e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d24b93f49195737dac18",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dc8d9fab7df19d346092194ce1fa83e8b2531f5012d409e8236dbe44988b4770",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-52e30074be7411c0ba5a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "52d081250531bf6b96283e7847a9944e192053ea796f7cdd5399381204e77af5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ab8b07c11b78f4bc7997",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3c73937af3e75c3874a9f22483a33bcc360de382e97c9182b15589589804fd61",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c79f44ffea2ce25d9894",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "41d9b9b77e543bb0eb0eb0c68305e61cc0c2fdae91dafeb71325c03d3162f6f5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-eab997b1a229566fa6e4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "3-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram-udi",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bf5dc586fe9b4c697a94c450204c31c6e3e3d6b4397880beac83d68e7f8a9505",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-16ab7817c89735830ec4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4f7db8cff811685df29f41d505872c902a03f29bc74b6b192b984461aece4b44",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-70df29df19666f6a3113",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e056be67e5a9cc7048c3ea18a7eb501d59a010256b041d9c64faadd349cf3405",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8434e452fec97061b758",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "00cdf60b85b2db48186c89535e3040f4574a29c56ac4be19d3740d803119d7a2",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-23ed10e1825b28abd005",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d31f0d7f388755bcbc9f2a9460c217781811d0527d1edd69e70f5ac0f33705e4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e0ba0c7b62f115e70ef4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d2a1c147a2ff300711936b2c29e926889210f8690da1765b31f7c5f1115cb24c",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8cd03b5bc734d028d535",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7bca2cf2c3fcd983efbb3b8403ba7b49e827268de9c82e57791f978cf14004c6",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-bc9a58f9c6a3f10089d8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "014b0fb19bfe0dde00b8445d632b9eb0ec9fe16970828a7c40bd91117fee5813",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3aa9b6ec446905fa2570",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "73e87846aa2736c880c5050abe7450eb21a9eca96fca8094a46aca586ef21ed7",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-76e2dc325b7931040b2b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "08e23221db6530618851221e94ba3357858d9aac9d34cc6ea867ce7b5cabb417",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-aa66d7bd55f7bcfc15f3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dd720171592e7744f843c0c91a0c8b2192077858030661dc0e2d7220864dce9e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-00fa0843cab27eb6f2c6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8410bf1bc13cb445321bb327de806d0fbbff6acf055255e0e775cf1914297df0",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-359d59f86d9b60fff47b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "6-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2952d47f66c40a406fe202a5c0859b88dbfa3815409c57dd018db3c5b42a3685",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0fe642fb10aec0812c25",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aeb803edd081d9ba76f0929a76de0639bbbd18ba8039941190a1d7a9ed6419f8",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-dfb1268b2a86bd9e97d3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a1f274fc37d66a2aaebed6666b3b28b0d5e2b2c6d89540bdb36f56097d024de2",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9d5a1667cc0f11fc0928",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8fb18c50526225891f183dcfc4ab05d0e82e79158a6b60d03275799eb53932f5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7339655bd088272ee20e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5fddfc95e7a9567f550b2691c0fcf4473cc325d9acfe4517dd54990d89aa9e53",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7f4d3df078a4c92b6bd3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e9d5e3fe41f5ab959737f54b68f92810fb3dc2af907b3b4b1b08a89ac1b5d868",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3700e0115f96236d1e22",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2c771a74f911df4739a6c01101db6e5d0ccfcc79ff4b57a87616d4be9544e88",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-00ee7232a5f136a3a1cd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "51ab0b8d34f53f8aed3bb7308bcf4a62803409ed9b5950c7940362882da69436",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8501445a3c72232c1c24",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-N-in-2",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "efb941b8bda15b278e726a1b90fb4b4b5e2fdcbc4f9426c34ba81b841840ee0b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9991a81801873cfb9e14",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "78cd9716f2bf19307957418998c9b41289a96960b248d53278f36c6e0d868498",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-80f8cb4c2c09809907dd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d3ce154f586e72e16743788e5348a8d91c055905fd79d252a733ef9f0b1affc5",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-406c010bea1116ea77de",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2e546e444283d1f0b5532e762b954186f7bf11c8b1f179e8991eee832ebd2e85",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-edb86bc9ae6a7fb3dbc5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8cbb27338bdaacc126ce165b4f479041f2d3e0c9b0b449bf46dff927fa25ee57",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b74b1f383d0edfd212ac",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b2005d212751e797586370655b5548c856f61cc245a60cdcb503c906d10a019e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e4e0d3323a401163b964",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "21bf2ec7064360b82d1e151350904e6e43430922b90dde7fe2607da1c37783c1",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b7ca479fa54f6bd40646",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "426bbe191e82a8241f819886a8cee574c2e32c9a1bab6c37d2d74cef5fc6ec6f",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0cc7dfeb1b95e42cd5bf",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "3-N-out-4",
+          "from_service": "tram",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bc92c1967809b86f714fc43337c754135b3800d6c672f7484f218831c3cf6bcf",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7dfe9fa014c87e472d9a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "64ed422ad6822298dc301f27c35f2978423c1210815d3da8dcde76c2c90bc532",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ed3438d5ccb3f8b7ee4e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1993b2501ef03bd32bd5ff5bda7678481927fd7f5dbb6201fc28c66c36ada272",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6837c4d8a991592d6cc8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3139e5ddae0daf7c8e83e4005c814a4b2f89f96c19bcff552c6e04303b000ef1",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-269ce490c6c7d935e7c1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "6-S-out-1",
+          "from_service": "tram",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7205710b9ff5a88b5a211ba851bee299a9efc3d399b8e82ac8f8b2547d2979ae",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1c411c6797081475f350",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b67d2d83e527aea5442cd96a4363508ed1ba21587141949b138b8e5683567d26",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-15f3d9c5e8a7f1e887ec",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f2f9dcf9913647cd9d92425e491dc79b8b08324b418d21fe2a204c97e6477205",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4f1ae471f6d7357b0c36",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd6457fdd32ca901336c3bd6b576542f93976a3c97740b61e3dfc84b2246ed30",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-265d4265726da46d5490",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-W-out-2",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "36c621abb5bf16662caff7b5394879182804f53552c4943997cf2f63f0ea86b9",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e9f9fa36475405051853",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9ab7e14b5081ecddce1fc4b74efb60c465293fc0d9880b063f4ae317314a946b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-74a3eb890cd2a37bbe6f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "05b55264b5d57254dec29950484f265e889657767266845300cd1248ada84fea",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f0329d06c91c4708e72f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8615782bc57d52fa28024c50f4d4c522178e1e74375d521ec2d234e93ae173f4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-fb7200e5e3962421210d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "6-S-in-3",
+          "to_port": "7-E-out-3",
+          "from_service": "tram",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3e0dd6e9b454544c947d3c4b3c36dd532b8bb3f3afbbb1358f4c0bf2e2b71f6e",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4937a979241576b7df1e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5a2677eb22346fb20a96121dcacac415c462e42733a15e4e5e66f4a18a989339",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-181cde60426804f7d5a8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b2c3042aa7f222a01435cf2d89223a84b71f129e3f74bc356ddc58c67fb06eb3",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-88adbe89ab205ceccb4e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fb2f577bc83f2eddbd5b66bd0fdd04a1f4a5ae60e50bcb6db8a748c28f5544e6",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-44426e4fbee43b1b6739",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8454219e51f04411556fac27e227ae5b10cf085d33ce09f61565e9a9b194c797",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8238d11d4ea5473e85dd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "177ef0a87688099c260e051d0be5533dfd86a2740a0128a1ca94e3558f4bbd4a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-35034cc6921214fc492f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "078fbfe3b556f6bbbbae897a82ff4a8bff683493da74094423b4fc155fcd40fa",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-86e40a773c5be7544ca4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "74fb48de421b8755e453799f56321422091d49481d3ed53297d8910e81aa4e2d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0886334cbdaeb9534409",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ee3feecdf3c3d3b9d42638f0352677061cd82b31f45fcaa83adc4552c817875c",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4a27756164c17eeeccb8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "974bd7a92b620cfa7908385ee294bf8209fea25acd4bfa9c1f10cf83dc1dff35",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-087f33d922607a49f54e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a3271fc3114a99fd06e252285447d8d941e55f7545dbb3744054642d3c89c035",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-433d84308629689c173b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "64cbe56b02103065edd89a2ec7a714a7c817c921df0c1b244e6908a11ee6baaf",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4a4659d6aedc7a60334b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c7e86ab1900da13fcc423910e8e0fbe095ebb11f54821c6df872cf1807e2817a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b69ee13e420efcb13d7b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "90abead1ea06bd9dbcd7c787c08a491ecdd3db3c10635f08c73389d0da437108",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-70a26dd5b659ed5cc274",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "72de0ead74fdeedd8c0e89927c948b674372f41628cd40f5310478d7b7d7542a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b27997f64b1be09f3834",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "90d0037d7d3b3f79f9fa93e57c744a6d1bec3a355b0c11554f3e76394b1ed095",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2b1dd9a2440682225946",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "643a095da18b54a8e6177ce74800bafdf887fa95ebd8a03c1b35eb032e1d8f2b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3788bd14f74596e89800",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "63491e1965f4214cc85a794f105f65645077f629d288056bd7d80319ec0daf4b",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f56b08ae1fb257bcb03d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "91a45e4b2b808ef7c7b2e60b12a0a0489c3d8e3f28cee69796f10be2dfae1981",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-95f39b36554e161e4dbb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d17135fe362c41f919f0343883782c6d447825cd886f3fbf5e5b924a96832f96",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2bdd6e9aad2e61e43ca2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-W-in-1",
+          "to_port": "7-W-out-2",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5b6609edc4097cc0f98b8f74360ce3a49bdd7f41e18d15377b9e2265bcafaa08",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d062e34f8a124c407e85",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8aeab825f5ec79bced4267531169816a12717730d56f2ce07ad494f2bb1af81f",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-75565cce93a25a8ed52c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "02a0b567de850af3b4173bdd8a3d4b0291ab4be7f6a740f8af1ebf6cb9c0ac90",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-527fa2adf1ca63b3e4c2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "415dd9325d01671130cfa788855860668a93a6df2389b1e823345557ba3ca8a7",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-18995b2be48cf2b63ccb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "01cf98981c6c61d7320067f942692592a7e199963f2ac660ca93b820db6f2f2a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d39d39a2f7faf3a46a6c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bea2068839c8517adb7216234708edba5dc29495afd7a9b56c8ab895b34cc9e6",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-98ef376ed808d82027e9",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c4f6214da009b72a74d018f8041abaf5d21ebae0358ebd1a565738490723bebd",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3750d05a32001c6ba7d3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8cafb656fede7d183a880c132fe2f3de0a90ad6106972e847dbc858804b17c6c",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2801ef03e034167fc650",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "3-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram-udi",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6f778a33753046ff0c1cc846ea2daf32505a301dfe7404c048bd5795b9807670",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4c27604d8f51b0b030c7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "afddb6a8f6a3cbf55bb435c8a8b1adc79b61fea4be745fe618f943b2a9217cb7",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d0abf10822db70ffc029",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8c7fd447820a0a89b0651205556e0cc7457cc5e01d94438bc1bac509c4ea2df4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5d0a1d91d60734b7d7e7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "46beb37eec46b5dab100409e1b01f985d8d37e139824308bee214261c4d83af9",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-946bea3e6f6968c4bccb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-S-out-1",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8630114c8e997b50cf47d700c87e2cff3ffad21fe0f3031424c7fcb17233e880",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5cd4b7b3ab9b3f5d3766",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5be98a5acd49284174d2222f01f421820ed944a3e0ff2416890575fb3f452b6a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-045ed8242374caefe6ad",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8786d136d6207cd129408d1befaca00ebfd896541aa10fbe26a2aa8ec2fc9b6a",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-044ea6c7e87f4d9de594",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "136bb4a1fdf82fc67cef6c76cf0cdd309e32c6760afb232ff6c12c70fd26c1a9",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a84f663d23a8032f2469",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "6-N-out-4",
+          "from_service": "hsr",
+          "to_service": "tram",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "29fa4b6407aef2ea74256db22d6ac2a362dc2ec9c5ab432e4dca204854fb38c0",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a6f6fad1929719b4f256",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "7-E-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df802220cba7b04f55c365c17c5d4fb2eafd95af512fc1e8cc385830bc2ef8b4",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7aab5694fc673ea8ad26",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "7-E-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3729e32a72215be23bfbd73f66e4405f4ac0ee026d3624913dabb2f7fde80869",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ee7fe93e3c9f01645015",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "7-E-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fbdd5500e6a471b664c0fb52f4484e235227e5ed67f8dc0d7fe1df74c4721c7d",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    },
+    {
+      "id": "in_game_forbidden_transfer-17fc9d8e67aceaff1312",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "tram-under-hsr",
+        "forbidden_transfer": {
+          "from_port": "7-E-in-4",
+          "to_port": "7-E-out-3",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2c131ee06d6c78b2c3df6beb1b827f518f43f08373b55151293f3ff37ec94721",
+      "dependency_ref": "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395"
+    }
+  ],
+  "dependency_sets": {
+    "c8a1d92b9cb5cde0c90342cfca7c33e9319830f23be1ebc48815198c74ab4ff5": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "effect:tram-under-hsr:ea5118b0-ea5118b1-5dd0f105": "1cb975a075819342feb0aa7a80509b9dc8ed2a39cae41ae6679e143874c16a98",
+      "exemplar:tram-under-hsr:6534284a-a8434037-5dd0f100": "00097f82bc7ecd004349ceb7a4c667cc8a5fe3f86c266559afe2d73926babf19",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f105": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "ef636b1e2efa289821276ef636f3d6913942b4a83df34457f38164c92090e395": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "graph:tram-under-hsr": "73e1d2407a652ec04c29c8db0efbc20ce050562b1206a3007554f662a0eaf2ad",
+      "interface:tram-under-hsr:3-N-in-2": "9667e45e069c193241f7aa5ea9fe01af406589cf0ee4b888ca36cbe4860b5972",
+      "interface:tram-under-hsr:3-N-out-4": "d4b8ad60baf64ce88576ce56ef6c8b00ca4742ec87b11623fcf2187294d41e6c",
+      "interface:tram-under-hsr:3-S-in-3": "bdc180988a6c41401b8c37e5c16d5bba121ef65f831b92b36b4ac7e233301d3a",
+      "interface:tram-under-hsr:3-S-out-1": "cfa04e56aebc039c01cd90005c99507576b2a95335abbce61970f66d456d1040",
+      "interface:tram-under-hsr:6-N-in-2": "457cde93097b5876769c0898a2f0e709dbb7b46a4f754b2ba9da1475b6e6c624",
+      "interface:tram-under-hsr:6-N-out-4": "25f3c377d9f03a503e017a758a5198cbfcc065776ca38fb540a3cb39df953ebb",
+      "interface:tram-under-hsr:6-S-in-3": "b86cb6c227328b336754108f07a7aaf4650b5ce92ee06757e88ab7478a0d5494",
+      "interface:tram-under-hsr:6-S-out-1": "8b1db029f1ec8018b3cc47a10fd77aad07ecd61417931635209cafea5ea83f99",
+      "interface:tram-under-hsr:7-E-in-4": "1138720e032c3596a5058af04e5306dfc70215b59cf14e6a178017478f8b9d3c",
+      "interface:tram-under-hsr:7-E-out-3": "1bbe5de8f466e317c98957ec2d4d7d16bf617c9f226efaa148baad92e32f5cfe",
+      "interface:tram-under-hsr:7-W-in-1": "bb5015d2c53c752dbbdefb9ddce74e7b2da9d15f73f2a23a1ac45b55e487ff43",
+      "interface:tram-under-hsr:7-W-out-2": "605490ab5e33903f6eff5224bdf7d6f50eb20526e3b553ba811d6423000d08d0",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "6c98d9b570187dd0544154393c5c8e7831cf5fcdaeab58407fbfbe9e2b5fb2fd": {
+      "image:tram-under-hsr:canonical-southeast": "899f9e512253f17960781aa75b4b7dfa63cae1cca22d404d25fa34805e1ef1b4"
+    },
+    "1e86c149d22137f6e0e176c441efcf330749f7ff4a8b987204998215309464b9": {
+      "effect:tram-under-hsr:ea5118b0-ea5118b1-5dd0f105": "1cb975a075819342feb0aa7a80509b9dc8ed2a39cae41ae6679e143874c16a98",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f105": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c"
+    },
+    "0c613ff620f3a4454dbeb83c7ee3b1eac4ba4b0788952e27e369d9acd6aff260": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:3-S-out-1": "cfa04e56aebc039c01cd90005c99507576b2a95335abbce61970f66d456d1040",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "fc25d40b63356288ff4ffdd0e2ac4960f95f3ac24344a0ccda91458cc32be8c2": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:3-N-in-2": "9667e45e069c193241f7aa5ea9fe01af406589cf0ee4b888ca36cbe4860b5972",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "bd4e629908d76c57ed371781f91eadfe0162d2c0d60360fd8ddbe58810079355": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:3-S-in-3": "bdc180988a6c41401b8c37e5c16d5bba121ef65f831b92b36b4ac7e233301d3a",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "2a6bee8b0cb46e3d17667e10924fa4e749099b63112dbbcba246024edfacbe64": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:3-N-out-4": "d4b8ad60baf64ce88576ce56ef6c8b00ca4742ec87b11623fcf2187294d41e6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "51f6ffabbf3fcc07cac81ffcb12035ced43f3161014084264003d3c9d8506c7a": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:6-S-out-1": "8b1db029f1ec8018b3cc47a10fd77aad07ecd61417931635209cafea5ea83f99",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "de4a2231e232a51b51e00dae36f7472c155585d4f4614e9c6a99f6b4c3225592": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:6-N-in-2": "457cde93097b5876769c0898a2f0e709dbb7b46a4f754b2ba9da1475b6e6c624",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "e077992d90dd3411aaf9241f6a27433f321522d2ad103ff3044f1ed6ebc1994f": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:6-S-in-3": "b86cb6c227328b336754108f07a7aaf4650b5ce92ee06757e88ab7478a0d5494",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "f526be09a76006cbcfb7ba78e0e23d15086f24057b9e9a3272f177702e688ef6": {
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:6-N-out-4": "25f3c377d9f03a503e017a758a5198cbfcc065776ca38fb540a3cb39df953ebb",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "9a74968b7e6a81f44883557a966242dabe68e709f9041aa61db8e1aaec90499b": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-W-in-1": "bb5015d2c53c752dbbdefb9ddce74e7b2da9d15f73f2a23a1ac45b55e487ff43",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "ceb0c543d3756fea030b7490db38d87462aa2af9a840aa5425b19e0e21af11f4": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-W-in-1": "bb5015d2c53c752dbbdefb9ddce74e7b2da9d15f73f2a23a1ac45b55e487ff43",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "6c23f778e6ffde91e6142a8b647c94f1b34f7c23fb812d1a270e8fe01f1c76f0": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-W-out-2": "605490ab5e33903f6eff5224bdf7d6f50eb20526e3b553ba811d6423000d08d0",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "767884bd96e6d34e55d6afaffcca7ca432d7253ecb4456fd849edd6a4e0b033e": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-W-out-2": "605490ab5e33903f6eff5224bdf7d6f50eb20526e3b553ba811d6423000d08d0",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "9fbb40dfd7c00ca7eb6230b1c1fe740545b55594c1de02eaedeab95163c8b9b7": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-E-out-3": "1bbe5de8f466e317c98957ec2d4d7d16bf617c9f226efaa148baad92e32f5cfe",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "9d1076b1fb3da381b034a1d51e819650d93758de08648b283876ff1a23732ae5": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-E-out-3": "1bbe5de8f466e317c98957ec2d4d7d16bf617c9f226efaa148baad92e32f5cfe",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "abd086c3a6e10c8a36bf0f193eba098cc794baf3bba5961ad92cc7800edad2e3": {
+      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-E-in-4": "1138720e032c3596a5058af04e5306dfc70215b59cf14e6a178017478f8b9d3c",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    },
+    "96a3e3d36e1346ba6ff9b7b4a4abd2d7596de3d01a1449ebf539b136911b53ad": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "construction:tram-under-hsr": "35bfb45881f5bb84459ea4ffd87ba53f8b525993521122c77dbeb0ce19ff6557",
+      "interface:tram-under-hsr:7-E-in-4": "1138720e032c3596a5058af04e5306dfc70215b59cf14e6a178017478f8b9d3c",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f100": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f101": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f102": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f103": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "model:tram-under-hsr:5ad0e817-badb57f1-5dd0f104": "184aad5a2eb9ae2f88675f872351e90b9698c5ae73ae966201660d1264780c6c",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "path:tram-under-hsr:296678f7-a966883f-5dd0f100": "2efb4616299953898021444e602a04bab17647faa7979c211dac5e3cc371aa9c"
+    }
+  }
+}

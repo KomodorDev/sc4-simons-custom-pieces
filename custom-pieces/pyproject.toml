@@ -1,0 +1,21 @@
+# Purpose: package shared tools and independently owned domain implementations.
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simons-custom-pieces"
+version = "0.6.0.dev1"
+description = "SimCity 4 custom network piece authoring framework"
+requires-python = ">=3.11"
+dependencies = ["Pillow>=10,<13"]
+
+[project.optional-dependencies]
+preview = ["NumPy>=1.26,<3"]
+
+[tool.setuptools]
+packages = ["scp", "scp.schemas", "scp_hsr", "scp_hsr_tools"]
+package-dir = {"scp" = "framework/scp", "scp.schemas" = "schemas", "scp_hsr" = "domains/high-speed-rail/implementation/scp_hsr", "scp_hsr_tools" = "domains/high-speed-rail/tools"}
+
+[tool.setuptools.package-data]
+"scp.schemas" = ["*.json"]

@@ -1,0 +1,110 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Adjacent Crossover Right.",
+  "schema_version": 1,
+  "id": "rail-ghsr-adjacent-crossover-right",
+  "name": "GHSR Adjacent Crossover Right",
+  "description": "Switches between two adjacent two-track lines, with no empty tile between them. Both through lines are retained. Choose a handed crossover or a scissors for transfers in both hands.",
+  "recipe": "rail_ghsr_adjacent_crossover_right",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7b8",
+  "tile_ids": [
+    "7f516000",
+    "7f516100",
+    "7f516010",
+    "7f516110",
+    "7f516020",
+    "7f516120"
+  ],
+  "preview_id": "7f516ff5",
+  "effect_name": "preview_scp_rail_feat_00010",
+  "footprint": [
+    2,
+    3
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7b8",
+    "order": "7011f7b8",
+    "style": "rail-ghsr-crossover-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f516000",
+      "source": "7f516000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f516100",
+      "source": "7f516100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f516010",
+      "source": "7f516010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f516110",
+      "source": "7f516110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f516020",
+      "source": "7f516020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f516120",
+      "source": "7f516120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team HSR/GHSR texture and deck profiles; SCP procedural junctions and diagonal curves. Height adapters preserve the eight audited native ramp tile models.",
+    "construction": "SCP right-hand-running fixed-piece rules and explicit directed Monorail paths; native ramp coordinates retained.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "orientation_policy": "rotate-only-preserve-direction",
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "category": "adjacent-switches",
+  "domain": "high-speed-rail"
+}

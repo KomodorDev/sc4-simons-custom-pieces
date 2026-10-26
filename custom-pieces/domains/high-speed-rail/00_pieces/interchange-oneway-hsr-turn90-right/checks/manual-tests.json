@@ -1,0 +1,708 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "interchange-oneway-hsr-turn90-right",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f813",
+        "0004f813"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f813",
+        "0007f813"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f813",
+        "0006f813"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f813",
+        "0005f813"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-lower-oneway-straight": "50d70e8248208443b1c0cc1d2467396588614a24573c06903433c74ee04e02fb",
+    "construction:interchange-oneway-hsr-curve-in-left": "80616d742f16d498049d92e80d5542dabbf5568b1bf05dd0db72ad12516e1b28",
+    "construction:interchange-oneway-hsr-curve-out-left": "be5604071ce652980dfda80b90a304f98b6d3f62f7684f9d636a5a3703621b08",
+    "construction:interchange-oneway-hsr-straight": "4121e1cf1ff2a5a7d354156168add6f3eafa54ac74223d7cd1fc7a2dd4654372",
+    "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+    "effect:interchange-oneway-hsr-turn90-right:ea5118b0-ea5118b1-7f571ff5": "1c0a28ea20830b252f80309fe319d7d4e779a67471b3f33863e0d1703b2c80ea",
+    "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571010": "05f5459b528ecbd6e534d548d8ac000a113037c81b3df65ceb924c253cf4afe1",
+    "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571020": "3807fd5e86d07bab26cb2b098d35a3f452f5b41ab5b3dc07033b4f4796c2c304",
+    "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571100": "ac98de669e7ac04023bf7fd3b3f3a7f1e289f3a50105e4ed24b1a5afb010a60a",
+    "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571110": "fcde6e5bfcea797114112145324d7f7db2267bd46a057ba4dc0d2170d3c2c96b",
+    "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571200": "aac62cf029457db5c00b1953aed13466c8361bddf12ab989bfc086234cb14df9",
+    "graph:interchange-oneway-hsr-turn90-right": "e60c20d96002c35e419ae2ee83fc5d3720639f173d2e252c140ef7fd32c58450",
+    "image:interchange-oneway-hsr-turn90-right:canonical-southeast": "bfed030ecce85aaa19903619440231d551cdf1bfe851492c6a94580bcacfa8ae",
+    "interface:interchange-oneway-hsr-turn90-right:in": "654e75ce57dd80cd0c1082cee8765191f303a941b7b0ce52ad9bcd01dc027571",
+    "interface:interchange-oneway-hsr-turn90-right:out": "9d9aa76bf2b89932ae77db2b4a70484553ecc2f4ddef33a7dce12bdb5a6c8fe8",
+    "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e000": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+    "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e001": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+    "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e002": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+    "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e003": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+    "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e004": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+    "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d010": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+    "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d011": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+    "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d012": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+    "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d013": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+    "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d014": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+    "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568000": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+    "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568001": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+    "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568002": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+    "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568003": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+    "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568004": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571010": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571011": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571012": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571013": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571014": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571100": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571101": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571102": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571103": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571104": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571110": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571111": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571112": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571113": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571114": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+    "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571ff5": "1774ad4f6d26ff0365456cfe9dc83010688c38d184ea19eba11d3920edb124a4",
+    "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000": "92e9e645601981aedd02a8dbe41779be59df1680011cdd6471a6bc001721979b",
+    "path:interchange-oneway-hsr-curve-in-left:296678f7-a966883f-7f56e000": "3ed5311d3b7a44d50fa233ecfc9f066cc2f513093bc3d78c0b7544502f2c3ecf",
+    "path:interchange-oneway-hsr-curve-out-left:296678f7-a966883f-7f56d010": "ee0323a01b5cebc3a83f0b203bf2c7c117725b03c804ebb345b36768fd947e30",
+    "path:interchange-oneway-hsr-straight:296678f7-a966883f-7f568000": "c971523b85bfb1f30eec7d0ea3ec34458d5e23ce9ef5e2be85b55da71f74f396",
+    "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571010": "f830e65983430104f6094a60ee09f003e659763a85853dab7aa13964d20ba774",
+    "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e",
+    "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571100": "89958c4757a4549b17d897e01131483c4f033fc772aaba26fb368258617daa84",
+    "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571110": "621fe24f36b30f567c288fa06b31db96d91375df5ef29f56d8b9b6273e96dd4b",
+    "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571010": "4b8ee68fdb8422432dc3c313131883e1417dd1dd65c3930d368f81eb3f3cb5cb",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571011": "e935a03990cea6d01c4be46072d038c494ebe1d1efdd9a88913b63fe2dc23ae5",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571012": "4b2567e4b164ae2ebdbea4eff63c55b0e1e204baa38c8675bb996afb2b26d691",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571013": "687bf1b98a8d52b26d912bac16eb1ae4be1b4c1a42d84d0dc5383bfbb509939e",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571014": "08b37c0d7bcdc6288a76eb05455afeec2c059a209fe861ddd3f5a633b076e046",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571020": "3af5044f878f04f4247636858a7db838c5db1ac714d915d10c82147ac6d73ed8",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571021": "f2e671d09e8b20ca178b5c379bbe573dd7dfe3679903df628eefa8da99b24f72",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571022": "30f5af441941015cd3c858a5c63cef49a6565a0f92b564917d32e23f4a9e9743",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571023": "14080e4704aaaf91ecb316625d7637a218ce6cda1c99bf592d068fb7060458ca",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571024": "414ae1fc8386b303a407bc167678e3b4fbbfcc5d0a88543e01348e60803aa159",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571100": "cd03ae0de4e661da5c84faa8a6ecb98ec6b78e02e3a7de05d0885dc2df30a15f",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571101": "085307db78a59b40477c038f1fe8e17fadf0159ad2d308b657ae2a4b1b92b7cc",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571102": "3578e9ace575508a96124af9c0467e96f60f6ecc7b7415f7f31be74e1e7f3e17",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571103": "4019b74af55ce4fda066523446819fba975fcb2aa77d6d7edfd5b5573c8e0a2a",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571104": "daa300250174ababc4aa4d133c979f6772fd96e5398f8dc5ef6d5f6203fa50e1",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571110": "5eb1aa7c36b42e7967403fc8b56f6fc192ec546626eddae2fd1e46e93e92dffe",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571111": "13697fcdb546b7469092e31cd9c56852b66be4d9d777eb29c703769b7c76b9b1",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571112": "421640820098d008d1a114ed22eedf02b1dd825d05155ba3a7546196db8dcc13",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571113": "5ef449b625f0f5e1a172f9c4b8ff7f261d04289dca5b1c0a2b5c6fcec7aa7627",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571114": "4345d7bb35770d8c37dc220d9952db6034f3947ab29a1cdf5b3b5fee7f72170d",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571200": "e49f380e48d6e8b3c86357d19f1c6e564bb214068ae31bc550c95b9bea878a82",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571201": "9716a483e7cbff7c7d1e05451ba028e1a7a1f0d5cc05e82cc7ba661db13b664d",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571202": "6ab4cf6527d15e3d85c72ca4abc110e90618fbd151a7a6eedefea9391c4322d0",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571203": "015d55b8c7460632dea1aeb4f58a85285367ad9ef51f13929c0df2adebe80520",
+    "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571204": "68e1f50e0faea3bc4f9432f5265cb2bbde4107cddddf902acb7818b19ac1cf79",
+    "text:interchange-oneway-hsr-turn90-right:2026960b-2a592fd1-7f571010": "aea61487471bedd1d2477322d296c689f5098bc39d470cb288979a9f26f1ed70",
+    "text:interchange-oneway-hsr-turn90-right:2026960b-2a592fd1-7f571020": "aea61487471bedd1d2477322d296c689f5098bc39d470cb288979a9f26f1ed70",
+    "text:interchange-oneway-hsr-turn90-right:2026960b-2a592fd1-7f571100": "aea61487471bedd1d2477322d296c689f5098bc39d470cb288979a9f26f1ed70",
+    "text:interchange-oneway-hsr-turn90-right:2026960b-2a592fd1-7f571110": "aea61487471bedd1d2477322d296c689f5098bc39d470cb288979a9f26f1ed70",
+    "text:interchange-oneway-hsr-turn90-right:2026960b-2a592fd1-7f571200": "aea61487471bedd1d2477322d296c689f5098bc39d470cb288979a9f26f1ed70"
+  },
+  "cases": [
+    {
+      "id": "software_resources-6439ba46c55ddf628f4a",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "04e24540f8966a872050badda03380ca2e503f3cb3399ac938ddfa0ea8a05eb4",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "software_connectivity-6439ba46c55ddf628f4a",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "219df664eab6b7652623226afa60f46fdd79cb880f3e4635394e8fedf960ccc1",
+      "dependency_ref": "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515"
+    },
+    {
+      "id": "preview_review-b41689cec735c3ec61ee",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "image_key": "image:interchange-oneway-hsr-turn90-right:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bcfaf115bb3df16d6ca26c5f57921a09f81ce9bac31f45d02618ae472fb1dabc",
+      "dependency_ref": "834ed3b4ceb09509b6462a418aac06175c9502c65bb9ab30314db6b731116ea1"
+    },
+    {
+      "id": "in_game_render-4ab5802cea577f155df9",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "86e48c21582b10afd6e89280f56896f813eb86adb8f7872026f536394002773f",
+      "dependency_ref": "c82a732c31136a5dfb1720931b9062bdb0773a4b2ed0c1f1b900f589351049dd"
+    },
+    {
+      "id": "in_game_placement-4ab5802cea577f155df9",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f859d472ac078ec175b0bcf95ea01b95840ef327e6c54d1085310e29641bdcdf",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_demolition-4ab5802cea577f155df9",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f859d472ac078ec175b0bcf95ea01b95840ef327e6c54d1085310e29641bdcdf",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_save_reload-4ab5802cea577f155df9",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f859d472ac078ec175b0bcf95ea01b95840ef327e6c54d1085310e29641bdcdf",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_render-a97e9b102479c41dddcb",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "20533e2d1a387a0a63cd11ec12458a2a2ac4c0da7ddfbdd4afc0134581b6ddd0",
+      "dependency_ref": "c82a732c31136a5dfb1720931b9062bdb0773a4b2ed0c1f1b900f589351049dd"
+    },
+    {
+      "id": "in_game_placement-a97e9b102479c41dddcb",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c850926fe62a2a7fe83d5df653773957036019390d1f8ecef884b9be2fe26502",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_demolition-a97e9b102479c41dddcb",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c850926fe62a2a7fe83d5df653773957036019390d1f8ecef884b9be2fe26502",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_save_reload-a97e9b102479c41dddcb",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c850926fe62a2a7fe83d5df653773957036019390d1f8ecef884b9be2fe26502",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_render-15982752758a18160b90",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ce4a45d0d896554b28006e167237c4a4b2b6822ad1bf37882c56b5b73e931c86",
+      "dependency_ref": "c82a732c31136a5dfb1720931b9062bdb0773a4b2ed0c1f1b900f589351049dd"
+    },
+    {
+      "id": "in_game_placement-15982752758a18160b90",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cfbe647f597cf3b0f5f07a539ea6e1f6dec0e496b695a6d4906681bcbc75172d",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_demolition-15982752758a18160b90",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cfbe647f597cf3b0f5f07a539ea6e1f6dec0e496b695a6d4906681bcbc75172d",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_save_reload-15982752758a18160b90",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cfbe647f597cf3b0f5f07a539ea6e1f6dec0e496b695a6d4906681bcbc75172d",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_render-412b44ed18c5c63c52e7",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "10c4f48ec155eeec8af37bbb8b6bd481b00a2c5b97d11a30881a1fbb2625200a",
+      "dependency_ref": "c82a732c31136a5dfb1720931b9062bdb0773a4b2ed0c1f1b900f589351049dd"
+    },
+    {
+      "id": "in_game_placement-412b44ed18c5c63c52e7",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9ea8fb452c6015c64807c4511fc48300588b2586232a443502c303509925caa",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_demolition-412b44ed18c5c63c52e7",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9ea8fb452c6015c64807c4511fc48300588b2586232a443502c303509925caa",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_save_reload-412b44ed18c5c63c52e7",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9ea8fb452c6015c64807c4511fc48300588b2586232a443502c303509925caa",
+      "dependency_ref": "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f"
+    },
+    {
+      "id": "in_game_journey-27283838f0a0979845a6",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "journey_id": "7:in>out",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "in",
+        "exit_port": "out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b510a8bfb86c3abdd3ba3ff39a7d00e4bfcbd35bac085f60f49153e2a577f4db",
+      "dependency_ref": "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515"
+    },
+    {
+      "id": "in_game_journey-008e3b05e1b5d9ae650f",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "journey_id": "7:in>out",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "in",
+        "exit_port": "out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "35c28c58c80212c7a8257a7ef3cd0806f40117a71acc0adb2c4cf600d0be0a8c",
+      "dependency_ref": "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515"
+    },
+    {
+      "id": "in_game_journey-bcb38f417f0f28a8613a",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "journey_id": "7:in>out",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "in",
+        "exit_port": "out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "78b22c71b0b94163cc14637a1a354224ded86c3fad03545dd98bd0375d83a60a",
+      "dependency_ref": "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515"
+    },
+    {
+      "id": "in_game_journey-b2eb97decea00be974aa",
+      "kind": "in_game_journey",
+      "description": "Run the declared journey in this direction using its service network.",
+      "scope": {
+        "subject_id": "interchange-oneway-hsr-turn90-right",
+        "journey_id": "7:in>out",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "in",
+        "exit_port": "out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "661ea2bc7f666f75ad3430fb52c137b2e980983353b8123a1541a983c92e82de",
+      "dependency_ref": "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515"
+    }
+  ],
+  "dependency_sets": {
+    "5a1ab2fe8fa511b9dc1d3a31d85c08b06670a2136219f9c2187f2bfbb1db8f0f": {
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "effect:interchange-oneway-hsr-turn90-right:ea5118b0-ea5118b1-7f571ff5": "1c0a28ea20830b252f80309fe319d7d4e779a67471b3f33863e0d1703b2c80ea",
+      "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571010": "05f5459b528ecbd6e534d548d8ac000a113037c81b3df65ceb924c253cf4afe1",
+      "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571020": "3807fd5e86d07bab26cb2b098d35a3f452f5b41ab5b3dc07033b4f4796c2c304",
+      "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571100": "ac98de669e7ac04023bf7fd3b3f3a7f1e289f3a50105e4ed24b1a5afb010a60a",
+      "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571110": "fcde6e5bfcea797114112145324d7f7db2267bd46a057ba4dc0d2170d3c2c96b",
+      "exemplar:interchange-oneway-hsr-turn90-right:6534284a-a8434037-7f571200": "aac62cf029457db5c00b1953aed13466c8361bddf12ab989bfc086234cb14df9",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571010": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571011": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571012": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571013": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571014": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571100": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571101": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571102": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571103": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571104": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571110": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571111": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571112": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571113": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571114": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571ff5": "1774ad4f6d26ff0365456cfe9dc83010688c38d184ea19eba11d3920edb124a4",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571010": "f830e65983430104f6094a60ee09f003e659763a85853dab7aa13964d20ba774",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571100": "89958c4757a4549b17d897e01131483c4f033fc772aaba26fb368258617daa84",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571110": "621fe24f36b30f567c288fa06b31db96d91375df5ef29f56d8b9b6273e96dd4b",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571010": "4b8ee68fdb8422432dc3c313131883e1417dd1dd65c3930d368f81eb3f3cb5cb",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571011": "e935a03990cea6d01c4be46072d038c494ebe1d1efdd9a88913b63fe2dc23ae5",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571012": "4b2567e4b164ae2ebdbea4eff63c55b0e1e204baa38c8675bb996afb2b26d691",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571013": "687bf1b98a8d52b26d912bac16eb1ae4be1b4c1a42d84d0dc5383bfbb509939e",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571014": "08b37c0d7bcdc6288a76eb05455afeec2c059a209fe861ddd3f5a633b076e046",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571020": "3af5044f878f04f4247636858a7db838c5db1ac714d915d10c82147ac6d73ed8",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571021": "f2e671d09e8b20ca178b5c379bbe573dd7dfe3679903df628eefa8da99b24f72",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571022": "30f5af441941015cd3c858a5c63cef49a6565a0f92b564917d32e23f4a9e9743",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571023": "14080e4704aaaf91ecb316625d7637a218ce6cda1c99bf592d068fb7060458ca",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571024": "414ae1fc8386b303a407bc167678e3b4fbbfcc5d0a88543e01348e60803aa159",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571100": "cd03ae0de4e661da5c84faa8a6ecb98ec6b78e02e3a7de05d0885dc2df30a15f",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571101": "085307db78a59b40477c038f1fe8e17fadf0159ad2d308b657ae2a4b1b92b7cc",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571102": "3578e9ace575508a96124af9c0467e96f60f6ecc7b7415f7f31be74e1e7f3e17",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571103": "4019b74af55ce4fda066523446819fba975fcb2aa77d6d7edfd5b5573c8e0a2a",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571104": "daa300250174ababc4aa4d133c979f6772fd96e5398f8dc5ef6d5f6203fa50e1",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571110": "5eb1aa7c36b42e7967403fc8b56f6fc192ec546626eddae2fd1e46e93e92dffe",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571111": "13697fcdb546b7469092e31cd9c56852b66be4d9d777eb29c703769b7c76b9b1",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571112": "421640820098d008d1a114ed22eedf02b1dd825d05155ba3a7546196db8dcc13",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571113": "5ef449b625f0f5e1a172f9c4b8ff7f261d04289dca5b1c0a2b5c6fcec7aa7627",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571114": "4345d7bb35770d8c37dc220d9952db6034f3947ab29a1cdf5b3b5fee7f72170d",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571200": "e49f380e48d6e8b3c86357d19f1c6e564bb214068ae31bc550c95b9bea878a82",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571201": "9716a483e7cbff7c7d1e05451ba028e1a7a1f0d5cc05e82cc7ba661db13b664d",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571202": "6ab4cf6527d15e3d85c72ca4abc110e90618fbd151a7a6eedefea9391c4322d0",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571203": "015d55b8c7460632dea1aeb4f58a85285367ad9ef51f13929c0df2adebe80520",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571204": "68e1f50e0faea3bc4f9432f5265cb2bbde4107cddddf902acb7818b19ac1cf79"
+    },
+    "fd3505e314e3e1bab2b20b20445c1c0a2e2e8f0aa8ec007fba122da78ff8a515": {
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "graph:interchange-oneway-hsr-turn90-right": "e60c20d96002c35e419ae2ee83fc5d3720639f173d2e252c140ef7fd32c58450",
+      "interface:interchange-oneway-hsr-turn90-right:in": "654e75ce57dd80cd0c1082cee8765191f303a941b7b0ce52ad9bcd01dc027571",
+      "interface:interchange-oneway-hsr-turn90-right:out": "9d9aa76bf2b89932ae77db2b4a70484553ecc2f4ddef33a7dce12bdb5a6c8fe8",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571010": "f830e65983430104f6094a60ee09f003e659763a85853dab7aa13964d20ba774",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571100": "89958c4757a4549b17d897e01131483c4f033fc772aaba26fb368258617daa84",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571110": "621fe24f36b30f567c288fa06b31db96d91375df5ef29f56d8b9b6273e96dd4b",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8"
+    },
+    "834ed3b4ceb09509b6462a418aac06175c9502c65bb9ab30314db6b731116ea1": {
+      "image:interchange-oneway-hsr-turn90-right:canonical-southeast": "bfed030ecce85aaa19903619440231d551cdf1bfe851492c6a94580bcacfa8ae"
+    },
+    "c82a732c31136a5dfb1720931b9062bdb0773a4b2ed0c1f1b900f589351049dd": {
+      "effect:interchange-oneway-hsr-turn90-right:ea5118b0-ea5118b1-7f571ff5": "1c0a28ea20830b252f80309fe319d7d4e779a67471b3f33863e0d1703b2c80ea",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571010": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571011": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571012": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571013": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571014": "d63b4cd66001ddbd9dbaeaf136d8fb44bcab204be8085387de90742c69bb2a77",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571100": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571101": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571102": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571103": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571104": "730dd3498a41e5740a65cca2c9e077b722a75a3df7dc737f1f190efdd2886a07",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571110": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571111": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571112": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571113": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571114": "ecc6676bd3219d2da7285de9d766e05e5beeff2714fb793948433f7002fb476b",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571ff5": "1774ad4f6d26ff0365456cfe9dc83010688c38d184ea19eba11d3920edb124a4",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571010": "4b8ee68fdb8422432dc3c313131883e1417dd1dd65c3930d368f81eb3f3cb5cb",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571011": "e935a03990cea6d01c4be46072d038c494ebe1d1efdd9a88913b63fe2dc23ae5",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571012": "4b2567e4b164ae2ebdbea4eff63c55b0e1e204baa38c8675bb996afb2b26d691",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571013": "687bf1b98a8d52b26d912bac16eb1ae4be1b4c1a42d84d0dc5383bfbb509939e",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571014": "08b37c0d7bcdc6288a76eb05455afeec2c059a209fe861ddd3f5a633b076e046",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571020": "3af5044f878f04f4247636858a7db838c5db1ac714d915d10c82147ac6d73ed8",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571021": "f2e671d09e8b20ca178b5c379bbe573dd7dfe3679903df628eefa8da99b24f72",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571022": "30f5af441941015cd3c858a5c63cef49a6565a0f92b564917d32e23f4a9e9743",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571023": "14080e4704aaaf91ecb316625d7637a218ce6cda1c99bf592d068fb7060458ca",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571024": "414ae1fc8386b303a407bc167678e3b4fbbfcc5d0a88543e01348e60803aa159",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571100": "cd03ae0de4e661da5c84faa8a6ecb98ec6b78e02e3a7de05d0885dc2df30a15f",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571101": "085307db78a59b40477c038f1fe8e17fadf0159ad2d308b657ae2a4b1b92b7cc",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571102": "3578e9ace575508a96124af9c0467e96f60f6ecc7b7415f7f31be74e1e7f3e17",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571103": "4019b74af55ce4fda066523446819fba975fcb2aa77d6d7edfd5b5573c8e0a2a",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571104": "daa300250174ababc4aa4d133c979f6772fd96e5398f8dc5ef6d5f6203fa50e1",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571110": "5eb1aa7c36b42e7967403fc8b56f6fc192ec546626eddae2fd1e46e93e92dffe",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571111": "13697fcdb546b7469092e31cd9c56852b66be4d9d777eb29c703769b7c76b9b1",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571112": "421640820098d008d1a114ed22eedf02b1dd825d05155ba3a7546196db8dcc13",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571113": "5ef449b625f0f5e1a172f9c4b8ff7f261d04289dca5b1c0a2b5c6fcec7aa7627",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571114": "4345d7bb35770d8c37dc220d9952db6034f3947ab29a1cdf5b3b5fee7f72170d",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571200": "e49f380e48d6e8b3c86357d19f1c6e564bb214068ae31bc550c95b9bea878a82",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571201": "9716a483e7cbff7c7d1e05451ba028e1a7a1f0d5cc05e82cc7ba661db13b664d",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571202": "6ab4cf6527d15e3d85c72ca4abc110e90618fbd151a7a6eedefea9391c4322d0",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571203": "015d55b8c7460632dea1aeb4f58a85285367ad9ef51f13929c0df2adebe80520",
+      "shadow:interchange-oneway-hsr-turn90-right:7ab50e44-2bc2759a-7f571204": "68e1f50e0faea3bc4f9432f5265cb2bbde4107cddddf902acb7818b19ac1cf79"
+    },
+    "22188efab10b7dd51c1dd9f0faa6501c3236b2c14dc5df48ec4216e69419a13c": {
+      "construction:hsr-component-lower-oneway-straight": "50d70e8248208443b1c0cc1d2467396588614a24573c06903433c74ee04e02fb",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:in": "654e75ce57dd80cd0c1082cee8765191f303a941b7b0ce52ad9bcd01dc027571",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000": "92e9e645601981aedd02a8dbe41779be59df1680011cdd6471a6bc001721979b",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e"
+    },
+    "2e1bc4e3f1e5836c3d67abc81d91284ad7999ea2ffcf993ef6370647a84517d2": {
+      "construction:interchange-oneway-hsr-straight": "4121e1cf1ff2a5a7d354156168add6f3eafa54ac74223d7cd1fc7a2dd4654372",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:in": "654e75ce57dd80cd0c1082cee8765191f303a941b7b0ce52ad9bcd01dc027571",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568000": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568001": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568002": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568003": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568004": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "path:interchange-oneway-hsr-straight:296678f7-a966883f-7f568000": "c971523b85bfb1f30eec7d0ea3ec34458d5e23ce9ef5e2be85b55da71f74f396",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e"
+    },
+    "41e8e252170889a828b5048b31faea4ffdc15ddc70ffa51c627f54b836aaf61c": {
+      "construction:interchange-oneway-hsr-curve-in-left": "80616d742f16d498049d92e80d5542dabbf5568b1bf05dd0db72ad12516e1b28",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:in": "654e75ce57dd80cd0c1082cee8765191f303a941b7b0ce52ad9bcd01dc027571",
+      "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e000": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+      "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e001": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+      "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e002": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+      "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e003": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+      "model:interchange-oneway-hsr-curve-in-left:5ad0e817-badb57f1-7f56e004": "665bb67deeeac64249599dfe13ccb24b7af124ea1d90117c990d8b2fe59ec2c0",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571020": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571021": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571022": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571023": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571024": "948ce1d6c5850839e67f4027a222634029b749f3834d4c6af7118b7ccbb6117a",
+      "path:interchange-oneway-hsr-curve-in-left:296678f7-a966883f-7f56e000": "3ed5311d3b7a44d50fa233ecfc9f066cc2f513093bc3d78c0b7544502f2c3ecf",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571020": "9d5f4790cabd063cee5393c8de2cb27be267df58711789bd004cd1659158367e"
+    },
+    "90c7116d589d845804bd12d8647b8e801f1c0b8853068583b3daed5ab15a066b": {
+      "construction:hsr-component-lower-oneway-straight": "50d70e8248208443b1c0cc1d2467396588614a24573c06903433c74ee04e02fb",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:out": "9d9aa76bf2b89932ae77db2b4a70484553ecc2f4ddef33a7dce12bdb5a6c8fe8",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000": "92e9e645601981aedd02a8dbe41779be59df1680011cdd6471a6bc001721979b",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8"
+    },
+    "cb1e416c75eccff5b2e26e636d004dea6c7ed732e3501a837e9bad34b046d136": {
+      "construction:interchange-oneway-hsr-straight": "4121e1cf1ff2a5a7d354156168add6f3eafa54ac74223d7cd1fc7a2dd4654372",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:out": "9d9aa76bf2b89932ae77db2b4a70484553ecc2f4ddef33a7dce12bdb5a6c8fe8",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568000": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568001": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568002": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568003": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-straight:5ad0e817-badb57f1-7f568004": "57781b64443c5c61af9f618babe30c9cd983f833ebf0fd5e8ec14ea2b7e030d3",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "path:interchange-oneway-hsr-straight:296678f7-a966883f-7f568000": "c971523b85bfb1f30eec7d0ea3ec34458d5e23ce9ef5e2be85b55da71f74f396",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8"
+    },
+    "da889a007d7bb74a1efa5188159317986e3fa5147531e06efbd9301969ff012b": {
+      "construction:interchange-oneway-hsr-curve-out-left": "be5604071ce652980dfda80b90a304f98b6d3f62f7684f9d636a5a3703621b08",
+      "construction:interchange-oneway-hsr-turn90-right": "dbd04781a5716187a912ccddc73c444d365bd951afbf2cb1106a69e23e859573",
+      "interface:interchange-oneway-hsr-turn90-right:out": "9d9aa76bf2b89932ae77db2b4a70484553ecc2f4ddef33a7dce12bdb5a6c8fe8",
+      "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d010": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+      "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d011": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+      "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d012": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+      "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d013": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+      "model:interchange-oneway-hsr-curve-out-left:5ad0e817-badb57f1-7f56d014": "4ae9fc2bc7697a90343840c167f74cd4d63fa9184962b80ee1b9c5a34cb2ab95",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571200": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571201": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571202": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571203": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "model:interchange-oneway-hsr-turn90-right:5ad0e817-badb57f1-7f571204": "40f8574ad897196e6a5c2ee451986c6bb9140f8cc2c0d1d2a3e7751f869581a7",
+      "path:interchange-oneway-hsr-curve-out-left:296678f7-a966883f-7f56d010": "ee0323a01b5cebc3a83f0b203bf2c7c117725b03c804ebb345b36768fd947e30",
+      "path:interchange-oneway-hsr-turn90-right:296678f7-a966883f-7f571200": "7ca4cbf18eb6dd20ea0914c1fffe8bce311a18efed52dc64157903a3be2fb9d8"
+    }
+  }
+}

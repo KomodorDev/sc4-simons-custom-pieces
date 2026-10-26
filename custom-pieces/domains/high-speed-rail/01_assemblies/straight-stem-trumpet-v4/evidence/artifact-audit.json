@@ -1,0 +1,37 @@
+{
+  "purpose": "Verify final image hashes, fixed X/Y city grids, complete readable names, generic standalone captions and preserved previews; visual inspection is by the assistant and creates no human/manual pass.",
+  "schema_version": 1,
+  "status": "passed",
+  "assembly_images": 6,
+  "named_views_with_26_complete_names": 4,
+  "minimum_callout_name_font_pixels": 22,
+  "canvas_pixels": [
+    2800,
+    2600
+  ],
+  "canonical_angled_types": 14,
+  "new_angled_views": 4,
+  "new_top_views": 4,
+  "previous_canonical_types_preserved": 10,
+  "coordinate_system": "Assembly X0\u2013X19/Y0\u2013Y22; each standalone new type uses its own X0/Y0 bounding-rectangle grid. No global origin marker.",
+  "visual_inspection": {
+    "reviewer": "assistant",
+    "images_inspected": [
+      "../previews/tile-ownership.png",
+      "../previews/preview.png",
+      "../previews/named-northwest.png",
+      "../../../00_pieces/hsr-component-l2-shortened-departure-curve/preview-top.png",
+      "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/preview.png"
+    ],
+    "notes": "Readable exact menu names and positions; distinct adjacent ownership colours and thick boundaries; complete compiled geometry; self-contained local type captions.",
+    "human_approval": false
+  },
+  "manual_passes_added": 0,
+  "installed": false,
+  "cleanup_preservation": {
+    "retained_geometry_and_image_hashes_checked": 681,
+    "all_current_images_unchanged": true,
+    "scene_changes": "obsolete metadata references only",
+    "physical_layout_unchanged": true
+  }
+}

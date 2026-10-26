@@ -1,0 +1,1755 @@
+{
+  "purpose": "Active atomization decision history for the current assembly. Original source identifiers, hashes, eligibility measurements and cell reviews are descriptive historical observations; deleted predecessor resources are neither retained nor opened by current verification. Current replacement geometry and the approved compiled-resource contract are checked independently.",
+  "schema_version": 2,
+  "assembly_id": "straight-stem-trumpet-v4",
+  "reference_assembly": "straight-stem-trumpet-v3",
+  "policy": {
+    "candidate_eligibility_strictly_below_m": 0.005,
+    "actual_rework_bounds_separate": true,
+    "render_after_geometry_complete": true,
+    "preserve_reference_subjects_byte_for_byte": false,
+    "threshold_applies_to": "Original candidate tail PATH/rail deviation; not a blanket limit on every adjoining correction. Actual correction is independently bounded separately.",
+    "physical_eligibility": "PATH shape alone does not establish an ordinary straight: verify complete deck, underside, parapets, train corridor, support and world shadows.",
+    "larger_redesigns": "Retained candidates are not declared mathematically impossible; reopening them requires the stated larger scope and new proof.",
+    "scope": "Four removed tails and four adjoining collar cells; no wider footprint, moved outside ports or support positions.",
+    "reference_subjects": "Predecessor definitions and resource fixtures were explicitly removed by the user after the current resource set was approved. Historical measurements below are retained as decisions, not executable resource dependencies."
+  },
+  "quality_contract": "contract.json",
+  "layout_contract": "layout.json",
+  "status": "Four atomized candidates accepted after actual standalone and assembled resource audits; current replacement hashes and the complete current resource set are pinned separately. Original measurements are historical records. In-game observations remain unverified.",
+  "candidates": [
+    {
+      "id": "p01a-west-tail",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_tiles_xy": [
+        [
+          0,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          0,
+          13
+        ]
+      ],
+      "decision": "atomized",
+      "original_path_deviation_m": 0.004018411269782,
+      "reason": "The original branch tail is strictly below 5 mm from the compatible ordinary straight. A bounded correction in its adjoining retained tile gives an independently placeable native end; the existing straight then owns the extracted tile and its support. Both mirrored tails are changed together to preserve direct-slip symmetry.",
+      "replacement": {
+        "straight_piece_id": "hsr-component-lower-paired-straight",
+        "straight_rotation_degrees": 270,
+        "new_core_piece_id": "hsr-component-l2-short-mainline-diverge-core"
+      },
+      "actual_rework": {
+        "maximum_route_change_m": 0.024332708305568218,
+        "independent_bound_m": 0.0245,
+        "allowed_world_cells_en_m": [
+          [
+            -112.0,
+            0.0
+          ],
+          [
+            -96.0,
+            0.0
+          ]
+        ],
+        "status": "Final standalone actual saved-resource checks passed; the complete integrated proof is recorded separately in evidence/validation.json.",
+        "measurement_method": "Maximum lateral correction at unchanged longitudinal coordinates of encoded route samples; the independent saved-PATH proof continuously checks both polylines against the separate literal distance bound."
+      },
+      "source_geometry_sha256": "7db5f289e75dd98728a7c9270f1b30ee3b89bb9b1b4395f694beda5958f7414a",
+      "reconsider_if": "Reopen if final actual-resource verification fails; keep the current approved geometry rather than silently widen scope.",
+      "replacement_geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
+      "evidence": [
+        "../evidence/atomization-implementation.json",
+        "../evidence/validation.json"
+      ],
+      "original_visible_rail_deviation_m": 0.0040185610292082785
+    },
+    {
+      "id": "p03b-east-tail",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_tiles_xy": [
+        [
+          5,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          14,
+          13
+        ]
+      ],
+      "decision": "atomized",
+      "original_path_deviation_m": 0.004018411269782,
+      "reason": "The original branch tail is strictly below 5 mm from the compatible ordinary straight. A bounded correction in its adjoining retained tile gives an independently placeable native end; the existing straight then owns the extracted tile and its support. Both mirrored tails are changed together to preserve direct-slip symmetry.",
+      "replacement": {
+        "straight_piece_id": "hsr-component-lower-paired-straight",
+        "straight_rotation_degrees": 270,
+        "new_core_piece_id": "hsr-component-l2-short-opposed-merge-core"
+      },
+      "actual_rework": {
+        "maximum_route_change_m": 0.024332708305568218,
+        "independent_bound_m": 0.0245,
+        "allowed_world_cells_en_m": [
+          [
+            112.0,
+            0.0
+          ],
+          [
+            96.0,
+            0.0
+          ]
+        ],
+        "status": "Final standalone actual saved-resource checks passed; the complete integrated proof is recorded separately in evidence/validation.json.",
+        "measurement_method": "Maximum lateral correction at unchanged longitudinal coordinates of encoded route samples; the independent saved-PATH proof continuously checks both polylines against the separate literal distance bound."
+      },
+      "source_geometry_sha256": "a3e50f4d3f07e748e71dc33ccbdba7d14ada363ae348c6d0c6cbb1864ed3b081",
+      "reconsider_if": "Reopen if final actual-resource verification fails; keep the current approved geometry rather than silently widen scope.",
+      "replacement_geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833",
+      "evidence": [
+        "../evidence/atomization-implementation.json",
+        "../evidence/validation.json"
+      ],
+      "original_visible_rail_deviation_m": 0.004018597831425552
+    },
+    {
+      "id": "p01b-south-tail",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_tiles_xy": [
+        [
+          4,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          6,
+          6
+        ]
+      ],
+      "decision": "atomized",
+      "original_path_deviation_m": 0.00205811399999,
+      "reason": "The original branch tail is strictly below 5 mm from the compatible ordinary straight. A bounded correction in its adjoining retained tile gives an independently placeable native end; the existing straight then owns the extracted tile and its support. Both mirrored tails are changed together to preserve direct-slip symmetry.",
+      "replacement": {
+        "straight_piece_id": "hsr-component-lower-oneway-straight",
+        "straight_rotation_degrees": 180,
+        "new_core_piece_id": "hsr-component-l2-shortened-departure-curve"
+      },
+      "actual_rework": {
+        "maximum_route_change_m": 0.008133571,
+        "independent_bound_m": 0.0082,
+        "allowed_world_cells_en_m": [
+          [
+            -16.0,
+            -112.0
+          ],
+          [
+            -16.0,
+            -96.0
+          ]
+        ],
+        "status": "Final standalone actual saved-resource checks passed; the complete integrated proof is recorded separately in evidence/validation.json.",
+        "measurement_method": "Maximum lateral correction at unchanged longitudinal coordinates of encoded route samples; the independent saved-PATH proof continuously checks both polylines against the separate literal distance bound."
+      },
+      "source_geometry_sha256": "1cdd7b02cd057f2ba48d52d37ee326b61fa5d436f546b3befd53b11efeeec1ad",
+      "reconsider_if": "Reopen if final actual-resource verification fails; keep the current approved geometry rather than silently widen scope.",
+      "replacement_geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
+      "evidence": [
+        "../evidence/atomization-implementation.json",
+        "../evidence/validation.json"
+      ],
+      "original_visible_rail_deviation_m": 0.0020580718453029998
+    },
+    {
+      "id": "p03d-south-tail",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_tiles_xy": [
+        [
+          0,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          8,
+          6
+        ]
+      ],
+      "decision": "atomized",
+      "original_path_deviation_m": 0.00205811399999,
+      "reason": "The original branch tail is strictly below 5 mm from the compatible ordinary straight. A bounded correction in its adjoining retained tile gives an independently placeable native end; the existing straight then owns the extracted tile and its support. Both mirrored tails are changed together to preserve direct-slip symmetry.",
+      "replacement": {
+        "straight_piece_id": "hsr-component-lower-oneway-straight",
+        "straight_rotation_degrees": 0,
+        "new_core_piece_id": "hsr-component-l2-shortened-return-curve"
+      },
+      "actual_rework": {
+        "maximum_route_change_m": 0.008133571,
+        "independent_bound_m": 0.0082,
+        "allowed_world_cells_en_m": [
+          [
+            16.0,
+            -112.0
+          ],
+          [
+            16.0,
+            -96.0
+          ]
+        ],
+        "status": "Final standalone actual saved-resource checks passed; the complete integrated proof is recorded separately in evidence/validation.json.",
+        "measurement_method": "Maximum lateral correction at unchanged longitudinal coordinates of encoded route samples; the independent saved-PATH proof continuously checks both polylines against the separate literal distance bound."
+      },
+      "source_geometry_sha256": "79e083906b6102ea8094c22df323cf2345933de1806a5bae43210a053febf356",
+      "reconsider_if": "Reopen if final actual-resource verification fails; keep the current approved geometry rather than silently widen scope.",
+      "replacement_geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
+      "evidence": [
+        "../evidence/atomization-implementation.json",
+        "../evidence/validation.json"
+      ],
+      "original_visible_rail_deviation_m": 0.002058072026109692
+    },
+    {
+      "id": "p01a-reuse-p03c",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_tiles_xy": [],
+      "assembly_tiles_xy": [],
+      "decision": "retained",
+      "original_path_deviation_m": null,
+      "reason": "A rotated P03C is a different branch: its socket misses by 5.835829856 m and its tangent by 2.202886 degrees. Replacing P01A that way would move several existing modules and break the agreed direct-slip symmetry.",
+      "source_geometry_sha256": "7db5f289e75dd98728a7c9270f1b30ee3b89bb9b1b4395f694beda5958f7414a",
+      "reconsider_if": "larger coordinated layout redesign explicitly requested"
+    },
+    {
+      "id": "p01a-east-platform-wing",
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_tiles_xy": [
+        [
+          4,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          4,
+          13
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.0,
+      "reason": "Straight PATHs are insufficient: this tile owns a 500 mm branch-platform wing and an open parapet. An ordinary straight restores a wall only 1.169553309 m from the neighbouring branch PATH, inside its 2.6 m half-width clearance.",
+      "source_geometry_sha256": "7db5f289e75dd98728a7c9270f1b30ee3b89bb9b1b4395f694beda5958f7414a",
+      "reconsider_if": "a separately proved shared-platform module preserves the neighbouring branch and wall opening"
+    },
+    {
+      "id": "p02a-south-tail",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_tiles_xy": [
+        [
+          1,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          7,
+          0
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.11984,
+      "reason": "Both directional branch tails move 119.840 mm, above the 5 mm eligibility threshold. This is also a split/merge platform rather than an ordinary straight profile.",
+      "source_geometry_sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd",
+      "reconsider_if": "a separate larger redesign with unchanged external joins and full physical proof"
+    },
+    {
+      "id": "p02a-side-tails",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_tiles_xy": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          6,
+          5
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.11984,
+      "reason": "The side tails each move 119.840 mm. They fail the 5 mm threshold and participate in the shared split/merge platform.",
+      "source_geometry_sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd",
+      "reconsider_if": "a separate larger redesign"
+    },
+    {
+      "id": "p02a-middle-platform",
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_tiles_xy": [
+        [
+          1,
+          3
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          7,
+          3
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.0,
+      "reason": "Its paired PATHs are straight but the shared slab is 16 m wide and has branch wall openings. An ordinary 15 m straight changes the physical connection.",
+      "source_geometry_sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd",
+      "reconsider_if": "a separate native-profile/platform redesign with proof of both neighbouring branches"
+    },
+    {
+      "id": "p03b-west-tail",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_tiles_xy": [
+        [
+          0,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          9,
+          13
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.0064370541255654,
+      "reason": "Its branch moves 6.437054 mm. This is above the strict 5 mm threshold, so it is not silently rounded into eligibility.",
+      "source_geometry_sha256": "a3e50f4d3f07e748e71dc33ccbdba7d14ada363ae348c6d0c6cbb1864ed3b081",
+      "reconsider_if": "a separately approved wider threshold and a new joining-curve proof"
+    },
+    {
+      "id": "p03b-inner-east-curve",
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_tiles_xy": [
+        [
+          4,
+          0
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          13,
+          13
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.286369,
+      "reason": "The branch moves 286.369 mm and the northern branch deck reaches 8 m beyond the centre instead of the native 7.5 m half-width. An ordinary straight removes useful branch geometry.",
+      "source_geometry_sha256": "a3e50f4d3f07e748e71dc33ccbdba7d14ada363ae348c6d0c6cbb1864ed3b081",
+      "reconsider_if": "a larger coordinated branch and platform redesign"
+    },
+    {
+      "id": "p01b-next-tail",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_tiles_xy": [
+        [
+          4,
+          1
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          6,
+          7
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.148533079,
+      "reason": "The next tile bends 148.533079 mm. Its route is not an almost-straight tail under the 5 mm policy.",
+      "source_geometry_sha256": "1cdd7b02cd057f2ba48d52d37ee326b61fa5d436f546b3befd53b11efeeec1ad",
+      "reconsider_if": "a separate larger curve redesign"
+    },
+    {
+      "id": "p03d-next-tail",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_tiles_xy": [
+        [
+          0,
+          1
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          8,
+          7
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 0.148533079,
+      "reason": "The next tile bends 148.533079 mm. Its route is not an almost-straight tail under the 5 mm policy.",
+      "source_geometry_sha256": "79e083906b6102ea8094c22df323cf2345933de1806a5bae43210a053febf356",
+      "reconsider_if": "a separate larger curve redesign"
+    },
+    {
+      "id": "p01b-next-curve",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_tiles_xy": [
+        [
+          4,
+          2
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          6,
+          8
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 1.02572658,
+      "reason": "This tile contains 1.02572658 m of lateral curve movement, so replacing it with a straight would materially change the layout.",
+      "source_geometry_sha256": "1cdd7b02cd057f2ba48d52d37ee326b61fa5d436f546b3befd53b11efeeec1ad",
+      "reconsider_if": "a separate larger curve redesign"
+    },
+    {
+      "id": "p03d-next-curve",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_tiles_xy": [
+        [
+          0,
+          2
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          8,
+          8
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 1.02572658,
+      "reason": "This tile contains 1.02572658 m of lateral curve movement, so replacing it with a straight would materially change the layout.",
+      "source_geometry_sha256": "79e083906b6102ea8094c22df323cf2345933de1806a5bae43210a053febf356",
+      "reconsider_if": "a separate larger curve redesign"
+    },
+    {
+      "id": "p01b-interior-bend",
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_tiles_xy": [
+        [
+          4,
+          3
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          6,
+          9
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 3.5433,
+      "reason": "This is a substantial bend of approximately 3.5433 m, not a straight tail.",
+      "source_geometry_sha256": "1cdd7b02cd057f2ba48d52d37ee326b61fa5d436f546b3befd53b11efeeec1ad",
+      "reconsider_if": "a separate larger curve redesign"
+    },
+    {
+      "id": "p03d-interior-bend",
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_tiles_xy": [
+        [
+          0,
+          3
+        ]
+      ],
+      "assembly_tiles_xy": [
+        [
+          8,
+          9
+        ]
+      ],
+      "decision": "retained",
+      "original_path_deviation_m": 3.5433,
+      "reason": "This is a substantial bend of approximately 3.5433 m, not a straight tail.",
+      "source_geometry_sha256": "79e083906b6102ea8094c22df323cf2345933de1806a5bae43210a053febf356",
+      "reconsider_if": "a separate larger curve redesign"
+    }
+  ],
+  "source_cell_inventory": [
+    {
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_xy": [
+        0,
+        0
+      ],
+      "assembly_xy": [
+        0,
+        13
+      ],
+      "candidate_id": "p01a-west-tail",
+      "decision": "atomized",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "W>S",
+          "east_span_m": 16,
+          "north_span_m": 0.004018411269782085
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_xy": [
+        1,
+        0
+      ],
+      "assembly_xy": [
+        1,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "W>S",
+          "east_span_m": 16,
+          "north_span_m": 0.28235063947362393
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_xy": [
+        2,
+        0
+      ],
+      "assembly_xy": [
+        2,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "W>S",
+          "east_span_m": 16,
+          "north_span_m": 1.6605309057860307
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_xy": [
+        3,
+        0
+      ],
+      "assembly_xy": [
+        3,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "W>S",
+          "east_span_m": 14.398518552216863,
+          "north_span_m": 4.053100043470563
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01A",
+      "source_piece_id": "hsr-component-l2-mainline-diverge-core",
+      "standalone_xy": [
+        4,
+        0
+      ],
+      "assembly_xy": [
+        4,
+        13
+      ],
+      "candidate_id": "p01a-east-platform-wing",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        0,
+        5
+      ],
+      "assembly_xy": [
+        6,
+        5
+      ],
+      "candidate_id": "p02a-side-tails",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "L>S",
+          "east_span_m": 0.11983999999997685,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        2,
+        5
+      ],
+      "assembly_xy": [
+        8,
+        5
+      ],
+      "candidate_id": "p02a-side-tails",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>R",
+          "east_span_m": 0.11983999999997685,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        0,
+        4
+      ],
+      "assembly_xy": [
+        6,
+        4
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "L>S",
+          "east_span_m": 2.163280000000027,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        2,
+        4
+      ],
+      "assembly_xy": [
+        8,
+        4
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>R",
+          "east_span_m": 2.163280000000027,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        0,
+        3
+      ],
+      "assembly_xy": [
+        6,
+        3
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "L>S",
+          "east_span_m": 4.716879999999996,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        1,
+        3
+      ],
+      "assembly_xy": [
+        7,
+        3
+      ],
+      "candidate_id": "p02a-middle-platform",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>N",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "N>S",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        2,
+        3
+      ],
+      "assembly_xy": [
+        8,
+        3
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>R",
+          "east_span_m": 4.716879999999996,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        0,
+        2
+      ],
+      "assembly_xy": [
+        6,
+        2
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "L>S",
+          "east_span_m": 1.0,
+          "north_span_m": 3.0596363729957545
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        1,
+        2
+      ],
+      "assembly_xy": [
+        7,
+        2
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>N",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "N>S",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "S>R",
+          "east_span_m": 3.7168800000000006,
+          "north_span_m": 12.940363627004245
+        },
+        {
+          "movement": "L>S",
+          "east_span_m": 3.7168800000000006,
+          "north_span_m": 12.940363627004245
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        2,
+        2
+      ],
+      "assembly_xy": [
+        8,
+        2
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>R",
+          "east_span_m": 1.0,
+          "north_span_m": 3.0596363729957545
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        0,
+        1
+      ],
+      "assembly_xy": [
+        6,
+        1
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        1,
+        1
+      ],
+      "assembly_xy": [
+        7,
+        1
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>N",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "N>S",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "S>R",
+          "east_span_m": 2.1632799999999994,
+          "north_span_m": 16
+        },
+        {
+          "movement": "L>S",
+          "east_span_m": 2.1632799999999994,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        2,
+        1
+      ],
+      "assembly_xy": [
+        8,
+        1
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P02A",
+      "source_piece_id": "hsr-component-modular-south-junction",
+      "standalone_xy": [
+        1,
+        0
+      ],
+      "assembly_xy": [
+        7,
+        0
+      ],
+      "candidate_id": "p02a-south-tail",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>N",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "N>S",
+          "east_span_m": 0.0,
+          "north_span_m": 16
+        },
+        {
+          "movement": "S>R",
+          "east_span_m": 0.11983999999999995,
+          "north_span_m": 16
+        },
+        {
+          "movement": "L>S",
+          "east_span_m": 0.11983999999999995,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        0,
+        0
+      ],
+      "assembly_xy": [
+        9,
+        13
+      ],
+      "candidate_id": "p03b-west-tail",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "N>W",
+          "east_span_m": 16,
+          "north_span_m": 0.006437054125565389
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        1,
+        0
+      ],
+      "assembly_xy": [
+        10,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "N>W",
+          "east_span_m": 16,
+          "north_span_m": 0.43940806613096317
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        2,
+        0
+      ],
+      "assembly_xy": [
+        11,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "N>W",
+          "east_span_m": 16,
+          "north_span_m": 2.5108447552741957
+        },
+        {
+          "movement": "S>E",
+          "east_span_m": 14.398518552216863,
+          "north_span_m": 4.053100043470563
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        3,
+        0
+      ],
+      "assembly_xy": [
+        12,
+        13
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "N>W",
+          "east_span_m": 8.562688696411044,
+          "north_span_m": 3.0433101244692757
+        },
+        {
+          "movement": "S>E",
+          "east_span_m": 16,
+          "north_span_m": 1.6605309057860307
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        4,
+        0
+      ],
+      "assembly_xy": [
+        13,
+        13
+      ],
+      "candidate_id": "p03b-inner-east-curve",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "S>E",
+          "east_span_m": 16,
+          "north_span_m": 0.28235063947362393
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03B",
+      "source_piece_id": "hsr-component-modular-east-junction",
+      "standalone_xy": [
+        5,
+        0
+      ],
+      "assembly_xy": [
+        14,
+        13
+      ],
+      "candidate_id": "p03b-east-tail",
+      "decision": "atomized",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>E",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "E>W",
+          "east_span_m": 16,
+          "north_span_m": 0.0
+        },
+        {
+          "movement": "S>E",
+          "east_span_m": 16,
+          "north_span_m": 0.004018411269782085
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        0,
+        6
+      ],
+      "assembly_xy": [
+        2,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        1,
+        6
+      ],
+      "assembly_xy": [
+        3,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 1.6014814477831365,
+          "north_span_m": 0.6695533086086112
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        2,
+        6
+      ],
+      "assembly_xy": [
+        4,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 16,
+          "north_span_m": 10.268420221216227
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        3,
+        6
+      ],
+      "assembly_xy": [
+        5,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 4.96071759473957,
+          "north_span_m": 5.062026470175162
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        2,
+        5
+      ],
+      "assembly_xy": [
+        4,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        3,
+        5
+      ],
+      "assembly_xy": [
+        5,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 10.165032256858883,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        5
+      ],
+      "assembly_xy": [
+        6,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        3,
+        4
+      ],
+      "assembly_xy": [
+        5,
+        10
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 0.874250148401547,
+          "north_span_m": 2.0028883527546526
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        4
+      ],
+      "assembly_xy": [
+        6,
+        10
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 4.456700207203092,
+          "north_span_m": 13.997111647245347
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        3
+      ],
+      "assembly_xy": [
+        6,
+        9
+      ],
+      "candidate_id": "p01b-interior-bend",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 2.51757321277562,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        2
+      ],
+      "assembly_xy": [
+        6,
+        8
+      ],
+      "candidate_id": "p01b-next-curve",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 0.8771935005549096,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        1
+      ],
+      "assembly_xy": [
+        6,
+        7
+      ],
+      "candidate_id": "p01b-next-tail",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 0.14647496517193304,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P01B",
+      "source_piece_id": "hsr-component-modular-west-curve",
+      "standalone_xy": [
+        4,
+        0
+      ],
+      "assembly_xy": [
+        6,
+        6
+      ],
+      "candidate_id": "p01b-south-tail",
+      "decision": "atomized",
+      "encoded_fragment_spans": [
+        {
+          "movement": "W>S",
+          "east_span_m": 0.002058114294445801,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        1,
+        6
+      ],
+      "assembly_xy": [
+        9,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 4.96071759473957,
+          "north_span_m": 5.062026470175166
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        2,
+        6
+      ],
+      "assembly_xy": [
+        10,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 16,
+          "north_span_m": 10.268420221216223
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        3,
+        6
+      ],
+      "assembly_xy": [
+        11,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 1.6014814477831365,
+          "north_span_m": 0.6695533086086112
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        4,
+        6
+      ],
+      "assembly_xy": [
+        12,
+        12
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        5
+      ],
+      "assembly_xy": [
+        8,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        1,
+        5
+      ],
+      "assembly_xy": [
+        9,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 10.165032256858883,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        2,
+        5
+      ],
+      "assembly_xy": [
+        10,
+        11
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [],
+      "reason": "Structural-only swept branch/platform tile: no complete native train route exists to replace it with an ordinary straight. It still owns real slab, underside or wall geometry."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        4
+      ],
+      "assembly_xy": [
+        8,
+        10
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 4.456700207203092,
+          "north_span_m": 13.997111647245347
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        1,
+        4
+      ],
+      "assembly_xy": [
+        9,
+        10
+      ],
+      "candidate_id": null,
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 0.874250148401547,
+          "north_span_m": 2.0028883527546526
+        }
+      ],
+      "reason": "Retained interior curved/shared-junction tile. Its encoded fragments turn or serve the common split/merge platform; it is not an independent full native straight. No additional extraction is approved by the small-tail policy."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        3
+      ],
+      "assembly_xy": [
+        8,
+        9
+      ],
+      "candidate_id": "p03d-interior-bend",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 2.51757321277562,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        2
+      ],
+      "assembly_xy": [
+        8,
+        8
+      ],
+      "candidate_id": "p03d-next-curve",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 0.8771935005549096,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        1
+      ],
+      "assembly_xy": [
+        8,
+        7
+      ],
+      "candidate_id": "p03d-next-tail",
+      "decision": "retained",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 0.14647496517193304,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    },
+    {
+      "placement_label": "P03D",
+      "source_piece_id": "hsr-component-modular-south-curve",
+      "standalone_xy": [
+        0,
+        0
+      ],
+      "assembly_xy": [
+        8,
+        6
+      ],
+      "candidate_id": "p03d-south-tail",
+      "decision": "atomized",
+      "encoded_fragment_spans": [
+        {
+          "movement": "S>E",
+          "east_span_m": 0.002058114294445801,
+          "north_span_m": 16
+        }
+      ],
+      "reason": "See linked measured candidate decision."
+    }
+  ],
+  "source_cells_reviewed": 51,
+  "observations_inside_game": "unverified",
+  "render_gate": {
+    "purpose": "Record the required ordering of geometry and rendering.",
+    "geometry_agents_complete": true,
+    "all_four_modules_pass_actual_saved_resource_checks": true,
+    "no_render_before_this_gate": true,
+    "assembly_validation_required_before_render": true
+  },
+  "current_resource_contract": "resources.json",
+  "historical_inputs_required": false,
+  "current_resource_contract_sha256": "cf35ae0769d37ca98eefd913308d9b41f032bd64fc3a1f5da7e6945db6f7283a"
+}

@@ -1,0 +1,168 @@
+<!-- Purpose: reusable HTML viewer template consumed by export_hsr_assembly_3d.py. -->
+<div id="scp-trumpet-model-orbit">
+  <div class="preview-controls-buffer"><div class="viz-controls" aria-label="3D viewing controls">
+    <button class="btn" type="button" data-view="southeast" aria-pressed="true">Southeast</button>
+    <button class="btn" type="button" data-view="northwest" aria-pressed="false">Northwest</button>
+    <button class="btn" type="button" data-view="top" aria-pressed="false">Top</button>
+    <label class="form-label">Zoom <input class="form-range" aria-label="3D preview zoom" type="range" min="0.65" max="3" step="0.05" value="1"></label>
+  </div></div>
+  <canvas role="img" aria-label="Complete compiled HSR trumpet model. Drag to rotate; the three view buttons provide keyboard-accessible viewpoints.">Complete HSR trumpet geometry; requires WebGL2.</canvas>
+  <div class="text-small text-muted" aria-live="polite" data-status>Actual compiled geometry · game placement unverified</div>
+  <div class="text-destructive" role="alert" data-error hidden></div>
+</div>
+<style>
+#scp-trumpet-model-orbit { color: var(--foreground); }
+#scp-trumpet-model-orbit canvas { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; touch-action: none; }
+#scp-trumpet-model-orbit .preview-controls-buffer { padding-inline-end: 92px; }
+</style>
+<script>
+(async () => {
+  const root = document.getElementById('scp-trumpet-model-orbit');
+  const canvas = root.querySelector('canvas');
+  const error = root.querySelector('[data-error]');
+  const status = root.querySelector('[data-status]');
+  const zoomControl = root.querySelector('input');
+  const data = ASSEMBLY_DATA_PLACEHOLDER;
+  try {
+    const gl = canvas.getContext('webgl2', { alpha: true, antialias: true });
+    if (!gl) throw new Error('WebGL2 is unavailable. Use the rendered 3D images beside this preview.');
+    if (!window.DecompressionStream) throw new Error('This browser cannot decompress the exact model. Use the rendered 3D images.');
+    const decode = text => Uint8Array.from(atob(text), c => c.charCodeAt(0));
+    const compressed = new Blob([decode(data.geometry)]).stream();
+    const packed = new Uint8Array(await new Response(compressed.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
+    let binary=packed.buffer;
+    if(data.byte_plane_shuffle===4) {
+      const unpacked=new Uint8Array(packed.length), words=packed.length/4;
+      for(let byte=0;byte<4;byte++)for(let word=0;word<words;word++)unpacked[word*4+byte]=packed[byte*words+word];
+      binary=unpacked.buffer;
+    }
+    const compile = (type, source) => {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source); gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));
+      return shader;
+    };
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, `#version 300 es
+      precision highp float;
+      in vec3 position; in vec2 uv;
+      uniform vec3 center, right, up, towards;
+      uniform vec2 halfSize; uniform float depthRadius;
+      out vec2 textureUV; out vec3 world;
+      void main() {
+        vec3 relative = position-center;
+        gl_Position = vec4(dot(relative,right)/halfSize.x, dot(relative,up)/halfSize.y,
+                           -dot(relative,towards)/depthRadius, 1.0);
+        textureUV=uv; world=position;
+      }`));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, `#version 300 es
+      precision highp float;
+      in vec2 textureUV; in vec3 world; uniform sampler2D atlas;
+      out vec4 color;
+      void main() {
+        vec4 sampled=texture(atlas,textureUV);
+        if (sampled.a<=0.5) discard;
+        vec3 normal=normalize(cross(dFdx(world),dFdy(world)));
+        float shade=0.78+0.22*abs(dot(normal,normalize(vec3(-0.4,0.9,0.2))));
+        color=vec4(sampled.rgb*shade,1.0);
+      }`));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    gl.useProgram(program);
+    const uniforms = Object.fromEntries(['center','right','up','towards','halfSize','depthRadius','atlas']
+      .map(name => [name,gl.getUniformLocation(program,name)]));
+    const position = gl.getAttribLocation(program,'position');
+    const uv = gl.getAttribLocation(program,'uv');
+    const textures = new Map();
+    await Promise.all(data.atlases.map(async atlas => {
+      const image = new Image();
+      await new Promise((resolve,reject) => {
+        image.onload=resolve; image.onerror=() => reject(new Error('A native track texture could not load.'));
+        image.src='data:image/png;base64,'+atlas.png;
+      });
+      const texture = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,texture);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,image);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+      textures.set(atlas.id,texture);
+    }));
+    const groups = data.groups.map(group => {
+      const array = gl.createVertexArray(); gl.bindVertexArray(array);
+      const vertexBuffer=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vertexBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(binary,group.vertex_offset,group.vertex_count*5),gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(position); gl.vertexAttribPointer(position,3,gl.FLOAT,false,20,0);
+      gl.enableVertexAttribArray(uv); gl.vertexAttribPointer(uv,2,gl.FLOAT,false,20,12);
+      const indexBuffer=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(binary,group.index_offset,group.index_count),gl.STATIC_DRAW);
+      return {...group,array};
+    });
+    let state={azimuth:45,elevation:31,zoom:1};
+    const applyState = value => {
+      const candidate=value?.privateContent?.camera;
+      if(candidate && ['azimuth','elevation','zoom'].every(key => Number.isFinite(candidate[key]))) {
+        state={azimuth:candidate.azimuth,elevation:Math.max(-80,Math.min(90,candidate.elevation)),zoom:Math.max(.65,Math.min(3,candidate.zoom))};
+      }
+      zoomControl.value=state.zoom;
+    };
+    applyState(window.openai?.widgetState);
+    const save=() => window.openai?.setWidgetState?.({
+      modelContent:{preview:'new-straight-stem-hsr-trumpet',view:{...state},model_sha256:data.model_sha256},
+      privateContent:{camera:{...state}}
+    })?.catch(() => {});
+    const render = () => {
+      const ratio=Math.min(window.devicePixelRatio||1,2);
+      const width=Math.max(1,Math.round(canvas.clientWidth*ratio));
+      const height=Math.round(width*.75);
+      if(canvas.width!==width || canvas.height!==height) {canvas.width=width;canvas.height=height;}
+      gl.viewport(0,0,width,height); gl.clearColor(0,0,0,0); gl.clearDepth(1);
+      gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LESS); gl.disable(gl.CULL_FACE);
+      gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+      const az=state.azimuth*Math.PI/180,el=state.elevation*Math.PI/180;
+      gl.uniform3fv(uniforms.center,data.center);
+      gl.uniform3fv(uniforms.right,[Math.cos(az),0,-Math.sin(az)]);
+      gl.uniform3fv(uniforms.up,[-Math.sin(az)*Math.sin(el),Math.cos(el),-Math.cos(az)*Math.sin(el)]);
+      gl.uniform3fv(uniforms.towards,[Math.sin(az)*Math.cos(el),Math.sin(el),Math.cos(az)*Math.cos(el)]);
+      const halfHeight=data.radius*1.12/state.zoom;
+      gl.uniform2f(uniforms.halfSize,halfHeight*width/height,halfHeight);
+      gl.uniform1f(uniforms.depthRadius,data.radius*2.1);
+      gl.uniform1i(uniforms.atlas,0); gl.activeTexture(gl.TEXTURE0);
+      for(const group of groups) {
+        gl.bindVertexArray(group.array); gl.bindTexture(gl.TEXTURE_2D,textures.get(group.texture));
+        gl.drawElements(gl.TRIANGLES,group.index_count,gl.UNSIGNED_INT,0);
+      }
+      for(const button of root.querySelectorAll('[data-view]')) {
+        const preset=button.dataset.view;
+        const selected=(preset==='top'&&state.elevation===90)||(preset==='southeast'&&state.azimuth===45&&state.elevation===31)||(preset==='northwest'&&state.azimuth===225&&state.elevation===31);
+        button.setAttribute('aria-pressed',String(selected));
+      }
+    };
+    for(const button of root.querySelectorAll('[data-view]')) button.addEventListener('click',() => {
+      const view=button.dataset.view;
+      state.azimuth=view==='northwest'?225:view==='top'?0:45;
+      state.elevation=view==='top'?90:31; render(); save();
+    });
+    zoomControl.addEventListener('input',() => {state.zoom=Number(zoomControl.value);render();});
+    zoomControl.addEventListener('change',save);
+    let drag=null;
+    canvas.addEventListener('pointerdown',event => {drag={x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId);});
+    canvas.addEventListener('pointermove',event => {
+      if(!drag)return;
+      state.azimuth=(state.azimuth-(event.clientX-drag.x)*.4+360)%360;
+      state.elevation=Math.max(-80,Math.min(89,state.elevation+(event.clientY-drag.y)*.3));
+      drag={x:event.clientX,y:event.clientY};render();
+    });
+    canvas.addEventListener('pointerup',() => {drag=null;save();});
+    canvas.addEventListener('pointercancel',() => {drag=null;});
+    window.addEventListener('openai:set_globals',event => {
+      if(event.detail?.globals?.widgetState){applyState(event.detail.globals.widgetState);render();}
+    });
+    new ResizeObserver(render).observe(canvas);
+    status.textContent=data.triangle_count.toLocaleString()+' actual triangles · game placement unverified';
+    render();
+  } catch(problem) {
+    error.textContent=problem.message; error.hidden=false; canvas.hidden=true;
+  }
+})();
+</script>
