@@ -220,7 +220,7 @@ class PieceMatrixTests(unittest.TestCase):
             text = (directory/'README.md').read_text()
             self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS[:3])
             self.assertEqual(text.count(SPLIT_LAYOUT_MARKER), 1)
-            self.assertIn('[Testing](TESTING.md)', text)
+            self.assertIn('[Testing ↗ (separate document)](TESTING.md)', text)
             for chapter in HEADINGS[:3]:
                 anchor = chapter.replace('.', '').lower().replace(' ', '-')
                 self.assertIn(f'[{chapter}](#{anchor})', text)
