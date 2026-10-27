@@ -21,6 +21,9 @@ import shlex
 
 STATES = ('unverified', 'passed', 'failed', 'stale', 'not_applicable')
 ROTATIONS = (0, 90, 180, 270)
+ASSEMBLY_TESTING_LAYOUT_MARKER = '<!-- ASSEMBLY TESTING LAYOUT: 1 -->'
+ASSEMBLY_TESTING_CHAPTERS = ('1. Test scope', '2. Test setup', '3. Software checks',
+                             '4. Game checks', '5. Results and known issues', '6. Design history')
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
     'in_game_journey', 'in_game_route_query', 'in_game_visible_travel',
@@ -611,7 +614,13 @@ def _manual_state_counts(cases, fingerprints=None):
     return ', '.join(state.replace('_', ' ')+': '+str(counts[state]) for state in STATES if counts[state])
 
 
-def _manual_attention_index(current, history, fingerprints):
+def _section_heading(title, level):
+    """Keep heading depth configurable without changing stored case identities."""
+    _require(type(level) is int and 2 <= level <= 6, 'Generated section heading level must be from 2 to 6')
+    return ['#'*level+' '+title, '']
+
+
+def _manual_attention_index(current, history, fingerprints, *, heading_level=3):
     """Keep every current or historical failed/stale case outside disclosures."""
     rows = []
     for cases, coverage, inputs in ((current, 'Current', fingerprints),
@@ -627,19 +636,21 @@ def _manual_attention_index(current, history, fingerprints):
                         f'<a href="#case-{case["id"]}"><code>{case["id"]}</code></a> |')
     if not rows:
         return []
-    return ['### Failed and stale cases', '',
+    return [*_section_heading('Failed and stale cases', heading_level),
             'These cases remain visible while the detailed groups are collapsed. Historical cases retain their stored dependency snapshots and are outside current coverage.', '',
             '| State | Coverage | Exact check / scope | Rotation | Case details |',
             '| --- | --- | --- | --- | --- |', *rows, '']
 
 
-def render_manual_checklist(record, fingerprints=None, *, directory=None):
+def render_manual_checklist(record, fingerprints=None, *, directory=None, heading_level=2):
     """Render collapsible kind/service matrices and exact cases/observations.
 
     Rows group only identical non-orientation scope. Every rotation, transpose,
     neighbour, pose, service, and observation remains individually addressable.
     Failed and stale cases also appear outside the collapsed current groups.
     """
+    _require(type(heading_level) is int and 2 <= heading_level <= 5,
+             'Checklist heading level must leave room for child sections')
     record = _expanded_record(record)
     fingerprints = record['fingerprints'] if fingerprints is None else fingerprints
     summary = summarize_manual_record(record, fingerprints)
@@ -658,15 +669,15 @@ def render_manual_checklist(record, fingerprints=None, *, directory=None):
     history = {case['id']:case for case in record.get('removed_cases', [])}
     history.update({case['id']:case for case in record['cases']
                     if case['kind'] == 'in_game_connection' and _has_case_history(case)})
-    lines = ['## Test checklist', '',
+    lines = [*_section_heading('Test checklist', heading_level),
              'Generated from [the authoritative record](checks/manual-tests.json). Only explicit human observations create manual passes; software and preview checks remain separate. Expand a check/service group to see its rotation table, then expand the matching exact scope to copy a case ID and inspect its pose, reviewer, environment, and evidence. Grouping changes only this view; every declared case remains separate.', '',
              '**States:** [x] passed; [ ] unverified, failed, or stale; N/A is an explicit inapplicable declaration. A dash means no case was declared in that column. Every pass covers only its recorded environment. T means a distinct construction-transposed state.', '',
              record['rotation_policy'], '',
              'Current totals: '+', '.join(f'{state}: {summary["states"][state]}' for state in STATES)+'.', '']
-    lines += _manual_attention_index(current, history.values(), fingerprints)
+    lines += _manual_attention_index(current, history.values(), fingerprints, heading_level=heading_level+1)
     if directory is not None:
-        lines += _manual_workflow(directory, record)
-    lines += ['### Detailed current checks', '',
+        lines += _manual_workflow(directory, record, heading_level=heading_level+1)
+    lines += [*_section_heading('Detailed current checks', heading_level+1),
               'Each collapsed group shows exact case counts and states. Forbidden transfers are grouped by the directed service pair; the table inside retains every port pair and rotation.', '']
     sections = {}
     for (kind, _), group in groups.items():
@@ -700,7 +711,7 @@ def render_manual_checklist(record, fingerprints=None, *, directory=None):
     for legacy, title in ((True, 'Legacy connection history'), (False, 'Historical cases outside current coverage')):
         cases = [case for case in history.values() if (case['kind'] == 'in_game_connection') == legacy]
         if cases:
-            lines += ['', '### '+title, '',
+            lines += ['', *_section_heading(title, heading_level+1),
                       'These exact historical scopes, observations, and N/A declarations are retained as evidence. They do not count towards current required coverage or establish a complete-boundary join. Historical states use their stored dependency snapshots.', '']
             for case in cases:
                 attention = case_state(case) in ('failed', 'stale')
@@ -735,9 +746,12 @@ def _case_details(case, fingerprints=None):
     return lines
 
 
-def render_connections(connections, *, piece_link=None, include_purpose=True, manual_check_orientations=None):
+def render_connections(connections, *, piece_link=None, include_purpose=True, manual_check_orientations=None,
+                       heading_level=2):
     """Generate human connection/journey tables from the same machine record."""
-    lines = ['## Connections and journeys', '']
+    _require(type(heading_level) is int and 2 <= heading_level <= 5,
+             'Connection heading level must leave room for child sections')
+    lines = _section_heading('Connections and journeys', heading_level)
     if include_purpose:
         lines += ['Purpose: describe intrinsic directional interfaces and permitted service journeys.', '']
     supported = connections.get('supported_orientations', [{'rotation_ccw_degrees': angle} for angle in ROTATIONS])
@@ -750,7 +764,7 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
         orientation_text += (' Human game checks use only '+_manual_orientation_names(selected)+
                              '; supported construction states and software rotation checks remain separate.')
     lines += [
-             'Generated from [connections.json](connections.json). Coordinates are canonical east, north and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
+             'Generated from [connections.json](connections.json). Coordinates are canonical east, north, and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
              orientation_text, '',
              'A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.', '',
              'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.', '',
@@ -760,10 +774,11 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
         service = f'{port.get("service_network", "unresolved")} / {port.get("engine_transport", port.get("engine_transport_classes", []))} / {port.get("role", "primary")}'
         geometry = f'{port.get("endpoint_m", [])}; {port.get("tangent", [])}; {port.get("grade", "unresolved")}'
         lines.append(f'| `{port["id"]}` | {_md(service)} | {_md(port.get("direction", port.get("directions", [])))} | {_md(geometry)} | `{port.get("connection_class", "unresolved")}` |')
-    lines += ['', '### Directed journeys', '', '| Service | Entry → exit | Role |', '| --- | --- | --- |']
+    lines += ['', *_section_heading('Directed journeys', heading_level+1),
+              '| Service | Entry → exit | Role |', '| --- | --- | --- |']
     for journey in connections.get('journeys', []):
         lines.append(f'| {_md(journey.get("service_network", "unresolved"))} | `{journey.get("entry_port", journey.get("from_port"))}` → `{journey.get("exit_port", journey.get("to_port"))}` | {_md(journey.get("role", "primary"))} |')
-    lines += ['', '### Forbidden transfers', '']
+    lines += ['', *_section_heading('Forbidden transfers', heading_level+1)]
     transfers=connections.get('forbidden_transfers', [])
     if transfers:
         lines += ['| From service / port | To service / port | Reason |', '| --- | --- | --- |']
@@ -968,6 +983,46 @@ def refresh_image_reviews(record, preview_hashes):
     return output
 
 
+def _ensure_testing_document(directory, subject):
+    """Create the shared assembly chapters once; preserve every existing document."""
+    directory = Path(directory)
+    if subject['kind'] != 'assembly':
+        return directory/'README.md'
+    testing = directory/'TESTING.md'
+    if not testing.is_file():
+        title = f'Testing: {subject.get("name", subject["id"])}'
+        lines = [markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
+                                   'contributors', 'reference').rstrip(), '',
+                 '# '+title, '', ASSEMBLY_TESTING_LAYOUT_MARKER, '',
+                 ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+                            for chapter in ASSEMBLY_TESTING_CHAPTERS), '']
+        pending = (
+            'The assembly-specific test scope has not yet been documented. Start with the [assembly overview](README.md).',
+            'The required local inputs, installation, test layout, and game environment have not yet been documented.',
+            'The assembly-specific software commands, expected results, and evidence requirements have not yet been documented.',
+            'The assembly-specific game procedures have not yet been documented. Record only explicitly confirmed observations of exact cases.',
+            'Results and known issues have not yet been summarized. The generated checklist below retains the recorded case states and evidence.',
+            'No assembly-specific design history has yet been documented.',
+        )
+        for index, (chapter, paragraph) in enumerate(zip(ASSEMBLY_TESTING_CHAPTERS, pending), 1):
+            lines += ['## '+chapter, '', paragraph, '']
+            if index in (1, 5):
+                name = 'CONNECTIONS' if index == 1 else 'MANUAL CHECKS'
+                lines += [f'<!-- BEGIN {name} -->', '', f'<!-- END {name} -->', '']
+        testing.write_text('\n'.join(lines))
+    return testing
+
+
+def _testing_heading_level(testing, subject):
+    """Only the explicit assembly layout marker changes generated heading depth."""
+    if subject['kind'] != 'assembly':
+        return 2
+    text = Path(testing).read_text()
+    count = text.count(ASSEMBLY_TESTING_LAYOUT_MARKER)
+    _require(count <= 1, 'Assembly testing layout marker must appear only once')
+    return 3 if count else 2
+
+
 def _write_subject_views(directory, subject, connections, record, piece_link=None):
     directory = Path(directory)
     readme = directory/'README.md'
@@ -993,6 +1048,9 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
             purpose = '' if re.search(r'(?m)^summary\s*:\s*\S', metadata) else 'Purpose: explain this reusable piece, its matching connections and current test coverage.\n\n'
             readme.write_text(metadata+f'# {subject.get("name", subject["id"])}\n\n'+purpose+overview+body[len(prefix):].lstrip('\n'))
         _replace_generated(readme, 'PIECE OVERVIEW', _piece_overview(directory, subject))
+    testing = _ensure_testing_document(directory, subject)
+    heading_level = _testing_heading_level(testing, subject)
+    numbered_testing = subject['kind'] == 'assembly' and heading_level == 3
     matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if matrix_enabled:
         from .assembly_matrix import MARKER, render_assembly_connection_matrix
@@ -1001,17 +1059,17 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
         _replace_generated(readme, MARKER, render_assembly_connection_matrix(connections, record), append=False)
     else:
         update_manual_summary(readme, record)
-        _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
-                                                                   include_purpose=subject['kind'] == 'piece'))
-    testing = directory/'TESTING.md' if subject['kind'] == 'assembly' else readme
-    if not testing.is_file():
-        title = f'Testing: {subject["id"]}'
-        testing.write_text(markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
-                                             'contributors', 'reference')+f'# {title}\n')
-    if matrix_enabled:
+        if numbered_testing:
+            _remove_generated(readme, 'CONNECTIONS')
+        else:
+            _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
+                                                                       include_purpose=subject['kind'] == 'piece'))
+    if matrix_enabled or numbered_testing:
         _replace_generated(testing, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
-            include_purpose=False, manual_check_orientations=record.get('manual_check_orientations')))
-    _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory))
+            include_purpose=False, manual_check_orientations=record.get('manual_check_orientations'),
+            heading_level=heading_level))
+    _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory,
+                                                                      heading_level=heading_level))
     for obsolete in (directory/'CONNECTIONS.md', directory/'checks/MANUAL_TESTS.md', directory/'checks/README.md'):
         obsolete.unlink(missing_ok=True)
 
@@ -1091,8 +1149,16 @@ def record_observation_file(record_path, observation_path):
         _write_subject_views(directory, output['subject'], connections, output)
     else:
         if readme.is_file():update_manual_summary(readme,output)
-        testing=directory/'TESTING.md' if output['subject']['kind']=='assembly' else readme
-        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
+        testing = _ensure_testing_document(directory, output['subject'])
+        heading_level = _testing_heading_level(testing, output['subject'])
+        if output['subject']['kind'] == 'assembly' and heading_level == 3 and (directory/'connections.json').is_file():
+            if readme.is_file():
+                _remove_generated(readme, 'CONNECTIONS')
+            connections = json.loads((directory/'connections.json').read_text())
+            _replace_generated(testing, 'CONNECTIONS', render_connections(connections, include_purpose=False,
+                manual_check_orientations=output.get('manual_check_orientations'), heading_level=heading_level))
+        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory,
+                                                                         heading_level=heading_level))
     for obsolete in (record_path.parent/'MANUAL_TESTS.md',record_path.parent/'README.md'):
         obsolete.unlink(missing_ok=True)
     refreshed = False
@@ -1109,7 +1175,7 @@ def record_observation_file(record_path, observation_path):
             'authority':'explicit_user_observation','inventory_refresh_required':not refreshed}
 
 
-def _manual_workflow(directory, record):
+def _manual_workflow(directory, record, *, heading_level=3):
     """Return a short local command; shared recording instructions live once."""
     candidates = [case for case in record['cases'] if case['kind'] in MANUAL_KINDS
                   and case['kind'] != 'in_game_connection']
@@ -1137,7 +1203,7 @@ def _manual_workflow(directory, record):
         guide='docs/TESTING.md'
         location='From this subject folder, run after filling `checks/observation.json` and explicitly confirming the exact observation:'
         command='python3 -m scp.content record --record checks/manual-tests.json --observation checks/observation.json'
-    return ['### Record an observation', '',
+    return [*_section_heading('Record an observation', heading_level),
             f'Follow the [shared testing guide]({guide}); copy [the unconfirmed example](checks/observation.example.json) to `checks/observation.json`. Case identifiers are in the expandable sections below. Do not edit generated checkboxes.', '',
             location, '', '```sh', command, '```', '']
 

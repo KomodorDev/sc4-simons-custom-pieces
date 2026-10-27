@@ -9,6 +9,8 @@ document_type: "procedure"
 
 A **piece** is one reusable menu type. An **assembly** is a layout made from placed copies. Read a piece's README or an assembly's TESTING page to find its exact checks. A **case** is one specific observation, such as a directed journey at a stated rotation and game environment. A pass for one case does not cover a different direction, transport, rotation, or platform.
 
+Assembly TESTING pages follow the shared [six-chapter layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout). Use chapter 2 to prepare the layout, chapter 3 for software checks, chapter 4 for game actions, and chapter 5 for known issues and the generated checklist. This guide owns the common recording procedure; each assembly supplies its exact conditions, case links, and recording command.
+
 ## Piece validation and compatibility discovery
 
 **Intrinsic validation** checks the piece itself: its actual compiled resources, internal routes, exposed boundary measurements, declared connector associations, and supported construction orientations. Run the owning saved-resource verifier and, for a migrated piece, its connector refresh/check. These operations do not need an automatically selected neighbour or a manual test of every possible pair.

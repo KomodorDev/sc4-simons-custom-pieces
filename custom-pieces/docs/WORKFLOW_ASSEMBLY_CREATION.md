@@ -160,7 +160,7 @@ Keep untested behaviours explicitly unverified. Public distribution has addition
 
 ## Required Markdown guide for each modular interchange
 
-Register the assembly and keep its player overview in `domains/<domain>/01_assemblies/<assembly-id>/README.md`, with detailed preparation, coordinate definitions, software evidence, limitations, history, and generated human checks in `TESTING.md`. Follow the shared [assembly guide layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-markdown-guide-for-each-modular-interchange) for the required pictures, type quantities, placement table, rebuilding order, complete journeys, coordinates, and evidence. Update the accepted plan, guide, image links, and reports together; a chart or parts list alone is insufficient.
+Register the assembly and keep its player overview in `domains/<domain>/01_assemblies/<assembly-id>/README.md`, with detailed preparation, coordinate definitions, software evidence, limitations, history, and generated human checks in `TESTING.md`. Follow the shared [assembly guide layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-markdown-guide-for-each-modular-interchange) and its [six-chapter TESTING layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout). The TESTING chapters are **1. Test scope**, **2. Test setup**, **3. Software checks**, **4. Game checks**, **5. Results and known issues**, and **6. Design history**; detailed current results precede design history. Update the accepted plan, guide, image links, and reports together; a chart or parts list alone is insufficient.
 
 ## Worked example
 
