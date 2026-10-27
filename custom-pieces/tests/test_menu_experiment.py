@@ -105,7 +105,9 @@ class MenuExperimentTests(unittest.TestCase):
                                    for piece in self.normal_pieces]}
         self.assembly_icon = self.project / self.catalog['_assemblies'][0]['path'] / 'icon.png'
         self.assembly_icon.parent.mkdir(parents=True)
-        self.assembly_icon.write_bytes(make_assembly_icon())
+        self.icon_routes = [[(-40., 0., 15.5), (40., 0., 15.5)],
+                            [(0., -60., 30.5), (0., 0., 15.5)]]
+        self.assembly_icon.write_bytes(make_assembly_icon(self.icon_routes))
         deltas, menus = [], {}
         for piece in self.normal_pieces:
             root = int(piece['puzzle_id'], 16)
@@ -160,6 +162,7 @@ class MenuExperimentTests(unittest.TestCase):
         for patcher in (patch.dict('scp.menu_experiment._BASELINE_REPORTS', {}, clear=True),
                         patch('scp.verify.verify_build', side_effect=dispatch),
                         patch('scp.menu_experiment.load_catalog', return_value=self.catalog),
+                        patch('scp.menu_experiment._assembly_icon_routes', return_value=self.icon_routes),
                         patch('scp.build.audit_inputs', return_value=({}, {}, ['synthetic-donor'], {}))):
             patcher.start()
             self.addCleanup(patcher.stop)
@@ -200,6 +203,8 @@ class MenuExperimentTests(unittest.TestCase):
         self.assertEqual(manifest['source_provenance']['manifest'], f'{ASSEMBLY_PROOF}/manifest.json')
         menu = strict_dbpf((self.output / self.folder / MENU).read_bytes())
         self.assertEqual(menu[*ICON, 0x6A47FEF0], self.assembly_icon.read_bytes())
+        self.assertEqual((self.output / ASSEMBLY_PROOF / 'icon.png').read_bytes(),
+                         self.assembly_icon.read_bytes())
         originals = strict_dbpf(self.payloads[f'{self.folder}/{MENU}'])
         self.assertEqual({key[2] for key in menu if key[:2] == MENU_EXEMPLAR}, {0x6A47FEF0, 0x6A47F801})
         for piece in (self.normal_pieces[0], self.normal_pieces[2]):
@@ -239,16 +244,22 @@ class MenuExperimentTests(unittest.TestCase):
 
     def test_icon_refresh_changes_only_assembly_artwork_without_native_inputs(self):
         self.assembly_icon.write_bytes(b'Stale assembly artwork')
+        evidence = self.assembly_icon.parent / 'evidence/icon.json'
+        artwork = {self.assembly_icon, evidence}
         before = {path.relative_to(self.root): path.read_bytes()
-                  for path in self.root.rglob('*') if path.is_file() and path != self.assembly_icon}
+                  for path in self.root.rglob('*') if path.is_file() and path not in artwork}
         with patch('scp.build.audit_inputs', side_effect=AssertionError('Icon refresh needs no native inputs')):
             result = write_assembly_icons(self.project)
         self.assertEqual(result['icons'], ['domains/test/01_assemblies/fixture-assembly/icon.png'])
         self.assertFalse(result['built'])
         self.assertFalse(result['installed'])
-        self.assertEqual(self.assembly_icon.read_bytes(), make_assembly_icon())
+        self.assertEqual(self.assembly_icon.read_bytes(), make_assembly_icon(self.icon_routes))
+        provenance = json.loads(evidence.read_text())
+        self.assertEqual(provenance['output']['sha256'], hashlib.sha256(self.assembly_icon.read_bytes()).hexdigest())
+        self.assertIn('no compiled model rendering', provenance['basis'])
+        self.assertEqual(provenance['in_game_appearance'], 'unverified')
         after = {path.relative_to(self.root): path.read_bytes()
-                 for path in self.root.rglob('*') if path.is_file() and path != self.assembly_icon}
+                 for path in self.root.rglob('*') if path.is_file() and path not in artwork}
         self.assertEqual(after, before)
 
     def test_saved_candidate_verification_does_not_depend_on_current_icon_source(self):
@@ -258,13 +269,29 @@ class MenuExperimentTests(unittest.TestCase):
         with Image.open(self.assembly_icon) as icon:
             alternate = BytesIO()
             icon.save(alternate, format='PNG', compress_level=0)
-        self.assertNotEqual(alternate.getvalue(), make_assembly_icon())
+        self.assertNotEqual(alternate.getvalue(), make_assembly_icon(self.icon_routes))
         self.assembly_icon.write_bytes(alternate.getvalue())
         write_assembly_icons(self.project)
         self.assertEqual(self.assembly_icon.read_bytes(), alternate.getvalue())
         self.build_single_button()
         self.assembly_icon.unlink()
         self.assertTrue(self.real_verify(self.output, write_report=False)['static_checks_passed'])
+
+    def test_saved_candidate_rejects_changed_icon_pixels_even_with_an_updated_menu_file_hash(self):
+        self.prepare_single_button_layout()
+        self.build_single_button()
+        path = self.output / self.folder / MENU
+        resources = strict_dbpf(path.read_bytes())
+        resources[*ICON, 0x6A47FEF0] = make_assembly_icon()
+        altered = pack_dbpf(resources)
+        path.write_bytes(altered)
+        manifest = self.manifest()
+        manifest['files'] = [fingerprint(row['path'], altered)
+                             if row['path'] == f'{self.folder}/{MENU}' else row
+                             for row in manifest['files']]
+        self.rewrite_manifest(manifest)
+        with self.assertRaisesRegex(ValueError, 'canonical cycle artwork'):
+            self.real_verify(self.output, write_report=False)
 
     def test_single_button_package_retains_source_proof_and_reverifies_without_installing(self):
         self.prepare_single_button_layout()

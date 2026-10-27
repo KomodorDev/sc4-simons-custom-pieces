@@ -1,0 +1,114 @@
+{
+  "scope": "Complete unmodified native trumpet test module; the integration verifier returned report was persisted without changing its checks or results.",
+  "tests_run": 71,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "elapsed_seconds": 566.1404939168133,
+  "native_inputs_before": {
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json": "57e520ee5e54e5e46a72a696d4d657afd4b53ea564a580f9140bcd1741ff5ace",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/layout.json": "29d455bcf047092fc291ac53623efc7ad4928b37f16246bbc2ee720a26e74800",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/contract.json": "0fa5ca20a78e6a90d7bcfe14531fec1fa2f31a28b1f70f7cbfa1a9324cc477c5",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/resources.json": "b7d46a7b08992797dbf3f23dcbf575439125e6e107e266c91b15ac6cb7d87ac6",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/junction-rework.json": "18151a14db1f3e7fea48364285a465ef155e6b63003de2d247bd123017000169",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/atomization.json": "7b2d03d18228187761838100ce483a1cebaf9ebed7166fab0e57928589058f10",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json": "ad33d8fc968e03ba74744c6cbf039cf5a131abf80f144d84874186fca7d1a3ad",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+    "dist/trumpet-rework-parts-01/manifest.json": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/tests/test_hsr_trumpet.py": "fc6fdc1e437705b70a5fe7dbd2ce2feaaa3bf01fb2bbcf63d0f8c59a11d2826f",
+    "domains/high-speed-rail/tools/verify_hsr_trumpet.py": "c39f014f1f404b9ef5da46210df9b63fb80b7979fc32245b499cfbc0820a7545",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "e5c192be2e6a96e7f135caad204b5fd041c2cd30a21c513c77c21e2ffc1a6eb5",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d36288f967a7a107d0a23fcc5d1e1265b0093be127624870e3ddb312b5a2ee5f"
+  },
+  "native_inputs_after": {
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json": "57e520ee5e54e5e46a72a696d4d657afd4b53ea564a580f9140bcd1741ff5ace",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/layout.json": "29d455bcf047092fc291ac53623efc7ad4928b37f16246bbc2ee720a26e74800",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/contract.json": "0fa5ca20a78e6a90d7bcfe14531fec1fa2f31a28b1f70f7cbfa1a9324cc477c5",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/resources.json": "b7d46a7b08992797dbf3f23dcbf575439125e6e107e266c91b15ac6cb7d87ac6",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/junction-rework.json": "18151a14db1f3e7fea48364285a465ef155e6b63003de2d247bd123017000169",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/atomization.json": "7b2d03d18228187761838100ce483a1cebaf9ebed7166fab0e57928589058f10",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json": "ad33d8fc968e03ba74744c6cbf039cf5a131abf80f144d84874186fca7d1a3ad",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+    "dist/trumpet-rework-parts-01/manifest.json": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+    "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/tests/test_hsr_trumpet.py": "fc6fdc1e437705b70a5fe7dbd2ce2feaaa3bf01fb2bbcf63d0f8c59a11d2826f",
+    "domains/high-speed-rail/tools/verify_hsr_trumpet.py": "c39f014f1f404b9ef5da46210df9b63fb80b7979fc32245b499cfbc0820a7545",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "e5c192be2e6a96e7f135caad204b5fd041c2cd30a21c513c77c21e2ffc1a6eb5",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
+    "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d36288f967a7a107d0a23fcc5d1e1265b0093be127624870e3ddb312b5a2ee5f"
+  },
+  "native_inputs_unchanged": true,
+  "purpose": "Record the executed complete native trumpet suite after the scoped custom-cut verifier fix.",
+  "status": "passed",
+  "suite_file": "tests/test_hsr_trumpet.py",
+  "native_build_logical_name": "trumpet-rework-parts-01",
+  "final_component_archives_match_current_pins": [
+    {
+      "id": "hsr-component-l2-paired-fan-compact-join",
+      "sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+      "bytes": 26189315
+    },
+    {
+      "id": "hsr-component-l2-short-mainline-diverge-core",
+      "sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "bytes": 3460736
+    },
+    {
+      "id": "hsr-component-l2-short-opposed-merge-core",
+      "sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+      "bytes": 6053864
+    },
+    {
+      "id": "hsr-component-l2-shortened-departure-curve",
+      "sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "bytes": 9821669
+    },
+    {
+      "id": "hsr-component-l2-shortened-return-curve",
+      "sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+      "bytes": 10807797
+    },
+    {
+      "id": "hsr-component-lower-oneway-straight",
+      "sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "bytes": 130180
+    },
+    {
+      "id": "hsr-component-lower-paired-straight",
+      "sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "bytes": 138092
+    },
+    {
+      "id": "hsr-component-modular-crossing-core",
+      "sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "bytes": 181040
+    },
+    {
+      "id": "hsr-component-modular-paired-climb",
+      "sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "bytes": 2025717
+    },
+    {
+      "id": "hsr-component-modular-south-junction",
+      "sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "bytes": 11066785
+    },
+    {
+      "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "bytes": 17904628
+    },
+    {
+      "id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+      "bytes": 17904628
+    },
+    {
+      "id": "hsr-component-upper-paired-straight",
+      "sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "bytes": 138092
+    }
+  ],
+  "manual_or_game_observations_recorded": false
+}

@@ -363,7 +363,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         header_rows = assembly_caption_rows(title, 'Component guide' if labelled else 'Clean view', label)
         _caption(draw, header_rows[0], 22, 34, width, bold=True)
         _caption(draw, header_rows[1], 72, 23, width, color='#176eaf')
-        _caption(draw, 'Actual compiled S3D track, decks and supports | software preview',
+        _caption(draw, 'Actual compiled S3D track, decks, and supports | software preview',
                  108, 21, width, color='#586a7e')
         if labelled:
             labels_caption = f'{len(sources)} named placements | positions in side panels'
@@ -387,10 +387,10 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                                     header_y=top+30, footer_y=height-140,
                                     colour_assignment=colours) if labelled else None
         _caption(draw,
-                 'All model geometry shown; no simulated trains, terrain or game lighting.',
+                 'All model geometry shown; no simulated trains, terrain, or game lighting.',
                  height-65, 20, width, color='#586a7e')
         _caption(draw,
-                 'Not a SimCity 4 screenshot. Placement, traffic and game shadows remain unverified.',
+                 'Not a SimCity 4 screenshot. Placement, traffic, and game shadows remain unverified.',
                  height-36, 20, width, color='#586a7e')
         target = destination/f'{prefix}-{name}-xy.png'
         canvas.save(target)
@@ -411,7 +411,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_header_rows = assembly_caption_rows(title, 'Clean view', label)
             _caption(cd, clean_header_rows[0], 22, 34, width, bold=True)
             _caption(cd, clean_header_rows[1], 72, 23, width, color='#176eaf')
-            _caption(cd, 'Actual compiled S3D track, decks and supports | software preview',
+            _caption(cd, 'Actual compiled S3D track, decks, and supports | software preview',
                      108, 21, width, color='#586a7e')
             _caption(cd, 'X/Y tile coordinates | 1 tile = 16 m',
                      143, 20, width, color='#586a7e')
@@ -422,9 +422,9 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_view = render_fast_view(model, textures, azimuth, elevation,
                 width, view_height, camera=clean_camera, background_image=clean_background)
             clean.paste(clean_view, (0, top))
-            _caption(cd, 'All model geometry shown; no simulated trains, terrain or game lighting.',
+            _caption(cd, 'All model geometry shown; no simulated trains, terrain, or game lighting.',
                      height-65, 20, width, color='#586a7e')
-            _caption(cd, 'Not a SimCity 4 screenshot. Placement, traffic and game shadows remain unverified.',
+            _caption(cd, 'Not a SimCity 4 screenshot. Placement, traffic, and game shadows remain unverified.',
                      height-36, 20, width, color='#586a7e')
             clean_target = destination/f'{prefix}-{name}-clean-xy.png'
             clean.save(clean_target)

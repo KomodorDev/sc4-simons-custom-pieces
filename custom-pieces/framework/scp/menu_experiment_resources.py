@@ -11,6 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 from io import BytesIO
+import math
 import struct
 
 from .dbpf import encode_exemplar, exemplar, require, tgi_string
@@ -105,12 +106,81 @@ def _icon(kind):
     return output.getvalue()
 
 
-def make_assembly_icon():
-    """Return the canonical assembly cycle icon without building game resources."""
-    return _icon('cycle')
+def make_assembly_icon(routes=None):
+    """Draw the complete north-up assembly; retain the historical icon on demand.
+
+    ``routes`` contains placed east/north/height polylines. No game resources,
+    build outputs, placements, or observations are changed by this illustration.
+    Omitting routes reproduces frozen historical menu candidates exactly.
+    """
+    if routes is None:
+        return _icon('cycle')
+    from PIL import Image, ImageDraw, ImageOps
+
+    require(isinstance(routes, (list, tuple)) and routes, 'Assembly icon needs actual routes')
+    require(all(isinstance(route, (list, tuple)) and len(route) >= 2 for route in routes),
+            'Assembly icon routes need at least two points')
+    require(all(isinstance(point, (list, tuple)) and len(point) == 3
+                and all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                        and math.isfinite(value) for value in point)
+                for route in routes for point in route), 'Assembly icon needs finite XYZ points')
+    points = [point for route in routes for point in route]
+    xmin, xmax = min(p[0] for p in points), max(p[0] for p in points)
+    ymin, ymax = min(p[1] for p in points), max(p[1] for p in points)
+    require(xmax > xmin or ymax > ymin, 'Assembly icon routes have no planar extent')
+    factor = min(34 / max(xmax - xmin, 1), 30 / max(ymax - ymin, 1))
+    scale = 6
+    strip = Image.new('RGBA', (176, 44))
+    glyphs = {'T': ('111', '010', '010', '010', '010'),
+              'A': ('010', '101', '111', '101', '101'),
+              'B': ('110', '101', '110', '101', '110')}
+
+    def screen(point):
+        return ((22 + (point[0] - (xmin + xmax) / 2) * factor) * scale,
+                (18.5 - (point[1] - (ymin + ymax) / 2) * factor) * scale)
+
+    for number in range(4):
+        image = Image.new('RGBA', (44 * scale, 44 * scale))
+        draw = ImageDraw.Draw(image)
+        border = ((68, 183, 182), (68, 183, 182), (248, 197, 82), (113, 222, 218))[number]
+        draw.rounded_rectangle((scale, scale, 42 * scale, 42 * scale), radius=5 * scale,
+                               fill=(14, 32, 42), outline=border, width=round(1.5 * scale))
+        # Higher tracks cover lower tracks at genuine crossings. Thin dark
+        # halos separate the loop from the nearby approach at the native size.
+        for route in sorted(routes, key=lambda row: sum(p[2] for p in row) / len(row)):
+            planar = [screen(point) for point in route]
+            draw.line(planar, fill=(5, 15, 23), width=round(3.0 * scale), joint='curve')
+            for first, last, a, b in zip(route, route[1:], planar, planar[1:]):
+                upper = min(1., max(0., ((first[2] + last[2]) / 2 - 15.5) / 15.))
+                colour = tuple(round(low + (high - low) * upper)
+                               for low, high in zip((240, 225, 178), (83, 222, 208)))
+                draw.line((a, b), fill=colour, width=round(1.35 * scale))
+        image = image.resize((44, 44), Image.Resampling.LANCZOS)
+        draw = ImageDraw.Draw(image)
+        # Reserve only five pixels for the component-cycle hint, leaving the
+        # complete layout enough room to be recognized without a large label.
+        draw.rectangle((8, 36, 35, 40), fill=(14, 32, 42))
+        for index, letter in enumerate('TAB'):
+            for y, row in enumerate(glyphs[letter]):
+                for x, value in enumerate(row):
+                    if value == '1':
+                        draw.point((16 + index * 4 + x, 36 + y), fill=(244, 249, 249))
+        draw.line((8, 38, 12, 38), fill=border)
+        draw.line((8, 38, 10, 36), fill=border)
+        draw.line((8, 38, 10, 40), fill=border)
+        draw.line((31, 38, 35, 38), fill=border)
+        draw.line((33, 36, 35, 38, 33, 40), fill=border)
+        if number == 0:
+            alpha = image.getchannel('A')
+            image = ImageOps.grayscale(image).convert('RGBA')
+            image.putalpha(alpha)
+        strip.paste(image, (44 * number, 0))
+    output = BytesIO()
+    strip.save(output, format='PNG', optimize=False)
+    return output.getvalue()
 
 
-def _validate_icon(raw, kind):
+def _validate_icon(raw, kind, expected_icon=None):
     """Check native image bytes while allowing equivalent PNG compression."""
     from PIL import Image
 
@@ -130,15 +200,16 @@ def _validate_icon(raw, kind):
             actual_pixels = image.tobytes()
     except (OSError, SyntaxError) as error:
         raise ValueError('Menu icon must be a valid 176 by 44 RGBA PNG') from error
-    with Image.open(BytesIO(_icon(kind))) as expected:
+    with Image.open(BytesIO(expected_icon if expected_icon is not None else _icon(kind))) as expected:
         require(actual_pixels == expected.tobytes(),
                 'Assembly icon differs from the canonical cycle artwork; regenerate it with assembly-icons'
                 if kind == 'cycle' else 'Wrong experiment icon')
 
 
-def validate_assembly_icon(raw):
-    """Require every original cycle-icon pixel, state, dimension, and RGBA mode."""
-    _validate_icon(raw, 'cycle')
+def validate_assembly_icon(raw, *, routes=None, expected_icon=None):
+    """Require exact source-derived artwork pixels and the native PNG format."""
+    require(routes is None or expected_icon is None, 'Specify routes or frozen icon proof, not both')
+    _validate_icon(raw, 'cycle', expected_icon if expected_icon is not None else make_assembly_icon(routes))
 
 
 def _new_button(template, definition, *, kind, icon=None):
@@ -161,7 +232,7 @@ def _new_button(template, definition, *, kind, icon=None):
 
 
 def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
-                                    cycle_icon=None):
+                                    cycle_icon=None, expected_cycle_icon=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
@@ -177,7 +248,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     its original PNG encoding is retained exactly in the compiled resource.
     """
     if cycle_icon is not None:
-        validate_assembly_icon(cycle_icon)
+        validate_assembly_icon(cycle_icon, expected_icon=expected_cycle_icon)
     require(isinstance(source_resources, dict) and source_resources,
             'Source resources must be a nonempty mapping from a verified build')
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
@@ -244,11 +315,13 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         result.update(_new_button(records[0][2], button, kind=kind,
                                   icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
-        result, source_resources, pieces, cycle_button=cycle, submenu=group)
+        result, source_resources, pieces, cycle_button=cycle, submenu=group,
+        expected_cycle_icon=expected_cycle_icon)
     return result, report
 
 
-def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None):
+def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None,
+                                       expected_cycle_icon=None):
     """Inspect the encoded result and reject any change outside presentation."""
     cycle, group = cycle_button, submenu
     cycle_id = _uint(cycle['id'], 'cycle id')
@@ -317,7 +390,8 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         require(resources[*TITLE, button_id] == _ltext(button['title']) and
                 resources[*DESCRIPTION, button_id] == _ltext(button['description']),
                 'Wrong new menu localized text')
-        _validate_icon(resources[*ICON, button_id], kind)
+        _validate_icon(resources[*ICON, button_id], kind,
+                       expected_cycle_icon if kind == 'cycle' else None)
     report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
                              'menu': 'Rail', 'construction_alias_verified_in_game': False},

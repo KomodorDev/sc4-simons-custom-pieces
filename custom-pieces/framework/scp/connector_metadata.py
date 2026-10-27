@@ -274,9 +274,10 @@ def validate_piece(piece, connections, groups, profiles):
         normal = NORMALS[edge]
         left = (-normal[1], normal[0])
         centre = [16. * cell[0] + 8. * normal[0], -16. * cell[1] + 8. * normal[1]]
-        section_offset = raw.get("section_offset_m", 0.)
-        _need(_number(section_offset), "Section offset must be finite metres")
-        section_centre = [centre[i] + left[i]*section_offset for i in (0, 1)]
+        section_offset = raw.get("section_offset_m")
+        _need(section_offset is None or _number(section_offset), "Section offset must be finite metres when declared")
+        section_centre = ([centre[i] + left[i]*section_offset for i in (0, 1)]
+                          if section_offset is not None else None)
         member_ports, group_cuts, group_channels = [], {}, {}
         for member in members:
             port_id, planner_id = member["source_port_id"], member.get("id")
@@ -330,7 +331,8 @@ def validate_piece(piece, connections, groups, profiles):
                 group_channels[channel_id]["cuts"].append(cut)
             member_ports.append({**deepcopy(port), **deepcopy(member), "traffic_modes": list(modes),
                                  "outward_tangent": outward, "heading_outward_degrees": heading,
-                                 "grade_outward": grade, "section_offset_m": offset-section_offset})
+                                 "grade_outward": grade, "section_offset_m": (
+                                     offset-section_offset if section_offset is not None else None)})
             port_components[port_id] = raw["component_id"]
             source_to_planner[port_id] = planner_id
         heights = [p["endpoint_m"][2] for p in member_ports]
@@ -341,7 +343,8 @@ def validate_piece(piece, connections, groups, profiles):
         profile.setdefault("alignment", "orth" if all(_close(p["outward_tangent"], normal) for p in member_ports) else "angled")
         resolved.append({**deepcopy(raw), "profile": deepcopy(profile), "members": member_ports,
                          "section_offset_m": section_offset, "source_cell": deepcopy(cell), "edge": edge,
-                         "tile_seam_center_m": centre+[height], "anchor_m": section_centre+[height],
+                         "tile_seam_center_m": centre+[height], "anchor_m": (
+                             section_centre+[height] if section_centre is not None else None),
                          "channels": list(group_channels.values()), "construction_network": component.get("construction_network"),
                          "outward_normal": list(normal), "boundary_bundle_id": bundle["id"]})
     _need(covered == ports.keys(), "Connector groups do not cover all measured ports")

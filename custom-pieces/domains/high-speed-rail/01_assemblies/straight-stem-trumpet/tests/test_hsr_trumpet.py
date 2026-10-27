@@ -21,10 +21,17 @@ from scp_hsr.hsr_atomic_components_verify import (
     CONTRACTS, check_paths, audit_native_sections, audit_inherited_cap_model, audit_trumpet_visible_rails,
 )
 from scp_hsr_tools.verify_hsr_trumpet import (
-    ROOT, SCENE, QUALITY_PATH, RESOURCES_PATH, NEW_IDS, CURRENT_IDS, STRAIGHT_ID,
+    ROOT, SCENE, QUALITY_PATH, RESOURCES_PATH, REWORK_PATH, NEW_IDS, CURRENT_IDS, STRAIGHT_ID,
     ONEWAY_ID, REPLACEMENTS, audit_quality_contract, audit_approved_layout,
     load_build, world_tiles, audit_current_world_tiles, encoded_records,
-    _journeys, CONTRACT, audit_current_journeys, verify, audit_candidate_ledger,
+    _journeys, CONTRACT, audit_current_journeys, verify, audit_candidate_ledger, audit_whole_route_quality,
+)
+
+from scp_hsr.hsr_trumpet_rework_verify import (
+    read_rework_record, audit_redesign_scope, audit_target_joins, audit_preserved_journeys,
+    prove_removed_structural_cells, _projected_tile_intersection_area, _tile_intersection_surface_area,
+    ROUTE_MOVEMENT_POLICY, audit_route_movement, audit_recorded_route_movement,
+    continuous_symmetric_distance, _directed_continuous_distance, audit_matching_route_movement,
 )
 
 
@@ -46,8 +53,9 @@ class TrumpetLiteralContractTests(unittest.TestCase):
 
     def test_relaxing_a_physical_limit_or_threshold_is_rejected(self):
         literal = json.loads(QUALITY_PATH.read_text())
-        changes = {'candidate_eligibility_strictly_below_m': .01, 'encoded_fragments': 168,
-                   'minimum_clearance': 4., 'minimum_pier_spacing_m': 15., 'actual_tile_triangles': 659272}
+        changes = {'candidate_eligibility_strictly_below_m': .01, 'encoded_fragments': literal['encoded_fragments']+1,
+                   'minimum_clearance': 4., 'minimum_pier_spacing_m': 15.,
+                   'actual_tile_triangles': literal['actual_tile_triangles']+1}
         for field, value in changes.items():
             candidate = deepcopy(literal); candidate[field] = value
             with tempfile.TemporaryDirectory() as temporary:
@@ -65,7 +73,7 @@ class TrumpetLiteralContractTests(unittest.TestCase):
     def test_current_plan_preserves_approved_rectangle_grid_and_outside_ports(self):
         report=audit_approved_layout(json.loads(SCENE.read_text()))
         self.assertTrue(report['approved_external_ports_rectangle_and_grid'])
-        self.assertEqual(report['reviewed_placements'],26)
+        self.assertEqual(report['reviewed_placements'],25)
 
     def test_a_moved_module_is_rejected(self):
         scene=json.loads(SCENE.read_text());scene['placements'][0]['origin_m'][0]+=16.
@@ -76,6 +84,226 @@ class TrumpetLiteralContractTests(unittest.TestCase):
         scene=json.loads(SCENE.read_text());scene['placements'][0]['rotation_degrees_ccw']=45
         with self.assertRaisesRegex(ValueError,'proper cardinal rotation'):
             audit_approved_layout(scene)
+
+
+class AuthorizedJunctionReworkControls(unittest.TestCase):
+    def altered_record(self, change):
+        record = json.loads(REWORK_PATH.read_text()); change(record)
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary)/'junction-rework.json';path.write_text(json.dumps(record))
+            return read_rework_record(path, root=ROOT, require_completed=False)
+
+    def test_baseline_scope_needs_no_deleted_definition_or_dat(self):
+        record = read_rework_record(REWORK_PATH, root=ROOT, require_completed=False)
+        self.assertEqual(len(record['unchanged_world_cells']),85)
+        self.assertEqual(len(record['unchanged_piece_archives']),11)
+        self.assertEqual(len(record['allowed_world_cells_east_north_m']),24)
+        self.assertFalse((ROOT/'domains/high-speed-rail/00_pieces/hsr-component-l2-compact-fan-diverge').exists())
+
+    def test_expanding_the_change_region_is_rejected(self):
+        with self.assertRaisesRegex(ValueError,'authorized 24-cell'):
+            self.altered_record(lambda record:record['allowed_world_cells_east_north_m'].append([192.,0.]))
+
+    def test_rehashing_an_unchanged_baseline_cell_is_rejected(self):
+        def change(record):record['unchanged_world_cells'][0]['resources_sha256']['path']='0'*64
+        with self.assertRaisesRegex(ValueError,'unchanged 85-cell baseline'):self.altered_record(change)
+
+    def test_changing_an_unchanged_type_hash_is_rejected(self):
+        def change(record):record['unchanged_piece_archives'][0]['sha256']='0'*64
+        with self.assertRaisesRegex(ValueError,'unchanged 11-type baseline'):self.altered_record(change)
+
+    def test_socket_positions_and_headings_cannot_follow_a_changed_writer(self):
+        for key in ('endpoint_m','travel_tangent'):
+            with self.subTest(field=key),self.assertRaisesRegex(ValueError,'fixed target joins'):
+                self.altered_record(lambda record:record['fixed_target_joins'][0][key].__setitem__(0,0.))
+
+    def test_historical_replacement_geometry_binding_cannot_be_relabelled(self):
+        def change(record):record['source_geometry']['hsr-component-l2-short-opposed-merge-core']['before_sha256']='0'*64
+        with self.assertRaisesRegex(ValueError,'historical source binding'):self.altered_record(change)
+
+    def test_unchanged_support_positions_cannot_move(self):
+        def change(record):record['unchanged_support_positions_east_north_m'][0][0]+=.01
+        with self.assertRaisesRegex(ValueError,'support plan'):self.altered_record(change)
+
+    def test_a_different_structural_cell_cannot_be_removed(self):
+        def change(record):record['removed_world_cells_east_north_m']=[[64.,16.],[144.,0.]]
+        with self.assertRaisesRegex(ValueError,'unauthorized structural cell'):self.altered_record(change)
+
+    def test_frozen_complete_northern_route_facts_cannot_be_rehashed(self):
+        def change(record):
+            record['baseline_reworked_journeys'][0]['points_east_north_height_m'][0][0]+=.001
+        with self.assertRaisesRegex(ValueError,'frozen affected-route baseline'):self.altered_record(change)
+
+    def test_independent_movement_envelope_cannot_be_relaxed(self):
+        def change(record):record['route_movement_policy']['maximum_symmetric_continuous_distance_m']=6.01
+        with self.assertRaisesRegex(ValueError,'independent route-movement envelope'):self.altered_record(change)
+
+    def test_relaxing_any_whole_route_curvature_limit_is_rejected(self):
+        for field,value in (('min_radius_m',23.),('max_curvature_change_per_m2',.002),
+                            ('max_endpoint_curvature_per_m',.001)):
+            literal=json.loads(QUALITY_PATH.read_text())
+            literal['whole_route_quality']['per_movement']['E_in>S_out'][field]=value
+            with tempfile.TemporaryDirectory() as temporary:
+                path=Path(temporary)/'contract.json';path.write_text(json.dumps(literal))
+                with self.subTest(field=field),self.assertRaisesRegex(ValueError,'complete route quality'):
+                    audit_quality_contract(path)
+
+
+class ContinuousRouteMovementControls(unittest.TestCase):
+    def test_sub_guard_tolerance_cannot_create_nonterminating_subdivision(self):
+        before=[(0.,0.,8.),(2.,0.,8.)];after=[(0.,1.,8.),(2.,1.,8.)]
+        with self.assertRaisesRegex(ValueError,'guarded numerical range'):
+            continuous_symmetric_distance(before,after,tolerance=1e-9)
+
+    def test_segment_interior_is_measured_when_all_source_vertices_are_on_target(self):
+        before=[(-1.,0.,0.),(1.,0.,0.)]
+        after=[(-1.,0.,0.),(-1.,1.,0.),(1.,1.,0.),(1.,0.,0.)]
+        measured=_directed_continuous_distance(before,after,tolerance=.0001)
+        self.assertLessEqual(measured['lower_bound_m'],1.)
+        self.assertGreaterEqual(measured['upper_bound_m'],1.)
+        self.assertGreater(measured['lower_bound_m'],.9999)
+        self.assertLessEqual(measured['upper_bound_m']-measured['lower_bound_m'],.0001)
+
+    def test_identical_continuous_polylines_have_zero_movement(self):
+        points=[(0.,0.,8.),(12.,5.,8.),(30.,0.,8.)]
+        measured=continuous_symmetric_distance(points,points)
+        self.assertEqual(measured['lower_bound_m'],0.)
+        self.assertLessEqual(measured['upper_bound_m'],1e-8)
+
+    def test_full_three_dimensional_separation_is_measured(self):
+        before=[(0.,0.,8.),(2.,0.,8.)];after=[(0.,0.,14.01),(2.,0.,14.01)]
+        measured=continuous_symmetric_distance(before,after)
+        self.assertGreater(measured['lower_bound_m'],6.)
+        routes=[{'movement':movement,**measured} for movement in ROUTE_MOVEMENT_POLICY['movements']]
+        with self.assertRaisesRegex(ValueError,'independent 6.0 m'):
+            audit_recorded_route_movement({'policy':ROUTE_MOVEMENT_POLICY,'journeys':routes})
+
+    def test_rounding_differences_are_allowed_only_for_identical_encoded_geometry(self):
+        original=json.loads(REWORK_PATH.read_text())['source_path_movement_preflight']['measurement']
+        rounded=deepcopy(original)
+        for item in rounded['journeys']:
+            item['lower_bound_m']+=1e-12;item['upper_bound_m']+=1e-12
+        rounded['maximum_lower_bound_m']+=1e-12;rounded['maximum_upper_bound_m']+=1e-12
+        self.assertEqual(audit_matching_route_movement(rounded,original),rounded)
+        rounded['journeys'][0]['current_points_sha256']='0'*64
+        with self.assertRaisesRegex(ValueError,'compiled redesign proof'):
+            audit_matching_route_movement(rounded,original)
+
+
+class RemovedStructuralCellProjectionControls(unittest.TestCase):
+    def setUp(self):
+        from scp_hsr.test_support import donor
+        self.record=json.loads(REWORK_PATH.read_text())
+        self.spec={'id':'hsr-component-l2-paired-fan-compact-join','cells':[[3,0]],
+                   'tile_ids':['7f580300'],'preview_id':'7f580ff5',
+                   'component':{'support_centers':[[48.,0.]]}}
+        self.model=donor()
+        self.resources={(0x5ad0e817,0xbadb57f1,0x7f580300+zoom):self.model for zoom in range(5)}
+        self.resources[0x5ad0e817,0xbadb57f1,0x7f580ff5]=self.shift(self.model,48.,0.)
+        self.build={'pieces':{self.spec['id']:self.spec},'manifest_sha256':'1'*64,
+                    'resources':lambda spec:{'sha256':'2'*64,'resources':self.resources}}
+
+    @staticmethod
+    def shift(raw,east,south):
+        model=parse_s3d(raw)
+        for block in model['vertices']:
+            data=bytearray(block['data'])
+            for offset in range(0,len(data),block['stride']):
+                x,h,z=struct.unpack_from('<3f',data,offset)
+                struct.pack_into('<3f',data,offset,x+east,h,z+south)
+            block['data']=bytes(data)
+        return pack_s3d(model)
+
+    def prove(self):
+        return prove_removed_structural_cells(self.build,self.record,root=ROOT)
+
+    def test_exact_tile_borders_have_no_positive_open_area(self):
+        self.assertEqual(_projected_tile_intersection_area([(-9.,0.),(-8.,0.),(-8.,1.)],(-8.,-8.,8.,8.)),0.)
+        self.assertGreater(_projected_tile_intersection_area([(-9.,0.),(-7.,0.),(-7.,1.)],(-8.,-8.,8.,8.)),0.)
+
+    def test_valid_saved_models_are_checked_in_all_five_zooms_and_preview(self):
+        proof=self.prove()
+        self.assertEqual(len(proof['cells']),4)
+        self.assertEqual(len(proof['checked_model_resources']),6)
+        self.assertEqual({x['zoom'] for x in proof['checked_model_resources']},{0,1,2,3,4})
+        self.assertTrue(all(x['positive_area_intersections_by_zoom']==[0]*5 for x in proof['cells']))
+
+    def test_any_saved_zoom_projection_inside_a_removed_cell_is_rejected(self):
+        for zoom in range(5):
+            with self.subTest(zoom=zoom):
+                key=(0x5ad0e817,0xbadb57f1,0x7f580300+zoom)
+                self.resources[key]=self.shift(self.model,-16.,32.)
+                with self.assertRaisesRegex(ValueError,'projects.*removed structural cell'):self.prove()
+                self.resources[key]=self.model
+
+    def test_vertical_surface_inside_an_omitted_tile_cannot_hide_in_zero_plan_area(self):
+        triangle=[(32.,14.,30.),(32.,17.,30.),(32.,14.,34.)]
+        bounds=(24.,24.,40.,40.)
+        self.assertEqual(_projected_tile_intersection_area([(x,z) for x,h,z in triangle],bounds),0.)
+        self.assertGreater(_tile_intersection_surface_area(triangle,bounds),0.)
+        self.assertEqual(_tile_intersection_surface_area([(24.,14.,30.),(24.,17.,30.),(24.,14.,34.)],bounds),0.)
+        model=parse_s3d(self.model)
+        for block in model['vertices']:
+            data=bytearray(block['data'])
+            for index,offset in enumerate(range(0,len(data),block['stride'])):
+                x,h,z=triangle[index%3]
+                struct.pack_into('<3f',data,offset,x-48.,h,z)
+            block['data']=bytes(data)
+        self.resources[0x5ad0e817,0xbadb57f1,0x7f580300]=pack_s3d(model)
+        with self.assertRaisesRegex(ValueError,'surface inside removed structural cell'):self.prove()
+
+    def test_complete_preview_projection_is_checked_separately(self):
+        self.resources[0x5ad0e817,0xbadb57f1,0x7f580ff5]=self.shift(self.model,32.,32.)
+        with self.assertRaisesRegex(ValueError,'projects.*removed structural cell'):self.prove()
+
+    def test_hidden_path_resource_for_an_omitted_source_cell_is_rejected(self):
+        self.resources[0x296678f7,0xa966883f,0x7f580220]=b'SC4PATHS\n1.2\n0\n0\n0\n'
+        with self.assertRaisesRegex(ValueError,'retains an actual PATH resource'):self.prove()
+
+    def test_an_owned_support_cannot_hide_in_an_omitted_cell(self):
+        self.spec['component']['support_centers'].append([32.,-32.])
+        with self.assertRaisesRegex(ValueError,'still owns a support'):self.prove()
+
+    def test_unexpected_unmapped_saved_model_is_rejected(self):
+        self.resources[0x5ad0e817,0xbadb57f1,0x7f580220]=self.model
+        with self.assertRaisesRegex(ValueError,'unexpected model'):self.prove()
+
+
+class EncodedWholeAssemblySourceControls(unittest.TestCase):
+    """Clean clones can check encoded route geometry without native model inputs."""
+    @classmethod
+    def setUpClass(cls):
+        from scp_hsr.hsr_components_layout import component_layout
+        from scp_hsr.hsr_trumpet_verify import rotate,key
+        scene=json.loads(SCENE.read_text());tiles={}
+        for placement in scene['placements']:
+            path=ROOT/'domains/high-speed-rail/00_pieces'/placement['piece_id']/'piece.json'
+            spec=json.loads(path.read_text());layout=component_layout(spec['recipe'])
+            turns=placement['rotation_degrees_ccw']//90
+            for cell in spec['cells']:
+                column,row=cell;x,north,_=rotate((column*16.,-row*16.,0.),turns)
+                position=key((x+placement['origin_m'][0],north+placement['origin_m'][1],0.))[:2]
+                if position in tiles:raise ValueError('Source assembly overlaps owned cells')
+                routes=layout[tuple(cell)]['routes']
+                raw=encode_paths(routes) if routes else b'SC4PATHS\n1.2\n0\n0\n0\n'
+                tiles[position]={'resources':{'path':raw},'cell':tuple(cell),
+                    'rotation':turns,'instance_id':placement['label']}
+        cls.records=encoded_records(tiles);cls.journeys=_journeys(cls.records,CONTRACT)
+        cls.rework=read_rework_record(REWORK_PATH,root=ROOT,require_completed=False)
+
+    def test_all_six_complete_encoded_source_journeys_meet_global_limits(self):
+        self.assertEqual(audit_whole_route_quality(self.journeys)['complete_journeys_checked'],6)
+
+    def test_actual_encoded_source_sockets_use_independent_targets(self):
+        self.assertEqual(len(audit_target_joins(self.records)['fixed_branch_joins_checked']),2)
+
+    def test_mainlines_and_direct_slips_preserve_accepted_baseline_geometry(self):
+        self.assertEqual(audit_preserved_journeys(self.journeys,self.rework)['unchanged_complete_journeys'],4)
+
+    def test_complete_changed_northern_routes_stay_within_independent_six_metre_envelope(self):
+        measured=audit_route_movement(self.journeys,self.rework)
+        self.assertEqual(len(measured['journeys']),2)
+        self.assertLessEqual(measured['maximum_upper_bound_m'],6.)
 
 
 class AtomizationHistoryControls(unittest.TestCase):
@@ -127,10 +355,10 @@ class CurrentSavedResourceMutationControls(unittest.TestCase):
         cls.build,cls.tiles,cls.descriptor=saved_current()
         cls.journeys=_journeys(encoded_records(cls.tiles),CONTRACT)
 
-    def test_all_109_current_tile_resource_sets_are_frozen_exactly(self):
+    def test_all_current_tile_resource_sets_are_frozen_exactly(self):
         report=audit_current_world_tiles(self.tiles,self.descriptor)
-        self.assertEqual(report['strict_byte_identity_cells'],109)
-        self.assertEqual(report['tile_resource_fingerprints_checked'],1199)
+        self.assertEqual(report['strict_byte_identity_cells'],len(self.descriptor['world_cells']))
+        self.assertEqual(report['tile_resource_fingerprints_checked'],len(self.descriptor['world_cells'])*11)
 
     def test_every_complete_current_journey_is_frozen(self):
         self.assertEqual(audit_current_journeys(self.journeys,self.descriptor)['complete_directed_journeys_frozen'],6)
@@ -169,15 +397,70 @@ class CurrentSavedResourceMutationControls(unittest.TestCase):
             audit_native_sections(widened,contract)
 
 
+class CurrentRedesignSavedResourceControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.build,cls.tiles,cls.descriptor=saved_current()
+        cls.record=read_rework_record(REWORK_PATH,root=ROOT)
+        cls.records=encoded_records(cls.tiles)
+        cls.journeys=_journeys(cls.records,CONTRACT)
+
+    def test_actual_candidate_preserves_all_unaffected_cells_and_types(self):
+        report=audit_redesign_scope(self.tiles,self.build,self.record)
+        self.assertEqual(report['unchanged_world_cells_preserved_byte_for_byte'],85)
+        self.assertEqual(report['unchanged_type_archives_preserved_byte_for_byte'],11)
+
+    def test_changed_resource_outside_redesign_scope_is_rejected(self):
+        changed=deepcopy(self.tiles)
+        position=tuple(self.record['unchanged_world_cells'][0]['world_east_north_m'])
+        changed[position]['resources']['path']+=b'\n'
+        with self.assertRaisesRegex(ValueError,'outside its authorized region'):
+            audit_redesign_scope(changed,self.build,self.record)
+
+    def test_both_independently_fixed_sockets_match_actual_saved_paths(self):
+        self.assertEqual(len(audit_target_joins(self.records)['fixed_branch_joins_checked']),2)
+
+    def test_a_shifted_actual_socket_is_rejected(self):
+        changed=deepcopy(self.records)
+        target=tuple(round(x,6) for x in self.record['fixed_target_joins'][0]['endpoint_m'])
+        route=next(points for _,meta,points in changed if meta['instance_id']=='P06' and points[0]==target)
+        route[0]=(route[0][0]+.001,route[0][1],route[0][2])
+        with self.assertRaisesRegex(ValueError,'fixed directed target join'):audit_target_joins(changed)
+
+    def test_both_mainlines_and_direct_slips_preserve_baseline_geometry(self):
+        self.assertEqual(audit_preserved_journeys(self.journeys,self.record)['unchanged_complete_journeys'],4)
+
+    def test_changed_direct_slip_bend_cannot_hide_behind_straight_normalization(self):
+        changed=deepcopy(self.journeys)
+        points=changed['W_in','S_out'];index=len(points)//2;x,north,height=points[index]
+        points[index]=(x+.01,north,height)
+        with self.assertRaisesRegex(ValueError,'preserved mainline or direct-slip'):
+            audit_preserved_journeys(changed,self.record)
+
+    def test_all_six_complete_journeys_meet_their_global_physical_limits(self):
+        report=audit_whole_route_quality(self.journeys)
+        self.assertEqual(report['complete_journeys_checked'],6)
+        self.assertEqual(set(report['complete_journeys']),{'>'.join(x) for x in CONTRACT['movements']})
+
+    def test_a_sharp_loop_bend_is_rejected_by_global_quality(self):
+        changed=deepcopy(self.journeys)
+        points=changed['E_in','S_out'];index=len(points)//2;x,north,height=points[index]
+        points[index]=(x+1.,north,height)
+        with self.assertRaisesRegex(ValueError,'kink|curve|curvature|turn|winding'):
+            audit_whole_route_quality(changed)
+
+
 class ActualTrumpetBuildIntegration(unittest.TestCase):
     def test_complete_saved_candidate(self):
         path=os.environ.get('SCP_TRUMPET_BUILD')
         if not path:self.skipTest('Set SCP_TRUMPET_BUILD to audit an actual staged current build')
         report=verify(Path(path))
         self.assertEqual(report['status'],'passed')
-        self.assertEqual(report['geometry']['strict_byte_identity_cells'],109)
+        self.assertEqual(report['geometry']['strict_byte_identity_cells'],len(resource_descriptor(RESOURCES_PATH)['world_cells']))
         self.assertEqual(len(report['encoded_paths']['proper_rotations']),4)
-        self.assertEqual(report['supports']['total_column_positions_preserved'],75)
+        self.assertEqual(report['supports']['total_column_positions'],74)
+        self.assertEqual(report['supports']['unchanged_support_positions'],59)
+        self.assertEqual(report['encoded_paths']['whole_route_quality']['complete_journeys_checked'],6)
         self.assertFalse(report['deleted_predecessor_resource_inputs_required'])
 
 

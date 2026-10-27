@@ -17,7 +17,7 @@ An **assembly** is a complete layout made from reusable pieces. A **piece type**
 | --- | --- |
 | Clean preview | A computer-rendered picture of the complete layout without component-name labels. Click it to open the full image. |
 | Blueprint | The assembly name. Click it to open the guide with its pictures, component list, and placement instructions. This is a layout to construct from components; each placement requires its own click. |
-| Placements / types | Total placed copies / number of different reusable piece types. For example, `26 / 14` means 26 copies using 14 types; repeated copies of one type count as several placements but only one type. These numbers do not count tiles or menu buttons. |
+| Placements / types | Total placed copies / number of different reusable piece types. For example, `5 / 3` means five copies using three types; repeated copies of one type count as several placements but only one type. These numbers do not count tiles or menu buttons. |
 | Preview reviewed | Recorded human reviews of the declared final assembly images. Each image has its own case; generating an image does not record its approval. |
 | Renders correctly in game | Recorded human checks that the complete placed layout looks correct inside SimCity 4 under the declared conditions. This checks appearance; the connection matrix separately reports traffic. |
 | Connection matrix summary | A summary of the results displayed in the blueprint’s entrance → exit matrix. Saved PATH, Route Query, visible travel, and forbidden-movement checks have separate totals. Click **Open matrix** to inspect those entries and their exact evidence. |

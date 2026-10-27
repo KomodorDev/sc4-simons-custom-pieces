@@ -71,7 +71,7 @@ class MenuIconCategoryTests(unittest.TestCase):
         expected = {
             'modular-south-junction': 'JCT', 'modular-paired-climb': 'RMP',
             'modular-crossing-core': 'XNG',
-            'l2-compact-fan-diverge': 'SPL', 'l2-paired-fan-compact-join': 'JCT',
+            'l2-paired-fan-compact-join': 'JCT',
             'l2-short-mainline-diverge-core': 'SPL', 'l2-short-opposed-merge-core': 'MRG',
             'l2-shortened-departure-curve': 'CRV', 'l2-shortened-return-curve': 'CRV',
         }

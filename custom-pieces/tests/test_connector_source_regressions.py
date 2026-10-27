@@ -51,6 +51,54 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
             deepcopy(self.profiles if profiles is None else profiles),
         )
 
+    def test_trumpet_sources_preserve_complete_measured_ends_and_physical_channels(self):
+        expected = {
+            "hsr-component-l2-paired-fan-compact-join": {
+                "Nin": "north-to-west-track", "Wout": "north-to-west-track",
+                "Ein": "east-to-north-track", "Nout": "east-to-north-track"},
+            "hsr-component-l2-short-opposed-merge-core": {
+                "Win": "eastbound-mainline", "Eout": "eastbound-mainline",
+                "Ein": "westbound-mainline", "Wout": "westbound-mainline",
+                "Nin": "north-branch", "Sin": "south-branch"},
+        }
+        resolved = metadata.load_library(CUSTOM_ROOT, list(expected))["pieces"]
+        for slug, channels in expected.items():
+            with self.subTest(piece=slug):
+                piece = resolved[slug]
+                ports = {port["id"]: port for port in piece["connections"]["ports"]}
+                members = [member for group in piece["groups"] for member in group["members"]]
+                self.assertEqual({member["source_port_id"]: member["channel_id"] for member in members}, channels)
+                self.assertEqual(len(members), len(ports))
+                self.assertEqual({member["source_port_id"] for member in members}, set(ports))
+                for member in members:
+                    self.assertEqual(member["endpoint_m"], ports[member["source_port_id"]]["endpoint_m"])
+                    self.assertEqual(member["tangent"], ports[member["source_port_id"]]["tangent"])
+                    self.assertEqual(member["traffic_modes"], ["monorail"])
+                self.assertTrue(all(group["construction_network"] == "monorail" for group in piece["groups"]))
+
+    def test_trumpet_curved_cuts_do_not_invent_paired_profiles_or_section_origins(self):
+        slugs = ["hsr-component-l2-paired-fan-compact-join", "hsr-component-l2-short-opposed-merge-core"]
+        resolved = metadata.load_library(CUSTOM_ROOT, slugs)["pieces"]
+        for slug in slugs:
+            with self.subTest(piece=slug):
+                groups = resolved[slug]["groups"]
+                curved = [group for group in groups if group["id"].endswith("curved-cut")]
+                paired = [group for group in groups if group["id"].endswith("paired-end")]
+                self.assertEqual(len(curved), 2)
+                for group in curved:
+                    self.assertEqual(group["nominal_level"], "l2")
+                    self.assertIsNone(group.get("profile_id"))
+                    self.assertIsNone(group["section_offset_m"])
+                    self.assertIsNone(group["anchor_m"])
+                    self.assertEqual(len(group["members"]), 1)
+                    self.assertIsNone(group["members"][0]["section_offset_m"])
+                    self.assertNotEqual(group["members"][0]["heading_outward_degrees"] % 90, 0)
+                for group in paired:
+                    self.assertEqual(group["profile_id"], "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1")
+                    self.assertEqual(group["section_offset_m"], 0)
+                    self.assertIsNotNone(group["anchor_m"])
+                    self.assertEqual(len(group["members"]), 2)
+
     def test_resolved_profiles_inherit_optional_defaults_without_mutating_source(self):
         before = deepcopy(self.registry)
         resolved = metadata.resolve_profiles(self.registry)
@@ -271,6 +319,52 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
         self.assertEqual(shifted["anchor_m"], [1.0, -56.0, 30.5])
         self.assertEqual({port["section_offset_m"] for port in shifted["members"]}, {-2., 2.})
         self.assertEqual(self.raw[CORNER], original)
+
+    def test_omitted_section_origin_stays_unknown_even_with_a_paired_profile(self):
+        groups = deepcopy(self.raw[CROSSING]['groups'])
+        groups['groups'][0].pop('section_offset_m')
+        resolved = self.validate(CROSSING, groups=groups)['groups'][0]
+        self.assertIsNone(resolved['section_offset_m'])
+        self.assertIsNone(resolved['anchor_m'])
+        self.assertTrue(all(member['section_offset_m'] is None for member in resolved['members']))
+        self.assertEqual(resolved['profile']['path_height_m'], 30.5)
+        baseline = self.validate(CROSSING)['groups'][0]
+        self.assertEqual(baseline['section_offset_m'], 0.)
+        for actual, original in zip(resolved['members'], baseline['members']):
+            self.assertEqual(actual['endpoint_m'], original['endpoint_m'])
+            self.assertEqual(actual['outward_tangent'], original['outward_tangent'])
+            self.assertEqual(actual['grade_outward'], original['grade_outward'])
+
+    def test_single_angled_cut_without_section_origin_preserves_actual_geometry(self):
+        # Synthetic one-track subset tests source-format semantics; it is not
+        # a declaration or a compatibility claim for the real paired curve.
+        source = deepcopy(self.raw[CORNER])
+        keep = {'Sin', 'Eout'}
+        source['connections']['ports'] = [port for port in source['connections']['ports'] if port['id'] in keep]
+        source['connections']['journeys'] = [journey for journey in source['connections']['journeys']
+            if journey['entry_port'] in keep and journey['exit_port'] in keep]
+        source['connections']['forbidden_transfers'] = []
+        source['groups']['channels'] = source['groups']['channels'][:1]
+        for group in source['groups']['groups']:
+            group.pop('section_offset_m')
+            group.pop('profile_id')
+            group['members'] = [member for member in group['members'] if member['source_port_id'] in keep]
+        port = next(port for port in source['connections']['ports'] if port['id'] == 'Eout')
+        port['tangent'] = [2**-.5, 2**-.5]
+        result = self.validate(CORNER, connections=source['connections'], groups=source['groups'])
+        end = result['groups'][1]
+        self.assertEqual(end['profile']['alignment'], 'angled')
+        self.assertIsNone(end['anchor_m'])
+        self.assertIsNone(end['section_offset_m'])
+        self.assertEqual(end['members'][0]['endpoint_m'], port['endpoint_m'])
+        self.assertEqual(end['members'][0]['tangent'], port['tangent'])
+        self.assertIsNone(end['members'][0]['section_offset_m'])
+        source['groups']['groups'][1]['section_offset_m'] = 0.
+        explicit = self.validate(CORNER, connections=source['connections'], groups=source['groups'])['groups'][1]
+        self.assertEqual(explicit['anchor_m'], [56., 0., 23.])
+        self.assertEqual(explicit['section_offset_m'], 0.)
+        self.assertEqual(explicit['members'][0]['endpoint_m'], port['endpoint_m'])
+        self.assertEqual(explicit['members'][0]['tangent'], port['tangent'])
 
     def test_loading_is_read_only_for_authoritative_piece_records(self):
         paths = [CUSTOM_ROOT / DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "checks/manual-tests.json")]

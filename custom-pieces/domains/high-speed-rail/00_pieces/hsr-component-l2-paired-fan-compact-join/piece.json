@@ -3,7 +3,7 @@
   "schema_version": 1,
   "id": "hsr-component-l2-paired-fan-compact-join",
   "name": "HSR L2 Compact Paired Fan Join",
-  "description": "Paired fan connection with native15.5m paths and a coordinated outer corner for the Compact Fan Diverge; retains the established curved connection positions and support spacing.",
+  "description": "Two opposite-direction flat L2 fan arms join the native paired north mouth to matched oblique mainline branches, using the Short Mainline Diverge Core angles and six explicitly owned supports.",
   "domain": "high-speed-rail",
   "recipe": "hsr_component_l2_paired_fan_compact_join",
   "status": "experimental",
@@ -12,19 +12,15 @@
   "tile_ids": [
     "7f580300",
     "7f580310",
-    "7f580220",
     "7f580320",
-    "7f580420",
     "7f580230",
     "7f580330",
     "7f580430",
-    "7f580040",
     "7f580140",
     "7f580240",
     "7f580340",
     "7f580440",
-    "7f580540",
-    "7f580640"
+    "7f580540"
   ],
   "preview_id": "7f580ff5",
   "effect_name": "preview_scp_hsrcomp_f822_00",
@@ -42,15 +38,7 @@
       1
     ],
     [
-      2,
-      2
-    ],
-    [
       3,
-      2
-    ],
-    [
-      4,
       2
     ],
     [
@@ -64,10 +52,6 @@
     [
       4,
       3
-    ],
-    [
-      0,
-      4
     ],
     [
       1,
@@ -88,33 +72,17 @@
     [
       5,
       4
-    ],
-    [
-      6,
-      4
     ]
   ],
   "orientation_count": 8,
   "structural_cells": [
     [
       2,
-      2
+      3
     ],
     [
       4,
-      2
-    ],
-    [
-      0,
-      4
-    ],
-    [
-      3,
-      4
-    ],
-    [
-      6,
-      4
+      3
     ]
   ],
   "orientation_policy": "rotate-only-preserve-direction",
@@ -139,18 +107,8 @@
       "rotation": 0
     },
     {
-      "tile": "7f580220",
-      "source": "7f580220",
-      "rotation": 0
-    },
-    {
       "tile": "7f580320",
       "source": "7f580320",
-      "rotation": 0
-    },
-    {
-      "tile": "7f580420",
-      "source": "7f580420",
       "rotation": 0
     },
     {
@@ -166,11 +124,6 @@
     {
       "tile": "7f580430",
       "source": "7f580430",
-      "rotation": 0
-    },
-    {
-      "tile": "7f580040",
-      "source": "7f580040",
       "rotation": 0
     },
     {
@@ -197,15 +150,10 @@
       "tile": "7f580540",
       "source": "7f580540",
       "rotation": 0
-    },
-    {
-      "tile": "7f580640",
-      "source": "7f580640",
-      "rotation": 0
     }
   ],
   "provenance": {
-    "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+    "geometry": "Authorized trumpet-angle redesign: retained native north mouth and game identities; symmetric arms share the unchanged Short Mainline Diverge Core branch angles; software geometry only.",
     "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
     "redistribution": "permission-pending"
   },
@@ -270,14 +218,14 @@
     },
     "W": {
       "out": [
-        16.562688696411044,
+        22.398518552216863,
         -72.0,
         15.5
       ]
     },
     "E": {
       "in": [
-        79.43731130358896,
+        73.60148144778313,
         -72.0,
         15.5
       ]

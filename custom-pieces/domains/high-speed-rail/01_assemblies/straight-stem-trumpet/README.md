@@ -9,7 +9,7 @@ document_type: "guide"
 
 [1. Views](#1-views) · [2. Pieces](#2-pieces) · [3. Placements](#3-placements) · [4. Connection matrix](#4-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This **modular blueprint** is an arrangement built from reusable component types. A **placement** is one copy of a component in the city. The trumpet uses **26 placements of 14 types**, within a **20 × 23 tile** rectangle, with **109 occupied tiles** and **75 support positions**.
+This **modular blueprint** is an arrangement built from reusable component types. A **placement** is one copy of a component in the city. The trumpet uses **25 placements of 13 types**, within a **20 × 23 tile** rectangle, with **105 occupied tiles** and **74 support positions**.
 
 Open **Transportation → Rail**, select the **SCP | ASSEMBLY | HSR Trumpet** button, and press **Tab** to cycle forward through its components or **Shift+Tab** to cycle backward. Each click places the selected component. Use the placement table to complete the arrangement. [Build and install the assembly menu](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) before following these menu instructions.
 
@@ -37,22 +37,21 @@ Use **Tab** or **Shift+Tab** on the assembly button to select the component name
 
 | Standalone angled picture | Component name and permanent piece ID | Placements | Quantity |
 | --- | --- | --- | ---: |
-| [![HSR L2 Short Mainline Diverge Core: canonical angled view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-top.png) | **[HSR L2 Short Mainline Diverge Core](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/README.md)**<br>`hsr-component-l2-short-mainline-diverge-core` | P01A | 1 |
-| [![HSR L2 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-paired-straight/previews/preview.png) | **[HSR L2 Two-Track Straight](../../00_pieces/hsr-component-lower-paired-straight/README.md)**<br>`hsr-component-lower-paired-straight` | P01S, P03CW, P03CE, P04W, P04E, P01AW, P03BE | 7 |
-| [![HSR L2 Shortened One-Way Departure Curve: canonical angled view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-top.png) | **[HSR L2 Shortened One-Way Departure Curve](../../00_pieces/hsr-component-l2-shortened-departure-curve/README.md)**<br>`hsr-component-l2-shortened-departure-curve` | P01B | 1 |
-| [![HSR Modular Symmetric Split and Return: canonical angled view](../../00_pieces/hsr-component-modular-south-junction/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-south-junction/previews/preview.png) | **[HSR Modular Symmetric Split and Return](../../00_pieces/hsr-component-modular-south-junction/README.md)**<br>`hsr-component-modular-south-junction` | P02A | 1 |
-| [![HSR Modular Two-Track L2 to L4 Climb: canonical angled view](../../00_pieces/hsr-component-modular-paired-climb/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-paired-climb/previews/preview.png) | **[HSR Modular Two-Track L2 to L4 Climb](../../00_pieces/hsr-component-modular-paired-climb/README.md)**<br>`hsr-component-modular-paired-climb` | P02B | 1 |
-| [![HSR L2 Compact Paired Fan Join: canonical angled view](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-top.png) | **[HSR L2 Compact Paired Fan Join](../../00_pieces/hsr-component-l2-paired-fan-compact-join/README.md)**<br>`hsr-component-l2-paired-fan-compact-join` | P03A | 1 |
-| [![HSR L2 Short Opposed Merge Core: canonical angled view](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-top.png) | **[HSR L2 Short Opposed Merge Core](../../00_pieces/hsr-component-l2-short-opposed-merge-core/README.md)**<br>`hsr-component-l2-short-opposed-merge-core` | P03B | 1 |
-| [![HSR L2 Compact Fan Diverge: canonical angled view](../../00_pieces/hsr-component-l2-compact-fan-diverge/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-compact-fan-diverge/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-compact-fan-diverge/previews/preview-top.png) | **[HSR L2 Compact Fan Diverge](../../00_pieces/hsr-component-l2-compact-fan-diverge/README.md)**<br>`hsr-component-l2-compact-fan-diverge` | P03C | 1 |
-| [![HSR L2 Shortened One-Way Return Curve: canonical angled view](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-top.png) | **[HSR L2 Shortened One-Way Return Curve](../../00_pieces/hsr-component-l2-shortened-return-curve/README.md)**<br>`hsr-component-l2-shortened-return-curve` | P03D | 1 |
-| [![HSR Modular One-Tile Two-Level Crossing: canonical angled view](../../00_pieces/hsr-component-modular-crossing-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-crossing-core/previews/preview.png) | **[HSR Modular One-Tile Two-Level Crossing](../../00_pieces/hsr-component-modular-crossing-core/README.md)**<br>`hsr-component-modular-crossing-core` | P04A | 1 |
-| [![HSR L4 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-upper-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-upper-paired-straight/previews/preview.png) | **[HSR L4 Two-Track Straight](../../00_pieces/hsr-component-upper-paired-straight/README.md)**<br>`hsr-component-upper-paired-straight` | P04N, P04S, P05, P06, P07, P08 | 6 |
-| [![HSR Tight Two-Track Corner 30.5 to 23 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview.png) | **[HSR Tight Two-Track Corner 30.5 to 23 Metres](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/README.md)**<br>`hsr-component-tight-paired-curve90-l4-to-mid` | P09 | 1 |
-| [![HSR Tight Two-Track Corner 23 to 15.5 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview.png) | **[HSR Tight Two-Track Corner 23 to 15.5 Metres](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/README.md)**<br>`hsr-component-tight-paired-curve90-mid-to-l2` | P10 | 1 |
-| [![One-Way HSR L2 Eight-Metre Straight: canonical angled view](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview.png) | **[One-Way HSR L2 Eight-Metre Straight](../../00_pieces/hsr-component-lower-oneway-straight/README.md)**<br>`hsr-component-lower-oneway-straight` | P01BS, P03DS | 2 |
+| [![HSR L2 Short Mainline Diverge Core: canonical angled view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-top.png) | **[HSR L2 Short Mainline Diverge Core](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/README.md)**<br>`hsr-component-l2-short-mainline-diverge-core` | P01, P08 | 2 |
+| [![HSR L2 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-paired-straight/previews/preview.png) | **[HSR L2 Two-Track Straight](../../00_pieces/hsr-component-lower-paired-straight/README.md)**<br>`hsr-component-lower-paired-straight` | P02, P09, P14, P15, P22, P23 | 6 |
+| [![HSR L2 Shortened One-Way Departure Curve: canonical angled view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-top.png) | **[HSR L2 Shortened One-Way Departure Curve](../../00_pieces/hsr-component-l2-shortened-departure-curve/README.md)**<br>`hsr-component-l2-shortened-departure-curve` | P03 | 1 |
+| [![HSR Modular Symmetric Split and Return: canonical angled view](../../00_pieces/hsr-component-modular-south-junction/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-south-junction/previews/preview.png) | **[HSR Modular Symmetric Split and Return](../../00_pieces/hsr-component-modular-south-junction/README.md)**<br>`hsr-component-modular-south-junction` | P04 | 1 |
+| [![HSR Modular Two-Track L2 to L4 Climb: canonical angled view](../../00_pieces/hsr-component-modular-paired-climb/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-paired-climb/previews/preview.png) | **[HSR Modular Two-Track L2 to L4 Climb](../../00_pieces/hsr-component-modular-paired-climb/README.md)**<br>`hsr-component-modular-paired-climb` | P05 | 1 |
+| [![HSR L2 Compact Paired Fan Join: canonical angled view](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-top.png) | **[HSR L2 Compact Paired Fan Join](../../00_pieces/hsr-component-l2-paired-fan-compact-join/README.md)**<br>`hsr-component-l2-paired-fan-compact-join` | P06 | 1 |
+| [![HSR L2 Short Opposed Merge Core: canonical angled view](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-top.png) | **[HSR L2 Short Opposed Merge Core](../../00_pieces/hsr-component-l2-short-opposed-merge-core/README.md)**<br>`hsr-component-l2-short-opposed-merge-core` | P07 | 1 |
+| [![HSR L2 Shortened One-Way Return Curve: canonical angled view](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-top.png) | **[HSR L2 Shortened One-Way Return Curve](../../00_pieces/hsr-component-l2-shortened-return-curve/README.md)**<br>`hsr-component-l2-shortened-return-curve` | P10 | 1 |
+| [![HSR Modular One-Tile Two-Level Crossing: canonical angled view](../../00_pieces/hsr-component-modular-crossing-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-crossing-core/previews/preview.png) | **[HSR Modular One-Tile Two-Level Crossing](../../00_pieces/hsr-component-modular-crossing-core/README.md)**<br>`hsr-component-modular-crossing-core` | P11 | 1 |
+| [![HSR L4 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-upper-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-upper-paired-straight/previews/preview.png) | **[HSR L4 Two-Track Straight](../../00_pieces/hsr-component-upper-paired-straight/README.md)**<br>`hsr-component-upper-paired-straight` | P12, P13, P16, P17, P18, P19 | 6 |
+| [![HSR Tight Two-Track Corner 30.5 to 23 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview.png) | **[HSR Tight Two-Track Corner 30.5 to 23 Metres](../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/README.md)**<br>`hsr-component-tight-paired-curve90-l4-to-mid` | P20 | 1 |
+| [![HSR Tight Two-Track Corner 23 to 15.5 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview.png) | **[HSR Tight Two-Track Corner 23 to 15.5 Metres](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/README.md)**<br>`hsr-component-tight-paired-curve90-mid-to-l2` | P21 | 1 |
+| [![One-Way HSR L2 Eight-Metre Straight: canonical angled view](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview.png) | **[One-Way HSR L2 Eight-Metre Straight](../../00_pieces/hsr-component-lower-oneway-straight/README.md)**<br>`hsr-component-lower-oneway-straight` | P24, P25 | 2 |
 
-The [standalone-picture report](evidence/piece-previews.json) records the component images and their saved-model sources. It preserves historical filenames; the current images now live in each component's `previews/` folder. Quantities count placements, so the same component can appear several times in the arrangement.
+The [standalone-picture report](evidence/piece-previews.json) records the current component images, their saved-model sources, and all 25 placements. Each canonical picture shows 0°; use the rotation in the placement table when building. Quantities count placements, so the same component can appear several times in the arrangement.
 
 ## 3. Placements
 
@@ -60,34 +59,33 @@ Use each position and rotation together; standalone component pictures show 0°.
 
 | Placement | Exact descriptive menu name | Reference position | Rotation | Occupied tiles |
 | --- | --- | --- | --- | ---: |
-| P01A | HSR L2 Short Mainline Diverge Core | (X1, Y13) | 0° | 4 |
-| P01S | HSR L2 Two-Track Straight | (X5, Y13) | 270° | 1 |
-| P01B | HSR L2 Shortened One-Way Departure Curve | (X2, Y12) | 0° | 12 |
-| P02A | HSR Modular Symmetric Split and Return | (X6, Y5) | 0° | 14 |
-| P02B | HSR Modular Two-Track L2 to L4 Climb | (X7, Y11) | 0° | 8 |
-| P03A | HSR L2 Compact Paired Fan Join | (X11, Y18) | 0° | 15 |
-| P03B | HSR L2 Short Opposed Merge Core | (X9, Y13) | 0° | 5 |
-| P03CW | HSR L2 Two-Track Straight | (X15, Y13) | 270° | 1 |
-| P03C | HSR L2 Compact Fan Diverge | (X16, Y13) | 0° | 3 |
-| P03CE | HSR L2 Two-Track Straight | (X19, Y13) | 270° | 1 |
-| P03D | HSR L2 Shortened One-Way Return Curve | (X8, Y12) | 0° | 12 |
-| P04A | HSR Modular One-Tile Two-Level Crossing | (X7, Y13) | 0° | 1 |
-| P04N | HSR L4 Two-Track Straight | (X7, Y14) | 0° | 1 |
-| P04S | HSR L4 Two-Track Straight | (X7, Y12) | 0° | 1 |
-| P04W | HSR L2 Two-Track Straight | (X6, Y13) | 270° | 1 |
-| P04E | HSR L2 Two-Track Straight | (X8, Y13) | 270° | 1 |
-| P05 | HSR L4 Two-Track Straight | (X7, Y15) | 0° | 1 |
-| P06 | HSR L4 Two-Track Straight | (X7, Y16) | 0° | 1 |
-| P07 | HSR L4 Two-Track Straight | (X7, Y17) | 0° | 1 |
-| P08 | HSR L4 Two-Track Straight | (X7, Y18) | 0° | 1 |
-| P09 | HSR Tight Two-Track Corner 30.5 to 23 Metres | (X7, Y22) | 0° | 10 |
-| P10 | HSR Tight Two-Track Corner 23 to 15.5 Metres | (X14, Y22) | 270° | 10 |
-| P01AW | HSR L2 Two-Track Straight | (X0, Y13) | 270° | 1 |
-| P03BE | HSR L2 Two-Track Straight | (X14, Y13) | 270° | 1 |
-| P01BS | One-Way HSR L2 Eight-Metre Straight | (X6, Y6) | 180° | 1 |
-| P03DS | One-Way HSR L2 Eight-Metre Straight | (X8, Y6) | 0° | 1 |
+| P01 | HSR L2 Short Mainline Diverge Core | (X1, Y13) | 0° | 4 |
+| P02 | HSR L2 Two-Track Straight | (X5, Y13) | 270° | 1 |
+| P03 | HSR L2 Shortened One-Way Departure Curve | (X2, Y12) | 0° | 12 |
+| P04 | HSR Modular Symmetric Split and Return | (X6, Y5) | 0° | 14 |
+| P05 | HSR Modular Two-Track L2 to L4 Climb | (X7, Y11) | 0° | 8 |
+| P06 | HSR L2 Compact Paired Fan Join | (X11, Y18) | 0° | 11 |
+| P07 | HSR L2 Short Opposed Merge Core | (X9, Y13) | 0° | 5 |
+| P08 | HSR L2 Short Mainline Diverge Core | (X18, Y13) | 180° | 4 |
+| P09 | HSR L2 Two-Track Straight | (X19, Y13) | 270° | 1 |
+| P10 | HSR L2 Shortened One-Way Return Curve | (X8, Y12) | 0° | 12 |
+| P11 | HSR Modular One-Tile Two-Level Crossing | (X7, Y13) | 0° | 1 |
+| P12 | HSR L4 Two-Track Straight | (X7, Y14) | 0° | 1 |
+| P13 | HSR L4 Two-Track Straight | (X7, Y12) | 0° | 1 |
+| P14 | HSR L2 Two-Track Straight | (X6, Y13) | 270° | 1 |
+| P15 | HSR L2 Two-Track Straight | (X8, Y13) | 270° | 1 |
+| P16 | HSR L4 Two-Track Straight | (X7, Y15) | 0° | 1 |
+| P17 | HSR L4 Two-Track Straight | (X7, Y16) | 0° | 1 |
+| P18 | HSR L4 Two-Track Straight | (X7, Y17) | 0° | 1 |
+| P19 | HSR L4 Two-Track Straight | (X7, Y18) | 0° | 1 |
+| P20 | HSR Tight Two-Track Corner 30.5 to 23 Metres | (X7, Y22) | 0° | 10 |
+| P21 | HSR Tight Two-Track Corner 23 to 15.5 Metres | (X14, Y22) | 270° | 10 |
+| P22 | HSR L2 Two-Track Straight | (X0, Y13) | 270° | 1 |
+| P23 | HSR L2 Two-Track Straight | (X14, Y13) | 270° | 1 |
+| P24 | One-Way HSR L2 Eight-Metre Straight | (X6, Y6) | 180° | 1 |
+| P25 | One-Way HSR L2 Eight-Metre Straight | (X8, Y6) | 0° | 1 |
 
-The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01A's reference is **(X1, Y13)** because P01AW owns the western approach tile at **(X0, Y13)**. Every occupied tile has exactly one owner.
+The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01's reference is **(X1, Y13)** because P22 owns the western approach tile at **(X0, Y13)**. Every occupied tile has exactly one owner. P01 and P08 reuse the same Short Mainline Diverge Core: P01 is at 0°, and P08 is at 180°. P08 replaces the earlier separate eastern diverge and its western straight; the fan and opposed merge have matching revised branch angles. The retained component types keep their permanent game identifiers.
 
 <!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 

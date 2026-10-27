@@ -21,7 +21,7 @@ The current library does not supply automatic compatibility discovery. Most exis
 
 ## Inventories and collections
 
-- [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 166 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
@@ -45,12 +45,12 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `redesigned-junction-example`: 1 piece types.
 - `redesigned-diagonal-junction-example`: 1 piece types.
 - `smooth-t-junctions`: 2 piece types.
-- `hsr-all-components`: 33 piece types.
+- `hsr-all-components`: 32 piece types.
 - `hsr-modular-connection-parts`: 3 piece types.
 - `hsr-split-and-climb`: 2 piece types.
 - `hsr-crossing-core-and-approaches`: 3 piece types.
-- `hsr-compact-fan-parts`: 2 piece types.
-- `hsr-straight-stem-trumpet`: 14 piece types.
+- `hsr-compact-fan-parts`: 1 piece types.
+- `hsr-straight-stem-trumpet`: 13 piece types.
 - `piece-authoring-examples`: 2 piece types.
 
 </details>

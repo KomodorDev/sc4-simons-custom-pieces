@@ -3,7 +3,7 @@
   "schema_version": 1,
   "id": "hsr-component-l2-short-opposed-merge-core",
   "name": "HSR L2 Short Opposed Merge Core",
-  "description": "Five-tile native two-track mainline receiving opposed one-way branches, with an exact native straight departure and unchanged custom curved branch entrances.",
+  "description": "Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.",
   "domain": "high-speed-rail",
   "recipe": "hsr_component_l2_short_opposed_merge_core",
   "status": "experimental",
@@ -84,7 +84,7 @@
     }
   ],
   "provenance": {
-    "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+    "geometry": "Retains the earlier native east-tail correction and exact southern direct-slip routes; the authorized northern-fan redesign reuses the unchanged Short Mainline Diverge Core branch samples by reflection and travel reversal.",
     "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
     "redistribution": "permission-pending"
   },
@@ -153,7 +153,7 @@
     },
     "N": {
       "in": [
-        48.562688696411044,
+        54.39851855221686,
         8.0,
         15.5
       ]
