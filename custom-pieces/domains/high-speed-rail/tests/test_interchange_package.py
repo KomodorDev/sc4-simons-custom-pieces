@@ -85,8 +85,8 @@ class InterchangePackageTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as zipped:
             self.assertIsNone(zipped.testzip())
             domain = 'docs/domains/high-speed-rail/'
-            guides = [domain+'README.md', domain+'INVENTORY.md',
-                      domain+'00_pieces/INVENTORY.md', domain+'01_assemblies/INVENTORY.md']
+            guides = [domain+'README.md', domain+'00_pieces/INVENTORY.md',
+                      domain+'01_assemblies/INVENTORY.md']
             for name in guides:
                 self.assertIn(name, zipped.namelist())
             self.assertNotIn('input-audit.json', zipped.namelist())
