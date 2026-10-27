@@ -1,0 +1,173 @@
+{
+  "purpose": "Record an explicit assembly source identity migration while preserving compiled piece identities, approved geometry, historical measurements, and original observations.",
+  "migration_date": "2026-10-27",
+  "identity": {
+    "before": "straight-stem-trumpet-v4",
+    "after": "straight-stem-trumpet"
+  },
+  "source_directory": {
+    "before": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4",
+    "after": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet"
+  },
+  "collection": {
+    "before": "hsr-straight-stem-trumpet-v4",
+    "after": "hsr-straight-stem-trumpet"
+  },
+  "verifier": {
+    "before": "verify_hsr_trumpet_v4.py",
+    "after": "verify_hsr_trumpet.py"
+  },
+  "test_module": {
+    "before": "test_hsr_trumpet_v4.py",
+    "after": "test_hsr_trumpet.py"
+  },
+  "optional_test_build_environment": {
+    "before": "SCP_V4_BUILD",
+    "after": "SCP_TRUMPET_BUILD"
+  },
+  "original_identity_bound_archives": {
+    "assembly.json": {
+      "file": "evidence/design-history/assembly-before-identity-rename.json",
+      "sha256": "6e876bb3ff81676ed3b161738696ff1350f3ab347ac0386cd88ce3ee7ffa89be"
+    },
+    "connections.json": {
+      "file": "evidence/design-history/connections-before-identity-rename.json",
+      "sha256": "281deaa8b27d86646639f4a775957bdbdd3076e9bc8c95f1573040395eb58c8e"
+    },
+    "checks/manual-tests.json": {
+      "file": "evidence/design-history/checks-manual-tests-before-identity-rename.json",
+      "sha256": "73aa6cd0ffcaa60e4243a15d970225d2b9c1919bc2e60280a13ed3286e9baca4"
+    },
+    "checks/contract.json": {
+      "file": "evidence/design-history/checks-contract-before-identity-rename.json",
+      "sha256": "cb9cadc67e4af715c6631bad35f206a5ea7819b82564ef4ed96eb2ad6a733a45"
+    },
+    "checks/layout.json": {
+      "file": "evidence/design-history/checks-layout-before-identity-rename.json",
+      "sha256": "3fa4085e3c70b3f7aa3e9a6d3f3afd57f6c3096c0e1cea69533670715a1911f7"
+    },
+    "checks/resources.json": {
+      "file": "evidence/design-history/checks-resources-before-identity-rename.json",
+      "sha256": "cf35ae0769d37ca98eefd913308d9b41f032bd64fc3a1f5da7e6945db6f7283a"
+    },
+    "checks/atomization.json": {
+      "file": "evidence/design-history/checks-atomization-before-identity-rename.json",
+      "sha256": "1c39199a99dc56edcf82ce0e338430e03bdc889571e957baedfd63dc5adc42c4"
+    },
+    "evidence/render.json": {
+      "file": "evidence/design-history/evidence-render-before-identity-rename.json",
+      "sha256": "1120d1a416f3bbcabb687fd0eac9b13648fb1116c267a5054891203dc7b4e0f8"
+    },
+    "verifier_source": {
+      "file": "evidence/design-history/verifier-before-identity-rename.py.txt",
+      "sha256": "38100e19584fe73b2b1cdc5c6f116d62c4fb86126a23909e188885e852360313"
+    }
+  },
+  "preservation": {
+    "piece_types": 14,
+    "protected_piece_json_files": 85,
+    "all_protected_piece_json_hashes_unchanged": true,
+    "all_14_piece_resource_descriptors_unchanged": true,
+    "all_109_world_cell_resource_descriptors_unchanged": true,
+    "all_6_encoded_journey_geometry_fingerprints_unchanged": true,
+    "physical_layout_sha256": "7d230df3d8697640ed5b197f448e041abd75cab62be2a9886562e4fc52909ee6",
+    "atomization_measurement_payload_sha256": "616e7daadab6a141e84a615f64bfcf8bc3e7fee06f7129d41e57c5b09f3eaa73",
+    "all_original_measurement_values_and_reference_assembly_unchanged": true,
+    "existing_frozen_evidence_files_unchanged": 17,
+    "rendered_image_hashes_unchanged": {
+      "previews/preview.png": "c32676e673e1714e86a109c6b798edd2e7d2da59f83a935a10292c35fcb6fd9a",
+      "previews/tile-ownership.png": "67315cb703005d212ab7748ad93d56b2f6892382d43c1a7f9fceeddac59ad3eb",
+      "previews/named-southeast.png": "559e91d9aad08935a16fde91ecfd2d9c1d2b27895c3dd22b01b1f926a71275fd",
+      "previews/named-top.png": "e56111b70bf87ef5218872602f5422965a8b1b56b74f7bdd2144113acca6fd6c",
+      "previews/overview-top.png": "42ae53253349446848f332efd67030b73578bfcd8b84390c01ac9c6c8c30ed7a",
+      "previews/named-northwest.png": "56c35cc6c181b3abcc8b7c8f7191ecc2c374c7f3a0a1aa4046b28fb768037034"
+    }
+  },
+  "new_connectivity": {
+    "source": "Existing retained piece measurements recomposed at unchanged saved physical placements.",
+    "directed_journeys": 6,
+    "encoded_route_joins": 50,
+    "DAT_extraction_repeated": false
+  },
+  "new_manual_record": {
+    "subject_id": "straight-stem-trumpet",
+    "cases": 27,
+    "observations": 0,
+    "passes_copied_from_old_subject": 0,
+    "software_attestation": "Pending an actual current native-verifier run."
+  },
+  "scope": {
+    "builds_created_or_modified": false,
+    "installed_files_modified": false,
+    "native_verification_performed": false,
+    "rendering_repeated": false,
+    "inventory_regeneration_deferred": true
+  },
+  "maintained_text_files_updated": [
+    "custom-pieces/README.md",
+    "custom-pieces/docs/BUILD_AND_INSTALL.md",
+    "custom-pieces/docs/TESTING.md",
+    "custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md",
+    "custom-pieces/docs/WORKFLOW_DOCUMENTATION_GENERATION.md",
+    "custom-pieces/docs/WORKFLOW_PIECE_CREATION.md",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/README.md",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/README.md",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/README.md",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/README.md",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/README.md",
+    "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md",
+    "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/tests/test_hsr_trumpet.py",
+    "custom-pieces/domains/high-speed-rail/NETWORK_SPEC.md",
+    "custom-pieces/domains/high-speed-rail/README.md",
+    "custom-pieces/domains/high-speed-rail/collections.json",
+    "custom-pieces/domains/high-speed-rail/domain.json",
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py",
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py",
+    "custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py",
+    "custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py",
+    "custom-pieces/tests/test_connectivity.py",
+    "custom-pieces/tests/test_connector_metadata.py",
+    "custom-pieces/tests/test_inventory.py"
+  ],
+  "contract_file_bindings_at_migration": {
+    "checks/manual-tests.json": {
+      "before_sha256": "73aa6cd0ffcaa60e4243a15d970225d2b9c1919bc2e60280a13ed3286e9baca4",
+      "after_sha256": "181a8104f3b8d1b828674f6e1b7a09724fcf0ffaaf0278031725748037c0c98c"
+    },
+    "checks/contract.json": {
+      "before_sha256": "cb9cadc67e4af715c6631bad35f206a5ea7819b82564ef4ed96eb2ad6a733a45",
+      "after_sha256": "7bbd041e00e2533a4d7bd32f79183a411c0e4e3a1f1b0c9b08585032e097fa95"
+    },
+    "checks/layout.json": {
+      "before_sha256": "3fa4085e3c70b3f7aa3e9a6d3f3afd57f6c3096c0e1cea69533670715a1911f7",
+      "after_sha256": "b349597b38a9d9336d1fc4a82439b303b353f3627c13ebf99f247859fd445218"
+    },
+    "checks/resources.json": {
+      "before_sha256": "cf35ae0769d37ca98eefd913308d9b41f032bd64fc3a1f5da7e6945db6f7283a",
+      "after_sha256": "77b643b30603846aaa2bc3a913c9229ae59edc56df96440784903690e1b50821"
+    },
+    "checks/atomization.json": {
+      "before_sha256": "1c39199a99dc56edcf82ce0e338430e03bdc889571e957baedfd63dc5adc42c4",
+      "after_sha256": "183d2d54cda8416d9f2cb9b617a0e01358bbcd14fa7d510db9c3637c3ef50127"
+    }
+  },
+  "source_validation_at_migration": {
+    "focused_tests": 62,
+    "skips": 0,
+    "failures": 0,
+    "modules": {
+      "test_connectivity.py": 15,
+      "test_assembly_matrix.py": 20,
+      "test_content_assembly_matrix.py": 10,
+      "test_hsr_trumpet.py literal-and-history-only classes": 14,
+      "test_inventory.py": 3
+    },
+    "native_saved_build_verification_performed": false
+  },
+  "historical_reference_policy": "Original observation quotations, frozen measurement records, and source-bound connector provenance retain their recorded legacy names and paths. They are historical facts, not renamed evidence or new observations. The explicit identity mapping in this report locates the current assembly.",
+  "deferred_outputs": [
+    "Generated domain/assembly inventories require normal regeneration.",
+    "Source-bound connector exports keep the original compiled-build provenance; they were not rewritten or freshly checked by this identity migration.",
+    "Actual source build, current native verification, and new software attestations remain separate subsequent operations."
+  ]
+}

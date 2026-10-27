@@ -69,7 +69,7 @@ These fields describe the document; piece and connector data retain their own au
 | Location | Purpose |
 | --- | --- |
 | `project.json`, domain `domain.json`, and `collections.json` | Explicit project/domain registries and named build selections. |
-| Optional domain `menu-layout.json` | Explicitly selected menu experiments, assembly membership policy, presentation names, and locally reserved presentation IDs; normal builds keep their existing menu layout. See [the menu experiment](docs/BUILD_AND_INSTALL.md#try-the-trumpet-menu-experiment). |
+| Domain `menu-layout.json` | Assembly membership, component-cycle order, the single assembly-button presentation, and locally reserved IDs. Ordinary piece compilation supplies the inputs; [assembly-menu packaging](docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) prepares every final assembly menu. |
 | `config/allocations.json`, `config/profiles/`, and `config/release.json` | Identifier ownership, audited dependency contracts, and release requirements. |
 | `00_pieces/<piece>/piece.json`, plus `geometry.json` where needed | Definition, resource identities, and local geometry source for one reusable type. |
 | `01_assemblies/<assembly>/assembly.json` | Placed instances, stable labels, positions, and rotations. |
@@ -94,6 +94,6 @@ A **generated section** sits between named HTML comment markers and is replaced 
 
 A **prose-only refresh** updates generated views without changing measured connection or observation bytes. Actual resource changes require extraction and relevant evidence refresh under [framework engineering](docs/FRAMEWORK_ENGINEERING.md#documentation-generation-and-observations). Preserve original backups and frozen evidence. Current evidence stays with the retained subject it verifies; explicitly deleted subjects do not retain obsolete compatibility copies.
 
-A piece has one README, and an assembly has README plus TESTING. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
+A piece has one README, and an assembly has README plus TESTING. New assembly TESTING pages follow the [shared six-chapter layout](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout); the content generator supplies their initial scaffold and preserves authored chapters during refresh. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
 
 Automatic compatibility discovery is outside the current library commands. A future consumer must use current, source-validated connector exports and keep its eligibility decisions, excluded-source reasons, pairwise candidates, and reports separate from the authored library. Consumer results do not become authored neighbour lists or required manual checkboxes in piece definitions. Unmigrated pieces retain their existing registration and build eligibility without being described as compatible or incompatible.

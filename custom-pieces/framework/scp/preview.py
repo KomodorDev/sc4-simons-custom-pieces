@@ -336,28 +336,44 @@ def textures_for_models(models: list[dict], plugins: Path) -> dict:
 def render_contact_sheet(items: list[tuple[str, dict]], textures: dict,
                          destination: Path, *, title='One-way HSR branch kit') -> dict:
     """Render real indexed geometry; labels are the only graphical overlays."""
+    from .render_headers import _fit_font, piece_heading, view_caption
     columns = 2 if len(items) == 4 else min(3, len(items))
     if not columns:
         raise ValueError('No models selected for preview')
     rows = math.ceil(len(items) / columns)
-    panel_width, panel_height = 640, 565
+    panel_width, panel_height = 640, 600
     canvas = Image.new('RGB', (columns * panel_width, 150 + rows * panel_height + 78), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
     dark, muted, blue = '#172b42', '#586a7e', '#176eaf'
     draw.text((42, 32), title, fill=dark, font=font(37, True))
     draw.text((44, 88), 'Actual S3D geometry and installed NAM texture · experimental fixed pieces',
               fill=muted, font=font(21))
+    headers = []
     for number, (label, model) in enumerate(items):
         x, y = (number % columns) * panel_width, 150 + (number // columns) * panel_height
-        draw.text((x + 32, y + 8), label, fill=blue, font=font(23, True))
+        captions = [piece_heading(label), view_caption('angled', 45, 36)]
+        header = {'source_name': label, 'captions': captions, 'rows': [],
+                  'viewport_box': [x + 20, y + 80, x + 620, y + 580]}
+        for caption, offset, size, bold, colour in zip(captions, (8, 44), (23, 18),
+                                                      (True, False), (dark, blue)):
+            face, pixels = _fit_font(draw, caption, font, size, panel_width - 64, bold)
+            position = (x + 32, y + offset)
+            bounds = draw.textbbox(position, caption, font=face)
+            if bounds[3] >= header['viewport_box'][1]:
+                raise ValueError('A contact-sheet caption overlaps its model viewport')
+            draw.text(position, caption, fill=colour, font=face)
+            header['rows'].append({'text': caption, 'position': list(position),
+                                   'bounds': list(bounds), 'font_pixels': pixels})
+        headers.append(header)
         view = render_view(model, textures, 45, 36, 1200, 1000)
-        canvas.paste(view.resize((600, 500), Image.Resampling.LANCZOS), (x + 20, y + 47))
+        canvas.paste(view.resize((600, 500), Image.Resampling.LANCZOS), (x + 20, y + 80))
     draw.text((44, canvas.height - 50), 'Software model preview, not a game screenshot. Placement, routing and shadows need game tests.',
               fill=muted, font=font(20))
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(destination)
-    return {'output': str(destination.resolve()), 'models': len(items), 'size': list(canvas.size)}
+    return {'output': str(destination.resolve()), 'models': len(items), 'size': list(canvas.size),
+            'panel_headers': headers}
 
 
 def render_package(output: Path, plugins: Path, destination: Path, *, piece_ids=None) -> dict:
@@ -490,15 +506,15 @@ def validate_preview_coverage(index, pieces, destination, *, settings=None, view
 
 
 def _canonical_title(root, catalog, piece):
-    from .render_headers import piece_title, title_records
+    from .render_headers import piece_heading, piece_title, title_records
     domain = catalog.get('domains', {}).get(piece.get('domain'), {})
     relative = domain.get('path')
     if relative is None:
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     directory = root/relative/'00_pieces'/piece['id']
     declaration = directory/'connector-groups.jsonc'
     if not declaration.is_file():
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     from .connector_metadata import load_library
     resolved = load_library(root, [piece['id']], domain_id=piece['domain'])['pieces'][piece['id']]
     title = piece_title(piece['id'], title_records(resolved), piece['name'])

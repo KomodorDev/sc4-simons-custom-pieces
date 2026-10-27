@@ -1,8 +1,8 @@
-"""Build an opt-in parts-cycle alias and Submenus DLL test catalogue.
+"""Build one assembly cycle entry, or verify the retained legacy submenu form.
 
 This changes presentation resources only. The caller supplies an independently
 verified build, allocates IDs, composes the construction cycle, checks installed
-resource collisions, and keeps this experiment separate from normal builds.
+resource collisions, and keeps assembly menu preparation after piece compilation.
 An alias sharing Item Button ID with a piece is a testable hypothesis, not an
 in-game result. Source: https://github.com/memo33/submenus-dll#information-for-modders
 """
@@ -124,12 +124,14 @@ def _new_button(template, definition, *, kind):
             (*DESCRIPTION, button_id): _ltext(definition['description'])}
 
 
-def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu):
+def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
-    buttons move into ``submenu`` and keep all original IDs, text, icons, costs,
-    and construction targets. Each new button definition supplies ``id``,
+    member menu presentations are removed when ``submenu`` is absent: the
+    assembly gets one cycle button, while unrelated standalone pieces remain.
+    A supplied ``submenu`` retains the historical two-entry test format.
+    Each new button definition supplies ``id``,
     ``order``, ``title``, and ``description``. ``cycle_button`` also requires
     ``target_id`` equal to the first piece's existing menu/root button ID.
     Its distinct presentation ID changes no construction definition itself.
@@ -141,12 +143,14 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     pieces = list(pieces)
     require(pieces, 'At least one piece is required')
     cycle = _definition(cycle_button, 'cycle_button')
-    group = _definition(submenu, 'submenu')
+    group = _definition(submenu, 'submenu') if submenu is not None else None
     require('target_id' in cycle, 'cycle_button requires target_id')
     cycle['target_id'] = _uint(cycle['target_id'], 'cycle_button.target_id')
-    require('target_id' not in group, 'Submenu button cannot have a construction target')
-    require(cycle['id'] != group['id'], 'Cycle and submenu presentation IDs must be distinct')
-    for button in (cycle, group):
+    if group is not None:
+        require('target_id' not in group, 'Submenu button cannot have a construction target')
+        require(cycle['id'] != group['id'], 'Cycle and submenu presentation IDs must be distinct')
+    buttons = (cycle, group) if group is not None else (cycle,)
+    for button in buttons:
         require(all((*prefix, button['id']) not in source_resources
                     for prefix in _PRESENTATION_PREFIXES),
                 f'New menu resource ID collides with source resources: {button["id"]:08x}')
@@ -158,7 +162,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         button_id = _uint(piece['menu']['id'], f'{piece["id"]}.menu.id')
         require(piece['id'] not in seen_pieces and button_id not in seen_ids,
                 'Duplicate piece identity or original menu button ID')
-        require(button_id not in (cycle['id'], group['id']),
+        require(button_id not in {button['id'] for button in buttons},
                 'New presentation ID collides with an original menu button')
         seen_pieces.add(piece['id'])
         seen_ids.add(button_id)
@@ -184,35 +188,50 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     require(cycle['target_id'] == records[0][1],
             'Cycle alias must target the first selected piece\'s existing root button')
     result = dict(source_resources)
-    for _, button_id, original in records:
-        record = deepcopy(original)
-        _set(record, ITEM_SUBMENU_PARENT_ID, [group['id']])
-        _set(record, ITEM_BUTTON_CLASS, [2])
-        result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
-    for button, kind in ((cycle, 'cycle'), (group, 'submenu')):
+    if group is not None:
+        for _, button_id, original in records:
+            record = deepcopy(original)
+            _set(record, ITEM_SUBMENU_PARENT_ID, [group['id']])
+            _set(record, ITEM_BUTTON_CLASS, [2])
+            result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
+    else:
+        for _, button_id, _ in records:
+            for prefix in _PRESENTATION_PREFIXES:
+                del result[*prefix, button_id]
+    presentations = ((cycle, 'cycle'), (group, 'submenu')) if group is not None else ((cycle, 'cycle'),)
+    for button, kind in presentations:
         result.update(_new_button(records[0][2], button, kind=kind))
     report = validate_menu_experiment_resources(
         result, source_resources, pieces, cycle_button=cycle, submenu=group)
     return result, report
 
 
-def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu):
+def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None):
     """Inspect the encoded result and reject any change outside presentation."""
     cycle, group = cycle_button, submenu
-    cycle_id, group_id = _uint(cycle['id'], 'cycle id'), _uint(group['id'], 'submenu id')
+    cycle_id = _uint(cycle['id'], 'cycle id')
+    group_id = _uint(group['id'], 'submenu id') if group is not None else None
     target_id = _uint(cycle['target_id'], 'cycle target')
-    changed = {(*MENU_EXEMPLAR, _uint(p['menu']['id'], 'original id')) for p in pieces}
+    changed = ({(*MENU_EXEMPLAR, _uint(p['menu']['id'], 'original id')) for p in pieces}
+               if group is not None else set())
     added = {(*prefix, button_id) for prefix in _PRESENTATION_PREFIXES
-             for button_id in (cycle_id, group_id)}
-    require(set(resources) == set(source_resources) | added,
+             for button_id in ((cycle_id, group_id) if group is not None else (cycle_id,))}
+    removed = ({(*prefix, _uint(piece['menu']['id'], 'member id'))
+                for piece in pieces for prefix in _PRESENTATION_PREFIXES}
+               if group is None else set())
+    require(set(resources) == (set(source_resources) - removed) | added,
             'Experiment added or removed an unexpected resource')
-    for key in set(source_resources) - changed:
+    for key in set(source_resources) - changed - removed:
         require(resources[key] == source_resources[key],
                 f'Changed non-target source resource {tgi_string(key)}')
     individual = []
     for piece in pieces:
         button_id = _uint(piece['menu']['id'], 'original id')
         key = (*MENU_EXEMPLAR, button_id)
+        if group is None:
+            require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
+                    'Assembly member still has an individual menu presentation')
+            continue
         before, after = exemplar(source_resources[key]), exemplar(resources[key])
         original, actual = _props(before), _props(after)
         require(after['parent'] == before['parent'] and
@@ -227,7 +246,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
     template = exemplar(source_resources[*MENU_EXEMPLAR, _uint(pieces[0]['menu']['id'], 'template id')])
     template_props = _props(template)
     edited = {0x20, 0x8A2602B8, 0x8A2602B9, 0x8A2602BB, 0x8A416A99, 0xCA416AB5}
-    for button, button_id, kind in ((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu')):
+    presentations = (((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu'))
+                     if group is not None else ((cycle, cycle_id, 'cycle'),))
+    for button, button_id, kind in presentations:
         actual = exemplar(resources[*MENU_EXEMPLAR, button_id])
         props = _props(actual)
         expected_ids = [*template_props]
@@ -255,10 +276,11 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                 resources[*DESCRIPTION, button_id] == _ltext(button['description']),
                 'Wrong new menu localized text')
         require(resources[*ICON, button_id] == _icon(kind), 'Wrong experiment icon')
-    return {'schema_version': 1, 'individual_buttons': individual,
+    report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
                              'menu': 'Rail', 'construction_alias_verified_in_game': False},
-            'submenu': {'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'},
+            'submenu': ({'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'}
+                        if group is not None else None),
             'modified_existing_exemplar_tgis': [tgi_string(key) for key in sorted(changed)],
             'added_resource_tgis': [tgi_string(key) for key in sorted(added)],
             'unchanged_source_resource_count': len(source_resources) - len(changed),
@@ -266,3 +288,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                                        'sha256': hashlib.sha256(source_resources[key]).hexdigest()}
                                       for key in sorted(changed)],
             'in_game_menu_tested': False}
+    if group is None:
+        report['assembly_menu_buttons'] = 1
+        report['member_buttons_hidden'] = len(pieces)
+        report['removed_resource_tgis'] = [tgi_string(key) for key in sorted(removed)]
+        report['unchanged_source_resource_count'] = len(source_resources) - len(removed)
+    return report

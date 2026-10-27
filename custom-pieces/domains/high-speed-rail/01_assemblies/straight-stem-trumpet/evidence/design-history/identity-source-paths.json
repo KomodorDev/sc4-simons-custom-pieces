@@ -1,0 +1,20 @@
+{
+  "purpose": "Preserve actual render source names and paths used before the current assembly identity was renamed.",
+  "assembly_id": "straight-stem-trumpet-v4",
+  "scene_path": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/assembly.json",
+  "scene_sha256": "6e876bb3ff81676ed3b161738696ff1350f3ab347ac0386cd88ce3ee7ffa89be",
+  "source_builds": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "used_component_types": 14,
+    "new_component_types": 4,
+    "reused_component_types": 10,
+    "controller_policy": "One coordinated staged build; do not stack controllers from separate builds"
+  },
+  "render_source_build": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "policy": "Supply an explicitly verified staged build containing these 14 required types; exact input fingerprints are retained in evidence/render.json."
+  },
+  "rendered_source_build_names": [
+    "straight-stem-trumpet-v4"
+  ]
+}

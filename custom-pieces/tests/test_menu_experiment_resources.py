@@ -64,6 +64,43 @@ class MenuExperimentResourceTests(unittest.TestCase):
         return build_menu_experiment_resources(self.source, self.pieces,
                                                cycle_button=self.cycle, submenu=self.submenu)
 
+    def test_single_assembly_button_hides_members_and_preserves_unrelated_resources_exactly(self):
+        before = deepcopy(self.source)
+        output, report = build_menu_experiment_resources(self.source, self.pieces,
+                                                        cycle_button=self.cycle)
+        self.assertEqual(self.source, before)
+        removed = {(*prefix, int(piece['menu']['id'], 16))
+                   for piece in self.pieces for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
+        self.assertEqual(len(output), len(self.source) - len(removed) + 4)
+        self.assertFalse(removed & output.keys())
+        self.assertEqual({key: output[key] for key in self.source.keys() - removed},
+                         {key: self.source[key] for key in self.source.keys() - removed})
+        self.assertEqual(report['assembly_menu_buttons'], 1)
+        self.assertEqual(report['member_buttons_hidden'], 14)
+        self.assertEqual(len(report['removed_resource_tgis']), 56)
+        self.assertEqual(report['individual_buttons'], [])
+        self.assertIsNone(report['submenu'])
+        self.assertEqual(report['modified_existing_exemplar_tgis'], [])
+        self.assertNotIn((*MENU_EXEMPLAR, int(self.submenu['id'], 16)), output)
+        props = properties(output[*MENU_EXEMPLAR, int(self.cycle['id'], 16)])
+        self.assertEqual(props[0x8A2602BB]['values'], [0x6A47F000])
+        self.assertNotIn(ITEM_SUBMENU_PARENT_ID, props)
+        self.assertNotIn(ITEM_BUTTON_CLASS, props)
+        self.assertFalse(report['in_game_menu_tested'])
+
+    def test_single_button_verifier_rejects_restored_member_or_added_submenu(self):
+        output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                   cycle_button=self.cycle)
+        changed = dict(output)
+        key = (*MENU_EXEMPLAR, int(self.pieces[1]['menu']['id'], 16))
+        changed[key] = self.source[key]
+        extra = dict(output)
+        extra[*MENU_EXEMPLAR, int(self.submenu['id'], 16)] = b'Unexpected second assembly entry'
+        for damaged in (changed, extra):
+            with self.subTest(damaged=damaged is changed), self.assertRaisesRegex(ValueError, 'non-target|unexpected resource'):
+                validate_menu_experiment_resources(damaged, self.source, self.pieces,
+                                                  cycle_button=self.cycle)
+
     def test_moves_fourteen_original_buttons_without_changing_identity_or_assets(self):
         before = deepcopy(self.source)
         output, report = self.build()

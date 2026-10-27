@@ -78,6 +78,32 @@ class PreviewTests(unittest.TestCase):
         self.assertNotIn('unrelated.dat',[call.args[0].name for call in read.call_args_list])
         self.assertEqual(read.call_args_list[0].args[1],(*preview.S3D,0x7f500ff5))
 
+    def test_contact_panels_fit_source_names_and_view_purposes_above_complete_models(self):
+        names = ['A source-backed reusable piece with a deliberately long descriptive name',
+                 'Piece - Already prefixed reusable piece']
+        items = [(name, {'source-model': number}) for number, name in enumerate(names)]
+        untouched = deepcopy(items)
+        model_view = Image.new('RGB', (1200, 1000), '#00ff00')
+        with patch.object(preview, 'render_view', return_value=model_view) as render:
+            result = preview.render_contact_sheet(items, {}, self.root/'contact.png', title='Component collection')
+        self.assertEqual(items, untouched)
+        self.assertEqual(len(result['panel_headers']), 2)
+        self.assertEqual([call.args[2:] for call in render.call_args_list], [(45,36,1200,1000)]*2)
+        with Image.open(self.root/'contact.png') as image:
+            for number, header in enumerate(result['panel_headers']):
+                self.assertEqual(header['source_name'], names[number])
+                self.assertTrue(header['captions'][0].startswith('Piece - '))
+                self.assertNotIn('Piece - Piece - ', header['captions'][0])
+                self.assertEqual(header['captions'][1],
+                                 'Clean view | Southeast view | Authored orientation: 0°')
+                left, top, right, bottom = header['viewport_box']
+                self.assertEqual(image.crop((left,top,right,bottom)).tobytes(),
+                                 Image.new('RGB', (600,500), '#00ff00').tobytes())
+                for row in header['rows']:
+                    self.assertGreaterEqual(row['bounds'][0], number*640)
+                    self.assertLessEqual(row['bounds'][2], (number+1)*640)
+                    self.assertLess(row['bounds'][3], top)
+
     def test_runtime_address_alias_is_rejected_before_reading_a_pretty_preview(self):
         self.piece.update(footprint=[17,2], cells=[[0,0],[16,0],[0,1]],
                           tile_ids=['7f503000','7f504000','7f503010'])
@@ -97,6 +123,14 @@ class PreviewTests(unittest.TestCase):
         self.assertTrue(all(item['tile_index']>=0 for item in evidence['grid']['tile_labels']))
         self.assertIn('in-game placement and traffic remain unverified',evidence['captions'][-1])
         self.assertEqual(evidence['header']['rows'][1]['colour'], '#176eaf')
+        self.assertEqual(evidence['header']['rows'][0]['text'],'Piece - Actual Test Piece')
+        self.assertEqual(evidence['display_title'],evidence['header']['rows'][0]['text'])
+        self.assertEqual(evidence['piece_id'],self.piece['id'])
+        self.assertEqual(evidence['menu_name'],self.piece['name'])
+        self.assertEqual(evidence['header']['rows'][1]['text'],
+                         'Clean view | Southeast view | Authored orientation: 0°')
+        index=json.loads(self.index.read_text())
+        self.assertEqual(index['pieces'][self.piece['id']]['views']['angled']['display_title'],evidence['display_title'])
         self.assertFalse(evidence['grid']['tile_scale']['caption_visible'])
         self.assertEqual(sum('1 tile = 16 m' in caption for caption in evidence['captions']), 1)
         self.assertFalse(self.guide.exists(),'No giant legacy preview guide is generated')
@@ -124,6 +158,7 @@ class PreviewTests(unittest.TestCase):
         self.assertAlmostEqual(top['camera']['up_s3d'][2],-1.)
         self.assertEqual(top['displayed_rotation_ccw_degrees'],0.)
         self.assertIn('Top view, north up',top['captions'][1])
+        self.assertEqual(top['captions'][1],'Clean view | Top view, north up | Authored orientation: 0°')
         self.assertEqual(top['header']['rows'][1]['colour'],angle['header']['rows'][1]['colour'])
         self.assertTrue(result['coverage']['complete'])
 
