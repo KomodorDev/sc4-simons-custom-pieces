@@ -994,9 +994,8 @@ def _ensure_piece_document(directory, subject):
         subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
     title = subject.get('name', subject['id'])
     chapters = ('1. Views', '2. Piece and placement', '3. Connection matrix', '4. Testing')
-    lines = [markdown_metadata(title, 'Explain this piece, its measured connections, and its current test coverage.',
-                               'players', 'guide').rstrip(), '',
-             '# '+title, '', LAYOUT_MARKER, '',
+    lines = ['# '+title, '', 'Purpose: explain this reusable piece and its connections and test coverage.', '',
+             LAYOUT_MARKER, '',
              ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
                         for chapter in chapters), '']
     content = (
