@@ -353,6 +353,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet_v4.py plus independent staged build resource checks; confirmed at: 2026-10-20T10:42:34.956270+00:00; evidence: [../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:29:44.936700+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 
 </details>
 
@@ -382,6 +383,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet_v4.py plus independent staged build resource checks; confirmed at: 2026-10-20T10:42:34.964878+00:00; evidence: [../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:29:44.936700+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 
 </details>
 

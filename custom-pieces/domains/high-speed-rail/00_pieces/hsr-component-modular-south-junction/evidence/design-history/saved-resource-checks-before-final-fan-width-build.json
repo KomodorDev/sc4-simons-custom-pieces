@@ -1,0 +1,1207 @@
+{
+  "schema_version": 1,
+  "purpose": "Piece-scoped projection of an existing passed saved-build verification report; this documentation refresh is not a new native test run or a game observation.",
+  "piece_id": "hsr-component-modular-south-junction",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "source_verification_sha256": "2f4c2fe10ed979509d1e9d82b7785a374bfe95e537beed7d103503a9e465881d",
+  "source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+  "verified_piece_report": {
+    "id": "hsr-component-modular-south-junction",
+    "menu": {
+      "piece_id": "hsr-component-modular-south-junction",
+      "title": "SCP | [PART] HSR Modular Symmetric Split and Return",
+      "menu": "Rail",
+      "menu_id": "6a47f82e",
+      "puzzle_id": "f82e",
+      "order": "7012f82e",
+      "icon_style": "hsr-component-modular-south-junction",
+      "icon": {
+        "width": 176,
+        "height": 44,
+        "pixel_format": "RGBA8",
+        "interlaced": false,
+        "states": [
+          "locked",
+          "normal",
+          "selected",
+          "highlighted"
+        ],
+        "state_dimensions": [
+          44,
+          44
+        ],
+        "transparent_corners": true,
+        "crc_valid": true,
+        "sha256": "5a89093be191a07d9e1451b8f4243ecfeadb184fc8f34a9acecbaf54bab6f738"
+      },
+      "icon_identity": {
+        "category": "part",
+        "badge": "PART",
+        "network": "HSR",
+        "palette": "teal",
+        "kind": "JCT",
+        "meaning": "Individual building piece"
+      },
+      "retained_native_properties_verified": true,
+      "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+      "resources": [
+        {
+          "tgi": "2026960b-123006aa-6a47f82e",
+          "bytes": 578,
+          "sha256": "e8e18261d959faa59e493672564bab65fdc67e0c2a8aa77264ad57876f9942e9"
+        },
+        {
+          "tgi": "2026960b-123007bb-6a47f82e",
+          "bytes": 106,
+          "sha256": "0ac0e3f703a379e01f2a07c5888395040390356898a16f120c27896e2f86a423"
+        },
+        {
+          "tgi": "6534284a-2a3858e4-6a47f82e",
+          "bytes": 237,
+          "sha256": "24047c5cdcbf9c6eea4a6ded19a29e158372079292d6b520979384e963e299d6"
+        },
+        {
+          "tgi": "856ddbac-6a386d26-6a47f82e",
+          "bytes": 6187,
+          "sha256": "5a89093be191a07d9e1451b8f4243ecfeadb184fc8f34a9acecbaf54bab6f738"
+        }
+      ],
+      "in_game_menu_tested": false
+    },
+    "paths": {
+      "tile_count": 14,
+      "encoded_routes_checked": 22,
+      "external_ports_checked": 6,
+      "permitted_movements_checked": 4,
+      "unique_complete_journeys_checked": 4,
+      "rotations_checked": 4,
+      "exact_3d_cell_seams": true,
+      "all_encoded_tracks_used_by_intended_journeys": true,
+      "unwanted_u_turns": false,
+      "unwanted_cross_level_transfers": false,
+      "maximum_encoded_grade": 0.0,
+      "native_port_heights_m": [
+        15.5
+      ],
+      "literal_port_tangents_checked": 6,
+      "frozen_module_path_files_checked": 14,
+      "frozen_module_recipe": "hsr_component_modular_south_junction",
+      "frozen_module_source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "all_module_local_path_bytes_unchanged": true,
+      "custom_curved_interfaces_require_matching_continuation": false,
+      "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+      "collision_free_operation_claimed": false,
+      "grade_separated_crossings_checked": 0,
+      "grade_separated_projected_contacts_checked": 0,
+      "grade_separated_crossings": [],
+      "same_direction_shared_tail_contacts_checked": 6,
+      "independent_at_grade_conflicts_checked": 0,
+      "native_straight_eight_metre_collars_checked": 8
+    },
+    "models": {
+      "all_module_local_model_bytes_unchanged": true,
+      "all_module_local_path_bytes_unchanged": true,
+      "authored_clearance_height_m": 5.0,
+      "authored_clearance_width_m": 5.0,
+      "coplanar_overlap_meshing_tolerance_m": 0.0001,
+      "custom_curve_ends_reswept": false,
+      "frozen_module_model_zooms_checked": 70,
+      "frozen_module_path_files_checked": 14,
+      "frozen_module_recipe": "hsr_component_modular_south_junction",
+      "frozen_module_source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+      "global_support_spacing_checked": true,
+      "maximum_coplanar_bed_overlap_area_m2": 5.606683544101543e-07,
+      "maximum_coplanar_bed_overlap_thickness_m": 4.711239895982544e-07,
+      "minimum_support_centre_distance_m": 16.0,
+      "models_checked": 71,
+      "native_material_preserved": true,
+      "path_nodes_covered_by_visible_bed": 574,
+      "positive_area_coplanar_bed_pairs": 8223,
+      "preview_matches_tiles": true,
+      "rail_crossing_ribbon_nodes": 30,
+      "render_budget_models_checked": 71,
+      "render_group_budget_checked": true,
+      "sloped_support_heads_checked": 0,
+      "support_centres_sc4path_xy": [
+        [
+          0.0,
+          -16.0
+        ],
+        [
+          0.0,
+          -0.0
+        ],
+        [
+          16.0,
+          -80.0
+        ],
+        [
+          16.0,
+          -64.0
+        ],
+        [
+          16.0,
+          -48.0
+        ],
+        [
+          16.0,
+          -32.0
+        ],
+        [
+          32.0,
+          -16.0
+        ],
+        [
+          32.0,
+          -0.0
+        ]
+      ],
+      "support_columns_checked": 8,
+      "support_contact_points_checked": 72,
+      "support_foundations_within_reserved_cells": true,
+      "support_tops_touch_deck": true,
+      "train_clearance_segments_checked": 552,
+      "render_groups": {
+        "all_authored_groups_within_budget": true,
+        "model_resources_checked": 71,
+        "distinct_model_payloads_checked": 15,
+        "details": [
+          {
+            "authored_frames_checked": 8,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 16,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 14,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 5,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 1,
+            "max_authored_vertices": 116,
+            "max_authored_triangles": 82,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 7,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 25,
+            "max_authored_vertices": 504,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 22,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 10,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 9,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 18,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 16,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 5,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 1,
+            "max_authored_vertices": 105,
+            "max_authored_triangles": 63,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 157,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          }
+        ]
+      }
+    },
+    "shadows": {
+      "artwork": "new code-authored vertical triangle silhouettes",
+      "projection": "vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset",
+      "tile_metres": 16.0,
+      "supersample_per_axis": 8,
+      "all_five_zoom_resources_valid": true,
+      "silhouettes_match_actual_s3d_geometry": true,
+      "native_projection_calibrated": false,
+      "texture_alpha_cutouts_sampled": false,
+      "in_game_shadow_selection_tested": false,
+      "subpixel_structural_zooms": [],
+      "images": [
+        {
+          "instance": "7f58c000",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            2,
+            0,
+            6,
+            8
+          ],
+          "coverage_pixels": 32.0,
+          "sha256": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074"
+        },
+        {
+          "instance": "7f58c001",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            4,
+            0,
+            13,
+            16
+          ],
+          "coverage_pixels": 128.01568627450982,
+          "sha256": "f112303c4bad70a7beb58dc236ca83c635ae3f5a50cf791cca8afa22ef1969af"
+        },
+        {
+          "instance": "7f58c002",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            8,
+            0,
+            25,
+            32
+          ],
+          "coverage_pixels": 512.0470588235294,
+          "sha256": "4e73db12402d51a5ef356e1a470408a04d5bae63f1a1933d78b9071c0e053d16"
+        },
+        {
+          "instance": "7f58c003",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            16,
+            0,
+            49,
+            64
+          ],
+          "coverage_pixels": 2048.2078431372547,
+          "sha256": "a45d539df4a3f0e9eadcd53d2a19a70a10df53f88b5bddd243bfa0b6c742fde5"
+        },
+        {
+          "instance": "7f58c004",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            32,
+            0,
+            97,
+            128
+          ],
+          "coverage_pixels": 8192.878431372548,
+          "sha256": "660edeca2a512162b2697ec20c70bd29da5900ace606f9c3c39c5e37e2371b33"
+        },
+        {
+          "instance": "7f58c200",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            2,
+            0,
+            6,
+            8
+          ],
+          "coverage_pixels": 32.0,
+          "sha256": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074"
+        },
+        {
+          "instance": "7f58c201",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            3,
+            0,
+            12,
+            16
+          ],
+          "coverage_pixels": 128.01568627450982,
+          "sha256": "e4caf59bad088cbdf4f7691187785dd4718b559ed948a76d6202e210c68c51af"
+        },
+        {
+          "instance": "7f58c202",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            7,
+            0,
+            24,
+            32
+          ],
+          "coverage_pixels": 512.0470588235294,
+          "sha256": "f5154ddf4f227a608f4f91f35356ab7f421498e8bab99d35644637e57631eead"
+        },
+        {
+          "instance": "7f58c203",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            15,
+            0,
+            48,
+            64
+          ],
+          "coverage_pixels": 2048.2078431372547,
+          "sha256": "3a0470532daf78b9dfd44480e2fe98ab10e1aabd8b59675cc9a7f5f9da2b089e"
+        },
+        {
+          "instance": "7f58c204",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            31,
+            0,
+            96,
+            128
+          ],
+          "coverage_pixels": 8192.878431372548,
+          "sha256": "fc3a5fbd88b9e84bce8dd9341d840ff9790ee0ec33d5b90dcc1aa22cb1f17600"
+        },
+        {
+          "instance": "7f58c010",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            2,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 32.36470588235294,
+          "sha256": "e47cb01c5e5c799836ee5f0e874adbb44d69b45e90ce57cf543774bd101dd73f"
+        },
+        {
+          "instance": "7f58c011",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            4,
+            0,
+            15,
+            16
+          ],
+          "coverage_pixels": 129.3686274509804,
+          "sha256": "d0221a86be7b25fb06f8176f18526dab82ef43693b013ec887432cba09e3721e"
+        },
+        {
+          "instance": "7f58c012",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            8,
+            0,
+            29,
+            32
+          ],
+          "coverage_pixels": 517.4196078431372,
+          "sha256": "1010a32c289294055a11ad9421d7eea268fb76ed5a7b29247d6e6686fc1109f3"
+        },
+        {
+          "instance": "7f58c013",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            16,
+            0,
+            58,
+            64
+          ],
+          "coverage_pixels": 2069.9176470588236,
+          "sha256": "5c2f890346b42bb27cb58a7742cf9bca3cfe2bcd7fc23340b75ec0bd5b3e0d94"
+        },
+        {
+          "instance": "7f58c014",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            32,
+            0,
+            116,
+            128
+          ],
+          "coverage_pixels": 8279.23137254902,
+          "sha256": "4fc141e82e330fb5f70c5fcdfe449cbbb662b9ba8001c811bff5f258683024bd"
+        },
+        {
+          "instance": "7f58c210",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            6,
+            8
+          ],
+          "coverage_pixels": 32.36470588235294,
+          "sha256": "f094dd36560f031e411f8465faea032b75f03113880f3ad89354a1e19b18e0ba"
+        },
+        {
+          "instance": "7f58c211",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            1,
+            0,
+            12,
+            16
+          ],
+          "coverage_pixels": 129.3686274509804,
+          "sha256": "505448fd5efe86f5d16e840ea67e2dba2050081feb9395e653aaf77117033553"
+        },
+        {
+          "instance": "7f58c212",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            3,
+            0,
+            24,
+            32
+          ],
+          "coverage_pixels": 517.4196078431372,
+          "sha256": "2c8650372c4458f5e47bf480b667e8f8dccc2c585fa46dcca50850de3931aed2"
+        },
+        {
+          "instance": "7f58c213",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            6,
+            0,
+            48,
+            64
+          ],
+          "coverage_pixels": 2069.9176470588236,
+          "sha256": "90efee3f2ba65e156a9b2d40343e448114e1b32061855f8ab7e056d699d6ecc6"
+        },
+        {
+          "instance": "7f58c214",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            12,
+            0,
+            96,
+            128
+          ],
+          "coverage_pixels": 8279.23137254902,
+          "sha256": "3bd954e120654fb50837c7c0e9023a36c6b39a68d6bab19cc69c2d8bd10de7c9"
+        },
+        {
+          "instance": "7f58c020",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            3,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 29.4078431372549,
+          "sha256": "d3c6b3ac823ff1654d422a9d14da86a51a01ec34b78039ed3d45db1eaba779e8"
+        },
+        {
+          "instance": "7f58c021",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            6,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 117.58039215686274,
+          "sha256": "6f131fd4e602dd9fc15e204a89c51d15708291a897ea80e941f7a16e1e73ea03"
+        },
+        {
+          "instance": "7f58c022",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            12,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 470.3921568627451,
+          "sha256": "338197ea17732a1ab6ff931440a6721c8aacfe2dae6c8db95cd9d79cf42588c2"
+        },
+        {
+          "instance": "7f58c023",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            24,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 1881.592156862745,
+          "sha256": "98f9f93de4a29175f8446e0cf27cf01f11226496c40fec133eade23670e8780f"
+        },
+        {
+          "instance": "7f58c024",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            49,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 7526.290196078431,
+          "sha256": "0c5ca68aa70f001eb050efdc49d0c237342b0c361bd0a39c112a831485a1158d"
+        },
+        {
+          "instance": "7f58c120",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 62.305882352941175,
+          "sha256": "0d5cfe575e9fded2408b3caec5ef531e1bc116b23d07396c1ac68150e0602b79"
+        },
+        {
+          "instance": "7f58c121",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 249.27058823529413,
+          "sha256": "47638667e9907b567a30d914c390f37edd8fae601f0c247d0e284c6a1b00a12f"
+        },
+        {
+          "instance": "7f58c122",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 996.9411764705883,
+          "sha256": "d3fe50cacab77b419c59a15e194582b35e2ca10a74136d721d73e98d0be935d8"
+        },
+        {
+          "instance": "7f58c123",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 3987.788235294118,
+          "sha256": "4b7dd6ba0ec14aeb9242eb5b30da0e720d443fbdb4e5930dd7472f7635d9ba8c"
+        },
+        {
+          "instance": "7f58c124",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 15951.160784313726,
+          "sha256": "33f2f60a70dc39d256c3db6d04a25b12b96cb6a2b1b1c9aa944b83044bc8be72"
+        },
+        {
+          "instance": "7f58c220",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            5,
+            8
+          ],
+          "coverage_pixels": 29.4078431372549,
+          "sha256": "fca62d0dc9a2061c1e59aab5d149a98593989b26dd785afedd1e578e2008ca9a"
+        },
+        {
+          "instance": "7f58c221",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            10,
+            16
+          ],
+          "coverage_pixels": 117.58039215686274,
+          "sha256": "400756b43e41fbd2c63f8c2d3c39ddced3ec82c37ff03ce8a3fd6995feb2415b"
+        },
+        {
+          "instance": "7f58c222",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            20,
+            32
+          ],
+          "coverage_pixels": 470.3921568627451,
+          "sha256": "0664237c3267e0cee2909a383ddff572df86421f6d5e1463a5bac47a06235e83"
+        },
+        {
+          "instance": "7f58c223",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            40,
+            64
+          ],
+          "coverage_pixels": 1881.592156862745,
+          "sha256": "287c2d82d979b67d48a019825e1cb47d7815157a84a4fb4e9678b502d3af01d2"
+        },
+        {
+          "instance": "7f58c224",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            79,
+            128
+          ],
+          "coverage_pixels": 7526.290196078431,
+          "sha256": "b15d62a9a4701f21534677e4ec178d8becfed519fce3774643fe4c6c28a90b5f"
+        },
+        {
+          "instance": "7f58c030",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            5,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 10.737254901960783,
+          "sha256": "f844ff06a054b83102390ff6c61cbb041ab6eeda9c00f7c8df58815d5f903982"
+        },
+        {
+          "instance": "7f58c031",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            10,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 43.03529411764706,
+          "sha256": "c8067c02fe458888501e4460340dc46dea7111dfab1163d94200836d9f584fe2"
+        },
+        {
+          "instance": "7f58c032",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            21,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 171.90980392156862,
+          "sha256": "98f5f9a4a5df5511b560d92036c3b52dcb3584c8431a5a517fb7a488b99c09b0"
+        },
+        {
+          "instance": "7f58c033",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            43,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 687.5960784313726,
+          "sha256": "cb3323089cec33f0621877a89a9b08b3bc9112f0fc7760e1dd2163159cf0c045"
+        },
+        {
+          "instance": "7f58c034",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            86,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 2750.266666666667,
+          "sha256": "355fe43793ca4d7d746375678a9d54170cf429ede0699f14eff11ad4de8f897a"
+        },
+        {
+          "instance": "7f58c130",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 64.0,
+          "sha256": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2"
+        },
+        {
+          "instance": "7f58c131",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 256.0,
+          "sha256": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409"
+        },
+        {
+          "instance": "7f58c132",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 1024.0,
+          "sha256": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd"
+        },
+        {
+          "instance": "7f58c133",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 4096.0,
+          "sha256": "f22537853e4049367871bedd85d3a62cd1112cb0d960241d915dc61fbddf08ab"
+        },
+        {
+          "instance": "7f58c134",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 16384.0,
+          "sha256": "a69fb0276cf8d1284cf6594ecbed6dec30c83926e95b22dcd78647a943862b73"
+        },
+        {
+          "instance": "7f58c230",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            3,
+            8
+          ],
+          "coverage_pixels": 10.737254901960783,
+          "sha256": "d6c02d9914a173c247918423aa8264ae5fd51996b80881b7d46d9d86012491f3"
+        },
+        {
+          "instance": "7f58c231",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            6,
+            16
+          ],
+          "coverage_pixels": 43.03529411764706,
+          "sha256": "08a12579bb4e4eb1782b79adcc90b9142e3eca6f69bc932a2981af01ab9d43a1"
+        },
+        {
+          "instance": "7f58c232",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            11,
+            32
+          ],
+          "coverage_pixels": 171.90980392156862,
+          "sha256": "eaa9ed69c73f2d63ce3f5a9041a518e1dcb75a395a123ba1741ce0e89db3ced9"
+        },
+        {
+          "instance": "7f58c233",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            21,
+            64
+          ],
+          "coverage_pixels": 687.5960784313726,
+          "sha256": "0c74ae3964b6ffc76d859345b74cc88515139fe1e94c5f3502b93c480f06f081"
+        },
+        {
+          "instance": "7f58c234",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            42,
+            128
+          ],
+          "coverage_pixels": 2750.266666666667,
+          "sha256": "00e39968a3044e70ef65833247f8c78a2b37ca198a69e7d8016eb2be663615d1"
+        },
+        {
+          "instance": "7f58c040",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            7,
+            0,
+            8,
+            1
+          ],
+          "coverage_pixels": 0.0784313725490196,
+          "sha256": "59b57fbae2a790ab5597316f4c94795721fedb033dc03aaec71aed6cd795a95a"
+        },
+        {
+          "instance": "7f58c041",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            15,
+            0,
+            16,
+            2
+          ],
+          "coverage_pixels": 0.32941176470588235,
+          "sha256": "14836cc583152790ad82446646122c0aaf0033c2d6f86b1e780e5f3749fcf5ca"
+        },
+        {
+          "instance": "7f58c042",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            31,
+            0,
+            32,
+            4
+          ],
+          "coverage_pixels": 1.3137254901960784,
+          "sha256": "f562c15afd8b97af7d339689321512e771051ce674efffc5d6f7ba3c39e9b8c4"
+        },
+        {
+          "instance": "7f58c043",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            62,
+            0,
+            64,
+            7
+          ],
+          "coverage_pixels": 5.270588235294118,
+          "sha256": "2570e827c8d7b5dcd6642a268ccd19c557921b5f1e40d2d828ece6cefc7523c8"
+        },
+        {
+          "instance": "7f58c044",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            124,
+            0,
+            128,
+            14
+          ],
+          "coverage_pixels": 21.066666666666666,
+          "sha256": "72a744da4899069db98bd9830e17cdeb98b65973c4775cf7f2667c87983de0ec"
+        },
+        {
+          "instance": "7f58c140",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 60.705882352941174,
+          "sha256": "4c55b7da3882cd1db8d93fd699a11ccf1cbd811455b9a1e9be1316bd729e6d8d"
+        },
+        {
+          "instance": "7f58c141",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 242.8862745098039,
+          "sha256": "9dc772c2398c94539a8adea319aecdc1737cf8c34181b11647d61c2c0ac86f3b"
+        },
+        {
+          "instance": "7f58c142",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 971.4745098039216,
+          "sha256": "082e8e4160f1f0f1f717030c0232222f7cbc6f1cfba33a479f55353d07436f0c"
+        },
+        {
+          "instance": "7f58c143",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 3886.062745098039,
+          "sha256": "d1c37931f4b91ad2fcc1c5b74441171017d34986ab6ff7cd0ed1e508206150ce"
+        },
+        {
+          "instance": "7f58c144",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 15543.921568627451,
+          "sha256": "ffa0294d7b44ed9399410d8361c1647d73cba603cf0c164776b6dcba2498d64b"
+        },
+        {
+          "instance": "7f58c240",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "coverage_pixels": 0.0784313725490196,
+          "sha256": "a9ea887226a8578413e93faaa0818dd79b95c5362687f39c7a4f76352b2e64c6"
+        },
+        {
+          "instance": "7f58c241",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            1,
+            2
+          ],
+          "coverage_pixels": 0.32941176470588235,
+          "sha256": "a60ec1c6a0efb426e86024bde335f5af6be42664cefebae84dda111699f7f9af"
+        },
+        {
+          "instance": "7f58c242",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            1,
+            4
+          ],
+          "coverage_pixels": 1.3137254901960784,
+          "sha256": "07cb47f6a58bc752efc820702c6e544ebcf8b653be01e0850af8b34f4b0e62c9"
+        },
+        {
+          "instance": "7f58c243",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            2,
+            7
+          ],
+          "coverage_pixels": 5.270588235294118,
+          "sha256": "64faf289f0e46270e0a58b8bb49187b0c14bb4b4d3efbdaebaebcdb5e2c1c697"
+        },
+        {
+          "instance": "7f58c244",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            4,
+            14
+          ],
+          "coverage_pixels": 21.066666666666666,
+          "sha256": "1c77c3b2a3333a668a1604766470fbbc8f156e1f7f624e0452e3d48a0d19db1a"
+        },
+        {
+          "instance": "7f58c150",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 59.984313725490196,
+          "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+        },
+        {
+          "instance": "7f58c151",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 240.06274509803922,
+          "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+        },
+        {
+          "instance": "7f58c152",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            1,
+            0,
+            31,
+            32
+          ],
+          "coverage_pixels": 960.0,
+          "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+        },
+        {
+          "instance": "7f58c153",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            2,
+            0,
+            62,
+            64
+          ],
+          "coverage_pixels": 3840.0,
+          "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+        },
+        {
+          "instance": "7f58c154",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            4,
+            0,
+            124,
+            128
+          ],
+          "coverage_pixels": 15360.0,
+          "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+        }
+      ]
+    }
+  },
+  "geometry_and_game_ids_changed": false,
+  "human_observations_added": 0,
+  "in_game_operation": "unverified"
+}

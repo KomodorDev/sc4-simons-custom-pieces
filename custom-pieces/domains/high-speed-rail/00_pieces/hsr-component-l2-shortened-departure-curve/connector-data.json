@@ -1,0 +1,2654 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "hsr-component-l2-shortened-departure-curve",
+  "domain_id": "high-speed-rail",
+  "source_binding": {
+    "compiled_build": "dist/trumpet-icon-no-tab-parts",
+    "compiled_manifest_sha256": "467a09cc7aad0f042530e5274254812ad05f8f6cfe0c93840e270393b5c1ec43",
+    "files": {
+      "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+      "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
+      "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+      "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "4af85a79d8e4b5fb0c8d8000a91afaa1d4482db0b544391dac0903e675bb7ed2",
+      "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
+      "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d36288f967a7a107d0a23fcc5d1e1265b0093be127624870e3ddb312b5a2ee5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "f238345479371c5e383dc293019f97fba79b5dc8687d68be02d2874693f75042",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "e6cf3456c68fc57f103f6735bfaf15e5bfeb1c8b8c26778dabb44d1f2d76137f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "445d313bc9190e1a6689ba61f042c94942bfe0d8be5ac90a0c15abcd3aa079f4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "e5c192be2e6a96e7f135caad204b5fd041c2cd30a21c513c77c21e2ffc1a6eb5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "6a449968af8993cb96ea540ea1791aac1849c8843882a74ca1356bf8e3d5c928",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
+      "domains/high-speed-rail/implementation/scp_hsr/menu.py": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_features.py": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
+      "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866",
+      "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+      "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
+      "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+      "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+      "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "e53a8b95807d530081c9721d62a2a24147464967496828ece947ddd68e37822e",
+      "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+      "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+      "framework/scp/connector_metadata.py": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
+      "framework/scp/connector_overview.py": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
+      "framework/scp/content.py": "f477103efe3ace402adbc080e4be386b08fb976199a71de81e615b6f7773cade",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+      "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+      "framework/scp/jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+      "framework/scp/menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+      "framework/scp/piece_matrix.py": "ebf4d29bce4bb59d8f61e39b4cfc9f6745ac4c01c327ec8320417c200c8e1826",
+      "framework/scp/piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+      "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+      "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0abd859485be079e9b0ec6765a2da0ea18699b717bfd62e1556140443b37f2dd",
+      "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+      "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+      "framework/scp/verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd",
+      "schemas/connector-data.schema.json": "78a77d6c231f59d06605ff15dfac87df07bf89804680fc731fd9ca513efb20c9",
+      "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+      "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "hsr-component-l2-shortened-departure-curve",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for HSR L2 Shortened One-Way Departure Curve.",
+      "schema_version": 1,
+      "id": "hsr-component-l2-shortened-departure-curve",
+      "name": "HSR L2 Shortened One-Way Departure Curve",
+      "description": "A twelve-tile one-way departure curve with a native eight-metre centred southern end. Its final 8.5 m collar is locally eased to free an existing ordinary straight.",
+      "domain": "high-speed-rail",
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f831",
+      "tile_ids": [
+        "7f58f000",
+        "7f58f100",
+        "7f58f200",
+        "7f58f300",
+        "7f58f210",
+        "7f58f310",
+        "7f58f410",
+        "7f58f320",
+        "7f58f420",
+        "7f58f430",
+        "7f58f440",
+        "7f58f450"
+      ],
+      "preview_id": "7f58fff5",
+      "effect_name": "preview_scp_hsrcomp_f831_00",
+      "footprint": [
+        5,
+        6
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "orientation_count": 8,
+      "structural_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f831",
+        "order": "7012f831",
+        "style": "hsr-component-l2-shortened-departure-curve"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f58f000",
+          "source": "7f58f000",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f100",
+          "source": "7f58f100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f200",
+          "source": "7f58f200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f300",
+          "source": "7f58f300",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f210",
+          "source": "7f58f210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f310",
+          "source": "7f58f310",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f410",
+          "source": "7f58f410",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f320",
+          "source": "7f58f320",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f420",
+          "source": "7f58f420",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f430",
+          "source": "7f58f430",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f440",
+          "source": "7f58f440",
+          "rotation": 0
+        },
+        {
+          "tile": "7f58f450",
+          "source": "7f58f450",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+        "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "category": "hsr-components",
+      "component": {
+        "kind": "partition_component",
+        "support_centers": [
+          [
+            32.0,
+            0.0
+          ],
+          [
+            48.0,
+            -16.0
+          ],
+          [
+            64.0,
+            -48.0
+          ],
+          [
+            64.0,
+            -64.0
+          ],
+          [
+            64.0,
+            -80.0
+          ],
+          [
+            57.377596412,
+            -29.524559409
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0,
+        "custom_curved_interfaces": true
+      },
+      "ports": {
+        "W": {
+          "in": [
+            22.398518552216863,
+            8.0,
+            15.5
+          ]
+        },
+        "S": {
+          "out": [
+            64.0,
+            -88.0,
+            15.5
+          ]
+        }
+      },
+      "movements": [
+        [
+          "W",
+          "S"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Individual component; assembly and game operation unverified"
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "hsr-component-l2-shortened-departure-curve",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:hsr-component-l2-shortened-departure-curve:ea5118b0-ea5118b1-7f58fff5": "4dc15a1e45643e50ce10b156fc7fa74af8af236b07a25d5891958b0c155fd8f5",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f000": "4a3a73e9e1e54027dd11cdba0c8b8d0c49913c97255f70bd4d4f6ca6db4899d5",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f100": "ddd99e496a3ec236297155bbd7bacd5e67de3bba1d995654ed5127b7366dc4ce",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f200": "58bab16b42c7cde11d9c7e0122008a9f503c60108a183612a7c3566421a5e2bc",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f210": "644dd931f0756fa630c3158f1002828c3a74012cc00b6458adac11d9d3b7909d",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f300": "b131f3fb4f2b837f3385ba2f62b5e67464196ab09811bc4bedfa7804153b163e",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f310": "39362a92ea34c9de095a64e5d1af8d81b92d7b542fa8405c2ddde5f4502fec0a",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f320": "43607e58a9473a0b1051ec850cd0ad09eba4f55c6329c7756f5c0d0787470b0a",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f410": "71de1821a5d755fd4920412a96356b0410e347e465903c87d891dd4a3b7ebc11",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f420": "8639a4392e82b6bf129a8b0cb14bd61ec3d1c2f82be58a96f598b0e4855bd98f",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f430": "1ada9e8f63c733a66001467edcfe7001f0eb476d6238e343a91dc8e2b66fd342",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f440": "ec15f58b80fb04b6c4a50183c8f73bf6836002804195ef1858722d1e1bd2d569",
+          "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f450": "dd0c36f7d3f003359f9f50e74955cbf8d9d7bc210fd3876ce6af1973404f49cd",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f000": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f001": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f002": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f003": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f004": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f100": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f101": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f102": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f103": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f104": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f200": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f201": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f202": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f203": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f204": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f210": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f211": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f212": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f213": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f214": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f300": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f301": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f302": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f303": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f304": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f310": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f311": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f312": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f313": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f314": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f320": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f321": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f322": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f323": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f324": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f410": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f411": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f412": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f413": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f414": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f420": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f421": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f422": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f423": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f424": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f430": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f431": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f432": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f433": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f434": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f440": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f441": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f442": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f443": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f444": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f450": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f451": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f452": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f453": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f454": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+          "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58fff5": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f000": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f100": "c72c6f512f3afb22ceb8095dd5bdcc2f40e34c2b6f183018464b1c643d79969a",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f200": "fad2e9b2afb3667b9636675dbf3d078fda876aaf5877080376c1adbbdbffa437",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f210": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f300": "a2575eb6aa6fbeaf662989dadaa491f69614903d94f240506688d6923fff80ef",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f310": "f8b539856215992ebb9c72498ac2493b21b64dd3ca70b488a386547fbacd85a8",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f320": "ccc4b74726e47dfb9f204417b4d6f556c46769be178efb86c6c82df45482f2dc",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f410": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f420": "cb15369b9be1627e41d3b33344139ad821597dedbf09355d3ff36de152d20333",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f430": "b05d7944182b7f0b5d796e5983ff20de91e94e0f5d9f852455ab0cd2f4f26d1f",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f440": "c4af6c3655d14ae4367a68333a06d22d990a8ce346b6da7950316bfeff1452c6",
+          "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f450": "99d5405f8ba8e85d267585aac482d342884b82414160b76f9c52a20e0becf917",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f000": "d8079b1714f4b5507474e2991a00f5b6a93e9d4beed1352fb653c44764772238",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f001": "9392a799e58b611336d119df63cfd39befd2b446092522085e36573089ca23f4",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f002": "425e4a6cffbc3642731f1e49424aa9b0d6414ef425ddc5272c8b2475f3862d18",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f003": "8afbd3a7fd2b2a7f0bfd34893815a6b5667a0901b01002d565cbacfe58ffdd6d",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f004": "5bf443fc79e01c8bc8c3d4117896da7a986e0aa7de764b9e6a7ed78700c9eb85",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f100": "6cae926f74dd73fd92826920168536d5a2e15dc2c9242ad5362ae62e9b5c471b",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f101": "ce64c072f27a24db7cbe5f4235eeeb86c36f25f1c1217294103aa6a08dae9566",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f102": "5859a3bccb2d6b68d949f92a1d635c640fedce0d11ce649b78069ca61928f43e",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f103": "a8cd6e2d0deeba3e4f1fb7b91752b283baab1367c302508be71e32b493952fe5",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f104": "5c9698c5ab29e48e0bf53eeea36bd777d0138ff1a87281d3d734e643cbeab816",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f200": "5cfde643e7654c1c5f6d19f613fe491a7ffd0cc92edd2da2202f09a40aea181f",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f201": "607542865d2addc7913050f24e96e5fa139de8c15c9bea3530448d7f1ff764b9",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f202": "bb4032ebdd83b7276a08698223a622732179bafd01246bbad16188f181c40b93",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f203": "e98084a7e81e84ee1a9dd389326c7e8c8571956018a8ec177ee968af67b0e658",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f204": "0c543ed48841f6e8646c5d8f1b48c6a0a4798a81e7541a7b769e4fe52f6d9359",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f210": "eaff89ad7ddd54c02dc7b36b246ed619d254fc1eac8accb9fba022238d47d367",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f211": "90115405e1d9f2e35247144fa5925f3dadb2b1894d4975d87984c9409572a83b",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f212": "1659c6871fe395dab7e3e164d3a47a97e1bf6feb6edc4a6926554cdd7faaeadb",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f213": "8e91219ecd3c9485646573f59d2897eaafc7d7ca99c5aaa7bd072d113ae7a346",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f214": "826d66f3ad05f3832d2b9762fba93802812155b18a3c35d8114e5ffd32efa015",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f300": "f5f9f3cd7de055193d72c3c4127e08db07aa709cff71b95bb5d3a67bfbc98a7b",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f301": "94dfd2a3b623c54e33c0331f37ac8b445d5359dad7f0125308cdc4d1ba6c1551",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f302": "89be86c7e2addb215a70521bcce7dbc48d99079efd1eb6c00e8fea2d57004002",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f303": "742ff5a697c924ada8f026940ad2de2653dbf3caa943ee1dcfec9417245d9b65",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f304": "1c9d154f23d332b0a97eaaf96b87dc4651d4e60946b9d244795c80cd5d2bc3f0",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f310": "b3324697877d2742b8db7f66c2b1b17fca21333140c80b44b0fe8a7f4ff25ad0",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f311": "4d8291e32f2815aa549622403fad5829b5d1fbe60d62e61c059a48287cfb2aa4",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f312": "f8c308bef8e332268e21991ab89a65ed3b9e0a898c6c775e3b14cea12ba535df",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f313": "0273550deb436f2bae2a61f55d5a61e57826961a6541d47f762f3da7e3650671",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f314": "ec8f4427c51d94c0b5f592297437042f6e13e18ed95af37021e44e16647cc394",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f320": "03a309ea45a5c538e7c33c08103273c6ad851c9ae90e04fc8ab901e5385af7e7",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f321": "a0654f23938fe9d1128d958aa18d310815b8cdd0d50ac086d21ec168d41223e9",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f322": "90579da5f08ced8a88d619080e1eeec6d253df9e664f903dad2cf9989117585a",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f323": "9df4dec9d286c82a3116d359de9c67fe9e9ebe6344ea62de88afc22140af7032",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f324": "a86abf7150fc2dbe271faee2036cd443d2682c094f25e78bdaf4012622889bde",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f410": "4b2db1fa43b49af9a541ca8a18a6311a364ea79dcee128afd8acbf8c171e678c",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f411": "722e9798bde568c954c4a799e957faf8a684c319194f84c0713a26b89a667ce6",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f412": "22ce95364083e27c8b55e8e0882e24ba4ec6b1117f54f137a5c23c234056fc14",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f413": "b64036a8498a7457d910e7b42a6bbe1ce17ba1698cf82957482d2b7860c8bd86",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f414": "8e9f280c3d57614fef54f70caf7d8a752743447c0a2347209c784a8d79fde4e9",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f420": "6b315a78007305faaa86939b5c8ec50463c8a2e1efec8654e3b4d196a24c1f70",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f421": "f0209ac349aacb97bbf2c8e9b2839f25f8b1ff6844d47265a8fbeec492f1eac1",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f422": "eb45621817fc04ff09b9d1f63e11eaa31befd86354915095a88f0efc01b9ca16",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f423": "d98e41e6242f362508e700297588538e704917c770a4b938ff2e3100ac61f430",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f424": "898738210507e91e4756771f63d6879c8a1dbb38db142bb0b19401493123881d",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f430": "dc73a1bb0a72c44c931236c9a20bde20eda1a8ff434b05aa4dbd3994581f4970",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f431": "352e415a8e6bc0d792e0fc2b613ad749e5f0779dab38eba0febf4e8e7afe1b19",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f432": "1d20129ac762571b0337e6283de77e65bf93cf523db085bd79805e7a64da4e85",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f433": "6f8e5a0f7dec92b0ae35bcb7e6fc45dd018351097f6bb794a7fc0abf352b5b63",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f434": "ba55f7430be71c4afe9c1a7abc386975b94e96eab7b3ed1ec63840f7f2510868",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f440": "303654acd20565a2f9f09ed34cbe276ec0c6bdf60daa44c5b8a49e23a91c81be",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f441": "f0b84de7ff304b2973d58888c3506e6d0da4d137a6c13189f4931f01dc8904e9",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f442": "3acb338a271a77587970138397fcc6491f36ad171b6f4361d377c16b571f4e8b",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f443": "b79455a33d1be9e73a44d539c9b316fd114c55fc4e0da3f198252cd089ab4707",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f444": "6577af0d112a4017e40aaaee8e56805269f4c9d8f5374968cc8bd5baf59466d8",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f450": "9412a65f5caf3af15a17d6cc7cb8612ab62be9a9c6716e36f59dc5b244d65e18",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f451": "22d08e97d38d62e0a03f97b7de55e185e6e9aff57fd0505f9b13ce76d6666cc0",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f452": "b1bec698dfdc1d3e0bd0468eb9c95b1addafa53c203d66254540a8e5a802c8ed",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f453": "52a9c1f39e7691ebf93702b11c6abf8bf09bc18d92f3be2d76700f769b367642",
+          "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f454": "e8dc979e7ee9ff8ace7258ef49c371cf8ad36bc8cd1a22ac9b31b56ab47ad83b",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f000": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f100": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f200": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f210": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f300": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f310": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f320": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f410": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f420": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f430": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f440": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f450": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+          "construction:hsr-component-l2-shortened-departure-curve": "b6a554aeebc8ffca76057445ecbf74c7af3d002634191db859d98bb55697c0ee"
+        },
+        "reviewed_contract_available": true,
+        "construction_basis": "Actual emitted per-piece rule sections and Ordering rotation list from the verified V4 staged build."
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "Win",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            22.398519,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "sampled_tangent": [
+            0.927254928799026,
+            -0.3744306304483021
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f100",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f101",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f102",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f103",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f104",
+            "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f100",
+            "construction:hsr-component-l2-shortened-departure-curve"
+          ],
+          "connection_class": "path-interface-d819a6d05c5e43d11db7"
+        },
+        {
+          "id": "Sout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            64.0,
+            -88.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f450",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f451",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f452",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f453",
+            "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f454",
+            "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f450",
+            "construction:hsr-component-l2-shortened-departure-curve"
+          ],
+          "connection_class": "path-interface-365752af76285c80cd0b"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "7:Win>Sout",
+          "entry_port": "Win",
+          "exit_port": "Sout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f831",
+            "0004f831"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f831",
+            "0007f831"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f831",
+            "0006f831"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f831",
+            "0005f831"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Declare the single physical track and complete exposed boundaries; measured saved PATHs retain the exact geometry and directed journey.",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "source_binding": {
+        "piece_sha256": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+        "connections_sha256": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04"
+      },
+      "components": [
+        {
+          "id": "one-way-curve",
+          "network": "hsr",
+          "construction_network": "monorail"
+        }
+      ],
+      "channels": [
+        {
+          "id": "curve-track",
+          "component_id": "one-way-curve",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "custom-curved-end",
+          "component_id": "one-way-curve",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "custom-curved-end-track",
+              "source_port_id": "Win",
+              "direction": "in",
+              "channel_id": "curve-track",
+              "cut_id": "custom-curved-end-cut"
+            }
+          ]
+        },
+        {
+          "id": "ordinary-south-end",
+          "component_id": "one-way-curve",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "ordinary-south-end-track",
+              "source_port_id": "Sout",
+              "direction": "out",
+              "channel_id": "curve-track",
+              "cut_id": "ordinary-south-end-cut"
+            }
+          ],
+          "section_offset_m": 0.0
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "cell-1-0-north",
+          "source_cell": [
+            1,
+            0
+          ],
+          "edge": "north",
+          "connector_ids": [
+            "custom-curved-end"
+          ]
+        },
+        {
+          "id": "cell-4-5-south",
+          "source_cell": [
+            4,
+            5
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "ordinary-south-end"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "groups": [
+      {
+        "id": "custom-curved-end",
+        "component_id": "one-way-curve",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "custom-curved-end-track",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              22.398519,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "sampled_tangent": [
+              0.927254928799026,
+              -0.3744306304483021
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f100",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f101",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f102",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f103",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f104",
+              "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f100",
+              "construction:hsr-component-l2-shortened-departure-curve"
+            ],
+            "connection_class": "path-interface-d819a6d05c5e43d11db7",
+            "source_port_id": "Win",
+            "channel_id": "curve-track",
+            "cut_id": "custom-curved-end-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.9272548089646255,
+              0.3744309272108488
+            ],
+            "heading_outward_degrees": 291.98914503637025,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "north",
+        "tile_seam_center_m": [
+          16.0,
+          8.0,
+          15.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "curve-track",
+            "component_id": "one-way-curve",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "custom-curved-end-cut",
+                "member_ids": [
+                  "custom-curved-end-track"
+                ],
+                "endpoint_m": [
+                  22.398519,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.9272548089646255,
+                  0.3744309272108488
+                ],
+                "heading_outward_degrees": 291.98914503637025,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          1.0
+        ],
+        "boundary_bundle_id": "cell-1-0-north"
+      },
+      {
+        "id": "ordinary-south-end",
+        "component_id": "one-way-curve",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "ordinary-south-end-track",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              64.0,
+              -88.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              -1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              -1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f450",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f451",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f452",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f453",
+              "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f454",
+              "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f450",
+              "construction:hsr-component-l2-shortened-departure-curve"
+            ],
+            "connection_class": "path-interface-365752af76285c80cd0b",
+            "source_port_id": "Sout",
+            "channel_id": "curve-track",
+            "cut_id": "ordinary-south-end-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.0,
+              -1.0
+            ],
+            "heading_outward_degrees": 180.0,
+            "grade_outward": 0.0,
+            "section_offset_m": 0.0
+          }
+        ],
+        "section_offset_m": 0.0,
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth"
+        },
+        "source_cell": [
+          4,
+          5
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          64.0,
+          -88.0,
+          15.5
+        ],
+        "anchor_m": [
+          64.0,
+          -88.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "curve-track",
+            "component_id": "one-way-curve",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "ordinary-south-end-cut",
+                "member_ids": [
+                  "ordinary-south-end-track"
+                ],
+                "endpoint_m": [
+                  64.0,
+                  -88.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.0,
+                  -1.0
+                ],
+                "heading_outward_degrees": 180.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-4-5-south"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "cell-1-0-north",
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "north",
+        "connector_ids": [
+          "custom-curved-end"
+        ]
+      },
+      {
+        "id": "cell-4-5-south",
+        "source_cell": [
+          4,
+          5
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "ordinary-south-end"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "curve-track",
+        "component_id": "one-way-curve",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "custom-curved-end-track>ordinary-south-end-track",
+        "entry_port": "custom-curved-end-track",
+        "exit_port": "ordinary-south-end-track",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Win>Sout",
+        "source_entry_port": "Win",
+        "source_exit_port": "Sout"
+      }
+    ],
+    "forbidden_transfers": [],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f831",
+          "0004f831"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f831",
+          "0007f831"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f831",
+          "0006f831"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f831",
+          "0005f831"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f58f100-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f58f100",
+      "points": [
+        [
+          22.398518552,
+          8.0,
+          15.5
+        ],
+        [
+          22.688416133,
+          7.882937657,
+          15.5
+        ],
+        [
+          23.088245466,
+          7.718307953,
+          15.5
+        ],
+        [
+          23.487176357,
+          7.550841183,
+          15.5
+        ],
+        [
+          23.885186733,
+          7.380523102,
+          15.5
+        ],
+        [
+          24.0,
+          7.330446691,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f58f200-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f58f200",
+      "points": [
+        [
+          24.0,
+          7.330446691,
+          15.5
+        ],
+        [
+          24.282254309,
+          7.207339988,
+          15.5
+        ],
+        [
+          24.678356591,
+          7.031278648,
+          15.5
+        ],
+        [
+          25.073470886,
+          6.852326423,
+          15.5
+        ],
+        [
+          25.467574309,
+          6.670471197,
+          15.5
+        ],
+        [
+          25.860643788,
+          6.485701403,
+          15.5
+        ],
+        [
+          26.252656079,
+          6.298006027,
+          15.5
+        ],
+        [
+          26.643587763,
+          6.107374613,
+          15.5
+        ],
+        [
+          27.033415264,
+          5.913797273,
+          15.5
+        ],
+        [
+          27.422114852,
+          5.717264688,
+          15.5
+        ],
+        [
+          27.809662654,
+          5.517768114,
+          15.5
+        ],
+        [
+          28.19603466,
+          5.315299388,
+          15.5
+        ],
+        [
+          28.581206735,
+          5.10985093,
+          15.5
+        ],
+        [
+          28.965154627,
+          4.901415749,
+          15.5
+        ],
+        [
+          29.347853974,
+          4.689987448,
+          15.5
+        ],
+        [
+          29.729280319,
+          4.475560226,
+          15.5
+        ],
+        [
+          30.109409112,
+          4.25812888,
+          15.5
+        ],
+        [
+          30.488215727,
+          4.037688812,
+          15.5
+        ],
+        [
+          30.865675467,
+          3.814236031,
+          15.5
+        ],
+        [
+          31.241763576,
+          3.58776715,
+          15.5
+        ],
+        [
+          31.616455249,
+          3.358279398,
+          15.5
+        ],
+        [
+          31.989725641,
+          3.125770614,
+          15.5
+        ],
+        [
+          32.361549881,
+          2.890239252,
+          15.5
+        ],
+        [
+          32.731903078,
+          2.651684382,
+          15.5
+        ],
+        [
+          33.100760335,
+          2.410105692,
+          15.5
+        ],
+        [
+          33.468096756,
+          2.165503487,
+          15.5
+        ],
+        [
+          33.833887462999996,
+          1.917878691,
+          15.5
+        ],
+        [
+          34.198107599,
+          1.667232847,
+          15.5
+        ],
+        [
+          34.560732347,
+          1.413568117,
+          15.5
+        ],
+        [
+          34.921736934,
+          1.15688728,
+          15.5
+        ],
+        [
+          35.281096646,
+          0.897193733,
+          15.5
+        ],
+        [
+          35.63878684,
+          0.634491491,
+          15.5
+        ],
+        [
+          35.994782952,
+          0.368785182,
+          15.5
+        ],
+        [
+          36.349060508,
+          0.100080049,
+          15.5
+        ],
+        [
+          36.701595141,
+          -0.171618055,
+          15.5
+        ],
+        [
+          37.052362595,
+          -0.446302665,
+          15.5
+        ],
+        [
+          37.401338741,
+          -0.723966713,
+          15.5
+        ],
+        [
+          37.748499586,
+          -1.004602525,
+          15.5
+        ],
+        [
+          38.093821286,
+          -1.288201828,
+          15.5
+        ],
+        [
+          38.437280154999996,
+          -1.574755751,
+          15.5
+        ],
+        [
+          38.778852678,
+          -1.864254831,
+          15.5
+        ],
+        [
+          39.118515521,
+          -2.156689018,
+          15.5
+        ],
+        [
+          39.456245545,
+          -2.452047675,
+          15.5
+        ],
+        [
+          39.792019812999996,
+          -2.750319587,
+          15.5
+        ],
+        [
+          40.0,
+          -2.93797353,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f58f300-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f58f300",
+      "points": [
+        [
+          40.0,
+          -2.93797353,
+          15.5
+        ],
+        [
+          40.125815602,
+          -3.051492967,
+          15.5
+        ],
+        [
+          40.457610418,
+          -3.355555456,
+          15.5
+        ],
+        [
+          40.787382001,
+          -3.662494136,
+          15.5
+        ],
+        [
+          41.115108339,
+          -3.97229553,
+          15.5
+        ],
+        [
+          41.44076768,
+          -4.284945611,
+          15.5
+        ],
+        [
+          41.764338539,
+          -4.60042981,
+          15.5
+        ],
+        [
+          42.08579971,
+          -4.918733019,
+          15.5
+        ],
+        [
+          42.40513028,
+          -5.239839604,
+          15.5
+        ],
+        [
+          42.722309633,
+          -5.563733407,
+          15.5
+        ],
+        [
+          43.037317463,
+          -5.890397756,
+          15.5
+        ],
+        [
+          43.350133786,
+          -6.219815475,
+          15.5
+        ],
+        [
+          43.660738948,
+          -6.55196889,
+          15.5
+        ],
+        [
+          43.969113632,
+          -6.886839837,
+          15.5
+        ],
+        [
+          44.275238874,
+          -7.224409674,
+          15.5
+        ],
+        [
+          44.579096065,
+          -7.564659287,
+          15.5
+        ],
+        [
+          44.880666965,
+          -7.907569102,
+          15.5
+        ],
+        [
+          44.960717595,
+          -8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f58f310-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        1
+      ],
+      "tile_id": "7f58f310",
+      "points": [
+        [
+          44.960717595,
+          -8.0,
+          15.5
+        ],
+        [
+          45.179933713,
+          -8.253119092999999,
+          15.5
+        ],
+        [
+          45.47687883,
+          -8.601288791,
+          15.5
+        ],
+        [
+          45.771485233,
+          -8.952057296,
+          15.5
+        ],
+        [
+          46.063736242,
+          -9.305403289000001,
+          15.5
+        ],
+        [
+          46.353615585,
+          -9.661305036,
+          15.5
+        ],
+        [
+          46.641107413,
+          -10.019740407,
+          15.5
+        ],
+        [
+          46.926196299,
+          -10.380686878999999,
+          15.5
+        ],
+        [
+          47.208867255,
+          -10.744121554,
+          15.5
+        ],
+        [
+          47.489105729,
+          -11.110021165,
+          15.5
+        ],
+        [
+          47.766897621,
+          -11.478362091000001,
+          15.5
+        ],
+        [
+          48.042229285,
+          -11.849120367000001,
+          15.5
+        ],
+        [
+          48.315087537,
+          -12.222271695,
+          15.5
+        ],
+        [
+          48.585459663,
+          -12.597791458,
+          15.5
+        ],
+        [
+          48.85333342,
+          -12.97565473,
+          15.5
+        ],
+        [
+          49.118697047,
+          -13.355836288999999,
+          15.5
+        ],
+        [
+          49.381539269,
+          -13.738310631000001,
+          15.5
+        ],
+        [
+          49.641849302,
+          -14.12305198,
+          15.5
+        ],
+        [
+          49.899616857,
+          -14.510034299,
+          15.5
+        ],
+        [
+          50.154832147,
+          -14.899231307,
+          15.5
+        ],
+        [
+          50.40748589,
+          -15.290616489,
+          15.5
+        ],
+        [
+          50.657569314,
+          -15.68416311,
+          15.5
+        ],
+        [
+          50.90507416,
+          -16.079844224,
+          15.5
+        ],
+        [
+          51.149992687,
+          -16.477632692,
+          15.5
+        ],
+        [
+          51.392317674,
+          -16.877501193,
+          15.5
+        ],
+        [
+          51.632042425,
+          -17.279422234000002,
+          15.5
+        ],
+        [
+          51.86916077,
+          -17.683368168,
+          15.5
+        ],
+        [
+          52.103667068,
+          -18.089311201,
+          15.5
+        ],
+        [
+          52.33555621,
+          -18.497223412,
+          15.5
+        ],
+        [
+          52.564823621,
+          -18.907076759,
+          15.5
+        ],
+        [
+          52.791465262,
+          -19.318843097,
+          15.5
+        ],
+        [
+          53.015477629,
+          -19.732494186,
+          15.5
+        ],
+        [
+          53.236857757,
+          -20.148001709,
+          15.5
+        ],
+        [
+          53.455603221,
+          -20.565337282,
+          15.5
+        ],
+        [
+          53.671712134,
+          -20.984472467,
+          15.5
+        ],
+        [
+          53.885183149,
+          -21.405378783,
+          15.5
+        ],
+        [
+          54.096015461,
+          -21.828027722999998,
+          15.5
+        ],
+        [
+          54.304208802,
+          -22.252390761,
+          15.5
+        ],
+        [
+          54.509763445,
+          -22.67843937,
+          15.5
+        ],
+        [
+          54.712680202,
+          -23.106145028,
+          15.5
+        ],
+        [
+          54.912960422,
+          -23.535479236,
+          15.5
+        ],
+        [
+          55.110605989999996,
+          -23.966413527,
+          15.5
+        ],
+        [
+          55.125749852,
+          -24.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f58f320-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        2
+      ],
+      "tile_id": "7f58f320",
+      "points": [
+        [
+          55.125749852,
+          -24.0,
+          15.5
+        ],
+        [
+          55.305619327,
+          -24.398919479,
+          15.5
+        ],
+        [
+          55.498003386,
+          -24.832968725,
+          15.5
+        ],
+        [
+          55.687761651,
+          -25.268532968,
+          15.5
+        ],
+        [
+          55.874898137,
+          -25.705583988,
+          15.5
+        ],
+        [
+          56.0,
+          -26.002888353,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f58f420-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        4,
+        2
+      ],
+      "tile_id": "7f58f420",
+      "points": [
+        [
+          56.0,
+          -26.002888353,
+          15.5
+        ],
+        [
+          56.059417381,
+          -26.144093657,
+          15.5
+        ],
+        [
+          56.241324448,
+          -26.58403395,
+          15.5
+        ],
+        [
+          56.42062492,
+          -27.025376952000002,
+          15.5
+        ],
+        [
+          56.597324900000004,
+          -27.468094876000002,
+          15.5
+        ],
+        [
+          56.771431000999996,
+          -27.912160065000002,
+          15.5
+        ],
+        [
+          56.942950348,
+          -28.35754501,
+          15.5
+        ],
+        [
+          57.111890571,
+          -28.804222355,
+          15.5
+        ],
+        [
+          57.278259805,
+          -29.25216491,
+          15.5
+        ],
+        [
+          57.442066679,
+          -29.701345659,
+          15.5
+        ],
+        [
+          57.603320318,
+          -30.151737771,
+          15.5
+        ],
+        [
+          57.762030333,
+          -30.603314609999998,
+          15.5
+        ],
+        [
+          57.91820682,
+          -31.056049739,
+          15.5
+        ],
+        [
+          58.071860354,
+          -31.509916937,
+          15.5
+        ],
+        [
+          58.22300198,
+          -31.964890201,
+          15.5
+        ],
+        [
+          58.371643214,
+          -32.420943758,
+          15.5
+        ],
+        [
+          58.517796031,
+          -32.878052071,
+          15.5
+        ],
+        [
+          58.661472865,
+          -33.336189847,
+          15.5
+        ],
+        [
+          58.802686595,
+          -33.795332049,
+          15.5
+        ],
+        [
+          58.941450549,
+          -34.255453895,
+          15.5
+        ],
+        [
+          59.077778488999996,
+          -34.716530875000004,
+          15.5
+        ],
+        [
+          59.21168461,
+          -35.178538749,
+          15.5
+        ],
+        [
+          59.343183528,
+          -35.64145356,
+          15.5
+        ],
+        [
+          59.472290279,
+          -36.105251636,
+          15.5
+        ],
+        [
+          59.59902031,
+          -36.569909599,
+          15.5
+        ],
+        [
+          59.72338947,
+          -37.03540437,
+          15.5
+        ],
+        [
+          59.845414005,
+          -37.501713172,
+          15.5
+        ],
+        [
+          59.965110549,
+          -37.968813539,
+          15.5
+        ],
+        [
+          60.08249612,
+          -38.43668332,
+          15.5
+        ],
+        [
+          60.197588107,
+          -38.905300682000004,
+          15.5
+        ],
+        [
+          60.310404268,
+          -39.374644115,
+          15.5
+        ],
+        [
+          60.420962719,
+          -39.844692437,
+          15.5
+        ],
+        [
+          60.456700207,
+          -40.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f58f430-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        4,
+        3
+      ],
+      "tile_id": "7f58f430",
+      "points": [
+        [
+          60.456700207,
+          -40.0,
+          15.5
+        ],
+        [
+          60.529281927,
+          -40.315424798,
+          15.5
+        ],
+        [
+          60.635380703,
+          -40.786820681,
+          15.5
+        ],
+        [
+          60.739278191,
+          -41.258859908,
+          15.5
+        ],
+        [
+          60.840993866,
+          -41.731522643,
+          15.5
+        ],
+        [
+          60.940547518,
+          -42.204789394,
+          15.5
+        ],
+        [
+          61.03795925,
+          -42.678641013000004,
+          15.5
+        ],
+        [
+          61.133249468,
+          -43.153058704,
+          15.5
+        ],
+        [
+          61.226438871,
+          -43.628024017,
+          15.5
+        ],
+        [
+          61.317548445,
+          -44.103518858,
+          15.5
+        ],
+        [
+          61.406599454,
+          -44.579525483,
+          15.5
+        ],
+        [
+          61.493613431,
+          -45.056026507,
+          15.5
+        ],
+        [
+          61.578612167,
+          -45.533004895,
+          15.5
+        ],
+        [
+          61.66161771,
+          -46.01044397,
+          15.5
+        ],
+        [
+          61.742652348,
+          -46.488327414,
+          15.5
+        ],
+        [
+          61.821738604000004,
+          -46.96663926,
+          15.5
+        ],
+        [
+          61.89889923,
+          -47.445363901,
+          15.5
+        ],
+        [
+          61.974157192999996,
+          -47.924486083,
+          15.5
+        ],
+        [
+          62.047535671,
+          -48.40399091,
+          15.5
+        ],
+        [
+          62.119058042,
+          -48.883863837,
+          15.5
+        ],
+        [
+          62.188747873,
+          -49.364090672,
+          15.5
+        ],
+        [
+          62.256628918,
+          -49.844657577,
+          15.5
+        ],
+        [
+          62.322725104,
+          -50.325551061,
+          15.5
+        ],
+        [
+          62.387060521,
+          -50.806757982,
+          15.5
+        ],
+        [
+          62.449659419,
+          -51.288265544,
+          15.5
+        ],
+        [
+          62.510546194,
+          -51.770061295,
+          15.5
+        ],
+        [
+          62.569745383,
+          -52.252133124,
+          15.5
+        ],
+        [
+          62.627281651,
+          -52.734469257,
+          15.5
+        ],
+        [
+          62.683179789,
+          -53.217058258,
+          15.5
+        ],
+        [
+          62.737464696,
+          -53.699889022,
+          15.5
+        ],
+        [
+          62.790161379,
+          -54.182950773,
+          15.5
+        ],
+        [
+          62.84129494,
+          -54.666233061,
+          15.5
+        ],
+        [
+          62.890890566,
+          -55.149725761,
+          15.5
+        ],
+        [
+          62.938973525,
+          -55.633419061,
+          15.5
+        ],
+        [
+          62.97427342,
+          -56.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f58f440-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        4,
+        4
+      ],
+      "tile_id": "7f58f440",
+      "points": [
+        [
+          62.97427342,
+          -56.0,
+          15.5
+        ],
+        [
+          62.985569152,
+          -56.117303469,
+          15.5
+        ],
+        [
+          63.030702845,
+          -56.6013698,
+          15.5
+        ],
+        [
+          63.074400054,
+          -57.085609176,
+          15.5
+        ],
+        [
+          63.116686269,
+          -57.570013021,
+          15.5
+        ],
+        [
+          63.15758702,
+          -58.054573057,
+          15.5
+        ],
+        [
+          63.197127861,
+          -58.539281297,
+          15.5
+        ],
+        [
+          63.235334362,
+          -59.024130043,
+          15.5
+        ],
+        [
+          63.272232104,
+          -59.50911188,
+          15.5
+        ],
+        [
+          63.307846667,
+          -59.994219669,
+          15.5
+        ],
+        [
+          63.342203626,
+          -60.479446546,
+          15.5
+        ],
+        [
+          63.375328535,
+          -60.964785914000004,
+          15.5
+        ],
+        [
+          63.407246924,
+          -61.450231438,
+          15.5
+        ],
+        [
+          63.437984292,
+          -61.935777039,
+          15.5
+        ],
+        [
+          63.467566091,
+          -62.42141689,
+          15.5
+        ],
+        [
+          63.496017725,
+          -62.907145412,
+          15.5
+        ],
+        [
+          63.523364538,
+          -63.392957262,
+          15.5
+        ],
+        [
+          63.549631806,
+          -63.878847335,
+          15.5
+        ],
+        [
+          63.574844726,
+          -64.364810754,
+          15.5
+        ],
+        [
+          63.599028415,
+          -64.850842863,
+          15.5
+        ],
+        [
+          63.622207891,
+          -65.336939227,
+          15.5
+        ],
+        [
+          63.644408073,
+          -65.823095619,
+          15.5
+        ],
+        [
+          63.66565377,
+          -66.30930802,
+          15.5
+        ],
+        [
+          63.685969668,
+          -66.795572609,
+          15.5
+        ],
+        [
+          63.705380331,
+          -67.281885761,
+          15.5
+        ],
+        [
+          63.723910181,
+          -67.768244035,
+          15.5
+        ],
+        [
+          63.7415835,
+          -68.254644177,
+          15.5
+        ],
+        [
+          63.758424414,
+          -68.741083106,
+          15.5
+        ],
+        [
+          63.774456889,
+          -69.227557912,
+          15.5
+        ],
+        [
+          63.789704719,
+          -69.714065851,
+          15.5
+        ],
+        [
+          63.80419152,
+          -70.200604334,
+          15.5
+        ],
+        [
+          63.817940722,
+          -70.687170929,
+          15.5
+        ],
+        [
+          63.830975557,
+          -71.17376335,
+          15.5
+        ],
+        [
+          63.843319053,
+          -71.66037945,
+          15.5
+        ],
+        [
+          63.851466921,
+          -72.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f58f450-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        4,
+        5
+      ],
+      "tile_id": "7f58f450",
+      "points": [
+        [
+          63.851466921,
+          -72.0,
+          15.5
+        ],
+        [
+          63.854994024,
+          -72.147017222,
+          15.5
+        ],
+        [
+          63.866023065,
+          -72.633674787,
+          15.5
+        ],
+        [
+          63.876428536,
+          -73.12035039,
+          15.5
+        ],
+        [
+          63.886232563,
+          -73.607042398,
+          15.5
+        ],
+        [
+          63.895457019,
+          -74.093749289,
+          15.5
+        ],
+        [
+          63.904123525,
+          -74.580469652,
+          15.5
+        ],
+        [
+          63.912253432,
+          -75.067202179,
+          15.5
+        ],
+        [
+          63.919867821,
+          -75.55394566,
+          15.5
+        ],
+        [
+          63.926987487,
+          -76.040698978,
+          15.5
+        ],
+        [
+          63.933632934,
+          -76.527461107,
+          15.5
+        ],
+        [
+          63.939824367,
+          -77.014231102,
+          15.5
+        ],
+        [
+          63.945581678,
+          -77.501008098,
+          15.5
+        ],
+        [
+          63.950924442,
+          -77.987791306,
+          15.5
+        ],
+        [
+          63.955871908,
+          -78.474580003,
+          15.5
+        ],
+        [
+          63.960442985,
+          -78.961373537,
+          15.5
+        ],
+        [
+          63.964656238,
+          -79.448171315,
+          15.5
+        ],
+        [
+          63.965068656,
+          -79.5,
+          15.5
+        ],
+        [
+          63.967089412,
+          -79.75,
+          15.5
+        ],
+        [
+          63.969069217,
+          -80.0,
+          15.5
+        ],
+        [
+          63.971043832,
+          -80.25,
+          15.5
+        ],
+        [
+          63.973036741,
+          -80.5,
+          15.5
+        ],
+        [
+          63.975060458,
+          -80.75,
+          15.5
+        ],
+        [
+          63.977117849,
+          -81.0,
+          15.5
+        ],
+        [
+          63.979203437,
+          -81.25,
+          15.5
+        ],
+        [
+          63.981304725,
+          -81.5,
+          15.5
+        ],
+        [
+          63.9834035,
+          -81.75,
+          15.5
+        ],
+        [
+          63.985477155,
+          -82.0,
+          15.5
+        ],
+        [
+          63.987499998,
+          -82.25,
+          15.5
+        ],
+        [
+          63.989444567,
+          -82.5,
+          15.5
+        ],
+        [
+          63.991282942,
+          -82.75,
+          15.5
+        ],
+        [
+          63.992988064,
+          -83.0,
+          15.5
+        ],
+        [
+          63.994535042,
+          -83.25,
+          15.5
+        ],
+        [
+          63.995902472,
+          -83.5,
+          15.5
+        ],
+        [
+          63.997073747,
+          -83.75,
+          15.5
+        ],
+        [
+          63.998038371,
+          -84.0,
+          15.5
+        ],
+        [
+          63.998793279,
+          -84.25,
+          15.5
+        ],
+        [
+          63.999344139,
+          -84.5,
+          15.5
+        ],
+        [
+          63.999706678,
+          -84.75,
+          15.5
+        ],
+        [
+          63.999907987,
+          -85.0,
+          15.5
+        ],
+        [
+          63.999987839,
+          -85.25,
+          15.5
+        ],
+        [
+          64.0,
+          -85.5,
+          15.5
+        ],
+        [
+          64.0,
+          -87.875,
+          15.5
+        ],
+        [
+          64.0,
+          -88.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    }
+  ],
+  "endpoint_route_refs": {
+    "custom-curved-end-track": [
+      "path-7f58f100-route-000"
+    ],
+    "ordinary-south-end-track": [
+      "path-7f58f450-route-000"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
+      "dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+      "resource_fingerprints_checked": 158,
+      "directional_ports_reextracted": 2,
+      "directed_journeys_reextracted": 1,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "ed7d7a324b6f9c6c2d2faa5af230e952c55dae042b18a820c9cabcc8d4209fbd"
+}

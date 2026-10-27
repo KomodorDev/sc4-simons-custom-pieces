@@ -3,12 +3,12 @@
   "schema_version": 3,
   "status": "passed",
   "scope": "actual approved current saved compiled resources; game operation unverified",
-  "scene_file": "../assembly.json",
+  "scene_file": "assembly.json",
   "scene_sha256": "57e520ee5e54e5e46a72a696d4d657afd4b53ea564a580f9140bcd1741ff5ace",
-  "manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+  "manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
   "audited_manifest_file": "audited-build-manifest.json",
   "manifest_hash_scope": "Exact input manifest at audit start; documentation metadata may change later. DAT fingerprints are independently pinned.",
-  "current_resource_contract_sha256": "b7d46a7b08992797dbf3f23dcbf575439125e6e107e266c91b15ac6cb7d87ac6",
+  "current_resource_contract_sha256": "3becf81758cceaf522820038640e73127ac3180291a5e38f592b83c5c439bf8c",
   "deleted_predecessor_resource_inputs_required": false,
   "reviewed_layout": {
     "layout_sha256": "4966ac4e75d7d1ca54f31bb75d88538fbad8338d77989031956aafbc97c5af3f",
@@ -16,13 +16,13 @@
     "approved_external_ports_rectangle_and_grid": true
   },
   "independent_quality_contract": {
-    "contract_sha256": "0fa5ca20a78e6a90d7bcfe14531fec1fa2f31a28b1f70f7cbfa1a9324cc477c5",
+    "contract_sha256": "acecd50680b7d8e341a968d6e814dc539c28ac73877ca8b7b5c09112a818eb84",
     "candidate_eligibility_and_actual_edit_limits_are_separate": true,
     "independent_ports_movements_clearance_and_budgets_checked": true,
     "predecessor_resource_inputs_required": false
   },
   "atomization_decisions": {
-    "ledger_sha256": "7b2d03d18228187761838100ce483a1cebaf9ebed7166fab0e57928589058f10",
+    "ledger_sha256": "a09a61be8a114e2c472fab4beb0f1dabb58ac8e92d450594cdda56b918fc42c6",
     "eligible_atomized_candidates": {
       "p01a-west-tail": {
         "recorded_original_path_deviation_m": 0.004018411269782,
@@ -94,7 +94,7 @@
     "complete_actual_assembly_corridors": {
       "full_width_bed_union_segments_checked": 4688,
       "bed_union_width_m": 5.0,
-      "maximum_uncovered_bed_area_m2": 1.4606180954501724e-05,
+      "maximum_uncovered_bed_area_m2": 1.4606181053977707e-05,
       "height_aware_bed_union_checked": true,
       "owner_clipped_corridor_fragments_checked": 4688,
       "corridor_clipped_to_literal_ownership": false,
@@ -113,7 +113,7 @@
     },
     "occupied_cells": 105,
     "strict_byte_identity_cells": 105,
-    "actual_tile_triangles": 700114,
+    "actual_tile_triangles": 708930,
     "tile_resource_fingerprints_checked": 1155,
     "exact_current_ownership_and_rotations_checked": true,
     "original_standard_straight_replacements": 4
@@ -713,9 +713,9 @@
     {
       "instance": "P06",
       "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+      "dat_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
       "cells": 11,
-      "preview_triangles": 180894,
+      "preview_triangles": 189710,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
@@ -1463,7 +1463,7 @@
     },
     {
       "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+      "dat_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
       "audit": {
         "paths": {
           "tile_count": 11,
@@ -1564,15 +1564,15 @@
           "global_support_spacing_checked": true,
           "height_aware_bed_union_checked": true,
           "maximum_coplanar_bed_overlap_area_m2": 4.6303523504320765e-07,
-          "maximum_coplanar_bed_overlap_thickness_m": 5.979185218052407e-07,
-          "maximum_uncovered_bed_area_m2": 2.3574411461835254e-06,
+          "maximum_coplanar_bed_overlap_thickness_m": 5.210942610744951e-07,
+          "maximum_uncovered_bed_area_m2": 2.1218216851304206e-06,
           "minimum_support_centre_distance_m": 16.0,
           "model_polygons_cut_at_custom_caps": 809,
           "models_checked": 56,
           "native_material_preserved": true,
           "owner_clipped_corridor_fragments_checked": 690,
           "path_nodes_covered_by_visible_bed": 560,
-          "positive_area_coplanar_bed_pairs": 19569,
+          "positive_area_coplanar_bed_pairs": 19938,
           "preview_matches_tiles": true,
           "rail_crossing_ribbon_nodes": 0,
           "render_budget_models_checked": 56,
@@ -2529,46 +2529,5 @@
     "reworked_region_support_positions": 15,
     "minimum_global_centre_spacing_m": 16.0
   },
-  "game_tests": "unverified",
-  "audited_manifest_file_scope": "Exact public binary-payload projection of the audit input manifest; documentation and release bookkeeping are omitted explicitly. The raw input manifest SHA-256 is retained independently.",
-  "audited_manifest_file_sha256": "65582e90affa4ca5c89274513214fcbbd59f5eb3605a6b234af141fd117cb87c",
-  "junction_rework_file": "../checks/junction-rework.json",
-  "junction_rework_sha256": "18151a14db1f3e7fea48364285a465ef155e6b63003de2d247bd123017000169",
-  "build_provenance_file": "junction-rework-build.json",
-  "native_test_execution_file": "junction-rework-tests.json",
-  "previous_accepted_audit": {
-    "validation.json": {
-      "path": "design-history/validation-before-junction-rework.json",
-      "bytes": 101950,
-      "sha256": "f1aec14eb822efbdcb281aff767579ada899876d9ec41a66699f734b341fb3da"
-    },
-    "audited-build-manifest.json": {
-      "path": "design-history/audited-build-manifest-before-junction-rework.json",
-      "bytes": 122022,
-      "sha256": "b1b6eb3f95fa910708a216cda46f96231a3489b136a2cc661355ef4e466c7848"
-    }
-  },
-  "earlier_current_capture": {
-    "validation_file": "design-history/validation-at-junction-rework-capture.json",
-    "validation_sha256": "bdd1072f1a876596a6587671169187456f64e4c58d20c43f2068b616f9e308ee",
-    "scene_sha256": "815f99be2514663116ac6ba693cc0ff9d20f656078a7a1c6e15ac6011d02e3ff",
-    "frozen_scene_file": "design-history/assembly-at-junction-rework-audit.json",
-    "scope": "The earlier executed capture and its descriptive metadata-refresh declaration remain frozen. This current report comes from a new executed post-fix integration audit using the refreshed scene; its scene_sha256 identifies that actual new input."
-  },
-  "descriptive_metadata_refresh": {
-    "scope": "After this executed post-fix native audit, only layout.scope was corrected from fourteen to thirteen. All other layout JSON fields and its approved physical-layout payload are identical. The scene was unchanged throughout this audit and after it. This textual correction does not claim another geometry execution.",
-    "changes": [
-      {
-        "source_file": "../checks/layout.json",
-        "changed_field": "scope",
-        "before_value": "Current fourteen reusable types at their approved physical positions and proper rotations.",
-        "after_value": "Current thirteen reusable types at their approved physical positions and proper rotations.",
-        "actual_audit_input_sha256": "29d455bcf047092fc291ac53623efc7ad4928b37f16246bbc2ee720a26e74800",
-        "current_metadata_refreshed_sha256": "2b149a52ed2c04c0bf3628f4c91189a48d906da7ae295d0878d3aa05db5d9976",
-        "frozen_actual_audit_input": "design-history/layout-at-junction-rework-postfix-audit.json",
-        "all_other_json_fields_identical": true
-      }
-    ],
-    "physical_layout_sha256_unchanged": "4966ac4e75d7d1ca54f31bb75d88538fbad8338d77989031956aafbc97c5af3f"
-  }
+  "game_tests": "unverified"
 }

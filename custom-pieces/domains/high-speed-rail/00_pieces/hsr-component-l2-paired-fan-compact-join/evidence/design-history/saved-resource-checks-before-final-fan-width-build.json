@@ -1,0 +1,531 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-paired-fan-compact-join",
+  "purpose": "Actual saved-resource software checks for the redesigned reusable fan; no human or in-game approval.",
+  "provenance": {
+    "model_compilation": "The normal builder generated resources for the current source definitions, reusing verified matching native geometry caches when available; no new cold-meshing run is claimed.",
+    "build_method": "Current-source full build through the normal pipeline, with normal input audit, resource/path/model checks, controller checks, archive checks, and packaging retained.",
+    "build_path_relative_to_library": "dist/trumpet-rework-parts-01",
+    "build_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+    "build_verification_sha256": "2f308220f04b07fcb15adb2c3db3a6947480de2858aaed69b6439d6e5587d371",
+    "source_dat": "dist/trumpet-rework-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-join.dat",
+    "source_dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+    "source_inputs": {
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/piece.json": "1755c90ebe2c2e37a687ffadd70830e0805b2b4841e56a5a7d61e13a55d041d7",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json": "ad33d8fc968e03ba74744c6cbf039cf5a131abf80f144d84874186fca7d1a3ad",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/connections.json": "2df652ba09d7ef764b12a38be927f3f63f26bf833835e030089832af9511ac4f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "29cb6144226533a933c1223904dced64e9a5c9d9b612f38d4bf4e04b7f5a8ea6",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "7ecd872fcd31dcede7b89ec6335feb69ff94de17c7005027d6529f49308e5b6c"
+    },
+    "native_input_archives": [
+      {
+        "filename": "NetworkAddonMod_Controller.dat",
+        "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+      },
+      {
+        "filename": "High Speed Rail.dat",
+        "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a"
+      }
+    ],
+    "private_cache_path_published": false,
+    "private_input_paths_published": false
+  },
+  "normal_saved_build_verification": {
+    "static_checks_passed": true,
+    "files_checked": 15,
+    "resources_checked": 1250,
+    "construction": {
+      "original_rul0_restored": true,
+      "original_network_ini_restored": true,
+      "separate_piece_menu_roots": 13,
+      "states_per_root": 8,
+      "runtime_tile_addresses_checked": 90,
+      "ordering_sections_checked": 1,
+      "custom_rotation_rings_in_ordering": 13,
+      "native_rotation_rings_preserved": 132
+    },
+    "dependency_records_cover_all_references": true
+  },
+  "menu": {
+    "piece_id": "hsr-component-l2-paired-fan-compact-join",
+    "title": "SCP | [PART] HSR L2 Compact Paired Fan Join",
+    "menu": "Rail",
+    "menu_id": "6a47f822",
+    "puzzle_id": "f822",
+    "order": "7012f822",
+    "icon_style": "hsr-component-l2-paired-fan-compact-join",
+    "icon": {
+      "width": 176,
+      "height": 44,
+      "pixel_format": "RGBA8",
+      "interlaced": false,
+      "states": [
+        "locked",
+        "normal",
+        "selected",
+        "highlighted"
+      ],
+      "state_dimensions": [
+        44,
+        44
+      ],
+      "transparent_corners": true,
+      "crc_valid": true,
+      "sha256": "78151fa8a3555c43e5071289f29b8d492ec37aebc6e0c22848576672291e1e8c"
+    },
+    "icon_identity": {
+      "category": "part",
+      "badge": "PART",
+      "network": "HSR",
+      "palette": "teal",
+      "kind": "JCT",
+      "meaning": "Individual building piece"
+    },
+    "retained_native_properties_verified": true,
+    "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+    "resources": [
+      {
+        "tgi": "2026960b-123006aa-6a47f822",
+        "bytes": 676,
+        "sha256": "4726552dc45bde385c4c067a32235bff1c2325013b155cf1f1ae78dc17bf307e"
+      },
+      {
+        "tgi": "2026960b-123007bb-6a47f822",
+        "bytes": 90,
+        "sha256": "7017aa6a6b1b394bf0500febef25c6d95aeb5b23b3ca98991d35515098acd761"
+      },
+      {
+        "tgi": "6534284a-2a3858e4-6a47f822",
+        "bytes": 229,
+        "sha256": "ff9ac210fe11b3bdd1a20564668d8c644664383aa9ad055671aad4ef0603f6b8"
+      },
+      {
+        "tgi": "856ddbac-6a386d26-6a47f822",
+        "bytes": 6155,
+        "sha256": "78151fa8a3555c43e5071289f29b8d492ec37aebc6e0c22848576672291e1e8c"
+      }
+    ],
+    "in_game_menu_tested": false
+  },
+  "paths": {
+    "tile_count": 11,
+    "encoded_routes_checked": 14,
+    "external_ports_checked": 4,
+    "permitted_movements_checked": 2,
+    "literal_port_tangents_checked": 4,
+    "unique_complete_journeys_checked": 2,
+    "journey_quality": {
+      "Nin>Wout": {
+        "length_m": 90.22124197373965,
+        "direct_distance_m": 83.40881191692735,
+        "length_ratio": 1.081675183955351,
+        "total_turn_degrees": 67.21398047295664,
+        "minimum_sampled_radius_m": 30.23222307515748,
+        "maximum_sample_turn_degrees": 3.7170887518418576,
+        "maximum_raw_encoded_turn_degrees": 0.3921524116148986,
+        "minimum_resolved_raw_radius_m": 30.936382036676573,
+        "maximum_endpoint_curvature_per_m": 0.017071277555964028,
+        "maximum_curvature_change_per_m2": 0.0012622258512775533,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.9613313472552099,
+        "signed_turn_degrees": -67.21398047295665,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Nin": 0.0
+        }
+      },
+      "Ein>Nout": {
+        "length_m": 90.22124197373967,
+        "direct_distance_m": 83.40881191692735,
+        "length_ratio": 1.0816751839553511,
+        "total_turn_degrees": 67.21398047295669,
+        "minimum_sampled_radius_m": 30.23222307515712,
+        "maximum_sample_turn_degrees": 3.7170887518419127,
+        "maximum_raw_encoded_turn_degrees": 0.39215241161453307,
+        "minimum_resolved_raw_radius_m": 30.936382036676573,
+        "maximum_endpoint_curvature_per_m": 0.017071277555965582,
+        "maximum_curvature_change_per_m2": 0.0012622258512773779,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.96133134725521,
+        "signed_turn_degrees": -67.21398047295672,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Nout": 0.0
+        }
+      }
+    },
+    "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+    "exact_3d_cell_seams": true,
+    "maximum_encoded_grade": 0.0,
+    "native_port_heights_m": [
+      15.5
+    ],
+    "game_operation": "unverified",
+    "grade_separated_crossings_checked": 0,
+    "grade_separated_projected_contacts_checked": 0,
+    "grade_separated_crossings": [],
+    "same_direction_shared_tail_contacts_checked": 0,
+    "independent_at_grade_conflicts_checked": 0
+  },
+  "models": {
+    "authored_clearance_height_m": 5.0,
+    "authored_clearance_width_m": 5.0,
+    "bed_union_width_m": 5.0,
+    "coplanar_overlap_meshing_tolerance_m": 0.0001,
+    "corridor_clipped_to_literal_ownership": true,
+    "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+    "custom_port_boundary_wedges": [
+      {
+        "edge": "south",
+        "half_width_m": 1.1,
+        "label": "Wout",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          1,
+          4
+        ]
+      },
+      {
+        "edge": "south",
+        "half_width_m": 1.1,
+        "label": "Ein",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          5,
+          4
+        ]
+      }
+    ],
+    "custom_port_cap_labels": [
+      "Wout",
+      "Ein"
+    ],
+    "custom_port_caps_clipped_to_literal_owned_cells": true,
+    "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+    "full_width_bed_union_segments_checked": 546,
+    "global_support_spacing_checked": true,
+    "height_aware_bed_union_checked": true,
+    "maximum_coplanar_bed_overlap_area_m2": 4.6303523504320765e-07,
+    "maximum_coplanar_bed_overlap_thickness_m": 5.979185218052407e-07,
+    "maximum_uncovered_bed_area_m2": 2.3574411461835254e-06,
+    "minimum_support_centre_distance_m": 16.0,
+    "model_polygons_cut_at_custom_caps": 809,
+    "models_checked": 56,
+    "native_material_preserved": true,
+    "owner_clipped_corridor_fragments_checked": 690,
+    "path_nodes_covered_by_visible_bed": 560,
+    "positive_area_coplanar_bed_pairs": 19569,
+    "preview_matches_tiles": true,
+    "rail_crossing_ribbon_nodes": 0,
+    "render_budget_models_checked": 56,
+    "render_group_budget_checked": true,
+    "sloped_support_heads_checked": 0,
+    "support_centres_sc4path_xy": [
+      [
+        32.0,
+        -64.0
+      ],
+      [
+        48.0,
+        -48.0
+      ],
+      [
+        48.0,
+        -32.0
+      ],
+      [
+        48.0,
+        -16.0
+      ],
+      [
+        48.0,
+        -0.0
+      ],
+      [
+        64.0,
+        -64.0
+      ]
+    ],
+    "support_columns_checked": 6,
+    "support_contact_points_checked": 54,
+    "support_foundations_within_reserved_cells": true,
+    "support_tops_touch_deck": true,
+    "train_clearance_segments_checked": 546,
+    "unused_visible_rails_outside_declared_custom_caps": false,
+    "visible_native_rail_centre_segments_matched_to_paths": 7675,
+    "visible_native_rail_triangles_matched_to_paths": 20919,
+    "render_groups": {
+      "all_authored_groups_within_budget": true,
+      "model_resources_checked": 56,
+      "distinct_model_payloads_checked": 12,
+      "details": [
+        {
+          "authored_frames_checked": 9,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 4,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 96,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 435,
+          "max_authored_triangles": 436,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 318,
+          "max_authored_triangles": 354,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 37,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 108,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 27,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 5,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 85,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 9,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 384,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        }
+      ]
+    }
+  },
+  "actual_saved_resource_fingerprints": {
+    "effect:hsr-component-l2-paired-fan-compact-join:ea5118b0-ea5118b1-7f580ff5": "9b7d07c3be80f33a764e12a3390663157debfac032c3430f3dea54bda31ec1dd",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580140": "ca55ea036044be7efaa9e40a207149473970715350732c0a02cec2b6c0929dd3",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580230": "aad80b80af0bcfd22620cd1d83a8bf94294b53bad2849004bc907309e863bd8a",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580240": "8659ff5e58a10035c3281c8d3b84d20ba9461d8875ee7f76da7ab46a6ba6e304",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580300": "00532d01e3647760c33e3810ff1d1c21ca2af7e62f89c629e826d7284581e714",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580310": "005aca2deedcdf8cf9ef6ec3bb812a93b7e2c2a46e75511e99b5ef9aceeb1b83",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580320": "49aec0627038f97fe777ee8d365ff558f8657bccd81648626d73926e39108232",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580330": "a10af87b149121c17c45186dacf16d042425cee41b6b5b846d07b892846ffd95",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580340": "1c6c97474fd019e37c34c992c849c4c8b5a383c76e24d82374e54461b91bda37",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580430": "42a3d0f2131cbc4614c1155f0e87d530c3e2e071833caba7ab36b4cddbac1544",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580440": "1b60661719d3427232ce1a3f1f266ac43108dc49cfab31b83f0ad0409e46fc47",
+    "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580540": "8264d6826e1eac9e82099f3bf6b7058e204bf51fed8970c9f2530e230eb61221",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580140": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580141": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580142": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580143": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580144": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580230": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580231": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580232": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580233": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580234": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580240": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580241": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580242": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580243": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580244": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580300": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580301": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580302": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580303": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580304": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580310": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580311": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580312": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580313": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580314": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580320": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580321": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580322": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580323": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580324": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580330": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580331": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580332": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580333": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580334": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580340": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580341": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580342": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580343": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580344": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580430": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580431": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580432": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580433": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580434": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580440": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580441": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580442": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580443": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580444": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580540": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580541": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580542": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580543": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580544": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+    "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580ff5": "7967ee3acd044d5f063d1cdda48f3c8a2a2e2dfe9a45b8eb3020df97dd224091",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580140": "bb6d40d7ac8962529b7d1d6aa614dae1b1310148f1d467b70228ae1bea077744",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580230": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580240": "7dc91b6f8de0341ecd0a0d97cc4264d6e805916c0899bac6f23e6c919adcb0d2",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580300": "8decb10a5d66daf28b5fdf24290d118d8a4719ef682d5a309640e0729d769956",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580310": "41dfafc4ef2c1cf41cf838382b088cafe3bbe704b88dc4ee3e220d6cd7c748ef",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580320": "730f3e37d3f9913457e486377b77ed235d744c4ec63272e53daf2ff56a779f1f",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580330": "16d4a4c57486aedf001496e5a4d0ec20b66bb3d9df2ee37bdee4eb5cd0ed152a",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580340": "26739a95ef096cba8e8f9147580bfa48ea8ca5126f42b5d798e4d91371d3f849",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580430": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580440": "298339d654160ce8b59169483543a1b69f39c11aaf01be7ae368634ce3c5ed1d",
+    "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580540": "4436273bd66af492acca9f7ef9c384a2213a4a42300dbbeb55997896d321c580",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580140": "ed0ba1eefc04281bf996deb1232813b9558913b90abc91fb7e11a681049554f2",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580141": "fbb068b8caf2806262bebef1417022f53f0b22e5c239e4467d6b55aee5686a3c",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580142": "c06d0c65f9535805e2727a0f1fdb79898060c51cc8f84a75d31340b681a27b93",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580143": "53c3402b65bd29015e44fc0cdb57e9c1584336230d0cf776dad2f9d06f8f5a78",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580144": "23a05e74545f5d976f6d65df393bdda87a5452fd0d0f0553e55c77847e3d9e2d",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580230": "37a63fb36cccbd8efac9f6828d5abbcf4c4788cae738c721929e4959bb2e243f",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580231": "3074da5b2c5996ed2baf89ff3e1b06253713f230a3a94d7ca2a2f87181a00fb3",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580232": "60a2a9abd006069474340e606bac5d4dd1b569acc6a1c43f2502cecde714ae09",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580233": "9fe12e3660cef8f2ff90d460c6bb2183486242938d67bda674fde4312c2dced2",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580234": "39a0c41931afab9d7184319de93e341d187b972fdc9626951ad45d7d08e120ba",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580240": "c2d490825769a35aabc6d8310e88035f2fb8315b86a0a4276862da8a4e2baf06",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580241": "10e80e3283b978651594dc8f3ad9a64e75915f6f9b3286164868168c15977802",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580242": "6602cc30338af9e1332fac51393449a93ca3a90eac7e8ada0e01b15607018f4d",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580243": "245c4a7568fb2d443f6798f6559aea8f9d4978ad65b29a02aaacf088ecce610f",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580244": "b9532a2b77fcebbf28ec0d0d606333b579ea832cbccf8c7ec380d8b3e7296aab",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580300": "763cf74d9919e6850a0f3972c555e3a03f582540cc3e7705e73903d1167d7a26",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580301": "9a9554efde354b12bbe0a36ceb37c99d7f7cd23c80abe58135cd14e8bcef71df",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580302": "4a6ea3fdfb40521901f2d496695b349c301d6bbcc52b01dc7eb752ebafd2ae43",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580303": "93157be4f5e866bfefa4ea3bd7135f90ccf6df40a4f0e3d86ae1c6825b88944e",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580304": "4a29239578f132594d1d2787f4f238c173dc93f02bb4396d73a8c3c9f580a6e5",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580310": "88705c7f4ce578966c94d1aaa7f8a7ef76326c4a34585c9d9d43c344d591eb33",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580311": "a799d3471af61e3828c36cff39982ee290ad2e41b4b6dc0617b4af72761553de",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580312": "8b29bbdbc034852d9c5c176da43d8004583b2287ecb3a0f8a18b1a1a448a6796",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580313": "93341d0726bcf33222b467f906285b9bfae7150356df3b1429d3403b1d4e3aff",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580314": "e47aeb4a8ae9110269536b69f7c07ebf42f7152bcfbe035d887fcb0193521f38",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580320": "20b2b1b61a6dc503a4ab1e81e19f196eddc58868cb24e1d70286e03203a37e5b",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580321": "723348cc8497f3ca2b3dc4f2202c2f0d5d12f75c484c987ce551655c5f77848e",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580322": "2ce8916d5ff12ef8ae66761f40525398c1973613cf59acfa130f7f93d7f945c2",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580323": "2ffa69929b922d8aa703e51eefadf5aae2d6d7521b763efc571c8f6df4dc2917",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580324": "7ec96fb50ad4af68c6f0ac3ffc7c8e8667a3d2773c9a06259807bf53eafe58d1",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580330": "14383b08a5395b0b560675743c89674cb280433aa03ed420f16dd03f395abe43",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580331": "2c3f533ab468fd63e8a6497bb74937b15d30a61b2eb6931626289f3a9592c7b8",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580332": "77547cb809143ae78f4762e2b52c27c0e23083bf11cda2e2a7cc7c6c1c356026",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580333": "19e6c0ad1f9f2415f53ccd3543e142adc89fcf7ce9aba37c6f1fdcc761058497",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580334": "9dc865e5197b636ab51495c0e283ffb54746d8ac21256815908640e25a09baf9",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580340": "fbb55aca5f72f8be47c10072b72e694b1559484a4882f0803c3eeb6c2aacb5c6",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580341": "9c3f5a4e9b5fe2cc77c6e3ce4e2d64b738a3150ba1c81973997edfc50491bb34",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580342": "8a70bac8c75c35a52c55d9918045d9e8704cea7fce019a7f26ae46c15350608e",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580343": "eea4f4ec63d4e613e3e4ecb4fd665b3ddc797ada7411ab5272a3181c18895cfd",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580344": "ab6b5c6179a765692b47fd0f278ac94a2c6cc92b18ec96287c751027ab49bd51",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580430": "4e98c5a7f239c40b6aa95669760fd03feae8fff4af0ac6d647cc950737713d5c",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580431": "953f2d0eb003c8884185906f7a62e3e5a20ccfcca07411a5f4adcdb96f25806e",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580432": "c080acebe6d34e85004a3d459d1dc0033351356b28c19933dba5474ea0e4c822",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580433": "42d32cb702799f8be19d07891efa663cbf2e9ce73467ce0351423e2cdb89e2e3",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580434": "3dd6729e4c06d3bec49ec36663950911344d3925acb7000a0cb2685117447295",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580440": "ed60958708d27d0bd50783a5c0502d29befa30ec8c103f44e077a4ffaf429938",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580441": "4584a46a839b46383f725f593f259845267010e876ae8a7e55985371ef02e8b9",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580442": "8da9278c3311308107d6165cfd30ee7e2a8061d4d2c86fec9d791dfed6ceace2",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580443": "4e4885965d530eed0aefb2408b26bf5d6bbeb696b041ad744274c31b739cb6a7",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580444": "fca01667c184a6acacb0a76fe03c07f8fec0ea30818dd1a8cac97438ee4c2d90",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580540": "240ae21a7b115e7fccc5cf9754db8af002e90455173fa56a79d122ab3c00b2c6",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580541": "cdeef00e6c6fa881bfd55f908f8083649b03bc07739d011fd048b7ed1bdb8efd",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580542": "7fe7b830ca5a59e311ff07c930075c51a2fdded221fa679a99f25358534d2d47",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580543": "f5120868fff198ba623794791112b9341e0892a0991369c8deec14b32b86fde9",
+    "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580544": "f3d3e3121defe91896318368b340e8697e33287bec2ce92edc434b6711584fce",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580140": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580230": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580240": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580300": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580310": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580320": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580330": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580340": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580430": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580440": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580540": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+    "construction:hsr-component-l2-paired-fan-compact-join": "b371993f725c254289e9e9ce7735f53e89743749666472c989ca336c846bf150"
+  },
+  "geometry_scope": "This is the reusable type alone. Visible native rail checks at each custom oblique cut exclude only the boundary wedge derived from that literal city edge, the endpoint tangent, and the unchanged rail-stripe envelope. Interior rail, bed, clearance, support, and budget checks remain strict. A separate assembled check must match all rails across the complete neighbouring joins without clipping those wedges.",
+  "installed": false,
+  "human_preview_approved": false,
+  "in_game_appearance_verified": false,
+  "in_game_train_operation_verified": false,
+  "compatibility_discovery_performed": false,
+  "canonical_artwork_identity_comparison": {
+    "compared_to_final_source_dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+    "original_clean_view_evidence_preserved_byte_for_byte": true,
+    "connection_overview_source_build_context_preserved": true,
+    "connection_overview_actually_rerendered_with_current_framework": true,
+    "connection_overview_pixels_unchanged": true,
+    "reason_for_connection_overview_refresh": "Current shared framework source fingerprints changed after the original card render. A real card rerender reused the same actual saved DAT and retained its original verified source-build context.",
+    "artwork": [
+      {
+        "evidence_file": "evidence/preview.json",
+        "evidence_sha256": "108ef30efef60c8f169defcf166176a8f4e5fd295d8775d38ab7096802b9860a",
+        "render_source_dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+        "final_source_dat_exact_match": true
+      },
+      {
+        "evidence_file": "evidence/preview-top.json",
+        "evidence_sha256": "9cd45b4ec0bf73dc4a4202eb7cea4a7f912b4acfd9c3bb78638a6fd8655ef7c5",
+        "render_source_dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+        "final_source_dat_exact_match": true
+      },
+      {
+        "evidence_file": "evidence/connection-overview.json",
+        "evidence_sha256": "446a4f5b26dd40c4be217fa361d461d129779a0fe899a3d40cf31c860e77cdd3",
+        "render_source_dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+        "final_source_dat_exact_match": true
+      }
+    ]
+  }
+}

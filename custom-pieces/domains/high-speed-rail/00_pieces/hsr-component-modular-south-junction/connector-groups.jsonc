@@ -1,0 +1,185 @@
+// Physical track IDs persist across their exposed ends; members and edge cuts have their own local IDs.
+// Branches have separate channel IDs; the measured internal journeys define every split or merge.
+// No counterpart shortlist or compatibility result is authored here.
+{
+  "schema_version": 3,
+  "purpose": "Declare complete source-owned boundaries and physical channel associations. Coordinates and intrinsic movements resolve from actual saved PATH evidence.",
+  "piece_id": "hsr-component-modular-south-junction",
+  "source_binding": {
+    "piece_sha256": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0",
+    "connections_sha256": "e1c7e8f4053268b579cca192ac16ed662806107cf75e8102e06aae3fb898621d"
+  },
+  "components": [
+    {
+      "id": "symmetric-split-return",
+      "network": "hsr",
+      "construction_network": "monorail"
+    }
+  ],
+  "channels": [
+    {
+      "id": "southbound-mainline",
+      "component_id": "symmetric-split-return",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "northbound-mainline",
+      "component_id": "symmetric-split-return",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "left-return-branch",
+      "component_id": "symmetric-split-return",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "right-departure-branch",
+      "component_id": "symmetric-split-return",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "south-paired-end",
+      "component_id": "symmetric-split-return",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "south-paired-end-sin",
+          "source_port_id": "Sin",
+          "direction": "in",
+          "channel_id": "northbound-mainline",
+          "cut_id": "south-paired-end-northbound-mainline-cut"
+        },
+        {
+          "id": "south-paired-end-sout",
+          "source_port_id": "Sout",
+          "direction": "out",
+          "channel_id": "southbound-mainline",
+          "cut_id": "south-paired-end-southbound-mainline-cut"
+        }
+      ],
+      // hsr = High Speed Rail; l2 = nominal Level 2 with measured PATH height 15.5 m.
+      // orth = perpendicular boundary; scp-paired15 = native 15 m paired visual family.
+      // t2-opposed = two opposite-direction physical tracks; rhd = right-hand running; v1 = defaults revision 1.
+      // Actual measured positions, headings, grades, and complete membership govern agreement.
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "north-paired-end",
+      "component_id": "symmetric-split-return",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "north-paired-end-nin",
+          "source_port_id": "Nin",
+          "direction": "in",
+          "channel_id": "southbound-mainline",
+          "cut_id": "north-paired-end-southbound-mainline-cut"
+        },
+        {
+          "id": "north-paired-end-nout",
+          "source_port_id": "Nout",
+          "direction": "out",
+          "channel_id": "northbound-mainline",
+          "cut_id": "north-paired-end-northbound-mainline-cut"
+        }
+      ],
+      // hsr = High Speed Rail; l2 = nominal Level 2 with measured PATH height 15.5 m.
+      // orth = perpendicular boundary; scp-paired15 = native 15 m paired visual family.
+      // t2-opposed = two opposite-direction physical tracks; rhd = right-hand running; v1 = defaults revision 1.
+      // Actual measured positions, headings, grades, and complete membership govern agreement.
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "left-northern-end",
+      "component_id": "symmetric-split-return",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "left-northern-end-lin",
+          "source_port_id": "Lin",
+          "direction": "in",
+          "channel_id": "left-return-branch",
+          "cut_id": "left-northern-end-left-return-branch-cut"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "right-northern-end",
+      "component_id": "symmetric-split-return",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "right-northern-end-rout",
+          "source_port_id": "Rout",
+          "direction": "out",
+          "channel_id": "right-departure-branch",
+          "cut_id": "right-northern-end-right-departure-branch-cut"
+        }
+      ],
+      "section_offset_m": 0.0
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "cell-1-5-south",
+      "source_cell": [
+        1,
+        5
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "south-paired-end"
+      ]
+    },
+    {
+      "id": "cell-1-2-north",
+      "source_cell": [
+        1,
+        2
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "north-paired-end"
+      ]
+    },
+    {
+      "id": "cell-0-0-north",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "left-northern-end"
+      ]
+    },
+    {
+      "id": "cell-2-0-north",
+      "source_cell": [
+        2,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "right-northern-end"
+      ]
+    }
+  ]
+}

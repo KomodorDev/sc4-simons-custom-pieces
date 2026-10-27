@@ -87,6 +87,8 @@ Use each position and rotation together; standalone component pictures show 0°.
 
 The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01's reference is **(X1, Y13)** because P22 owns the western approach tile at **(X0, Y13)**. Every occupied tile has exactly one owner. P01 and P08 reuse the same Short Mainline Diverge Core: P01 is at 0°, and P08 is at 180°. P08 replaces the earlier separate eastern diverge and its western straight; the fan and opposed merge have matching revised branch angles. The retained component types keep their permanent game identifiers.
 
+P06 uses the approved wider Compact Paired Fan Join: its paired structure stays 15 m wide through the approach before widening into the fork. This changes the shoulders and walls while preserving the track routes, radii, joining cuts, and support positions. The other 12 component DATs remain byte-identical to the preceding verified build. See the [fan width comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) for measured cross-sections, and the complete geometry audit below for the assembled joins and clearances.
+
 <!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 
 ## 4. Connection matrix

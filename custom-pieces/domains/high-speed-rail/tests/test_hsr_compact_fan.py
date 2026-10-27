@@ -18,13 +18,16 @@ from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import RECIPES, compact_info, compact_layout, compact_routes, model_inputs
 from scp_hsr.hsr_compact_fan_verify import CONTRACTS, check_paths
 from scp_hsr.hsr_atomic_junctions import atomic_info
+from scp_hsr.hsr_components import _sweep_component_profile
 from scp_hsr.directional_t_verify import _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
+from scp_hsr.rail_geometry import _route
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
 FAN = 'hsr_component_l2_paired_fan_compact_join'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
 MERGE = 'hsr_component_l2_short_opposed_merge_core'
+STEM_NORTH = (8., 0., -16., -24., -28.)
 
 
 def _point(point):
@@ -42,7 +45,87 @@ def encoded_fan():
     return spec, resources
 
 
+def sampled_native_profile(deck):
+    """Exercise the real shoulder warp without requiring a private NAM donor.
+
+    Only native surface production is replaced by eight-metre profile probes
+    and rail triangles. Route points, lengths, and taper settings come from
+    the fan's actual authored deck, and the production shoulder warp runs.
+    """
+    points, lengths, _ = _route(deck['points'], deck.get('start_tangent'), deck.get('end_tangent'))
+    sections, surfaces = [], []
+    for north in (*STEM_NORTH, -72.):
+        distance = 0.
+        for first, last, length in zip(points, points[1:], lengths):
+            dz = last[2]-first[2]
+            if abs(dz) > 1e-12 and min(first[2], last[2])-1e-10 <= -north <= max(first[2], last[2])+1e-10:
+                fraction = (-north-first[2])/dz
+                center = tuple(a+fraction*(b-a) for a, b in zip(first, last))
+                normal = dz/length, -(last[0]-first[0])/length
+                station = distance+fraction*length
+                break
+            distance += length
+        else:
+            raise AssertionError(f'Actual fan deck has no section at north {north}')
+
+        def vertex(offset, height):
+            return (center[0]+offset*normal[0], height,
+                    center[2]+offset*normal[1], offset/8., station/16.)
+
+        surfaces.append(('wall', (vertex(-4., 14.), vertex(4., 14.), vertex(-4., 15.))))
+        surfaces.append(('rail', (vertex(-.6, 16.2), vertex(.6, 16.2), vertex(-.6, 16.3))))
+        sections.append({'north': north, 'center': center, 'normal': normal, 'station': station})
+    # This is the independently measured native paired inside-wall position;
+    # the shoulder transformation uses it to retain parapet thickness.
+    source = {'inner': 5.996547698974609, 'outer': 7.5}
+    original = deepcopy(surfaces)
+    with patch('scp_hsr.hsr_components._sweep_native_profile',
+               return_value=(surfaces, [], points, lengths)):
+        changed = _sweep_component_profile(source, deck)[0]
+    return sections, original, changed
+
+
 class CompactFanSourceTests(unittest.TestCase):
+    def test_parallel_stem_keeps_full_native_pair_width_before_the_arms_turn(self):
+        decks = model_inputs(FAN)[1]['surface_decks']
+
+        def paired_widths(profiles):
+            return [max(vertex[0] for _, _, changed in profiles for vertex in changed[2*number][1])
+                    - min(vertex[0] for _, _, changed in profiles for vertex in changed[2*number][1])
+                    for number in range(len(STEM_NORTH))]
+
+        current = [sampled_native_profile(deck) for deck in decks]
+        for north, width in zip(STEM_NORTH, paired_widths(current)):
+            with self.subTest(north=north):
+                self.assertAlmostEqual(width, 15., places=8)
+        # The former taper visibly squeezed the still-parallel stem. Reusing
+        # that defect must fail the same measured-width requirement.
+        old_decks = deepcopy(decks)
+        for deck in old_decks:
+            deck.update(taper_start_distance=8., taper_end_distance=48.)
+        old_widths = paired_widths([sampled_native_profile(deck) for deck in old_decks])
+        self.assertLess(old_widths[-1], 13.)
+        with self.assertRaises(AssertionError):
+            for width in old_widths:
+                self.assertAlmostEqual(width, 15., places=8)
+
+    def test_shoulder_width_fix_preserves_rails_and_the_eight_metre_lower_cut(self):
+        for deck in model_inputs(FAN)[1]['surface_decks']:
+            with self.subTest(deck=deck['name']):
+                sections, original, changed = sampled_native_profile(deck)
+                self.assertEqual([triangle for kind, triangle in changed if kind == 'rail'],
+                                 [triangle for kind, triangle in original if kind == 'rail'])
+                cut = sections[-1]
+                self.assertEqual(cut['north'], -72.)
+                self.assertGreater(cut['station'], 90.)
+                normal, center = cut['normal'], cut['center']
+                offsets = [(vertex[0]-center[0])*normal[0]+(vertex[2]-center[2])*normal[1]
+                           for vertex in changed[-2][1]]
+                self.assertAlmostEqual(max(offsets)-min(offsets), 8., places=8)
+                for before, after in zip(original[-2][1], changed[-2][1]):
+                    for expected, actual in zip(before, after):
+                        self.assertAlmostEqual(actual, expected, places=10)
+
     def test_only_the_retained_fan_is_registered_with_its_literal_ownership_and_supports(self):
         self.assertEqual(RECIPES, (FAN,))
         self.assertEqual(set(CONTRACTS), {FAN})

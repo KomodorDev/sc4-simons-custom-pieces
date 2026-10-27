@@ -1,0 +1,532 @@
+{
+  "schema_version": 1,
+  "purpose": "Piece-scoped projection of an existing passed saved-build verification report; this documentation refresh is not a new native test run or a game observation.",
+  "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "source_verification_sha256": "2f4c2fe10ed979509d1e9d82b7785a374bfe95e537beed7d103503a9e465881d",
+  "source_dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+  "verified_piece_report": {
+    "id": "hsr-component-l2-short-mainline-diverge-core",
+    "menu": {
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "title": "SCP | [PART] HSR L2 Short Mainline Diverge Core",
+      "menu": "Rail",
+      "menu_id": "6a47f826",
+      "puzzle_id": "f826",
+      "order": "7012f826",
+      "icon_style": "hsr-component-l2-short-mainline-diverge-core",
+      "icon": {
+        "width": 176,
+        "height": 44,
+        "pixel_format": "RGBA8",
+        "interlaced": false,
+        "states": [
+          "locked",
+          "normal",
+          "selected",
+          "highlighted"
+        ],
+        "state_dimensions": [
+          44,
+          44
+        ],
+        "transparent_corners": true,
+        "crc_valid": true,
+        "sha256": "074383389e0a178407a749f430f909729f93f573818c1c4e564826ad32a366db"
+      },
+      "icon_identity": {
+        "category": "part",
+        "badge": "PART",
+        "network": "HSR",
+        "palette": "teal",
+        "kind": "SPL",
+        "meaning": "Individual building piece"
+      },
+      "retained_native_properties_verified": true,
+      "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+      "resources": [
+        {
+          "tgi": "2026960b-123006aa-6a47f826",
+          "bytes": 632,
+          "sha256": "5dffb710f8ee6c4ea2e704cee9a3d86e93e362929778dff62ef191f0e01b737a"
+        },
+        {
+          "tgi": "2026960b-123007bb-6a47f826",
+          "bytes": 98,
+          "sha256": "b1d7e03662fa52257756c29c005c76f52cd259c36e408eba04e3c96eb1f60fa6"
+        },
+        {
+          "tgi": "6534284a-2a3858e4-6a47f826",
+          "bytes": 233,
+          "sha256": "ade7c859d1f8ce15336ac2a6801c088db27c2806c4b3c20a86810611f6bb61ab"
+        },
+        {
+          "tgi": "856ddbac-6a386d26-6a47f826",
+          "bytes": 6191,
+          "sha256": "074383389e0a178407a749f430f909729f93f573818c1c4e564826ad32a366db"
+        }
+      ],
+      "in_game_menu_tested": false
+    },
+    "paths": {
+      "tile_count": 4,
+      "encoded_routes_checked": 11,
+      "external_ports_checked": 5,
+      "permitted_movements_checked": 3,
+      "unique_complete_journeys_checked": 3,
+      "literal_port_tangents_checked": 5,
+      "journey_quality": {
+        "Win>Eout": {
+          "length_m": 64.0,
+          "direct_distance_m": 64.0,
+          "length_ratio": 1.0,
+          "total_turn_degrees": 0.0,
+          "minimum_sampled_radius_m": null,
+          "maximum_sample_turn_degrees": 0.0,
+          "maximum_raw_encoded_turn_degrees": 0.0,
+          "minimum_resolved_raw_radius_m": null,
+          "maximum_endpoint_curvature_per_m": 0.0,
+          "maximum_curvature_change_per_m2": 0.0,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 2.0,
+          "signed_turn_degrees": 0.0,
+          "maximum_raw_grade_change_per_m": 0.0,
+          "native_endpoint_curvature_per_m": {
+            "Win": 0.0,
+            "Eout": 0.0
+          }
+        },
+        "Ein>Wout": {
+          "length_m": 64.0,
+          "direct_distance_m": 64.0,
+          "length_ratio": 1.0,
+          "total_turn_degrees": 0.0,
+          "minimum_sampled_radius_m": null,
+          "maximum_sample_turn_degrees": 0.0,
+          "maximum_raw_encoded_turn_degrees": 0.0,
+          "minimum_resolved_raw_radius_m": null,
+          "maximum_endpoint_curvature_per_m": 0.0,
+          "maximum_curvature_change_per_m2": 0.0,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 2.0,
+          "signed_turn_degrees": 0.0,
+          "maximum_raw_grade_change_per_m": 0.0,
+          "native_endpoint_curvature_per_m": {
+            "Ein": 0.0,
+            "Wout": 0.0
+          }
+        },
+        "Win>Sout": {
+          "length_m": 47.086527336665014,
+          "direct_distance_m": 46.78485401701453,
+          "length_ratio": 1.0064480979152093,
+          "total_turn_degrees": 21.02871144578946,
+          "minimum_sampled_radius_m": 65.68040939653639,
+          "maximum_sample_turn_degrees": 1.7114775604833168,
+          "maximum_raw_encoded_turn_degrees": 0.38575697438252654,
+          "minimum_resolved_raw_radius_m": 41.802569768805526,
+          "maximum_endpoint_curvature_per_m": 0.01522524005541193,
+          "maximum_curvature_change_per_m2": 0.0010509823887540992,
+          "maximum_grade_change_per_m": 0.0,
+          "quality_sample_spacing_m": 1.961938639027709,
+          "signed_turn_degrees": -21.028711445789458,
+          "maximum_raw_grade_change_per_m": 0.0,
+          "native_endpoint_curvature_per_m": {
+            "Win": 0.00024889828408203367
+          }
+        }
+      },
+      "maximum_encoded_grade": 0.0,
+      "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+      "game_operation": "unverified",
+      "grade_separated_crossings_checked": 0,
+      "grade_separated_projected_contacts_checked": 0,
+      "grade_separated_crossings": [],
+      "same_direction_shared_tail_contacts_checked": 15,
+      "independent_at_grade_conflicts_checked": 0
+    },
+    "models": {
+      "authored_clearance_height_m": 5.0,
+      "authored_clearance_width_m": 5.0,
+      "bed_union_width_m": 5.0,
+      "complete_native_join_sections_checked": 3,
+      "coplanar_overlap_meshing_tolerance_m": 0.0001,
+      "corridor_clipped_to_literal_ownership": true,
+      "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+      "custom_port_cap_depth_m": 2.6,
+      "custom_port_cap_labels": [
+        "Sout"
+      ],
+      "custom_port_cap_width_m": 5.2,
+      "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+      "full_width_bed_union_segments_checked": 123,
+      "global_support_spacing_checked": true,
+      "height_aware_bed_union_checked": true,
+      "maximum_coplanar_bed_overlap_area_m2": 3.4974808116317035e-07,
+      "maximum_coplanar_bed_overlap_thickness_m": 4.681197651734692e-07,
+      "maximum_uncovered_bed_area_m2": 8.56833048601402e-06,
+      "minimum_support_centre_distance_m": 16.0,
+      "model_polygons_cut_at_custom_caps": 570,
+      "models_checked": 21,
+      "native_join_profile_tolerance_m": 5e-05,
+      "native_join_widths_m": [
+        15.0
+      ],
+      "native_material_preserved": true,
+      "owner_clipped_corridor_fragments_checked": 129,
+      "path_nodes_covered_by_visible_bed": 134,
+      "positive_area_coplanar_bed_pairs": 2316,
+      "preview_matches_tiles": true,
+      "rail_crossing_ribbon_nodes": 2,
+      "render_budget_models_checked": 21,
+      "render_group_budget_checked": true,
+      "sloped_support_heads_checked": 0,
+      "support_centres_sc4path_xy": [
+        [
+          0.0,
+          -0.0
+        ],
+        [
+          16.0,
+          -0.0
+        ],
+        [
+          32.0,
+          -0.0
+        ],
+        [
+          48.0,
+          -0.0
+        ]
+      ],
+      "support_columns_checked": 4,
+      "support_contact_points_checked": 36,
+      "support_foundations_within_reserved_cells": true,
+      "support_tops_touch_deck": true,
+      "train_clearance_segments_checked": 123,
+      "unused_visible_rails_outside_declared_custom_caps": false,
+      "visible_native_rail_centre_segments_matched_to_paths": 1395,
+      "visible_native_rail_triangles_matched_to_paths": 5217,
+      "render_groups": {
+        "all_authored_groups_within_budget": true,
+        "model_resources_checked": 21,
+        "distinct_model_payloads_checked": 5,
+        "details": [
+          {
+            "authored_frames_checked": 13,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 15,
+            "max_authored_vertices": 511,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 18,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 6,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 52,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          }
+        ]
+      }
+    },
+    "shadows": {
+      "artwork": "new code-authored vertical triangle silhouettes",
+      "projection": "vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset",
+      "tile_metres": 16.0,
+      "supersample_per_axis": 8,
+      "all_five_zoom_resources_valid": true,
+      "silhouettes_match_actual_s3d_geometry": true,
+      "native_projection_calibrated": false,
+      "texture_alpha_cutouts_sampled": false,
+      "in_game_shadow_selection_tested": false,
+      "subpixel_structural_zooms": [],
+      "images": [
+        {
+          "instance": "7f584000",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 59.984313725490196,
+          "sha256": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3"
+        },
+        {
+          "instance": "7f584001",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 240.06274509803922,
+          "sha256": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d"
+        },
+        {
+          "instance": "7f584002",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            1,
+            32,
+            31
+          ],
+          "coverage_pixels": 960.0,
+          "sha256": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e"
+        },
+        {
+          "instance": "7f584003",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            2,
+            64,
+            62
+          ],
+          "coverage_pixels": 3840.0,
+          "sha256": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b"
+        },
+        {
+          "instance": "7f584004",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            4,
+            128,
+            124
+          ],
+          "coverage_pixels": 15360.0,
+          "sha256": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6"
+        },
+        {
+          "instance": "7f584100",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 60.17254901960784,
+          "sha256": "3bb1721dd705bc68463982dd19404faa936a87a7e38b1c61ca7879aac797e6ca"
+        },
+        {
+          "instance": "7f584101",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 240.80392156862746,
+          "sha256": "41efe6ce481c8cb07fbce3ba12f65e66bf7688972dbe8714b6010cb38edf770c"
+        },
+        {
+          "instance": "7f584102",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            1,
+            32,
+            32
+          ],
+          "coverage_pixels": 963.0,
+          "sha256": "c9d6abd23ea89ac15453a857452941f56529b5c5095a71fd7b76437defe0da6b"
+        },
+        {
+          "instance": "7f584103",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            2,
+            64,
+            64
+          ],
+          "coverage_pixels": 3851.956862745098,
+          "sha256": "08121f8d5b7147e87b9a10166d659fbb0984e0229315231f5828f3b50a037d85"
+        },
+        {
+          "instance": "7f584104",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            4,
+            128,
+            128
+          ],
+          "coverage_pixels": 15407.933333333332,
+          "sha256": "edd38205df01c21ffd6199ef88b1836095c2d4c811aa2de23173356c17053e88"
+        },
+        {
+          "instance": "7f584200",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 61.9921568627451,
+          "sha256": "fd1697df4d0901a6f1c9a26e9e7e840787e2da897f5061535b6eb806dbab4b3d"
+        },
+        {
+          "instance": "7f584201",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 248.0313725490196,
+          "sha256": "e1a1eff48d95b3ee463e49d17c744628a5b22443eafcd507102744ff020c59d0"
+        },
+        {
+          "instance": "7f584202",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            1,
+            32,
+            32
+          ],
+          "coverage_pixels": 992.0,
+          "sha256": "891475d14afb682f5448d1978100aba3e8b7c26e3e6f84027ce7d9f66d236948"
+        },
+        {
+          "instance": "7f584203",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            2,
+            64,
+            64
+          ],
+          "coverage_pixels": 3968.0,
+          "sha256": "bfe22d5b624a835feb90ebeda5008748f90bc899cd29d00630107c680d7438ca"
+        },
+        {
+          "instance": "7f584204",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            4,
+            128,
+            128
+          ],
+          "coverage_pixels": 15872.0,
+          "sha256": "e78608a96d7727520ff0c2c6e49e67c42417c0469c6ecb38d23296573da4b119"
+        },
+        {
+          "instance": "7f584300",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 60.89411764705882,
+          "sha256": "43cfc9d6b1b6a56926d75c1851b8d85266a053fd557eec6a1e89b92fc5665d94"
+        },
+        {
+          "instance": "7f584301",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 243.64313725490197,
+          "sha256": "c406ff75843b52bfebb9e21d09ffe123e969f1a0e60017b98e65a62a5ad1309c"
+        },
+        {
+          "instance": "7f584302",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            1,
+            32,
+            32
+          ],
+          "coverage_pixels": 974.3450980392157,
+          "sha256": "1c9eb0c6527cefe1402b3036dcc0133153d5ed20b56e2afab29832833d2d204d"
+        },
+        {
+          "instance": "7f584303",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            2,
+            64,
+            64
+          ],
+          "coverage_pixels": 3897.392156862745,
+          "sha256": "4746a8aaf0abfdb45686bbac69cb680084913dc65c912f6ae2bf987c23da6403"
+        },
+        {
+          "instance": "7f584304",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            4,
+            128,
+            128
+          ],
+          "coverage_pixels": 15589.580392156862,
+          "sha256": "b5784429d61cce454135042454865c540f2aa6e01e597a06e8f8ac12c99edb18"
+        }
+      ]
+    }
+  },
+  "geometry_and_game_ids_changed": false,
+  "human_observations_added": 0,
+  "in_game_operation": "unverified"
+}

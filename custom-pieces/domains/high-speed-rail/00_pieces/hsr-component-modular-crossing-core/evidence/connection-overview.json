@@ -6250,10 +6250,10 @@
   },
   "generator_sha256": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
   "metadata_resolver_sha256": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
-  "manifest_sha256": "5441ae5bbf30866970a40a8735a6be9f3fc43d6947d940f7c726aa6e3306594e",
-  "compiled_manifest_sha256": "5b5df87727dee5dfc3f82e7b00ea001b2638574d4d20fe06407025dfb6e6a9bc",
-  "source_manifest": "dist/straight-stem-trumpet-v4/manifest.json",
-  "source_dat": "dist/straight-stem-trumpet-v4/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
+  "manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "compiled_manifest_sha256": "467a09cc7aad0f042530e5274254812ad05f8f6cfe0c93840e270393b5c1ec43",
+  "source_manifest": "dist/trumpet-icon-no-tab-parts/manifest.json",
+  "source_dat": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
   "source_preview_id": "7f58eff5",
   "source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
   "source_model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
@@ -6648,7 +6648,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/evidence/preview.json",
-    "sha256": "c9954d45ed8b3232ef538438b46d65e6fb24cc662de42cc17dea53f906e24f9e",
+    "sha256": "285074537134abcaac460b99ed416ad7fc836e374f8ce2c69bf621a232674747",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,
@@ -6677,81 +6677,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "933dea51e447d7402018c852b5e38cc2e55061d8060412a7bcac28adcd4020b2",
-  "framework_dependency_refresh": {
-    "reason": "The shared assembly icon renderer changed to remove the redundant Tab label and enlarge the assembly route silhouette. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "26ec91f3216a1378329fe4cfbbc08ff1e4fd1a5dfbf2954f3f4211f484bd29d3",
-    "previous_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "current_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "artwork_refresh": {
-    "reason": "Shared source-library connector and framework dependencies changed. This connection overview was actually rerendered with the current renderer from an exact copy of its original verified manifest and native DAT.",
-    "previous_image": "evidence/design-history/connection-overview-before-trumpet-rework.png",
-    "previous_image_sha256": "6a7235a9d6605c7b081bf5e51a5616cce8f8bb06079af83c52fc1ea87c6cbf09",
-    "previous_evidence": "evidence/design-history/connection-overview-before-trumpet-rework.json",
-    "previous_evidence_sha256": "769d9330f62144b08c5809c27c5be9d74ab329fae4c9728f983fd3312b3bc820",
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "source_geometry_and_resolved_connector_facts_unchanged": true,
-    "geometry_and_cards_pixels_unchanged": true,
-    "canonical_png_bytes_unchanged": false,
-    "inherited_shared_header_only_update": true,
-    "changed_rgb_bounds_xyxy": [
-      49,
-      32,
-      1708,
-      110
-    ],
-    "pixel_comparison_scope": "Exact RGB comparison against the preserved previous PNG. Any changed pixels are confined to the existing three-line header above y=182; the model scene, markers, legends, cards, and footer below that boundary are identical.",
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "assembly_icon_compact_labels_refresh": {
-    "reason": "The shared assembly icon presentation now adds a small SCP library mark at the top right and compact assembly and network labels at the bottom centre while retaining the full route drawing viewport. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment.py",
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "23b2958b6a3746a462594a34560f5dc7fef02285dba7803731cd992a28a486ef",
-    "previous_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "current_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "assembly_icon_top_left_labels_refresh": {
-    "reason": "The shared assembly icon presentation now places its small SCP library mark at the top left, retaining the compact assembly and network labels and the full route drawing viewport. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment.py",
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "5ea63484800ae14c4886c28abb6b5fb8918ddc8c930d00a21868721ee4442ce9",
-    "previous_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "current_image_sha256": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  }
+  "selectable_markdown_sha256": "50eed4f3c415063041d4c4efa7d957f53386288d4126e20976e307c20f5b5ea0"
 }

@@ -1,252 +1,498 @@
 {
   "schema_version": 1,
-  "purpose": "Identify the freshly generated revised meshes and strictly guarded reuse of unchanged model meshes in the completed normal source build.",
+  "purpose": "Normal integrated source build of the user-approved wider fan and twelve unchanged component types, with explicit mesh-reuse provenance.",
   "normal_build": {
-    "logical_name": "trumpet-rework-parts-01",
-    "manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
-    "verification_sha256": "2f308220f04b07fcb15adb2c3db3a6947480de2858aaed69b6439d6e5587d371",
+    "logical_name": "trumpet-fan-width-parts-01",
+    "manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
+    "verification_sha256": "4c14be713f14fc3aa6a83e591711f2736c642efe77abd7d134c6f5e57927afad",
     "piece_types": 13,
     "normal_resource_generation_and_all_build_checks_passed": true,
     "installed": false,
     "in_game_tested": false
   },
-  "fresh_mesh_types": [
-    {
-      "id": "hsr-component-l2-paired-fan-compact-join",
-      "recipe": "hsr_component_l2_paired_fan_compact_join",
-      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-join.dat",
-      "dat_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
-      "geometry_sha256": "ad33d8fc968e03ba74744c6cbf039cf5a131abf80f144d84874186fca7d1a3ad",
-      "model_writer": {
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py",
-        "sha256": "f238345479371c5e383dc293019f97fba79b5dc8687d68be02d2874693f75042"
-      },
-      "native_donor_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-      "compiler_config_sha256": [
-        "65e35954a8a471e25279ea1e0a3c96fc78e51891d07619834f3311a34067fec3"
-      ],
-      "actual_model_0_sha256": [
-        {
-          "cell": [
-            3,
-            0
-          ],
-          "tile_id": "7f580300",
-          "sha256": "9acc39d47608efe28337b29f584ae06ec219b1474d66b8c7f25c671baa7daa73"
-        },
-        {
-          "cell": [
-            3,
-            1
-          ],
-          "tile_id": "7f580310",
-          "sha256": "d7ed4579920c3cd08e7046cfac0365416afaf51810cdf66673a938dd33a99e3f"
-        },
-        {
-          "cell": [
-            3,
-            2
-          ],
-          "tile_id": "7f580320",
-          "sha256": "7cbdf95b4b89a60af2150bbadf88015ad85b49717ba2690e5a6d5f748922686c"
-        },
-        {
-          "cell": [
-            2,
-            3
-          ],
-          "tile_id": "7f580230",
-          "sha256": "f2b7bbe8f92dd4143a1ccd81acbf9f6e1a85a74bebc2585bf536d363de6be3ae"
-        },
-        {
-          "cell": [
-            3,
-            3
-          ],
-          "tile_id": "7f580330",
-          "sha256": "e0d5fd616342174cfdbd4d244ab1368c7f1e8e8541f0bc94597baed5c0101896"
-        },
-        {
-          "cell": [
-            4,
-            3
-          ],
-          "tile_id": "7f580430",
-          "sha256": "9a89d6cb53d8e578607185e3813d40fb89b7d145861e6ef78046d6600c6581e9"
-        },
-        {
-          "cell": [
-            1,
-            4
-          ],
-          "tile_id": "7f580140",
-          "sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861"
-        },
-        {
-          "cell": [
-            2,
-            4
-          ],
-          "tile_id": "7f580240",
-          "sha256": "e18aa4c04419d659aa3b0ceefe1619c49697b51cf6d061b0262b6e23012214fc"
-        },
-        {
-          "cell": [
-            3,
-            4
-          ],
-          "tile_id": "7f580340",
-          "sha256": "82d4e9e9c4399238cbe63676dd161c8f83695ec142143037781f86b3e3ec6f65"
-        },
-        {
-          "cell": [
-            4,
-            4
-          ],
-          "tile_id": "7f580440",
-          "sha256": "015991347c9a4e4a5bf858e85713ef29f412e18e5887e041245ea20bd56b73c5"
-        },
-        {
-          "cell": [
-            5,
-            4
-          ],
-          "tile_id": "7f580540",
-          "sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727"
-        }
-      ]
+  "approved_fan_geometry": {
+    "geometry_sha256": "d034aa453bfa95fb3a537736d12a40d0be427cbe59baffebf8f73424c7f7a090",
+    "fresh_compilation_origin": "fan-width-review-01",
+    "fresh_compilation_source_commit": "36d1b00de099981f32019b534f222c0683ae30ec",
+    "fresh_compilation_source_changes": "Only two taper_start_distance values from 8 to 48 m and two taper_end_distance values from 48 to 72 m; all other geometry inputs unchanged.",
+    "standalone_compilation_and_saved_resource_checks_passed": true,
+    "approved_standalone_complete_DAT_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
+    "measured_width_and_unchanged_rail_PATH_evidence": "../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json"
+  },
+  "guarded_saved_model_reuse": {
+    "schema_version": 1,
+    "status": "installed",
+    "baseline_commit": "36d1b00de099981f32019b534f222c0683ae30ec",
+    "scope": "Reuse only verified model meshes from the accepted current 12-type build and the freshly compiled, user-approved standalone fan-width build. The original build_piece and every ordinary build verifier remain active.",
+    "fresh_mesh_generation_claimed_for_reused_types": false,
+    "ordinary_build_piece_and_verifiers_replaced": false,
+    "native_input": {
+      "archive_filename": "High Speed Rail.dat",
+      "archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+      "decoded_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25"
     },
-    {
-      "id": "hsr-component-l2-short-opposed-merge-core",
-      "recipe": "hsr_component_l2_short_opposed_merge_core",
-      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
-      "dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
-      "geometry_sha256": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
-      "model_writer": {
+    "source_bindings": [
+      {
+        "path": "config/profiles/nam50-rhd.json",
+        "sha256": "1cd57f68b2676dcf0b520d40a6ad89d63433f836b299b74df19830db8dbce378"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json",
+        "sha256": "d034aa453bfa95fb3a537736d12a40d0be427cbe59baffebf8f73424c7f7a090"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/piece.json",
+        "sha256": "1755c90ebe2c2e37a687ffadd70830e0805b2b4841e56a5a7d61e13a55d041d7"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/geometry.json",
+        "sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json",
+        "sha256": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json",
+        "sha256": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json",
+        "sha256": "3ea3869a23ae31a1c3b31de16023ce921e603536f11e168bc3912dd9d3100e78"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/geometry.json",
+        "sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json",
+        "sha256": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/geometry.json",
+        "sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/piece.json",
+        "sha256": "668ace6a67fef74c1609816ec75868d526dcd15b0de60bbc6c9e16a9285de8f9"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json",
+        "sha256": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/piece.json",
+        "sha256": "e9d39b4cc65ed2e60527cc99be2b57c47eb7fe3bbcbec1a3419f2239af4b6265"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/geometry.json",
+        "sha256": "8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/piece.json",
+        "sha256": "0087e27275a2c11ee126ce4254ded8a1f22eb18fe7448ae2b7062a4ef7a2a90f"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/geometry.json",
+        "sha256": "0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/piece.json",
+        "sha256": "0d67af67113bdf0d99fac71f74ff35c6f9e1d5596f5e2480e55a88d23cfe04e3"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/geometry.json",
+        "sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/piece.json",
+        "sha256": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json",
+        "sha256": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/piece.json",
+        "sha256": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33"
+      },
+      {
+        "path": "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/piece.json",
+        "sha256": "be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/__init__.py",
+        "sha256": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py",
+        "sha256": "4af85a79d8e4b5fb0c8d8000a91afaa1d4482db0b544391dac0903e675bb7ed2"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py",
+        "sha256": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/crossings.py",
+        "sha256": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py",
+        "sha256": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py",
+        "sha256": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_t.py",
+        "sha256": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py",
+        "sha256": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py",
+        "sha256": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py",
+        "sha256": "d36288f967a7a107d0a23fcc5d1e1265b0093be127624870e3ddb312b5a2ee5f"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py",
+        "sha256": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0"
+      },
+      {
         "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py",
         "sha256": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554"
       },
-      "native_donor_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-      "compiler_config_sha256": [
-        "92f7130668bbb92222ccd70313fb77cf0e920f70ffd7ceaffc92a1b7877e784a",
-        "09110781dc8a9976a5aee20ff8428e50ce767c64940c4f99f0b40c6064ac9db0"
-      ],
-      "actual_model_0_sha256": [
-        {
-          "cell": [
-            0,
-            0
-          ],
-          "tile_id": "7f585000",
-          "sha256": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f"
-        },
-        {
-          "cell": [
-            1,
-            0
-          ],
-          "tile_id": "7f585100",
-          "sha256": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8"
-        },
-        {
-          "cell": [
-            2,
-            0
-          ],
-          "tile_id": "7f585200",
-          "sha256": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b"
-        },
-        {
-          "cell": [
-            3,
-            0
-          ],
-          "tile_id": "7f585300",
-          "sha256": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1"
-        },
-        {
-          "cell": [
-            4,
-            0
-          ],
-          "tile_id": "7f585400",
-          "sha256": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7"
-        }
-      ]
-    }
-  ],
-  "unchanged_model_cache": {
-    "archive_pin_source": "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/junction-rework.json",
-    "archive_pins_sha256": "44070ac64c2d3167ca9cb118e38e8ca683ff9440817bf82490dc6e0932c89f46",
-    "baseline_build_manifest_sha256": "390003f1b8cc52a75bfd3615d2ed8c948ac0704a91563e08059b9a77eb7bffe2",
-    "baseline_commit": "086d33bc276a21fe31693456d490f7a5b44725d9",
-    "cache_calls": [
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_l2_short_mainline_diverge_core"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py",
+        "sha256": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_lower_paired_straight"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py",
+        "sha256": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_l2_shortened_departure_curve"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py",
+        "sha256": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_modular_south_junction"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py",
+        "sha256": "f238345479371c5e383dc293019f97fba79b5dc8687d68be02d2874693f75042"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_modular_paired_climb"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py",
+        "sha256": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_l2_shortened_return_curve"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py",
+        "sha256": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_modular_crossing_core"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py",
+        "sha256": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_upper_paired_straight"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py",
+        "sha256": "e6cf3456c68fc57f103f6735bfaf15e5bfeb1c8b8c26778dabb44d1f2d76137f"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_tight_paired_curve90_l4_to_mid"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py",
+        "sha256": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_tight_paired_curve90_mid_to_l2"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py",
+        "sha256": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff"
       },
       {
-        "bound_sources_rechecked": true,
-        "native_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-        "recipe": "hsr_component_lower_oneway_straight"
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py",
+        "sha256": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py",
+        "sha256": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py",
+        "sha256": "445d313bc9190e1a6689ba61f042c94942bfe0d8be5ac90a0c15abcd3aa079f4"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py",
+        "sha256": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py",
+        "sha256": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py",
+        "sha256": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py",
+        "sha256": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py",
+        "sha256": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py",
+        "sha256": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py",
+        "sha256": "e5c192be2e6a96e7f135caad204b5fd041c2cd30a21c513c77c21e2ffc1a6eb5"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py",
+        "sha256": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/icons.py",
+        "sha256": "6a449968af8993cb96ea540ea1791aac1849c8843882a74ca1356bf8e3d5c928"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py",
+        "sha256": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py",
+        "sha256": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py",
+        "sha256": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/menu.py",
+        "sha256": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py",
+        "sha256": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_features.py",
+        "sha256": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py",
+        "sha256": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py",
+        "sha256": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py",
+        "sha256": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/recipes.py",
+        "sha256": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/road_stack.py",
+        "sha256": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py",
+        "sha256": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py",
+        "sha256": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/test_support.py",
+        "sha256": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py",
+        "sha256": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13"
+      },
+      {
+        "path": "framework/scp/__init__.py",
+        "sha256": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0"
+      },
+      {
+        "path": "framework/scp/assembly_matrix.py",
+        "sha256": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a"
+      },
+      {
+        "path": "framework/scp/autotile.py",
+        "sha256": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a"
+      },
+      {
+        "path": "framework/scp/build.py",
+        "sha256": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29"
+      },
+      {
+        "path": "framework/scp/catalog.py",
+        "sha256": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905"
+      },
+      {
+        "path": "framework/scp/check_bootstrap.py",
+        "sha256": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4"
+      },
+      {
+        "path": "framework/scp/checks.py",
+        "sha256": "e53a8b95807d530081c9721d62a2a24147464967496828ece947ddd68e37822e"
+      },
+      {
+        "path": "framework/scp/city_grid.py",
+        "sha256": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45"
+      },
+      {
+        "path": "framework/scp/connectivity.py",
+        "sha256": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa"
+      },
+      {
+        "path": "framework/scp/connector_metadata.py",
+        "sha256": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50"
+      },
+      {
+        "path": "framework/scp/connector_overview.py",
+        "sha256": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f"
+      },
+      {
+        "path": "framework/scp/content.py",
+        "sha256": "f477103efe3ace402adbc080e4be386b08fb976199a71de81e615b6f7773cade"
+      },
+      {
+        "path": "framework/scp/dbpf.py",
+        "sha256": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08"
+      },
+      {
+        "path": "framework/scp/design_review.py",
+        "sha256": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa"
+      },
+      {
+        "path": "framework/scp/export.py",
+        "sha256": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c"
+      },
+      {
+        "path": "framework/scp/install.py",
+        "sha256": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625"
+      },
+      {
+        "path": "framework/scp/inventory.py",
+        "sha256": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338"
+      },
+      {
+        "path": "framework/scp/jsonc.py",
+        "sha256": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422"
+      },
+      {
+        "path": "framework/scp/menu.py",
+        "sha256": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607"
+      },
+      {
+        "path": "framework/scp/menu_experiment.py",
+        "sha256": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930"
+      },
+      {
+        "path": "framework/scp/menu_experiment_resources.py",
+        "sha256": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb"
+      },
+      {
+        "path": "framework/scp/model_equivalence.py",
+        "sha256": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7"
+      },
+      {
+        "path": "framework/scp/models.py",
+        "sha256": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f"
+      },
+      {
+        "path": "framework/scp/paths.py",
+        "sha256": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717"
+      },
+      {
+        "path": "framework/scp/piece_matrix.py",
+        "sha256": "ebf4d29bce4bb59d8f61e39b4cfc9f6745ac4c01c327ec8320417c200c8e1826"
+      },
+      {
+        "path": "framework/scp/piece_previews.py",
+        "sha256": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c"
+      },
+      {
+        "path": "framework/scp/preview.py",
+        "sha256": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69"
+      },
+      {
+        "path": "framework/scp/providers.py",
+        "sha256": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b"
+      },
+      {
+        "path": "framework/scp/recipes.py",
+        "sha256": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399"
+      },
+      {
+        "path": "framework/scp/registration.py",
+        "sha256": "0abd859485be079e9b0ec6765a2da0ea18699b717bfd62e1556140443b37f2dd"
+      },
+      {
+        "path": "framework/scp/release.py",
+        "sha256": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99"
+      },
+      {
+        "path": "framework/scp/render_headers.py",
+        "sha256": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61"
+      },
+      {
+        "path": "framework/scp/render_meshes.py",
+        "sha256": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b"
+      },
+      {
+        "path": "framework/scp/resource_audit.py",
+        "sha256": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84"
+      },
+      {
+        "path": "framework/scp/rul0.py",
+        "sha256": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07"
+      },
+      {
+        "path": "framework/scp/shadows.py",
+        "sha256": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540"
+      },
+      {
+        "path": "framework/scp/test_support.py",
+        "sha256": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22"
+      },
+      {
+        "path": "framework/scp/track_paths.py",
+        "sha256": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51"
+      },
+      {
+        "path": "framework/scp/verification_fixtures.py",
+        "sha256": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4"
+      },
+      {
+        "path": "framework/scp/verify.py",
+        "sha256": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd"
       }
     ],
-    "cache_scope": "Only hsr_components.build_models; FAN and MERGE always call the original writer.",
     "cached_types": [
       {
         "id": "hsr-component-l2-short-mainline-diverge-core",
+        "recipe": "hsr_component_l2_short_mainline_diverge_core",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
+        "source_dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+        "source_dat_bytes": 3460736,
         "models": [
           {
             "cell": [
               0,
               0
             ],
+            "tile_id": "7f584000",
             "decoded_model_sha256": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
             "identical_zooms": [
               0,
@@ -254,14 +500,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f584000"
+            ]
           },
           {
             "cell": [
               1,
               0
             ],
+            "tile_id": "7f584100",
             "decoded_model_sha256": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
             "identical_zooms": [
               0,
@@ -269,14 +515,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f584100"
+            ]
           },
           {
             "cell": [
               2,
               0
             ],
+            "tile_id": "7f584200",
             "decoded_model_sha256": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
             "identical_zooms": [
               0,
@@ -284,14 +530,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f584200"
+            ]
           },
           {
             "cell": [
               3,
               0
             ],
+            "tile_id": "7f584300",
             "decoded_model_sha256": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
             "identical_zooms": [
               0,
@@ -299,425 +545,25 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f584300"
+            ]
           }
-        ],
-        "recipe": "hsr_component_l2_short_mainline_diverge_core",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
-        "source_dat_bytes": 3460736,
-        "source_dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4"
-      },
-      {
-        "id": "hsr-component-l2-shortened-departure-curve",
-        "models": [
-          {
-            "cell": [
-              0,
-              0
-            ],
-            "decoded_model_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f000"
-          },
-          {
-            "cell": [
-              1,
-              0
-            ],
-            "decoded_model_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f100"
-          },
-          {
-            "cell": [
-              2,
-              0
-            ],
-            "decoded_model_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f200"
-          },
-          {
-            "cell": [
-              3,
-              0
-            ],
-            "decoded_model_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f300"
-          },
-          {
-            "cell": [
-              2,
-              1
-            ],
-            "decoded_model_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f210"
-          },
-          {
-            "cell": [
-              3,
-              1
-            ],
-            "decoded_model_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f310"
-          },
-          {
-            "cell": [
-              4,
-              1
-            ],
-            "decoded_model_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f410"
-          },
-          {
-            "cell": [
-              3,
-              2
-            ],
-            "decoded_model_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f320"
-          },
-          {
-            "cell": [
-              4,
-              2
-            ],
-            "decoded_model_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f420"
-          },
-          {
-            "cell": [
-              4,
-              3
-            ],
-            "decoded_model_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f430"
-          },
-          {
-            "cell": [
-              4,
-              4
-            ],
-            "decoded_model_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f440"
-          },
-          {
-            "cell": [
-              4,
-              5
-            ],
-            "decoded_model_sha256": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58f450"
-          }
-        ],
-        "recipe": "hsr_component_l2_shortened_departure_curve",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
-        "source_dat_bytes": 9821669,
-        "source_dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d"
-      },
-      {
-        "id": "hsr-component-l2-shortened-return-curve",
-        "models": [
-          {
-            "cell": [
-              1,
-              0
-            ],
-            "decoded_model_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590100"
-          },
-          {
-            "cell": [
-              2,
-              0
-            ],
-            "decoded_model_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590200"
-          },
-          {
-            "cell": [
-              3,
-              0
-            ],
-            "decoded_model_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590300"
-          },
-          {
-            "cell": [
-              4,
-              0
-            ],
-            "decoded_model_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590400"
-          },
-          {
-            "cell": [
-              0,
-              1
-            ],
-            "decoded_model_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590010"
-          },
-          {
-            "cell": [
-              1,
-              1
-            ],
-            "decoded_model_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590110"
-          },
-          {
-            "cell": [
-              2,
-              1
-            ],
-            "decoded_model_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590210"
-          },
-          {
-            "cell": [
-              0,
-              2
-            ],
-            "decoded_model_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590020"
-          },
-          {
-            "cell": [
-              1,
-              2
-            ],
-            "decoded_model_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590120"
-          },
-          {
-            "cell": [
-              0,
-              3
-            ],
-            "decoded_model_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590030"
-          },
-          {
-            "cell": [
-              0,
-              4
-            ],
-            "decoded_model_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590040"
-          },
-          {
-            "cell": [
-              0,
-              5
-            ],
-            "decoded_model_sha256": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f590050"
-          }
-        ],
-        "recipe": "hsr_component_l2_shortened_return_curve",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-return-curve.dat",
-        "source_dat_bytes": 10807797,
-        "source_dat_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1"
-      },
-      {
-        "id": "hsr-component-lower-oneway-straight",
-        "models": [
-          {
-            "cell": [
-              0,
-              0
-            ],
-            "decoded_model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f509000"
-          }
-        ],
-        "recipe": "hsr_component_lower_oneway_straight",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-oneway-straight.dat",
-        "source_dat_bytes": 130180,
-        "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd"
+        ]
       },
       {
         "id": "hsr-component-lower-paired-straight",
+        "recipe": "hsr_component_lower_paired_straight",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-paired-straight.dat",
+        "source_dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+        "source_dat_bytes": 138092,
         "models": [
           {
             "cell": [
               0,
               0
             ],
+            "tile_id": "7f508000",
             "decoded_model_sha256": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
             "identical_zooms": [
               0,
@@ -725,176 +571,216 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f508000"
+            ]
           }
-        ],
-        "recipe": "hsr_component_lower_paired_straight",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-paired-straight.dat",
-        "source_dat_bytes": 138092,
-        "source_dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d"
+        ]
       },
       {
-        "id": "hsr-component-modular-crossing-core",
+        "id": "hsr-component-l2-shortened-departure-curve",
+        "recipe": "hsr_component_l2_shortened_departure_curve",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
+        "source_dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+        "source_dat_bytes": 9821669,
         "models": [
           {
             "cell": [
               0,
               0
             ],
-            "decoded_model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+            "tile_id": "7f58f000",
+            "decoded_model_sha256": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58e000"
-          }
-        ],
-        "recipe": "hsr_component_modular_crossing_core",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
-        "source_dat_bytes": 181040,
-        "source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da"
-      },
-      {
-        "id": "hsr-component-modular-paired-climb",
-        "models": [
-          {
-            "cell": [
-              0,
-              0
-            ],
-            "decoded_model_sha256": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58d000"
+            ]
           },
           {
             "cell": [
+              1,
+              0
+            ],
+            "tile_id": "7f58f100",
+            "decoded_model_sha256": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+            "identical_zooms": [
               0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "tile_id": "7f58f200",
+            "decoded_model_sha256": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "tile_id": "7f58f300",
+            "decoded_model_sha256": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
               1
             ],
-            "decoded_model_sha256": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+            "tile_id": "7f58f210",
+            "decoded_model_sha256": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58d010"
+            ]
           },
           {
             "cell": [
+              3,
+              1
+            ],
+            "tile_id": "7f58f310",
+            "decoded_model_sha256": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+            "identical_zooms": [
               0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              4,
+              1
+            ],
+            "tile_id": "7f58f410",
+            "decoded_model_sha256": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
               2
             ],
-            "decoded_model_sha256": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+            "tile_id": "7f58f320",
+            "decoded_model_sha256": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58d020"
+            ]
           },
           {
             "cell": [
+              4,
+              2
+            ],
+            "tile_id": "7f58f420",
+            "decoded_model_sha256": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+            "identical_zooms": [
               0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              4,
               3
             ],
-            "decoded_model_sha256": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+            "tile_id": "7f58f430",
+            "decoded_model_sha256": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58d030"
+            ]
           },
           {
             "cell": [
-              0,
+              4,
               4
             ],
-            "decoded_model_sha256": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+            "tile_id": "7f58f440",
+            "decoded_model_sha256": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58d040"
+            ]
           },
           {
             "cell": [
-              0,
+              4,
               5
             ],
-            "decoded_model_sha256": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+            "tile_id": "7f58f450",
+            "decoded_model_sha256": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f58d050"
-          },
-          {
-            "cell": [
-              0,
-              6
-            ],
-            "decoded_model_sha256": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58d060"
-          },
-          {
-            "cell": [
-              0,
-              7
-            ],
-            "decoded_model_sha256": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f58d070"
+            ]
           }
-        ],
-        "recipe": "hsr_component_modular_paired_climb",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
-        "source_dat_bytes": 2025717,
-        "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c"
+        ]
       },
       {
         "id": "hsr-component-modular-south-junction",
+        "recipe": "hsr_component_modular_south_junction",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
+        "source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+        "source_dat_bytes": 11066785,
         "models": [
           {
             "cell": [
               0,
               0
             ],
+            "tile_id": "7f58c000",
             "decoded_model_sha256": "0f8c0cf6878b9a9e6b489b5fc018a92179184d79162d4339360196ad9d79ec43",
             "identical_zooms": [
               0,
@@ -902,14 +788,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c000"
+            ]
           },
           {
             "cell": [
               2,
               0
             ],
+            "tile_id": "7f58c200",
             "decoded_model_sha256": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
             "identical_zooms": [
               0,
@@ -917,14 +803,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c200"
+            ]
           },
           {
             "cell": [
               0,
               1
             ],
+            "tile_id": "7f58c010",
             "decoded_model_sha256": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
             "identical_zooms": [
               0,
@@ -932,14 +818,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c010"
+            ]
           },
           {
             "cell": [
               2,
               1
             ],
+            "tile_id": "7f58c210",
             "decoded_model_sha256": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
             "identical_zooms": [
               0,
@@ -947,14 +833,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c210"
+            ]
           },
           {
             "cell": [
               0,
               2
             ],
+            "tile_id": "7f58c020",
             "decoded_model_sha256": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
             "identical_zooms": [
               0,
@@ -962,14 +848,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c020"
+            ]
           },
           {
             "cell": [
               1,
               2
             ],
+            "tile_id": "7f58c120",
             "decoded_model_sha256": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
             "identical_zooms": [
               0,
@@ -977,14 +863,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c120"
+            ]
           },
           {
             "cell": [
               2,
               2
             ],
+            "tile_id": "7f58c220",
             "decoded_model_sha256": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
             "identical_zooms": [
               0,
@@ -992,14 +878,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c220"
+            ]
           },
           {
             "cell": [
               0,
               3
             ],
+            "tile_id": "7f58c030",
             "decoded_model_sha256": "36296490f4afc12bde43a0e40fa6ee1164297eb77cb440d846d17e75c63a3d55",
             "identical_zooms": [
               0,
@@ -1007,14 +893,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c030"
+            ]
           },
           {
             "cell": [
               1,
               3
             ],
+            "tile_id": "7f58c130",
             "decoded_model_sha256": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
             "identical_zooms": [
               0,
@@ -1022,14 +908,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c130"
+            ]
           },
           {
             "cell": [
               2,
               3
             ],
+            "tile_id": "7f58c230",
             "decoded_model_sha256": "d688b44d98b4c49194e97dbd40e962b492500fa9bbd6f1c07b1a6183333b3400",
             "identical_zooms": [
               0,
@@ -1037,14 +923,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c230"
+            ]
           },
           {
             "cell": [
               0,
               4
             ],
+            "tile_id": "7f58c040",
             "decoded_model_sha256": "01996dcdd494c7f5cb05395d66c10e7a95c67a6379011d3b39406bb9fc4f8504",
             "identical_zooms": [
               0,
@@ -1052,14 +938,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c040"
+            ]
           },
           {
             "cell": [
               1,
               4
             ],
+            "tile_id": "7f58c140",
             "decoded_model_sha256": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
             "identical_zooms": [
               0,
@@ -1067,14 +953,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c140"
+            ]
           },
           {
             "cell": [
               2,
               4
             ],
+            "tile_id": "7f58c240",
             "decoded_model_sha256": "7b48a785f888af4c8a246cc7d77f3016ddc1dc5db08f8f6ec12e3f413ffc0ed7",
             "identical_zooms": [
               0,
@@ -1082,14 +968,14 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c240"
+            ]
           },
           {
             "cell": [
               1,
               5
             ],
+            "tile_id": "7f58c150",
             "decoded_model_sha256": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
             "identical_zooms": [
               0,
@@ -1097,341 +983,635 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f58c150"
+            ]
           }
-        ],
-        "recipe": "hsr_component_modular_south_junction",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
-        "source_dat_bytes": 11066785,
-        "source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca"
+        ]
       },
       {
-        "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+        "id": "hsr-component-modular-paired-climb",
+        "recipe": "hsr_component_modular_paired_climb",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
+        "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "source_dat_bytes": 2025717,
         "models": [
           {
             "cell": [
               0,
               0
             ],
-            "decoded_model_sha256": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+            "tile_id": "7f58d000",
+            "decoded_model_sha256": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f582000"
-          },
-          {
-            "cell": [
-              1,
-              0
-            ],
-            "decoded_model_sha256": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582100"
-          },
-          {
-            "cell": [
-              2,
-              0
-            ],
-            "decoded_model_sha256": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582200"
-          },
-          {
-            "cell": [
-              3,
-              0
-            ],
-            "decoded_model_sha256": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582300"
+            ]
           },
           {
             "cell": [
               0,
               1
             ],
-            "decoded_model_sha256": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+            "tile_id": "7f58d010",
+            "decoded_model_sha256": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f582010"
-          },
-          {
-            "cell": [
-              1,
-              1
-            ],
-            "decoded_model_sha256": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582110"
-          },
-          {
-            "cell": [
-              2,
-              1
-            ],
-            "decoded_model_sha256": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582210"
+            ]
           },
           {
             "cell": [
               0,
               2
             ],
-            "decoded_model_sha256": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+            "tile_id": "7f58d020",
+            "decoded_model_sha256": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f582020"
-          },
-          {
-            "cell": [
-              1,
-              2
-            ],
-            "decoded_model_sha256": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
-            "identical_zooms": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "tile_id": "7f582120"
+            ]
           },
           {
             "cell": [
               0,
               3
             ],
-            "decoded_model_sha256": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+            "tile_id": "7f58d030",
+            "decoded_model_sha256": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              4
             ],
-            "tile_id": "7f582030"
+            "tile_id": "7f58d040",
+            "decoded_model_sha256": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              5
+            ],
+            "tile_id": "7f58d050",
+            "decoded_model_sha256": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              6
+            ],
+            "tile_id": "7f58d060",
+            "decoded_model_sha256": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              7
+            ],
+            "tile_id": "7f58d070",
+            "decoded_model_sha256": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
           }
-        ],
-        "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
-        "source_dat_bytes": 17904628,
-        "source_dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb"
+        ]
       },
       {
-        "id": "hsr-component-tight-paired-curve90-mid-to-l2",
+        "id": "hsr-component-l2-paired-fan-compact-join",
+        "recipe": "hsr_component_l2_paired_fan_compact_join",
+        "source_build": "fan-width-review-01",
+        "source_manifest_sha256": "37e83bb3456c440387a73f0817b29890ad0567a5f1379014692e95e4c5e9332a",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-join.dat",
+        "source_dat_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
+        "source_dat_bytes": 27394235,
+        "models": [
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "tile_id": "7f580300",
+            "decoded_model_sha256": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              1
+            ],
+            "tile_id": "7f580310",
+            "decoded_model_sha256": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              2
+            ],
+            "tile_id": "7f580320",
+            "decoded_model_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              3
+            ],
+            "tile_id": "7f580230",
+            "decoded_model_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              3
+            ],
+            "tile_id": "7f580330",
+            "decoded_model_sha256": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              4,
+              3
+            ],
+            "tile_id": "7f580430",
+            "decoded_model_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              4
+            ],
+            "tile_id": "7f580140",
+            "decoded_model_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              4
+            ],
+            "tile_id": "7f580240",
+            "decoded_model_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              4
+            ],
+            "tile_id": "7f580340",
+            "decoded_model_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              4,
+              4
+            ],
+            "tile_id": "7f580440",
+            "decoded_model_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              5,
+              4
+            ],
+            "tile_id": "7f580540",
+            "decoded_model_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hsr-component-l2-short-opposed-merge-core",
+        "recipe": "hsr_component_l2_short_opposed_merge_core",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+        "source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "source_dat_bytes": 6053864,
         "models": [
           {
             "cell": [
               0,
               0
             ],
-            "decoded_model_sha256": "b213763856c088e11524cc556cf5143a82b489e9b34a0b1e7147f59314104653",
+            "tile_id": "7f585000",
+            "decoded_model_sha256": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583000"
+            ]
           },
           {
             "cell": [
               1,
               0
             ],
-            "decoded_model_sha256": "c64cb2006e6457c47a8f05e695ac8b4fff82e15e75bf38a9ebfd0d1913e8e5c2",
+            "tile_id": "7f585100",
+            "decoded_model_sha256": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583100"
+            ]
           },
           {
             "cell": [
               2,
               0
             ],
-            "decoded_model_sha256": "6a3d62402580b5fa2e726d0ac54f0099ea25ac21432181b6568a0a97e6b2e724",
+            "tile_id": "7f585200",
+            "decoded_model_sha256": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583200"
+            ]
           },
           {
             "cell": [
               3,
               0
             ],
-            "decoded_model_sha256": "bea6884d2781a0287c8f14400acb3a080d690a93d44fa345a8e2a4be35bdb617",
+            "tile_id": "7f585300",
+            "decoded_model_sha256": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
+            ]
+          },
+          {
+            "cell": [
+              4,
+              0
             ],
-            "tile_id": "7f583300"
+            "tile_id": "7f585400",
+            "decoded_model_sha256": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hsr-component-l2-shortened-return-curve",
+        "recipe": "hsr_component_l2_shortened_return_curve",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-return-curve.dat",
+        "source_dat_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+        "source_dat_bytes": 10807797,
+        "models": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "tile_id": "7f590100",
+            "decoded_model_sha256": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "tile_id": "7f590200",
+            "decoded_model_sha256": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "tile_id": "7f590300",
+            "decoded_model_sha256": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "tile_id": "7f590400",
+            "decoded_model_sha256": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
           },
           {
             "cell": [
               0,
               1
             ],
-            "decoded_model_sha256": "f2da8d2f5e1744042ec3fa02735b16c5b103324cd020fb2a60c058c58edfef50",
+            "tile_id": "7f590010",
+            "decoded_model_sha256": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583010"
+            ]
           },
           {
             "cell": [
               1,
               1
             ],
-            "decoded_model_sha256": "76348ed46d9111565807bfd6ce392e03f067dd2143f99c90e48fd63fcef87e99",
+            "tile_id": "7f590110",
+            "decoded_model_sha256": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583110"
+            ]
           },
           {
             "cell": [
               2,
               1
             ],
-            "decoded_model_sha256": "a3ffbcda7e41be76332bc64740558b5326fa59e908f3d1ece573605e8578006c",
+            "tile_id": "7f590210",
+            "decoded_model_sha256": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583210"
+            ]
           },
           {
             "cell": [
               0,
               2
             ],
-            "decoded_model_sha256": "dd4d1a9e4fe776e61d7cc5a77316fb4af8f9c89b973aecde77329522c77471fd",
+            "tile_id": "7f590020",
+            "decoded_model_sha256": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583020"
+            ]
           },
           {
             "cell": [
               1,
               2
             ],
-            "decoded_model_sha256": "04add1fe777dfadd17710a6dbcb4908e2940ba01e11a3b315e684649699d48ed",
+            "tile_id": "7f590120",
+            "decoded_model_sha256": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
-            ],
-            "tile_id": "7f583120"
+            ]
           },
           {
             "cell": [
               0,
               3
             ],
-            "decoded_model_sha256": "adff26284ab19cc39ae9cb536a7184bb472a734d5fd9045cab4eb820296d16e0",
+            "tile_id": "7f590030",
+            "decoded_model_sha256": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
             "identical_zooms": [
               0,
               1,
               2,
               3,
               4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              4
             ],
-            "tile_id": "7f583030"
+            "tile_id": "7f590040",
+            "decoded_model_sha256": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              5
+            ],
+            "tile_id": "7f590050",
+            "decoded_model_sha256": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
           }
-        ],
-        "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-mid-to-l2.dat",
-        "source_dat_bytes": 17904628,
-        "source_dat_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383"
+        ]
+      },
+      {
+        "id": "hsr-component-modular-crossing-core",
+        "recipe": "hsr_component_modular_crossing_core",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
+        "source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+        "source_dat_bytes": 181040,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "tile_id": "7f58e000",
+            "decoded_model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
       },
       {
         "id": "hsr-component-upper-paired-straight",
+        "recipe": "hsr_component_upper_paired_straight",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-upper-paired-straight.dat",
+        "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+        "source_dat_bytes": 138092,
         "models": [
           {
             "cell": [
               0,
               0
             ],
+            "tile_id": "7f503000",
             "decoded_model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
             "identical_zooms": [
               0,
@@ -1439,225 +1619,522 @@
               2,
               3,
               4
-            ],
-            "tile_id": "7f503000"
+            ]
           }
-        ],
+        ]
+      },
+      {
+        "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+        "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
+        "source_dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+        "source_dat_bytes": 17904628,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "tile_id": "7f582000",
+            "decoded_model_sha256": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "tile_id": "7f582100",
+            "decoded_model_sha256": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "tile_id": "7f582200",
+            "decoded_model_sha256": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "tile_id": "7f582300",
+            "decoded_model_sha256": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "tile_id": "7f582010",
+            "decoded_model_sha256": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "tile_id": "7f582110",
+            "decoded_model_sha256": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              1
+            ],
+            "tile_id": "7f582210",
+            "decoded_model_sha256": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "tile_id": "7f582020",
+            "decoded_model_sha256": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              2
+            ],
+            "tile_id": "7f582120",
+            "decoded_model_sha256": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              3
+            ],
+            "tile_id": "7f582030",
+            "decoded_model_sha256": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hsr-component-tight-paired-curve90-mid-to-l2",
+        "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-mid-to-l2.dat",
+        "source_dat_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+        "source_dat_bytes": 17904628,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "tile_id": "7f583000",
+            "decoded_model_sha256": "b213763856c088e11524cc556cf5143a82b489e9b34a0b1e7147f59314104653",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "tile_id": "7f583100",
+            "decoded_model_sha256": "c64cb2006e6457c47a8f05e695ac8b4fff82e15e75bf38a9ebfd0d1913e8e5c2",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "tile_id": "7f583200",
+            "decoded_model_sha256": "6a3d62402580b5fa2e726d0ac54f0099ea25ac21432181b6568a0a97e6b2e724",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "tile_id": "7f583300",
+            "decoded_model_sha256": "bea6884d2781a0287c8f14400acb3a080d690a93d44fa345a8e2a4be35bdb617",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "tile_id": "7f583010",
+            "decoded_model_sha256": "f2da8d2f5e1744042ec3fa02735b16c5b103324cd020fb2a60c058c58edfef50",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "tile_id": "7f583110",
+            "decoded_model_sha256": "76348ed46d9111565807bfd6ce392e03f067dd2143f99c90e48fd63fcef87e99",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              2,
+              1
+            ],
+            "tile_id": "7f583210",
+            "decoded_model_sha256": "a3ffbcda7e41be76332bc64740558b5326fa59e908f3d1ece573605e8578006c",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "tile_id": "7f583020",
+            "decoded_model_sha256": "dd4d1a9e4fe776e61d7cc5a77316fb4af8f9c89b973aecde77329522c77471fd",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              1,
+              2
+            ],
+            "tile_id": "7f583120",
+            "decoded_model_sha256": "04add1fe777dfadd17710a6dbcb4908e2940ba01e11a3b315e684649699d48ed",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "cell": [
+              0,
+              3
+            ],
+            "tile_id": "7f583030",
+            "decoded_model_sha256": "adff26284ab19cc39ae9cb536a7184bb472a734d5fd9045cab4eb820296d16e0",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hsr-component-lower-oneway-straight",
+        "recipe": "hsr_component_lower_oneway_straight",
+        "source_build": "trumpet-icon-no-tab-parts",
+        "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-oneway-straight.dat",
+        "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+        "source_dat_bytes": 130180,
+        "models": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "tile_id": "7f509000",
+            "decoded_model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+            "identical_zooms": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    ],
+    "cache_calls": [
+      {
+        "recipe": "hsr_component_l2_short_mainline_diverge_core",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_lower_paired_straight",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_l2_shortened_departure_curve",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_modular_south_junction",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_modular_paired_climb",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_l2_paired_fan_compact_join",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_l2_short_opposed_merge_core",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_l2_shortened_return_curve",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_modular_crossing_core",
+        "bound_sources_rechecked": true
+      },
+      {
         "recipe": "hsr_component_upper_paired_straight",
-        "source_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-upper-paired-straight.dat",
-        "source_dat_bytes": 138092,
-        "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0"
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+        "bound_sources_rechecked": true
+      },
+      {
+        "recipe": "hsr_component_lower_oneway_straight",
+        "bound_sources_rechecked": true
       }
-    ],
-    "environment": {
-      "implementation": "CPython",
-      "machine": "arm64",
-      "python": "3.11.9",
-      "system": "Darwin"
-    },
-    "fallback_calls": [],
-    "fresh_mesh_generation_claimed_for_reused_types": false,
-    "installer_sha256": "822190fcc84be77c5bb915a560b483d74cb88fd79ac1c0db1c9bf6dad0eff277",
-    "native_input": {
-      "archive_filename": "High Speed Rail.dat",
-      "archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
-      "decoded_resource_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
-      "resource_tgi": "5ad0e817-badb57f1-5dd31500"
-    },
-    "ordinary_build_piece_and_verifiers_replaced": false,
-    "purpose": "Record guarded reuse of eleven accepted unchanged model meshes while the current normal builder regenerates every other resource and executes every required verifier.",
-    "schema_version": 1,
-    "source_bindings": [
-      {
-        "equals_baseline_commit": true,
-        "path": "framework/scp/models.py",
-        "sha256": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "framework/scp/recipes.py",
-        "sha256": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py",
-        "sha256": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py",
-        "sha256": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py",
-        "sha256": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py",
-        "sha256": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_t.py",
-        "sha256": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py",
-        "sha256": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py",
-        "sha256": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py",
-        "sha256": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py",
-        "sha256": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py",
-        "sha256": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py",
-        "sha256": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py",
-        "sha256": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py",
-        "sha256": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py",
-        "sha256": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_features.py",
-        "sha256": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py",
-        "sha256": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py",
-        "sha256": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "config/profiles/nam50-rhd.json",
-        "sha256": "1cd57f68b2676dcf0b520d40a6ad89d63433f836b299b74df19830db8dbce378"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json",
-        "sha256": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/geometry.json",
-        "sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json",
-        "sha256": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/geometry.json",
-        "sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/piece.json",
-        "sha256": "668ace6a67fef74c1609816ec75868d526dcd15b0de60bbc6c9e16a9285de8f9"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/geometry.json",
-        "sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json",
-        "sha256": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/piece.json",
-        "sha256": "e9d39b4cc65ed2e60527cc99be2b57c47eb7fe3bbcbec1a3419f2239af4b6265"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/piece.json",
-        "sha256": "0087e27275a2c11ee126ce4254ded8a1f22eb18fe7448ae2b7062a4ef7a2a90f"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/geometry.json",
-        "sha256": "8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/piece.json",
-        "sha256": "0d67af67113bdf0d99fac71f74ff35c6f9e1d5596f5e2480e55a88d23cfe04e3"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/geometry.json",
-        "sha256": "0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/piece.json",
-        "sha256": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/geometry.json",
-        "sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json",
-        "sha256": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/piece.json",
-        "sha256": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33"
-      },
-      {
-        "equals_baseline_commit": true,
-        "path": "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/piece.json",
-        "sha256": "be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3"
-      }
-    ],
-    "status": "installed"
+    ]
   },
-  "unchanged_complete_output_DATs_equal_pinned_baseline": 11,
-  "generation_scope": "Only model meshes for eleven unchanged types came from the accepted baseline cache. The original normal builder generated PATHs, shadows, exemplars, combined previews, effects, rules, menus, and archives for all thirteen types, and ran every ordinary saved-resource check. FAN and MERGE used their freshly generated current-source model configurations, retained in the compiler memory cache between this task\u2019s builds.",
-  "reproduction": "A contributor can instead run the documented ordinary source build with the exact supported NAM inputs; no private cache helper is required to generate or verify the source.",
-  "manual_or_game_observations_recorded": false
+  "complete_DAT_identity_comparisons": [
+    {
+      "id": "hsr-component-l2-short-mainline-diverge-core",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
+      "sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "bytes": 3460736,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-lower-paired-straight",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-paired-straight.dat",
+      "sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "bytes": 138092,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-l2-shortened-departure-curve",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
+      "sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+      "bytes": 9821669,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-modular-south-junction",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
+      "sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "bytes": 11066785,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-modular-paired-climb",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
+      "sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "bytes": 2025717,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-l2-paired-fan-compact-join",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-join.dat",
+      "sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
+      "bytes": 27394235,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "fan-width-review-01"
+    },
+    {
+      "id": "hsr-component-l2-short-opposed-merge-core",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+      "sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+      "bytes": 6053864,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-l2-shortened-return-curve",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-return-curve.dat",
+      "sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+      "bytes": 10807797,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-modular-crossing-core",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
+      "sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "bytes": 181040,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-upper-paired-straight",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-upper-paired-straight.dat",
+      "sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "bytes": 138092,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
+      "sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "bytes": 17904628,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-mid-to-l2.dat",
+      "sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+      "bytes": 17904628,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    },
+    {
+      "id": "hsr-component-lower-oneway-straight",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-oneway-straight.dat",
+      "sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "bytes": 130180,
+      "equals_verified_mesh_source_complete_DAT": true,
+      "mesh_source_build": "trumpet-icon-no-tab-parts"
+    }
+  ],
+  "unchanged_complete_DATs_relative_to_preceding_assembly_build": 12,
+  "generation_scope": "The current original build_piece generated PATHs, shadows, exemplars, combined previews, effects, rules, menus, and archives for all thirteen types. Only the tile model mesh provider reused exact saved models from independently verified, matching source/native-input builds. Every ordinary per-piece and saved-build verifier ran. No new cold-meshing run is claimed for this integration. The wider fan had already been freshly compiled and reviewed before integration.",
+  "reproduction": "Run the documented ordinary source build with the supported NAM profile. Private task cache helpers are optional and are not required to generate or verify these sources.",
+  "manual_or_game_observations_recorded_by_build": false
 }

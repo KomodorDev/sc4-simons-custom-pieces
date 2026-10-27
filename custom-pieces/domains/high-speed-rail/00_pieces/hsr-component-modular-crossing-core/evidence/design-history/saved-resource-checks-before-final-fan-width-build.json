@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "purpose": "Piece-scoped projection of an existing passed saved-build verification report; this documentation refresh is not a new native test run or a game observation.",
+  "piece_id": "hsr-component-modular-crossing-core",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "source_verification_sha256": "2f4c2fe10ed979509d1e9d82b7785a374bfe95e537beed7d103503a9e465881d",
+  "source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+  "verified_piece_report": {
+    "id": "hsr-component-modular-crossing-core",
+    "menu": {
+      "piece_id": "hsr-component-modular-crossing-core",
+      "title": "SCP | [PART] HSR Modular One-Tile Two-Level Crossing",
+      "menu": "Rail",
+      "menu_id": "6a47f830",
+      "puzzle_id": "f830",
+      "order": "7012f830",
+      "icon_style": "hsr-component-modular-crossing-core",
+      "icon": {
+        "width": 176,
+        "height": 44,
+        "pixel_format": "RGBA8",
+        "interlaced": false,
+        "states": [
+          "locked",
+          "normal",
+          "selected",
+          "highlighted"
+        ],
+        "state_dimensions": [
+          44,
+          44
+        ],
+        "transparent_corners": true,
+        "crc_valid": true,
+        "sha256": "bec19f2d946de281e4851a92f9384565094b450df8b2e512a1f9746656fead95"
+      },
+      "icon_identity": {
+        "category": "part",
+        "badge": "PART",
+        "network": "HSR",
+        "palette": "teal",
+        "kind": "XNG",
+        "meaning": "Individual building piece"
+      },
+      "retained_native_properties_verified": true,
+      "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+      "resources": [
+        {
+          "tgi": "2026960b-123006aa-6a47f830",
+          "bytes": 550,
+          "sha256": "73d1b799b9ff0848c594335c5659db4493ef0bf33fe3321ce909d1584dad48ba"
+        },
+        {
+          "tgi": "2026960b-123007bb-6a47f830",
+          "bytes": 108,
+          "sha256": "7ee20dcbb81486e5ac5913a558d20b81fd68c5b2eb6368135fb63beaa3564b5b"
+        },
+        {
+          "tgi": "6534284a-2a3858e4-6a47f830",
+          "bytes": 238,
+          "sha256": "fb9d32bf3e59da7404c1345619479c6524b51750202bc2b42ac52899c23ed0a2"
+        },
+        {
+          "tgi": "856ddbac-6a386d26-6a47f830",
+          "bytes": 6791,
+          "sha256": "bec19f2d946de281e4851a92f9384565094b450df8b2e512a1f9746656fead95"
+        }
+      ],
+      "in_game_menu_tested": false
+    },
+    "paths": {
+      "tile_count": 1,
+      "encoded_routes_checked": 4,
+      "external_ports_checked": 8,
+      "permitted_movements_checked": 4,
+      "unique_complete_journeys_checked": 4,
+      "rotations_checked": 4,
+      "exact_3d_cell_seams": true,
+      "all_encoded_tracks_used_by_intended_journeys": true,
+      "unwanted_u_turns": false,
+      "unwanted_cross_level_transfers": false,
+      "maximum_encoded_grade": 0.0,
+      "native_port_heights_m": [
+        15.5,
+        30.5
+      ],
+      "literal_port_tangents_checked": 8,
+      "frozen_module_path_files_checked": 1,
+      "frozen_module_recipe": "hsr_component_modular_crossing_core",
+      "frozen_module_source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "all_module_local_path_bytes_unchanged": true,
+      "custom_curved_interfaces_require_matching_continuation": false,
+      "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+      "collision_free_operation_claimed": false,
+      "grade_separated_crossings_checked": 4,
+      "grade_separated_projected_contacts_checked": 4,
+      "grade_separated_crossings": [
+        {
+          "xy": [
+            -2.0,
+            -2.0
+          ],
+          "path_heights_m": [
+            15.5,
+            30.5
+          ],
+          "structural_clearance_m": 12.02134,
+          "collinear_projection": false
+        },
+        {
+          "xy": [
+            -2.0,
+            2.0
+          ],
+          "path_heights_m": [
+            15.5,
+            30.5
+          ],
+          "structural_clearance_m": 12.02134,
+          "collinear_projection": false
+        },
+        {
+          "xy": [
+            2.0,
+            -2.0
+          ],
+          "path_heights_m": [
+            15.5,
+            30.5
+          ],
+          "structural_clearance_m": 12.02134,
+          "collinear_projection": false
+        },
+        {
+          "xy": [
+            2.0,
+            2.0
+          ],
+          "path_heights_m": [
+            15.5,
+            30.5
+          ],
+          "structural_clearance_m": 12.02134,
+          "collinear_projection": false
+        }
+      ],
+      "same_direction_shared_tail_contacts_checked": 0,
+      "independent_at_grade_conflicts_checked": 0,
+      "native_straight_eight_metre_collars_checked": 8
+    },
+    "models": {
+      "all_module_local_model_bytes_unchanged": true,
+      "all_module_local_path_bytes_unchanged": true,
+      "authored_clearance_height_m": 5.0,
+      "authored_clearance_width_m": 5.0,
+      "coplanar_overlap_meshing_tolerance_m": 0.0001,
+      "custom_curve_ends_reswept": false,
+      "frozen_module_model_zooms_checked": 5,
+      "frozen_module_path_files_checked": 1,
+      "frozen_module_recipe": "hsr_component_modular_crossing_core",
+      "frozen_module_source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+      "global_support_spacing_checked": true,
+      "maximum_coplanar_bed_overlap_area_m2": 0.0,
+      "maximum_coplanar_bed_overlap_thickness_m": 0.0,
+      "minimum_support_centre_distance_m": null,
+      "models_checked": 6,
+      "native_material_preserved": true,
+      "path_nodes_covered_by_visible_bed": 8,
+      "positive_area_coplanar_bed_pairs": 0,
+      "preview_matches_tiles": true,
+      "rail_crossing_ribbon_nodes": 0,
+      "render_budget_models_checked": 6,
+      "render_group_budget_checked": true,
+      "sloped_support_heads_checked": 0,
+      "support_centres_sc4path_xy": [
+        [
+          0.0,
+          -0.0
+        ]
+      ],
+      "support_columns_checked": 1,
+      "support_contact_points_checked": 9,
+      "support_foundations_within_reserved_cells": true,
+      "support_tops_touch_deck": true,
+      "train_clearance_segments_checked": 4,
+      "render_groups": {
+        "all_authored_groups_within_budget": true,
+        "model_resources_checked": 6,
+        "distinct_model_payloads_checked": 1,
+        "details": [
+          {
+            "authored_frames_checked": 3,
+            "max_authored_vertices": 463,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          }
+        ]
+      }
+    },
+    "shadows": {
+      "artwork": "new code-authored vertical triangle silhouettes",
+      "projection": "vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset",
+      "tile_metres": 16.0,
+      "supersample_per_axis": 8,
+      "all_five_zoom_resources_valid": true,
+      "silhouettes_match_actual_s3d_geometry": true,
+      "native_projection_calibrated": false,
+      "texture_alpha_cutouts_sampled": false,
+      "in_game_shadow_selection_tested": false,
+      "subpixel_structural_zooms": [],
+      "images": [
+        {
+          "instance": "7f58e000",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 63.74901960784314,
+          "sha256": "32ad5b2425c5c1363fa3a4d3d16678bc5c97fa7beef88981925d65bf732797d1"
+        },
+        {
+          "instance": "7f58e001",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 255.01176470588234,
+          "sha256": "20d6aa67aa629372eb775f5a1fd47fe6bb861eb8c644cb1ad213b659ce8760f5"
+        },
+        {
+          "instance": "7f58e002",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 1020.0,
+          "sha256": "fc998cf56057f5431a4096996a0641e02bc6f3f4f0b30e1c929b8bf07597932e"
+        },
+        {
+          "instance": "7f58e003",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 4080.0,
+          "sha256": "b8d77c631e53e4e1d38b2472dbe8c3d4a83aa7f6739a54d1c4594d328d944d19"
+        },
+        {
+          "instance": "7f58e004",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 16320.0,
+          "sha256": "3b7a12302dbb3dc52aec1ea4ad879c3486c080c3a1d31ca2e8126f933bd05d3d"
+        }
+      ]
+    }
+  },
+  "geometry_and_game_ids_changed": false,
+  "human_observations_added": 0,
+  "in_game_operation": "unverified"
+}

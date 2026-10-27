@@ -40,6 +40,8 @@ The fan separates the two directions of paired HSR into their respective curved 
 
 The north-facing boundary carries both directions of ordinary paired L2 HSR. Each curved branch has its own directed connection, whose position, heading, deck, walls, and train clearance must all match its neighbour. A shared height alone does not establish a complete join. The library does not supply automatic compatibility discovery.
 
+The paired structure remains **15 m wide** through the straight approach and the start of the fork. The shoulder taper now begins 48 m along each authored sweep and ends at 72 m, after the tracks have begun separating. This removes the earlier unexplained narrowing without changing the train paths, track radii, visible rails, joining cuts, or six supports. The [saved-model width audit](evidence/fan-width-audit.json) records cross-sections, exact rail identity, and unchanged PATH resources.
+
 The permanent construction definition is [piece.json](piece.json), and the authoring geometry is [geometry.json](geometry.json). Source cells use [column, row], with columns increasing eastward and rows increasing southward; the picture's Y axis increases northward. Use the generated coordinate conversion rather than reading a source row as a picture Y label.
 
 Keep the complete construction rectangle clear, including cells without a visible train route. This is a sparse piece: an apparently empty cell can be its software construction reference, and that reference has not been confirmed as the game's mouse-click anchor.
@@ -221,7 +223,7 @@ Building writes a local development build; verification inspects its saved resou
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 2/3 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/8 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/8 applicable cases passed; 0 failed, 0 stale.
@@ -277,7 +279,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 43, passed: 2, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 41, passed: 4, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -317,6 +319,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet_v4.py plus current compiled-resource checks; confirmed at: 2026-10-20T11:45:51.432103+00:00; evidence: [../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:29:02.017861+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:41:49.586746+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 
 </details>
 
@@ -346,18 +349,19 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet_v4.py plus current compiled-resource checks; confirmed at: 2026-10-20T11:45:51.438799+00:00; evidence: [../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:29:02.017861+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:41:49.586746+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 
 </details>
 
 </details>
 
 <details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+<summary>Preview review — Images — 3 cases; unverified: 1, passed: 2</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast | <a href="#case-preview_review-3cb6c2661802b929620d">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top | <a href="#case-preview_review-f59bcfa100a7ff0db938">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast | <a href="#case-preview_review-3cb6c2661802b929620d">[x] passed</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top | <a href="#case-preview_review-f59bcfa100a7ff0db938">[x] passed</a> | — | — | — | — |
 | **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview | <a href="#case-preview_review-407c1640d6da76516db5">[ ] unverified</a> | — | — | — | — |
 
 
@@ -366,13 +370,15 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 <a id="case-preview_review-3cb6c2661802b929620d"></a>
 
-**General: unverified** — `preview_review-3cb6c2661802b929620d`.
+**General: passed** — `preview_review-3cb6c2661802b929620d`.
 
 Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
 
 </details>
 
@@ -382,13 +388,15 @@ No observation recorded.
 
 <a id="case-preview_review-f59bcfa100a7ff0db938"></a>
 
-**General: unverified** — `preview_review-f59bcfa100a7ff0db938`.
+**General: passed** — `preview_review-f59bcfa100a7ff0db938`.
 
 Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
 
 </details>
 

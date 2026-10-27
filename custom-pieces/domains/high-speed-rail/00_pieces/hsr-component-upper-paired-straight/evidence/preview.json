@@ -1,27 +1,22 @@
 {
-  "purpose": "Portable exact-model preview provenance for this reusable type; image review and game tests remain separate.",
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-upper-paired-straight",
   "menu_name": "HSR L4 Two-Track Straight",
+  "display_title": "Piece - HSR L4 Two-Track Straight",
+  "view_role": "angled",
+  "canonical_filename": "preview.png",
   "source": {
-    "asset_file": "SCP_hsr-component-upper-paired-straight.dat",
+    "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-upper-paired-straight.dat",
     "preview_id": "7f503ff5",
     "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
     "model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788"
   },
   "file": "previews/preview.png",
-  "sha256": "ca1928f38952dd2ae38b6d604b875cf12b68db1ea181f523a50c90ab6ae732b8",
+  "sha256": "a41556c084130d8ce0e0f20638ade50297f34bf0babe75d1749f28e232b9900d",
   "size": [
     1600,
     1200
   ],
-  "thumbnail": {
-    "file": "previews/preview-thumb.png",
-    "sha256": "0de47d460202044fcf0e92cc312a4de04c781aa39d9f84ae7a079d1992d27212",
-    "size": [
-      360,
-      270
-    ]
-  },
   "azimuth_degrees": 45.0,
   "elevation_degrees": 31.0,
   "displayed_rotation_ccw_degrees": 0.0,
@@ -283,7 +278,8 @@
       "metres": 16,
       "east_pixels": 258.50049543440724,
       "north_pixels": 258.50049543440724,
-      "caption": "1 tile = 16 m"
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
     },
     "camera": {
       "projection": "orthographic",
@@ -324,6 +320,70 @@
       "s3d_coordinates": "(east, height, -north)"
     }
   },
+  "header": {
+    "captions": [
+      "Piece - HSR L4 Two-Track Straight",
+      "Clean view | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - HSR L4 Two-Track Straight",
+        "colour": "#172b42",
+        "font_pixels": 35,
+        "bold": true,
+        "position": [
+          30,
+          20
+        ],
+        "bounds": [
+          30,
+          27,
+          600,
+          59
+        ]
+      },
+      {
+        "text": "Clean view | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          63
+        ],
+        "bounds": [
+          30,
+          67,
+          553,
+          88
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          98
+        ],
+        "bounds": [
+          30,
+          102,
+          927,
+          122
+        ]
+      }
+    ],
+    "bottom": 146,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "viewport_offset_xy": [
+    0,
+    146
+  ],
   "model": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
@@ -379,16 +439,17 @@
     }
   ],
   "captions": [
-    "HSR L4 Two-Track Straight",
-    "Reusable piece | southeast view | default orientation: 0 degrees",
-    "Independent local X/Y grid | piece reference: X0, Y0 | 1 tile = 16 m",
-    "Complete reusable piece shown at its default orientation.",
+    "Piece - HSR L4 Two-Track Straight",
+    "Clean view | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+    "Complete reusable piece shown at its authored orientation.",
     "Software model preview; in-game placement and traffic remain unverified."
   ],
-  "annotation_mode": "Exact reusable menu name in header; independent local X/Y grid; no assembly labels",
+  "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
   "other_piece_types_drawn": false,
   "selected_piece_geometry_hidden_or_simplified": false,
+  "in_game_evidence": false,
   "renderer": {
     "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
     "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
@@ -413,6 +474,22 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
+    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "header": {
+      "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
+      "row_colours": [
+        "#172b42",
+        "#176eaf",
+        "#586a7e"
+      ],
+      "rows": [
+        "Piece - source-backed piece title",
+        "view purpose, camera, and authored orientation",
+        "local grid and scale"
+      ],
+      "duplicate_grid_footer_visible": false
+    },
+    "city_grid_source_sha256": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
     "image_size": [
       1600,
       1200
@@ -427,14 +504,19 @@
         "elevation": 31.0
       }
     ],
+    "view_role": "angled",
     "tile_metres": 16.0,
-    "origin_marker_visible": false
+    "origin_marker_visible": false,
+    "duplicate_grid_footer_visible": false
   },
-  "renderer_metadata_note": "View settings normalized from saved camera/grid facts; original image bytes retained. No new render or manual review is claimed.",
-  "artwork_relocation": {
-    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
-    "image_directory": "previews",
-    "image_bytes_changed": false,
-    "original_renderer_and_input_fingerprints_preserved": true
-  }
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "7176c2a44a7f6b4225bb49389b57cccb6247b2376a7c8997ec378b7ef415ad4c",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "title_source_inputs": {},
+  "input_fingerprint": "b681d72e3dedfdd7af3bbdd208934243698acfacaa9734fd7c7316be897a6ea5"
 }

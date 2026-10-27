@@ -154,7 +154,7 @@ A **PATH** describes train movement. An **S3D model** contains visible triangles
 
 Use the [quality contract](checks/contract.json) and [layout contract](checks/layout.json) with the resource fingerprints below; these source records define the current acceptance requirements.
 
-The independently accepted schema-3 [current resource contract](checks/resources.json) pins all **13 current piece DATs**, their identities, recipes, sizes, resource counts, and hashes. It also pins the models, PATHs, and shadows of all **105 placed tiles**, their owning pieces and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The actual native audit passed with **700,114 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**. Verification reads the current staged build and compares these exact approved fingerprints before performing independent physical and routing checks. Verification uses the current compiled resources and their declared contracts.
+The independently accepted schema-3 [current resource contract](checks/resources.json) pins all **13 current piece DATs**, their identities, recipes, sizes, resource counts, and hashes. It also pins the models, PATHs, and shadows of all **105 placed tiles**, their owning pieces and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The actual native audit passed with **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**. Verification reads the current staged build and compares these exact approved fingerprints before performing independent physical and routing checks. Verification uses the current compiled resources and their declared contracts.
 
 The candidate placement contract requires **25 placements, 13 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. The software verifier checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer. Full native bed, underside, and parapet sections are checked at the four exposed ordinary connections. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
 
@@ -170,6 +170,12 @@ Every complete journey must also stay within **3°** of heading change between r
 | South → West | 3.5 | 269°–271° | −270° |
 
 The redesigned fan owns **11 tiles**. Four former structural cells are omitted only after every saved model zoom has no surface or positive-area projection inside those cells, their PATH resources are absent, and no support is owned there. The two earlier near-centre fan supports are replaced by one support at **(112 m, 32 m)** in assembly authoring coordinates. The explicit plan retains all **59 support positions** outside the redesigned modules and has **74 positions** overall. The [junction redesign record](checks/junction-rework.json) holds the baseline hashes, exact allowed region, fixed sockets, and actual saved-resource proof.
+
+### Approved paired-fan structure width
+
+The paired part of P06 now retains its native **15 m** width through the approach and the start of the fork. Each shoulder taper begins at 48 m and ends at 72 m along its authored sweep. The [saved-model comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) measures bed and underside cross-sections, confirms exact identity of all **21,245 visible rail triangles**, and confirms unchanged bytes for all **11 PATH resources**. The approved angled and top pictures have their own image-bound user observations; that approval does not establish game appearance or operation.
+
+The full independent geometry audit was rerun from the approved fan DAT and twelve byte-identical preceding component DATs before the current resource pins were captured. The [normal build provenance](evidence/junction-rework-build.json) distinguishes reuse of verified saved meshes from resource generation and verification. The [executed native test report](evidence/junction-rework-tests.json) identifies its exact audited inputs and results. Preceding audits and render reports are preserved under `evidence/design-history/*-before-fan-width.json`.
 
 ### Inherited interface checks and limits
 
@@ -296,6 +302,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 
 </details>
 
@@ -325,6 +332,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 
 </details>
 
