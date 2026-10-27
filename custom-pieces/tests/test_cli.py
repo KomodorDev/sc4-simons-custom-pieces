@@ -75,7 +75,7 @@ class PortableCLITests(unittest.TestCase):
         directory = self.root/'domains/high-speed-rail/00_pieces/split-guide-draft'
         readme, testing = [(directory/name).read_text() for name in ('README.md', 'TESTING.md')]
         self.assertIn('<!-- PIECE README LAYOUT: 2 -->', readme)
-        self.assertIn('[Testing](TESTING.md)', readme)
+        self.assertIn('[Testing ↗ (separate document)](TESTING.md)', readme)
         self.assertNotIn('## 4. Testing', readme)
         self.assertIn('<!-- PIECE TESTING LAYOUT: 1 -->', testing)
         self.assertIn('## 6. Design history', testing)

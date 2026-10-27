@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece carries two tracks in opposite directions over a 128 m climb. In the pictured 0° orientation, the south end is Level 2 (L2), with traffic paths 15.5 m above ground, and the north end is Level 4 (L4), at 30.5 m. The northbound track climbs, and the southbound track descends. Both exposed ends are flat.
 

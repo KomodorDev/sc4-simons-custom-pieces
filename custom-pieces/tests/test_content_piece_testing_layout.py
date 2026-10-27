@@ -55,7 +55,7 @@ class PieceTestingLayoutTests(unittest.TestCase):
         readme, testing = [(directory/name).read_text() for name in ('README.md', 'TESTING.md')]
         self.assertEqual(re.findall(r'^## (.+)$', readme, re.M), list(PIECE_README_CHAPTERS))
         self.assertEqual(re.findall(r'^## (.+)$', testing, re.M), list(PIECE_TESTING_CHAPTERS))
-        self.assertIn('[Testing](TESTING.md)', readme)
+        self.assertIn('[Testing ↗ (separate document)](TESTING.md)', readme)
         self.assertIn(SPLIT_LAYOUT_MARKER, readme)
         self.assertEqual(testing.count(PIECE_TESTING_LAYOUT_MARKER), 1)
         for block, chapter, next_chapter in [('CONNECTIONS', '1. Test scope', '2. Test setup'),

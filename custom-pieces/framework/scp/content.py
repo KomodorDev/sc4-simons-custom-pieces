@@ -1000,7 +1000,7 @@ def piece_document_scaffold(subject):
     lines = ['# '+title, '', 'Purpose: explain this reusable piece and its connections and test coverage.', '',
              SPLIT_LAYOUT_MARKER, '',
              ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
-                        for chapter in PIECE_README_CHAPTERS)+' · [Testing](TESTING.md)', '']
+                        for chapter in PIECE_README_CHAPTERS)+' · [Testing ↗ (separate document)](TESTING.md)', '']
     content = (
         ('The authored explanation of the canonical angled and north-up views is still missing. Generated software images, when available, do not establish the piece’s appearance in the game.',
          ('PIECE VIEWS',)),

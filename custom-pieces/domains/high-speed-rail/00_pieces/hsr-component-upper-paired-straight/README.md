@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece is a flat, native-width paired straight at Level 4 (L4), with traffic paths 30.5 m above ground. In the pictured 0° orientation, the eastern track carries trains northward, and the western track carries trains southward. Both tracks are part of one tile placement.
 

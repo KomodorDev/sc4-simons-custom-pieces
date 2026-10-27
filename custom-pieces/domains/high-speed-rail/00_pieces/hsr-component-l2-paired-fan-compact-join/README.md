@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece connects one north-facing pair of tracks to two curved branch ends. At the authored 0° orientation, traffic entering from the north leaves through the western branch; traffic entering from the eastern branch continues north. Both directions remain at nominal Level 2 (L2), with a train-path height of 15.5 m.
 

@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece carries two opposite directions along one mainline and provides one directed departure onto a curved branch. Every train path remains at nominal Level 2 (L2), measured at 15.5 m above the piece’s ground reference. One click places this four-tile component; it does not place a complete interchange.
 

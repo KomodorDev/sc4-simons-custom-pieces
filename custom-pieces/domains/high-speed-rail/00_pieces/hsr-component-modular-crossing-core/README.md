@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece crosses two paired lines within one 16 × 16 m city tile. East/west traffic stays at nominal Level 2 (L2), measured at 15.5 m, while north/south traffic stays at nominal Level 4 (L4), measured at 30.5 m. The two heights remain separate; this piece provides no turn or transfer between them.
 

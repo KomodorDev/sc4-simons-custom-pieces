@@ -2,7 +2,7 @@
 
 <!-- PIECE README LAYOUT: 2 -->
 
-[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing](TESTING.md)
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
 This reusable High Speed Rail (HSR) piece is one centred, northbound track on an 8 m wide slab. Its traffic path is at Level 2 (L2), 15.5 m above ground. In the pictured 0° orientation, a train enters at the south end and leaves at the north end; the piece supplies no reverse-direction journey.
 
