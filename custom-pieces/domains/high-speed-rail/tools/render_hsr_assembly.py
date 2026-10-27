@@ -184,7 +184,7 @@ def load_scene(path, *, default_build=None):
                          'model_sha256': sha256(raw), 'render_budget': budget})
     combined = combine_meshes(sources)
     provenance = {'scene_file': path.name, 'scene_sha256': sha256(raw_scene),
-                  'title': scene.get('title', 'HSR interchange | complete geometry'),
+                  'title': scene.get('title', 'HSR interchange'),
                   'sources': evidence,
                   'geometry_status': scene.get('geometry_status',
                       'assembled actual compiled model resources'),
@@ -212,6 +212,23 @@ def _caption(draw, text, y, size, width, *, bold=False, color='#172b42'):
     draw.text((32, y), text, font=font(size, bold), fill=color)
 
 
+def assembly_caption_rows(name, view_class, camera):
+    """Keep the assembly identity in row one and the view class in row two."""
+    if not isinstance(name, str) or not name.strip():
+        raise ValueError('Assembly captions require a nonempty semantic name')
+    if view_class not in ('Clean view', 'Component guide', 'Construction view'):
+        raise ValueError('Unknown assembly view class')
+    if not isinstance(camera, str) or not camera.strip():
+        raise ValueError('Assembly captions require a camera description')
+    name = name.strip()
+    prefix = 'Assembly - '
+    while name.startswith(prefix):
+        name = name[len(prefix):].strip()
+    if not name or name == prefix.rstrip():
+        raise ValueError('Assembly captions require a nonempty semantic name')
+    return prefix+name, view_class+' | '+camera.strip()
+
+
 def _grid_bounds(vertices, sources):
     """Enclose real cells and model at tile edges, without extra negative-index cells."""
     cells = [cell for source in sources for cell in source.get('occupied_world_cells', [])]
@@ -229,10 +246,9 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     """Draw exact occupied city cells. This is explicitly a plan, not model geometry."""
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
-    _caption(draw, title or 'Straight-stem HSR trumpet | tile ownership and placement positions',
-             22, 34, width, bold=True)
-    _caption(draw, 'Construction plan | north up | each coloured square is one occupied 16 x 16 m tile',
-             72, 23, width, color='#176eaf')
+    header_rows = assembly_caption_rows(title or 'HSR interchange', 'Construction view', 'Top view | north up')
+    _caption(draw, header_rows[0], 22, 34, width, bold=True)
+    _caption(draw, header_rows[1], 72, 23, width, color='#176eaf')
     label_prefix = 'Piece labels'
     _caption(draw, f'{label_prefix} match the model views and guide | diamonds mark piece reference positions, not cursor anchors',
              108, 21, width, color='#586a7e')
@@ -299,6 +315,7 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     _caption(draw, 'Match the shown positions and rotations; reference diamonds are not verified in-game mouse-click positions.',
              height-42, 20, width, color='#586a7e')
     return canvas, {'kind': 'construction tile-ownership plan', 'camera': camera.metadata(),
+                    'header_rows': list(header_rows), 'label': header_rows[1],
                     'grid': grid, 'piece_labels': labels,
                     'colour_assignment': colours,
                     'ownership_boundaries': {
@@ -327,7 +344,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     vertices = [point for block in model['vertices'] for point in positions(block)]
     bounds = [[min(point[axis] for point in vertices),
                max(point[axis] for point in vertices)] for axis in range(3)]
-    title = provenance.get('title', 'HSR interchange | complete geometry')
+    title = provenance.get('title', 'HSR interchange')
     sources = provenance.get('sources', [])
     labelled = bool(sources) and all('label_anchor_world_m' in item and 'piece_id' in item
                                     for item in sources)
@@ -343,8 +360,9 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     for name, azimuth, elevation, label in VIEWS:
         canvas = Image.new('RGB', (width, height), '#f7f9fb')
         draw = ImageDraw.Draw(canvas)
-        _caption(draw, title, 22, 34, width, bold=True)
-        _caption(draw, label, 72, 23, width, color='#176eaf')
+        header_rows = assembly_caption_rows(title, 'Component guide' if labelled else 'Clean view', label)
+        _caption(draw, header_rows[0], 22, 34, width, bold=True)
+        _caption(draw, header_rows[1], 72, 23, width, color='#176eaf')
         _caption(draw, 'Actual compiled S3D track, decks and supports | software preview',
                  108, 21, width, color='#586a7e')
         if labelled:
@@ -378,7 +396,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         canvas.save(target)
         image = {'file': target.name, 'sha256': sha256(target.read_bytes()),
                  'size': [width, height], 'azimuth_degrees': azimuth,
-                 'elevation_degrees': elevation, 'label': label,
+                 'elevation_degrees': elevation, 'label': header_rows[1],
+                 'header_rows': list(header_rows),
                  'variant': 'named' if labelled else 'overview',
                  'camera': camera.metadata(), 'grid': grid,
                  'piece_labels': labels}
@@ -389,8 +408,9 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             # with the whole width available for inspecting its shape.
             clean = Image.new('RGB', (width, height), '#f7f9fb')
             cd = ImageDraw.Draw(clean)
-            _caption(cd, title, 22, 34, width, bold=True)
-            _caption(cd, label+' | clean overview', 72, 23, width, color='#176eaf')
+            clean_header_rows = assembly_caption_rows(title, 'Clean view', label)
+            _caption(cd, clean_header_rows[0], 22, 34, width, bold=True)
+            _caption(cd, clean_header_rows[1], 72, 23, width, color='#176eaf')
             _caption(cd, 'Actual compiled S3D track, decks and supports | software preview',
                      108, 21, width, color='#586a7e')
             _caption(cd, 'X/Y tile coordinates | 1 tile = 16 m',
@@ -410,14 +430,15 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean.save(clean_target)
             images.append({'file': clean_target.name, 'sha256': sha256(clean_target.read_bytes()),
                 'size': [width, height], 'azimuth_degrees': azimuth,
-                'elevation_degrees': elevation, 'label': label+' | clean overview',
+                'elevation_degrees': elevation, 'label': clean_header_rows[1],
+                'header_rows': list(clean_header_rows),
                 'variant': 'clean', 'piece_labels': None,
                 'camera': clean_camera.metadata(), 'grid': clean_grid})
             print(json.dumps({'rendered': clean_target.name}), flush=True)
     if labelled and any(item.get('occupied_world_cells') for item in sources):
         plan, metadata = _placement_plan(vertices, sources, grid_bounds, origin,
                                          width, height, panel, top,
-                                         title=provenance.get('placement_plan_title'),
+                                         title=title,
                                          colour_assignment=colours)
         target = destination/f'{prefix}-placement-plan-xy.png'
         plan.save(target)

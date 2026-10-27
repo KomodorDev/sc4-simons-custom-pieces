@@ -62,7 +62,7 @@ python3 custom-pieces/scp.py check --scope straight-stem-trumpet
 
 The validation report identifies the [exact manifest snapshot at audit time](evidence/audited-build-manifest.json). Documentation-only export metadata may change later; the approved DAT bytes remain pinned independently. A missing current descriptor, missing required staged build or changed resource fails verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
 
-The six assembly pictures use neutral current captions. Their current [render report](evidence/render.json) identifies the exact images, renderer settings, and saved-model inputs. Caption changes preserve the tracks, supports, placements, and picture body; the standalone component pictures keep their existing bytes. Frozen reports in the design history describe their original inputs and images.
+The six assembly pictures start with `Assembly - Straight-stem HSR trumpet`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their current [render report](evidence/render.json) identifies the exact images, renderer settings, and saved-model inputs. Only the first two header rows changed; every pixel from row 108 downward remains unchanged. The standalone component pictures and their [picture report](evidence/piece-previews.json) keep their existing bytes. When those pictures are next refreshed, their first row will start with `Piece - ` and their source-backed display name; their second row will identify a `Clean view` or `Connection overview`. Frozen reports in the design history describe their original inputs and images. Updated assembly picture hashes affect image-review dependencies, without creating new software or game passes.
 
 ## Prepare the test layout
 
@@ -290,7 +290,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 **General: unverified** — `preview_review-4255f74d1a0022065ce4`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:clean-southeast.
 
@@ -306,7 +306,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-8f00df0ccb26670bca5a`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:clean-top.
 
@@ -322,7 +322,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-09c7f0560ea1efecf6f1`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:named-northwest.
 
@@ -338,7 +338,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-b0defe1adfa80a596bb8`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:named-southeast.
 
@@ -354,7 +354,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-ecf9be65aaa4dd4c3c7b`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:named-top.
 
@@ -370,7 +370,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-a613bd9fbd07c6e7cb5f`.
 
-Inspect this exact preview for tracks, walls, piers, seams and shadows.
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:straight-stem-trumpet:tile-ownership.
 

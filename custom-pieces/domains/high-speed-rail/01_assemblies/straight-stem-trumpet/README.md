@@ -17,7 +17,7 @@ Open **Transportation → Rail**, select the **SCP | ASSEMBLY | HSR Trumpet** bu
 
 ## 1. Views
 
-Every image uses the same city grid. The first two omit part names. The next three show exact component names and placement labels. The final plan shows tile ownership: adjacent placements have clearly different colours and thick boundaries, even when they reuse the same button. The [render report](evidence/render.json) identifies the actual saved models and image hashes.
+Every image is titled **Assembly - Straight-stem HSR trumpet** and uses the same city grid. Its second row identifies its purpose and camera direction. The first two are **Clean view** images without part names. The next three are **Component guide** images with exact component names and placement labels in the side legend. The final **Construction view** shows tile ownership: adjacent placements have clearly different colours and thick boundaries, even when they reuse the same button. The [render report](evidence/render.json) identifies the actual saved models and image hashes.
 
 ![clean top view on the fixed X/Y city grid](previews/overview-top.png)
 

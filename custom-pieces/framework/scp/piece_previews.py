@@ -13,7 +13,7 @@ from .catalog import piece_cells
 from .city_grid import make_camera, make_city_grid
 from .models import pack_s3d, parse_s3d, positions, validate_s3d
 from .preview import font, render_fast_view, renderer_settings as raster_settings
-from .render_headers import draw_header, grid_caption, header_settings, view_caption
+from .render_headers import draw_header, grid_caption, header_settings, piece_heading, view_caption
 
 
 def sha256(raw):
@@ -100,7 +100,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     bounds, origin = local['bounds_world_m'], local['origin_world_m']
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
-    captions = [title or piece['name'], view_caption(view_role, azimuth, elevation), grid_caption(local)]
+    captions = [piece_heading(title or piece['name']), view_caption(view_role, azimuth, elevation), grid_caption(local)]
     header = draw_header(draw, captions, width, font, margin=30, top=20)
     view_height, top = height-230, max(145, header['bottom'])
     if top + view_height > height - 80:
