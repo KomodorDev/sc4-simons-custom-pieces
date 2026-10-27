@@ -166,6 +166,12 @@ from .hsr_atomic_components_verify import (
 CONTRACTS.update(_ATOMIC_COMPONENT_CONTRACTS)
 
 
+from .hsr_blind_rise_verify import (
+    CONTRACTS as _BLIND_RISE_CONTRACTS, audit_shared_sheet, audit_native_collars,
+)
+CONTRACTS.update(_BLIND_RISE_CONTRACTS)
+
+
 def _contract(spec):
     require(spec['recipe'] in CONTRACTS, 'Unknown HSR component requires an independent literal contract')
     contract = CONTRACTS[spec['recipe']]
@@ -258,6 +264,8 @@ def check_paths(resources, spec, donors=None):
               'native_port_heights_m': sorted(set(point[2] for point in contract['ports'].values())),
               'collision_free_operation_claimed': False}
     report.update(audit_crossings(journeys, contract))
+    if spec['recipe'] in _BLIND_RISE_CONTRACTS:
+        report.update(audit_shared_sheet(journeys))
     if spec['recipe'] in _REFINED_COMPONENT_CONTRACTS:
         report.update(audit_refined_journeys(journeys, spec['recipe']))
     if spec['recipe'] in _TIGHT_LOOP_CONTRACTS:
@@ -376,6 +384,8 @@ def _cached_models(spec_json, immutable):
     report.update(audit_bed_union(triangles, records))
     report.update(audit_visible_rails(triangles, records))
     report.update(audit_supports(triangles, contract))
+    if spec['recipe'] in _BLIND_RISE_CONTRACTS:
+        report.update(audit_native_collars(triangles))
     if contract['kind'] == 'paired_to_single_adapter':
         report.update(audit_adapter_native_profiles(triangles,
             paired_south_north_m=contract.get('native_paired_south_north_m', -120.)))

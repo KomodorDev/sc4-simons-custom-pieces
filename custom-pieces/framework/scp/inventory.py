@@ -17,7 +17,8 @@ def _status(directory):
 
 def _coverage(status,kind):
     if not status['record_present']:return '[ ] Unverified; record missing'
-    counts=status['summary']['by_kind'].get(kind,{})
+    counts=(status['summary'].get('journey_coverage', status['summary']['by_kind'].get(kind, {}))
+            if kind == 'in_game_journey' else status['summary']['by_kind'].get(kind, {}))
     total=sum(counts.values())-counts.get('not_applicable',0)
     if not total:return 'Not applicable / no declared cases'
     passed=counts.get('passed',0)

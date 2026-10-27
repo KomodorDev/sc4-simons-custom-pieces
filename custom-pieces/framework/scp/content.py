@@ -23,7 +23,7 @@ STATES = ('unverified', 'passed', 'failed', 'stale', 'not_applicable')
 ROTATIONS = (0, 90, 180, 270)
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
-    'in_game_journey', 'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
+    'in_game_journey', 'in_game_route_query', 'in_game_visible_travel', 'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
 })
 SOFTWARE_KINDS = frozenset({'software_resources', 'software_connectivity'})
 RESOURCE_KINDS = {
@@ -165,13 +165,15 @@ def _orientation_scopes(connections):
     return result
 
 
-def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None):
+def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None, *,
+                      split_journey_observations=False):
     """Generate applicable cases at actual supported orientations, unverified.
 
     Software, image review, and actual game rendering have separate cases.
     Endpoint candidate lists do not generate manual compatibility coverage.
     """
     _require(subject_kind in ('piece', 'assembly'), 'Subject kind must be piece or assembly')
+    _require(type(split_journey_observations) is bool, 'Split journey observations must be a boolean')
     _require(connections.get('subject_id', subject_id) == subject_id, 'Connection metadata belongs to another subject')
     values = _sha_map(fingerprints)
     orientations = _orientation_scopes(connections)
@@ -215,8 +217,11 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
                      'entry_port': journey.get('entry_port', journey.get('from_port')),
                      'exit_port': journey.get('exit_port', journey.get('to_port')),
                      **orientation}
-            cases.append(_new_case('in_game_journey', 'Run the declared journey in this direction using its service network.',
-                                   scope, _dependencies(traffic_keys, values)))
+            checks = (('in_game_route_query', 'Inspect this directed journey with the game Route Query tool.'),
+                      ('in_game_visible_travel', 'Observe a vehicle or pedestrian completing this directed journey.')) if split_journey_observations else (
+                      ('in_game_journey', 'Run the declared journey in this direction using its service network.'),)
+            for kind, description in checks:
+                cases.append(_new_case(kind, description, scope, _dependencies(traffic_keys, values)))
     for transfer in connections.get('forbidden_transfers', []):
         for orientation in orientations:
             scope = {'subject_id': subject_id, 'forbidden_transfer': deepcopy(transfer),
@@ -467,6 +472,10 @@ def summarize_manual_record(record, fingerprints=None, environment=None):
         totals.update(counts)
     return {'total': len(current), 'states': dict(totals),
             'by_kind': {key: dict(value) for key, value in sorted(by_kind.items())},
+            **({'journey_coverage': dict(sum((Counter(counts) for kind, counts in by_kind.items()
+                                            if kind in ('in_game_journey', 'in_game_route_query', 'in_game_visible_travel')),
+                                           Counter({state: 0 for state in STATES})))}
+               if any(kind in by_kind for kind in ('in_game_route_query', 'in_game_visible_travel')) else {}),
             'environment_filter': environment,
             'coverage_scope': 'Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage.'}
 
@@ -479,7 +488,8 @@ _CHECK_NAMES = {
     'software_resources': 'Compiled resources', 'software_connectivity': 'Directed routing graph',
     'preview_review': 'Preview review', 'in_game_render': 'In-game rendering',
     'in_game_placement': 'Placement', 'in_game_connection': 'Connection',
-    'in_game_journey': 'Journey', 'in_game_forbidden_transfer': 'Forbidden transfer',
+    'in_game_journey': 'Journey', 'in_game_route_query': 'Route Query',
+    'in_game_visible_travel': 'Visible travel', 'in_game_forbidden_transfer': 'Forbidden transfer',
     'in_game_demolition': 'Demolition', 'in_game_save_reload': 'Save and reload',
 }
 
@@ -487,7 +497,7 @@ _CHECK_NAMES = {
 def _readable(value):
     """Render small scope facts as prose; never paste an opaque JSON blob."""
     if isinstance(value, dict):
-        return '; '.join(str(key).replace('_', ' ')+': '+_readable(item) for key, item in value.items())
+        return '; '.join(str(key).replace('_', ' ')+': '+_readable(item) for key, item in value.items()) if value else '{}'
     if isinstance(value, (tuple, list)):
         return '['+', '.join(_readable(item) for item in value)+']'
     if value is None:
@@ -731,7 +741,8 @@ def update_manual_summary(path, record):
     target = 'TESTING.md#test-checklist' if record['subject']['kind'] == 'assembly' else '#test-checklist'
     rows = ['## Manual status', '', f'Generated from [the exact test cases]({target}) and [authoritative observations](checks/manual-tests.json).', '']
     labels = (('preview_review', 'Preview review'), ('in_game_render', 'In-game rendering'),
-              ('in_game_journey', 'Directed journeys'))
+              ('in_game_journey', 'Directed journeys'), ('in_game_route_query', 'Route Query'),
+              ('in_game_visible_travel', 'Visible travel'))
     for kind, title in labels:
         counts = summary['by_kind'].get(kind, {})
         if not counts:
@@ -851,6 +862,54 @@ def refresh_image_reviews(record, preview_hashes):
     return output
 
 
+def _numbered_piece_enabled(directory, subject):
+    """A marked piece opts into the shared four-chapter guide without changing older guides."""
+    from .piece_matrix import LAYOUT_MARKER, MARKER
+    path = Path(directory)/'README.md'
+    if subject['kind'] != 'piece' or not path.is_file() or LAYOUT_MARKER not in path.read_text():
+        return False
+    text = path.read_text()
+    _require(text.count(LAYOUT_MARKER) == 1, 'Piece layout marker must occur once')
+    for marker in ('PIECE VIEWS', 'PIECE OVERVIEW', MARKER, 'MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS'):
+        begin, end = f'<!-- BEGIN {marker} -->', f'<!-- END {marker} -->'
+        _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
+                 'Numbered piece guide requires one ordered '+marker+' block')
+    return True
+
+
+def _nested_piece_section(text):
+    """Nest generated second-level sections under an authored numbered chapter."""
+    return re.sub(r'(?m)^(#{2,5}) ', r'\1# ', text)
+
+
+def _write_numbered_piece_views(directory, subject, connections, record, piece_link):
+    from .piece_matrix import MARKER, render_piece_connection_matrix
+    readme = Path(directory)/'README.md'
+    # Observation-file updates carry only stable identity; resolve display facts
+    # from the owning definition instead of erasing them from the overview.
+    if (Path(directory)/'piece.json').is_file():
+        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    title = subject.get('name', subject['id'])
+    views = []
+    for name, label in (('preview.png', 'Clean angled view'), ('preview-top.png', 'Clean top view')):
+        if (Path(directory)/name).is_file():
+            views += [f'![{title} — {label}]({name})', '']
+    _replace_generated(readme, 'PIECE VIEWS', '\n'.join(views), append=False)
+    rows = [subject.get('description', ''), '', f'Exact reusable identifier: `{subject["id"]}`.', '']
+    if subject.get('footprint'):
+        width, depth = subject['footprint']
+        rows += [f'Footprint: **{width} × {depth} tiles**. Exact menu name: **{title}**.', '']
+    _replace_generated(readme, 'PIECE OVERVIEW', '\n'.join(rows), append=False)
+    _replace_generated(readme, MARKER, render_piece_connection_matrix(connections, record), append=False)
+    update_manual_summary(readme, record)
+    text = readme.read_text().replace('\n## Manual status\n', '\n### Manual status\n')
+    readme.write_text(text)
+    _replace_generated(readme, 'CONNECTIONS', _nested_piece_section(render_connections(
+        connections, piece_link=piece_link, include_purpose=False)), append=False)
+    _replace_generated(readme, 'MANUAL CHECKS', _nested_piece_section(render_manual_checklist(
+        record, directory=directory)), append=False)
+
+
 def _write_subject_views(directory, subject, connections, record, piece_link=None):
     directory = Path(directory)
     readme = directory/'README.md'
@@ -861,6 +920,9 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
         else:
             readme.write_text(markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
                                                 'players', 'guide')+f'# {title}\n')
+    if _numbered_piece_enabled(directory, subject):
+        _write_numbered_piece_views(directory, subject, connections, record, piece_link)
+        return
     if subject['kind'] == 'piece':
         text = readme.read_text()
         metadata, body = split_markdown_metadata(text)
@@ -905,7 +967,8 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
     else:
-        generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes)
+        generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
+                                      split_journey_observations=_numbered_piece_enabled(directory, subject))
         if record_path.exists():
             generated = refresh_manual_record(json.loads(record_path.read_text()), generated)
         (directory/'connections.json').write_text(json.dumps(connections, indent=2, allow_nan=False)+'\n')
@@ -945,9 +1008,14 @@ def record_observation_file(record_path, observation_path):
     record_path.write_text(json.dumps(compact_manual_record(output),indent=2,allow_nan=False)+'\n')
     directory=record_path.parent.parent
     readme=directory/'README.md'
-    if readme.is_file():update_manual_summary(readme,output)
+    if _numbered_piece_enabled(directory, output['subject']):
+        connections = json.loads((directory/'connections.json').read_text())
+        _write_subject_views(directory, output['subject'], connections, output)
+    elif readme.is_file():
+        update_manual_summary(readme, output)
     testing=directory/'TESTING.md' if output['subject']['kind']=='assembly' else readme
-    _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
+    if not _numbered_piece_enabled(directory, output['subject']):
+        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
     for obsolete in (record_path.parent/'MANUAL_TESTS.md',record_path.parent/'README.md'):
         obsolete.unlink(missing_ok=True)
     refreshed = False
@@ -972,7 +1040,7 @@ def _manual_workflow(directory, record):
         return []
     checks=Path(directory)/'checks'
     checks.mkdir(parents=True, exist_ok=True)
-    example=next((case for case in candidates if case['kind']=='in_game_journey'), candidates[0])
+    example=next((case for case in candidates if case['kind'] in ('in_game_journey', 'in_game_route_query')), candidates[0])
     request={'purpose':'Copy this template to a separate observation file and fill it only after the user confirms the exact case.',
              'case_id':example['id'],'result':'passed','explicit_user_confirmation':False,
              'reviewer':'','confirmed_at':'','evidence':[],

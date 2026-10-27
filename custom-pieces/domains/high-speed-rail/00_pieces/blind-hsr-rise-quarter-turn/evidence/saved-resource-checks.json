@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "piece_id": "blind-hsr-rise-quarter-turn",
+  "build_manifest_sha256": "e66f932272c732a44c8ba83eed38f64ca184b13634fb669d7ef7671fd9e81153",
+  "sources": [
+    {
+      "piece_id": "blind-hsr-rise-quarter-turn",
+      "dat_sha256": "04a92c39d2049ff33642e5573d60fd446ef993eda77d49138a83580afd4a9267",
+      "rotation_ccw_degrees": 0,
+      "anchor_en_m": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "rotation_ccw_degrees": 0,
+      "anchor_en_m": [
+        0.0,
+        -112.0
+      ]
+    },
+    {
+      "piece_id": "hsr-component-upper-paired-straight",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "rotation_ccw_degrees": 270,
+      "anchor_en_m": [
+        112.0,
+        0.0
+      ]
+    }
+  ],
+  "paths": {
+    "tile_count": 20,
+    "encoded_routes_checked": 26,
+    "external_ports_checked": 4,
+    "permitted_movements_checked": 2,
+    "native_facing_port_tangents_checked": 4,
+    "unique_complete_journeys_checked": 2,
+    "rotations_checked": 4,
+    "exact_3d_cell_seams": true,
+    "all_encoded_tracks_used_by_intended_journeys": true,
+    "unwanted_u_turns": false,
+    "unwanted_cross_level_transfers": false,
+    "maximum_encoded_grade": 0.10575804877211374,
+    "journey_quality": {
+      "Sin>Eout": {
+        "length_m": 176.00517227033885,
+        "direct_distance_m": 144.2497833620557,
+        "length_ratio": 1.2201416748653244,
+        "total_turn_degrees": 89.99999999999997,
+        "minimum_sampled_radius_m": 53.490377362951726,
+        "maximum_sample_turn_degrees": 2.11826570336598,
+        "maximum_raw_encoded_turn_degrees": 0.4390017863675853,
+        "minimum_resolved_raw_radius_m": 53.92947937688662,
+        "maximum_endpoint_curvature_per_m": 0.0,
+        "maximum_curvature_change_per_m2": 0.00038540929237567144,
+        "maximum_grade_change_per_m": 0.006460115291764268,
+        "quality_sample_spacing_m": 1.9775862052847062,
+        "signed_turn_degrees": -90.0,
+        "maximum_raw_grade_change_per_m": 0.006427692952927634
+      },
+      "Ein>Sout": {
+        "length_m": 182.2883477711519,
+        "direct_distance_m": 149.90663761154806,
+        "length_ratio": 1.2160125173610679,
+        "total_turn_degrees": 89.99999999999999,
+        "minimum_sampled_radius_m": 56.703757046146876,
+        "maximum_sample_turn_degrees": 2.0020821984992696,
+        "maximum_raw_encoded_turn_degrees": 0.43922917760942737,
+        "minimum_resolved_raw_radius_m": 57.90289629295201,
+        "maximum_endpoint_curvature_per_m": 0.0,
+        "maximum_curvature_change_per_m2": 0.0004046440125410354,
+        "maximum_grade_change_per_m": 0.006384326339140292,
+        "quality_sample_spacing_m": 1.9813950844690424,
+        "signed_turn_degrees": 90.00000000000001,
+        "maximum_raw_grade_change_per_m": 0.006330494767254487
+      }
+    },
+    "native_port_heights_m": [
+      15.5,
+      30.5
+    ],
+    "collision_free_operation_claimed": false,
+    "grade_separated_crossings_checked": 0,
+    "grade_separated_projected_contacts_checked": 0,
+    "grade_separated_crossings": [],
+    "same_direction_shared_tail_contacts_checked": 0,
+    "independent_at_grade_conflicts_checked": 0,
+    "paired_shared_sheet_points_checked": 770,
+    "maximum_paired_spacing_error_m": 1.2377958071851936e-06,
+    "maximum_paired_height_error_m": 0.0,
+    "physical_channels": 2,
+    "intermediate_exposed_custom_height_ports": 0
+  },
+  "actual_saved_path_negative_controls": [
+    {
+      "mutation": "interior-height",
+      "rejected": true,
+      "reason": "Interchange route exceeds its bounded rise/run grade"
+    },
+    {
+      "mutation": "reverse-channel",
+      "rejected": true,
+      "reason": "Interchange path classes are missing, repeated, or out of range"
+    },
+    {
+      "mutation": "remove-travel-cell",
+      "rejected": true,
+      "reason": "A train-carrying interchange cell has no train route"
+    }
+  ],
+  "combined_approach_cells": 22,
+  "combined_ports": 4,
+  "combined_movements": 2,
+  "four_directed_joins_checked": 4,
+  "proper_rotations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "proper_rotation_determinant": 1,
+      "complete_journeys": 2,
+      "all_saved_model_vertices_transformed": 70012,
+      "model_heights_preserved": true,
+      "exact_route_points_and_heights_preserved": true,
+      "shared_endpoint_and_travel_tangent_checks_passed": true
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "proper_rotation_determinant": 1,
+      "complete_journeys": 2,
+      "all_saved_model_vertices_transformed": 70012,
+      "model_heights_preserved": true,
+      "exact_route_points_and_heights_preserved": true,
+      "shared_endpoint_and_travel_tangent_checks_passed": true
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "proper_rotation_determinant": 1,
+      "complete_journeys": 2,
+      "all_saved_model_vertices_transformed": 70012,
+      "model_heights_preserved": true,
+      "exact_route_points_and_heights_preserved": true,
+      "shared_endpoint_and_travel_tangent_checks_passed": true
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "proper_rotation_determinant": 1,
+      "complete_journeys": 2,
+      "all_saved_model_vertices_transformed": 70012,
+      "model_heights_preserved": true,
+      "exact_route_points_and_heights_preserved": true,
+      "shared_endpoint_and_travel_tangent_checks_passed": true
+    }
+  ],
+  "native_l2_donor_archive_sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+  "native_l2_donor_path_sha256": "14ede4aca7915368d6cfbeb88e5af3e801243eb9e4becbd4a5cf9b1e1fe7a9b8",
+  "native_l2_donor_endpoints_enh_m": [
+    [
+      -2.0,
+      -8.0,
+      15.5
+    ],
+    [
+      -2.0,
+      8.0,
+      15.5
+    ],
+    [
+      2.0,
+      -8.0,
+      15.5
+    ],
+    [
+      2.0,
+      8.0,
+      15.5
+    ]
+  ],
+  "geometry_scope": "Canonical actual-model rail/bed, wall clearance, collars, and support contact proof is in build verification.json. Proper rigid rotations preserve its distances and heights; no game collision claim.",
+  "human_preview_approved": false,
+  "game_operation_verified": false,
+  "compatibility_discovery_performed": false
+}

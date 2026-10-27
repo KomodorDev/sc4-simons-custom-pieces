@@ -1,0 +1,54 @@
+{
+  "purpose": "Authoritative build definition and permanent identity for one pillar-supported parallel HSR/Road straight.",
+  "schema_version": 1,
+  "orientation_count": 8,
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "id": "blind-hsr-road-stack",
+  "name": "HSR Level 2 above Parallel Road Level 0 \u2014 Native Paired Straight",
+  "description": "One owned 16 m tile carries north/south paired HSR at 15.5 m directly above ordinary two-way Road and all six native pedestrian paths at 0 m. HSR, Road vehicles, and pedestrians are required together at both ends; lateral native sidewalk access is retained. No HSR/Road transfer.",
+  "recipe": "rail_hsr_road_stack",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f828",
+  "tile_ids": [
+    "7f591000"
+  ],
+  "preview_id": "7f591ff5",
+  "effect_name": "preview_scp_f828________001",
+  "footprint": [
+    1,
+    1
+  ],
+  "dependencies": [
+    "controller",
+    "hsr",
+    "ordinary_road",
+    "ordinary_road_texture"
+  ],
+  "menu": {
+    "id": "6a47f828",
+    "order": "7011f828",
+    "style": "rail-hsr-road-stack"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f591000",
+      "source": "7f591000",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Exact valid NAM 50 5dd31500 paired HSR deck; authored 16 m ordinary Road plane using audited US 00004b0e texture; central 1.3 m column and 15 m transverse cap remain outside explicit native-path vehicle/pedestrian corridors.",
+    "construction": "Authored parallel monorail/Road 02000200 flags; four proper rotations repeated without reflection; native filler effect 5ddf0100. Game placement remains unverified.",
+    "redistribution": "permission-pending"
+  },
+  "domain": "high-speed-rail"
+}

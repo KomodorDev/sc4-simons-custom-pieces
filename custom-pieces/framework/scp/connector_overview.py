@@ -572,9 +572,19 @@ def markdown_overview(evidence):
     return "\n".join(lines)
 
 
+def readme_overview(original, content):
+    """Use the same selectable text and fingerprint in a numbered or legacy guide."""
+    from .piece_matrix import LAYOUT_MARKER
+    if LAYOUT_MARKER in original and content.startswith("## Connection overview\n"):
+        import re
+        return re.sub(r"(?m)^(#{2,5}) ", r"\1# ", content)
+    return content
+
+
 def _update_readme(path, content):
     begin, end = "<!-- BEGIN CONNECTOR OVERVIEW -->", "<!-- END CONNECTOR OVERVIEW -->"
     original = path.read_text(encoding="utf-8")
+    content = readme_overview(original, content)
     block = begin + "\n\n" + content.rstrip() + "\n\n" + end
     if begin in original or end in original:
         if original.count(begin) != 1 or original.count(end) != 1:
@@ -740,7 +750,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
                 "display_anchor": "Measured-height section origin projected with the actual model camera",
             },
         })
-        text = markdown_overview(evidence)
+        text = readme_overview((directory / "README.md").read_text(encoding="utf-8"), markdown_overview(evidence))
         evidence["selectable_markdown_sha256"] = sha256(text.encode("utf-8"))
         destination = directory if output_root is None else Path(output_root).resolve() / identifier
         staged.append((destination, directory, image_bytes, evidence, text))

@@ -490,15 +490,15 @@ def validate_preview_coverage(index, pieces, destination, *, settings=None, view
 
 
 def _canonical_title(root, catalog, piece):
-    from .render_headers import piece_title, title_records
+    from .render_headers import piece_heading, piece_title, title_records
     domain = catalog.get('domains', {}).get(piece.get('domain'), {})
     relative = domain.get('path')
     if relative is None:
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     directory = root/relative/'00_pieces'/piece['id']
     declaration = directory/'connector-groups.jsonc'
     if not declaration.is_file():
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     from .connector_metadata import load_library
     resolved = load_library(root, [piece['id']], domain_id=piece['domain'])['pieces'][piece['id']]
     title = piece_title(piece['id'], title_records(resolved), piece['name'])

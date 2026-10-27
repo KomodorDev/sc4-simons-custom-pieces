@@ -28,6 +28,13 @@ def reviewed_contract(piece):
 
 
 def service_classifier(piece, engine_transport, height):
+    if piece['recipe'] == 'rail_hsr_road_stack' and engine_transport in (1, 2):
+        pedestrian = engine_transport == 2
+        return {'service_network': 'pedestrian' if pedestrian else 'road',
+                'service_family': 'pedestrian' if pedestrian else 'road',
+                'variant': 'native-road-sidewalk' if pedestrian else 'ordinary-road',
+                'role': 'primary',
+                'classification_status': 'explicit native ordinary Road PATH audit 00004b00'}
     if engine_transport == 7:
         variant = 'ghsr' if abs(height-1.) < .001 else 'hsr'
         return {'service_network': variant, 'service_family': 'high-speed-rail',

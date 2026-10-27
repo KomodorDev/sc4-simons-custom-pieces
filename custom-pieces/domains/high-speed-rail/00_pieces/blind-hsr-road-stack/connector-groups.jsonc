@@ -1,0 +1,310 @@
+// Source positions use [east, north, height] metres; cells use [column east, row south].
+// Both HSR and Road run north/south in the same owned tile, directly above each other.
+// No profile or name moves endpoints. Lower groups use explicit native source facts without invented shared profiles.
+// The native sidewalk on each side includes one through direction and its actual lateral access paths.
+{
+  "schema_version": 3, // JSONC declaration format revision; independent of the NAM version.
+  "purpose": "Complete parallel north/south HSR, Road-vehicle, and native-pedestrian boundaries, plus source-backed lateral sidewalk access.",
+  "piece_id": "blind-hsr-road-stack",
+  "source_binding": { // Exact definition and measured-resource fingerprints; refresh only after re-auditing.
+    "piece_sha256": "42bf42a590a5979dca4c1e54dc9f629b4b192fd6bd49d3b2d2157b7a737a99e5",
+    "connections_sha256": "d12eca86bc59a0cd3cceaf7c0b4fa6ec3335ee25f48b1fbfe1ee7737942446e7"
+  },
+  "components": [
+    {
+      "id": "upper-hsr",
+      "network": "hsr",
+      "construction_network": "monorail"
+    },
+    {
+      "id": "lower-road",
+      "network": "road",
+      "construction_network": "road"
+    },
+    {
+      "id": "native-sidewalks",
+      "network": "pedestrian", // Actual engine-2 native Road sidewalk service; not decorative paint.
+      "construction_network": "road"
+    }
+  ],
+  "channels": [ // A physical channel keeps its identity at every end and lateral cut; member and cut IDs stay local to a boundary.
+    {
+      "id": "hsr-west",
+      "component_id": "upper-hsr",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "hsr-east",
+      "component_id": "upper-hsr",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "road-west",
+      "component_id": "lower-road",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "road-east",
+      "component_id": "lower-road",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "sidewalk-west",
+      "component_id": "native-sidewalks",
+      "kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "sidewalk-east",
+      "component_id": "native-sidewalks",
+      "kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ]
+    }
+  ],
+  "groups": [ // Separate HSR, Road-vehicle, and pedestrian service groups; all groups in one boundary bundle are mandatory together.
+    {
+      "id": "south-hsr",
+      "component_id": "upper-hsr",
+      "nominal_level": "L2",
+      "members": [
+        {
+          "id": "south-hsr-member-1",
+          "source_port_id": "7-S-out-1",
+          "direction": "out",
+          "channel_id": "hsr-west",
+          "cut_id": "south-hsr-cut-1"
+        },
+        {
+          "id": "south-hsr-member-2",
+          "source_port_id": "7-S-in-3",
+          "direction": "in",
+          "channel_id": "hsr-east",
+          "cut_id": "south-hsr-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0,
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1" // HSR L2, 15.5 m PATH, orthogonal boundary, native 15 m paired family, two opposed tracks, right-hand running, profile revision 1.
+    },
+    {
+      "id": "south-road",
+      "component_id": "lower-road",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "south-road-member-1",
+          "source_port_id": "1-S-out-1",
+          "direction": "out",
+          "channel_id": "road-west",
+          "cut_id": "south-road-cut-1"
+        },
+        {
+          "id": "south-road-member-2",
+          "source_port_id": "1-S-in-3",
+          "direction": "in",
+          "channel_id": "road-east",
+          "cut_id": "south-road-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "south-pedestrian",
+      "component_id": "native-sidewalks",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "south-pedestrian-member-1",
+          "source_port_id": "2-S-out-3",
+          "direction": "out",
+          "channel_id": "sidewalk-west",
+          "cut_id": "south-pedestrian-cut-1"
+        },
+        {
+          "id": "south-pedestrian-member-2",
+          "source_port_id": "2-S-in-5",
+          "direction": "in",
+          "channel_id": "sidewalk-east",
+          "cut_id": "south-pedestrian-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "north-hsr",
+      "component_id": "upper-hsr",
+      "nominal_level": "L2",
+      "members": [
+        {
+          "id": "north-hsr-member-1",
+          "source_port_id": "7-N-in-2",
+          "direction": "in",
+          "channel_id": "hsr-west",
+          "cut_id": "north-hsr-cut-1"
+        },
+        {
+          "id": "north-hsr-member-2",
+          "source_port_id": "7-N-out-4",
+          "direction": "out",
+          "channel_id": "hsr-east",
+          "cut_id": "north-hsr-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0,
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1" // HSR L2, 15.5 m PATH, orthogonal boundary, native 15 m paired family, two opposed tracks, right-hand running, profile revision 1.
+    },
+    {
+      "id": "north-road",
+      "component_id": "lower-road",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "north-road-member-1",
+          "source_port_id": "1-N-in-2",
+          "direction": "in",
+          "channel_id": "road-west",
+          "cut_id": "north-road-cut-1"
+        },
+        {
+          "id": "north-road-member-2",
+          "source_port_id": "1-N-out-4",
+          "direction": "out",
+          "channel_id": "road-east",
+          "cut_id": "north-road-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "north-pedestrian",
+      "component_id": "native-sidewalks",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "north-pedestrian-member-1",
+          "source_port_id": "2-N-in-4",
+          "direction": "in",
+          "channel_id": "sidewalk-west",
+          "cut_id": "north-pedestrian-cut-1"
+        },
+        {
+          "id": "north-pedestrian-member-2",
+          "source_port_id": "2-N-out-6",
+          "direction": "out",
+          "channel_id": "sidewalk-east",
+          "cut_id": "north-pedestrian-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "west-pedestrian",
+      "component_id": "native-sidewalks",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "west-pedestrian-member-1",
+          "source_port_id": "2-W-in-1",
+          "direction": "in",
+          "channel_id": "sidewalk-west",
+          "cut_id": "west-pedestrian-cut-1"
+        },
+        {
+          "id": "west-pedestrian-member-2",
+          "source_port_id": "2-W-out-2",
+          "direction": "out",
+          "channel_id": "sidewalk-west",
+          "cut_id": "west-pedestrian-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "east-pedestrian",
+      "component_id": "native-sidewalks",
+      "nominal_level": "L0",
+      "members": [
+        {
+          "id": "east-pedestrian-member-1",
+          "source_port_id": "2-E-out-7",
+          "direction": "out",
+          "channel_id": "sidewalk-east",
+          "cut_id": "east-pedestrian-cut-1"
+        },
+        {
+          "id": "east-pedestrian-member-2",
+          "source_port_id": "2-E-in-8",
+          "direction": "in",
+          "channel_id": "sidewalk-east",
+          "cut_id": "east-pedestrian-cut-2"
+        }
+      ],
+      "section_offset_m": 0.0
+    }
+  ],
+  "boundary_bundles": [ // Each physical tile edge has one complete connection. North and south each require all three services.
+    {
+      "id": "cell-0-0-south",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "south-hsr",
+        "south-road",
+        "south-pedestrian"
+      ]
+    },
+    {
+      "id": "cell-0-0-north",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "north-hsr",
+        "north-road",
+        "north-pedestrian"
+      ]
+    },
+    {
+      "id": "cell-0-0-west",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "west-pedestrian"
+      ]
+    },
+    {
+      "id": "cell-0-0-east",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "east-pedestrian"
+      ]
+    }
+  ]
+}

@@ -11,6 +11,7 @@ from functools import lru_cache
 import math
 from .hsr_refined_components import DEFINITIONS as REFINED_DEFINITIONS, canonical as canonical_refined
 from .hsr_tight_loop_components import DEFINITIONS as TIGHT_LOOP_DEFINITIONS, canonical as canonical_tight_loop
+from .hsr_blind_rise import DEFINITIONS as BLIND_RISE_DEFINITIONS, canonical as canonical_blind_rise
 
 LOWER = 15.5
 UPPER = 30.5
@@ -76,6 +77,7 @@ EXTRA_DEFINITIONS = {
 }
 EXTRA_DEFINITIONS.update(REFINED_DEFINITIONS)
 EXTRA_DEFINITIONS.update(TIGHT_LOOP_DEFINITIONS)
+EXTRA_DEFINITIONS.update(BLIND_RISE_DEFINITIONS)
 
 
 def _sheet(name, points, width, start=(0., 1.), end=(0., 1.)):
@@ -110,6 +112,8 @@ def _wide_quarter(displacement):
 
 def canonical_extra(recipe):
     """Return one additional component before catalogue normalization."""
+    if recipe in BLIND_RISE_DEFINITIONS:
+        return canonical_blind_rise(recipe)
     if recipe in TIGHT_LOOP_DEFINITIONS:
         return canonical_tight_loop(recipe)
     if recipe in REFINED_DEFINITIONS:

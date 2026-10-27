@@ -67,13 +67,15 @@ Use one shared three-row header for standalone angled pictures, north-up picture
 
 | Row | Content | Example |
 | --- | --- | --- |
-| 1, bold dark text | One source-backed display title, with each nominal level and measured path height in parentheses; retain the exact registered menu name separately in evidence. | `HSR Paired Quarter-Turn Level 2 (15.5 m) to Level 4 (30.5 m)` |
-| 2, blue text | Reusable-piece role, actual camera direction, optional connection-overview role, and authored orientation. | `Reusable piece / Southeast view / Authored orientation: 0°` |
+| 1, bold dark text | `Piece - ` followed by one source-backed display title, with each nominal level and measured path height in parentheses; retain the exact registered menu name separately in evidence. | `Piece - HSR Paired Quarter-Turn Level 2 (15.5 m) to Level 4 (30.5 m)` |
+| 2, blue text | View purpose first: `Clean view` for canonical model pictures or `Connection overview` for the card picture; then actual camera direction and authored orientation. | `Clean view / Southeast view / Authored orientation: 0°` |
 | 3, grey text | Independent local grid, derived piece reference where applicable, tile size, and meaning of the grid labels. | `Independent local X/Y grid / Piece reference: X0, Y6 / 1 tile = 16 m / Labels mark tile centres` |
 
 Derive the reference position from `local_piece_grid`; do not hardcode a coordinate for a particular footprint. A 45° azimuth in this renderer is the Southeast view, while the north-up top view uses 0° azimuth and 90° elevation. The same display title appears in all three images, and source-backed height details occur once per level. Keep `1 tile = 16 m` in the third row only; suppress the redundant grid footer. Keep the software-preview and unverified-game statements readable elsewhere in the image.
 
 Assembly pictures keep their existing fixed global grid, placement P-labels, exact menu-name callouts, and assembly rotations. Do not restart their X/Y numbering because a standalone type image uses local zero. Do not leave old per-placement type pictures or obsolete types as retired artifacts.
+
+For every new or refreshed render within the requested scope, identify the subject in the first row with `Piece - ` or `Assembly - ` followed by its display name. Begin the second row with its view purpose: `Clean view`, `Component guide`, `Construction view`, or `Connection overview`. Use `Component guide` for named assembly pictures and `Construction view` for the occupied-tile plan. Keep unchanged artwork outside the requested scope. The subject type, purpose, camera, and coordinate reference must agree with the saved render evidence.
 
 ## Assembly picture set and in-picture identification
 
@@ -115,7 +117,7 @@ The requirements above describe the delivered artwork. Existing tools have diffe
 | `framework/scp/preview.py --catalog` | Canonical angled and north-up actual-model views, portable view-specific evidence, independent caches, and explicit selected-piece/view coverage. | Defaults to the angled view for compatibility; request `--views angled top` for both, or `--views top` to preserve an existing angled image and thumbnail. |
 | `domains/high-speed-rail/tools/render_hsr_assembly.py` | Actual compiled assembly models, the fixed 16 m X/Y grid, clean top/oblique companions, named top/opposite oblique views, and an occupied-tile placement plan for the current HSR scene workflow. | This is the existing domain helper, not a registered generic assembly renderer for every future network. A raw model alone lacks the placement metadata needed for named views and ownership plans. |
 | `domains/high-speed-rail/tools/render_hsr_assembly_parts.py` | Uses the shared standalone renderer and header for each unique type in an audited assembly scene; repeated `--top-piece-id EXACT-ID` adds north-up views. | Retains its scene restriction and stages filenames plus a combined evidence report under `--output-dir`; use the generic catalogue command for canonical piece-local files. |
-| `framework/scp/connector_overview.py`, through `scp.py connectors` | An actual compiled-model connection overview, complete boundary cards, provenance, a resolved export, and the marked piece README section for supported declarations. | A connection overview supplements canonical angled/top previews; it does not create those separate catalogue views. Current connector coverage is the two intentionally migrated types, and the card renderer requires one measured height per service group. |
+| `framework/scp/connector_overview.py`, through `scp.py connectors` | An actual compiled-model connection overview, complete boundary cards, provenance, a resolved export, and the marked piece README section for supported declarations. | A connection overview supplements canonical angled/top previews; it does not create those separate catalogue views. Current connector coverage is the modular crossing, tight curve, paired rising quarter-turn, and parallel HSR/Road stack; the card renderer requires one measured height per service group. |
 
 The generic catalogue command now produces the complete model's north-up view without requiring an assembly scene or a piece-specific helper. Run from the parent project directory after the editable installation described in [BUILD_AND_INSTALL](BUILD_AND_INSTALL.md#build-a-selected-collection). Replace `EXACT-PIECE-ID`, `BUILD_NAME`, and the texture-directory placeholder with actual values:
 
@@ -185,7 +187,7 @@ An **overview** is a generated explanation of a reusable piece's exposed connect
 | `evidence/connection-overview.json` | Generated provenance: the source evidence and fingerprints tying that overview to its inputs and output image. |
 | `README.md` | Existing single piece guide. Its `CONNECTOR OVERVIEW` block is generated; maintained explanations stay outside the markers. |
 
-Use the [connector reference](CONNECTOR_METADATA.md#6-stable-identity-reuse-and-file-ownership) for source authority, optional defaults, and schema ownership. This procedure currently covers the two migrated HSR types in its [Examples](CONNECTOR_METADATA.md#8-examples-the-two-existing-hsr-pieces); it does not imply whole-catalogue coverage.
+Use the [connector reference](CONNECTOR_METADATA.md#6-stable-identity-reuse-and-file-ownership) for source authority, optional defaults, and schema ownership. This procedure covers the initial crossing and tight-curve [examples](CONNECTOR_METADATA.md#8-examples-the-two-existing-hsr-pieces), plus the paired rising quarter-turn and parallel HSR/Road [authoring examples](#piece-readme); it does not imply whole-catalogue coverage.
 
 The source pipeline resolves the declaration and measured records once and uses that complete representation for both export and overview generation. It can pass the resolved records directly to the renderer, so the renderer need not reread a just-written export. Standalone library rendering resolves the same authoring inputs through the shared API. No separate overview-only measurement or manually copied card geometry is introduced.
 
@@ -214,7 +216,9 @@ Keep the outputs beside the piece and refresh its existing README block; do not 
 
 If only maintained prose changes, use the [README refresh procedure](#readme-layouts-and-generated-sections); it preserves measured connections and observations. If connector declarations change, regenerate their export and overview. If saved resources change, start with verification and extraction again. This order prevents an old measurement or picture from being relabelled as current evidence.
 
-### Refresh and check the two migrated pieces
+<a id="refresh-and-check-the-two-migrated-pieces"></a>
+
+### Refresh and check selected migrated pieces
 
 Open a terminal. On macOS, press **Command + Space**, type **Terminal**, and press **Return**. Replace `/path/to/sc4-simons-custom-pieces` below with your checkout's full path, keep the quotation marks, and press **Return** to select its library directory:
 
@@ -226,20 +230,20 @@ The checkout root is the folder containing `custom-pieces/` and the repository R
 
 Type `python3 --version` and press **Return**. Python must be version 3.11 or newer. Use the existing project dependencies; the [build instructions](BUILD_AND_INSTALL.md#build-a-selected-collection) explain editable installation, Pillow, and NumPy when preparing a new source checkout.
 
-Run this command to verify the two pieces against the existing saved V4 build, resolve their authored declarations, write their generated exports, and regenerate their overviews and marked README blocks:
+Select a verified build containing both authoring examples and matching their current measured records. Replace `BUILD_NAME` below with that build directory's actual name. Run this command to verify the selected resources, resolve their authored declarations, write their generated exports, and regenerate their overviews and marked README blocks:
 
 ```sh
-python3 scp.py connectors refresh --piece hsr-component-modular-crossing-core --piece hsr-component-tight-paired-curve90-l4-to-mid --build dist/straight-stem-trumpet-v4
+python3 scp.py connectors refresh --piece blind-hsr-rise-quarter-turn --piece blind-hsr-road-stack --build dist/BUILD_NAME
 ```
 
-`--piece` selects one exact registered type and can be repeated. `--domain` defaults to `high-speed-rail`. `--build` selects an existing build directory relative to `custom-pieces`, unless an absolute path is supplied; its default is `dist/current`. The example explicitly selects `dist/straight-stem-trumpet-v4`, the existing compiled input used by this two-piece trial. Refresh does not build that directory. Select another verified build only when its resources match the current measured source records.
+`--piece` selects one exact registered type and can be repeated. `--domain` defaults to `high-speed-rail`. `--build` selects an existing build directory relative to `custom-pieces`, unless an absolute path is supplied; its default is `dist/current`. Refresh does not build that directory. The modular crossing and tight curve can be selected in the same way with their exact IDs and a verified build containing them. Select another build only when its resources match the current measured source records.
 
 Rendering and artwork freshness checks also need the models' existing material textures. Use the configured project texture inputs, or append `--plugins '/absolute/path/to/Plugins'` to select an existing texture directory for refresh or check. Replace that placeholder with the directory's actual path and retain the single quotation marks if the path contains spaces. Texture inputs are read only; no connector command installs or alters Plugins files.
 
 Now run the read-only freshness check with the same selection and build:
 
 ```sh
-python3 scp.py connectors check --piece hsr-component-modular-crossing-core --piece hsr-component-tight-paired-curve90-l4-to-mid --build dist/straight-stem-trumpet-v4
+python3 scp.py connectors check --piece blind-hsr-rise-quarter-turn --piece blind-hsr-road-stack --build dist/BUILD_NAME
 ```
 
 The check validates the source declarations and compiled-resource agreement, compares the saved export with the freshly resolved result, and checks the canonical overview's recorded input and output fingerprints, current material textures, fonts, and renderer settings. Missing or stale outputs are failures, rather than a request to silently rewrite them. Read the command's JSON result and resolve any reported input or provenance mismatch before using the outputs.
@@ -282,6 +286,21 @@ A reusable piece has one README; an assembly has README plus TESTING. Keep a pla
 
 Keep a piece's useful function, exact identifier and menu name, network services, footprint, supported rotations, intended interface families and required adapters, limitations, and current evidence in its existing README. Show canonical angled and top views for new or geometrically revised types under the [standalone contract](#reusable-names-and-standalone-type-pictures), preserve unchanged types' current previews, and include the generated connection overview for intentionally migrated types. Reference the exact measured connection and manual records instead of hand-copying their coordinates or checkbox state into maintained prose. Generated intrinsic connection tables do not publish legacy neighbour shortlists or a mandatory port/counterpart manual matrix. Automatic complete-boundary compatibility discovery is not supplied by the current library; any future consumer must exclude incomplete or stale inputs explicitly.
 
+New piece guides and intentionally refreshed examples use the same numbered sections and navigation labels. A **movement matrix** is a table whose rows are directed entrances and whose columns are directed exits within this one piece. It is generated from measured routes and scoped observations; it does not list possible neighbouring pieces. Use [the paired rising quarter-turn](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/README.md) and [HSR above parallel Road with its central pillar](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md) as the maintained examples.
+
+| Section and navigation label | Content and source |
+| --- | --- |
+| `1. Views` | Canonical angled and north-up images, local grid, and software-preview limits. Keep generated `PIECE VIEWS` images here. |
+| `2. Piece and placement` | Exact menu name and permanent ID, function, services, occupied cells and construction rectangle, rotations, approach requirements, and numbered placement instructions. Keep generated `PIECE OVERVIEW` facts here. |
+| `3. Connection matrix` | Generated `PIECE CONNECTION MATRIX` with intrinsic entrance-to-exit movements, followed by the generated `CONNECTOR OVERVIEW` image and selectable card details for migrated types. |
+| `4. Testing` | Current limitations, evidence links, intrinsic `CONNECTIONS` details, `MANUAL SUMMARY`, `MANUAL CHECKS`, and the exact subject observation command. Keep all of these in the same README. |
+
+Use these four second-level headings once each, and use third-level headings for material within them. Enable the layout with `<!-- PIECE README LAYOUT: 1 -->` outside generated blocks. The README's navigation links to `#1-views`, `#2-piece-and-placement`, `#3-connection-matrix`, and `#4-testing`. Numbering identifies sections; it does not change the piece's permanent ID, construction resources, connector IDs, or observation case IDs. Existing guides retain their layout until deliberately refreshed.
+
+Read the matrix from an entrance row to an exit column. Keep **Saved PATH**, meaning checks of the saved traffic routes, **Route Query**, meaning the route displayed by the game, and **Visible travel**, meaning an observed vehicle or pedestrian completing that journey, separate. Show **Game appearance** once above the matrix. Each result links to the exact test-case anchor in this README. Display ✅ only when every required current case in the declared scope passes, ❌ when a required current case fails, and ? for missing, stale, or otherwise unestablished coverage. A software pass cannot approve either human travel check. A recorded combined journey observation remains historical when separate Route Query and Visible travel cases are introduced; do not copy its approval into either new case.
+
+Mark a pair **Forbidden** only when authoritative `forbidden_transfers` declares it. Keep its software result and focused in-game negative check separate. An unlisted entrance/exit pair remains unknown rather than acquiring an invented permission or prohibition. Service, role, direction, and declared orientation belong to the case scope; a matching display label alone cannot approve a movement. Preserve observations and their original fingerprints when refreshing this view.
+
 The connection overview's image and selectable Markdown details come from the same complete resolved records used for `connector-data.json`. Keep those generated details in the existing `CONNECTOR OVERVIEW` block so full IDs, numerical fields, permissions, and source references remain readable and copyable without extracting text from a PNG. Maintain shape-specific explanations and unresolved limitations outside generated markers. Do not copy the shared metadata format or generation procedure into each subject README.
 
 ### Required Markdown guide for each modular interchange
@@ -303,7 +322,7 @@ When changing a picture's coordinate-label format, use a new descriptive image f
 
 A **generated block** is a section bounded by named HTML comments, such as `<!-- BEGIN PIECE OVERVIEW -->` and `<!-- END PIECE OVERVIEW -->`. Edit its source data or its owning generator, rather than editing text that the next run will replace. Keep authored prose and valid existing metadata headers outside these blocks; preserve frontmatter on repeated refreshes. Follow [STRUCTURE.md](../STRUCTURE.md#markdown-metadata) for the four-field document metadata convention and its existing subject exceptions. Write each prose paragraph on one physical source line, with blank lines between paragraphs.
 
-`scp.content` owns `PIECE OVERVIEW`, `CONNECTIONS`, `MANUAL SUMMARY`, and `MANUAL CHECKS` views; connector refresh owns `CONNECTOR OVERVIEW`; inventory generation owns domain `COLLECTIONS` navigation and the illustrated inventories. Keep the connector block outside other generated markers. Assembly manual checks belong in its `TESTING.md`, while a piece's checks stay in its single README. Source definitions, placements, measured connections, source-port identities, class records, and human observations remain authoritative JSON, not Markdown checkboxes.
+`scp.content` owns `PIECE VIEWS`, `PIECE OVERVIEW`, `PIECE CONNECTION MATRIX`, `CONNECTIONS`, `MANUAL SUMMARY`, and `MANUAL CHECKS` views; connector refresh owns `CONNECTOR OVERVIEW`; inventory generation owns domain `COLLECTIONS` navigation and the illustrated inventories. Keep the connector block outside other generated markers. The piece movement matrix is enabled by its explicit marker; do not add it to every unchanged historical guide during a general refresh. Assembly manual checks belong in its `TESTING.md`, while a piece's checks stay in its single README. Source definitions, placements, measured connections, source-port identities, class records, and human observations remain authoritative JSON, not Markdown checkboxes.
 
 For a prose-only or generator-presentation refresh, return to the repository root containing `custom-pieces/` and the root README. Replace the placeholder path in the first command with your checkout's full path, keep the quotation marks, and run both commands:
 

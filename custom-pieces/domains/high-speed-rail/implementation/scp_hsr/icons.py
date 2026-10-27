@@ -18,7 +18,7 @@ STATES = ('locked', 'normal', 'selected', 'highlighted')
 STYLES = ('diagonal-hsr', 'tram-hsr', 'cross-oo', 'cross-do', 'cross-dd',
           'rail-hsr-s-left', 'rail-hsr-s-right', 'rail-ghsr-s-left', 'rail-ghsr-s-right',
           'rail-hsr-crossover-right', 'rail-hsr-crossover-left',
-          'rail-ghsr-crossover-right', 'rail-ghsr-crossover-left', 'rail-transition')
+          'rail-ghsr-crossover-right', 'rail-ghsr-crossover-left', 'rail-transition', 'rail-hsr-road-stack')
 PNG_SIGNATURE = b'\x89PNG\r\n\x1a\n'
 REVISED_STYLES = {
     'rail-hsr-scissors-revised': 'rail-hsr-scissors',
@@ -35,6 +35,7 @@ PNP_STYLES = frozenset({
 # extracted modules rather than the historical recipe naming conventions.
 # Keep this scoped to new IDs so every existing icon remains byte-identical.
 _MODULAR_KIND = {
+    'hsr-component-blind-rise-quarter-turn': 'RMP',
     'hsr-component-modular-south-junction': 'JCT',
     'hsr-component-modular-paired-climb': 'RMP',
     'hsr-component-modular-crossing-core': 'XNG',
@@ -236,7 +237,14 @@ def _frame(style: str, state: str):
     box((.5, .5, 43.5, 43.5), background, radius=5.5)
     for y in range(16, 43, 4):
         line([(3, y), (41, y)], (31, 55, 64, 255), .5)
-    if style == 'diagonal-hsr':
+    if style == 'rail-hsr-road-stack':
+        # Side elevation communicates that the two straight services are stacked.
+        line([(6, 39), (38, 39)], (139, 112, 86, 255), 5)
+        line([(8, 38.5), (36, 38.5)], (245, 207, 103, 255), .65)
+        line([(11, 27), (11, 36)], (151, 169, 174, 255), 2)
+        line([(33, 27), (33, 36)], (151, 169, 174, 255), 2)
+        track((6, 26), (38, 26), (151, 169, 174, 255))
+    elif style == 'diagonal-hsr':
         track((5, 38), (37, 17), (236, 181, 76, 255))
         # An elevated deck runs vertically in front of the diagonal ground line.
         box((20, 16, 29, 42), (4, 14, 20, 170))

@@ -393,6 +393,9 @@ def native_model(raw,turns=0):
 
 
 def build_feature(spec,context):
+    if spec['recipe'] == 'rail_hsr_road_stack':
+        from .road_stack import build
+        return build(spec, context)
     from .rail_geometry import build_tiled_geometry
     from scp.shadows import build_shadows
     from scp.models import parse_s3d,pack_s3d
@@ -426,3 +429,8 @@ def build_feature(spec,context):
     donor_tgi,name,model=info['effect_donor']
     assets[*EFFECT,preview]=effect_clone(hsr[donor_tgi],name,spec['effect_name'],model,preview)
     return assets,build_rules(spec)
+
+
+# The mixed-network module has its own independent geometry and route contract.
+from .road_stack import INFO as ROAD_STACK_INFO
+INFO['rail_hsr_road_stack'] = ROAD_STACK_INFO

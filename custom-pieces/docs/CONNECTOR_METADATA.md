@@ -7,7 +7,7 @@ document_type: "reference"
 
 # Connector metadata: matching pieces at their shared edge
 
-**Implementation scope:** The source library owns connector declarations, schemas, source validation, resolved exports, and generated connection overviews. The current migration covers two High Speed Rail (HSR) piece types, six connector groups, and twelve measured directional endpoints. Their authored group files use schema version 3, the optional shared-profile registry uses version 2, and generated `connector-data.json` files use version 1. The rules below apply across transport networks; a rule is not evidence that an untested source family works. The measured examples remain HSR-only. Full-scene placement, terrain-aware construction, model collision and seam checks, and actual game operation remain separate, unverified capabilities. See [generation and overview instructions](WORKFLOW_DOCUMENTATION_GENERATION.md) for the exact authoring commands and output ownership.
+**Implementation scope:** The source library owns connector declarations, schemas, source validation, resolved exports, and generated connection overviews. The current migration covers four piece types, sixteen connector groups, and thirty-two measured directional endpoints: the two detailed High Speed Rail (HSR) examples below, the paired rising quarter-turn, and parallel HSR above ordinary Road. The Road example includes measured vehicle and pedestrian paths. Their authored group files use schema version 3, the optional shared-profile registry uses version 2, and generated `connector-data.json` files use version 1. The rules below apply across transport networks; a rule is not evidence that an untested source family works. Full-scene placement, terrain-aware construction, general model-collision and seam discovery, and actual game operation remain separate capabilities; each piece's evidence defines any narrower checks already performed. See [generation and overview instructions](WORKFLOW_DOCUMENTATION_GENERATION.md) for the exact authoring commands and output ownership.
 
 ## 1. A connection is agreement at the shared edge
 
@@ -77,7 +77,7 @@ An **edge cut** is one physical channel crossing of a particular edge. Several d
 
 Raw route-record counts need not agree across source formats. For example, one source could have separate car and bus records, while another explicitly assigns both modes to one record. A **source adapter** is code that reads one source format and converts its measured facts into the common comparison model. It must produce comparable channel, crossing, direction, and mode facts without changing the original records. Compare complete permitted-movement coverage, rather than requiring equal numbers of raw records. Preserve original record identities as references. The current consumer normalizes per-mode movement coverage within an explicitly matched channel and cut; this does not establish a verified source adapter for every transport family.
 
-A diagonal two-channel section near a tile corner can put one channel through the north edge and the other through the east edge. Preserve the complete section relationship and the actual edge intersections. Neither edge acquires an invented second endpoint, and a single intersection does not turn the complete two-channel section into a one-channel section. All required shared segments must fit under the same placement. This case requires source-backed coverage of every cut and every affected edge. The two migrated HSR examples do not establish that diagonal case.
+A diagonal two-channel section near a tile corner can put one channel through the north edge and the other through the east edge. Preserve the complete section relationship and the actual edge intersections. Neither edge acquires an invented second endpoint, and a single intersection does not turn the complete two-channel section into a one-channel section. All required shared segments must fit under the same placement. This case requires source-backed coverage of every cut and every affected edge. The four migrated examples do not establish that diagonal case.
 
 ### Rendering from the existing models
 
@@ -254,7 +254,7 @@ The optional domain `connector-profiles.json` supplies shared defaults. After ex
 
 The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [authoring skill](../skills/network-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Application-specific placement, candidate discovery, and reports belong in a separate consumer, using the generated export rather than another source parser.
 
-Only the two migrated pieces currently supply the new declaration/export set. Do not imply full-catalogue coverage from that subset, and do not manufacture missing geometry or channel associations to extend coverage. Current resolved exports omit legacy per-port counterpart shortlists and candidate counts, while unchanged measured files retain their original bytes. Piece validation and extraction do not compute neighbouring candidates or generate a manual pair-testing matrix.
+Only the four migrated pieces currently supply the new declaration/export set: the modular crossing, tight curve, paired rising quarter-turn, and parallel HSR/Road stack. Do not imply full-catalogue coverage from that subset, and do not manufacture missing geometry or channel associations to extend coverage. Current resolved exports omit legacy per-port counterpart shortlists and candidate counts, while unchanged measured files retain their original bytes. Piece validation and extraction do not compute neighbouring candidates or generate a manual pair-testing matrix.
 
 The current library does not supply automatic compatibility discovery. A future consumer must consider only registered pieces with source-valid declarations and fresh generated exports, compare complete boundaries under one placement, and distinguish unmigrated pieces from missing, stale, or invalid data. An excluded piece has unknown compatibility, rather than a failed connection. Candidate results retain the limits of pairwise metadata and owned-cell checking; full-scene clearance and game operation remain separate evidence.
 
@@ -280,7 +280,7 @@ Metadata validation, compiled-route agreement, occupied-tile fit, overview gener
 
 ## 8. Examples: the two existing HSR pieces
 
-These examples preserve the actual measured data. Railway-specific terms here describe these railway pieces; they are not universal names for the network-neutral model above. In these examples, one physical track is one transport channel. The two JSONC declarations and their generated exports now use the library-owned format. The measured connections, geometry, saved assembly placements, and game-observation records retain their authority and are not rewritten by connector refresh.
+These two detailed examples preserve the actual measured data. Railway-specific terms here describe these railway pieces; they are not universal names for the network-neutral model above. In these examples, one physical track is one transport channel. The two JSONC declarations and their generated exports use the library-owned format. The measured connections, geometry, saved assembly placements, and game-observation records retain their authority and are not rewritten by connector refresh. The additional [authoring examples](#86-additional-measured-authoring-examples) extend the migrated subset without changing these worked tables.
 
 ### 8.1 Reading the example tables and current profile IDs
 
@@ -371,7 +371,7 @@ The crossing's measured journeys remain separate at the two heights: no upper/lo
 
 ### 8.5 Related schematic case: HSR parallel above street
 
-The real crossing has its two heights on different edges. A hypothetical combined piece can instead put HSR above street at the same edge of the same tile. This is a schematic case, not a third measured pilot piece:
+The real crossing has its two heights on different edges. A hypothetical combined piece can instead put HSR above Street at the same edge of the same tile. This Street case remains schematic; the separately measured parallel HSR/Road example uses ordinary Road, rather than establishing Street-source facts:
 
 | Required part of source cell `[0,0]`'s east edge | Network | Outward connection heading | Required vertical position | Required sideways position |
 | --- | --- | ---: | --- | --- |
@@ -381,3 +381,14 @@ The real crossing has its two heights on different edges. A hypothetical combine
 One candidate piece must satisfy both rows under one common placement, including each service's channel arrangement and traffic permissions. An HSR-only piece, a street-only piece, or different placements that fit the services independently are incomplete solutions. Two independent pieces claiming the same tile do not constitute a supported combined piece. Actual street heights, shared-channel associations, lane data, and construction behavior need measured source evidence; the HSR-only pilot cannot supply them.
 
 Both figures use the actual compiled models, measured source positions, and library-owned declarations. Their evidence lives beside the pieces: [crossing overview evidence](../domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/evidence/connection-overview.json) and [curve overview evidence](../domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/evidence/connection-overview.json). The [overview commands](WORKFLOW_DOCUMENTATION_GENERATION.md#refresh-and-check-the-two-migrated-pieces) reproduce the exports and artwork. These software renders do not mark physical-clearance or in-game tests as passed.
+
+### 8.6 Additional measured authoring examples
+
+Use these complete piece guides to follow source authoring, saved-resource verification, canonical views, connector declarations, generated cards, and scoped manual checks together. Each uses the shared numbered README layout and intrinsic movement matrix; neither supplies an automatic neighbour-compatibility catalogue.
+
+| Maintained example | Additional measured scope | Connector sources |
+| --- | --- | --- |
+| [HSR Paired Quarter-Turn Level 2 to Level 4](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/README.md) | Two paired native boundaries at 15.5 m and 30.5 m, connected by a rising quarter-turn. | [Authored groups](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/connector-groups.jsonc); [resolved export](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/connector-data.json). |
+| [HSR above parallel Road with a central pillar](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md) | North/south bundles each require HSR, Road-vehicle, and pedestrian groups together; lateral native pedestrian cuts remain separately described. | [Authored groups](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-groups.jsonc); [resolved export](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-data.json). |
+
+The original crossing and tight curve contribute six groups and twelve measured directional endpoints. The rising quarter-turn adds two groups and four endpoints; the parallel stack adds eight groups and sixteen endpoints. These counts describe the four current exports, rather than coverage of every library type or transport family. Keep each piece's literal contracts, source permissions, physical-clearance scope, and unverified game behavior in its own guide and evidence.
