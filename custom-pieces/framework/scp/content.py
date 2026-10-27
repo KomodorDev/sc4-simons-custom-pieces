@@ -236,7 +236,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
                   {'subject_id': subject_id}, _dependencies(traffic_keys, values)),
     ]
     for image_key in sorted(image_values):
-        cases.append(_new_case('preview_review', 'Inspect this exact preview for tracks, walls, piers, seams and shadows.',
+        cases.append(_new_case('preview_review', 'Inspect this exact preview for tracks, walls, piers, seams, and shadows.',
             {'subject_id': subject_id, 'image_key': image_key}, {image_key: image_values[image_key]}))
     if not image_values:
         # Missing artwork remains a visible pending check, never an automatic N/A or pass.
@@ -245,10 +245,10 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     for orientation in manual_orientations:
         scope = {'subject_id': subject_id, **orientation}
         for kind, description in (
-                ('in_game_render', 'Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.'),
+                ('in_game_render', 'Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.'),
                 ('in_game_placement', 'Place this piece or complete blueprint and inspect every occupied tile.'),
                 ('in_game_demolition', 'Bulldoze the complete placement and inspect the cleared area.'),
-                ('in_game_save_reload', 'Save, quit, reload and inspect the placement and its paths.')):
+                ('in_game_save_reload', 'Save, quit, reload, and inspect the placement and its paths.')):
             keys = visual_keys if kind == 'in_game_render' else resource_keys
             cases.append(_new_case(kind, description, scope, _dependencies(keys, values)))
     # Legacy endpoint/counterpart cases remain readable and recordable, but
@@ -282,7 +282,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
                   if any(scope.get('construction_transposed') for scope in orientations) else
                   'Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.'),
               'supported_orientations': deepcopy(connections.get('supported_orientations',orientations)),
-              'environment_policy': 'Every result applies only to its recorded platform, game version and NAM profile.',
+              'environment_policy': 'Every result applies only to its recorded platform, game version, and NAM profile.',
               'fingerprints': dict(sorted(values.items())), 'cases': cases}
     if manual_check_orientations is not None:
         record['manual_check_orientations'] = deepcopy(manual_orientations)

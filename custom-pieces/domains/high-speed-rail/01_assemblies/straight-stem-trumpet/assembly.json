@@ -1,16 +1,16 @@
 {
   "purpose": "Reconstruct the straight-stem HSR trumpet from reusable registered pieces at the recorded positions and rotations.",
   "title": "Straight-stem HSR trumpet",
-  "geometry_status": "Actual compiled model resources assembled at the recorded placements; game observations remain unverified.",
+  "geometry_status": "Passed saved-resource software checks for 105 occupied cells, all six complete journeys, 74 supports, and four proper rotations. Game observations remain unverified.",
   "coordinate_units": "metres east,north,height; rotations counterclockwise",
   "construction_rectangle_tiles": [
     20,
     23
   ],
-  "occupied_tiles": 109,
-  "module_placements": 26,
-  "component_types_used": 14,
-  "separately_available_component_types": 39,
+  "occupied_tiles": 105,
+  "module_placements": 25,
+  "component_types_used": 13,
+  "separately_available_component_types": 32,
   "external_ports": {
     "W": {
       "in": [
@@ -51,9 +51,9 @@
   },
   "placements": [
     {
-      "name": "HSR L2 Short Mainline Diverge Core at P01A",
-      "instance_id": "HSR L2 Short Mainline Diverge Core at P01A",
-      "label": "P01A",
+      "name": "HSR L2 Short Mainline Diverge Core at P01",
+      "instance_id": "P01",
+      "label": "P01",
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
       "recipe": "hsr_component_l2_short_mainline_diverge_core",
       "origin_m": [
@@ -73,9 +73,9 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P01S",
-      "instance_id": "HSR L2 Two-Track Straight at P01S",
-      "label": "P01S",
+      "name": "HSR L2 Two-Track Straight at P02",
+      "instance_id": "P02",
+      "label": "P02",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -95,9 +95,9 @@
       ]
     },
     {
-      "name": "HSR L2 Shortened One-Way Departure Curve at P01B",
-      "instance_id": "HSR L2 Shortened One-Way Departure Curve at P01B",
-      "label": "P01B",
+      "name": "HSR L2 Shortened One-Way Departure Curve at P03",
+      "instance_id": "P03",
+      "label": "P03",
       "piece_id": "hsr-component-l2-shortened-departure-curve",
       "recipe": "hsr_component_l2_shortened_departure_curve",
       "origin_m": [
@@ -117,9 +117,9 @@
       ]
     },
     {
-      "name": "HSR Modular Symmetric Split and Return at P02A",
-      "instance_id": "HSR Modular Symmetric Split and Return at P02A",
-      "label": "P02A",
+      "name": "HSR Modular Symmetric Split and Return at P04",
+      "instance_id": "P04",
+      "label": "P04",
       "piece_id": "hsr-component-modular-south-junction",
       "recipe": "hsr_component_modular_south_junction",
       "origin_m": [
@@ -139,9 +139,9 @@
       ]
     },
     {
-      "name": "HSR Modular Two-Track L2 to L4 Climb at P02B",
-      "instance_id": "HSR Modular Two-Track L2 to L4 Climb at P02B",
-      "label": "P02B",
+      "name": "HSR Modular Two-Track L2 to L4 Climb at P05",
+      "instance_id": "P05",
+      "label": "P05",
       "piece_id": "hsr-component-modular-paired-climb",
       "recipe": "hsr_component_modular_paired_climb",
       "origin_m": [
@@ -161,9 +161,9 @@
       ]
     },
     {
-      "name": "HSR L2 Compact Paired Fan Join at P03A",
-      "instance_id": "HSR L2 Compact Paired Fan Join at P03A",
-      "label": "P03A",
+      "name": "HSR L2 Compact Paired Fan Join at P06",
+      "instance_id": "P06",
+      "label": "P06",
       "piece_id": "hsr-component-l2-paired-fan-compact-join",
       "recipe": "hsr_component_l2_paired_fan_compact_join",
       "origin_m": [
@@ -183,9 +183,9 @@
       ]
     },
     {
-      "name": "HSR L2 Short Opposed Merge Core at P03B",
-      "instance_id": "HSR L2 Short Opposed Merge Core at P03B",
-      "label": "P03B",
+      "name": "HSR L2 Short Opposed Merge Core at P07",
+      "instance_id": "P07",
+      "label": "P07",
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
       "recipe": "hsr_component_l2_short_opposed_merge_core",
       "origin_m": [
@@ -205,53 +205,31 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P03CW",
-      "instance_id": "HSR L2 Two-Track Straight at P03CW",
-      "label": "P03CW",
-      "piece_id": "hsr-component-lower-paired-straight",
-      "recipe": "hsr_component_lower_paired_straight",
+      "name": "HSR L2 Short Mainline Diverge Core at P08",
+      "instance_id": "P08",
+      "label": "P08",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
       "origin_m": [
-        128.0,
+        176.0,
         0.0
       ],
-      "rotation_degrees_ccw": 270,
-      "rotation_degrees": 270,
-      "menu_name": "HSR L2 Two-Track Straight",
+      "rotation_degrees_ccw": 180,
+      "rotation_degrees": 180,
+      "menu_name": "HSR L2 Short Mainline Diverge Core",
       "display_origin_m": [
-        240.0,
+        288.0,
         208.0
       ],
       "display_origin_tiles_en": [
-        15.0,
+        18.0,
         13.0
       ]
     },
     {
-      "name": "HSR L2 Compact Fan Diverge at P03C",
-      "instance_id": "HSR L2 Compact Fan Diverge at P03C",
-      "label": "P03C",
-      "piece_id": "hsr-component-l2-compact-fan-diverge",
-      "recipe": "hsr_component_l2_compact_fan_diverge",
-      "origin_m": [
-        144.0,
-        0.0
-      ],
-      "rotation_degrees_ccw": 0,
-      "rotation_degrees": 0,
-      "menu_name": "HSR L2 Compact Fan Diverge",
-      "display_origin_m": [
-        256.0,
-        208.0
-      ],
-      "display_origin_tiles_en": [
-        16.0,
-        13.0
-      ]
-    },
-    {
-      "name": "HSR L2 Two-Track Straight at P03CE",
-      "instance_id": "HSR L2 Two-Track Straight at P03CE",
-      "label": "P03CE",
+      "name": "HSR L2 Two-Track Straight at P09",
+      "instance_id": "P09",
+      "label": "P09",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -271,9 +249,9 @@
       ]
     },
     {
-      "name": "HSR L2 Shortened One-Way Return Curve at P03D",
-      "instance_id": "HSR L2 Shortened One-Way Return Curve at P03D",
-      "label": "P03D",
+      "name": "HSR L2 Shortened One-Way Return Curve at P10",
+      "instance_id": "P10",
+      "label": "P10",
       "piece_id": "hsr-component-l2-shortened-return-curve",
       "recipe": "hsr_component_l2_shortened_return_curve",
       "origin_m": [
@@ -293,9 +271,9 @@
       ]
     },
     {
-      "name": "HSR Modular One-Tile Two-Level Crossing at P04A",
-      "instance_id": "HSR Modular One-Tile Two-Level Crossing at P04A",
-      "label": "P04A",
+      "name": "HSR Modular One-Tile Two-Level Crossing at P11",
+      "instance_id": "P11",
+      "label": "P11",
       "piece_id": "hsr-component-modular-crossing-core",
       "recipe": "hsr_component_modular_crossing_core",
       "origin_m": [
@@ -315,9 +293,9 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P04N",
-      "instance_id": "HSR L4 Two-Track Straight at P04N",
-      "label": "P04N",
+      "name": "HSR L4 Two-Track Straight at P12",
+      "instance_id": "P12",
+      "label": "P12",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -337,9 +315,9 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P04S",
-      "instance_id": "HSR L4 Two-Track Straight at P04S",
-      "label": "P04S",
+      "name": "HSR L4 Two-Track Straight at P13",
+      "instance_id": "P13",
+      "label": "P13",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -359,9 +337,9 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P04W",
-      "instance_id": "HSR L2 Two-Track Straight at P04W",
-      "label": "P04W",
+      "name": "HSR L2 Two-Track Straight at P14",
+      "instance_id": "P14",
+      "label": "P14",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -381,9 +359,9 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P04E",
-      "instance_id": "HSR L2 Two-Track Straight at P04E",
-      "label": "P04E",
+      "name": "HSR L2 Two-Track Straight at P15",
+      "instance_id": "P15",
+      "label": "P15",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -403,7 +381,7 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P05",
+      "name": "HSR L4 Two-Track Straight at P16",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -415,9 +393,9 @@
         0.0,
         32.0
       ],
-      "instance_id": "HSR L4 Two-Track Straight at P05",
+      "instance_id": "P16",
       "rotation_degrees": 0,
-      "label": "P05",
+      "label": "P16",
       "menu_name": "HSR L4 Two-Track Straight",
       "display_origin_m": [
         112.0,
@@ -429,7 +407,7 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P06",
+      "name": "HSR L4 Two-Track Straight at P17",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -441,9 +419,9 @@
         0.0,
         48.0
       ],
-      "instance_id": "HSR L4 Two-Track Straight at P06",
+      "instance_id": "P17",
       "rotation_degrees": 0,
-      "label": "P06",
+      "label": "P17",
       "menu_name": "HSR L4 Two-Track Straight",
       "display_origin_m": [
         112.0,
@@ -455,7 +433,7 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P07",
+      "name": "HSR L4 Two-Track Straight at P18",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -467,9 +445,9 @@
         0.0,
         64.0
       ],
-      "instance_id": "HSR L4 Two-Track Straight at P07",
+      "instance_id": "P18",
       "rotation_degrees": 0,
-      "label": "P07",
+      "label": "P18",
       "menu_name": "HSR L4 Two-Track Straight",
       "display_origin_m": [
         112.0,
@@ -481,7 +459,7 @@
       ]
     },
     {
-      "name": "HSR L4 Two-Track Straight at P08",
+      "name": "HSR L4 Two-Track Straight at P19",
       "piece_id": "hsr-component-upper-paired-straight",
       "recipe": "hsr_component_upper_paired_straight",
       "origin_m": [
@@ -493,9 +471,9 @@
         0.0,
         80.0
       ],
-      "instance_id": "HSR L4 Two-Track Straight at P08",
+      "instance_id": "P19",
       "rotation_degrees": 0,
-      "label": "P08",
+      "label": "P19",
       "menu_name": "HSR L4 Two-Track Straight",
       "display_origin_m": [
         112.0,
@@ -507,7 +485,7 @@
       ]
     },
     {
-      "name": "HSR Tight Two-Track Corner 30.5 to 23 Metres at P09",
+      "name": "HSR Tight Two-Track Corner 30.5 to 23 Metres at P20",
       "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
       "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
       "origin_m": [
@@ -519,9 +497,9 @@
         0.0,
         144.0
       ],
-      "instance_id": "HSR Tight Two-Track Corner 30.5 to 23 Metres at P09",
+      "instance_id": "P20",
       "rotation_degrees": 0,
-      "label": "P09",
+      "label": "P20",
       "menu_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
       "display_origin_m": [
         112.0,
@@ -533,7 +511,7 @@
       ]
     },
     {
-      "name": "HSR Tight Two-Track Corner 23 to 15.5 Metres at P10",
+      "name": "HSR Tight Two-Track Corner 23 to 15.5 Metres at P21",
       "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
       "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
       "origin_m": [
@@ -545,9 +523,9 @@
         112.0,
         144.0
       ],
-      "instance_id": "HSR Tight Two-Track Corner 23 to 15.5 Metres at P10",
+      "instance_id": "P21",
       "rotation_degrees": 270,
-      "label": "P10",
+      "label": "P21",
       "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
       "display_origin_m": [
         224.0,
@@ -559,9 +537,9 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P01AW",
-      "instance_id": "HSR L2 Two-Track Straight at P01AW",
-      "label": "P01AW",
+      "name": "HSR L2 Two-Track Straight at P22",
+      "instance_id": "P22",
+      "label": "P22",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -581,9 +559,9 @@
       ]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P03BE",
-      "instance_id": "HSR L2 Two-Track Straight at P03BE",
-      "label": "P03BE",
+      "name": "HSR L2 Two-Track Straight at P23",
+      "instance_id": "P23",
+      "label": "P23",
       "piece_id": "hsr-component-lower-paired-straight",
       "recipe": "hsr_component_lower_paired_straight",
       "origin_m": [
@@ -603,9 +581,9 @@
       ]
     },
     {
-      "name": "One-Way HSR L2 Eight-Metre Straight at P01BS",
-      "instance_id": "One-Way HSR L2 Eight-Metre Straight at P01BS",
-      "label": "P01BS",
+      "name": "One-Way HSR L2 Eight-Metre Straight at P24",
+      "instance_id": "P24",
+      "label": "P24",
       "piece_id": "hsr-component-lower-oneway-straight",
       "recipe": "hsr_component_lower_oneway_straight",
       "origin_m": [
@@ -625,9 +603,9 @@
       ]
     },
     {
-      "name": "One-Way HSR L2 Eight-Metre Straight at P03DS",
-      "instance_id": "One-Way HSR L2 Eight-Metre Straight at P03DS",
-      "label": "P03DS",
+      "name": "One-Way HSR L2 Eight-Metre Straight at P25",
+      "instance_id": "P25",
+      "label": "P25",
       "piece_id": "hsr-component-lower-oneway-straight",
       "recipe": "hsr_component_lower_oneway_straight",
       "origin_m": [
@@ -652,13 +630,13 @@
       "recipe": "hsr_component_l2_short_mainline_diverge_core",
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
       "menu_name": "HSR L2 Short Mainline Diverge Core",
-      "placements": 1
+      "placements": 2
     },
     {
       "recipe": "hsr_component_lower_paired_straight",
       "piece_id": "hsr-component-lower-paired-straight",
       "menu_name": "HSR L2 Two-Track Straight",
-      "placements": 7
+      "placements": 6
     },
     {
       "recipe": "hsr_component_l2_shortened_departure_curve",
@@ -688,12 +666,6 @@
       "recipe": "hsr_component_l2_short_opposed_merge_core",
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
       "menu_name": "HSR L2 Short Opposed Merge Core",
-      "placements": 1
-    },
-    {
-      "recipe": "hsr_component_l2_compact_fan_diverge",
-      "piece_id": "hsr-component-l2-compact-fan-diverge",
-      "menu_name": "HSR L2 Compact Fan Diverge",
       "placements": 1
     },
     {
@@ -735,9 +707,9 @@
   ],
   "source_builds": {
     "selection": "hsr-straight-stem-trumpet",
-    "used_component_types": 14,
-    "new_component_types": 4,
-    "reused_component_types": 10,
+    "used_component_types": 13,
+    "new_component_types": 0,
+    "reused_component_types": 13,
     "controller_policy": "One coordinated staged build; do not stack controllers from separate builds"
   },
   "compiled_assembly_validation": "evidence/validation.json",
@@ -796,7 +768,7 @@
   },
   "render_source_build": {
     "selection": "hsr-straight-stem-trumpet",
-    "policy": "Supply an explicitly verified staged build containing these 14 required types; exact input fingerprints are retained in evidence/render.json."
+    "policy": "Supply an explicitly verified staged build containing these 13 required types; exact input fingerprints are retained in evidence/render.json."
   },
   "placement_plan_image": "previews/tile-ownership.png",
   "placement_plan_title": "Straight-stem HSR trumpet | tile ownership and placement positions",
@@ -804,13 +776,13 @@
     "layout_contract": "checks/layout.json",
     "quality_contract": "checks/contract.json",
     "decision_record": "checks/atomization.json",
-    "policy": "Preserve the approved current outside ports, grid, footprint, all75 support positions and all109 actual world-cell resources exactly; prior atomization measurements are historical decisions in checks/atomization.json.",
+    "policy": "Preserve the outside ports, fixed city grid, construction rectangle,59 support positions outside the redesigned modules, and all85 unaffected world-cell resources. The approved current layout and resource contracts record the authorized fan/merge redesign, explicit74-support plan, and reusable-core substitution; earlier atomization measurements remain historical decisions in checks/atomization.json.",
     "resource_contract": "checks/resources.json"
   },
   "standalone_piece_preview_policy": "One canonical 0-degree angled image per type; new types also have a top view, all on their own southwest-zero local X/Y grid. P labels belong only to the assembly plan and guide.",
   "redesign_scope": {
-    "decision_record": "checks/atomization.json",
-    "policy": "An original tail deviation strictly below 5 mm selects a candidate. Actual adjoining-collar movement is independently bounded at 24.5 mm for paired junctions and 8.2 mm for one-way curves. Preserve the outside layout and supports.",
+    "historical_atomization_decision_record": "checks/atomization.json",
+    "policy": "Unify the adjoining fan and opposed-merge branch angles with the existing Short Mainline Diverge Core. Replace the former P03CW straight and P03C diverge with one retained core at [176,0] m, rotated 180 degrees; preserve all other placement positions, outside ports, grid, and support spacing. Renumber the resulting placements consecutively P01 through P25.",
     "in_game_status": "unverified"
   }
 }

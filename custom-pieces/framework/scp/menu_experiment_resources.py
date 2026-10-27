@@ -11,6 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 from io import BytesIO
+import math
 import struct
 
 from .dbpf import encode_exemplar, exemplar, require, tgi_string
@@ -105,12 +106,119 @@ def _icon(kind):
     return output.getvalue()
 
 
-def make_assembly_icon():
-    """Return the canonical assembly cycle icon without building game resources."""
-    return _icon('cycle')
+# Tiny native-size lettering overlays the full route drawing without text bands.
+_ASSEMBLY_MARK = {
+    'A': ('010', '101', '111', '101', '101'),
+    'B': ('110', '101', '110', '101', '110'),
+    'C': ('111', '100', '100', '100', '111'),
+    'D': ('110', '101', '101', '101', '110'),
+    'E': ('111', '100', '111', '100', '111'),
+    'F': ('111', '100', '111', '100', '100'),
+    'G': ('111', '100', '101', '101', '111'),
+    'H': ('101', '101', '111', '101', '101'),
+    'I': ('111', '010', '010', '010', '111'),
+    'J': ('001', '001', '001', '101', '111'),
+    'K': ('101', '101', '110', '101', '101'),
+    'L': ('100', '100', '100', '100', '111'),
+    'M': ('101', '111', '101', '101', '101'),
+    'N': ('101', '111', '111', '101', '101'),
+    'O': ('111', '101', '101', '101', '111'),
+    'P': ('110', '101', '110', '100', '100'),
+    'Q': ('111', '101', '101', '111', '001'),
+    'R': ('110', '101', '110', '101', '101'),
+    'S': ('111', '100', '111', '001', '111'),
+    'T': ('111', '010', '010', '010', '010'),
+    'U': ('101', '101', '101', '101', '111'),
+    'V': ('101', '101', '101', '101', '010'),
+    'W': ('101', '101', '101', '111', '101'),
+    'X': ('101', '101', '010', '101', '101'),
+    'Y': ('101', '101', '010', '010', '010'),
+    'Z': ('111', '001', '010', '100', '111'),
+}
 
 
-def _validate_icon(raw, kind):
+def _assembly_label(draw, value, x, y, colour):
+    for letter in value:
+        if letter == ' ':
+            x += 3
+            continue
+        for row, pixels in enumerate(_ASSEMBLY_MARK[letter]):
+            for column, on in enumerate(pixels):
+                if on == '1':
+                    draw.point((x + column, y + row), fill=colour)
+        x += 4
+
+
+def make_assembly_icon(routes=None, *, network_label=None):
+    """Draw the complete north-up assembly; retain the historical icon on demand.
+
+    ``routes`` contains placed east/north/height polylines. No game resources,
+    build outputs, placements, or observations are changed by this illustration.
+    The owning domain supplies the compact network label. Omitting routes
+    reproduces frozen historical menu candidates exactly.
+    """
+    if routes is None:
+        require(network_label is None, 'Historical assembly icon has no network label')
+        return _icon('cycle')
+    from PIL import Image, ImageDraw, ImageOps
+
+    require(isinstance(network_label, str) and 1 <= len(network_label) <= 4
+            and all(letter in _ASSEMBLY_MARK for letter in network_label),
+            'Assembly icon needs an explicit network label of one to four uppercase letters')
+    require(isinstance(routes, (list, tuple)) and routes, 'Assembly icon needs actual routes')
+    require(all(isinstance(route, (list, tuple)) and len(route) >= 2 for route in routes),
+            'Assembly icon routes need at least two points')
+    require(all(isinstance(point, (list, tuple)) and len(point) == 3
+                and all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                        and math.isfinite(value) for value in point)
+                for route in routes for point in route), 'Assembly icon needs finite XYZ points')
+    points = [point for route in routes for point in route]
+    xmin, xmax = min(p[0] for p in points), max(p[0] for p in points)
+    ymin, ymax = min(p[1] for p in points), max(p[1] for p in points)
+    require(xmax > xmin or ymax > ymin, 'Assembly icon routes have no planar extent')
+    factor = min(34 / max(xmax - xmin, 1), 34 / max(ymax - ymin, 1))
+    scale = 6
+    strip = Image.new('RGBA', (176, 44))
+
+    def screen(point):
+        return ((22 + (point[0] - (xmin + xmax) / 2) * factor) * scale,
+                (22 - (point[1] - (ymin + ymax) / 2) * factor) * scale)
+
+    for number in range(4):
+        image = Image.new('RGBA', (44 * scale, 44 * scale))
+        draw = ImageDraw.Draw(image)
+        border = ((68, 183, 182), (68, 183, 182), (248, 197, 82), (113, 222, 218))[number]
+        draw.rounded_rectangle((scale, scale, 42 * scale, 42 * scale), radius=5 * scale,
+                               fill=(14, 32, 42), outline=border, width=round(1.5 * scale))
+        # Higher tracks cover lower tracks at genuine crossings. Thin dark
+        # halos separate the loop from the nearby approach at the native size.
+        for route in sorted(routes, key=lambda row: sum(p[2] for p in row) / len(row)):
+            planar = [screen(point) for point in route]
+            draw.line(planar, fill=(5, 15, 23), width=round(3.0 * scale), joint='curve')
+            for first, last, a, b in zip(route, route[1:], planar, planar[1:]):
+                upper = min(1., max(0., ((first[2] + last[2]) / 2 - 15.5) / 15.))
+                colour = tuple(round(low + (high - low) * upper)
+                               for low, high in zip((240, 225, 178), (83, 222, 208)))
+                draw.line((a, b), fill=colour, width=round(1.35 * scale))
+        image = image.resize((44, 44), Image.Resampling.LANCZOS)
+        # Overlay crisp 3 by 5 letters on the full-size diagram. The footer's
+        # last ink row is 37, leaving clearance above the bottom border.
+        draw = ImageDraw.Draw(image)
+        _assembly_label(draw, 'SCP', 5, 5, (190, 210, 216))
+        footer = 'ASM ' + network_label
+        _assembly_label(draw, footer, (44 - (4 * len(footer) - 2)) // 2, 33,
+                        (225, 235, 238))
+        if number == 0:
+            alpha = image.getchannel('A')
+            image = ImageOps.grayscale(image).convert('RGBA')
+            image.putalpha(alpha)
+        strip.paste(image, (44 * number, 0))
+    output = BytesIO()
+    strip.save(output, format='PNG', optimize=False)
+    return output.getvalue()
+
+
+def _validate_icon(raw, kind, expected_icon=None):
     """Check native image bytes while allowing equivalent PNG compression."""
     from PIL import Image
 
@@ -130,15 +238,18 @@ def _validate_icon(raw, kind):
             actual_pixels = image.tobytes()
     except (OSError, SyntaxError) as error:
         raise ValueError('Menu icon must be a valid 176 by 44 RGBA PNG') from error
-    with Image.open(BytesIO(_icon(kind))) as expected:
+    with Image.open(BytesIO(expected_icon if expected_icon is not None else _icon(kind))) as expected:
         require(actual_pixels == expected.tobytes(),
                 'Assembly icon differs from the canonical cycle artwork; regenerate it with assembly-icons'
                 if kind == 'cycle' else 'Wrong experiment icon')
 
 
-def validate_assembly_icon(raw):
-    """Require every original cycle-icon pixel, state, dimension, and RGBA mode."""
-    _validate_icon(raw, 'cycle')
+def validate_assembly_icon(raw, *, routes=None, network_label=None, expected_icon=None):
+    """Require exact source-derived artwork pixels and the native PNG format."""
+    require(expected_icon is None or (routes is None and network_label is None),
+            'Specify routes and network label, or frozen icon proof, not both')
+    _validate_icon(raw, 'cycle', expected_icon if expected_icon is not None else
+                   make_assembly_icon(routes, network_label=network_label))
 
 
 def _new_button(template, definition, *, kind, icon=None):
@@ -161,7 +272,7 @@ def _new_button(template, definition, *, kind, icon=None):
 
 
 def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
-                                    cycle_icon=None):
+                                    cycle_icon=None, expected_cycle_icon=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
@@ -177,7 +288,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     its original PNG encoding is retained exactly in the compiled resource.
     """
     if cycle_icon is not None:
-        validate_assembly_icon(cycle_icon)
+        validate_assembly_icon(cycle_icon, expected_icon=expected_cycle_icon)
     require(isinstance(source_resources, dict) and source_resources,
             'Source resources must be a nonempty mapping from a verified build')
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
@@ -244,11 +355,13 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         result.update(_new_button(records[0][2], button, kind=kind,
                                   icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
-        result, source_resources, pieces, cycle_button=cycle, submenu=group)
+        result, source_resources, pieces, cycle_button=cycle, submenu=group,
+        expected_cycle_icon=expected_cycle_icon)
     return result, report
 
 
-def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None):
+def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None,
+                                       expected_cycle_icon=None):
     """Inspect the encoded result and reject any change outside presentation."""
     cycle, group = cycle_button, submenu
     cycle_id = _uint(cycle['id'], 'cycle id')
@@ -317,7 +430,8 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         require(resources[*TITLE, button_id] == _ltext(button['title']) and
                 resources[*DESCRIPTION, button_id] == _ltext(button['description']),
                 'Wrong new menu localized text')
-        _validate_icon(resources[*ICON, button_id], kind)
+        _validate_icon(resources[*ICON, button_id], kind,
+                       expected_cycle_icon if kind == 'cycle' else None)
     report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
                              'menu': 'Rail', 'construction_alias_verified_in_game': False},

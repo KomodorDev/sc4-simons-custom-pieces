@@ -3,7 +3,7 @@
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
   "version": "0.6.0.dev1",
   "domain": "high-speed-rail",
-  "count": 167,
+  "count": 166,
   "pieces": [
     {
       "purpose": "Authoritative build definition and permanent game-resource identity for HSR over Diagonal GHSR.",
@@ -29854,164 +29854,11 @@
       }
     },
     {
-      "purpose": "Authoritative build definition and permanent game-resource identity for HSR L2 Compact Fan Diverge.",
-      "schema_version": 1,
-      "id": "hsr-component-l2-compact-fan-diverge",
-      "name": "HSR L2 Compact Fan Diverge",
-      "description": "Three-tile native two-track mainline with a one-way departure into the matching Compact Paired Fan Join. Both mainline ends accept ordinary L2 two-track HSR.",
-      "domain": "high-speed-rail",
-      "recipe": "hsr_component_l2_compact_fan_diverge",
-      "status": "experimental",
-      "enabled_by_default": false,
-      "puzzle_id": "f7a8",
-      "tile_ids": [
-        "7f505000",
-        "7f505100",
-        "7f505200"
-      ],
-      "preview_id": "7f505ff5",
-      "effect_name": "preview_scp_hsrcomp_f7a8_00",
-      "footprint": [
-        3,
-        1
-      ],
-      "cells": [
-        [
-          0,
-          0
-        ],
-        [
-          1,
-          0
-        ],
-        [
-          2,
-          0
-        ]
-      ],
-      "orientation_count": 8,
-      "structural_cells": [],
-      "orientation_policy": "rotate-only-preserve-direction",
-      "dependencies": [
-        "controller",
-        "hsr"
-      ],
-      "menu": {
-        "id": "6a47f7a8",
-        "order": "7012f7a8",
-        "style": "hsr-component-l2-compact-fan-diverge"
-      },
-      "shadow_mappings": [
-        {
-          "tile": "7f505000",
-          "source": "7f505000",
-          "rotation": 0
-        },
-        {
-          "tile": "7f505100",
-          "source": "7f505100",
-          "rotation": 0
-        },
-        {
-          "tile": "7f505200",
-          "source": "7f505200",
-          "rotation": 0
-        }
-      ],
-      "provenance": {
-        "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
-        "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
-        "redistribution": "permission-pending"
-      },
-      "game_tests": {
-        "placement": "unverified",
-        "traffic_both_directions": "unverified",
-        "no_unwanted_transfers": "unverified",
-        "rotations_and_mirrors": "unverified",
-        "shadows": "unverified",
-        "demolition": "unverified",
-        "save_reload": "unverified"
-      },
-      "category": "hsr-components",
-      "component": {
-        "kind": "partition_component",
-        "support_centers": [
-          [
-            0.0,
-            0.0
-          ],
-          [
-            16.0,
-            0.0
-          ],
-          [
-            32.0,
-            0.0
-          ]
-        ],
-        "support_foundation_width": 1.3,
-        "support_min_spacing": 16.0,
-        "custom_curved_interfaces": true
-      },
-      "ports": {
-        "W": {
-          "in": [
-            -8.0,
-            -2.0,
-            15.5
-          ],
-          "out": [
-            -8.0,
-            2.0,
-            15.5
-          ]
-        },
-        "E": {
-          "out": [
-            40.0,
-            -2.0,
-            15.5
-          ],
-          "in": [
-            40.0,
-            2.0,
-            15.5
-          ]
-        },
-        "N": {
-          "out": [
-            -0.562688696411044,
-            8.0,
-            15.5
-          ]
-        }
-      },
-      "movements": [
-        [
-          "W",
-          "E"
-        ],
-        [
-          "E",
-          "W"
-        ],
-        [
-          "E",
-          "N"
-        ]
-      ],
-      "at_grade_conflicts": false,
-      "design_assessment": {
-        "stage": "reusable component prototype",
-        "scope": "Individual component; assembly and game operation unverified"
-      }
-    },
-    {
       "purpose": "Authoritative build definition and permanent game-resource identity for HSR L2 Compact Paired Fan Join.",
       "schema_version": 1,
       "id": "hsr-component-l2-paired-fan-compact-join",
       "name": "HSR L2 Compact Paired Fan Join",
-      "description": "Paired fan connection with native15.5m paths and a coordinated outer corner for the Compact Fan Diverge; retains the established curved connection positions and support spacing.",
+      "description": "Two opposite-direction flat L2 fan arms join the native paired north mouth to matched oblique mainline branches, using the Short Mainline Diverge Core angles and six explicitly owned supports.",
       "domain": "high-speed-rail",
       "recipe": "hsr_component_l2_paired_fan_compact_join",
       "status": "experimental",
@@ -30020,19 +29867,15 @@
       "tile_ids": [
         "7f580300",
         "7f580310",
-        "7f580220",
         "7f580320",
-        "7f580420",
         "7f580230",
         "7f580330",
         "7f580430",
-        "7f580040",
         "7f580140",
         "7f580240",
         "7f580340",
         "7f580440",
-        "7f580540",
-        "7f580640"
+        "7f580540"
       ],
       "preview_id": "7f580ff5",
       "effect_name": "preview_scp_hsrcomp_f822_00",
@@ -30050,15 +29893,7 @@
           1
         ],
         [
-          2,
-          2
-        ],
-        [
           3,
-          2
-        ],
-        [
-          4,
           2
         ],
         [
@@ -30072,10 +29907,6 @@
         [
           4,
           3
-        ],
-        [
-          0,
-          4
         ],
         [
           1,
@@ -30096,33 +29927,17 @@
         [
           5,
           4
-        ],
-        [
-          6,
-          4
         ]
       ],
       "orientation_count": 8,
       "structural_cells": [
         [
           2,
-          2
+          3
         ],
         [
           4,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          3,
-          4
-        ],
-        [
-          6,
-          4
+          3
         ]
       ],
       "orientation_policy": "rotate-only-preserve-direction",
@@ -30147,18 +29962,8 @@
           "rotation": 0
         },
         {
-          "tile": "7f580220",
-          "source": "7f580220",
-          "rotation": 0
-        },
-        {
           "tile": "7f580320",
           "source": "7f580320",
-          "rotation": 0
-        },
-        {
-          "tile": "7f580420",
-          "source": "7f580420",
           "rotation": 0
         },
         {
@@ -30174,11 +29979,6 @@
         {
           "tile": "7f580430",
           "source": "7f580430",
-          "rotation": 0
-        },
-        {
-          "tile": "7f580040",
-          "source": "7f580040",
           "rotation": 0
         },
         {
@@ -30205,15 +30005,10 @@
           "tile": "7f580540",
           "source": "7f580540",
           "rotation": 0
-        },
-        {
-          "tile": "7f580640",
-          "source": "7f580640",
-          "rotation": 0
         }
       ],
       "provenance": {
-        "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+        "geometry": "Authorized trumpet-angle redesign: retained native north mouth and game identities; symmetric arms share the unchanged Short Mainline Diverge Core branch angles; software geometry only.",
         "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
         "redistribution": "permission-pending"
       },
@@ -30278,14 +30073,14 @@
         },
         "W": {
           "out": [
-            16.562688696411044,
+            22.398518552216863,
             -72.0,
             15.5
           ]
         },
         "E": {
           "in": [
-            79.43731130358896,
+            73.60148144778313,
             -72.0,
             15.5
           ]
@@ -30479,7 +30274,7 @@
       "schema_version": 1,
       "id": "hsr-component-l2-short-opposed-merge-core",
       "name": "HSR L2 Short Opposed Merge Core",
-      "description": "Five-tile native two-track mainline receiving opposed one-way branches, with an exact native straight departure and unchanged custom curved branch entrances.",
+      "description": "Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.",
       "domain": "high-speed-rail",
       "recipe": "hsr_component_l2_short_opposed_merge_core",
       "status": "experimental",
@@ -30560,7 +30355,7 @@
         }
       ],
       "provenance": {
-        "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+        "geometry": "Retains the earlier native east-tail correction and exact southern direct-slip routes; the authorized northern-fan redesign reuses the unchanged Short Mainline Diverge Core branch samples by reflection and travel reversal.",
         "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
         "redistribution": "permission-pending"
       },
@@ -30629,7 +30424,7 @@
         },
         "N": {
           "in": [
-            48.562688696411044,
+            54.39851855221686,
             8.0,
             15.5
           ]
@@ -42860,10 +42655,10 @@
     "hsr-component-upper-paired-straight": {
       "record_present": true,
       "summary": {
-        "total": 35,
+        "total": 45,
         "states": {
-          "unverified": 35,
-          "passed": 0,
+          "unverified": 43,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -42877,13 +42672,6 @@
             "not_applicable": 0
           },
           "in_game_forbidden_transfer": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 8,
             "passed": 0,
             "failed": 0,
@@ -42904,6 +42692,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -42911,27 +42706,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -43615,10 +43424,10 @@
     "hsr-component-lower-paired-straight": {
       "record_present": true,
       "summary": {
-        "total": 35,
+        "total": 45,
         "states": {
-          "unverified": 35,
-          "passed": 0,
+          "unverified": 43,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -43638,13 +43447,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -43659,6 +43461,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -43666,27 +43475,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -43702,23 +43525,16 @@
     "hsr-component-lower-oneway-straight": {
       "record_present": true,
       "summary": {
-        "total": 23,
+        "total": 29,
         "states": {
-          "unverified": 23,
-          "passed": 0,
+          "unverified": 27,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
         },
         "by_kind": {
           "in_game_demolition": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 4,
             "passed": 0,
             "failed": 0,
@@ -43739,6 +43555,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -43746,27 +43569,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -44725,10 +44562,10 @@
     "hsr-component-tight-paired-curve90-l4-to-mid": {
       "record_present": true,
       "summary": {
-        "total": 37,
+        "total": 45,
         "states": {
-          "unverified": 37,
-          "passed": 0,
+          "unverified": 43,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -44742,13 +44579,6 @@
             "not_applicable": 0
           },
           "in_game_forbidden_transfer": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 8,
             "passed": 0,
             "failed": 0,
@@ -44769,8 +44599,22 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 8,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -44784,19 +44628,26 @@
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -44812,10 +44663,10 @@
     "hsr-component-tight-paired-curve90-mid-to-l2": {
       "record_present": true,
       "summary": {
-        "total": 35,
+        "total": 45,
         "states": {
-          "unverified": 35,
-          "passed": 0,
+          "unverified": 43,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -44829,13 +44680,6 @@
             "not_applicable": 0
           },
           "in_game_forbidden_transfer": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 8,
             "passed": 0,
             "failed": 0,
@@ -44856,6 +44700,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -44863,27 +44714,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -44899,10 +44764,10 @@
     "hsr-component-modular-south-junction": {
       "record_present": true,
       "summary": {
-        "total": 55,
+        "total": 73,
         "states": {
-          "unverified": 55,
-          "passed": 0,
+          "unverified": 71,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -44922,13 +44787,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 16,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -44943,6 +44801,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -44950,27 +44815,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 32,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -44986,10 +44865,10 @@
     "hsr-component-modular-paired-climb": {
       "record_present": true,
       "summary": {
-        "total": 35,
+        "total": 45,
         "states": {
-          "unverified": 35,
-          "passed": 0,
+          "unverified": 43,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -45009,13 +44888,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -45030,6 +44902,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45037,27 +44916,41 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 1,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45073,10 +44966,10 @@
     "hsr-component-modular-crossing-core": {
       "record_present": true,
       "summary": {
-        "total": 85,
+        "total": 101,
         "states": {
-          "unverified": 85,
-          "passed": 0,
+          "unverified": 99,
+          "passed": 2,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -45096,13 +44989,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 16,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -45117,8 +45003,22 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 16,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -45132,19 +45032,26 @@
             "not_applicable": 0
           },
           "software_connectivity": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           },
           "software_resources": {
-            "unverified": 1,
-            "passed": 0,
+            "unverified": 0,
+            "passed": 1,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 32,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45157,100 +45064,13 @@
       "manual_record": "hsr-component-modular-crossing-core/checks/manual-tests.json",
       "design_review": null
     },
-    "hsr-component-l2-compact-fan-diverge": {
-      "record_present": true,
-      "summary": {
-        "total": 44,
-        "states": {
-          "unverified": 42,
-          "passed": 2,
-          "failed": 0,
-          "stale": 0,
-          "not_applicable": 0
-        },
-        "by_kind": {
-          "in_game_demolition": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_forbidden_transfer": {
-            "unverified": 12,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
-            "unverified": 12,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_placement": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_render": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_save_reload": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "preview_review": {
-            "unverified": 2,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "software_connectivity": {
-            "unverified": 0,
-            "passed": 1,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "software_resources": {
-            "unverified": 0,
-            "passed": 1,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          }
-        },
-        "environment_filter": null,
-        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
-      },
-      "ports": 5,
-      "journeys": 3,
-      "path": "hsr-component-l2-compact-fan-diverge/README.md",
-      "preview": "hsr-component-l2-compact-fan-diverge/previews/preview.png",
-      "thumbnail": "hsr-component-l2-compact-fan-diverge/previews/preview-thumb.png",
-      "manual_record": "hsr-component-l2-compact-fan-diverge/checks/manual-tests.json",
-      "design_review": null
-    },
     "hsr-component-l2-paired-fan-compact-join": {
       "record_present": true,
       "summary": {
-        "total": 36,
+        "total": 45,
         "states": {
-          "unverified": 34,
-          "passed": 2,
+          "unverified": 41,
+          "passed": 4,
           "failed": 0,
           "stale": 0,
           "not_applicable": 0
@@ -45264,13 +45084,6 @@
             "not_applicable": 0
           },
           "in_game_forbidden_transfer": {
-            "unverified": 8,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 8,
             "passed": 0,
             "failed": 0,
@@ -45291,6 +45104,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45298,9 +45118,16 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "preview_review": {
-            "unverified": 2,
+          "in_game_visible_travel": {
+            "unverified": 8,
             "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 1,
+            "passed": 2,
             "failed": 0,
             "stale": 0,
             "not_applicable": 0
@@ -45319,6 +45146,13 @@
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45334,9 +45168,9 @@
     "hsr-component-l2-short-mainline-diverge-core": {
       "record_present": true,
       "summary": {
-        "total": 44,
+        "total": 57,
         "states": {
-          "unverified": 42,
+          "unverified": 55,
           "passed": 2,
           "failed": 0,
           "stale": 0,
@@ -45357,13 +45191,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 12,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -45378,6 +45205,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 12,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45385,8 +45219,15 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 12,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 2,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -45406,6 +45247,13 @@
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 24,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45421,9 +45269,9 @@
     "hsr-component-l2-short-opposed-merge-core": {
       "record_present": true,
       "summary": {
-        "total": 52,
+        "total": 69,
         "states": {
-          "unverified": 50,
+          "unverified": 67,
           "passed": 2,
           "failed": 0,
           "stale": 0,
@@ -45444,13 +45292,6 @@
             "stale": 0,
             "not_applicable": 0
           },
-          "in_game_journey": {
-            "unverified": 16,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
           "in_game_placement": {
             "unverified": 4,
             "passed": 0,
@@ -45465,6 +45306,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45472,8 +45320,15 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 2,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -45493,6 +45348,13 @@
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 32,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45508,9 +45370,9 @@
     "hsr-component-l2-shortened-departure-curve": {
       "record_present": true,
       "summary": {
-        "total": 24,
+        "total": 29,
         "states": {
-          "unverified": 22,
+          "unverified": 27,
           "passed": 2,
           "failed": 0,
           "stale": 0,
@@ -45518,13 +45380,6 @@
         },
         "by_kind": {
           "in_game_demolition": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 4,
             "passed": 0,
             "failed": 0,
@@ -45545,6 +45400,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45552,8 +45414,15 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 2,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -45573,6 +45442,13 @@
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
@@ -45588,9 +45464,9 @@
     "hsr-component-l2-shortened-return-curve": {
       "record_present": true,
       "summary": {
-        "total": 24,
+        "total": 29,
         "states": {
-          "unverified": 22,
+          "unverified": 27,
           "passed": 2,
           "failed": 0,
           "stale": 0,
@@ -45598,13 +45474,6 @@
         },
         "by_kind": {
           "in_game_demolition": {
-            "unverified": 4,
-            "passed": 0,
-            "failed": 0,
-            "stale": 0,
-            "not_applicable": 0
-          },
-          "in_game_journey": {
             "unverified": 4,
             "passed": 0,
             "failed": 0,
@@ -45625,6 +45494,13 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "in_game_save_reload": {
             "unverified": 4,
             "passed": 0,
@@ -45632,8 +45508,15 @@
             "stale": 0,
             "not_applicable": 0
           },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
           "preview_review": {
-            "unverified": 2,
+            "unverified": 3,
             "passed": 0,
             "failed": 0,
             "stale": 0,
@@ -45653,6 +45536,13 @@
             "stale": 0,
             "not_applicable": 0
           }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
         },
         "environment_filter": null,
         "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."

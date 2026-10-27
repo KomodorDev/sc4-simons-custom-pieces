@@ -17,6 +17,8 @@ from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
 from scp.menu_experiment_resources import (
     ITEM_BUTTON_CLASS, ITEM_SUBMENU_PARENT_ID, build_menu_experiment_resources,
     make_assembly_icon, validate_assembly_icon, validate_menu_experiment_resources)
+from scp.catalog import load_catalog
+from scp_hsr.icons import assembly_icon_network, assembly_icon_routes
 
 
 def property_record(prop_id, values, *, kind=0x300, array=False):
@@ -151,10 +153,15 @@ class MenuExperimentResourceTests(unittest.TestCase):
                 self.assertEqual(len(frames), 4)
 
     def test_registered_assembly_icon_matches_existing_native_resource_bytes(self):
+        catalog = load_catalog(ROOT)
+        assembly = next(row for row in catalog['_assemblies'] if row['id'] == 'straight-stem-trumpet')
+        expected = make_assembly_icon(assembly_icon_routes(assembly['scene'], catalog['pieces']),
+                                      network_label=assembly_icon_network(assembly['id']))
         raw = (ROOT / 'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/icon.png').read_bytes()
         output, _ = build_menu_experiment_resources(self.source, self.pieces,
-                                                   cycle_button=self.cycle, cycle_icon=raw)
-        validate_assembly_icon(raw)
+                                                   cycle_button=self.cycle, cycle_icon=raw,
+                                                   expected_cycle_icon=expected)
+        validate_assembly_icon(raw, expected_icon=expected)
         self.assertEqual(output[*ICON, int(self.cycle['id'], 16)], raw)
         with self.assertRaisesRegex(ValueError, 'RGBA PNG'):
             build_menu_experiment_resources(self.source, self.pieces,

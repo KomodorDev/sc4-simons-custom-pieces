@@ -11,7 +11,7 @@ document_type: "guide"
 
 Each piece has one README containing its preview, measured connection interfaces, and human observations. The **[Straight-stem HSR trumpet](01_assemblies/straight-stem-trumpet/README.md)** has a four-section overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
 
-The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, with the modular crossing and tight curve as its final examples. Their generated overview cards live beside those two pieces. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); other types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
+The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Current connector exports and overview cards cover all [thirteen reusable trumpet types](01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: fifteen types within this 166-type rail catalogue. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
 For complete piece-authoring and documentation examples, open **[HSR Paired Quarter-Turn Level 2 to Level 4](00_pieces/blind-hsr-rise-quarter-turn/README.md)** or **[HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md)**. The first shows a paired curve that changes height; the second uses two side pillars and explicitly paved sidewalks and separates HSR, Road vehicles, and pedestrians in its boundary cards. Both guides use **1. Views**, **2. Piece and placement**, **3. Connection matrix**, and **4. Testing**. Their matrices distinguish saved-route checks, the game's Route Query, and observed travel. They are experimental examples; a generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#1-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#implementation-entry-points) when adapting the pattern.
 
@@ -21,7 +21,7 @@ The current library does not supply automatic compatibility discovery. Most exis
 
 ## Inventories and collections
 
-- [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 166 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
@@ -45,12 +45,12 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `redesigned-junction-example`: 1 piece types.
 - `redesigned-diagonal-junction-example`: 1 piece types.
 - `smooth-t-junctions`: 2 piece types.
-- `hsr-all-components`: 33 piece types.
+- `hsr-all-components`: 32 piece types.
 - `hsr-modular-connection-parts`: 3 piece types.
 - `hsr-split-and-climb`: 2 piece types.
 - `hsr-crossing-core-and-approaches`: 3 piece types.
-- `hsr-compact-fan-parts`: 2 piece types.
-- `hsr-straight-stem-trumpet`: 14 piece types.
+- `hsr-compact-fan-parts`: 1 piece types.
+- `hsr-straight-stem-trumpet`: 13 piece types.
 - `piece-authoring-examples`: 2 piece types.
 
 </details>

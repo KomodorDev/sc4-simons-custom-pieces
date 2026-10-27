@@ -1,15 +1,13 @@
 {
   "schema_version": 1,
-  "purpose": "Actual saved-resource ports, service roles, directed journeys and scoped candidate counterpart poses.",
+  "purpose": "Intrinsic ports, service roles, and directed journeys measured from this piece\u2019s saved resources.",
   "subject_id": "hsr-component-l2-paired-fan-compact-join",
   "subject_kind": "piece",
   "source": {
     "basis": "actual decompressed saved resources",
     "resource_fingerprints": {
       "effect:hsr-component-l2-paired-fan-compact-join:ea5118b0-ea5118b1-7f580ff5": "9b7d07c3be80f33a764e12a3390663157debfac032c3430f3dea54bda31ec1dd",
-      "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580040": "1b5cf55208d35efcc1a52bd91fc8305872056f425d6710f2c06f8263cf5952c3",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580140": "ca55ea036044be7efaa9e40a207149473970715350732c0a02cec2b6c0929dd3",
-      "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580220": "dd1e0b7d09882b2fb5340279860b954fac14fac4c3c969345b9dd28304c82bc3",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580230": "aad80b80af0bcfd22620cd1d83a8bf94294b53bad2849004bc907309e863bd8a",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580240": "8659ff5e58a10035c3281c8d3b84d20ba9461d8875ee7f76da7ab46a6ba6e304",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580300": "00532d01e3647760c33e3810ff1d1c21ca2af7e62f89c629e826d7284581e714",
@@ -17,180 +15,132 @@
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580320": "49aec0627038f97fe777ee8d365ff558f8657bccd81648626d73926e39108232",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580330": "a10af87b149121c17c45186dacf16d042425cee41b6b5b846d07b892846ffd95",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580340": "1c6c97474fd019e37c34c992c849c4c8b5a383c76e24d82374e54461b91bda37",
-      "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580420": "8c60b23402645cda2e5d8ad447e8981118ac4523c5ee086768a355a4b25843fa",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580430": "42a3d0f2131cbc4614c1155f0e87d530c3e2e071833caba7ab36b4cddbac1544",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580440": "1b60661719d3427232ce1a3f1f266ac43108dc49cfab31b83f0ad0409e46fc47",
       "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580540": "8264d6826e1eac9e82099f3bf6b7058e204bf51fed8970c9f2530e230eb61221",
-      "exemplar:hsr-component-l2-paired-fan-compact-join:6534284a-a8434037-7f580640": "4e2ece5cd42da5f0c8032450993f432c1a842e8f435fde5ee0e23b8399b2fc18",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580040": "c4343e33745310cf3b40b8b0cd57dd295dd009649f3ef3a83b723d0674df1c97",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580041": "c4343e33745310cf3b40b8b0cd57dd295dd009649f3ef3a83b723d0674df1c97",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580042": "c4343e33745310cf3b40b8b0cd57dd295dd009649f3ef3a83b723d0674df1c97",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580043": "c4343e33745310cf3b40b8b0cd57dd295dd009649f3ef3a83b723d0674df1c97",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580044": "c4343e33745310cf3b40b8b0cd57dd295dd009649f3ef3a83b723d0674df1c97",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580140": "85cb45ba2541f689b348b470cc0213b954d9731f7ee3feda1d41c2662f34bd33",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580141": "85cb45ba2541f689b348b470cc0213b954d9731f7ee3feda1d41c2662f34bd33",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580142": "85cb45ba2541f689b348b470cc0213b954d9731f7ee3feda1d41c2662f34bd33",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580143": "85cb45ba2541f689b348b470cc0213b954d9731f7ee3feda1d41c2662f34bd33",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580144": "85cb45ba2541f689b348b470cc0213b954d9731f7ee3feda1d41c2662f34bd33",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580220": "0d48f9d437ccc5e1879b8191374c45895e21094ebc1fdd908e9c688e74118df8",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580221": "0d48f9d437ccc5e1879b8191374c45895e21094ebc1fdd908e9c688e74118df8",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580222": "0d48f9d437ccc5e1879b8191374c45895e21094ebc1fdd908e9c688e74118df8",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580223": "0d48f9d437ccc5e1879b8191374c45895e21094ebc1fdd908e9c688e74118df8",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580224": "0d48f9d437ccc5e1879b8191374c45895e21094ebc1fdd908e9c688e74118df8",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580230": "b9417be60729a5d3b9d1c0b7a3280298d737f7a62d9b5cf816931ab930468055",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580231": "b9417be60729a5d3b9d1c0b7a3280298d737f7a62d9b5cf816931ab930468055",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580232": "b9417be60729a5d3b9d1c0b7a3280298d737f7a62d9b5cf816931ab930468055",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580233": "b9417be60729a5d3b9d1c0b7a3280298d737f7a62d9b5cf816931ab930468055",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580234": "b9417be60729a5d3b9d1c0b7a3280298d737f7a62d9b5cf816931ab930468055",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580240": "8a6a3b4e4a3f1eaa6600ef50bee93d323fb126322a19c837c0979bce60086dce",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580241": "8a6a3b4e4a3f1eaa6600ef50bee93d323fb126322a19c837c0979bce60086dce",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580242": "8a6a3b4e4a3f1eaa6600ef50bee93d323fb126322a19c837c0979bce60086dce",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580243": "8a6a3b4e4a3f1eaa6600ef50bee93d323fb126322a19c837c0979bce60086dce",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580244": "8a6a3b4e4a3f1eaa6600ef50bee93d323fb126322a19c837c0979bce60086dce",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580300": "b78e6947d7beb85b3ef27ba54400cb12d98a77f51fdc0b167d7a4486e348c2be",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580301": "b78e6947d7beb85b3ef27ba54400cb12d98a77f51fdc0b167d7a4486e348c2be",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580302": "b78e6947d7beb85b3ef27ba54400cb12d98a77f51fdc0b167d7a4486e348c2be",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580303": "b78e6947d7beb85b3ef27ba54400cb12d98a77f51fdc0b167d7a4486e348c2be",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580304": "b78e6947d7beb85b3ef27ba54400cb12d98a77f51fdc0b167d7a4486e348c2be",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580310": "3809b2d0ec5a9a61387d2e9b0d1584449c2aa58548f5145bbb203e799db21f2c",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580311": "3809b2d0ec5a9a61387d2e9b0d1584449c2aa58548f5145bbb203e799db21f2c",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580312": "3809b2d0ec5a9a61387d2e9b0d1584449c2aa58548f5145bbb203e799db21f2c",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580313": "3809b2d0ec5a9a61387d2e9b0d1584449c2aa58548f5145bbb203e799db21f2c",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580314": "3809b2d0ec5a9a61387d2e9b0d1584449c2aa58548f5145bbb203e799db21f2c",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580320": "ded4585d96c25ac90f527debeeb38cd6e35fcfd50a4d16f93cd4948bd3122fba",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580321": "ded4585d96c25ac90f527debeeb38cd6e35fcfd50a4d16f93cd4948bd3122fba",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580322": "ded4585d96c25ac90f527debeeb38cd6e35fcfd50a4d16f93cd4948bd3122fba",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580323": "ded4585d96c25ac90f527debeeb38cd6e35fcfd50a4d16f93cd4948bd3122fba",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580324": "ded4585d96c25ac90f527debeeb38cd6e35fcfd50a4d16f93cd4948bd3122fba",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580330": "e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580331": "e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580332": "e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580333": "e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580334": "e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580340": "e85949d4c5fea221918a052b9168b514d14f02c513ec512aa6e9e1768e4e5de5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580341": "e85949d4c5fea221918a052b9168b514d14f02c513ec512aa6e9e1768e4e5de5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580342": "e85949d4c5fea221918a052b9168b514d14f02c513ec512aa6e9e1768e4e5de5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580343": "e85949d4c5fea221918a052b9168b514d14f02c513ec512aa6e9e1768e4e5de5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580344": "e85949d4c5fea221918a052b9168b514d14f02c513ec512aa6e9e1768e4e5de5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580420": "90d7eeb2c15a0a58f67fe3d4be05ad697dc802c972331878816f064c6ca4c670",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580421": "90d7eeb2c15a0a58f67fe3d4be05ad697dc802c972331878816f064c6ca4c670",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580422": "90d7eeb2c15a0a58f67fe3d4be05ad697dc802c972331878816f064c6ca4c670",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580423": "90d7eeb2c15a0a58f67fe3d4be05ad697dc802c972331878816f064c6ca4c670",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580424": "90d7eeb2c15a0a58f67fe3d4be05ad697dc802c972331878816f064c6ca4c670",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580430": "216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580431": "216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580432": "216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580433": "216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580434": "216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580440": "49b548cee8ef10fb710dc0237eeb3ae04ac1d0578aab554f7d4a2b15eab41d9a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580441": "49b548cee8ef10fb710dc0237eeb3ae04ac1d0578aab554f7d4a2b15eab41d9a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580442": "49b548cee8ef10fb710dc0237eeb3ae04ac1d0578aab554f7d4a2b15eab41d9a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580443": "49b548cee8ef10fb710dc0237eeb3ae04ac1d0578aab554f7d4a2b15eab41d9a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580444": "49b548cee8ef10fb710dc0237eeb3ae04ac1d0578aab554f7d4a2b15eab41d9a",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580540": "f7299a6dda4dfe5fe6df4782b3ed9f67963f1363983640b03d0db4c15d79e3ea",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580541": "f7299a6dda4dfe5fe6df4782b3ed9f67963f1363983640b03d0db4c15d79e3ea",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580542": "f7299a6dda4dfe5fe6df4782b3ed9f67963f1363983640b03d0db4c15d79e3ea",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580543": "f7299a6dda4dfe5fe6df4782b3ed9f67963f1363983640b03d0db4c15d79e3ea",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580544": "f7299a6dda4dfe5fe6df4782b3ed9f67963f1363983640b03d0db4c15d79e3ea",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580640": "ede3c09532840d50e145f35d90d4b0b39f010ace42e62a2c7a573180f01e6cc5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580641": "ede3c09532840d50e145f35d90d4b0b39f010ace42e62a2c7a573180f01e6cc5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580642": "ede3c09532840d50e145f35d90d4b0b39f010ace42e62a2c7a573180f01e6cc5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580643": "ede3c09532840d50e145f35d90d4b0b39f010ace42e62a2c7a573180f01e6cc5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580644": "ede3c09532840d50e145f35d90d4b0b39f010ace42e62a2c7a573180f01e6cc5",
-      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580ff5": "d916107b1f4f90d957ffde32c24d7c30e29d7b8a47ff1427e9d1d1336bc1da59",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580040": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580140": "0aa2151ed42ef6d5e4aef8ab22379b2739bdc3ffeae576411e96fe27ecb58a7f",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580220": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580230": "852fee4bbb781d0e214e1d5737c36ded006333f961721f657193ec6f78705d1b",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580240": "516f7d5fb6a5906f25dcaa924c3cea2c89063d4fcf8a2fe09f1996de17032598",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580300": "97cdbbb99ca8505f6099dd49ccd71e9784305244fcf3565d4c309266d7a89c32",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580310": "79104bca57127745e904b21b15593e3037f2ccadd3f2375756832cbdf24b9fd8",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580320": "fcc5dbbf5adcc62479701fdab1c07b1023a88f0614a6973c5f4a21189b10edca",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580330": "ffdd0fe3ec322e7e393897dfe86cd9c68acd51801f196727124f8083a7513c55",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580340": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580420": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580430": "7036ffd8d40513e6b38bc460db074d54f98a76b5d6d51c0071c0be8ed0909ab6",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580440": "dc7afeb38b7f3570c0eb027226d4a79f81501ded096c1cff6bda723cc40eb448",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580540": "70ec50317f070bbddec66938ebd81b496d543da853728cda54e919f97a8d269d",
-      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580640": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580040": "f16b3ef0bf07a34390793930f130d82bc28243eaec02ec4fab6b7e75428a72a1",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580041": "4a34646282a222674cbc957fd428616cec49ea123e38eeb31422a1d9fcb35af7",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580042": "741bbf2e98a5ae45870119fe99b459e727206c08d9effe9bf483f023d7656b9f",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580043": "fe56a967fa1a630cbbed59fc6621cd733cd2c09080f3e4c9fd2d76ccc0a090f2",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580044": "1b9700fd423795f0364c227f65cc72049e8ae784542a7bf3d5442b75aa9d1bbc",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580140": "0d90b1c81a545ca18778f1fdc9209bb15f9380e48d96fa1c1fcfe97b2e9f9b03",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580141": "abdfb25e1fc31b6bfe81acc81d9179061cd199c92cc67033ff457b046eb0bc93",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580142": "ce7edacac5478e8c6b67e907292d620fb7f7bdbdd7f07b15929057a87d4ec877",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580143": "340c30c030a6eacdf1ce691dd14cf2c533b0139af402d6bcfd398325449b0ff3",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580144": "137f3aa9f53ce46474fc2ca38e3f57826028ce55546b19f6d3037fb7b2b378fd",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580220": "432d738e01ee84eaf1dbf5bd7d2785123c9d3a1e8a24b34fc2a1cece5999a43e",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580221": "61f2366fdec79d60a458d9826ed3a589f7682de5425fcbbf667380ff634f8477",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580222": "1eaee9a14f51692b6ba3a4b36833f103b1cffbdab6a64fb41a26de07e3b55983",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580223": "ba66a5dd25ded7d7e6cce9bf4851c464d04b43902f0eb3a9317264aaa447128c",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580224": "dddfceb16b08377764b71a82cae9dcd2e6e42bf83b00654a2a4322c414d4f0cc",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580230": "8d4107af08dffa904a8b991b6c3d3dc5408a6c0c5ce85867d1b2461669e2cdb3",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580231": "92b07bf3243bcc4a59e9181e8bfa399090153e6756e569a49ded017a7e41038a",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580232": "cf7c6760c5b04b369cad051e11984fbe549f2aa194a32a29109de8b31a52a30a",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580233": "9373d9f08218ff27b845b434ad2d7046396cd33ce1008c402b304966aef94781",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580234": "2d866e2ee7597fc0546b3156068bce5417d6a3715ba3d157a5ce4bb64ff2e86e",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580240": "7e91e376d199a5b11bfe332b610874b19e3cda44aca65ef964df75b10973d3fd",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580241": "06271831ef9d3ddf55cdb42d09af071747a743ea30b0c2764e49ff9dfe90cd53",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580242": "f7a01cea9d387813ba977bf162cb416c36d1afde73b0d11c43fbb1c01d3d404b",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580243": "6fab301d927fae1b8e8b38e32df7a320d85703280e9fe62e4bfcd5325f6bb5d6",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580244": "d6d30a2c78d5f2b76c9b810a9778d5a97bcb45639b0d3fe0eb8fcfeff11bf944",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580140": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580141": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580142": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580143": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580144": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580230": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580231": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580232": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580233": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580234": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580240": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580241": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580242": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580243": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580244": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580300": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580301": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580302": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580303": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580304": "06c42afe8cecf0c3e6bb5de48bfad9b0f68c7c25f29d5ae37d350a43869ae426",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580310": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580311": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580312": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580313": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580314": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580320": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580321": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580322": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580323": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580324": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580330": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580331": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580332": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580333": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580334": "cee1f5f9fdfa6d4eda27f3f2f8b9cd1bc6f2fc7e565917eba6712ac92355bdcc",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580340": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580341": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580342": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580343": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580344": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580430": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580431": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580432": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580433": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580434": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580440": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580441": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580442": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580443": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580444": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580540": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580541": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580542": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580543": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580544": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+      "model:hsr-component-l2-paired-fan-compact-join:5ad0e817-badb57f1-7f580ff5": "9cb88b5ae303eaeb2f769664f6568afe25efc8f0f129167dcb299b0cd9ace0d2",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580140": "bb6d40d7ac8962529b7d1d6aa614dae1b1310148f1d467b70228ae1bea077744",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580230": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580240": "7dc91b6f8de0341ecd0a0d97cc4264d6e805916c0899bac6f23e6c919adcb0d2",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580300": "8decb10a5d66daf28b5fdf24290d118d8a4719ef682d5a309640e0729d769956",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580310": "41dfafc4ef2c1cf41cf838382b088cafe3bbe704b88dc4ee3e220d6cd7c748ef",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580320": "730f3e37d3f9913457e486377b77ed235d744c4ec63272e53daf2ff56a779f1f",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580330": "16d4a4c57486aedf001496e5a4d0ec20b66bb3d9df2ee37bdee4eb5cd0ed152a",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580340": "26739a95ef096cba8e8f9147580bfa48ea8ca5126f42b5d798e4d91371d3f849",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580430": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580440": "298339d654160ce8b59169483543a1b69f39c11aaf01be7ae368634ce3c5ed1d",
+      "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580540": "4436273bd66af492acca9f7ef9c384a2213a4a42300dbbeb55997896d321c580",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580140": "ed0ba1eefc04281bf996deb1232813b9558913b90abc91fb7e11a681049554f2",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580141": "fbb068b8caf2806262bebef1417022f53f0b22e5c239e4467d6b55aee5686a3c",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580142": "c06d0c65f9535805e2727a0f1fdb79898060c51cc8f84a75d31340b681a27b93",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580143": "53c3402b65bd29015e44fc0cdb57e9c1584336230d0cf776dad2f9d06f8f5a78",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580144": "23a05e74545f5d976f6d65df393bdda87a5452fd0d0f0553e55c77847e3d9e2d",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580230": "3129f50b6a7b41c58e3d115e08584a7736e12e0bdac8892dab1aa0f9427146e1",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580231": "78de091fda28f0f020a1539c515e4a8953bf159351bd74a5f287a530a74ebe36",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580232": "830f1aec7d95981fbc0437a848d4ad3ad34eaf0a89c072e7187747394145ea71",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580233": "8979596bf7305ed92c0f1f091b673fae49fc8d5d6f4d369d573508f8e7466836",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580234": "e04dd666811758166868c821d9ac421e1e1d1651a64297679d41fcafc526175f",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580240": "2c0d9ffdfdfb363e8f7cd88cee95e39664955fcb4657f567b6bdaf4348dfd5ef",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580241": "86cccc9e9464a59bc890fd4e2bdab6cba9561eaae3461deb4dbed49c41ee3c58",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580242": "1edd0a2b6b70d3a665a9deea89c48e6456c94e801b7002f8a6c97ce24a04aac5",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580243": "057c6f7e812a2ea8aeb3aea0e926c334d3275d627dc0e408e91d3a93c6302481",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580244": "7b8f09e5e977b667682de971945c8d4d4b8356301ddb41f9a71cf89b3b5c1af8",
       "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580300": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580301": "b51b35e0068587096c0d336b36d945280580d61aa33240c2ae8afa5515a9e0c0",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580302": "1daaf7904fc741ec5950d271f74e572a70b65ca636a144b109af6656bc48b468",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580303": "d8c654296b5b38964f2950a60e7301dff43b118269b025d13e11b51a0087e59f",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580304": "91b8356886ea83c23443c4634c1708e875063e749d089fe0c22f407d57a010d2",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580310": "f7910822bf790783b81c9662ce733422e3aa243d479bbcf644c7cfc1c6becc27",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580311": "59fef8b119b1eb765d82922d3ad4cd7deaf38a2edb8fc67e387511f05dd15928",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580312": "c2ab36a338342f7c12ca0501bee02964ec5e9df6732fbe07150d2768f5b21f94",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580313": "e0e8eb04bde5b46cbbece17c92118f7f9800629acd429ff37ed8c281c9862ca0",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580314": "9ad717ad699fe111aad3c67e5d47812d80ab5326fae55e61f768e6df4fb66046",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580320": "42f63c85415f1fbee9566cd5ee4b56ce8aa4f51cd351532c91b629b6ebf27826",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580321": "572521f157e8de5d08b6d8793f4356335c22735ee310a5d17cabdfd681e33744",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580322": "2e544b80a85b4567aebe6dbbd2a318c8119418ef143ff45f8dc2287cedb697df",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580323": "2e7ce7dd10443c46b934d392b540ae13a2ad8914fcc6a34e52de158842e2f777",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580324": "458dbbd3ab38594fa1cdad0af35a3ce85e7b4ac723318ae4f33fbbb49731b4d5",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580330": "a6913bce2a64905bc100beff36414b47a325ec88684cfd6469cb9986931b35d2",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580331": "de2989bb6eff88aba554ddf937d181f360a90da9ddf85d15af70f0ddd7eaeddf",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580332": "340caa36fdc951c54eb53707a86e9a632210b06e4d2319e9aa10e13531a926e1",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580333": "f43f88e5569e363c394ae52d926d4fd4357ca86d101807f31fb6ed6e9410cd48",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580334": "ae8d9a8c23c99bd0db6b1a2ddbed5b401cc094f9d1a1d4865b60758a698a6f93",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580340": "9b3f8382998e17b30928329c78b109138f6624dade9363abe33c910d2edf58d0",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580341": "e95a63a4bc84fe87b9346c6794ccd3bc09675efa222003fe0802c48833f6392e",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580342": "3a9a6c6bd0bcf078e486a210222b9c6ea2a703efad4dee9271b1c96780fc40ab",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580343": "6bd373963f06a13b115962fb4b3ded0615015a121f091712fce82e9a9a8a0135",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580344": "aee69375b45a1d8caaff2cb59f5a11c2f24cb34248325feb59a5d16358c2f754",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580420": "4b4503a4cf4b896368105b0840f03513aaa666c913b3545142269382e9b49ba3",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580421": "175ad1d285534f0c6973f9fd918fb215d353ac8a6a194b311011267387ec287a",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580422": "75a2a187bf98213b97b58ccb6c18a281a17a917fd4cd18ca5cfa5fa8a4798bd8",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580423": "3603f0b6d922c48ca5d583eed967e0dcd027b0bd4cdb192eca54b9e7b208e653",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580424": "08a2aed15aa8a6af9150e120c6aa5f3a27840b97d982cb05496513df1881d152",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580430": "9a16a697b2e9d57935198108e1954f62a79d3c7df9fa7755484d3c202f4c0926",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580431": "85617d27b81699f9ec798ac749de252a25cbe9a7d42c3badc27ff7494814eab9",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580432": "b47b25214184f67a95d41175e7844aa6a4a4d983fc3d3419e5b66d8d106ef97e",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580433": "e0a3629762b116cfed211fbaa5967602127407680e6b255c968a9ffc20ad2503",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580434": "43c09c728782184e2d50feef4a4b2a1e60b541d642060033625c74793f97de36",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580440": "be4f67ff2fafeaae71b420a0dc4608cab424433255408353919f44edd0e81967",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580441": "d609711bb58acd0a39588ea24391a287aac46e76292b2ec50e34a1ca2291e568",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580442": "3e5951a8817084586a14450fe504b75f8857c48a8f0fec9e35e3e62cfd28f0aa",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580443": "77a5298006e7579684e923900e2d16051dab572468f4972a0e8a1a76e940de54",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580444": "dcb7f693b9692b229025d3ed69c70eca3d54e59771f7bf6ea5dcf743dca0772f",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580540": "c129cedcde00c3a3783dbdfaeff3cca19e8e3b54b24a4bcccc6e677ba788d3aa",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580541": "d510aa0bcda8833df240a749e3d9b88cef4d553942172294dca8707b81e7986c",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580542": "0e512f2c146386b4f214073a04d7d136574fde7d15724a4feae668cfb60a04ea",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580543": "a18646f9574658479fd34bd0afc5d89db545fd6fa3c6ca3135d0afaab563b1d4",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580544": "023170cab04f764353be7822a0f70e1d93aaeb633940405c9b69ea0fc61833e2",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580640": "6b17ba374d1de75cc490cf53f6000285b361233745361b4183b445d70dec04e3",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580641": "5ad47ef1f11f4296cea528802c0fb529125ff0ae75c6f30620450a5433e18a41",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580642": "021c34f935edf3fab00ff8d4f5c75f3655dc64e4d747df6bbe28911db9f61709",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580643": "161e2e54e2d1bbf1b084cb8c3ddc9a4ef583ba83dd6feaf3201752dd81518197",
-      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580644": "7e460a098d0be9d0d280e046f25156e623a4662936fdba2065f52b7ac53e3d33",
-      "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580040": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580301": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580302": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580303": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580304": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580310": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580311": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580312": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580313": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580314": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580320": "6ac0f3b42c3dbdaf9306fca1c252cfaa234797241ed1f1f08d4b389645bee367",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580321": "24635a47b5716859bb34c89d7a0b91af96f32007b3921207de9db6ee907721bc",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580322": "0d615ad4e834e295c67b500a20094e6d155151fc348752302d499746014669a3",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580323": "254bac6aa670ce47724b77fa582a73e1ba12e6d1efa5caaa2fc978ab6a97c1dc",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580324": "fe978d10b8d814b6ed4dae2d12312a7a7169daec530e3ffe6b91df9dd8240f5d",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580330": "6a156bfd3207f6b49dbe9c824d3626f39b9223834276c74154e41d0a4c05d505",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580331": "ff6899740fd3c4286ec28ed24efd72936eb25fff5c5b0fcf4f690355dd0f08d1",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580332": "2499afcfbf1d59f85f68be82183db419063bc8428e8aea3ebebf3b56db5dc4fe",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580333": "bfc0f3c5b1394309a28dc7ce703d4ccb698387aac3d2826761826b0012622b8f",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580334": "b46242127386547f88c575fa3227e1ef2368207ddbc0758635bf8bd5aff474c8",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580340": "c6b53ea9cd8423c8b6d9b414dfa07725224b220c2971392223dd09180a2bac9f",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580341": "d07109aced729a5bc41bfcb4d8dab376d51701e9a54fc7b69fcf05550ea23a83",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580342": "e74ddc662e3ddd40d5c905476d68d2f67824ab3a9aa8fa24f1a6b12210aceeeb",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580343": "2b370c1af360ec8224333257b5513f9506ab2904e901f1c920c053205b8148bf",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580344": "ee40c799eb9bb7466a074e6e2a949699da39453d87d1797bed24b71c8f7f3451",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580430": "346404e4cdcf4fb0444d344e3f1b184af4a64a69019d70453b7589574213f4cc",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580431": "4b507c5edbabb8830023c36914cb1fa3003537e11001d6ee733d15a2b1c60f70",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580432": "da5c54e4e5815de7edc6e020dd54613d95cfd9399d04d9c46a2e8e7ae24c5095",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580433": "4e779bb793c0a3fe73b4efa648fa4881d8f6b03a92940ee20e7f52f40c4ef8cf",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580434": "dd1748336dcc18735a141841439ebd8a822fdd252b8b59261f11f1f6a242289e",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580440": "3473a448ba3caecfbbc5494caea1dc5a4975dcd5d53e28c0d82b8cedb1208f05",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580441": "e222e57b410f84c94dbd0ba861ecf8a951a64186e377fc184412fbc69ba75418",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580442": "1709c673ef50b707d3cbd9854dd7a1eeb5dd21ad25d97aa44f772f95684740a3",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580443": "a371304c00a8ca2a1056de147f5525453c9f3bb59c24c619f2d714de31d64c7e",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580444": "6f1a5e2db927be39c74d33566915bb5ae98fc13b7195f48fd7ec2f6af87f2aa1",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580540": "240ae21a7b115e7fccc5cf9754db8af002e90455173fa56a79d122ab3c00b2c6",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580541": "cdeef00e6c6fa881bfd55f908f8083649b03bc07739d011fd048b7ed1bdb8efd",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580542": "7fe7b830ca5a59e311ff07c930075c51a2fdded221fa679a99f25358534d2d47",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580543": "f5120868fff198ba623794791112b9341e0892a0991369c8deec14b32b86fde9",
+      "shadow:hsr-component-l2-paired-fan-compact-join:7ab50e44-2bc2759a-7f580544": "f3d3e3121defe91896318368b340e8697e33287bec2ce92edc434b6711584fce",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580140": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
-      "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580220": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580230": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580240": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580300": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
@@ -198,15 +148,14 @@
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580320": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580330": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580340": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
-      "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580420": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580430": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580440": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
       "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580540": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
-      "text:hsr-component-l2-paired-fan-compact-join:2026960b-2a592fd1-7f580640": "7d0616c25d8c678711702333381215e78ff18fa6e465052ccdd33de3d7c5051b",
-      "construction:hsr-component-l2-paired-fan-compact-join": "db6ed2de9b2e060e852e26167888bada81c2dd483635b76f7292cdf1eafb18fa"
+      "construction:hsr-component-l2-paired-fan-compact-join": "b371993f725c254289e9e9ce7735f53e89743749666472c989ca336c846bf150"
     },
     "reviewed_contract_available": true,
-    "construction_basis": "Actual emitted per-piece rule sections and Ordering rotation list from the verified V3 staged build."
+    "scope": "one piece only; no counterpart catalogue is consulted",
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
   },
   "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
   "ports": [
@@ -221,17 +170,17 @@
       "engine_transport": 7,
       "edge": 3,
       "endpoint_m": [
-        16.562689,
+        22.398519,
         -72.0,
         15.5
       ],
       "tangent": [
-        -0.9121771234450041,
-        -0.4097961633100019
+        -0.9272548089646255,
+        -0.3744309272108488
       ],
       "sampled_tangent": [
-        -0.912171116941918,
-        -0.4098095330966983
+        -0.9272549287990212,
+        -0.3744306304483143
       ],
       "grade": 0.0,
       "lane_spacing_m": null,
@@ -248,32 +197,20 @@
         "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580140",
         "construction:hsr-component-l2-paired-fan-compact-join"
       ],
-      "compatible_counterparts": [
+      "source_route_ids": [
+        "path-7f580140-route-000"
+      ],
+      "boundary_sources": [
         {
-          "piece_id": "hsr-component-l2-short-opposed-merge-core",
-          "port_id": "Nin",
-          "relative_rotation_ccw": 0,
-          "relative_position_m": [
-            -32.0,
-            -80.0
+          "cell": [
+            1,
+            4
           ],
-          "resource_keys": [
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304",
-            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300",
-            "construction:hsr-component-l2-short-opposed-merge-core"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
+          "edge": 3,
+          "tile_id": "7f580140"
         }
       ],
-      "connection_class": "path-interface-cbe8d469a6c3c876ed7f",
-      "candidate_counterpart_count": 1,
-      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+      "connection_class": "path-interface-0f4b8204e68941486c48"
     },
     {
       "id": "Nin",
@@ -313,74 +250,20 @@
         "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580300",
         "construction:hsr-component-l2-paired-fan-compact-join"
       ],
-      "compatible_counterparts": [
+      "source_route_ids": [
+        "path-7f580300-route-000"
+      ],
+      "boundary_sources": [
         {
-          "piece_id": "hsr-component-lower-paired-straight",
-          "port_id": "Nout",
-          "relative_rotation_ccw": 180,
-          "relative_position_m": [
-            48.0,
-            16.0
+          "cell": [
+            3,
+            0
           ],
-          "resource_keys": [
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
-            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
-            "construction:hsr-component-lower-paired-straight"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
-        },
-        {
-          "piece_id": "hsr-component-lower-paired-straight",
-          "port_id": "Sout",
-          "relative_rotation_ccw": 0,
-          "relative_position_m": [
-            48.0,
-            16.0
-          ],
-          "resource_keys": [
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
-            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
-            "construction:hsr-component-lower-paired-straight"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
-        },
-        {
-          "piece_id": "hsr-component-modular-crossing-core",
-          "port_id": "Eout",
-          "relative_rotation_ccw": 270,
-          "relative_position_m": [
-            48.0,
-            16.0
-          ],
-          "resource_keys": [
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
-            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
-            "construction:hsr-component-modular-crossing-core"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
+          "edge": 1,
+          "tile_id": "7f580300"
         }
       ],
-      "connection_class": "path-interface-12d12be31d2057c5763d",
-      "candidate_counterpart_count": 80,
-      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+      "connection_class": "path-interface-12d12be31d2057c5763d"
     },
     {
       "id": "Nout",
@@ -420,74 +303,20 @@
         "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580300",
         "construction:hsr-component-l2-paired-fan-compact-join"
       ],
-      "compatible_counterparts": [
+      "source_route_ids": [
+        "path-7f580300-route-001"
+      ],
+      "boundary_sources": [
         {
-          "piece_id": "hsr-component-lower-paired-straight",
-          "port_id": "Nin",
-          "relative_rotation_ccw": 180,
-          "relative_position_m": [
-            48.0,
-            16.0
+          "cell": [
+            3,
+            0
           ],
-          "resource_keys": [
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
-            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
-            "construction:hsr-component-lower-paired-straight"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
-        },
-        {
-          "piece_id": "hsr-component-lower-paired-straight",
-          "port_id": "Sin",
-          "relative_rotation_ccw": 0,
-          "relative_position_m": [
-            48.0,
-            16.0
-          ],
-          "resource_keys": [
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003",
-            "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004",
-            "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000",
-            "construction:hsr-component-lower-paired-straight"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
-        },
-        {
-          "piece_id": "hsr-component-modular-crossing-core",
-          "port_id": "Ein",
-          "relative_rotation_ccw": 270,
-          "relative_position_m": [
-            48.0,
-            16.0
-          ],
-          "resource_keys": [
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003",
-            "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004",
-            "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000",
-            "construction:hsr-component-modular-crossing-core"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
+          "edge": 1,
+          "tile_id": "7f580300"
         }
       ],
-      "connection_class": "path-interface-fba09fbeb87ad95c667a",
-      "candidate_counterpart_count": 80,
-      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+      "connection_class": "path-interface-fba09fbeb87ad95c667a"
     },
     {
       "id": "Ein",
@@ -500,17 +329,17 @@
       "engine_transport": 7,
       "edge": 3,
       "endpoint_m": [
-        79.437311,
+        73.601481,
         -72.0,
         15.5
       ],
       "tangent": [
-        -0.9121771234450041,
-        0.4097961633100019
+        -0.9272548089646255,
+        0.3744309272108488
       ],
       "sampled_tangent": [
-        -0.9121711169418514,
-        0.40980953309684665
+        -0.9272549287990259,
+        0.3744306304483025
       ],
       "grade": 0.0,
       "lane_spacing_m": null,
@@ -527,32 +356,20 @@
         "path:hsr-component-l2-paired-fan-compact-join:296678f7-a966883f-7f580540",
         "construction:hsr-component-l2-paired-fan-compact-join"
       ],
-      "compatible_counterparts": [
+      "source_route_ids": [
+        "path-7f580540-route-000"
+      ],
+      "boundary_sources": [
         {
-          "piece_id": "hsr-component-l2-compact-fan-diverge",
-          "port_id": "Nout",
-          "relative_rotation_ccw": 0,
-          "relative_position_m": [
-            80.0,
-            -80.0
+          "cell": [
+            5,
+            4
           ],
-          "resource_keys": [
-            "model:hsr-component-l2-compact-fan-diverge:5ad0e817-badb57f1-7f505000",
-            "model:hsr-component-l2-compact-fan-diverge:5ad0e817-badb57f1-7f505001",
-            "model:hsr-component-l2-compact-fan-diverge:5ad0e817-badb57f1-7f505002",
-            "model:hsr-component-l2-compact-fan-diverge:5ad0e817-badb57f1-7f505003",
-            "model:hsr-component-l2-compact-fan-diverge:5ad0e817-badb57f1-7f505004",
-            "path:hsr-component-l2-compact-fan-diverge:296678f7-a966883f-7f505000",
-            "construction:hsr-component-l2-compact-fan-diverge"
-          ],
-          "status": "candidate; actual PATH endpoints/headings align; physical seam and in-game operation unverified",
-          "endpoint_error_m": 0.0,
-          "tangent_error": 0.0
+          "edge": 3,
+          "tile_id": "7f580540"
         }
       ],
-      "connection_class": "path-interface-187e749c1d9d220c3c88",
-      "candidate_counterpart_count": 1,
-      "counterpart_list_scope": "Selected explicit candidate test poses, not an exhaustive assertion of compatibility."
+      "connection_class": "path-interface-d819a6d05c5e43d11db7"
     }
   ],
   "journeys": [
@@ -603,7 +420,7 @@
       "basis": "not reachable in actual saved PATH graph"
     }
   ],
-  "compatibility_policy": "Concrete PATH-aligned candidates only; physical seam review and in-game tests remain separate.",
+  "compatibility_policy": "Intrinsic encoded-route facts only; complete shared-boundary agreement, physical seams, and game operation are not evaluated.",
   "software_status": {
     "path_extraction": "passed",
     "contract_consistency": "passed",

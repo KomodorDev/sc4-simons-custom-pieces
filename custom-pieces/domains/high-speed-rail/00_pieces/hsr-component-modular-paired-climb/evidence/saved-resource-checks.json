@@ -1,0 +1,958 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-modular-paired-climb",
+  "purpose": "Portable piece-scoped projection of the actually passed final normal saved-build verification. No new cold-meshing run, human approval, installation, or game observation is claimed.",
+  "provenance": {
+    "source_build": "dist/trumpet-fan-width-parts-01",
+    "source_manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
+    "source_verification_sha256": "4c14be713f14fc3aa6a83e591711f2736c642efe77abd7d134c6f5e57927afad",
+    "source_dat": "dist/trumpet-fan-width-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
+    "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+    "source_verification_report_file_modified_at_utc": "2026-10-27T21:52:34.927406+00:00",
+    "projected_at_utc": "2026-10-27T21:57:25.376326+00:00",
+    "build_method": "The normal builder emitted the current source selection, reused matching verified model caches where available, and completed native input, resource, PATH, model, construction, menu, shadow, archive, and packaging checks. This report projects those executed results without rerunning meshing.",
+    "previous_piece_report_preserved": null,
+    "private_input_paths_published": false
+  },
+  "normal_saved_build_verification": {
+    "static_checks_passed": true,
+    "files_checked": 15,
+    "resources_checked": 1250,
+    "construction": {
+      "original_rul0_restored": true,
+      "original_network_ini_restored": true,
+      "separate_piece_menu_roots": 13,
+      "states_per_root": 8,
+      "runtime_tile_addresses_checked": 90,
+      "ordering_sections_checked": 1,
+      "custom_rotation_rings_in_ordering": 13,
+      "native_rotation_rings_preserved": 132
+    },
+    "dependency_records_cover_all_references": true
+  },
+  "menu": {
+    "piece_id": "hsr-component-modular-paired-climb",
+    "title": "SCP | [PART] HSR Modular Two-Track L2 to L4 Climb",
+    "menu": "Rail",
+    "menu_id": "6a47f82f",
+    "puzzle_id": "f82f",
+    "order": "7012f82f",
+    "icon_style": "hsr-component-modular-paired-climb",
+    "icon": {
+      "width": 176,
+      "height": 44,
+      "pixel_format": "RGBA8",
+      "interlaced": false,
+      "states": [
+        "locked",
+        "normal",
+        "selected",
+        "highlighted"
+      ],
+      "state_dimensions": [
+        44,
+        44
+      ],
+      "transparent_corners": true,
+      "crc_valid": true,
+      "sha256": "141137dd39f7c3584da5c7c30521cd1ba1340725bae0e15caf0d413e43ae1613"
+    },
+    "icon_identity": {
+      "category": "part",
+      "badge": "PART",
+      "network": "HSR",
+      "palette": "teal",
+      "kind": "RMP",
+      "meaning": "Individual building piece"
+    },
+    "retained_native_properties_verified": true,
+    "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+    "resources": [
+      {
+        "tgi": "2026960b-123006aa-6a47f82f",
+        "bytes": 556,
+        "sha256": "dac4f1b990a4b6060e0739e9bc7d1d213faf623d11ab44bd38a1e8e08349c29d"
+      },
+      {
+        "tgi": "2026960b-123007bb-6a47f82f",
+        "bytes": 102,
+        "sha256": "a49888a2ac64177e63e9f881c7ab1f4c1540065c6f4746f8a68449895dc18bcb"
+      },
+      {
+        "tgi": "6534284a-2a3858e4-6a47f82f",
+        "bytes": 235,
+        "sha256": "b21eedb58d9fe253f255d7979430d5b33a1494caf6af00778eaab18ac11f9a8e"
+      },
+      {
+        "tgi": "856ddbac-6a386d26-6a47f82f",
+        "bytes": 5898,
+        "sha256": "141137dd39f7c3584da5c7c30521cd1ba1340725bae0e15caf0d413e43ae1613"
+      }
+    ],
+    "in_game_menu_tested": false
+  },
+  "paths": {
+    "tile_count": 8,
+    "encoded_routes_checked": 16,
+    "external_ports_checked": 4,
+    "permitted_movements_checked": 2,
+    "unique_complete_journeys_checked": 2,
+    "rotations_checked": 4,
+    "exact_3d_cell_seams": true,
+    "all_encoded_tracks_used_by_intended_journeys": true,
+    "unwanted_u_turns": false,
+    "unwanted_cross_level_transfers": false,
+    "maximum_encoded_grade": 0.15625,
+    "native_port_heights_m": [
+      15.5,
+      30.5
+    ],
+    "literal_port_tangents_checked": 4,
+    "frozen_module_path_files_checked": 8,
+    "frozen_module_recipe": "hsr_component_modular_paired_climb",
+    "frozen_module_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+    "all_module_local_path_bytes_unchanged": true,
+    "custom_curved_interfaces_require_matching_continuation": false,
+    "curve_quality_scope": "Exact approved module samples retained; assembled routes have independent curve-quality audits.",
+    "collision_free_operation_claimed": false,
+    "grade_separated_crossings_checked": 0,
+    "grade_separated_projected_contacts_checked": 0,
+    "grade_separated_crossings": [],
+    "same_direction_shared_tail_contacts_checked": 0,
+    "independent_at_grade_conflicts_checked": 0,
+    "native_straight_eight_metre_collars_checked": 4,
+    "paired_climb_profile_samples_checked": 484,
+    "paired_climb_flat_collar_samples_checked": 38,
+    "paired_climb_horizontal_length_m": 128.0,
+    "paired_climb_rise_m": 15.0,
+    "paired_climb_flat_collar_m": 8.0
+  },
+  "models": {
+    "all_module_local_model_bytes_unchanged": true,
+    "all_module_local_path_bytes_unchanged": true,
+    "authored_clearance_height_m": 5.0,
+    "authored_clearance_width_m": 5.0,
+    "coplanar_overlap_meshing_tolerance_m": 0.0001,
+    "custom_curve_ends_reswept": false,
+    "frozen_module_model_zooms_checked": 40,
+    "frozen_module_path_files_checked": 8,
+    "frozen_module_recipe": "hsr_component_modular_paired_climb",
+    "frozen_module_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+    "full_width_bed_validation_scope": "Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.",
+    "global_support_spacing_checked": true,
+    "maximum_coplanar_bed_overlap_area_m2": 1.4901143430279262e-07,
+    "maximum_coplanar_bed_overlap_thickness_m": 7.449671279857739e-08,
+    "minimum_support_centre_distance_m": 16.0,
+    "models_checked": 41,
+    "native_material_preserved": true,
+    "path_nodes_covered_by_visible_bed": 498,
+    "positive_area_coplanar_bed_pairs": 10,
+    "preview_matches_tiles": true,
+    "rail_crossing_ribbon_nodes": 0,
+    "render_budget_models_checked": 41,
+    "render_group_budget_checked": true,
+    "sloped_support_heads_checked": 8,
+    "support_centres_sc4path_xy": [
+      [
+        0.0,
+        -112.0
+      ],
+      [
+        0.0,
+        -96.0
+      ],
+      [
+        0.0,
+        -80.0
+      ],
+      [
+        0.0,
+        -64.0
+      ],
+      [
+        0.0,
+        -48.0
+      ],
+      [
+        0.0,
+        -32.0
+      ],
+      [
+        0.0,
+        -16.0
+      ],
+      [
+        0.0,
+        -0.0
+      ]
+    ],
+    "support_columns_checked": 8,
+    "support_contact_points_checked": 72,
+    "support_foundations_within_reserved_cells": true,
+    "support_tops_touch_deck": true,
+    "train_clearance_segments_checked": 482,
+    "render_groups": {
+      "all_authored_groups_within_budget": true,
+      "model_resources_checked": 41,
+      "distinct_model_payloads_checked": 9,
+      "details": [
+        {
+          "authored_frames_checked": 6,
+          "max_authored_vertices": 511,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 5,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 249,
+          "max_authored_triangles": 287,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 251,
+          "max_authored_triangles": 291,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 254,
+          "max_authored_triangles": 294,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 246,
+          "max_authored_triangles": 284,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 5,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 6,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 30,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        }
+      ]
+    }
+  },
+  "shadows": {
+    "artwork": "new code-authored vertical triangle silhouettes",
+    "projection": "vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset",
+    "tile_metres": 16.0,
+    "supersample_per_axis": 8,
+    "all_five_zoom_resources_valid": true,
+    "silhouettes_match_actual_s3d_geometry": true,
+    "native_projection_calibrated": false,
+    "texture_alpha_cutouts_sampled": false,
+    "in_game_shadow_selection_tested": false,
+    "subpixel_structural_zooms": [],
+    "images": [
+      {
+        "instance": "7f58d000",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d001",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d002",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d003",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d004",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d010",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d011",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d012",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d013",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d014",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d020",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d021",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d022",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d023",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d024",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d030",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d031",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d032",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d033",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d034",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d040",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d041",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d042",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d043",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d044",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d050",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d051",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d052",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d053",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d054",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d060",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d061",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d062",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d063",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d064",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      },
+      {
+        "instance": "7f58d070",
+        "width": 8,
+        "height": 8,
+        "alpha_bbox": [
+          0,
+          0,
+          8,
+          8
+        ],
+        "coverage_pixels": 59.984313725490196,
+        "sha256": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a"
+      },
+      {
+        "instance": "7f58d071",
+        "width": 16,
+        "height": 16,
+        "alpha_bbox": [
+          0,
+          0,
+          16,
+          16
+        ],
+        "coverage_pixels": 240.06274509803922,
+        "sha256": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40"
+      },
+      {
+        "instance": "7f58d072",
+        "width": 32,
+        "height": 32,
+        "alpha_bbox": [
+          1,
+          0,
+          31,
+          32
+        ],
+        "coverage_pixels": 960.0,
+        "sha256": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c"
+      },
+      {
+        "instance": "7f58d073",
+        "width": 64,
+        "height": 64,
+        "alpha_bbox": [
+          2,
+          0,
+          62,
+          64
+        ],
+        "coverage_pixels": 3840.0,
+        "sha256": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15"
+      },
+      {
+        "instance": "7f58d074",
+        "width": 128,
+        "height": 128,
+        "alpha_bbox": [
+          4,
+          0,
+          124,
+          128
+        ],
+        "coverage_pixels": 15360.0,
+        "sha256": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+      }
+    ]
+  },
+  "actual_saved_resource_fingerprints": {
+    "effect:hsr-component-modular-paired-climb:ea5118b0-ea5118b1-7f58dff5": "17d2bbc1676a849920bb46283b6f34bf5c50daafbbbc7f288569f8aebbc5ec12",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d000": "078b2061d846ede393761e3489eafed32f5ff81e4ff776127667955f1c288528",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d010": "9bece75f51523a9038e3f2cc5e1a8f6b0a9099285c33d81c37a583ccb35be9cb",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d020": "6789e6f887c77c430548b42779bfbb83f53c85134e2d1791fc42f16802eaa947",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d030": "229d6e1e72eb6493af6baaf356282da274de63fae8d77fdd121f34be676eaac9",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d040": "6955eed08606ab3ab4cdd327a14352b34b720f174b7737f06ee73c7bb477275d",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d050": "cef2fbeb996c88ad2ab58e315c9d864f4df3e393482f6ece11ad4b7b41752841",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d060": "ed8aa6a48a23a417e94c8d4667ecd793486c21066c681f3f47203512560d8151",
+    "exemplar:hsr-component-modular-paired-climb:6534284a-a8434037-7f58d070": "c06249975b828f9759219df8ced84ac1967cff6d1bde184a8dbeb5bd39f65071",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d000": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d001": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d002": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d003": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d004": "d243591330d1322b721671cab5334add8683c3d149258d2d732affdef9adaae7",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d010": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d011": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d012": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d013": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d014": "c4bfb8f7a6def3fcf9765843d11cf3b31b007ce90f3226804e26003fbbd1bbc3",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d020": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d021": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d022": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d023": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d024": "43b0f7f4ec030afd6f4bd007a205eaa0065aa91b68d69bed10c4fbb90e415330",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d030": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d031": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d032": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d033": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d034": "24ca864b4543a8254aaa6463b1138f82f0418ed9840b00c867fa2678158a3746",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d040": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d041": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d042": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d043": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d044": "535728622168c28f9ac1aa746fe3ace7c43bc62b14b2b5c77a8583d72f2e6b78",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d050": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d051": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d052": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d053": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d054": "8517bb6ab11ea353027a24c6ca542d001ffec33e376c49dae28caac2bdd49b37",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d060": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d061": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d062": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d063": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d064": "e21c31b5a239c334737734798eee48b27f8ec25b98e1316a495d6b49bc6f0b47",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d070": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d071": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d072": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d073": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58d074": "9e26f108f04fcb3def7dd15e9c0b16ac26f2f0d6e20bbcd4fa502afffb6a8de6",
+    "model:hsr-component-modular-paired-climb:5ad0e817-badb57f1-7f58dff5": "1e209a1b1bc0c9be3c776225a926d76e406086370f3a77a7672102518be46b50",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d000": "ed203af6257bd1b00e4b126b6a138cd08f7480b24a5cc0a08407442799c46f84",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d010": "f10c96fbee444a41ab7a92a3b6e99df830d3df3e31aae2aef3e7ad1424e4646f",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d020": "b04ec129e91032230a13766fc528579e076ed0fd9530e393eeb8ee993f25407c",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d030": "fac4f2c6e2ab1815fe9951283d5aaa1e9345f3a3cf168b249705dc0e4b485e25",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d040": "69a4bb0456f555d10146c4f10b4cbbd40246a8c52902292624b58d38b400bfa8",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d050": "acb413d82af05515eff005878cd516b2047879997cf0ca48611435af1b5aeb40",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d060": "54915476a6a95c1589a79c4d27bc292e510c456b06c9995dafc1adcd6ce88eaa",
+    "path:hsr-component-modular-paired-climb:296678f7-a966883f-7f58d070": "49aafbad70dd9180ca28f1eaeccfe96f5294c69e5bf12e1b64775dc78e6c82bf",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d010": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d011": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d012": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d013": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d014": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d020": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d021": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d022": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d023": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d024": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d030": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d031": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d032": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d033": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d034": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d040": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d041": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d042": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d043": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d044": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d050": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d051": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d052": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d053": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d054": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d060": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d061": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d062": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d063": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d064": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d070": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d071": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d072": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d073": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-modular-paired-climb:7ab50e44-2bc2759a-7f58d074": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d000": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d010": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d020": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d030": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d040": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d050": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d060": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "text:hsr-component-modular-paired-climb:2026960b-2a592fd1-7f58d070": "3a06e169a52afa44b80899aac84689a55cb6a2158f8e11017f9ef6910d977a9d",
+    "construction:hsr-component-modular-paired-climb": "340e1db7b0b66fc633cae56071772fe1d6d25a15f6bb4d03374b377ff0304a68"
+  },
+  "intrinsic_graph_source_validation": "Actual saved PATH resources were independently re-extracted. All permitted journeys, forbidden pairs, and interface fingerprints match the current record. Reachability traversal order is normalized to the existing record only after proving set equality, preserving its dependency fingerprint.",
+  "canonical_artwork_identity_comparison": {
+    "final_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+    "all_three_original_render_source_dats_match_final_dat": true,
+    "render_evidence_rebound_or_rewritten": false,
+    "artwork": [
+      {
+        "evidence_file": "evidence/preview.json",
+        "evidence_sha256": "1c67152994bcdc4d09ec9a56e610ed8342a6cd4ab06173898f0c65a9cb5b99df",
+        "image_file": "previews/preview.png",
+        "image_sha256": "5f6c359e1123eda805fb7f7f95a081179f9e7ba52210220e0c8a56f107a2f24b",
+        "original_render_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "final_dat_exact_match": true,
+        "original_render_context": {},
+        "original_context_preserved": true
+      },
+      {
+        "evidence_file": "evidence/preview-top.json",
+        "evidence_sha256": "b4cf0ad3fc5bc5ffe21b3beda6e3e783367c33a655feb5d8e1193daa7b8682a8",
+        "image_file": "previews/preview-top.png",
+        "image_sha256": "f6284e2e00390b24f0d551e0b105614270a2431d0d900f4c07cafa5965486312",
+        "original_render_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "final_dat_exact_match": true,
+        "original_render_context": {},
+        "original_context_preserved": true
+      },
+      {
+        "evidence_file": "evidence/connection-overview.json",
+        "evidence_sha256": "e0b6e648f233cc7c36cfc2da1609d865cdd3f0c9f1f041494cce7bf0595b8f3d",
+        "image_file": "previews/connection-overview.png",
+        "image_sha256": "aa3ebf8de19bb4715fb05226f50045e409f8461ea614aead48a1e595f0f2172a",
+        "original_render_source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "final_dat_exact_match": true,
+        "original_render_context": {
+          "source_manifest": "dist/trumpet-icon-no-tab-parts/manifest.json",
+          "manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+          "compiled_manifest_sha256": "467a09cc7aad0f042530e5274254812ad05f8f6cfe0c93840e270393b5c1ec43",
+          "source_dat": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
+          "source_preview_id": "7f58dff5"
+        },
+        "original_context_preserved": true
+      }
+    ]
+  },
+  "geometry_scope": "This reusable type alone. Intrinsic routes, models, and construction checks do not establish arbitrary neighbour compatibility or observed game operation. A complete assembly has separate saved-resource and game checks.",
+  "new_software_observations": 2,
+  "new_human_observations": 0,
+  "installed": false,
+  "in_game_appearance_verified_by_this_report": false,
+  "in_game_train_operation_verified_by_this_report": false
+}

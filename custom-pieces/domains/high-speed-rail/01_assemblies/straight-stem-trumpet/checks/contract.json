@@ -2,11 +2,11 @@
   "purpose": "Independent current assembly acceptance: fixed ports, six HSR journeys, native joining profiles, supports, clearance, model budgets and exact approved saved-resource fingerprints. Historical atomization decisions are recorded separately; game operation remains unverified.",
   "schema_version": 2,
   "id": "straight-stem-trumpet",
-  "occupied_cells": 109,
-  "encoded_fragments": 167,
-  "unique_piers": 75,
-  "placements": 26,
-  "unique_piece_types": 14,
+  "occupied_cells": 105,
+  "encoded_fragments": 166,
+  "unique_piers": 74,
+  "placements": 25,
+  "unique_piece_types": 13,
   "candidate_eligibility_strictly_below_m": 0.005,
   "minimum_pier_spacing_m": 16.0,
   "minimum_clearance": 5.0,
@@ -106,14 +106,86 @@
     "native_new_join_profile_tolerance_m": 5e-05
   },
   "current_resource_contract": "resources.json",
-  "actual_tile_triangles": 659271,
+  "actual_tile_triangles": 708930,
   "whole_route_quality": {
-    "direct_slips": {
-      "minimum_radius_m": 24.0,
-      "maximum_total_turn_degrees": 130.0,
-      "maximum_curvature_change_per_m2": 0.0015,
-      "maximum_native_endpoint_curvature_per_m": 0.0005
+    "per_movement": {
+      "W_in>E_out": {
+        "max_length_ratio": 1.00001,
+        "max_total_turn_degrees": 0.01,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": 0.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "E_in>W_out": {
+        "max_length_ratio": 1.00001,
+        "max_total_turn_degrees": 0.01,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": 0.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "W_in>S_out": {
+        "max_length_ratio": 1.55,
+        "max_total_turn_degrees": 130.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": -90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "S_in>E_out": {
+        "max_length_ratio": 1.55,
+        "max_total_turn_degrees": 130.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": -90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "E_in>S_out": {
+        "max_length_ratio": 3.5,
+        "max_total_turn_degrees": 271.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "min_total_turn_degrees": 269.0,
+        "signed_turn_degrees": 90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "S_in>W_out": {
+        "max_length_ratio": 3.5,
+        "max_total_turn_degrees": 271.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "min_total_turn_degrees": 269.0,
+        "signed_turn_degrees": -270.0,
+        "max_signed_turn_error_degrees": 0.01
+      }
     },
-    "other_four_journeys": "Exact approved current encoded geometry; all constituent modules retain their existing independent physical contracts."
-  }
+    "preserved_baseline_journeys": "Both mainlines and both direct slips; only collinear grid-cut subdivisions may differ.",
+    "constituent_module_limits_retained": true
+  },
+  "junction_rework_contract": "junction-rework.json"
 }

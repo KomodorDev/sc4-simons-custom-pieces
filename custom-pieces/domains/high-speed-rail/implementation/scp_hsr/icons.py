@@ -119,6 +119,42 @@ _LETTER = {
 }
 
 
+def assembly_icon_network(assembly_id):
+    """Declare an assembly's network explicitly, including future mixed layouts."""
+    networks = {'straight-stem-trumpet': 'HSR'}
+    _require(assembly_id in networks, f'No declared assembly icon network: {assembly_id}')
+    return networks[assembly_id]
+
+
+def assembly_icon_routes(scene, pieces):
+    """Place the authored reusable HSR routes for the complete menu silhouette.
+
+    This is a source-derived menu illustration, rather than compiled-resource
+    verification or an observed game result. The same complete routes feed the
+    piece builder; the assembly supplies their actual translations and turns.
+    """
+    from .hsr_components_layout import component_routes
+
+    by_id = {piece['id']: piece for piece in pieces}
+    placements = scene.get('placements', scene.get('instances'))
+    _require(isinstance(placements, list) and placements, 'Assembly icon needs placements')
+    routes = []
+    for instance in placements:
+        piece = by_id[instance['piece_id']]
+        degrees = instance.get('rotation_ccw_degrees', instance.get(
+            'rotation_degrees_ccw', instance.get('rotation_degrees', 0)))
+        _require(degrees in (0, 90, 180, 270), 'Assembly icon requires cardinal rotations')
+        east, north = instance['origin_m']
+        for points in component_routes(piece['recipe']).values():
+            placed = []
+            for x, y, height in points:
+                for _ in range(degrees // 90):
+                    x, y = -y, x
+                placed.append((x + east, y + north, height))
+            routes.append(placed)
+    return routes
+
+
 def _require(condition: bool, message: str):
     if not condition:
         raise ValueError(message)

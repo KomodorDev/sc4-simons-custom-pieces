@@ -1,0 +1,5490 @@
+{
+  "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+  "size": [
+    2000,
+    3672
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1904,
+      1000
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      -5.656854249492376,
+      -21.840155346765243
+    ],
+    "pixels_per_metre": 11.254537501283664,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -88.0,
+      72.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -80.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -88.0,
+      72.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        4
+      ],
+      "Y": [
+        0,
+        5
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": false,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        5
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "viewport_offset_xy": [
+    48,
+    182
+  ],
+  "viewport_size": [
+    1904,
+    1000
+  ],
+  "title_occurrences": 1,
+  "card_columns": 2,
+  "body_font_pixels": 28,
+  "header": {
+    "captions": [
+      "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+      "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+        "colour": "#172b42",
+        "font_pixels": 44,
+        "bold": true,
+        "position": [
+          48,
+          24
+        ],
+        "bounds": [
+          48,
+          32,
+          1423,
+          73
+        ]
+      },
+      {
+        "text": "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 28,
+        "bold": false,
+        "position": [
+          48,
+          78
+        ],
+        "bounds": [
+          48,
+          83,
+          837,
+          110
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 27,
+        "bold": false,
+        "position": [
+          48,
+          122
+        ],
+        "bounds": [
+          48,
+          127,
+          1149,
+          152
+        ]
+      }
+    ],
+    "bottom": 182,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "header_settings": {
+    "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
+    "row_colours": [
+      "#172b42",
+      "#176eaf",
+      "#586a7e"
+    ],
+    "rows": [
+      "Piece - source-backed piece title",
+      "view purpose, camera, and authored orientation",
+      "local grid and scale"
+    ],
+    "duplicate_grid_footer_visible": false
+  },
+  "conventions": [
+    "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
+    "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
+    "Display grid: X = source column \u2212 (0); Y = 5 \u2212 source row.",
+    "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
+    "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
+    "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
+    "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative."
+  ],
+  "figure_text": [
+    "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+    "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
+    "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
+    "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
+    "Display grid: X = source column \u2212 (0); Y = 5 \u2212 source row.",
+    "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
+    "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
+    "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
+    "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.",
+    "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
+    "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
+    "Unverified: physical seams, construction clearance, model collisions, and game operation."
+  ],
+  "boundary_cards": [
+    {
+      "id": "cell-1-0-north",
+      "marker": "A",
+      "source_cell": [
+        1,
+        0
+      ],
+      "boundary": "North",
+      "text_runs": [
+        {
+          "text": "North edge \u00b7 cell [1,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            456,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            421,
+            200
+          ]
+        },
+        {
+          "text": "custom-curved-end",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            319,
+            236
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "HSR",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            441,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "one-way-curve",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            400,
+            601,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Monorail (7); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            640,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[1,0] / North",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            528,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "Not declared; see member",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            601,
+            787,
+            626
+          ]
+        },
+        {
+          "text": "endpoints",
+          "position": [
+            382,
+            632
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            637,
+            534,
+            664
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            674
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            679,
+            326,
+            706
+          ]
+        },
+        {
+          "text": "Not declared",
+          "position": [
+            382,
+            674
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            679,
+            541,
+            700
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            716
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            721,
+            264,
+            748
+          ]
+        },
+        {
+          "text": "Level 2 (15.5 m)",
+          "position": [
+            382,
+            716
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            722,
+            584,
+            748
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            758
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            763,
+            245,
+            790
+          ]
+        },
+        {
+          "text": "291.989\u00b0",
+          "position": [
+            382,
+            758
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            764,
+            494,
+            784
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            800
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            805,
+            294,
+            832
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            800
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            805,
+            549,
+            832
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            874
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            880,
+            301,
+            900
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            927,
+            241,
+            948
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            958
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            964,
+            149,
+            984
+          ]
+        },
+        {
+          "text": "1 / 1 / 1",
+          "position": [
+            382,
+            922
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            928,
+            475,
+            948
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            1000
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1005,
+            275,
+            1032
+          ]
+        },
+        {
+          "text": "1 incoming; 0 outgoing",
+          "position": [
+            382,
+            1000
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1005,
+            664,
+            1032
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1042
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1047,
+            280,
+            1074
+          ]
+        },
+        {
+          "text": "See member directions",
+          "position": [
+            382,
+            1042
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1047,
+            670,
+            1068
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1084
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1090,
+            241,
+            1116
+          ]
+        },
+        {
+          "text": "See individual measured intersections",
+          "position": [
+            382,
+            1084
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1089,
+            854,
+            1110
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1126
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1132,
+            209,
+            1152
+          ]
+        },
+        {
+          "text": "rail",
+          "position": [
+            382,
+            1126
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1132,
+            419,
+            1152
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1168
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1174,
+            200,
+            1194
+          ]
+        },
+        {
+          "text": "monorail",
+          "position": [
+            382,
+            1168
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1174,
+            489,
+            1194
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1242
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1248,
+            276,
+            1268
+          ]
+        },
+        {
+          "text": "custom-curved-end-track   source: Win",
+          "position": [
+            32,
+            1290
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1295,
+            656,
+            1316
+          ]
+        },
+        {
+          "text": "Channel: curve-track | Cut: custom-curved-end-cut",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            858,
+            1371
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1382
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1388,
+            239,
+            1408
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1432,
+            91,
+            1452
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1432,
+            302,
+            1458
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1431,
+            566,
+            1458
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1432,
+            691,
+            1458
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1432,
+            867,
+            1458
+          ]
+        },
+        {
+          "text": "Incoming",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1468,
+            146,
+            1494
+          ]
+        },
+        {
+          "text": "[22.3985,8,15.5]",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1465,
+            432,
+            1493
+          ]
+        },
+        {
+          "text": "Not decl",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1467,
+            577,
+            1488
+          ]
+        },
+        {
+          "text": "ared",
+          "position": [
+            442,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1503,
+            509,
+            1524
+          ]
+        },
+        {
+          "text": "291.989\u00b0",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1468,
+            722,
+            1488
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1467,
+            761,
+            1488
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1576
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1582,
+            276,
+            1602
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1624
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1630,
+            188,
+            1656
+          ]
+        },
+        {
+          "text": "cell-1-0-north",
+          "position": [
+            382,
+            1624
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1629,
+            618,
+            1650
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1686,
+            111,
+            1706
+          ]
+        },
+        {
+          "text": "No profile reference",
+          "position": [
+            32,
+            1720
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1725,
+            369,
+            1752
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "HSR",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "one-way-curve",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Monorail (7); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[1,0] / North",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "Not declared; see member endpoints",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Not declared",
+          "top": 674
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Level 2 (15.5 m)",
+          "top": 716
+        },
+        {
+          "label": "Outward heading",
+          "value": "291.989\u00b0",
+          "top": 758
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 800
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "1 / 1 / 1",
+          "top": 922
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "1 incoming; 0 outgoing",
+          "top": 1000
+        },
+        {
+          "label": "Running convention",
+          "value": "See member directions",
+          "top": 1042
+        },
+        {
+          "label": "Channel spacing",
+          "value": "See individual measured intersections",
+          "top": 1084
+        },
+        {
+          "label": "Channel kinds",
+          "value": "rail",
+          "top": 1126
+        },
+        {
+          "label": "Traffic modes",
+          "value": "monorail",
+          "top": 1168
+        },
+        {
+          "label": "Boundary ID",
+          "value": "cell-1-0-north",
+          "top": 1624
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "custom-curved-end",
+          "network": "hsr",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "colour": "#007b84",
+          "bounds": [
+            16,
+            152,
+            915,
+            1784
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        1848
+      ],
+      "output_box": [
+        48,
+        1584,
+        980,
+        3432
+      ],
+      "group_ids": [
+        "custom-curved-end"
+      ]
+    },
+    {
+      "id": "cell-4-5-south",
+      "marker": "B",
+      "source_cell": [
+        4,
+        5
+      ],
+      "boundary": "South",
+      "text_runs": [
+        {
+          "text": "South edge \u00b7 cell [4,5]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            462,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            421,
+            200
+          ]
+        },
+        {
+          "text": "ordinary-south-end",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            335,
+            242
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "HSR",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            441,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "one-way-curve",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            400,
+            601,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Monorail (7); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            640,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[4,5] / South",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            533,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "[64,-88]",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            599,
+            517,
+            627
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            638
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            643,
+            326,
+            670
+          ]
+        },
+        {
+          "text": "Centred; 0 m",
+          "position": [
+            382,
+            638
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            643,
+            544,
+            669
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            685,
+            264,
+            712
+          ]
+        },
+        {
+          "text": "Level 2 (15.5 m)",
+          "position": [
+            382,
+            680
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            686,
+            584,
+            712
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            722
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            727,
+            245,
+            754
+          ]
+        },
+        {
+          "text": "180\u00b0 (South)",
+          "position": [
+            382,
+            722
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            727,
+            540,
+            754
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            764
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            769,
+            294,
+            796
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            764
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            769,
+            549,
+            796
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            838
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            844,
+            301,
+            864
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            886
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            891,
+            241,
+            912
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            928,
+            149,
+            948
+          ]
+        },
+        {
+          "text": "1 / 1 / 1",
+          "position": [
+            382,
+            886
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            892,
+            475,
+            912
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            964
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            969,
+            275,
+            996
+          ]
+        },
+        {
+          "text": "0 incoming; 1 outgoing",
+          "position": [
+            382,
+            964
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            969,
+            664,
+            996
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1006
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1011,
+            280,
+            1038
+          ]
+        },
+        {
+          "text": "See member directions",
+          "position": [
+            382,
+            1006
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1011,
+            670,
+            1032
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1048
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1054,
+            241,
+            1080
+          ]
+        },
+        {
+          "text": "See individual measured intersections",
+          "position": [
+            382,
+            1048
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1053,
+            854,
+            1074
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1090
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1096,
+            209,
+            1116
+          ]
+        },
+        {
+          "text": "rail",
+          "position": [
+            382,
+            1090
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1096,
+            419,
+            1116
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1132
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1138,
+            200,
+            1158
+          ]
+        },
+        {
+          "text": "monorail",
+          "position": [
+            382,
+            1132
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1138,
+            489,
+            1158
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1206
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1212,
+            276,
+            1232
+          ]
+        },
+        {
+          "text": "ordinary-south-end-track   source: Sout",
+          "position": [
+            32,
+            1254
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1259,
+            690,
+            1286
+          ]
+        },
+        {
+          "text": "Channel: curve-track | Cut: ordinary-south-end-cut",
+          "position": [
+            32,
+            1302
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1307,
+            875,
+            1335
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1346
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1352,
+            239,
+            1372
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1390
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1396,
+            91,
+            1416
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1390
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1396,
+            302,
+            1422
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1390
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1395,
+            566,
+            1422
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1390
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1396,
+            691,
+            1422
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1390
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1396,
+            867,
+            1422
+          ]
+        },
+        {
+          "text": "Outgoing",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1431,
+            146,
+            1458
+          ]
+        },
+        {
+          "text": "[64,-88,15.5]",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1429,
+            381,
+            1457
+          ]
+        },
+        {
+          "text": "+0",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1431,
+            476,
+            1452
+          ]
+        },
+        {
+          "text": "180\u00b0",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1431,
+            654,
+            1452
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1431,
+            761,
+            1452
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1504
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1510,
+            276,
+            1530
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1552
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1558,
+            188,
+            1584
+          ]
+        },
+        {
+          "text": "cell-4-5-south",
+          "position": [
+            382,
+            1552
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1557,
+            618,
+            1578
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1608
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1614,
+            111,
+            1634
+          ]
+        },
+        {
+          "text": "No profile reference",
+          "position": [
+            32,
+            1648
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1653,
+            369,
+            1680
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "HSR",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "one-way-curve",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Monorail (7); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[4,5] / South",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "[64,-88]",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Centred; 0 m",
+          "top": 638
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Level 2 (15.5 m)",
+          "top": 680
+        },
+        {
+          "label": "Outward heading",
+          "value": "180\u00b0 (South)",
+          "top": 722
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 764
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "1 / 1 / 1",
+          "top": 886
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "0 incoming; 1 outgoing",
+          "top": 964
+        },
+        {
+          "label": "Running convention",
+          "value": "See member directions",
+          "top": 1006
+        },
+        {
+          "label": "Channel spacing",
+          "value": "See individual measured intersections",
+          "top": 1048
+        },
+        {
+          "label": "Channel kinds",
+          "value": "rail",
+          "top": 1090
+        },
+        {
+          "label": "Traffic modes",
+          "value": "monorail",
+          "top": 1132
+        },
+        {
+          "label": "Boundary ID",
+          "value": "cell-4-5-south",
+          "top": 1552
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "ordinary-south-end",
+          "network": "hsr",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "colour": "#007b84",
+          "bounds": [
+            16,
+            152,
+            915,
+            1712
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        1776
+      ],
+      "output_box": [
+        1020,
+        1584,
+        1952,
+        3360
+      ],
+      "group_ids": [
+        "ordinary-south-end"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "custom-curved-end",
+      "component_id": "one-way-curve",
+      "profile_id": null,
+      "resolved_profile": {
+        "network": "hsr",
+        "nominal_level": "l2",
+        "path_height_m": 15.5,
+        "engine_transport": 7,
+        "role": "primary",
+        "alignment": "angled"
+      },
+      "network": "hsr",
+      "nominal_level": "l2",
+      "path_height_m": 15.5,
+      "boundary_bundle_id": "cell-1-0-north",
+      "source_cell": [
+        1,
+        0
+      ],
+      "boundary": "North",
+      "anchor_enh_m": null,
+      "section_offset_m": null,
+      "centred_on_tile_boundary": null,
+      "physical_channel_count": 1,
+      "edge_cut_count": 1,
+      "channel_spacing_m": null,
+      "channels": [
+        {
+          "id": "curve-track",
+          "component_id": "one-way-curve",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "custom-curved-end-cut",
+              "member_ids": [
+                "custom-curved-end-track"
+              ],
+              "endpoint_m": [
+                22.398519,
+                8.0,
+                15.5
+              ],
+              "outward_tangent": [
+                -0.9272548089646255,
+                0.3744309272108488
+              ],
+              "heading_outward_degrees": 291.98914503637025,
+              "grade_outward": -0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "monorail"
+      ],
+      "common_outward_heading_degrees": 291.98914503637025,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "custom-curved-end-track",
+          "source_port_id": "Win",
+          "direction": "in",
+          "endpoint_m": [
+            22.398519,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "grade": 0.0,
+          "edge": 1,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "curve-track",
+          "cut_id": "custom-curved-end-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            -0.9272548089646255,
+            0.3744309272108488
+          ],
+          "outward_heading_degrees": 291.98914503637025,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": null
+        }
+      ],
+      "marker_enh_m": [
+        22.398519,
+        8.0,
+        15.5
+      ],
+      "viewport_pixel": [
+        1257.5815497583542,
+        163.68632489923556
+      ],
+      "marker": "A",
+      "output_pixel": [
+        1305.5815497583542,
+        345.68632489923556
+      ],
+      "marker_output_pixel": [
+        1367.5815497583542,
+        307.68632489923556
+      ],
+      "marker_leader_output_pixels": [
+        [
+          1305.5815497583542,
+          345.68632489923556
+        ],
+        [
+          1367.5815497583542,
+          307.68632489923556
+        ]
+      ]
+    },
+    {
+      "id": "ordinary-south-end",
+      "component_id": "one-way-curve",
+      "profile_id": null,
+      "resolved_profile": {
+        "network": "hsr",
+        "nominal_level": "l2",
+        "path_height_m": 15.5,
+        "engine_transport": 7,
+        "role": "primary",
+        "alignment": "orth"
+      },
+      "network": "hsr",
+      "nominal_level": "l2",
+      "path_height_m": 15.5,
+      "boundary_bundle_id": "cell-4-5-south",
+      "source_cell": [
+        4,
+        5
+      ],
+      "boundary": "South",
+      "anchor_enh_m": [
+        64.0,
+        -88.0,
+        15.5
+      ],
+      "section_offset_m": 0.0,
+      "centred_on_tile_boundary": true,
+      "physical_channel_count": 1,
+      "edge_cut_count": 1,
+      "channel_spacing_m": null,
+      "channels": [
+        {
+          "id": "curve-track",
+          "component_id": "one-way-curve",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "ordinary-south-end-cut",
+              "member_ids": [
+                "ordinary-south-end-track"
+              ],
+              "endpoint_m": [
+                64.0,
+                -88.0,
+                15.5
+              ],
+              "outward_tangent": [
+                0.0,
+                -1.0
+              ],
+              "heading_outward_degrees": 180.0,
+              "grade_outward": 0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "monorail"
+      ],
+      "common_outward_heading_degrees": 180.0,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "ordinary-south-end-track",
+          "source_port_id": "Sout",
+          "direction": "out",
+          "endpoint_m": [
+            64.0,
+            -88.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "edge": 3,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "curve-track",
+          "cut_id": "ordinary-south-end-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            0.0,
+            -1.0
+          ],
+          "outward_heading_degrees": 180.0,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": 0.0
+        }
+      ],
+      "viewport_pixel": [
+        824.6694434195844,
+        727.6811239060952
+      ],
+      "marker": "B",
+      "output_pixel": [
+        872.6694434195844,
+        909.6811239060952
+      ],
+      "marker_output_pixel": [
+        810.6694434195844,
+        871.6811239060952
+      ],
+      "marker_leader_output_pixels": [
+        [
+          872.6694434195844,
+          909.6811239060952
+        ],
+        [
+          810.6694434195844,
+          871.6811239060952
+        ]
+      ]
+    }
+  ],
+  "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-shortened-departure-curve",
+  "file": "previews/connection-overview.png",
+  "output_sha256": "f9a0c1c49e56fd768a5b070d2e5ea8d021b6aca494ccff2bce3d3483b1efb3d4",
+  "source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+    "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+    "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3",
+    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+  },
+  "generator_sha256": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
+  "metadata_resolver_sha256": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
+  "manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "compiled_manifest_sha256": "467a09cc7aad0f042530e5274254812ad05f8f6cfe0c93840e270393b5c1ec43",
+  "source_manifest": "dist/trumpet-icon-no-tab-parts/manifest.json",
+  "source_dat": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
+  "source_preview_id": "7f58fff5",
+  "source_dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+  "source_model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+  "render_model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+  "model_validation": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 58863,
+    "mesh_count": 138,
+    "bounds_xyz_m": [
+      [
+        [
+          7.9261250495910645,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -8.0,
+          -7.986103534698486
+        ]
+      ],
+      [
+        [
+          8.0,
+          16.142057418823242
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -8.0,
+          -6.073495864868164
+        ]
+      ],
+      [
+        [
+          15.452240943908691,
+          23.245546340942383
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -7.531960487365723,
+          -3.3817875385284424
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -8.0,
+          -2.9404428005218506
+        ]
+      ],
+      [
+        [
+          15.452239990234375,
+          21.91641616821289
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -4.330657482147217
+        ]
+      ],
+      [
+        [
+          20.80253791809082,
+          24.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -7.1277947425842285,
+          -3.214442729949951
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -2.940441131591797
+        ]
+      ],
+      [
+        [
+          24.0,
+          32.10839080810547
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -8.0,
+          -0.7934086322784424
+        ]
+      ],
+      [
+        [
+          27.756147384643555,
+          35.69779586791992
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -7.7228498458862305,
+          0.927747368812561
+        ]
+      ],
+      [
+        [
+          30.896455764770508,
+          39.15560531616211
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -5.747959613800049,
+          3.0775954723358154
+        ]
+      ],
+      [
+        [
+          33.919532775878906,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -3.2777562141418457,
+          6.868475914001465
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          26.58542251586914,
+          32.1419677734375
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -6.807841777801514,
+          -2.5074846744537354
+        ]
+      ],
+      [
+        [
+          30.722679138183594,
+          37.28367233276367
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -4.209074020385742,
+          0.9513081312179565
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -8.0,
+          4.295761585235596
+        ]
+      ],
+      [
+        [
+          24.0,
+          27.075075149536133
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -2.5183658599853516
+        ]
+      ],
+      [
+        [
+          24.87745475769043,
+          28.078781127929688
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -2.154162645339966
+        ]
+      ],
+      [
+        [
+          25.60428237915039,
+          29.098901748657227
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -1.7790846824645996
+        ]
+      ],
+      [
+        [
+          26.326435089111328,
+          30.662124633789062
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -1.195938229560852
+        ]
+      ],
+      [
+        [
+          27.400588989257812,
+          31.70241355895996
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          -0.7934069633483887
+        ]
+      ],
+      [
+        [
+          28.110427856445312,
+          32.51301956176758
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -7.955067157745361,
+          -0.37980714440345764
+        ]
+      ],
+      [
+        [
+          28.81508445739746,
+          33.718502044677734
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -7.48738431930542,
+          0.26142799854278564
+        ]
+      ],
+      [
+        [
+          29.862024307250977,
+          34.91073989868164
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.761458396911621,
+          0.9277489185333252
+        ]
+      ],
+      [
+        [
+          30.896455764770508,
+          36.08890151977539
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.006218910217285,
+          1.6192129850387573
+        ]
+      ],
+      [
+        [
+          31.917863845825195,
+          36.47835159301758
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -5.221686840057373,
+          1.8552924394607544
+        ]
+      ],
+      [
+        [
+          32.25535202026367,
+          37.25216293334961
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -4.953678607940674,
+          2.335836887359619
+        ]
+      ],
+      [
+        [
+          32.92573165893555,
+          38.39970397949219
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -4.407941818237305,
+          3.07759690284729
+        ]
+      ],
+      [
+        [
+          33.919532775878906,
+          39.530731201171875
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -3.565124273300171,
+          3.5860376358032227
+        ]
+      ],
+      [
+        [
+          34.57399368286133,
+          40.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -2.693432331085205,
+          4.369525909423828
+        ]
+      ],
+      [
+        [
+          35.54319763183594,
+          40.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.7586619853973389,
+          4.905678749084473
+        ]
+      ],
+      [
+        [
+          36.18077850341797,
+          40.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -0.28360864520072937,
+          5.73052453994751
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          29.862024307250977,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -6.2612223625183105,
+          8.0
+        ]
+      ],
+      [
+        [
+          31.350000381469727,
+          32.650001525878906
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          40.0,
+          45.590965270996094
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -2.3188328742980957,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          50.14199447631836
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -0.5075200200080872,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          48.35378646850586
+        ],
+        [
+          16.18932342529297,
+          16.98932647705078
+        ],
+        [
+          1.5991172790527344,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          46.27777862548828
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -2.318833827972412,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          44.22211837768555
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          0.4170326888561249,
+          6.396078586578369
+        ]
+      ],
+      [
+        [
+          40.0,
+          44.91118621826172
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          1.4101715087890625,
+          7.613319396972656
+        ]
+      ],
+      [
+        [
+          40.0,
+          45.590965270996094
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          2.0872275829315186,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.83277130126953,
+          46.26126480102539
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          2.776073455810547,
+          8.0
+        ]
+      ],
+      [
+        [
+          42.100318908691406,
+          47.24855041503906
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.4765431880950928,
+          8.0
+        ]
+      ],
+      [
+        [
+          45.0185661315918,
+          49.15565490722656
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          4.548658847808838,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          50.141998291015625
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -2.318833827972412,
+          8.0
+        ]
+      ],
+      [
+        [
+          39.508792877197266,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          8.0,
+          8.503154754638672
+        ]
+      ],
+      [
+        [
+          40.0,
+          50.37542724609375
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          8.0,
+          13.188119888305664
+        ]
+      ],
+      [
+        [
+          43.777957916259766,
+          52.96290969848633
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          8.30012321472168,
+          16.352571487426758
+        ]
+      ],
+      [
+        [
+          46.07671356201172,
+          55.32579803466797
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          11.893531799316406,
+          19.316410064697266
+        ]
+      ],
+      [
+        [
+          48.18953323364258,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          15.670449256896973,
+          23.601707458496094
+        ]
+      ],
+      [
+        [
+          41.45510482788086,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          46.41722869873047,
+          51.73273849487305
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          10.133121490478516,
+          16.607152938842773
+        ]
+      ],
+      [
+        [
+          49.81165313720703,
+          54.56205368041992
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          15.150833129882812,
+          21.439777374267578
+        ]
+      ],
+      [
+        [
+          40.0,
+          56.0
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          42.698787689208984,
+          48.40901184082031
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          8.0,
+          12.510777473449707
+        ]
+      ],
+      [
+        [
+          43.511417388916016,
+          49.96360397338867
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          8.0,
+          13.18812084197998
+        ]
+      ],
+      [
+        [
+          44.04230880737305,
+          50.96940994262695
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          8.0,
+          14.222067832946777
+        ]
+      ],
+      [
+        [
+          44.82208251953125,
+          52.40705108642578
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          9.081670761108398,
+          15.633318901062012
+        ]
+      ],
+      [
+        [
+          45.83034133911133,
+          52.96290969848633
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          11.078353881835938,
+          16.715532302856445
+        ]
+      ],
+      [
+        [
+          46.56255340576172,
+          53.23667907714844
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          11.893531799316406,
+          17.080684661865234
+        ]
+      ],
+      [
+        [
+          46.802001953125,
+          54.041229248046875
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          12.304535865783691,
+          17.817481994628906
+        ]
+      ],
+      [
+        [
+          47.27391052246094,
+          54.820465087890625
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          13.550843238830566,
+          19.3164119720459
+        ]
+      ],
+      [
+        [
+          48.18953323364258,
+          55.32579803466797
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          14.81643295288086,
+          20.078174591064453
+        ]
+      ],
+      [
+        [
+          48.63313293457031,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          15.670448303222656,
+          21.23566436767578
+        ]
+      ],
+      [
+        [
+          49.2806282043457,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          17.00092315673828,
+          22.4103946685791
+        ]
+      ],
+      [
+        [
+          49.90652847290039,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          18.687782287597656,
+          23.202802658081055
+        ]
+      ],
+      [
+        [
+          50.31174850463867,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          19.79383087158203,
+          24.0
+        ]
+      ],
+      [
+        [
+          51.74755096435547,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          21.42734146118164,
+          24.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          51.90363693237305,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          21.96544647216797,
+          24.0
+        ]
+      ],
+      [
+        [
+          47.349998474121094,
+          48.650001525878906
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          15.350000381469727,
+          16.649999618530273
+        ]
+      ],
+      [
+        [
+          56.0,
+          59.495853424072266
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          16.8546142578125,
+          24.0
+        ]
+      ],
+      [
+        [
+          56.0,
+          59.495853424072266
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          16.854612350463867,
+          24.0
+        ]
+      ],
+      [
+        [
+          50.706138610839844,
+          55.1154899597168
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          31.489051818847656
+        ]
+      ],
+      [
+        [
+          52.25897979736328,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          38.60932159423828
+        ]
+      ],
+      [
+        [
+          50.706138610839844,
+          56.0
+        ],
+        [
+          16.18932342529297,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          33.54069519042969
+        ]
+      ],
+      [
+        [
+          52.015625,
+          56.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          25.505435943603516,
+          33.215187072753906
+        ]
+      ],
+      [
+        [
+          50.706138610839844,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          24.0,
+          38.60932540893555
+        ]
+      ],
+      [
+        [
+          57.97113800048828,
+          62.17821502685547
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          31.589200973510742
+        ]
+      ],
+      [
+        [
+          56.0,
+          63.717689514160156
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          30.71459197998047,
+          38.49524688720703
+        ]
+      ],
+      [
+        [
+          56.0,
+          64.55794525146484
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          56.0,
+          63.123329162597656
+        ],
+        [
+          16.18932342529297,
+          16.98932647705078
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          57.8460693359375,
+          61.385169982910156
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          33.50397491455078,
+          40.0
+        ]
+      ],
+      [
+        [
+          56.22262954711914,
+          61.48283386230469
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          56.0,
+          61.204010009765625
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          25.98685646057129,
+          30.72049903869629
+        ]
+      ],
+      [
+        [
+          56.0,
+          61.70328903198242
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          28.341964721679688,
+          32.20475387573242
+        ]
+      ],
+      [
+        [
+          56.0,
+          62.3311767578125
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          29.76249885559082,
+          34.16279602050781
+        ]
+      ],
+      [
+        [
+          56.0,
+          62.91667175292969
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          31.67047119140625,
+          36.100128173828125
+        ]
+      ],
+      [
+        [
+          56.0,
+          63.460792541503906
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          33.592689514160156,
+          38.01996994018555
+        ]
+      ],
+      [
+        [
+          56.0,
+          64.08450317382812
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          35.52740478515625,
+          40.0
+        ]
+      ],
+      [
+        [
+          56.0,
+          64.55794525146484
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          56.727596282958984,
+          58.02759552001953
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          28.87455940246582,
+          30.174558639526367
+        ]
+      ],
+      [
+        [
+          56.3467903137207,
+          65.15330505371094
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          40.0,
+          44.38946533203125
+        ]
+      ],
+      [
+        [
+          57.20981216430664,
+          65.92693328857422
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          42.86658477783203,
+          48.0739631652832
+        ]
+      ],
+      [
+        [
+          57.94859313964844,
+          66.47986602783203
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          46.81676483154297,
+          51.7968635559082
+        ]
+      ],
+      [
+        [
+          58.482120513916016,
+          66.91996765136719
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          50.779666900634766,
+          55.55165100097656
+        ]
+      ],
+      [
+        [
+          57.78654098510742,
+          66.99198150634766
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          40.0,
+          56.0
+        ]
+      ],
+      [
+        [
+          60.33500289916992,
+          63.78443908691406
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          43.91748046875,
+          54.2897834777832
+        ]
+      ],
+      [
+        [
+          56.34678649902344,
+          64.85676574707031
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          40.0,
+          56.0
+        ]
+      ],
+      [
+        [
+          57.02432632446289,
+          65.24772644042969
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          41.21253967285156,
+          45.30658721923828
+        ]
+      ],
+      [
+        [
+          57.47322082519531,
+          65.68772888183594
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          43.3593635559082,
+          47.61115264892578
+        ]
+      ],
+      [
+        [
+          57.87399673461914,
+          66.07649230957031
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          45.82769775390625,
+          49.93104934692383
+        ]
+      ],
+      [
+        [
+          58.2291259765625,
+          66.35274505615234
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          48.30179977416992,
+          51.7968635559082
+        ]
+      ],
+      [
+        [
+          58.48211669921875,
+          66.65738677978516
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          50.28388214111328,
+          54.140235900878906
+        ]
+      ],
+      [
+        [
+          58.76177215576172,
+          66.96773529052734
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          52.76348114013672,
+          56.0
+        ]
+      ],
+      [
+        [
+          56.34678649902344,
+          66.99198150634766
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          40.0,
+          56.0
+        ]
+      ],
+      [
+        [
+          63.349998474121094,
+          64.6500015258789
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          47.349998474121094,
+          48.650001525878906
+        ]
+      ],
+      [
+        [
+          58.9556999206543,
+          67.29749298095703
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          56.0,
+          59.807273864746094
+        ]
+      ],
+      [
+        [
+          59.283355712890625,
+          67.54403686523438
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          59.21095275878906,
+          63.74125671386719
+        ]
+      ],
+      [
+        [
+          59.52943801879883,
+          67.73906707763672
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          63.17259216308594,
+          68.13054656982422
+        ]
+      ],
+      [
+        [
+          59.72667694091797,
+          67.85261535644531
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          67.61947631835938,
+          72.0
+        ]
+      ],
+      [
+        [
+          59.84453582763672,
+          66.45221710205078
+        ],
+        [
+          14.590024948120117,
+          16.98932647705078
+        ],
+        [
+          56.0,
+          72.0
+        ]
+      ],
+      [
+        [
+          62.40932083129883,
+          64.81756591796875
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          61.38583755493164,
+          70.71468353271484
+        ]
+      ],
+      [
+        [
+          58.9556999206543,
+          67.14388275146484
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          56.0,
+          72.0
+        ]
+      ],
+      [
+        [
+          59.209922790527344,
+          67.33257293701172
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          57.72373962402344,
+          61.2321891784668
+        ]
+      ],
+      [
+        [
+          59.384273529052734,
+          67.51729583740234
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          60.202003479003906,
+          64.09043884277344
+        ]
+      ],
+      [
+        [
+          59.55522918701172,
+          67.6620101928711
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          63.17259216308594,
+          66.95882415771484
+        ]
+      ],
+      [
+        [
+          59.689300537109375,
+          67.77239227294922
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          66.13851165771484,
+          69.83624267578125
+        ]
+      ],
+      [
+        [
+          58.9556999206543,
+          67.85261535644531
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          56.0,
+          72.0
+        ]
+      ],
+      [
+        [
+          59.13134002685547,
+          67.85261535644531
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          57.227867126464844,
+          72.0
+        ]
+      ],
+      [
+        [
+          63.349998474121094,
+          64.6500015258789
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          63.349998474121094,
+          64.6500015258789
+        ]
+      ],
+      [
+        [
+          59.850318908691406,
+          67.92658996582031
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          72.0,
+          76.09725189208984
+        ]
+      ],
+      [
+        [
+          59.920326232910156,
+          67.96696472167969
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          75.59329223632812,
+          79.72919464111328
+        ]
+      ],
+      [
+        [
+          59.9651985168457,
+          67.98534393310547
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          79.4679183959961,
+          81.97869873046875
+        ]
+      ],
+      [
+        [
+          59.983543395996094,
+          67.998779296875
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          81.77169799804688,
+          84.24085998535156
+        ]
+      ],
+      [
+        [
+          59.99806213378906,
+          68.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          72.0,
+          88.0
+        ]
+      ],
+      [
+        [
+          61.355995178222656,
+          66.5999984741211
+        ],
+        [
+          16.18932342529297,
+          16.98932647705078
+        ],
+        [
+          72.0,
+          88.0
+        ]
+      ],
+      [
+        [
+          62.96048355102539,
+          64.99878692626953
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          78.95235443115234,
+          84.25260925292969
+        ]
+      ],
+      [
+        [
+          59.85031509399414,
+          67.88546752929688
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          72.0,
+          88.0
+        ]
+      ],
+      [
+        [
+          59.88699722290039,
+          67.92658996582031
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          73.52886199951172,
+          76.5802001953125
+        ]
+      ],
+      [
+        [
+          59.93397903442383,
+          67.96028137207031
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          75.98414611816406,
+          79.48139190673828
+        ]
+      ],
+      [
+        [
+          59.96479415893555,
+          67.97091674804688
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          78.92528533935547,
+          80.53213500976562
+        ]
+      ],
+      [
+        [
+          59.973167419433594,
+          67.98116302490234
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          80.21826171875,
+          81.78337860107422
+        ]
+      ],
+      [
+        [
+          59.983543395996094,
+          67.99118041992188
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          81.46640014648438,
+          82.77835083007812
+        ]
+      ],
+      [
+        [
+          59.99138259887695,
+          67.99801635742188
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          82.72164916992188,
+          84.26044464111328
+        ]
+      ],
+      [
+        [
+          59.99880599975586,
+          68.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          83.98624420166016,
+          87.875
+        ]
+      ],
+      [
+        [
+          59.85031509399414,
+          68.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          72.0,
+          88.0
+        ]
+      ],
+      [
+        [
+          63.349998474121094,
+          64.6500015258789
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          79.3499984741211,
+          80.6500015258789
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b"
+    ]
+  },
+  "saved_resource_fingerprints_checked": {
+    "effect:hsr-component-l2-shortened-departure-curve:ea5118b0-ea5118b1-7f58fff5": "4dc15a1e45643e50ce10b156fc7fa74af8af236b07a25d5891958b0c155fd8f5",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f000": "4a3a73e9e1e54027dd11cdba0c8b8d0c49913c97255f70bd4d4f6ca6db4899d5",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f100": "ddd99e496a3ec236297155bbd7bacd5e67de3bba1d995654ed5127b7366dc4ce",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f200": "58bab16b42c7cde11d9c7e0122008a9f503c60108a183612a7c3566421a5e2bc",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f210": "644dd931f0756fa630c3158f1002828c3a74012cc00b6458adac11d9d3b7909d",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f300": "b131f3fb4f2b837f3385ba2f62b5e67464196ab09811bc4bedfa7804153b163e",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f310": "39362a92ea34c9de095a64e5d1af8d81b92d7b542fa8405c2ddde5f4502fec0a",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f320": "43607e58a9473a0b1051ec850cd0ad09eba4f55c6329c7756f5c0d0787470b0a",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f410": "71de1821a5d755fd4920412a96356b0410e347e465903c87d891dd4a3b7ebc11",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f420": "8639a4392e82b6bf129a8b0cb14bd61ec3d1c2f82be58a96f598b0e4855bd98f",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f430": "1ada9e8f63c733a66001467edcfe7001f0eb476d6238e343a91dc8e2b66fd342",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f440": "ec15f58b80fb04b6c4a50183c8f73bf6836002804195ef1858722d1e1bd2d569",
+    "exemplar:hsr-component-l2-shortened-departure-curve:6534284a-a8434037-7f58f450": "dd0c36f7d3f003359f9f50e74955cbf8d9d7bc210fd3876ce6af1973404f49cd",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f000": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f001": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f002": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f003": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f004": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f100": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f101": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f102": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f103": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f104": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f200": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f201": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f202": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f203": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f204": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f210": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f211": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f212": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f213": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f214": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f300": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f301": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f302": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f303": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f304": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f310": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f311": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f312": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f313": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f314": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f320": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f321": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f322": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f323": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f324": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f410": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f411": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f412": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f413": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f414": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f420": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f421": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f422": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f423": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f424": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f430": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f431": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f432": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f433": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f434": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f440": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f441": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f442": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f443": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f444": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f450": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f451": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f452": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f453": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58f454": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311",
+    "model:hsr-component-l2-shortened-departure-curve:5ad0e817-badb57f1-7f58fff5": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f000": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f100": "c72c6f512f3afb22ceb8095dd5bdcc2f40e34c2b6f183018464b1c643d79969a",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f200": "fad2e9b2afb3667b9636675dbf3d078fda876aaf5877080376c1adbbdbffa437",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f210": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f300": "a2575eb6aa6fbeaf662989dadaa491f69614903d94f240506688d6923fff80ef",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f310": "f8b539856215992ebb9c72498ac2493b21b64dd3ca70b488a386547fbacd85a8",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f320": "ccc4b74726e47dfb9f204417b4d6f556c46769be178efb86c6c82df45482f2dc",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f410": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f420": "cb15369b9be1627e41d3b33344139ad821597dedbf09355d3ff36de152d20333",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f430": "b05d7944182b7f0b5d796e5983ff20de91e94e0f5d9f852455ab0cd2f4f26d1f",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f440": "c4af6c3655d14ae4367a68333a06d22d990a8ce346b6da7950316bfeff1452c6",
+    "path:hsr-component-l2-shortened-departure-curve:296678f7-a966883f-7f58f450": "99d5405f8ba8e85d267585aac482d342884b82414160b76f9c52a20e0becf917",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f000": "d8079b1714f4b5507474e2991a00f5b6a93e9d4beed1352fb653c44764772238",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f001": "9392a799e58b611336d119df63cfd39befd2b446092522085e36573089ca23f4",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f002": "425e4a6cffbc3642731f1e49424aa9b0d6414ef425ddc5272c8b2475f3862d18",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f003": "8afbd3a7fd2b2a7f0bfd34893815a6b5667a0901b01002d565cbacfe58ffdd6d",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f004": "5bf443fc79e01c8bc8c3d4117896da7a986e0aa7de764b9e6a7ed78700c9eb85",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f100": "6cae926f74dd73fd92826920168536d5a2e15dc2c9242ad5362ae62e9b5c471b",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f101": "ce64c072f27a24db7cbe5f4235eeeb86c36f25f1c1217294103aa6a08dae9566",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f102": "5859a3bccb2d6b68d949f92a1d635c640fedce0d11ce649b78069ca61928f43e",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f103": "a8cd6e2d0deeba3e4f1fb7b91752b283baab1367c302508be71e32b493952fe5",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f104": "5c9698c5ab29e48e0bf53eeea36bd777d0138ff1a87281d3d734e643cbeab816",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f200": "5cfde643e7654c1c5f6d19f613fe491a7ffd0cc92edd2da2202f09a40aea181f",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f201": "607542865d2addc7913050f24e96e5fa139de8c15c9bea3530448d7f1ff764b9",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f202": "bb4032ebdd83b7276a08698223a622732179bafd01246bbad16188f181c40b93",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f203": "e98084a7e81e84ee1a9dd389326c7e8c8571956018a8ec177ee968af67b0e658",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f204": "0c543ed48841f6e8646c5d8f1b48c6a0a4798a81e7541a7b769e4fe52f6d9359",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f210": "eaff89ad7ddd54c02dc7b36b246ed619d254fc1eac8accb9fba022238d47d367",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f211": "90115405e1d9f2e35247144fa5925f3dadb2b1894d4975d87984c9409572a83b",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f212": "1659c6871fe395dab7e3e164d3a47a97e1bf6feb6edc4a6926554cdd7faaeadb",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f213": "8e91219ecd3c9485646573f59d2897eaafc7d7ca99c5aaa7bd072d113ae7a346",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f214": "826d66f3ad05f3832d2b9762fba93802812155b18a3c35d8114e5ffd32efa015",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f300": "f5f9f3cd7de055193d72c3c4127e08db07aa709cff71b95bb5d3a67bfbc98a7b",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f301": "94dfd2a3b623c54e33c0331f37ac8b445d5359dad7f0125308cdc4d1ba6c1551",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f302": "89be86c7e2addb215a70521bcce7dbc48d99079efd1eb6c00e8fea2d57004002",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f303": "742ff5a697c924ada8f026940ad2de2653dbf3caa943ee1dcfec9417245d9b65",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f304": "1c9d154f23d332b0a97eaaf96b87dc4651d4e60946b9d244795c80cd5d2bc3f0",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f310": "b3324697877d2742b8db7f66c2b1b17fca21333140c80b44b0fe8a7f4ff25ad0",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f311": "4d8291e32f2815aa549622403fad5829b5d1fbe60d62e61c059a48287cfb2aa4",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f312": "f8c308bef8e332268e21991ab89a65ed3b9e0a898c6c775e3b14cea12ba535df",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f313": "0273550deb436f2bae2a61f55d5a61e57826961a6541d47f762f3da7e3650671",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f314": "ec8f4427c51d94c0b5f592297437042f6e13e18ed95af37021e44e16647cc394",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f320": "03a309ea45a5c538e7c33c08103273c6ad851c9ae90e04fc8ab901e5385af7e7",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f321": "a0654f23938fe9d1128d958aa18d310815b8cdd0d50ac086d21ec168d41223e9",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f322": "90579da5f08ced8a88d619080e1eeec6d253df9e664f903dad2cf9989117585a",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f323": "9df4dec9d286c82a3116d359de9c67fe9e9ebe6344ea62de88afc22140af7032",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f324": "a86abf7150fc2dbe271faee2036cd443d2682c094f25e78bdaf4012622889bde",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f410": "4b2db1fa43b49af9a541ca8a18a6311a364ea79dcee128afd8acbf8c171e678c",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f411": "722e9798bde568c954c4a799e957faf8a684c319194f84c0713a26b89a667ce6",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f412": "22ce95364083e27c8b55e8e0882e24ba4ec6b1117f54f137a5c23c234056fc14",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f413": "b64036a8498a7457d910e7b42a6bbe1ce17ba1698cf82957482d2b7860c8bd86",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f414": "8e9f280c3d57614fef54f70caf7d8a752743447c0a2347209c784a8d79fde4e9",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f420": "6b315a78007305faaa86939b5c8ec50463c8a2e1efec8654e3b4d196a24c1f70",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f421": "f0209ac349aacb97bbf2c8e9b2839f25f8b1ff6844d47265a8fbeec492f1eac1",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f422": "eb45621817fc04ff09b9d1f63e11eaa31befd86354915095a88f0efc01b9ca16",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f423": "d98e41e6242f362508e700297588538e704917c770a4b938ff2e3100ac61f430",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f424": "898738210507e91e4756771f63d6879c8a1dbb38db142bb0b19401493123881d",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f430": "dc73a1bb0a72c44c931236c9a20bde20eda1a8ff434b05aa4dbd3994581f4970",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f431": "352e415a8e6bc0d792e0fc2b613ad749e5f0779dab38eba0febf4e8e7afe1b19",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f432": "1d20129ac762571b0337e6283de77e65bf93cf523db085bd79805e7a64da4e85",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f433": "6f8e5a0f7dec92b0ae35bcb7e6fc45dd018351097f6bb794a7fc0abf352b5b63",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f434": "ba55f7430be71c4afe9c1a7abc386975b94e96eab7b3ed1ec63840f7f2510868",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f440": "303654acd20565a2f9f09ed34cbe276ec0c6bdf60daa44c5b8a49e23a91c81be",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f441": "f0b84de7ff304b2973d58888c3506e6d0da4d137a6c13189f4931f01dc8904e9",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f442": "3acb338a271a77587970138397fcc6491f36ad171b6f4361d377c16b571f4e8b",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f443": "b79455a33d1be9e73a44d539c9b316fd114c55fc4e0da3f198252cd089ab4707",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f444": "6577af0d112a4017e40aaaee8e56805269f4c9d8f5374968cc8bd5baf59466d8",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f450": "9412a65f5caf3af15a17d6cc7cb8612ab62be9a9c6716e36f59dc5b244d65e18",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f451": "22d08e97d38d62e0a03f97b7de55e185e6e9aff57fd0505f9b13ce76d6666cc0",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f452": "b1bec698dfdc1d3e0bd0468eb9c95b1addafa53c203d66254540a8e5a802c8ed",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f453": "52a9c1f39e7691ebf93702b11c6abf8bf09bc18d92f3be2d76700f769b367642",
+    "shadow:hsr-component-l2-shortened-departure-curve:7ab50e44-2bc2759a-7f58f454": "e8dc979e7ee9ff8ace7258ef49c371cf8ad36bc8cd1a22ac9b31b56ab47ad83b",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f000": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f100": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f200": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f210": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f300": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f310": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f320": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f410": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f420": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f430": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f440": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4",
+    "text:hsr-component-l2-shortened-departure-curve:2026960b-2a592fd1-7f58f450": "e67da4fd81b8820cf79c2d9578378e3b1e0414162a334974e7d0bc26203c9fd4"
+  },
+  "textures": [
+    {
+      "instance": "0bf6e09b",
+      "fsh_sha256": "5231481a061ebfd0387dd7f58a925ec6f705b147fb396407039348b19f4323b4",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -88.0,
+      72.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -80.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        4
+      ],
+      "north_index_range": [
+        0,
+        5
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      379.0124953881293,
+      582.0995763079849
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0,
+      40.0,
+      56.0,
+      72.0
+    ],
+    "north_boundaries_m": [
+      -88.0,
+      -72.0,
+      -56.0,
+      -40.0,
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            251.68193880771366,
+            582.0995763079849
+          ],
+          [
+            1015.6652782902078,
+            188.61906787756658
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            379.0124953881293,
+            647.6796610463879
+          ],
+          [
+            1142.9958348706234,
+            254.19915261596964
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            506.34305196854507,
+            713.2597457847909
+          ],
+          [
+            1270.3263914510392,
+            319.77923735437264
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            633.6736085489608,
+            778.839830523194
+          ],
+          [
+            1397.656948031455,
+            385.35932209277564
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 56.0,
+        "pixels": [
+          [
+            761.0041651293765,
+            844.419915261597
+          ],
+          [
+            1524.9875046118705,
+            450.9394068311787
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 72.0,
+        "pixels": [
+          [
+            888.3347217097922,
+            910.0
+          ],
+          [
+            1652.3180611922862,
+            516.5194915695818
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -88.0,
+        "pixels": [
+          [
+            251.68193880771366,
+            582.0995763079849
+          ],
+          [
+            888.3347217097922,
+            910.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -72.0,
+        "pixels": [
+          [
+            379.0124953881293,
+            516.5194915695818
+          ],
+          [
+            1015.6652782902079,
+            844.419915261597
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -56.0,
+        "pixels": [
+          [
+            506.34305196854507,
+            450.93940683117876
+          ],
+          [
+            1142.9958348706236,
+            778.839830523194
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -40.0,
+        "pixels": [
+          [
+            633.6736085489607,
+            385.3593220927757
+          ],
+          [
+            1270.3263914510394,
+            713.2597457847909
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            761.0041651293764,
+            319.7792373543727
+          ],
+          [
+            1397.656948031455,
+            647.6796610463879
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            888.3347217097921,
+            254.19915261596964
+          ],
+          [
+            1524.9875046118707,
+            582.0995763079848
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            1015.6652782902078,
+            188.61906787756658
+          ],
+          [
+            1652.3180611922862,
+            516.5194915695818
+          ]
+        ],
+        "major": true
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -88.0
+        ],
+        "pixel": [
+          300.2339517256472,
+          622.6735257801273
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -88.0
+        ],
+        "pixel": [
+          427.5645083060629,
+          688.2536105185303
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -88.0
+        ],
+        "pixel": [
+          554.8950648864786,
+          753.8336952569334
+        ]
+      },
+      {
+        "text": "X3",
+        "axis": "X",
+        "tile_index": 3,
+        "world_m": [
+          48.0,
+          -88.0
+        ],
+        "pixel": [
+          682.2256214668944,
+          819.4137799953364
+        ]
+      },
+      {
+        "text": "X4",
+        "axis": "X",
+        "tile_index": 4,
+        "world_m": [
+          64.0,
+          -88.0
+        ],
+        "pixel": [
+          809.55617804731,
+          884.9938647337394
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -80.0
+        ],
+        "pixel": [
+          300.2339517256471,
+          541.5256268358424
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          -64.0
+        ],
+        "pixel": [
+          427.5645083060628,
+          475.94554209743933
+        ]
+      },
+      {
+        "text": "Y2",
+        "axis": "Y",
+        "tile_index": 2,
+        "world_m": [
+          -8.0,
+          -48.0
+        ],
+        "pixel": [
+          554.8950648864785,
+          410.3654573590363
+        ]
+      },
+      {
+        "text": "Y3",
+        "axis": "Y",
+        "tile_index": 3,
+        "world_m": [
+          -8.0,
+          -32.0
+        ],
+        "pixel": [
+          682.2256214668943,
+          344.78537262063327
+        ]
+      },
+      {
+        "text": "Y4",
+        "axis": "Y",
+        "tile_index": 4,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          809.5561780473099,
+          279.2052878822302
+        ]
+      },
+      {
+        "text": "Y5",
+        "axis": "Y",
+        "tile_index": 5,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          936.8867346277257,
+          213.62520314382715
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1804.0,
+          100.0
+        ],
+        "end_pixel": [
+          1846.6727492864215,
+          121.97809064359794
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1804.0,
+          100.0
+        ],
+        "end_pixel": [
+          1846.6727492864215,
+          78.02190935640203
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 143.22645758858445,
+      "north_pixels": 143.22645758858448,
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1904,
+        1000
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        -5.656854249492376,
+        -21.840155346765243
+      ],
+      "pixels_per_metre": 11.254537501283664,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -88.0,
+        72.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "figure_typography": {
+    "body_pixels": 28,
+    "card_title_pixels": 36,
+    "piece_title_pixels": 44,
+    "bold_usage": "Piece and card titles, and section headings only",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      },
+      {
+        "name": [
+          "Menlo",
+          "Regular"
+        ],
+        "file_sha256": "dc256e0b39c2a6fec947129d421fef41b8b429f58f9b6e5d1b148c87f775c1f6"
+      }
+    ]
+  },
+  "shared_framework_sources": {
+    "__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+    "assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+    "autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+    "build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+    "catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+    "check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+    "checks.py": "e53a8b95807d530081c9721d62a2a24147464967496828ece947ddd68e37822e",
+    "city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+    "connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+    "connector_metadata.py": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
+    "connector_overview.py": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
+    "content.py": "f477103efe3ace402adbc080e4be386b08fb976199a71de81e615b6f7773cade",
+    "dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+    "design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+    "export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+    "install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+    "inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+    "jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+    "menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+    "menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+    "menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+    "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+    "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+    "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+    "piece_matrix.py": "ebf4d29bce4bb59d8f61e39b4cfc9f6745ac4c01c327ec8320417c200c8e1826",
+    "piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+    "preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+    "providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+    "recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+    "registration.py": "0abd859485be079e9b0ec6765a2da0ea18699b717bfd62e1556140443b37f2dd",
+    "release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+    "render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+    "render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+    "resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+    "rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+    "shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+    "test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+    "track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+    "verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+    "verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd"
+  },
+  "previous_preview_evidence": {
+    "file": "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/evidence/preview.json",
+    "sha256": "22b2ef6f6f91828e558ba51a82ce4c2bde4568ffb58131ff13cbeea2c15b2a4e",
+    "mandatory_current_build_truth": false
+  },
+  "source_preview_png_used_as_input": false,
+  "source_geometry_altered": false,
+  "geometry_simplified": false,
+  "marker_order": "source column, source row, edge rank South/North/West/East, boundary ID; groups by stable ID",
+  "supported_inputs": "Registered canonical flat-reference pieces; one measured height per service group; explicit channel/cut associations; no free vertical placement or reflection",
+  "evidence_states": {
+    "boundary_metadata": "validated",
+    "source_bindings": "validated",
+    "manifest_payload": "matched",
+    "saved_resource_identity": "matched",
+    "compiled_path_reextraction": "not_run_by_renderer",
+    "previous_preview_review": "matched",
+    "occupied_tile_fit": "not_evaluated_no_candidate_placement",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "model_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "derivations": {
+    "channels_and_cuts": "Explicit source-backed associations; counts do not come from modes or directed-member counts",
+    "heading": "degrees(atan2(outward_east,outward_north)) modulo 360; incoming travel tangent reversed",
+    "edge_slope_percent": "100 * travel grade for outgoing; -100 * travel grade for incoming; never an interior average",
+    "section_offset": "Declared resolved offset from source tile-edge midpoint; null when no section offset was authored",
+    "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
+    "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
+  },
+  "selectable_markdown_sha256": "6c1d8bd6bb8d1d675761511c31b511d37086e48e4a5da0361c72638150a7162f"
+}

@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
   "menu_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
-  "display_title": "HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
+  "display_title": "Piece - HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc"
   },
   "file": "previews/preview-top.png",
-  "sha256": "9da3f12257efd9ff1950e97d2cee049d4aa93669dee28ac9865a5aeacd0bc2f4",
+  "sha256": "12230f267daa471a1cf4be1c98f8a9923f653a5a4af2d651dcf4c6bf2ec71bba",
   "size": [
     1600,
     1200
@@ -532,13 +532,13 @@
   },
   "header": {
     "captions": [
-      "HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
-      "Reusable piece / Top view, north up / Authored orientation: 0\u00b0",
+      "Piece - HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
+      "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
+        "text": "Piece - HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -549,12 +549,12 @@
         "bounds": [
           30,
           27,
-          1114,
+          1236,
           59
         ]
       },
       {
-        "text": "Reusable piece / Top view, north up / Authored orientation: 0\u00b0",
+        "text": "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "colour": "#176eaf",
         "font_pixels": 22,
         "bold": false,
@@ -565,8 +565,8 @@
         "bounds": [
           30,
           67,
-          625,
-          87
+          581,
+          88
         ]
       },
       {
@@ -4247,8 +4247,8 @@
     }
   ],
   "captions": [
-    "HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
-    "Reusable piece / Top view, north up / Authored orientation: 0\u00b0",
+    "Piece - HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
+    "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
     "Software model preview; in-game placement and traffic remain unverified."
@@ -4282,17 +4282,17 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "738f9327e58894ba748f0eb61acb095b19edcbf64143e4abe95eed0e7084a1a5",
+    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
     "header": {
-      "source_sha256": "fb553aa59573da71d49d940b081f1ad4953e0aa3c7b04ec47f69aeb0edd85834",
+      "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
         "#172b42",
         "#176eaf",
         "#586a7e"
       ],
       "rows": [
-        "source-backed piece title",
-        "view and authored orientation",
+        "Piece - source-backed piece title",
+        "view purpose, camera, and authored orientation",
         "local grid and scale"
       ],
       "duplicate_grid_footer_visible": false
@@ -4321,14 +4321,8 @@
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
-    "domains/high-speed-rail/domain.json": "611285408ab8c2a5517c71a6a50d65b9bf506092c65ed75ededa1896e47cf459",
+    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
     "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
   },
-  "input_fingerprint": "d49cd1d51f89b75fd2771f8ee89592e03d3ee3754907ffd0c3af1d2871f30620",
-  "artwork_relocation": {
-    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
-    "image_directory": "previews",
-    "image_bytes_changed": false,
-    "original_renderer_and_input_fingerprints_preserved": true
-  }
+  "input_fingerprint": "97f6e834a8a4a79ad6bfe9fcd6df4c695dffcf71eaa29b75ee9db74302510005"
 }

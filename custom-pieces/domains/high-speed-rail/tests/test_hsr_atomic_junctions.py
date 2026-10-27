@@ -12,13 +12,14 @@ import math
 from pathlib import Path
 import unittest
 
-from scp.track_paths import encode_paths, _parse_paths
+from scp.track_paths import PATH, encode_paths, _parse_paths
 from scp_hsr.hsr_atomic_junctions import (
     RECIPES, _source, atomic_info, atomic_layout, atomic_routes, model_inputs,
     compilation_parts,
 )
 from scp_hsr.directional_t_verify import measure_route_quality, _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
+from scp_hsr.hsr_atomic_components_verify import check_paths
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
@@ -52,7 +53,7 @@ class AtomicJunctionSourceTests(unittest.TestCase):
     def test_current_junction_geometry_keeps_its_frozen_source_bytes(self):
         for identifier, digest in {
             'hsr-component-l2-short-mainline-diverge-core': '7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0',
-            'hsr-component-l2-short-opposed-merge-core': '42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833',
+            'hsr-component-l2-short-opposed-merge-core': '9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c',
         }.items():
             self.assertEqual(hashlib.sha256((PIECES/identifier/'geometry.json').read_bytes()).hexdigest(), digest)
 
@@ -69,7 +70,8 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         self.assertEqual(second['footprint'], (5, 1))
         self.assertEqual(second['cells'], [(x, 0) for x in range(5)])
         self.assertEqual(second['ports']['E'], {'out': (72., -2., 15.5), 'in': (72., 2., 15.5)})
-        self.assertEqual(second['ports']['N']['in'], (48.562688696411044, 8., 15.5))
+        self.assertAlmostEqual(second['ports']['N']['in'][0], 54.39851855221686, places=10)
+        self.assertEqual(second['ports']['N']['in'][1:], (8., 15.5))
         self.assertEqual(second['ports']['S']['in'], (25.601481447783137, -8., 15.5))
         self.assertEqual(second['support_centers'], [(16.*x, 0.) for x in range(5)])
         for recipe in RECIPES:
@@ -83,6 +85,51 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         reflected = [(-x, n, h) for x, n, h in reversed(east)]
         self.assertEqual(len(west), len(reflected))
         self.assertLessEqual(max(math.dist(a, b) for a, b in zip(west, reflected)), 2e-9)
+
+    def test_reworked_north_merge_reuses_the_exact_reflected_reversed_diverge_branch(self):
+        branch = atomic_routes(DIVERGE)['W>S']
+        expected = [(x+16., -north, height) for x, north, height in reversed(branch)]
+        actual = atomic_routes(MERGE)['N>W']
+        self.assertGreaterEqual(len(actual), len(expected))
+        self.assertLess(max(math.dist(a, b) for a, b in zip(expected, actual)), 2e-9)
+        self.assertEqual(actual[-1], (-8., 2., 15.5))
+        self.assertTrue(all(point[1:] == (2., 15.5) for point in actual[len(expected):]))
+        tangent = atomic_info(DIVERGE)['port_vectors']['Sout']
+        self.assertEqual(atomic_info(MERGE)['port_vectors']['Nin'], (-tangent[0], tangent[1]))
+
+    def test_reworked_merge_keeps_every_mainline_and_direct_south_route_fragment(self):
+        unchanged = [[cell, {**data, 'routes': [route for route in data['routes'] if route['movement'] != 'N>W']}]
+                     for cell, data in _source(MERGE)['layout']]
+        digest = hashlib.sha256(json.dumps(unchanged, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        self.assertEqual(digest, 'b31ac1d5767d4faf205b345dec32dfcb4bee9b6e824ba4c1b98065f0f5223c9e')
+        expected = {
+            ('surface_context', 'native_east_west_main'): 'f3158f8eb882cfcc89d6afbdf31c454af1908ecf24ad259743931901d4910204',
+            ('retained_surface_context', 'native_east_west_main'): 'f3158f8eb882cfcc89d6afbdf31c454af1908ecf24ad259743931901d4910204',
+            ('surface_context', 'direct_south_east_merge'): '10ef1f1934c5841582ca202692203db025e47b070ccdc5139829e727cf26b685',
+            ('retained_surface_context', 'direct_south_east_merge'): '84c9b3c1f89d972d0398bd58d219711d44815bd3987eb3525d74e718a12b70c4',
+        }
+        for (context, name), wanted in expected.items():
+            deck = next(deck for deck in _source(MERGE)[context]['surface_decks'] if deck['name'] == name)
+            self.assertEqual(hashlib.sha256(json.dumps(deck, sort_keys=True, separators=(',', ':')).encode()).hexdigest(), wanted)
+
+    def test_new_merge_encoded_paths_satisfy_independent_literal_ports_and_curve_limits(self):
+        info, layout = atomic_info(MERGE), atomic_layout(MERGE)
+        tiles = [f'{0x7ff00000+x*0x100+y*0x10:08x}' for x, y in info['cells']]
+        spec = {'id': MERGE.replace('_', '-'), 'recipe': MERGE, 'cells': info['cells'],
+                'footprint': info['footprint'], 'structural_cells': info['structural_cells'], 'tile_ids': tiles}
+        resources = {(*PATH, int(tile, 16)): encode_paths(data['routes'])
+                     if data['routes'] else EMPTY_STRUCTURAL_PATH
+                     for tile, data in zip(tiles, layout.values())}
+        result = check_paths(resources, spec)
+        self.assertEqual(result['external_ports_checked'], 6)
+        self.assertEqual(result['unique_complete_journeys_checked'], 4)
+        for quality in result['journey_quality'].values():
+            if quality['minimum_sampled_radius_m'] is not None:
+                self.assertGreaterEqual(quality['minimum_sampled_radius_m'], 24.)
+            else:
+                self.assertEqual(quality['total_turn_degrees'], 0.)
+            self.assertLessEqual(quality['maximum_curvature_change_per_m2'], .0015)
+        self.assertEqual(result['maximum_encoded_grade'], 0.)
 
     def test_owned_analytic_contexts_differ_only_inside_the_bounded_joining_tile(self):
         before = _source(DIVERGE)['retained_surface_context']['surface_decks'][1]['points']
@@ -111,12 +158,13 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         self.assertEqual(_TURN_LIMITS['max_curvature_change_per_m2'], .0015)
         self.assertEqual(_TURN_LIMITS['max_endpoint_curvature_per_m'], .0005)
 
-    def test_all_encoded_paths_match_the_approved_current_dat_fingerprints(self):
-        # Captured from the approved compiled DATs, then checked against the
-        # current source encoder. No predecessor folders or build are needed.
+    def test_encoded_paths_keep_the_current_source_revision_fingerprints(self):
+        # DIVERGE retains its earlier compiled PATH fingerprint. MERGE binds
+        # the revised source's encoded paths; actual saved DAT verification
+        # remains a separate build check rather than an implied game result.
         expected = {
             DIVERGE: '3d1aa91de0f3833eba19922270fb2ab2fd821682b329a4e08e50be5265270a85',
-            MERGE: 'bc054d99d4908ccfc83ef1cff449c5992b73752d42eb462342fce694a9fa3811',
+            MERGE: '7c99a741e17de515a3b15cbd6515dc81211902f21a35181ea02c2b08c10083f5',
         }
         for recipe, digest in expected.items():
             fingerprints = [[list(cell), hashlib.sha256(
@@ -154,7 +202,6 @@ class AtomicJunctionSourceTests(unittest.TestCase):
     def test_retained_tiles_keep_their_owned_literal_analytic_surface_inputs(self):
         expected = {
             DIVERGE: '7741ec4ffb241b54a2ea0f01de5fd0e0d3d3d490668f766a006e64ee22d9a368',
-            MERGE: 'dc859cc8deffe2a3da9facfa81401841159516943ec3786ac9d858004c8b2d96',
         }
         for recipe, digest in expected.items():
             kept = _source(recipe)['retained_surface_context']

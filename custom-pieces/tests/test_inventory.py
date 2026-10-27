@@ -5,7 +5,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from scp.inventory import write_inventories
-from scp.content import split_markdown_metadata
+from scp.content import (fingerprint, new_manual_record, record_software_result,
+                         record_user_result, split_markdown_metadata)
+from scp.assembly_matrix import MARKER
 
 
 class InventoryArtworkTests(unittest.TestCase):
@@ -101,6 +103,95 @@ class InventoryArtworkTests(unittest.TestCase):
             with patch('scp.inventory.load_catalog',return_value=catalog):write_inventories(root)
             self.assertEqual(text,(domain/'README.md').read_text())
             self.assertEqual(inventory,(domain/'00_pieces/INVENTORY.md').read_text())
+
+
+class AssemblyInventoryEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        self.root = Path(directory.name)
+        self.domain = self.root/'domains/fixture'
+        self.local = self.domain/'01_assemblies/fixture'
+        (self.local/'checks').mkdir(parents=True)
+        self.readme = self.local/'README.md'
+        self.readme.write_text(f'# Fixture\n\n<!-- BEGIN {MARKER} -->\nAll tests passed: ✅\n<!-- END {MARKER} -->\n')
+        (self.local/'TESTING.md').write_text('Every preview and game check passed: [x].\n')
+        self.connections = {
+            'subject_id': 'fixture', 'software_status': {'path_extraction': 'passed'},
+            'ports': [{'id': identifier, 'direction': direction, 'service_network': 'hsr'}
+                      for identifier, direction in (('W.in', 'in'), ('E.out', 'out'), ('W.out', 'out'))],
+            'journeys': [{'id': 'west-east', 'entry_port': 'W.in', 'exit_port': 'E.out',
+                          'service_network': 'hsr', 'role': 'primary'}],
+            'forbidden_transfers': [{'from_port': 'W.in', 'to_port': 'W.out',
+                                     'from_service': 'hsr', 'to_service': 'hsr'}],
+        }
+        self.record = new_manual_record('fixture', 'assembly', self.connections,
+            {'path:fixture:one': fingerprint(b'fixture path'), 'model:fixture:one': fingerprint(b'fixture model')},
+            {'preview.png': fingerprint(b'fixture image')}, split_journey_observations=True,
+            manual_check_orientations=[{'rotation_ccw_degrees': 0}])
+        case = next(case for case in self.record['cases'] if case['kind'] == 'software_connectivity')
+        self.record = record_software_result(self.record, case['id'], 'passed', verifier='Fixture verifier',
+            checked_at='2026-10-27T10:00:00Z', evidence=['Fixture-only software result.'])
+        self.catalog = {'version': 'fixture', 'domains': {'fixture': {'path': 'domains/fixture', 'name': 'Fixture'}},
+                        'pieces': [], 'piece_sets': {}, '_assemblies': [
+                            {'id': 'fixture', 'domain': 'fixture', 'path': 'domains/fixture/01_assemblies/fixture',
+                             'scene': {'placements': []}}]}
+
+    def generate(self):
+        (self.local/'connections.json').write_text(json.dumps(self.connections))
+        (self.local/'checks/manual-tests.json').write_text(json.dumps(self.record))
+        with patch('scp.inventory.load_catalog', return_value=self.catalog):
+            write_inventories(self.root)
+        return (self.domain/'01_assemblies/INVENTORY.md').read_text()
+
+    def observe(self, kind, result='passed'):
+        case = next(case for case in self.record['cases'] if case['kind'] == kind)
+        self.record = record_user_result(self.record, case['id'], result, explicit_user_confirmation=True,
+            reviewer='Fixture reviewer', confirmed_at='2026-10-27T10:01:00Z',
+            evidence=['Fixture-only explicit observation.'],
+            environment={'platform': 'fixture OS', 'game_version': 'fixture version', 'nam_profile': 'fixture profile'})
+
+    def test_matrix_summary_uses_current_evidence_and_does_not_parse_markdown(self):
+        text = self.generate()
+        self.assertIn('| Connection matrix summary |', text)
+        self.assertNotIn('| Directed journey cases |', text)
+        self.assertIn('[Open matrix](fixture/README.md#4-connection-matrix)', text)
+        self.assertIn('Saved PATH: 2/2 confirmed', text)
+        self.assertIn('Route Query: 0/1 confirmed; 1 not established', text)
+        self.assertIn('Visible travel: 0/1 confirmed; 1 not established', text)
+        self.assertIn('Forbidden in game: 0/1 confirmed; 1 not established', text)
+        row = text.splitlines()[-1]
+        self.assertEqual(row.count('[ ] 0/1 passed; 1 unverified'), 2)
+        self.observe('in_game_route_query', 'failed')
+        self.assertIn('Route Query: 0/1 confirmed; 1 failed', self.generate())
+        self.connections['journeys'][0]['id'] = 'changed-graph'
+        self.assertIn('Saved PATH: 0/2 confirmed; 2 not established', self.generate())
+        machine = json.loads((self.domain/'01_assemblies/inventory.json').read_text())['assemblies']['fixture']
+        self.assertEqual(machine['connection_matrix']['metrics']['saved_path'],
+                         {'confirmed': 0, 'failed': 0, 'not_established': 2})
+
+    def test_image_and_game_appearance_read_named_cases_from_json(self):
+        self.observe('preview_review')
+        self.assertEqual(self.generate().splitlines()[-1].count('[x] 1/1 passed'), 1)
+        self.observe('in_game_render')
+        text = self.generate()
+        self.assertEqual(text.splitlines()[-1].count('[x] 1/1 passed'), 2)
+        self.assertIn('Route Query: 0/1 confirmed; 1 not established', text)
+        self.assertEqual((self.local/'TESTING.md').read_text(), 'Every preview and game check passed: [x].\n')
+
+    def test_missing_matrix_or_inputs_never_fall_back_to_journey_case_totals(self):
+        self.generate()
+        for name in ('connections.json', 'checks/manual-tests.json'):
+            with self.subTest(missing=name):
+                self.generate()
+                (self.local/name).unlink()
+                with patch('scp.inventory.load_catalog', return_value=self.catalog):
+                    write_inventories(self.root)
+                text = (self.domain/'01_assemblies/INVENTORY.md').read_text()
+                self.assertIn(f'Unverified; {name} missing', text)
+                self.assertNotIn('Saved PATH: 2/2 confirmed', text)
+        self.readme.write_text('# No matrix opted in\n')
+        self.assertIn('No connection matrix declared', self.generate())
 
 
 if __name__=='__main__':unittest.main()

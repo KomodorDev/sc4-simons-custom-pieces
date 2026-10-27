@@ -13,10 +13,10 @@ import math
 from scp.dbpf import require
 from scp.models import parse_s3d
 from scp.render_meshes import assert_render_budget
-from .directional_t_verify import _journeys, _world_triangles, audit_visible_rails, _TURN_LIMITS
+from .directional_t_verify import _journeys, _world_triangles, audit_visible_rails, _TURN_LIMITS, _resample
 from .hsr_mesh_verify import (
     audit_bed_overlaps, audit_crossings, audit_supports, measure_journey_quality,
-    _bed_index, _height, _clip_height, _component_union_area,
+    _bed_index, _height, _clip_height, _component_union_area, _coalesce_grid_cuts,
 )
 from .directional_t_verify import _area, _intersection_polygon
 from .interchange_verify import (
@@ -33,33 +33,21 @@ _COMMON = {
 }
 
 CONTRACTS = {
-    'hsr_component_l2_compact_fan_diverge': {
-        **_COMMON, 'footprint': (3, 1), 'cost': 300,
-        'cells': [(0, 0), (1, 0), (2, 0)], 'structural_cells': [],
-        'ports': {'Win': (-8., -2., 15.5), 'Wout': (-8., 2., 15.5),
-                  'Eout': (40., -2., 15.5), 'Ein': (40., 2., 15.5),
-                  'Nout': (-.562689, 8., 15.5)},
-        'port_vectors': {'Win': (1., 0.), 'Wout': (-1., 0.),
-                         'Eout': (1., 0.), 'Ein': (-1., 0.),
-                         'Nout': (-.912177123445, .409796163310)},
-        'movements': [('Win', 'Eout'), ('Ein', 'Wout'), ('Ein', 'Nout')],
-        'support_centres_xz': [(0., 0.), (16., 0.), (32., 0.)],
-        'custom_curve_ports': ('Nout',),
-    },
     'hsr_component_l2_paired_fan_compact_join': {
         **_COMMON, 'footprint': (7, 5), 'cost': 1500,
-        'cells': [(3, 0), (3, 1), (2, 2), (3, 2), (4, 2), (2, 3), (3, 3),
-                  (4, 3), (0, 4), (1, 4), (2, 4), (3, 4), (4, 4), (5, 4), (6, 4)],
-        'structural_cells': [(2, 2), (4, 2), (0, 4), (3, 4), (6, 4)],
+        'cells': [(3, 0), (3, 1), (3, 2), (2, 3), (3, 3), (4, 3),
+                  (1, 4), (2, 4), (3, 4), (4, 4), (5, 4)],
+        'structural_cells': [(2, 3), (4, 3)],
         'ports': {'Nin': (46., 8., 15.5), 'Nout': (50., 8., 15.5),
-                  'Wout': (16.562689, -72., 15.5), 'Ein': (79.437311, -72., 15.5)},
+                  'Wout': (22.398519, -72., 15.5), 'Ein': (73.601481, -72., 15.5)},
         'port_vectors': {'Nin': (0., -1.), 'Nout': (0., 1.),
-                         'Wout': (-.912177123445, -.409796163310),
-                         'Ein': (-.912177123445, .409796163310)},
+                         'Wout': (-.927254808965, -.374430927211),
+                         'Ein': (-.927254808965, .374430927211)},
         'movements': [('Nin', 'Wout'), ('Ein', 'Nout')],
-        'support_centres_xz': [(48., 0.), (48., 16.), (48., 32.), (40., 46.),
-                               (56., 46.), (32., 64.), (64., 64.)],
+        'support_centres_xz': [(48., 0.), (48., 16.), (48., 32.), (48., 48.),
+                               (32., 64.), (64., 64.)],
         'custom_curve_ports': ('Wout', 'Ein'),
+        'geometric_custom_rail_wedges': True,
     },
 }
 
@@ -80,34 +68,109 @@ def _clip_attribute_polygon(polygon, value, positive):
     return result
 
 
-def clip_custom_port_rail_caps(triangles, contract):
-    """Exclude only finite, literally declared custom-cut rail extensions.
+def _custom_port_rail_wedges(contract):
+    """Derive each finite-PATH termination wedge from its actual city boundary.
 
-    A tile boundary cuts a curved track obliquely. Its textured rail ribbon
-    extends beyond the perpendicular plane through the last owned PATH point.
-    Remove that extension only inside a 2.6 m deep, 5.2 m wide oriented cap.
-    This does not alter the saved model, PATH, native matching distances or
-    the strict complete-assembly rail audit.
+    The rail audit already permits stripe centroids at most 1.10 m from a
+    used PATH. At an oblique cut, that same strip intersects the owner's
+    side of the tile edge beyond the perpendicular PATH-end plane. Its
+    maximum length follows from those half-planes; it is not a depth limit.
     """
-    caps = []
+    require('inherited_custom_cap' not in contract,
+            'Inherited custom-cut model exceptions cannot use generic geometric rail wedges')
+    owned = set(contract['cells'])
+    edges = (('west', -1., 0.), ('east', 1., 0.),
+             ('north', 0., -1.), ('south', 0., 1.))
+    result = []
     for label in contract['custom_curve_ports']:
-        x, north, _ = contract['ports'][label]
+        px, north, _ = contract['ports'][label]
+        pz = -north
+        boundaries = []
+        for col, row in owned:
+            for edge, nx, nz in edges:
+                if (col+int(nx), row+int(nz)) in owned:
+                    continue
+                cx, cz = 16.*col+8.*nx, 16.*row+8.*nz
+                if (abs((px-cx)*nx+(pz-cz)*nz) <= 2e-6
+                        and abs(-(px-cx)*nz+(pz-cz)*nx) <= 8.+2e-6):
+                    boundaries.append(((col, row), edge, nx, nz))
+        require(len(boundaries) == 1, 'Custom rail cut needs one literal exposed source edge')
+        cell, edge, nx, nz = boundaries[0]
         east, direction_north = contract['port_vectors'][label]
         norm = math.hypot(east, direction_north)
         sign = -1. if label.endswith('in') else 1.
         dx, dz = sign*east/norm, -sign*direction_north/norm
-        px, pz = x, -north
-        def longitudinal(point, px=px, pz=pz, dx=dx, dz=dz):
-            return (point[0]-px)*dx+(point[2]-pz)*dz
-        def transverse(point, px=px, pz=pz, dx=dx, dz=dz):
-            return -(point[0]-px)*dz+(point[2]-pz)*dx
+        outward = dx*nx+dz*nz
+        lateral = -dz*nx+dx*nz
+        require(outward > 0., 'Custom rail cut tangent must leave its declared boundary')
+        half = 1.10  # Exactly the unchanged visible-stripe matching envelope.
+        depth = half*abs(lateral)/outward
+        transverse_end = -math.copysign(half, lateral) if lateral else 0.
+        corners = [(px, pz), (px-transverse_end*dz, pz+transverse_end*dx),
+                   (px+depth*dx-transverse_end*dz, pz+depth*dz+transverse_end*dx)]
+        result.append({'label': label, 'source_cell': list(cell), 'edge': edge,
+                       'origin': (px, pz), 'tangent': (dx, dz), 'normal': (nx, nz),
+                       'half_width_m': half, 'maximum_depth_m': depth,
+                       'bounds': (min(p[0] for p in corners), max(p[0] for p in corners),
+                                  min(p[1] for p in corners), max(p[1] for p in corners))})
+    return result
+
+
+def _literal_custom_port_rail_caps(contract):
+    """Preserve the original 2.6 m generic mask for unchanged components."""
+    caps = []
+    for label in contract['custom_curve_ports']:
+        px, north, _ = contract['ports'][label]
+        east, direction_north = contract['port_vectors'][label]
+        norm = math.hypot(east, direction_north)
+        sign = -1. if label.endswith('in') else 1.
+        dx, dz, pz = sign*east/norm, -sign*direction_north/norm, -north
+        longitudinal = lambda p, px=px, pz=pz, dx=dx, dz=dz: (p[0]-px)*dx+(p[2]-pz)*dz
+        transverse = lambda p, px=px, pz=pz, dx=dx, dz=dz: -(p[0]-px)*dz+(p[2]-pz)*dx
         corners = [(px+t*dx-s*dz, pz+t*dz+s*dx) for t in (0., 2.6) for s in (-2.6, 2.6)]
         bounds = (min(p[0] for p in corners), max(p[0] for p in corners),
                   min(p[1] for p in corners), max(p[1] for p in corners))
-        planes = (longitudinal, lambda point, f=longitudinal: 2.6-f(point),
-                  lambda point, f=transverse: f(point)+2.6,
-                  lambda point, f=transverse: 2.6-f(point))
+        planes = (longitudinal, lambda p, f=longitudinal: 2.6-f(p),
+                  lambda p, f=transverse: f(p)+2.6,
+                  lambda p, f=transverse: 2.6-f(p))
         caps.append((bounds, planes))
+    return caps
+
+
+def clip_custom_port_rail_caps(triangles, contract):
+    """Use an explicitly selected geometric wedge, or the original generic cap.
+
+    Only the redesigned fan and opposed merge opt in to the exact owned
+    boundary wedges. Unchanged components retain their original 2.6 m mask;
+    inherited 2.65 m exceptions remain in their exact-model-bound wrapper.
+    Whole-assembly rail verification stays fully unclipped.
+    """
+    geometric = contract.get('geometric_custom_rail_wedges', False)
+    caps = [] if geometric else _literal_custom_port_rail_caps(contract)
+    for wedge in _custom_port_rail_wedges(contract) if geometric else ():
+        if wedge['maximum_depth_m'] == 0.:
+            continue
+        px, pz = wedge['origin']
+        dx, dz = wedge['tangent']
+        nx, nz = wedge['normal']
+        half = wedge['half_width_m']
+        longitudinal = lambda p, px=px, pz=pz, dx=dx, dz=dz: (p[0]-px)*dx+(p[2]-pz)*dz
+        transverse = lambda p, px=px, pz=pz, dx=dx, dz=dz: -(p[0]-px)*dz+(p[2]-pz)*dx
+        inward = lambda p, px=px, pz=pz, nx=nx, nz=nz: -(p[0]-px)*nx-(p[2]-pz)*nz
+        xmin, xmax, zmin, zmax = wedge['bounds']
+        for column, row in contract['cells']:
+            left, right, top, bottom = 16.*column-8., 16.*column+8., 16.*row-8., 16.*row+8.
+            bounds = max(xmin, left), min(xmax, right), max(zmin, top), min(zmax, bottom)
+            if bounds[0] >= bounds[1] or bounds[2] >= bounds[3]:
+                continue
+            planes = (longitudinal, inward,
+                      lambda p, f=transverse, half=half: f(p)+half,
+                      lambda p, f=transverse, half=half: half-f(p),
+                      lambda p, left=left: p[0]-left,
+                      lambda p, right=right: right-p[0],
+                      lambda p, top=top: p[2]-top,
+                      lambda p, bottom=bottom: bottom-p[2])
+            caps.append((bounds, planes))
     result, affected = [], 0
     for triangle in triangles:
         polygons = [list(triangle)]
@@ -138,11 +201,18 @@ def audit_visible_rails_at_custom_cuts(triangles, records, contract):
     clipped, affected = clip_custom_port_rail_caps(triangles, contract)
     report = audit_visible_rails(clipped, records)
     report.pop('unused_visible_native_rails', None)
-    return {**report, 'unused_visible_rails_outside_declared_custom_caps': False,
+    report = {**report, 'unused_visible_rails_outside_declared_custom_caps': False,
             'custom_port_cap_labels': list(contract['custom_curve_ports']),
-            'custom_port_cap_depth_m': 2.6, 'custom_port_cap_width_m': 5.2,
             'model_polygons_cut_at_custom_caps': affected,
             'custom_cap_extensions_require_strict_actual_assembled_path_audit': True}
+    if contract.get('geometric_custom_rail_wedges', False):
+        report['custom_port_boundary_wedges'] = [
+            {key: wedge[key] for key in ('label', 'source_cell', 'edge', 'half_width_m', 'maximum_depth_m')}
+            for wedge in _custom_port_rail_wedges(contract)]
+        report['custom_port_caps_clipped_to_literal_owned_cells'] = True
+    else:
+        report.update(custom_port_cap_depth_m=2.6, custom_port_cap_width_m=5.2)
+    return report
 
 
 def audit_bed_corridors(triangles, records, *, owned_cells=None):
@@ -238,59 +308,6 @@ def _contract(spec):
     return contract
 
 
-def audit_native_mainline_sections(triangles):
-    """Measure both compact core interfaces against the complete native profile.
-
-    At the exact replacement seam the native slab is 15 m wide, with one
-    unobstructed interior between its two outside parapets. The branch wing
-    starts one micrometre inside its owner. Saved native cap ends round inward
-    by 0.48 micrometres, so sample 0.75 micrometres inside the seam with a 0.01
-    micrometre intersection tolerance. This includes native float32 rounding
-    while excluding the intentional branch wing farther inside its owner.
-    """
-    sections = [(tuple((z, height, x, u, v) for x, height, z, u, v in tri))
-                for tri in triangles]
-    def intervals(station, height, floor):
-        found = []
-        for triangle in sections:
-            if not all(abs(point[1]-height) < .0001 for point in triangle):
-                continue
-            if floor and not all(.2158 <= point[3] <= 1.0042 for point in triangle):
-                continue
-            xs = []
-            for a, b in zip(triangle, triangle[1:]+triangle[:1]):
-                if abs(a[2]-station) <= 1e-8:
-                    xs.append(a[0])
-                if min(a[2], b[2]) < station < max(a[2], b[2]):
-                    t = (station-a[2])/(b[2]-a[2])
-                    xs.append(a[0]+t*(b[0]-a[0]))
-            if len(xs) >= 2 and max(xs)-min(xs) > 1e-7:
-                found.append((min(xs), max(xs)))
-        merged = []
-        for first, last in sorted(found):
-            if merged and first <= merged[-1][1]+.00005:
-                merged[-1] = merged[-1][0], max(last, merged[-1][1])
-            else:
-                merged.append((first, last))
-        return merged
-    checked = 0
-    for station in (-8.+.00000075, 40.-.00000075):
-        for height, floor, expected in (
-            (16.189326, True, [(-7.5, 7.5)]),
-            (14.01067, False, [(-7.5, 7.5)]),
-            (16.98933, False, [(-7.5, -5.9965477), (5.9965477, 7.5)]),
-        ):
-            actual = intervals(station, height, floor)
-            require(len(actual) == len(expected) and all(
-                abs(a-c) <= .0001 and abs(b-d) <= .0001
-                for (a, b), (c, d) in zip(actual, expected)),
-                f'Compact fan native mainline section differs: x={station}, height={height}, '
-                f'actual={actual}, expected={expected}')
-            checked += 1
-    return {'native_mainline_sections_checked': checked,
-            'native_slab_width_m': 15., 'native_parapet_inner_offsets_m': [-5.9965477, 5.9965477]}
-
-
 def check_paths(resources, spec, donors=None):
     contract = _contract(spec)
     records = _encoded_routes(resources, spec, contract)
@@ -302,24 +319,23 @@ def check_paths(resources, spec, donors=None):
         # Custom curved cuts retain the existing non-zero curvature. They
         # are matching interfaces, not native straight approaches. All other
         # established radius, tangent and curvature-change limits still apply.
-        custom = (spec['recipe'] == 'hsr_component_l2_paired_fan_compact_join'
-                  or movement == ('Ein', 'Nout'))
-        limits = {**_TURN_LIMITS,
-                  'max_endpoint_curvature_per_m': 1./24. if custom else .0005}
+        limits = {**_TURN_LIMITS, 'max_endpoint_curvature_per_m': 1./24.}
         quality['>'.join(movement)] = measure_journey_quality(points, limits)
+        sampled, _, _ = _resample(_coalesce_grid_cuts(points))
+        native_curvatures = {}
+        for label, end in ((movement[0], sampled[:3]), (movement[1], sampled[-3:])):
+            if label in contract['custom_curve_ports']:
+                continue
+            a, b, c = end
+            product = math.dist(a[:2], b[:2])*math.dist(b[:2], c[:2])*math.dist(a[:2], c[:2])
+            curvature = abs(2.*((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])))/product
+            require(curvature <= .0005+2e-6,
+                    f'Compact fan native endpoint does not ease into its straight: {label}, {curvature}')
+            native_curvatures[label] = curvature
+        quality['>'.join(movement)]['native_endpoint_curvature_per_m'] = native_curvatures
     for _, _, points in records:
         require(all(abs(point[2]-15.5) <= 2e-6 for point in points),
                 'Compact fan route must remain flat at the native L2 height')
-    if spec['recipe'] == 'hsr_component_l2_compact_fan_diverge':
-        for movement, offset in ((('Win', 'Eout'), -2.), (('Ein', 'Wout'), 2.)):
-            require(all(abs(point[1]-offset) <= 2e-6 for point in journeys[movement]),
-                    'Compact fan mainline departs from its literal native straight')
-        branch = journeys['Ein', 'Nout']
-        require(branch[0] == (40., 2., 15.5) and branch[-1] == (-.562689, 8., 15.5),
-                'Compact fan branch endpoints differ')
-        require(all(b[0] <= a[0]+2e-6 and b[1] >= a[1]-2e-6
-                    for a, b in zip(branch, branch[1:])),
-                'Compact fan branch reverses or loops inside the compact core')
     return {'tile_count': len(contract['cells']), 'encoded_routes_checked': len(records),
             'external_ports_checked': ports, 'permitted_movements_checked': movements,
             'literal_port_tangents_checked': len(headings),
@@ -352,8 +368,6 @@ def _cached_models(spec_json, immutable):
     report.update(audit_bed_overlaps(triangles))
     report.update(audit_visible_rails_at_custom_cuts(triangles, records, contract))
     report.update(audit_supports(triangles, contract))
-    if spec['recipe'] == 'hsr_component_l2_compact_fan_diverge':
-        report.update(audit_native_mainline_sections(triangles))
     budgets = [assert_render_budget(parse_s3d(raw)) for key, raw in immutable if key[:2] == S3D]
     report.update(render_budget_models_checked=len(budgets), render_group_budget_checked=True)
     return json.dumps(report, sort_keys=True)

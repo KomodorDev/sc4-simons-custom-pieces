@@ -46,14 +46,15 @@
       "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
     }
   ],
-  "environment_policy": "Every result applies only to its recorded platform, game version and NAM profile.",
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
   "fingerprints": {
     "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-    "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
     "effect:hsr-component-lower-paired-straight:ea5118b0-ea5118b1-7f508ff5": "063572a3f710031808c980bc516e23327384736394cc2d2f6dbacc3bd03846e9",
     "exemplar:hsr-component-lower-paired-straight:6534284a-a8434037-7f508000": "4cbfbc0bc05614651142affe064fc86fd09aeb98820855001a5cf09a48e76dbd",
     "graph:hsr-component-lower-paired-straight": "aef07cafbb11641f21aa09d2f6feb0741faa11762f0de6c804cbb87cbf8324ac",
-    "image:hsr-component-lower-paired-straight:canonical-southeast": "64c920145acf685579b206dc39761df873ed52eb6163ed0823ecf2fc714cd84d",
+    "image:hsr-component-lower-paired-straight:canonical-southeast": "f5536c084662c85549175bff5529981214573898cdfc0c3dfd4757b7979e8ca3",
+    "image:hsr-component-lower-paired-straight:canonical-top": "b242e582b06a31e72e85cbb508b56ea0a20506db0b5d9525c4ee41db8952628a",
+    "image:hsr-component-lower-paired-straight:connection-overview": "7c18c7e7d48d57f7c29a0ab331a1c485f47f3e04d186c631a1d15b4793c4e002",
     "interface:hsr-component-lower-paired-straight:Nin": "f93e0ec28dddf5bb75eb7f6ceea224b3fbfff14b61283dbd393c27df7e98d801",
     "interface:hsr-component-lower-paired-straight:Nout": "5b6e5ac35ef5cecfcd7f0cf6c6b5a277e0ba6cc51ba47567c8a422f3c599337c",
     "interface:hsr-component-lower-paired-straight:Sin": "1f3e5acd667b0251b6654324d124b64562c4270cb635621e7af398de1d3a06bc",
@@ -64,13 +65,7 @@
     "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
     "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
     "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508ff5": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
     "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
-    "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
     "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
     "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
     "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
@@ -87,7 +82,19 @@
         "subject_id": "hsr-component-lower-paired-straight"
       },
       "applicability": "applicable",
-      "observations": [],
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "c1e9f0c8b747b2f3a94c27d0365a9d49e0aa06ab372f5be49f366babdd43d3f4"
+        }
+      ],
       "dependency_snapshot": "c1e9f0c8b747b2f3a94c27d0365a9d49e0aa06ab372f5be49f366babdd43d3f4",
       "dependency_ref": "dab7013255f2ac3f33dce77d53099a2aebe9c0972c197b08bb92bbc657758fa0"
     },
@@ -99,27 +106,78 @@
         "subject_id": "hsr-component-lower-paired-straight"
       },
       "applicability": "applicable",
-      "observations": [],
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Scoped actual-PATH extraction and independent connector verifier",
+          "confirmed_at": "2026-10-27",
+          "evidence": [
+            "evidence/documentation-refresh.json",
+            "connector-data.json",
+            "connections.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "6b5f2ac4fa321729810f0d71b1b3e9eefbf1edbe9cc7ba2a038211f0ad0198bb"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "6b5f2ac4fa321729810f0d71b1b3e9eefbf1edbe9cc7ba2a038211f0ad0198bb"
+        }
+      ],
       "dependency_snapshot": "6b5f2ac4fa321729810f0d71b1b3e9eefbf1edbe9cc7ba2a038211f0ad0198bb",
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
       "id": "preview_review-02941c608575aef5939c",
       "kind": "preview_review",
-      "description": "Inspect this exact preview for tracks, walls, piers, seams and shadows.",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "image_key": "image:hsr-component-lower-paired-straight:canonical-southeast"
       },
       "applicability": "applicable",
       "observations": [],
-      "dependency_snapshot": "498605ad6878c314bd86c5eeb343678cf1ec53260501ad0f4b04eb767c019eb7",
-      "dependency_ref": "7362cacdd31cf1c6c3e57058a1e9fd778248c8ed520bbf9a44808d17a8e63110"
+      "dependency_snapshot": "85afc38c9fcb18fbb6927ec0f590981e5da4d7bc1d89edfbb3992842bdbee571",
+      "dependency_ref": "83fbab95598dafac7b44828ef5030d6fa529cb2862b0719d52d41223b73ad7eb"
+    },
+    {
+      "id": "preview_review-0539e6f6858d0b8908f8",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "image_key": "image:hsr-component-lower-paired-straight:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "47b5508214b6a832abc75c65f396ee8370c778dddeb50eee4db0974402f478aa",
+      "dependency_ref": "1493aa1d08481bcb6ffb3744bbc5730ad70b59d2ae99d6d97e1c6223c8c3be59"
+    },
+    {
+      "id": "preview_review-3ede0eb521ea54e43601",
+      "kind": "preview_review",
+      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "image_key": "image:hsr-component-lower-paired-straight:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8621c929fbeaa6b9c644ce3e2f46d6bdfbed57ab8708dde63e8d4d2c5de9dfe8",
+      "dependency_ref": "9ca7bf2670b775fb72ae362bf4a5ae9ef7f0183e3ac1279da01675e9513acb3e"
     },
     {
       "id": "in_game_render-33b06929a6d90240c7ca",
       "kind": "in_game_render",
-      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 0
@@ -158,7 +216,7 @@
     {
       "id": "in_game_save_reload-33b06929a6d90240c7ca",
       "kind": "in_game_save_reload",
-      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 0
@@ -171,7 +229,7 @@
     {
       "id": "in_game_render-cc1af715d656b28f54bb",
       "kind": "in_game_render",
-      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 90
@@ -210,7 +268,7 @@
     {
       "id": "in_game_save_reload-cc1af715d656b28f54bb",
       "kind": "in_game_save_reload",
-      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 90
@@ -223,7 +281,7 @@
     {
       "id": "in_game_render-568b1caaf435a32ff291",
       "kind": "in_game_render",
-      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 180
@@ -262,7 +320,7 @@
     {
       "id": "in_game_save_reload-568b1caaf435a32ff291",
       "kind": "in_game_save_reload",
-      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 180
@@ -275,7 +333,7 @@
     {
       "id": "in_game_render-9873412f9f8be0255400",
       "kind": "in_game_render",
-      "description": "Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 270
@@ -314,7 +372,7 @@
     {
       "id": "in_game_save_reload-9873412f9f8be0255400",
       "kind": "in_game_save_reload",
-      "description": "Save, quit, reload and inspect the placement and its paths.",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "rotation_ccw_degrees": 270
@@ -325,9 +383,9 @@
       "dependency_ref": "dab7013255f2ac3f33dce77d53099a2aebe9c0972c197b08bb92bbc657758fa0"
     },
     {
-      "id": "in_game_journey-06466a17ee6b6d84dab0",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_route_query-06466a17ee6b6d84dab0",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Nin>Sout",
@@ -343,9 +401,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-8b92b636a69df8add9aa",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-06466a17ee6b6d84dab0",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "497967cb3e91199a28ec04b0cfea0ee6faf5e3878270d8da28fc9a8ebb1ed87c",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-8b92b636a69df8add9aa",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Nin>Sout",
@@ -361,9 +437,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-7498b67eef5ca59e0d27",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-8b92b636a69df8add9aa",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0de9ab59daa4c4ed7b9657c93510429221ca187fbf1efba748956d7f697c51bc",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-7498b67eef5ca59e0d27",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Nin>Sout",
@@ -379,9 +473,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-a25f075c170c5d9de330",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-7498b67eef5ca59e0d27",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cafaee4d3c533e77c877941905b716431df56f960fc6d5aafeed6b4f22c2697d",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-a25f075c170c5d9de330",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Nin>Sout",
@@ -397,9 +509,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-359af6bdd34b9eca0d1f",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-a25f075c170c5d9de330",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aee61b5e52b3f72c6232c4bff358608fc1baeb8693eae60dd5185970aadb64bb",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-359af6bdd34b9eca0d1f",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Sin>Nout",
@@ -415,9 +545,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-eddd6f88b43b05d0af0c",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-359af6bdd34b9eca0d1f",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d7cd707d2b381b558234117b38c70a29c00ac4526cc40375f7df1933ca7ab519",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-eddd6f88b43b05d0af0c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Sin>Nout",
@@ -433,9 +581,27 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-7fd9e7def85f452e4cbc",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-eddd6f88b43b05d0af0c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cac2f174149c4439a1d675cee84b88c6672beb581900630492ffdde43f74fe00",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-7fd9e7def85f452e4cbc",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Sin>Nout",
@@ -451,9 +617,45 @@
       "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
     },
     {
-      "id": "in_game_journey-32b3a4420c6ca4c0e61e",
-      "kind": "in_game_journey",
-      "description": "Run the declared journey in this direction using its service network.",
+      "id": "in_game_visible_travel-7fd9e7def85f452e4cbc",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4c598c4f5524efc2b33c047452580a766878f069692f03d47f78a3c67724c123",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_route_query-32b3a4420c6ca4c0e61e",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-lower-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7044557420ea25c632297033d85ffca368bee2a092094549d34985f1a6283542",
+      "dependency_ref": "4c8527b8832d459614fd4db326547767a835ad3359b28de3023872ea75ac90f2"
+    },
+    {
+      "id": "in_game_visible_travel-32b3a4420c6ca4c0e61e",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
       "scope": {
         "subject_id": "hsr-component-lower-paired-straight",
         "journey_id": "7:Sin>Nout",
@@ -656,8 +858,14 @@
       "interface:hsr-component-lower-paired-straight:Sout": "acd944b65d675dce2ac71d56530d82af26835b497ff4cb70f1c916f98ea99aad",
       "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435"
     },
-    "7362cacdd31cf1c6c3e57058a1e9fd778248c8ed520bbf9a44808d17a8e63110": {
-      "image:hsr-component-lower-paired-straight:canonical-southeast": "64c920145acf685579b206dc39761df873ed52eb6163ed0823ecf2fc714cd84d"
+    "83fbab95598dafac7b44828ef5030d6fa529cb2862b0719d52d41223b73ad7eb": {
+      "image:hsr-component-lower-paired-straight:canonical-southeast": "f5536c084662c85549175bff5529981214573898cdfc0c3dfd4757b7979e8ca3"
+    },
+    "1493aa1d08481bcb6ffb3744bbc5730ad70b59d2ae99d6d97e1c6223c8c3be59": {
+      "image:hsr-component-lower-paired-straight:canonical-top": "b242e582b06a31e72e85cbb508b56ea0a20506db0b5d9525c4ee41db8952628a"
+    },
+    "9ca7bf2670b775fb72ae362bf4a5ae9ef7f0183e3ac1279da01675e9513acb3e": {
+      "image:hsr-component-lower-paired-straight:connection-overview": "7c18c7e7d48d57f7c29a0ab331a1c485f47f3e04d186c631a1d15b4793c4e002"
     },
     "cd1342aa68962325add969554fe0f3de88abbe328cf8d448f7ed2c0811853926": {
       "effect:hsr-component-lower-paired-straight:ea5118b0-ea5118b1-7f508ff5": "063572a3f710031808c980bc516e23327384736394cc2d2f6dbacc3bd03846e9",
@@ -672,114 +880,6 @@
       "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
       "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
       "shadow:hsr-component-lower-paired-straight:7ab50e44-2bc2759a-7f508004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
-    },
-    "1fd0b9b8365e0505b4ba312e98f864f3389d667481b78414c43ac61da6809895": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "interface:hsr-component-lower-paired-straight:Sout": "acd944b65d675dce2ac71d56530d82af26835b497ff4cb70f1c916f98ea99aad",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435"
-    },
-    "9e81c4cdc74dfc55a7dfc4536d10944f8af6df9f79e1fb8d2431a363c1e07c7d": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
-      "interface:hsr-component-lower-paired-straight:Sout": "acd944b65d675dce2ac71d56530d82af26835b497ff4cb70f1c916f98ea99aad",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
-      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3"
-    },
-    "ee85c2f2de841f1f76550b11c91190c6a8dc6b569de95e1c8b6fb5995986b78e": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "interface:hsr-component-lower-paired-straight:Nin": "f93e0ec28dddf5bb75eb7f6ceea224b3fbfff14b61283dbd393c27df7e98d801",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435"
-    },
-    "217c5fb49eb07b0cf308524eca1855affbdfd21a499db5eb9d937293d291ff82": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
-      "interface:hsr-component-lower-paired-straight:Nin": "f93e0ec28dddf5bb75eb7f6ceea224b3fbfff14b61283dbd393c27df7e98d801",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
-      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3"
-    },
-    "f60a217cd589ec85597523b213ebdbec83e90ed64963e044849821e080ef2f8d": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "interface:hsr-component-lower-paired-straight:Sin": "1f3e5acd667b0251b6654324d124b64562c4270cb635621e7af398de1d3a06bc",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435"
-    },
-    "606d47bfff6be7885638691e0eb6f13545db58b947887e480932152b9d77152a": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
-      "interface:hsr-component-lower-paired-straight:Sin": "1f3e5acd667b0251b6654324d124b64562c4270cb635621e7af398de1d3a06bc",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
-      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3"
-    },
-    "e182df83bb51fa351df9c0cb419ec9bd85fa3ea7a77a8e54a3b2cda1e98abe7c": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "interface:hsr-component-lower-paired-straight:Nout": "5b6e5ac35ef5cecfcd7f0cf6c6b5a277e0ba6cc51ba47567c8a422f3c599337c",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435"
-    },
-    "52a27e55ab5ce91c369fe89f88d626fbb8fe55b3b77950cbd1e84a9b018bdcbc": {
-      "construction:hsr-component-lower-paired-straight": "fcdb1c4be1ecd029d9c71b918fb1493a72291aec7906661939c6f7a6c605d612",
-      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
-      "interface:hsr-component-lower-paired-straight:Nout": "5b6e5ac35ef5cecfcd7f0cf6c6b5a277e0ba6cc51ba47567c8a422f3c599337c",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508000": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508001": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508002": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508003": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-lower-paired-straight:5ad0e817-badb57f1-7f508004": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
-      "path:hsr-component-lower-paired-straight:296678f7-a966883f-7f508000": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
-      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3"
     }
   }
 }

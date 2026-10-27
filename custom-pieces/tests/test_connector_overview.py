@@ -77,6 +77,40 @@ class ConnectorOverviewTests(unittest.TestCase):
         self.assertEqual([member["outward_heading_degrees"] for member in record["members"]], [180., 135.])
         self.assertIsNone(record["channel_spacing_m"])
 
+    def test_undeclared_section_origin_never_becomes_a_centred_single_curved_cut(self):
+        piece = resolved_piece()
+        group = piece['groups'][0]
+        group.update(anchor_m=None, section_offset_m=None)
+        group['members'] = group['members'][:1]
+        group['channels'] = group['channels'][:1]
+        group['members'][0]['tangent'] = [2**-.5, 2**-.5]
+        record = overview.build_records(piece)[0]
+        self.assertIsNone(record['anchor_enh_m'])
+        self.assertIsNone(record['centred_on_tile_boundary'])
+        self.assertIsNone(record['members'][0]['section_frame_offset_m'])
+        self.assertEqual(record['marker_enh_m'], group['members'][0]['endpoint_m'])
+        self.assertEqual(overview.section_origin_label(record), 'Not declared; see member endpoints')
+        self.assertEqual(overview.section_offset_label(record), 'Not declared')
+        self.assertEqual(overview.member_offset_label(record['members'][0]), 'Not declared')
+        card = overview.make_boundary_cards([record])[0]
+        overview.render_boundary_card(card, 932, font)
+        rows = {row['label']: row['value'] for row in card['field_rows']}
+        self.assertEqual(rows['Centring / section offset'], 'Not declared')
+        evidence = {'groups': [record], 'boundary_cards': [{**card, 'group_ids': [record['id']]}],
+                    'conventions': []}
+        text = overview.markdown_overview(evidence)
+        self.assertIn('| Centring / section offset | Not declared |', text)
+        self.assertNotIn('Centred; 0', text)
+        self.assertIn('Not declared; see member endpoints', text)
+
+    def test_undeclared_paired_section_does_not_infer_a_running_convention(self):
+        piece = resolved_piece()
+        piece['groups'][0].update(anchor_m=None, section_offset_m=None)
+        record = overview.build_records(piece)[0]
+        self.assertEqual(overview.arrangement_text(record),
+                         ('1 incoming; 1 outgoing', 'See member directions'))
+        self.assertEqual(record['channel_spacing_m'], 4.)
+
     def test_actual_pieces_keep_six_groups_twelve_members_and_custom_height(self):
         from scp.connector_metadata import load_library
         root = Path(__file__).resolve().parents[1]

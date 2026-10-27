@@ -153,7 +153,7 @@ def _selected(base, scene):
     return [by_id[identifier] for identifier in identifiers]
 
 
-def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None):
+def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expected_cycle_icon=None):
     from .build import RUL0, NETWORK_INI
     from .rul0 import with_feature_sequence
     from .menu_experiment_resources import build_menu_experiment_resources
@@ -171,7 +171,7 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None):
     cycle = {**layout['cycle_button'], 'target_id': pieces[0]['menu']['id']}
     menu_resources, audit = build_menu_experiment_resources(
         strict_dbpf(menu), pieces, cycle_button=cycle, submenu=layout.get('submenu'),
-        cycle_icon=cycle_icon)
+        cycle_icon=cycle_icon, expected_cycle_icon=expected_cycle_icon)
     return pack_dbpf(controller_resources), pack_dbpf(menu_resources), composition, audit, pieces
 
 
@@ -372,6 +372,10 @@ def verify_menu_experiment(output, write_report=True):
     proof_root = PROOF if experiment['kind'] == KIND else ASSEMBLY_PROOF
     expected = {'manifest': f'{proof_root}/manifest.json', 'controller': f'{proof_root}/controller.proof',
                 'menu': f'{proof_root}/menu.proof', 'layout': f'{proof_root}/layout.json', 'assembly': f'{proof_root}/assembly.json'}
+    # New candidates freeze their source-derived silhouette. Historical
+    # candidates without this proof retain exact generic-cycle validation.
+    if isinstance(proof, dict) and 'icon' in proof:
+        expected['icon'] = f'{proof_root}/icon.png'
     require(isinstance(proof, dict) and set(proof) == set(expected), 'Incomplete experiment source evidence')
     raw = {}
     for key, name in expected.items():
@@ -392,7 +396,8 @@ def verify_menu_experiment(output, write_report=True):
     cycle_key = (*ICON, number(layout['cycle_button']['id']))
     require(cycle_key in current_menu, 'Missing assembly cycle icon resource')
     controller, menu, composition, audit, _ = _transformed(
-        base, raw['controller'], raw['menu'], layout, scene, cycle_icon=current_menu[cycle_key])
+        base, raw['controller'], raw['menu'], layout, scene, cycle_icon=current_menu[cycle_key],
+        expected_cycle_icon=raw.get('icon'))
     require(manifest == _expected_manifest(base, layout, scene, proof, controller, menu, composition, audit),
             'Experimental manifest differs from the exact allowed menu transformation')
     allowed = {'manifest.json', 'verification.json', 'input-audit.json'} | {
@@ -462,26 +467,79 @@ def _assembly_icon_path(root, assembly):
     return path
 
 
+def _assembly_icon_routes(assembly, catalog):
+    """Ask the owning domain for its placed source routes, without game inputs."""
+    from .providers import domain_module
+    adapter = domain_module({'domain': assembly['domain']}, 'icons')
+    require(hasattr(adapter, 'assembly_icon_routes'),
+            f'{assembly["domain"]}: no source-derived assembly icon adapter')
+    return adapter.assembly_icon_routes(assembly['scene'], catalog['pieces'])
+
+
+def _assembly_icon_network(assembly):
+    """Require the owning domain's declared network instead of guessing HSR."""
+    from .providers import domain_module
+    adapter = domain_module({'domain': assembly['domain']}, 'icons')
+    require(hasattr(adapter, 'assembly_icon_network'),
+            f'{assembly["domain"]}: no declared assembly icon network adapter')
+    return adapter.assembly_icon_network(assembly['id'])
+
+
 def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
-    """Refresh only canonical icons for the registered assemblies in one domain."""
+    """Refresh canonical assembly icons and their source-schematic provenance."""
+    from . import menu_experiment_resources
     from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
     root = Path(project_root).resolve()
     catalog = load_catalog(root)
     require(domain_id in catalog['domains'], 'Unknown assembly icon domain')
     assemblies = [assembly for assembly in catalog['_assemblies'] if assembly['domain'] == domain_id]
     targets = [_assembly_icon_path(root, assembly) for assembly in assemblies]
-    raw = make_assembly_icon()
-    for path in targets:
+    # Resolve every assembly before changing any icon; malformed source data
+    # must not leave a partly refreshed selection behind.
+    routes = [_assembly_icon_routes(assembly, catalog) for assembly in assemblies]
+    networks = [_assembly_icon_network(assembly) for assembly in assemblies]
+    artworks = [make_assembly_icon(points, network_label=network)
+                for points, network in zip(routes, networks)]
+    evidence_paths = []
+    for assembly, points, network, path, raw in zip(assemblies, routes, networks, targets, artworks):
+        current = None
         if path.is_file():
             try:
-                validate_assembly_icon(path.read_bytes())
+                validate_assembly_icon(path.read_bytes(), expected_icon=raw)
             except ValueError:
                 pass
             else:
-                continue
-        path.write_bytes(raw)
+                current = path.read_bytes()
+        if current is None:
+            path.write_bytes(raw)
+            current = raw
+        member_ids = set(_members(assembly['scene']))
+        evidence = {'schema_version': 1,
+            'purpose': 'Reproduce the assembly menu schematic from the current placed source routes.',
+            'basis': 'Authored complete routes transformed by assembly.json placements; no compiled model rendering.',
+            'generator': 'scp.menu_experiment.write_assembly_icons',
+            'generator_sha256': {'scp.menu_experiment': _sha(Path(__file__).read_bytes()),
+                'scp.menu_experiment_resources': _sha(Path(menu_experiment_resources.__file__).read_bytes())},
+            'assembly_source_sha256': _sha(_json_bytes(assembly['scene'])),
+            'placed_routes_sha256': _sha(_json_bytes(points)),
+            'labels': {'brand': 'SCP', 'brand_position': 'top-left',
+                       'category': 'ASM', 'network': network, 'footer_position': 'bottom-centre'},
+            'footer_ink_rows_px': [33, 37],
+            'piece_definitions_sha256': {piece['id']: _sha(_json_bytes(piece))
+                for piece in catalog['pieces'] if piece['id'] in member_ids},
+            'output': {'path': 'icon.png', 'sha256': _sha(current), 'dimensions_px': [176, 44],
+                'frame_order': ['locked', 'normal', 'selected', 'highlighted'], 'frame_size_px': [44, 44]},
+            'compiled_resource_verification': 'separate', 'in_game_appearance': 'unverified'}
+        evidence_relative = assembly['path'] + '/evidence/icon.json'
+        evidence_path = root / evidence_relative
+        require(evidence_path == safe_relative(root, evidence_relative)
+                and not any(parent.is_symlink() for parent in (evidence_path, *evidence_path.parents)),
+                'Assembly icon evidence path must not redirect through symbolic links')
+        evidence_path.parent.mkdir(parents=True, exist_ok=True)
+        evidence_path.write_bytes(_json_bytes(evidence))
+        evidence_paths.append(evidence_path.relative_to(root).as_posix())
     return {'domain': domain_id, 'icons': [path.relative_to(root).as_posix() for path in targets],
-            'built': False, 'installed': False}
+            'evidence': evidence_paths, 'built': False, 'installed': False}
 
 
 def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-menu-test',
@@ -515,11 +573,13 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
                   if assembly['id'] == layout['assembly_id'] and assembly['domain'] == domain_id]
     require(len(assemblies) == 1, 'Menu experiment must select one registered assembly')
     scene = assemblies[0]['scene']
-    from .menu_experiment_resources import validate_assembly_icon
+    from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
     icon_path = _assembly_icon_path(root, assemblies[0])
     require(icon_path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')
     cycle_icon = icon_path.read_bytes()
-    validate_assembly_icon(cycle_icon)
+    expected_cycle_icon = make_assembly_icon(_assembly_icon_routes(assemblies[0], catalog),
+                                            network_label=_assembly_icon_network(assemblies[0]))
+    validate_assembly_icon(cycle_icon, expected_icon=expected_cycle_icon)
     base = _read_json(source / 'manifest.json')
     require('menu_experiment' not in base,
             'Source must be a normal verified build; combining assembly cycles or reusing their shared types is unsupported')
@@ -537,11 +597,13 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     original_controller = (source / folder / CONTROLLER).read_bytes()
     original_menu = (source / folder / MENU).read_bytes()
     controller, menu, composition, audit, pieces = _transformed(
-        base, original_controller, original_menu, layout, scene, cycle_icon=cycle_icon)
+        base, original_controller, original_menu, layout, scene, cycle_icon=cycle_icon,
+        expected_cycle_icon=expected_cycle_icon)
     proof_raw = {'manifest': (source / 'manifest.json').read_bytes(), 'controller': original_controller,
-                 'menu': original_menu, 'layout': _json_bytes(layout), 'assembly': _json_bytes(scene)}
+                 'menu': original_menu, 'layout': _json_bytes(layout), 'assembly': _json_bytes(scene),
+                 'icon': cycle_icon}
     proof_names = {'manifest': 'manifest.json', 'controller': 'controller.proof', 'menu': 'menu.proof',
-                   'layout': 'layout.json', 'assembly': 'assembly.json'}
+                   'layout': 'layout.json', 'assembly': 'assembly.json', 'icon': 'icon.png'}
     proof_root, guide_path, checks_path = _presentation_paths(layout)
     proof = {key: _record(f'{proof_root}/{proof_names[key]}', raw) for key, raw in proof_raw.items()}
     manifest = _expected_manifest(base, layout, scene, proof, controller, menu, composition, audit)

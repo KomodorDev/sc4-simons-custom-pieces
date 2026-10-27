@@ -87,13 +87,13 @@ Use the README's [views](README.md#1-views), [piece list](README.md#2-pieces), a
 
 ### Before you start
 
-Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to prepare the matching one-button assembly candidate and its required local dependencies. The current candidate is staged at `custom-pieces/dist/straight-stem-trumpet`; this document does not establish that it is installed. Before a game test, record the actual candidate's file hashes, platform, game version, NAM profile, and disposable test city. Historical reports do not supply missing details of a new run.
+Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to prepare the matching one-button assembly candidate and its required local dependencies. Use `custom-pieces/dist/trumpet-rework-menu` for the current candidate; preparing or checking that directory does not install it. Before a game test, record the actual candidate's file hashes, platform, game version, NAM profile, and disposable test city. Historical reports do not supply missing details of a new run.
 
 ### Layout reference
 
 Each city tile measures **16 × 16 m**. On the north-up plan, **X0–X19** increase east/right and **Y0–Y22** increase north/up. The central crossing stays at **(X7, Y13)**. The southwest tile centre is implicitly **(X0, Y0)**; no global origin marker appears. Standalone piece previews use their own local zero-based grid and authored 0° orientation.
 
-The [placement plan](assembly.json) stores authoring positions in metres east and north, with **(0 m, 0 m)** at the central crossing. Its `coordinate_system.conversion` maps those positions to the displayed grid: **X = east metres / 16 + 7**, and **Y = north metres / 16 + 13**. For example, P01A's `origin_m` of **(-96 m, 0 m)** becomes **(X1, Y13)**; the southwest tile centre at **(-112 m, -208 m)** becomes **(X0, Y0)**. These labels identify tile centres. Tile boundaries lie **8 m** to either side of a centre, so an external port on a boundary is not a tile-centre placement reference.
+The [placement plan](assembly.json) stores authoring positions in metres east and north, with **(0 m, 0 m)** at the central crossing. Its `coordinate_system.conversion` maps those positions to the displayed grid: **X = east metres / 16 + 7**, and **Y = north metres / 16 + 13**. For example, P01's `origin_m` of **(-96 m, 0 m)** becomes **(X1, Y13)**; the southwest tile centre at **(-112 m, -208 m)** becomes **(X0, Y0)**. These labels identify tile centres. Tile boundaries lie **8 m** to either side of a centre, so an external port on a boundary is not a tile-centre placement reference.
 
 A **reference position** is a piece's software reference tile, which can be empty in a sparse piece. The table therefore describes exact model positions rather than certified mouse-click anchors. Align the entire cursor preview with the ownership plan. A rotation is **counterclockwise from the standalone 0° picture**: 270° counterclockwise equals 90° clockwise. Proper rotations turn the route and its direction together; they do not reverse a one-way track.
 
@@ -101,10 +101,10 @@ A **reference position** is a piece's software reference tile, which can be empt
 
 A **port** is a track entrance or exit. Its position, direction, height, deck width, and visible rails must agree with its neighbour. A **native end** accepts the stated ordinary track profile. A **custom curved end** requires its matching curved continuation; height alone is insufficient.
 
-- P01AW meets P01A's ordinary west end. P01A meets P01S to the east and P01B at its custom branch. P01B's ordinary south end meets P01BS, then P02A's western one-way port.
-- P02A's eastern one-way port meets P03DS, then P03D. P03D's custom curved end meets P03B. P03B's ordinary east end meets P03BE, then P03CW and P03C. P03CE completes the east approach.
-- P02A's paired end meets P02B, which rises from 15.5 m to 30.5 m and meets P04S. P04A carries upper north/south HSR over lower east/west HSR without a level transfer.
-- P04N and P05–P08 extend the upper stem. P09 and P10 join at 23 m. P10 descends to P03A, whose custom curved ends meet P03B and P03C.
+- P22 meets P01's ordinary west end. P01 meets P02 to the east and P03 at its custom branch. P03's ordinary south end meets P24, then P04's western one-way port.
+- P04's eastern one-way port meets P25, then P10. P10's custom curved end meets P07. P07's ordinary east end meets P23, then P08. P09 completes the east approach.
+- P04's paired end meets P05, which rises from 15.5 m to 30.5 m and meets P13. P11 carries upper north/south HSR over lower east/west HSR without a level transfer.
+- P12 and P16–P19 extend the upper stem. P20 and P21 join at 23 m. P21 descends to P06, whose custom curved ends meet P07 and P08.
 
 Each linked piece README lists its declared ports; these declarations do not establish complete compatibility with a neighbouring piece. The curves use their declared custom interfaces and the centred 8 m one-way profile at their southern ends.
 
@@ -114,31 +114,31 @@ Open **Transportation → Rail** and select **SCP | ASSEMBLY | HSR Trumpet** onc
 
 Use clear, flat terrain for the first game test and keep the full **20 × 23 tile** rectangle clear. A **cursor preview** is the complete shape attached to your pointer before you click. Press **Home** or **End** to rotate it; on keyboards without dedicated Home and End keys, check the keyboard mapping; some Mac keyboards use **Fn + ←** and **Fn + →**. Align all occupied tiles with the plan; reference positions are not certified click anchors.
 
-1. Select **HSR Modular One-Tile Two-Level Crossing**. Place P04A at **(X7, Y13)**, 0°, with upper track north/south.
-2. Select **HSR L4 Two-Track Straight** and place P04N/P04S at **(X7, Y14)** and **(X7, Y12)**, both 0°. Select **HSR L2 Two-Track Straight**, rotate 270°, and place P04W/P04E at **(X6, Y13)** and **(X8, Y13)**.
-3. Place P02B **HSR Modular Two-Track L2 to L4 Climb** at **(X7, Y11)** and P02A **HSR Modular Symmetric Split and Return** at **(X6, Y5)**, both 0°. Match the climb's high end to P04S and its low end to P02A.
-4. Place upper straights P05–P08 at **(X7, Y15)** through **(X7, Y18)**, all 0°. Place P09 **HSR Tight Two-Track Corner 30.5 to 23 Metres** at **(X7, Y22)**, 0°, and P10 **HSR Tight Two-Track Corner 23 to 15.5 Metres** at **(X14, Y22)**, 270°.
-5. Place P03A **HSR L2 Compact Paired Fan Join** at **(X11, Y18)**, P03B **HSR L2 Short Opposed Merge Core** at **(X9, Y13)**, and P03C **HSR L2 Compact Fan Diverge** at **(X16, Y13)**, all 0°. Their custom branch ends must meet the pictured fan routes.
-6. Select the lower paired straight, rotate 270°, and place **P03BE (X14, Y13)**, **P03CW (X15, Y13)**, and **P03CE (X19, Y13)**.
-7. Place P01A **HSR L2 Short Mainline Diverge Core** at **(X1, Y13)**, 0°. Use the same paired straight at 270° for **P01AW (X0, Y13)** and **P01S (X5, Y13)**.
-8. Place P01B **HSR L2 Shortened One-Way Departure Curve** at **(X2, Y12)** and P03D **HSR L2 Shortened One-Way Return Curve** at **(X8, Y12)**, both 0°.
-9. Select **One-Way HSR L2 Eight-Metre Straight**. Place **P01BS (X6, Y6)** at **180°**, pointing south, and **P03DS (X8, Y6)** at **0°**, pointing north. These complete the two connections between the curves and P02A; select the same cycle component at the two specified rotations.
+1. Select **HSR Modular One-Tile Two-Level Crossing**. Place P11 at **(X7, Y13)**, 0°, with upper track north/south.
+2. Select **HSR L4 Two-Track Straight** and place P12/P13 at **(X7, Y14)** and **(X7, Y12)**, both 0°. Select **HSR L2 Two-Track Straight**, rotate 270°, and place P14/P15 at **(X6, Y13)** and **(X8, Y13)**.
+3. Place P05 **HSR Modular Two-Track L2 to L4 Climb** at **(X7, Y11)** and P04 **HSR Modular Symmetric Split and Return** at **(X6, Y5)**, both 0°. Match the climb's high end to P13 and its low end to P04.
+4. Place upper straights P16–P19 at **(X7, Y15)** through **(X7, Y18)**, all 0°. Place P20 **HSR Tight Two-Track Corner 30.5 to 23 Metres** at **(X7, Y22)**, 0°, and P21 **HSR Tight Two-Track Corner 23 to 15.5 Metres** at **(X14, Y22)**, 270°.
+5. Place P06 **HSR L2 Compact Paired Fan Join** at **(X11, Y18)** and P07 **HSR L2 Short Opposed Merge Core** at **(X9, Y13)**, both 0°. Select **HSR L2 Short Mainline Diverge Core**, rotate it to **180°**, and place P08 at **(X18, Y13)**. Their custom branch ends must meet the pictured fan routes.
+6. Select the lower paired straight, rotate 270°, and place **P23 (X14, Y13)** and **P09 (X19, Y13)**. P08 already owns the four eastern core tiles; no separate straight is placed at (X15, Y13).
+7. Place P01 **HSR L2 Short Mainline Diverge Core** at **(X1, Y13)**, 0°. Use the same paired straight at 270° for **P22 (X0, Y13)** and **P02 (X5, Y13)**.
+8. Place P03 **HSR L2 Shortened One-Way Departure Curve** at **(X2, Y12)** and P10 **HSR L2 Shortened One-Way Return Curve** at **(X8, Y12)**, both 0°.
+9. Select **One-Way HSR L2 Eight-Metre Straight**. Place **P24 (X6, Y6)** at **180°**, pointing south, and **P25 (X8, Y6)** at **0°**, pointing north. These complete the two connections between the curves and P04; select the same cycle component at the two specified rotations.
 10. Extend compatible ordinary paired HSR beyond the west edge of X0, east edge of X19, and south edge of Y0. All three outside connections have their train path at **15.5 m**. Supply travel demand and test every journey below using separate Route Query and visible-train observations.
 
 The selected pieces support proper **0°, 90°, 180°, and 270°** rotations in their construction rules. For this game test, use each placement at the rotation specified in the README. Keyboard response, cursor anchors, terrain behaviour, and actual train operation still require human observations. Plop & Paint does not stamp this complete blueprint.
 
 ### Directed routes under test
 
-**Service:** HSR, using the game's Monorail traffic class. Each direction is a separate journey. P04A appears twice in South → West because that journey passes first above and later along the mainline; no transfer occurs inside the crossing.
+**Service:** HSR, using the game's Monorail traffic class. Each direction is a separate journey. P11 appears twice in South → West because that journey passes first above and later along the mainline; no transfer occurs inside the crossing.
 
 | Journey | Placement sequence |
 | --- | --- |
-| West → East | P01AW → P01A → P01S → P04W → P04A → P04E → P03B → P03BE → P03CW → P03C → P03CE |
-| East → West | P03CE → P03C → P03CW → P03BE → P03B → P04E → P04A → P04W → P01S → P01A → P01AW |
-| West → South | P01AW → P01A → P01B → P01BS → P02A |
-| South → East | P02A → P03DS → P03D → P03B → P03BE → P03CW → P03C → P03CE |
-| South → West | P02A → P02B → P04S → P04A → P04N → P05 → P06 → P07 → P08 → P09 → P10 → P03A → P03B → P04E → P04A → P04W → P01S → P01A → P01AW |
-| East → South | P03CE → P03C → P03A → P10 → P09 → P08 → P07 → P06 → P05 → P04N → P04A → P04S → P02B → P02A |
+| West → East | P22 → P01 → P02 → P14 → P11 → P15 → P07 → P23 → P08 → P09 |
+| East → West | P09 → P08 → P23 → P07 → P15 → P11 → P14 → P02 → P01 → P22 |
+| West → South | P22 → P01 → P03 → P24 → P04 |
+| South → East | P04 → P25 → P10 → P07 → P23 → P08 → P09 |
+| South → West | P04 → P05 → P13 → P11 → P12 → P16 → P17 → P18 → P19 → P20 → P21 → P06 → P07 → P15 → P11 → P14 → P02 → P01 → P22 |
+| East → South | P09 → P08 → P06 → P21 → P20 → P19 → P18 → P17 → P16 → P12 → P11 → P13 → P05 → P04 |
 
 U-turns and transfers between the two crossing levels are forbidden. The separate Route Query and visible-travel cases come from this assembly’s authoritative record and appear in [5. Results and known issues](#5-results-and-known-issues).
 
@@ -146,7 +146,7 @@ U-turns and transfers between the two crossing levels are forbidden. The separat
 
 ## 3. Software checks
 
-The approved saved assembly contains **109 occupied tiles, 659,271 triangles, 167 encoded route fragments, and 75 pillars**, with minimum **16 m** spacing. The [current validation](evidence/validation.json) identifies the exact audited resources and checks. Historical test logs, build provenance, and preservation audits remain linked in the [design history](#design-history). No software result marks a human observation as passed.
+The assembly uses **25 placements of 13 types**. The current occupied-tile, triangle, encoded-route-fragment, and pillar totals are recorded in the linked validation and acceptance contracts; support spacing must remain at least **16 m**. The [current validation](evidence/validation.json) identifies the exact audited resources and checks. Historical test logs, build provenance, and preservation audits remain linked in the [design history](#design-history). No software result marks a human observation as passed.
 
 ### Current independent acceptance scope
 
@@ -154,15 +154,32 @@ A **PATH** describes train movement. An **S3D model** contains visible triangles
 
 Use the [quality contract](checks/contract.json) and [layout contract](checks/layout.json) with the resource fingerprints below; these source records define the current acceptance requirements.
 
-The schema-3 [current resource contract](checks/resources.json) pins all **14 current piece DATs**, their identities, recipes, sizes, resource counts, and hashes. It also pins the models, PATHs, and shadows of all **109 placed tiles**, their owning pieces and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. Verification reads the current staged build and compares these exact approved fingerprints before performing independent physical and routing checks. Verification uses the current compiled resources and their declared contracts.
+The independently accepted schema-3 [current resource contract](checks/resources.json) pins all **13 current piece DATs**, their identities, recipes, sizes, resource counts, and hashes. It also pins the models, PATHs, and shadows of all **105 placed tiles**, their owning pieces and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The actual native audit passed with **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**. Verification reads the current staged build and compares these exact approved fingerprints before performing independent physical and routing checks. Verification uses the current compiled resources and their declared contracts.
 
-The placement contract requires **26 placements, 14 types, 109 occupied tiles, and 75 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. The software verifier checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer. Full native bed, underside, and parapet sections are checked at the four exposed ordinary connections. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
+The candidate placement contract requires **25 placements, 13 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. The software verifier checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer. Full native bed, underside, and parapet sections are checked at the four exposed ordinary connections. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
 
-The verifier also checks full **5 m** train corridors, native visible rails, deck intersections, pillar contacts, separate tile ownership, all five model/shadow zooms, and construction rotation lists. Existing per-module minimum radius is **24 m**, curvature-change limit **0.0015 per square metre**, and native-end curvature limit **0.0005 per metre**. The two direct-slip journeys receive additional end-to-end checks. The other four journeys are pinned to their exact approved current geometry and retain the constituent modules' independent contracts; this does not impose a new whole-journey curvature threshold on the loop.
+The verifier also checks full **5 m** train corridors, native visible rails, deck intersections, pillar contacts, separate tile ownership, all five model/shadow zooms, and construction rotation lists. It measures **all six complete journeys**, including both northern loops, against the existing **24 m minimum radius**, **0.0015 per square metre maximum curvature change**, and **0.0005 per metre maximum curvature at the native outside ends**. Curvature means bend tightness, or one divided by the radius. These whole-journey checks supplement each constituent module's independent contract.
+
+Every complete journey must also stay within **3°** of heading change between raw encoded segments, **8°** between quality samples spaced no more than **2 m** apart, and **0.025 per metre** of grade change, checked on both the raw and sampled routes. Grade means vertical rise divided by horizontal distance. Each journey has its own length and winding limits below. The length ratio is route length divided by the straight-line distance between its ends. Cumulative turn adds the size of every bend; signed turn retains the left/right sign, so opposite bends can cancel. The signed-turn tolerance is **0.01°** for every movement.
+
+| Complete movement | Maximum length ratio | Cumulative turn | Required signed turn |
+| --- | ---: | --- | ---: |
+| West → East and East → West | 1.00001 | At most 0.01° | 0° |
+| West → South and South → East | 1.55 | At most 130° | −90° |
+| East → South | 3.5 | 269°–271° | +90° |
+| South → West | 3.5 | 269°–271° | −270° |
+
+The redesigned fan owns **11 tiles**. Four former structural cells are omitted only after every saved model zoom has no surface or positive-area projection inside those cells, their PATH resources are absent, and no support is owned there. The two earlier near-centre fan supports are replaced by one support at **(112 m, 32 m)** in assembly authoring coordinates. The explicit plan retains all **59 support positions** outside the redesigned modules and has **74 positions** overall. The [junction redesign record](checks/junction-rework.json) holds the baseline hashes, exact allowed region, fixed sockets, and actual saved-resource proof.
+
+### Approved paired-fan structure width
+
+The paired part of P06 now retains its native **15 m** width through the approach and the start of the fork. Each shoulder taper begins at 48 m and ends at 72 m along its authored sweep. The [saved-model comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) measures bed and underside cross-sections, confirms exact identity of all **21,245 visible rail triangles**, and confirms unchanged bytes for all **11 PATH resources**. The approved angled and top pictures have their own image-bound user observations; that approval does not establish game appearance or operation.
+
+The full independent geometry audit was rerun from the approved fan DAT and twelve byte-identical preceding component DATs before the current resource pins were captured. The [normal build provenance](evidence/junction-rework-build.json) distinguishes reuse of verified saved meshes from resource generation and verification. The [executed native test report](evidence/junction-rework-tests.json) identifies its exact audited inputs and results. Preceding audits and render reports are preserved under `evidence/design-history/*-before-fan-width.json`.
 
 ### Inherited interface checks and limits
 
-The four ordinary connections receive full native slab, underside, and parapet checks. P03B's western interface retains its approved model bytes, including an inherited incomplete outer parapet-cap section. Its train corridor and neighbouring geometry remain checked; the current assembly does not repair that separate visual detail.
+The four exposed ordinary connections receive full native slab, underside, and parapet checks. The revised P06/P07 branch geometry and both uses of the Short Mainline Diverge Core must also pass the complete-assembly train-corridor and neighbouring-model checks. Earlier interface exceptions belong to the historical build that established them; the current validation records any retained exception explicitly.
 
 The two shortened one-way curves retain their custom-end tiles. Their standalone rail audit allows a narrowly limited **2.65 m cut depth**, tied to the exact approved port-tile model hashes at all five zooms. This accounts for a rail strip crossing the artificial standalone cut. It neither widens the allowed rail strip nor permits stray rails inside the piece. The complete-assembly audit uses actual neighbouring models and uncut routes, with no artificial end cap. Mutation tests reject changed port hashes, excessive depth or width, and interior stray rails.
 
@@ -171,14 +188,14 @@ The two shortened one-way curves retain their custom-end tiles. Their standalone
 To check the existing staged candidate, open a terminal in the repository folder containing `custom-pieces`, and activate this checkout's Python environment using [Python setup](../../../../docs/BUILD_AND_INSTALL.md#python-setup-for-a-checkout-or-source-zip). The commands below use `python`, which selects that environment's interpreter on macOS, Linux, and Windows. Verify the candidate, then write a private assembly-audit report under `custom-pieces/local/`. If `trumpet-validation.json` already contains a run you need to retain, choose an unused report filename:
 
 ```sh
-python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
-python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/straight-stem-trumpet --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/local/trumpet-validation.json
+python custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-rework-menu
+python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/trumpet-rework-menu --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/local/trumpet-validation.json
 ```
 
 Next, set `SCP_TRUMPET_BUILD`, an **environment variable** that tells the integration checks which candidate directory to inspect. Some saved-resource checks default to `custom-pieces/dist/straight-stem-trumpet` when this variable is absent; the complete-candidate integration check requires it explicitly. The check runner resolves relative candidate paths from the repository root. The following commands set an absolute path, run the assembly checks, and remove the variable afterward. On macOS or Linux, use:
 
 ```sh
-export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/straight-stem-trumpet"
+export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/trumpet-rework-menu"
 python custom-pieces/scp.py check --scope straight-stem-trumpet
 unset SCP_TRUMPET_BUILD
 ```
@@ -186,20 +203,26 @@ unset SCP_TRUMPET_BUILD
 On Windows, use PowerShell:
 
 ```powershell
-$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/straight-stem-trumpet').Path
+$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/trumpet-rework-menu').Path
 python custom-pieces/scp.py check --scope straight-stem-trumpet
 Remove-Item Env:SCP_TRUMPET_BUILD
 ```
 
-If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/straight-stem-trumpet-final-01`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
+If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/trumpet-rework-menu-02`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
 
-For the fresh run, replace `custom-pieces/dist/straight-stem-trumpet` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
+For the fresh run, replace `custom-pieces/dist/trumpet-rework-menu` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
 
-The retained [validation report](evidence/validation.json) identifies a [public binary-payload projection of its audit input manifest](evidence/audited-build-manifest.json), with documentation and release bookkeeping explicitly omitted. The original full input manifest's hash is recorded separately as `manifest_sha256` in the validation report and `raw_input_manifest_sha256` in the projection; `audited_manifest_file_sha256` in the validation report identifies the projection itself. Documentation-only export metadata may change later; the approved DAT bytes remain pinned independently. A missing current descriptor, missing required staged build, or changed resource fails verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
+The current [validation report](evidence/validation.json) identifies a [public binary-payload projection of its audit input manifest](evidence/audited-build-manifest.json), with documentation and release bookkeeping explicitly omitted. The original full input manifest's hash is recorded separately as `manifest_sha256` in the validation report and `raw_input_manifest_sha256` in the projection; `audited_manifest_file_sha256` in the validation report identifies the projection itself. The [current build provenance](evidence/junction-rework-build.json) records two freshly generated revised mesh types and guarded reuse of unchanged model meshes for the other 11 types. The normal builder regenerated their PATHs, shadows, construction definitions, previews, effects, and rules; all 11 unchanged complete DAT archives were then compared byte for byte with the accepted baseline. The [scoped redesign proof](checks/junction-rework.json) records the 85 preserved world cells, four empty removed cells, fixed sockets, support plan, and complete-route movement measurements. Documentation-only export metadata may change later; the approved DAT bytes remain pinned independently. A missing current descriptor, missing required staged build, or changed resource fails verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
+
+The previous [validation](evidence/design-history/validation-before-junction-rework.json) and [audit-input manifest projection](evidence/design-history/audited-build-manifest-before-junction-rework.json) remain frozen byte for byte. They retain the earlier accepted 109-tile, 26-placement, and 14-type baseline and its original measured scope.
+
+The [native test report](evidence/junction-rework-tests.json) records **71 tests passed, zero failures, zero errors, and zero skips**, including a newly executed full saved-candidate audit after the scoped custom-cut verifier correction. Its declared source, verifier, and manifest inputs stayed unchanged throughout the run, and all 13 component archives were checked again against the current exact resource pins.
+
+The [earlier executed capture](evidence/design-history/validation-at-junction-rework-capture.json), its exact [scene input](evidence/design-history/assembly-at-junction-rework-audit.json), and its exact [layout input](evidence/design-history/layout-at-junction-rework-audit.json) preserve the stage before the descriptive `geometry_status` and `purpose` updates. Their original hashes remain historical facts. The current validation comes from the later executed integration audit using the refreshed scene. After that run, only the layout's descriptive `scope` was corrected from fourteen types to thirteen; the exact [layout input for that rerun](evidence/design-history/layout-at-junction-rework-postfix-audit.json) is also frozen. The current report records the before/after fingerprints and proves every other JSON field is identical. The approved physical layout, models, PATHs, supports, and outside connections remain unchanged by these metadata updates.
 
 ### Artwork evidence
 
-The six assembly pictures start with `Assembly - Straight-stem HSR trumpet`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their current [render report](evidence/render.json) identifies the exact images, renderer settings, and saved-model inputs. Only the first two header rows changed; every pixel from row 108 downward remains unchanged. The standalone component pictures and their [picture report](evidence/piece-previews.json) keep their existing bytes. When those pictures are next refreshed, their first row will start with `Piece - ` and their source-backed display name; their second row will identify a `Clean view` or `Connection overview`. The component picture report preserves its historical filenames; current component images now live in each piece's `previews/` folder. Frozen reports in the design history describe their original inputs and images. Updated assembly picture hashes affect image-review dependencies, without creating new software or game passes.
+The six assembly pictures start with `Assembly - Straight-stem HSR trumpet`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their current [render report](evidence/render.json) identifies the exact images, renderer settings, and saved-model inputs. The named views and construction plan use consecutive P01–P25 placement labels. The revised fan and opposed merge have refreshed canonical angled and top views and source-bound connection overviews in their own `previews/` folders; provenance belongs in each piece's `evidence/` folder. Unchanged reusable types retain their canonical artwork. The [component picture report](evidence/piece-previews.json) maps the assembly placements to their reusable type images. Frozen reports in the design history describe their original inputs and images. Updated assembly picture hashes affect image-review dependencies, without creating new software or game passes.
 
 <a id="game-testing"></a>
 
@@ -209,11 +232,11 @@ Use the exact reference layout from chapter 2 and the verified candidate from ch
 
 ### Menu and placement
 
-The assembly menu uses one **SCP | ASSEMBLY | HSR Trumpet** button. Check that Tab visits its fourteen components, Shift+Tab reverses that order, and one click places only the selected component. The [assembly-menu guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) explains the candidate-specific menu checks. The [executed assembly-menu audit](evidence/assembly-menu.json) confirms one button, a fourteen-component cycle, unchanged piece archives, and no submenu. The candidate is staged at `custom-pieces/dist/straight-stem-trumpet` and has not been installed. Static verification does not establish the button's appearance or keyboard behaviour in the game.
+The current assembly menu requires one **SCP | ASSEMBLY | HSR Trumpet** button containing its **13 component types**. Check that Tab visits all 13 types, Shift+Tab reverses that order, and one click places only the selected component. The [assembly-menu guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) explains these candidate-specific checks. Software acceptance requires a fresh [assembly-menu audit](evidence/assembly-menu.json) confirming one button, a 13-type cycle, unchanged component DAT archives, and no submenu for `custom-pieces/dist/trumpet-rework-menu`. The previous 14-type execution is historical and does not validate the redesigned menu; its results must not be relabelled as a new run. Preparing the candidate does not install it. Static verification does not establish the button's appearance or keyboard behaviour in the game.
 
 ### Appearance and travel
 
-After installing an authorized test build, use a disposable flat city. Inspect P01AW/P01A and P03B/P03BE at every zoom, then P01B/P01BS and P03DS/P03D. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement at its specified orientation. Build the complete reference arrangement, supply real Monorail demand, and check every journey with separate Route Query and visible-train observations. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
+After installing an authorized test build, use a disposable flat city. Inspect P22/P01 and P07/P23 at every zoom, then P03/P24 and P25/P10. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement at its specified orientation. Build the complete reference arrangement, supply real Monorail demand, and check every journey with separate Route Query and visible-train observations. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
 
 The three generated forbidden-transfer cases cover the approach U-turns. They do not separately establish an in-game crossing-level isolation result; keep that distinction when reporting the observed scope.
 
@@ -276,7 +299,10 @@ Scope: Whole subject.
 
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment:
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 
 </details>
 
@@ -303,7 +329,10 @@ Scope: Whole subject.
 
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment:
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 
 </details>
 
@@ -329,7 +358,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 **General: unverified** — `preview_review-4255f74d1a0022065ce4`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:clean-southeast.
 
@@ -345,7 +374,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-8f00df0ccb26670bca5a`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:clean-top.
 
@@ -361,7 +390,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-09c7f0560ea1efecf6f1`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:named-northwest.
 
@@ -377,7 +406,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-b0defe1adfa80a596bb8`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:named-southeast.
 
@@ -393,7 +422,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-ecf9be65aaa4dd4c3c7b`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:named-top.
 
@@ -409,7 +438,7 @@ No observation recorded.
 
 **General: unverified** — `preview_review-a613bd9fbd07c6e7cb5f`.
 
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
 
 Scope: Image: image:straight-stem-trumpet:tile-ownership.
 
@@ -434,7 +463,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_render-4b8e61d1c512b7c578e8`.
 
-Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.
+Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
 Scope: Whole subject.
 
@@ -509,7 +538,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_save_reload-4b8e61d1c512b7c578e8`.
 
-Save, quit, reload and inspect the placement and its paths.
+Save, quit, reload, and inspect the placement and its paths.
 
 Scope: Whole subject.
 
@@ -804,6 +833,44 @@ No observation recorded.
 
 ## 6. Design history
 
+### Branch-angle unification and placement numbering
+
+The current redesign replaces the former P03CW straight and P03C Compact Fan Diverge with a second copy of the retained Short Mainline Diverge Core, placed at authoring position (176 m, 0 m), or picture position (X18, Y13), at 180°. The adjoining paired fan and opposed merge are reworked to match that core's branch angle. The complete assembly therefore uses 25 placements and 13 types. This is an authorized geometry revision, separate from the earlier sub-5 mm tail-extraction policy. The older socket-mismatch measurements below describe the previous geometry and retain their original identities and scope.
+
+The [current redesign record](checks/junction-rework.json) freezes the previous complete east-to-south and south-to-west train routes and checks their movement against an independent **6.0 m** envelope. This limit was chosen before measuring the new routes: the fixed connection sockets move **5.835829856 m**, rounded upward to 6.0 m. The measurement is the greatest distance from either route to the nearest point on the other route, including points between stored coordinates. The actual saved native PATH audit encloses the maximum between **5.005208772 m and 5.005308655 m**, a range narrower than **0.1 mm**; the earlier source preflight independently produced the same interval. The record retains the original decoded coordinates and their fingerprints, so later checks do not need deleted source folders or predecessor DAT files. The 24-cell change boundary, fixed outside connections, 85 unchanged cells, four unchanged complete routes, and existing radius, curvature, clearance, and support limits remain separate mandatory checks.
+
+Placement labels now run consecutively from P01 through P25. The following map preserves the meaning of older reports without relabelling their evidence. Labels identify placed copies; permanent piece and game-resource IDs of retained types do not change.
+
+| Earlier placement | Current placement |
+| --- | --- |
+| P01A | P01 |
+| P01S | P02 |
+| P01B | P03 |
+| P02A | P04 |
+| P02B | P05 |
+| P03A | P06 |
+| P03B | P07 |
+| P03CW | P08 |
+| P03CE | P09 |
+| P03D | P10 |
+| P04A | P11 |
+| P04N | P12 |
+| P04S | P13 |
+| P04W | P14 |
+| P04E | P15 |
+| P05 | P16 |
+| P06 | P17 |
+| P07 | P18 |
+| P08 | P19 |
+| P09 | P20 |
+| P10 | P21 |
+| P01AW | P22 |
+| P03BE | P23 |
+| P01BS | P24 |
+| P03DS | P25 |
+
+The former P03C and P03CW both map to the single current P08 placement; they are not separate components in the current build.
+
 Historical executions retain their original names, paths, input fingerprints, and results. The [test logs](evidence/test-results.json), [build provenance](evidence/build-provenance.json), and [preservation audit](evidence/preservation.json) describe those original executions. Current entry points, scene identifiers, and software checks use `straight-stem-trumpet`.
 
 This section retains the historical design decisions and their original measurements. These records explain how the current geometry was chosen; they do not represent additional selectable assembly versions or current game-test passes. See the [decision ledger](checks/atomization.json) and [implementation record](evidence/atomization-implementation.json) for the original evidence.
@@ -855,7 +922,7 @@ Not every straight-looking tile qualifies. P02A's end tails bend **119.840 mm**.
 
 ### Preserved measurement context
 
-The earlier redesign was limited to eight world tiles: **(X0–X1, Y13)** and **(X13–X14, Y13)** for paired tails and joining collars; **(X6, Y6–Y7)** and **(X8, Y6–Y7)** for one-way tails and joining collars. The ledger preserves its measured movement and bounds as history. The current resource contract authorizes no geometry changes: the current fingerprint contract protects **all 109 tiles**, including those eight, and the four extracted placements still use the existing standard straight types at their specified rotations. Each current type generates its geometry from its own retained source.
+The earlier tail-extraction redesign was limited to eight world tiles: **(X0–X1, Y13)** and **(X13–X14, Y13)** for paired tails and joining collars; **(X6, Y6–Y7)** and **(X8, Y6–Y7)** for one-way tails and joining collars. The ledger preserves that run's measured movement and bounds as history. Its subsequently accepted **109-tile baseline** allowed no further edits and pinned every saved tile, including those eight. The later branch-angle redesign has a separate [24-cell authorization and preservation record](checks/junction-rework.json): the current candidate owns **105 tiles**, preserves the **85 unaffected world cells** exactly, and retains the four extracted standard-straight placements. The original tail-extraction measurements are not a measurement of the later branch work.
 
 The historical mesh comparison measured the **sum of changed cross-section intervals**, not one track's movement. Two parapet strips have four interval edges, giving a one-way bound of **4 × (8.2 mm route bound + 0.05 mm section precision) = 33 mm** in total, with each edge checked independently. That did not permit a 33 mm route shift: the route bound was **8.2 mm**. The current contract now pins the approved result exactly instead of requiring the deleted comparison inputs.
 
@@ -863,4 +930,4 @@ The historical mesh comparison measured the **sum of changed cross-section inter
 
 On 2026-10-27, the maintained assembly identity, collection, verifier, and test names changed to `straight-stem-trumpet`. The [migration report](evidence/identity-migration.json) records the mapping and unchanged measured payloads. Original identity-bound contracts and the [original observations](evidence/design-history/checks-manual-tests-before-identity-rename.json) are archived byte for byte; their passes were not relabelled as new cases. Current software cases require their own executed verification, and game checks remain unverified.
 
-The six assembly renders received neutral titles, with the atomization-history text removed. The saved S3D model bytes, track layout, supports, and every image pixel below the header band remain unchanged. The [current render report](evidence/render.json) and archived render-source context record the caption and identity updates separately from geometry.
+The earlier identity-only execution gave the six assembly renders neutral titles and removed the atomization-history text. In that specific execution, the saved S3D model bytes, track layout, supports, and every image pixel below the header band stayed unchanged; the archived render-source context retains that limited scope. The later junction redesign changes geometry and requires newly generated images with their own [current render report](evidence/render.json). The identity-only pixel comparison is not a preservation claim for those new images.

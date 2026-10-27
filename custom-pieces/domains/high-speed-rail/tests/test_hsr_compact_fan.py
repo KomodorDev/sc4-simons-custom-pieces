@@ -1,340 +1,226 @@
-"""Protect current compact fan geometry, physical safety and native profiles.
+"""Protect the revised fan, its reused junction, and independent PATH limits.
 
-These tests inspect literal source paths and isolated native-profile sweeps.
-They do not compile full models, load installed plugins or claim game results.
-Frozen current geometry and compiled-PATH fingerprints preserve the approved
-types without loading predecessor modules or historical assembly folders.
+These source and encoded-route tests do not claim game operation. Complete
+saved model ownership, track clearance, and native profiles are checked by
+the compiled-resource verifier and the complete assembly audit separately.
 """
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import defaultdict
 from copy import deepcopy
-import hashlib
 import json
 import math
 from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from scp.track_paths import encode_paths
-from scp_hsr.hsr_compact_fan import (
-    RECIPES, compact_info, compact_layout, compact_routes, model_inputs,
-    _sweep_compact_profile, _split_corner_polygon,
-    _complete_core_native_end, build_models,
-)
+from scp.track_paths import PATH, encode_paths
+from scp_hsr.hsr_compact_fan import RECIPES, compact_info, compact_layout, compact_routes, model_inputs
+from scp_hsr.hsr_compact_fan_verify import CONTRACTS, check_paths
+from scp_hsr.hsr_atomic_junctions import atomic_info
 from scp_hsr.hsr_components import _sweep_component_profile
-from scp_hsr.directional_t_verify import measure_route_quality, _TURN_LIMITS
+from scp_hsr.directional_t_verify import _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
-from scp_hsr.single_track_models import _native, _clip, _triangulate, _pack
-from scp_hsr.hsr_surface_equivalence import audit_corner_equivalence
-from scp_hsr.hsr_mesh import _surface_triangles
-from scp_hsr.test_support import donor, triangles as encoded_triangles
-from scp_hsr.directional_t import _floor_subtract
+from scp_hsr.rail_geometry import _route
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
-PIECES = ROOT/'domains/high-speed-rail/00_pieces'
-CORE = 'hsr_component_l2_compact_fan_diverge'
 FAN = 'hsr_component_l2_paired_fan_compact_join'
-
-# Current geometry fingerprints remain independent of production loaders.
-RETAINED_GEOMETRY = {
-    'hsr-component-l2-compact-fan-diverge': 'a84008816db7f0b100446608c6bde8d5bc1440c075ca99948edc84e81c51ee52',
-    'hsr-component-l2-paired-fan-compact-join': 'aee65b48c132692063d6bd2845772403a078850d1cdc2cbca11762d5a6ca7696',
-}
+DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
+MERGE = 'hsr_component_l2_short_opposed_merge_core'
+STEM_NORTH = (8., 0., -16., -24., -28.)
 
 
 def _point(point):
     return tuple(round(value, 6) for value in point)
 
 
+def encoded_fan():
+    info = compact_info(FAN)
+    tiles = [f'{0x7ff00000+x*0x100+y*0x10:08x}' for x, y in info['cells']]
+    spec = {'id': FAN.replace('_', '-'), 'recipe': FAN, 'cells': info['cells'],
+            'footprint': info['footprint'], 'structural_cells': info['structural_cells'], 'tile_ids': tiles}
+    resources = {(*PATH, int(tile, 16)): encode_paths(data['routes'])
+                 if data['routes'] else EMPTY_STRUCTURAL_PATH
+                 for tile, data in zip(tiles, compact_layout(FAN).values())}
+    return spec, resources
+
+
+def sampled_native_profile(deck):
+    """Exercise the real shoulder warp without requiring a private NAM donor.
+
+    Only native surface production is replaced by eight-metre profile probes
+    and rail triangles. Route points, lengths, and taper settings come from
+    the fan's actual authored deck, and the production shoulder warp runs.
+    """
+    points, lengths, _ = _route(deck['points'], deck.get('start_tangent'), deck.get('end_tangent'))
+    sections, surfaces = [], []
+    for north in (*STEM_NORTH, -72.):
+        distance = 0.
+        for first, last, length in zip(points, points[1:], lengths):
+            dz = last[2]-first[2]
+            if abs(dz) > 1e-12 and min(first[2], last[2])-1e-10 <= -north <= max(first[2], last[2])+1e-10:
+                fraction = (-north-first[2])/dz
+                center = tuple(a+fraction*(b-a) for a, b in zip(first, last))
+                normal = dz/length, -(last[0]-first[0])/length
+                station = distance+fraction*length
+                break
+            distance += length
+        else:
+            raise AssertionError(f'Actual fan deck has no section at north {north}')
+
+        def vertex(offset, height):
+            return (center[0]+offset*normal[0], height,
+                    center[2]+offset*normal[1], offset/8., station/16.)
+
+        surfaces.append(('wall', (vertex(-4., 14.), vertex(4., 14.), vertex(-4., 15.))))
+        surfaces.append(('rail', (vertex(-.6, 16.2), vertex(.6, 16.2), vertex(-.6, 16.3))))
+        sections.append({'north': north, 'center': center, 'normal': normal, 'station': station})
+    # This is the independently measured native paired inside-wall position;
+    # the shoulder transformation uses it to retain parapet thickness.
+    source = {'inner': 5.996547698974609, 'outer': 7.5}
+    original = deepcopy(surfaces)
+    with patch('scp_hsr.hsr_components._sweep_native_profile',
+               return_value=(surfaces, [], points, lengths)):
+        changed = _sweep_component_profile(source, deck)[0]
+    return sections, original, changed
+
+
 class CompactFanSourceTests(unittest.TestCase):
-    def test_current_compact_fan_geometry_keeps_its_frozen_source_bytes(self):
-        for slug, digest in RETAINED_GEOMETRY.items():
-            with self.subTest(piece=slug):
-                self.assertEqual(hashlib.sha256((PIECES/slug/'geometry.json').read_bytes()).hexdigest(), digest)
+    def test_parallel_stem_keeps_full_native_pair_width_before_the_arms_turn(self):
+        decks = model_inputs(FAN)[1]['surface_decks']
 
-    def test_native_mainline_ports_and_single_branch_start_are_literal(self):
-        self.assertEqual(set(RECIPES), {CORE, FAN})
-        self.assertEqual(set(compact_layout(CORE)), {(0, 0), (1, 0), (2, 0)})
-        routes = compact_routes(CORE)
-        self.assertEqual((routes['W>E'][0], routes['W>E'][-1]),
-                         ((-8., -2., 15.5), (40., -2., 15.5)))
-        self.assertEqual((routes['E>W'][0], routes['E>W'][-1]),
-                         ((40., 2., 15.5), (-8., 2., 15.5)))
-        self.assertEqual(routes['E>N'][0], (40., 2., 15.5))
-        self.assertEqual(routes['E>N'][-1], (-.562688696411044, 8., 15.5))
-        branches = [(cell, route) for cell, data in compact_layout(CORE).items()
-                    for route in data['routes'] if route['movement'] == 'E>N']
-        self.assertEqual([cell for cell, route in branches if route['junction']], [(2, 0)])
-        start = next(route for cell, route in branches if cell == (2, 0))
-        self.assertEqual(start['points'][:2], [(8., 2., 15.5), (7.875, 2., 15.5)])
-        self.assertEqual(start['tangent_in'], [-1., 0.])
+        def paired_widths(profiles):
+            return [max(vertex[0] for _, _, changed in profiles for vertex in changed[2*number][1])
+                    - min(vertex[0] for _, _, changed in profiles for vertex in changed[2*number][1])
+                    for number in range(len(STEM_NORTH))]
 
-    def test_local_fragments_form_only_the_three_permitted_directed_journeys(self):
+        current = [sampled_native_profile(deck) for deck in decks]
+        for north, width in zip(STEM_NORTH, paired_widths(current)):
+            with self.subTest(north=north):
+                self.assertAlmostEqual(width, 15., places=8)
+        # The former taper visibly squeezed the still-parallel stem. Reusing
+        # that defect must fail the same measured-width requirement.
+        old_decks = deepcopy(decks)
+        for deck in old_decks:
+            deck.update(taper_start_distance=8., taper_end_distance=48.)
+        old_widths = paired_widths([sampled_native_profile(deck) for deck in old_decks])
+        self.assertLess(old_widths[-1], 13.)
+        with self.assertRaises(AssertionError):
+            for width in old_widths:
+                self.assertAlmostEqual(width, 15., places=8)
+
+    def test_shoulder_width_fix_preserves_rails_and_the_eight_metre_lower_cut(self):
+        for deck in model_inputs(FAN)[1]['surface_decks']:
+            with self.subTest(deck=deck['name']):
+                sections, original, changed = sampled_native_profile(deck)
+                self.assertEqual([triangle for kind, triangle in changed if kind == 'rail'],
+                                 [triangle for kind, triangle in original if kind == 'rail'])
+                cut = sections[-1]
+                self.assertEqual(cut['north'], -72.)
+                self.assertGreater(cut['station'], 90.)
+                normal, center = cut['normal'], cut['center']
+                offsets = [(vertex[0]-center[0])*normal[0]+(vertex[2]-center[2])*normal[1]
+                           for vertex in changed[-2][1]]
+                self.assertAlmostEqual(max(offsets)-min(offsets), 8., places=8)
+                for before, after in zip(original[-2][1], changed[-2][1]):
+                    for expected, actual in zip(before, after):
+                        self.assertAlmostEqual(actual, expected, places=10)
+
+    def test_only_the_retained_fan_is_registered_with_its_literal_ownership_and_supports(self):
+        self.assertEqual(RECIPES, (FAN,))
+        self.assertEqual(set(CONTRACTS), {FAN})
+        info = compact_info(FAN)
+        self.assertEqual(info['footprint'], (7, 5))
+        self.assertEqual(info['cells'], [(3, 0), (3, 1), (3, 2), (2, 3), (3, 3), (4, 3),
+                                         (1, 4), (2, 4), (3, 4), (4, 4), (5, 4)])
+        self.assertEqual(info['structural_cells'], [(2, 3), (4, 3)])
+        self.assertEqual(info['support_centers'], [(48., 0.), (48., -16.), (48., -32.),
+                                                  (48., -48.), (32., -64.), (64., -64.)])
+        self.assertEqual(list(compact_layout(FAN)), info['cells'])
+        mapping, context = model_inputs(FAN)
+        self.assertEqual(len(mapping), 11)
+        self.assertTrue(all('compact_native_corner' not in deck for deck in context['surface_decks']))
+        for x, north in context['support_centers']:
+            self.assertIn((math.floor((x+8)/16), math.floor((-north+8)/16)), set(mapping.values()))
+
+    def test_fan_ports_use_p01a_angles_and_meet_the_reused_rotated_piece_exactly(self):
+        info = compact_info(FAN)
+        self.assertEqual(info['ports']['N'], {'in': (46., 8., 15.5), 'out': (50., 8., 15.5)})
+        expected = {'Wout': (22.39851855221686, -72., 15.5),
+                    'Ein': (73.60148144778314, -72., 15.5)}
+        actual = {'Wout': info['ports']['W']['out'], 'Ein': info['ports']['E']['in']}
+        for label in expected:
+            self.assertLess(math.dist(actual[label], expected[label]), 1e-9)
+        diverge, merge = atomic_info(DIVERGE), atomic_info(MERGE)
+        sx, sy, sh = diverge['ports']['S']['out']
+        fan_east_world = tuple(v + d for v, d in zip(actual['Ein'], (64., 80., 0.)))
+        self.assertLess(math.dist(fan_east_world, (176.-sx, -sy, sh)), 1e-9)
+        fan_west_world = tuple(v + d for v, d in zip(actual['Wout'], (64., 80., 0.)))
+        self.assertLess(math.dist(fan_west_world,
+                                 tuple(v+d for v, d in zip(merge['ports']['N']['in'], (32., 0., 0.)))), 1e-9)
+        tangent = diverge['port_vectors']['Sout']
+        self.assertEqual(info['port_vectors']['Ein'], tuple(-v for v in tangent))
+        self.assertEqual(info['port_vectors']['Wout'], (-tangent[0], tangent[1]))
+        self.assertEqual(info['port_vectors']['Wout'], merge['port_vectors']['Nin'])
+        scene = json.loads((ROOT/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json').read_text())
+        copies = [row for row in scene['placements'] if row['piece_id'] == DIVERGE.replace('_', '-')]
+        self.assertEqual([(row['origin_m'], row['rotation_degrees_ccw']) for row in copies],
+                         [([-96., 0.], 0), ([176., 0.], 180)])
+        self.assertFalse(any(row['piece_id'] == 'hsr-component-l2-compact-fan-diverge'
+                             for row in scene['placements']))
+
+    def test_local_fragments_have_only_the_two_permitted_directed_journeys(self):
         graph = defaultdict(set)
-        for (column, row), data in compact_layout(CORE).items():
+        for (column, row), data in compact_layout(FAN).items():
             for route in data['routes']:
                 first, last = (_point((x+16*column, north-16*row, height))
                                for x, north, height in (route['points'][0], route['points'][-1]))
                 graph[first].add(last)
-        exits = {(-8., 2., 15.5): 'W', (40., -2., 15.5): 'E',
-                 (-.562689, 8., 15.5): 'N'}
-        for start, expected in {(-8., -2., 15.5): {'E'}, (40., 2., 15.5): {'W', 'N'}}.items():
+        exits = {(22.398519, -72., 15.5): 'W', (50., 8., 15.5): 'N'}
+        for start, expected in {(46., 8., 15.5): {'W'}, (73.601481, -72., 15.5): {'N'}}.items():
             reached, pending = set(), [start]
             while pending:
                 point = pending.pop()
                 if point not in reached:
-                    reached.add(point); pending.extend(graph[point]-reached)
+                    reached.add(point)
+                    pending.extend(graph[point]-reached)
             self.assertEqual({exits[point] for point in reached if point in exits}, expected)
 
-    def test_current_branch_keeps_native_heading_height_and_strict_curve_limits(self):
-        points = compact_routes(CORE)['E>N']
-        self.assertEqual(points[:2], [(40., 2., 15.5), (39.875, 2., 15.5)])
-        self.assertTrue(all(point[2] == 15.5 for point in points))
-        # The opposite custom curved cut intentionally has nonzero curvature.
-        result = measure_route_quality(points, {**_TURN_LIMITS, 'max_endpoint_curvature_per_m': .02})
-        self.assertGreater(result['minimum_sampled_radius_m'], 50.)
-        self.assertLess(result['maximum_curvature_change_per_m2'], .0015)
+    def test_two_fan_arms_are_reflected_reverses_at_the_same_native_l2_height(self):
+        routes = compact_routes(FAN)
+        self.assertEqual(set(routes), {'N>W', 'E>N'})
+        first, last = routes['N>W'], list(reversed(routes['E>N']))
+        self.assertEqual(len(first), len(last))
+        self.assertLess(max(math.dist(a, (96.-b[0], b[1], b[2]))
+                            for a, b in zip(first, last)), 2e-9)
+        self.assertTrue(all(point[2] == 15.5 for route in routes.values() for point in route))
 
-    def test_all_encoded_paths_and_supports_match_the_approved_current_types(self):
-        # PATH fingerprints were captured from the approved current DATs.
-        expected = {
-            CORE: 'd6ead22a10b51d6c3845cb14c92f5a8a4534203f1ceed592933fa5ea941547e5',
-            FAN: '85e31bb024cd8d37262ce5d2a59be39ff718bce806ba664543e64663444d45c2',
-        }
-        for recipe, digest in expected.items():
-            fingerprints = [[list(cell), hashlib.sha256(
-                encode_paths(data['routes']) if data['routes'] else EMPTY_STRUCTURAL_PATH
-            ).hexdigest()] for cell, data in compact_layout(recipe).items()]
-            self.assertEqual(hashlib.sha256(json.dumps(fingerprints, separators=(',', ':')).encode()).hexdigest(), digest)
-        self.assertEqual(compact_info(FAN)['support_centers'],
-                         [(48., 0.), (48., -16.), (48., -32.), (40., -46.),
-                          (56., -46.), (32., -64.), (64., -64.)])
-        self.assertEqual(compact_info(CORE)['support_centers'], [(0., 0.), (16., 0.), (32., 0.)])
+    def test_encoded_routes_satisfy_the_independent_literal_ports_and_strict_curve_limits(self):
+        spec, resources = encoded_fan()
+        result = check_paths(resources, spec)
+        self.assertEqual(result['external_ports_checked'], 4)
+        self.assertEqual(result['permitted_movements_checked'], 2)
+        self.assertEqual(result['literal_port_tangents_checked'], 4)
+        self.assertEqual(result['maximum_encoded_grade'], 0.)
+        for quality in result['journey_quality'].values():
+            self.assertGreater(quality['minimum_sampled_radius_m'], 24.)
+            self.assertLessEqual(quality['maximum_curvature_change_per_m2'], .0015)
+            self.assertLessEqual(max(quality['native_endpoint_curvature_per_m'].values()), .0005)
+        self.assertEqual(_TURN_LIMITS['min_radius_m'], 24.)
+        self.assertEqual(_TURN_LIMITS['max_curvature_change_per_m2'], .0015)
+        self.assertEqual(_TURN_LIMITS['max_endpoint_curvature_per_m'], .0005)
 
-    def test_owned_contexts_agree_and_branch_collar_ends_at_the_new_native_seam(self):
-        core_map, core = model_inputs(CORE)
-        fan_map, fan = model_inputs(FAN)
-        self.assertEqual(core['surface_decks'], fan['surface_decks'])
-        self.assertEqual(core_map, {(0, 0): (8, 5), (1, 0): (9, 5), (2, 0): (10, 5)})
-        self.assertTrue(set(core_map.values()).isdisjoint(fan_map.values()))
-        branch = next(deck for deck in core['surface_decks'] if deck['name'] == 'native_y_right')
-        self.assertEqual(branch['points'][-1], [168., -78., 15.5])
-        self.assertEqual(branch['end_tangent'], [1., 0.])
-        self.assertEqual(branch['shared_mainline_collar'], 'end')
-        self.assertIn([0, 168., -1, -1], branch['scoped_clip_planes'])
-        for config in (core, fan):
-            cells = {tuple(cell) for cell, data in config['layout']}
-            for x, north in config['support_centers']:
-                self.assertIn((math.floor((x+8)/16), math.floor((-north+8)/16)), cells)
-
-
-class CompactFanSweepSafetyTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.source = _native(donor())
-        _, config = model_inputs(CORE)
-        cls.deck = next(deck for deck in config['surface_decks'] if deck['name'] == 'native_y_right')
-        cls.before = _sweep_component_profile(cls.source, cls.deck)
-        cls.after = _sweep_compact_profile(cls.source, cls.deck)
-
-    def test_outer_corner_cannot_change_rails_clearance_or_other_surface_kinds(self):
-        before_rails = [tri for kind, tri in self.before[0] if kind == 'rail']
-        after_rails = [tri for kind, tri in self.after[0] if kind == 'rail']
-        self.assertEqual(before_rails, after_rails)
-        for kind in {kind for kind, tri in self.before[0]}-{'bed', 'underside', 'wall'}:
-            self.assertEqual([tri for actual, tri in self.before[0] if actual == kind],
-                             [tri for actual, tri in self.after[0] if actual == kind])
-        for key in ('rail_polygons', 'clearance_polygons'):
-            before = Counter(tuple(tuple(point) for point in polygon)
-                             for corridor in self.before[1] for polygon in corridor.get(key, []))
-            after = Counter(tuple(tuple(point) for point in polygon)
-                            for corridor in self.after[1] for polygon in corridor.get(key, []))
-            self.assertEqual(before, after)
-        self.assertEqual(self.before[2:], self.after[2:])
-        self.assertGreater(len(self.after[0]), len(self.before[0]))
-
-    def test_triangles_crossing_the_corner_keep_the_original_outside_affine_uv(self):
-        def vertex(x, z):
-            return x, 16., z, .2*x+.1*z, .3*x-.1*z
-        triangle = [vertex(119., 70.), vertex(122., 70.), vertex(119., 74.)]
-        contract = self.deck['compact_native_corner']
-        pieces = _split_corner_polygon(triangle, contract)
-        self.assertTrue(any(edit for piece, edit in pieces))
-        self.assertTrue(any(not edit for piece, edit in pieces))
-        for piece, edit in pieces:
-            for x, height, z, u, v in piece:
-                self.assertAlmostEqual(u, .2*x+.1*z, places=12)
-                self.assertAlmostEqual(v, .3*x-.1*z, places=12)
-                if edit:
-                    self.assertLessEqual(x, 120.+1e-7)
-                    self.assertGreaterEqual(z, 71.-1e-7)
-                else:
-                    self.assertTrue(all(p[0] >= 120.-1e-7 for p in piece)
-                                    or all(p[2] <= 71.+1e-7 for p in piece))
-
-    def test_isolated_saved_sweep_preserves_continuous_uv_outside_the_ownership_strip(self):
-        def cropped_model(surfaces):
-            triangles = []
-            for kind, triangle in surfaces:
-                polygon = list(triangle)
-                for axis, boundary, sign in ((0,120.,1.), (0,136.,-1.),
-                                              (2,56.,1.), (2,72.,-1.)):
-                    polygon = _clip(polygon, lambda p, axis=axis, boundary=boundary, sign=sign:
-                                    sign*(p[axis]-boundary))
-                for tri in _triangulate(polygon):
-                    triangles.append(tuple((x-128.,height,z-64.,u,v) for x,height,z,u,v in tri))
-            return _pack(self.source, triangles)
-        report = audit_corner_equivalence(cropped_model(self.before[0]),cropped_model(self.after[0]))
-        self.assertTrue(report['continuous_oriented_surface_and_affine_uv_equivalence'])
-        self.assertLessEqual(report['before_to_after']['maximum_unmatched_projected_area_m2'],1e-9)
-        self.assertLessEqual(report['after_to_before']['maximum_unmatched_projected_area_m2'],1e-9)
-
-    def test_complete_native_seams_remain_clear_through_the_ownership_micrometre(self):
-        # Compute only two8µm slices, not a complete module. Exact floor,
-        # underside and both parapet intervals catch partial-width corner
-        # leaks that one rail-centre sample would miss.
-        def sliced(source,deck):
-            surfaces,corridors,points,lengths = _sweep_compact_profile(source,deck)
-            output=[]
-            for kind,triangle in surfaces:
-                for center in (120.,168.):
-                    polygon=list(triangle)
-                    for axis,boundary,sign in ((0,center-4e-6,1.),(0,center+4e-6,-1.),
-                                               (2,72.,1.),(2,88.,-1.)):
-                        polygon=_clip(polygon,lambda p,axis=axis,boundary=boundary,sign=sign:
-                                      sign*(p[axis]-boundary))
-                    output.extend((kind,tri) for tri in _triangulate(polygon))
-            return output,corridors,points,lengths
-        _,config=model_inputs(CORE)
-        triangles,_=_surface_triangles(self.source,config['surface_decks'],sliced)
-        def intervals(station,height):
-            values=[]
-            for tri in triangles:
-                if any(abs(v[1]-height)>1e-7 for v in tri):
-                    continue
-                coordinates=[]
-                for a,b in zip(tri,tri[1:]+tri[:1]):
-                    if abs(a[0]-station)<1e-8:
-                        coordinates.append(a[2])
-                    if (a[0]-station)*(b[0]-station)<0.:
-                        t=(station-a[0])/(b[0]-a[0])
-                        coordinates.append(a[2]+t*(b[2]-a[2]))
-                if coordinates and max(coordinates)-min(coordinates)>1e-8:
-                    values.append((min(coordinates),max(coordinates)))
-            result=[]
-            for low,high in sorted(values):
-                # Synthetic8µm slices can leave sub0.1mm clipped seams;
-                # use the existing native meshing precision when joining
-                # intervals, while keeping their full outside edges strict.
-                if result and low<=result[-1][1]+1e-4:
-                    result[-1]=(result[-1][0],max(high,result[-1][1]))
-                else:result.append((low,high))
-            return result
-        for station in (120.,120.00000025,120.0000005,120.00000075,167.99999925,168.):
-            for height,expected in ((self.source['bed_y'],[(72.5,87.5)]),
-                                    (self.source['bottom'],[(72.5,87.5)]),
-                                    (self.source['top'],[(72.5,74.),(86.,87.5)])):
-                with self.subTest(station=station,height=height):
-                    actual=intervals(station,height)
-                    self.assertEqual(len(actual),len(expected),actual)
-                    for got,wanted in zip(actual,expected):
-                        self.assertAlmostEqual(got[0],wanted[0],places=5)
-                        self.assertAlmostEqual(got[1],wanted[1],places=5)
-
-    def test_warp_moved_into_the_train_clearance_is_rejected(self):
-        unsafe = deepcopy(self.deck)
-        unsafe['compact_native_corner']['north_start_s3d'] = 70.
-        with self.assertRaisesRegex(ValueError, 'touches train clearance'):
-            _sweep_compact_profile(self.source, unsafe)
-
-    def test_warp_moved_onto_the_rails_is_rejected(self):
-        unsafe = deepcopy(self.deck)
-        unsafe['compact_native_corner']['north_start_s3d'] = 68.
-        with self.assertRaisesRegex(ValueError, 'touches a rail ribbon'):
-            _sweep_compact_profile(self.source, unsafe)
-
-    def test_unmarked_profiles_use_the_existing_unmodified_sweep(self):
-        ordinary = deepcopy(self.deck)
-        ordinary.pop('compact_native_corner')
-        self.assertEqual(_sweep_compact_profile(self.source, ordinary),
-                         _sweep_component_profile(self.source, ordinary))
-
-
-class CompactNativeEndCompletionTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.native = donor()
-        cls.source = _native(cls.native)
-        _, config = model_inputs(CORE)
-        cls.deck = config['surface_decks'][0]
-        faces = []
-        for kind, triangle in _sweep_component_profile(cls.source, cls.deck)[0]:
-            polygon = _clip(list(triangle), lambda p: p[0]-152.)
-            polygon = _clip(polygon, lambda p: 168.-p[0])
-            faces.extend(tuple((x-160., h, z-80., u, v) for x, h, z, u, v in tri)
-                         for tri in _triangulate(polygon))
-        cls.clean = _pack(cls.source, faces, preserve_encoded_triangles=True)
-
-    def damaged(self, start=7.9999, half_width=.00005):
-        # Distinct positions on three planes ensure a floor-only repair
-        # cannot accidentally satisfy the underside or parapet-cap cases.
-        planes = ((self.source['bed_y'], 2.), (self.source['bottom'], .5),
-                  (self.source['top'], 6.5))
-        faces = encoded_triangles(self.clean)
-        for height, center in planes:
-            rectangle = [(start, height, center-half_width, 0., 0.),
-                         (8., height, center-half_width, 0., 0.),
-                         (8., height, center+half_width, 0., 0.),
-                         (start, height, center+half_width, 0., 0.)]
-            result = []
-            for face in faces:
-                pieces = [list(face)]
-                if all(abs(p[1]-height) < .0001 for p in face):
-                    for mask in ((rectangle[0],rectangle[1],rectangle[2]),
-                                 (rectangle[0],rectangle[2],rectangle[3])):
-                        pieces = [part for piece in pieces
-                                  for part in _floor_subtract(piece,list(mask))]
-                result.extend((p[0],p[n],p[n+1]) for p in pieces for n in range(1,len(p)-1))
-            faces = result
-        return _pack(self.source, faces, preserve_encoded_triangles=True)
-
-    def test_packed_completion_preserves_every_existing_face_and_is_idempotent(self):
-        raw = self.damaged()
-        repaired = _complete_core_native_end(self.native, raw, self.deck)
-        original = Counter(encoded_triangles(raw))
-        final = Counter(encoded_triangles(repaired))
-        self.assertFalse(original-final)
-        added = list((final-original).elements())
-        self.assertTrue(added)
-        for triangle in added:
-            self.assertTrue(all(7.99-1e-6 <= p[0] <= 8. for p in triangle))
-        self.assertEqual(_complete_core_native_end(self.native,repaired,self.deck),repaired)
-
-    def test_three_planes_restore_continuous_native_geometry_and_their_own_uv(self):
-        damaged = self.damaged()
-        repaired = _complete_core_native_end(self.native,damaged,self.deck)
-        added = list((Counter(encoded_triangles(repaired))-
-                      Counter(encoded_triangles(damaged))).elements())
-        for height in (self.source['bed_y'],self.source['bottom'],self.source['top']):
-            self.assertTrue(any(all(abs(v[1]-height)<1e-4 for v in tri) for tri in added))
-        # This independent continuous proof checks the original native atlas
-        # field, surface orientation and full planar coverage on every plane.
-        report = audit_corner_equivalence(self.clean,repaired)
-        self.assertTrue(report['continuous_oriented_surface_and_affine_uv_equivalence'])
-
-    def test_larger_missing_end_is_rejected_instead_of_hidden(self):
-        with self.assertRaisesRegex(ValueError,'defect exceeds its bounded'):
-            _complete_core_native_end(self.native,self.damaged(7.995,.1),self.deck)
-
-    def test_matching_fan_never_runs_the_core_end_completion(self):
-        mapping, _ = model_inputs(FAN)
-        fake = tuple((cell,b'unchanged saved fan') for cell in mapping.values())
-        with patch('scp_hsr.hsr_compact_fan._cached_models',return_value=fake), \
-                patch('scp_hsr.hsr_compact_fan._complete_core_native_end') as completion:
-            self.assertEqual(build_models(b'unused',FAN),
-                             {cell:b'unchanged saved fan' for cell in mapping})
-            completion.assert_not_called()
+    def test_missing_paths_and_old_ports_are_rejected_without_changing_the_source(self):
+        spec, resources = encoded_fan()
+        changed = dict(resources)
+        tile = next(key for key, raw in changed.items() if raw != EMPTY_STRUCTURAL_PATH)
+        changed[tile] = EMPTY_STRUCTURAL_PATH
+        with self.assertRaises(ValueError):
+            check_paths(changed, spec)
+        stale = deepcopy(CONTRACTS[FAN])
+        stale['ports']['Wout'] = (16.562689, -72., 15.5)
+        with patch.dict(CONTRACTS, {FAN: stale}), self.assertRaises(ValueError):
+            check_paths(resources, spec)
 
 
 if __name__ == '__main__':
