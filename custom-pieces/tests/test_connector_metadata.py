@@ -15,7 +15,7 @@ from scp.export import public_files
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = ROOT/'domains/high-speed-rail'
 IDS = ['hsr-component-modular-crossing-core', 'hsr-component-tight-paired-curve90-l4-to-mid']
-BUILD = ROOT/'dist/straight-stem-trumpet-v4'
+BUILD = ROOT/'dist/straight-stem-trumpet'
 
 
 def bound_source_names(values):

@@ -91,19 +91,19 @@ CONTRACTS = {
 
 
 def _contract(spec):
-    require(spec['recipe'] in CONTRACTS, 'Unknown V4 shortened module contract')
+    require(spec['recipe'] in CONTRACTS, 'Unknown Trumpet shortened module contract')
     contract = CONTRACTS[spec['recipe']]
     require([tuple(cell) for cell in spec['cells']] == contract['cells']
             and tuple(spec['footprint']) == contract['footprint'],
-            'V4 shortened module footprint differs from its independent literal contract')
+            'Trumpet shortened module footprint differs from its independent literal contract')
     require([tuple(cell) for cell in spec.get('structural_cells', [])] == contract['structural_cells'],
-            'V4 shortened module structural ownership differs')
+            'Trumpet shortened module structural ownership differs')
     tiles = list(map(_number, spec['tile_ids']))
-    require(len(tiles) == len(contract['cells']), 'V4 shortened module allocation is incomplete')
+    require(len(tiles) == len(contract['cells']), 'Trumpet shortened module allocation is incomplete')
     col, row = contract['cells'][0]
     base = tiles[0]-0x100*col-0x10*row
     require(tiles == [base+0x100*x+0x10*y for x, y in contract['cells']],
-            'V4 shortened module AutoTileBase allocation differs')
+            'Trumpet shortened module AutoTileBase allocation differs')
     return contract
 
 
@@ -156,7 +156,7 @@ def audit_native_sections(triangles, contract):
             require(len(actual) == len(expected) and all(
                 abs(a-c) <= .00005 and abs(b-d) <= .00005
                 for (a, b), (c, d) in zip(actual, expected)),
-                f'V4 native joining section differs: {axis}={station}, height={height}, '
+                f'Trumpet native joining section differs: {axis}={station}, height={height}, '
                 f'actual={actual}, expected={expected}')
             checked += 1
     return {'complete_native_join_sections_checked': checked,
@@ -172,7 +172,7 @@ def audit_inherited_cap_model(resources, spec, contract):
     index = contract['cells'].index(cap['cell'])
     tile = _number(spec['tile_ids'][index])
     require(all(hashlib.sha256(resources[*S3D, tile+zoom]).hexdigest() == cap['model_sha256']
-                for zoom in range(5)), 'V4 inherited custom-cut exception requires exact original port-tile model bytes')
+                for zoom in range(5)), 'Trumpet inherited custom-cut exception requires exact original port-tile model bytes')
     return {'inherited_custom_cap_exact_model_cell': list(cap['cell']),
             'inherited_custom_cap_exact_model_sha256': cap['model_sha256'],
             'inherited_custom_cap_model_zooms_checked': 5}
@@ -184,7 +184,7 @@ def clip_inherited_curve_cap(triangles, contract):
     Both current curves need a wider mask than the2.6m fan-specific mask at their
     shallow diagonal cut. Their unchanged saved meshes pass the strict audit
     when their actual opposed merge/diverge neighbour's PATHs are included.
-    The full V4 assembly must repeat that unclipped actual-neighbour proof.
+    The full Trumpet assembly must repeat that unclipped actual-neighbour proof.
     """
     cap = contract['inherited_custom_cap']
     label, depth, half = cap['label'], cap['depth_m'], cap['width_m']/2.
@@ -219,7 +219,7 @@ def clip_inherited_curve_cap(triangles, contract):
     return result, affected
 
 
-def audit_v4_visible_rails(triangles, records, contract):
+def audit_trumpet_visible_rails(triangles, records, contract):
     if 'inherited_custom_cap' not in contract:
         return audit_visible_rails_at_custom_cuts(triangles, records, contract)
     clipped, affected = clip_inherited_curve_cap(triangles, contract)
@@ -253,14 +253,14 @@ def check_paths(resources, spec, donors=None):
             product = math.dist(a[:2], b[:2])*math.dist(b[:2], c[:2])*math.dist(a[:2], c[:2])
             curvature = abs(2.*((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])))/product
             require(curvature <= .0005+2e-6,
-                    f'V4 native endpoint does not ease into its straight: {label}, {curvature}')
+                    f'Trumpet native endpoint does not ease into its straight: {label}, {curvature}')
             native_curvatures[label] = curvature
         quality['>'.join(movement)]['native_endpoint_curvature_per_m'] = native_curvatures
-        require(all(abs(p[2]-15.5) <= 2e-6 for p in points), 'V4 shortened route changes its native L2 height')
+        require(all(abs(p[2]-15.5) <= 2e-6 for p in points), 'Trumpet shortened route changes its native L2 height')
     for movement, offset in ((('Win', 'Eout'), -2.), (('Ein', 'Wout'), 2.)):
         if movement in journeys:
             require(all(abs(p[1]-offset) <= 2e-6 for p in journeys[movement]),
-                    'V4 shortened mainline leaves its literal native straight')
+                    'Trumpet shortened mainline leaves its literal native straight')
     return {'tile_count': len(contract['cells']), 'encoded_routes_checked': len(records),
             'external_ports_checked': ports, 'permitted_movements_checked': movements,
             'unique_complete_journeys_checked': len(journeys), 'literal_port_tangents_checked': len(headings),
@@ -289,7 +289,7 @@ def _cached_models(spec_json, immutable):
     report = _models(resources, spec, contract=contract)
     report.update(audit_bed_corridors(triangles, records, owned_cells=contract['cells']))
     report.update(audit_bed_overlaps(triangles))
-    report.update(audit_v4_visible_rails(triangles, records, contract))
+    report.update(audit_trumpet_visible_rails(triangles, records, contract))
     report.update(cap_evidence)
     report.update(audit_supports(triangles, contract))
     report.update(audit_native_sections(triangles, contract))

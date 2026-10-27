@@ -74,6 +74,8 @@ class AssemblyMatrixTests(unittest.TestCase):
 
     def test_directional_axes_three_cell_metrics_and_one_separate_appearance(self):
         text = self.render()
+        self.assertTrue(text.startswith('## 4. Connection matrix\n\n'))
+        self.assertNotIn('\n## Connection matrix\n', text)
         header = next(line for line in text.splitlines() if line.startswith('| Entrance'))
         self.assertIn('**HSR · East exit**<br>`E.out`', header)
         self.assertNotIn('`W.in`', header)

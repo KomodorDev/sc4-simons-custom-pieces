@@ -162,7 +162,7 @@ def render_assembly_connection_matrix(connections, record):
                         and not any(key in case.get('scope', {}) for key in ('journey_id', 'service_network', 'role'))]
     appearance = _coverage(appearance_cases, states, fingerprints)
     path_status, _ = _software_path_status(connections, record, fingerprints)
-    lines = ['## Connection matrix', '',
+    lines = ['## 4. Connection matrix', '',
              'Read **from an entrance row to an exit column**. **Saved PATH** checks the saved traffic route; **Route Query** checks the route shown by the game; **Visible travel** checks a vehicle completing that journey. For HSR, visible travel means a moving train.', '',
              f'**Game appearance:** {appearance} — the complete assembly’s appearance in the game, checked separately from its journeys.', '',
              '**Legend:** ✅ confirmed; ❌ failed; ? not established. **Forbidden** means the movement is unavailable; its in-game check confirms that it stays unavailable. Click a result for its exact test case. Scope, evidence, and limitations remain in [TESTING](TESTING.md#test-checklist).', '']

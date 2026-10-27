@@ -18,9 +18,9 @@ from scp.track_paths import encode_paths, _parse_paths
 from scp.verification_fixtures import resource_descriptor, verification_resources
 from scp_hsr.rail_feature_verify import _triangles
 from scp_hsr.hsr_atomic_components_verify import (
-    CONTRACTS, check_paths, audit_native_sections, audit_inherited_cap_model, audit_v4_visible_rails,
+    CONTRACTS, check_paths, audit_native_sections, audit_inherited_cap_model, audit_trumpet_visible_rails,
 )
-from scp_hsr_tools.verify_hsr_trumpet_v4 import (
+from scp_hsr_tools.verify_hsr_trumpet import (
     ROOT, SCENE, QUALITY_PATH, RESOURCES_PATH, NEW_IDS, CURRENT_IDS, STRAIGHT_ID,
     ONEWAY_ID, REPLACEMENTS, audit_quality_contract, audit_approved_layout,
     load_build, world_tiles, audit_current_world_tiles, encoded_records,
@@ -30,9 +30,9 @@ from scp_hsr_tools.verify_hsr_trumpet_v4 import (
 
 @lru_cache(maxsize=1)
 def saved_current():
-    path = Path(os.environ.get('SCP_V4_BUILD', ROOT/'dist/straight-stem-trumpet-v4'))
+    path = Path(os.environ.get('SCP_TRUMPET_BUILD', ROOT/'dist/straight-stem-trumpet'))
     checked = verification_resources(RESOURCES_PATH, path, selected_piece_ids=CURRENT_IDS,
-                                     assembly_id='straight-stem-trumpet-v4', required=False)
+                                     assembly_id='straight-stem-trumpet', required=False)
     if checked is None:
         raise unittest.SkipTest('Current actual staged build absent; no saved-resource claim made')
     build = load_build(checked)
@@ -40,7 +40,7 @@ def saved_current():
     return build, tiles, resource_descriptor(RESOURCES_PATH)
 
 
-class V4LiteralContractTests(unittest.TestCase):
+class TrumpetLiteralContractTests(unittest.TestCase):
     def test_current_acceptance_has_no_predecessor_resource_dependency(self):
         self.assertFalse(audit_quality_contract()['predecessor_resource_inputs_required'])
 
@@ -169,10 +169,10 @@ class CurrentSavedResourceMutationControls(unittest.TestCase):
             audit_native_sections(widened,contract)
 
 
-class ActualV4BuildIntegration(unittest.TestCase):
+class ActualTrumpetBuildIntegration(unittest.TestCase):
     def test_complete_saved_candidate(self):
-        path=os.environ.get('SCP_V4_BUILD')
-        if not path:self.skipTest('Set SCP_V4_BUILD to audit an actual staged current build')
+        path=os.environ.get('SCP_TRUMPET_BUILD')
+        if not path:self.skipTest('Set SCP_TRUMPET_BUILD to audit an actual staged current build')
         report=verify(Path(path))
         self.assertEqual(report['status'],'passed')
         self.assertEqual(report['geometry']['strict_byte_identity_cells'],109)
@@ -181,7 +181,7 @@ class ActualV4BuildIntegration(unittest.TestCase):
         self.assertFalse(report['deleted_predecessor_resource_inputs_required'])
 
 
-class EncodedV4ModuleTests(unittest.TestCase):
+class EncodedTrumpetModuleTests(unittest.TestCase):
     def encoded(self, identifier):
         folder = ROOT/'domains/high-speed-rail/00_pieces'/identifier
         geometry = json.loads((folder/'geometry.json').read_text())
@@ -283,7 +283,7 @@ class InheritedCustomCutRailControls(unittest.TestCase):
     def test_both_frozen_current_models_pass_the_literal_mask(self):
         for spec, resources, triangles, records, contract in self.inputs:
             evidence = audit_inherited_cap_model(resources, spec, contract)
-            report = audit_v4_visible_rails(triangles, records, contract)
+            report = audit_trumpet_visible_rails(triangles, records, contract)
             self.assertEqual(evidence['inherited_custom_cap_model_zooms_checked'], 5)
             self.assertEqual(report['inherited_custom_cap_depth_m'], 2.65)
             self.assertEqual(report['inherited_custom_cap_width_m'], 5.2)
@@ -306,23 +306,23 @@ class InheritedCustomCutRailControls(unittest.TestCase):
     def test_interior_extra_rail_cannot_hide_in_the_outward_mask(self):
         _, _, triangles, records, contract = self.inputs[0]
         with self.assertRaisesRegex(ValueError, 'stripe with no used train PATH'):
-            audit_v4_visible_rails([*triangles, self.rail_triangle(outward=-1.)], records, contract)
+            audit_trumpet_visible_rails([*triangles, self.rail_triangle(outward=-1.)], records, contract)
 
     def test_rail_beyond_the_literal_cap_depth_is_rejected(self):
         _, _, triangles, records, contract = self.inputs[0]
         with self.assertRaisesRegex(ValueError, 'stripe with no used train PATH'):
-            audit_v4_visible_rails([*triangles, self.rail_triangle(outward=2.8)], records, contract)
+            audit_trumpet_visible_rails([*triangles, self.rail_triangle(outward=2.8)], records, contract)
 
     def test_rail_outside_the_existing_width_is_rejected(self):
         _, _, triangles, records, contract = self.inputs[0]
         with self.assertRaisesRegex(ValueError, 'stripe with no used train PATH'):
-            audit_v4_visible_rails([*triangles, self.rail_triangle(transverse=-3.)], records, contract)
+            audit_trumpet_visible_rails([*triangles, self.rail_triangle(transverse=-3.)], records, contract)
 
     def test_complete_actual_neighbour_check_still_rejects_an_unused_rail_inside_the_cap(self):
         from scp_hsr.directional_t_verify import audit_visible_rails
         _, _, triangles, records, contract = self.inputs[0]
         changed = [*triangles, self.rail_triangle()]
-        audit_v4_visible_rails(changed, records, contract)
+        audit_trumpet_visible_rails(changed, records, contract)
         with self.assertRaisesRegex(ValueError, 'stripe with no used train PATH'):
             audit_visible_rails(changed, records+self.neighbour_paths)
 

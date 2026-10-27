@@ -150,17 +150,20 @@ def main():
     observations_cmd.add_argument('--piece', action='append', dest='observation_pieces', help='Exact registered piece ID; repeat to select more')
     observations_cmd.add_argument('--assembly', action='append', dest='observation_assemblies', help='Exact registered assembly ID; repeat to select more')
     observations_cmd.add_argument('--all', action='store_true', help='Apply this observation maintenance operation to every registered subject')
-    menu_cmd = sub.add_parser('menu-test', help='Build an opt-in assembly parts cycle and individual-button submenu')
-    menu_cmd.add_argument('--source', type=Path, default=ROOT / 'dist/current', help='Existing normal verified build; all selected types are preserved')
-    menu_cmd.add_argument('--output', type=Path, default=ROOT / 'dist/trumpet-menu-test')
-    menu_cmd.add_argument('--layout', default='trumpet-menu-test', help='Exact entry in the owning domain menu-layout.json')
-    menu_cmd.add_argument('--domain', default='high-speed-rail')
-    menu_cmd.add_argument('--plugins', type=Path)
-    menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
+    for command in ('assembly-menu', 'menu-test'):
+        menu_cmd = sub.add_parser(command, help=('Prepare one assembly button with Tab/Shift+Tab component cycling'
+            if command == 'assembly-menu' else 'Compatibility command for assembly menu preparation'))
+        menu_cmd.add_argument('--source', type=Path, default=ROOT / 'dist/current', help='Existing normal verified build; all selected piece assets are preserved')
+        menu_cmd.add_argument('--output', type=Path, default=ROOT / ('dist/trumpet-assembly-menu' if command == 'assembly-menu' else 'dist/trumpet-menu-test'))
+        menu_cmd.add_argument('--layout', default='trumpet', help='Exact entry in the owning domain menu-layout.json')
+        menu_cmd.add_argument('--domain', default='high-speed-rail')
+        menu_cmd.add_argument('--plugins', type=Path)
+        menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
     args = parser.parse_args()
-    if args.command == 'menu-test':
-        from scp.menu_experiment import build_menu_experiment
-        result = build_menu_experiment(ROOT, args.source, args.output, layout_id=args.layout,
+    if args.command in ('assembly-menu', 'menu-test'):
+        from scp.menu_experiment import build_assembly_menu, build_menu_experiment
+        operation = build_assembly_menu if args.command == 'assembly-menu' else build_menu_experiment
+        result = operation(ROOT, args.source, args.output, layout_id=args.layout,
             domain_id=args.domain, plugins=args.plugins or configured_plugins(), extra_roots=args.extra_plugins)
         print(json.dumps(result, indent=2))
         return 0

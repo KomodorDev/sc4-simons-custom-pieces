@@ -351,7 +351,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             labels_caption = f'{len(sources)} named placements | positions in side panels'
             _caption(draw, f'X/Y tile coordinates | 1 tile = 16 m | {labels_caption}',
                      143, 20, width, color='#586a7e')
-            if provenance.get('coordinate_system', {}).get('layout') == 'straight-stem-trumpet-v4':
+            if provenance.get('coordinate_system', {}).get('layout') == 'straight-stem-trumpet':
                 _caption(draw, 'Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m',
                          170, 18, width, color='#586a7e')
         camera = make_camera(vertices, azimuth, elevation, view_width, view_height,

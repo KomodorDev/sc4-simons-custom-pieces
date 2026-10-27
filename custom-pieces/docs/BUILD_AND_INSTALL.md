@@ -8,11 +8,11 @@ document_type: "procedure"
 # Build, install, and inspect SCP
 
 
-An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. Each selected piece has its own **SCP** button in **Transportation → Rail**. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
+An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in **Transportation → Rail**. Every assembly delivery then uses the [assembly-menu step](#prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
 
 ## Current pieces and assembly design
 
-The [rail player guide](../domains/high-speed-rail/README.md) explains network levels, matching approaches and the main piece families. Browse the [illustrated pieces](../domains/high-speed-rail/00_pieces/INVENTORY.md) or [assembly blueprints](../domains/high-speed-rail/01_assemblies/INVENTORY.md) for current types, pictures and scoped status. Named collections and their current counts are in the player guide. The [trumpet rebuilding guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/README.md) identifies every module, position and rotation.
+The [rail player guide](../domains/high-speed-rail/README.md) explains network levels, matching approaches and the main piece families. Browse the [illustrated pieces](../domains/high-speed-rail/00_pieces/INVENTORY.md) or [assembly blueprints](../domains/high-speed-rail/01_assemblies/INVENTORY.md) for current types, pictures and scoped status. Named collections and their current counts are in the player guide. The [trumpet rebuilding guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) identifies every module, position and rotation.
 
 Use the [assembly workflow](WORKFLOW_ASSEMBLY_CREATION.md) to agree on a schematic, inventory compatible types, build missing useful modules and review actual compiled grid renders. The [engineering reference](FRAMEWORK_ENGINEERING.md#mixed-network-ownership) owns mixed-network classification. Complete complex interchanges use documented modular blueprints; the existing accepted smooth-T buttons remain PNP types.
 
@@ -226,11 +226,12 @@ python custom-pieces/scp.py verify --output custom-pieces/dist/current
 
 Run these commands from the repository root. Building and verification do not install anything. The installer rejects a replacement that omits an installed piece, so a smaller default build is not automatically a replacement for a larger installed selection. A rebuild must be checked against the intended source and inputs; it does not inherit manual game approval from an older build.
 
-The optional saved-resource checks for the V4 assembly use a separate build, which can be prepared deliberately when needed:
+The optional native saved-resource checks for the trumpet use its compiled assembly build, which can be prepared deliberately when needed:
 
 ```sh
-python custom-pieces/scp.py build --set hsr-straight-stem-trumpet-v4 --progress --output custom-pieces/dist/straight-stem-trumpet-v4
-python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet-v4
+python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --progress --output custom-pieces/dist/trumpet-parts
+python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/straight-stem-trumpet --layout trumpet
+python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
 ```
 
 Keep original evidence and archived builds intact when they are needed to interpret recorded observations. Neither a new clone nor a fresh build requires copying old review workspaces, disposable reports, or Python caches into the active checkout.
@@ -243,7 +244,7 @@ Use a disposable city. Save and quit SimCity 4 first. Keep backups outside all P
 python custom-pieces/scp.py install --output custom-pieces/dist/smooth-t-junctions --backup-root '/absolute/path/to/SCP Backups'
 ```
 
-The installer checks exact NAM fingerprints and current files. It prints a `backup_id`; save that value if you may need rollback. Start the game, open **Transportation → Rail**, and hover over a teal **SCP** button to read its full title. Click the button; use **Home** or **End** to rotate; click clear terrain once to place the piece. **Tab** and **Shift+Tab** select the next or previous type in a declared construction family. Normal SCP builds give each type its own family, so Tab does not provide a catalogue of other SCP types. Directional pieces repeat four proper rotations across their eight rotation states so reflection cannot silently reverse travel direction.
+The installer checks exact NAM fingerprints and current files. It prints a `backup_id`; save that value if you may need rollback. Start the game, open **Transportation → Rail**, and hover over a teal **SCP** button to read its full title. Click the button; use **Home** or **End** to rotate; click clear terrain once to place the piece. **Tab** and **Shift+Tab** select the next or previous type in a declared construction family. The ordinary piece-compilation stage gives each type its own family. A final assembly build replaces its member buttons with one assembly entry and groups those types into the same Tab cycle; follow [Prepare the assembly menu](#prepare-the-assembly-menu) before packaging an assembly. Directional pieces repeat four proper rotations across their eight rotation states so reflection cannot silently reverse travel direction.
 
 Existing sc4pac DLL shortcuts are supported when each points to a regular Windows DLL inside an explicitly scanned Plugins folder. A DLL is a Windows code library. The installer leaves these shortcuts and their targets intact. Linked folders, linked game-resource archives, broken links, and DLL shortcuts pointing outside the scanned folders remain blocked.
 
@@ -263,29 +264,38 @@ python custom-pieces/scp.py uninstall --backup-root '/absolute/path/to/SCP Backu
 
 Removal checks its ownership receipt and saves a snapshot first. The tools do not edit city files or NAM's original archives.
 
-## Try the trumpet menu experiment
+## Prepare the assembly menu
 
-This optional experiment presents the fourteen unique reusable types in `straight-stem-trumpet-v4` in two ways: **SCP | TEST | Trumpet V4 - cycle parts** selects the first component and uses Tab/Shift+Tab to change types; **SCP | TEST | Trumpet V4 - individual parts** opens a submenu containing one named button per type. Each individual button should start on its named type, and Tab then follows the same shared family. Home/End rotate the current type. Neither entry point places the complete assembly.
+Every assembly is delivered through **one assembly button**. Click that button, use **Tab** or **Shift+Tab** to select a component type, use **Home** or **End** to rotate that component, and click to place one copy. This is a component selector; it does not stamp the complete arrangement. The trumpet's button is **SCP | ASSEMBLY | HSR Trumpet**, and its fourteen distinct types appear once each in the cycle, in their first-use order in the assembly plan.
 
-The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the experimental presentation names, locally reserved IDs, and assembly selection. Piece definitions retain their permanent IDs and capabilities. The type order follows first use in the assembly's placement plan, with repeated copies appearing only once. Normal builds do not read this opt-in layout and keep their existing menu arrangement.
+The normal `build` command compiles the reusable pieces. The `assembly-menu` command is the required final menu step for an assembly: it preserves every piece DAT, removes the selected assembly members' individual menu presentations from this candidate, adds one assembly entry, and groups the original construction rows into the Tab cycle. Buttons for unrelated types in a broader source selection remain unchanged. The original menu and controller are retained as verification proof outside the installable folder. Piece identifiers, geometry, paths, shadows, construction definitions, and NetworkINI remain unchanged.
 
-From the project directory, build from an existing verified selection that contains the assembly's components and every installed SCP type you need to retain. The commands below use `dist/current` for that selection; the experiment preserves its types and changes only the menu archive and the controller's generated ordering rows:
+From the repository root, perform these steps:
 
-```sh
-python custom-pieces/scp.py menu-test --source custom-pieces/dist/current --output custom-pieces/dist/trumpet-menu-test
-python custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-menu-test
-python custom-pieces/scp.py package --output custom-pieces/dist/trumpet-menu-test --destination custom-pieces/dist/trumpet-menu-test.zip
-```
-
-The output directory must not already exist. Choose a new descriptive test-build name for another run. The builder verifies the original selection, checks the new presentation IDs against active Plugins, preserves every component DAT and NetworkINI, and packages the original manifest and two original archives as proof outside the installable folder. Those reference archives use `.proof` filenames so the game cannot discover them as additional plugins. The experimental verifier reconstructs the original build for the normal strict verification, then checks the exact allowed menu/controller changes and actual encoded submenu properties and type order. Experimental packages retain this frozen evidence and do not support `--refresh-docs` or public release. Building and packaging do not install anything.
-
-The game needs Submenus DLL, its documented dependencies, and `submenu-essentials.dat`; [the upstream instructions](https://github.com/memo33/submenus-dll#installation) own those requirements. The builder does not install DLLs. After saving and fully quitting SimCity 4, install the complete candidate through the existing receipt-based installer:
+1. Compile the assembly's parts into a normal verified source build. This example contains only the trumpet's fourteen types. To retain other SCP types in a future installation, use a verified normal build containing those types and all the assembly's members as the source in step 2.
 
 ```sh
-python custom-pieces/scp.py install --output custom-pieces/dist/trumpet-menu-test --backup-root '/absolute/path/to/SCP Backups'
+python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts --progress
 ```
 
-Save the returned `backup_id`. Open a disposable city, open **Transportation → Rail**, and test both named entries. Read `docs/menu-experiment/README.md` inside the build for the exact type order and controls; its adjacent `game-checks.json` lists the unverified observations at packaging time. Check both presentations of the first type, every individual starting type, forward and reverse cycling, rotation, cancellation, placement, and save/reload. Static validation cannot prove the game's handling of two presentations sharing one construction target. Record actual failures or explicit successes with the installed build fingerprint and game/DLL environment; do not infer piece traffic or complete-assembly approval from menu behavior. Restore the previous complete selection with the [rollback command](#install-remove-or-roll-back-a-test-build) and saved backup ID.
+2. Prepare the single assembly button. The output directory must not already exist; choose a new descriptive output name for another candidate.
+
+```sh
+python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/straight-stem-trumpet --layout trumpet
+```
+
+3. Verify the complete candidate, and create its development ZIP.
+
+```sh
+python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
+python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-trumpet --destination custom-pieces/dist/straight-stem-trumpet.zip
+```
+
+The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the assembly selection, its single presentation ID, its Rail-menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. The current builder prepares one assembly per final candidate and rejects an already grouped source; it does not silently combine overlapping assembly cycles. The historical `menu-test` command remains a compatibility entry point, while new delivery instructions use `assembly-menu`.
+
+Read `docs/assembly-menu/README.md` inside the output for the exact component order. Its adjacent `game-checks.json` is a frozen list of pending checks, not a passing observation record. The verifier reconstructs the original source build, performs its normal strict validation, and independently checks the allowed menu removal, single added button, and actual Tab ordering. The `.proof` source archives stay outside the managed plugin folder and are not additional game plugins. Candidate packaging preserves this frozen proof; update the source documentation and create a fresh candidate instead of using `package --refresh-docs` on it. Public release remains blocked until the required game evidence exists.
+
+This menu presentation uses native construction-family ordering and needs no Submenus DLL. Its actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm that Rail shows one assembly entry, that its members have no duplicate individual entries, and that unrelated standalone types remain available. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish train travel or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#install-remove-or-roll-back-a-test-build) with the complete candidate.
 
 ## Project files and future additions
 
@@ -321,7 +331,7 @@ Real-NAM tests run when their supported local inputs are available; skipped case
 
 The source ZIP excludes private settings, build output, NAM binaries, caches, and backups. It is a development export. Public binary release remains blocked until public identifier allocation, NAM-derived asset permission, game/platform tests, and publication materials are recorded. See [RELEASE.md](RELEASE.md). No build or packaging command uploads anything to Simtropolis.
 
-Reusable component names describe their function and level. Their standalone pictures use a local **(X0,Y0)** grid at **0°**, without assembly P-labels. The current [V4 guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/README.md) shows **14 unique type pictures** and a separate **26-placement** table. Its six assembly views retain the fixed global X/Y grid and P-labels. Build it with `--set hsr-straight-stem-trumpet-v4`; earlier trumpet definitions and their exclusive pieces are no longer part of the current source.
+Reusable component names describe their function and level. Their standalone pictures use a local **(X0,Y0)** grid at **0°**, without assembly P-labels. The [trumpet guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) shows **14 unique type pictures** and a separate **26-placement** table. Its six assembly views retain the fixed global X/Y grid and P-labels. Build it with `--set hsr-straight-stem-trumpet`. Prepare its single-button assembly menu after compiling the selected components.
 
 
 Read [TESTING.md](TESTING.md) to record a real preview or game observation. Checkboxes are generated from scoped JSON records; do not edit them directly.

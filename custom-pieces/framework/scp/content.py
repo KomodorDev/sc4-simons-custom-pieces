@@ -727,7 +727,7 @@ def _case_details(case, fingerprints=None):
         lines += ['Declaration: '+_readable(case['not_applicable_declaration'])+'.', '']
     if case.get('observations'):
         lines += ['Recorded observations (chronological; the state above checks the relevant dependency snapshot):', '']
-        lines += ['- '+_readable({key:value for key,value in observation.items() if key != 'dependency_fingerprint'})
+        lines += [('- '+_readable({key:value for key,value in observation.items() if key != 'dependency_fingerprint'})).rstrip()
                   for observation in case['observations']]
         lines += ['']
     else:

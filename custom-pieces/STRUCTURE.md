@@ -69,7 +69,7 @@ These fields describe the document; piece and connector data retain their own au
 | Location | Purpose |
 | --- | --- |
 | `project.json`, domain `domain.json`, and `collections.json` | Explicit project/domain registries and named build selections. |
-| Optional domain `menu-layout.json` | Explicitly selected menu experiments, assembly membership policy, presentation names, and locally reserved presentation IDs; normal builds keep their existing menu layout. See [the menu experiment](docs/BUILD_AND_INSTALL.md#try-the-trumpet-menu-experiment). |
+| Domain `menu-layout.json` | Assembly membership, component-cycle order, the single assembly-button presentation, and locally reserved IDs. Ordinary piece compilation supplies the inputs; [assembly-menu packaging](docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) prepares every final assembly menu. |
 | `config/allocations.json`, `config/profiles/`, and `config/release.json` | Identifier ownership, audited dependency contracts, and release requirements. |
 | `00_pieces/<piece>/piece.json`, plus `geometry.json` where needed | Definition, resource identities, and local geometry source for one reusable type. |
 | `01_assemblies/<assembly>/assembly.json` | Placed instances, stable labels, positions, and rotations. |

@@ -70,8 +70,11 @@ def write_inventories(root):
                 'unique_piece_types':len({item['piece_id'] for item in placements}),'journeys':len(conn.get('journeys',[])),
                 'manual_record':identifier+'/checks/manual-tests.json','preview':identifier+'/previews/preview.png'})
             assembly_status[identifier]=status
-            image=f'[![{identifier}]({identifier}/previews/preview.png)]({identifier}/previews/preview.png)' if (local/'previews/preview.png').is_file() else 'Preview pending'
-            assembly_rows.append(f'| {image} | [{identifier}]({identifier}/README.md) | {status["placements"]} / {status["unique_piece_types"]} | '
+            title=assembly['scene'].get('title')
+            label=title.strip() if isinstance(title,str) and title.strip() else identifier
+            label=label.replace('|','\\|').replace('\n',' ').replace('[','\\[').replace(']','\\]')
+            image=f'[![{label}]({identifier}/previews/preview.png)]({identifier}/previews/preview.png)' if (local/'previews/preview.png').is_file() else 'Preview pending'
+            assembly_rows.append(f'| {image} | [{label}]({identifier}/README.md) | {status["placements"]} / {status["unique_piece_types"]} | '
                 f'{_coverage(status,"preview_review")} | {_coverage(status,"in_game_render")} | '
                 f'{_coverage(status,"in_game_journey")} |')
         if not assemblies:assembly_rows+=['','No assembly blueprints are registered in this domain.']

@@ -186,7 +186,7 @@ class AssemblyObservationSplitTests(unittest.TestCase):
             self.assertEqual(summarize_manual_record(record)['journey_coverage']['unverified'], 2)
             self.assertEqual(record['manual_check_orientations'], [{'rotation_ccw_degrees': 0}])
             self.assertEqual(len(record['supported_orientations']), 4)
-            self.assertIn('## Connection matrix', readme.read_text())
+            self.assertIn('## 4. Connection matrix', readme.read_text())
             self.assertNotIn('<!-- BEGIN MANUAL SUMMARY -->', readme.read_text())
             self.assertNotIn('<!-- BEGIN CONNECTIONS -->', readme.read_text())
             self.assertIn('<!-- BEGIN CONNECTIONS -->', testing.read_text())

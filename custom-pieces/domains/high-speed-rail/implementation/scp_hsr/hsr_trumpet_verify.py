@@ -60,7 +60,7 @@ def physical_layout(scene):
 
 def audit_approved_layout(scene, assembly_id, root=None):
     """Compare against the independently reviewed current layout, never a writer."""
-    if assembly_id != 'straight-stem-trumpet-v4':
+    if assembly_id != 'straight-stem-trumpet':
         raise ValueError('No independently reviewed physical layout for this assembly')
     path = _root(root)/'domains/high-speed-rail/01_assemblies'/assembly_id/'checks/layout.json'
     frozen = json.loads(path.read_text())

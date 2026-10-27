@@ -9,6 +9,36 @@ from scp.content import split_markdown_metadata
 
 
 class InventoryArtworkTests(unittest.TestCase):
+    def test_assembly_human_titles_preserve_ids_paths_and_missing_title_fallback(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);domain=root/'domains/fixture';domain.mkdir(parents=True)
+            assemblies=[]
+            for identifier,title in (('trumpet-stable-id','Straight-stem HSR trumpet'),
+                                     ('missing',None),('blank','  '),('invalid',7)):
+                local=domain/'01_assemblies'/identifier
+                (local/'previews').mkdir(parents=True)
+                (local/'previews/preview.png').write_bytes(b'fixture')
+                scene={'placements':[]}
+                if title is not None:scene['title']=title
+                assemblies.append({'id':identifier,'domain':'fixture',
+                    'path':f'domains/fixture/01_assemblies/{identifier}','scene':scene})
+            catalog={'version':'fixture','domains':{'fixture':{'path':'domains/fixture','name':'Fixture'}},
+                     'pieces':[],'piece_sets':{},'_assemblies':assemblies}
+            with patch('scp.inventory.load_catalog',return_value=catalog):write_inventories(root)
+            text=(domain/'01_assemblies/INVENTORY.md').read_text()
+            self.assertIn('[Straight-stem HSR trumpet](trumpet-stable-id/README.md)',text)
+            self.assertIn('[![Straight-stem HSR trumpet](trumpet-stable-id/previews/preview.png)](trumpet-stable-id/previews/preview.png)',text)
+            self.assertNotIn('[trumpet-stable-id](trumpet-stable-id/README.md)',text)
+            for identifier in ('missing','blank','invalid'):
+                self.assertIn(f'[{identifier}]({identifier}/README.md)',text)
+                self.assertIn(f'[![{identifier}]({identifier}/previews/preview.png)]',text)
+            machine=json.loads((domain/'01_assemblies/inventory.json').read_text())['assemblies']
+            self.assertEqual(set(machine),{'trumpet-stable-id','missing','blank','invalid'})
+            for identifier,status in machine.items():
+                self.assertEqual(status['path'],identifier+'/README.md')
+                self.assertEqual(status['preview'],identifier+'/previews/preview.png')
+                self.assertEqual(status['manual_record'],identifier+'/checks/manual-tests.json')
+
     def test_linked_thumbnail_requires_both_image_files(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);domain=root/'domains/fixture';domain.mkdir(parents=True)

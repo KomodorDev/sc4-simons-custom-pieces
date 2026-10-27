@@ -11,4 +11,4 @@ Generated from each subject’s authoritative `checks/manual-tests.json`. Checke
 
 | Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Directed journey cases |
 | --- | --- | --- | --- | --- | --- |
-| [![straight-stem-trumpet-v4](straight-stem-trumpet-v4/previews/preview.png)](straight-stem-trumpet-v4/previews/preview.png) | [straight-stem-trumpet-v4](straight-stem-trumpet-v4/README.md) | 26 / 14 | [ ] 0/6 passed; 6 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [ ] 0/12 passed; 12 unverified; 0 failed; 0 stale |
+| [![Straight-stem HSR trumpet](straight-stem-trumpet/previews/preview.png)](straight-stem-trumpet/previews/preview.png) | [Straight-stem HSR trumpet](straight-stem-trumpet/README.md) | 26 / 14 | [ ] 0/6 passed; 6 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [ ] 0/12 passed; 12 unverified; 0 failed; 0 stale |
