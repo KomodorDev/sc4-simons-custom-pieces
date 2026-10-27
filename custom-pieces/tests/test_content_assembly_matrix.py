@@ -66,8 +66,12 @@ class AssemblyObservationSplitTests(unittest.TestCase):
         self.assertEqual(self.record(True), split)
         with self.assertRaisesRegex(ValueError, 'boolean'):
             new_manual_record('fixture', 'assembly', {}, {}, split_journey_observations=1)
-        with self.assertRaisesRegex(ValueError, 'assembly documentation opt-in'):
-            new_manual_record('fixture', 'piece', {}, {}, split_journey_observations=True)
+        # Pieces use the same explicit opt-in while preserving legacy defaults.
+        piece = new_manual_record(self.subject['id'], 'piece', self.connections, self.hashes,
+                                  split_journey_observations=True)
+        self.assertEqual([case['scope'] for case in piece['cases']],
+                         [case['scope'] for case in split['cases']])
+        self.assertTrue(all(case_state(case) == 'unverified' for case in piece['cases']))
 
     def test_query_does_not_approve_visible_travel_other_rotations_or_environments(self):
         record = self.record(True)

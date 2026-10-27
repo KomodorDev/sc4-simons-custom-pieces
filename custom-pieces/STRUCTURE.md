@@ -90,7 +90,7 @@ These fields describe the document; piece and connector data retain their own au
 
 ## Generated views
 
-A **generated section** sits between named HTML comment markers and is replaced by its generator. Keep authored explanations outside those markers. Subject summaries, connection tables, checklists, and catalogues derive from their source records; edit those records or the owning generator. The `CONNECTOR OVERVIEW` block and its related outputs follow [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md).
+A **generated section** sits between named HTML comment markers and is replaced by its generator. Keep authored explanations outside those markers. Subject summaries, intrinsic movement matrices, connection tables, checklists, and catalogues derive from their source records; edit those records or the owning generator. The numbered piece layout, `PIECE CONNECTION MATRIX`, `CONNECTOR OVERVIEW`, and related outputs follow [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#piece-readme).
 
 A **prose-only refresh** updates generated views without changing measured connection or observation bytes. Actual resource changes require extraction and relevant evidence refresh under [framework engineering](docs/FRAMEWORK_ENGINEERING.md#documentation-generation-and-observations). Preserve original backups and frozen evidence. Current evidence stays with the retained subject it verifies; explicitly deleted subjects do not retain obsolete compatibility copies.
 

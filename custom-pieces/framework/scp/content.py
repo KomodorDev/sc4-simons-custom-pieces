@@ -209,15 +209,13 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
 
     Software, image review, and actual game rendering have separate cases.
     Endpoint candidate lists do not generate manual compatibility coverage.
-    An opted-in assembly records Route Query and visible travel independently;
+    An opted-in piece or assembly records Route Query and visible travel independently;
     existing generic journey observations never become either new result.
     A manual-orientation subset limits human checks without changing supported
     construction orientations or any software verifier's rotation coverage.
     """
     _require(subject_kind in ('piece', 'assembly'), 'Subject kind must be piece or assembly')
     _require(type(split_journey_observations) is bool, 'Split journey observations must be a boolean')
-    _require(not split_journey_observations or subject_kind == 'assembly',
-             'Split journey observations are an assembly documentation opt-in')
     _require(connections.get('subject_id', subject_id) == subject_id, 'Connection metadata belongs to another subject')
     values = _sha_map(fingerprints)
     orientations = _orientation_scopes(connections)
@@ -563,7 +561,7 @@ _CHECK_NAMES = {
 def _readable(value):
     """Render small scope facts as prose; never paste an opaque JSON blob."""
     if isinstance(value, dict):
-        return '; '.join(str(key).replace('_', ' ')+': '+_readable(item) for key, item in value.items())
+        return '; '.join(str(key).replace('_', ' ')+': '+_readable(item) for key, item in value.items()) if value else '{}'
     if isinstance(value, (tuple, list)):
         return '['+', '.join(_readable(item) for item in value)+']'
     if value is None:
@@ -863,6 +861,9 @@ def update_manual_summary(path, record):
     rows = ['## Manual status', '', f'Generated from [the exact test cases]({target}) and [authoritative observations](checks/manual-tests.json).', '']
     labels = (('preview_review', 'Preview review'), ('in_game_render', 'In-game rendering'),
               ('in_game_journey', 'Directed journeys'))
+    if record['subject']['kind'] == 'piece' and 'journey_coverage' in summary:
+        labels = labels[:2]+(('in_game_route_query', 'Route Query'),
+                             ('in_game_visible_travel', 'Visible travel'))
     for kind, title in labels:
         counts = (summary.get('journey_coverage', summary['by_kind'].get(kind, {})) if kind == 'in_game_journey'
                   else summary['by_kind'].get(kind, {}))
@@ -983,6 +984,86 @@ def refresh_image_reviews(record, preview_hashes):
     return output
 
 
+def _ensure_piece_document(directory, subject):
+    """Give a missing piece guide the current layout; preserve every existing guide."""
+    from .piece_matrix import LAYOUT_MARKER, MARKER
+    readme = Path(directory)/'README.md'
+    if subject['kind'] != 'piece' or readme.is_file():
+        return readme
+    if (Path(directory)/'piece.json').is_file():
+        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    title = subject.get('name', subject['id'])
+    chapters = ('1. Views', '2. Piece and placement', '3. Connection matrix', '4. Testing')
+    lines = ['# '+title, '', 'Purpose: explain this reusable piece and its connections and test coverage.', '',
+             LAYOUT_MARKER, '',
+             ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+                        for chapter in chapters), '']
+    content = (
+        ('The authored explanation of the canonical angled and north-up views is still missing. Generated software images, when available, do not establish the piece’s appearance in the game.',
+         ('PIECE VIEWS',)),
+        ('Placement steps, required approaches, interface families, and known limitations have not yet been documented. Complete these instructions before using this guide as a placement example.',
+         ('PIECE OVERVIEW',)),
+        ('The generated matrix describes movements within this piece. A connector overview, when supplied, describes its exposed boundaries; neither establishes compatibility with an untested neighbour.',
+         (MARKER, 'CONNECTOR OVERVIEW')),
+        ('Piece-specific test preparation, procedures, evidence links, and limitations have not yet been documented. The generated checklist retains the exact current case states; only explicit human observations can approve game checks.',
+         ('MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS')),
+    )
+    for chapter, (paragraph, markers) in zip(chapters, content):
+        lines += ['## '+chapter, '', paragraph, '']
+        for marker in markers:
+            lines += [f'<!-- BEGIN {marker} -->', '', f'<!-- END {marker} -->', '']
+    readme.write_text('\n'.join(lines))
+    return readme
+
+
+def _numbered_piece_enabled(directory, subject):
+    """A marked piece opts into the shared four-chapter guide without changing older guides."""
+    from .piece_matrix import LAYOUT_MARKER, MARKER
+    path = Path(directory)/'README.md'
+    if subject['kind'] != 'piece' or not path.is_file() or LAYOUT_MARKER not in path.read_text():
+        return False
+    text = path.read_text()
+    _require(text.count(LAYOUT_MARKER) == 1, 'Piece layout marker must occur once')
+    for marker in ('PIECE VIEWS', 'PIECE OVERVIEW', MARKER, 'MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS'):
+        begin, end = f'<!-- BEGIN {marker} -->', f'<!-- END {marker} -->'
+        _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
+                 'Numbered piece guide requires one ordered '+marker+' block')
+    return True
+
+
+def _nested_piece_section(text):
+    """Nest generated second-level sections under an authored numbered chapter."""
+    return re.sub(r'(?m)^(#{2,5}) ', r'\1# ', text)
+
+
+def _write_numbered_piece_views(directory, subject, connections, record, piece_link):
+    from .piece_matrix import MARKER, render_piece_connection_matrix
+    readme = Path(directory)/'README.md'
+    # Observation-file updates carry only stable identity; resolve display facts
+    # from the owning definition instead of erasing them from the overview.
+    if (Path(directory)/'piece.json').is_file():
+        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    title = subject.get('name', subject['id'])
+    views = []
+    for name, label in (('preview.png', 'Clean angled view'), ('preview-top.png', 'Clean top view')):
+        if (Path(directory)/name).is_file():
+            views += [f'![{title} — {label}]({name})', '']
+    _replace_generated(readme, 'PIECE VIEWS', '\n'.join(views), append=False)
+    rows = [subject.get('description', ''), '', f'Exact reusable identifier: `{subject["id"]}`.', '']
+    if subject.get('footprint'):
+        width, depth = subject['footprint']
+        rows += [f'Footprint: **{width} × {depth} tiles**. Exact menu name: **{title}**.', '']
+    _replace_generated(readme, 'PIECE OVERVIEW', '\n'.join(rows), append=False)
+    _replace_generated(readme, MARKER, render_piece_connection_matrix(connections, record), append=False)
+    update_manual_summary(readme, record)
+    text = readme.read_text().replace('\n## Manual status\n', '\n### Manual status\n')
+    readme.write_text(text)
+    _replace_generated(readme, 'CONNECTIONS', _nested_piece_section(render_connections(
+        connections, piece_link=piece_link, include_purpose=False)), append=False)
+    _replace_generated(readme, 'MANUAL CHECKS', _nested_piece_section(render_manual_checklist(
+        record, directory=directory)), append=False)
+
+
 def _ensure_testing_document(directory, subject):
     """Create the shared assembly chapters once; preserve every existing document."""
     directory = Path(directory)
@@ -1025,14 +1106,14 @@ def _testing_heading_level(testing, subject):
 
 def _write_subject_views(directory, subject, connections, record, piece_link=None):
     directory = Path(directory)
-    readme = directory/'README.md'
+    readme = _ensure_piece_document(directory, subject)
     if not readme.is_file():
         title = subject.get('name', subject['id'])
-        if subject['kind'] == 'piece':
-            readme.write_text(f'# {title}\n\nPurpose: explain this reusable piece and its connections and test coverage.\n')
-        else:
-            readme.write_text(markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
-                                                'players', 'guide')+f'# {title}\n')
+        readme.write_text(markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
+                                            'players', 'guide')+f'# {title}\n')
+    if _numbered_piece_enabled(directory, subject):
+        _write_numbered_piece_views(directory, subject, connections, record, piece_link)
+        return
     if subject['kind'] == 'piece':
         text = readme.read_text()
         metadata, body = split_markdown_metadata(text)
@@ -1083,14 +1164,15 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     """
     directory = Path(directory)
     checks = directory/'checks'
-    checks.mkdir(parents=True, exist_ok=True)
     record_path = checks/'manual-tests.json'
-    matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if not refresh_metadata:
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
-    else:
+    checks.mkdir(parents=True, exist_ok=True)
+    _ensure_piece_document(directory, subject)
+    matrix_enabled = _assembly_matrix_enabled(directory, subject)
+    if refresh_metadata:
         previous = json.loads(record_path.read_text()) if record_path.exists() else None
         manual_orientations = None
         if matrix_enabled:
@@ -1103,7 +1185,7 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
                 canonical = {'rotation_ccw_degrees': 0}
                 manual_orientations = [canonical if canonical in supported else supported[0]]
         generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
-                                      split_journey_observations=matrix_enabled,
+                                      split_journey_observations=matrix_enabled or _numbered_piece_enabled(directory, subject),
                                       manual_check_orientations=manual_orientations)
         if previous is not None:
             generated = refresh_manual_record(previous, generated)
@@ -1135,6 +1217,14 @@ def record_observation_file(record_path, observation_path):
     """Apply one user-authored observation file and refresh only its derived views."""
     record_path,observation_path=Path(record_path),Path(observation_path)
     record=json.loads(record_path.read_text());request=json.loads(observation_path.read_text())
+    directory=record_path.parent.parent
+    readme=directory/'README.md'
+    numbered_piece = (record['subject']['kind'] == 'piece' and not readme.is_file()) or _numbered_piece_enabled(directory, record['subject'])
+    matrix_views = _assembly_matrix_enabled(directory, record['subject']) or numbered_piece
+    if matrix_views:
+        connection_path=directory/'connections.json'
+        _require(connection_path.is_file(), 'No measured connections for '+record['subject']['id']+'; cannot refresh its connection matrix')
+        connections=json.loads(connection_path.read_text())
     common={key:request.get(key) for key in ('explicit_user_confirmation','reviewer','confirmed_at')}
     if request.get('result')=='not_applicable':
         output=declare_not_applicable(record,request['case_id'],reason=request.get('reason'),**common)
@@ -1142,10 +1232,8 @@ def record_observation_file(record_path, observation_path):
         output=record_user_result(record,request['case_id'],request.get('result'),evidence=request.get('evidence',[]),
                                   environment=request.get('environment'),note=request.get('note',''),**common)
     record_path.write_text(json.dumps(compact_manual_record(output),indent=2,allow_nan=False)+'\n')
-    directory=record_path.parent.parent
-    readme=directory/'README.md'
-    if _assembly_matrix_enabled(directory, output['subject']):
-        connections = json.loads((directory/'connections.json').read_text())
+    readme=_ensure_piece_document(directory, output['subject'])
+    if matrix_views:
         _write_subject_views(directory, output['subject'], connections, output)
     else:
         if readme.is_file():update_manual_summary(readme,output)

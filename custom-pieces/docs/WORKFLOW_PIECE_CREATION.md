@@ -57,7 +57,16 @@ python3 custom-pieces/scp.py list
 
 Run the two installation commands on first use of a source checkout. The `-e` option registers the shared and domain Python packages at their source locations. `python3` starts Python; `scp.py` is this project's command-line program. The `list` command shows the registered pieces. A registered piece can be disabled by default or still be a draft. Look at the piece's status before selecting it.
 
-Useful existing examples:
+Use these two complete authoring examples when creating a new reusable type. They are experimental: their saved-resource checks and generated documentation do not establish operation inside the game. A **permanent ID** is the value used by selection commands; retain each existing ID when revising that type.
+
+| Example | Permanent ID | What to follow |
+| --- | --- | --- |
+| [HSR Paired Quarter-Turn Level 2 to Level 4](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/README.md) | `blind-hsr-rise-quarter-turn` | One curved, paired height transition, complete native joining boundaries, separate generation and verification, and the canonical angled/top pictures and connection cards. |
+| [HSR above parallel Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md) | `blind-hsr-road-stack` | Several required services sharing a boundary, two side pillars and explicitly paved sidewalks with measured clearance evidence, service-separated cards, and permitted and forbidden movements. |
+
+Open the example's README first, then its `piece.json`, `connections.json`, `connector-groups.jsonc`, and evidence links. Use the [HSR implementation map](../domains/high-speed-rail/NETWORK_SPEC.md#implementation-entry-points) to find its recipe and independent verifier. Copy the authoring sequence and documentation structure, then supply the new type's own measured routes, geometry, declarations, and evidence. Do not copy an example's game IDs, numerical exceptions, source fingerprints, or observations into another type. New piece guides use the [shared numbered README layout](WORKFLOW_DOCUMENTATION_GENERATION.md#piece-readme), including a generated intrinsic movement matrix.
+
+Additional small examples and shared implementation entry points:
 
 - `custom-pieces/domains/high-speed-rail/00_pieces/hsr-diagonal-ghsr/piece.json`: the two-tile elevated HSR over diagonal GHSR piece.
 - `custom-pieces/domains/high-speed-rail/00_pieces/tram-under-hsr/piece.json`: the one-tile ground tram crossing beneath HSR. It is disabled by default.

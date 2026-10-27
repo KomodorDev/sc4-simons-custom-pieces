@@ -13,13 +13,15 @@ Each piece has one README containing its preview, measured connection interfaces
 
 The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, with the modular crossing and tight curve as its final examples. Their generated overview cards live beside those two pieces. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); other types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
+For complete piece-authoring and documentation examples, open **[HSR Paired Quarter-Turn Level 2 to Level 4](00_pieces/blind-hsr-rise-quarter-turn/README.md)** or **[HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md)**. The first shows a paired curve that changes height; the second uses two side pillars and explicitly paved sidewalks and separates HSR, Road vehicles, and pedestrians in its boundary cards. Both guides use **1. Views**, **2. Piece and placement**, **3. Connection matrix**, and **4. Testing**. Their matrices distinguish saved-route checks, the game's Route Query, and observed travel. They are experimental examples; a generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#1-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#implementation-entry-points) when adapting the pattern.
+
 The current library does not supply automatic compatibility discovery. Most existing pieces are not yet migrated to the new connector-export format; that absence establishes neither compatibility nor incompatibility. Ordinary piece validation does not generate a manual test for every possible neighbour.
 
 <!-- BEGIN COLLECTIONS -->
 
 ## Inventories and collections
 
-- [Individual pieces: 165 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
@@ -49,6 +51,7 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `hsr-crossing-core-and-approaches`: 3 piece types.
 - `hsr-compact-fan-parts`: 2 piece types.
 - `hsr-straight-stem-trumpet`: 14 piece types.
+- `piece-authoring-examples`: 2 piece types.
 
 </details>
 
@@ -88,6 +91,15 @@ python3 scp.py verify --output dist/smooth-t-junctions
 ```
 
 This example builds the two accepted smooth T pieces. Repeat `--set` to combine collections, or use `--include EXACT-PIECE-ID` for one exact inventory identifier. These options replace the default selection; `--all` selects every current piece. Building and verifying create and check staged files. Follow the separate [build/install guide](../../docs/BUILD_AND_INSTALL.md) to install them.
+
+To build the two experimental authoring examples instead, remain in `custom-pieces` and run:
+
+```sh
+python3 scp.py build --set piece-authoring-examples --output dist/piece-authoring-examples
+python3 scp.py verify --output dist/piece-authoring-examples
+```
+
+The `piece-authoring-examples` collection selects only the paired rising quarter-turn and parallel HSR/Road stack. A combined native-approach audit for the curve also requires the lower and upper paired straight types named in its README; the two-piece build alone does not supply those approach models. Keep experimental builds staged until their evidence and any installation are deliberately reviewed.
 
 A managed SCP installation has one combined controller and menu for its complete selection. Installing a component-only selection replaces the previous managed selection; it does not add to it automatically. Include every SCP piece you want to retain when choosing a collection to install.
 

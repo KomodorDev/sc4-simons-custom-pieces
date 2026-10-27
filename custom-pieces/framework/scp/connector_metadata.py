@@ -651,7 +651,7 @@ def load_exports(custom_root, piece_ids, domain_id="high-speed-rail"):
 
 def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=None):
     """Check current artwork, selectable text, and recorded source/render fingerprints."""
-    from .connector_overview import markdown_overview
+    from .connector_overview import markdown_overview, readme_overview
     root = Path(custom_root).resolve()
     directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}")
     evidence_path = directory / "evidence/connection-overview.json"
@@ -693,9 +693,9 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
                      for face in (font(BODY_SIZE),font(BODY_SIZE,True),mono_font(BODY_SIZE,font))]
     _need(current_fonts == evidence["figure_typography"]["fonts"], "Stale overview font inputs")
     _need(renderer_settings() == evidence["renderer"], "Stale overview runtime renderer settings")
-    text = markdown_overview(evidence)
-    _need(_sha(text.encode()) == evidence["selectable_markdown_sha256"], "Overview selectable-text fingerprint mismatch")
     readme = (directory/"README.md").read_text()
+    text = readme_overview(readme, markdown_overview(evidence))
+    _need(_sha(text.encode()) == evidence["selectable_markdown_sha256"], "Overview selectable-text fingerprint mismatch")
     _need(text in readme, f"{piece_id}: README overview differs from card facts")
     return {"status": "passed", "boundary_cards": len(evidence["boundary_cards"]), "output_sha256": evidence["output_sha256"]}
 

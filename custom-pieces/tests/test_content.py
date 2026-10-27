@@ -774,6 +774,8 @@ class ManualContentTests(unittest.TestCase):
         from scp.content import compact_manual_record,refresh_catalog_content
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);subject=root/'domains/fixture/00_pieces/fixture';subject.mkdir(parents=True)
+            # This regression retains a legacy combined journey observation.
+            (subject/'README.md').write_text('# Legacy fixture\n\nKeep combined journey coverage.\n')
             connections=deepcopy(self.connections)
             for port in connections['ports']:port['compatible_counterparts']=[]
             connections['source']={'resource_fingerprints':self.hashes}

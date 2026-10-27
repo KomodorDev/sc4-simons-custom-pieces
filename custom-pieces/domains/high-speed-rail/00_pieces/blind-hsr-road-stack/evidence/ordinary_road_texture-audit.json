@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "purpose": "Exact resource discovery; no game load-order selection or installation",
+  "status": "complete",
+  "tgi": "7ab50e44-1abe787d-00004b0e",
+  "scope": {
+    "archive": "<NAM Plugins>/US_Common_Road.dat"
+  },
+  "archives_inspected": 1,
+  "matching_archives": 1,
+  "matching_index_entries": 1,
+  "matches": [
+    {
+      "archive": "<NAM Plugins>/US_Common_Road.dat",
+      "archive_sha256": "074bb0fe837e33ef888b22e60ca1d759d9f3ae99f3c0199e32708926657660de",
+      "archive_bytes": 4441478,
+      "tgi": "7ab50e44-1abe787d-00004b0e",
+      "index_entry_1based": 853,
+      "tgi_occurrence_1based": 1,
+      "stored_offset_bytes": 1919596,
+      "stored_bytes": 7304,
+      "stored_resource_sha256": "4cb5c8f58d46723d4ea8ce912431c3446fd86570e405187a5817fa657ed4ca98",
+      "compression": "qfs",
+      "decompression_status": "passed",
+      "decompressed_bytes": 16432,
+      "decompressed_resource_sha256": "c6190c0d3003da45a0c776aabe73b6a4e02307e96117a29af9b216c31732c196"
+    }
+  ],
+  "errors": [],
+  "stored_variant_count": 1,
+  "decompressed_variant_count": 1,
+  "selection": {
+    "winner_selected": false,
+    "load_order_evaluated": false,
+    "priority_inferred": false,
+    "sort_order": "Archive path, then original index entry"
+  },
+  "read_scope": {
+    "index": "dbpf.read_index",
+    "resource": "Seek to exact matching index entries only",
+    "archive_hash": "Entire matching archive streamed in bounded chunks",
+    "hash_chunk_bytes": 1048576,
+    "maximum_stored_resource_bytes": 134217728
+  },
+  "next_step": "Review every occurrence; capture requires one explicitly selected archive with one occurrence",
+  "source_files_modified": false,
+  "capture": {
+    "directory": "<local resource-captures>/ordinary-road-texture",
+    "file": "7ab50e44-1abe787d-00004b0e.dat",
+    "sha256": "6a8850121fc1bcb95e26b185db8691b35ec79397cd9e560cfbca815023392839",
+    "bytes": 7420,
+    "resource_count": 1,
+    "stored_bytes_preserved": true,
+    "resource_tgi_unchanged": true,
+    "installed": false,
+    "source_archive": "<NAM Plugins>/US_Common_Road.dat",
+    "source_archive_sha256": "074bb0fe837e33ef888b22e60ca1d759d9f3ae99f3c0199e32708926657660de",
+    "source_index_entry_1based": 853,
+    "audit_file": "resource-audit.json"
+  },
+  "path_redaction": {
+    "purpose": "Make imported historical evidence portable without exposing private local paths.",
+    "method": "Absolute source paths replaced with explicit placeholders; original archive and capture filenames retained.",
+    "measured_results_changed": false,
+    "new_audit_run": false
+  }
+}

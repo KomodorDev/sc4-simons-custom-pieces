@@ -3,7 +3,7 @@
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
   "version": "0.6.0.dev1",
   "domain": "high-speed-rail",
-  "count": 165,
+  "count": 167,
   "pieces": [
     {
       "purpose": "Authoritative build definition and permanent game-resource identity for HSR over Diagonal GHSR.",
@@ -31151,6 +31151,433 @@
         "stage": "reusable component prototype",
         "scope": "Individual component; assembly and game operation unverified"
       }
+    },
+    {
+      "purpose": "Authoritative definition and permanent identity for one parallel HSR/Road straight with two sidewalk pillars whose street-facing faces align with the Road/sidewalk boundaries.",
+      "schema_version": 1,
+      "orientation_count": 8,
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "id": "blind-hsr-road-stack",
+      "name": "HSR Level 2 above Parallel Road Level 0 \u2014 Native Paired Straight",
+      "description": "One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars support the deck entirely from the sidewalks, with their street-facing faces aligned with the Road/sidewalk boundaries. Opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.",
+      "recipe": "rail_hsr_road_stack",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f828",
+      "tile_ids": [
+        "7f591000"
+      ],
+      "preview_id": "7f591ff5",
+      "effect_name": "preview_scp_f828________001",
+      "footprint": [
+        1,
+        1
+      ],
+      "dependencies": [
+        "controller",
+        "hsr",
+        "ordinary_road",
+        "ordinary_road_texture",
+        "ordinary_sidewalk_texture"
+      ],
+      "menu": {
+        "id": "6a47f828",
+        "order": "7011f828",
+        "style": "rail-hsr-road-stack"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f591000",
+          "source": "7f591000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Exact native NAM 50 5dd31500 HSR deck; US 00004b0e roadway clipped to its 10 m band without lane rescaling; two 3 m opaque native 08200004 pavement bands; two 0.45 m columns entirely on pavement, with street-facing faces at east offsets -5 m and +5 m, and a 15.80 m cap outside the authored vehicle and pedestrian corridors.",
+        "construction": "Authored parallel monorail/Road 02000200 flags; four proper rotations repeated without reflection; native filler effect 5ddf0100. Game placement remains unverified.",
+        "redistribution": "permission-pending"
+      },
+      "domain": "high-speed-rail"
+    },
+    {
+      "purpose": "Authoritative build definition and permanent identity for one paired L2/L4 graded quarter-turn.",
+      "schema_version": 1,
+      "orientation_count": 8,
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "id": "blind-hsr-rise-quarter-turn",
+      "name": "HSR Paired Quarter-Turn Level 2 to Level 4",
+      "description": "A native-width paired right quarter-turn rises from L2 (15.5 m) at its south end to L4 (30.5 m) at its east end. The return track descends. Both ends retain 8 m straight, flat native collars.",
+      "recipe": "hsr_component_blind_rise_quarter_turn",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f82a",
+      "tile_ids": [
+        "7f5a1100",
+        "7f5a1200",
+        "7f5a1300",
+        "7f5a1400",
+        "7f5a1500",
+        "7f5a1600",
+        "7f5a1010",
+        "7f5a1110",
+        "7f5a1210",
+        "7f5a1310",
+        "7f5a1410",
+        "7f5a1020",
+        "7f5a1120",
+        "7f5a1220",
+        "7f5a1030",
+        "7f5a1130",
+        "7f5a1040",
+        "7f5a1140",
+        "7f5a1050",
+        "7f5a1060"
+      ],
+      "preview_id": "7f5a1ff5",
+      "effect_name": "preview_scp_f82a________001",
+      "footprint": [
+        7,
+        7
+      ],
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f82a",
+        "order": "7011f82a",
+        "style": "hsr-component-blind-rise-quarter-turn"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f5a1100",
+          "source": "7f5a1100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1200",
+          "source": "7f5a1200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1300",
+          "source": "7f5a1300",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1400",
+          "source": "7f5a1400",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1500",
+          "source": "7f5a1500",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1600",
+          "source": "7f5a1600",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1010",
+          "source": "7f5a1010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1110",
+          "source": "7f5a1110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1210",
+          "source": "7f5a1210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1310",
+          "source": "7f5a1310",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1410",
+          "source": "7f5a1410",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1020",
+          "source": "7f5a1020",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1120",
+          "source": "7f5a1120",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1220",
+          "source": "7f5a1220",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1030",
+          "source": "7f5a1030",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1130",
+          "source": "7f5a1130",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1040",
+          "source": "7f5a1040",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1140",
+          "source": "7f5a1140",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1050",
+          "source": "7f5a1050",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a1060",
+          "source": "7f5a1060",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Authored monotonic L2/L4 paired quarter-turn using the audited NAM 50 HSR 5dd31500 native profile and textures.",
+        "construction": "Existing reusable-component controller compiler; independent literal 7 \u00d7 7 sparse-mask, ports, supports, and four-rotation checks.",
+        "redistribution": "permission-pending"
+      },
+      "domain": "high-speed-rail",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "structural_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "category": "hsr-components",
+      "ports": {
+        "S": {
+          "in": [
+            2.0,
+            -104.0,
+            15.5
+          ],
+          "out": [
+            -2.0,
+            -104.0,
+            15.5
+          ]
+        },
+        "E": {
+          "out": [
+            104.0,
+            -2.0,
+            30.5
+          ],
+          "in": [
+            104.0,
+            2.0,
+            30.5
+          ]
+        }
+      },
+      "movements": [
+        [
+          "S",
+          "E"
+        ],
+        [
+          "E",
+          "S"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "component": {
+        "kind": "paired_curved_grade",
+        "support_centers": [
+          [
+            48.0,
+            -0.0
+          ],
+          [
+            64.0,
+            -0.0
+          ],
+          [
+            80.0,
+            -0.0
+          ],
+          [
+            96.0,
+            -0.0
+          ],
+          [
+            16.0,
+            -16.0
+          ],
+          [
+            32.0,
+            -16.0
+          ],
+          [
+            16.0,
+            -32.0
+          ],
+          [
+            0.0,
+            -48.0
+          ],
+          [
+            0.0,
+            -64.0
+          ],
+          [
+            0.0,
+            -80.0
+          ],
+          [
+            0.0,
+            -96.0
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0
+      },
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Software resource checks only; human preview and game operation unverified"
+      }
     }
   ],
   "status": {
@@ -45236,6 +45663,208 @@
       "preview": "hsr-component-l2-shortened-return-curve/preview.png",
       "thumbnail": "hsr-component-l2-shortened-return-curve/preview-thumb.png",
       "manual_record": "hsr-component-l2-shortened-return-curve/checks/manual-tests.json",
+      "design_review": null
+    },
+    "blind-hsr-road-stack": {
+      "record_present": true,
+      "summary": {
+        "total": 317,
+        "states": {
+          "unverified": 315,
+          "passed": 2,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 216,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 80,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 16,
+      "journeys": 10,
+      "path": "blind-hsr-road-stack/README.md",
+      "preview": "blind-hsr-road-stack/preview.png",
+      "thumbnail": "blind-hsr-road-stack/preview-thumb.png",
+      "manual_record": "blind-hsr-road-stack/checks/manual-tests.json",
+      "design_review": null
+    },
+    "blind-hsr-rise-quarter-turn": {
+      "record_present": true,
+      "summary": {
+        "total": 45,
+        "states": {
+          "unverified": 43,
+          "passed": 2,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 8,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 16,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 4,
+      "journeys": 2,
+      "path": "blind-hsr-rise-quarter-turn/README.md",
+      "preview": "blind-hsr-rise-quarter-turn/preview.png",
+      "thumbnail": "blind-hsr-rise-quarter-turn/preview-thumb.png",
+      "manual_record": "blind-hsr-rise-quarter-turn/checks/manual-tests.json",
       "design_review": null
     }
   }

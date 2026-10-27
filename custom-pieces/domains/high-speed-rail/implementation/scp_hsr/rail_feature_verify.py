@@ -147,6 +147,9 @@ def _cells(spec):
 
 
 def check_paths(resources, spec, donors=None):
+    if spec['recipe'] == 'rail_hsr_road_stack':
+        from .road_stack_verify import check_paths as verify_stack
+        return verify_stack(resources, spec, donors)
     from scp.verify import edge, parse_paths
     recipe = _recipe(spec)
     cells = _cells(spec)
@@ -351,6 +354,9 @@ def check_models(resources, spec, donors=None):
     avoids repeating the geometric intersection work for unaffected pieces.
     No result survives this process or a change to any model/path/exemplar.
     """
+    if spec['recipe'] == 'rail_hsr_road_stack':
+        from .road_stack_verify import check_models as verify_stack
+        return verify_stack(resources, spec, donors)
     _recipe(spec)
     _cells(spec)
     keys = {(*S3D, _number(spec['preview_id']))}
@@ -469,6 +475,9 @@ def _check_models_uncached(resources, spec):
 
 def construction_expectations(spec):
     """Literal construction tables are added alongside the finalized layouts."""
+    if spec['recipe'] == 'rail_hsr_road_stack':
+        from .road_stack_verify import construction_expectations as stack_expectations
+        return stack_expectations(spec)
     _recipe(spec)
     require(spec['recipe'] in CONSTRUCTION, 'Rail construction layout is not independently audited')
     cells, cons, flags, cost = CONSTRUCTION[spec['recipe']]

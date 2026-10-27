@@ -151,6 +151,8 @@ class AssemblyTestingLayoutTests(unittest.TestCase):
                 subject = {**self.subject, 'kind': kind}
                 if kind == 'assembly':
                     (directory/'TESTING.md').write_text('# Authored legacy tests\n\nKeep the legacy structure.\n')
+                else:
+                    (directory/'README.md').write_text('# Authored legacy piece\n\nKeep the legacy structure.\n')
                 write_subject_content(directory, subject, self.connections, self.hashes)
                 path = directory/('README.md' if kind == 'piece' else 'TESTING.md')
                 text = path.read_text()

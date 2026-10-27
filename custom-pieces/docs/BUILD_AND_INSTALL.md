@@ -85,12 +85,12 @@ All later Python commands in this guide assume that the environment remains acti
 
 The Python tools can run on macOS, Linux, and Windows. The audited game profile is **SimCity 4 Deluxe version 1.1.641 for Windows, with NAM 50 and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The profile does not establish support for the native macOS game port. See the [NAM Team's official installation instructions](https://www.sc4nam.com/docs/getting-started/installation/) for obtaining NAM and its installer, DLL, and game requirements.
 
-A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded in [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json). A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
+A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, and `ordinary_sidewalk_texture`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
 
 | Item | Provided in Git | Local use |
 | --- | --- | --- |
 | Workstation settings | [`config/local.example.json`](../config/local.example.json) | Copy to ignored `custom-pieces/local/settings.json`, then supply every active Plugins directory. |
-| Supported NAM input identities | [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json) | Supply the matching core archives from your own NAM installation. |
+| Supported NAM input identities | [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json) | Supply the matching four core archives from your own NAM installation, plus any optional captured dependencies required by your selected pieces. |
 | Python dependencies and package definitions | Library requirements and `pyproject.toml` | Install them in a newly created environment for this checkout. |
 | Isolated native inputs | No game archives | Optional private copies under `custom-pieces/local/validation-inputs/` support repeatable texture and verification work. Follow the [preparation procedure](#optional-isolated-native-inputs). |
 | Compiled builds, packages, and caches | No generated build templates | Generate them from source and matching NAM inputs. Existing `dist/` directories are convenient retained outputs, rather than prerequisites for starting source development. |
@@ -174,7 +174,7 @@ This is an optional private copy of selected game archives. Ordinary builds can 
 
 ### Prepare a new private copy
 
-1. Complete the private Plugins settings and run `doctor` as described above. Locate each core archive named in `config/profiles/nam50-rhd.json` within those configured Plugins directories. If more than one candidate exists, resolve the ambiguity before copying anything.
+1. Complete the private Plugins settings and run `doctor` as described above. Locate the four core archives under the profile's `controller`, `hsr`, `urail`, and `glr` keys within those configured Plugins directories. This six-file preparation procedure does not require every optional entry in the profile's `files` table. If more than one candidate exists, resolve the ambiguity before copying anything.
 2. For the current HSR overview work, also locate `High Speed Rail_Textures.dat` and `NetworkAddonMod_GroundLightRail_Plugin_Textures.dat`. These are texture providers. Their full-file fingerprints are not declared by the public core profile, and `doctor` does not certify them. Preserve which source files you selected; later rendering and freshness checks still need their exact texture inputs.
 3. Create a new private directory. This command stops if the `Plugins` directory already exists:
 
@@ -197,15 +197,17 @@ This is an optional private copy of selected game archives. Ordinary builds can 
 
 This record stores fingerprints of the copied files; it is not another compatibility baseline and does not approve different archives. Keep the directory, its record, and all game binaries out of Git. Never replace an existing fingerprint record just to conceal changed inputs.
 
+If a selected piece declares optional captured dependencies, prepare them separately by following that piece's README before building it. For example, [HSR above parallel Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md#native-inputs-and-source-reproduction) needs three narrow captures (the ordinary Road PATH, Road texture, and pavement texture) in addition to the core inputs. These captures are separate files with their own pinned profile hashes and source-audit records. Do not copy a full unrelated Road override into the six-file directory or change the core-copy procedure to require optional inputs for every piece. Pass the prepared capture directory explicitly through `--extra-plugins` when building or checking that selected piece.
+
 ### Transfer an existing private copy
 
-Copy the complete `custom-pieces/local/validation-inputs/` directory, including `Plugins/` and the existing `sources.json`, into the same relative location in the new checkout. Run the following command from the directory containing `custom-pieces/`. It checks every recorded file against the original record, rejects filenames containing a directory, and compares the four core records with the public NAM profile. Any mismatch produces an unsuccessful exit:
+Copy the complete `custom-pieces/local/validation-inputs/` directory, including `Plugins/` and the existing `sources.json`, into the same relative location in the new checkout. Run the following command from the directory containing `custom-pieces/`. It checks every recorded file against the original record, rejects filenames containing a directory, and compares only the four core records (`controller`, `hsr`, `urail`, and `glr`) with the public NAM profile. Optional piece-specific capture entries are not required by this core transfer check. Any mismatch produces an unsuccessful exit:
 
 ```sh
-python -c "import hashlib, json; from pathlib import Path; r=Path('custom-pieces/local/validation-inputs'); files=json.loads((r/'sources.json').read_text(encoding='utf-8'))['files']; bad=[f['file'] for f in files if not Path(f['file']).name==f['file'] or not hashlib.sha256((r/'Plugins'/f['file']).read_bytes()).hexdigest()==f['sha256']]; recorded={f['file']:f['sha256'] for f in files}; core=json.loads(Path('custom-pieces/config/profiles/nam50-rhd.json').read_text(encoding='utf-8'))['files']; baseline=[f['filename'] for f in core.values() if not recorded.get(f['filename'])==f['sha256']]; print('Changed or unsafe records:', bad, 'Missing or mismatched core inputs:', baseline); raise SystemExit(1 if bad or baseline else 0)"
+python -c "import hashlib, json; from pathlib import Path; r=Path('custom-pieces/local/validation-inputs'); files=json.loads((r/'sources.json').read_text(encoding='utf-8'))['files']; bad=[f['file'] for f in files if not Path(f['file']).name==f['file'] or not hashlib.sha256((r/'Plugins'/f['file']).read_bytes()).hexdigest()==f['sha256']]; recorded={f['file']:f['sha256'] for f in files}; profile=json.loads(Path('custom-pieces/config/profiles/nam50-rhd.json').read_text(encoding='utf-8'))['files']; core=[profile[key] for key in ('controller','hsr','urail','glr')]; baseline=[f['filename'] for f in core if not recorded.get(f['filename'])==f['sha256']]; print('Changed or unsafe records:', bad, 'Missing or mismatched core inputs:', baseline); raise SystemExit(1 if bad or baseline else 0)"
 ```
 
-A missing file or unreadable record is a failure to investigate. The two texture providers remain private captured inputs, rather than entries in the public core baseline. Preserve the old directory until the transfer has been checked.
+A missing file or unreadable record is a failure to investigate. The two texture providers remain private captured inputs, rather than entries in the public core baseline. Transfer any separate optional capture directory only when the selected piece requires it, and verify those captures against their own pinned profile hashes and source-audit records. Preserve the old directories until the transfer has been checked.
 
 ### Select isolated inputs explicitly
 
