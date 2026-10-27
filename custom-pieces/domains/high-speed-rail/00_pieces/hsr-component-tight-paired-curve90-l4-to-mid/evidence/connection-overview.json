@@ -7523,7 +7523,7 @@
     "jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
     "menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
     "menu_experiment.py": "a505aad1d0d2ff4c6a6114b483edd35ad4b3d069bad7c82fde8aef707fc7f1f3",
-    "menu_experiment_resources.py": "7f52707df5c4ee44159d08776499214779b94065347378e2aedb2f6a7b6c109d",
+    "menu_experiment_resources.py": "99704946085aa492e961ff436363e163835041d2d720e65bd22f2ecaccef6184",
     "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
@@ -7596,6 +7596,23 @@
       110
     ],
     "pixel_comparison_scope": "Exact RGB comparison against the preserved previous PNG. Any changed pixels are confined to the existing three-line header above y=182; the model scene, markers, legends, cards, and footer below that boundary are identical.",
+    "human_observations_added": 0,
+    "game_operation_tested": false
+  },
+  "framework_dependency_refresh": {
+    "reason": "The shared assembly icon renderer changed to remove the redundant Tab label and enlarge the assembly route silhouette. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
+    "changed_framework_sources": [
+      "menu_experiment_resources.py"
+    ],
+    "previous_connection_overview_evidence_sha256": "b9aa3ed1664fe211e870d87fcc9265e66b65f63eda68fc8dac18b4280c9e072f",
+    "previous_image_sha256": "77dc023889c30bf302f05284da0bfb6f63952e5436d675b933b4e2f4b275b6d6",
+    "current_image_sha256": "77dc023889c30bf302f05284da0bfb6f63952e5436d675b933b4e2f4b275b6d6",
+    "canonical_png_bytes_unchanged": true,
+    "original_source_manifest_bytes_matched": true,
+    "original_source_dat_bytes_matched": true,
+    "original_render_build_context_retained": true,
+    "canonical_clean_views_and_provenance_unchanged": true,
+    "source_geometry_and_manual_observations_unchanged": true,
     "human_observations_added": 0,
     "game_operation_tested": false
   }

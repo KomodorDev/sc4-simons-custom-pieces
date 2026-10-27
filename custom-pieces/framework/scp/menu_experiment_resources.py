@@ -128,16 +128,13 @@ def make_assembly_icon(routes=None):
     xmin, xmax = min(p[0] for p in points), max(p[0] for p in points)
     ymin, ymax = min(p[1] for p in points), max(p[1] for p in points)
     require(xmax > xmin or ymax > ymin, 'Assembly icon routes have no planar extent')
-    factor = min(34 / max(xmax - xmin, 1), 30 / max(ymax - ymin, 1))
+    factor = min(34 / max(xmax - xmin, 1), 34 / max(ymax - ymin, 1))
     scale = 6
     strip = Image.new('RGBA', (176, 44))
-    glyphs = {'T': ('111', '010', '010', '010', '010'),
-              'A': ('010', '101', '111', '101', '101'),
-              'B': ('110', '101', '110', '101', '110')}
 
     def screen(point):
         return ((22 + (point[0] - (xmin + xmax) / 2) * factor) * scale,
-                (18.5 - (point[1] - (ymin + ymax) / 2) * factor) * scale)
+                (22 - (point[1] - (ymin + ymax) / 2) * factor) * scale)
 
     for number in range(4):
         image = Image.new('RGBA', (44 * scale, 44 * scale))
@@ -156,20 +153,6 @@ def make_assembly_icon(routes=None):
                                for low, high in zip((240, 225, 178), (83, 222, 208)))
                 draw.line((a, b), fill=colour, width=round(1.35 * scale))
         image = image.resize((44, 44), Image.Resampling.LANCZOS)
-        draw = ImageDraw.Draw(image)
-        # Reserve only five pixels for the component-cycle hint, leaving the
-        # complete layout enough room to be recognized without a large label.
-        draw.rectangle((8, 36, 35, 40), fill=(14, 32, 42))
-        for index, letter in enumerate('TAB'):
-            for y, row in enumerate(glyphs[letter]):
-                for x, value in enumerate(row):
-                    if value == '1':
-                        draw.point((16 + index * 4 + x, 36 + y), fill=(244, 249, 249))
-        draw.line((8, 38, 12, 38), fill=border)
-        draw.line((8, 38, 10, 36), fill=border)
-        draw.line((8, 38, 10, 40), fill=border)
-        draw.line((31, 38, 35, 38), fill=border)
-        draw.line((33, 36, 35, 38, 33, 40), fill=border)
         if number == 0:
             alpha = image.getchannel('A')
             image = ImageOps.grayscale(image).convert('RGBA')

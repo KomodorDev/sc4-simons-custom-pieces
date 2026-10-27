@@ -10475,7 +10475,7 @@
     "jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
     "menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
     "menu_experiment.py": "a505aad1d0d2ff4c6a6114b483edd35ad4b3d069bad7c82fde8aef707fc7f1f3",
-    "menu_experiment_resources.py": "7f52707df5c4ee44159d08776499214779b94065347378e2aedb2f6a7b6c109d",
+    "menu_experiment_resources.py": "99704946085aa492e961ff436363e163835041d2d720e65bd22f2ecaccef6184",
     "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
@@ -10527,5 +10527,22 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "cd1d5b73df1e5c6d1ab6391e28a40dde58704be0d7da722f9e6a95efe665c708"
+  "selectable_markdown_sha256": "cd1d5b73df1e5c6d1ab6391e28a40dde58704be0d7da722f9e6a95efe665c708",
+  "framework_dependency_refresh": {
+    "reason": "The shared assembly icon renderer changed to remove the redundant Tab label and enlarge the assembly route silhouette. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
+    "changed_framework_sources": [
+      "menu_experiment_resources.py"
+    ],
+    "previous_connection_overview_evidence_sha256": "96a344c98b2797e636d944a780b8e91de9bb833e3575996c28a6c5382c08988e",
+    "previous_image_sha256": "eac18ed7adcc9e22d743c0f8eed0b9322bfcd1874e1331a7b8da86c211c0d9e0",
+    "current_image_sha256": "eac18ed7adcc9e22d743c0f8eed0b9322bfcd1874e1331a7b8da86c211c0d9e0",
+    "canonical_png_bytes_unchanged": true,
+    "original_source_manifest_bytes_matched": true,
+    "original_source_dat_bytes_matched": true,
+    "original_render_build_context_retained": true,
+    "canonical_clean_views_and_provenance_unchanged": true,
+    "source_geometry_and_manual_observations_unchanged": true,
+    "human_observations_added": 0,
+    "game_operation_tested": false
+  }
 }

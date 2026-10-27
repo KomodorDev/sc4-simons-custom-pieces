@@ -39,14 +39,14 @@ class AssemblyIconTests(unittest.TestCase):
         validate_assembly_icon(raw, routes=routes)
         image = Image.open(BytesIO(raw)).convert('RGBA')
         normal = image.crop((44, 0, 88, 44))
-        bright_lower = {(x, y) for y in range(3, 35) for x in range(3, 41)
+        bright_lower = {(x, y) for y in range(3, 41) for x in range(3, 41)
                         if (lambda p: p[0] > 180 and p[1] > 160 and p[2] < p[1])(
                             normal.getpixel((x, y)))}
         self.assertTrue(any(y < 6 for _, y in bright_lower))
         self.assertTrue(any(x > 34 for x, _ in bright_lower))
         self.assertFalse(any(x > 20 and y < 16 for x, y in bright_lower))
         self.assertTrue(any(p[1] > p[0] + 60 and p[2] > 120
-                            for p in normal.crop((21, 20, 31, 29)).getdata()))
+                            for p in normal.crop((21, 28, 33, 34)).getdata()))
         frames = [image.crop((44 * n, 0, 44 * (n + 1), 44)) for n in range(4)]
         self.assertEqual(len({frame.tobytes() for frame in frames}), 4)
         self.assertTrue(all(p[0] == p[1] == p[2] for p in frames[0].getdata()))
