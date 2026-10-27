@@ -4,6 +4,7 @@ from html import escape
 
 MARKER = 'PIECE CONNECTION MATRIX'
 LAYOUT_MARKER = '<!-- PIECE README LAYOUT: 1 -->'
+SPLIT_LAYOUT_MARKER = '<!-- PIECE README LAYOUT: 2 -->'
 
 
 def _text(value):
@@ -141,9 +142,15 @@ def _forbidden_cases(record, connections, entrance, exit_port):
             and case.get('scope', {}).get('forbidden_transfer') in transfers]
 
 
-def render_piece_connection_matrix(connections, record):
+def render_piece_connection_matrix(connections, record, *, testing_document=''):
     """Render declared entry/exit movements without inferring compatible neighbours."""
     from .content import _expanded_record, connectivity_fingerprints
+
+    if testing_document not in ('', 'TESTING.md'):
+        raise ValueError('Piece matrix testing document must be local or TESTING.md')
+    def routed(text):
+        return (text.replace('](#case-', ']('+testing_document+'#case-')
+                    .replace('](#test-checklist)', ']('+testing_document+'#test-checklist)'))
 
     record = _expanded_record(record)
     subject_id = record.get('subject', {}).get('id')
@@ -169,7 +176,7 @@ def render_piece_connection_matrix(connections, record):
              '**Legend:** ✅ confirmed; ❌ failed; ? not established. **Forbidden** means the movement is unavailable; its in-game check confirms that it stays unavailable. Click a result for its exact test case. Scope, evidence, and limitations remain in [the test checklist](#test-checklist).', '']
     if not entrances or not exits:
         lines += ['No directional entrance/exit matrix is declared for this piece.', '']
-        return '\n'.join(lines)
+        return routed('\n'.join(lines))
     lines += ['| Entrance ↓ / Exit → | ' + ' | '.join(_port_label(port) for port in exits) + ' |',
               '| --- | ' + ' | '.join('---' for _ in exits) + ' |']
     for entrance in entrances:
@@ -196,4 +203,4 @@ def render_piece_connection_matrix(connections, record):
             cells.append('<br>'.join(parts))
         lines.append('| ' + _port_label(entrance) + ' | ' + ' | '.join(cells) + ' |')
     lines += ['', 'Source: [connections.json](connections.json).', '']
-    return '\n'.join(lines)
+    return routed('\n'.join(lines))

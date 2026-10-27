@@ -603,8 +603,8 @@ def markdown_overview(evidence):
 
 def readme_overview(original, content):
     """Use the same selectable text and fingerprint in a numbered or legacy guide."""
-    from .piece_matrix import LAYOUT_MARKER
-    if LAYOUT_MARKER in original and content.startswith("## Connection overview\n"):
+    from .piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
+    if any(marker in original for marker in (LAYOUT_MARKER, SPLIT_LAYOUT_MARKER)) and content.startswith("## Connection overview\n"):
         import re
         return re.sub(r"(?m)^(#{2,5}) ", r"\1# ", content)
     return content

@@ -24,6 +24,9 @@ ROTATIONS = (0, 90, 180, 270)
 ASSEMBLY_TESTING_LAYOUT_MARKER = '<!-- ASSEMBLY TESTING LAYOUT: 1 -->'
 ASSEMBLY_TESTING_CHAPTERS = ('1. Test scope', '2. Test setup', '3. Software checks',
                              '4. Game checks', '5. Results and known issues', '6. Design history')
+PIECE_TESTING_LAYOUT_MARKER = '<!-- PIECE TESTING LAYOUT: 1 -->'
+PIECE_TESTING_CHAPTERS = ASSEMBLY_TESTING_CHAPTERS
+PIECE_README_CHAPTERS = ('1. Views', '2. Piece and placement', '3. Connection matrix')
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
     'in_game_journey', 'in_game_route_query', 'in_game_visible_travel',
@@ -854,11 +857,13 @@ def _assembly_matrix_enabled(directory, subject):
     return True
 
 
-def update_manual_summary(path, record):
+def update_manual_summary(path, record, *, case_document=None, heading_level=2):
     """Replace or append the status block; preserve the authored guide."""
     summary = summarize_manual_record(record)
-    target = 'TESTING.md#test-checklist' if record['subject']['kind'] == 'assembly' else '#test-checklist'
-    rows = ['## Manual status', '', f'Generated from [the exact test cases]({target}) and [authoritative observations](checks/manual-tests.json).', '']
+    if case_document is None:
+        case_document = 'TESTING.md' if record['subject']['kind'] == 'assembly' and Path(path).name != 'TESTING.md' else ''
+    target = case_document+'#test-checklist'
+    rows = [*_section_heading('Manual status', heading_level), f'Generated from [the exact test cases]({target}) and [authoritative observations](checks/manual-tests.json).', '']
     labels = (('preview_review', 'Preview review'), ('in_game_render', 'In-game rendering'),
               ('in_game_journey', 'Directed journeys'))
     if record['subject']['kind'] == 'piece' and 'journey_coverage' in summary:
@@ -879,7 +884,7 @@ def update_manual_summary(path, record):
     expanded = _expanded_record(record)
     if any(case['kind'] == 'in_game_connection' and _has_case_history(case)
            for case in expanded['cases']+expanded.get('removed_cases', [])):
-        history_target = 'TESTING.md#legacy-connection-history' if record['subject']['kind'] == 'assembly' else '#legacy-connection-history'
+        history_target = case_document+'#legacy-connection-history'
         rows += ['', f'[Legacy connection history]({history_target}) is retained separately and contributes no current required coverage.']
     rows += ['', 'These observations cover only the named services, directions, poses, rotations, and recorded platforms.']
     return _replace_generated(path, 'MANUAL SUMMARY', '\n'.join(rows))
@@ -984,20 +989,18 @@ def refresh_image_reviews(record, preview_hashes):
     return output
 
 
-def _ensure_piece_document(directory, subject):
-    """Give a missing piece guide the current layout; preserve every existing guide."""
-    from .piece_matrix import LAYOUT_MARKER, MARKER
-    readme = Path(directory)/'README.md'
-    if subject['kind'] != 'piece' or readme.is_file():
-        return readme
-    if (Path(directory)/'piece.json').is_file():
-        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+def piece_document_scaffold(subject):
+    """Return both new piece documents without reading or writing any files.
+
+    Registration uses the same text in its validated pending-output transaction.
+    Existing guides opt in separately; this function never migrates their prose.
+    """
+    from .piece_matrix import SPLIT_LAYOUT_MARKER, MARKER
     title = subject.get('name', subject['id'])
-    chapters = ('1. Views', '2. Piece and placement', '3. Connection matrix', '4. Testing')
     lines = ['# '+title, '', 'Purpose: explain this reusable piece and its connections and test coverage.', '',
-             LAYOUT_MARKER, '',
+             SPLIT_LAYOUT_MARKER, '',
              ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
-                        for chapter in chapters), '']
+                        for chapter in PIECE_README_CHAPTERS)+' · [Testing](TESTING.md)', '']
     content = (
         ('The authored explanation of the canonical angled and north-up views is still missing. Generated software images, when available, do not establish the piece’s appearance in the game.',
          ('PIECE VIEWS',)),
@@ -1005,30 +1008,109 @@ def _ensure_piece_document(directory, subject):
          ('PIECE OVERVIEW',)),
         ('The generated matrix describes movements within this piece. A connector overview, when supplied, describes its exposed boundaries; neither establishes compatibility with an untested neighbour.',
          (MARKER, 'CONNECTOR OVERVIEW')),
-        ('Piece-specific test preparation, procedures, evidence links, and limitations have not yet been documented. The generated checklist retains the exact current case states; only explicit human observations can approve game checks.',
-         ('MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS')),
     )
-    for chapter, (paragraph, markers) in zip(chapters, content):
+    for chapter, (paragraph, markers) in zip(PIECE_README_CHAPTERS, content):
         lines += ['## '+chapter, '', paragraph, '']
         for marker in markers:
             lines += [f'<!-- BEGIN {marker} -->', '', f'<!-- END {marker} -->', '']
-    readme.write_text('\n'.join(lines))
+    return {'README.md': '\n'.join(lines),
+            'TESTING.md': _testing_document_scaffold({**subject, 'kind': 'piece'})}
+
+
+def _ensure_piece_document(directory, subject):
+    """Give a missing piece guide the current layout; preserve every existing guide."""
+    readme = Path(directory)/'README.md'
+    if subject['kind'] != 'piece' or readme.is_file():
+        return readme
+    if (Path(directory)/'piece.json').is_file():
+        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    readme.write_text(piece_document_scaffold(subject)['README.md'])
     return readme
 
 
-def _numbered_piece_enabled(directory, subject):
-    """A marked piece opts into the shared four-chapter guide without changing older guides."""
-    from .piece_matrix import LAYOUT_MARKER, MARKER
+def _piece_layout_version(directory, subject):
+    from .piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
     path = Path(directory)/'README.md'
-    if subject['kind'] != 'piece' or not path.is_file() or LAYOUT_MARKER not in path.read_text():
+    if subject['kind'] != 'piece' or not path.is_file():
+        return 0
+    text = path.read_text()
+    counts = [text.count(marker) for marker in (LAYOUT_MARKER, SPLIT_LAYOUT_MARKER)]
+    _require(sum(counts) <= 1, 'Piece layout marker must occur once, with one version')
+    return 2 if counts[1] else 1 if counts[0] else 0
+
+
+def _split_piece_enabled(directory, subject):
+    return _piece_layout_version(directory, subject) == 2
+
+
+def _generated_block_intervals(text, names, *, optional=(), context):
+    """Validate disjoint generated regions before any caller replaces their text."""
+    intervals = {}
+    for name in (*names, *optional):
+        begin, end = f'<!-- BEGIN {name} -->', f'<!-- END {name} -->'
+        if name in optional and begin not in text and end not in text:
+            continue
+        _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
+                 context+' requires one ordered '+name+' block')
+        intervals[name] = (text.index(begin), text.index(end)+len(end))
+    ordered = sorted(intervals.values())
+    _require(all(previous[1] <= following[0] for previous, following in zip(ordered, ordered[1:])),
+             context+' generated blocks must not overlap or nest')
+    return intervals
+
+
+def _numbered_piece_enabled(directory, subject):
+    """Only an explicit version selects the numbered inline or split guide."""
+    from .piece_matrix import MARKER
+    path = Path(directory)/'README.md'
+    version = _piece_layout_version(directory, subject)
+    if not version:
         return False
     text = path.read_text()
-    _require(text.count(LAYOUT_MARKER) == 1, 'Piece layout marker must occur once')
-    for marker in ('PIECE VIEWS', 'PIECE OVERVIEW', MARKER, 'MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS'):
+    markers = ('PIECE VIEWS', 'PIECE OVERVIEW', MARKER)
+    if version == 1:
+        markers += ('MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS')
+    for marker in markers:
         begin, end = f'<!-- BEGIN {marker} -->', f'<!-- END {marker} -->'
         _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
                  'Numbered piece guide requires one ordered '+marker+' block')
+    if version == 2:
+        _generated_block_intervals(text, markers, optional=('CONNECTOR OVERVIEW',), context='Split piece README')
+        _require(re.findall(r'^## (.+)$', text, re.M) == list(PIECE_README_CHAPTERS),
+                 'Split piece README requires its three numbered chapters')
+        _require(not any(f'<!-- {edge} {marker} -->' in text
+                        for edge in ('BEGIN', 'END')
+                        for marker in ('MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS')),
+                 'Split piece guide keeps testing blocks in TESTING.md')
     return True
+
+
+def _validate_piece_testing_document(testing):
+    """Check an existing split document without depending on a saved README."""
+    text = Path(testing).read_text()
+    _require(text.count(PIECE_TESTING_LAYOUT_MARKER) == 1,
+             'Split piece testing layout marker must appear once')
+    _require(re.findall(r'^## (.+)$', text, re.M) == list(PIECE_TESTING_CHAPTERS),
+             'Piece TESTING.md requires its six numbered chapters')
+    intervals = _generated_block_intervals(text, ('CONNECTIONS', 'MANUAL SUMMARY', 'MANUAL CHECKS'),
+                                          context='Piece testing')
+    bounds = [text.index('## '+chapter+'\n') for chapter in PIECE_TESTING_CHAPTERS]
+    for marker, chapter in (('CONNECTIONS', 0), ('MANUAL SUMMARY', 4), ('MANUAL CHECKS', 4)):
+        begin, end = intervals[marker]
+        _require(bounds[chapter] < begin < end < bounds[chapter+1],
+                 'Piece testing requires one '+marker+' block in chapter '+str(chapter+1))
+
+
+def _preflight_piece_documents(directory, subject):
+    """Validate current or default split layouts before creating or changing files."""
+    if subject['kind'] != 'piece':
+        return
+    directory = Path(directory)
+    missing_readme = not (directory/'README.md').is_file()
+    if not missing_readme:
+        _numbered_piece_enabled(directory, subject)
+    if (missing_readme or _split_piece_enabled(directory, subject)) and (directory/'TESTING.md').is_file():
+        _validate_piece_testing_document(directory/'TESTING.md')
 
 
 def _nested_piece_section(text):
@@ -1054,7 +1136,19 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
         width, depth = subject['footprint']
         rows += [f'Footprint: **{width} × {depth} tiles**. Exact menu name: **{title}**.', '']
     _replace_generated(readme, 'PIECE OVERVIEW', '\n'.join(rows), append=False)
-    _replace_generated(readme, MARKER, render_piece_connection_matrix(connections, record), append=False)
+    split = _split_piece_enabled(directory, subject)
+    _replace_generated(readme, MARKER, render_piece_connection_matrix(
+        connections, record, testing_document='TESTING.md' if split else ''), append=False)
+    if split:
+        testing = _ensure_testing_document(directory, subject)
+        heading_level = _testing_heading_level(testing, subject)
+        update_manual_summary(testing, record, case_document='', heading_level=heading_level)
+        _replace_generated(testing, 'CONNECTIONS', render_connections(
+            connections, piece_link=piece_link, include_purpose=False,
+            heading_level=heading_level), append=False)
+        _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(
+            record, directory=directory, heading_level=heading_level), append=False)
+        return
     update_manual_summary(readme, record)
     text = readme.read_text().replace('\n## Manual status\n', '\n### Manual status\n')
     readme.write_text(text)
@@ -1064,42 +1158,54 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
         record, directory=directory)), append=False)
 
 
+def _testing_document_scaffold(subject):
+    noun = 'piece' if subject['kind'] == 'piece' else 'assembly'
+    marker = PIECE_TESTING_LAYOUT_MARKER if noun == 'piece' else ASSEMBLY_TESTING_LAYOUT_MARKER
+    title = f'Testing: {subject.get("name", subject["id"])}'
+    lines = [markdown_metadata(title, f'Inspect this {noun}’s exact checks, resource evidence, and explicit human observations.',
+                               'contributors', 'reference').rstrip(), '',
+             '# '+title, '', marker, '',
+             ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+                        for chapter in ASSEMBLY_TESTING_CHAPTERS), '']
+    pending = (
+        f'The {noun}-specific test scope has not yet been documented. Start with the [{noun} overview](README.md).',
+        'The required local inputs, installation, test layout, and game environment have not yet been documented.',
+        f'The {noun}-specific software commands, expected results, and evidence requirements have not yet been documented.',
+        f'The {noun}-specific game procedures have not yet been documented. Record only explicitly confirmed observations of exact cases.',
+        'Results and known issues have not yet been summarized. The generated checklist below retains the recorded case states and evidence.',
+        f'No {noun}-specific design history has yet been documented.',
+    )
+    for index, (chapter, paragraph) in enumerate(zip(ASSEMBLY_TESTING_CHAPTERS, pending), 1):
+        lines += ['## '+chapter, '', paragraph, '']
+        markers = ('CONNECTIONS',) if index == 1 else (('MANUAL SUMMARY', 'MANUAL CHECKS')
+                  if noun == 'piece' else ('MANUAL CHECKS',)) if index == 5 else ()
+        for name in markers:
+            lines += [f'<!-- BEGIN {name} -->', '', f'<!-- END {name} -->', '']
+    return '\n'.join(lines)
+
+
 def _ensure_testing_document(directory, subject):
-    """Create the shared assembly chapters once; preserve every existing document."""
+    """Create explicitly selected testing chapters once; preserve existing prose."""
     directory = Path(directory)
-    if subject['kind'] != 'assembly':
+    if subject['kind'] != 'assembly' and not _split_piece_enabled(directory, subject):
         return directory/'README.md'
     testing = directory/'TESTING.md'
     if not testing.is_file():
-        title = f'Testing: {subject.get("name", subject["id"])}'
-        lines = [markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
-                                   'contributors', 'reference').rstrip(), '',
-                 '# '+title, '', ASSEMBLY_TESTING_LAYOUT_MARKER, '',
-                 ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
-                            for chapter in ASSEMBLY_TESTING_CHAPTERS), '']
-        pending = (
-            'The assembly-specific test scope has not yet been documented. Start with the [assembly overview](README.md).',
-            'The required local inputs, installation, test layout, and game environment have not yet been documented.',
-            'The assembly-specific software commands, expected results, and evidence requirements have not yet been documented.',
-            'The assembly-specific game procedures have not yet been documented. Record only explicitly confirmed observations of exact cases.',
-            'Results and known issues have not yet been summarized. The generated checklist below retains the recorded case states and evidence.',
-            'No assembly-specific design history has yet been documented.',
-        )
-        for index, (chapter, paragraph) in enumerate(zip(ASSEMBLY_TESTING_CHAPTERS, pending), 1):
-            lines += ['## '+chapter, '', paragraph, '']
-            if index in (1, 5):
-                name = 'CONNECTIONS' if index == 1 else 'MANUAL CHECKS'
-                lines += [f'<!-- BEGIN {name} -->', '', f'<!-- END {name} -->', '']
-        testing.write_text('\n'.join(lines))
+        if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
+            subject = {**json.loads((directory/'piece.json').read_text()), **subject}
+        testing.write_text(_testing_document_scaffold(subject))
     return testing
 
 
 def _testing_heading_level(testing, subject):
-    """Only the explicit assembly layout marker changes generated heading depth."""
-    if subject['kind'] != 'assembly':
+    """Only explicit testing layouts change generated heading depth."""
+    split = subject['kind'] == 'piece' and _split_piece_enabled(Path(testing).parent, subject)
+    if subject['kind'] != 'assembly' and not split:
         return 2
-    text = Path(testing).read_text()
-    count = text.count(ASSEMBLY_TESTING_LAYOUT_MARKER)
+    if split:
+        _validate_piece_testing_document(testing)
+        return 3
+    count = Path(testing).read_text().count(ASSEMBLY_TESTING_LAYOUT_MARKER)
     _require(count <= 1, 'Assembly testing layout marker must appear only once')
     return 3 if count else 2
 
@@ -1169,8 +1275,12 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
+    _preflight_piece_documents(directory, subject)
     checks.mkdir(parents=True, exist_ok=True)
     _ensure_piece_document(directory, subject)
+    numbered_piece = _numbered_piece_enabled(directory, subject)
+    if _split_piece_enabled(directory, subject):
+        _testing_heading_level(_ensure_testing_document(directory, subject), subject)
     matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if refresh_metadata:
         previous = json.loads(record_path.read_text()) if record_path.exists() else None
@@ -1185,7 +1295,7 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
                 canonical = {'rotation_ccw_degrees': 0}
                 manual_orientations = [canonical if canonical in supported else supported[0]]
         generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
-                                      split_journey_observations=matrix_enabled or _numbered_piece_enabled(directory, subject),
+                                      split_journey_observations=matrix_enabled or numbered_piece,
                                       manual_check_orientations=manual_orientations)
         if previous is not None:
             generated = refresh_manual_record(previous, generated)
@@ -1194,7 +1304,7 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     _write_subject_views(directory, subject, connections, generated, piece_link)
     return {'subject': generated['subject'], 'summary': summarize_manual_record(generated),
             'files': ['connections.json', 'README.md', 'checks/manual-tests.json', 'checks/observation.example.json']+
-                     (['TESTING.md'] if subject['kind'] == 'assembly' else [])}
+                     (['TESTING.md'] if subject['kind'] == 'assembly' or _split_piece_enabled(directory, subject) else [])}
 
 
 def declare_not_applicable(record, case_id, *, explicit_user_confirmation, reviewer,
@@ -1218,6 +1328,7 @@ def record_observation_file(record_path, observation_path):
     record_path,observation_path=Path(record_path),Path(observation_path)
     record=json.loads(record_path.read_text());request=json.loads(observation_path.read_text())
     directory=record_path.parent.parent
+    _preflight_piece_documents(directory, record['subject'])
     readme=directory/'README.md'
     numbered_piece = (record['subject']['kind'] == 'piece' and not readme.is_file()) or _numbered_piece_enabled(directory, record['subject'])
     matrix_views = _assembly_matrix_enabled(directory, record['subject']) or numbered_piece
@@ -1357,6 +1468,7 @@ def retire_connection_cases_in_catalog(root, *, piece_ids=None, assembly_ids=Non
         if not path.is_file():
             skipped.append(subject['id']);continue
         previous=json.loads(path.read_text())
+        _preflight_piece_documents(directory, subject)
         _require(previous['subject']=={'id':subject['id'],'kind':subject['kind']}, 'Manual record belongs to another subject: '+subject['id'])
         output=retire_connection_cases(previous)
         connections=json.loads((directory/'connections.json').read_text())
@@ -1405,6 +1517,7 @@ def refresh_image_reviews_in_catalog(root, *, piece_ids=None, assembly_ids=None,
             skipped.append(subject['id'])
             continue
         previous = json.loads(path.read_text())
+        _preflight_piece_documents(directory, subject)
         _require(previous['subject'] == {'id': subject['id'], 'kind': subject['kind']},
                  'Manual record belongs to another subject: '+subject['id'])
         connections = json.loads((directory/'connections.json').read_text())

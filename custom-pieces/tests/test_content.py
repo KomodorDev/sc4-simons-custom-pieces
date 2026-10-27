@@ -426,8 +426,8 @@ class ManualContentTests(unittest.TestCase):
             saved=json.loads(record_path.read_text())
             self.assertIn('dependency_sets',saved)
             self.assertEqual(summarize_manual_record(saved)['states']['passed'],1)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
-            self.assertIn(request['case_id'],(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
+            self.assertIn(request['case_id'],(root/'TESTING.md').read_text())
 
     def test_written_views_preserve_authoritative_observations(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -437,7 +437,7 @@ class ManualContentTests(unittest.TestCase):
             record=self.user_result(record,case);path.write_text(json.dumps(record))
             result=write_subject_content(root,subject,self.connections,self.hashes,preview_hashes=self.images,write_readme=True)
             self.assertEqual(result['summary']['states']['passed'],1)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
             self.assertIn('Exact reusable identifier: `fixture`',(root/'README.md').read_text())
             self.assertTrue((root/'connections.json').is_file())
 
@@ -465,7 +465,7 @@ class ManualContentTests(unittest.TestCase):
                     patch('scp.connectivity.assembly_connectivity',return_value=assembly), \
                     patch('scp.inventory.write_inventories',return_value={}):
                 refresh_catalog_content(root,records=records)
-            text=(root/'domains/hsr/00_pieces/fixture/README.md').read_text()
+            text=(root/'domains/hsr/00_pieces/fixture/TESTING.md').read_text()
             self.assertNotIn('Concrete compatible counterparts',text)
             self.assertNotIn('[neighbour]',text)
             self.assertIn('| `Sin` | hsr / 7 / primary | in |',text)
@@ -564,7 +564,7 @@ class ManualContentTests(unittest.TestCase):
             root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.json').write_text('{}')
             subject=root/'domains/hsr/00_pieces/fixture'
             write_subject_content(subject,{'id':'fixture','kind':'piece'},self.connections,self.hashes)
-            text=(subject/'README.md').read_text()
+            text=(subject/'TESTING.md').read_text()
             relative='custom-pieces/domains/hsr/00_pieces/fixture/checks/'
             self.assertIn('python3 -m scp.content record --record '+relative+'manual-tests.json --observation '+relative+'observation.json',text)
             self.assertIn('../../../../docs/TESTING.md',text)
@@ -770,7 +770,7 @@ class ManualContentTests(unittest.TestCase):
             result=write_subject_content(root,subject,self.connections,{},refresh_metadata=False)
             self.assertEqual(result['summary']['states']['passed'],1)
             self.assertEqual({file:file.read_bytes() for file in original},original)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
 
     def test_refresh_manual_unverified_flag_ignores_supported_software_passes(self):
         from scp.content import compact_manual_record,refresh_catalog_content

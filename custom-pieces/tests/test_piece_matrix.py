@@ -16,7 +16,7 @@ from scp.content import (
     record_observation_file, record_software_result, record_user_result,
     summarize_manual_record, write_subject_content,
 )
-from scp.piece_matrix import LAYOUT_MARKER, render_piece_connection_matrix
+from scp.piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER, render_piece_connection_matrix
 
 
 HEADINGS = ['1. Views', '2. Piece and placement', '3. Connection matrix', '4. Testing']
@@ -218,13 +218,14 @@ class PieceMatrixTests(unittest.TestCase):
                        'description': 'A literal guide fixture.', 'footprint': [1, 2]}
             write_subject_content(directory, subject, self.connections, self.hashes)
             text = (directory/'README.md').read_text()
-            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS)
-            self.assertEqual(text.count(LAYOUT_MARKER), 1)
-            for chapter in HEADINGS:
+            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS[:3])
+            self.assertEqual(text.count(SPLIT_LAYOUT_MARKER), 1)
+            self.assertIn('[Testing](TESTING.md)', text)
+            for chapter in HEADINGS[:3]:
                 anchor = chapter.replace('.', '').lower().replace(' ', '-')
                 self.assertIn(f'[{chapter}](#{anchor})', text)
             for marker in ('PIECE VIEWS', 'PIECE OVERVIEW', 'PIECE CONNECTION MATRIX',
-                           'CONNECTOR OVERVIEW', 'MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS'):
+                           'CONNECTOR OVERVIEW'):
                 self.assertEqual(text.count(f'<!-- BEGIN {marker} -->'), 1)
                 self.assertEqual(text.count(f'<!-- END {marker} -->'), 1)
             self.assertLess(text.index('<!-- END PIECE CONNECTION MATRIX -->'),
@@ -294,7 +295,7 @@ class PieceMatrixTests(unittest.TestCase):
             with patch('scp.content.new_manual_record', side_effect=AssertionError('Do not regenerate cases')):
                 record_observation_file(record_path, observation)
             text = (directory/'README.md').read_text()
-            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS)
+            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS[:3])
             self.assertIn('# Fixture paired piece\n', text)
             after = _expanded_record(json.loads(record_path.read_text()))
             self.assertEqual(connections_before, (directory/'connections.json').read_bytes())

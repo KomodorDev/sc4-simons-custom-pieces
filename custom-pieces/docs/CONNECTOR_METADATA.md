@@ -384,7 +384,7 @@ Both figures use the actual compiled models, measured source positions, and libr
 
 ### 8.6 Additional measured authoring examples
 
-Use these complete piece guides to follow source authoring, saved-resource verification, canonical views, connector declarations, generated cards, and scoped manual checks together. Each uses the shared numbered README layout and intrinsic movement matrix; none supplies an automatic neighbour-compatibility catalogue.
+Use these complete piece guides to follow source authoring, saved-resource verification, canonical views, connector declarations, generated cards, and scoped manual checks together. The trumpet’s [reusable types](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md#2-pieces) demonstrate the current split README/TESTING layout; the two blind examples below retain version-1 combined guides until explicitly refreshed. All retain intrinsic movement matrices; none supplies an automatic neighbour-compatibility catalogue.
 
 | Maintained example | Additional measured scope | Connector sources |
 | --- | --- | --- |

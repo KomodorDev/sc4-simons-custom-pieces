@@ -12052,7 +12052,7 @@
     "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3",
     "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
   },
-  "generator_sha256": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
+  "generator_sha256": "593a8868ed5cf88525d0bb464c04e14cdceb410af7ccce9cddfb320f538d5d82",
   "metadata_resolver_sha256": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
   "manifest_sha256": "43565088ead9b892dd7d7ca9e99c6195e4b02ba38fdb475b038e80ccd274c07d",
   "compiled_manifest_sha256": "83514ae95021aa507cb4f4590807a52b3e1c57303bbc63a5cd7561a4efff64a3",
@@ -12496,8 +12496,8 @@
     "city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
     "connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
     "connector_metadata.py": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
-    "connector_overview.py": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
-    "content.py": "f477103efe3ace402adbc080e4be386b08fb976199a71de81e615b6f7773cade",
+    "connector_overview.py": "593a8868ed5cf88525d0bb464c04e14cdceb410af7ccce9cddfb320f538d5d82",
+    "content.py": "973276b33d5e6f03ab2dd55a56f83faabd07c405c1532feb63208e50a657032b",
     "dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
     "design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
     "export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
@@ -12510,12 +12510,12 @@
     "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
-    "piece_matrix.py": "ebf4d29bce4bb59d8f61e39b4cfc9f6745ac4c01c327ec8320417c200c8e1826",
+    "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
     "piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
     "preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
     "providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
     "recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
-    "registration.py": "0abd859485be079e9b0ec6765a2da0ea18699b717bfd62e1556140443b37f2dd",
+    "registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
     "release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
     "render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
     "render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
@@ -12558,76 +12558,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "90e0a868034264427c8d0ac03382c8a621da39d306b3beae1341c66a578943f4",
-  "framework_dependency_refresh": {
-    "reason": "The shared assembly icon renderer changed to remove the redundant Tab label and enlarge the assembly route silhouette. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "da4045f64201ebdeebc0d10f28d90d1e54ceda191c96ffe1009504cdff1daa79",
-    "previous_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "current_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "artwork_refresh": {
-    "reason": "Shared source-library connector and framework dependencies changed. This connection overview was actually rerendered with the current renderer from an exact copy of its original verified manifest and native DAT.",
-    "previous_image": "evidence/design-history/connection-overview-before-trumpet-rework.png",
-    "previous_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "previous_evidence": "evidence/design-history/connection-overview-before-trumpet-rework.json",
-    "previous_evidence_sha256": "8fbac1733188cf1b36ada3387b7d99885dfd883b5b83ea26f3c0009aae0b5d03",
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "source_geometry_and_resolved_connector_facts_unchanged": true,
-    "geometry_and_cards_pixels_unchanged": true,
-    "canonical_png_bytes_unchanged": true,
-    "inherited_shared_header_only_update": false,
-    "changed_rgb_bounds_xyxy": null,
-    "pixel_comparison_scope": "Exact RGB comparison against the preserved previous PNG. Any changed pixels are confined to the existing three-line header above y=182; the model scene, markers, legends, cards, and footer below that boundary are identical.",
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "assembly_icon_compact_labels_refresh": {
-    "reason": "The shared assembly icon presentation now adds a small SCP library mark at the top right and compact assembly and network labels at the bottom centre while retaining the full route drawing viewport. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment.py",
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "e6e8ac9b58229262716a317a662b263a3834f352a0850219d115f9917b90dd57",
-    "previous_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "current_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  },
-  "assembly_icon_top_left_labels_refresh": {
-    "reason": "The shared assembly icon presentation now places its small SCP library mark at the top left, retaining the compact assembly and network labels and the full route drawing viewport. Strict connection-overview provenance fingerprints every shared framework module, so this overview was actually rerendered from its unchanged verified build.",
-    "changed_framework_sources": [
-      "menu_experiment.py",
-      "menu_experiment_resources.py"
-    ],
-    "previous_connection_overview_evidence_sha256": "8f845da3e9f48f8fef7f74547aac3ddbef14d6b79a8b97b2c2424033c1016778",
-    "previous_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "current_image_sha256": "a0ad20dfdad463556bf39edf236ae8471ab567dc02c03c63e6c5fd2cdc1ade65",
-    "canonical_png_bytes_unchanged": true,
-    "original_source_manifest_bytes_matched": true,
-    "original_source_dat_bytes_matched": true,
-    "original_render_build_context_retained": true,
-    "canonical_clean_views_and_provenance_unchanged": true,
-    "source_geometry_and_manual_observations_unchanged": true,
-    "human_observations_added": 0,
-    "game_operation_tested": false
-  }
+  "selectable_markdown_sha256": "90e0a868034264427c8d0ac03382c8a621da39d306b3beae1341c66a578943f4"
 }

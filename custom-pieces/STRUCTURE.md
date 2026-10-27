@@ -19,7 +19,7 @@ custom-pieces/
 ├── docs/
 │   ├── WORKFLOW_PIECE_CREATION.md          Create or revise one reusable piece
 │   ├── WORKFLOW_ASSEMBLY_CREATION.md       Design a layout made from several pieces
-│   ├── WORKFLOW_DOCUMENTATION_GENERATION.md Generate README files, artwork, exports, and cards
+│   ├── WORKFLOW_DOCUMENTATION_GENERATION.md Generate README/TESTING documents, artwork, exports, and cards
 │   ├── CONNECTOR_METADATA.md              Meaning of connection data and matching rules
 │   ├── BUILD_AND_INSTALL.md               Operate build, install, and package commands
 │   ├── FRAMEWORK_ENGINEERING.md           Shared implementation contracts
@@ -31,7 +31,9 @@ custom-pieces/
 │   ├── NETWORK_SPEC.md               Measured network facts and implementation map, where implemented
 │   ├── 00_pieces/
 │   │   ├── INVENTORY.md               Generated illustrated type catalogue
-│   │   └── <piece>/README.md          Piece-specific manual and generated checks
+│   │   └── <piece>/
+│   │       ├── README.md             Views, placement, and intrinsic movement matrix
+│   │       └── TESTING.md            Scope, preparation, evidence, and exact checks; legacy guides can remain combined
 │   └── 01_assemblies/
 │       ├── INVENTORY.md               Generated illustrated assembly catalogue
 │       └── <assembly>/
@@ -47,7 +49,7 @@ The `00_` and `01_` prefixes keep pieces and assemblies first in a name-sorted f
 
 A **domain** is one network family, such as high-speed rail. Shared procedures and rules live in `docs/`: the two creation workflows describe the sequence of work, the [documentation-generation workflow](docs/WORKFLOW_DOCUMENTATION_GENERATION.md) owns artwork and README production, [framework engineering](docs/FRAMEWORK_ENGINEERING.md) owns shared implementation contracts, and [connector metadata](docs/CONNECTOR_METADATA.md) owns boundary data and matching semantics.
 
-An implemented domain's `NETWORK_SPEC.md` contains its measured network values, audited donors, particular limitations, and implementation map. The [HSR specification](domains/high-speed-rail/NETWORK_SPEC.md) supplies those rail facts; the reserved highway domain has no implemented specification yet. Generic image, coordinate, and resource rules belong in the shared guides. A piece's particular dimensions, supports, route contracts, and exceptions belong with its existing README, checks, and evidence; an assembly's placements and decisions belong with that assembly. Deliberate worked examples can remain in shared references with links to their authoritative sources.
+An implemented domain’s `NETWORK_SPEC.md` contains its measured network values, audited donors, particular limitations, and implementation map. The [HSR specification](domains/high-speed-rail/NETWORK_SPEC.md) supplies those rail facts; the reserved highway domain has no implemented specification yet. Generic image, coordinate, and resource rules belong in the shared guides. A piece’s function and placement belong in its README; detailed dimensions, supports, route contracts, exceptions, and test evidence belong in its TESTING document, checks, and evidence. Legacy combined guides keep their existing content until intentionally migrated. An assembly’s placements and decisions belong with that assembly. Deliberate worked examples can remain in shared references with links to their authoritative sources.
 
 Use the root README to select one workflow. Read technical references when that step needs their facts. `AGENTS.md` and `SKILL.md` route the task and preserve essential constraints; they link the detailed procedure instead of maintaining another copy.
 
@@ -95,6 +97,6 @@ A **generated section** sits between named HTML comment markers and is replaced 
 
 A **prose-only refresh** updates generated views without changing measured connection or observation bytes. Actual resource changes require extraction and relevant evidence refresh under [framework engineering](docs/FRAMEWORK_ENGINEERING.md#documentation-generation-and-observations). Preserve original backups and frozen evidence. Current evidence stays with the retained subject it verifies; explicitly deleted subjects do not retain obsolete compatibility copies.
 
-A piece has one README, and an assembly has README plus TESTING. New assembly TESTING pages follow the [shared six-chapter layout](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout); the content generator supplies their initial scaffold and preserves authored chapters during refresh. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
+New or intentionally refreshed pieces and assemblies have README plus TESTING. A split piece README contains three numbered chapters and a separate Testing link; its TESTING document follows the [shared six-chapter layout](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#required-piece-and-assembly-testing-layout). The markers are `<!-- PIECE README LAYOUT: 2 -->` and `<!-- PIECE TESTING LAYOUT: 1 -->`; legacy combined piece guides, including version 1, remain unchanged until explicitly migrated. The content generator preserves authored chapters during refresh. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
 
 Automatic compatibility discovery is outside the current library commands. A future consumer must use current, source-validated connector exports and keep its eligibility decisions, excluded-source reasons, pairwise candidates, and reports separate from the authored library. Consumer results do not become authored neighbour lists or required manual checkboxes in piece definitions. Unmigrated pieces retain their existing registration and build eligibility without being described as compatible or incompatible.
