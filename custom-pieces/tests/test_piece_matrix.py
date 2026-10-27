@@ -12,7 +12,7 @@ sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents
                           if (p/'project.json').is_file())/'framework'))
 
 from scp.content import (
-    _expanded_record, fingerprint, new_manual_record,
+    _expanded_record, case_state, compact_manual_record, fingerprint, new_manual_record,
     record_observation_file, record_software_result, record_user_result,
     summarize_manual_record, write_subject_content,
 )
@@ -209,6 +209,118 @@ class PieceMatrixTests(unittest.TestCase):
         (directory/'preview-top.png').write_bytes(b'fixture top image')
         write_subject_content(directory, subject, self.connections, self.hashes)
         return subject
+
+    def test_missing_piece_guide_starts_numbered_with_split_unverified_observations(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)/'fixture'
+            subject = {'id': 'fixture', 'kind': 'piece', 'name': 'Fixture paired piece',
+                       'description': 'A literal guide fixture.', 'footprint': [1, 2]}
+            write_subject_content(directory, subject, self.connections, self.hashes)
+            text = (directory/'README.md').read_text()
+            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS)
+            self.assertEqual(text.count(LAYOUT_MARKER), 1)
+            for chapter in HEADINGS:
+                anchor = chapter.replace('.', '').lower().replace(' ', '-')
+                self.assertIn(f'[{chapter}](#{anchor})', text)
+            for marker in ('PIECE VIEWS', 'PIECE OVERVIEW', 'PIECE CONNECTION MATRIX',
+                           'CONNECTOR OVERVIEW', 'MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS'):
+                self.assertEqual(text.count(f'<!-- BEGIN {marker} -->'), 1)
+                self.assertEqual(text.count(f'<!-- END {marker} -->'), 1)
+            self.assertLess(text.index('<!-- END PIECE CONNECTION MATRIX -->'),
+                            text.index('<!-- BEGIN CONNECTOR OVERVIEW -->'))
+            self.assertIn('Placement steps, required approaches, interface families, and known limitations have not yet been documented.', text)
+            record_path = directory/'checks/manual-tests.json'
+            record = _expanded_record(json.loads(record_path.read_text()))
+            for kind in ('in_game_route_query', 'in_game_visible_travel'):
+                cases = [case for case in record['cases'] if case['kind'] == kind]
+                self.assertEqual(len(cases), 4)
+                self.assertEqual({case['scope']['rotation_ccw_degrees'] for case in cases},
+                                 {0, 90, 180, 270})
+            self.assertFalse(any(case['kind'] == 'in_game_journey' for case in record['cases']))
+            self.assertTrue(all(case_state(case, record['fingerprints']) == 'unverified'
+                                for case in record['cases']))
+            before = {path: path.read_bytes() for path in directory.rglob('*') if path.is_file()}
+            write_subject_content(directory, subject, self.connections, self.hashes)
+            self.assertEqual(before, {path: path.read_bytes() for path in directory.rglob('*') if path.is_file()})
+
+    def test_new_guide_does_not_migrate_existing_unmarked_guide_or_rewrite_prose_only_records(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)/'fixture'
+            directory.mkdir()
+            authored = '# Legacy fixture\n\nKeep this exact legacy placement paragraph.\n'
+            (directory/'README.md').write_text(authored)
+            subject = {'id': 'fixture', 'kind': 'piece', 'name': 'Fixture paired piece'}
+            write_subject_content(directory, subject, self.connections, self.hashes)
+            record_path = directory/'checks/manual-tests.json'
+            record = _expanded_record(json.loads(record_path.read_text()))
+            self.assertEqual(sum(case['kind'] == 'in_game_journey' for case in record['cases']), 4)
+            self.assertFalse(any(case['kind'] in ('in_game_route_query', 'in_game_visible_travel')
+                                 for case in record['cases']))
+            record = self.observe(record, 'in_game_journey')
+            record_path.write_text(json.dumps(compact_manual_record(record), indent=2)+'\n')
+            paths = (directory/'connections.json', record_path)
+            before = {path: path.read_bytes() for path in paths}
+            with patch('scp.content.new_manual_record', side_effect=AssertionError('No new resource facts')):
+                write_subject_content(directory, subject, self.connections, {}, refresh_metadata=False)
+            self.assertEqual(before, {path: path.read_bytes() for path in paths})
+            text = (directory/'README.md').read_text()
+            self.assertTrue(text.startswith(authored))
+            self.assertNotIn(LAYOUT_MARKER, text)
+            self.assertNotIn('PIECE CONNECTION MATRIX', text)
+
+    def test_missing_authoritative_record_does_not_create_guide_or_other_files(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)/'fixture'
+            with self.assertRaisesRegex(ValueError, 'No authoritative manual record'):
+                write_subject_content(directory, {'id': 'fixture', 'kind': 'piece'},
+                                      self.connections, {}, refresh_metadata=False)
+            self.assertFalse(directory.exists())
+
+    def test_observation_recording_recreates_missing_guide_without_replacing_observations(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)/'fixture'
+            self.create_guide(directory)
+            (directory/'README.md').unlink()
+            record_path = directory/'checks/manual-tests.json'
+            initial = _expanded_record(json.loads(record_path.read_text()))
+            case = next(case for case in initial['cases'] if case['kind'] == 'in_game_route_query')
+            observation = directory/'observation.json'
+            observation.write_text(json.dumps({
+                'case_id': case['id'], 'result': 'passed', 'explicit_user_confirmation': True,
+                'reviewer': 'Fixture observer', 'confirmed_at': '2026-10-27',
+                'evidence': ['Literal fixture observation.'], 'environment': self.environment}))
+            connections_before = (directory/'connections.json').read_bytes()
+            with patch('scp.content.new_manual_record', side_effect=AssertionError('Do not regenerate cases')):
+                record_observation_file(record_path, observation)
+            text = (directory/'README.md').read_text()
+            self.assertEqual(re.findall(r'^## (.+)$', text, re.MULTILINE), HEADINGS)
+            self.assertIn('# Fixture paired piece\n', text)
+            after = _expanded_record(json.loads(record_path.read_text()))
+            self.assertEqual(connections_before, (directory/'connections.json').read_bytes())
+            self.assertEqual(initial['fingerprints'], after['fingerprints'])
+            self.assertEqual([{k: v for k, v in item.items() if k != 'observations'} for item in initial['cases']],
+                             [{k: v for k, v in item.items() if k != 'observations'} for item in after['cases']])
+            updated = next(item for item in after['cases'] if item['id'] == case['id'])
+            self.assertEqual(case_state(updated, after['fingerprints']), 'passed')
+
+    def test_missing_connections_prevent_observation_scaffold_before_any_write(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)/'fixture'
+            self.create_guide(directory)
+            (directory/'README.md').unlink()
+            (directory/'connections.json').unlink()
+            record_path = directory/'checks/manual-tests.json'
+            record = _expanded_record(json.loads(record_path.read_text()))
+            case = next(case for case in record['cases'] if case['kind'] == 'in_game_route_query')
+            observation = directory/'observation.json'
+            observation.write_text(json.dumps({
+                'case_id': case['id'], 'result': 'passed', 'explicit_user_confirmation': True,
+                'reviewer': 'Fixture observer', 'confirmed_at': '2026-10-27',
+                'evidence': ['Literal fixture observation.'], 'environment': self.environment}))
+            before = {path: path.read_bytes() for path in directory.rglob('*') if path.is_file()}
+            with self.assertRaisesRegex(ValueError, 'No measured connections'):
+                record_observation_file(record_path, observation)
+            self.assertEqual(before, {path: path.read_bytes() for path in directory.rglob('*') if path.is_file()})
 
     def test_numbered_refresh_is_idempotent_and_preserves_authored_and_raw_records(self):
         with TemporaryDirectory() as temporary:

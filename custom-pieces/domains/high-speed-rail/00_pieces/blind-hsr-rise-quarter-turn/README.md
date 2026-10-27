@@ -187,7 +187,7 @@ The mesh and traffic checks inspect the actual saved S3D models and SC4PATH rout
 
 ### Reproduce the local experiment
 
-From the parent directory containing `custom-pieces`, with the source dependencies already available as described in the [build guide](../../../../docs/BUILD_AND_INSTALL.md), first prepare the [Road example’s two private captures](../blind-hsr-road-stack/README.md#native-inputs-and-source-reproduction), then build both authoring examples and the two existing approach types. The command below assumes those captures are under `custom-pieces/local/road-stack-inputs`; if they are already recorded in your private settings, omit the `--extra-plugins` option:
+From the parent directory containing `custom-pieces`, with the source dependencies already available as described in the [build guide](../../../../docs/BUILD_AND_INSTALL.md), first prepare the [Road example’s three private captures](../blind-hsr-road-stack/README.md#native-inputs-and-source-reproduction), then build both authoring examples and the two existing approach types. The command below assumes those captures are under `custom-pieces/local/road-stack-inputs`; if they are already recorded in your private settings, omit the `--extra-plugins` option:
 
 ```sh
 python3 custom-pieces/scp.py build --include blind-hsr-road-stack --include blind-hsr-rise-quarter-turn --include hsr-component-lower-paired-straight --include hsr-component-upper-paired-straight --extra-plugins "$PWD/custom-pieces/local/road-stack-inputs" --output custom-pieces/dist/piece-authoring-examples
