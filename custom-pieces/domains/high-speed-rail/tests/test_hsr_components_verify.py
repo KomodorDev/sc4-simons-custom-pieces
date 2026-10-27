@@ -258,7 +258,10 @@ class GeneratedComponentContractTests(unittest.TestCase):
                 for cell, tile in zip(CONTRACTS[recipe]['cells'], spec['tile_ids'])}
 
     def test_all_generated_paths_match_literal_ports_and_quality_limits(self):
-        self.assertEqual(len(self.specs), 34)
+        # The obsolete compact diverge is replaced by a second placement of
+        # the existing mainline diverge; its recipe contract is reused.
+        self.assertEqual(len(self.specs), 33)
+        self.assertNotIn('hsr_component_l2_compact_fan_diverge', self.specs)
         for recipe, spec in self.specs.items():
             with self.subTest(recipe=recipe):
                 report = check_paths(self.paths[recipe], spec)

@@ -25,6 +25,14 @@ ADAPTER = 'hsr_component_upper_paired_to_single_adapter'
 PAIRED = 'hsr_component_upper_paired_curve90_'
 SINGLE = 'hsr_component_oneway_curve90_'
 
+# The north branch and westbound mainline share this one continuation into
+# cell (0, 0). No other interior split or merge is permitted by this test.
+INTERIOR_JUNCTION_DEGREES = {
+    'hsr_component_l2_short_opposed_merge_core': {
+        (8., 2., 15.5): {'incoming': 2, 'outgoing': 1},
+    },
+}
+
 
 def _point(point):
     return tuple(round(value, 6) for value in point)
@@ -105,7 +113,7 @@ class HsrComponentsLayoutTests(unittest.TestCase):
                 incoming[last] += 1
             # The independent contract permits intentional splits and merges.
             # Ports with more than one movement can legitimately have degree2;
-            # A new coordinated merge also has one literal interior join;
+            # the opposed merge has one literal two-in/one-out interior join;
             # every other interior seam retains exactly one continuation.
             contract = CONTRACTS[recipe]
             starts = {_point(point): label for label, point in contract['ports'].items()
@@ -127,7 +135,14 @@ class HsrComponentsLayoutTests(unittest.TestCase):
                 self.assertEqual({ends[p] for p in visited if p in ends}, expected, recipe)
             target_counts = Counter(target for source, target in contract['movements'])
             source_counts = Counter(source for source, target in contract['movements'])
-            internal = contract.get('interior_junction_degrees', {})
+            internal = INTERIOR_JUNCTION_DEGREES.get(recipe, {})
+            actual_internal = {
+                point: {'incoming': incoming[point], 'outgoing': outgoing[point]}
+                for point in set(incoming) | set(outgoing)
+                if point not in starts and point not in ends
+                and (incoming[point] > 1 or outgoing[point] > 1)
+            }
+            self.assertEqual(actual_internal, internal, recipe)
             for point, count in incoming.items():
                 limit = target_counts[ends[point]] if point in ends else internal.get(point, {}).get('incoming', 1)
                 self.assertLessEqual(count, limit, recipe)
@@ -169,7 +184,9 @@ class HsrComponentsLayoutTests(unittest.TestCase):
             self.assertEqual(len({((row << 4)+column+1) & 255 for column, row in info['cells']}),
                              len(info['cells']))
             self.assertEqual(info['cells'], sorted(info['cells'], key=lambda cell: (cell[1], cell[0])))
-            self.assertEqual(info['cost'], 100*len(info['cells']))
+            # Prices are independently pinned; the sparse fan keeps its price
+            # after four empty cells were removed from its ownership mask.
+            self.assertEqual(info['cost'], CONTRACTS[recipe]['cost'])
 
     def test_paired_curves_have_one_full_deck_and_constant_four_metre_track_spacing(self):
         for hand in ('right', 'left'):
