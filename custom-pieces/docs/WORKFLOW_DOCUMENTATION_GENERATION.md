@@ -163,7 +163,7 @@ The generic catalogue renderer reads each selected DAT's actual S3D preview and 
 3. Inspect changed routes, tracks, walls, piers, joins, and shadows. Record human preview approval separately; generating an image does not confirm approval or game operation. Check readability at the actual delivered resolution, not just the provenance fields.
 4. Require `coverage.complete` for the requested piece selection and views, with no missing or stale records in that selection. Inspect `selected_piece_ids`, `selected_count`, and `requested_views`; outside-selection pieces do not count as missing in this primary report. The separately labelled `catalogue_coverage` reports all registered types; require its completeness only for a deliberately full-registry audit. The default acceleration/coverage index is private `local/cache/preview-index.json`; it is rebuildable and excluded from exports. Each piece's portable `evidence/preview.json` records the actual model, texture, renderer, and PNG hashes. Reuse requires matching inputs and exact current image hashes; historical build names alone are insufficient. The [framework implementation contract](FRAMEWORK_ENGINEERING.md) owns bounded caches, selected DAT reads, shared texture loading, and pixel equality with the reference renderer.
 5. After actual-resource extraction when required, refresh generated connector outputs, then bind review cases to the final images through [the final-artifact procedure](#final-artifacts-and-packaging). A prose-only refresh does not update image-review dependencies or extract resources. Check local Markdown links, then finish and freeze preview writes before tests or packaging copy the source.
-6. Package the final current documentation and images using `package --refresh-docs`, followed by a current source package. The copied source tree describes the current registry, while the candidate manifest identifies the exact selected subset. Old flat catalogue panels and old build ZIPs are not required inputs.
+6. Package the final documentation and images through the [final-artifact procedure](#final-artifacts-and-packaging), selecting its ordinary-build or assembly-menu branch, then create the current source package. The copied source tree describes the current registry, while the candidate manifest identifies the exact selected subset. Old flat catalogue panels and old build ZIPs are not required inputs.
 
 ## Menu artwork and source registration
 
@@ -350,7 +350,7 @@ Inventory refresh does not create missing previews, extract resources, verify a 
 
 ## Final artifacts and packaging
 
-Use this sequence after the implementation, schemas, registry, and required compiled builds have stopped changing. A later source addition or real resource change requires the affected validation and connector refresh again. Do not rebuild merely to capture a newer README.
+Use this sequence after the implementation, schemas, registry, and required compiled resources have stopped changing. A later source addition or real resource change requires the affected validation and connector refresh again. An ordinary verified piece build can receive newer documentation in its ZIP without rebuilding resources. An assembly-menu candidate freezes its source proof, so finalize its documentation before a fresh normal source build and a fresh final assembly-menu candidate.
 
 1. Verify the actual compiled resources and extract changed route measurements through the owning domain. Select the intended build and subjects. For unchanged resources, preserve the existing measured records.
 2. Generate the required standalone angled and top images through the generic command above, then run `connectors refresh` and `connectors check` for migrated types. Inspect the actual PNGs for clipping, complete geometry, consistent headers, and readable connection groups.
@@ -363,18 +363,29 @@ python3 custom-pieces/scp.py inventory
 
 Repeat `--piece`, select an assembly with `--assembly EXACT-ASSEMBLY-ID`, or deliberately use `--all`. This operation updates only image-review cases for the selected subjects, including separate angled, top, and connector-overview images where present. It records exact PNG fingerprints, preserves all non-image cases and original observations, and never marks an image approved. A changed image makes its earlier approval stale; it does not inherit an approval from a different view. Missing final images remain missing rather than receiving an invented pass. Run inventory afterward because those summaries are a separate view refresh.
 
-4. Finish scoped software checks and local-link checks, then freeze image and documentation writes. Package the verified build with current documentation:
+4. Finish scoped software checks and local-link checks, then freeze image and documentation writes. Select the applicable packaging branch below.
+
+For an **ordinary verified piece build**, replace `BUILD_NAME` with its existing build directory, and run:
 
 ```sh
 python3 custom-pieces/scp.py package --output custom-pieces/dist/BUILD_NAME --destination custom-pieces/dist/BUILD_NAME-current-docs.zip --refresh-docs
+```
+
+This command verifies the ordinary build, copies its exact compiled payloads, and places current portable documentation plus matching document hashes in the ZIP. It changes no files in the input build. The ZIP's manifest records the delivered documentation, while the source build's original documentation snapshot remains intact.
+
+For an **assembly-menu candidate**, follow [Prepare the assembly menu](BUILD_AND_INSTALL.md#prepare-the-assembly-menu) after finalizing the source documentation. Its commands compile a fresh normal source build, create a fresh final assembly-menu candidate in an unused output directory, verify it, and package it without `--refresh-docs`. That option is rejected because the candidate's source documents are frozen verification proof. Preserve an earlier candidate unchanged and label it as historical when its documentation is superseded; changing its label does not deliver the new documentation.
+
+5. After completing the applicable binary-packaging branch, export the current portable sources:
+
+```sh
 python3 custom-pieces/scp.py source-package --destination custom-pieces/dist/current-source.zip
 ```
 
-Replace `BUILD_NAME` with the existing verified build directory. The first command verifies that build, copies its exact compiled payloads, and places current portable documentation plus matching document hashes in the ZIP. It changes no files in the input build. The ZIP's manifest records the delivered documentation, while the source build's original documentation snapshot remains intact. The second command exports current portable sources without compiled DATs, private settings, caches, or workstation textures. Both commands create local archives; neither installs or publishes anything.
+The source command excludes compiled DATs, private settings, caches, and workstation textures. Binary packaging and source packaging create local archives; neither installs or publishes anything.
 
 Connector exports and new overview evidence bind a canonical fingerprint of the compiled manifest's resource facts, independently of the documentation list and publication/installation state. Exact DAT hashes, selected definitions, dependencies, construction overlays, and all other build facts remain checked. Consequently, packaging final documentation does not create the old cycle in which updating document hashes invalidated the very connector export being packaged. Legacy overview evidence without this stable field retains its stricter raw-manifest check until deliberately refreshed.
 
-Without `--refresh-docs`, `package` deliberately retains the build-time documentation snapshot. Use that behavior to reproduce an earlier artifact, and label it accurately; use the explicit final-documentation option for a current delivery. Preserve skipped or unavailable game checks as unverified, and inspect the archive's final manifest and README rather than assuming a successful ZIP operation supplied manual evidence.
+Without `--refresh-docs`, `package` deliberately retains the build-time documentation snapshot. This is required for assembly-menu candidates. For ordinary piece builds, use it to reproduce an earlier artifact, and label a superseded snapshot as historical; use `--refresh-docs` for current documentation. Preserve skipped or unavailable game checks as unverified, and inspect the archive's final manifest and README rather than assuming a successful ZIP operation supplied manual evidence.
 
 ## Freshness and evidence
 

@@ -93,6 +93,8 @@ Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-ass
 
 Each city tile measures **16 × 16 m**. On the north-up plan, **X0–X19** increase east/right and **Y0–Y22** increase north/up. The central crossing stays at **(X7, Y13)**. The southwest tile centre is implicitly **(X0, Y0)**; no global origin marker appears. Standalone piece previews use their own local zero-based grid and authored 0° orientation.
 
+The [placement plan](assembly.json) stores authoring positions in metres east and north, with **(0 m, 0 m)** at the central crossing. Its `coordinate_system.conversion` maps those positions to the displayed grid: **X = east metres / 16 + 7**, and **Y = north metres / 16 + 13**. For example, P01A's `origin_m` of **(-96 m, 0 m)** becomes **(X1, Y13)**; the southwest tile centre at **(-112 m, -208 m)** becomes **(X0, Y0)**. These labels identify tile centres. Tile boundaries lie **8 m** to either side of a centre, so an external port on a boundary is not a tile-centre placement reference.
+
 A **reference position** is a piece's software reference tile, which can be empty in a sparse piece. The table therefore describes exact model positions rather than certified mouse-click anchors. Align the entire cursor preview with the ownership plan. A rotation is **counterclockwise from the standalone 0° picture**: 270° counterclockwise equals 90° clockwise. Proper rotations turn the route and its direction together; they do not reverse a one-way track.
 
 ### Module interfaces
@@ -166,17 +168,34 @@ The two shortened one-way curves retain their custom-end tiles. Their standalone
 
 ### Run the software checks
 
-From the project folder containing `custom-pieces`, compile the reusable parts, prepare the single-button assembly menu, and verify that final candidate. The [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) explains this sequence. These commands create local outputs; they do not install them:
+To check the existing staged candidate, open a terminal in the repository folder containing `custom-pieces`, and activate this checkout's Python environment using [Python setup](../../../../docs/BUILD_AND_INSTALL.md#python-setup-for-a-checkout-or-source-zip). The commands below use `python`, which selects that environment's interpreter on macOS, Linux, and Windows. Verify the candidate, then write a private assembly-audit report under `custom-pieces/local/`. If `trumpet-validation.json` already contains a run you need to retain, choose an unused report filename:
 
 ```sh
-python3 custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts --progress
-python3 custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/straight-stem-trumpet --layout trumpet
-python3 custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
-python3 custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/straight-stem-trumpet --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/validation.json
-python3 custom-pieces/scp.py check --scope straight-stem-trumpet
+python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
+python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/straight-stem-trumpet --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/local/trumpet-validation.json
 ```
 
-The validation report identifies the [exact manifest snapshot at audit time](evidence/audited-build-manifest.json). Documentation-only export metadata may change later; the approved DAT bytes remain pinned independently. A missing current descriptor, missing required staged build or changed resource fails verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
+Next, set `SCP_TRUMPET_BUILD`, an **environment variable** that tells the integration checks which candidate directory to inspect. Some saved-resource checks default to `custom-pieces/dist/straight-stem-trumpet` when this variable is absent; the complete-candidate integration check requires it explicitly. The check runner resolves relative candidate paths from the repository root. The following commands set an absolute path, run the assembly checks, and remove the variable afterward. On macOS or Linux, use:
+
+```sh
+export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/straight-stem-trumpet"
+python custom-pieces/scp.py check --scope straight-stem-trumpet
+unset SCP_TRUMPET_BUILD
+```
+
+On Windows, use PowerShell:
+
+```powershell
+$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/straight-stem-trumpet').Path
+python custom-pieces/scp.py check --scope straight-stem-trumpet
+Remove-Item Env:SCP_TRUMPET_BUILD
+```
+
+If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/straight-stem-trumpet-final-01`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
+
+For the fresh run, replace `custom-pieces/dist/straight-stem-trumpet` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
+
+The retained [validation report](evidence/validation.json) identifies a [public binary-payload projection of its audit input manifest](evidence/audited-build-manifest.json), with documentation and release bookkeeping explicitly omitted. The original full input manifest's hash is recorded separately as `manifest_sha256` in the validation report and `raw_input_manifest_sha256` in the projection; `audited_manifest_file_sha256` in the validation report identifies the projection itself. Documentation-only export metadata may change later; the approved DAT bytes remain pinned independently. A missing current descriptor, missing required staged build, or changed resource fails verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
 
 ### Artwork evidence
 
@@ -819,7 +838,7 @@ The saved [candidate-coverage report](evidence/candidate-coverage.json) preserve
 
 ### Tail extraction decisions
 
-**Atomization** means separating a larger piece into smaller useful modules. V4 extracts four almost-straight tail tiles into two existing standard types. Their remaining junctions and curves become four new reusable types with their own menu buttons. No new special straight variant is needed. The comparison table preserves each **original reviewed piece’s local coordinates** as historical measurement context; those predecessor definitions are not current dependencies. The shortened V4 preview starts its own local grid: for example, new P01B local (X4, Y0) is the retained tile at assembly (X6, Y7), while original P01B local (X4, Y0) becomes the separate P01BS tile at assembly (X6, Y6).
+V4 extracts four almost-straight tail tiles into two existing standard types. Their remaining junctions and curves become four new reusable types with their own menu buttons. No new special straight variant is needed. The comparison table preserves each **original reviewed piece’s local coordinates** as historical measurement context; those predecessor definitions are not current dependencies. The shortened V4 preview starts its own local grid: for example, new P01B local (X4, Y0) is the retained tile at assembly (X6, Y7), while original P01B local (X4, Y0) becomes the separate P01BS tile at assembly (X6, Y6).
 
 | Original placement and local tile | Assembly tile | New ordinary placement | Existing standard and rotation | Remaining reusable core |
 | --- | --- | --- | --- | --- |

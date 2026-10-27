@@ -226,13 +226,7 @@ python custom-pieces/scp.py verify --output custom-pieces/dist/current
 
 Run these commands from the repository root. Building and verification do not install anything. The installer rejects a replacement that omits an installed piece, so a smaller default build is not automatically a replacement for a larger installed selection. A rebuild must be checked against the intended source and inputs; it does not inherit manual game approval from an older build.
 
-The optional native saved-resource checks for the trumpet use its compiled assembly build, which can be prepared deliberately when needed:
-
-```sh
-python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --progress --output custom-pieces/dist/trumpet-parts
-python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/straight-stem-trumpet --layout trumpet
-python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
-```
+The optional native saved-resource checks for the trumpet need its compiled assembly candidate. Follow [Prepare the assembly menu](#prepare-the-assembly-menu) for the complete preparation sequence using fresh output directories. Then follow the trumpet's [software checks](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md#run-the-software-checks), using that candidate's actual path for verification and `SCP_TRUMPET_BUILD`. Rechecking an existing candidate does not require preparing its assembly menu again.
 
 Keep original evidence and archived builds intact when they are needed to interpret recorded observations. Neither a new clone nor a fresh build requires copying old review workspaces, disposable reports, or Python caches into the active checkout.
 
@@ -270,30 +264,32 @@ Every assembly is delivered through **one assembly button**. Click that button, 
 
 The normal `build` command compiles the reusable pieces. The `assembly-menu` command is the required final menu step for an assembly: it preserves every piece DAT, removes the selected assembly members' individual menu presentations from this candidate, adds one assembly entry, and groups the original construction rows into the Tab cycle. Buttons for unrelated types in a broader source selection remain unchanged. The original menu and controller are retained as verification proof outside the installable folder. Piece identifiers, geometry, paths, shadows, construction definitions, and NetworkINI remain unchanged.
 
-From the repository root, perform these steps:
+Finalize the source README files, artwork, connector exports, and generated observation views before compiling the normal source build below. The normal build captures that documentation, and `assembly-menu` freezes it as verification proof. Delivering later documentation requires a fresh normal source build followed by a fresh assembly-menu candidate; packaging cannot refresh the candidate's frozen documents.
 
-1. Compile the assembly's parts into a normal verified source build. This example contains only the trumpet's fourteen types. To retain other SCP types in a future installation, use a verified normal build containing those types and all the assembly's members as the source in step 2.
+Run the following steps from the repository root. The example uses `trumpet-parts-final-01` for the fresh normal source build and `straight-stem-trumpet-final-01` for the final assembly-menu candidate. Confirm that neither output directory nor the destination ZIP already exists. If any exists, replace `final-01` with an unused suffix, such as `final-02`, in every command below. Preserve an earlier candidate unchanged; when its documentation is superseded, label it as a historical candidate.
+
+1. Compile the assembly's parts into a fresh normal verified source build. This example contains only the trumpet's fourteen types. To retain other SCP types in a future installation, select those types and all the assembly's members in this source build.
 
 ```sh
-python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts --progress
+python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts-final-01 --progress
 ```
 
-2. Prepare the single assembly button. The output directory must not already exist; choose a new descriptive output name for another candidate.
+2. Prepare the single assembly button from that fresh source build. The final output directory must not already exist.
 
 ```sh
-python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/straight-stem-trumpet --layout trumpet
+python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/trumpet-parts-final-01 --output custom-pieces/dist/straight-stem-trumpet-final-01 --layout trumpet
 ```
 
-3. Verify the complete candidate, and create its development ZIP.
+3. Verify the complete candidate, and create its development ZIP without `--refresh-docs`.
 
 ```sh
-python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet
-python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-trumpet --destination custom-pieces/dist/straight-stem-trumpet.zip
+python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-trumpet-final-01
+python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-trumpet-final-01 --destination custom-pieces/dist/straight-stem-trumpet-final-01.zip
 ```
 
 The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the assembly selection, its single presentation ID, its Rail-menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. The current builder prepares one assembly per final candidate and rejects an already grouped source; it does not silently combine overlapping assembly cycles. The historical `menu-test` command remains a compatibility entry point, while new delivery instructions use `assembly-menu`.
 
-Read `docs/assembly-menu/README.md` inside the output for the exact component order. Its adjacent `game-checks.json` is a frozen list of pending checks, not a passing observation record. The verifier reconstructs the original source build, performs its normal strict validation, and independently checks the allowed menu removal, single added button, and actual Tab ordering. The `.proof` source archives stay outside the managed plugin folder and are not additional game plugins. Candidate packaging preserves this frozen proof; update the source documentation and create a fresh candidate instead of using `package --refresh-docs` on it. Public release remains blocked until the required game evidence exists.
+Read `docs/assembly-menu/README.md` inside the output for the exact component order. Its adjacent `game-checks.json` is a frozen list of pending checks, not a passing observation record. The verifier reconstructs the original source build, performs its normal strict validation, and independently checks the allowed menu removal, single added button, and actual Tab ordering. The `.proof` source archives stay outside the managed plugin folder and are not additional game plugins. Candidate packaging preserves this frozen proof and rejects `package --refresh-docs`. For updated documentation, repeat the fresh normal source build and assembly-menu steps above; do not relabel an older candidate as current. Public release remains blocked until the required game evidence exists.
 
 This menu presentation uses native construction-family ordering and needs no Submenus DLL. Its actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm that Rail shows one assembly entry, that its members have no duplicate individual entries, and that unrelated standalone types remain available. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish train travel or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#install-remove-or-roll-back-a-test-build) with the complete candidate.
 
@@ -313,13 +309,15 @@ A **DAT** is the game's archive of models, traffic paths, menu records, and othe
 
 ## Check and prepare distribution
 
-For a local candidate whose final README, artwork, and connector exports are ready, follow the [final-artifact procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging), then package its existing verified build with current documentation. Replace `BUILD_NAME` with that build directory:
+After the final README, artwork, and connector exports are ready, follow the [final-artifact procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging), and choose the packaging branch that matches the build. For an **ordinary verified piece build**, replace `BUILD_NAME` below with its existing build directory to package current documentation without rebuilding its compiled resources:
 
 ```sh
 python custom-pieces/scp.py package --output custom-pieces/dist/BUILD_NAME --destination custom-pieces/dist/BUILD_NAME-current-docs.zip --refresh-docs
 ```
 
-The command preserves the input build and its compiled resources, and writes the current portable documentation plus matching hashes into the ZIP. Omitting `--refresh-docs` deliberately packages the original build-time documentation snapshot. Packaging remains separate from publication and records no game observation.
+The command preserves the ordinary input build and its compiled resources, and writes the current portable documentation plus matching hashes into the ZIP. Omitting `--refresh-docs` deliberately packages its original build-time documentation snapshot; label that archive as historical when its documentation has been superseded.
+
+For an **assembly-menu candidate**, follow [Prepare the assembly menu](#prepare-the-assembly-menu): finalize documentation before a fresh normal source build, create a fresh final candidate, and package it without `--refresh-docs`. The candidate requires its frozen proof documents and rejects that option. Preserve any earlier candidate unchanged as historical evidence. Packaging remains separate from publication and records no game observation.
 
 ```sh
 python custom-pieces/scp.py check --scope all

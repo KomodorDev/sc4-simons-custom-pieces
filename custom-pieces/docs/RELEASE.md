@@ -70,7 +70,7 @@ These are **recommended project gates**, except where a site requirement is expl
 | Allocation | Confirmed network/resource and construction-ID allocation, plus collision results and preview-name checks. |
 | Compatibility | Exact supported NAM/controller fingerprints, game edition, DLL requirements, drive side, and any required optional NAM asset packages. Unsupported variants are named. |
 | Static verification | Results tied to the exact release DAT hash, including all combined-controller checks. |
-| In-game verification | Actual game build, loaded add-ons, tester/date, and evidence of menu selection, all distinct rotations/mirrors, all connection ends, both directions on both lines, no unintended transfers, shadows, zooms, save/reopen, and removal. Test actual passenger demand when checking route query. |
+| In-game verification | Actual game build, loaded add-ons, tester/date, and evidence of menu selection, every declared supported construction orientation, all declared connection ends, every permitted directed journey for each service, declared forbidden movements, shadows, zooms, save/reopen, and removal. Supply the applicable travel demand for Route Query and visible-travel checks; record those observations separately when both are required. |
 | Installation and removal | Instructions tested on a clean supported profile, competing overlays handled, upgrades tested, and removal instructions explain how to remove placed pieces before their resources disappear. |
 | Packaging | Final archive tested, members listed, DAT/archive hashes recorded, dependencies and credits included, and no private filesystem paths or private correspondence accidentally included. |
 | Publication description | Accurate behavior, menu location, footprint, compatibility, dependencies, limitations, installation, removal, and support route. Do not label an experimental piece as game-tested without the evidence above. |
@@ -133,6 +133,8 @@ Each selected piece can reference a project-relative evidence JSON file with `"g
 ```
 
 Replace the placeholders with records of tests actually performed on the verified build. All declared cases must match the piece's `game_tests` and be `passed` for release readiness. The date must be a real calendar date in `YYYY-MM-DD` format. Evidence and screenshot paths must stay inside the project; absolute paths, parent traversal, and symbolic links are rejected. At least one referenced screenshot file must exist.
+
+The existing JSON keys remain unchanged. `traffic_both_directions` records the subject's applicable declared traffic checks; its name does not require a forbidden reverse journey through a one-way piece. `rotations_and_mirrors` covers the subject's supported construction states; it does not require inventing unsupported reflected states. Bind the evidence to the actual service, direction, and orientation checked.
 
 `package_fingerprints` must include **every** `manifest.files` entry, including the shared controller and menu DATs and the other selected pieces. Changing those files or any donor makes the old evidence inapplicable. Recheck the affected behavior rather than copying a new hash into an old passing record. The caller must verify the actual DAT files against the manifest before the evidence assessment. Matching hashes establish file identity, not that the reported game tests happened. Human permission/evidence flags likewise remain recorded assertions and do not provide automatic legal proof.
 

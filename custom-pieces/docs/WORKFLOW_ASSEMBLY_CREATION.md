@@ -13,7 +13,7 @@ Read the selected transport domain's short `AGENTS.md` router and human `README.
 
 ## Terms and evidence
 
-- A **movement** is one permitted journey, such as south to west. The reverse journey is a separate movement. A full three-arm T has six movements.
+- A **movement** is one permitted journey, such as south to west. The reverse journey is a separate movement. A full three-arm T carrying one service has six movements.
 - A **port** is a measured traffic-route endpoint. The [connector reference](CONNECTOR_METADATA.md) defines how complete shared boundaries, permissions, and placement are compared; physical fit requires its own geometry checks.
 - A **module** is a functional component selected within an assembly's shared menu cycle. Its reusable type can also belong to other builds.
 - A **blueprint** is an exact arrangement of several modules. Building it requires several placements, even when the finished layout is ready-made.
@@ -45,9 +45,9 @@ Use “working in SimCity 4” only for the last state. A plausible chart, an at
 Write a short brief before creating detailed geometry:
 
 1. Name the network on each arm: for example, HSR west/east/south.
-2. List the intended movements and their train directions. For a full T: `W→E`, `W→S`, `E→W`, `E→S`, `S→W`, and `S→E`; exclude U-turns unless requested.
+2. List the intended movements and permitted travel directions separately for each network service. For a full T carrying one service: `W→E`, `W→S`, `E→W`, `E→S`, `S→W`, and `S→E`; exclude U-turns unless requested.
 3. State which crossings must be separated vertically. Identify intended merges and splits, where routes are allowed to meet at the same height.
-4. Record the external connection heights, track widths, and native network ends. Name any intermediate custom height explicitly.
+4. Record the external connection heights, interface widths, and native network ends for each service. Name any intermediate custom height explicitly.
 5. Record the desired footprint, straight/diagonal orientation, symmetry, terrain assumptions, and modular placement method. Distinguish requirements from preferences and unresolved questions. Plan a dedicated rebuilding guide rather than an unimplemented complete-interchange button.
 
 Then present an editable in-chat chart using the available visualization tools. Show north, the city grid, labelled arms, direction arrows, a consistent colour per movement, and height labels wherever lines cross or change level. Include a legend and an explicit **schematic** label. Until dimensions are checked, state that sizes and radii are provisional.
@@ -60,7 +60,7 @@ The chart should make the transport logic obvious before models, textures, pilla
 
 Use the user's comments to revise the chart. Resolve the arrangement of loops, branches, crossing order, direction of travel, and symmetry first. For example, “make the east-to-south curve follow the south-to-west loop before separating” changes the route layout and must be visible in the chart.
 
-Keep the movement colours, arm names, and coordinate origin stable between iterations. Explain what changed and why. If a requested shape conflicts with a height transition or matching track end, show the specific conflict and a small alternative.
+Keep the movement colours, arm names, and coordinate origin stable between iterations. Explain what changed and why. If a requested shape conflicts with a height transition or matching network end, show the specific conflict and a small alternative.
 
 Once the intended shape is clear, carry out routine implementation decisions without repeatedly asking for confirmation. Return to this layout discussion when feasibility requires a material change to the agreed shape or movements.
 
@@ -77,9 +77,9 @@ Create a parts table with one row per required functional module:
 | P01 | Mainline crossing | Exact current ID, if available | Checked / unverified, with the reason | Reuse, test, adapt, or build |
 | P02 | Curved height change | None, if missing | Required entry/exit heights and headings | Build a separate module |
 
-For each connection, check the exact three-dimensional endpoint, heading along the track, permitted train direction, track spacing, visible profile, and construction-grid alignment. Write these expected connections independently of the generator. Keep visual fit and traffic-path compatibility separate.
+For each connection, check the exact three-dimensional endpoint, travel heading, permitted direction for each service, required interface spacing, visible profile, and construction-grid alignment. Write these expected connections independently of the generator. Keep visual fit and traffic-path compatibility separate.
 
-Also assign every occupied city tile to exactly one module. Upper and lower tracks sharing a tile generally need a coordinated module containing both routes; independently placing another piece there can overwrite the first. Check sparse footprints, empty construction-origin cells, rotations, and the runtime tile-address rules before relying on an apparent fit.
+Also assign every occupied city tile to exactly one module. Upper and lower routes sharing a tile generally need a coordinated module containing both routes; independently placing another piece there can overwrite the first. Check sparse footprints, empty construction-origin cells, rotations, and the runtime tile-address rules before relying on an apparent fit.
 
 Check runtime addressing for each independently placed module. Keep the complete arrangement as a blueprint; a safe component allocation does not imply that merging all components into one construction is safe.
 
@@ -94,7 +94,7 @@ Each new functional module needs:
 1. Its own current manifest, unique identifiers, descriptive SCP menu name, and icon, so the user can place it independently.
 2. Explicit traffic paths, visible geometry, occupied cells, construction rules, matching ports, supports, and shadow resources.
 3. Independent checks of the saved DAT contents. Inspect actual encoded PATH samples, S3D geometry, and construction rules, not just values supplied by the generator.
-4. Checks for permitted and forbidden movements, correct split/merge flags, all four proper 90-degree rotations, native connection profiles, curve and slope limits, train clearance, open joins, support contacts and spacing, and all five model/shadow zooms.
+4. Checks for permitted and forbidden movements, correct split/merge flags, all four proper 90-degree rotations, native connection profiles, curve and slope limits, traffic clearance, open joins, support contacts and spacing, and all five model/shadow zooms.
 5. Its own canonical artwork, connection overview, manual records, and inventory row under the shared [documentation-generation workflow](WORKFLOW_DOCUMENTATION_GENERATION.md), including both angled and north-up views for a new or geometrically revised type.
 
 Use the existing piece-authoring guide for the commands and allocation rules. Test a small changed selection first. Reuse already verified results only when every relevant specification and binary input is identical.
@@ -109,12 +109,12 @@ Useful wider variants remain separate current pieces. Add a clearly named compac
 
 Make a machine-readable placement plan. Record a stable module label such as `P01`, its exact piece ID and descriptive SCP menu name, translation, rotation, occupied cells, and source DAT fingerprint. Give repeated copies separate instance labels: four copies of one straight are `P05`, `P06`, `P07`, and `P08`, even though their menu name and piece ID match. Preserve those labels through all views and revisions. A fingerprint is a hash identifying the exact file bytes.
 
-Assemble the saved component models using rotations and translations only. Do not reshape track ends, hide clipping, delete pillars, or repair walls only inside the preview. A repair belongs in an independently placeable module.
+Assemble the saved component models using rotations and translations only. Do not reshape network ends, hide clipping, delete pillars, or repair walls only inside the preview. A repair belongs in an independently placeable module.
 
 Check the complete arrangement:
 
 - Every required directed journey exists; unwanted U-turns, transfers between levels, reverse travel, and unintended same-height crossings are absent.
-- Every seam matches in position, height, direction, and profile. The actual train corridor remains clear across the join.
+- Every seam matches in position, height, direction, and profile. The actual traffic corridor remains clear across the join.
 - Occupied construction cells do not overwrite another module's routes.
 - Pillars meet their decks and satisfy spacing across module boundaries. Two pieces that pass separately can still introduce duplicate or obstructing pillars when placed next to each other.
 - Crossings have sufficient clearance in the visible model, including walls and deck thickness, rather than only different PATH heights.
@@ -139,7 +139,7 @@ Consider available space from the first sketch. Perform a deliberate compaction 
 1. Remove straight approach padding that serves no connection or height transition. Check the west, east, and south arms and the loop's own straights.
 2. Move compatible splits and merges closer to the main crossing where clearances and tile ownership permit it.
 3. Shorten loop sides and its top straight, and reduce curve size where the approved curvature and slope limits still pass. A curve may also change height if an independently tested module supports that combination.
-4. Preserve matching end segments, safe train clearances, support spacing, and required climb length. Do not weaken existing limits to make a smaller footprint pass. Record why any remaining straight length is necessary.
+4. Preserve matching end segments, safe traffic clearances, support spacing, and required climb length. Do not weaken existing limits to make a smaller footprint pass. Record why any remaining straight length is necessary.
 5. Build additional compact modules as needed, returning to **step 4**. Run the affected piece checks and the whole-assembly checks again. Present the result on the same coordinate grid for review.
 
 Compare the width and depth of the enclosing construction rectangle, occupied tile count, route lengths, and relevant curve/slope measurements. The rectangle includes empty space; its area is not the number of occupied tiles. Describe the achieved reduction rather than claiming a mathematically minimum design.
@@ -154,7 +154,7 @@ Build the complete intended installed selection with **one shared controller and
 
 Package the individually placeable components, the one-button assembly cycle, and the README/TESTING documents. The assembly button selects components through Tab; it does not construct the complete arrangement with one click. Do not mark that component cycle as PNP or describe it as a Plop & Paint stamp. The current whole-trumpet address collisions remain even if its components are packaged together. A future one-click research project must satisfy the policy in **Terms and evidence** before it can change this delivery method.
 
-To establish game operation, use a disposable flat city and the exact installed version. Test placement and every intended movement with real traffic demand, the game's route query, and moving trains. Also test forbidden transfers at same-network crossings and parallel edges at different heights. Use the declared reference layout for human checks; inspect zooms, shadows, joins, demolition, save/reload, and the claimed terrain behaviour. Require additional manual orientations only when the test plan identifies a specific reason; automatic software rotation checks keep their own coverage. Record the game/platform, file hashes, city layout, observations, and screenshots. Return defects to the appropriate earlier step.
+To establish game operation, use a disposable flat city and the exact installed version. Test placement and every intended movement with real traffic demand and the observations required by the declared test plan. **Route Query** is the game's tool for showing assigned traffic routes; **visible travel** means watching traffic complete the stated directed journey. When the plan declares both checks, record them as separate observations for each service and direction; neither establishes the other. Also test forbidden transfers at same-network crossings and parallel edges at different heights. Use the declared reference layout for human checks; inspect zooms, shadows, joins, demolition, save/reload, and the claimed terrain behaviour. Require additional manual orientations only when the test plan identifies a specific reason; automatic software rotation checks keep their own coverage. Record the game/platform, file hashes, city layout, observations, and screenshots. Return defects to the appropriate earlier step.
 
 Keep untested behaviours explicitly unverified. Public distribution has additional requirements documented separately in `docs/RELEASE.md`.
 
@@ -168,7 +168,7 @@ The [current trumpet README](../domains/high-speed-rail/01_assemblies/straight-s
 
 ## Clear piece ownership and reusable types
 
-A placement label (P05, P06, P04E) identifies one copy in the assembly; it does not create a new menu piece type. Reuse one existing straight button at every compatible placement, applying proper rotations. Do not create east/west or numbered variants merely to preserve different triangle ordering, texture repeat counts, or endpoint tessellation. Preserve track geometry, direction, height, native connection profiles, pillar positions, and shadow silhouettes; verify any permitted resource substitution explicitly and narrowly. Keep exact resource checks on unaffected curves, junctions, and ramps. Include a type-to-placement/quantity table so repeated copies are obvious to players. For an exact-position design, do not replace tiny curve tails or shared branch-deck wings merely because they look straight in the overview.
+A placement label (P05, P06, P04E) identifies one copy in the assembly; it does not create a new menu piece type. Reuse one existing straight type at every compatible placement, applying proper rotations. Do not create east/west or numbered variants merely to preserve different triangle ordering, texture repeat counts, or endpoint tessellation. Preserve model and route geometry, direction, height, native connection profiles, pillar positions, and shadow silhouettes; verify any permitted resource substitution explicitly and narrowly. Keep exact resource checks on unaffected curves, junctions, and ramps. Include a type-to-placement/quantity table so repeated copies are obvious to players. For an exact-position design, do not replace tiny curve tails or shared branch-deck wings merely because they look straight in the overview.
 
 Use the shared [ownership colours](WORKFLOW_DOCUMENTATION_GENERATION.md#ownership-colours) in named model views and the occupied-tile plan. The assignment must distinguish neighbouring placements, including two copies of one type.
 
@@ -180,7 +180,7 @@ Before replacing an almost-straight tile, inspect every encoded route and the wh
 
 ## Distinguish unchanged geometry from binary identity
 
-A source reorganization must be checked against freshly compiled saved resources. The same visible track does not imply identical DAT or S3D bytes. Preserve the original input and image hashes as provenance; record fresh build hashes separately. When encodings differ, disclose them and require an independent comparison of exact ordered visible float32 XYZ/UV draws, winding, materials, flags, frames, and bounds, plus actual PATHs, shadows, identifiers, menus, and construction rules. A picture alone cannot establish that equivalence. Keep strict byte checks for resources that are required to remain byte-identical.
+A reorganization of code that generates game resources must be checked against freshly compiled saved resources. The same visible network geometry does not imply identical DAT or S3D bytes. Preserve the original input and image hashes as provenance; record fresh build hashes separately. When encodings differ, disclose them and require an independent comparison of exact ordered visible float32 XYZ/UV draws, winding, materials, flags, frames, and bounds, plus actual PATHs, shadows, identifiers, menus, and construction rules. A picture alone cannot establish that equivalence. Keep strict byte checks for resources that are required to remain byte-identical.
 
 A saved comparison must identify its exact input files and distinguish equivalent rendering from identical binary encoding. Do not treat an old hash as a new file identity, overwrite actual preview fingerprints, or use a software comparison to confirm an in-game/manual test. When a subject is explicitly deleted, remove its obsolete reports and fixtures instead of retaining them as current dependencies. Apply actual case-dependency rules when refreshing the retained subjects' manual records; geometry equivalence cannot tick a user checkbox.
 
@@ -192,7 +192,7 @@ A useful module has an independently placeable function, valid construction addr
 
 An **atomization decision** records why a candidate tile can become an existing standard piece, or why it must remain inside a larger module. Keep one authoritative `checks/atomization.json` beside the assembly's placement and quality contracts; keep historical decisions in the assembly's TESTING design-history section rather than adding another Markdown file. Current README titles and render captions describe the current assembly without predecessor-version or atomization-history labels. Distinguish historical eligibility measurements from checks on the current resources. When predecessor subjects are explicitly deleted, keep their useful decision measurements as history and pin the retained assembly with its own `checks/resources.json`; verification must not require deleted definitions, layouts, or DAT fixtures. A reusable type's README links the relevant decision, states its generic connection limits, and explains the useful function that remains.
 
-For each reviewed candidate, record its source type and placement, local and assembly X/Y tiles, original measured deviation, physical deck and wall requirements, decision, plain-language reason, and exact replacement type and rotation. An accepted redesign also records the smallest changed region, actual maximum route movement, independent acceptance bound, support/port policy, compiled evidence, and source fingerprints. A rejected candidate records the measured obstacle and what larger redesign or evidence could justify reconsideration. A real platform wing or a restored wall obstructing another train is a different reason from a curve exceeding a threshold; explain which applies. List all reviewed source cells so omitted interior or structural tiles are accounted for explicitly.
+For each reviewed candidate, record its source type and placement, local and assembly X/Y tiles, original measured deviation, physical deck and wall requirements, decision, plain-language reason, and exact replacement type and rotation. An accepted redesign also records the smallest changed region, actual maximum route movement, independent acceptance bound, support/port policy, compiled evidence, and source fingerprints. A rejected candidate records the measured obstacle and what larger redesign or evidence could justify reconsideration. A real platform wing or a restored wall obstructing passing traffic is a different reason from a curve exceeding a threshold; explain which applies. List all reviewed source cells so omitted interior or structural tiles are accounted for explicitly.
 
 Keep the **eligibility threshold** separate from the **actual redesign bound**. For example, an original 2.058 mm tail can qualify under a strict “less than 5 mm” policy while its adjoining joining curve needs an 8.14 mm correction to meet the existing native-end curvature limit. Record both numbers and their measurement methods. Do not claim that the whole redesign moved less than 5 mm, relax curvature/clearance limits, or silently broaden the allowed cells. An exact-position policy still forbids snapping a curve unless the user has authorized bounded redesign.
 
@@ -206,9 +206,9 @@ Prepare missing or changed types through [WORKFLOW: Piece Creation](WORKFLOW_PIE
 
 At a proposed join, transform the complete tile-edge segments, member positions, headings, outward grades, models, and owned cells under one common placement. Require every service and required cut on the shared boundary to agree, and check other already occupied neighbours separately. A touching corner, a compatible upper service with a missing lower service, or unrelated placements that fit different groups cannot establish one complete join. Other branches can remain unfinished only where no existing neighbour creates a conflict. Pairwise compatibility does not replace whole-assembly ownership, construction, journey, or clearance checks.
 
-Each assembly declares every permitted directed journey for every participating transport, plus forbidden level transfers and unintended crossings. HSR, tram, and future conventional rail checks are separate even when their game resource identifiers overlap. Every real journey needs travel demand, compatible end connections, a route query or observed traffic, and the tested orientation and platform. A pretty render does not establish any journey.
+Each assembly declares every permitted directed journey for every participating transport, plus forbidden level transfers and unintended crossings. For example, HSR, tram, and future conventional rail checks are separate even when their game resource identifiers overlap. Every real journey needs travel demand, compatible end connections, the observations required by its declared test plan, and the tested orientation and platform. When the plan includes both Route Query and visible travel, each needs its own observation; neither proves the other. A pretty render does not establish any journey.
 
-Use [TESTING.md](TESTING.md) for the sole observation record, exact case scope, current and stale states, and the recording procedure. Only an explicitly confirmed matching human observation can create a manual pass. Keep the assembly's coverage distinct by service, directed journey, pose, rotation, and tested environment; preview approval and software checks do not confirm game traffic. Recheck the affected whole traffic graph after a route change, rather than only the edited member, and report the actual covered cases.
+Each subject's `checks/manual-tests.json` is its sole observation record, including exact case scope and current or stale states. Use [TESTING.md](TESTING.md) for the common interpretation and recording procedure. Only an explicitly confirmed matching human observation can create a manual pass. Keep the assembly's coverage distinct by service, directed journey, pose, rotation, and tested environment; preview approval and software checks do not confirm game traffic. Recheck the affected whole traffic graph after a route change, rather than only the edited member, and report the actual covered cases.
 
 ## Compact documentation ownership
 

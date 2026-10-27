@@ -56,7 +56,7 @@ The [standalone-picture report](evidence/piece-previews.json) records the compon
 
 ## 3. Placements
 
-Use each position and rotation together; standalone component pictures show 0°. The [layout reference in TESTING.md](TESTING.md#layout-reference) defines the grid and rotation convention. Occupied tiles count only the tiles belonging to that placement.
+Use each position and rotation together; standalone component pictures show 0°. The [layout reference in TESTING.md](TESTING.md#layout-reference) defines the grid and rotation convention. Follow the [numbered placement sequence](TESTING.md#placement-sequence) to select and place the components in order. Occupied tiles count only the tiles belonging to that placement.
 
 | Placement | Exact descriptive menu name | Reference position | Rotation | Occupied tiles |
 | --- | --- | --- | --- | ---: |
