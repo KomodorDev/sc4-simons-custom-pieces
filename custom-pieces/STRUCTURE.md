@@ -79,9 +79,10 @@ These fields describe the document; piece and connector data retain their own au
 | `schemas/connector-*.schema.json`; `framework/scp/connector_metadata.py` and `jsonc.py` | Source-format rules, parsing, cross-file validation, and export. |
 | Subject `checks/manual-tests.json` | Authoritative record of scoped observations; follow [TESTING](docs/TESTING.md). |
 | Subject `checks/` and `evidence/` | Contracts, measurement rationale, and current verification/render evidence. |
-| Subject `preview.png`, `preview-thumb.png`, `preview-top.png` where present, and `icon.png`; assembly `previews/` | Canonical type artwork and layout views under the [documentation-generation workflow](docs/WORKFLOW_DOCUMENTATION_GENERATION.md); icon encoding belongs to [framework engineering](docs/FRAMEWORK_ENGINEERING.md#icon-encoding-and-maintenance). |
+| Subject `icon.png`, beside `piece.json` or `assembly.json` | Canonical four-state menu icon for that reusable piece or assembly button; icon encoding belongs to [framework engineering](docs/FRAMEWORK_ENGINEERING.md#icon-encoding-and-maintenance). |
+| Subject `previews/` | Canonical documentation images: a piece's `preview.png`, `preview-thumb.png`, `preview-top.png` where present, and `connection-overview.png` where supported, or an assembly's complete-layout views. The [documentation-generation workflow](docs/WORKFLOW_DOCUMENTATION_GENERATION.md) owns their generation. |
 | Subject `evidence/preview.json` and `evidence/preview-top.json` | Independent angled/top source, camera, local-grid, common-header, and image fingerprints; the generic selected-view renderer owns both. |
-| Subject `connection-overview.png` and `evidence/connection-overview.json` | Generated boundary cards and provenance, documented in [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md). |
+| Piece `previews/connection-overview.png` and `evidence/connection-overview.json` | Generated boundary cards and their separate provenance, documented in [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md). |
 | Domain `assets/figures/` | Shared reference images explained in the player guide. |
 | `framework/scp/` and `tests/` | Shared, transport-neutral tools and tests. |
 | Domain `implementation/`, `tools/`, and `tests/`; assembly `tests/` | Network-specific generation and independent checks with their owning domain or layout. |

@@ -205,8 +205,9 @@ class PieceMatrixTests(unittest.TestCase):
         subject = {'id': 'fixture', 'kind': 'piece', 'name': 'Fixture paired piece',
                    'description': 'A literal guide fixture.', 'footprint': [1, 2]}
         (directory/'piece.json').write_text(json.dumps(subject))
-        (directory/'preview.png').write_bytes(b'fixture angled image')
-        (directory/'preview-top.png').write_bytes(b'fixture top image')
+        (directory/'previews').mkdir(exist_ok=True)
+        (directory/'previews/preview.png').write_bytes(b'fixture angled image')
+        (directory/'previews/preview-top.png').write_bytes(b'fixture top image')
         write_subject_content(directory, subject, self.connections, self.hashes)
         return subject
 
@@ -340,8 +341,8 @@ class PieceMatrixTests(unittest.TestCase):
                     self.assertIn('### Connections and journeys', text)
                     self.assertIn('#### Directed journeys', text)
                     self.assertIn('### Test checklist', text)
-                    self.assertEqual(text.count('(preview.png)'), 1)
-                    self.assertEqual(text.count('(preview-top.png)'), 1)
+                    self.assertEqual(text.count('(previews/preview.png)'), 1)
+                    self.assertEqual(text.count('(previews/preview-top.png)'), 1)
                     if _ == 0:
                         first = {path: path.read_bytes() for path in directory.rglob('*') if path.is_file()}
                     else:

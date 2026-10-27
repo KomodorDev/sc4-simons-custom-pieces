@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way HSR 90 Degree Right L4 to L2 Ramp](preview.png)
+![One-Way HSR 90 Degree Right L4 to L2 Ramp](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

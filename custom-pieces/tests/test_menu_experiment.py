@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import re
@@ -29,7 +30,8 @@ from scp.dbpf import encode_exemplar, exemplar, pack_dbpf
 from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
 from scp.menu_experiment import (ASSEMBLY_CHECKS, ASSEMBLY_GUIDE, ASSEMBLY_MENU_KIND,
                                  ASSEMBLY_PROOF, CHECKS, CONTROLLER, GUIDE, KIND, MENU, PROOF,
-                                 build_assembly_menu, build_menu_experiment)
+                                 build_assembly_menu, build_menu_experiment, write_assembly_icons)
+from scp.menu_experiment_resources import make_assembly_icon
 from scp.rul0 import compose_rul0
 from scp.verify import strict_dbpf
 
@@ -97,9 +99,13 @@ class MenuExperimentTests(unittest.TestCase):
         self.write_layout()
         self.catalog = {'domains': {'high-speed-rail': {'path': 'domains/test'}},
                         '_assemblies': [{'id': 'fixture-assembly', 'domain': 'high-speed-rail',
+                                         'path': 'domains/test/01_assemblies/fixture-assembly',
                                          'scene': deepcopy(self.scene)}],
                         'pieces': [{key: value for key, value in piece.items() if key != 'asset_file'}
                                    for piece in self.normal_pieces]}
+        self.assembly_icon = self.project / self.catalog['_assemblies'][0]['path'] / 'icon.png'
+        self.assembly_icon.parent.mkdir(parents=True)
+        self.assembly_icon.write_bytes(make_assembly_icon())
         deltas, menus = [], {}
         for piece in self.normal_pieces:
             root = int(piece['puzzle_id'], 16)
@@ -193,6 +199,7 @@ class MenuExperimentTests(unittest.TestCase):
         self.assertEqual(manifest['assembly_selection']['assembly_id'], 'fixture-assembly')
         self.assertEqual(manifest['source_provenance']['manifest'], f'{ASSEMBLY_PROOF}/manifest.json')
         menu = strict_dbpf((self.output / self.folder / MENU).read_bytes())
+        self.assertEqual(menu[*ICON, 0x6A47FEF0], self.assembly_icon.read_bytes())
         originals = strict_dbpf(self.payloads[f'{self.folder}/{MENU}'])
         self.assertEqual({key[2] for key in menu if key[:2] == MENU_EXEMPLAR}, {0x6A47FEF0, 0x6A47F801})
         for piece in (self.normal_pieces[0], self.normal_pieces[2]):
@@ -218,6 +225,46 @@ class MenuExperimentTests(unittest.TestCase):
         self.assertEqual(report['new_presentation_resources'], 4)
         self.assertEqual(report['removed_member_presentation_resources'], 8)
         self.assertEqual(report['unrelated_piece_buttons_preserved'], 1)
+
+    def test_missing_or_stale_canonical_icon_rejects_before_creating_build_output(self):
+        self.prepare_single_button_layout()
+        self.assembly_icon.unlink()
+        with self.assertRaisesRegex(ValueError, 'Missing canonical assembly icon'):
+            self.build_single_button()
+        self.assertFalse(self.output.exists())
+        self.assembly_icon.write_bytes(b'Stale assembly artwork')
+        with self.assertRaisesRegex(ValueError, 'RGBA PNG'):
+            self.build_single_button()
+        self.assertFalse(self.output.exists())
+
+    def test_icon_refresh_changes_only_assembly_artwork_without_native_inputs(self):
+        self.assembly_icon.write_bytes(b'Stale assembly artwork')
+        before = {path.relative_to(self.root): path.read_bytes()
+                  for path in self.root.rglob('*') if path.is_file() and path != self.assembly_icon}
+        with patch('scp.build.audit_inputs', side_effect=AssertionError('Icon refresh needs no native inputs')):
+            result = write_assembly_icons(self.project)
+        self.assertEqual(result['icons'], ['domains/test/01_assemblies/fixture-assembly/icon.png'])
+        self.assertFalse(result['built'])
+        self.assertFalse(result['installed'])
+        self.assertEqual(self.assembly_icon.read_bytes(), make_assembly_icon())
+        after = {path.relative_to(self.root): path.read_bytes()
+                 for path in self.root.rglob('*') if path.is_file() and path != self.assembly_icon}
+        self.assertEqual(after, before)
+
+    def test_saved_candidate_verification_does_not_depend_on_current_icon_source(self):
+        from PIL import Image
+
+        self.prepare_single_button_layout()
+        with Image.open(self.assembly_icon) as icon:
+            alternate = BytesIO()
+            icon.save(alternate, format='PNG', compress_level=0)
+        self.assertNotEqual(alternate.getvalue(), make_assembly_icon())
+        self.assembly_icon.write_bytes(alternate.getvalue())
+        write_assembly_icons(self.project)
+        self.assertEqual(self.assembly_icon.read_bytes(), alternate.getvalue())
+        self.build_single_button()
+        self.assembly_icon.unlink()
+        self.assertTrue(self.real_verify(self.output, write_report=False)['static_checks_passed'])
 
     def test_single_button_package_retains_source_proof_and_reverifies_without_installing(self):
         self.prepare_single_button_layout()

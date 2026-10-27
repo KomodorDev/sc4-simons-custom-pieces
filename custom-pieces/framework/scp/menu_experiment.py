@@ -153,7 +153,7 @@ def _selected(base, scene):
     return [by_id[identifier] for identifier in identifiers]
 
 
-def _transformed(base, controller, menu, layout, scene):
+def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None):
     from .build import RUL0, NETWORK_INI
     from .rul0 import with_feature_sequence
     from .menu_experiment_resources import build_menu_experiment_resources
@@ -170,7 +170,8 @@ def _transformed(base, controller, menu, layout, scene):
     controller_resources = {**resources, RUL0: changed}
     cycle = {**layout['cycle_button'], 'target_id': pieces[0]['menu']['id']}
     menu_resources, audit = build_menu_experiment_resources(
-        strict_dbpf(menu), pieces, cycle_button=cycle, submenu=layout.get('submenu'))
+        strict_dbpf(menu), pieces, cycle_button=cycle, submenu=layout.get('submenu'),
+        cycle_icon=cycle_icon)
     return pack_dbpf(controller_resources), pack_dbpf(menu_resources), composition, audit, pieces
 
 
@@ -384,7 +385,14 @@ def verify_menu_experiment(output, write_report=True):
     base, layout, scene = json.loads(raw['manifest']), _layout(json.loads(raw['layout'])), json.loads(raw['assembly'])
     require('menu_experiment' not in base, 'Nested experiment source manifest')
     pieces = _selected(base, scene)
-    controller, menu, composition, audit, _ = _transformed(base, raw['controller'], raw['menu'], layout, scene)
+    # PNG compression may vary between Pillow versions. Validate the saved
+    # cycle artwork's exact pixels, then retain its original encoded bytes.
+    from .verify import strict_dbpf
+    current_menu = strict_dbpf(safe_file(output, f'{base["plugin_folder"]}/{MENU}').read_bytes())
+    cycle_key = (*ICON, number(layout['cycle_button']['id']))
+    require(cycle_key in current_menu, 'Missing assembly cycle icon resource')
+    controller, menu, composition, audit, _ = _transformed(
+        base, raw['controller'], raw['menu'], layout, scene, cycle_icon=current_menu[cycle_key])
     require(manifest == _expected_manifest(base, layout, scene, proof, controller, menu, composition, audit),
             'Experimental manifest differs from the exact allowed menu transformation')
     allowed = {'manifest.json', 'verification.json', 'input-audit.json'} | {
@@ -445,6 +453,37 @@ def verify_menu_experiment(output, write_report=True):
     return report
 
 
+def _assembly_icon_path(root, assembly):
+    relative = assembly['path'] + '/icon.png'
+    path = Path(root) / relative
+    require(path == safe_relative(root, relative) and
+            not any(parent.is_symlink() for parent in (path, *path.parents)),
+            'Assembly icon path must not redirect through symbolic links')
+    return path
+
+
+def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
+    """Refresh only canonical icons for the registered assemblies in one domain."""
+    from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
+    root = Path(project_root).resolve()
+    catalog = load_catalog(root)
+    require(domain_id in catalog['domains'], 'Unknown assembly icon domain')
+    assemblies = [assembly for assembly in catalog['_assemblies'] if assembly['domain'] == domain_id]
+    targets = [_assembly_icon_path(root, assembly) for assembly in assemblies]
+    raw = make_assembly_icon()
+    for path in targets:
+        if path.is_file():
+            try:
+                validate_assembly_icon(path.read_bytes())
+            except ValueError:
+                pass
+            else:
+                continue
+        path.write_bytes(raw)
+    return {'domain': domain_id, 'icons': [path.relative_to(root).as_posix() for path in targets],
+            'built': False, 'installed': False}
+
+
 def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-menu-test',
                           domain_id='high-speed-rail', plugins=None, extra_roots=None,
                           single_button_only=False):
@@ -476,6 +515,11 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
                   if assembly['id'] == layout['assembly_id'] and assembly['domain'] == domain_id]
     require(len(assemblies) == 1, 'Menu experiment must select one registered assembly')
     scene = assemblies[0]['scene']
+    from .menu_experiment_resources import validate_assembly_icon
+    icon_path = _assembly_icon_path(root, assemblies[0])
+    require(icon_path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')
+    cycle_icon = icon_path.read_bytes()
+    validate_assembly_icon(cycle_icon)
     base = _read_json(source / 'manifest.json')
     require('menu_experiment' not in base,
             'Source must be a normal verified build; combining assembly cycles or reusing their shared types is unsupported')
@@ -492,7 +536,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     folder = base['plugin_folder']
     original_controller = (source / folder / CONTROLLER).read_bytes()
     original_menu = (source / folder / MENU).read_bytes()
-    controller, menu, composition, audit, pieces = _transformed(base, original_controller, original_menu, layout, scene)
+    controller, menu, composition, audit, pieces = _transformed(
+        base, original_controller, original_menu, layout, scene, cycle_icon=cycle_icon)
     proof_raw = {'manifest': (source / 'manifest.json').read_bytes(), 'controller': original_controller,
                  'menu': original_menu, 'layout': _json_bytes(layout), 'assembly': _json_bytes(scene)}
     proof_names = {'manifest': 'manifest.json', 'controller': 'controller.proof', 'menu': 'menu.proof',

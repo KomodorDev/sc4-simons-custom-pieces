@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR L2 Parallel One-Way Split](preview.png)
+![HSR L2 Parallel One-Way Split](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

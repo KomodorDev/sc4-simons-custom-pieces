@@ -23,7 +23,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 [Design-review evidence](../../junction-design-review.json).
 
-![HSR L2 Split 135 Degree Compact](preview.png)
+![HSR L2 Split 135 Degree Compact](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

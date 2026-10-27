@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![Rail L4 Split 45 Degree Compact](preview.png)
+![Rail L4 Split 45 Degree Compact](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

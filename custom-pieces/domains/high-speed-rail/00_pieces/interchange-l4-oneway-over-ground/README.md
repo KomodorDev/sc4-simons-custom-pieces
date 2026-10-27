@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way L4 over GHSR Crossing](preview.png)
+![One-Way L4 over GHSR Crossing](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

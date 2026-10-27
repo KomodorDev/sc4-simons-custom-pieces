@@ -3260,7 +3260,7 @@
   "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
   "schema_version": 1,
   "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
-  "file": "connection-overview.png",
+  "file": "previews/connection-overview.png",
   "output_sha256": "c3b6201b70e4490e63ffc9bf1a08222e8813b814d34892b8d13aaa176fc45a52",
   "source_inputs": {
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
@@ -7573,5 +7573,11 @@
     "member_offset": "Measured endpoint minus section origin, dotted with tile-edge outward-left direction",
     "display_anchor": "Measured-height section origin projected with the actual model camera"
   },
-  "selectable_markdown_sha256": "e5514c3bf078e50c2b0b36f5490cf5a20643cf44447ddbca82c73cf9a3c66664"
+  "selectable_markdown_sha256": "e5514c3bf078e50c2b0b36f5490cf5a20643cf44447ddbca82c73cf9a3c66664",
+  "artwork_relocation": {
+    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
+    "image_directory": "previews",
+    "image_bytes_changed": false,
+    "original_renderer_and_input_fingerprints_preserved": true
+  }
 }

@@ -7,6 +7,7 @@ from pathlib import Path
 import struct
 import sys
 import unittest
+import zlib
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
@@ -15,7 +16,7 @@ from scp.dbpf import encode_exemplar, exemplar
 from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
 from scp.menu_experiment_resources import (
     ITEM_BUTTON_CLASS, ITEM_SUBMENU_PARENT_ID, build_menu_experiment_resources,
-    validate_menu_experiment_resources)
+    make_assembly_icon, validate_assembly_icon, validate_menu_experiment_resources)
 
 
 def property_record(prop_id, values, *, kind=0x300, array=False):
@@ -148,6 +149,77 @@ class MenuExperimentResourceTests(unittest.TestCase):
                 self.assertEqual(icon.mode, 'RGBA')
                 frames = {icon.crop((44*n, 0, 44*(n+1), 44)).tobytes() for n in range(4)}
                 self.assertEqual(len(frames), 4)
+
+    def test_registered_assembly_icon_matches_existing_native_resource_bytes(self):
+        raw = (ROOT / 'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/icon.png').read_bytes()
+        output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                   cycle_button=self.cycle, cycle_icon=raw)
+        validate_assembly_icon(raw)
+        self.assertEqual(output[*ICON, int(self.cycle['id'], 16)], raw)
+        with self.assertRaisesRegex(ValueError, 'RGBA PNG'):
+            build_menu_experiment_resources(self.source, self.pieces,
+                                             cycle_button=self.cycle, cycle_icon=b'Altered icon')
+
+    def test_reencoded_cycle_png_preserves_bytes_but_changed_pixels_mode_and_size_reject(self):
+        from PIL import Image
+
+        with Image.open(BytesIO(make_assembly_icon())) as icon:
+            alternate = BytesIO()
+            icon.save(alternate, format='PNG', compress_level=0)
+            raw = alternate.getvalue()
+            self.assertNotEqual(raw, make_assembly_icon())
+            output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                       cycle_button=self.cycle, cycle_icon=raw)
+            self.assertEqual(output[*ICON, int(self.cycle['id'], 16)], raw)
+            modified = icon.copy()
+            modified.putpixel((6, 19), (255, 0, 0, 255))
+            for damaged in (modified, icon.convert('RGB'), icon.resize((44, 44))):
+                encoded = BytesIO()
+                damaged.save(encoded, format='PNG')
+                with self.assertRaisesRegex(ValueError, 'canonical cycle artwork|RGBA PNG'):
+                    validate_assembly_icon(encoded.getvalue())
+
+    def test_native_png_encoding_rejects_same_pixel_16bit_interlaced_and_animated_variants(self):
+        from PIL import Image
+
+        def chunk(kind, payload):
+            return (struct.pack('>I', len(payload)) + kind + payload +
+                    struct.pack('>I', zlib.crc32(kind + payload)))
+
+        def png(depth, interlace, content):
+            header = struct.pack('>IIBBBBB', 176, 44, depth, 6, 0, 0, interlace)
+            return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', header) +
+                    chunk(b'IDAT', zlib.compress(content)) + chunk(b'IEND', b''))
+
+        with Image.open(BytesIO(make_assembly_icon())) as icon:
+            pixels = icon.tobytes()
+            sixteen_bit = b''.join(b'\0' + b''.join(bytes((value, value))
+                for value in pixels[row * 704:(row + 1) * 704]) for row in range(44))
+            interlaced = bytearray()
+            for sx, sy, dx, dy in ((0, 0, 8, 8), (4, 0, 8, 8), (0, 4, 4, 8),
+                                   (2, 0, 4, 4), (0, 2, 2, 4), (1, 0, 2, 2), (0, 1, 1, 2)):
+                for y in range(sy, 44, dy):
+                    interlaced.append(0)
+                    for x in range(sx, 176, dx):
+                        offset = 4 * (y * 176 + x)
+                        interlaced.extend(pixels[offset:offset + 4])
+            changed = icon.copy()
+            changed.putpixel((6, 19), (255, 0, 0, 255))
+            animation = BytesIO()
+            icon.save(animation, format='PNG', save_all=True, append_images=[changed], duration=100, loop=0)
+        for name, raw, message in (
+                ('16-bit', png(16, 0, sixteen_bit), 'noninterlaced 8-bit RGBA PNG'),
+                ('interlaced', png(8, 1, interlaced), 'noninterlaced 8-bit RGBA PNG'),
+                ('animated', animation.getvalue(), 'single static PNG')):
+            with self.subTest(name=name):
+                with Image.open(BytesIO(raw)) as candidate:
+                    self.assertEqual(candidate.tobytes(), pixels)
+                with self.assertRaisesRegex(ValueError, message):
+                    validate_assembly_icon(raw)
+        damaged_crc = bytearray(make_assembly_icon())
+        damaged_crc[-13] ^= 1
+        with self.assertRaisesRegex(ValueError, 'valid 176 by 44 RGBA PNG'):
+            validate_assembly_icon(bytes(damaged_crc))
 
     def test_empty_and_duplicate_piece_inputs_reject_without_mutation(self):
         for pieces in ([], [self.pieces[0], self.pieces[0]], 'piece-0'):

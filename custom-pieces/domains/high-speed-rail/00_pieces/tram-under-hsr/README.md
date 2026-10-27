@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR over Ground Tram](preview.png)
+![HSR over Ground Tram](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

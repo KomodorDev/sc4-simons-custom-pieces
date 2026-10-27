@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way Rail L4 Curve In Left](preview.png)
+![One-Way Rail L4 Curve In Left](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

@@ -38,6 +38,35 @@ cd '/path/to/sc4-simons-custom-pieces'
 
 Type `python3 --version` and press **Return**; Python must be version 3.11 or newer. Use the existing project dependencies. For a new checkout, follow [editable installation in BUILD_AND_INSTALL](BUILD_AND_INSTALL.md#build-a-selected-collection), including Pillow and NumPy. The commands below state when they need the repository root or the `custom-pieces` directory; paths are relative to that stated directory.
 
+## Artwork ownership and folders
+
+Every reusable piece and assembly follows the same folder rule. Its **canonical artwork** is the maintained image used by documentation or packaging. Keep its four-state menu strip as `icon.png` beside the owning `piece.json` or `assembly.json`, its documentation images in `previews/`, and its provenance records in `evidence/`. The menu icon represents the selectable button; a preview shows the piece or complete assembly for a reader. These different roles explain why the icon stays beside the definition while the larger documentation images share a subfolder.
+
+```text
+00_pieces/<piece-id>/
+├── piece.json
+├── icon.png
+├── previews/
+│   ├── preview.png
+│   ├── preview-thumb.png
+│   ├── preview-top.png                 Where this view is present
+│   └── connection-overview.png         Where connector cards are supported
+└── evidence/
+    ├── preview.json
+    ├── preview-top.json                Where this view is present
+    └── connection-overview.json        Where connector cards are supported
+
+01_assemblies/<assembly-id>/
+├── assembly.json
+├── icon.png
+├── previews/                          Complete-layout images
+└── evidence/                          Software and render reports
+```
+
+Repeated assembly placements reuse their piece type's canonical images and icon. The assembly owns a separate `icon.png` for its single component-cycle button. Keep disposable render staging in `local/` and build/package copies in `dist/`; they are not additional canonical sources. [STRUCTURE.md](../STRUCTURE.md#source-and-data-ownership) maps the remaining definitions, connector exports, and observation files.
+
+A folder reorganization moves existing image bytes and updates maintained links and output paths. It does not redraw geometry, rerun measurements, or supply a new rendering result. Preserve original source, input, renderer, and image fingerprints. If current provenance needs a changed image filename, record the relocation explicitly without presenting its original render as newly executed. Preserve frozen reports and backup snapshots. A renderer source change can still make its strict freshness check require a deliberate later render, even when every relocated PNG byte is unchanged.
+
 ## Coordinate contract for charts and renders
 
 **Use X/Y tile-centre coordinates in every picture and rebuilding table.** The following fixed-reference rules apply to assembly charts, assembly renders, and placement tables. Standalone reusable type pictures use local zero and canonical orientation under the [standalone-picture rules](#reusable-names-and-standalone-type-pictures). X increases eastward (right on a north-up plan); Y increases northward (up). The fixed zero `(X0, Y0)` is the centre of the southwest tile of the layout's construction rectangle. Reuse that same physical reference in every assembly camera view. All displayed tile indices must be nonnegative.
@@ -61,7 +90,7 @@ Write nominal levels in full in source names, for example `HSR Level 2 above Roa
 
 Provide a standalone angled picture and a north-up top picture for every **new or geometrically revised unique type**, not per placement. Both views must show the same complete saved model and use the same canonical orientation and local grid. Preserve the existing current previews of unchanged types; do not regenerate them solely to satisfy this new-view policy. Use the authored **0° orientation**, untranslated compiled geometry except for normalizing its local display grid, and a local southwest tile centre **(X0, Y0)**. Show the source-backed display title, X/Y ticks, the 16 m city grid, scale, and view direction; retain the exact registered menu name in the README and render evidence. Do not show P-labels, trumpet/global coordinates, assembly roles, or assembly-specific rotations in this picture. Every visible caption must be self-contained: only the reusable type display title, local grid, canonical orientation, type/height facts, and software-preview status. Do not mention a trumpet or other interchange, assembly positions or rotations, placement labels, or “see the guide” in titles, subtitles, or footers. These contextual references belong only in the Markdown or JSON placement mapping. Record every visible caption verbatim in render evidence. Keep the software construction reference and the local display-grid reference distinct; a sparse piece can have an empty construction reference cell. Never invent geometry or move a track merely to normalize displayed coordinates.
 
-Store the full angled image as **`00_pieces/<piece-id>/preview.png`**, its thumbnail as **`00_pieces/<piece-id>/preview-thumb.png`**, and the full north-up top image as **`00_pieces/<piece-id>/preview-top.png`**, beside `piece.json` and `icon.png`. A second top-view thumbnail is optional. Show both full views in that type's README. Repeated copies share these images and the same component type in the assembly cycle. The guide needs both a type/image/quantity table and a placement/position/rotation table. State that the standalone image is at 0°; use the rotation column to rebuild the assembly. Record each view's role (angled or top-down), exact input model/DAT hashes, canonical orientation, local display grid, camera, and image hashes in render evidence; retain the angled thumbnail hash as well. Both views must identify the same geometry rather than separate reconstructed models.
+Store the full angled image as **`00_pieces/<piece-id>/previews/preview.png`**, its thumbnail as **`00_pieces/<piece-id>/previews/preview-thumb.png`**, and the full north-up top image as **`00_pieces/<piece-id>/previews/preview-top.png`**. Keep `piece.json` and `icon.png` at the piece-folder root, with each view's provenance in `evidence/`. A second top-view thumbnail is optional. Show both full views in that type's README. Repeated copies share these images and the same component type in the assembly cycle. The guide needs both a type/image/quantity table and a placement/position/rotation table. State that the standalone image is at 0°; use the rotation column to rebuild the assembly. Record each view's role (angled or top-down), exact input model/DAT hashes, canonical orientation, local display grid, camera, and image hashes in render evidence; retain the angled thumbnail hash as well. Both views must identify the same geometry rather than separate reconstructed models.
 
 Use one shared three-row header for standalone angled pictures, north-up pictures, and connection overviews. The first row always starts with **`Piece - `**, followed by the source-backed display name. The second row starts with the view's purpose, followed by its camera direction and authored orientation. `framework/scp/render_headers.py` owns the title, wording, colours, and font rules; `piece_previews.py` and `connector_overview.py` both use it. The standalone assembly-parts helper delegates to the same renderer. Changing the camera or adding cards must not invent a different piece name or subtitle style. Keep the prefix in the renderer rather than renaming the registered piece.
 
@@ -130,7 +159,7 @@ The generic catalogue command now produces the complete model's north-up view wi
 python3 -m scp.preview --catalog --root custom-pieces --output custom-pieces/dist/BUILD_NAME --plugins '/absolute/path/to/Plugins' --include EXACT-PIECE-ID --views angled top
 ```
 
-Repeat `--include` to select several exact registered types. The supplied verified build must contain every selected type. The command writes `preview.png`, `preview-thumb.png`, `evidence/preview.json`, `preview-top.png`, and `evidence/preview-top.json` beside each selected definition. Each evidence record identifies its own role, actual model and DAT, textures, camera, local grid, captions, generator settings, and output hashes. Both views use the same compiled model. The coverage report states the requested selection and views explicitly; types outside that selection are not a failed or completed migration.
+Repeat `--include` to select several exact registered types. The supplied verified build must contain every selected type. Under each selected piece folder, the command writes `previews/preview.png`, `previews/preview-thumb.png`, `previews/preview-top.png`, `evidence/preview.json`, and `evidence/preview-top.json`. Each evidence record identifies its own role, actual model and DAT, textures, camera, local grid, captions, generator settings, and output hashes. Both views use the same compiled model. The coverage report states the requested selection and views explicitly; types outside that selection are not a failed or completed migration.
 
 Use `--views top` to add or refresh only the top view; it must leave an existing angled image, thumbnail, and angled evidence untouched. An unchanged repeat reuses each view only when its inputs, evidence, and output image hashes still agree. Missing or altered evidence, top images, or angled thumbnails invalidate the relevant view. A top-only run must not satisfy coverage for a missing angled view. Preserve valid unchanged types' images unless their artwork is deliberately revised.
 
@@ -140,7 +169,7 @@ The existing HSR assembly helper can be used for a type that meets its actual sc
 python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly_parts.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --build custom-pieces/dist/straight-stem-trumpet --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/documentation-generation/parts --prefix reviewed-part --top-piece-id hsr-component-modular-crossing-core
 ```
 
-This helper also renders an angled image for every unique type in that scene. It produces `<piece-id>-southeast-local-xy.png`, its `-thumb.png`, selected `<piece-id>-top-local-xy.png` files, and `reviewed-parts-preview-evidence.json`. The report maps staged files to exact types, images, cameras, local grids, source DAT/model hashes, and assembly placements. The `canonical_filename: preview-top.png` field describes the intended role; it does not copy the file into the piece directory. The current helper supplies no automatic command to promote this staged set and its combined report into canonical piece-local top-view evidence. Review that handoff explicitly, preserve the provenance of any deliberately integrated artifact, and do not call the generic catalogue complete on the strength of this staged run.
+This helper also renders an angled image for every unique type in that scene. It produces `<piece-id>-southeast-local-xy.png`, its `-thumb.png`, selected `<piece-id>-top-local-xy.png` files, and `reviewed-parts-preview-evidence.json`. The report maps staged files to exact types, images, cameras, local grids, source DAT/model hashes, and assembly placements. The `canonical_filename: preview-top.png` field describes the intended basename and role; it does not copy the file into the piece's `previews/` directory. The current helper supplies no automatic command to promote this staged set and its combined report into canonical piece-local top-view evidence. Review that handoff explicitly, preserve the provenance of any deliberately integrated artifact, and do not call the generic catalogue complete on the strength of this staged run.
 
 For the current HSR assembly's six-image set, use its audited scene and matching verified build. This existing example also stages its output without overwriting maintained pictures:
 
@@ -152,7 +181,7 @@ The helper writes named `reviewed-assembly-{top,southeast,northwest}-xy.png`, cl
 
 ## Maintain the complete preview catalogue
 
-The generic catalogue renderer reads each selected DAT's actual S3D preview and its referenced FSH texture atlases. Do not substitute a menu icon, a schematic, or an invented illustration for compiled-model evidence. The piece inventory links one canonical image per type, while the assembly inventory links complete-layout pictures. Each reusable type owns its canonical files under its domain's `00_pieces/<piece-id>/`; the [standalone-picture contract](#reusable-names-and-standalone-type-pictures) defines their roles and the separate top-view requirement.
+The generic catalogue renderer reads each selected DAT's actual S3D preview and its referenced FSH texture atlases. Do not substitute a menu icon, a schematic, or an invented illustration for compiled-model evidence. The piece inventory links one canonical image per type, while the assembly inventory links complete-layout pictures. Each reusable type owns its canonical documentation images under its domain's `00_pieces/<piece-id>/previews/`; the [standalone-picture contract](#reusable-names-and-standalone-type-pictures) defines their roles and the separate top-view requirement.
 
 1. Build and verify every new or changed piece first. Use [BUILD_AND_INSTALL](BUILD_AND_INSTALL.md) for the build commands. Keep missing current resources pending.
 2. From the parent directory containing `custom-pieces`, render a freshly built all-piece candidate with this exact existing catalogue command. Replace the Plugins placeholder with the actual directory containing the required textures:
@@ -169,7 +198,15 @@ The generic catalogue renderer reads each selected DAT's actual S3D preview and 
 
 ## Menu artwork and source registration
 
-Every piece keeps its own `icon.png` and registered exact menu name beside `piece.json`. Derive identity, network labels, and type vocabulary from the same owning domain source used for menu text and registration, rather than inventing a caption or class from an assembly P-label. Inspect all four native-size menu states. The [framework icon contract](FRAMEWORK_ENGINEERING.md#icon-encoding-and-maintenance) owns the PNG dimensions, frame order, encoding, resource binding, and verification; the [player legend](BUILD_AND_INSTALL.md#recognize-scp-menu-icons) explains the visible vocabulary.
+Every piece keeps its own `icon.png` and registered exact menu name beside `piece.json`. Every registered assembly keeps its own `icon.png` beside `assembly.json`; this strip supplies the assembly's single component-cycle button. Derive identity, network labels, and type vocabulary from the same owning domain source used for menu text and registration, rather than inventing a caption or class from an assembly P-label. Inspect all four native-size menu states. The [framework icon contract](FRAMEWORK_ENGINEERING.md#icon-encoding-and-maintenance) owns the PNG dimensions, frame order, encoding, resource binding, and verification; the [player legend](BUILD_AND_INSTALL.md#recognize-scp-menu-icons) explains the visible vocabulary.
+
+To regenerate only the current HSR assemblies' canonical icons, run this command from the repository root after preparing the dependencies above:
+
+```sh
+python3 -B custom-pieces/scp.py assembly-icons --domain high-speed-rail
+```
+
+This artwork-only command writes `domains/high-speed-rail/01_assemblies/<assembly-id>/icon.png` under `custom-pieces/` for every registered assembly in that domain. It requires no compiled build or native game inputs, and it changes neither `assembly.json` nor `menu-layout.json`. Assembly-menu preparation reads the canonical strip and checks it against the expected four-state artwork before packaging it. A previous frozen candidate retains its original verification inputs; refresh source artwork before deliberately building a new candidate.
 
 Use the owning domain's registration/artwork entry point, listed in its network specification; the [HSR registration table](../domains/high-speed-rail/NETWORK_SPEC.md#registration-and-artwork-tools) is the existing implementation. Several HSR commands allocate or register definitions and named selections as well as generating icons. They are not interchangeable with an artwork-only refresh. For a name or style change, coordinate manifest/menu text, icon identity, registration, inventory labels, saved-resource verification, and current documentation while preserving existing game IDs and geometry. Static icon validation does not establish menu selection behavior in the game.
 
@@ -188,7 +225,7 @@ An **overview** is a generated explanation of a reusable piece's exposed connect
 | `connections.json` | Existing measured directional ports, resource fingerprints, and internal journeys. Connector commands read and verify this file. |
 | `connector-groups.jsonc` | Authored stable component, group, channel, cut, and member associations, permissions, boundary bundles, and optional defaults. References measured ports rather than copying their coordinates. |
 | `connector-data.json` | Generated resolved connector export, including measured geometry, permissions, journeys, and full source PATH polylines. Consumer applications can read this file; exports and overview generation use the same complete resolved representation. Do not hand-edit it. |
-| `connection-overview.png` | Fresh compiled-model scene, boundary markers, and complete cards. This image supplements the existing canonical previews. |
+| `previews/connection-overview.png` | Fresh compiled-model scene, boundary markers, and complete cards. This image supplements the existing canonical previews. |
 | `evidence/connection-overview.json` | Generated provenance: the source evidence and fingerprints tying that overview to its inputs and output image. |
 | `README.md` | Existing single piece guide. Its `CONNECTOR OVERVIEW` block is generated; maintained explanations stay outside the markers. |
 
@@ -196,7 +233,7 @@ Use the [connector reference](CONNECTOR_METADATA.md#6-stable-identity-reuse-and-
 
 The source pipeline resolves the declaration and measured records once and uses that complete representation for both export and overview generation. It can pass the resolved records directly to the renderer, so the renderer need not reread a just-written export. Standalone library rendering resolves the same authoring inputs through the shared API. No separate overview-only measurement or manually copied card geometry is introduced.
 
-Keep the outputs beside the piece and refresh its existing README block; do not create another per-piece connection or checklist Markdown page. [STRUCTURE.md](../STRUCTURE.md) owns the full file map, and [TESTING.md](TESTING.md) owns manual observations. Consumer applications must read the generated export and keep their reports separately.
+Keep the export beside `piece.json`, the overview image in `previews/`, and its provenance in `evidence/`, then refresh the existing README block; do not create another per-piece connection or checklist Markdown page. [STRUCTURE.md](../STRUCTURE.md) owns the full file map, and [TESTING.md](TESTING.md) owns manual observations. Consumer applications must read the generated export and keep their reports separately.
 
 ### Before refreshing
 
@@ -257,7 +294,7 @@ To refresh only machine-readable exports, add `--no-render` to `connectors refre
 
 ### Reading an overview
 
-The overview shows one clean scene rendered directly from the selected compiled model and its textures at the piece's authored 0° orientation. It does not paste a previously captioned preview into a new frame or reconstruct track geometry from metadata. The existing `preview.png`, `preview-top.png` where present, and their evidence retain their separate roles.
+The overview shows one clean scene rendered directly from the selected compiled model and its textures at the piece's authored 0° orientation. It does not paste a previously captioned preview into a new frame or reconstruct track geometry from metadata. The existing `previews/preview.png`, `previews/preview-top.png` where present, and their evidence retain their separate roles.
 
 Each actual source cell and exposed edge has one card, identified by its boundary bundle. Several service groups declared on that same boundary appear as sections of that card; they are not independent attachment choices. Short scene markers such as A and B point to the cards. Stable boundary, group, and member IDs remain visible in the detailed output.
 
@@ -310,7 +347,7 @@ The connection overview's image and selectable Markdown details come from the sa
 
 ### Required Markdown guide for each modular interchange
 
-Create `domains/<domain>/01_assemblies/<assembly-id>/`, using the [straight-stem trumpet guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) as the example. Register `assembly.json` in that domain's `domain.json` and link the blueprint from its human overview. Keep exactly two Markdown files: `README.md` for the player overview (pictures, pieces, placements, and the connection matrix), and `TESTING.md` for detailed preparation, coordinate definitions, software evidence, technical limitations, design history, and generated human checks. The current trumpet overview uses exactly **1. Views**, **2. Pieces**, **3. Placements**, and **4. Connection matrix** as both section titles and navigation labels; its Testing navigation explicitly opens a separate document. Use the [six-chapter TESTING layout](#required-assembly-testing-layout) for every new assembly. Shared observation-recording instructions live once in [framework TESTING](TESTING.md); link them and include the subject-specific command instead of repeating the procedure. Put artwork in `previews/`, authoritative manual observations in `checks/`, and durable software/render reports in `evidence/`. The generated assembly inventory links one clean preview to this guide. Across these two files include:
+Create `domains/<domain>/01_assemblies/<assembly-id>/`, using the [straight-stem trumpet guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) as the example. Register `assembly.json` in that domain's `domain.json` and link the blueprint from its human overview. Keep exactly two Markdown files: `README.md` for the player overview (pictures, pieces, placements, and the connection matrix), and `TESTING.md` for detailed preparation, coordinate definitions, software evidence, technical limitations, design history, and generated human checks. The current trumpet overview uses exactly **1. Views**, **2. Pieces**, **3. Placements**, and **4. Connection matrix** as both section titles and navigation labels; its Testing navigation explicitly opens a separate document. Use the [six-chapter TESTING layout](#required-assembly-testing-layout) for every new assembly. Shared observation-recording instructions live once in [framework TESTING](TESTING.md); link them and include the subject-specific command instead of repeating the procedure. Keep `icon.png` beside `assembly.json`, layout pictures in `previews/`, authoritative manual observations in `checks/`, and durable software/render reports in `evidence/`. The generated assembly inventory links one clean preview to this guide. Across these two files include:
 
 1. **What is built:** the intended networks, levels, dimensions, required movements, and terrain assumptions; an explicit modular-blueprint label and instructions for its one assembly button: Tab cycles forward, Shift+Tab cycles backward, and each click places one component. Every assembly follows this menu pattern; [prepare its final assembly menu](BUILD_AND_INSTALL.md#prepare-the-assembly-menu) after compiling the reusable parts.
 2. **Six current pictures:** a clean top and clean oblique model view, a named top view, two named opposite oblique views, and a named occupied-tile plan. All follow the same southwest `(X0, Y0)` tile-centre grid, with no global origin annotation. Named pictures contain exact menu names, stable instance IDs, and leader lines; clean pictures retain coordinates while omitting those part annotations.

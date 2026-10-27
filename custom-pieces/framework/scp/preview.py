@@ -433,23 +433,27 @@ def _selected_views(view_roles):
 
 
 def _view_files(role):
-    return ('preview-top.png', 'evidence/preview-top.json') if role == 'top' else ('preview.png', 'evidence/preview.json')
+    return ('previews/preview-top.png', 'evidence/preview-top.json') if role == 'top' else ('previews/preview.png', 'evidence/preview.json')
 
 
 def _valid_view_record(record, role, base):
     relative = Path(record.get('image', ''))
     image = (base/relative).resolve()
     safe = (not relative.is_absolute() and '..' not in relative.parts and image.is_relative_to(base)
-            and image.name == _view_files(role)[0] and image.parent.parent.name == '00_pieces')
+            and image.name == Path(_view_files(role)[0]).name and image.parent.name == 'previews'
+            and image.parent.parent.parent.name == '00_pieces')
     if not safe or not image.is_file() or record.get('image_sha256') != _sha(image.read_bytes()):
         return False
     if role == 'angled':
-        thumb = (base/record.get('thumbnail', '')).resolve()
-        if (thumb != image.with_name('preview-thumb.png') or not thumb.is_file()
+        thumb_relative = Path(record.get('thumbnail', ''))
+        thumb = (base/thumb_relative).resolve()
+        if (thumb_relative.is_absolute() or '..' in thumb_relative.parts
+                or thumb != image.with_name('preview-thumb.png') or not thumb.is_file()
                 or record.get('thumbnail_sha256') != _sha(thumb.read_bytes())):
             return False
-    evidence = image.parent/_view_files(role)[1]
-    if not evidence.is_file():
+    piece_directory = image.parent.parent
+    evidence = (piece_directory/_view_files(role)[1]).resolve()
+    if not evidence.is_relative_to(piece_directory) or not evidence.is_file():
         return False
     if record.get('evidence_sha256') and record['evidence_sha256'] != _sha(evidence.read_bytes()):
         return False
@@ -458,6 +462,8 @@ def _valid_view_record(record, role, base):
     except (ValueError, OSError):
         return False
     return (saved.get('sha256') == record['image_sha256']
+            and saved.get('file') == _view_files(role)[0]
+            and (role != 'angled' or saved.get('thumbnail', {}).get('file') == 'previews/preview-thumb.png')
             and saved.get('source', {}).get('model_sha256') == record.get('preview_sha256')
             and saved.get('view_role', 'angled') == ('top-down' if role == 'top' else 'angled'))
 
@@ -483,7 +489,7 @@ def validate_preview_coverage(index, pieces, destination, *, settings=None, view
                 per_view[role]['missing'].append(piece['id']); invalid = True; continue
             expected = settings.get(role) if settings and ('angled' in settings or 'top' in settings) else settings
             valid = (_valid_view_record(record, role, base)
-                     and Path(record.get('image', '')).parent.name == piece['id']
+                     and Path(record.get('image', '')).parent.parent.name == piece['id']
                      and entry.get('catalog_spec_sha256') == _json_hash(piece_spec(piece))
                      and entry.get('built_spec_sha256') == _json_hash(entry.get('built_spec'))
                      and entry.get('catalog_spec_sha256') == _json_hash(entry.get('catalog_spec'))
@@ -593,7 +599,7 @@ def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
                           image_sha256=_sha(image.read_bytes()), image_size=evidence['size'],
                           evidence_sha256=_sha(evidence_path.read_bytes()))
             if role == 'angled':
-                thumb = target/'preview-thumb.png'
+                thumb = target/'previews/preview-thumb.png'
                 record.update(thumbnail=thumb.relative_to(base).as_posix(), thumbnail_sha256=_sha(thumb.read_bytes()))
             views[role] = record
         rendered += int(any_rendered); skipped += int(not any_rendered)
@@ -640,7 +646,7 @@ def main():
     parser.add_argument('--include', action='append')
     parser.add_argument('--catalog',action='store_true',help='Write selected canonical reusable-piece views in their piece folders (default: angled view and thumbnail)')
     parser.add_argument('--views', nargs='+', choices=('angled', 'top'), default=['angled'],
-                        help='Canonical --catalog views: angled, top, or both; top writes preview-top.png without changing an existing angle')
+                        help='Canonical --catalog views: angled, top, or both; top writes previews/preview-top.png without changing an existing angle')
     parser.add_argument('--root',type=Path,default=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()))
     parser.add_argument('--index',type=Path,help='Portable JSON coverage index for --catalog')
     parser.add_argument('--force',action='store_true',help='Render even when all input and image hashes match')
