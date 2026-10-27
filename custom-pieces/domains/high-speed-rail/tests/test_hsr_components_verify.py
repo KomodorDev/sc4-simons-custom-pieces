@@ -258,7 +258,7 @@ class GeneratedComponentContractTests(unittest.TestCase):
                 for cell, tile in zip(CONTRACTS[recipe]['cells'], spec['tile_ids'])}
 
     def test_all_generated_paths_match_literal_ports_and_quality_limits(self):
-        self.assertEqual(len(self.specs), 33)
+        self.assertEqual(len(self.specs), 34)
         for recipe, spec in self.specs.items():
             with self.subTest(recipe=recipe):
                 report = check_paths(self.paths[recipe], spec)
