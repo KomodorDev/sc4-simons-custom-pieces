@@ -192,7 +192,8 @@ class RealNAMBuildTests(unittest.TestCase):
         source = self.case_dir/'current-source'
         source.mkdir()
         (source/'README.md').write_text('# Current final views\n')
-        (source/'preview-top.png').write_bytes(b'exact final image fixture')
+        (source/'previews').mkdir()
+        (source/'previews/preview-top.png').write_bytes(b'exact final image fixture')
         output = self.copy_fixture(combined=True, portable=True)
         before = {path: path.read_bytes() for path in output.rglob('*') if path.is_file()}
         destination = self.case_dir/'current.zip'
@@ -206,7 +207,7 @@ class RealNAMBuildTests(unittest.TestCase):
         report = verify_build(extracted, write_report=False)
         self.assertTrue(report['static_checks_passed'])
         self.assertEqual(report['documentation_files_checked'], 3)
-        self.assertEqual((extracted/'docs/preview-top.png').read_bytes(), b'exact final image fixture')
+        self.assertEqual((extracted/'docs/previews/preview-top.png').read_bytes(), b'exact final image fixture')
         self.assertEqual(compiled_manifest_sha256(self.manifest(extracted)),
                          compiled_manifest_sha256(self.manifest(output)))
         for item in self.manifest(output)['files']:

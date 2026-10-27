@@ -12,7 +12,7 @@ The piece occupies **15 tiles** inside a **7 × 5 tile** construction rectangle.
 
 Both views show the same complete compiled piece at its default **0° orientation**. Their local southwest tile centre is **(X0, Y0)**; the top view keeps north upward. These software pictures do not establish operation inside the game.
 
-[Angled view](preview.png) · [North-up top view](preview-top.png)
+[Angled view](previews/preview.png) · [North-up top view](previews/preview-top.png)
 
 Definition: [piece.json](piece.json). Independent geometry: [geometry.json](geometry.json). The generated connection overview and exact test cases below describe the current saved resources.
 
@@ -29,9 +29,9 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR L2 Compact Paired Fan Join](preview.png)
+![HSR L2 Compact Paired Fan Join](previews/preview.png)
 
-![HSR L2 Compact Paired Fan Join — top view](preview-top.png)
+![HSR L2 Compact Paired Fan Join — top view](previews/preview-top.png)
 
 <!-- END PIECE OVERVIEW -->
 

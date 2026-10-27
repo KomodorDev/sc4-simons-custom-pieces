@@ -320,7 +320,7 @@ The `t1` and `t2` notation belongs to railway-specific profile naming: one or tw
 
 ### 8.2 HSR Modular One-Tile Crossing — Level 4 (30.5 m) over Level 2 (15.5 m)
 
-![HSR Modular One-Tile Crossing — Level 4 (30.5 m) over Level 2 (15.5 m), with measured connector annotations](../domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connection-overview.png)
+![HSR Modular One-Tile Crossing — Level 4 (30.5 m) over Level 2 (15.5 m), with measured connector annotations](../domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/previews/connection-overview.png)
 
 Fresh rendering of the actual compiled model at its authored 0° orientation, with one display title, A/B/C/D boundary markers, and four complete cards in a 2 × 2 grid below the scene. Two independent paired routes cross at PATH heights of 15.5 m and 30.5 m. The upper route's ends lie on the north and south edges; the lower route's ends lie on the west and east edges. Each boundary card retains its own matching facts, including its combined Level (path height) row and the full directed-member details. The shared legend explains conventions, and one evidence footer distinguishes this software rendering from game-operation evidence.
 
@@ -335,7 +335,7 @@ All four sections are centred on their own tile boundaries. The crossing's piece
 
 ### 8.3 HSR Tight Two-Track Corner — Level 4 (30.5 m) to Custom (23 m)
 
-![HSR Tight Two-Track Corner — Level 4 (30.5 m) to Custom (23 m), with measured connector annotations](../domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connection-overview.png)
+![HSR Tight Two-Track Corner — Level 4 (30.5 m) to Custom (23 m), with measured connector annotations](../domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/connection-overview.png)
 
 Fresh rendering of the actual compiled model at its authored 0° orientation, with one display title, A/B boundary markers, and two complete cards across below the scene. Its south end is Level 4 (30.5 m), and its east end is Custom (23 m), without an assigned nominal level. Both connection ends have slope at the edge of 0%; each card retains that fact alongside its own member positions, flows, headings, offsets, classification, and references. The height change occurs inside the curve. The 4 × 4 construction rectangle contains ten owned cells, including structural cells. Empty spaces in the picture do not establish construction clearance.
 

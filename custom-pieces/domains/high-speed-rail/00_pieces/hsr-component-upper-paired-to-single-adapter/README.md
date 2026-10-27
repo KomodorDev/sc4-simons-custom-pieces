@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR L4 Two-Track to Separate One-Way Adapter](preview.png)
+![HSR L4 Two-Track to Separate One-Way Adapter](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

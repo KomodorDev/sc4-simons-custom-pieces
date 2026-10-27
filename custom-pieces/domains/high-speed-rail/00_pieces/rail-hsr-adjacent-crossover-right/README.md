@@ -23,7 +23,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 [Design-review evidence](../../junction-design-review.json).
 
-![HSR Adjacent Crossover Right](preview.png)
+![HSR Adjacent Crossover Right](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

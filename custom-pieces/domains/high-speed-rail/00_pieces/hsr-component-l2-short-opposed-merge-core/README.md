@@ -23,9 +23,9 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR L2 Short Opposed Merge Core](preview.png)
+![HSR L2 Short Opposed Merge Core](previews/preview.png)
 
-![HSR L2 Short Opposed Merge Core — top view](preview-top.png)
+![HSR L2 Short Opposed Merge Core — top view](previews/preview-top.png)
 
 <!-- END PIECE OVERVIEW -->
 

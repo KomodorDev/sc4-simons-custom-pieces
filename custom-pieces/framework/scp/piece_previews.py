@@ -119,14 +119,15 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
         _caption(draw, caption, y_position, size, width, color='#586a7e')
     captions.extend(footer)
     filename = 'preview-top.png' if view_role == 'top' else 'preview.png'
-    target = destination/filename
+    target = destination/'previews'/filename
+    target.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(target)
     thumbnail = None
     if view_role == 'angled':
         bitmap = canvas.resize((thumbnail_width, round(height*thumbnail_width/width)), Image.Resampling.LANCZOS)
-        thumb = destination/'preview-thumb.png'
+        thumb = target.with_name('preview-thumb.png')
         bitmap.save(thumb)
-        thumbnail = {'file': thumb.name, 'sha256': sha256(thumb.read_bytes()), 'size': list(bitmap.size)}
+        thumbnail = {'file': thumb.relative_to(destination).as_posix(), 'sha256': sha256(thumb.read_bytes()), 'size': list(bitmap.size)}
     if sha256(pack_s3d(model)) != before_model:
         raise ValueError('Canonical preview rendering modified the parsed source model')
     image = {
@@ -135,7 +136,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
         'view_role': 'top-down' if view_role == 'top' else 'angled', 'canonical_filename': filename,
         'source': {'asset_file': piece.get('asset_file', piece['id']+'.dat'), 'preview_id': piece['preview_id'],
                    'source_dat_sha256': dat_hash, 'model_sha256': sha256(raw)},
-        'file': filename, 'sha256': sha256(target.read_bytes()), 'size': [width, height],
+        'file': target.relative_to(destination).as_posix(), 'sha256': sha256(target.read_bytes()), 'size': [width, height],
         'azimuth_degrees': azimuth, 'elevation_degrees': elevation,
         'displayed_rotation_ccw_degrees': 0., 'coordinate_system': local,
         'camera': camera.metadata(), 'grid': grid, 'header': header, 'viewport_offset_xy': [0, top],
@@ -184,9 +185,9 @@ def normalize_preview_evidence(directory):
     """
     directory=Path(directory);path=directory/'evidence/preview.json'
     entry=json.loads(path.read_text())
-    if sha256((directory/'preview.png').read_bytes())!=entry['sha256']:
+    if sha256((directory/'previews/preview.png').read_bytes())!=entry['sha256']:
         raise ValueError('Actual preview PNG differs from its saved evidence')
-    if sha256((directory/'preview-thumb.png').read_bytes())!=entry['thumbnail']['sha256']:
+    if sha256((directory/'previews/preview-thumb.png').read_bytes())!=entry['thumbnail']['sha256']:
         raise ValueError('Actual thumbnail differs from its saved evidence')
     actual={**raster_settings(),'layout':'one canonical view with independent local city grid',
             'image_size':entry['size'],'view_size':entry['camera']['image_size'],

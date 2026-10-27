@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR Diagonal S-Curve Right](preview.png)
+![HSR Diagonal S-Curve Right](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

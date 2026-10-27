@@ -105,7 +105,43 @@ def _icon(kind):
     return output.getvalue()
 
 
-def _new_button(template, definition, *, kind):
+def make_assembly_icon():
+    """Return the canonical assembly cycle icon without building game resources."""
+    return _icon('cycle')
+
+
+def _validate_icon(raw, kind):
+    """Check native image bytes while allowing equivalent PNG compression."""
+    from PIL import Image
+
+    require(isinstance(raw, bytes), 'Menu icon must be PNG bytes')
+    require(len(raw) >= 33 and raw[:16] == b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR',
+            'Menu icon must be a valid 176 by 44 RGBA PNG')
+    require(struct.unpack('>IIBBBBB', raw[16:29]) == (176, 44, 8, 6, 0, 0, 0),
+            'Menu icon must be a 176 by 44 noninterlaced 8-bit RGBA PNG')
+    try:
+        with Image.open(BytesIO(raw)) as image:
+            require(image.format == 'PNG' and image.mode == 'RGBA' and image.size == (176, 44),
+                    'Menu icon must be a 176 by 44 RGBA PNG')
+            require(image.get_format_mimetype() == 'image/png' and image.n_frames == 1,
+                    'Menu icon must be a single static PNG; APNG animation is not supported')
+            image.verify()
+        with Image.open(BytesIO(raw)) as image:
+            actual_pixels = image.tobytes()
+    except (OSError, SyntaxError) as error:
+        raise ValueError('Menu icon must be a valid 176 by 44 RGBA PNG') from error
+    with Image.open(BytesIO(_icon(kind))) as expected:
+        require(actual_pixels == expected.tobytes(),
+                'Assembly icon differs from the canonical cycle artwork; regenerate it with assembly-icons'
+                if kind == 'cycle' else 'Wrong experiment icon')
+
+
+def validate_assembly_icon(raw):
+    """Require every original cycle-icon pixel, state, dimension, and RGBA mode."""
+    _validate_icon(raw, 'cycle')
+
+
+def _new_button(template, definition, *, kind, icon=None):
     record = deepcopy(template)
     button_id = definition['id']
     for prop_id, values in {
@@ -119,12 +155,13 @@ def _new_button(template, definition, *, kind):
         _set(record, ITEM_SUBMENU_PARENT_ID, [RAIL_PARENT_ID])
         _set(record, ITEM_BUTTON_CLASS, [1])
     return {(*MENU_EXEMPLAR, button_id): encode_exemplar(record),
-            (*ICON, button_id): _icon(kind),
+            (*ICON, button_id): icon if icon is not None else _icon(kind),
             (*TITLE, button_id): _ltext(definition['title']),
             (*DESCRIPTION, button_id): _ltext(definition['description'])}
 
 
-def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None):
+def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
+                                    cycle_icon=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
@@ -136,7 +173,11 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     ``target_id`` equal to the first piece's existing menu/root button ID.
     Its distinct presentation ID changes no construction definition itself.
     Nothing is written to disk, and caller-owned mappings are never mutated.
+    A supplied ``cycle_icon`` must match every canonical assembly artwork pixel;
+    its original PNG encoding is retained exactly in the compiled resource.
     """
+    if cycle_icon is not None:
+        validate_assembly_icon(cycle_icon)
     require(isinstance(source_resources, dict) and source_resources,
             'Source resources must be a nonempty mapping from a verified build')
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
@@ -200,7 +241,8 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
                 del result[*prefix, button_id]
     presentations = ((cycle, 'cycle'), (group, 'submenu')) if group is not None else ((cycle, 'cycle'),)
     for button, kind in presentations:
-        result.update(_new_button(records[0][2], button, kind=kind))
+        result.update(_new_button(records[0][2], button, kind=kind,
+                                  icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
         result, source_resources, pieces, cycle_button=cycle, submenu=group)
     return result, report
@@ -275,7 +317,7 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         require(resources[*TITLE, button_id] == _ltext(button['title']) and
                 resources[*DESCRIPTION, button_id] == _ltext(button['description']),
                 'Wrong new menu localized text')
-        require(resources[*ICON, button_id] == _icon(kind), 'Wrong experiment icon')
+        _validate_icon(resources[*ICON, button_id], kind)
     report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
                              'menu': 'Rail', 'construction_alias_verified_in_game': False},

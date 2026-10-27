@@ -15,9 +15,9 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR Tight Two-Track Corner 30.5 to 23 Metres](preview.png)
+![HSR Tight Two-Track Corner 30.5 to 23 Metres](previews/preview.png)
 
-![HSR Tight Two-Track Corner 30.5 to 23 Metres — top view](preview-top.png)
+![HSR Tight Two-Track Corner 30.5 to 23 Metres — top view](previews/preview-top.png)
 
 <!-- END PIECE OVERVIEW -->
 
@@ -41,7 +41,7 @@ These observations cover only the named services, directions, poses, rotations, 
 
 Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.
 
-![Complete connection overview](connection-overview.png)
+![Complete connection overview](previews/connection-overview.png)
 
 [Rendering sources and verification scope](evidence/connection-overview.json).
 

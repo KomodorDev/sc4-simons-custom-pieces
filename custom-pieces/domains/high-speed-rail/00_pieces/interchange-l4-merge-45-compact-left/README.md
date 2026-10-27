@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way L4 Merge 45deg Left Compact](preview.png)
+![One-Way L4 Merge 45deg Left Compact](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

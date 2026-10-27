@@ -16,9 +16,9 @@ The top view shows the complete solid model, so the upper HSR deck hides most of
 
 <!-- BEGIN PIECE VIEWS -->
 
-![HSR Level 2 above Parallel Road Level 0 — Native Paired Straight — Clean angled view](preview.png)
+![HSR Level 2 above Parallel Road Level 0 — Native Paired Straight — Clean angled view](previews/preview.png)
 
-![HSR Level 2 above Parallel Road Level 0 — Native Paired Straight — Clean top view](preview-top.png)
+![HSR Level 2 above Parallel Road Level 0 — Native Paired Straight — Clean top view](previews/preview-top.png)
 
 <!-- END PIECE VIEWS -->
 
@@ -88,7 +88,7 @@ Source: [connections.json](connections.json).
 
 Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.
 
-![Complete connection overview](connection-overview.png)
+![Complete connection overview](previews/connection-overview.png)
 
 [Rendering sources and verification scope](evidence/connection-overview.json).
 

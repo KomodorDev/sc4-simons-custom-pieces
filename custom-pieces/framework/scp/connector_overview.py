@@ -526,7 +526,7 @@ def markdown_overview(evidence):
     """Selectable text uses the exact resolved records drawn in the figure."""
     lines = ["## Connection overview", "",
              "Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.", "",
-             "![Complete connection overview](connection-overview.png)", "",
+             "![Complete connection overview](previews/connection-overview.png)", "",
              "[Rendering sources and verification scope](evidence/connection-overview.json).", ""]
     for convention in evidence["conventions"]:
         lines.extend([convention, ""])
@@ -702,7 +702,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
             source_files.append(profile_path)
         evidence.update({
             "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
-            "schema_version": 1, "piece_id": identifier, "file": "connection-overview.png",
+            "schema_version": 1, "piece_id": identifier, "file": "previews/connection-overview.png",
             "output_sha256": sha256(image_bytes), "source_inputs": {
                 path.relative_to(root).as_posix(): sha256(path.read_bytes()) for path in source_files},
             "generator_sha256": sha256(Path(__file__).read_bytes()),
@@ -758,7 +758,8 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     # Every selected source/resource/layout was checked before canonical files are written.
     for destination, directory, image_bytes, evidence, text in staged:
         (destination / "evidence").mkdir(parents=True, exist_ok=True)
-        image_path, evidence_path = destination / "connection-overview.png", destination / "evidence/connection-overview.json"
+        (destination / "previews").mkdir(parents=True, exist_ok=True)
+        image_path, evidence_path = destination / "previews/connection-overview.png", destination / "evidence/connection-overview.json"
         image_path.write_bytes(image_bytes)
         evidence_path.write_text(json.dumps(evidence, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         if output_root is None:

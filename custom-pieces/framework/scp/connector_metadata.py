@@ -657,8 +657,9 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     evidence_path = directory / "evidence/connection-overview.json"
     _need(evidence_path.is_file(), f"{piece_id}: missing overview evidence; run connectors refresh")
     evidence = jsonc.load(evidence_path)
-    image = directory / "connection-overview.png"
+    image = directory / "previews/connection-overview.png"
     _need(evidence.get("schema_version") == 1 and evidence.get("piece_id") == piece_id, "Wrong overview evidence identity")
+    _need(evidence.get("file") == "previews/connection-overview.png", f"{piece_id}: overview evidence uses a noncanonical image path")
     _need(image.is_file() and _sha(image.read_bytes()) == evidence["output_sha256"], f"{piece_id}: overview image differs from provenance")
     for name, digest in evidence["source_inputs"].items():
         path = _safe_relative(root, name)

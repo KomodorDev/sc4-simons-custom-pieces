@@ -905,10 +905,10 @@ def _piece_overview(directory, subject):
             except ValueError:
                 rows += ['', 'Evidence reference: `'+review['evidence']+'`.']
         rows += ['']
-    if (Path(directory)/'preview.png').is_file():
-        rows += [f'![{subject.get("name", subject["id"])}](preview.png)', '']
-    if (Path(directory)/'preview-top.png').is_file():
-        rows += [f'![{subject.get("name", subject["id"])} — top view](preview-top.png)', '']
+    if (Path(directory)/'previews/preview.png').is_file():
+        rows += [f'![{subject.get("name", subject["id"])}](previews/preview.png)', '']
+    if (Path(directory)/'previews/preview-top.png').is_file():
+        rows += [f'![{subject.get("name", subject["id"])} — top view](previews/preview-top.png)', '']
     return '\n'.join(rows)
 
 
@@ -916,9 +916,9 @@ def piece_preview_hashes(directory):
     """Bind each delivered full-size piece image to its own review case."""
     directory = Path(directory)
     return {role: fingerprint((directory/name).read_bytes())
-            for name, role in (('preview.png', 'canonical-southeast'),
-                               ('preview-top.png', 'canonical-top'),
-                               ('connection-overview.png', 'connection-overview'))
+            for name, role in (('previews/preview.png', 'canonical-southeast'),
+                               ('previews/preview-top.png', 'canonical-top'),
+                               ('previews/connection-overview.png', 'connection-overview'))
             if (directory/name).is_file()}
 
 
@@ -1045,7 +1045,7 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
         subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
     title = subject.get('name', subject['id'])
     views = []
-    for name, label in (('preview.png', 'Clean angled view'), ('preview-top.png', 'Clean top view')):
+    for name, label in (('previews/preview.png', 'Clean angled view'), ('previews/preview-top.png', 'Clean top view')):
         if (Path(directory)/name).is_file():
             views += [f'![{title} — {label}]({name})', '']
     _replace_generated(readme, 'PIECE VIEWS', '\n'.join(views), append=False)
@@ -1122,8 +1122,8 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
         prefix = '\n'.join([f'# {subject.get("name", subject["id"])}', '', 'Purpose: explain this reusable type, show its exact preview and expose its connection and manual-test coverage.', '', subject.get('description', ''), '',
                  f'Exact reusable identifier: `{subject["id"]}`.', '',
                  '- [Connections and directed journeys](CONNECTIONS.md)', '- [Authoritative manual checks](checks/MANUAL_TESTS.md)', ''])
-        if (directory/'preview.png').is_file():
-            prefix += '\n'+f'![{subject.get("name", subject["id"])}](preview.png)'+'\n'
+        if (directory/'previews/preview.png').is_file():
+            prefix += '\n'+f'![{subject.get("name", subject["id"])}](previews/preview.png)'+'\n'
         if body.startswith(prefix):
             overview='<!-- BEGIN PIECE OVERVIEW -->\n\n'+_piece_overview(directory,subject).rstrip()+'\n\n<!-- END PIECE OVERVIEW -->\n\n'
             purpose = '' if re.search(r'(?m)^summary\s*:\s*\S', metadata) else 'Purpose: explain this reusable piece, its matching connections and current test coverage.\n\n'

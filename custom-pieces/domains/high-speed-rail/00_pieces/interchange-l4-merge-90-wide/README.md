@@ -23,7 +23,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 [Design-review evidence](../../junction-design-review.json).
 
-![Rail L4 Merge 90 Degree Wide](preview.png)
+![Rail L4 Merge 90 Degree Wide](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

@@ -176,7 +176,8 @@ class ManualContentTests(unittest.TestCase):
                 write_subject_content(directory, {**piece, 'kind': 'piece'}, connections, self.hashes)
             directory = directories['fixture']
             before = (directory/'connections.json').read_bytes()
-            for name in ('preview.png', 'preview-top.png', 'connection-overview.png', 'preview-thumb.png'):
+            (directory/'previews').mkdir(exist_ok=True)
+            for name in ('previews/preview.png', 'previews/preview-top.png', 'previews/connection-overview.png', 'previews/preview-thumb.png'):
                 (directory/name).write_bytes(name.encode())
             self.assertEqual(set(piece_preview_hashes(directory)),
                              {'canonical-southeast', 'canonical-top', 'connection-overview'})
@@ -526,15 +527,16 @@ class ManualContentTests(unittest.TestCase):
         from scp.content import piece_preview_hashes
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory)
-            (root/'preview.png').write_bytes(b'unchanged angled image')
-            (root/'preview-top.png').write_bytes(b'first top image')
+            (root/'previews').mkdir()
+            (root/'previews/preview.png').write_bytes(b'unchanged angled image')
+            (root/'previews/preview-top.png').write_bytes(b'first top image')
             images=piece_preview_hashes(root)
             record=new_manual_record('fixture','piece',self.connections,self.hashes,images)
             cases=[case for case in record['cases'] if case['kind']=='preview_review']
             self.assertEqual(len(cases),2)
             for case in cases:
                 record=self.user_result(record,case)
-            (root/'preview-top.png').write_bytes(b'revised top image')
+            (root/'previews/preview-top.png').write_bytes(b'revised top image')
             fresh=new_manual_record('fixture','piece',self.connections,self.hashes,piece_preview_hashes(root))
             refreshed=refresh_manual_record(record,fresh)
             summary=summarize_manual_record(refreshed)
@@ -542,7 +544,7 @@ class ManualContentTests(unittest.TestCase):
             self.assertEqual(summary['by_kind']['preview_review']['stale'],1)
             write_subject_content(root,{'id':'fixture','kind':'piece','name':'Fixture'},
                                   self.connections,self.hashes,preview_hashes=piece_preview_hashes(root))
-            self.assertIn('](preview-top.png)',(root/'README.md').read_text())
+            self.assertIn('](previews/preview-top.png)',(root/'README.md').read_text())
 
     def test_forbidden_transfer_view_uses_readable_known_and_unknown_rows(self):
         from scp.content import render_connections

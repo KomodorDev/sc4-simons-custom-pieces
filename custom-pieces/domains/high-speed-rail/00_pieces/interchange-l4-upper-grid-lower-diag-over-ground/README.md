@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way L4 over Diagonal GHSR](preview.png)
+![One-Way L4 over Diagonal GHSR](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 
