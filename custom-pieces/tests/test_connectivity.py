@@ -292,7 +292,9 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         output = assembly_connectivity('straight-stem-trumpet', scene, records, specs)
         self.assertEqual({(j['entry_port'], j['exit_port']) for j in output['journeys']},
                          {(a+'.in', b+'.out') for a in 'WES' for b in 'WES' if a != b})
-        self.assertEqual(len(output['encoded_route_joins']), 50)
+        # P08 replaces the former eastern diverge plus its two-way straight,
+        # removing their two directed seam joins while retaining all six journeys.
+        self.assertEqual(len(output['encoded_route_joins']), 48)
         self.assertEqual(original, (directory/'connections.json').read_bytes())
         self.assertEqual(before, {identifier: path.read_bytes() for identifier, path in files.items()})
 
