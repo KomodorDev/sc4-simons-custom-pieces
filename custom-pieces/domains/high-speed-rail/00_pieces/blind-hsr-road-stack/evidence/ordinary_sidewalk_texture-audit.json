@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "purpose": "Exact resource discovery; no game load-order selection or installation",
+  "status": "complete",
+  "tgi": "7ab50e44-1abe787d-08200004",
+  "scope": {
+    "archive": "<SimCity 4 installation>/SimCity_3.dat"
+  },
+  "archives_inspected": 1,
+  "matching_archives": 1,
+  "matching_index_entries": 1,
+  "matches": [
+    {
+      "archive": "<SimCity 4 installation>/SimCity_3.dat",
+      "archive_sha256": "00ee62f016b6a057a27d3975b492efa009f965380d62df842e914e1766654a2a",
+      "archive_bytes": 115117583,
+      "tgi": "7ab50e44-1abe787d-08200004",
+      "index_entry_1based": 2866,
+      "tgi_occurrence_1based": 1,
+      "stored_offset_bytes": 2392659,
+      "stored_bytes": 8256,
+      "stored_resource_sha256": "f38c5c04ef63430a3730844973b9334c28e219cd5644df71a381bc8ef6008baa",
+      "compression": "none",
+      "decompression_status": "passed",
+      "decompressed_bytes": 8256,
+      "decompressed_resource_sha256": "f38c5c04ef63430a3730844973b9334c28e219cd5644df71a381bc8ef6008baa"
+    }
+  ],
+  "errors": [],
+  "stored_variant_count": 1,
+  "decompressed_variant_count": 1,
+  "selection": {
+    "winner_selected": false,
+    "load_order_evaluated": false,
+    "priority_inferred": false,
+    "sort_order": "Archive path, then original index entry"
+  },
+  "read_scope": {
+    "index": "dbpf.read_index",
+    "resource": "Seek to exact matching index entries only",
+    "archive_hash": "Entire matching archive streamed in bounded chunks",
+    "hash_chunk_bytes": 1048576,
+    "maximum_stored_resource_bytes": 134217728
+  },
+  "next_step": "Review every occurrence; capture requires one explicitly selected archive with one occurrence",
+  "source_files_modified": false,
+  "capture": {
+    "directory": "<local resource-captures>/ordinary-road-pavement",
+    "file": "7ab50e44-1abe787d-08200004.dat",
+    "sha256": "19e47af9e8a5fb90ca069bb297574146fe5567fb5474a0f22602a3ab284c7a53",
+    "bytes": 8372,
+    "resource_count": 1,
+    "stored_bytes_preserved": true,
+    "resource_tgi_unchanged": true,
+    "installed": false,
+    "source_archive": "<SimCity 4 installation>/SimCity_3.dat",
+    "source_archive_sha256": "00ee62f016b6a057a27d3975b492efa009f965380d62df842e914e1766654a2a",
+    "source_index_entry_1based": 2866,
+    "audit_file": "resource-audit.json"
+  },
+  "path_redaction": {
+    "purpose": "Publish portable evidence from the current exact-resource capture without exposing private local paths.",
+    "method": "Absolute game-installation and capture-directory paths replaced with explicit placeholders; archive and capture filenames retained.",
+    "measured_results_changed": false,
+    "new_audit_run": false
+  }
+}

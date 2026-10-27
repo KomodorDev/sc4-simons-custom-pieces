@@ -11,10 +11,10 @@ RECIPE = 'rail_hsr_road_stack'
 INFO = {'effect_donor': ((*EFFECT,0x5DDF0100),'preview_hsr_ofillerpiece000',0x5DD31500)}
 
 
-def _box(native, half, bottom, top):
-    """Create a median column or its transverse cap, below the native deck."""
+def _box(native, half, bottom, top, *, centre=0.):
+    """Create a complete side column or its transverse cap below the deck."""
     from .single_track_models import _quad, _pack
-    x, depth = 0., .65
+    x, depth = centre, .65
     points = [(x+a*half,y,b*depth,.07+.035*a,y/16)
               for y in (bottom,top) for a,b in ((-1,-1),(1,-1),(1,1),(-1,1))]
     faces=[]
@@ -25,15 +25,17 @@ def _box(native, half, bottom, top):
     return parse_s3d(_pack(native,faces))
 
 
-def _road(native):
+def _surface(native, texture, west, east):
+    """Keep each material at native tile scale across its own ground band."""
     from .single_track_models import _quad, _pack
     material=deepcopy(native)
     material['material']=deepcopy(native['material'])
     old=material['material']['textures'][0]
-    material['material']['raw']=material['material']['raw'].replace(struct.pack('<I',old),struct.pack('<I',0x00004B0E))
-    material['material']['textures']=[0x00004B0E]
-    # Full tile UV range retains the actual ordinary Road texture's lane widths.
-    vertices=[(-8.,0.,-8.,0.,0.),(8.,0.,-8.,1.,0.),(8.,0.,8.,1.,1.),(-8.,0.,8.,0.,1.)]
+    material['material']['raw']=material['material']['raw'].replace(struct.pack('<I',old),struct.pack('<I',texture))
+    material['material']['textures']=[texture]
+    # Clipping the roadway's transparent shoulders must not stretch its lanes.
+    vertices=[(x,0.,z,(x+8.)/16.,(z+8.)/16.)
+              for x,z in ((west,-8.),(east,-8.),(east,8.),(west,8.))]
     return parse_s3d(_pack(material,_quad(vertices,(0,1,0))))
 
 
@@ -55,8 +57,16 @@ def build(spec,context):
     hsr=context['hsr']; source=parse_s3d(hsr[*S3D,0x5DD31500])
     meshes=[m for m in source['meshes'] if all(valid_frame(source,f) for f in m['frames'])]
     native=_native(hsr[*S3D,0x5DD31500])
-    road=_road(native); column=_box(native,.65,0.,13.5);cap=_box(native,7.5,13.5,native['bottom'])
-    parts=[(source,meshes,(0.,0.,0.))]+[(m,m['meshes'],(0.,0.,0.)) for m in (road,column,cap)]
+    # Road and pavement share edges but no coplanar area. The native paving
+    # atlas is opaque, unlike the Road overlay's transparent dirt shoulders.
+    road=_surface(native,0x00004B0E,-5.,5.)
+    west_walk=_surface(native,0x08200004,-8.,-5.)
+    east_walk=_surface(native,0x08200004,5.,8.)
+    west_column=_box(native,.25,0.,13.5,centre=-7.65)
+    east_column=_box(native,.25,0.,13.5,centre=7.65)
+    cap=_box(native,7.9,13.5,native['bottom'])
+    parts=[(source,meshes,(0.,0.,0.))]+[(m,m['meshes'],(0.,0.,0.))
+        for m in (road,west_walk,east_walk,west_column,east_column,cap)]
     raw=pack_s3d(combine_meshes(parts))
     assets={(*S3D,tile+z):raw for z in range(5)}
     assets.update(build_shadows(raw,tile)); assets[*S3D,preview]=raw

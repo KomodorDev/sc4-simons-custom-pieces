@@ -62,7 +62,7 @@ Use these two complete authoring examples when creating a new reusable type. The
 | Example | Permanent ID | What to follow |
 | --- | --- | --- |
 | [HSR Paired Quarter-Turn Level 2 to Level 4](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/README.md) | `blind-hsr-rise-quarter-turn` | One curved, paired height transition, complete native joining boundaries, separate generation and verification, and the canonical angled/top pictures and connection cards. |
-| [HSR above parallel Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md) | `blind-hsr-road-stack` | Several required services sharing a boundary, a central pillar with explicit clearance evidence, service-separated cards, and permitted and forbidden movements. |
+| [HSR above parallel Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md) | `blind-hsr-road-stack` | Several required services sharing a boundary, two side pillars and explicitly paved sidewalks with measured clearance evidence, service-separated cards, and permitted and forbidden movements. |
 
 Open the example's README first, then its `piece.json`, `connections.json`, `connector-groups.jsonc`, and evidence links. Use the [HSR implementation map](../domains/high-speed-rail/NETWORK_SPEC.md#implementation-entry-points) to find its recipe and independent verifier. Copy the authoring sequence and documentation structure, then supply the new type's own measured routes, geometry, declarations, and evidence. Do not copy an example's game IDs, numerical exceptions, source fingerprints, or observations into another type. New piece guides use the [shared numbered README layout](WORKFLOW_DOCUMENTATION_GENERATION.md#piece-readme), including a generated intrinsic movement matrix.
 

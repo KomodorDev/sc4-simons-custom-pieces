@@ -12,7 +12,7 @@ This experimental reusable piece puts **north/south High Speed Rail (HSR) direct
 
 Both clean views show the complete saved model at the authored 0° orientation. North is up in the top view; X increases eastward, Y increases northward, and one tile measures 16 × 16 m.
 
-The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, central column, and transverse cap. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
+The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, its paved sidewalks, two side pillars, and the transverse cap. Each pillar stands near the outer edge of its sidewalk. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
 
 <!-- BEGIN PIECE VIEWS -->
 
@@ -26,7 +26,7 @@ The top view shows the complete solid model, so the upper HSR deck hides most of
 
 <!-- BEGIN PIECE OVERVIEW -->
 
-One owned 16 m tile carries north/south paired HSR at 15.5 m directly above ordinary two-way Road and all six native pedestrian paths at 0 m. HSR, Road vehicles, and pedestrians are required together at both ends; lateral native sidewalk access is retained. No HSR/Road transfer.
+One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two outer sidewalk pillars support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.
 
 Exact reusable identifier: `blind-hsr-road-stack`.
 
@@ -41,7 +41,7 @@ After following the [separate installation procedure](../../../../docs/BUILD_AND
 1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 above Parallel Road Level 0 — Native Paired Straight**.
 2. Move the preview onto one clear tile. At 0°, both HSR and Road run north/south, with the train paths 15.5 m above the Road paths. Press **Home** or **End** to rotate both networks together; on the documented Mac keyboard, **Fn + ←** and **Fn + →** produce those keys.
 3. Click once to place this one tile. To extend the stack, place another copy against its matching north or south boundary. Continue HSR, Road vehicles, and sidewalks together at that complete boundary; an HSR-only or Road-only approach leaves required services missing.
-4. Check Road and pedestrian access, both HSR directions, the central pillar, the cap, and the seams. Supply travel demand, inspect Route Query, and watch actual travel. Record each exact case in **4. Testing**; these instructions do not establish a game pass.
+4. Check Road and pedestrian access, both HSR directions, both side pillars, the cap, the paved sidewalks, and the seams. Supply travel demand, inspect Route Query, and watch actual travel. Record each exact case in **4. Testing**; these instructions do not establish a game pass.
 
 ### Complete joining boundaries
 
@@ -318,7 +318,7 @@ Rendering checks source metadata, current compiled resource identities, and mode
 
 ## 4. Testing
 
-The [current import verification](evidence/import-verification.json) records the integrated checks and confirms that every saved model and traffic-path resource matches the preserved prototype byte for byte. Original prototype reports remain historical evidence; no human game result is inferred.
+The [current revision verification](evidence/revision-verification.json) records the checks for the two side pillars and explicitly paved sidewalks. The [preserved import baseline](evidence/import-verification.json) records the earlier central-pillar model; its byte-for-byte prototype comparison applies to that earlier model. This revision changes the visible models, regenerates and verifies their shadows, and preserves all traffic-path bytes. Original prototype reports remain historical evidence; no human game result is inferred.
 
 ### Engineering contract
 
@@ -332,12 +332,14 @@ A **PATH** resource stores directed vehicle or pedestrian travel lines; an **S3D
 | Playable tile / cursor-preview model | `7f591000` / `7f591ff5` |
 | HSR model | Exact valid visible mesh from native `5dd31500`; 15 m outside deck width |
 | HSR travel | Two opposed native engine-7 routes, at east offsets −2 m and +2 m, height 15.5 m |
-| Road surface | Full 16 m tile plane, using all of the audited US native `00004b0e` texture; native alpha is preserved |
+| Road surface | East [−5, +5] m, north [−8, +8] m, height 0 m, using the audited US native `00004b0e` texture at its original full-tile scale; native alpha is preserved |
+| Paved sidewalks | West panel: east [−8, −5] m; east panel: east [+5, +8] m; both north [−8, +8] m, height 0 m; opaque native `08200004` pavement at the same full-tile texture scale |
 | Road travel | Two native engine-1 vehicle routes, at east offsets −2.5 m and +2.5 m, height 0 m |
 | Pedestrian travel | Six actual native engine-2 paths: two through paths at east offsets ±6.39 m, and four lateral access paths |
 | Construction flags | Both `monorail: 0x02000200` and `road: 0x02000200` on the same owned cell |
-| Support column | East [−0.65, +0.65] m; north [−0.65, +0.65] m; height 0–13.5 m |
-| Transverse cap | East [−7.5, +7.5] m; north [−0.65, +0.65] m; height 13.5–14.0106707 m; contacts the native deck's lower side flanges |
+| West side pillar | East [−7.90, −7.40] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| East side pillar | East [+7.40, +7.90] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| Transverse cap | East [−7.9, +7.9] m; north [−0.65, +0.65] m; height 13.5–14.0106707 m; contacts both pillars and the native deck's lower side flanges |
 | Rotations | 0°, 90°, 180°, and 270° proper rotations, repeated once to fill eight construction states; no reflection |
 | Shadows | Five generated FSH silhouettes checked against the actual saved models; game shadow selection remains unverified |
 
@@ -345,44 +347,53 @@ In this table, east and north coordinates are metres from the tile centre. A sou
 
 #### Full support clearance
 
-The independent verifier reads the actual saved column and cap. It checks all 24 support triangles, all six faces of each closed solid, each face's area, edge closure, and each support's complete dimensions. It then compares every segment of all eight native Road paths against the complete supports; checking only the distance between a path centre and a pier centre would be insufficient.
+This remains one reusable piece: the elevated HSR, lower Road, sidewalks, and coordinated supports share one owned tile and its complete joining boundaries. Moving the supports does not create an independently useful additional module or change the piece's permanent identifiers.
+
+The independent verifier reads both saved side pillars and the cap. It checks all 36 support triangles, all six faces of each of the three closed solids, each face's area, edge closure, and each support's complete dimensions. It then compares every segment of all eight native Road paths against the complete supports; checking only the distance between a path centre and a pillar centre would be insufficient.
 
 The chosen **vehicle corridor** is 3.0 m wide and 4.5 m high around each saved vehicle path. The chosen **pedestrian corridor** is 1.8 m wide and 2.2 m high around each saved pedestrian path. A corridor is the explicit space reserved by this authoring check. These dimensions are design assumptions, rather than measured SimCity 4 collision boxes or a civil-engineering certification.
 
-The smallest horizontal margin from a vehicle corridor to the central column is approximately **0.35 m**. The smallest pedestrian margin is approximately **4.84 m**. The cap's underside is **9.0 m** above the chosen vehicle height. The cap reaches the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
+Each side pillar is 0.50 m wide east/west and 1.30 m deep north/south. The smallest horizontal margin from a through-pedestrian corridor to its adjacent pillar is **0.11 m**; the smallest margin from a lateral pedestrian corridor is **0.95 m**. The smallest horizontal margin from a vehicle corridor to a side pillar is **3.40 m**. The cap's underside is **9.0 m** above the chosen vehicle height. Both outer pillar faces and cap ends remain **0.10 m** inside the owned tile boundary. The cap reaches the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
 
-The preliminary outer-pier version was rejected after clearance review: it left only 0.41 m from the actual sidewalk centre to a pier face, which failed the chosen 1.8 m pedestrian corridor. The final piece uses the central column and cap above. The preliminary private build is retained as superseded workflow evidence and is not the final delivered geometry.
+The preserved prototype [native profile](evidence/native-profile.json) and [import baseline](evidence/import-verification.json) describe the earlier central-pillar version. An even earlier outer-pier attempt had only 0.41 m between its pillar face and a sidewalk's actual centre, which failed the chosen 1.8 m pedestrian corridor. This revision uses narrower pillars farther outward, with a measured 1.01 m distance between each through-path centre and its nearest pillar face, leaving 0.11 m after the corridor's 0.90 m half-width. The earlier reports are retained without rewriting their measured results.
 
+#### Sidewalk appearance diagnosis
 
+The [texture diagnosis](evidence/sidewalk-texture-diagnosis.json) records why the earlier sidewalks were missing in the software render. **Alpha** is a texture pixel's opacity: 0 is transparent, and 255 is fully opaque. The selected native Road texture is transparent at the native through-pedestrian positions, east ±6.39 m. Applying that texture to a full-width plane supplies no visible pavement there. The actual pedestrian travel paths were present; the missing visual surface did not establish a missing route.
+
+This revision keeps the Road texture's original scale, clips its model to east [−5, +5] m, and supplies separate opaque pavement panels on east [−8, −5] m and [+5, +8] m. All three ground panels remain at height 0 m, meet at their edges, and have no overlapping surface area. Texture coordinates retain the full-tile mapping `u=(east+8)/16` and `v=(S3D_z+8)/16`; the Road lanes are not widened to fill the clipped band. The pavement uses the exact native `08200004` resource captured from `SimCity_3.dat`, with a fixed appearance. Dynamic wealth-based sidewalk selection is not established. This correction addresses the software-render diagnosis; game appearance still needs its own human check.
 
 ### Native inputs and source reproduction
 
-A **TGI** is a resource's three-part type, group, and instance identifier. The native HSR deck and paths come from the pinned NAM 50 `High Speed Rail.dat`. Ordinary Road PATH `296678f7-69668828-00004b00` was found in `NetworkAddonMod_BaseContent.dat`; its full route geometry was inspected before use. Texture `7ab50e44-1abe787d-00004b0e` had two native variants. This experiment deliberately pins the US variant from `US_Common_Road.dat`; it does not infer a general game load-order winner. Only those exact selected resources were captured into private single-resource DATs, rather than importing their archives' unrelated overrides.
+A **TGI** is a resource's three-part type, group, and instance identifier. The native HSR deck and paths come from the pinned NAM 50 `High Speed Rail.dat`. Ordinary Road PATH `296678f7-69668828-00004b00` was found in `NetworkAddonMod_BaseContent.dat`; its full route geometry was inspected before use. Texture `7ab50e44-1abe787d-00004b0e` had two native variants. This experiment deliberately pins the US variant from `US_Common_Road.dat`; it does not infer a general game load-order winner. Pavement texture `7ab50e44-1abe787d-08200004` comes from the exact `SimCity_3.dat` recorded in its audit. Only those exact selected resources were captured into private single-resource DATs, rather than importing their archives' unrelated overrides.
 
-Inspect the [Road PATH audit](evidence/ordinary_road-audit.json), [Road texture audit](evidence/ordinary_road_texture-audit.json), and [measured native profile and design envelopes](evidence/native-profile.json). They record source archive hashes, original stored-resource hashes, decoded-resource hashes, capture hashes, coordinates, and the limits of each conclusion. Source capture does not grant redistribution permission. Public identifier reservation, asset permissions, and game platform testing remain pending.
+Inspect the [Road PATH audit](evidence/ordinary_road-audit.json), [Road texture audit](evidence/ordinary_road_texture-audit.json), [pavement texture audit](evidence/ordinary_sidewalk_texture-audit.json), and [preserved native prototype profile and design envelopes](evidence/native-profile.json). They record source archive hashes, original stored-resource hashes, decoded-resource hashes, capture hashes, coordinates, and the limits of each conclusion. Source capture does not grant redistribution permission. Public identifier reservation, asset permissions, and game platform testing remain pending.
 
-For a fresh checkout, prepare Python dependencies and an editable installation using the shared [build guide](../../../../docs/BUILD_AND_INSTALL.md#build-a-selected-collection). An **editable installation** makes Python module commands use this checkout's source files. Keep that Python environment active, and run the commands below from the repository root, meaning the directory containing `custom-pieces/`. Source archives intentionally exclude native DAT inputs and private settings. This piece needs the core `controller` and `hsr` inputs, plus the two optional captures under `ordinary_road` and `ordinary_road_texture` in the [NAM profile](../../../../config/profiles/nam50-rhd.json).
+For a fresh checkout, prepare Python dependencies and an editable installation using the shared [build guide](../../../../docs/BUILD_AND_INSTALL.md#build-a-selected-collection). An **editable installation** makes Python module commands use this checkout's source files. Keep that Python environment active, and run the commands below from the repository root, meaning the directory containing `custom-pieces/`. Source archives intentionally exclude native DAT inputs and private settings. This piece needs the core `controller` and `hsr` inputs, plus the three optional captures under `ordinary_road`, `ordinary_road_texture`, and `ordinary_sidewalk_texture` in the [NAM profile](../../../../config/profiles/nam50-rhd.json).
 
-1. Locate the original NAM inputs before capturing anything. Replace `/path/to/Plugins` below with the existing Plugins directory containing your NAM installation, keeping the single quotation marks so spaces work. A **shell variable** stores a value for later commands; the `scp_nam_plugins` variable below stores that directory's path. Run both read-only discovery commands, and inspect every matching archive they report:
+1. Locate the original NAM inputs and the game installation's `SimCity_3.dat` before capturing anything. Replace `/path/to/Plugins` below with the existing Plugins directory containing your NAM installation, keeping the single quotation marks so spaces work. A **shell variable** stores a value for later commands; the `scp_nam_plugins` variable below stores that directory's path. Set `scp_game_archive` to the full path of the original `SimCity_3.dat`, run all three read-only discovery commands, and inspect every matching archive they report:
 
    ```sh
    scp_nam_plugins='/path/to/Plugins'
+   scp_game_archive='/path/to/SimCity_3.dat'
    python3 -m scp.resource_audit --plugins "$scp_nam_plugins" --tgi 296678f7-69668828-00004b00
    python3 -m scp.resource_audit --plugins "$scp_nam_plugins" --tgi 7ab50e44-1abe787d-00004b0e
+   python3 -m scp.resource_audit --archive "$scp_game_archive" --tgi 7ab50e44-1abe787d-08200004
    ```
 
-2. Choose the exact `NetworkAddonMod_BaseContent.dat` PATH source and `US_Common_Road.dat` texture source recorded in the linked audits. Copy their full archive paths from the discovery results into the variables below. The US texture is an intentional variant; do not select a different texture because it has the same resource ID. A **capture** is a small DAT containing only the selected resource, preserving its original stored bytes. The following commands create captures and audit reports in new private directories, without modifying the source archives:
+2. Choose the exact `NetworkAddonMod_BaseContent.dat` PATH source, `US_Common_Road.dat` Road texture source, and `SimCity_3.dat` pavement texture source recorded in the linked audits. The pavement source archive must have SHA-256 `00ee62f016b6a057a27d3975b492efa009f965380d62df842e914e1766654a2a`. Copy the two NAM archive paths from the discovery results into the variables below; retain `scp_game_archive` from step 1. The US texture is an intentional variant; do not select a different texture because it has the same resource ID. A **capture** is a small DAT containing only the selected resource, preserving its original stored bytes. The following commands create captures and audit reports in new private directories, without modifying the source archives:
 
    ```sh
    scp_road_archive='/path/to/NetworkAddonMod_BaseContent.dat'
    scp_road_texture_archive='/path/to/US_Common_Road.dat'
    python3 -m scp.resource_audit --archive "$scp_road_archive" --tgi 296678f7-69668828-00004b00 --capture custom-pieces/local/road-stack-captures/path --root custom-pieces
    python3 -m scp.resource_audit --archive "$scp_road_texture_archive" --tgi 7ab50e44-1abe787d-00004b0e --capture custom-pieces/local/road-stack-captures/texture --root custom-pieces
+   python3 -m scp.resource_audit --archive "$scp_game_archive" --tgi 7ab50e44-1abe787d-08200004 --capture custom-pieces/local/road-stack-captures/pavement --root custom-pieces
    ```
 
-   Both capture directories must be new. If either already exists, preserve it and choose a new parent name, such as `road-stack-captures-v2`, in both commands and in the Python block below. Do not delete earlier captures or overwrite their audit reports to make a rerun succeed. Compare each new report's source archive and resource hashes with the linked audit before continuing.
+   All three capture directories must be new. If any already exists, preserve it and choose a new parent name, such as `road-stack-captures-v2`, in all three commands and in the Python block below. Do not delete earlier captures or overwrite their audit reports to make a rerun succeed. Compare each new report's source archive and resource hashes with the linked audit before continuing.
 
-3. Give the captured files the exact filenames expected by the profile. The capture tool names files by their TGI; the build profile uses descriptive names. Paste the complete Python block below, including its opening and closing `PY` lines. It checks both capture hashes before making the named copies. A **SHA-256 hash** identifies exact file bytes, so a different resource or capture cannot silently substitute for the pinned input:
+3. Give the captured files the exact filenames expected by the profile. The capture tool names files by their TGI; the build profile uses descriptive names. Paste the complete Python block below, including its opening and closing `PY` lines. It checks all three capture hashes before making the named copies. A **SHA-256 hash** identifies exact file bytes, so a different resource or capture cannot silently substitute for the pinned input:
 
    ```sh
    python3 - <<'PY'
@@ -399,6 +410,7 @@ For a fresh checkout, prepare Python dependencies and an editable installation u
    for key, folder, filename in (
        ('ordinary_road', 'path', '296678f7-69668828-00004b00.dat'),
        ('ordinary_road_texture', 'texture', '7ab50e44-1abe787d-00004b0e.dat'),
+       ('ordinary_sidewalk_texture', 'pavement', '7ab50e44-1abe787d-08200004.dat'),
    ):
        source = source_root / folder / filename
        if hashlib.sha256(source.read_bytes()).hexdigest() != profile[key]['sha256']:
@@ -407,11 +419,11 @@ For a fresh checkout, prepare Python dependencies and an editable installation u
    target.mkdir()
    for source, destination in copies:
        shutil.copy2(source, destination)
-   print('Both captured inputs match the recorded profile.')
+   print('All three captured inputs match the recorded profile.')
    PY
    ```
 
-   The expected hashes are `0d9a2a851f9807bbccd738459e379c9d9cbd98e171405fada2d2d2de3b938c9c` for `SCP_OrdinaryRoad_Path_Capture.dat` and `6a8850121fc1bcb95e26b185db8691b35ec79397cd9e560cfbca815023392839` for `SCP_OrdinaryRoad_Texture_Capture.dat`. The `road-stack-inputs` directory must also be new. If it exists, choose a new target name in the Python block and in the build command below. A hash mismatch requires investigating the source selection; do not edit the public profile hash merely to accept a different file.
+   The expected hashes are `0d9a2a851f9807bbccd738459e379c9d9cbd98e171405fada2d2d2de3b938c9c` for `SCP_OrdinaryRoad_Path_Capture.dat`, `6a8850121fc1bcb95e26b185db8691b35ec79397cd9e560cfbca815023392839` for `SCP_OrdinaryRoad_Texture_Capture.dat`, and `19e47af9e8a5fb90ca069bb297574146fe5567fb5474a0f22602a3ab284c7a53` for `SCP_OrdinaryRoad_Pavement_Capture.dat`. These are hashes of the complete capture DAT files, including their resource containers; the pavement resource's own hash, `f38c5c04ef63430a3730844973b9334c28e219cd5644df71a381bc8ef6008baa`, identifies different bytes and must not replace the DAT hash. The `road-stack-inputs` directory must also be new. If it exists, choose a new target name in the Python block and in the build command below. A hash mismatch requires investigating the source selection; do not edit the public profile hash merely to accept a different file.
 
 4. Build the selected piece, supplying the private capture directory as an additional read-only input location, then verify its saved resources:
 
@@ -421,7 +433,7 @@ For a fresh checkout, prepare Python dependencies and an editable installation u
    python3 -m unittest discover -s custom-pieces/domains/high-speed-rail/tests -p test_road_stack.py -v
    ```
 
-   `--extra-plugins` adds a source-scan directory; it does not install files into the real game Plugins directory. The `--output` argument selects a staged build under ignored `dist/`. Use a fresh build name after changing an experimental recipe or verifier, as explained in the [piece-creation workflow](../../../../docs/WORKFLOW_PIECE_CREATION.md#5-build-and-check-only-the-new-piece). Keep both capture directories, their audit reports, and their named copies under ignored `local/`; none belongs in Git or the real Plugins directory.
+   `--extra-plugins` adds a source-scan directory; it does not install files into the real game Plugins directory. The `--output` argument selects a staged build under ignored `dist/`. Use a fresh build name after changing an experimental recipe or verifier, as explained in the [piece-creation workflow](../../../../docs/WORKFLOW_PIECE_CREATION.md#5-build-and-check-only-the-new-piece). Keep all three capture directories, their audit reports, and their named copies under ignored `local/`; none belongs in Git or the real Plugins directory.
 
 After a real source or geometry change, extract actual resources first, regenerate both canonical views, regenerate and check connectors, and bind review cases to the final images. Follow the shared [final-artifact workflow](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging) in that order. Do not update fingerprints on stale declarations without inspecting the changed source.
 
@@ -603,6 +615,7 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
 
 </details>
 
@@ -630,6 +643,7 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
 
 </details>
 

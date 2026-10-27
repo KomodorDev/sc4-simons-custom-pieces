@@ -8,11 +8,11 @@
   "source": {
     "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_blind-hsr-road-stack.dat",
     "preview_id": "7f591ff5",
-    "source_dat_sha256": "ba3f30a509a604e4f4cad13eae1b8eb3af3eac5e2b2b517badf02781e49e996f",
-    "model_sha256": "4c2a09bc7d2491e54fb59799f088ab08f2fa488cbc0dd9ea5ad51fc899aba9c4"
+    "source_dat_sha256": "ff35fc7de5ac569d0d894d8c03430f7573ad3e1d1f08c725c1eac80c5f9faf6d",
+    "model_sha256": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef"
   },
   "file": "preview-top.png",
-  "sha256": "ffbce1652230ff750f2d0f58f769c9660e6e6e964c59519cc7e5716fdc5f7265",
+  "sha256": "23add9b838b68574cfbca911d4bd5f068e60b878e956bb520146b1af5d854b3b",
   "size": [
     1600,
     1200
@@ -390,8 +390,8 @@
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 52,
-    "mesh_count": 4,
+    "triangles": 68,
+    "mesh_count": 7,
     "bounds_xyz_m": [
       [
         [
@@ -409,7 +409,35 @@
       ],
       [
         [
+          -5.0,
+          5.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
           -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          -8.0,
+          -5.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          5.0,
           8.0
         ],
         [
@@ -423,8 +451,8 @@
       ],
       [
         [
-          -0.6499999761581421,
-          0.6499999761581421
+          -7.900000095367432,
+          -7.400000095367432
         ],
         [
           0.0,
@@ -437,8 +465,22 @@
       ],
       [
         [
-          -7.5,
-          7.5
+          7.400000095367432,
+          7.900000095367432
+        ],
+        [
+          0.0,
+          13.5
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          -7.900000095367432,
+          7.900000095367432
         ],
         [
           13.5,
@@ -453,15 +495,26 @@
     "textures": [
       "0bf6e09b",
       "00004b0e",
+      "08200004",
+      "08200004",
+      "0bf6e09b",
       "0bf6e09b",
       "0bf6e09b"
     ]
   },
-  "render_model_sha256": "4c2a09bc7d2491e54fb59799f088ab08f2fa488cbc0dd9ea5ad51fc899aba9c4",
+  "render_model_sha256": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
   "textures": [
     {
       "instance": "00004b0e",
       "fsh_sha256": "c6190c0d3003da45a0c776aabe73b6a4e02307e96117a29af9b216c31732c196",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "instance": "08200004",
+      "fsh_sha256": "f38c5c04ef63430a3730844973b9334c28e219cd5644df71a381bc8ef6008baa",
       "size": [
         128,
         128
@@ -548,11 +601,11 @@
     "duplicate_grid_footer_visible": false
   },
   "title_source_inputs": {
-    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json": "42bf42a590a5979dca4c1e54dc9f629b4b192fd6bd49d3b2d2157b7a737a99e5",
-    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connections.json": "d12eca86bc59a0cd3cceaf7c0b4fa6ec3335ee25f48b1fbfe1ee7737942446e7",
-    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-groups.jsonc": "946e805488cea3e531e92b4a9eca87e8e28688a18ca87af9ca5e087c908dbd6e",
+    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json": "c78410620a1a6b2782edb2d191ac900281be587118b3aed7edc6d9fc34caf852",
+    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connections.json": "c75ad965f3ccd5fa633e3ae8bab6257e61368a77ab3ea1f8d92ea2cd1074b69f",
+    "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-groups.jsonc": "c26e5b0dad7c992e8ddec223d0ad47af3039408834af857ec814dabe62749331",
     "domains/high-speed-rail/domain.json": "384202776899d1babc1875eb2509989065ac25d7128ed96fe897f86420a3ad8d",
     "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
   },
-  "input_fingerprint": "7f7ccc99dc304a6fce3018c5d41d238df72202e64291283bdcc93944b5efc579"
+  "input_fingerprint": "2bbc9f440c0fee66acc5a5887a0c09403c2d4b38ef0aae8bef9133dd2632a927"
 }

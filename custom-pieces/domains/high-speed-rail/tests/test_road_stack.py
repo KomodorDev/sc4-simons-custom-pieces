@@ -40,9 +40,11 @@ class NativeRoadStackTests(unittest.TestCase):
         settings=json.loads((ROOT/'local/settings.json').read_text()) if (ROOT/'local/settings.json').is_file() else {}
         fixture=Path(os.environ.get('SCP_TEST_NAM_PLUGINS',
                                     settings.get('plugins',ROOT/'local/validation-inputs/Plugins'))).expanduser()
-        names={'hsr':'High Speed Rail.dat','ordinary_road':'SCP_OrdinaryRoad_Path_Capture.dat'}
+        profile=json.loads((ROOT/'config/profiles/nam50-rhd.json').read_text())['files']
+        names={key:profile[key]['filename'] for key in
+               ('hsr','ordinary_road','ordinary_sidewalk_texture')}
         if not all((fixture/name).is_file() for name in names.values()):
-            raise unittest.SkipTest('Exact native HSR and narrow ordinary Road PATH capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.json, or local/validation-inputs/Plugins.')
+            raise unittest.SkipTest('Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.json, or local/validation-inputs/Plugins.')
         cls.context={label:{k:decompress(v) for k,v in entries((fixture/name).read_bytes()).items()} for label,name in names.items()}
         generated,cls.rules=build(cls.spec,cls.context)
         # Read the serialized archive, rather than trusting only the in-memory result.
@@ -111,15 +113,15 @@ class NativeRoadStackTests(unittest.TestCase):
 
     def test_shifted_column_into_vehicle_corridor_is_rejected(self):
         def change(m):
-            i=m['meshes'][2]['frames'][0][0];b=m['vertices'][i];raw=bytearray(b['data'])
+            i=m['meshes'][4]['frames'][0][0];b=m['vertices'][i];raw=bytearray(b['data'])
             for o in range(0,len(raw),b['stride']):
-                x=struct.unpack_from('<f',raw,o)[0];struct.pack_into('<f',raw,o,x+.71)
+                x=struct.unpack_from('<f',raw,o)[0];struct.pack_into('<f',raw,o,x+5.15)
             b['data']=bytes(raw)
         with self.assertRaisesRegex(ValueError,'Support bounds'):check_models(self.model_mutation(change),self.spec)
 
     def test_missing_support_face_is_rejected(self):
         def change(m):
-            pi=m['meshes'][2]['frames'][0][2]
+            pi=m['meshes'][4]['frames'][0][2]
             kind,start,count=m['primitives'][pi][0]
             m['primitives'][pi]=[(kind,start,count-3)]
         with self.assertRaisesRegex(ValueError,'entire closed box'):
@@ -127,10 +129,68 @@ class NativeRoadStackTests(unittest.TestCase):
 
     def test_full_saved_support_clearance_is_quantified(self):
         report=check_models(self.resources,self.spec)
-        self.assertEqual(report['support_closed_solid_faces_checked'],24)
-        self.assertAlmostEqual(report['clearance_margins_m']['minimum_vehicle_horizontal'],.35,places=6)
-        self.assertAlmostEqual(report['clearance_margins_m']['minimum_pedestrian_horizontal'],4.84,places=6)
+        self.assertEqual(report['support_closed_solid_faces_checked'],36)
+        self.assertEqual(report['side_pillars'],2)
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_vehicle_horizontal'],3.40,places=6)
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_pedestrian_horizontal'],.11,places=6)
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_lateral_pedestrian_horizontal'],.95,places=6)
         self.assertEqual(report['clearance_margins_m']['minimum_cap_vertical'],9.)
+
+    def test_actual_native_pavement_is_opaque_and_covers_every_pedestrian_route(self):
+        from scp.preview import decode_fsh
+        from scp.verify import mesh_data
+        from scp.models import positions
+        atlas=decode_fsh(self.context['ordinary_sidewalk_texture'][0x7ab50e44,0x1abe787d,0x08200004])
+        self.assertEqual(atlas.getchannel('A').getextrema(),(255,255))
+        model=parse_s3d(self.resources[*S3D,self.tile])
+        bands=[mesh_data(model,model['meshes'][index]) for index in (2,3)]
+        routes=parse_paths(self.resources[*PATH,self.tile])['routes']
+        for route in routes:
+            if route['transport']!=2:continue
+            for first,second in zip(route['points'],route['points'][1:]):
+                samples=[first,second,tuple((a+b)/2 for a,b in zip(first,second))]
+                for east,north,height in samples:
+                    covering=[]
+                    for vertices,_,_,material in bands:
+                        points=positions(vertices)
+                        if min(p[0] for p in points)<=east<=max(p[0] for p in points):
+                            covering.append(material['textures'])
+                    self.assertEqual(covering,[[0x08200004]])
+
+    def test_stretching_road_texture_across_its_clipped_band_is_rejected(self):
+        def change(m):
+            index=m['meshes'][1]['frames'][0][0];block=m['vertices'][index];raw=bytearray(block['data'])
+            for offset in range(0,len(raw),block['stride']):
+                east=struct.unpack_from('<f',raw,offset)[0]
+                struct.pack_into('<f',raw,offset+12,(east+5.)/10.)
+            block['data']=bytes(raw)
+        with self.assertRaisesRegex(ValueError,'native lane scale'):
+            check_models(self.model_mutation(change),self.spec)
+
+    def test_missing_sidewalk_face_is_rejected(self):
+        def change(m):
+            index=m['meshes'][2]['frames'][0][2];kind,start,count=m['primitives'][index][0]
+            m['primitives'][index]=[(kind,start,count-3)]
+        with self.assertRaisesRegex(ValueError,'pavement face'):
+            check_models(self.model_mutation(change),self.spec)
+
+    def test_replacing_pavement_with_transparent_road_overlay_is_rejected(self):
+        def change(m):
+            index=m['meshes'][2]['frames'][0][3];material=m['materials'][index]
+            material['raw']=material['raw'].replace(struct.pack('<I',0x08200004),struct.pack('<I',0x4b0e))
+            material['textures']=[0x4b0e]
+        with self.assertRaisesRegex(ValueError,'unaudited material'):
+            check_models(self.model_mutation(change),self.spec)
+
+    def test_widening_side_pillars_into_pedestrian_corridors_is_rejected(self):
+        def change(m):
+            index=m['meshes'][4]['frames'][0][0];block=m['vertices'][index];raw=bytearray(block['data'])
+            for offset in range(0,len(raw),block['stride']):
+                east=struct.unpack_from('<f',raw,offset)[0]
+                struct.pack_into('<f',raw,offset,-7.65+2*(east+7.65))
+            block['data']=bytes(raw)
+        with self.assertRaisesRegex(ValueError,'Support bounds'):
+            check_models(self.model_mutation(change),self.spec)
 
     def test_wrong_road_texture_is_rejected(self):
         def change(m):
