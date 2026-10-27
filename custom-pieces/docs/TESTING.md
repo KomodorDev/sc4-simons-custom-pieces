@@ -9,6 +9,10 @@ document_type: "procedure"
 
 A **piece** is one reusable menu type. An **assembly** is a layout made from placed copies. Read a piece's README or an assembly's TESTING page to find its exact checks. A **case** is one specific observation, such as a directed journey at a stated rotation and game environment. A pass for one case does not cover a different direction, transport, rotation, or platform.
 
+[Understand results](#understand-the-displayed-results) · [Record an observation](#record-one-observation) · [Data ownership and stale evidence](#data-ownership-and-stale-evidence) · [Piece validation](#piece-validation-and-compatibility-discovery) · [Investigate demolition](#investigate-single-tile-demolition-and-connected-survivors)
+
+Assembly TESTING pages follow the shared [six-chapter layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout). Use chapter 2 to prepare the layout, chapter 3 for software checks, chapter 4 for game actions, and chapter 5 for known issues and the generated checklist. This guide owns the common recording procedure; each assembly supplies its exact conditions, case links, and recording command.
+
 ## Piece validation and compatibility discovery
 
 **Intrinsic validation** checks the piece itself: its actual compiled resources, internal routes, exposed boundary measurements, declared connector associations, and supported construction orientations. Run the owning saved-resource verifier and, for a migrated piece, its connector refresh/check. These operations do not need an automatically selected neighbour or a manual test of every possible pair.
@@ -60,9 +64,9 @@ The checklist starts with current totals and collapsed **check/service groups**,
 
 Any failed or stale cases also appear in a table above the groups, with their exact scope, rotation, and case link. Their matching groups and exact scopes start expanded so those links lead to visible details. Historical failures and stale observations are labeled `Historical` and stay outside current totals; their expanded cases appear in separate sections below the current groups. A design warning is also separate from a test result: valid encoded files can still have awkward geometry.
 
-Software checks, review of a rendered picture, and operation inside SimCity 4 are separate evidence. A successful build cannot tick a human rendering, connection, or journey case. Unused tracks without travel demand do not establish a traffic pass. For a real journey, provide matching station connections and demand, then use Route Query or observe traffic in the stated direction.
+Software checks, review of a rendered picture, and operation inside SimCity 4 are separate evidence. A successful build cannot tick a human rendering, connection, or journey case. Unused routes without travel demand do not establish a traffic pass. For a real journey, provide matching outside connections and the applicable travel demand. Record Route Query and visible-travel observations separately when the declared test plan requires both; one does not establish the other.
 
-When reporting a software test run, state how many tests were **collected** (found by the test runner), **passed**, **failed**, and **skipped** (not executed). For example, `435 collected; 428 passed; 0 failed; 7 skipped` does not mean 435 passed. Give the skip reason and its coverage limit, such as `Seven connector-export tests require an unavailable older compiled build, so that build's export behavior was not checked.` Report any other outcomes separately; software counts do not change manual observation states.
+When reporting a software test run, use the test runner's actual totals and labels. Report failures, errors, skips, and any other outcomes explicitly; give skip reasons and their coverage limits. This project's `unittest` runner can count skipped classes and individual **subtests** (checks inside one test method) differently from the headline `Ran N tests` count. Do not calculate a passed count by subtracting skip reports from that headline, or relabel the headline as passed or collected. For example, `884 reported tests; 76 skip reports; no failures or errors` preserves what the runner actually reported without inventing a passed total. If a runner supplies separate collected and passed totals, use them as supplied. Software counts do not change manual observation states.
 
 ## Record one observation
 
@@ -75,7 +79,7 @@ After creating or deliberately changing artwork, first run `python3 custom-piece
 5. Open Terminal in the project folder containing `custom-pieces`. On a new source checkout, follow [Build and install](BUILD_AND_INSTALL.md#build-a-selected-collection) to install Python dependencies and register the editable packages. Copy the subject-specific record command from its generated test section and run it. For the trumpet, it is:
 
 ```sh
-python3 -m scp.content record --record custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/checks/manual-tests.json --observation custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/checks/observation.json
+python3 -m scp.content record --record custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/manual-tests.json --observation custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/observation.json
 ```
 
 6. Read the result and reopen the piece README or assembly TESTING page. The command updates the authoritative JSON record, generated summaries, and inventories. Do not type checkmarks into Markdown.

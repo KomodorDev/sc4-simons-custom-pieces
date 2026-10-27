@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import re
 import struct
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -26,8 +27,9 @@ from scp import verify as verification
 from scp.build import NETWORK_INI, RUL0, package_build
 from scp.dbpf import encode_exemplar, exemplar, pack_dbpf
 from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
-from scp.menu_experiment import (CHECKS, CONTROLLER, GUIDE, KIND, MENU, PROOF,
-                                 build_menu_experiment)
+from scp.menu_experiment import (ASSEMBLY_CHECKS, ASSEMBLY_GUIDE, ASSEMBLY_MENU_KIND,
+                                 ASSEMBLY_PROOF, CHECKS, CONTROLLER, GUIDE, KIND, MENU, PROOF,
+                                 build_assembly_menu, build_menu_experiment)
 from scp.rul0 import compose_rul0
 from scp.verify import strict_dbpf
 
@@ -117,7 +119,8 @@ class MenuExperimentTests(unittest.TestCase):
                                                            (0x5AD0E817, 0xBADB57F1, 0x7F500000 + index):
                                                             ('Compiled geometry ' + piece['id']).encode()})
         self.documentation = {'README.txt': b'Frozen build instructions\n',
-                              'docs/example.md': b'# Frozen source documentation\n'}
+                              'docs/example.md': b'# Frozen source documentation\n',
+                              'docs/prior-assembly/evidence/report.txt': b'Frozen source report\n'}
         self.base = {'schema_version': 1, 'version': 'synthetic', 'plugin_folder': self.folder,
                      'pieces': deepcopy(self.normal_pieces), 'overlay': {'rul0': composition},
                      'files': [fingerprint(path, raw) for path, raw in self.payloads.items()],
@@ -168,6 +171,98 @@ class MenuExperimentTests(unittest.TestCase):
 
     def rewrite_manifest(self, value):
         write_json(self.output / 'manifest.json', value)
+
+    def prepare_single_button_layout(self):
+        self.layout.pop('submenu')
+        self.layout['cycle_button']['title'] = 'Fixture assembly'
+        self.write_layout()
+
+    def build_single_button(self, **kwargs):
+        return build_assembly_menu(self.project, self.source, self.output,
+                                   layout_id='fixture-test', plugins=self.plugins, extra_roots=[], **kwargs)
+
+    def test_single_assembly_button_replaces_member_presentations_and_preserves_all_piece_assets(self):
+        self.prepare_single_button_layout()
+        result = self.build_single_button()
+        self.assertEqual(result['assembly_menu_buttons'], 1)
+        self.assertEqual(result['member_buttons_hidden'], 2)
+        self.assertFalse(result['submenus_dll_required'])
+        self.assertFalse(result['installed'])
+        manifest = self.manifest()
+        self.assertEqual(manifest['menu_experiment']['kind'], ASSEMBLY_MENU_KIND)
+        self.assertEqual(manifest['assembly_selection']['assembly_id'], 'fixture-assembly')
+        self.assertEqual(manifest['source_provenance']['manifest'], f'{ASSEMBLY_PROOF}/manifest.json')
+        menu = strict_dbpf((self.output / self.folder / MENU).read_bytes())
+        originals = strict_dbpf(self.payloads[f'{self.folder}/{MENU}'])
+        self.assertEqual({key[2] for key in menu if key[:2] == MENU_EXEMPLAR}, {0x6A47FEF0, 0x6A47F801})
+        for piece in (self.normal_pieces[0], self.normal_pieces[2]):
+            self.assertFalse(any(key[2] == int(piece['menu']['id'], 16) for key in menu))
+        for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION):
+            self.assertEqual(menu[*prefix, 0x6A47F801], originals[*prefix, 0x6A47F801])
+        for piece in self.normal_pieces:
+            self.assertEqual((self.output / piece['asset_file']).read_bytes(), self.payloads[piece['asset_file']])
+        self.assertEqual((self.output / ASSEMBLY_PROOF / 'menu.proof').read_bytes(), self.payloads[f'{self.folder}/{MENU}'])
+        for path, raw in self.documentation.items():
+            self.assertEqual((self.output / ASSEMBLY_PROOF / 'documentation' / path).read_bytes(), raw)
+        self.assertNotEqual((self.output / 'README.txt').read_bytes(), self.documentation['README.txt'])
+        self.assertIn('Assembly: fixture-assembly', (self.output / 'README.txt').read_text())
+        self.assertFalse((self.output / 'docs/example.md').exists())
+        self.assertFalse((self.output / 'docs/prior-assembly').exists())
+        self.assertIn('does not require Submenus DLL', (self.output / ASSEMBLY_GUIDE).read_text())
+        checks = json.loads((self.output / ASSEMBLY_CHECKS).read_text())
+        self.assertEqual(len(checks['cases']), 9)
+        self.assertNotIn('Submenus_DLL_version', checks['environment_required'])
+        self.assertTrue(all(row['status'] == 'unverified' and not row['observations'] for row in checks['cases']))
+        report = self.real_verify(self.output, write_report=False)['menu_experiment']
+        self.assertEqual(report['individual_submenu_buttons'], 0)
+        self.assertEqual(report['new_presentation_resources'], 4)
+        self.assertEqual(report['removed_member_presentation_resources'], 8)
+        self.assertEqual(report['unrelated_piece_buttons_preserved'], 1)
+
+    def test_single_button_package_retains_source_proof_and_reverifies_without_installing(self):
+        self.prepare_single_button_layout()
+        self.build_single_button()
+        archive_path = self.root / 'assembly-menu.zip'
+        result = package_build(self.output, archive_path)
+        self.assertFalse(result['public_release'])
+        with zipfile.ZipFile(archive_path) as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertIn(ASSEMBLY_GUIDE, archive.namelist())
+            self.assertIn(f'{ASSEMBLY_PROOF}/controller.proof', archive.namelist())
+            self.assertIn(f'{ASSEMBLY_PROOF}/menu.proof', archive.namelist())
+            destination = self.root / 'assembly-extracted'
+            archive.extractall(destination)
+        self.assertTrue(self.real_verify(destination, write_report=False)['static_checks_passed'])
+
+    def test_assembly_delivery_rejects_legacy_submenu_and_already_grouped_source(self):
+        with self.assertRaisesRegex(ValueError, 'one cycle button'):
+            self.build_single_button()
+        self.assertFalse(self.output.exists())
+        self.prepare_single_button_layout()
+        self.build_single_button()
+        with self.assertRaisesRegex(ValueError, 'combining assembly cycles'):
+            build_assembly_menu(self.project, self.output, self.root / 'nested',
+                                layout_id='fixture-test', plugins=self.plugins, extra_roots=[])
+
+    def test_repeated_placements_of_one_type_still_get_one_assembly_button(self):
+        self.prepare_single_button_layout()
+        self.catalog['_assemblies'][0]['scene'] = {'placements': [{'piece_id': 'fixture-alpha'}] * 3}
+        result = self.build_single_button()
+        self.assertEqual(result['assembly_component_types'], 1)
+        self.assertEqual(result['member_buttons_hidden'], 1)
+        controller = (self.output / self.folder / CONTROLLER).read_bytes()
+        self.assertEqual(controller, self.payloads[f'{self.folder}/{CONTROLLER}'])
+
+    def test_assembly_menu_cli_help_and_historical_layout_selector_compatibility(self):
+        help_result = subprocess.run([sys.executable, '-B', str(ROOT / 'scp.py'), 'assembly-menu', '--help'],
+                                     capture_output=True, text=True, check=False)
+        self.assertEqual(help_result.returncode, 0, help_result.stderr)
+        self.assertIn('--layout', help_result.stdout)
+        self.prepare_single_button_layout()
+        write_json(self.config, {'schema_version': 1, 'layouts': {'trumpet': self.layout}})
+        result = build_menu_experiment(self.project, self.source, self.output,
+                                      plugins=self.plugins, extra_roots=[])
+        self.assertEqual(result['assembly_menu_buttons'], 1)
 
     def test_build_preserves_all_assets_unselected_button_and_exact_unique_first_use_order(self):
         before = {path.relative_to(self.source).as_posix(): path.read_bytes()
@@ -288,7 +383,7 @@ class MenuExperimentTests(unittest.TestCase):
             self.real_verify(self.output, write_report=False)
 
     def test_unknown_layout_and_malformed_identifier_fail_without_creating_output(self):
-        with self.assertRaisesRegex(ValueError, 'Unknown experimental menu layout'):
+        with self.assertRaisesRegex(ValueError, 'Unknown assembly menu layout'):
             self.build(layout_id='missing-layout')
         self.assertFalse(self.output.exists())
         for value in ('zzzzzzzz', '../badid', None, 1234, '00000000'):

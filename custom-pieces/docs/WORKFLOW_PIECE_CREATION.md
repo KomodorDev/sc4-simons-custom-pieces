@@ -147,7 +147,7 @@ Check every part of the piece explicitly:
 4. **Construction rules:** declare the required networks, occupied cells, rotations, mirrors, and resource references. Use a native piece with the same network relationship as a starting point where one exists. Networks at different heights can still use the same underlying game network.
 5. **Preview:** build the entire footprint in the cursor preview, including correct offsets for its tiles. Do not point the cursor at an unrelated donor model.
 6. **Shadows:** reuse an appropriate native shadow with the correct orientation or deliberately supply and validate a new one. Do not relabel a narrower donor shadow as a match for a wider piece.
-7. **Menu:** normal builds use a distinct button and a readable icon/title for each reusable type. Construction section identifiers must match the button's construction target. An explicitly requested browsing experiment may add another presentation or a shared type family through the [opt-in menu workflow](BUILD_AND_INSTALL.md#try-the-trumpet-menu-experiment); it must preserve independent selection, geometry, and permanent construction identifiers. An assembly-parts button selects one component at a time and is not a one-click interchange. Menu icon generation does not supply the construction rules.
+7. **Menu:** ordinary piece compilation creates a readable icon, title, and construction target for each reusable type. Every assembly delivery then uses the [assembly-menu workflow](BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to replace its member buttons with one assembly button; Tab and Shift+Tab select components in that cycle. Preserve the component geometry, selection, and permanent construction identifiers. Each click places the selected component. Menu icon generation does not supply the construction rules.
 
 Require the four proper rotations **0°, 90°, 180°, and 270°** for every new independently placeable piece. Independently inspect the emitted construction rules and occupied cells, actual models and traffic paths, entry/exit directions, matching ports, cursor previews and shadows in each rotation. Proper rotation turns the piece without reflecting it. One-way pieces repeat those four rotations when eight menu states are required; reflection must not silently reverse their travel directions. A 45-degree diagonal variant needs separate geometry and audited diagonal ports. It is not created by rotating an orthogonal piece through an additional 45 degrees. Static rotation checks do not replace four-direction placement and traffic tests inside the game.
 
@@ -205,7 +205,7 @@ Then check the owning domain and, when relevant, the changed assembly:
 
 ```sh
 python3 custom-pieces/scp.py check --scope high-speed-rail
-python3 custom-pieces/scp.py check --scope straight-stem-trumpet-v4
+python3 custom-pieces/scp.py check --scope straight-stem-trumpet
 ```
 
 Replace those identifiers with the actual domain or assembly. Use `python3 custom-pieces/scp.py check --scope all` for every registered check folder. The runner discovers framework, domain and assembly tests separately; ordinary discovery in `custom-pieces/tests` covers only the shared framework. These tests use temporary fixtures and must not install into the real Plugins folder or edit a city. When changing the builder or verifier, add tests that exercise a meaningful failure or invariant rather than checking only that the new branch exists.

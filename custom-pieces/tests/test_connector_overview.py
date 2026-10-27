@@ -215,7 +215,10 @@ class ConnectorOverviewTests(unittest.TestCase):
         rows = evidence["header"]["rows"]
         self.assertEqual(len(rows), 3)
         self.assertEqual([row["colour"] for row in rows], [TITLE_INK, SUBTITLE_INK, FACTS_INK])
-        self.assertTrue(rows[0]["text"].startswith("Piece - "))
+        self.assertEqual(rows[0]["text"], "Piece - Synthetic test only — Level 4 (30.5 m)")
+        self.assertEqual(evidence["display_title"], rows[0]["text"])
+        self.assertEqual(piece["id"], "synthetic")
+        self.assertEqual(piece["piece"]["name"], "Synthetic test only")
         self.assertEqual(rows[1]["text"], "Connection overview | Southeast view | Authored orientation: 0°")
         self.assertIn("1 tile = 16 m", rows[2]["text"])
         self.assertEqual(sum(value.count("1 tile = 16 m") for value in evidence["figure_text"]), 1)

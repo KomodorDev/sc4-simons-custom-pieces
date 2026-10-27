@@ -21,10 +21,15 @@ import shlex
 
 STATES = ('unverified', 'passed', 'failed', 'stale', 'not_applicable')
 ROTATIONS = (0, 90, 180, 270)
+ASSEMBLY_TESTING_LAYOUT_MARKER = '<!-- ASSEMBLY TESTING LAYOUT: 1 -->'
+ASSEMBLY_TESTING_CHAPTERS = ('1. Test scope', '2. Test setup', '3. Software checks',
+                             '4. Game checks', '5. Results and known issues', '6. Design history')
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
-    'in_game_journey', 'in_game_route_query', 'in_game_visible_travel', 'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
+    'in_game_journey', 'in_game_route_query', 'in_game_visible_travel',
+    'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
 })
+JOURNEY_KINDS = frozenset({'in_game_journey', 'in_game_route_query', 'in_game_visible_travel'})
 SOFTWARE_KINDS = frozenset({'software_resources', 'software_connectivity'})
 RESOURCE_KINDS = {
     0x5ad0e817: 'model', 0x296678f7: 'path', 0x6534284a: 'exemplar',
@@ -165,18 +170,57 @@ def _orientation_scopes(connections):
     return result
 
 
+def _validated_manual_orientations(states):
+    """Normalize explicit game-check scopes without expanding construction support."""
+    _require(isinstance(states, list) and states, 'Manual check orientations must be a nonempty list')
+    result = []
+    for state in states:
+        _require(isinstance(state, dict) and set(state) <= {'rotation_ccw_degrees', 'construction_transposed'},
+                 'Manual check orientation contains unsupported scope fields')
+        angle, transposed = state.get('rotation_ccw_degrees'), state.get('construction_transposed', False)
+        _require(type(angle) is int and angle in ROTATIONS and type(transposed) is bool,
+                 'Manual check orientation needs a proper rotation and an optional boolean transpose flag')
+        scope = {'rotation_ccw_degrees': angle}
+        if transposed:
+            scope['construction_transposed'] = True
+        _require(scope not in result, 'Duplicate manual check orientation')
+        result.append(scope)
+    return result
+
+
+def _manual_orientation_subset(states, supported):
+    result = _validated_manual_orientations(states)
+    _require(all(state in supported for state in result),
+             'Manual check orientations must be a subset of supported construction orientations')
+    return result
+
+
+def _manual_orientation_names(states):
+    labels = [str(state['rotation_ccw_degrees'])+'° CCW'+
+              (' with construction transpose' if state.get('construction_transposed') else '')
+              for state in states]
+    return (labels[0] if len(labels) == 1 else ' and '.join(labels) if len(labels) == 2 else
+            ', '.join(labels[:-1])+', and '+labels[-1])
+
+
 def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None, *,
-                      split_journey_observations=False):
+                      split_journey_observations=False, manual_check_orientations=None):
     """Generate applicable cases at actual supported orientations, unverified.
 
     Software, image review, and actual game rendering have separate cases.
     Endpoint candidate lists do not generate manual compatibility coverage.
+    An opted-in piece or assembly records Route Query and visible travel independently;
+    existing generic journey observations never become either new result.
+    A manual-orientation subset limits human checks without changing supported
+    construction orientations or any software verifier's rotation coverage.
     """
     _require(subject_kind in ('piece', 'assembly'), 'Subject kind must be piece or assembly')
     _require(type(split_journey_observations) is bool, 'Split journey observations must be a boolean')
     _require(connections.get('subject_id', subject_id) == subject_id, 'Connection metadata belongs to another subject')
     values = _sha_map(fingerprints)
     orientations = _orientation_scopes(connections)
+    manual_orientations = (orientations if manual_check_orientations is None else
+                           _manual_orientation_subset(manual_check_orientations, orientations))
     values.update(connectivity_fingerprints(subject_id, connections))
     images = _sha_map(preview_hashes or {})
     image_values = {f'image:{subject_id}:{key}': value for key, value in images.items()}
@@ -198,7 +242,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
         # Missing artwork remains a visible pending check, never an automatic N/A or pass.
         cases.append(_new_case('preview_review', 'Supply and review a current complete model preview.',
                                {'subject_id': subject_id, 'image_key': None}, {}))
-    for orientation in orientations:
+    for orientation in manual_orientations:
         scope = {'subject_id': subject_id, **orientation}
         for kind, description in (
                 ('in_game_render', 'Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.'),
@@ -210,20 +254,23 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     # Legacy endpoint/counterpart cases remain readable and recordable, but
     # an endpoint shortlist cannot establish a complete-boundary test scope.
     for journey in connections.get('journeys', []):
-        for orientation in orientations:
+        for orientation in manual_orientations:
             scope = {'subject_id': subject_id, 'journey_id': journey['id'],
                      'service_network': journey.get('service_network'),
                      'role': journey.get('role', 'primary'),
                      'entry_port': journey.get('entry_port', journey.get('from_port')),
                      'exit_port': journey.get('exit_port', journey.get('to_port')),
                      **orientation}
-            checks = (('in_game_route_query', 'Inspect this directed journey with the game Route Query tool.'),
-                      ('in_game_visible_travel', 'Observe a vehicle or pedestrian completing this directed journey.')) if split_journey_observations else (
-                      ('in_game_journey', 'Run the declared journey in this direction using its service network.'),)
-            for kind, description in checks:
+            journey_checks = (
+                ('in_game_route_query', 'Use Route Query in SimCity 4 to confirm this directed journey for its service network.'),
+                ('in_game_visible_travel', 'Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.'),
+            ) if split_journey_observations else (
+                ('in_game_journey', 'Run the declared journey in this direction using its service network.'),
+            )
+            for kind, description in journey_checks:
                 cases.append(_new_case(kind, description, scope, _dependencies(traffic_keys, values)))
     for transfer in connections.get('forbidden_transfers', []):
-        for orientation in orientations:
+        for orientation in manual_orientations:
             scope = {'subject_id': subject_id, 'forbidden_transfer': deepcopy(transfer),
                      **orientation}
             cases.append(_new_case('in_game_forbidden_transfer', 'Confirm this undeclared transfer is unavailable.',
@@ -237,6 +284,11 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
               'supported_orientations': deepcopy(connections.get('supported_orientations',orientations)),
               'environment_policy': 'Every result applies only to its recorded platform, game version and NAM profile.',
               'fingerprints': dict(sorted(values.items())), 'cases': cases}
+    if manual_check_orientations is not None:
+        record['manual_check_orientations'] = deepcopy(manual_orientations)
+        record['rotation_policy'] = ('Human game checks are required only at '+_manual_orientation_names(manual_orientations)+
+            '. Supported construction orientations and software rotation checks retain their separate scope; '
+            'these human cases do not establish observations at the other orientations.')
     validate_manual_record(record)
     return record
 
@@ -275,12 +327,20 @@ def validate_manual_record(record):
     subject = record.get('subject', {})
     _require(subject.get('kind') in ('piece', 'assembly') and subject.get('id'), 'Invalid manual-test subject')
     _sha_map(record.get('fingerprints', {}))
+    manual_orientations = None
+    if 'manual_check_orientations' in record:
+        supported = _validated_manual_orientations(record.get('supported_orientations'))
+        manual_orientations = _manual_orientation_subset(record['manual_check_orientations'], supported)
     seen = set()
     for case in record.get('cases', []):
         _require(case.get('kind') in MANUAL_KINDS | SOFTWARE_KINDS, 'Unknown manual/software check kind')
         _require(case.get('id') == _case_identifier(case['kind'], case.get('scope', {})), 'Case ID differs from its exact scope')
         _require(case['id'] not in seen, 'Repeated manual-test case ID')
         seen.add(case['id'])
+        if manual_orientations is not None and case['kind'].startswith('in_game_'):
+            orientation = _validated_manual_orientations([{key: case['scope'][key]
+                for key in ('rotation_ccw_degrees', 'construction_transposed') if key in case['scope']}])[0]
+            _require(orientation in manual_orientations, 'Current game case is outside the selected manual check orientations')
         _require(case.get('applicability') in ('applicable', 'not_applicable'), 'Invalid applicability')
         if case['applicability'] == 'not_applicable':
             _require(bool(case.get('not_applicable_reason', '').strip()), 'Not-applicable checks need an explicit reason')
@@ -470,12 +530,16 @@ def summarize_manual_record(record, fingerprints=None, environment=None):
     totals = Counter({state: 0 for state in STATES})
     for counts in by_kind.values():
         totals.update(counts)
+    aggregate = {}
+    if any(kind in by_kind for kind in JOURNEY_KINDS-{'in_game_journey'}):
+        journey_coverage = Counter({state: 0 for state in STATES})
+        for kind in JOURNEY_KINDS:
+            journey_coverage.update(by_kind.get(kind, {}))
+        # Preserve the shape of every subject that has not opted into split checks.
+        aggregate['journey_coverage'] = dict(journey_coverage)
     return {'total': len(current), 'states': dict(totals),
             'by_kind': {key: dict(value) for key, value in sorted(by_kind.items())},
-            **({'journey_coverage': dict(sum((Counter(counts) for kind, counts in by_kind.items()
-                                            if kind in ('in_game_journey', 'in_game_route_query', 'in_game_visible_travel')),
-                                           Counter({state: 0 for state in STATES})))}
-               if any(kind in by_kind for kind in ('in_game_route_query', 'in_game_visible_travel')) else {}),
+            **aggregate,
             'environment_filter': environment,
             'coverage_scope': 'Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage.'}
 
@@ -548,7 +612,13 @@ def _manual_state_counts(cases, fingerprints=None):
     return ', '.join(state.replace('_', ' ')+': '+str(counts[state]) for state in STATES if counts[state])
 
 
-def _manual_attention_index(current, history, fingerprints):
+def _section_heading(title, level):
+    """Keep heading depth configurable without changing stored case identities."""
+    _require(type(level) is int and 2 <= level <= 6, 'Generated section heading level must be from 2 to 6')
+    return ['#'*level+' '+title, '']
+
+
+def _manual_attention_index(current, history, fingerprints, *, heading_level=3):
     """Keep every current or historical failed/stale case outside disclosures."""
     rows = []
     for cases, coverage, inputs in ((current, 'Current', fingerprints),
@@ -564,19 +634,21 @@ def _manual_attention_index(current, history, fingerprints):
                         f'<a href="#case-{case["id"]}"><code>{case["id"]}</code></a> |')
     if not rows:
         return []
-    return ['### Failed and stale cases', '',
+    return [*_section_heading('Failed and stale cases', heading_level),
             'These cases remain visible while the detailed groups are collapsed. Historical cases retain their stored dependency snapshots and are outside current coverage.', '',
             '| State | Coverage | Exact check / scope | Rotation | Case details |',
             '| --- | --- | --- | --- | --- |', *rows, '']
 
 
-def render_manual_checklist(record, fingerprints=None, *, directory=None):
+def render_manual_checklist(record, fingerprints=None, *, directory=None, heading_level=2):
     """Render collapsible kind/service matrices and exact cases/observations.
 
     Rows group only identical non-orientation scope. Every rotation, transpose,
     neighbour, pose, service, and observation remains individually addressable.
     Failed and stale cases also appear outside the collapsed current groups.
     """
+    _require(type(heading_level) is int and 2 <= heading_level <= 5,
+             'Checklist heading level must leave room for child sections')
     record = _expanded_record(record)
     fingerprints = record['fingerprints'] if fingerprints is None else fingerprints
     summary = summarize_manual_record(record, fingerprints)
@@ -595,15 +667,15 @@ def render_manual_checklist(record, fingerprints=None, *, directory=None):
     history = {case['id']:case for case in record.get('removed_cases', [])}
     history.update({case['id']:case for case in record['cases']
                     if case['kind'] == 'in_game_connection' and _has_case_history(case)})
-    lines = ['## Test checklist', '',
+    lines = [*_section_heading('Test checklist', heading_level),
              'Generated from [the authoritative record](checks/manual-tests.json). Only explicit human observations create manual passes; software and preview checks remain separate. Expand a check/service group to see its rotation table, then expand the matching exact scope to copy a case ID and inspect its pose, reviewer, environment, and evidence. Grouping changes only this view; every declared case remains separate.', '',
              '**States:** [x] passed; [ ] unverified, failed, or stale; N/A is an explicit inapplicable declaration. A dash means no case was declared in that column. Every pass covers only its recorded environment. T means a distinct construction-transposed state.', '',
              record['rotation_policy'], '',
              'Current totals: '+', '.join(f'{state}: {summary["states"][state]}' for state in STATES)+'.', '']
-    lines += _manual_attention_index(current, history.values(), fingerprints)
+    lines += _manual_attention_index(current, history.values(), fingerprints, heading_level=heading_level+1)
     if directory is not None:
-        lines += _manual_workflow(directory, record)
-    lines += ['### Detailed current checks', '',
+        lines += _manual_workflow(directory, record, heading_level=heading_level+1)
+    lines += [*_section_heading('Detailed current checks', heading_level+1),
               'Each collapsed group shows exact case counts and states. Forbidden transfers are grouped by the directed service pair; the table inside retains every port pair and rotation.', '']
     sections = {}
     for (kind, _), group in groups.items():
@@ -637,7 +709,7 @@ def render_manual_checklist(record, fingerprints=None, *, directory=None):
     for legacy, title in ((True, 'Legacy connection history'), (False, 'Historical cases outside current coverage')):
         cases = [case for case in history.values() if (case['kind'] == 'in_game_connection') == legacy]
         if cases:
-            lines += ['', '### '+title, '',
+            lines += ['', *_section_heading(title, heading_level+1),
                       'These exact historical scopes, observations, and N/A declarations are retained as evidence. They do not count towards current required coverage or establish a complete-boundary join. Historical states use their stored dependency snapshots.', '']
             for case in cases:
                 attention = case_state(case) in ('failed', 'stale')
@@ -664,7 +736,7 @@ def _case_details(case, fingerprints=None):
         lines += ['Declaration: '+_readable(case['not_applicable_declaration'])+'.', '']
     if case.get('observations'):
         lines += ['Recorded observations (chronological; the state above checks the relevant dependency snapshot):', '']
-        lines += ['- '+_readable({key:value for key,value in observation.items() if key != 'dependency_fingerprint'})
+        lines += [('- '+_readable({key:value for key,value in observation.items() if key != 'dependency_fingerprint'})).rstrip()
                   for observation in case['observations']]
         lines += ['']
     else:
@@ -672,14 +744,26 @@ def _case_details(case, fingerprints=None):
     return lines
 
 
-def render_connections(connections, *, piece_link=None, include_purpose=True):
+def render_connections(connections, *, piece_link=None, include_purpose=True, manual_check_orientations=None,
+                       heading_level=2):
     """Generate human connection/journey tables from the same machine record."""
-    lines = ['## Connections and journeys', '']
+    _require(type(heading_level) is int and 2 <= heading_level <= 5,
+             'Connection heading level must leave room for child sections')
+    lines = _section_heading('Connections and journeys', heading_level)
     if include_purpose:
         lines += ['Purpose: describe intrinsic directional interfaces and permitted service journeys.', '']
+    supported = connections.get('supported_orientations', [{'rotation_ccw_degrees': angle} for angle in ROTATIONS])
+    orientation_text = ('Supported placement states: '+', '.join(str(state['rotation_ccw_degrees'])+'° CCW'+
+                        (' with construction Transpose' if state.get('construction_transposed') else '') for state in supported)+'.')
+    if manual_check_orientations is None:
+        orientation_text += ' Each state has its own declared manual scope.'
+    else:
+        selected = _manual_orientation_subset(manual_check_orientations, _validated_manual_orientations(supported))
+        orientation_text += (' Human game checks use only '+_manual_orientation_names(selected)+
+                             '; supported construction states and software rotation checks remain separate.')
     lines += [
-             'Generated from [connections.json](connections.json). Coordinates are canonical east, north and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
-             ('Supported placement states: '+', '.join(str(state['rotation_ccw_degrees'])+'° CCW'+(' with construction Transpose' if state.get('construction_transposed') else '') for state in connections.get('supported_orientations',[{'rotation_ccw_degrees':angle} for angle in ROTATIONS]))+'. Each state has its own declared manual scope.'), '',
+             'Generated from [connections.json](connections.json). Coordinates are canonical east, north, and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
+             orientation_text, '',
              'A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.', '',
              'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.', '',
              '| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |',
@@ -688,10 +772,11 @@ def render_connections(connections, *, piece_link=None, include_purpose=True):
         service = f'{port.get("service_network", "unresolved")} / {port.get("engine_transport", port.get("engine_transport_classes", []))} / {port.get("role", "primary")}'
         geometry = f'{port.get("endpoint_m", [])}; {port.get("tangent", [])}; {port.get("grade", "unresolved")}'
         lines.append(f'| `{port["id"]}` | {_md(service)} | {_md(port.get("direction", port.get("directions", [])))} | {_md(geometry)} | `{port.get("connection_class", "unresolved")}` |')
-    lines += ['', '### Directed journeys', '', '| Service | Entry → exit | Role |', '| --- | --- | --- |']
+    lines += ['', *_section_heading('Directed journeys', heading_level+1),
+              '| Service | Entry → exit | Role |', '| --- | --- | --- |']
     for journey in connections.get('journeys', []):
         lines.append(f'| {_md(journey.get("service_network", "unresolved"))} | `{journey.get("entry_port", journey.get("from_port"))}` → `{journey.get("exit_port", journey.get("to_port"))}` | {_md(journey.get("role", "primary"))} |')
-    lines += ['', '### Forbidden transfers', '']
+    lines += ['', *_section_heading('Forbidden transfers', heading_level+1)]
     transfers=connections.get('forbidden_transfers', [])
     if transfers:
         lines += ['| From service / port | To service / port | Reason |', '| --- | --- | --- |']
@@ -735,17 +820,54 @@ def _replace_generated(path, name, content, *, append=True):
     return True
 
 
+def _remove_generated(path, name):
+    """Remove a superseded generated block without removing authored prose."""
+    path = Path(path)
+    if not path.is_file():
+        return False
+    text = path.read_text()
+    start, end = f'<!-- BEGIN {name} -->', f'<!-- END {name} -->'
+    if start not in text and end not in text:
+        return False
+    _require(text.count(start) == text.count(end) == 1 and text.index(start) < text.index(end),
+             name+' markers must be one ordered pair')
+    before, tail = text.split(start, 1)
+    _, after = tail.split(end, 1)
+    path.write_text(before+after)
+    return True
+
+
+def _assembly_matrix_enabled(directory, subject):
+    """Opt in only an assembly with its explicit README matrix marker pair."""
+    if subject['kind'] != 'assembly':
+        return False
+    readme = Path(directory)/'README.md'
+    if not readme.is_file():
+        return False
+    from .assembly_matrix import MARKER
+    text = readme.read_text()
+    start, end = f'<!-- BEGIN {MARKER} -->', f'<!-- END {MARKER} -->'
+    if start not in text and end not in text:
+        return False
+    _require(text.count(start) == text.count(end) == 1 and text.index(start) < text.index(end),
+             MARKER+' markers must be one ordered pair')
+    return True
+
+
 def update_manual_summary(path, record):
     """Replace or append the status block; preserve the authored guide."""
     summary = summarize_manual_record(record)
     target = 'TESTING.md#test-checklist' if record['subject']['kind'] == 'assembly' else '#test-checklist'
     rows = ['## Manual status', '', f'Generated from [the exact test cases]({target}) and [authoritative observations](checks/manual-tests.json).', '']
     labels = (('preview_review', 'Preview review'), ('in_game_render', 'In-game rendering'),
-              ('in_game_journey', 'Directed journeys'), ('in_game_route_query', 'Route Query'),
-              ('in_game_visible_travel', 'Visible travel'))
+              ('in_game_journey', 'Directed journeys'))
+    if record['subject']['kind'] == 'piece' and 'journey_coverage' in summary:
+        labels = labels[:2]+(('in_game_route_query', 'Route Query'),
+                             ('in_game_visible_travel', 'Visible travel'))
     for kind, title in labels:
-        counts = summary['by_kind'].get(kind, {})
-        if not counts:
+        counts = (summary.get('journey_coverage', summary['by_kind'].get(kind, {})) if kind == 'in_game_journey'
+                  else summary['by_kind'].get(kind, {}))
+        if not any(counts.values()):
             continue
         total = sum(counts.values())-counts.get('not_applicable', 0)
         passed = counts.get('passed', 0)
@@ -910,6 +1032,46 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
         record, directory=directory)), append=False)
 
 
+def _ensure_testing_document(directory, subject):
+    """Create the shared assembly chapters once; preserve every existing document."""
+    directory = Path(directory)
+    if subject['kind'] != 'assembly':
+        return directory/'README.md'
+    testing = directory/'TESTING.md'
+    if not testing.is_file():
+        title = f'Testing: {subject.get("name", subject["id"])}'
+        lines = [markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
+                                   'contributors', 'reference').rstrip(), '',
+                 '# '+title, '', ASSEMBLY_TESTING_LAYOUT_MARKER, '',
+                 ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+                            for chapter in ASSEMBLY_TESTING_CHAPTERS), '']
+        pending = (
+            'The assembly-specific test scope has not yet been documented. Start with the [assembly overview](README.md).',
+            'The required local inputs, installation, test layout, and game environment have not yet been documented.',
+            'The assembly-specific software commands, expected results, and evidence requirements have not yet been documented.',
+            'The assembly-specific game procedures have not yet been documented. Record only explicitly confirmed observations of exact cases.',
+            'Results and known issues have not yet been summarized. The generated checklist below retains the recorded case states and evidence.',
+            'No assembly-specific design history has yet been documented.',
+        )
+        for index, (chapter, paragraph) in enumerate(zip(ASSEMBLY_TESTING_CHAPTERS, pending), 1):
+            lines += ['## '+chapter, '', paragraph, '']
+            if index in (1, 5):
+                name = 'CONNECTIONS' if index == 1 else 'MANUAL CHECKS'
+                lines += [f'<!-- BEGIN {name} -->', '', f'<!-- END {name} -->', '']
+        testing.write_text('\n'.join(lines))
+    return testing
+
+
+def _testing_heading_level(testing, subject):
+    """Only the explicit assembly layout marker changes generated heading depth."""
+    if subject['kind'] != 'assembly':
+        return 2
+    text = Path(testing).read_text()
+    count = text.count(ASSEMBLY_TESTING_LAYOUT_MARKER)
+    _require(count <= 1, 'Assembly testing layout marker must appear only once')
+    return 3 if count else 2
+
+
 def _write_subject_views(directory, subject, connections, record, piece_link=None):
     directory = Path(directory)
     readme = directory/'README.md'
@@ -938,15 +1100,28 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
             purpose = '' if re.search(r'(?m)^summary\s*:\s*\S', metadata) else 'Purpose: explain this reusable piece, its matching connections and current test coverage.\n\n'
             readme.write_text(metadata+f'# {subject.get("name", subject["id"])}\n\n'+purpose+overview+body[len(prefix):].lstrip('\n'))
         _replace_generated(readme, 'PIECE OVERVIEW', _piece_overview(directory, subject))
-    update_manual_summary(readme, record)
-    _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
-                                                               include_purpose=subject['kind'] == 'piece'))
-    testing = directory/'TESTING.md' if subject['kind'] == 'assembly' else readme
-    if not testing.is_file():
-        title = f'Testing: {subject["id"]}'
-        testing.write_text(markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
-                                             'contributors', 'reference')+f'# {title}\n')
-    _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory))
+    testing = _ensure_testing_document(directory, subject)
+    heading_level = _testing_heading_level(testing, subject)
+    numbered_testing = subject['kind'] == 'assembly' and heading_level == 3
+    matrix_enabled = _assembly_matrix_enabled(directory, subject)
+    if matrix_enabled:
+        from .assembly_matrix import MARKER, render_assembly_connection_matrix
+        _remove_generated(readme, 'MANUAL SUMMARY')
+        _remove_generated(readme, 'CONNECTIONS')
+        _replace_generated(readme, MARKER, render_assembly_connection_matrix(connections, record), append=False)
+    else:
+        update_manual_summary(readme, record)
+        if numbered_testing:
+            _remove_generated(readme, 'CONNECTIONS')
+        else:
+            _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
+                                                                       include_purpose=subject['kind'] == 'piece'))
+    if matrix_enabled or numbered_testing:
+        _replace_generated(testing, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
+            include_purpose=False, manual_check_orientations=record.get('manual_check_orientations'),
+            heading_level=heading_level))
+    _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory,
+                                                                      heading_level=heading_level))
     for obsolete in (directory/'CONNECTIONS.md', directory/'checks/MANUAL_TESTS.md', directory/'checks/README.md'):
         obsolete.unlink(missing_ok=True)
 
@@ -962,15 +1137,28 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     checks = directory/'checks'
     checks.mkdir(parents=True, exist_ok=True)
     record_path = checks/'manual-tests.json'
+    matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if not refresh_metadata:
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
     else:
+        previous = json.loads(record_path.read_text()) if record_path.exists() else None
+        manual_orientations = None
+        if matrix_enabled:
+            supported = _orientation_scopes(connections)
+            if previous is not None and 'manual_check_orientations' in previous:
+                selected = _validated_manual_orientations(previous['manual_check_orientations'])
+                if all(state in supported for state in selected):
+                    manual_orientations = selected
+            if manual_orientations is None:
+                canonical = {'rotation_ccw_degrees': 0}
+                manual_orientations = [canonical if canonical in supported else supported[0]]
         generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
-                                      split_journey_observations=_numbered_piece_enabled(directory, subject))
-        if record_path.exists():
-            generated = refresh_manual_record(json.loads(record_path.read_text()), generated)
+                                      split_journey_observations=matrix_enabled or _numbered_piece_enabled(directory, subject),
+                                      manual_check_orientations=manual_orientations)
+        if previous is not None:
+            generated = refresh_manual_record(previous, generated)
         (directory/'connections.json').write_text(json.dumps(connections, indent=2, allow_nan=False)+'\n')
         record_path.write_text(json.dumps(compact_manual_record(generated), indent=2, allow_nan=False)+'\n')
     _write_subject_views(directory, subject, connections, generated, piece_link)
@@ -1008,14 +1196,22 @@ def record_observation_file(record_path, observation_path):
     record_path.write_text(json.dumps(compact_manual_record(output),indent=2,allow_nan=False)+'\n')
     directory=record_path.parent.parent
     readme=directory/'README.md'
-    if _numbered_piece_enabled(directory, output['subject']):
+    if (_assembly_matrix_enabled(directory, output['subject'])
+            or _numbered_piece_enabled(directory, output['subject'])):
         connections = json.loads((directory/'connections.json').read_text())
         _write_subject_views(directory, output['subject'], connections, output)
-    elif readme.is_file():
-        update_manual_summary(readme, output)
-    testing=directory/'TESTING.md' if output['subject']['kind']=='assembly' else readme
-    if not _numbered_piece_enabled(directory, output['subject']):
-        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
+    else:
+        if readme.is_file():update_manual_summary(readme,output)
+        testing = _ensure_testing_document(directory, output['subject'])
+        heading_level = _testing_heading_level(testing, output['subject'])
+        if output['subject']['kind'] == 'assembly' and heading_level == 3 and (directory/'connections.json').is_file():
+            if readme.is_file():
+                _remove_generated(readme, 'CONNECTIONS')
+            connections = json.loads((directory/'connections.json').read_text())
+            _replace_generated(testing, 'CONNECTIONS', render_connections(connections, include_purpose=False,
+                manual_check_orientations=output.get('manual_check_orientations'), heading_level=heading_level))
+        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory,
+                                                                         heading_level=heading_level))
     for obsolete in (record_path.parent/'MANUAL_TESTS.md',record_path.parent/'README.md'):
         obsolete.unlink(missing_ok=True)
     refreshed = False
@@ -1032,7 +1228,7 @@ def record_observation_file(record_path, observation_path):
             'authority':'explicit_user_observation','inventory_refresh_required':not refreshed}
 
 
-def _manual_workflow(directory, record):
+def _manual_workflow(directory, record, *, heading_level=3):
     """Return a short local command; shared recording instructions live once."""
     candidates = [case for case in record['cases'] if case['kind'] in MANUAL_KINDS
                   and case['kind'] != 'in_game_connection']
@@ -1040,7 +1236,7 @@ def _manual_workflow(directory, record):
         return []
     checks=Path(directory)/'checks'
     checks.mkdir(parents=True, exist_ok=True)
-    example=next((case for case in candidates if case['kind'] in ('in_game_journey', 'in_game_route_query')), candidates[0])
+    example=next((case for case in candidates if case['kind'] in JOURNEY_KINDS), candidates[0])
     request={'purpose':'Copy this template to a separate observation file and fill it only after the user confirms the exact case.',
              'case_id':example['id'],'result':'passed','explicit_user_confirmation':False,
              'reviewer':'','confirmed_at':'','evidence':[],
@@ -1060,7 +1256,7 @@ def _manual_workflow(directory, record):
         guide='docs/TESTING.md'
         location='From this subject folder, run after filling `checks/observation.json` and explicitly confirming the exact observation:'
         command='python3 -m scp.content record --record checks/manual-tests.json --observation checks/observation.json'
-    return ['### Record an observation', '',
+    return [*_section_heading('Record an observation', heading_level),
             f'Follow the [shared testing guide]({guide}); copy [the unconfirmed example](checks/observation.example.json) to `checks/observation.json`. Case identifiers are in the expandable sections below. Do not edit generated checkboxes.', '',
             location, '', '```sh', command, '```', '']
 

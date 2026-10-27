@@ -7,9 +7,9 @@ document_type: "guide"
 
 # High-speed rail player guide
 
-**HSR** means elevated High Speed Rail; **GHSR** means Ground High Speed Rail. Both carry the game's Monorail traffic. A **piece** is one separately selectable construction button. An **assembly** is a documented arrangement of several placed pieces; the trumpet is an assembly. A **collection** is a named selection of existing pieces used when building the plugin, not an extra game button.
+**HSR** means elevated High Speed Rail; **GHSR** means Ground High Speed Rail. Both carry the game's Monorail traffic. A **piece** is one reusable construction type, selected through a standalone button or an assembly’s component cycle. An **assembly** is a documented arrangement of several placed pieces; the trumpet is an assembly. A **collection** is a named selection of existing pieces used when building the plugin, not an extra game button.
 
-Each piece has one README containing its preview, measured connection interfaces, and human observations. The current trumpet is the **[V4 blueprint](01_assemblies/straight-stem-trumpet-v4/README.md)**, with one building guide and one testing reference. It uses existing ordinary straights for four extracted small tails, with bounded corrections in the adjoining retained curves. Only this current blueprint and its required pieces are maintained; historical atomization measurements remain recorded with it.
+Each piece has one README containing its preview, measured connection interfaces, and human observations. The **[Straight-stem HSR trumpet](01_assemblies/straight-stem-trumpet/README.md)** has a four-section overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
 
 The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, with the modular crossing and tight curve as its final examples. Their generated overview cards live beside those two pieces. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); other types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
@@ -50,7 +50,7 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `hsr-split-and-climb`: 2 piece types.
 - `hsr-crossing-core-and-approaches`: 3 piece types.
 - `hsr-compact-fan-parts`: 2 piece types.
-- `hsr-straight-stem-trumpet-v4`: 14 piece types.
+- `hsr-straight-stem-trumpet`: 14 piece types.
 - `piece-authoring-examples`: 2 piece types.
 
 </details>
@@ -73,7 +73,7 @@ A **port** is a track entrance or exit at the edge of a piece. Its height, headi
 | A transfer between two neighbouring paired mainlines | Adjacent Crossover Left/Right or Adjacent Scissors Revised |
 | A paired change between HSR and GHSR | HSR to GHSR Transition |
 | Reusable upper paired track, graded corners, spacing adapters or compact connections | The `hsr-all-components` collection in the inventory |
-| The complete modular trumpet | The [V4 assembly README](01_assemblies/straight-stem-trumpet-v4/README.md) and `hsr-straight-stem-trumpet-v4` collection |
+| The complete modular trumpet | The [assembly README](01_assemblies/straight-stem-trumpet/README.md) and `hsr-straight-stem-trumpet` collection |
 
 A 45°, 90° or 135° branch angle describes the change in heading. Wide modular branches have at least twice the sampled minimum radius of their Compact counterparts, so they require more land. A larger **radius** means a gentler curve. Use the exact footprint in the piece README; a diagonal half-tile and a complete diagonal pair are not interchangeable in every layout.
 
@@ -108,7 +108,7 @@ A managed SCP installation has one combined controller and menu for its complete
 1. Save and fully quit SimCity 4 before changing Plugins. Follow the installation guide, then open a disposable test city with flat, clear terrain.
 2. Open **Transportation → Rail**. Hover over an **SCP** icon to read its exact title, then click that button once.
 3. Move the construction preview over clear land. Press **Home** or **End** to rotate before placing. On the keyboard used for this installation, **Fn + ←** and **Fn + →** produce those keys.
-4. **Tab** and **Shift+Tab** select the next or previous type within a declared construction family. Normal SCP builds keep types separate; the optional [trumpet menu experiment](../../docs/BUILD_AND_INSTALL.md#try-the-trumpet-menu-experiment) groups fourteen reusable types into one family. **Home** and **End** cycle rotation states. Directional pieces repeat four proper rotations: 0°, 90°, 180°, and 270°. Rotation turns the whole piece and its travel directions together; it does not turn a split into a merge or produce a 45° shape. Choose a separate diagonal or opposite-handed piece when needed.
+4. **Tab** and **Shift+Tab** select the next or previous type within a declared construction family. The ordinary piece-compilation stage keeps types separate. Every assembly delivery uses [one assembly button](../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu), with Tab/Shift+Tab selecting its member types; the final menu step hides duplicate member buttons and preserves unrelated standalone types. **Home** and **End** cycle rotation states. Directional pieces repeat four proper rotations: 0°, 90°, 180°, and 270°. Rotation turns the whole piece and its travel directions together; it does not turn a split into a merge or produce a 45° shape. Choose a separate diagonal or opposite-handed piece when needed.
 5. Keep the whole declared **construction rectangle** clear, including unused cells. It is the area reserved around the construction reference position. A gap in a software preview is not a promise that a road or building will fit there; native-width concrete can extend beyond occupied network cells.
 6. Check the port heights, profiles, headings and arrows, then click once. Place matching narrow fillers end to end: ordinary Monorail dragging does not extend narrow SCP track. Stop native two-track construction drags at the outside boundary of a compatible piece.
 7. Where two routes share a tile, use a combined crossing that contains both levels. Placing an independent upper filler on a lower railway can replace the lower route.

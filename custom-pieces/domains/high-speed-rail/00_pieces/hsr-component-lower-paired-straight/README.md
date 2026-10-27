@@ -19,7 +19,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 <!-- END PIECE OVERVIEW -->
 
-**Open demolition defect, reported 2026-10-23:** the user placed three copies of this piece end to end and bulldozed the middle tile; both connected survivors appeared as Monorail. The [failure record](../../01_assemblies/straight-stem-trumpet-v4/evidence/demolition-regression-20261023.json) retains the exact confirmation, installed menu-trial context, and unreported conditions. No fix has been verified. Existing whole-placement demolition cases do not cover this partial-deletion result; use the [focused regression procedure](../../../../docs/TESTING.md#investigate-single-tile-demolition-and-connected-survivors).
+**Open demolition defect, reported 2026-10-23:** the user placed three copies of this piece end to end and bulldozed the middle tile; both connected survivors appeared as Monorail. The [failure record](../../01_assemblies/straight-stem-trumpet/evidence/demolition-regression-20261023.json) retains the exact confirmation, installed menu-trial context, and unreported conditions. No fix has been verified. Existing whole-placement demolition cases do not cover this partial-deletion result; use the [focused regression procedure](../../../../docs/TESTING.md#investigate-single-tile-demolition-and-connected-survivors).
 
 <!-- BEGIN MANUAL SUMMARY -->
 

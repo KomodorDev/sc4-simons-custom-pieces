@@ -1,0 +1,119 @@
+{
+  "purpose": "Independent current assembly acceptance: fixed ports, six HSR journeys, native joining profiles, supports, clearance, model budgets and exact approved saved-resource fingerprints. Historical atomization decisions are recorded separately; game operation remains unverified.",
+  "schema_version": 2,
+  "id": "straight-stem-trumpet",
+  "occupied_cells": 109,
+  "encoded_fragments": 167,
+  "unique_piers": 75,
+  "placements": 26,
+  "unique_piece_types": 14,
+  "candidate_eligibility_strictly_below_m": 0.005,
+  "minimum_pier_spacing_m": 16.0,
+  "minimum_clearance": 5.0,
+  "ports": {
+    "W_in": [
+      -120.0,
+      -2.0,
+      15.5
+    ],
+    "W_out": [
+      -120.0,
+      2.0,
+      15.5
+    ],
+    "E_in": [
+      200.0,
+      2.0,
+      15.5
+    ],
+    "E_out": [
+      200.0,
+      -2.0,
+      15.5
+    ],
+    "S_in": [
+      2.0,
+      -216.0,
+      15.5
+    ],
+    "S_out": [
+      -2.0,
+      -216.0,
+      15.5
+    ]
+  },
+  "movements": [
+    [
+      "W_in",
+      "E_out"
+    ],
+    [
+      "W_in",
+      "S_out"
+    ],
+    [
+      "E_in",
+      "W_out"
+    ],
+    [
+      "E_in",
+      "S_out"
+    ],
+    [
+      "S_in",
+      "W_out"
+    ],
+    [
+      "S_in",
+      "E_out"
+    ]
+  ],
+  "required_grade_separated_crossings": 4,
+  "expected_crossings_xyz": [
+    [
+      -2.0,
+      -2.0,
+      30.5,
+      15.5
+    ],
+    [
+      -2.0,
+      2.0,
+      30.5,
+      15.5
+    ],
+    [
+      2.0,
+      -2.0,
+      30.5,
+      15.5
+    ],
+    [
+      2.0,
+      2.0,
+      30.5,
+      15.5
+    ]
+  ],
+  "game_operation": "unverified",
+  "inherited_custom_cut_policy": {
+    "departure_port": "Win",
+    "return_port": "Eout",
+    "depth_m": 2.65,
+    "width_m": 5.2,
+    "require_exact_original_port_tile_models_all_five_zooms": true,
+    "whole_assembly_uses_strict_unclipped_actual_neighbour_paths": true,
+    "native_new_join_profile_tolerance_m": 5e-05
+  },
+  "current_resource_contract": "resources.json",
+  "actual_tile_triangles": 659271,
+  "whole_route_quality": {
+    "direct_slips": {
+      "minimum_radius_m": 24.0,
+      "maximum_total_turn_degrees": 130.0,
+      "maximum_curvature_change_per_m2": 0.0015,
+      "maximum_native_endpoint_curvature_per_m": 0.0005
+    },
+    "other_four_journeys": "Exact approved current encoded geometry; all constituent modules retain their existing independent physical contracts."
+  }
+}
