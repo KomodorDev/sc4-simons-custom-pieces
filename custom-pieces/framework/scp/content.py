@@ -23,8 +23,10 @@ STATES = ('unverified', 'passed', 'failed', 'stale', 'not_applicable')
 ROTATIONS = (0, 90, 180, 270)
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
-    'in_game_journey', 'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
+    'in_game_journey', 'in_game_route_query', 'in_game_visible_travel',
+    'in_game_forbidden_transfer', 'in_game_demolition', 'in_game_save_reload',
 })
+JOURNEY_KINDS = frozenset({'in_game_journey', 'in_game_route_query', 'in_game_visible_travel'})
 SOFTWARE_KINDS = frozenset({'software_resources', 'software_connectivity'})
 RESOURCE_KINDS = {
     0x5ad0e817: 'model', 0x296678f7: 'path', 0x6534284a: 'exemplar',
@@ -165,13 +167,19 @@ def _orientation_scopes(connections):
     return result
 
 
-def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None):
+def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None, *,
+                      split_journey_observations=False):
     """Generate applicable cases at actual supported orientations, unverified.
 
     Software, image review, and actual game rendering have separate cases.
     Endpoint candidate lists do not generate manual compatibility coverage.
+    An opted-in assembly records Route Query and visible travel independently;
+    existing generic journey observations never become either new result.
     """
     _require(subject_kind in ('piece', 'assembly'), 'Subject kind must be piece or assembly')
+    _require(type(split_journey_observations) is bool, 'Split journey observations must be a boolean')
+    _require(not split_journey_observations or subject_kind == 'assembly',
+             'Split journey observations are an assembly documentation opt-in')
     _require(connections.get('subject_id', subject_id) == subject_id, 'Connection metadata belongs to another subject')
     values = _sha_map(fingerprints)
     orientations = _orientation_scopes(connections)
@@ -215,8 +223,14 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
                      'entry_port': journey.get('entry_port', journey.get('from_port')),
                      'exit_port': journey.get('exit_port', journey.get('to_port')),
                      **orientation}
-            cases.append(_new_case('in_game_journey', 'Run the declared journey in this direction using its service network.',
-                                   scope, _dependencies(traffic_keys, values)))
+            journey_checks = (
+                ('in_game_route_query', 'Use Route Query in SimCity 4 to confirm this directed journey for its service network.'),
+                ('in_game_visible_travel', 'Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.'),
+            ) if split_journey_observations else (
+                ('in_game_journey', 'Run the declared journey in this direction using its service network.'),
+            )
+            for kind, description in journey_checks:
+                cases.append(_new_case(kind, description, scope, _dependencies(traffic_keys, values)))
     for transfer in connections.get('forbidden_transfers', []):
         for orientation in orientations:
             scope = {'subject_id': subject_id, 'forbidden_transfer': deepcopy(transfer),
@@ -465,8 +479,16 @@ def summarize_manual_record(record, fingerprints=None, environment=None):
     totals = Counter({state: 0 for state in STATES})
     for counts in by_kind.values():
         totals.update(counts)
+    aggregate = {}
+    if any(kind in by_kind for kind in JOURNEY_KINDS-{'in_game_journey'}):
+        journey_coverage = Counter({state: 0 for state in STATES})
+        for kind in JOURNEY_KINDS:
+            journey_coverage.update(by_kind.get(kind, {}))
+        # Preserve the shape of every subject that has not opted into split checks.
+        aggregate['journey_coverage'] = dict(journey_coverage)
     return {'total': len(current), 'states': dict(totals),
             'by_kind': {key: dict(value) for key, value in sorted(by_kind.items())},
+            **aggregate,
             'environment_filter': environment,
             'coverage_scope': 'Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage.'}
 
@@ -479,7 +501,8 @@ _CHECK_NAMES = {
     'software_resources': 'Compiled resources', 'software_connectivity': 'Directed routing graph',
     'preview_review': 'Preview review', 'in_game_render': 'In-game rendering',
     'in_game_placement': 'Placement', 'in_game_connection': 'Connection',
-    'in_game_journey': 'Journey', 'in_game_forbidden_transfer': 'Forbidden transfer',
+    'in_game_journey': 'Journey', 'in_game_route_query': 'Route Query',
+    'in_game_visible_travel': 'Visible travel', 'in_game_forbidden_transfer': 'Forbidden transfer',
     'in_game_demolition': 'Demolition', 'in_game_save_reload': 'Save and reload',
 }
 
@@ -725,6 +748,40 @@ def _replace_generated(path, name, content, *, append=True):
     return True
 
 
+def _remove_generated(path, name):
+    """Remove a superseded generated block without removing authored prose."""
+    path = Path(path)
+    if not path.is_file():
+        return False
+    text = path.read_text()
+    start, end = f'<!-- BEGIN {name} -->', f'<!-- END {name} -->'
+    if start not in text and end not in text:
+        return False
+    _require(text.count(start) == text.count(end) == 1 and text.index(start) < text.index(end),
+             name+' markers must be one ordered pair')
+    before, tail = text.split(start, 1)
+    _, after = tail.split(end, 1)
+    path.write_text(before+after)
+    return True
+
+
+def _assembly_matrix_enabled(directory, subject):
+    """Opt in only an assembly with its explicit README matrix marker pair."""
+    if subject['kind'] != 'assembly':
+        return False
+    readme = Path(directory)/'README.md'
+    if not readme.is_file():
+        return False
+    from .assembly_matrix import MARKER
+    text = readme.read_text()
+    start, end = f'<!-- BEGIN {MARKER} -->', f'<!-- END {MARKER} -->'
+    if start not in text and end not in text:
+        return False
+    _require(text.count(start) == text.count(end) == 1 and text.index(start) < text.index(end),
+             MARKER+' markers must be one ordered pair')
+    return True
+
+
 def update_manual_summary(path, record):
     """Replace or append the status block; preserve the authored guide."""
     summary = summarize_manual_record(record)
@@ -733,8 +790,9 @@ def update_manual_summary(path, record):
     labels = (('preview_review', 'Preview review'), ('in_game_render', 'In-game rendering'),
               ('in_game_journey', 'Directed journeys'))
     for kind, title in labels:
-        counts = summary['by_kind'].get(kind, {})
-        if not counts:
+        counts = (summary.get('journey_coverage', summary['by_kind'].get(kind, {})) if kind == 'in_game_journey'
+                  else summary['by_kind'].get(kind, {}))
+        if not any(counts.values()):
             continue
         total = sum(counts.values())-counts.get('not_applicable', 0)
         passed = counts.get('passed', 0)
@@ -876,14 +934,24 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
             purpose = '' if re.search(r'(?m)^summary\s*:\s*\S', metadata) else 'Purpose: explain this reusable piece, its matching connections and current test coverage.\n\n'
             readme.write_text(metadata+f'# {subject.get("name", subject["id"])}\n\n'+purpose+overview+body[len(prefix):].lstrip('\n'))
         _replace_generated(readme, 'PIECE OVERVIEW', _piece_overview(directory, subject))
-    update_manual_summary(readme, record)
-    _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
-                                                               include_purpose=subject['kind'] == 'piece'))
+    matrix_enabled = _assembly_matrix_enabled(directory, subject)
+    if matrix_enabled:
+        from .assembly_matrix import MARKER, render_assembly_connection_matrix
+        _remove_generated(readme, 'MANUAL SUMMARY')
+        _remove_generated(readme, 'CONNECTIONS')
+        _replace_generated(readme, MARKER, render_assembly_connection_matrix(connections, record), append=False)
+    else:
+        update_manual_summary(readme, record)
+        _replace_generated(readme, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
+                                                                   include_purpose=subject['kind'] == 'piece'))
     testing = directory/'TESTING.md' if subject['kind'] == 'assembly' else readme
     if not testing.is_file():
         title = f'Testing: {subject["id"]}'
         testing.write_text(markdown_metadata(title, 'Inspect this assembly’s exact checks, resource evidence, and explicit human observations.',
                                              'contributors', 'reference')+f'# {title}\n')
+    if matrix_enabled:
+        _replace_generated(testing, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
+                                                                    include_purpose=False))
     _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory))
     for obsolete in (directory/'CONNECTIONS.md', directory/'checks/MANUAL_TESTS.md', directory/'checks/README.md'):
         obsolete.unlink(missing_ok=True)
@@ -900,12 +968,14 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     checks = directory/'checks'
     checks.mkdir(parents=True, exist_ok=True)
     record_path = checks/'manual-tests.json'
+    matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if not refresh_metadata:
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
     else:
-        generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes)
+        generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
+                                      split_journey_observations=matrix_enabled)
         if record_path.exists():
             generated = refresh_manual_record(json.loads(record_path.read_text()), generated)
         (directory/'connections.json').write_text(json.dumps(connections, indent=2, allow_nan=False)+'\n')
@@ -945,9 +1015,13 @@ def record_observation_file(record_path, observation_path):
     record_path.write_text(json.dumps(compact_manual_record(output),indent=2,allow_nan=False)+'\n')
     directory=record_path.parent.parent
     readme=directory/'README.md'
-    if readme.is_file():update_manual_summary(readme,output)
-    testing=directory/'TESTING.md' if output['subject']['kind']=='assembly' else readme
-    _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
+    if _assembly_matrix_enabled(directory, output['subject']):
+        connections = json.loads((directory/'connections.json').read_text())
+        _write_subject_views(directory, output['subject'], connections, output)
+    else:
+        if readme.is_file():update_manual_summary(readme,output)
+        testing=directory/'TESTING.md' if output['subject']['kind']=='assembly' else readme
+        _replace_generated(testing,'MANUAL CHECKS',render_manual_checklist(output,directory=directory))
     for obsolete in (record_path.parent/'MANUAL_TESTS.md',record_path.parent/'README.md'):
         obsolete.unlink(missing_ok=True)
     refreshed = False
@@ -972,7 +1046,7 @@ def _manual_workflow(directory, record):
         return []
     checks=Path(directory)/'checks'
     checks.mkdir(parents=True, exist_ok=True)
-    example=next((case for case in candidates if case['kind']=='in_game_journey'), candidates[0])
+    example=next((case for case in candidates if case['kind'] in JOURNEY_KINDS), candidates[0])
     request={'purpose':'Copy this template to a separate observation file and fill it only after the user confirms the exact case.',
              'case_id':example['id'],'result':'passed','explicit_user_confirmation':False,
              'reviewer':'','confirmed_at':'','evidence':[],

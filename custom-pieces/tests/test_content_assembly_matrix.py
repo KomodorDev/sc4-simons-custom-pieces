@@ -1,0 +1,191 @@
+"""An assembly's explicit matrix opt-in separates two human journey observations."""
+from copy import deepcopy
+import json
+from pathlib import Path
+import sys
+from tempfile import TemporaryDirectory
+import unittest
+
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents
+                          if (p/'project.json').is_file())/'framework'))
+from scp.content import (case_state, compact_manual_record, fingerprint,
+                         new_manual_record, record_observation_file,
+                         record_software_result, record_user_result,
+                         refresh_manual_record, summarize_manual_record,
+                         write_subject_content)
+from scp.inventory import _coverage
+
+
+class AssemblyObservationSplitTests(unittest.TestCase):
+    def setUp(self):
+        self.subject = {'id': 'fixture-assembly', 'kind': 'assembly'}
+        self.hashes = {'path:fixture:route': fingerprint(b'actual route'),
+                       'model:fixture:model': fingerprint(b'actual model'),
+                       'construction:fixture': fingerprint(b'actual construction')}
+        self.connections = {
+            'subject_id': self.subject['id'],
+            'ports': [{'id': 'W.in', 'direction': 'in', 'service_network': 'hsr',
+                       'variant': 'hsr', 'role': 'primary'},
+                      {'id': 'E.out', 'direction': 'out', 'service_network': 'hsr',
+                       'variant': 'hsr', 'role': 'primary'}],
+            'journeys': [{'id': 'W.in>E.out', 'service_network': 'hsr', 'role': 'primary',
+                          'entry_port': 'W.in', 'exit_port': 'E.out'}],
+            'forbidden_transfers': [], 'software_status': {'path_extraction': 'passed'},
+            'source': {'resource_fingerprints': self.hashes},
+        }
+        self.environment = {'platform': 'fixture platform', 'game_version': 'fixture version',
+                            'nam_profile': 'fixture NAM profile'}
+
+    def record(self, split=False):
+        return new_manual_record(self.subject['id'], 'assembly', self.connections, self.hashes,
+                                 split_journey_observations=split)
+
+    def case(self, record, kind, rotation=0):
+        return next(case for case in record['cases'] if case['kind'] == kind
+                    and case['scope'].get('rotation_ccw_degrees') == rotation)
+
+    def observe(self, record, case, **overrides):
+        request = {'explicit_user_confirmation': True, 'reviewer': 'Fixture human',
+                   'confirmed_at': '2026-10-27', 'environment': self.environment,
+                   'evidence': ['The human confirmed this exact fixture observation.']}
+        request.update(overrides)
+        return record_user_result(record, case['id'], 'passed', **request)
+
+    def test_split_is_explicit_and_preserves_exact_direction_service_role_and_rotations(self):
+        default, split = self.record(), self.record(True)
+        generic = [case for case in default['cases'] if case['kind'] == 'in_game_journey']
+        self.assertEqual(len(generic), 4)
+        self.assertFalse(any(case['kind'] in ('in_game_route_query', 'in_game_visible_travel')
+                             for case in default['cases']))
+        self.assertFalse(any(case['kind'] == 'in_game_journey' for case in split['cases']))
+        for kind in ('in_game_route_query', 'in_game_visible_travel'):
+            cases = [case for case in split['cases'] if case['kind'] == kind]
+            self.assertEqual([case['scope'] for case in cases], [case['scope'] for case in generic])
+            self.assertTrue(all(case_state(case) == 'unverified' for case in cases))
+        self.assertEqual(len({case['id'] for case in split['cases']}), len(split['cases']))
+        self.assertEqual(self.record(True), split)
+        with self.assertRaisesRegex(ValueError, 'boolean'):
+            new_manual_record('fixture', 'assembly', {}, {}, split_journey_observations=1)
+        with self.assertRaisesRegex(ValueError, 'assembly documentation opt-in'):
+            new_manual_record('fixture', 'piece', {}, {}, split_journey_observations=True)
+
+    def test_query_does_not_approve_visible_travel_other_rotations_or_environments(self):
+        record = self.record(True)
+        query = self.case(record, 'in_game_route_query')
+        observed = self.observe(record, query)
+        self.assertEqual(case_state(self.case(observed, 'in_game_route_query')), 'passed')
+        self.assertEqual(case_state(self.case(observed, 'in_game_visible_travel')), 'unverified')
+        self.assertEqual(case_state(self.case(observed, 'in_game_route_query', 90)), 'unverified')
+        summary = summarize_manual_record(observed, environment={'platform': 'another platform'})
+        self.assertEqual(summary['journey_coverage']['passed'], 0)
+        for overrides in ({'explicit_user_confirmation': False}, {'environment': {}}, {'evidence': []}):
+            with self.subTest(overrides=overrides), self.assertRaises(ValueError):
+                self.observe(record, query, **overrides)
+        with self.assertRaisesRegex(ValueError, 'cannot mark a manual check'):
+            record_software_result(record, query['id'], 'passed', verifier='Fixture software',
+                                   checked_at='2026-10-27', evidence=['Software checked a file.'])
+        travel = self.case(observed, 'in_game_visible_travel')
+        observed = self.observe(observed, travel)
+        summary = summarize_manual_record(observed)
+        self.assertEqual(summary['journey_coverage']['passed'], 2)
+        self.assertEqual(summary['journey_coverage']['unverified'], 6)
+        self.assertEqual(sum(summary['journey_coverage'].values()), 8)
+        self.assertNotIn('in_game_journey', summary['by_kind'])
+        self.assertEqual(sum(sum(counts.values()) for counts in summary['by_kind'].values()),
+                         summary['total'])
+
+    def test_legacy_observations_remain_historical_without_approving_either_new_kind(self):
+        previous = self.record()
+        previous = self.observe(previous, self.case(previous, 'in_game_journey'))
+        observed_case = deepcopy(self.case(previous, 'in_game_journey'))
+        snapshot = deepcopy(previous)
+        migrated = refresh_manual_record(compact_manual_record(previous), self.record(True))
+        self.assertEqual(previous, snapshot)
+        self.assertEqual(migrated['removed_cases'], [observed_case])
+        self.assertEqual(summarize_manual_record(migrated)['journey_coverage']['passed'], 0)
+        self.assertEqual(summarize_manual_record(migrated)['journey_coverage']['unverified'], 8)
+        self.assertEqual(refresh_manual_record(migrated, self.record(True)), migrated)
+        for case in migrated['cases']:
+            if case['kind'] in ('in_game_route_query', 'in_game_visible_travel'):
+                self.assertFalse(case['observations'])
+
+    def test_changed_route_stales_each_independent_observation_without_rewriting_history(self):
+        previous = self.record(True)
+        for kind in ('in_game_route_query', 'in_game_visible_travel'):
+            previous = self.observe(previous, self.case(previous, kind))
+        self.hashes['path:fixture:route'] = fingerprint(b'changed actual route')
+        refreshed = refresh_manual_record(previous, self.record(True))
+        for kind in ('in_game_route_query', 'in_game_visible_travel'):
+            self.assertEqual(case_state(self.case(refreshed, kind)), 'stale')
+            self.assertEqual(self.case(refreshed, kind)['observations'],
+                             self.case(previous, kind)['observations'])
+
+    def test_opt_in_refresh_and_observation_file_keep_matrix_ownership_and_metadata(self):
+        with TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            readme, testing = directory/'README.md', directory/'TESTING.md'
+            authored_readme = '# Fixture assembly\n\nKeep this authored player paragraph.\n'
+            authored_testing = '# Fixture testing\n\nKeep this authored evidence paragraph.\n'
+            readme.write_text(authored_readme)
+            testing.write_text(authored_testing)
+            write_subject_content(directory, self.subject, self.connections, self.hashes)
+            self.assertIn('<!-- BEGIN MANUAL SUMMARY -->', readme.read_text())
+            self.assertIn('<!-- BEGIN CONNECTIONS -->', readme.read_text())
+            with readme.open('a') as stream:
+                stream.write('\n<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->\n\nPending matrix.\n\n<!-- END ASSEMBLY CONNECTION MATRIX -->\n')
+            write_subject_content(directory, self.subject, self.connections, self.hashes)
+            record_path = directory/'checks/manual-tests.json'
+            connection_path = directory/'connections.json'
+            record = json.loads(record_path.read_text())
+            self.assertEqual(summarize_manual_record(record)['journey_coverage']['unverified'], 8)
+            self.assertIn('## Connection matrix', readme.read_text())
+            self.assertNotIn('<!-- BEGIN MANUAL SUMMARY -->', readme.read_text())
+            self.assertNotIn('<!-- BEGIN CONNECTIONS -->', readme.read_text())
+            self.assertIn('<!-- BEGIN CONNECTIONS -->', testing.read_text())
+            self.assertIn('<!-- BEGIN MANUAL CHECKS -->', testing.read_text())
+            self.assertTrue(readme.read_text().startswith(authored_readme))
+            self.assertTrue(testing.read_text().startswith(authored_testing))
+            # Non-default JSON formatting makes an unintended metadata rewrite observable.
+            record_path.write_text(json.dumps(record, separators=(',', ':')))
+            connection_path.write_text(json.dumps(self.connections, separators=(',', ':')))
+            metadata = {path: path.read_bytes() for path in (record_path, connection_path)}
+            write_subject_content(directory, self.subject, self.connections, {}, refresh_metadata=False)
+            self.assertEqual(metadata, {path: path.read_bytes() for path in metadata})
+            before_matrix = readme.read_text()
+            query = self.case(record, 'in_game_route_query')
+            request = {'case_id': query['id'], 'result': 'passed', 'explicit_user_confirmation': True,
+                       'reviewer': 'Fixture human', 'confirmed_at': '2026-10-27',
+                       'environment': self.environment, 'evidence': ['Observed exact Route Query.']}
+            observation = directory/'checks/observation.json'
+            observation.write_text(json.dumps(request))
+            result = record_observation_file(record_path, observation)
+            self.assertEqual(result['state'], 'passed')
+            self.assertNotEqual(before_matrix, readme.read_text())
+            self.assertNotIn('<!-- BEGIN MANUAL SUMMARY -->', readme.read_text())
+            self.assertNotIn('<!-- BEGIN CONNECTIONS -->', readme.read_text())
+            self.assertEqual(metadata[connection_path], connection_path.read_bytes())
+            self.assertIn('Route Query — hsr', testing.read_text())
+            self.assertIn('Visible travel — hsr', testing.read_text())
+            write_subject_content(directory, self.subject, self.connections, self.hashes)
+            refreshed = json.loads(record_path.read_text())
+            self.assertEqual(case_state(self.case(refreshed, 'in_game_route_query')), 'passed')
+            self.assertEqual(case_state(self.case(refreshed, 'in_game_visible_travel')), 'unverified')
+            stable = {path: path.read_bytes() for path in (readme, testing, record_path, connection_path)}
+            write_subject_content(directory, self.subject, self.connections, self.hashes)
+            self.assertEqual(stable, {path: path.read_bytes() for path in stable})
+
+    def test_inventory_uses_split_coverage_without_changing_legacy_fallback(self):
+        split = self.record(True)
+        split = self.observe(split, self.case(split, 'in_game_route_query'))
+        status = {'record_present': True, 'summary': summarize_manual_record(split)}
+        self.assertIn('1/8 passed; 7 unverified', _coverage(status, 'in_game_journey'))
+        legacy = {'record_present': True, 'summary': summarize_manual_record(self.record())}
+        expected = _coverage(legacy, 'in_game_journey')
+        self.assertIn('0/4 passed; 4 unverified', expected)
+        self.assertNotIn('journey_coverage', legacy['summary'])
+        legacy['summary']['journey_coverage'] = deepcopy(legacy['summary']['by_kind']['in_game_journey'])
+        self.assertEqual(_coverage(legacy, 'in_game_journey'), expected)
+
+
+if __name__ == '__main__':
+    unittest.main()

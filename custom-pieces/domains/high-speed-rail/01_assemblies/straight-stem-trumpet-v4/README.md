@@ -1,36 +1,19 @@
 ---
 title: "Straight-stem HSR trumpet V4"
-summary: "Rebuild the V4 trumpet from reusable menu pieces, with four small tails extracted into existing ordinary straight HSR, and explain every accepted or rejected atomization decision."
+summary: "Show the V4 trumpet, its reusable pieces and placements, and the evidence for each directed connection between its external approaches."
 audience: "Players and assembly authors"
 document_type: "guide"
 ---
 
 # Straight-stem HSR trumpet V4
 
-[Views](#complete-assembly-views) · [Atomization decisions](#tail-extraction-decisions) · [Pieces](#fourteen-reusable-menu-types) · [Placements](#twenty-six-placements) · [Build steps](#rebuild-this-arrangement) · [Testing](TESTING.md)
+[Views](#complete-assembly-views) · [Pieces](#fourteen-reusable-menu-types) · [Placements](#twenty-six-placements) · [Connection matrix](#connection-matrix) · [Testing](TESTING.md)
 
 V4 is a **modular blueprint**: an arrangement built from several separately selectable pieces. A **piece type** is one menu button; a **placement** is one copy of that type in the city. This current blueprint uses **26 placements of 14 types**, within a **20 × 23 tile** rectangle, with **109 occupied tiles** and **75 support positions**. Its approved layout and pictures remain fixed. Earlier trumpet blueprints and their exclusive pieces have been removed; V4 has no whole-interchange one-click button.
 
 The optional [trumpet menu experiment](../../../../docs/BUILD_AND_INSTALL.md#try-the-trumpet-menu-experiment) gives these same fourteen types a shared Tab/Shift+Tab cycle and a test submenu with individual buttons. It changes browsing only: each click still places one component, and the complete blueprint still requires the placements below. Both entry points share the same type family; Home/End rotate the current component. Actual menu visibility, selection, and cycling remain unverified until tested in SimCity 4.
 
-**HSR** means elevated High Speed Rail. **L2** here has its train path at 15.5 m and **L4** at 30.5 m; the northern loop also uses a 23 m intermediate connection. Software verification, installation and observed train operation are separate states. V4’s actual saved resources pass software checks. An installation receipt confirms the installed files; correct rendering and train operation still require the separate human checks in TESTING.
-
-## Tail extraction decisions
-
-**Atomization** means separating a larger piece into smaller useful modules. V4 extracts four almost-straight tail tiles into two existing standard types. Their remaining junctions and curves become four new reusable types with their own menu buttons. No new special straight variant is needed. The comparison table preserves each **original reviewed piece’s local coordinates** as historical measurement context; those predecessor definitions are not current dependencies. The shortened V4 preview starts its own local grid: for example, new P01B local (X4, Y0) is the retained tile at assembly (X6, Y7), while original P01B local (X4, Y0) becomes the separate P01BS tile at assembly (X6, Y6).
-
-| Original placement and local tile | Assembly tile | New ordinary placement | Existing standard and rotation | Remaining reusable core |
-| --- | --- | --- | --- | --- |
-| P01A (X0, Y0) | (X0, Y13) | P01AW | HSR L2 Two-Track Straight, 270° | P01A: Short Mainline Diverge Core, 4 tiles |
-| P03B (X5, Y0) | (X14, Y13) | P03BE | HSR L2 Two-Track Straight, 270° | P03B: Short Opposed Merge Core, 5 tiles |
-| P01B (X4, Y0) | (X6, Y6) | P01BS | One-Way HSR L2 Eight-Metre Straight, 180° | P01B: Shortened One-Way Departure Curve, 12 tiles |
-| P03D (X0, Y0) | (X8, Y6) | P03DS | One-Way HSR L2 Eight-Metre Straight, 0° | P03D: Shortened One-Way Return Curve, 12 tiles |
-
-The original P01A/P03B tails deviate **4.018 mm** from ordinary paired track; P01B/P03D deviate **2.058 mm** from centred one-way track. Those measurements qualify under the requested **strictly less than 5 mm** candidate policy. The joining curve in the next retained tile needs a separately measured correction: approximately **24.33 mm** for each paired junction and **8.14 mm** for each one-way curve. These were small local redesigns; the sub-5 mm eligibility threshold was not a bound on every adjoining route correction. The independent bounds are **24.5 mm** and **8.2 mm**, while the existing curve, clearance and support limits stay in force.
-
-The one-way straight must be **One-Way HSR L2 Eight-Metre Straight** (`hsr-component-lower-oneway-straight`), whose centred deck is 8 m wide. The similarly named `interchange-oneway-hsr-straight` has a different 7.5 m profile and is not the replacement used here. P01BS runs south at 180°; P03DS runs north at 0°.
-
-Not every straight-looking tile qualifies. P02A's end tails bend **119.840 mm**. P03B's western tail bends **6.437 mm**. P01A's opposite end has straight train routes but a necessary platform wing and wall opening beside the branch; inserting a normal straight would put a wall inside the branch's train clearance. A rotated P03C also misses P01A's branch connection by approximately **5.836 m**. The [decision table in TESTING](TESTING.md#accepted-and-retained-candidates) explains the remaining candidates. The [historical decision record](checks/atomization.json) accounts for all **51 reviewed source tiles** in the five original modules and records why each stayed or was extracted. Current verification checks the retained design against its [approved resource fingerprints](checks/resources.json), without opening deleted predecessor files.
+**HSR** means elevated High Speed Rail. **L2** here has its train path at 15.5 m and **L4** at 30.5 m; the northern loop also uses a 23 m intermediate connection. Software verification, installation, and observed train operation are separate states. V4’s actual saved resources pass software checks. An installation receipt confirms the installed files; correct rendering and train operation still require the separate human checks in [TESTING.md](TESTING.md). The reported [demolition defect](TESTING.md#game-testing) remains open.
 
 ## Complete assembly views
 
@@ -75,7 +58,7 @@ Open **Transportation → Rail** and hover over a teal **PART HSR** icon. Its ti
 | [![HSR Tight Two-Track Corner 23 to 15.5 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/preview.png) | **[HSR Tight Two-Track Corner 23 to 15.5 Metres](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/README.md)**<br>`hsr-component-tight-paired-curve90-mid-to-l2` | P10 | 1 |
 | [![One-Way HSR L2 Eight-Metre Straight: canonical angled view](../../00_pieces/hsr-component-lower-oneway-straight/preview-thumb.png)](../../00_pieces/hsr-component-lower-oneway-straight/preview.png) | **[One-Way HSR L2 Eight-Metre Straight](../../00_pieces/hsr-component-lower-oneway-straight/README.md)**<br>`hsr-component-lower-oneway-straight` | P01BS, P03DS | 2 |
 
-The [standalone-picture report](evidence/piece-previews.json) records canonical orientation, local grid, model hashes and visible captions. P01AW/P01S/P03BE/P03CW/P03CE/P04W/P04E share one lower paired-straight button. P01BS/P03DS share one centred one-way-straight button. P04N/P04S/P05–P08 share one upper paired-straight button.
+The [standalone-picture report](evidence/piece-previews.json) records canonical orientation, local grid, model hashes, and visible captions. P01AW/P01S/P03BE/P03CW/P03CE/P04W/P04E share one lower paired-straight button. P01BS/P03DS share one centred one-way-straight button. P04N/P04S/P05–P08 share one upper paired-straight button.
 
 ## Twenty-six placements
 
@@ -112,103 +95,24 @@ Use the position and rotation together; the standalone image always shows 0°. O
 
 The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01A's reference is **(X1, Y13)** because P01AW owns the western approach tile at **(X0, Y13)**. The table gives the current reference positions of the other three shortened cores. Every occupied tile has exactly one owner.
 
-## Matching the modules
+<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 
-A **port** is a track entrance or exit. Its position, direction, height, deck width and visible rails must agree with its neighbour. A **native end** accepts the stated ordinary track profile. A **custom curved end** requires its matching curved continuation; height alone is insufficient.
+## Connection matrix
 
-- P01AW meets the new P01A's ordinary west end. P01A meets P01S to the east and P01B at its custom branch. P01B's new ordinary south end meets P01BS, then P02A's western one-way port.
-- P02A's eastern one-way port meets P03DS, then P03D. P03D's custom curved end meets P03B. P03B's new ordinary east end meets P03BE, then P03CW and P03C. P03CE completes the east approach.
-- P02A's paired end meets P02B, which rises from 15.5 m to 30.5 m and meets P04S. P04A carries upper north/south HSR over lower east/west HSR without a level transfer.
-- P04N and P05–P08 extend the upper stem. P09 and P10 join at 23 m. P10 descends to P03A, whose custom curved ends meet P03B and P03C.
+Read **from an entrance row to an exit column**. A port is one directional entrance or exit of the complete assembly. Network, variant, and role labels are explicit source declarations; sharing an internal game traffic class does not merge services.
 
-Each linked piece README lists its ports and concrete candidate neighbours. The shortened curves' custom ends retain their existing positions; their new southern ends use the centred 8 m one-way profile.
+**Saved PATH** checks the encoded traffic route in the saved resources. **Game appearance†** checks the complete assembly inside the game. **Route Query** checks the game’s displayed route for this directed movement. **Visible travel** checks a vehicle visibly completing it; for HSR, this means a moving train. These four results establish different facts.
 
-## Rebuild this arrangement
+**Legend:** ✓ means every required current case passed; ✗ means a recorded failure; ↻ means stale evidence; ? means unverified or missing evidence. Partial coverage, failed, stale, unverified, missing, and explicit N/A counts stay visible. Manual counts cover the declared construction states; click a result to inspect a matching exact case in TESTING. Every observation keeps its recorded environment, so combined counts do not establish one shared tested platform.
 
-Use clear, flat terrain for the first game test and keep the full **20 × 23 tile** rectangle clear. A **cursor preview** is the complete shape attached to your pointer before you click. Press **Home** or **End** to rotate it; on the keyboard used here, **Fn + ←** and **Fn + →** supply those keys. Align all occupied tiles with the plan; reference positions are not certified click anchors.
+**† Shared appearance scope:** the same whole-assembly rendering result appears in every cell. It is not a separate inspection of each journey. “Forbidden” is a declared unavailable movement, not a failed test; its linked negative game check tests that the movement stays unavailable, and does not substitute for Route Query or visible-travel evidence. An undeclared pair remains unknown. This matrix does not discover neighbouring-piece compatibility.
 
-1. Open **Transportation → Rail**. Select **HSR Modular One-Tile Two-Level Crossing**. Place P04A at **(X7, Y13)**, 0°, with upper track north/south.
-2. Select **HSR L4 Two-Track Straight** and place P04N/P04S at **(X7, Y14)** and **(X7, Y12)**, both 0°. Select **HSR L2 Two-Track Straight**, rotate 270°, and place P04W/P04E at **(X6, Y13)** and **(X8, Y13)**.
-3. Place P02B **HSR Modular Two-Track L2 to L4 Climb** at **(X7, Y11)** and P02A **HSR Modular Symmetric Split and Return** at **(X6, Y5)**, both 0°. Match the climb's high end to P04S and its low end to P02A.
-4. Place upper straights P05–P08 at **(X7, Y15)** through **(X7, Y18)**, all 0°. Place P09 **HSR Tight Two-Track Corner 30.5 to 23 Metres** at **(X7, Y22)**, 0°, and P10 **HSR Tight Two-Track Corner 23 to 15.5 Metres** at **(X14, Y22)**, 270°.
-5. Place P03A **HSR L2 Compact Paired Fan Join** at **(X11, Y18)**, P03B **HSR L2 Short Opposed Merge Core** at **(X9, Y13)** and P03C **HSR L2 Compact Fan Diverge** at **(X16, Y13)**, all 0°. Their custom branch ends must meet the pictured fan routes.
-6. Select the lower paired straight, rotate 270°, and place **P03BE (X14, Y13)**, **P03CW (X15, Y13)** and **P03CE (X19, Y13)**. P03BE is the newly extracted tile at the short merge's east end.
-7. Place P01A **HSR L2 Short Mainline Diverge Core** at **(X1, Y13)**, 0°. Use the same paired straight at 270° for **P01AW (X0, Y13)** and **P01S (X5, Y13)**.
-8. Place P01B **HSR L2 Shortened One-Way Departure Curve** at **(X2, Y12)** and P03D **HSR L2 Shortened One-Way Return Curve** at **(X8, Y12)**, both 0°.
-9. Select **One-Way HSR L2 Eight-Metre Straight**. Place **P01BS (X6, Y6)** at **180°**, pointing south, and **P03DS (X8, Y6)** at **0°**, pointing north. These complete the two connections between the shortened curves and P02A; they are the same button in different rotations.
-10. Extend compatible ordinary paired HSR beyond the west edge of X0, east edge of X19 and south edge of Y0. All three outside connections have their train path at **15.5 m**. Supply travel demand and test every journey below using the game's route query and moving trains.
+| Entrance ↓ / Exit → | **HSR · West exit**<br>`W.out`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary | **HSR · South exit**<br>`S.out`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary | **HSR · East exit**<br>`E.out`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary |
+| --- | --- | --- | --- |
+| **HSR · West entrance**<br>`W.in`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary | **Saved PATH:** Forbidden (saved PATH); negative game check: [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_forbidden_transfer-5e7720c782995408fbd3)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** — forbidden movement<br>**Visible travel:** — forbidden movement | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-cb6c5202c8347ebf1286)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-cb6c5202c8347ebf1286) | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-935025a1afa3ba78033c)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-935025a1afa3ba78033c) |
+| **HSR · South entrance**<br>`S.in`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-335c3ad51bc94699c104)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-335c3ad51bc94699c104) | **Saved PATH:** Forbidden (saved PATH); negative game check: [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_forbidden_transfer-0e614229b03bfe5c1e73)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** — forbidden movement<br>**Visible travel:** — forbidden movement | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-a1374cdd8955a931ef39)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-a1374cdd8955a931ef39) |
+| **HSR · East entrance**<br>`E.in`<br>Network: **hsr**<br>Variant: hsr<br>Role: primary | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-9e719d3640b74327466a)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-9e719d3640b74327466a) | **Saved PATH:** [✓](TESTING.md#case-software_connectivity-fb989639955077c49383)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_route_query-897ffbf0df74d5c6e5a4)<br>**Visible travel:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_visible_travel-897ffbf0df74d5c6e5a4) | **Saved PATH:** Forbidden (saved PATH); negative game check: [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_forbidden_transfer-6f8a97ec7efb05be09c5)<br>**Game appearance†:** [? 0/4 passed; unverified: 4](TESTING.md#case-in_game_render-1e76dcd30aba7445f7fc)<br>**Route Query:** — forbidden movement<br>**Visible travel:** — forbidden movement |
 
-The selected pieces support proper **0°, 90°, 180° and 270°** rotations in their construction rules. Keyboard response, cursor anchors, terrain behaviour and actual train operation still require human tests. Plop & Paint does not stamp this complete blueprint.
+The source declarations are in [connections.json](connections.json). Exact cases, rotations, limitations, and recorded evidence remain in [TESTING](TESTING.md#test-checklist).
 
-## Six complete journeys
-
-**Service:** HSR, using the game's Monorail traffic class. Each direction is a separate journey. P04A appears twice in South → West because that journey passes first above and later along the mainline; no transfer occurs inside the crossing.
-
-| Journey | Placement sequence |
-| --- | --- |
-| West → East | P01AW → P01A → P01S → P04W → P04A → P04E → P03B → P03BE → P03CW → P03C → P03CE |
-| East → West | P03CE → P03C → P03CW → P03BE → P03B → P04E → P04A → P04W → P01S → P01A → P01AW |
-| West → South | P01AW → P01A → P01B → P01BS → P02A |
-| South → East | P02A → P03DS → P03D → P03B → P03BE → P03CW → P03C → P03CE |
-| South → West | P02A → P02B → P04S → P04A → P04N → P05 → P06 → P07 → P08 → P09 → P10 → P03A → P03B → P04E → P04A → P04W → P01S → P01A → P01AW |
-| East → South | P03CE → P03C → P03A → P10 → P09 → P08 → P07 → P06 → P05 → P04N → P04A → P04S → P02B → P02A |
-
-U-turns and transfers between the two crossing levels are forbidden. Current per-journey game checkboxes are generated from this version's own observations in [TESTING.md](TESTING.md).
-
-<!-- BEGIN MANUAL SUMMARY -->
-
-## Manual status
-
-Generated from [the exact test cases](TESTING.md#test-checklist) and [authoritative observations](checks/manual-tests.json).
-
-- [ ] Preview review: 0/6 applicable cases passed; 0 failed, 0 stale.
-- [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
-- [ ] Directed journeys: 0/24 applicable cases passed; 0 failed, 0 stale.
-
-These observations cover only the named services, directions, poses, rotations, and recorded platforms.
-
-<!-- END MANUAL SUMMARY -->
-
-<!-- BEGIN CONNECTIONS -->
-
-## Connections and journeys
-
-Generated from [connections.json](connections.json). Coordinates are canonical east, north and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.
-
-Supported placement states: 0° CCW, 90° CCW, 180° CCW, 270° CCW. Each state has its own declared manual scope.
-
-A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.
-
-A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.
-
-| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
-| --- | --- | --- | --- | --- |
-| `W.in` | hsr / 7 / primary | in | [-120.0, -2.0, 15.5]; [1.0, -0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `W.out` | hsr / 7 / primary | out | [-120.0, 2.0, 15.5]; [-1.0, -0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
-| `S.out` | hsr / 7 / primary | out | [-2.0, -216.0, 15.5]; [0.0, -1.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
-| `S.in` | hsr / 7 / primary | in | [2.0, -216.0, 15.5]; [0.0, 1.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `E.out` | hsr / 7 / primary | out | [200.0, -2.0, 15.5]; [1.0, -0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `E.in` | hsr / 7 / primary | in | [200.0, 2.0, 15.5]; [-1.0, -0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
-
-### Directed journeys
-
-| Service | Entry → exit | Role |
-| --- | --- | --- |
-| hsr | `W.in` → `E.out` | primary |
-| hsr | `W.in` → `S.out` | primary |
-| hsr | `S.in` → `E.out` | primary |
-| hsr | `S.in` → `W.out` | primary |
-| hsr | `E.in` → `W.out` | primary |
-| hsr | `E.in` → `S.out` | primary |
-
-### Forbidden transfers
-
-| From service / port | To service / port | Reason |
-| --- | --- | --- |
-| hsr / `W.in` | hsr / `W.out` | No directed route exists between these ports in the saved assembly transport paths. In-game confirmation remains unverified. |
-| hsr / `S.in` | hsr / `S.out` | No directed route exists between these ports in the saved assembly transport paths. In-game confirmation remains unverified. |
-| hsr / `E.in` | hsr / `E.out` | No directed route exists between these ports in the saved assembly transport paths. In-game confirmation remains unverified. |
-
-Review the test checklist for the exact tested cases and environments.
-
-<!-- END CONNECTIONS -->
+<!-- END ASSEMBLY CONNECTION MATRIX -->
