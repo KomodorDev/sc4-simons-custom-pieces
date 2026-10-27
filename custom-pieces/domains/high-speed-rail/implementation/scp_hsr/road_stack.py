@@ -62,8 +62,8 @@ def build(spec,context):
     road=_surface(native,0x00004B0E,-5.,5.)
     west_walk=_surface(native,0x08200004,-8.,-5.)
     east_walk=_surface(native,0x08200004,5.,8.)
-    west_column=_box(native,.25,0.,13.5,centre=-7.65)
-    east_column=_box(native,.25,0.,13.5,centre=7.65)
+    west_column=_box(native,.25,0.,13.5,centre=-5.)
+    east_column=_box(native,.25,0.,13.5,centre=5.)
     cap=_box(native,7.9,13.5,native['bottom'])
     parts=[(source,meshes,(0.,0.,0.))]+[(m,m['meshes'],(0.,0.,0.))
         for m in (road,west_walk,east_walk,west_column,east_column,cap)]

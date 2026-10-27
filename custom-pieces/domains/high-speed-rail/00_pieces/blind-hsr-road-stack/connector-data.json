@@ -4,13 +4,13 @@
   "piece_id": "blind-hsr-road-stack",
   "domain_id": "high-speed-rail",
   "source_binding": {
-    "compiled_build": "dist/road-sidewalk-revision",
-    "compiled_manifest_sha256": "53786b3494486358cfc72820bf1f8254468fb71994dd402c5756c381c52ba81d",
+    "compiled_build": "dist/road-curb-revision",
+    "compiled_manifest_sha256": "3ef1a2b7e6cdc5c54693f187628a0fe4162591a6551e11cab0742b8d5bbadbb3",
     "files": {
-      "dist/road-sidewalk-revision/zzz_Simons_Custom_Pieces/20_Pieces/SCP_blind-hsr-road-stack.dat": "ff35fc7de5ac569d0d894d8c03430f7573ad3e1d1f08c725c1eac80c5f9faf6d",
-      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connections.json": "c75ad965f3ccd5fa633e3ae8bab6257e61368a77ab3ea1f8d92ea2cd1074b69f",
-      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-groups.jsonc": "c26e5b0dad7c992e8ddec223d0ad47af3039408834af857ec814dabe62749331",
-      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json": "c78410620a1a6b2782edb2d191ac900281be587118b3aed7edc6d9fc34caf852",
+      "dist/road-curb-revision/zzz_Simons_Custom_Pieces/20_Pieces/SCP_blind-hsr-road-stack.dat": "61935e12d9df202b8db3b605d9ceba7f3917b331a07f4701e4fe6fdfb694a980",
+      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connections.json": "d4bacf96d2d983fcae7015ad14d06db9e7c78e29b2fb7f16a966e91cbdf5c0e6",
+      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/connector-groups.jsonc": "eeb7b819771b9bb540fd4a3f31bf4aad4ff9bc37425aec2ee5b5880bf214eb49",
+      "domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json": "ed43c6e57d818fb84e12d05ccf6da29df1f6b91d41759444a3388637a750dee4",
       "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
       "domains/high-speed-rail/domain.json": "90276dde8bb81c532fd80f3ac03ca23a7911b54f64fb1e8934cc41bce5fe8044",
       "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
@@ -56,8 +56,8 @@
       "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
       "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
       "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
-      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "b387dcd1024a81c429b0da39361dc4d5e6b9b84f33000993f2dc46b7c3ef84b1",
-      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "2e320aaea66a5c11024575000ad79831ab919f20451b737ace6744b47775e6a9",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "0f95c6986cbeac7e8a8e20b6dbe275bd105f183fcdba00e47080c8030b788a28",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "439d19385f7b47a2b64856596af6049a02d19b56de612570d6844c9e29ca7942",
       "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
       "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
       "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
@@ -120,7 +120,7 @@
   "resolved_piece": {
     "id": "blind-hsr-road-stack",
     "piece": {
-      "purpose": "Authoritative definition and permanent identity for one parallel HSR/Road straight with two sidewalk pillars.",
+      "purpose": "Authoritative definition and permanent identity for one parallel HSR/Road straight with two pillars centred on the Road/sidewalk boundaries.",
       "schema_version": 1,
       "orientation_count": 8,
       "game_tests": {
@@ -134,7 +134,7 @@
       },
       "id": "blind-hsr-road-stack",
       "name": "HSR Level 2 above Parallel Road Level 0 \u2014 Native Paired Straight",
-      "description": "One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two outer sidewalk pillars support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.",
+      "description": "One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars centred on the Road/sidewalk boundaries support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.",
       "recipe": "rail_hsr_road_stack",
       "status": "experimental",
       "enabled_by_default": false,
@@ -168,7 +168,7 @@
         }
       ],
       "provenance": {
-        "geometry": "Exact native NAM 50 5dd31500 HSR deck; US 00004b0e roadway clipped to its 10 m band without lane rescaling; two 3 m opaque native 08200004 pavement bands; two 0.50 m side columns and a 15.80 m cap outside the authored vehicle and pedestrian corridors.",
+        "geometry": "Exact native NAM 50 5dd31500 HSR deck; US 00004b0e roadway clipped to its 10 m band without lane rescaling; two 3 m opaque native 08200004 pavement bands; two 0.50 m columns centred at the Road/sidewalk boundaries, east offsets -5 m and +5 m, and a 15.80 m cap outside the authored vehicle and pedestrian corridors.",
         "construction": "Authored parallel monorail/Road 02000200 flags; four proper rotations repeated without reflection; native filler effect 5ddf0100. Game placement remains unverified.",
         "redistribution": "permission-pending"
       },
@@ -184,12 +184,12 @@
         "resource_fingerprints": {
           "effect:blind-hsr-road-stack:ea5118b0-ea5118b1-7f591ff5": "3da37f118b037581b98eaf564341027e31aa52c3868393ed0643fe2951fbf81c",
           "exemplar:blind-hsr-road-stack:6534284a-a8434037-7f591000": "c8f382e9480c4decbb21d0cd73446640acc52c021a82d587907cfc2125c38f37",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
-          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591ff5": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
+          "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591ff5": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
           "path:blind-hsr-road-stack:296678f7-a966883f-7f591000": "96a7a430623b7994b63fcecca73e58c62aa54fd49756507a5552fc0ecc70e518",
           "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591000": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2",
           "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591001": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409",
@@ -1641,8 +1641,8 @@
       "purpose": "Complete parallel north/south HSR, Road-vehicle, and native-pedestrian boundaries, plus source-backed lateral sidewalk access.",
       "piece_id": "blind-hsr-road-stack",
       "source_binding": {
-        "piece_sha256": "c78410620a1a6b2782edb2d191ac900281be587118b3aed7edc6d9fc34caf852",
-        "connections_sha256": "c75ad965f3ccd5fa633e3ae8bab6257e61368a77ab3ea1f8d92ea2cd1074b69f"
+        "piece_sha256": "ed43c6e57d818fb84e12d05ccf6da29df1f6b91d41759444a3388637a750dee4",
+        "connections_sha256": "d4bacf96d2d983fcae7015ad14d06db9e7c78e29b2fb7f16a966e91cbdf5c0e6"
       },
       "components": [
         {
@@ -4899,9 +4899,9 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/road-sidewalk-revision/zzz_Simons_Custom_Pieces/20_Pieces/SCP_blind-hsr-road-stack.dat",
-      "dat_sha256": "ff35fc7de5ac569d0d894d8c03430f7573ad3e1d1f08c725c1eac80c5f9faf6d",
-      "model_sha256": "7ecb88910402150f1d2d65084564ac449fa8f43396770f02fd16b6aca74c4fef",
+      "dat_path": "dist/road-curb-revision/zzz_Simons_Custom_Pieces/20_Pieces/SCP_blind-hsr-road-stack.dat",
+      "dat_sha256": "61935e12d9df202b8db3b605d9ceba7f3917b331a07f4701e4fe6fdfb694a980",
+      "model_sha256": "b2e5d81bdc9b8b97ee74d935f0bb66c65dde6296f88cb34c370c222f2c2b2515",
       "resource_fingerprints_checked": 15,
       "directional_ports_reextracted": 16,
       "directed_journeys_reextracted": 10,
@@ -4918,5 +4918,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "25d31512217f87d6be904dbe36c17c5366b7917bd7acf7ed0d59c1e2c7a1cc41"
+  "content_sha256": "97c46b8e1e4384c826704625418a759e7e6d5705ff476ea5505f56891acd045f"
 }

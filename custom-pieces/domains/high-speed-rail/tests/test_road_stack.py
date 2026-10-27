@@ -115,7 +115,7 @@ class NativeRoadStackTests(unittest.TestCase):
         def change(m):
             i=m['meshes'][4]['frames'][0][0];b=m['vertices'][i];raw=bytearray(b['data'])
             for o in range(0,len(raw),b['stride']):
-                x=struct.unpack_from('<f',raw,o)[0];struct.pack_into('<f',raw,o,x+5.15)
+                x=struct.unpack_from('<f',raw,o)[0];struct.pack_into('<f',raw,o,x+2.5)
             b['data']=bytes(raw)
         with self.assertRaisesRegex(ValueError,'Support bounds'):check_models(self.model_mutation(change),self.spec)
 
@@ -131,9 +131,10 @@ class NativeRoadStackTests(unittest.TestCase):
         report=check_models(self.resources,self.spec)
         self.assertEqual(report['support_closed_solid_faces_checked'],36)
         self.assertEqual(report['side_pillars'],2)
-        self.assertAlmostEqual(report['clearance_margins_m']['minimum_vehicle_horizontal'],3.40,places=6)
-        self.assertAlmostEqual(report['clearance_margins_m']['minimum_pedestrian_horizontal'],.11,places=6)
-        self.assertAlmostEqual(report['clearance_margins_m']['minimum_lateral_pedestrian_horizontal'],.95,places=6)
+        self.assertTrue(report['pillar_centres_at_road_pavement_seams'])
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_vehicle_horizontal'],.75,places=6)
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_pedestrian_horizontal'],.24,places=6)
+        self.assertAlmostEqual(report['clearance_margins_m']['minimum_lateral_pedestrian_horizontal'],1.2730393460940803,places=6)
         self.assertEqual(report['clearance_margins_m']['minimum_cap_vertical'],9.)
 
     def test_actual_native_pavement_is_opaque_and_covers_every_pedestrian_route(self):
@@ -187,7 +188,7 @@ class NativeRoadStackTests(unittest.TestCase):
             index=m['meshes'][4]['frames'][0][0];block=m['vertices'][index];raw=bytearray(block['data'])
             for offset in range(0,len(raw),block['stride']):
                 east=struct.unpack_from('<f',raw,offset)[0]
-                struct.pack_into('<f',raw,offset,-7.65+2*(east+7.65))
+                struct.pack_into('<f',raw,offset,-5.+2*(east+5.))
             block['data']=bytes(raw)
         with self.assertRaisesRegex(ValueError,'Support bounds'):
             check_models(self.model_mutation(change),self.spec)

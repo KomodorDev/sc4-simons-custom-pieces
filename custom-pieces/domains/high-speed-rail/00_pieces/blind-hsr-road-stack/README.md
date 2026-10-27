@@ -12,7 +12,7 @@ This experimental reusable piece puts **north/south High Speed Rail (HSR) direct
 
 Both clean views show the complete saved model at the authored 0° orientation. North is up in the top view; X increases eastward, Y increases northward, and one tile measures 16 × 16 m.
 
-The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, its paved sidewalks, two side pillars, and the transverse cap. Each pillar stands near the outer edge of its sidewalk. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
+The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, its paved sidewalks, two side pillars, and the transverse cap. Each pillar is centred on the boundary between the Road and its sidewalk, 5 m east or west of the tile centre. Each 0.50 m wide pillar extends 0.25 m onto the Road band and 0.25 m onto the pavement band. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
 
 <!-- BEGIN PIECE VIEWS -->
 
@@ -26,7 +26,7 @@ The top view shows the complete solid model, so the upper HSR deck hides most of
 
 <!-- BEGIN PIECE OVERVIEW -->
 
-One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two outer sidewalk pillars support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.
+One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars centred on the Road/sidewalk boundaries support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.
 
 Exact reusable identifier: `blind-hsr-road-stack`.
 
@@ -318,7 +318,7 @@ Rendering checks source metadata, current compiled resource identities, and mode
 
 ## 4. Testing
 
-The [current revision verification](evidence/revision-verification.json) records the checks for the two side pillars and explicitly paved sidewalks. The [preserved import baseline](evidence/import-verification.json) records the earlier central-pillar model; its byte-for-byte prototype comparison applies to that earlier model. This revision changes the visible models, regenerates and verifies their shadows, and preserves all traffic-path bytes. Original prototype reports remain historical evidence; no human game result is inferred.
+The [current curb revision verification](evidence/curb-revision-verification.json) records the checks for the two pillars centred on the Road/sidewalk boundaries and the explicitly paved sidewalks. The [preserved outer-edge revision verification](evidence/revision-verification.json) records the earlier pillars near the outer edges of the sidewalks; its measurements apply to that earlier model. The [preserved import baseline](evidence/import-verification.json) records the earlier central-pillar model; its byte-for-byte prototype comparison applies to that earlier model. This revision changes the visible models, regenerates and verifies their shadows, and preserves all traffic-path bytes. Original prototype reports remain historical evidence; no human game result is inferred.
 
 ### Engineering contract
 
@@ -337,8 +337,8 @@ A **PATH** resource stores directed vehicle or pedestrian travel lines; an **S3D
 | Road travel | Two native engine-1 vehicle routes, at east offsets −2.5 m and +2.5 m, height 0 m |
 | Pedestrian travel | Six actual native engine-2 paths: two through paths at east offsets ±6.39 m, and four lateral access paths |
 | Construction flags | Both `monorail: 0x02000200` and `road: 0x02000200` on the same owned cell |
-| West side pillar | East [−7.90, −7.40] m; north [−0.65, +0.65] m; height 0–13.5 m |
-| East side pillar | East [+7.40, +7.90] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| West roadside pillar | East [−5.25, −4.75] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| East roadside pillar | East [+4.75, +5.25] m; north [−0.65, +0.65] m; height 0–13.5 m |
 | Transverse cap | East [−7.9, +7.9] m; north [−0.65, +0.65] m; height 13.5–14.0106707 m; contacts both pillars and the native deck's lower side flanges |
 | Rotations | 0°, 90°, 180°, and 270° proper rotations, repeated once to fill eight construction states; no reflection |
 | Shadows | Five generated FSH silhouettes checked against the actual saved models; game shadow selection remains unverified |
@@ -353,9 +353,9 @@ The independent verifier reads both saved side pillars and the cap. It checks al
 
 The chosen **vehicle corridor** is 3.0 m wide and 4.5 m high around each saved vehicle path. The chosen **pedestrian corridor** is 1.8 m wide and 2.2 m high around each saved pedestrian path. A corridor is the explicit space reserved by this authoring check. These dimensions are design assumptions, rather than measured SimCity 4 collision boxes or a civil-engineering certification.
 
-Each side pillar is 0.50 m wide east/west and 1.30 m deep north/south. The smallest horizontal margin from a through-pedestrian corridor to its adjacent pillar is **0.11 m**; the smallest margin from a lateral pedestrian corridor is **0.95 m**. The smallest horizontal margin from a vehicle corridor to a side pillar is **3.40 m**. The cap's underside is **9.0 m** above the chosen vehicle height. Both outer pillar faces and cap ends remain **0.10 m** inside the owned tile boundary. The cap reaches the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
+Each roadside pillar is 0.50 m wide east/west and 1.30 m deep north/south. Its centre is exactly on the Road/sidewalk seam at east −5 m or +5 m, so it extends 0.25 m into each surface band. The smallest horizontal margin from a through-pedestrian corridor to its adjacent pillar is **0.24 m**; the smallest margin from a lateral pedestrian corridor is approximately **1.273 m**. The smallest horizontal margin from a vehicle corridor to a pillar is **0.75 m**. The cap's underside is **9.0 m** above the chosen vehicle height. The outer pillar faces remain **2.75 m** inside the owned tile boundary; the cap ends remain **0.10 m** inside it. The cap retains its full width to reach the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
 
-The preserved prototype [native profile](evidence/native-profile.json) and [import baseline](evidence/import-verification.json) describe the earlier central-pillar version. An even earlier outer-pier attempt had only 0.41 m between its pillar face and a sidewalk's actual centre, which failed the chosen 1.8 m pedestrian corridor. This revision uses narrower pillars farther outward, with a measured 1.01 m distance between each through-path centre and its nearest pillar face, leaving 0.11 m after the corridor's 0.90 m half-width. The earlier reports are retained without rewriting their measured results.
+The preserved prototype [native profile](evidence/native-profile.json) and [import baseline](evidence/import-verification.json) describe the earlier central-pillar version. An even earlier outer-pier attempt had only 0.41 m between its pillar face and a sidewalk's actual centre, which failed the chosen 1.8 m pedestrian corridor. The [preserved outer-edge revision](evidence/revision-verification.json) used narrower pillars farther outward, with a measured 1.01 m distance between each through-path centre and its nearest pillar face, leaving 0.11 m after the corridor's 0.90 m half-width. The current revision moves those pillars inward to the Road/sidewalk seams: each through-path centre is 1.14 m from its nearest pillar face, leaving 0.24 m beyond the same pedestrian corridor. The earlier reports are retained without rewriting their measured results.
 
 #### Sidewalk appearance diagnosis
 
@@ -616,6 +616,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent curb-pillar saved-resource and full-route clearance verification; confirmed at: 2026-10-27; evidence: [evidence/curb-revision-verification.json, connections.json]; environment: {}
 
 </details>
 
@@ -644,6 +645,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent curb-pillar saved-resource and full-route clearance verification; confirmed at: 2026-10-27; evidence: [evidence/curb-revision-verification.json, connections.json]; environment: {}
 
 </details>
 
@@ -885,7 +887,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-97a15630f19e9572e53e`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -895,7 +897,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-f3f52d5f445ae6dafa08`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -905,7 +907,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-90deda62a3ee3f5e8952`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -915,7 +917,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-20c05ce4bfaf532e4591`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -931,7 +933,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-3ed06d6346537fdd715b`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -941,7 +943,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-7f7989fbf49d02c6c22d`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -951,7 +953,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-dba4916fc6f70dea01af`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -961,7 +963,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-0ed62d9d320ef36f5c80`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -987,7 +989,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-97a15630f19e9572e53e`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -997,7 +999,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-f3f52d5f445ae6dafa08`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -1007,7 +1009,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-90deda62a3ee3f5e8952`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -1017,7 +1019,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-20c05ce4bfaf532e4591`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-N-in-2>1-S-out-1; entry: 1-N-in-2; exit: 1-S-out-1.
 
@@ -1033,7 +1035,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-3ed06d6346537fdd715b`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -1043,7 +1045,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-7f7989fbf49d02c6c22d`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -1053,7 +1055,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-dba4916fc6f70dea01af`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -1063,7 +1065,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-0ed62d9d320ef36f5c80`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-S-in-3>1-N-out-4; entry: 1-S-in-3; exit: 1-N-out-4.
 
@@ -1093,7 +1095,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-003ec701dbbf377d5207`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1103,7 +1105,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-86f84b953d9a545a1c47`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1113,7 +1115,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-47c14285e6baa0cfa7f0`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1123,7 +1125,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-60c31b5437e761a555ab`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1139,7 +1141,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-e8593113d11305255476`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1149,7 +1151,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-2549df7f31cf65fb1398`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1159,7 +1161,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-951022ddbc86fcc78031`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1169,7 +1171,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-2e5267c39fc12c50b707`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1185,7 +1187,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-10996644ed6236efd8c0`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1195,7 +1197,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-ccb016ceaff52d069c1f`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1205,7 +1207,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-4e63c73d2429dec80917`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1215,7 +1217,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-c83c00e9d3f77912d10f`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1231,7 +1233,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-6f8300069735d462857f`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1241,7 +1243,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-7a773ce01be173809c36`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1251,7 +1253,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-b24cb0c7a5cfcab1256c`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1261,7 +1263,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-acf560552a1584f139bd`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1277,7 +1279,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-5215cc28a3d503108616`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1287,7 +1289,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-2f3f8da49001bab23c4b`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1297,7 +1299,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-abd525c4cbcc1989095c`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1307,7 +1309,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-1e4abdf64ef0019d1be4`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1323,7 +1325,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-17a18ad59ffdc7cbbea9`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1333,7 +1335,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-bb58df7e28f9683b04ff`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1343,7 +1345,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-40d05b93e5c55ada8353`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1353,7 +1355,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-78ac369fcf2b9dee7918`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1383,7 +1385,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-003ec701dbbf377d5207`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1393,7 +1395,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-86f84b953d9a545a1c47`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1403,7 +1405,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-47c14285e6baa0cfa7f0`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1413,7 +1415,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-60c31b5437e761a555ab`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-W-in-1>2-S-out-3; entry: 2-W-in-1; exit: 2-S-out-3.
 
@@ -1429,7 +1431,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-e8593113d11305255476`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1439,7 +1441,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-2549df7f31cf65fb1398`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1449,7 +1451,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-951022ddbc86fcc78031`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1459,7 +1461,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-2e5267c39fc12c50b707`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-W-out-2; entry: 2-N-in-4; exit: 2-W-out-2.
 
@@ -1475,7 +1477,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-10996644ed6236efd8c0`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1485,7 +1487,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-ccb016ceaff52d069c1f`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1495,7 +1497,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-4e63c73d2429dec80917`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1505,7 +1507,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-c83c00e9d3f77912d10f`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-N-in-4>2-S-out-3; entry: 2-N-in-4; exit: 2-S-out-3.
 
@@ -1521,7 +1523,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-6f8300069735d462857f`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1531,7 +1533,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-7a773ce01be173809c36`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1541,7 +1543,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-b24cb0c7a5cfcab1256c`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1551,7 +1553,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-acf560552a1584f139bd`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-E-out-7; entry: 2-S-in-5; exit: 2-E-out-7.
 
@@ -1567,7 +1569,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-5215cc28a3d503108616`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1577,7 +1579,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-2f3f8da49001bab23c4b`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1587,7 +1589,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-abd525c4cbcc1989095c`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1597,7 +1599,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-1e4abdf64ef0019d1be4`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-S-in-5>2-N-out-6; entry: 2-S-in-5; exit: 2-N-out-6.
 
@@ -1613,7 +1615,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-17a18ad59ffdc7cbbea9`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1623,7 +1625,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-bb58df7e28f9683b04ff`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1633,7 +1635,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-40d05b93e5c55ada8353`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1643,7 +1645,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-78ac369fcf2b9dee7918`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: pedestrian; role: primary; journey: 2:2-E-in-8>2-N-out-6; entry: 2-E-in-8; exit: 2-N-out-6.
 
@@ -1669,7 +1671,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-f1a5056d8d78b009f96b`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1679,7 +1681,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-8358304f12663c89652c`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1689,7 +1691,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-2fcea635c90c839b0dc3`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1699,7 +1701,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-2bb6308699736758a2df`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1715,7 +1717,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_route_query-88ea3cd9ba0dbc191594`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1725,7 +1727,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_route_query-f28dfe6d8d7293687857`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1735,7 +1737,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_route_query-628233884349bae3bae1`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1745,7 +1747,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_route_query-a4c6282aa11baee6b47d`.
 
-Inspect this directed journey with the game Route Query tool.
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1771,7 +1773,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-f1a5056d8d78b009f96b`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1781,7 +1783,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-8358304f12663c89652c`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1791,7 +1793,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-2fcea635c90c839b0dc3`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1801,7 +1803,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-2bb6308699736758a2df`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-N-in-2>7-S-out-1; entry: 7-N-in-2; exit: 7-S-out-1.
 
@@ -1817,7 +1819,7 @@ No observation recorded.
 
 **0° CCW: unverified** — `in_game_visible_travel-88ea3cd9ba0dbc191594`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1827,7 +1829,7 @@ No observation recorded.
 
 **90° CCW: unverified** — `in_game_visible_travel-f28dfe6d8d7293687857`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1837,7 +1839,7 @@ No observation recorded.
 
 **180° CCW: unverified** — `in_game_visible_travel-628233884349bae3bae1`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
@@ -1847,7 +1849,7 @@ No observation recorded.
 
 **270° CCW: unverified** — `in_game_visible_travel-a4c6282aa11baee6b47d`.
 
-Observe a vehicle or pedestrian completing this directed journey.
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:7-S-in-3>7-N-out-4; entry: 7-S-in-3; exit: 7-N-out-4.
 
