@@ -12,7 +12,7 @@ This experimental reusable piece puts **north/south High Speed Rail (HSR) direct
 
 Both clean views show the complete saved model at the authored 0° orientation. North is up in the top view; X increases eastward, Y increases northward, and one tile measures 16 × 16 m.
 
-The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, its paved sidewalks, two side pillars, and the transverse cap. Each pillar is centred on the boundary between the Road and its sidewalk, 5 m east or west of the tile centre. Each 0.50 m wide pillar extends 0.25 m onto the Road band and 0.25 m onto the pavement band. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
+The top view shows the complete solid model, so the upper HSR deck hides most of the Road. The angled view exposes the Road, its paved sidewalks, two side pillars, and the transverse cap. Each pillar stands entirely on its sidewalk. Its street-facing face aligns exactly with the boundary between the Road and pavement, 5 m east or west of the tile centre. Each pillar is 0.45 m wide and extends outward from that boundary across the pavement. These pictures render the actual saved models and selected native textures; neither is a game screenshot.
 
 <!-- BEGIN PIECE VIEWS -->
 
@@ -26,7 +26,7 @@ The top view shows the complete solid model, so the upper HSR deck hides most of
 
 <!-- BEGIN PIECE OVERVIEW -->
 
-One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars centred on the Road/sidewalk boundaries support the deck; opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.
+One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars support the deck entirely from the sidewalks, with their street-facing faces aligned with the Road/sidewalk boundaries. Opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.
 
 Exact reusable identifier: `blind-hsr-road-stack`.
 
@@ -318,7 +318,7 @@ Rendering checks source metadata, current compiled resource identities, and mode
 
 ## 4. Testing
 
-The [current curb revision verification](evidence/curb-revision-verification.json) records the checks for the two pillars centred on the Road/sidewalk boundaries and the explicitly paved sidewalks. The [preserved outer-edge revision verification](evidence/revision-verification.json) records the earlier pillars near the outer edges of the sidewalks; its measurements apply to that earlier model. The [preserved import baseline](evidence/import-verification.json) records the earlier central-pillar model; its byte-for-byte prototype comparison applies to that earlier model. This revision changes the visible models, regenerates and verifies their shadows, and preserves all traffic-path bytes. Original prototype reports remain historical evidence; no human game result is inferred.
+The [current roadside-edge verification](evidence/roadside-edge-verification.json) records the checks for the two pillars entirely on pavement, with their street-facing faces aligned with the Road/sidewalk boundaries. The [preserved centred-curb revision verification](evidence/curb-revision-verification.json) describes a superseded version whose pillars straddled those boundaries; its measurements apply only to that earlier model. The [preserved outer-edge revision verification](evidence/revision-verification.json) records the earlier pillars near the outer edges of the sidewalks; its measurements apply to that earlier model. The [preserved import baseline](evidence/import-verification.json) records the earlier central-pillar model; its byte-for-byte prototype comparison applies to that earlier model. This revision changes the visible models, regenerates and verifies their shadows, and preserves all traffic-path bytes. Original prototype reports remain historical evidence; no human game result is inferred.
 
 ### Engineering contract
 
@@ -337,8 +337,8 @@ A **PATH** resource stores directed vehicle or pedestrian travel lines; an **S3D
 | Road travel | Two native engine-1 vehicle routes, at east offsets −2.5 m and +2.5 m, height 0 m |
 | Pedestrian travel | Six actual native engine-2 paths: two through paths at east offsets ±6.39 m, and four lateral access paths |
 | Construction flags | Both `monorail: 0x02000200` and `road: 0x02000200` on the same owned cell |
-| West roadside pillar | East [−5.25, −4.75] m; north [−0.65, +0.65] m; height 0–13.5 m |
-| East roadside pillar | East [+4.75, +5.25] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| West roadside pillar | East [−5.45, −5.00] m; north [−0.65, +0.65] m; height 0–13.5 m |
+| East roadside pillar | East [+5.00, +5.45] m; north [−0.65, +0.65] m; height 0–13.5 m |
 | Transverse cap | East [−7.9, +7.9] m; north [−0.65, +0.65] m; height 13.5–14.0106707 m; contacts both pillars and the native deck's lower side flanges |
 | Rotations | 0°, 90°, 180°, and 270° proper rotations, repeated once to fill eight construction states; no reflection |
 | Shadows | Five generated FSH silhouettes checked against the actual saved models; game shadow selection remains unverified |
@@ -353,9 +353,9 @@ The independent verifier reads both saved side pillars and the cap. It checks al
 
 The chosen **vehicle corridor** is 3.0 m wide and 4.5 m high around each saved vehicle path. The chosen **pedestrian corridor** is 1.8 m wide and 2.2 m high around each saved pedestrian path. A corridor is the explicit space reserved by this authoring check. These dimensions are design assumptions, rather than measured SimCity 4 collision boxes or a civil-engineering certification.
 
-Each roadside pillar is 0.50 m wide east/west and 1.30 m deep north/south. Its centre is exactly on the Road/sidewalk seam at east −5 m or +5 m, so it extends 0.25 m into each surface band. The smallest horizontal margin from a through-pedestrian corridor to its adjacent pillar is **0.24 m**; the smallest margin from a lateral pedestrian corridor is approximately **1.273 m**. The smallest horizontal margin from a vehicle corridor to a pillar is **0.75 m**. The cap's underside is **9.0 m** above the chosen vehicle height. The outer pillar faces remain **2.75 m** inside the owned tile boundary; the cap ends remain **0.10 m** inside it. The cap retains its full width to reach the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
+Each roadside pillar is 0.45 m wide east/west and 1.30 m deep north/south. Its street-facing face is exactly on the Road/sidewalk seam at east −5 m or +5 m; its full width occupies pavement. The pillar centres are at east offsets −5.225 m and +5.225 m. The smallest horizontal margin from a through-pedestrian corridor to its adjacent pillar is **0.04 m**; the smallest margin from a lateral pedestrian corridor is approximately **1.175 m**. The smallest horizontal margin from a vehicle corridor to a pillar is **1.00 m**. The cap's underside is **9.0 m** above the chosen vehicle height. The outer pillar faces remain **2.55 m** inside the owned tile boundary; the cap ends remain **0.10 m** inside it. The cap retains its full width to reach the native lower side flanges at approximately 14.01067 m, and remains below the native rail floor. These are geometric facts about the saved resources; automata scaling, terrain adjustment, and in-game collision behavior remain unverified.
 
-The preserved prototype [native profile](evidence/native-profile.json) and [import baseline](evidence/import-verification.json) describe the earlier central-pillar version. An even earlier outer-pier attempt had only 0.41 m between its pillar face and a sidewalk's actual centre, which failed the chosen 1.8 m pedestrian corridor. The [preserved outer-edge revision](evidence/revision-verification.json) used narrower pillars farther outward, with a measured 1.01 m distance between each through-path centre and its nearest pillar face, leaving 0.11 m after the corridor's 0.90 m half-width. The current revision moves those pillars inward to the Road/sidewalk seams: each through-path centre is 1.14 m from its nearest pillar face, leaving 0.24 m beyond the same pedestrian corridor. The earlier reports are retained without rewriting their measured results.
+The preserved prototype [native profile](evidence/native-profile.json) and [import baseline](evidence/import-verification.json) describe the earlier central-pillar version. An even earlier outer-pier attempt had only 0.41 m between its pillar face and a sidewalk's actual centre, which failed the chosen 1.8 m pedestrian corridor. The [preserved outer-edge revision](evidence/revision-verification.json) used narrower pillars farther outward, with a measured 1.01 m distance between each through-path centre and its nearest pillar face, leaving 0.11 m after the corridor's 0.90 m half-width. The [superseded centred-curb version](evidence/curb-revision-verification.json) placed each pillar centre on a Road/sidewalk seam, leaving 0.24 m beyond the same pedestrian corridor, but extending 0.25 m onto the Road. The current revision aligns each pillar's street-facing face with that seam and places the full pillar on pavement. Reducing the width to 0.45 m keeps the unchanged through-path centre 0.94 m from the nearest pillar face, leaving 0.04 m beyond the pedestrian corridor's 0.90 m half-width. A 0.50 m pillar entirely on pavement would overlap that corridor by 0.01 m. The earlier reports are retained without rewriting their measured results.
 
 #### Sidewalk appearance diagnosis
 
@@ -617,6 +617,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent curb-pillar saved-resource and full-route clearance verification; confirmed at: 2026-10-27; evidence: [evidence/curb-revision-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent roadside-face alignment and saved-resource verification; confirmed at: 2026-10-27; evidence: [evidence/roadside-edge-verification.json, connections.json]; environment: {}
 
 </details>
 
@@ -646,6 +647,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Integrated saved-resource verifier and intrinsic extractor; confirmed at: 2026-10-27; evidence: [evidence/import-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent side-pillar, pavement, and saved-route verification; confirmed at: 2026-10-27; evidence: [evidence/revision-verification.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Independent curb-pillar saved-resource and full-route clearance verification; confirmed at: 2026-10-27; evidence: [evidence/curb-revision-verification.json, connections.json]; environment: {}
+- result: passed; authority: software; reviewer: Independent roadside-face alignment and saved-resource verification; confirmed at: 2026-10-27; evidence: [evidence/roadside-edge-verification.json, connections.json]; environment: {}
 
 </details>
 

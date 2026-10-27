@@ -86,8 +86,8 @@ def check_models(resources,spec,donors=None):
         require(all(5.<=abs(point[0])<=8. and point[2]==0. for point in points),
                 'Native pedestrian route leaves its explicit pavement band')
     clearance=[]
-    for item,expected in zip(items[4:],(((-5.25,-4.75),(0.,13.5),(-.65,.65)),
-                                      ((4.75,5.25),(0.,13.5),(-.65,.65)),
+    for item,expected in zip(items[4:],(((-5.45,-5.),(0.,13.5),(-.65,.65)),
+                                      ((5.,5.45),(0.,13.5),(-.65,.65)),
                                       ((-7.9,7.9),(13.5,14.01067066192627),(-.65,.65)))):
         p=positions(item[0]); limits=[(min(q[a] for q in p),max(q[a] for q in p)) for a in range(3)]
         require(all(abs(actual-wanted)<2e-6 for pair,goal in zip(limits,expected) for actual,wanted in zip(pair,goal)),'Support bounds or deck contact changed')
@@ -140,7 +140,7 @@ def check_models(resources,spec,donors=None):
     require(props[0x10]==[11] and props[0x27812823]==[*S3D,*range(tile,tile+5)],'Exemplar zoom references changed')
     textures=sorted({t for material in model['materials'] for t in material['textures']})
     return {'models_checked':6,'exact_native_visible_hsr_mesh':True,'native_road_material_and_uv_range':True,
-        'explicit_native_pavement_bands':True,'nonoverlapping_ground_bands':True,'side_pillars':2,'pillar_centres_at_road_pavement_seams':True,
+        'explicit_native_pavement_bands':True,'nonoverlapping_ground_bands':True,'side_pillars':2,'pillar_road_faces_align_pavement_seams':True,
         'ground_route_pier_clearance':True,'proper_rotations_geometry_checked':4,'preview_matches_tiles':True,
         'texture_ids':textures,'support_closed_solid_faces_checked':36,
         'clearance_margins_m':{'minimum_vehicle_horizontal':min(v['horizontal_margin_m'] for v in clearance if v['transport']==1 and 'horizontal_margin_m' in v),
