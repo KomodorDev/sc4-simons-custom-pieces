@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way Rail L3 90 Degree Right Wide Curve](preview.png)
+![One-Way Rail L3 90 Degree Right Wide Curve](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

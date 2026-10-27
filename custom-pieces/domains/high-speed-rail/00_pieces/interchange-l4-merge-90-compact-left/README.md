@@ -23,7 +23,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 [Design-review evidence](../../junction-design-review.json).
 
-![One-Way L4 Merge 90deg Left Compact](preview.png)
+![One-Way L4 Merge 90deg Left Compact](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

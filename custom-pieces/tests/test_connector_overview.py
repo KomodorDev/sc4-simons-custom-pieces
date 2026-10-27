@@ -174,6 +174,8 @@ class ConnectorOverviewTests(unittest.TestCase):
             {"marker": card["marker"], "id": card["id"], "group_ids": [item["id"] for item in card["groups"]]}
             for card in cards], "conventions": [overview.grid_convention({"origin_world_m": [0., -48.]})]}
         text = overview.markdown_overview(evidence)
+        self.assertIn("![Complete connection overview](previews/connection-overview.png)", text)
+        self.assertIn("[Rendering sources and verification scope](evidence/connection-overview.json).", text)
         self.assertIn("Level 4 (30.5 m)", text)
         self.assertIn("end-a-member-1", text)
         self.assertIn("`[3,-8,30.5]`", text)

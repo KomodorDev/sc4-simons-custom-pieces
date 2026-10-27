@@ -3316,7 +3316,7 @@
   "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
   "schema_version": 1,
   "piece_id": "blind-hsr-rise-quarter-turn",
-  "file": "connection-overview.png",
+  "file": "previews/connection-overview.png",
   "output_sha256": "888064e8befa8c39405c667edef0bd46f68648a9b9ebbedb9371b3ed6c504bbe",
   "source_inputs": {
     "domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/piece.json": "0aff6b2f0cfd57f3c21ad38de18739a391b4e3156e1396b502c0a19af9ec21d0",
@@ -6830,5 +6830,11 @@
     "member_offset": "Measured endpoint minus section origin, dotted with tile-edge outward-left direction",
     "display_anchor": "Measured-height section origin projected with the actual model camera"
   },
-  "selectable_markdown_sha256": "64babdbdb93fdf8967d97c69fd02bf725217c72fed16cc9d703bf83a8fd6355f"
+  "selectable_markdown_sha256": "64babdbdb93fdf8967d97c69fd02bf725217c72fed16cc9d703bf83a8fd6355f",
+  "artwork_relocation": {
+    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
+    "image_directory": "previews",
+    "image_bytes_changed": false,
+    "original_renderer_and_input_fingerprints_preserved": true
+  }
 }

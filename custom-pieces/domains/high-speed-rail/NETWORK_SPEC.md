@@ -45,6 +45,7 @@ Run the following commands from the parent project directory containing `custom-
 | Scope | Command | Contract |
 | --- | --- | --- |
 | Current HSR artwork | `python3 -m scp_hsr.icons --root custom-pieces` | Regenerates every registered HSR piece's icon and the contact sheet; add `--output custom-pieces/local/icon-review` to stage an isolated artwork review. |
+| Current HSR assembly artwork | `python3 -B custom-pieces/scp.py assembly-icons --domain high-speed-rail` | Regenerates each registered assembly's canonical `icon.png` beside `assembly.json`; changes no definitions, allocations, build, installation, or observations. |
 | Modular track/branch/ramp/crossing catalogue | `python3 custom-pieces/domains/high-speed-rail/tools/update_interchange_catalog.py` | Allocates new IDs, distinct icons, and named sets; refuses to change a reserved layout. |
 | Revised scissors switches | `python3 custom-pieces/domains/high-speed-rail/tools/update_rail_repairs_catalog.py` | Registers the current revised switch modules and icons. |
 | Accepted straight smooth T | `python3 custom-pieces/domains/high-speed-rail/tools/register_directional_t.py` | Preserves the allocated straight-piece identity on reruns. |

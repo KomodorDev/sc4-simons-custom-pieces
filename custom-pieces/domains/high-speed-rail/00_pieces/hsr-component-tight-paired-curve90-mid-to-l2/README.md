@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR Tight Two-Track Corner 23 to 15.5 Metres](preview.png)
+![HSR Tight Two-Track Corner 23 to 15.5 Metres](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

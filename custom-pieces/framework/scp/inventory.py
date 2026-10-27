@@ -47,11 +47,11 @@ def write_inventories(root):
             local=directory/'00_pieces'/piece['id'];status=_status(local)
             file=local/'connections.json';conn=json.loads(file.read_text()) if file.is_file() else {}
             identifier=piece['id'];status.update({'ports':len(conn.get('ports',[])),'journeys':len(conn.get('journeys',[])),
-                'path':identifier+'/README.md','preview':identifier+'/preview.png','thumbnail':identifier+'/preview-thumb.png',
+                'path':identifier+'/README.md','preview':identifier+'/previews/preview.png','thumbnail':identifier+'/previews/preview-thumb.png',
                 'manual_record':identifier+'/checks/manual-tests.json','design_review':piece.get('design_review')})
             piece_status[identifier]=status
             width,depth=piece['footprint']
-            image=f'[![{piece["name"]}]({identifier}/preview-thumb.png)]({identifier}/preview.png)' if all((local/name).is_file() for name in ('preview.png','preview-thumb.png')) else 'Preview pending'
+            image=f'[![{piece["name"]}]({identifier}/previews/preview-thumb.png)]({identifier}/previews/preview.png)' if all((local/'previews'/name).is_file() for name in ('preview.png','preview-thumb.png')) else 'Preview pending'
             review=piece.get('design_review')
             design=(f'[{review_label(piece)}]({identifier}/README.md#design-review): '+review['summary']) if review else 'No current design flag'
             piece_rows.append(f'| {image} | [{piece["name"]}]({identifier}/README.md)<br>`{identifier}` | '

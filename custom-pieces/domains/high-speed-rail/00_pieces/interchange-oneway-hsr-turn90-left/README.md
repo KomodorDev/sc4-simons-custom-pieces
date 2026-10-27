@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![One-Way HSR L2 90 Degree Left Compact Curve](preview.png)
+![One-Way HSR L2 90 Degree Left Compact Curve](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

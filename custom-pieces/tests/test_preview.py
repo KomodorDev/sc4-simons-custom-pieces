@@ -127,19 +127,26 @@ class PreviewTests(unittest.TestCase):
         self.assertEqual(evidence['display_title'],evidence['header']['rows'][0]['text'])
         self.assertEqual(evidence['piece_id'],self.piece['id'])
         self.assertEqual(evidence['menu_name'],self.piece['name'])
+        self.assertEqual(evidence['file'],'previews/preview.png')
+        self.assertEqual(evidence['canonical_filename'],'preview.png')
+        self.assertEqual(evidence['thumbnail']['file'],'previews/preview-thumb.png')
         self.assertEqual(evidence['header']['rows'][1]['text'],
                          'Clean view | Southeast view | Authored orientation: 0°')
         index=json.loads(self.index.read_text())
         self.assertEqual(index['pieces'][self.piece['id']]['views']['angled']['display_title'],evidence['display_title'])
+        self.assertEqual(index['pieces'][self.piece['id']]['image'],'test-piece/previews/preview.png')
+        self.assertEqual(index['pieces'][self.piece['id']]['thumbnail'],'test-piece/previews/preview-thumb.png')
         self.assertFalse(evidence['grid']['tile_scale']['caption_visible'])
         self.assertEqual(sum('1 tile = 16 m' in caption for caption in evidence['captions']), 1)
         self.assertFalse(self.guide.exists(),'No giant legacy preview guide is generated')
+        self.assertFalse((self.images/'test-piece/preview.png').exists())
+        self.assertFalse((self.images/'test-piece/previews/evidence').exists())
 
     def test_standalone_top_view_preserves_angle_and_uses_same_complete_saved_model(self):
         self.render()
         directory=self.images/'test-piece'
         preserved={name:(directory/name).read_bytes() for name in
-                   ('preview.png','preview-thumb.png','evidence/preview.json')}
+                   ('previews/preview.png','previews/preview-thumb.png','evidence/preview.json')}
         from scp import piece_previews
         with patch.object(piece_previews,'render_piece',wraps=piece_previews.render_piece) as render:
             result=self.render(view_roles=['top'])
@@ -154,6 +161,7 @@ class PreviewTests(unittest.TestCase):
         self.assertEqual(top['coordinate_system'],angle['coordinate_system'])
         self.assertEqual(top['display_title'],angle['display_title'])
         self.assertEqual(top['view_role'],'top-down')
+        self.assertEqual(top['file'],'previews/preview-top.png')
         self.assertEqual(top['camera']['right_s3d'],[1.,0.,-0.])
         self.assertAlmostEqual(top['camera']['up_s3d'][2],-1.)
         self.assertEqual(top['displayed_rotation_ccw_degrees'],0.)
@@ -171,7 +179,7 @@ class PreviewTests(unittest.TestCase):
             second=self.render(view_roles=['angled','top'])
         self.assertEqual(second['skipped_unchanged_views'],2)
         render.assert_not_called()
-        (directory/'preview-top.png').write_bytes((directory/'preview-top.png').read_bytes()+b'changed artwork')
+        (directory/'previews/preview-top.png').write_bytes((directory/'previews/preview-top.png').read_bytes()+b'changed artwork')
         index=json.loads(self.index.read_text())
         report=preview.validate_preview_coverage(index,self.catalog['pieces'],self.images,view_roles=['angled','top'])
         self.assertEqual(report['views']['top']['stale'],['test-piece'])
@@ -184,7 +192,7 @@ class PreviewTests(unittest.TestCase):
 
     def test_top_policy_is_explicit_and_invalid_roles_do_not_create_outputs(self):
         self.render()
-        self.assertFalse((self.images/'test-piece/preview-top.png').exists())
+        self.assertFalse((self.images/'test-piece/previews/preview-top.png').exists())
         index=json.loads(self.index.read_text())
         report=preview.validate_preview_coverage(index,self.catalog['pieces'],self.images,view_roles=['top'])
         self.assertFalse(report['complete'])
@@ -195,7 +203,7 @@ class PreviewTests(unittest.TestCase):
 
     def test_top_only_refresh_cannot_make_an_old_angled_model_appear_current(self):
         self.render(view_roles=['angled','top'])
-        image=self.images/'test-piece/preview.png'; original=image.read_bytes()
+        image=self.images/'test-piece/previews/preview.png'; original=image.read_bytes()
         model=parse_s3d(self.raw); block=model['vertices'][0]; data=bytearray(block['data'])
         struct.pack_into('<f',data,4,17.25); block['data']=bytes(data)
         self.write_build(pack_s3d(model))
@@ -236,7 +244,7 @@ class PreviewTests(unittest.TestCase):
         # The input is unchanged, but an edited PNG is still regenerated.
         image.write_bytes(image.read_bytes()+b'changed artwork')
         self.assertEqual(self.render()['rendered'],1)
-        thumb=self.images/'test-piece/preview-thumb.png'
+        thumb=self.images/'test-piece/previews/preview-thumb.png'
         thumb.write_bytes(thumb.read_bytes()+b'edited thumbnail')
         self.assertEqual(self.render()['rendered'],1)
 
@@ -251,9 +259,29 @@ class PreviewTests(unittest.TestCase):
         (self.images/index['pieces']['test-piece']['image']).unlink()
         self.assertFalse(preview.validate_preview_coverage(index,self.catalog['pieces'],self.images)['complete'])
 
+    def test_coverage_requires_canonical_piece_previews_and_piece_local_evidence(self):
+        self.render();index=json.loads(self.index.read_text())
+        entry=index['pieces']['test-piece'];record=entry['views']['angled']
+        image=self.images/record['image'];thumbnail=self.images/record['thumbnail']
+        for image_name,thumbnail_name in (
+                ('test-piece/preview.png','test-piece/preview-thumb.png'),
+                ('other-piece/previews/preview.png','other-piece/previews/preview-thumb.png'),
+                ('test-piece/../test-piece/previews/preview.png','test-piece/previews/preview-thumb.png'),
+                (str(image.resolve()),str(thumbnail.resolve())),
+                (record['image'],'test-piece/previews/../previews/preview-thumb.png')):
+            tampered=deepcopy(index);modified=tampered['pieces']['test-piece']
+            modified.update(image=image_name,thumbnail=thumbnail_name)
+            modified['views']['angled'].update(image=image_name,thumbnail=thumbnail_name)
+            with self.subTest(image=image_name,thumbnail=thumbnail_name):
+                self.assertEqual(preview.validate_preview_coverage(tampered,self.catalog['pieces'],self.images)['stale'],['test-piece'])
+        evidence=self.images/'test-piece/evidence/preview.json'
+        outside=self.root/'outside-evidence.json';outside.write_bytes(evidence.read_bytes())
+        evidence.unlink();evidence.symlink_to(outside)
+        self.assertEqual(preview.validate_preview_coverage(index,self.catalog['pieces'],self.images)['stale'],['test-piece'])
+
     def test_review_flag_updates_provenance_and_guide_without_redrawing_unchanged_geometry(self):
         self.render()
-        image=self.images/'test-piece/preview.png'
+        image=self.images/'test-piece/previews/preview.png'
         original=image.read_bytes()
         self.catalog['pieces'][0]['design_review']={
             'status':'needs-redesign','summary':'Rectangular detours need a new layout.',
@@ -282,7 +310,7 @@ class PreviewTests(unittest.TestCase):
         self.assertEqual(report['catalogue_coverage']['missing'],['unbuilt-piece'])
         self.assertEqual(report['catalogue_coverage']['scope'],'all_registered_piece_ids_and_requested_views')
         self.assertFalse(self.guide.exists())
-        self.assertFalse((self.images/'unbuilt-piece/preview.png').exists())
+        self.assertFalse((self.images/'unbuilt-piece/previews/preview.png').exists())
         for ids in (['test-piece','test-piece'],['unknown'],['unbuilt-piece']):
             with self.subTest(ids=ids),self.assertRaisesRegex(ValueError,'duplicate, unknown or unbuilt'):
                 self.render(piece_ids=ids)

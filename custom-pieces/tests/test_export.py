@@ -59,7 +59,8 @@ class DocumentationHandoffTests(unittest.TestCase):
             (output/'plugin').mkdir(parents=True)
             (output/'docs').mkdir()
             (source/'README.md').write_text('# Final documentation\n')
-            (source/'connection-overview.png').write_bytes(b'final cards')
+            (source/'previews').mkdir()
+            (source/'previews/connection-overview.png').write_bytes(b'final cards')
             (source/'local').mkdir()
             (source/'local/private.json').write_text('{}')
             (output/'docs/README.md').write_text('# Old documentation\n')
@@ -86,7 +87,7 @@ class DocumentationHandoffTests(unittest.TestCase):
                 packaged = json.loads(archive.read('manifest.json'))
                 self.assertEqual(compiled_manifest_sha256(packaged), compiled_manifest_sha256(manifest))
                 self.assertEqual(archive.read('docs/README.md'), b'# Final documentation\n')
-                self.assertEqual(archive.read('docs/connection-overview.png'), b'final cards')
+                self.assertEqual(archive.read('docs/previews/connection-overview.png'), b'final cards')
                 self.assertNotIn('docs/removed.md', archive.namelist())
                 self.assertNotIn('docs/local/private.json', archive.namelist())
                 self.assertEqual(archive.read('plugin/payload.dat'), b'unchanged verified DAT')
@@ -96,7 +97,7 @@ class DocumentationHandoffTests(unittest.TestCase):
                     raw = archive.read(item['path'])
                     self.assertEqual((len(raw), hashlib.sha256(raw).hexdigest()), (item['bytes'], item['sha256']))
             self.assertEqual(documentation_members(source), {'docs/README.md': b'# Final documentation\n',
-                                                            'docs/connection-overview.png': b'final cards'})
+                                                            'docs/previews/connection-overview.png': b'final cards'})
 
     def test_handoff_rejects_missing_source_or_failed_build_verification(self):
         with tempfile.TemporaryDirectory() as temporary:

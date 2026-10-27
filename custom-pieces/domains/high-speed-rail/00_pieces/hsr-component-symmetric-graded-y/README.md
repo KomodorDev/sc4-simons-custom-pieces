@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![HSR Symmetric Upper Stem to Lower Curved Arms](preview.png)
+![HSR Symmetric Upper Stem to Lower Curved Arms](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

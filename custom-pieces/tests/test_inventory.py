@@ -46,8 +46,8 @@ class InventoryArtworkTests(unittest.TestCase):
             for identifier,files in (
                     ('none',()),('only-thumb',('preview-thumb.png',)),
                     ('only-full',('preview.png',)),('complete',('preview.png','preview-thumb.png'))):
-                local=domain/'00_pieces'/identifier;local.mkdir(parents=True)
-                for name in files:(local/name).write_bytes(b'fixture')
+                local=domain/'00_pieces'/identifier;(local/'previews').mkdir(parents=True)
+                for name in files:(local/'previews'/name).write_bytes(b'fixture')
                 pieces.append({'id':identifier,'name':identifier,'domain':'fixture','footprint':[1,1]})
             catalog={'version':'fixture','domains':{'fixture':{'path':'domains/fixture','name':'Fixture'}},
                      'pieces':pieces,'piece_sets':{},'_assemblies':[]}
@@ -65,7 +65,7 @@ class InventoryArtworkTests(unittest.TestCase):
             self.assertIn('Legacy endpoint observations remain historical evidence',text)
             self.assertNotIn('Connection cases',(domain/'01_assemblies/INVENTORY.md').read_text())
             self.assertEqual(text.count('Preview pending'),3)
-            self.assertIn('[![complete](complete/preview-thumb.png)](complete/preview.png)',text)
+            self.assertIn('[![complete](complete/previews/preview-thumb.png)](complete/previews/preview.png)',text)
             for identifier in ('none','only-thumb','only-full'):
                 self.assertNotIn(f'![{identifier}]',text)
 

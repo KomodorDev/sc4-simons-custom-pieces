@@ -37,14 +37,14 @@
         "source_dat_sha256": "309d4e411f043b9ca66ff3b80c4d0670eec4032f81114858bacdcf49d2ba1f04",
         "model_sha256": "d9239ad2a3690243b108cddcc607a81df4d7bb7a89bba07804e6cf305c184c90"
       },
-      "file": "preview.png",
+      "file": "previews/preview.png",
       "sha256": "6c3f50ae5a15a1492cc0fca8375d3d9e04085ec69934097358234635fe72012d",
       "size": [
         1600,
         1200
       ],
       "thumbnail": {
-        "file": "preview-thumb.png",
+        "file": "previews/preview-thumb.png",
         "sha256": "098d2d0a2223be54716fefec106e78180c63fa32b19394ed0df52a4735358356",
         "size": [
           360,
@@ -1283,7 +1283,7 @@
         "source_dat_sha256": "309d4e411f043b9ca66ff3b80c4d0670eec4032f81114858bacdcf49d2ba1f04",
         "model_sha256": "d9239ad2a3690243b108cddcc607a81df4d7bb7a89bba07804e6cf305c184c90"
       },
-      "file": "preview-top.png",
+      "file": "previews/preview-top.png",
       "sha256": "19b12beca6e9580ce59d9efd70ca27900d1d3d110023af22d3e43f6ba4529c3d",
       "size": [
         1600,
@@ -2510,5 +2510,11 @@
       "other_piece_types_drawn": false,
       "selected_piece_geometry_hidden_or_simplified": false
     }
-  ]
+  ],
+  "artwork_relocation": {
+    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
+    "image_directory": "previews",
+    "image_bytes_changed": false,
+    "original_renderer_and_input_fingerprints_preserved": true
+  }
 }

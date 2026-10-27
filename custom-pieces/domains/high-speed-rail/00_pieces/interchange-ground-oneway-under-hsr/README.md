@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![Ground One-Way Track under HSR](preview.png)
+![Ground One-Way Track under HSR](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 

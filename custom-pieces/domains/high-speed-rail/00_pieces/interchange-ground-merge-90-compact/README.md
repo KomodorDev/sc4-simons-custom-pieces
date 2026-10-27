@@ -15,7 +15,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
 
-![GHSR Merge 90 Degree Compact](preview.png)
+![GHSR Merge 90 Degree Compact](previews/preview.png)
 
 <!-- END PIECE OVERVIEW -->
 
