@@ -476,6 +476,15 @@ def _assembly_icon_routes(assembly, catalog):
     return adapter.assembly_icon_routes(assembly['scene'], catalog['pieces'])
 
 
+def _assembly_icon_network(assembly):
+    """Require the owning domain's declared network instead of guessing HSR."""
+    from .providers import domain_module
+    adapter = domain_module({'domain': assembly['domain']}, 'icons')
+    require(hasattr(adapter, 'assembly_icon_network'),
+            f'{assembly["domain"]}: no declared assembly icon network adapter')
+    return adapter.assembly_icon_network(assembly['id'])
+
+
 def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
     """Refresh canonical assembly icons and their source-schematic provenance."""
     from . import menu_experiment_resources
@@ -488,9 +497,11 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
     # Resolve every assembly before changing any icon; malformed source data
     # must not leave a partly refreshed selection behind.
     routes = [_assembly_icon_routes(assembly, catalog) for assembly in assemblies]
-    artworks = [make_assembly_icon(points) for points in routes]
+    networks = [_assembly_icon_network(assembly) for assembly in assemblies]
+    artworks = [make_assembly_icon(points, network_label=network)
+                for points, network in zip(routes, networks)]
     evidence_paths = []
-    for assembly, points, path, raw in zip(assemblies, routes, targets, artworks):
+    for assembly, points, network, path, raw in zip(assemblies, routes, networks, targets, artworks):
         current = None
         if path.is_file():
             try:
@@ -511,6 +522,9 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
                 'scp.menu_experiment_resources': _sha(Path(menu_experiment_resources.__file__).read_bytes())},
             'assembly_source_sha256': _sha(_json_bytes(assembly['scene'])),
             'placed_routes_sha256': _sha(_json_bytes(points)),
+            'labels': {'brand': 'SCP', 'brand_position': 'top-right',
+                       'category': 'ASM', 'network': network, 'footer_position': 'bottom-centre'},
+            'footer_ink_rows_px': [33, 37],
             'piece_definitions_sha256': {piece['id']: _sha(_json_bytes(piece))
                 for piece in catalog['pieces'] if piece['id'] in member_ids},
             'output': {'path': 'icon.png', 'sha256': _sha(current), 'dimensions_px': [176, 44],
@@ -563,7 +577,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     icon_path = _assembly_icon_path(root, assemblies[0])
     require(icon_path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')
     cycle_icon = icon_path.read_bytes()
-    expected_cycle_icon = make_assembly_icon(_assembly_icon_routes(assemblies[0], catalog))
+    expected_cycle_icon = make_assembly_icon(_assembly_icon_routes(assemblies[0], catalog),
+                                            network_label=_assembly_icon_network(assemblies[0]))
     validate_assembly_icon(cycle_icon, expected_icon=expected_cycle_icon)
     base = _read_json(source / 'manifest.json')
     require('menu_experiment' not in base,

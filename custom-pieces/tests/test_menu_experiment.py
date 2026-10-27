@@ -107,7 +107,7 @@ class MenuExperimentTests(unittest.TestCase):
         self.assembly_icon.parent.mkdir(parents=True)
         self.icon_routes = [[(-40., 0., 15.5), (40., 0., 15.5)],
                             [(0., -60., 30.5), (0., 0., 15.5)]]
-        self.assembly_icon.write_bytes(make_assembly_icon(self.icon_routes))
+        self.assembly_icon.write_bytes(make_assembly_icon(self.icon_routes, network_label='HSR'))
         deltas, menus = [], {}
         for piece in self.normal_pieces:
             root = int(piece['puzzle_id'], 16)
@@ -163,6 +163,7 @@ class MenuExperimentTests(unittest.TestCase):
                         patch('scp.verify.verify_build', side_effect=dispatch),
                         patch('scp.menu_experiment.load_catalog', return_value=self.catalog),
                         patch('scp.menu_experiment._assembly_icon_routes', return_value=self.icon_routes),
+                        patch('scp.menu_experiment._assembly_icon_network', return_value='HSR'),
                         patch('scp.build.audit_inputs', return_value=({}, {}, ['synthetic-donor'], {}))):
             patcher.start()
             self.addCleanup(patcher.stop)
@@ -253,14 +254,32 @@ class MenuExperimentTests(unittest.TestCase):
         self.assertEqual(result['icons'], ['domains/test/01_assemblies/fixture-assembly/icon.png'])
         self.assertFalse(result['built'])
         self.assertFalse(result['installed'])
-        self.assertEqual(self.assembly_icon.read_bytes(), make_assembly_icon(self.icon_routes))
+        self.assertEqual(self.assembly_icon.read_bytes(), make_assembly_icon(self.icon_routes, network_label='HSR'))
         provenance = json.loads(evidence.read_text())
         self.assertEqual(provenance['output']['sha256'], hashlib.sha256(self.assembly_icon.read_bytes()).hexdigest())
         self.assertIn('no compiled model rendering', provenance['basis'])
         self.assertEqual(provenance['in_game_appearance'], 'unverified')
+        self.assertEqual(provenance['labels'], {'brand': 'SCP', 'brand_position': 'top-right',
+                         'category': 'ASM', 'network': 'HSR', 'footer_position': 'bottom-centre'})
+        self.assertEqual(provenance['footer_ink_rows_px'], [33, 37])
         after = {path.relative_to(self.root): path.read_bytes()
                  for path in self.root.rglob('*') if path.is_file() and path not in artwork}
         self.assertEqual(after, before)
+
+    def test_changed_domain_network_rejects_stale_icon_before_creating_build_output(self):
+        self.prepare_single_button_layout()
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='GHSR'):
+            with self.assertRaisesRegex(ValueError, 'canonical cycle artwork'):
+                self.build_single_button()
+        self.assertFalse(self.output.exists())
+
+    def test_unresolved_domain_network_does_not_partially_refresh_artwork(self):
+        before = self.assembly_icon.read_bytes()
+        with patch('scp.menu_experiment._assembly_icon_network', side_effect=ValueError('Unknown assembly network')):
+            with self.assertRaisesRegex(ValueError, 'Unknown assembly network'):
+                write_assembly_icons(self.project)
+        self.assertEqual(self.assembly_icon.read_bytes(), before)
+        self.assertFalse((self.assembly_icon.parent / 'evidence/icon.json').exists())
 
     def test_saved_candidate_verification_does_not_depend_on_current_icon_source(self):
         from PIL import Image
@@ -269,7 +288,7 @@ class MenuExperimentTests(unittest.TestCase):
         with Image.open(self.assembly_icon) as icon:
             alternate = BytesIO()
             icon.save(alternate, format='PNG', compress_level=0)
-        self.assertNotEqual(alternate.getvalue(), make_assembly_icon(self.icon_routes))
+        self.assertNotEqual(alternate.getvalue(), make_assembly_icon(self.icon_routes, network_label='HSR'))
         self.assembly_icon.write_bytes(alternate.getvalue())
         write_assembly_icons(self.project)
         self.assertEqual(self.assembly_icon.read_bytes(), alternate.getvalue())

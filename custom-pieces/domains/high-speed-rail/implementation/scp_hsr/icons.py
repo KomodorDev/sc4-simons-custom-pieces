@@ -119,6 +119,13 @@ _LETTER = {
 }
 
 
+def assembly_icon_network(assembly_id):
+    """Declare an assembly's network explicitly, including future mixed layouts."""
+    networks = {'straight-stem-trumpet': 'HSR'}
+    _require(assembly_id in networks, f'No declared assembly icon network: {assembly_id}')
+    return networks[assembly_id]
+
+
 def assembly_icon_routes(scene, pieces):
     """Place the authored reusable HSR routes for the complete menu silhouette.
 

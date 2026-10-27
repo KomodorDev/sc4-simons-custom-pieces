@@ -106,17 +106,65 @@ def _icon(kind):
     return output.getvalue()
 
 
-def make_assembly_icon(routes=None):
+# Tiny native-size lettering overlays the full route drawing without text bands.
+_ASSEMBLY_MARK = {
+    'A': ('010', '101', '111', '101', '101'),
+    'B': ('110', '101', '110', '101', '110'),
+    'C': ('111', '100', '100', '100', '111'),
+    'D': ('110', '101', '101', '101', '110'),
+    'E': ('111', '100', '111', '100', '111'),
+    'F': ('111', '100', '111', '100', '100'),
+    'G': ('111', '100', '101', '101', '111'),
+    'H': ('101', '101', '111', '101', '101'),
+    'I': ('111', '010', '010', '010', '111'),
+    'J': ('001', '001', '001', '101', '111'),
+    'K': ('101', '101', '110', '101', '101'),
+    'L': ('100', '100', '100', '100', '111'),
+    'M': ('101', '111', '101', '101', '101'),
+    'N': ('101', '111', '111', '101', '101'),
+    'O': ('111', '101', '101', '101', '111'),
+    'P': ('110', '101', '110', '100', '100'),
+    'Q': ('111', '101', '101', '111', '001'),
+    'R': ('110', '101', '110', '101', '101'),
+    'S': ('111', '100', '111', '001', '111'),
+    'T': ('111', '010', '010', '010', '010'),
+    'U': ('101', '101', '101', '101', '111'),
+    'V': ('101', '101', '101', '101', '010'),
+    'W': ('101', '101', '101', '111', '101'),
+    'X': ('101', '101', '010', '101', '101'),
+    'Y': ('101', '101', '010', '010', '010'),
+    'Z': ('111', '001', '010', '100', '111'),
+}
+
+
+def _assembly_label(draw, value, x, y, colour):
+    for letter in value:
+        if letter == ' ':
+            x += 3
+            continue
+        for row, pixels in enumerate(_ASSEMBLY_MARK[letter]):
+            for column, on in enumerate(pixels):
+                if on == '1':
+                    draw.point((x + column, y + row), fill=colour)
+        x += 4
+
+
+def make_assembly_icon(routes=None, *, network_label=None):
     """Draw the complete north-up assembly; retain the historical icon on demand.
 
     ``routes`` contains placed east/north/height polylines. No game resources,
     build outputs, placements, or observations are changed by this illustration.
-    Omitting routes reproduces frozen historical menu candidates exactly.
+    The owning domain supplies the compact network label. Omitting routes
+    reproduces frozen historical menu candidates exactly.
     """
     if routes is None:
+        require(network_label is None, 'Historical assembly icon has no network label')
         return _icon('cycle')
     from PIL import Image, ImageDraw, ImageOps
 
+    require(isinstance(network_label, str) and 1 <= len(network_label) <= 4
+            and all(letter in _ASSEMBLY_MARK for letter in network_label),
+            'Assembly icon needs an explicit network label of one to four uppercase letters')
     require(isinstance(routes, (list, tuple)) and routes, 'Assembly icon needs actual routes')
     require(all(isinstance(route, (list, tuple)) and len(route) >= 2 for route in routes),
             'Assembly icon routes need at least two points')
@@ -153,6 +201,13 @@ def make_assembly_icon(routes=None):
                                for low, high in zip((240, 225, 178), (83, 222, 208)))
                 draw.line((a, b), fill=colour, width=round(1.35 * scale))
         image = image.resize((44, 44), Image.Resampling.LANCZOS)
+        # Overlay crisp 3 by 5 letters on the full-size diagram. The footer's
+        # last ink row is 37, leaving clearance above the bottom border.
+        draw = ImageDraw.Draw(image)
+        _assembly_label(draw, 'SCP', 28, 5, (190, 210, 216))
+        footer = 'ASM ' + network_label
+        _assembly_label(draw, footer, (44 - (4 * len(footer) - 2)) // 2, 33,
+                        (225, 235, 238))
         if number == 0:
             alpha = image.getchannel('A')
             image = ImageOps.grayscale(image).convert('RGBA')
@@ -189,10 +244,12 @@ def _validate_icon(raw, kind, expected_icon=None):
                 if kind == 'cycle' else 'Wrong experiment icon')
 
 
-def validate_assembly_icon(raw, *, routes=None, expected_icon=None):
+def validate_assembly_icon(raw, *, routes=None, network_label=None, expected_icon=None):
     """Require exact source-derived artwork pixels and the native PNG format."""
-    require(routes is None or expected_icon is None, 'Specify routes or frozen icon proof, not both')
-    _validate_icon(raw, 'cycle', expected_icon if expected_icon is not None else make_assembly_icon(routes))
+    require(expected_icon is None or (routes is None and network_label is None),
+            'Specify routes and network label, or frozen icon proof, not both')
+    _validate_icon(raw, 'cycle', expected_icon if expected_icon is not None else
+                   make_assembly_icon(routes, network_label=network_label))
 
 
 def _new_button(template, definition, *, kind, icon=None):
