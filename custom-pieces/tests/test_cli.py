@@ -34,6 +34,41 @@ class PortableCLITests(unittest.TestCase):
                       for path in json.loads((self.root / domain['registry']).read_text())['pieces']]
         self.assertEqual(len(json.loads(result.stdout)['pieces']), len(registered))
 
+    def test_documentation_check_is_read_only_and_reports_retained_legacy_guides(self):
+        paths = [p for p in self.root.rglob('*') if p.is_file()]
+        before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+        result = self.call('docs-check')
+        self.assertEqual(result.returncode, 0, result.stderr+result.stdout)
+        report = json.loads(result.stdout)
+        self.assertTrue(report['all_passed'])
+        self.assertGreaterEqual(report['current_layouts'], 14)
+        self.assertTrue(report['legacy_subjects'])
+        self.assertGreater(report['local_links_checked'], 1000)
+        self.assertEqual(before, {p: hashlib.sha256(p.read_bytes()).hexdigest()
+                                  for p in self.root.rglob('*') if p.is_file()})
+
+    def test_documentation_check_reports_a_broken_case_link_without_repairing_it(self):
+        identifier = 'hsr-component-modular-paired-climb'
+        directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
+        readme = directory/'README.md'
+        readme.write_text(readme.read_text()+'\n[Removed case](TESTING.md#case-removed-observation)\n')
+        before = {p: p.read_bytes() for p in (readme, directory/'TESTING.md',
+                                             directory/'checks/manual-tests.json')}
+        result = self.call('docs-check', '--piece', identifier)
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn('case-removed-observation', result.stdout)
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
+
+    def test_documentation_check_accepts_a_draft_pair_without_fabricated_evidence(self):
+        identifier = 'documentation-only-draft'
+        result = self.call('scaffold', '--id', identifier, '--name', 'Documentation Only Draft')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        result = self.call('docs-check', '--piece', identifier)
+        self.assertEqual(result.returncode, 0, result.stderr+result.stdout)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['current_layouts'], 1)
+        self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/identifier/'checks').exists())
+
     def test_invalid_display_names_do_not_reserve_ids_or_break_the_registry(self):
         files = [self.root/'config/allocations.json',
                  self.root/'domains/high-speed-rail/domain.json']

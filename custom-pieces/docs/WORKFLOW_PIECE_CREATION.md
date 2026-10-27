@@ -9,6 +9,8 @@ document_type: "procedure"
 
 A **piece definition**, `piece.json`, describes one reusable type. The generated build manifest records the resources and fingerprints produced from selected definitions. A **scaffold** is an unfinished registered entry; it does not create working geometry or traffic paths. This procedure orchestrates one new or revised piece. Use [BUILD_AND_INSTALL.md](BUILD_AND_INSTALL.md) for operator commands, [FRAMEWORK_ENGINEERING.md](FRAMEWORK_ENGINEERING.md) for shared technical contracts, and [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md) for every artwork, README, TESTING, catalogue, and connection-card generation step.
 
+Keep the [creation checklist and output-file table](WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) open while following this procedure. It identifies required and conditional files, authored and generated content, the command that creates each output, and the final readiness checks. A copied example folder or a passing draft documentation check does not supply the new piece's implementation or evidence.
+
 For an **existing piece**, open its README and `piece.json`, follow its `recipe` into the owning domain’s implementation map, and inspect its existing checks and evidence. Apply the [design-granularity decision](#0-decide-between-a-piece-and-an-assembly) before a substantial functional redesign. Preserve the registered piece and resource identifiers; skip scaffolding and allocation in sections 2 and 3. Continue with [section 4](#4-implement-the-recipe-and-the-independent-verifier), then the relevant verification, extraction, connector-generation, and documentation steps. Creating a separately selectable type uses the new-piece path instead. For a prose-only change, follow the [documentation refresh contract](FRAMEWORK_ENGINEERING.md#documentation-generation-and-observations).
 
 If the piece is a missing module in an assembly, first use [WORKFLOW: Assembly Creation](WORKFLOW_ASSEMBLY_CREATION.md) to agree on the layout and prove why a new reusable type is needed. That guide owns assembly positions, atomization, and the handoff to shared documentation generation. A new piece definition does not create a whole-assembly one-click button.
@@ -83,7 +85,15 @@ The concrete example uses the `high-speed-rail` domain. For a different network,
 python3 custom-pieces/scp.py scaffold --domain high-speed-rail --id example-crossing --name 'Example Crossing' --width 1 --depth 2
 ```
 
-The command creates `custom-pieces/domains/high-speed-rail/00_pieces/example-crossing/piece.json`, registers the draft, and records its local identifiers in `custom-pieces/config/allocations.json`. Read the printed file locations and inspect the generated manifest. A draft cannot be included in a working build until its construction recipe and verification are implemented.
+The command creates `custom-pieces/domains/high-speed-rail/00_pieces/example-crossing/piece.json` and its pending `README.md`/`TESTING.md` pair, registers the draft, and records its local identifiers in `custom-pieces/config/allocations.json`. Open all three new files and inspect the allocated definition and the pending authored chapters. The README has three chapters, and TESTING has six; their generated blocks will receive actual connection and observation data later. A draft cannot be included in a working build until its construction recipe and verification are implemented.
+
+Check the initial document structure without building game resources:
+
+```sh
+python3 -B custom-pieces/scp.py docs-check --piece example-crossing
+```
+
+The draft is allowed to lack compiled evidence and artwork at this stage. This command does not generate those files or approve the pending instructions. Follow the remaining implementation and documentation stages before presenting a documented experimental candidate.
 
 `--width` and `--depth` both default to 1 if omitted. Each must be a positive integer no greater than 16; the current scaffold supports at most 16 occupied tiles in total. For example, `--width 4 --depth 4` describes 16 tiles.
 

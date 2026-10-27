@@ -264,7 +264,7 @@ Removal checks its ownership receipt and saves a snapshot first. The tools do no
 
 ## Prepare the assembly menu
 
-Every assembly is delivered through **one assembly button**. Click that button, use **Tab** or **Shift+Tab** to select a component type, use **Home** or **End** to rotate that component, and click to place one copy. This is a component selector; it does not stamp the complete arrangement. The trumpet's button is **SCP | ASSEMBLY | HSR Trumpet**, and its fourteen distinct types appear once each in the cycle, in their first-use order in the assembly plan.
+Every assembly is delivered through **one assembly button**. Click that button, use **Tab** or **Shift+Tab** to select a component type, use **Home** or **End** to rotate that component, and click to place one copy. This is a component selector; it does not stamp the complete arrangement. The trumpet's button is **SCP | ASSEMBLY | HSR Trumpet**, and its thirteen distinct types appear once each in the cycle, in their first-use order in the assembly plan.
 
 The normal `build` command compiles the reusable pieces. The `assembly-menu` command is the required final menu step for an assembly: it preserves every piece DAT, removes the selected assembly members' individual menu presentations from this candidate, adds one assembly entry, and groups the original construction rows into the Tab cycle. Buttons for unrelated types in a broader source selection remain unchanged. The original menu and controller are retained as verification proof outside the installable folder. Piece identifiers, geometry, paths, shadows, construction definitions, and NetworkINI remain unchanged.
 
@@ -272,7 +272,7 @@ Finalize the source README files, artwork, connector exports, and generated obse
 
 Run the following steps from the repository root. The example uses `trumpet-parts-final-01` for the fresh normal source build and `straight-stem-trumpet-final-01` for the final assembly-menu candidate. Confirm that neither output directory nor the destination ZIP already exists. If any exists, replace `final-01` with an unused suffix, such as `final-02`, in every command below. Preserve an earlier candidate unchanged; when its documentation is superseded, label it as a historical candidate.
 
-1. Compile the assembly's parts into a fresh normal verified source build. This example contains only the trumpet's fourteen types. To retain other SCP types in a future installation, select those types and all the assembly's members in this source build.
+1. Compile the assembly's parts into a fresh normal verified source build. This example contains only the trumpet's thirteen types. To retain other SCP types in a future installation, select those types and all the assembly's members in this source build.
 
 ```sh
 python custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts-final-01 --progress
@@ -292,6 +292,8 @@ python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-tr
 ```
 
 The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the assembly selection, its single presentation ID, its Rail-menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. The current builder prepares one assembly per final candidate and rejects an already grouped source; it does not silently combine overlapping assembly cycles. The historical `menu-test` command remains a compatibility entry point, while new delivery instructions use `assembly-menu`.
+
+To create a second layout, follow the [bounded HSR assembly starter](WORKFLOW_ASSEMBLY_CREATION.md#start-a-small-hsr-assembly-from-existing-pieces) for the ordered `assembly.json`, domain registration, `menu-layout.json`, icon-adapter, and initial documentation steps. A new assembly using existing member types needs its own presentation identity, rather than copied trumpet IDs or another piece allocation.
 
 The assembly owns its canonical four-state `icon.png` beside `assembly.json`; its larger layout images stay in `previews/`. Assembly-menu preparation reads that icon and checks its expected artwork before packaging. If a registered assembly's icon is missing or intentionally needs regeneration, follow the [artwork-only command](WORKFLOW_DOCUMENTATION_GENERATION.md#menu-artwork-and-source-registration) before preparing a fresh candidate. The icon's fixed location requires no additional field in `assembly.json` or `menu-layout.json`.
 
@@ -315,6 +317,8 @@ A **DAT** is the game's archive of models, traffic paths, menu records, and othe
 
 ## Check and prepare distribution
 
+Run `python3 -B custom-pieces/scp.py docs-check` from the repository root for the read-only catalogue/shared-guide layout and local-link check. Repeat `--piece EXACT-ID` or `--assembly EXACT-ID` to limit the subject selection. The command reports retained legacy guides and checks current required files; it requires no native game inputs, writes no evidence, and does not establish that pending instructions or game tests are complete. Use the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) for required authored and generated artifacts.
+
 After the final README, artwork, and connector exports are ready, follow the [final-artifact procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging), and choose the packaging branch that matches the build. For an **ordinary verified piece build**, replace `BUILD_NAME` below with its existing build directory to package current documentation without rebuilding its compiled resources:
 
 ```sh
@@ -335,7 +339,7 @@ Real-NAM tests run when their supported local inputs are available; skipped case
 
 The source ZIP excludes private settings, build output, NAM binaries, caches, and backups. It is a development export. Public binary release remains blocked until public identifier allocation, NAM-derived asset permission, game/platform tests, and publication materials are recorded. See [RELEASE.md](RELEASE.md). No build or packaging command uploads anything to Simtropolis.
 
-Reusable component names describe their function and level. Their standalone pictures use a local **(X0,Y0)** grid at **0°**, without assembly P-labels. The [trumpet guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) shows **14 unique type pictures** and a separate **26-placement** table. Its six assembly views retain the fixed global X/Y grid and P-labels. Build it with `--set hsr-straight-stem-trumpet`. Prepare its single-button assembly menu after compiling the selected components.
+Reusable component names describe their function and level. Their standalone pictures use a local **(X0,Y0)** grid at **0°**, without assembly P-labels. The [trumpet guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) shows **13 unique type pictures** and a separate **25-placement** table. Its six assembly views retain the fixed global X/Y grid and P-labels. Build it with `--set hsr-straight-stem-trumpet`. Prepare its single-button assembly menu after compiling the selected components.
 
 
 Read [TESTING.md](TESTING.md) to record a real preview or game observation. Checkboxes are generated from scoped JSON records; do not edit them directly.

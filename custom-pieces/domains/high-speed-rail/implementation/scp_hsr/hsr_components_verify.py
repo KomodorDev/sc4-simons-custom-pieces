@@ -186,6 +186,19 @@ def _contract(spec):
     base = tiles[0]-0x100*cells[0][0]-0x10*cells[0][1]
     require(tiles == [base+0x100*x+0x10*row for x, row in cells],
             'HSR component tile allocation differs from its AutoTileBase grid')
+    if contract['kind'] == 'partition_component' and 'component' in spec:
+        # Complete manifests duplicate the literal geometry's local support
+        # declaration. Resource-only fixtures may omit source metadata, but
+        # a supplied declaration must match the independent measured plan.
+        declared = spec['component'].get('support_centers')
+        expected = [(east, -south) for east, south in contract['support_centres_xz']]
+        require(isinstance(declared, list) and len(declared) == len(expected)
+                and all(isinstance(point, (list, tuple)) and len(point) == 2
+                        and all(type(value) in (int, float) and math.isfinite(value) for value in point)
+                        for point in declared)
+                and all(math.dist(actual, target) <= EPS
+                        for actual, target in zip(sorted(map(tuple, declared)), sorted(expected))),
+                'HSR component declared supports differ from the independent support plan')
     return contract
 
 

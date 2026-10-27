@@ -611,6 +611,9 @@ def readme_overview(original, content):
 
 
 def _update_readme(path, content):
+    from .document_validation import validate_subject_documents
+    path = Path(path)
+    validate_subject_documents(path.parent, {'id': path.parent.name, 'kind': 'piece'})
     begin, end = "<!-- BEGIN CONNECTOR OVERVIEW -->", "<!-- END CONNECTOR OVERVIEW -->"
     original = path.read_text(encoding="utf-8")
     content = readme_overview(original, content)
@@ -662,6 +665,9 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     if not piece_ids or len(set(piece_ids)) != len(piece_ids) or not set(piece_ids) <= resolved["pieces"].keys():
         raise ValueError("Overview selection must name unique pieces present in the resolved library report")
     domain = root / "domains" / domain_id
+    from .document_validation import validate_subject_documents
+    for identifier in piece_ids:
+        validate_subject_documents(domain / "00_pieces" / identifier, {'id': identifier, 'kind': 'piece'})
     build = Path(build or root / "dist/current")
     if not build.is_absolute():
         build = root / build

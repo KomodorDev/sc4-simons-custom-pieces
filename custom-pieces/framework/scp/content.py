@@ -19,14 +19,15 @@ from pathlib import Path
 import re
 import shlex
 
+from .document_validation import (
+    ASSEMBLY_README_CHAPTERS, ASSEMBLY_TESTING_LAYOUT_MARKER, PIECE_README_CHAPTERS,
+    PIECE_TESTING_LAYOUT_MARKER, TESTING_CHAPTERS, validate_subject_documents,
+)
+
 STATES = ('unverified', 'passed', 'failed', 'stale', 'not_applicable')
 ROTATIONS = (0, 90, 180, 270)
-ASSEMBLY_TESTING_LAYOUT_MARKER = '<!-- ASSEMBLY TESTING LAYOUT: 1 -->'
-ASSEMBLY_TESTING_CHAPTERS = ('1. Test scope', '2. Test setup', '3. Software checks',
-                             '4. Game checks', '5. Results and known issues', '6. Design history')
-PIECE_TESTING_LAYOUT_MARKER = '<!-- PIECE TESTING LAYOUT: 1 -->'
+ASSEMBLY_TESTING_CHAPTERS = TESTING_CHAPTERS
 PIECE_TESTING_CHAPTERS = ASSEMBLY_TESTING_CHAPTERS
-PIECE_README_CHAPTERS = ('1. Views', '2. Piece and placement', '3. Connection matrix')
 MANUAL_KINDS = frozenset({
     'preview_review', 'in_game_render', 'in_game_placement', 'in_game_connection',
     'in_game_journey', 'in_game_route_query', 'in_game_visible_travel',
@@ -859,6 +860,7 @@ def _assembly_matrix_enabled(directory, subject):
 
 def update_manual_summary(path, record, *, case_document=None, heading_level=2):
     """Replace or append the status block; preserve the authored guide."""
+    validate_subject_documents(Path(path).parent, record['subject'], allow_missing=True)
     summary = summarize_manual_record(record)
     if case_document is None:
         case_document = 'TESTING.md' if record['subject']['kind'] == 'assembly' and Path(path).name != 'TESTING.md' else ''
@@ -1017,10 +1019,39 @@ def piece_document_scaffold(subject):
             'TESTING.md': _testing_document_scaffold({**subject, 'kind': 'piece'})}
 
 
+def assembly_document_scaffold(subject):
+    """Return the current pending assembly pair without creating evidence or files."""
+    title = subject.get('name', subject['id'])
+    lines = [markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
+                               'players', 'guide').rstrip(), '', '# '+title, '',
+             ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+                        for chapter in ASSEMBLY_README_CHAPTERS)+' · [Testing ↗ (separate document)](TESTING.md)', '',
+             'This modular blueprint has not yet been documented. Its assembly button cycles forward with Tab and backward with Shift+Tab; each click places one component.', '']
+    pending = ('The six accepted layout pictures and their software-preview limits have not yet been documented.',
+               'The required reusable component types, exact menu names, identifiers, and quantities have not yet been documented.',
+               'The numbered placement steps, reference positions, rotations, and approach requirements have not yet been documented.')
+    for chapter, paragraph in zip(ASSEMBLY_README_CHAPTERS[:3], pending):
+        lines += ['## '+chapter, '', paragraph, '']
+    lines += ['<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->', '', '## '+ASSEMBLY_README_CHAPTERS[3], '',
+              'The measured entrance-to-exit matrix has not yet been generated.', '',
+              '<!-- END ASSEMBLY CONNECTION MATRIX -->', '']
+    return {'README.md': '\n'.join(lines),
+            'TESTING.md': _testing_document_scaffold({**subject, 'kind': 'assembly'})}
+
+
 def _ensure_piece_document(directory, subject):
-    """Give a missing piece guide the current layout; preserve every existing guide."""
+    """Give a missing subject guide its scaffold; preserve every existing guide."""
     readme = Path(directory)/'README.md'
-    if subject['kind'] != 'piece' or readme.is_file():
+    if readme.is_file():
+        return readme
+    if subject['kind'] == 'assembly':
+        testing = Path(directory)/'TESTING.md'
+        if testing.is_file() and ASSEMBLY_TESTING_LAYOUT_MARKER not in testing.read_text():
+            title = subject.get('name', subject['id'])
+            readme.write_text(markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
+                                                'players', 'guide')+f'# {title}\n')
+        else:
+            readme.write_text(assembly_document_scaffold(subject)['README.md'])
         return readme
     if (Path(directory)/'piece.json').is_file():
         subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
@@ -1043,22 +1074,6 @@ def _split_piece_enabled(directory, subject):
     return _piece_layout_version(directory, subject) == 2
 
 
-def _generated_block_intervals(text, names, *, optional=(), context):
-    """Validate disjoint generated regions before any caller replaces their text."""
-    intervals = {}
-    for name in (*names, *optional):
-        begin, end = f'<!-- BEGIN {name} -->', f'<!-- END {name} -->'
-        if name in optional and begin not in text and end not in text:
-            continue
-        _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
-                 context+' requires one ordered '+name+' block')
-        intervals[name] = (text.index(begin), text.index(end)+len(end))
-    ordered = sorted(intervals.values())
-    _require(all(previous[1] <= following[0] for previous, following in zip(ordered, ordered[1:])),
-             context+' generated blocks must not overlap or nest')
-    return intervals
-
-
 def _numbered_piece_enabled(directory, subject):
     """Only an explicit version selects the numbered inline or split guide."""
     from .piece_matrix import MARKER
@@ -1075,42 +1090,19 @@ def _numbered_piece_enabled(directory, subject):
         _require(text.count(begin) == text.count(end) == 1 and text.index(begin) < text.index(end),
                  'Numbered piece guide requires one ordered '+marker+' block')
     if version == 2:
-        _generated_block_intervals(text, markers, optional=('CONNECTOR OVERVIEW',), context='Split piece README')
-        _require(re.findall(r'^## (.+)$', text, re.M) == list(PIECE_README_CHAPTERS),
-                 'Split piece README requires its three numbered chapters')
-        _require(not any(f'<!-- {edge} {marker} -->' in text
-                        for edge in ('BEGIN', 'END')
-                        for marker in ('MANUAL SUMMARY', 'CONNECTIONS', 'MANUAL CHECKS')),
-                 'Split piece guide keeps testing blocks in TESTING.md')
+        validate_subject_documents(directory, subject, allow_missing=True)
     return True
 
 
 def _validate_piece_testing_document(testing):
     """Check an existing split document without depending on a saved README."""
-    text = Path(testing).read_text()
-    _require(text.count(PIECE_TESTING_LAYOUT_MARKER) == 1,
-             'Split piece testing layout marker must appear once')
-    _require(re.findall(r'^## (.+)$', text, re.M) == list(PIECE_TESTING_CHAPTERS),
-             'Piece TESTING.md requires its six numbered chapters')
-    intervals = _generated_block_intervals(text, ('CONNECTIONS', 'MANUAL SUMMARY', 'MANUAL CHECKS'),
-                                          context='Piece testing')
-    bounds = [text.index('## '+chapter+'\n') for chapter in PIECE_TESTING_CHAPTERS]
-    for marker, chapter in (('CONNECTIONS', 0), ('MANUAL SUMMARY', 4), ('MANUAL CHECKS', 4)):
-        begin, end = intervals[marker]
-        _require(bounds[chapter] < begin < end < bounds[chapter+1],
-                 'Piece testing requires one '+marker+' block in chapter '+str(chapter+1))
+    validate_subject_documents(Path(testing).parent,
+                               {'id': Path(testing).parent.name, 'kind': 'piece'}, allow_missing=True)
 
 
 def _preflight_piece_documents(directory, subject):
-    """Validate current or default split layouts before creating or changing files."""
-    if subject['kind'] != 'piece':
-        return
-    directory = Path(directory)
-    missing_readme = not (directory/'README.md').is_file()
-    if not missing_readme:
-        _numbered_piece_enabled(directory, subject)
-    if (missing_readme or _split_piece_enabled(directory, subject)) and (directory/'TESTING.md').is_file():
-        _validate_piece_testing_document(directory/'TESTING.md')
+    """Historical private name; all subject writers now share the same preflight."""
+    return validate_subject_documents(directory, subject, allow_missing=True)
 
 
 def _nested_piece_section(text):
@@ -1165,7 +1157,7 @@ def _testing_document_scaffold(subject):
     lines = [markdown_metadata(title, f'Inspect this {noun}’s exact checks, resource evidence, and explicit human observations.',
                                'contributors', 'reference').rstrip(), '',
              '# '+title, '', marker, '',
-             ' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
+             '['+noun.capitalize()+' overview ↗ (README)](README.md) · '+' · '.join(f'[{chapter}](#{chapter.replace(".", "").lower().replace(" ", "-")})'
                         for chapter in ASSEMBLY_TESTING_CHAPTERS), '']
     pending = (
         f'The {noun}-specific test scope has not yet been documented. Start with the [{noun} overview](README.md).',
@@ -1193,7 +1185,14 @@ def _ensure_testing_document(directory, subject):
     if not testing.is_file():
         if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
             subject = {**json.loads((directory/'piece.json').read_text()), **subject}
-        testing.write_text(_testing_document_scaffold(subject))
+        text = _testing_document_scaffold(subject)
+        readme = directory/'README.md'
+        if subject['kind'] == 'assembly' and readme.is_file() and re.findall(r'^## (.+)$', readme.read_text(), re.M) != list(ASSEMBLY_README_CHAPTERS):
+            # Retain an existing legacy guide instead of silently opting it in.
+            text = markdown_metadata('Testing: '+subject.get('name', subject['id']),
+                'Retain this assembly’s recorded checks and explicit human observations.',
+                'contributors', 'reference')+'# Testing: '+subject.get('name', subject['id'])+'\n'
+        testing.write_text(text)
     return testing
 
 
@@ -1205,18 +1204,15 @@ def _testing_heading_level(testing, subject):
     if split:
         _validate_piece_testing_document(testing)
         return 3
+    validate_subject_documents(Path(testing).parent, subject, allow_missing=True)
     count = Path(testing).read_text().count(ASSEMBLY_TESTING_LAYOUT_MARKER)
-    _require(count <= 1, 'Assembly testing layout marker must appear only once')
     return 3 if count else 2
 
 
 def _write_subject_views(directory, subject, connections, record, piece_link=None):
     directory = Path(directory)
+    validate_subject_documents(directory, subject, allow_missing=True)
     readme = _ensure_piece_document(directory, subject)
-    if not readme.is_file():
-        title = subject.get('name', subject['id'])
-        readme.write_text(markdown_metadata(title, 'Explain this assembly, its connections, and its test coverage.',
-                                            'players', 'guide')+f'# {title}\n')
     if _numbered_piece_enabled(directory, subject):
         _write_numbered_piece_views(directory, subject, connections, record, piece_link)
         return
@@ -1328,10 +1324,12 @@ def record_observation_file(record_path, observation_path):
     record_path,observation_path=Path(record_path),Path(observation_path)
     record=json.loads(record_path.read_text());request=json.loads(observation_path.read_text())
     directory=record_path.parent.parent
-    _preflight_piece_documents(directory, record['subject'])
+    document_state = _preflight_piece_documents(directory, record['subject'])
     readme=directory/'README.md'
     numbered_piece = (record['subject']['kind'] == 'piece' and not readme.is_file()) or _numbered_piece_enabled(directory, record['subject'])
-    matrix_views = _assembly_matrix_enabled(directory, record['subject']) or numbered_piece
+    matrix_views = (_assembly_matrix_enabled(directory, record['subject']) or numbered_piece
+                    or (record['subject']['kind'] == 'assembly' and not readme.is_file()
+                        and document_state['layout'] == 'pending'))
     if matrix_views:
         connection_path=directory/'connections.json'
         _require(connection_path.is_file(), 'No measured connections for '+record['subject']['id']+'; cannot refresh its connection matrix')
@@ -1376,6 +1374,7 @@ def record_observation_file(record_path, observation_path):
 
 def _manual_workflow(directory, record, *, heading_level=3):
     """Return a short local command; shared recording instructions live once."""
+    validate_subject_documents(directory, record['subject'], allow_missing=True)
     candidates = [case for case in record['cases'] if case['kind'] in MANUAL_KINDS
                   and case['kind'] != 'in_game_connection']
     if not candidates:
@@ -1585,16 +1584,13 @@ def refresh_catalog_content(root, *, records=None, changed_piece_ids=None, scope
                 known[identifier]=json.loads(file.read_text())
             else:
                 skipped.append(identifier)
-    subjects=[]
+    selected_pieces=[]
     for identifier in sorted(changed & known.keys()):
         piece=pieces[identifier];directory=piece_directories[identifier]
         if not metadata_refresh and not (directory/'checks/manual-tests.json').is_file():
             skipped.append(identifier);continue
-        images=piece_preview_hashes(directory)
-        subjects.append(write_subject_content(directory,{**piece,'kind':'piece'},known[identifier],
-                            known[identifier].get('source',{}).get('resource_fingerprints',{}),
-                            preview_hashes=images,write_readme=True,refresh_metadata=metadata_refresh))
-    assembly_results=[]
+        selected_pieces.append((identifier, piece, directory))
+    selected_assemblies=[]
     for assembly in assemblies:
         directory=root/assembly['path']
         placements=assembly['scene'].get('placements',assembly['scene'].get('instances',[]))
@@ -1605,6 +1601,21 @@ def refresh_catalog_content(root, *, records=None, changed_piece_ids=None, scope
             skipped.append(assembly['id']);continue
         if not metadata_refresh and not all((directory/name).is_file() for name in ('connections.json','checks/manual-tests.json')):
             skipped.append(assembly['id']);continue
+        selected_assemblies.append((assembly, directory))
+    # Validate the complete effective selection before the first metadata/view
+    # write. A malformed later assembly must not partially refresh its pieces.
+    for identifier, piece, directory in selected_pieces:
+        validate_subject_documents(directory, {**piece, 'kind': 'piece'}, allow_missing=True)
+    for assembly, directory in selected_assemblies:
+        validate_subject_documents(directory, {'id': assembly['id'], 'kind': 'assembly'}, allow_missing=True)
+    subjects=[]
+    for identifier, piece, directory in selected_pieces:
+        images=piece_preview_hashes(directory)
+        subjects.append(write_subject_content(directory,{**piece,'kind':'piece'},known[identifier],
+                            known[identifier].get('source',{}).get('resource_fingerprints',{}),
+                            preview_hashes=images,write_readme=True,refresh_metadata=metadata_refresh))
+    assembly_results=[]
+    for assembly, directory in selected_assemblies:
         record=(assembly_connectivity(assembly['id'],assembly['scene'],known,pieces) if metadata_refresh else
                 json.loads((directory/'connections.json').read_text()))
         images=subject_preview_hashes(directory, 'assembly')

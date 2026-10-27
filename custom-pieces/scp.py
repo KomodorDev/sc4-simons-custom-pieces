@@ -145,6 +145,9 @@ def main():
     connector_cmd.add_argument('--build', type=Path, default=Path('dist/current'), help='Existing compiled build, relative to custom-pieces unless absolute')
     connector_cmd.add_argument('--plugins', type=Path, help='Texture source for rendering or overview freshness checks; never installs anything')
     connector_cmd.add_argument('--no-render', action='store_true', help='Refresh/check consumer data without artwork or README generation')
+    docs_cmd = sub.add_parser('docs-check', help='Read-only check of current document layouts, files, and local links; reports retained legacy guides')
+    docs_cmd.add_argument('--piece', action='append', dest='documentation_pieces', help='Exact piece ID; repeat to select more')
+    docs_cmd.add_argument('--assembly', action='append', dest='documentation_assemblies', help='Exact assembly ID; repeat to select more')
     observations_cmd = sub.add_parser('observations', help='Maintain observation records without extracting resources or computing compatibility')
     observations_cmd.add_argument('action', choices=('retire-connections', 'refresh-images'))
     observations_cmd.add_argument('--piece', action='append', dest='observation_pieces', help='Exact registered piece ID; repeat to select more')
@@ -162,6 +165,12 @@ def main():
         menu_cmd.add_argument('--plugins', type=Path)
         menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
     args = parser.parse_args()
+    if args.command == 'docs-check':
+        from scp.documentation_check import check_documentation
+        result = check_documentation(ROOT, piece_ids=args.documentation_pieces,
+                                     assembly_ids=args.documentation_assemblies)
+        print(json.dumps(result, indent=2))
+        return 0 if result['all_passed'] else 1
     if args.command == 'assembly-icons':
         from scp.menu_experiment import write_assembly_icons
         result = write_assembly_icons(ROOT, domain_id=args.domain)

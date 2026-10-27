@@ -24,7 +24,8 @@ custom-pieces/
 │   ├── BUILD_AND_INSTALL.md               Operate build, install, and package commands
 │   ├── FRAMEWORK_ENGINEERING.md           Shared implementation contracts
 │   ├── TESTING.md                         Interpret and record exact observations
-│   └── RELEASE.md                         Public distribution requirements
+│   ├── RELEASE.md                         Public distribution requirements
+│   └── templates/                        Unregistered starter source, not catalogue content
 ├── domains/<domain>/
 │   ├── README.md                     Player guide and generated navigation
 │   ├── AGENTS.md                     Domain-specific agent instructions
@@ -86,6 +87,7 @@ These fields describe the document; piece and connector data retain their own au
 | Subject `evidence/preview.json` and `evidence/preview-top.json` | Independent angled/top source, camera, local-grid, common-header, and image fingerprints; the generic selected-view renderer owns both. |
 | Piece `previews/connection-overview.png` and `evidence/connection-overview.json` | Generated boundary cards and their separate provenance, documented in [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md). |
 | Domain `assets/figures/` | Shared reference images explained in the player guide. |
+| `docs/templates/` | Unregistered authoring examples. Copy and deliberately register a starter through its documented procedure; files here are not piece or assembly entries and reserve no game identities. |
 | `framework/scp/` and `tests/` | Shared, transport-neutral tools and tests. |
 | Domain `implementation/`, `tools/`, and `tests/`; assembly `tests/` | Network-specific generation and independent checks with their owning domain or layout. |
 | `local/` | Private workstation settings, supported native inputs, and rebuildable working data. |
@@ -93,9 +95,13 @@ These fields describe the document; piece and connector data retain their own au
 
 ## Generated views
 
+For a new subject, use the [stage-by-stage creation checklist](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) to distinguish required and conditional files, authored inputs, generated outputs, and their producing commands. The source map above describes ownership; the checklist describes when each file must exist. The [small HSR assembly starter](docs/WORKFLOW_ASSEMBLY_CREATION.md#start-a-small-hsr-assembly-from-existing-pieces) demonstrates the separate plan, domain registration, menu registration, and first-population steps without allocating another reusable type.
+
 A **generated section** sits between named HTML comment markers and is replaced by its generator. Keep authored explanations outside those markers. Subject summaries, intrinsic movement matrices, connection tables, checklists, and catalogues derive from their source records; edit those records or the owning generator. The numbered piece layout, `PIECE CONNECTION MATRIX`, `CONNECTOR OVERVIEW`, and related outputs follow [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#piece-readme).
 
 A **prose-only refresh** updates generated views without changing measured connection or observation bytes. Actual resource changes require extraction and relevant evidence refresh under [framework engineering](docs/FRAMEWORK_ENGINEERING.md#documentation-generation-and-observations). Preserve original backups and frozen evidence. Current evidence stays with the retained subject it verifies; explicitly deleted subjects do not retain obsolete compatibility copies.
+
+Run `python3 -B custom-pieces/scp.py docs-check` from the repository root for the read-only catalogue and shared-guide structure/link check; use repeated `--piece EXACT-ID` or `--assembly EXACT-ID` selectors for a subject selection. Legacy guides are reported explicitly and retained. This check does not generate missing evidence, validate native game resources, or record a manual observation.
 
 New or intentionally refreshed pieces and assemblies have README plus TESTING. A split piece README contains three numbered chapters and a separate Testing link; its TESTING document follows the [shared six-chapter layout](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#required-piece-and-assembly-testing-layout). The markers are `<!-- PIECE README LAYOUT: 2 -->` and `<!-- PIECE TESTING LAYOUT: 1 -->`; legacy combined piece guides, including version 1, remain unchanged until explicitly migrated. The content generator preserves authored chapters during refresh. Keep shared procedures in `docs/`, and link their authoritative explanation. The [skill](skills/network-assembly-design/SKILL.md) routes agent tasks to those procedures.
 
