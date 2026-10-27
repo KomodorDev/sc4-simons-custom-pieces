@@ -43,7 +43,8 @@ class AssemblyIconTests(unittest.TestCase):
         bright_lower = {(x, y) for y in range(3, 41) for x in range(3, 41)
                         if (lambda p: p[0] > 180 and p[1] > 160 and p[2] < p[1])(
                             normal.getpixel((x, y)))}
-        self.assertTrue(any(y < 6 for _, y in bright_lower))
+        # This fixture's upper-left route shares the five-row brand area.
+        self.assertTrue(any(y < 11 for _, y in bright_lower))
         self.assertTrue(any(x > 34 for x, _ in bright_lower))
         self.assertFalse(any(x > 20 and y < 16 for x, y in bright_lower))
         self.assertTrue(any(p[1] > p[0] + 60 and p[2] > 120
@@ -63,7 +64,7 @@ class AssemblyIconTests(unittest.TestCase):
                 frame = image.crop((44 * number, 0, 44 * (number + 1), 44))
                 # Recognizable three-by-five letters must remain visible at
                 # native size, including the locked state.
-                for top, positions in ((5, (28, 32, 36)),
+                for top, positions in ((5, (5, 9, 13)),
                                        (33, (9, 13, 17, 24, 28, 32))):
                     for left in positions:
                         self.assertTrue(all(any(min(frame.getpixel((x, y))[:3]) > 170

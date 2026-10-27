@@ -522,7 +522,7 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
                 'scp.menu_experiment_resources': _sha(Path(menu_experiment_resources.__file__).read_bytes())},
             'assembly_source_sha256': _sha(_json_bytes(assembly['scene'])),
             'placed_routes_sha256': _sha(_json_bytes(points)),
-            'labels': {'brand': 'SCP', 'brand_position': 'top-right',
+            'labels': {'brand': 'SCP', 'brand_position': 'top-left',
                        'category': 'ASM', 'network': network, 'footer_position': 'bottom-centre'},
             'footer_ink_rows_px': [33, 37],
             'piece_definitions_sha256': {piece['id']: _sha(_json_bytes(piece))

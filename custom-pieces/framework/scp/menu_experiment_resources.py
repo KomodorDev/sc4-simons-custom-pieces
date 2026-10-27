@@ -204,7 +204,7 @@ def make_assembly_icon(routes=None, *, network_label=None):
         # Overlay crisp 3 by 5 letters on the full-size diagram. The footer's
         # last ink row is 37, leaving clearance above the bottom border.
         draw = ImageDraw.Draw(image)
-        _assembly_label(draw, 'SCP', 28, 5, (190, 210, 216))
+        _assembly_label(draw, 'SCP', 5, 5, (190, 210, 216))
         footer = 'ASM ' + network_label
         _assembly_label(draw, footer, (44 - (4 * len(footer) - 2)) // 2, 33,
                         (225, 235, 238))

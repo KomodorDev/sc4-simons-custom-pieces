@@ -22,7 +22,7 @@ Use [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md) t
 
 Open **Transportation → Rail** and hover over a button beginning **SCP |** to read its full name and description. Teal **PART** means one independently placeable building block. Purple **PNP** means an implemented complete junction placed with one click. PNP does not mean game operation has passed testing. A collection or assembly guide does not create a complete-interchange button.
 
-Assembly icons use the available button area for a drawing of the complete layout, with a tiny **SCP** label at the top right and a small **ASM** plus network label at the bottom centre. **SCP** means Simon’s Custom Pieces, and **ASM** means a modular assembly built through several component placements. For example, **ASM HSR** identifies a high-speed-rail assembly. These labels overlay the full-size drawing, with space below the bottom label. Hover over the button to read the assembly’s full name; select it, use **Tab** or **Shift+Tab** to choose a reusable component, and click once for each placement shown in its guide.
+Assembly icons use the available button area for a drawing of the complete layout, with a tiny **SCP** label at the top left and a small **ASM** plus network label at the bottom centre. **SCP** means Simon’s Custom Pieces, and **ASM** means a modular assembly built through several component placements. For example, **ASM HSR** identifies a high-speed-rail assembly. These labels overlay the full-size drawing, with space below the bottom label. Hover over the button to read the assembly’s full name; select it, use **Tab** or **Shift+Tab** to choose a reusable component, and click once for each placement shown in its guide.
 
 | Network code |Meaning |
 | --- | --- |

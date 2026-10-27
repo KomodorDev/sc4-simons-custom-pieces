@@ -259,7 +259,7 @@ class MenuExperimentTests(unittest.TestCase):
         self.assertEqual(provenance['output']['sha256'], hashlib.sha256(self.assembly_icon.read_bytes()).hexdigest())
         self.assertIn('no compiled model rendering', provenance['basis'])
         self.assertEqual(provenance['in_game_appearance'], 'unverified')
-        self.assertEqual(provenance['labels'], {'brand': 'SCP', 'brand_position': 'top-right',
+        self.assertEqual(provenance['labels'], {'brand': 'SCP', 'brand_position': 'top-left',
                          'category': 'ASM', 'network': 'HSR', 'footer_position': 'bottom-centre'})
         self.assertEqual(provenance['footer_ink_rows_px'], [33, 37])
         after = {path.relative_to(self.root): path.read_bytes()
