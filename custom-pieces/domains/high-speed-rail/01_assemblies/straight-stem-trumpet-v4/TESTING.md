@@ -13,20 +13,23 @@ document_type: "reference"
 
 The [README](README.md) is the assembly overview: pictures, required piece types, exact placements, and a summary matrix of external connections. This document holds the test procedure, exact cases, observations, failures, and engineering decisions. This trumpet is the working example for the revised presentation; a shared assembly README convention has not yet been finalized.
 
-A **port** is an entrance to or exit from the assembly. Each matrix row is an entrance, and each column is an exit. The axis labels identify the network service as well as the approach, so an HSR port remains distinct from any future passenger, ground-rail, or other network port at the same approach. West, East, and South name the approaches in the README's north-up plan; the cases below retain each tested rotation explicitly.
+A **port** is an entrance to or exit from the assembly. Each matrix row is an entrance, and each column is an exit. The axis labels identify the network service as well as the approach, so an HSR port remains distinct from any future passenger, ground-rail, or other network port at the same approach. West, East, and South name the approaches in the README's north-up plan. West → East and East → West are separate cells and separate directed journeys.
 
-Each permitted connection has four separate checks:
+**Game appearance** has one overall status above the matrix. A person inspects the complete placed assembly in the game for missing rails, broken decks, incorrect walls, pillars, and shadows. Generated preview pictures do not establish an in-game appearance pass.
+
+Each permitted connection has three separate checks:
 
 1. **Saved PATH:** software can follow the train routes encoded in the saved game resources from this entrance to this exit. A PATH is a resource that describes permitted vehicle movement. A software pass establishes this routing result; it does not establish what the game displays or simulates.
-2. **Game appearance:** a person has inspected the complete placed assembly in the game. This is a whole-assembly check for each rotation, shared by the permitted cells, rather than a separate visual inspection of every journey. Look for missing rails, broken decks, incorrect walls, pillars, and shadows. Generated preview pictures do not count as an in-game appearance pass.
-3. **Route Query:** the game's Route Query tool shows traffic following the specific entrance-to-exit connection. Record its direction, rotation, environment, and evidence separately from visible train travel.
-4. **Visible train travel:** a person has watched a train travel through the specific entrance-to-exit connection in the game. A Route Query line alone does not satisfy this check. Record the direction, rotation, environment, and evidence for the observed train.
+2. **Route Query:** the game's Route Query tool shows traffic following the specific entrance-to-exit connection. Record the direction, environment, and evidence separately from visible train travel.
+3. **Visible train travel:** a person has watched a train travel through the specific entrance-to-exit connection in the game. A Route Query line alone does not satisfy this check. Record the direction, environment, and evidence for the observed train.
 
-A matrix check is complete only when its required rotation cases have current passes; partial, failed, stale, and unverified coverage remains explicit. A **stale** observation belongs to inputs that have since changed and therefore cannot establish the current result. A forbidden connection is an intentionally prohibited journey, not a failed permitted journey. Its separate negative tests must confirm that the game prevents that travel. The matrix summarizes evidence; it does not discover compatible neighbouring pieces.
+The README uses **✅** for a current pass, **❌** for a current failure, and **?** when a current result has not been established. Open its status links for exact evidence, failures, stale results, or missing coverage. A **stale** observation belongs to inputs that have since changed and therefore cannot establish the current result. A forbidden connection is an intentionally prohibited journey; its separate in-game check confirms that the game prevents that travel. The matrix summarizes evidence; it does not discover compatible neighbouring pieces.
 
-The former combined journey criterion allowed Route Query or traffic observation. For this pilot, its 24 unobserved journey cases are replaced by 24 Route Query cases and 24 visible-travel cases: six directions in four rotations for each check. No game result is converted into a pass by this split. The two existing software observations and all other scopes remain preserved. Any observed legacy case retained by the tooling stays historical and cannot satisfy either new criterion automatically.
+Manual game checks use the north-up test layout shown in the README. **0°** identifies that reference orientation in the record; the test plan does not require rebuilding and retesting the whole assembly at 90°, 180°, and 270°. Individual pieces still use the placement table's specified rotations. The independent software checks retain the supported construction rotations and their existing routing requirements.
 
-Use the exact case links in the matrix and the [test checklist](#test-checklist) to record results. A pass covers only its recorded game environment and inputs. See [game testing](#game-testing) for the open demolition defect and the checks that the connection matrix does not cover.
+There is one Route Query case and one visible-travel case for each of the six permitted directions, one whole-assembly appearance case, and one negative case for each of the three forbidden U-turns. Placement, demolition, and save/reload each have one case for the reference layout. The six existing preview-review cases stay separate from actual game appearance. Previously unobserved duplicate rotation cases are removed; any observed retired case stays historical. No game result is converted into a pass by changing this test plan, and both existing software observations remain unchanged.
+
+Use the exact case links in the matrix and the [test checklist](#test-checklist) to record results. A pass covers only its recorded game environment, layout, and inputs. See [game testing](#game-testing) for the open demolition defect and the checks that the connection matrix does not cover.
 
 ## Accepted and retained candidates
 
@@ -81,7 +84,7 @@ The schema-3 [current resource contract](checks/resources.json) pins all **14 cu
 
 The earlier redesign was limited to eight world tiles: **(X0–X1, Y13)** and **(X13–X14, Y13)** for paired tails and joining collars; **(X6, Y6–Y7)** and **(X8, Y6–Y7)** for one-way tails and joining collars. The ledger preserves its measured movement and bounds as history. This cleanup authorizes no geometry changes: the current fingerprint contract protects **all 109 tiles**, including those eight, and the four extracted placements still use the existing standard straight types at their specified rotations. Each current type generates its geometry from its own retained source.
 
-The placement contract requires **26 placements, 14 types, 109 occupied tiles, and 75 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. All six HSR journeys must pass every proper rotation, with no U-turn or unintended level transfer. Full native bed, underside, and parapet sections are checked at the four exposed ordinary connections. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
+The placement contract requires **26 placements, 14 types, 109 occupied tiles, and 75 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. The software verifier checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer. Full native bed, underside, and parapet sections are checked at the four exposed ordinary connections. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
 
 The verifier also checks full **5 m** train corridors, native visible rails, deck intersections, pillar contacts, separate tile ownership, all five model/shadow zooms, and construction rotation lists. Existing per-module minimum radius is **24 m**, curvature-change limit **0.0015 per square metre**, and native-end curvature limit **0.0005 per metre**. The two direct-slip journeys receive additional end-to-end checks. The other four journeys are pinned to their exact approved current geometry and retain the constituent modules' independent contracts; this does not impose a new whole-journey curvature threshold on the loop.
 
@@ -140,7 +143,7 @@ Use clear, flat terrain for the first game test and keep the full **20 × 23 til
 9. Select **One-Way HSR L2 Eight-Metre Straight**. Place **P01BS (X6, Y6)** at **180°**, pointing south, and **P03DS (X8, Y6)** at **0°**, pointing north. These complete the two connections between the shortened curves and P02A; they are the same button in different rotations.
 10. Extend compatible ordinary paired HSR beyond the west edge of X0, east edge of X19, and south edge of Y0. All three outside connections have their train path at **15.5 m**. Supply travel demand and test every journey below using separate Route Query and visible-train observations.
 
-The selected pieces support proper **0°, 90°, 180° and 270°** rotations in their construction rules. Keyboard response, cursor anchors, terrain behaviour, and actual train operation still require human tests. Plop & Paint does not stamp this complete blueprint.
+The selected pieces support proper **0°, 90°, 180°, and 270°** rotations in their construction rules. For this game test, use each placement at the rotation specified in the README. Keyboard response, cursor anchors, terrain behaviour, and actual train operation still require human observations. Plop & Paint does not stamp this complete blueprint.
 
 ### Directed routes under test
 
@@ -159,11 +162,11 @@ U-turns and transfers between the two crossing levels are forbidden. The separat
 
 ## Game testing
 
-**Open demolition defect, reported 2026-10-23:** selecting one tile for demolition caused connected custom parts to appear as Monorail; disconnected copies remained unchanged in the original report. The user also confirmed a smaller reproduction: place three copies of `hsr-component-lower-paired-straight` end to end, delete the middle copy, and both connected survivors appear as Monorail. The disconnected control's outcome was not separately reported for this second test. The exact original deleted type, orientation, affected cells, and confirmed game environment remain unknown. The [scoped failure report](evidence/demolition-regression-20261023.json) binds the installed menu-trial context and retains both observations and their limits. Static comparison found all 165 installed piece archives and every construction definition unchanged from the pre-menu installation; it does not establish the runtime cause or a fix. Follow the [single-tile demolition regression procedure](../../../../docs/TESTING.md#investigate-single-tile-demolition-and-connected-survivors) in a disposable city. Existing whole-placement demolition, and save/reload observations do not cover this failure.
+**Open demolition defect, reported 2026-10-23:** selecting one tile for demolition caused connected custom parts to appear as Monorail; disconnected copies remained unchanged in the original report. The user also confirmed a smaller reproduction: place three copies of `hsr-component-lower-paired-straight` end to end, delete the middle copy, and both connected survivors appear as Monorail. The disconnected control's outcome was not separately reported for this second test. The exact original deleted type, orientation, affected cells, and confirmed game environment remain unknown. The [scoped failure report](evidence/demolition-regression-20261023.json) binds the installed menu-trial context and retains both observations and their limits. Static comparison found all 165 installed piece archives and every construction definition unchanged from the pre-menu installation; it does not establish the runtime cause or a fix. Follow the [single-tile demolition regression procedure](../../../../docs/TESTING.md#investigate-single-tile-demolition-and-connected-survivors) in a disposable city. Existing whole-placement demolition and save/reload observations do not cover this failure.
 
 V4 game observations remain **unverified** unless the user has explicitly confirmed the exact case in this subject's own record. This cleanup changes no game observation. Use the [shared observation procedure](../../../../docs/TESTING.md) to record precise human results in `checks/manual-tests.json`; software checks cannot create those confirmations.
 
-After installing an authorized test build, use a disposable flat city. Inspect P01AW/P01A and P03B/P03BE at every zoom, then P01B/P01BS and P03DS/P03D. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement and four rotations. Build the complete arrangement, supply real Monorail demand and check every journey with Route Query and moving trains. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
+After installing an authorized test build, use a disposable flat city. Inspect P01AW/P01A and P03B/P03BE at every zoom, then P01B/P01BS and P03DS/P03D. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement at its specified orientation. Build the complete reference arrangement, supply real Monorail demand, and check every journey with separate Route Query and visible-train observations. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
 
 <!-- BEGIN MANUAL CHECKS -->
 
@@ -173,9 +176,9 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 **States:** [x] passed; [ ] unverified, failed, or stale; N/A is an explicit inapplicable declaration. A dash means no case was declared in that column. Every pass covers only its recorded environment. T means a distinct construction-transposed state.
 
-Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
+Human game checks are required only at 0° CCW. Supported construction orientations and software rotation checks retain their separate scope; these human cases do not establish observations at the other orientations.
 
-Current totals: unverified: 82, passed: 2, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 25, passed: 2, failed: 0, stale: 0, not_applicable: 0.
 
 ### Record an observation
 
@@ -194,9 +197,9 @@ Each collapsed group shows exact case counts and states. Forbidden transfers are
 <details>
 <summary>Compiled resources — Whole subject — 1 case; passed: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Compiled resources**<br>Whole subject | <a href="#case-software_resources-fb989639955077c49383">[x] passed</a> | — | — | — | — |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Compiled resources**<br>Whole subject | <a href="#case-software_resources-fb989639955077c49383">[x] passed</a> | — |
 
 
 <details>
@@ -221,9 +224,9 @@ Recorded observations (chronological; the state above checks the relevant depend
 <details>
 <summary>Directed routing graph — Whole subject — 1 case; passed: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Directed routing graph**<br>Whole subject | <a href="#case-software_connectivity-fb989639955077c49383">[x] passed</a> | — | — | — | — |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Directed routing graph**<br>Whole subject | <a href="#case-software_connectivity-fb989639955077c49383">[x] passed</a> | — |
 
 
 <details>
@@ -248,14 +251,14 @@ Recorded observations (chronological; the state above checks the relevant depend
 <details>
 <summary>Preview review — Images — 6 cases; unverified: 6</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:clean-southeast | <a href="#case-preview_review-48a60c2c64f3348b7b78">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:clean-top | <a href="#case-preview_review-aed7734e9ecffe26325e">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-northwest | <a href="#case-preview_review-2561022812598330a304">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-southeast | <a href="#case-preview_review-6027b3b75397d93e4137">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-top | <a href="#case-preview_review-9a0709480b9933303c05">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet-v4:tile-ownership | <a href="#case-preview_review-82510a61f70ec0285a29">[ ] unverified</a> | — | — | — | — |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:clean-southeast | <a href="#case-preview_review-48a60c2c64f3348b7b78">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:clean-top | <a href="#case-preview_review-aed7734e9ecffe26325e">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-northwest | <a href="#case-preview_review-2561022812598330a304">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-southeast | <a href="#case-preview_review-6027b3b75397d93e4137">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:named-top | <a href="#case-preview_review-9a0709480b9933303c05">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet-v4:tile-ownership | <a href="#case-preview_review-82510a61f70ec0285a29">[ ] unverified</a> | — |
 
 
 <details>
@@ -356,11 +359,11 @@ No observation recorded.
 </details>
 
 <details>
-<summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
+<summary>In-game rendering — Whole subject — 1 case; unverified: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-1e76dcd30aba7445f7fc">[ ] unverified</a> | <a href="#case-in_game_render-518c4dbebce97ad76311">[ ] unverified</a> | <a href="#case-in_game_render-649f56bd91694b9554eb">[ ] unverified</a> | <a href="#case-in_game_render-89d6c51534495032543c">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-1e76dcd30aba7445f7fc">[ ] unverified</a> |
 
 
 <details>
@@ -376,46 +379,16 @@ Scope: Whole subject.
 
 No observation recorded.
 
-<a id="case-in_game_render-518c4dbebce97ad76311"></a>
-
-**90° CCW: unverified** — `in_game_render-518c4dbebce97ad76311`.
-
-Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_render-649f56bd91694b9554eb"></a>
-
-**180° CCW: unverified** — `in_game_render-649f56bd91694b9554eb`.
-
-Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_render-89d6c51534495032543c"></a>
-
-**270° CCW: unverified** — `in_game_render-89d6c51534495032543c`.
-
-Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.
-
-Scope: Whole subject.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Placement — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Placement — Whole subject — 1 case; unverified: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-1e76dcd30aba7445f7fc">[ ] unverified</a> | <a href="#case-in_game_placement-518c4dbebce97ad76311">[ ] unverified</a> | <a href="#case-in_game_placement-649f56bd91694b9554eb">[ ] unverified</a> | <a href="#case-in_game_placement-89d6c51534495032543c">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-1e76dcd30aba7445f7fc">[ ] unverified</a> |
 
 
 <details>
@@ -431,46 +404,16 @@ Scope: Whole subject.
 
 No observation recorded.
 
-<a id="case-in_game_placement-518c4dbebce97ad76311"></a>
-
-**90° CCW: unverified** — `in_game_placement-518c4dbebce97ad76311`.
-
-Place this piece or complete blueprint and inspect every occupied tile.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_placement-649f56bd91694b9554eb"></a>
-
-**180° CCW: unverified** — `in_game_placement-649f56bd91694b9554eb`.
-
-Place this piece or complete blueprint and inspect every occupied tile.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_placement-89d6c51534495032543c"></a>
-
-**270° CCW: unverified** — `in_game_placement-89d6c51534495032543c`.
-
-Place this piece or complete blueprint and inspect every occupied tile.
-
-Scope: Whole subject.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Demolition — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Demolition — Whole subject — 1 case; unverified: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-1e76dcd30aba7445f7fc">[ ] unverified</a> | <a href="#case-in_game_demolition-518c4dbebce97ad76311">[ ] unverified</a> | <a href="#case-in_game_demolition-649f56bd91694b9554eb">[ ] unverified</a> | <a href="#case-in_game_demolition-89d6c51534495032543c">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-1e76dcd30aba7445f7fc">[ ] unverified</a> |
 
 
 <details>
@@ -486,46 +429,16 @@ Scope: Whole subject.
 
 No observation recorded.
 
-<a id="case-in_game_demolition-518c4dbebce97ad76311"></a>
-
-**90° CCW: unverified** — `in_game_demolition-518c4dbebce97ad76311`.
-
-Bulldoze the complete placement and inspect the cleared area.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_demolition-649f56bd91694b9554eb"></a>
-
-**180° CCW: unverified** — `in_game_demolition-649f56bd91694b9554eb`.
-
-Bulldoze the complete placement and inspect the cleared area.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_demolition-89d6c51534495032543c"></a>
-
-**270° CCW: unverified** — `in_game_demolition-89d6c51534495032543c`.
-
-Bulldoze the complete placement and inspect the cleared area.
-
-Scope: Whole subject.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Save and reload — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Save and reload — Whole subject — 1 case; unverified: 1</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-1e76dcd30aba7445f7fc">[ ] unverified</a> | <a href="#case-in_game_save_reload-518c4dbebce97ad76311">[ ] unverified</a> | <a href="#case-in_game_save_reload-649f56bd91694b9554eb">[ ] unverified</a> | <a href="#case-in_game_save_reload-89d6c51534495032543c">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-1e76dcd30aba7445f7fc">[ ] unverified</a> |
 
 
 <details>
@@ -541,51 +454,21 @@ Scope: Whole subject.
 
 No observation recorded.
 
-<a id="case-in_game_save_reload-518c4dbebce97ad76311"></a>
-
-**90° CCW: unverified** — `in_game_save_reload-518c4dbebce97ad76311`.
-
-Save, quit, reload and inspect the placement and its paths.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_save_reload-649f56bd91694b9554eb"></a>
-
-**180° CCW: unverified** — `in_game_save_reload-649f56bd91694b9554eb`.
-
-Save, quit, reload and inspect the placement and its paths.
-
-Scope: Whole subject.
-
-No observation recorded.
-
-<a id="case-in_game_save_reload-89d6c51534495032543c"></a>
-
-**270° CCW: unverified** — `in_game_save_reload-89d6c51534495032543c`.
-
-Save, quit, reload and inspect the placement and its paths.
-
-Scope: Whole subject.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Route Query — hsr — 24 cases; unverified: 24</summary>
+<summary>Route Query — hsr — 6 cases; unverified: 6</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Route Query**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_route_query-935025a1afa3ba78033c">[ ] unverified</a> | <a href="#case-in_game_route_query-1ee82534208d8f70e09d">[ ] unverified</a> | <a href="#case-in_game_route_query-0caeff944d5ce14b121a">[ ] unverified</a> | <a href="#case-in_game_route_query-31bc90bd7620f94ae1a6">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_route_query-cb6c5202c8347ebf1286">[ ] unverified</a> | <a href="#case-in_game_route_query-be7aeb2c407c297d108b">[ ] unverified</a> | <a href="#case-in_game_route_query-5164724d0550dce108e6">[ ] unverified</a> | <a href="#case-in_game_route_query-2e9cfce6a757c2ed9e6d">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_route_query-a1374cdd8955a931ef39">[ ] unverified</a> | <a href="#case-in_game_route_query-ac62407d1170449eb506">[ ] unverified</a> | <a href="#case-in_game_route_query-4b3853ea4130fced6221">[ ] unverified</a> | <a href="#case-in_game_route_query-2cd25f0ed0eef6fcbea2">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_route_query-335c3ad51bc94699c104">[ ] unverified</a> | <a href="#case-in_game_route_query-95ed5510528261ee7919">[ ] unverified</a> | <a href="#case-in_game_route_query-a890a2a60344a48cfc9f">[ ] unverified</a> | <a href="#case-in_game_route_query-2275d5d33b70a5c4be7a">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_route_query-9e719d3640b74327466a">[ ] unverified</a> | <a href="#case-in_game_route_query-91bbdaf46b97bf59077b">[ ] unverified</a> | <a href="#case-in_game_route_query-98fd30b2f6f7ecfc6cf4">[ ] unverified</a> | <a href="#case-in_game_route_query-1b00be14960ac960943b">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_route_query-897ffbf0df74d5c6e5a4">[ ] unverified</a> | <a href="#case-in_game_route_query-911cda600a9e22f7b926">[ ] unverified</a> | <a href="#case-in_game_route_query-c79a5264d21ee222bcb0">[ ] unverified</a> | <a href="#case-in_game_route_query-7db79214c123c3231bb6">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Route Query**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_route_query-935025a1afa3ba78033c">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_route_query-cb6c5202c8347ebf1286">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_route_query-a1374cdd8955a931ef39">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_route_query-335c3ad51bc94699c104">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_route_query-9e719d3640b74327466a">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_route_query-897ffbf0df74d5c6e5a4">[ ] unverified</a> |
 
 
 <details>
@@ -594,36 +477,6 @@ No observation recorded.
 <a id="case-in_game_route_query-935025a1afa3ba78033c"></a>
 
 **0° CCW: unverified** — `in_game_route_query-935025a1afa3ba78033c`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-1ee82534208d8f70e09d"></a>
-
-**90° CCW: unverified** — `in_game_route_query-1ee82534208d8f70e09d`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-0caeff944d5ce14b121a"></a>
-
-**180° CCW: unverified** — `in_game_route_query-0caeff944d5ce14b121a`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-31bc90bd7620f94ae1a6"></a>
-
-**270° CCW: unverified** — `in_game_route_query-31bc90bd7620f94ae1a6`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -647,36 +500,6 @@ Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.ou
 
 No observation recorded.
 
-<a id="case-in_game_route_query-be7aeb2c407c297d108b"></a>
-
-**90° CCW: unverified** — `in_game_route_query-be7aeb2c407c297d108b`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-5164724d0550dce108e6"></a>
-
-**180° CCW: unverified** — `in_game_route_query-5164724d0550dce108e6`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-2e9cfce6a757c2ed9e6d"></a>
-
-**270° CCW: unverified** — `in_game_route_query-2e9cfce6a757c2ed9e6d`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
 </details>
 
 
@@ -686,36 +509,6 @@ No observation recorded.
 <a id="case-in_game_route_query-a1374cdd8955a931ef39"></a>
 
 **0° CCW: unverified** — `in_game_route_query-a1374cdd8955a931ef39`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-ac62407d1170449eb506"></a>
-
-**90° CCW: unverified** — `in_game_route_query-ac62407d1170449eb506`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-4b3853ea4130fced6221"></a>
-
-**180° CCW: unverified** — `in_game_route_query-4b3853ea4130fced6221`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-2cd25f0ed0eef6fcbea2"></a>
-
-**270° CCW: unverified** — `in_game_route_query-2cd25f0ed0eef6fcbea2`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -739,36 +532,6 @@ Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.ou
 
 No observation recorded.
 
-<a id="case-in_game_route_query-95ed5510528261ee7919"></a>
-
-**90° CCW: unverified** — `in_game_route_query-95ed5510528261ee7919`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-a890a2a60344a48cfc9f"></a>
-
-**180° CCW: unverified** — `in_game_route_query-a890a2a60344a48cfc9f`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-2275d5d33b70a5c4be7a"></a>
-
-**270° CCW: unverified** — `in_game_route_query-2275d5d33b70a5c4be7a`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
 </details>
 
 
@@ -778,36 +541,6 @@ No observation recorded.
 <a id="case-in_game_route_query-9e719d3640b74327466a"></a>
 
 **0° CCW: unverified** — `in_game_route_query-9e719d3640b74327466a`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-91bbdaf46b97bf59077b"></a>
-
-**90° CCW: unverified** — `in_game_route_query-91bbdaf46b97bf59077b`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-98fd30b2f6f7ecfc6cf4"></a>
-
-**180° CCW: unverified** — `in_game_route_query-98fd30b2f6f7ecfc6cf4`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-1b00be14960ac960943b"></a>
-
-**270° CCW: unverified** — `in_game_route_query-1b00be14960ac960943b`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -831,51 +564,21 @@ Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.ou
 
 No observation recorded.
 
-<a id="case-in_game_route_query-911cda600a9e22f7b926"></a>
-
-**90° CCW: unverified** — `in_game_route_query-911cda600a9e22f7b926`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-c79a5264d21ee222bcb0"></a>
-
-**180° CCW: unverified** — `in_game_route_query-c79a5264d21ee222bcb0`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-7db79214c123c3231bb6"></a>
-
-**270° CCW: unverified** — `in_game_route_query-7db79214c123c3231bb6`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Visible travel — hsr — 24 cases; unverified: 24</summary>
+<summary>Visible travel — hsr — 6 cases; unverified: 6</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_visible_travel-935025a1afa3ba78033c">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1ee82534208d8f70e09d">[ ] unverified</a> | <a href="#case-in_game_visible_travel-0caeff944d5ce14b121a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-31bc90bd7620f94ae1a6">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_visible_travel-cb6c5202c8347ebf1286">[ ] unverified</a> | <a href="#case-in_game_visible_travel-be7aeb2c407c297d108b">[ ] unverified</a> | <a href="#case-in_game_visible_travel-5164724d0550dce108e6">[ ] unverified</a> | <a href="#case-in_game_visible_travel-2e9cfce6a757c2ed9e6d">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_visible_travel-a1374cdd8955a931ef39">[ ] unverified</a> | <a href="#case-in_game_visible_travel-ac62407d1170449eb506">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4b3853ea4130fced6221">[ ] unverified</a> | <a href="#case-in_game_visible_travel-2cd25f0ed0eef6fcbea2">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_visible_travel-335c3ad51bc94699c104">[ ] unverified</a> | <a href="#case-in_game_visible_travel-95ed5510528261ee7919">[ ] unverified</a> | <a href="#case-in_game_visible_travel-a890a2a60344a48cfc9f">[ ] unverified</a> | <a href="#case-in_game_visible_travel-2275d5d33b70a5c4be7a">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_visible_travel-9e719d3640b74327466a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-91bbdaf46b97bf59077b">[ ] unverified</a> | <a href="#case-in_game_visible_travel-98fd30b2f6f7ecfc6cf4">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1b00be14960ac960943b">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_visible_travel-897ffbf0df74d5c6e5a4">[ ] unverified</a> | <a href="#case-in_game_visible_travel-911cda600a9e22f7b926">[ ] unverified</a> | <a href="#case-in_game_visible_travel-c79a5264d21ee222bcb0">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7db79214c123c3231bb6">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_visible_travel-935025a1afa3ba78033c">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_visible_travel-cb6c5202c8347ebf1286">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_visible_travel-a1374cdd8955a931ef39">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_visible_travel-335c3ad51bc94699c104">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_visible_travel-9e719d3640b74327466a">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_visible_travel-897ffbf0df74d5c6e5a4">[ ] unverified</a> |
 
 
 <details>
@@ -884,36 +587,6 @@ No observation recorded.
 <a id="case-in_game_visible_travel-935025a1afa3ba78033c"></a>
 
 **0° CCW: unverified** — `in_game_visible_travel-935025a1afa3ba78033c`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-1ee82534208d8f70e09d"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-1ee82534208d8f70e09d`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-0caeff944d5ce14b121a"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-0caeff944d5ce14b121a`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-31bc90bd7620f94ae1a6"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-31bc90bd7620f94ae1a6`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -937,36 +610,6 @@ Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.ou
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-be7aeb2c407c297d108b"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-be7aeb2c407c297d108b`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-5164724d0550dce108e6"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-5164724d0550dce108e6`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-2e9cfce6a757c2ed9e6d"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-2e9cfce6a757c2ed9e6d`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out.
-
-No observation recorded.
-
 </details>
 
 
@@ -976,36 +619,6 @@ No observation recorded.
 <a id="case-in_game_visible_travel-a1374cdd8955a931ef39"></a>
 
 **0° CCW: unverified** — `in_game_visible_travel-a1374cdd8955a931ef39`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-ac62407d1170449eb506"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-ac62407d1170449eb506`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-4b3853ea4130fced6221"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-4b3853ea4130fced6221`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-2cd25f0ed0eef6fcbea2"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-2cd25f0ed0eef6fcbea2`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -1029,36 +642,6 @@ Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.ou
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-95ed5510528261ee7919"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-95ed5510528261ee7919`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-a890a2a60344a48cfc9f"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-a890a2a60344a48cfc9f`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-2275d5d33b70a5c4be7a"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-2275d5d33b70a5c4be7a`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out.
-
-No observation recorded.
-
 </details>
 
 
@@ -1068,36 +651,6 @@ No observation recorded.
 <a id="case-in_game_visible_travel-9e719d3640b74327466a"></a>
 
 **0° CCW: unverified** — `in_game_visible_travel-9e719d3640b74327466a`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-91bbdaf46b97bf59077b"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-91bbdaf46b97bf59077b`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-98fd30b2f6f7ecfc6cf4"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-98fd30b2f6f7ecfc6cf4`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-1b00be14960ac960943b"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-1b00be14960ac960943b`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -1121,48 +674,18 @@ Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.ou
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-911cda600a9e22f7b926"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-911cda600a9e22f7b926`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-c79a5264d21ee222bcb0"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-c79a5264d21ee222bcb0`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-7db79214c123c3231bb6"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-7db79214c123c3231bb6`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out.
-
-No observation recorded.
-
 </details>
 
 </details>
 
 <details>
-<summary>Forbidden transfer — hsr → hsr — 12 cases; unverified: 12</summary>
+<summary>Forbidden transfer — hsr → hsr — 3 cases; unverified: 3</summary>
 
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Forbidden transfer**<br>from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-5e7720c782995408fbd3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-34fff7e1a9eb422d6c3d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4aa09b1528b4104521da">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9424da48468a67a34bad">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-0e614229b03bfe5c1e73">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1812b2006304b7c72221">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6789463f81e846e26420">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3af56e2b16b90cab12e7">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-6f8a97ec7efb05be09c5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-48dc00a5d1e0c6231374">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1d349a9a65ad8f06fa73">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5d54eefd540d1a8c6693">[ ] unverified</a> |
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Forbidden transfer**<br>from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-5e7720c782995408fbd3">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-0e614229b03bfe5c1e73">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph | — | <a href="#case-in_game_forbidden_transfer-6f8a97ec7efb05be09c5">[ ] unverified</a> |
 
 
 <details>
@@ -1171,36 +694,6 @@ No observation recorded.
 <a id="case-in_game_forbidden_transfer-5e7720c782995408fbd3"></a>
 
 **0° CCW: unverified** — `in_game_forbidden_transfer-5e7720c782995408fbd3`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-34fff7e1a9eb422d6c3d"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-34fff7e1a9eb422d6c3d`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-4aa09b1528b4104521da"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-4aa09b1528b4104521da`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-9424da48468a67a34bad"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-9424da48468a67a34bad`.
 
 Confirm this undeclared transfer is unavailable.
 
@@ -1224,36 +717,6 @@ Scope: from port: S.in; to port: S.out; from service: hsr; to service: hsr; basi
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1812b2006304b7c72221"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-1812b2006304b7c72221`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-6789463f81e846e26420"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-6789463f81e846e26420`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-3af56e2b16b90cab12e7"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-3af56e2b16b90cab12e7`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
 </details>
 
 
@@ -1263,36 +726,6 @@ No observation recorded.
 <a id="case-in_game_forbidden_transfer-6f8a97ec7efb05be09c5"></a>
 
 **0° CCW: unverified** — `in_game_forbidden_transfer-6f8a97ec7efb05be09c5`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-48dc00a5d1e0c6231374"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-48dc00a5d1e0c6231374`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-1d349a9a65ad8f06fa73"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-1d349a9a65ad8f06fa73`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in actual saved assembly graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-5d54eefd540d1a8c6693"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-5d54eefd540d1a8c6693`.
 
 Confirm this undeclared transfer is unavailable.
 
@@ -1312,7 +745,7 @@ No observation recorded.
 
 Generated from [connections.json](connections.json). Coordinates are canonical east, north and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.
 
-Supported placement states: 0° CCW, 90° CCW, 180° CCW, 270° CCW. Each state has its own declared manual scope.
+Supported placement states: 0° CCW, 90° CCW, 180° CCW, 270° CCW. Human game checks use only 0° CCW; supported construction states and software rotation checks remain separate.
 
 A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.
 

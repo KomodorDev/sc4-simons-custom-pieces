@@ -12,7 +12,7 @@ from scp.content import (case_state, compact_manual_record, fingerprint,
                          new_manual_record, record_observation_file,
                          record_software_result, record_user_result,
                          refresh_manual_record, summarize_manual_record,
-                         write_subject_content)
+                         validate_manual_record, write_subject_content)
 from scp.inventory import _coverage
 
 
@@ -36,9 +36,9 @@ class AssemblyObservationSplitTests(unittest.TestCase):
         self.environment = {'platform': 'fixture platform', 'game_version': 'fixture version',
                             'nam_profile': 'fixture NAM profile'}
 
-    def record(self, split=False):
+    def record(self, split=False, orientations=None):
         return new_manual_record(self.subject['id'], 'assembly', self.connections, self.hashes,
-                                 split_journey_observations=split)
+                                 split_journey_observations=split, manual_check_orientations=orientations)
 
     def case(self, record, kind, rotation=0):
         return next(case for case in record['cases'] if case['kind'] == kind
@@ -120,6 +120,52 @@ class AssemblyObservationSplitTests(unittest.TestCase):
             self.assertEqual(self.case(refreshed, kind)['observations'],
                              self.case(previous, kind)['observations'])
 
+    def test_manual_orientation_subset_keeps_supported_and_software_scopes_unchanged(self):
+        self.connections['ports'].append({'id': 'W.out', 'direction': 'out', 'service_network': 'hsr',
+                                          'variant': 'hsr', 'role': 'primary'})
+        self.connections['forbidden_transfers'] = [{'from_port': 'W.in', 'to_port': 'W.out',
+                                                   'from_service': 'hsr', 'to_service': 'hsr'}]
+        original = self.record(True)
+        selected = self.record(True, [{'rotation_ccw_degrees': 0}])
+        self.assertEqual(selected['supported_orientations'], original['supported_orientations'])
+        self.assertEqual(selected['manual_check_orientations'], [{'rotation_ccw_degrees': 0}])
+        self.assertNotIn('manual_check_orientations', original)
+        self.assertEqual([case for case in selected['cases'] if not case['kind'].startswith('in_game_')],
+                         [case for case in original['cases'] if not case['kind'].startswith('in_game_')])
+        self.assertEqual({case['scope']['rotation_ccw_degrees'] for case in selected['cases']
+                          if case['kind'].startswith('in_game_')}, {0})
+        self.assertEqual(sum(case['kind'] == 'in_game_forbidden_transfer' for case in selected['cases']), 1)
+        self.assertEqual(summarize_manual_record(selected)['journey_coverage']['unverified'], 2)
+        self.assertEqual(compact_manual_record(selected)['manual_check_orientations'],
+                         selected['manual_check_orientations'])
+        self.assertIn('Human game checks are required only at 0° CCW', selected['rotation_policy'])
+        self.assertNotIn('Four proper rotations are covered', selected['rotation_policy'])
+
+    def test_removed_manual_orientations_keep_observed_history_without_copying_results(self):
+        previous = self.record(True)
+        previous = self.observe(previous, self.case(previous, 'in_game_route_query', 90))
+        previous = self.observe(previous, self.case(previous, 'in_game_render', 270))
+        previous = self.observe(previous, self.case(previous, 'in_game_visible_travel', 0))
+        historical = [deepcopy(case) for case in previous['cases'] if case['observations']
+                      and case['scope']['rotation_ccw_degrees'] != 0]
+        selected = refresh_manual_record(previous, self.record(True, [{'rotation_ccw_degrees': 0}]))
+        self.assertEqual(selected['removed_cases'], historical)
+        self.assertEqual(case_state(self.case(selected, 'in_game_route_query')), 'unverified')
+        self.assertEqual(case_state(self.case(selected, 'in_game_visible_travel')), 'passed')
+        self.assertEqual(refresh_manual_record(selected, self.record(True, [{'rotation_ccw_degrees': 0}])), selected)
+
+    def test_manual_orientation_selection_rejects_unsupported_duplicate_and_invalid_scopes(self):
+        for states in ([], {}, [{'rotation_ccw_degrees': True}], [{'rotation_ccw_degrees': 45}],
+                       [{'rotation_ccw_degrees': 0, 'construction_transposed': True}],
+                       [{'rotation_ccw_degrees': 0}, {'rotation_ccw_degrees': 0, 'construction_transposed': False}],
+                       [{'rotation_ccw_degrees': 0, 'extra': 'unreviewed'}]):
+            with self.subTest(states=states), self.assertRaises(ValueError):
+                self.record(True, states)
+        record = self.record(True, [{'rotation_ccw_degrees': 0}])
+        record['manual_check_orientations'] = [{'rotation_ccw_degrees': 90}]
+        with self.assertRaisesRegex(ValueError, 'outside the selected manual'):
+            validate_manual_record(record)
+
     def test_opt_in_refresh_and_observation_file_keep_matrix_ownership_and_metadata(self):
         with TemporaryDirectory() as temporary:
             directory = Path(temporary)
@@ -137,12 +183,16 @@ class AssemblyObservationSplitTests(unittest.TestCase):
             record_path = directory/'checks/manual-tests.json'
             connection_path = directory/'connections.json'
             record = json.loads(record_path.read_text())
-            self.assertEqual(summarize_manual_record(record)['journey_coverage']['unverified'], 8)
+            self.assertEqual(summarize_manual_record(record)['journey_coverage']['unverified'], 2)
+            self.assertEqual(record['manual_check_orientations'], [{'rotation_ccw_degrees': 0}])
+            self.assertEqual(len(record['supported_orientations']), 4)
             self.assertIn('## Connection matrix', readme.read_text())
             self.assertNotIn('<!-- BEGIN MANUAL SUMMARY -->', readme.read_text())
             self.assertNotIn('<!-- BEGIN CONNECTIONS -->', readme.read_text())
             self.assertIn('<!-- BEGIN CONNECTIONS -->', testing.read_text())
             self.assertIn('<!-- BEGIN MANUAL CHECKS -->', testing.read_text())
+            self.assertIn('Human game checks use only 0° CCW', testing.read_text())
+            self.assertNotIn('Each state has its own declared manual scope', testing.read_text())
             self.assertTrue(readme.read_text().startswith(authored_readme))
             self.assertTrue(testing.read_text().startswith(authored_testing))
             # Non-default JSON formatting makes an unintended metadata rewrite observable.
@@ -173,6 +223,27 @@ class AssemblyObservationSplitTests(unittest.TestCase):
             stable = {path: path.read_bytes() for path in (readme, testing, record_path, connection_path)}
             write_subject_content(directory, self.subject, self.connections, self.hashes)
             self.assertEqual(stable, {path: path.read_bytes() for path in stable})
+
+    def test_matrix_refresh_honors_an_explicit_supported_subset_and_never_invents_zero(self):
+        for supported, selected in (([90], 90), ([0, 90, 180, 270], 90)):
+            with self.subTest(supported=supported), TemporaryDirectory() as temporary:
+                directory = Path(temporary)
+                (directory/'README.md').write_text('# Fixture\n\n<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->\n\n<!-- END ASSEMBLY CONNECTION MATRIX -->\n')
+                connections = deepcopy(self.connections)
+                connections['supported_orientations'] = [
+                    {'rotation_ccw_degrees': angle, 'construction_transposed': False} for angle in supported]
+                if len(supported) > 1:
+                    record = new_manual_record(self.subject['id'], 'assembly', connections, self.hashes,
+                        split_journey_observations=True, manual_check_orientations=[{'rotation_ccw_degrees': selected}])
+                    checks = directory/'checks'
+                    checks.mkdir()
+                    (checks/'manual-tests.json').write_text(json.dumps(compact_manual_record(record)))
+                write_subject_content(directory, self.subject, connections, self.hashes)
+                record = json.loads((directory/'checks/manual-tests.json').read_text())
+                self.assertEqual(record['manual_check_orientations'], [{'rotation_ccw_degrees': selected}])
+                self.assertEqual(record['supported_orientations'], connections['supported_orientations'])
+                self.assertEqual({case['scope']['rotation_ccw_degrees'] for case in record['cases']
+                                  if case['kind'].startswith('in_game_')}, {selected})
 
     def test_inventory_uses_split_coverage_without_changing_legacy_fallback(self):
         split = self.record(True)

@@ -1,5 +1,4 @@
 """Reader-facing assembly movement evidence, enabled by an explicit README block."""
-from collections import Counter
 from html import escape
 
 
@@ -23,18 +22,22 @@ def _port_label(port):
     cardinal_name = {'N': 'North', 'E': 'East', 'S': 'South', 'W': 'West'}.get(cardinal)
     friendly = explicit_label or (f'{cardinal_name} {direction}'
                                   if cardinal_name and separator and suffix == port.get('direction') else identifier)
-    return (f'**{_text(network_name)} · {_text(friendly)}**<br>'
-            f'`{_text(identifier)}`<br>Network: **{_text(network)}**'
-            f'<br>Variant: {_text(port.get("variant", "unspecified"))}'
-            f'<br>Role: {_text(port.get("role", "unspecified"))}')
+    label = f'**{_text(network_name)} · {_text(friendly)}**<br>`{_text(identifier)}`'
+    if port.get('variant') and port['variant'] != network:
+        label += f'<br>Variant: {_text(port["variant"])}'
+    if port.get('role', 'primary') != 'primary':
+        label += f'<br>Role: {_text(port["role"])}'
+    return label
 
 
 def _orientation_key(scope):
     return (scope.get('rotation_ccw_degrees'), bool(scope.get('construction_transposed', False)))
 
 
-def _supported_states(connections, record):
-    states = connections.get('supported_orientations', record.get('supported_orientations'))
+def _manual_states(connections, record):
+    states = record.get('manual_check_orientations')
+    if states is None:
+        states = connections.get('supported_orientations', record.get('supported_orientations'))
     if states is None:
         return [(angle, False) for angle in (0, 90, 180, 270)]
     keys = [_orientation_key(state) for state in states]
@@ -51,7 +54,7 @@ def _linked(label, cases):
 
 
 def _coverage(cases, states, fingerprints):
-    """Count every required state; missing or duplicate scopes never become passes."""
+    """Summarize exact required cases; details remain in the linked testing record."""
     from .content import case_state
 
     by_state = {}
@@ -59,35 +62,15 @@ def _coverage(cases, states, fingerprints):
         key = _orientation_key(case['scope'])
         if key in states:
             by_state.setdefault(key, []).append(case)
-    counts = Counter()
     current = []
+    incomplete = False
     for state in states:
         matches = by_state.get(state, [])
         if len(matches) != 1:
-            counts['missing' if not matches else 'ambiguous'] += 1
-            continue
-        current.append(matches[0])
-        counts[case_state(matches[0], fingerprints)] += 1
-    total = len(states)
-    passed = counts['passed']
-    if passed == total:
-        label = f'✓ {passed}/{total}'
-    elif counts['failed']:
-        label = f'✗ {passed}/{total} passed; failed: {counts["failed"]}'
-    elif counts['stale']:
-        label = f'↻ {passed}/{total} passed; stale: {counts["stale"]}'
-    elif counts['not_applicable']:
-        label = f'N/A: {counts["not_applicable"]}/{total}; passed: {passed}/{total}'
-    elif passed:
-        label = f'Partial: {passed}/{total} passed'
-    else:
-        label = f'? {passed}/{total} passed'
-    for state in ('failed', 'stale', 'unverified', 'missing', 'ambiguous', 'not_applicable'):
-        if counts[state] and not ((state == 'failed' and counts['failed'])
-                                  or (state == 'stale' and not counts['failed'])
-                                  or (state == 'not_applicable' and not counts['failed'] and not counts['stale'])):
-            title = 'N/A' if state == 'not_applicable' else state
-            label += f'; {title}: {counts[state]}'
+            incomplete = True
+        current.extend(matches)
+    values = [case_state(case, fingerprints) for case in current]
+    label = '❌' if 'failed' in values else '✅' if not incomplete and all(value == 'passed' for value in values) else '?'
     # Open a current failing/pending case before an unrelated successful one.
     order = {'failed': 0, 'stale': 1, 'unverified': 2, 'not_applicable': 3, 'passed': 4}
     current.sort(key=lambda case: order.get(case_state(case, fingerprints), 5))
@@ -100,22 +83,18 @@ def _software_path_status(connections, record, fingerprints):
     subject_id = record['subject']['id']
     cases = [case for case in record['cases'] if case['kind'] == 'software_connectivity'
              and case.get('scope', {}).get('subject_id') == subject_id]
+    extraction = connections.get('software_status', {}).get('path_extraction', 'unverified')
     if len(cases) != 1:
-        return '? missing software check' if not cases else '? ambiguous software checks', False
+        failed = extraction == 'failed' or any(case_state(case, fingerprints) == 'failed' for case in cases)
+        return _linked('❌' if failed else '?', cases), False
     case = cases[0]
     state = case_state(case, fingerprints)
     # A nominal check without the graph dependency cannot prove this movement set.
     if f'graph:{subject_id}' not in case.get('dependencies', {}):
-        return _linked('? missing graph scope', cases), False
-    extraction = connections.get('software_status', {}).get('path_extraction', 'unverified')
-    if extraction != 'passed':
-        symbol = '✗' if extraction == 'failed' or state == 'failed' else '↻' if state == 'stale' else '?'
-        check = f'{state}; ' if state != 'passed' else ''
-        return _linked(f'{symbol} {check}extraction: {_text(extraction)}', cases), False
-    if state == 'passed':
-        return _linked('✓', cases), True
-    symbols = {'failed': '✗', 'stale': '↻', 'not_applicable': 'N/A'}
-    return _linked(f'{symbols.get(state, "?")} {state}', cases), False
+        return _linked('❌' if state == 'failed' or extraction == 'failed' else '?', cases), False
+    passed = state == extraction == 'passed'
+    symbol = '❌' if state == 'failed' or extraction == 'failed' else '✅' if passed else '?'
+    return _linked(symbol, cases), passed
 
 
 def _journeys_for_pair(connections, entrance, exit_port):
@@ -172,7 +151,7 @@ def render_assembly_connection_matrix(connections, record):
     fingerprints = dict(record.get('fingerprints', {}))
     fingerprints.update(connections.get('source', {}).get('resource_fingerprints', {}))
     fingerprints.update(connectivity_fingerprints(subject_id, connections))
-    states = _supported_states(connections, record)
+    states = _manual_states(connections, record)
     entrances = [port for port in connections.get('ports', []) if port.get('direction') == 'in']
     exits = [port for port in connections.get('ports', []) if port.get('direction') == 'out']
     identifiers = [port['id'] for port in connections.get('ports', [])]
@@ -182,12 +161,11 @@ def render_assembly_connection_matrix(connections, record):
                         and case.get('scope', {}).get('subject_id') == subject_id
                         and not any(key in case.get('scope', {}) for key in ('journey_id', 'service_network', 'role'))]
     appearance = _coverage(appearance_cases, states, fingerprints)
-    path_status, path_passed = _software_path_status(connections, record, fingerprints)
+    path_status, _ = _software_path_status(connections, record, fingerprints)
     lines = ['## Connection matrix', '',
-             'Read **from an entrance row to an exit column**. A port is one directional entrance or exit of the complete assembly. Network, variant, and role labels are explicit source declarations; sharing an internal game traffic class does not merge services.', '',
-             '**Saved PATH** checks the encoded traffic route in the saved resources. **Game appearance†** checks the complete assembly inside the game. **Route Query** checks the game’s displayed route for this directed movement. **Visible travel** checks a vehicle visibly completing it; for HSR, this means a moving train. These four results establish different facts.', '',
-             '**Legend:** ✓ means every required current case passed; ✗ means a recorded failure; ↻ means stale evidence; ? means unverified or missing evidence. Partial coverage, failed, stale, unverified, missing, and explicit N/A counts stay visible. Manual counts cover the declared construction states; click a result to inspect a matching exact case in TESTING. Every observation keeps its recorded environment, so combined counts do not establish one shared tested platform.', '',
-             '**† Shared appearance scope:** the same whole-assembly rendering result appears in every cell. It is not a separate inspection of each journey. “Forbidden” is a declared unavailable movement, not a failed test; its linked negative game check tests that the movement stays unavailable, and does not substitute for Route Query or visible-travel evidence. An undeclared pair remains unknown. This matrix does not discover neighbouring-piece compatibility.', '']
+             'Read **from an entrance row to an exit column**. **Saved PATH** checks the saved traffic route; **Route Query** checks the route shown by the game; **Visible travel** checks a vehicle completing that journey. For HSR, visible travel means a moving train.', '',
+             f'**Game appearance:** {appearance} — the complete assembly’s appearance in the game, checked separately from its journeys.', '',
+             '**Legend:** ✅ confirmed; ❌ failed; ? not established. **Forbidden** means the movement is unavailable; its in-game check confirms that it stays unavailable. Click a result for its exact test case. Scope, evidence, and limitations remain in [TESTING](TESTING.md#test-checklist).', '']
     if not entrances or not exits:
         lines += ['No directional entrance/exit matrix is declared for this assembly.', '']
         return '\n'.join(lines)
@@ -207,17 +185,14 @@ def render_assembly_connection_matrix(connections, record):
                         parts.append(f'Journey: `{_text(journey["id"])}`')
                     query = _coverage(_journey_cases(record, journey, 'in_game_route_query'), states, fingerprints)
                     travel = _coverage(_journey_cases(record, journey, 'in_game_visible_travel'), states, fingerprints)
-                    parts += [f'**Saved PATH:** {path_status}', f'**Game appearance†:** {appearance}',
-                              f'**Route Query:** {query}', f'**Visible travel:** {travel}']
+                    travel_label = 'Visible train travel' if journey.get('service_network') in ('hsr', 'ghsr') else 'Visible travel'
+                    parts += [f'**Saved PATH:** {path_status}', f'**Route Query:** {query}', f'**{travel_label}:** {travel}']
             elif forbidden:
-                basis = 'saved PATH' if path_passed else f'declared; saved check: {path_status}'
                 negative = _coverage(_forbidden_cases(record, connections, entrance, exit_port), states, fingerprints)
-                parts = [f'**Saved PATH:** Forbidden ({basis}); negative game check: {negative}', f'**Game appearance†:** {appearance}',
-                         '**Route Query:** — forbidden movement', '**Visible travel:** — forbidden movement']
+                parts = ['**Forbidden**', f'**Saved PATH:** {path_status}', f'In-game check: {negative}']
             else:
-                parts = ['**Saved PATH:** ? not declared', f'**Game appearance†:** {appearance}',
-                         '**Route Query:** — no declared journey', '**Visible travel:** — no declared journey']
+                parts = ['**Saved PATH:** ?', '**Route Query:** ?', '**Visible travel:** ?']
             cells.append('<br>'.join(parts))
         lines.append('| ' + _port_label(entrance) + ' | ' + ' | '.join(cells) + ' |')
-    lines += ['', 'The source declarations are in [connections.json](connections.json). Exact cases, rotations, limitations, and recorded evidence remain in [TESTING](TESTING.md#test-checklist).', '']
+    lines += ['', 'Source: [connections.json](connections.json).', '']
     return '\n'.join(lines)

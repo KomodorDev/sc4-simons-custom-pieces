@@ -167,14 +167,49 @@ def _orientation_scopes(connections):
     return result
 
 
+def _validated_manual_orientations(states):
+    """Normalize explicit game-check scopes without expanding construction support."""
+    _require(isinstance(states, list) and states, 'Manual check orientations must be a nonempty list')
+    result = []
+    for state in states:
+        _require(isinstance(state, dict) and set(state) <= {'rotation_ccw_degrees', 'construction_transposed'},
+                 'Manual check orientation contains unsupported scope fields')
+        angle, transposed = state.get('rotation_ccw_degrees'), state.get('construction_transposed', False)
+        _require(type(angle) is int and angle in ROTATIONS and type(transposed) is bool,
+                 'Manual check orientation needs a proper rotation and an optional boolean transpose flag')
+        scope = {'rotation_ccw_degrees': angle}
+        if transposed:
+            scope['construction_transposed'] = True
+        _require(scope not in result, 'Duplicate manual check orientation')
+        result.append(scope)
+    return result
+
+
+def _manual_orientation_subset(states, supported):
+    result = _validated_manual_orientations(states)
+    _require(all(state in supported for state in result),
+             'Manual check orientations must be a subset of supported construction orientations')
+    return result
+
+
+def _manual_orientation_names(states):
+    labels = [str(state['rotation_ccw_degrees'])+'° CCW'+
+              (' with construction transpose' if state.get('construction_transposed') else '')
+              for state in states]
+    return (labels[0] if len(labels) == 1 else ' and '.join(labels) if len(labels) == 2 else
+            ', '.join(labels[:-1])+', and '+labels[-1])
+
+
 def new_manual_record(subject_id, subject_kind, connections, fingerprints, preview_hashes=None, *,
-                      split_journey_observations=False):
+                      split_journey_observations=False, manual_check_orientations=None):
     """Generate applicable cases at actual supported orientations, unverified.
 
     Software, image review, and actual game rendering have separate cases.
     Endpoint candidate lists do not generate manual compatibility coverage.
     An opted-in assembly records Route Query and visible travel independently;
     existing generic journey observations never become either new result.
+    A manual-orientation subset limits human checks without changing supported
+    construction orientations or any software verifier's rotation coverage.
     """
     _require(subject_kind in ('piece', 'assembly'), 'Subject kind must be piece or assembly')
     _require(type(split_journey_observations) is bool, 'Split journey observations must be a boolean')
@@ -183,6 +218,8 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     _require(connections.get('subject_id', subject_id) == subject_id, 'Connection metadata belongs to another subject')
     values = _sha_map(fingerprints)
     orientations = _orientation_scopes(connections)
+    manual_orientations = (orientations if manual_check_orientations is None else
+                           _manual_orientation_subset(manual_check_orientations, orientations))
     values.update(connectivity_fingerprints(subject_id, connections))
     images = _sha_map(preview_hashes or {})
     image_values = {f'image:{subject_id}:{key}': value for key, value in images.items()}
@@ -204,7 +241,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
         # Missing artwork remains a visible pending check, never an automatic N/A or pass.
         cases.append(_new_case('preview_review', 'Supply and review a current complete model preview.',
                                {'subject_id': subject_id, 'image_key': None}, {}))
-    for orientation in orientations:
+    for orientation in manual_orientations:
         scope = {'subject_id': subject_id, **orientation}
         for kind, description in (
                 ('in_game_render', 'Inspect the placed tracks, walls, piers, seams and shadows in SimCity 4.'),
@@ -216,7 +253,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     # Legacy endpoint/counterpart cases remain readable and recordable, but
     # an endpoint shortlist cannot establish a complete-boundary test scope.
     for journey in connections.get('journeys', []):
-        for orientation in orientations:
+        for orientation in manual_orientations:
             scope = {'subject_id': subject_id, 'journey_id': journey['id'],
                      'service_network': journey.get('service_network'),
                      'role': journey.get('role', 'primary'),
@@ -232,7 +269,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
             for kind, description in journey_checks:
                 cases.append(_new_case(kind, description, scope, _dependencies(traffic_keys, values)))
     for transfer in connections.get('forbidden_transfers', []):
-        for orientation in orientations:
+        for orientation in manual_orientations:
             scope = {'subject_id': subject_id, 'forbidden_transfer': deepcopy(transfer),
                      **orientation}
             cases.append(_new_case('in_game_forbidden_transfer', 'Confirm this undeclared transfer is unavailable.',
@@ -246,6 +283,11 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
               'supported_orientations': deepcopy(connections.get('supported_orientations',orientations)),
               'environment_policy': 'Every result applies only to its recorded platform, game version and NAM profile.',
               'fingerprints': dict(sorted(values.items())), 'cases': cases}
+    if manual_check_orientations is not None:
+        record['manual_check_orientations'] = deepcopy(manual_orientations)
+        record['rotation_policy'] = ('Human game checks are required only at '+_manual_orientation_names(manual_orientations)+
+            '. Supported construction orientations and software rotation checks retain their separate scope; '
+            'these human cases do not establish observations at the other orientations.')
     validate_manual_record(record)
     return record
 
@@ -284,12 +326,20 @@ def validate_manual_record(record):
     subject = record.get('subject', {})
     _require(subject.get('kind') in ('piece', 'assembly') and subject.get('id'), 'Invalid manual-test subject')
     _sha_map(record.get('fingerprints', {}))
+    manual_orientations = None
+    if 'manual_check_orientations' in record:
+        supported = _validated_manual_orientations(record.get('supported_orientations'))
+        manual_orientations = _manual_orientation_subset(record['manual_check_orientations'], supported)
     seen = set()
     for case in record.get('cases', []):
         _require(case.get('kind') in MANUAL_KINDS | SOFTWARE_KINDS, 'Unknown manual/software check kind')
         _require(case.get('id') == _case_identifier(case['kind'], case.get('scope', {})), 'Case ID differs from its exact scope')
         _require(case['id'] not in seen, 'Repeated manual-test case ID')
         seen.add(case['id'])
+        if manual_orientations is not None and case['kind'].startswith('in_game_'):
+            orientation = _validated_manual_orientations([{key: case['scope'][key]
+                for key in ('rotation_ccw_degrees', 'construction_transposed') if key in case['scope']}])[0]
+            _require(orientation in manual_orientations, 'Current game case is outside the selected manual check orientations')
         _require(case.get('applicability') in ('applicable', 'not_applicable'), 'Invalid applicability')
         if case['applicability'] == 'not_applicable':
             _require(bool(case.get('not_applicable_reason', '').strip()), 'Not-applicable checks need an explicit reason')
@@ -685,14 +735,23 @@ def _case_details(case, fingerprints=None):
     return lines
 
 
-def render_connections(connections, *, piece_link=None, include_purpose=True):
+def render_connections(connections, *, piece_link=None, include_purpose=True, manual_check_orientations=None):
     """Generate human connection/journey tables from the same machine record."""
     lines = ['## Connections and journeys', '']
     if include_purpose:
         lines += ['Purpose: describe intrinsic directional interfaces and permitted service journeys.', '']
+    supported = connections.get('supported_orientations', [{'rotation_ccw_degrees': angle} for angle in ROTATIONS])
+    orientation_text = ('Supported placement states: '+', '.join(str(state['rotation_ccw_degrees'])+'° CCW'+
+                        (' with construction Transpose' if state.get('construction_transposed') else '') for state in supported)+'.')
+    if manual_check_orientations is None:
+        orientation_text += ' Each state has its own declared manual scope.'
+    else:
+        selected = _manual_orientation_subset(manual_check_orientations, _validated_manual_orientations(supported))
+        orientation_text += (' Human game checks use only '+_manual_orientation_names(selected)+
+                             '; supported construction states and software rotation checks remain separate.')
     lines += [
              'Generated from [connections.json](connections.json). Coordinates are canonical east, north and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
-             ('Supported placement states: '+', '.join(str(state['rotation_ccw_degrees'])+'° CCW'+(' with construction Transpose' if state.get('construction_transposed') else '') for state in connections.get('supported_orientations',[{'rotation_ccw_degrees':angle} for angle in ROTATIONS]))+'. Each state has its own declared manual scope.'), '',
+             orientation_text, '',
              'A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.', '',
              'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.', '',
              '| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |',
@@ -951,7 +1010,7 @@ def _write_subject_views(directory, subject, connections, record, piece_link=Non
                                              'contributors', 'reference')+f'# {title}\n')
     if matrix_enabled:
         _replace_generated(testing, 'CONNECTIONS', render_connections(connections, piece_link=piece_link,
-                                                                    include_purpose=False))
+            include_purpose=False, manual_check_orientations=record.get('manual_check_orientations')))
     _replace_generated(testing, 'MANUAL CHECKS', render_manual_checklist(record, directory=directory))
     for obsolete in (directory/'CONNECTIONS.md', directory/'checks/MANUAL_TESTS.md', directory/'checks/README.md'):
         obsolete.unlink(missing_ok=True)
@@ -974,10 +1033,22 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
     else:
+        previous = json.loads(record_path.read_text()) if record_path.exists() else None
+        manual_orientations = None
+        if matrix_enabled:
+            supported = _orientation_scopes(connections)
+            if previous is not None and 'manual_check_orientations' in previous:
+                selected = _validated_manual_orientations(previous['manual_check_orientations'])
+                if all(state in supported for state in selected):
+                    manual_orientations = selected
+            if manual_orientations is None:
+                canonical = {'rotation_ccw_degrees': 0}
+                manual_orientations = [canonical if canonical in supported else supported[0]]
         generated = new_manual_record(subject['id'], subject['kind'], connections, fingerprints, preview_hashes,
-                                      split_journey_observations=matrix_enabled)
-        if record_path.exists():
-            generated = refresh_manual_record(json.loads(record_path.read_text()), generated)
+                                      split_journey_observations=matrix_enabled,
+                                      manual_check_orientations=manual_orientations)
+        if previous is not None:
+            generated = refresh_manual_record(previous, generated)
         (directory/'connections.json').write_text(json.dumps(connections, indent=2, allow_nan=False)+'\n')
         record_path.write_text(json.dumps(compact_manual_record(generated), indent=2, allow_nan=False)+'\n')
     _write_subject_views(directory, subject, connections, generated, piece_link)
