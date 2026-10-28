@@ -92,6 +92,8 @@ def main(argv=None):
     parser.add_argument("--report", type=Path)
     args = parser.parse_args(argv)
     try:
+        if getattr(sys, "frozen", False) and sys.flags.utf8_mode != 1:
+            raise ValueError("The installer package must use UTF-8 text encoding. Download a fresh copy of the complete ZIP.")
         root = bootstrap(runtime_root())
         info = metadata(root)
         verification = verify_runtime(root)
@@ -102,6 +104,7 @@ def main(argv=None):
             from scp_installer.service import self_test
             result = self_test(root)
             _emit({**result, "source_commit": info["source_commit"],
+                   "utf8_mode": sys.flags.utf8_mode,
                    "runtime_verification": verification}, args.report)
             return 0
         from scp_installer.gui import run, smoke_test
@@ -109,6 +112,7 @@ def main(argv=None):
             with tempfile.TemporaryDirectory(prefix="scp-installer-gui-check-") as temporary:
                 result = smoke_test(root, info, Path(temporary).resolve())
             _emit({**result, "source_commit": info["source_commit"],
+                   "utf8_mode": sys.flags.utf8_mode,
                    "runtime_verification": verification}, args.report)
             return 0
         run(root, info)

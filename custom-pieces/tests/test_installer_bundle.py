@@ -80,7 +80,7 @@ class InstallerBundleTests(unittest.TestCase):
         original.rename(archive)
         original.with_name("installer.zip.sha256").unlink()
         archive.with_name(name + ".sha256").write_text(bundle._hash(archive) + "  " + name + "\n")
-        report = {"status": "passed", "source_commit": COMMIT, "platform": "windows-x64"}
+        report = {"status": "passed", "source_commit": COMMIT, "platform": "windows-x64", "utf8_mode": 1}
         for name in ("self-test-windows-x64.json", "gui-smoke-test-windows-x64.json"):
             (self.directory / name).write_text(json.dumps(report))
         index = json.loads((folder / "bundle-index.json").read_text())
@@ -258,6 +258,19 @@ class InstallerBundleTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "GUI smoke-test"):
                 bundle.publish(self.directory, COMMIT, "owner/repository")
             github.assert_not_called()
+
+    def test_publishing_requires_utf8_mode_in_both_frozen_executable_reports(self):
+        environment = self._publication()
+        for name in ("self-test-windows-x64.json", "gui-smoke-test-windows-x64.json"):
+            path = self.directory / name
+            original = json.loads(path.read_text())
+            path.write_text(json.dumps({**original, "utf8_mode": 0}))
+            with self.subTest(report=name), patch.dict(os.environ, environment, clear=True), \
+                    patch.object(bundle, "_gh") as github:
+                with self.assertRaisesRegex(ValueError, "frozen"):
+                    bundle.publish(self.directory, COMMIT, "owner/repository")
+                github.assert_not_called()
+            path.write_text(json.dumps(original))
 
     def test_published_tag_is_never_retargeted(self):
         environment = self._publication()

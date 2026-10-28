@@ -96,7 +96,7 @@ These fields describe the document; piece and connector data retain their own au
 | `local/` | Private workstation settings, supported native inputs, and rebuildable working data. |
 | `dist/` | Disposable builds and exports; source definitions and observations live with their owners. |
 
-The repository-level `.github/workflows/installer-release.yml` checks the Windows x64 installer bundle. Pull requests produce review artifacts; accepted `main` pushes publish experimental installer prereleases only after the workflow's full test, packaged executable self-test, GUI startup smoke check, and archive checks pass. The [contributor workflow](../docs/GITHUB.md#automatic-installer-prereleases) owns that process, and the [installer guide](docs/INSTALLER.md) owns player steps. Downloadable installers contain the local builder and its runtime; native game resources are read and compiled on the user's computer.
+The repository-level `.github/workflows/installer-release.yml` checks the Windows x64 installer bundle. Pull requests produce review artifacts; accepted `main` pushes publish experimental installer prereleases only after the workflow's full test, packaged executable self-test, GUI startup smoke check, and archive checks pass. The [contributor workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) owns that process, and the [installer guide](docs/INSTALLER.md) owns player steps. Downloadable installers contain the local builder and its runtime; native game resources are read and compiled on the user's computer.
 
 ## Generated views
 

@@ -343,6 +343,10 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     import tkinter
     tkinter.Tcl().eval("info patchlevel")
     command = [sys.executable, "-B", "-m", "PyInstaller", "--noconfirm", "--clean", "--windowed", "--onedir",
+               # PyInstaller's isolated interpreter ignores PYTHONUTF8. This
+               # bootloader option applies before Python initializes, so the
+               # existing library's implicit text reads are UTF-8 on Windows.
+               "--python-option", "X utf8",
                "--name", APP_NAME, "--distpath", str(output / "work/frozen"), "--workpath", str(output / "work/pyinstaller"),
                "--specpath", str(output / "work"), "--add-data", str(runtime) + ":custom-pieces",
                "--paths", str(runtime / "framework"),
@@ -353,7 +357,13 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
                "--collect-all", "numpy", "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
                "--hidden-import", "tkinter.filedialog", "--hidden-import", "tkinter.messagebox"]
     command.append(str(runtime / "installer/main.py"))
-    subprocess.run(command, check=True, cwd=runtime, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+    timestamp = subprocess.run(["git", "show", "--no-patch", "--format=%ct", source_commit],
+                               cwd=source, text=True, capture_output=True, check=True).stdout.strip()
+    if re.fullmatch(r"[0-9]+", timestamp) is None:
+        raise ValueError("Cannot determine the source commit's build timestamp.")
+    build_environment = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1", "PYTHONUTF8": "1",
+                         "PYTHONHASHSEED": "0", "SOURCE_DATE_EPOCH": timestamp}
+    subprocess.run(command, check=True, cwd=runtime, env=build_environment)
     # Neither discovery nor freezing may modify the exact source payload.
     verify_runtime(runtime)
     name = "SCP-Installer-" + target + "-" + source_commit[:12]
@@ -366,16 +376,18 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     subprocess.run([str(executable), "--self-test", "--report", str(report_path)], check=True,
                    timeout=180, cwd=output, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
     report = json.loads(report_path.read_text(encoding="utf-8"))
-    if report.get("status") != "passed" or report.get("source_commit") != source_commit:
-        raise ValueError("Frozen installer self-test did not report a pass.")
+    if (report.get("status") != "passed" or report.get("source_commit") != source_commit
+            or report.get("utf8_mode") != 1):
+        raise ValueError("Frozen installer self-test did not report a pass with UTF-8 mode enabled.")
     report["platform"] = target
     _json(report_path, report)
     gui_report_path = output / ("gui-smoke-test-" + target + ".json")
     subprocess.run([str(executable), "--gui-smoke-test", "--report", str(gui_report_path)], check=True,
                    timeout=30, cwd=output, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
     gui_report = json.loads(gui_report_path.read_text(encoding="utf-8"))
-    if gui_report.get("status") != "passed" or gui_report.get("source_commit") != source_commit:
-        raise ValueError("Frozen installer GUI smoke test did not report a pass.")
+    if (gui_report.get("status") != "passed" or gui_report.get("source_commit") != source_commit
+            or gui_report.get("utf8_mode") != 1):
+        raise ValueError("Frozen installer GUI smoke test did not report a pass with UTF-8 mode enabled.")
     gui_report["platform"] = target
     _json(gui_report_path, gui_report)
     (folder / "README.txt").write_text(
@@ -427,12 +439,12 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
         report_path = archive.parent / ("self-test-" + target + ".json")
         report = json.loads(report_path.read_text(encoding="utf-8"))
         if (report.get("status") != "passed" or report.get("source_commit") != source_commit
-                or report.get("platform") != target):
+                or report.get("platform") != target or report.get("utf8_mode") != 1):
             raise ValueError("Release requires the frozen executable self-test result.")
         gui_path = archive.parent / ("gui-smoke-test-" + target + ".json")
         gui_report = json.loads(gui_path.read_text(encoding="utf-8"))
         if (gui_report.get("status") != "passed" or gui_report.get("source_commit") != source_commit
-                or gui_report.get("platform") != target):
+                or gui_report.get("platform") != target or gui_report.get("utf8_mode") != 1):
             raise ValueError("Release requires the frozen Windows GUI smoke-test result.")
         index_path = archive.parent / ("bundle-index-" + target + ".json")
         verification_path = archive.parent / ("archive-check-" + target + ".json")
