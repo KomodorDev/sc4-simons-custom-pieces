@@ -28,6 +28,8 @@ Make this decision **before scaffolding, reserving identifiers, or building deta
 3. Check whether proposed module boundaries can preserve complete measured connections and assign each claimed tile to one owner. Routes that share a tile, a branching floor, necessary walls, or coordinated supports may need to remain in one larger module. Follow the [smallest useful module rules](WORKFLOW_ASSEMBLY_CREATION.md#atomize-to-the-smallest-useful-reusable-module); do not split by arbitrary source curves, model chunks, or a fixed tile count.
 4. Record the decision, reusable functions, proposed boundaries, and measured obstacles in the brief, then in the owning subject's existing README. Detailed cut decisions belong in the assembly's existing [atomization record](WORKFLOW_ASSEMBLY_CREATION.md#persist-atomization-decisions-and-coordinate-parallel-work). Do not create another decision-guide Markdown file.
 
+For every user-requested atomization or further-splitting review, provide the [required coordinate-labelled line drawing](WORKFLOW_ASSEMBLY_CREATION.md#required-line-drawing-for-user-requested-atomization), even when reviewing one standalone piece or concluding that it should remain intact. Show straight and curved routes, possible cuts, physical obstacles, and the reason for every reviewed decision; retain the analysis in the owning subject's existing documentation and evidence folders.
+
 | Design finding | Delivery decision |
 | --- | --- |
 | One bounded, independently useful function, including coordinated services that share its tiles | A single piece can be appropriate; prove its construction, geometry, and interfaces. |
