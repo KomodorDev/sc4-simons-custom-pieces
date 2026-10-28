@@ -56,9 +56,13 @@ def synthetic_world():
 
 
 def source_world():
-    """Encode current authored routes; compare them with independently saved facts."""
+    """Recompose the exact historical 26-placement west-tail extraction."""
     domain = ROOT/'domains/high-speed-rail'
-    scene = json.loads((domain/'01_assemblies/straight-stem-trumpet/assembly.json').read_text())
+    scene_path = domain/'01_assemblies/straight-stem-trumpet/evidence/design-history/before-border-piece-integration/assembly.json'
+    raw = scene_path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != '4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3':
+        raise ValueError('Historical west-tail extraction scene differs from its frozen index')
+    scene = json.loads(raw)
     records, supports, occupied = [], [], []
     for placement in scene['placements']:
         piece = json.loads((domain/'00_pieces'/placement['piece_id']/'piece.json').read_text())
