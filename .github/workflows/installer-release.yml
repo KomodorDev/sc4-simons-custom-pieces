@@ -1,0 +1,124 @@
+name: Installer release
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: '1'
+
+concurrency:
+  group: installer-${{ github.event_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  tests:
+    name: Installer source checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Select Python 3.11
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-ci.txt
+      - name: Install the complete test dependencies
+        run: python -m pip install -r requirements-ci.txt
+      - name: Run every source test suite
+        run: python -B tools/run_tests.py
+
+  build:
+    name: Installer (${{ matrix.platform }})
+    needs: tests
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-2022
+            platform: windows-x64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 35
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Preserve exact source and frozen-evidence bytes on Windows
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Select Python 3.11
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: custom-pieces/requirements-installer.txt
+      - name: Install pinned installer dependencies
+        run: python -m pip install -r custom-pieces/requirements-installer.txt
+      - name: Freeze, self-test, and verify the native installer ZIP
+        shell: bash
+        env:
+          INSTALLER_PLATFORM: ${{ matrix.platform }}
+          INSTALLER_COMMIT: ${{ github.sha }}
+        run: >-
+          python -B custom-pieces/installer/build_bundle.py build
+          --output "$RUNNER_TEMP/scp-installer"
+          --source-commit "$INSTALLER_COMMIT"
+          --platform "$INSTALLER_PLATFORM"
+      - name: Keep verified installer and review evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: installer-${{ matrix.platform }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            ${{ runner.temp }}/scp-installer/*.zip
+            ${{ runner.temp }}/scp-installer/*.zip.sha256
+            ${{ runner.temp }}/scp-installer/bundle-index-*.json
+            ${{ runner.temp }}/scp-installer/archive-check-*.json
+            ${{ runner.temp }}/scp-installer/self-test-*.json
+            ${{ runner.temp }}/scp-installer/gui-smoke-test-*.json
+
+  publish:
+    name: Publish experimental installer
+    needs: [tests, build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Select Python 3.11
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.11'
+      - name: Download all verified native outputs
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          pattern: installer-*
+          path: custom-pieces/dist/release-artifacts
+      - name: Verify and publish this exact main commit
+        shell: bash
+        run: >-
+          python -B custom-pieces/installer/build_bundle.py publish
+          --artifacts custom-pieces/dist/release-artifacts
+          --source-commit "$GITHUB_SHA"
+          --repository "$GITHUB_REPOSITORY"
