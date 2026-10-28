@@ -38,14 +38,14 @@ class InterchangePackageTests(unittest.TestCase):
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS')
         catalog = load_catalog(ROOT)
-        selected = ['hsr-diagonal-ghsr',
-            'interchange-hsr-split-90-compact',
-            'interchange-ground-merge-45-wide',
-            'interchange-l4-split-135-wide',
-            'interchange-oneway-grade-ground-to-hsr',
-            'interchange-oneway-grade-hsr-to-l4',
-            'interchange-l4-oneway-over-hsr',
-            'interchange-l4-oneway-over-ground']
+        selected = ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg',
+            'hsr-l2-two-track-mainline-split-90deg-right-compact',
+            'ghsr-ground-two-track-mainline-merge-45deg-right-wide',
+            'hsr-l4-single-track-oneway-split-135deg-right-wide',
+            'ghsr-ground-to-hsr-l2-single-track-oneway-ramp',
+            'hsr-l2-to-l4-single-track-oneway-ramp',
+            'hsr-l4-over-hsr-l2-mixed-crossing-90deg',
+            'hsr-l4-over-ghsr-ground-mixed-crossing-90deg']
         known = {piece['id'] for piece in catalog['pieces']}
         if not set(selected) <= known:
             raise unittest.SkipTest('New interchange catalog has not been registered yet')
@@ -112,7 +112,7 @@ class InterchangePackageTests(unittest.TestCase):
                             (name, target, resolved))
 
     def test_rehashed_height_collapse_cannot_pass_the_portable_verifier(self):
-        piece = self.pieces['interchange-l4-oneway-over-hsr']
+        piece = self.pieces['hsr-l4-over-hsr-l2-mixed-crossing-90deg']
         path = self.output/piece['asset_file']
         resources = {key:decompress(value) for key,value in entries(path.read_bytes()).items()}
         changed = False

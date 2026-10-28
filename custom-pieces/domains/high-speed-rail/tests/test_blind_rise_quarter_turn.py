@@ -17,7 +17,7 @@ from scp_hsr.test_support import floor
 ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 
 def fixture():
-    spec = next(p for p in load_catalog(ROOT)['pieces'] if p['id']=='blind-hsr-rise-quarter-turn')
+    spec = next(p for p in load_catalog(ROOT)['pieces'] if p['id']=='hsr-l2-and-l4-two-track-curve-ramp-90deg-right')
     layout = component_layout(RECIPE)
     resources = {(*PATH,int(t,16)):encode_paths(layout[tuple(c)]['routes'])
         if layout[tuple(c)]['routes'] else EMPTY_STRUCTURAL_PATH

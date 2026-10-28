@@ -38,7 +38,7 @@ class RoadStackClassificationTests(unittest.TestCase):
 class NativeRoadStackTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.spec=json.loads((ROOT/'domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json').read_text())
+        cls.spec=json.loads((ROOT/'domains/high-speed-rail/00_pieces/hsr-l2-over-road-l0-mixed-parallel-stack/piece.json').read_text())
         settings=jsonc.load(local_settings(ROOT)) if local_settings(ROOT).is_file() else {}
         fixture=Path(os.environ.get('SCP_TEST_NAM_PLUGINS',
                                     settings.get('plugins',ROOT/'local/validation-inputs/Plugins'))).expanduser()

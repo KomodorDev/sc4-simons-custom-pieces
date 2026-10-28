@@ -1,5 +1,11 @@
 // title: "Graphical installer policy"
 // summary: "Select the supported game profile, implemented catalogue, assembly presentation, platforms, and installer distribution requirements."
+//
+// Used when: The graphical installer starts an installation, undoes its last installation, or runs its packaged self-test; bundle preparation includes this policy in the runtime.
+// Read by: scp_installer.service._policy(), called by run_install(), undo_install(), and self_test(); run_install() also reads assembly_menu to select the assembly package.
+// Updated by: A maintainer when changing the supported installer distribution, with matching service validation, packaging, tests, and player instructions.
+// Affects: Whether the installer accepts its distribution policy and which domain and assembly layout it packages; descriptive platform and publication fields do not replace implementation checks or game observations.
+// Reference: custom-pieces/docs/INSTALLER.md explains player actions, and docs/GITHUB.md describes automated installer publication.
 {
   "schema_version": 1,
   "purpose": "Experimental installer distribution policy; local building does not establish public DAT redistribution permission or in-game verification.",

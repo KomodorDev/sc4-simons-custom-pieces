@@ -15,6 +15,7 @@ import unittest
 from unittest.mock import patch
 
 from scp.track_paths import encode_paths
+from scp.subject_identity import piece_directory
 from scp_hsr.hsr_partition_components import (
     RECIPES, build_models, model_inputs, partition_info, partition_layout,
 )
@@ -29,7 +30,7 @@ class LiteralComponentSupportMetadataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         domain = ROOT/'domains/high-speed-rail'
-        assembly = json.loads((domain/'01_assemblies/straight-stem-trumpet/assembly.json').read_text())
+        assembly = json.loads((domain/'01_assemblies/hsr-trumpet-straight-stem/assembly.json').read_text())
         cls.sources = {}
         for identifier in {row['piece_id'] for row in assembly['placements']}:
             directory = domain/'00_pieces'/identifier
@@ -56,7 +57,7 @@ class LiteralComponentSupportMetadataTests(unittest.TestCase):
 
     def test_obsolete_seven_support_fan_declaration_is_rejected_for_the_core(self):
         piece = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/
-                            'hsr-component-l2-paired-fan-compact-core/piece.json').read_text())
+                            'hsr-l2-mixed-fan-compact-recessed-web/piece.json').read_text())
         changed = deepcopy(piece)
         changed['component']['support_centers'] = [
             [48., 0.], [48., -16.], [48., -32.], [40., -46.],
@@ -68,13 +69,13 @@ class LiteralComponentSupportMetadataTests(unittest.TestCase):
 class ReusableModuleSourceTests(unittest.TestCase):
     def test_current_partition_geometry_keeps_its_frozen_source_bytes(self):
         expected = {
-            'hsr-component-modular-crossing-core': '8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940',
-            'hsr-component-modular-paired-climb': '0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601',
-            'hsr-component-modular-south-junction': 'fda2275ea4013c2e9333e3904fc8e5f96de483ce12982c7d45e2fc4d3485ef5e',
+            'hsr_component_modular_crossing_core': '8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940',
+            'hsr_component_modular_paired_climb': '0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601',
+            'hsr_component_modular_south_junction': 'fda2275ea4013c2e9333e3904fc8e5f96de483ce12982c7d45e2fc4d3485ef5e',
         }
-        self.assertEqual(set(RECIPES), {slug.replace('-', '_') for slug in expected})
-        for slug, digest in expected.items():
-            path = ROOT/'domains/high-speed-rail/00_pieces'/slug/'geometry.json'
+        self.assertEqual(set(RECIPES), set(expected))
+        for recipe, digest in expected.items():
+            path = piece_directory(recipe, ROOT)/'geometry.json'
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
 
     def test_every_local_path_matches_its_direct_current_module_fingerprint(self):
@@ -94,8 +95,7 @@ class ReusableModuleSourceTests(unittest.TestCase):
         for recipe in RECIPES:
             with self.subTest(recipe=recipe):
                 info = partition_info(recipe)
-                piece = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/
-                                    recipe.replace('_', '-')/'piece.json').read_text())
+                piece = json.loads((piece_directory(recipe, ROOT)/'piece.json').read_text())
                 self.assertEqual(piece['name'], info['name'])
                 self.assertEqual(piece['description'], info['description'])
                 self.assertEqual(piece['cells'], [list(cell) for cell in info['cells']])
@@ -138,9 +138,9 @@ class ReusableModuleSourceTests(unittest.TestCase):
             self.assertEqual(result, expected)
             self.assertEqual(json.loads(compiler.call_args.args[1]), config)
             if recipe == 'hsr_component_modular_south_junction':
-                rule = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/recipe.replace('_', '-')/'geometry.json').read_text())['junction_wedge_alignment']
+                rule = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())['junction_wedge_alignment']
                 repair.assert_called_once_with(b'native donor', expected, mapping, rule)
-                stem_rule = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/recipe.replace('_', '-')/'geometry.json').read_text())['stem_parapet_alignment']
+                stem_rule = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())['stem_parapet_alignment']
                 stem_repair.assert_called_once_with(b'native donor', expected, mapping, stem_rule)
             else:
                 repair.assert_not_called()

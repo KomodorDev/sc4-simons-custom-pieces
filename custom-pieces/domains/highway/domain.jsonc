@@ -1,5 +1,15 @@
 // title: "Highway domain registry"
 // summary: "Reserve the highway domain’s registry and implementation locations while no highway pieces are implemented."
+//
+// Used when: The library loads its registered transport domains for commands such as list, inventory, or scaffold; this reserved domain currently contains no pieces, assemblies, or implementation module.
+//
+// Read by: custom-pieces/framework/scp/catalog.py load_catalog() reads this registry through project.jsonc, loads its collections file, and follows only explicitly listed subject paths; scp.providers.implementation() reads the implementation field and rejects its current null value if highway implementation is requested.
+//
+// Updated by: Contributors deliberately register highway subjects and implementation routing here; custom-pieces/scp.py scaffold --domain highway and scp.registration.apply_registration() can add draft piece entries with the header-preserving JSONC writer.
+//
+// Affects: The highway catalogue membership, collection location, future implementation routing, and scaffold dependency and menu defaults; the empty registry creates no highway model, build output, or in-game button.
+//
+// Reference: custom-pieces/domains/highway/AGENTS.md
 {
   "schema_version": 1,
   "purpose": "Explicit registry of maintained pieces, documented assemblies, implementation and build collections for this transport domain.",

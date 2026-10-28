@@ -280,7 +280,7 @@ class IntrinsicConnectivityTests(unittest.TestCase):
     def test_saved_trumpet_preserves_six_journeys_without_modifying_frozen_records(self):
         from scp.catalog import load_catalog
         root = Path(__file__).resolve().parents[1]
-        directory = root/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet'
+        directory = root/'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem'
         scene_path = directory/'assembly.json'
         scene = json.loads(scene_path.read_text())
         specs = {spec['id']: spec for spec in load_catalog(root)['pieces']}
@@ -289,7 +289,12 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         before = {identifier: path.read_bytes() for identifier, path in files.items()}
         original = (directory/'connections.json').read_bytes()
         records = {identifier: json.loads(raw) for identifier, raw in before.items()}
-        output = assembly_connectivity('straight-stem-trumpet', scene, records, specs)
+        with self.assertRaisesRegex(ValueError, 'another piece'):
+            assembly_connectivity('hsr-trumpet-straight-stem', scene, records, specs)
+        output = assembly_connectivity('hsr-trumpet-straight-stem', scene, records, specs,
+                                       allow_historical_identities=True, identity_root=root)
+        self.assertEqual(output['software_status']['path_extraction'], 'unverified')
+        self.assertEqual(set(output['source']['historical_subject_ids']), identifiers)
         self.assertEqual({(j['entry_port'], j['exit_port']) for j in output['journeys']},
                          {(a+'.in', b+'.out') for a in 'WES' for b in 'WES' if a != b})
         # The P26 extraction exposes two directed western merge joins, and

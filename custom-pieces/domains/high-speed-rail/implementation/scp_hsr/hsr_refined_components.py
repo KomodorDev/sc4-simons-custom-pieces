@@ -14,7 +14,7 @@ LOWER, UPPER = 15.5, 30.5
 DEFINITIONS = {
     'hsr_component_symmetric_graded_y': {
         'kind': 'symmetric_graded_y', 'height': LOWER,
-        'name': 'HSR Symmetric Upper Stem to Lower Curved Arms',
+        'name': 'HSR Level 2 (15.5 m) \u2194 Level 4 (30.5 m) \u2014 Y Junction with Two-Track Stem \u2014 Graded',
         'description': 'Two mirrored curved level transitions connect one native two-track upper stem to opposite lower one-way arms. The paired collar stays flat until the two tapered decks separate.',
         # Coordinates are normalized SC4PATH east/north. A shared upper
         # support line continues into reflected lower curve supports;
@@ -31,7 +31,7 @@ DEFINITIONS = {
     'hsr_component_lower_oneway_curve90_right': {
         'kind': 'lower_oneway_curve', 'height': LOWER,
         'hand': 'right', 'angle': 90,
-        'name': 'One-Way HSR L2 Standard 90 Degree Curve Right',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Standard, 8 m Deck Width',
         'description': 'A centred lower one-way track turns right through 90 degrees with 104 m cardinal displacement, smooth curvature and eight-metre flat collars.',
         'authored_support_centers': [
             (64., 0.), (80., 0.), (96., 0.),

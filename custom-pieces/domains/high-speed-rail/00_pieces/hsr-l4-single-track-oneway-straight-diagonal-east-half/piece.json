@@ -1,0 +1,83 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half.",
+  "schema_version": 1,
+  "id": "hsr-l4-single-track-oneway-straight-diagonal-east-half",
+  "name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half",
+  "description": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half. Fixed click-to-place piece in a 1 by 1 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_l4_diagonal_east_half",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7d5",
+  "tile_ids": [
+    "7f533000"
+  ],
+  "preview_id": "7f533ff5",
+  "effect_name": "preview_scp_interchg_f7d5_0",
+  "footprint": [
+    1,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7d5",
+    "order": "7011f7d5",
+    "style": "interchange-oneway-l4-diagonal-east-half"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f533000",
+      "source": "7f533000",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -8.0,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        8.0,
+        0.0,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "l4",
+    "height": 30.5,
+    "radius": "compact"
+  }
+}

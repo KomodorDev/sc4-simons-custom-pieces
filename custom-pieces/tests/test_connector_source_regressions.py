@@ -17,13 +17,14 @@ import unittest
 
 CUSTOM_ROOT = next(parent for parent in Path(__file__).resolve().parents if (parent / "project.jsonc").is_file())
 DOMAIN = Path("domains/high-speed-rail")
-CROSSING = "hsr-component-modular-crossing-core"
-CORNER = "hsr-component-tight-paired-curve90-l4-to-mid"
+CROSSING = "hsr-l4-over-hsr-l2-two-track-crossing-90deg"
+CORNER = "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight"
 PILOT_IDS = [CROSSING, CORNER]
 sys.path.insert(0, str(CUSTOM_ROOT / "framework"))
 
 from scp import connector_metadata as metadata
 from scp import jsonc
+from connector_source_fixture import write_connector_source_fixture
 
 
 def read_json(path):
@@ -33,14 +34,19 @@ def read_json(path):
 class ConnectorSourceRegressionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        temporary = tempfile.TemporaryDirectory(prefix='scp-synthetic-source-contracts-')
+        cls.addClassCleanup(temporary.cleanup)
+        identifiers = PILOT_IDS + ['hsr-l2-mixed-fan-compact-recessed-web',
+                                  'hsr-l2-two-track-mainline-opposed-merges-oblique-cuts']
+        cls.fixture_root = write_connector_source_fixture(temporary.name, identifiers, source_root=CUSTOM_ROOT)
         cls.registry = read_json(CUSTOM_ROOT / DOMAIN / "connector-profiles.jsonc")
         cls.profiles = metadata.resolve_profiles(cls.registry)
         cls.raw = {}
         for slug in PILOT_IDS:
-            directory = CUSTOM_ROOT / DOMAIN / "00_pieces" / slug
+            directory = cls.fixture_root / DOMAIN / "00_pieces" / slug
             cls.raw[slug] = {name: read_json(directory / filename) for name, filename in (
                 ("piece", "piece.json"), ("connections", "connections.json"), ("groups", "connector-groups.jsonc"))}
-        cls.pilot = metadata.load_library(CUSTOM_ROOT, PILOT_IDS)
+        cls.pilot = metadata.load_library(cls.fixture_root, PILOT_IDS)
 
     def validate(self, slug, *, piece=None, connections=None, groups=None, profiles=None):
         raw = self.raw[slug]
@@ -53,15 +59,15 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
 
     def test_trumpet_sources_preserve_complete_measured_ends_and_physical_channels(self):
         expected = {
-            "hsr-component-l2-paired-fan-compact-core": {
+            "hsr-l2-mixed-fan-compact-recessed-web": {
                 "Nin": "north-to-west-track", "Wout": "north-to-west-track",
                 "Ein": "east-to-north-track", "Nout": "east-to-north-track"},
-            "hsr-component-l2-short-opposed-merge-core": {
+            "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts": {
                 "Win": "eastbound-mainline", "Eout": "eastbound-mainline",
                 "Ein": "westbound-mainline", "Wout": "westbound-mainline",
                 "Nin": "north-branch", "Sin": "south-branch"},
         }
-        resolved = metadata.load_library(CUSTOM_ROOT, list(expected))["pieces"]
+        resolved = metadata.load_library(self.fixture_root, list(expected))["pieces"]
         for slug, channels in expected.items():
             with self.subTest(piece=slug):
                 piece = resolved[slug]
@@ -77,8 +83,8 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                 self.assertTrue(all(group["construction_network"] == "monorail" for group in piece["groups"]))
 
     def test_trumpet_curved_cuts_do_not_invent_paired_profiles_or_section_origins(self):
-        slugs = ["hsr-component-l2-paired-fan-compact-core", "hsr-component-l2-short-opposed-merge-core"]
-        resolved = metadata.load_library(CUSTOM_ROOT, slugs)["pieces"]
+        slugs = ["hsr-l2-mixed-fan-compact-recessed-web", "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts"]
+        resolved = metadata.load_library(self.fixture_root, slugs)["pieces"]
         for slug in slugs:
             with self.subTest(piece=slug):
                 groups = resolved[slug]["groups"]
@@ -95,7 +101,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                     self.assertNotEqual(group["members"][0]["heading_outward_degrees"] % 90, 0)
                 for group in paired:
                     expected_profile = ("hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
-                                        if slug == "hsr-component-l2-paired-fan-compact-core"
+                                        if slug == "hsr-l2-mixed-fan-compact-recessed-web"
                                         else "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1")
                     self.assertEqual(group["profile_id"], expected_profile)
                     self.assertEqual(group["section_offset_m"], 0)
@@ -129,7 +135,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             metadata.resolve_profiles(registry)
 
-    def test_actual_pilot_covers_all_twelve_ports_in_six_groups(self):
+    def test_source_geometry_fixture_covers_all_twelve_ports_in_six_groups(self):
         pieces = self.pilot["pieces"]
         self.assertEqual(set(pieces), set(PILOT_IDS))
         self.assertEqual(self.pilot["status"], "metadata_validated")
@@ -369,10 +375,10 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
         self.assertEqual(explicit['members'][0]['endpoint_m'], port['endpoint_m'])
         self.assertEqual(explicit['members'][0]['tangent'], port['tangent'])
 
-    def test_loading_is_read_only_for_authoritative_piece_records(self):
-        paths = [CUSTOM_ROOT / DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "checks/manual-tests.json")]
+    def test_loading_is_read_only_for_temporary_piece_records(self):
+        paths = [self.fixture_root / DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "checks/manual-tests.json")]
         before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
-        metadata.load_library(CUSTOM_ROOT, PILOT_IDS)
+        metadata.load_library(self.fixture_root, PILOT_IDS)
         self.assertEqual(before, {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths})
 
     def test_source_binding_detects_even_prose_only_source_change(self):
@@ -383,7 +389,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
             for relative in relatives:
                 destination = root / relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(CUSTOM_ROOT / relative, destination)
+                shutil.copyfile(self.fixture_root / relative, destination)
             self.assertEqual(metadata.load_library(root, PILOT_IDS)["status"], "metadata_validated")
             piece_path = root / DOMAIN / "00_pieces" / CROSSING / "piece.json"
             changed = read_json(piece_path)
@@ -400,7 +406,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
             for relative in relatives:
                 destination = root / relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(CUSTOM_ROOT / relative, destination)
+                shutil.copyfile(self.fixture_root / relative, destination)
             self.assertEqual(metadata.load_library(root, PILOT_IDS)["status"], "metadata_validated")
             domain_path = root / DOMAIN / "domain.jsonc"
             original = read_json(domain_path)
@@ -420,7 +426,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
             for relative in relatives:
                 destination = root / relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(CUSTOM_ROOT / relative, destination)
+                shutil.copyfile(self.fixture_root / relative, destination)
             sidecar = root / DOMAIN / "00_pieces" / CROSSING / "connector-groups.jsonc"
             sidecar.with_suffix(".json").write_text(json.dumps(jsonc.load(sidecar)))
             sidecar.unlink()

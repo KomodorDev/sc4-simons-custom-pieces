@@ -100,7 +100,7 @@ class RealNAMBuildTests(unittest.TestCase):
             crossings = load_catalog(ROOT)['piece_sets']['hsr-crossings']
             build_project(ROOT, plugins, cls.default_output, include=crossings, extra_roots=extra)
             build_project(ROOT, plugins, cls.combined_output,
-                          include=['hsr-diagonal-ghsr', 'tram-under-hsr'], extra_roots=extra)
+                          include=['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'], extra_roots=extra)
         except BaseException:
             cls.sandbox.cleanup()
             raise
@@ -140,10 +140,10 @@ class RealNAMBuildTests(unittest.TestCase):
     def test_default_and_explicit_piece_selection(self):
         default, combined = self.manifest(self.default_output), self.manifest(self.combined_output)
         self.assertEqual(len(default['pieces']), 4)
-        self.assertNotIn('tram-under-hsr', [p['id'] for p in default['pieces']])
+        self.assertNotIn('hsr-l2-over-tram-ground-mixed-crossing-90deg', [p['id'] for p in default['pieces']])
         default_report = verify_build(self.default_output, write_report=False)
         self.assertEqual(default_report['construction']['separate_piece_menu_roots'], 4)
-        self.assertEqual({p['id'] for p in combined['pieces']}, {'hsr-diagonal-ghsr', 'tram-under-hsr'})
+        self.assertEqual({p['id'] for p in combined['pieces']}, {'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'})
         report = verify_build(self.combined_output, write_report=False)
         self.assertEqual(report['construction']['separate_piece_menu_roots'], 2)
         self.assertEqual(report['construction']['states_per_root'], 8)
@@ -183,7 +183,7 @@ class RealNAMBuildTests(unittest.TestCase):
         self.assertFalse(report['local_donor_comparison'])
         self.assertEqual(report['documentation_files_checked'], len(self.manifest(extracted)['documentation']))
         self.assertTrue((extracted/'docs/STRUCTURE.md').is_file())
-        subject = extracted/'docs/domains/high-speed-rail/00_pieces/tram-under-hsr'
+        subject = extracted/'docs/domains/high-speed-rail/00_pieces/hsr-l2-over-tram-ground-mixed-crossing-90deg'
         self.assertTrue((subject/'README.md').is_file())
         self.assertIn('## Connections and journeys', (subject/'README.md').read_text())
         self.assertFalse((subject/'CONNECTIONS.md').exists())

@@ -12,7 +12,7 @@ from copy import deepcopy
 from functools import lru_cache
 import hashlib
 import json
-from pathlib import Path
+from scp.subject_identity import canonical_piece_name, piece_directory
 import struct
 
 from scp.dbpf import require
@@ -26,7 +26,7 @@ RECIPES = (
 @lru_cache(maxsize=2)
 def _source(recipe):
     require(recipe in RECIPES, 'Unknown shortened HSR junction recipe')
-    path = Path(__file__).resolve().parents[2]/'00_pieces'/recipe.replace('_', '-')/'geometry.json'
+    path = piece_directory(recipe)/'geometry.json'
     data = json.loads(path.read_text())
     require(data.get('schema_version') == 1 and data['metadata']['recipe'] == recipe,
             'Shortened HSR junction source identity or schema is invalid')
@@ -36,6 +36,7 @@ def _source(recipe):
 def atomic_info(recipe):
     """Return literal ports, construction cells and the retained support plan."""
     info = deepcopy(_source(recipe)['metadata'])
+    info['name'] = canonical_piece_name(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): flag for cell, flag in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]

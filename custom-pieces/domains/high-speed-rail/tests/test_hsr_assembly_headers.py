@@ -15,8 +15,8 @@ from scp_hsr_tools import render_hsr_assembly as renderer
 
 class AssemblyImageHeaderTests(unittest.TestCase):
     def test_existing_prefix_is_idempotent_and_invalid_headers_are_rejected(self):
-        rows = renderer.assembly_caption_rows('Straight-stem HSR trumpet', 'Clean view', 'Top view | north up')
-        self.assertEqual(rows, ('Assembly - Straight-stem HSR trumpet', 'Clean view | Top view | north up'))
+        rows = renderer.assembly_caption_rows('HSR \u2014 Trumpet \u2014 Straight Stem', 'Clean view', 'Top view | north up')
+        self.assertEqual(rows, ('Assembly - HSR \u2014 Trumpet \u2014 Straight Stem', 'Clean view | Top view | north up'))
         self.assertEqual(renderer.assembly_caption_rows(rows[0], 'Clean view', 'Top view | north up'), rows)
         self.assertEqual(renderer.assembly_caption_rows('Assembly - '+rows[0], 'Clean view', 'Top view | north up'), rows)
         for arguments in (('', 'Clean view', 'Top view'), ('Assembly - ', 'Clean view', 'Top view'),

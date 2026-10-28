@@ -1,5 +1,15 @@
 // title: "Highway build collections"
 // summary: "Reserve named selections for future implemented highway types without importing rail assumptions."
+//
+// Used when: The library loads highway build selections and a contributor explicitly selects a named collection with --set for doctor, build, or release-check; no highway collection is currently defined.
+//
+// Read by: custom-pieces/framework/scp/catalog.py load_catalog() follows the collections field in the highway domain registry and merges these named member lists into piece_sets; custom-pieces/scp.py selection() resolves an explicitly requested set to existing piece IDs.
+//
+// Updated by: Contributors author reviewed lists of already registered reusable piece IDs; custom-pieces/framework/scp/registration.py apply_registration() also writes supplied collection changes using the header-preserving JSONC writer.
+//
+// Affects: Which existing types an explicit named build selection includes and how collections appear in generated domain navigation; a collection allocates no new piece, defines no assembly placement plan, and creates no additional construction button.
+//
+// Reference: custom-pieces/docs/BUILD_AND_INSTALL.md
 {
   "schema_version": 1,
   "purpose": "Named build selections of existing pieces; a collection is not a new construction button or an assembly.",

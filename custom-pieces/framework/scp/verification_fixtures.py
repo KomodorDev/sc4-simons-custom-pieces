@@ -13,6 +13,7 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 
 from .dbpf import decompress, entries, tgi_string
+from .subject_identity import canonical_subject_id
 
 
 _SHA256 = re.compile(r'[0-9a-f]{64}')
@@ -76,6 +77,16 @@ def _piece_identities(pieces, label):
     return result
 
 
+def _current_piece_identities(pieces, label, root):
+    """Compare declared aliases without rewriting a descriptor or its assets."""
+    identities = {}
+    for identifier, value in _piece_identities(pieces, label).items():
+        current = canonical_subject_id(identifier, root=root)
+        _require(current not in identities, f'{label} has duplicate piece identities after declared aliases')
+        identities[current] = value
+    return identities
+
+
 def resource_descriptor(descriptor_path):
     """Read an explicit maintained schema-3 descriptor; source errors never skip.
 
@@ -113,18 +124,23 @@ def resource_descriptor(descriptor_path):
 
 
 def verification_resources(descriptor_path, build_root, *, selected_piece_ids=None,
-                           assembly_id=None, required=True):
+                           assembly_id=None, required=True, root=None):
     """Return the verified current build, or None only for an optional absent build.
 
     The actual manifest must select exactly the descriptor's identities, recipes
     and asset paths. Callers may independently supply the expected selected IDs
     and assembly ID so a valid descriptor for a different selection cannot pass.
-    Documentation, controller and menu files are outside this focused contract.
+    Only declared subject aliases are normalized, using the selected source
+    project's migration ledger. Recipes, asset paths, archive bytes, resource
+    identities, and hashes stay exact. The descriptor itself remains unchanged.
+    Documentation, controller, and menu files are outside this focused contract.
     """
     descriptor = resource_descriptor(descriptor_path)
-    identities = _piece_identities(descriptor['pieces'], 'Current resource descriptor')
+    identities = _current_piece_identities(descriptor['pieces'], 'Current resource descriptor', root)
     if assembly_id is not None:
-        _require(_identifier(assembly_id) and descriptor['assembly_id'] == assembly_id,
+        _require(_identifier(assembly_id)
+                 and canonical_subject_id(descriptor['assembly_id'], 'assembly', root)
+                 == canonical_subject_id(assembly_id, 'assembly', root),
                  'Current resource descriptor assembly identity differs')
     if selected_piece_ids is not None:
         _require(not isinstance(selected_piece_ids, (str, bytes)),
@@ -136,6 +152,9 @@ def verification_resources(descriptor_path, build_root, *, selected_piece_ids=No
         _require(all(_identifier(value) for value in selected)
                  and len(selected) == len(set(selected)),
                  'Expected selected piece identities must be unique identifiers')
+        selected = [canonical_subject_id(value, root=root) for value in selected]
+        _require(len(selected) == len(set(selected)),
+                 'Expected selected piece identities must be unique after declared aliases')
         _require(set(selected) == set(identities), 'Current resource descriptor selected identities differ')
     requested = Path(build_root)
     _require(not (requested.is_symlink() and not requested.exists()),
@@ -150,7 +169,7 @@ def verification_resources(descriptor_path, build_root, *, selected_piece_ids=No
     _require(manifest_path.is_file(), 'Present current build is incomplete: manifest.json')
     manifest = _read_json(manifest_path)
     _require(isinstance(manifest, dict), 'Current build manifest must be an object')
-    actual_identities = _piece_identities(manifest.get('pieces'), 'Current build manifest')
+    actual_identities = _current_piece_identities(manifest.get('pieces'), 'Current build manifest', root)
     _require(actual_identities == identities,
              'Current build manifest selected identity, recipe or asset path differs')
     resolved_assets = set()

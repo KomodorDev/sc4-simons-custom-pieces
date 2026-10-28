@@ -1,5 +1,11 @@
 // title: "Private workstation settings example"
 // summary: "Copy this template to ignored local/settings.jsonc and supply this computer’s actual Plugins directories without publishing private paths."
+//
+// Used when: A contributor creates private workstation settings by copying this template to ignored custom-pieces/local/settings.jsonc and replacing the placeholder Plugins path.
+// Read by: A contributor or the copy command in custom-pieces/docs/BUILD_AND_INSTALL.md; normal commands read the private settings copy through scp.paths.local_settings(), not this template.
+// Updated by: A maintainer for shared example settings; each contributor edits only their private copy for actual local paths and additional active Plugins directories.
+// Affects: The copy supplies default Plugins discovery in custom-pieces/scp.py and extra scan roots in scp.build.roots_for(); explicit command options can override those settings, and an existing sole settings.json remains supported.
+// Reference: custom-pieces/docs/BUILD_AND_INSTALL.md describes copying the template and the rejection of simultaneous settings.json and settings.jsonc files.
 {
   "purpose": "Copy to local/settings.jsonc, set plugins to your actual Plugins directory, and add any other active Plugins directories to extra_plugins. Keep local/settings.jsonc out of Git.",
   "plugins": "/absolute/path/to/user/Plugins",

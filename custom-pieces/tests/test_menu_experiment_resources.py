@@ -154,10 +154,10 @@ class MenuExperimentResourceTests(unittest.TestCase):
 
     def test_registered_assembly_icon_matches_existing_native_resource_bytes(self):
         catalog = load_catalog(ROOT)
-        assembly = next(row for row in catalog['_assemblies'] if row['id'] == 'straight-stem-trumpet')
+        assembly = next(row for row in catalog['_assemblies'] if row['id'] == 'hsr-trumpet-straight-stem')
         expected = make_assembly_icon(assembly_icon_routes(assembly['scene'], catalog['pieces']),
                                       network_label=assembly_icon_network(assembly['id']))
-        raw = (ROOT / 'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/icon.png').read_bytes()
+        raw = (ROOT / 'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/icon.png').read_bytes()
         output, _ = build_menu_experiment_resources(self.source, self.pieces,
                                                    cycle_button=self.cycle, cycle_icon=raw,
                                                    expected_cycle_icon=expected)

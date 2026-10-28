@@ -201,13 +201,13 @@ Register the assembly and keep its player overview in `domains/<domain>/01_assem
 
 ## 11. Worked example
 
-The [current trumpet README](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) demonstrates the current four-section overview: **1. Views**, **2. Pieces**, **3. Placements**, and **4. Connection matrix**. Its top navigation labels the Testing link as a separate document. It includes the six-image set, component thumbnails, exact placements, and directed connection statuses. Its [TESTING page](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md) owns the layout-specific measurements, current resource contract, technical limitations, and scoped checks. Reuse that structure without copying its particular dimensions or rail assumptions into unrelated assemblies.
+The [current trumpet README](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md) demonstrates the current four-section overview: **1. Views**, **2. Pieces**, **3. Placements**, and **4. Connection matrix**. Its top navigation labels the Testing link as a separate document. It includes the six-image set, component thumbnails, exact placements, and directed connection statuses. Its [TESTING page](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/TESTING.md) owns the layout-specific measurements, current resource contract, technical limitations, and scoped checks. Reuse that structure without copying its particular dimensions or rail assumptions into unrelated assemblies.
 
 <a id="start-a-small-hsr-assembly-from-existing-pieces"></a>
 
 ## 12. Start a small HSR assembly from existing pieces
 
-Use this bounded example to learn the registration and first-documentation sequence before attempting a junction. Its starter identifier and title are training placeholders, exempt from the finished-subject [naming grammar](NAMING_CONVENTIONS.md); retain the exact example values in the runnable steps. It creates a **two-tile training layout**, using two copies of the existing `hsr-component-lower-paired-straight` type at 15.5 m. Its expected footprint is one tile east–west and two tiles north–south. It introduces no new reusable type, puzzle identifier, or model-resource allocation. Both placements share one component-cycle entry; a multi-type assembly adds its distinct types in first-use order. This example does not establish physical fit, native construction, game traffic, or a complete interchange.
+Use this bounded example to learn the registration and first-documentation sequence before attempting a junction. Its starter identifier and title are training placeholders, exempt from the finished-subject [naming grammar](NAMING_CONVENTIONS.md); retain the exact example values in the runnable steps. It creates a **two-tile training layout**, using two copies of the existing `hsr-l2-two-track-straight` type at 15.5 m. Its expected footprint is one tile east–west and two tiles north–south. It introduces no new reusable type, puzzle identifier, or model-resource allocation. Both placements share one component-cycle entry; a multi-type assembly adds its distinct types in first-use order. This example does not establish physical fit, native construction, game traffic, or a complete interchange.
 
 Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-checklist-and-output-files) alongside these steps. Run commands from the repository root after the [Python installation and editable project installation](WORKFLOW_PIECE_CREATION.md#2-open-the-project-and-inspect-the-existing-pieces). If several checkouts exist, run the editable installation for the checkout you are actually editing. Prepare the supported native inputs through [Build and install](BUILD_AND_INSTALL.md#4-build-a-selected-collection) before any build or actual-model render. Replace `/path/to/SimCity 4/Plugins` below with the existing Plugins directory containing the required native inputs; it is read for resources and collision checks.
 
@@ -216,6 +216,8 @@ Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-
 ### 12.1 Copy the unregistered placement template
 
 The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the commented template and writes a strict-JSON assembly plan because individual assembly files have not migrated yet. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
+
+Future maintained assembly sources must follow the [JSONC source convention](../STRUCTURE.md#51-shared-jsonc-sources-and-strict-json-exports), including its complete introductory comment header. The example below documents the current `assembly.json` tooling. Before creating a JSONC replacement, update the readers, writers, registry paths, tests, and this example together. Retain existing subjects and frozen evidence in their current formats until deliberately migrated.
 
 ```sh
 python3 - <<'PY'
@@ -318,7 +320,7 @@ The current HSR icon adapter requires an explicit network declaration for every 
 
 ```python
 networks = {
-    'straight-stem-trumpet': 'HSR',
+    'hsr-trumpet-straight-stem': 'HSR',
     'two-tile-hsr-starter': 'HSR',
 }
 ```
@@ -340,7 +342,7 @@ This command refreshes all registered HSR assembly icons and their `evidence/ico
 Choose a fresh output directory; replace `review-01` consistently if it already exists. This assembly uses only one distinct member type, so one `--include` supplies both copies:
 
 ```sh
-python3 custom-pieces/scp.py build --include hsr-component-lower-paired-straight --output custom-pieces/dist/two-tile-hsr-parts-review-01
+python3 custom-pieces/scp.py build --include hsr-l2-two-track-straight --output custom-pieces/dist/two-tile-hsr-parts-review-01
 python3 custom-pieces/scp.py verify --output custom-pieces/dist/two-tile-hsr-parts-review-01
 python3 -m scp_hsr.hsr_connections --root custom-pieces --build custom-pieces/dist/two-tile-hsr-parts-review-01
 ```
@@ -380,7 +382,7 @@ python3 -B tools/run_tests.py
 Finish source documentation, icon artwork, measurements, and applicable checks first. Then build a fresh ordinary source selection, prepare this layout's single button, verify the candidate, and package it without `--refresh-docs`:
 
 ```sh
-python3 custom-pieces/scp.py build --include hsr-component-lower-paired-straight --output custom-pieces/dist/two-tile-hsr-parts-final-01
+python3 custom-pieces/scp.py build --include hsr-l2-two-track-straight --output custom-pieces/dist/two-tile-hsr-parts-final-01
 python3 custom-pieces/scp.py assembly-menu --domain high-speed-rail --layout two-tile-hsr-starter --source custom-pieces/dist/two-tile-hsr-parts-final-01 --output custom-pieces/dist/two-tile-hsr-menu-final-01 --plugins '/path/to/SimCity 4/Plugins'
 python3 custom-pieces/scp.py verify --output custom-pieces/dist/two-tile-hsr-menu-final-01
 python3 custom-pieces/scp.py package --output custom-pieces/dist/two-tile-hsr-menu-final-01 --destination custom-pieces/dist/two-tile-hsr-menu-final-01.zip

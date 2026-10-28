@@ -35,10 +35,13 @@ def piece_title(piece_id, records, source_name):
     """Use the same source-backed title in every view, without duplicate levels."""
     records = list(records)
     by_id = {record['id']: record for record in records}
-    if piece_id == 'hsr-component-tight-paired-curve90-l4-to-mid':
+    height_annotation = (r'\(\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+)'
+                         r'(?:[eE][+-]?\d+)?)\s*m\s*\)')
+    canonical = ' — ' in source_name and re.search(height_annotation, source_name) is not None
+    if not canonical and piece_id == 'hsr-component-tight-paired-curve90-l4-to-mid':
         return piece_heading('HSR Tight Two-Track Corner — ' + level_and_height(by_id['curve-end-a'])
                              + ' to ' + level_and_height(by_id['curve-end-b']))
-    if piece_id == 'hsr-component-modular-crossing-core':
+    if not canonical and piece_id == 'hsr-component-modular-crossing-core':
         return piece_heading('HSR Modular One-Tile Crossing — ' + level_and_height(by_id['upper-end-a'])
                              + ' over ' + level_and_height(by_id['lower-end-a']))
     labels = sorted({level_and_height(record) for record in records})
@@ -61,7 +64,17 @@ def piece_title(piece_id, records, source_name):
                    r'(?:\s*\(\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)'
                    r'(?:[eE][+-]?\d+)?\s*m\s*\))?')
     title = re.sub(level_token, replace, source_name, flags=re.IGNORECASE)
-    remaining = [label for label in labels if label not in consumed and label not in title]
+    # Deliberately migrated names already distinguish Custom, Ground, and
+    # each service. A measured 0 m pedestrian group must not append an extra
+    # Custom label to an explicitly named Road Level 0 interface, for example.
+    # Only consume heights actually written in the source-backed title; keep
+    # any unrepresented verified height visible rather than guessing it away.
+    annotated_heights = ({float(match.group(1)) for match in re.finditer(height_annotation, title)}
+                         if canonical else set())
+    represented = {level_and_height(record) for record in records
+                   if record['path_height_m'] in annotated_heights}
+    remaining = [label for label in labels
+                 if label not in consumed and label not in title and label not in represented]
     return piece_heading(title + (' — ' + ' / '.join(remaining) if remaining else ''))
 
 

@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scp import jsonc
+from scp.subject_identity import canonical_piece_id, piece_directory
 from scp.autotile import validate_auto_tile_addresses
 from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import (
@@ -25,7 +26,7 @@ FULL = 'hsr_component_l2_paired_fan_compact_join'
 class FanCoreExtractionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.directory = PIECES/CORE.replace('_', '-')
+        cls.directory = piece_directory(CORE, ROOT)
         cls.spec = json.loads((cls.directory/'piece.json').read_text())
         cls.source = json.loads((cls.directory/'geometry.json').read_text())
         cls.extraction = json.loads((cls.directory/'evidence/fan-core-extraction.json').read_text())
@@ -44,7 +45,7 @@ class FanCoreExtractionTests(unittest.TestCase):
         self.assertNotIn('00_pieces/'+FULL.replace('_', '-')+'/piece.json', domain['pieces'])
         collections = jsonc.load(PIECES.parent/'collections.jsonc')['collections']
         self.assertFalse(any(FULL.replace('_', '-') in members for members in collections.values()))
-        replacements = {CORE.replace('_', '-'), 'hsr-component-l2-paired-straight-recessed-web'}
+        replacements = {canonical_piece_id(CORE, ROOT), 'hsr-l2-two-track-straight-recessed-web'}
         self.assertEqual(set(collections['hsr-compact-fan-parts']), replacements)
         self.assertTrue(replacements <= set(collections['hsr-all-components']))
 
@@ -154,7 +155,7 @@ class FanCoreExtractionTests(unittest.TestCase):
 
     def test_sparse_new_allocation_has_unique_native_addresses(self):
         validate_auto_tile_addresses(self.spec)
-        ledger = jsonc.load(ROOT/'config/allocations.jsonc')['pieces'][CORE.replace('_', '-')]
+        ledger = jsonc.load(ROOT/'config/allocations.jsonc')['pieces'][canonical_piece_id(CORE, ROOT)]
         self.assertEqual(ledger['cells'], self.spec['cells'])
         self.assertEqual(ledger['tile_ids'], self.spec['tile_ids'])
         self.assertEqual(ledger['tile_base'], '7f505000')
@@ -163,7 +164,7 @@ class FanCoreExtractionTests(unittest.TestCase):
 
     def test_new_core_menu_identifies_a_junction_component(self):
         from scp_hsr.icons import icon_identity
-        identity = icon_identity(CORE.replace('_', '-'))
+        identity = icon_identity(canonical_piece_id(CORE, ROOT))
         self.assertEqual(identity['kind'], 'JCT')
         self.assertEqual(identity['badge'], 'PART')
 

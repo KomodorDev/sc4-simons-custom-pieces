@@ -12,11 +12,12 @@ from scp import connector_metadata
 from scp.connector_metadata import (ConnectorDataError, build_exports, load_exports, load_library,
     resolve_profiles, validate_piece, validate_structure, _schema, write_exports)
 from scp.export import public_files
+from connector_source_fixture import write_connector_source_fixture, synthetic_export_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = ROOT/'domains/high-speed-rail'
-IDS = ['hsr-component-modular-crossing-core', 'hsr-component-tight-paired-curve90-l4-to-mid']
-BUILD = ROOT/'dist/straight-stem-trumpet'
+IDS = ['hsr-l4-over-hsr-l2-two-track-crossing-90deg', 'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight']
+BUILD = ROOT/'dist/hsr-trumpet-straight-stem'
 
 
 def bound_source_names(values):
@@ -32,8 +33,21 @@ def bound_source_names(values):
 class ConnectorSourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.report = load_library(ROOT, IDS)
+        temporary = tempfile.TemporaryDirectory(prefix='scp-synthetic-connectors-')
+        cls.addClassCleanup(temporary.cleanup)
+        cls.fixture_root = write_connector_source_fixture(temporary.name, IDS, source_root=ROOT)
+        cls.report = load_library(cls.fixture_root, IDS)
         cls.profiles = resolve_profiles(jsonc.load(DOMAIN/'connector-profiles.jsonc'))
+
+    def test_actual_renamed_sources_keep_historical_connector_bindings_stale(self):
+        paths = [DOMAIN/'00_pieces'/identifier/name for identifier in IDS
+                 for name in ('piece.json', 'connections.json', 'connector-groups.jsonc', 'connector-data.json')]
+        before = {path: path.read_bytes() for path in paths}
+        for identifier in IDS:
+            with self.subTest(identifier=identifier), self.assertRaises(ConnectorDataError) as error:
+                load_library(ROOT, [identifier])
+            self.assertEqual(error.exception.code, 'stale_source')
+        self.assertEqual(before, {path: path.read_bytes() for path in paths})
 
     def validate(self, mutate):
         piece = deepcopy(self.report['pieces'][IDS[0]])
@@ -65,7 +79,8 @@ class ConnectorSourceTests(unittest.TestCase):
     def test_comment_only_shared_source_change_invalidates_raw_export_binding(self):
         identifier = IDS[0]
         relative = 'domains/high-speed-rail/connector-profiles.jsonc'
-        saved = json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text())
+        saved = synthetic_export_identity(
+            json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text()), identifier)
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             source = root/relative
@@ -90,7 +105,8 @@ class ConnectorSourceTests(unittest.TestCase):
 
     def test_connector_export_writer_keeps_strict_json_and_preserves_authored_comments(self):
         identifier = IDS[0]
-        value = json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text())
+        value = synthetic_export_identity(
+            json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text()), identifier)
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             directory = root/'domains/high-speed-rail/00_pieces'/identifier

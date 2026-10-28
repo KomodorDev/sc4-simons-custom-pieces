@@ -4,10 +4,12 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
+from connector_source_fixture import write_connector_source_fixture
 
 try:
     from scp import connector_overview as overview
@@ -122,11 +124,13 @@ class ConnectorOverviewTests(unittest.TestCase):
                          ('1 incoming; 1 outgoing', 'See member directions'))
         self.assertEqual(record['channel_spacing_m'], 4.)
 
-    def test_actual_pieces_keep_six_groups_twelve_members_and_custom_height(self):
+    def test_source_geometry_fixture_keeps_six_groups_twelve_members_and_custom_height(self):
         from scp.connector_metadata import load_library
         root = Path(__file__).resolve().parents[1]
-        identifiers = ["hsr-component-modular-crossing-core", "hsr-component-tight-paired-curve90-l4-to-mid"]
-        library = load_library(root, identifiers)
+        identifiers = ["hsr-l4-over-hsr-l2-two-track-crossing-90deg", "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight"]
+        with tempfile.TemporaryDirectory(prefix='scp-synthetic-overview-') as temporary:
+            fixture = write_connector_source_fixture(temporary, identifiers, source_root=root)
+            library = load_library(fixture, identifiers)
         records = [record for piece in library["pieces"].values() for record in overview.build_records(piece)]
         self.assertEqual(len(records), 6)
         self.assertEqual(sum(len(record["members"]) for record in records), 12)

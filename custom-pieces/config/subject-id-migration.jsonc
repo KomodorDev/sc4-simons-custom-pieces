@@ -1,0 +1,1517 @@
+// title: "Piece and assembly identity migration"
+// summary: "Map deliberately renamed subject IDs to their original recipe identities and recorded names without reallocating numeric game resources or rewriting historical evidence."
+//
+// Used when: Maintained tools must relate deliberately renamed piece or assembly IDs to original recipes, historical evidence identities, or files in a previous installation.
+// Read by: scp.subject_identity._indexes() and its canonical/legacy identity helpers; installation, observation, connectivity, verification-fixture, and geometry lookup code use those helpers at declared boundaries.
+// Updated by: A maintainer during an explicitly authorized naming migration, recording each old/current identity and the source-backed reason; normal builds and documentation refreshes do not regenerate it.
+// Affects: Alias resolution, recipe-to-folder lookup, and upgrade identity comparisons without changing numeric game IDs; recorded names are historical, and current display names come from registered piece or assembly definitions.
+// Reference: custom-pieces/docs/NAMING_CONVENTIONS.md explains identity migrations and which permanent identities must remain stable.
+{
+  "schema_version": 1,
+  "pieces": [
+    {
+      "old_id": "interchange-ground-merge-135-compact",
+      "new_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+      "old_name": "GHSR Merge 135 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 135\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_merge_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-merge-135-wide",
+      "new_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+      "old_name": "GHSR Merge 135 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 135\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_merge_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-merge-45-compact",
+      "new_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+      "old_name": "GHSR Merge 45 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 45\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_merge_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-merge-45-wide",
+      "new_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+      "old_name": "GHSR Merge 45 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 45\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_merge_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-merge-90-compact",
+      "new_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+      "old_name": "GHSR Merge 90 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 90\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_merge_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-merge-90-wide",
+      "new_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+      "old_name": "GHSR Merge 90 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Merge 90\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_merge_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-oneway-under-hsr",
+      "new_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+      "old_name": "Ground One-Way Track under HSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track over Single-Track One-Way Crossing 90\u00b0",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 15.5 m route is two-track; the lower 1 m route is single-track and one-way. Both alignments are orthogonal to the grid.",
+      "recipe": "interchange_ground_oneway_under_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-135-compact",
+      "new_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+      "old_name": "GHSR Split 135 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 135\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_split_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-135-wide",
+      "new_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+      "old_name": "GHSR Split 135 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 135\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_split_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-45-compact",
+      "new_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+      "old_name": "GHSR Split 45 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_split_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-45-wide",
+      "new_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+      "old_name": "GHSR Split 45 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_split_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-90-compact",
+      "new_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+      "old_name": "GHSR Split 90 Degree Compact",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_ground_split_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-ground-split-90-wide",
+      "new_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+      "old_name": "GHSR Split 90 Degree Wide",
+      "new_name": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 1 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_ground_split_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-135-compact",
+      "new_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+      "old_name": "HSR L2 Merge 135 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 135\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_merge_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-135-wide",
+      "new_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+      "old_name": "HSR L2 Merge 135 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 135\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_merge_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-45-compact",
+      "new_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+      "old_name": "HSR L2 Merge 45 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 45\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_merge_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-45-wide",
+      "new_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+      "old_name": "HSR L2 Merge 45 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 45\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_merge_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-90-compact",
+      "new_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+      "old_name": "HSR L2 Merge 90 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 90\u00b0 Right to Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_merge_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-merge-90-wide",
+      "new_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+      "old_name": "HSR L2 Merge 90 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Merge 90\u00b0 Right to Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_merge_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-oneway-over-ground",
+      "new_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+      "old_name": "One-Way HSR over GHSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 15.5 m route is single-track and one-way; the lower 1 m route is two-track. Both alignments are orthogonal to the grid.",
+      "recipe": "interchange_hsr_oneway_over_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-135-compact",
+      "new_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+      "old_name": "HSR L2 Split 135 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 135\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_split_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-135-wide",
+      "new_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+      "old_name": "HSR L2 Split 135 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 135\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_split_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-45-compact",
+      "new_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+      "old_name": "HSR L2 Split 45 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_split_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-45-wide",
+      "new_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+      "old_name": "HSR L2 Split 45 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_split_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-90-compact",
+      "new_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+      "old_name": "HSR L2 Split 90 Degree Compact",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_hsr_split_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-hsr-split-90-wide",
+      "new_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+      "old_name": "HSR L2 Split 90 Degree Wide",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 15.5 m. The mainline has two opposed tracks; only the branch is one-way. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_hsr_split_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-135-compact",
+      "new_id": "hsr-l4-single-track-oneway-merge-135deg-right-compact",
+      "old_name": "Rail L4 Merge 135 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 135\u00b0 Right to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-135-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-135deg-left-compact",
+      "old_name": "One-Way L4 Merge 135deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 135\u00b0 Left to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_135_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-135-wide",
+      "new_id": "hsr-l4-single-track-oneway-merge-135deg-right-wide",
+      "old_name": "Rail L4 Merge 135 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 135\u00b0 Right to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-135-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-135deg-left-wide",
+      "old_name": "One-Way L4 Merge 135deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 135\u00b0 Left to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_135_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-45-compact",
+      "new_id": "hsr-l4-single-track-oneway-merge-45deg-right-compact",
+      "old_name": "Rail L4 Merge 45 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Right to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-45-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-45deg-left-compact",
+      "old_name": "One-Way L4 Merge 45deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Left to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_45_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-45-wide",
+      "new_id": "hsr-l4-single-track-oneway-merge-45deg-right-wide",
+      "old_name": "Rail L4 Merge 45 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Right to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-45-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-45deg-left-wide",
+      "old_name": "One-Way L4 Merge 45deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Left to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_45_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-90-compact",
+      "new_id": "hsr-l4-single-track-oneway-merge-90deg-right-compact",
+      "old_name": "Rail L4 Merge 90 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 90\u00b0 Right to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-90-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-90deg-left-compact",
+      "old_name": "One-Way L4 Merge 90deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 90\u00b0 Left to Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_merge_90_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-90-wide",
+      "new_id": "hsr-l4-single-track-oneway-merge-90deg-right-wide",
+      "old_name": "Rail L4 Merge 90 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 90\u00b0 Right to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-merge-90-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-merge-90deg-left-wide",
+      "old_name": "One-Way L4 Merge 90deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Merge 90\u00b0 Left to Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 left merge at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_merge_90_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-oneway-over-ground",
+      "new_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+      "old_name": "One-Way L4 over GHSR Crossing",
+      "new_name": "HSR Level 4 (30.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 1 m route is two-track. Both alignments are orthogonal to the grid.",
+      "recipe": "interchange_l4_oneway_over_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-oneway-over-hsr",
+      "new_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+      "old_name": "One-Way L4 over HSR L2 Crossing",
+      "new_name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 15.5 m route is two-track. Both alignments are orthogonal to the grid.",
+      "recipe": "interchange_l4_oneway_over_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-135-compact",
+      "new_id": "hsr-l4-single-track-oneway-split-135deg-right-compact",
+      "old_name": "Rail L4 Split 135 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 135\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_135_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-135-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-split-135deg-left-compact",
+      "old_name": "One-Way L4 Split 135deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 135\u00b0 Left from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_135_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-135-wide",
+      "new_id": "hsr-l4-single-track-oneway-split-135deg-right-wide",
+      "old_name": "Rail L4 Split 135 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 135\u00b0 Right from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_135_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-135-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-split-135deg-left-wide",
+      "old_name": "One-Way L4 Split 135deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 135\u00b0 Left from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 135\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_135_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-45-compact",
+      "new_id": "hsr-l4-single-track-oneway-split-45deg-right-compact",
+      "old_name": "Rail L4 Split 45 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 45\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_45_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-45-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-split-45deg-left-compact",
+      "old_name": "One-Way L4 Split 45deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 45\u00b0 Left from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_45_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-45-wide",
+      "new_id": "hsr-l4-single-track-oneway-split-45deg-right-wide",
+      "old_name": "Rail L4 Split 45 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 45\u00b0 Right from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_45_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-45-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-split-45deg-left-wide",
+      "old_name": "One-Way L4 Split 45deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 45\u00b0 Left from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 45\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_45_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-90-compact",
+      "new_id": "hsr-l4-single-track-oneway-split-90deg-right-compact",
+      "old_name": "Rail L4 Split 90 Degree Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_90_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-90-compact-left",
+      "new_id": "hsr-l4-single-track-oneway-split-90deg-left-compact",
+      "old_name": "One-Way L4 Split 90deg Left Compact",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Left from Single-Track One-Way Mainline \u2014 Compact",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined compact geometry.",
+      "recipe": "interchange_l4_split_90_compact_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-90-wide",
+      "new_id": "hsr-l4-single-track-oneway-split-90deg-right-wide",
+      "old_name": "Rail L4 Split 90 Degree Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Right from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 right split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_90_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-split-90-wide-left",
+      "new_id": "hsr-l4-single-track-oneway-split-90deg-left-wide",
+      "old_name": "One-Way L4 Split 90deg Left Wide",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Left from Single-Track One-Way Mainline \u2014 Wide",
+      "rationale": "_split and measured journey tangents establish a 90\u00b0 left split at 30.5 m. The mainline and branch are each one-way single tracks. Preserve the source-defined wide geometry.",
+      "recipe": "interchange_l4_split_90_wide_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-diag-lower-diag-over-ground",
+      "new_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+      "old_name": "Diagonal One-Way L4 over Diagonal GHSR",
+      "new_name": "HSR Level 4 (30.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0 \u2014 Both Routes Diagonal",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 1 m route is two-track. Both Routes Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_diag_lower_diag_over_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-diag-lower-diag-over-hsr",
+      "new_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+      "old_name": "Diagonal One-Way L4 over Diagonal HSR",
+      "new_name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0 \u2014 Both Routes Diagonal",
+      "rationale": "Two separate alignments cross at 90\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 15.5 m route is two-track. Both Routes Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_diag_lower_diag_over_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-diag-lower-grid-over-ground",
+      "new_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+      "old_name": "Diagonal One-Way L4 over GHSR",
+      "new_name": "HSR Level 4 (30.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 45\u00b0 \u2014 Upper Diagonal",
+      "rationale": "Two separate alignments cross at 45\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 1 m route is two-track. Upper Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_diag_lower_grid_over_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-diag-lower-grid-over-hsr",
+      "new_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+      "old_name": "Diagonal One-Way L4 over HSR",
+      "new_name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 45\u00b0 \u2014 Upper Diagonal",
+      "rationale": "Two separate alignments cross at 45\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 15.5 m route is two-track. Upper Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_diag_lower_grid_over_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-grid-lower-diag-over-ground",
+      "new_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+      "old_name": "One-Way L4 over Diagonal GHSR",
+      "new_name": "HSR Level 4 (30.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal",
+      "rationale": "Two separate alignments cross at 45\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 1 m route is two-track. Lower Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_grid_lower_diag_over_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-l4-upper-grid-lower-diag-over-hsr",
+      "new_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+      "old_name": "One-Way L4 over Diagonal HSR",
+      "new_name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal",
+      "rationale": "Two separate alignments cross at 45\u00b0, with no transfer journeys. The upper 30.5 m route is single-track and one-way; the lower 15.5 m route is two-track. Lower Diagonal identifies which alignment is diagonal.",
+      "recipe": "interchange_l4_upper_grid_lower_diag_over_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-ground-to-hsr",
+      "new_id": "ghsr-ground-to-hsr-l2-single-track-oneway-ramp",
+      "old_name": "One-Way GHSR to HSR L2 Ramp",
+      "new_name": "GHSR Ground (1 m) \u2192 HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 1 m (ground) and exits at 15.5 m (hsr); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_ground_to_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-hsr-to-ground",
+      "new_id": "hsr-l2-to-ghsr-ground-single-track-oneway-ramp",
+      "old_name": "One-Way HSR L2 to GHSR Ramp",
+      "new_name": "HSR Level 2 (15.5 m) \u2192 GHSR Ground (1 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 15.5 m (hsr) and exits at 1 m (ground); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_hsr_to_ground",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-hsr-to-l3",
+      "new_id": "hsr-l2-to-l3-single-track-oneway-ramp",
+      "old_name": "One-Way HSR L2 to Rail L3 Ramp",
+      "new_name": "HSR Level 2 (15.5 m) \u2192 Level 3 (23 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 15.5 m (hsr) and exits at 23 m (l3); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_hsr_to_l3",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-hsr-to-l4",
+      "new_id": "hsr-l2-to-l4-single-track-oneway-ramp",
+      "old_name": "One-Way HSR L2 to Rail L4 Ramp",
+      "new_name": "HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 15.5 m (hsr) and exits at 30.5 m (l4); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_hsr_to_l4",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-l3-to-hsr",
+      "new_id": "hsr-l3-to-l2-single-track-oneway-ramp",
+      "old_name": "One-Way Rail L3 to HSR L2 Ramp",
+      "new_name": "HSR Level 3 (23 m) \u2192 Level 2 (15.5 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 23 m (l3) and exits at 15.5 m (hsr); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_l3_to_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-l3-to-l4",
+      "new_id": "hsr-l3-to-l4-single-track-oneway-ramp",
+      "old_name": "One-Way Rail L3 to Rail L4 Ramp",
+      "new_name": "HSR Level 3 (23 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 23 m (l3) and exits at 30.5 m (l4); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_l3_to_l4",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-l4-to-hsr",
+      "new_id": "hsr-l4-to-l2-single-track-oneway-ramp",
+      "old_name": "One-Way Rail L4 to HSR L2 Ramp",
+      "new_name": "HSR Level 4 (30.5 m) \u2192 Level 2 (15.5 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 30.5 m (l4) and exits at 15.5 m (hsr); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_l4_to_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-grade-l4-to-l3",
+      "new_id": "hsr-l4-to-l3-single-track-oneway-ramp",
+      "old_name": "One-Way Rail L4 to Rail L3 Ramp",
+      "new_name": "HSR Level 4 (30.5 m) \u2192 Level 3 (23 m) \u2014 Single-Track One-Way Ramp",
+      "rationale": "The sole directed journey enters at 30.5 m (l4) and exits at 23 m (l3); source levels are retained and the arrow follows traffic, including descents.",
+      "recipe": "interchange_oneway_grade_l4_to_l3",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-curve-in-left",
+      "new_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-left",
+      "old_name": "One-Way GHSR Curve In Left",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 1 m. Source shape curve_in_left enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_ground_curve_in_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-curve-in-right",
+      "new_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-right",
+      "old_name": "One-Way GHSR Curve In Right",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 1 m. Source shape curve_in_right enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_ground_curve_in_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-curve-out-left",
+      "new_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-left",
+      "old_name": "One-Way GHSR Curve Out Left",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 1 m. Source shape curve_out_left enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_ground_curve_out_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-curve-out-right",
+      "new_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-right",
+      "old_name": "One-Way GHSR Curve Out Right",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 1 m. Source shape curve_out_right enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_ground_curve_out_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-diagonal",
+      "new_id": "ghsr-ground-single-track-oneway-straight-diagonal",
+      "old_name": "One-Way GHSR Diagonal",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Diagonal Straight",
+      "rationale": "Source shape diagonal is straight in plan at the diagonal alignment, with one directed journey at 1 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_ground_diagonal",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-diagonal-east-half",
+      "new_id": "ghsr-ground-single-track-oneway-straight-diagonal-east-half",
+      "old_name": "One-Way GHSR Diagonal East Half",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half",
+      "rationale": "Source shape diagonal_east_half is straight in plan at the diagonal alignment, with one directed journey at 1 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_ground_diagonal_east_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-diagonal-north-half",
+      "new_id": "ghsr-ground-single-track-oneway-straight-diagonal-north-half",
+      "old_name": "One-Way GHSR Diagonal North Half",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 North Half",
+      "rationale": "Source shape diagonal_north_half is straight in plan at the diagonal alignment, with one directed journey at 1 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_ground_diagonal_north_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-straight",
+      "new_id": "ghsr-ground-single-track-oneway-straight",
+      "old_name": "One-Way GHSR Straight",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Straight",
+      "rationale": "One northbound centred track at 1 m; _filler sets a 7.5 m deck. The L2 width distinguishes the component family's 8 m straight.",
+      "recipe": "interchange_oneway_ground_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-turn90-left",
+      "new_id": "ghsr-ground-single-track-oneway-curve-90deg-left-compact",
+      "old_name": "One-Way GHSR 90 Degree Left Compact Curve",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Compact",
+      "rationale": "One directed 90\u00b0 left turn at 1 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_ground_turn90_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-turn90-left-wide",
+      "new_id": "ghsr-ground-single-track-oneway-curve-90deg-left-wide",
+      "old_name": "One-Way GHSR 90 Degree Left Wide Curve",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Wide",
+      "rationale": "One directed 90\u00b0 left turn at 1 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_ground_turn90_left_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-turn90-right",
+      "new_id": "ghsr-ground-single-track-oneway-curve-90deg-right-compact",
+      "old_name": "One-Way GHSR 90 Degree Right Compact Curve",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Compact",
+      "rationale": "One directed 90\u00b0 right turn at 1 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_ground_turn90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-ground-turn90-right-wide",
+      "new_id": "ghsr-ground-single-track-oneway-curve-90deg-right-wide",
+      "old_name": "One-Way GHSR 90 Degree Right Wide Curve",
+      "new_name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide",
+      "rationale": "One directed 90\u00b0 right turn at 1 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_ground_turn90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-curve-in-left",
+      "new_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-left",
+      "old_name": "One-Way HSR L2 Curve In Left",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 15.5 m. Source shape curve_in_left enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_hsr_curve_in_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-curve-in-right",
+      "new_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-right",
+      "old_name": "One-Way HSR L2 Curve In Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 15.5 m. Source shape curve_in_right enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_hsr_curve_in_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-curve-out-left",
+      "new_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-left",
+      "old_name": "One-Way HSR L2 Curve Out Left",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 15.5 m. Source shape curve_out_left enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_hsr_curve_out_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-curve-out-right",
+      "new_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-right",
+      "old_name": "One-Way HSR L2 Curve Out Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 15.5 m. Source shape curve_out_right enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_hsr_curve_out_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-diagonal",
+      "new_id": "hsr-l2-single-track-oneway-straight-diagonal",
+      "old_name": "One-Way HSR L2 Diagonal",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Diagonal Straight",
+      "rationale": "Source shape diagonal is straight in plan at the diagonal alignment, with one directed journey at 15.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_hsr_diagonal",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-diagonal-east-half",
+      "new_id": "hsr-l2-single-track-oneway-straight-diagonal-east-half",
+      "old_name": "One-Way HSR L2 Diagonal East Half",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half",
+      "rationale": "Source shape diagonal_east_half is straight in plan at the diagonal alignment, with one directed journey at 15.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_hsr_diagonal_east_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-diagonal-north-half",
+      "new_id": "hsr-l2-single-track-oneway-straight-diagonal-north-half",
+      "old_name": "One-Way HSR L2 Diagonal North Half",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 North Half",
+      "rationale": "Source shape diagonal_north_half is straight in plan at the diagonal alignment, with one directed journey at 15.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_hsr_diagonal_north_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-straight",
+      "new_id": "hsr-l2-single-track-oneway-straight-width7500mm",
+      "old_name": "One-Way HSR L2 Straight",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Straight \u2014 7.5 m Deck Width",
+      "rationale": "One northbound centred track at 15.5 m; _filler sets a 7.5 m deck. The L2 width distinguishes the component family's 8 m straight.",
+      "recipe": "interchange_oneway_hsr_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-turn90-left",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-left-compact-width7500mm",
+      "old_name": "One-Way HSR L2 90 Degree Left Compact Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Compact, 7.5 m Deck Width",
+      "rationale": "One directed 90\u00b0 left turn at 15.5 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_hsr_turn90_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-turn90-left-wide",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-left-wide-width7500mm",
+      "old_name": "One-Way HSR L2 90 Degree Left Wide Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Wide, 7.5 m Deck Width",
+      "rationale": "One directed 90\u00b0 left turn at 15.5 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_hsr_turn90_left_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-turn90-right",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-right-compact-width7500mm",
+      "old_name": "One-Way HSR L2 90 Degree Right Compact Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Compact, 7.5 m Deck Width",
+      "rationale": "One directed 90\u00b0 right turn at 15.5 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_hsr_turn90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-hsr-turn90-right-wide",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width7500mm",
+      "old_name": "One-Way HSR L2 90 Degree Right Wide Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide, 7.5 m Deck Width",
+      "rationale": "One directed 90\u00b0 right turn at 15.5 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_hsr_turn90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-curve-in-left",
+      "new_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-left",
+      "old_name": "One-Way Rail L3 Curve In Left",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 23 m. Source shape curve_in_left enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l3_curve_in_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-curve-in-right",
+      "new_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-right",
+      "old_name": "One-Way Rail L3 Curve In Right",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 23 m. Source shape curve_in_right enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l3_curve_in_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-curve-out-left",
+      "new_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-left",
+      "old_name": "One-Way Rail L3 Curve Out Left",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 23 m. Source shape curve_out_left enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l3_curve_out_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-curve-out-right",
+      "new_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-right",
+      "old_name": "One-Way Rail L3 Curve Out Right",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 23 m. Source shape curve_out_right enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l3_curve_out_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-diagonal",
+      "new_id": "hsr-l3-single-track-oneway-straight-diagonal",
+      "old_name": "One-Way Rail L3 Diagonal",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Diagonal Straight",
+      "rationale": "Source shape diagonal is straight in plan at the diagonal alignment, with one directed journey at 23 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l3_diagonal",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-diagonal-east-half",
+      "new_id": "hsr-l3-single-track-oneway-straight-diagonal-east-half",
+      "old_name": "One-Way Rail L3 Diagonal East Half",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half",
+      "rationale": "Source shape diagonal_east_half is straight in plan at the diagonal alignment, with one directed journey at 23 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l3_diagonal_east_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-diagonal-north-half",
+      "new_id": "hsr-l3-single-track-oneway-straight-diagonal-north-half",
+      "old_name": "One-Way Rail L3 Diagonal North Half",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 North Half",
+      "rationale": "Source shape diagonal_north_half is straight in plan at the diagonal alignment, with one directed journey at 23 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l3_diagonal_north_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-straight",
+      "new_id": "hsr-l3-single-track-oneway-straight",
+      "old_name": "One-Way Rail L3 Straight",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Straight",
+      "rationale": "One northbound centred track at 23 m; _filler sets a 7.5 m deck. The L2 width distinguishes the component family's 8 m straight.",
+      "recipe": "interchange_oneway_l3_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-turn90-left",
+      "new_id": "hsr-l3-single-track-oneway-curve-90deg-left-compact",
+      "old_name": "One-Way Rail L3 90 Degree Left Compact Curve",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Compact",
+      "rationale": "One directed 90\u00b0 left turn at 23 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l3_turn90_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-turn90-left-wide",
+      "new_id": "hsr-l3-single-track-oneway-curve-90deg-left-wide",
+      "old_name": "One-Way Rail L3 90 Degree Left Wide Curve",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Wide",
+      "rationale": "One directed 90\u00b0 left turn at 23 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l3_turn90_left_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-turn90-right",
+      "new_id": "hsr-l3-single-track-oneway-curve-90deg-right-compact",
+      "old_name": "One-Way Rail L3 90 Degree Right Compact Curve",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Compact",
+      "rationale": "One directed 90\u00b0 right turn at 23 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l3_turn90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l3-turn90-right-wide",
+      "new_id": "hsr-l3-single-track-oneway-curve-90deg-right-wide",
+      "old_name": "One-Way Rail L3 90 Degree Right Wide Curve",
+      "new_name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide",
+      "rationale": "One directed 90\u00b0 right turn at 23 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l3_turn90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-curve-in-left",
+      "new_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-left",
+      "old_name": "One-Way Rail L4 Curve In Left",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 30.5 m. Source shape curve_in_left enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l4_curve_in_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-curve-in-right",
+      "new_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-right",
+      "old_name": "One-Way Rail L4 Curve In Right",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Diagonal to Orthogonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 30.5 m. Source shape curve_in_right enters on a diagonal and leaves orthogonally; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l4_curve_in_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-curve-out-left",
+      "new_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-left",
+      "old_name": "One-Way Rail L4 Curve Out Left",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 left turn at 30.5 m. Source shape curve_out_left enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l4_curve_out_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-curve-out-right",
+      "new_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-right",
+      "old_name": "One-Way Rail L4 Curve Out Right",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 45\u00b0 Right \u2014 Orthogonal to Diagonal",
+      "rationale": "Measured directed tangents establish a 45\u00b0 right turn at 30.5 m. Source shape curve_out_right enters orthogonally and leaves on a diagonal; this qualifier distinguishes the four shapes.",
+      "recipe": "interchange_oneway_l4_curve_out_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-diagonal",
+      "new_id": "hsr-l4-single-track-oneway-straight-diagonal",
+      "old_name": "One-Way Rail L4 Diagonal",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight",
+      "rationale": "Source shape diagonal is straight in plan at the diagonal alignment, with one directed journey at 30.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l4_diagonal",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-diagonal-east-half",
+      "new_id": "hsr-l4-single-track-oneway-straight-diagonal-east-half",
+      "old_name": "One-Way Rail L4 Diagonal East Half",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 East Half",
+      "rationale": "Source shape diagonal_east_half is straight in plan at the diagonal alignment, with one directed journey at 30.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l4_diagonal_east_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-diagonal-north-half",
+      "new_id": "hsr-l4-single-track-oneway-straight-diagonal-north-half",
+      "old_name": "One-Way Rail L4 Diagonal North Half",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Diagonal Straight \u2014 North Half",
+      "rationale": "Source shape diagonal_north_half is straight in plan at the diagonal alignment, with one directed journey at 30.5 m; half labels identify authored canonical 0\u00b0 geometry.",
+      "recipe": "interchange_oneway_l4_diagonal_north_half",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-straight",
+      "new_id": "hsr-l4-single-track-oneway-straight",
+      "old_name": "One-Way Rail L4 Straight",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Straight",
+      "rationale": "One northbound centred track at 30.5 m; _filler sets a 7.5 m deck. The L2 width distinguishes the component family's 8 m straight.",
+      "recipe": "interchange_oneway_l4_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-turn90-left",
+      "new_id": "hsr-l4-single-track-oneway-curve-90deg-left-compact",
+      "old_name": "One-Way Rail L4 90 Degree Left Compact Curve",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Compact",
+      "rationale": "One directed 90\u00b0 left turn at 30.5 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l4_turn90_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-turn90-left-wide",
+      "new_id": "hsr-l4-single-track-oneway-curve-90deg-left-wide",
+      "old_name": "One-Way Rail L4 90 Degree Left Wide Curve",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Left \u2014 Wide",
+      "rationale": "One directed 90\u00b0 left turn at 30.5 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l4_turn90_left_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-turn90-right",
+      "new_id": "hsr-l4-single-track-oneway-curve-90deg-right-compact",
+      "old_name": "One-Way Rail L4 90 Degree Right Compact Curve",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Compact",
+      "rationale": "One directed 90\u00b0 right turn at 30.5 m. _turn90 defines compact with 40 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l4_turn90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "interchange-oneway-l4-turn90-right-wide",
+      "new_id": "hsr-l4-single-track-oneway-curve-90deg-right-wide",
+      "old_name": "One-Way Rail L4 90 Degree Right Wide Curve",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide",
+      "rationale": "One directed 90\u00b0 right turn at 30.5 m. _turn90 defines wide with 88 m displacement in each cardinal axis and _add_route's 7.5 m deck; this distinguishes the 8 m component family.",
+      "recipe": "interchange_oneway_l4_turn90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-paired-fan-compact-core",
+      "new_id": "hsr-l2-mixed-fan-compact-recessed-web",
+      "old_name": "HSR Level 2 Compact Paired Fan Core",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Fan with Two-Track Stem \u2014 Compact, Recessed Web",
+      "rationale": "Nine-cell5 \u00d7 3fan core has paired northern stem with recessed-web section, one outgoing western curved branch, and one incoming eastern curved branch. Mixed counts arrangements correctly; Two-Track does not falsely count each single-track arm as paired.",
+      "recipe": "hsr_component_l2_paired_fan_compact_core",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-paired-straight-recessed-web",
+      "new_id": "hsr-l2-two-track-straight-recessed-web",
+      "old_name": "HSR Level 2 Paired Straight with Recessed Web",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight \u2014 Recessed Web",
+      "rationale": "Distinct one-cell fan approach retains reviewed recessed structural web, rather than the ordinary paired straight profile; same opposite-direction tracks and15.5 m height.",
+      "recipe": "hsr_component_l2_paired_straight_recessed_web",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-short-mainline-diverge-core",
+      "new_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+      "old_name": "HSR L2 Short Mainline Diverge Core",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Split from Two-Track Mainline \u2014 Oblique Branch Cut",
+      "rationale": "Four consecutive16 m cells carry two-way mainline and one directed departure. Southern curved boundary heading111.989 degrees is an oblique partial-curve cut, not a completed90\u00b0 turn or ordinary straight. Removes historical Short/Core wording.",
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-short-opposed-merge-core",
+      "new_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+      "old_name": "HSR L2 Short Opposed Merge Core",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Opposed Merges to Two-Track Mainline \u2014 Oblique Branch Cuts",
+      "rationale": "Four-cell mainline accepts opposed directed branches through custom oblique cuts. Native paired west/east boundaries and all15.5 m paths remain unchanged. Distinguishes actual branch-cut geometry from parallel full-length opposed merges.",
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-shortened-departure-curve",
+      "new_id": "hsr-l2-single-track-oneway-curve-oblique-entry",
+      "old_name": "HSR L2 Shortened One-Way Departure Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve \u2014 Oblique Entry",
+      "rationale": "Twelve owned cells in5 \u00d7 6rectangle; directed path enters custom northern oblique cut (outward291.989 degrees) and exits centred southern8 m deck. Oblique Entry replaces assembly-role Departure and historical Shortened without inventing a90\u00b0 total turn.",
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-l2-shortened-return-curve",
+      "new_id": "hsr-l2-single-track-oneway-curve-oblique-exit",
+      "old_name": "HSR L2 Shortened One-Way Return Curve",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve \u2014 Oblique Exit",
+      "rationale": "Twelve owned cells in5 \u00d7 6rectangle; directed path enters centred southern8 m deck and exits custom northern oblique cut (outward68.0109 degrees). Oblique Exit distinguishes real directed interface role from Oblique Entry; no guessed90\u00b0 total turn.",
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-oneway-curve90-right",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-right-standard-width8m",
+      "old_name": "One-Way HSR L2 Standard 90 Degree Curve Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Standard, 8 m Deck Width",
+      "rationale": "Source-backed8 m deck distinguishes7.5 m interchange family. Standard104 m displacement and7 \u00d7 7rectangle. Hand follows actual travel from south to east; retain source family terms.",
+      "recipe": "hsr_component_lower_oneway_curve90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-oneway-curve90-right-wide",
+      "new_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width8m",
+      "old_name": "One-Way HSR L2 Wide 90 Degree Curve Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide, 8 m Deck Width",
+      "rationale": "Source-backed8 m deck distinguishes7.5 m interchange family. Wide136 m displacement and9 \u00d7 9rectangle. Hand follows actual travel from south to east; retain source family terms.",
+      "recipe": "hsr_component_lower_oneway_curve90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-oneway-straight",
+      "new_id": "hsr-l2-single-track-oneway-straight-width8m",
+      "old_name": "One-Way HSR L2 Eight-Metre Straight",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Straight \u2014 8 m Deck Width",
+      "rationale": "One centred northbound track on an 8 m physical deck; explicit deck width distinguishes concurrent 7.5 m interchange-family straight without implying compatibility.",
+      "recipe": "hsr_component_lower_oneway_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-paired-straight",
+      "new_id": "hsr-l2-two-track-straight",
+      "old_name": "HSR L2 Two-Track Straight",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight",
+      "rationale": "piece.json ports and measured connections declare opposite-direction paired tracks at 15.5 m; one 16 m city-tile straight, ordinary native paired profile.",
+      "recipe": "hsr_component_lower_paired_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-double-merge",
+      "new_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+      "old_name": "HSR L2 Opposite-Direction Parallel Merges",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Opposed Parallel Merges to Two-Track Mainline",
+      "rationale": "Two outside parallel one-way tracks merge into opposite mainline directions without crossing. Two-Track qualifies the preserved mainline, not all four boundary tracks.",
+      "recipe": "hsr_component_lower_zero_turn_double_merge",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-merge",
+      "new_id": "hsr-l2-two-track-mainline-merge-parallel",
+      "old_name": "HSR L2 Parallel One-Way Merge",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Merge to Two-Track Mainline",
+      "rationale": "Two opposite-direction mainline tracks remain straight while one parallel one-way branch joins; source defines 128 m full-length route length and 16 m branch/mainline centre separation. Parallel describes equal cardinal boundary headings, not a zero-curvature branch.",
+      "recipe": "hsr_component_lower_zero_turn_merge",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-merge-compact",
+      "new_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+      "old_name": "HSR L2 Compact Parallel One-Way Merge",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Merge to Two-Track Mainline \u2014 Compact",
+      "rationale": "Two opposite-direction mainline tracks remain straight while one parallel one-way branch joins; source defines 96 m compact route length and 16 m branch/mainline centre separation. Parallel describes equal cardinal boundary headings, not a zero-curvature branch.",
+      "recipe": "hsr_component_lower_zero_turn_merge_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-split",
+      "new_id": "hsr-l2-two-track-mainline-split-parallel",
+      "old_name": "HSR L2 Parallel One-Way Split",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Split from Two-Track Mainline",
+      "rationale": "Two opposite-direction mainline tracks remain straight while one parallel one-way branch departs; source defines 128 m full-length route length and 16 m branch/mainline centre separation. Parallel describes equal cardinal boundary headings, not a zero-curvature branch.",
+      "recipe": "hsr_component_lower_zero_turn_split",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-split-compact",
+      "new_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+      "old_name": "HSR L2 Compact Parallel One-Way Split",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Split from Two-Track Mainline \u2014 Compact",
+      "rationale": "Two opposite-direction mainline tracks remain straight while one parallel one-way branch departs; source defines 96 m compact route length and 16 m branch/mainline centre separation. Parallel describes equal cardinal boundary headings, not a zero-curvature branch.",
+      "recipe": "hsr_component_lower_zero_turn_split_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-lower-zero-turn-split-merge",
+      "new_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+      "old_name": "HSR L2 Symmetric Parallel Split and Return Merge",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Split and Return Merge with Two-Track Mainline",
+      "rationale": "128 m two-track stem,20 occupied cells in3 \u00d7 8rectangle, with outgoing right branch and incoming left branch at north side. No claim that whole piece is one-way.",
+      "recipe": "hsr_component_lower_zero_turn_split_merge",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-modular-crossing-core",
+      "new_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+      "old_name": "HSR Modular One-Tile Two-Level Crossing",
+      "new_name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Two-Track Crossing 90\u00b0",
+      "rationale": "One city tile contains N/S paired 30.5 m route over E/W paired 15.5 m route, with four straight directed journeys and no transfer. Two-Track counts each crossing alignment;90\u00b0s is crossing angle.",
+      "recipe": "hsr_component_modular_crossing_core",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-modular-south-junction",
+      "new_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+      "old_name": "HSR Modular Symmetric Split and Return",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Parallel Split and Return Merge with Two-Track Mainline \u2014 Recessed Mainline End",
+      "rationale": "Same split/return topology as full-length parallel variant, but the source has a96 m3 \u00d7 6construction rectangle and centre paired northern boundary recessed32 m from outer single-track northern boundaries. Recessed End is geometric, not the unrelated Recessed Web profile.",
+      "recipe": "hsr_component_modular_south_junction",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-oneway-curve90-left-l2-to-l4",
+      "new_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-left",
+      "old_name": "One-Way HSR 90 Degree Left L2 to L4 Ramp",
+      "new_name": "HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Ramp Left",
+      "rationale": "Single centred track has established directedL2\u2192L4 journey and90\u00b0 turn. Left/Right is vehicle travel from canonical southern entry; flat cardinal ends. Preserve ordered level relationship for descent as well as ascent.",
+      "recipe": "hsr_component_oneway_curve90_left_l2_to_l4",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-oneway-curve90-left-l4-to-l2",
+      "new_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-left",
+      "old_name": "One-Way HSR 90 Degree Left L4 to L2 Ramp",
+      "new_name": "HSR Level 4 (30.5 m) \u2192 Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Ramp Left",
+      "rationale": "Single centred track has established directedL4\u2192L2 journey and90\u00b0 turn. Left/Right is vehicle travel from canonical southern entry; flat cardinal ends. Preserve ordered level relationship for descent as well as ascent.",
+      "recipe": "hsr_component_oneway_curve90_left_l4_to_l2",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-oneway-curve90-right-l2-to-l4",
+      "new_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-right",
+      "old_name": "One-Way HSR 90 Degree Right L2 to L4 Ramp",
+      "new_name": "HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Ramp Right",
+      "rationale": "Single centred track has established directedL2\u2192L4 journey and90\u00b0 turn. Left/Right is vehicle travel from canonical southern entry; flat cardinal ends. Preserve ordered level relationship for descent as well as ascent.",
+      "recipe": "hsr_component_oneway_curve90_right_l2_to_l4",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-oneway-curve90-right-l4-to-l2",
+      "new_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-right",
+      "old_name": "One-Way HSR 90 Degree Right L4 to L2 Ramp",
+      "new_name": "HSR Level 4 (30.5 m) \u2192 Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Ramp Right",
+      "rationale": "Single centred track has established directedL4\u2192L2 journey and90\u00b0 turn. Left/Right is vehicle travel from canonical southern entry; flat cardinal ends. Preserve ordered level relationship for descent as well as ascent.",
+      "recipe": "hsr_component_oneway_curve90_right_l4_to_l2",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-symmetric-graded-y",
+      "new_id": "hsr-l2-and-l4-mixed-y-junction-graded",
+      "old_name": "HSR Symmetric Upper Stem to Lower Curved Arms",
+      "new_name": "HSR Level 2 (15.5 m) \u2194 Level 4 (30.5 m) \u2014 Y Junction with Two-Track Stem \u2014 Graded",
+      "rationale": "Upper30.5 m two-track stem connects lower15.5 m single-track curved arms. N\u2192W descends; E\u2192N ascends. Mixed counts distinct arrangement; bidirectional height relation does not claim both directions in either single arm.",
+      "recipe": "hsr_component_symmetric_graded_y",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "new_id": "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight",
+      "old_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
+      "new_name": "HSR Custom (23 m) \u2194 Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Ramp \u2014 Tight",
+      "rationale": "Measured custom23 m joint has deliberately unassigned nominal level; do not rename Level 3. Both opposite tracks connect custom/Level 4 through 56 m right-angle corner. Ascending order follows convention; Tight remains actualfamilyterm.",
+      "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "new_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight",
+      "old_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "new_name": "HSR Level 2 (15.5 m) \u2194 Custom (23 m) \u2014 Two-Track Curve 90\u00b0 Ramp \u2014 Tight",
+      "rationale": "Measured23 m connection isCustom, not Level 3; opposite tracks connect15.5 \u2194 23 m through 56 m corner. Two directions justify\u2194and ascending order; preserve fixed collars and Tight family.",
+      "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-curve90-left",
+      "new_id": "hsr-l4-two-track-curve-90deg-left",
+      "old_name": "HSR L4 Two-Track 90 Degree Curve Left",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Left",
+      "rationale": "Source declares20 owned cells in7 \u00d7 7rectangle and opposite-direction pair on one15 m sheet. Hand is referenced to canonical 0\u00b0 approach from south (S\u2192W), not to both opposing movements simultaneously; retain explicit README reference.",
+      "recipe": "hsr_component_upper_paired_curve90_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-curve90-right",
+      "new_id": "hsr-l4-two-track-curve-90deg-right",
+      "old_name": "HSR L4 Two-Track 90 Degree Curve Right",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Right",
+      "rationale": "Source declares20 owned cells in7 \u00d7 7rectangle and opposite-direction pair on one15 m sheet. Hand is referenced to canonical 0\u00b0 approach from south (S\u2192E), not to both opposing movements simultaneously; retain explicit README reference.",
+      "recipe": "hsr_component_upper_paired_curve90_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-curve90-right-wide",
+      "new_id": "hsr-l4-two-track-curve-90deg-right-wide",
+      "old_name": "HSR L4 Wide Two-Track 90 Degree Curve Right",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Right \u2014 Wide",
+      "rationale": "Wide paired curve has200 m cardinal displacement and13 \u00d7 13bounding rectangle versus104 m and7 \u00d7 7standard. Right uses canonical 0\u00b0 incoming southern approach; reverse-direction partner turns left in travel.",
+      "recipe": "hsr_component_upper_paired_curve90_right_wide",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-straight",
+      "new_id": "hsr-l4-two-track-straight",
+      "old_name": "HSR L4 Two-Track Straight",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track Straight",
+      "rationale": "One-cell native-width opposite-direction paired straight; ports and measured cards declare Level4 at 30.5 m.",
+      "recipe": "hsr_component_upper_paired_straight",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-to-single-adapter",
+      "new_id": "hsr-l4-two-track-adapter-separated",
+      "old_name": "HSR L4 Two-Track to Separate One-Way Adapter",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track to Separate Single-Track Adapter",
+      "rationale": "Width/spacing adapter keeps both opposite traffic directions at 30.5 m; native paired southern sheet opens into two8 m single-track decks with centres16 m apart. Full-length128 m,2 \u00d7 8bounding rectangle.",
+      "recipe": "hsr_component_upper_paired_to_single_adapter",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-upper-paired-to-single-adapter-compact",
+      "new_id": "hsr-l4-two-track-adapter-separated-compact",
+      "old_name": "HSR L4 Compact Two-Track to Separate Tracks",
+      "new_name": "HSR Level 4 (30.5 m) \u2014 Two-Track to Separate Single-Track Adapter \u2014 Compact",
+      "rationale": "Width/spacing adapter keeps both opposite traffic directions at 30.5 m; native paired southern sheet opens into two8 m single-track decks with centres16 m apart. Compact96 m,2 \u00d7 6bounding rectangle.",
+      "recipe": "hsr_component_upper_paired_to_single_adapter_compact",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "blind-hsr-rise-quarter-turn",
+      "new_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right",
+      "old_name": "HSR Paired Quarter-Turn Level 2 to Level 4",
+      "new_name": "HSR Level 2 (15.5 m) \u2194 Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Right Ramp",
+      "rationale": "piece.json and saved connections provide south L2=15.5m and east L4=30.5m with journeys both ways; the native15m deck has two physical tracks. Right refers to climbing from the south end at authored0\u00b0; reverse travel descends and turns left. Preserve the native-profile7\u00d77 bounding rectangle,20occupiedcells, accepted geometry, and hsr_component_blind_rise_quarter_turn recipe. Add the south\u2192east handedness frame to placement prose. Remove historical blind prefix and replace Quarter-Turn with Curve90\u00b0 Ramp.",
+      "recipe": "hsr_component_blind_rise_quarter_turn",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "blind-hsr-road-stack",
+      "new_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+      "old_name": "HSR Level 2 above Parallel Road Level 0 \u2014 Native Paired Straight",
+      "new_name": "HSR Level 2 (15.5 m) over Road Level 0 (0 m) \u2014 Parallel Stack",
+      "rationale": "The definition, measured Road/HSR/pedestrian groups, and road_stack.py preserve paired HSR at15.5m over two-way Road and six native pedestrian paths at0m. Mixed denotes service arrangements; both routes are parallel north/south, so this is a stack rather than a crossing. Keep sidewalk pillars, pavement, rail_hsr_road_stack recipe, and all numeric allocations. Remove historical blind prefix.",
+      "recipe": "rail_hsr_road_stack",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-straight-ghsr",
+      "new_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+      "old_name": "HSR over Straight GHSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 90\u00b0",
+      "rationale": "Both alignments are orthogonal and meet at90\u00b0; hsr_straight_ghsr uses native AAC0 with one occupiedtile. NETWORK_SPEC\u00a72/\u00a78 and saved connections identify15.5m HSR and1m GHSR with two physical tracks on each alignment, opposite directed routes, and no cross-level transfer. Crossing angle is the nominal grid-alignment angle; individual native diagonal members retain their exact asymmetric measured tangents. Preserve recipe/resource identities and all PATH/model data. Equal two-track arrangements justify two-track despite distinct HSR/GHSR service tokens; clarify this in naming policy.",
+      "recipe": "hsr_straight_ghsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-diagonal-ghsr",
+      "new_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+      "old_name": "HSR over Diagonal GHSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal",
+      "rationale": "Upper HSR is orthogonal, lower GHSR is diagonal; two native C219 cells. NETWORK_SPEC\u00a72/\u00a78 and saved connections identify15.5m HSR and1m GHSR with two physical tracks on each alignment, opposite directed routes, and no cross-level transfer. Crossing angle is the nominal grid-alignment angle; individual native diagonal members retain their exact asymmetric measured tangents. Preserve recipe/resource identities and all PATH/model data. Equal two-track arrangements justify two-track despite distinct HSR/GHSR service tokens; clarify this in naming policy.",
+      "recipe": "hsr_diagonal_ghsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "diagonal-hsr-straight-ghsr",
+      "new_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+      "old_name": "Diagonal HSR over Straight GHSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Upper Diagonal",
+      "rationale": "Upper HSR is diagonal, lower GHSR is orthogonal; two native AAC2 cells. NETWORK_SPEC\u00a72/\u00a78 and saved connections identify15.5m HSR and1m GHSR with two physical tracks on each alignment, opposite directed routes, and no cross-level transfer. Crossing angle is the nominal grid-alignment angle; individual native diagonal members retain their exact asymmetric measured tangents. Preserve recipe/resource identities and all PATH/model data. Equal two-track arrangements justify two-track despite distinct HSR/GHSR service tokens; clarify this in naming policy.",
+      "recipe": "diagonal_hsr_straight_ghsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "diagonal-hsr-diagonal-ghsr",
+      "new_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+      "old_name": "Diagonal HSR over Diagonal GHSR",
+      "new_name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 90\u00b0 \u2014 Both Diagonal",
+      "rationale": "Both alignments are diagonal and meet at90\u00b0; two native AAC3 cells. NETWORK_SPEC\u00a72/\u00a78 and saved connections identify15.5m HSR and1m GHSR with two physical tracks on each alignment, opposite directed routes, and no cross-level transfer. Crossing angle is the nominal grid-alignment angle; individual native diagonal members retain their exact asymmetric measured tangents. Preserve recipe/resource identities and all PATH/model data. Equal two-track arrangements justify two-track despite distinct HSR/GHSR service tokens; clarify this in naming policy.",
+      "recipe": "diagonal_hsr_diagonal_ghsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "directional-hsr-t-smooth-at-grade",
+      "new_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+      "old_name": "HSR Smooth Full T \u2014 At Grade",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Smooth T Junction \u2014 At Grade",
+      "rationale": "Definition and measured ports show three two-track arms at15.5m, with all six directed arm-to-arm movements and declared at-grade conflicts. Mainline follows the orthogonal authored alignment; preserve independent directional_t contract. Smooth is the family\u2019s established physical curve distinction. No directional prefix or interchange classification is needed, and this remains a reusable piece, not an assembly.",
+      "recipe": "directional_hsr_t_smooth_at_grade",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "directional-hsr-t-smooth-diagonal-at-grade",
+      "new_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+      "old_name": "HSR Smooth Diagonal Full T \u2014 At Grade",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Smooth Diagonal T Junction \u2014 At Grade",
+      "rationale": "Definition and measured ports show three two-track arms at15.5m, with all six directed arm-to-arm movements and declared at-grade conflicts. Mainline follows the diagonal authored alignment; preserve independent directional_diagonal_t contract. Smooth is the family\u2019s established physical curve distinction. No directional prefix or interchange classification is needed, and this remains a reusable piece, not an assembly.",
+      "recipe": "directional_hsr_t_smooth_diagonal_at_grade",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-diagonal-s-left",
+      "new_id": "hsr-l2-two-track-s-curve-diagonal-left",
+      "old_name": "HSR Diagonal S-Curve Left",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Diagonal S-Curve Left",
+      "rationale": "rail_features._procedural and _ports define a two-track diagonal S-curve at15.5m with saved south\u2194east journeys. At authored0\u00b0, the reference approach enters the south end travelling northeast and exits east still travelling northeast. Centreline (16,-40)\u2192(40,0) shifts left of that approach; its control points are (16,-40),(30,-26),(26,-14),(40,0). Add that explicit frame to README placement/engineering prose; do not infer a reflection or compatibility beyond the exact retained native diagonal boundaries.",
+      "recipe": "rail_hsr_diagonal_s_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-diagonal-s-right",
+      "new_id": "hsr-l2-two-track-s-curve-diagonal-right",
+      "old_name": "HSR Diagonal S-Curve Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Diagonal S-Curve Right",
+      "rationale": "rail_features._procedural and _ports define a two-track diagonal S-curve at15.5m with saved south\u2194east journeys. At authored0\u00b0, the reference approach enters the south end travelling northeast and exits east still travelling northeast. Centreline (0,-40)\u2192(40,-16) shifts right of that approach; its control points are (0,-40),(14,-26),(26,-30),(40,-16). Add that explicit frame to README placement/engineering prose; do not infer a reflection or compatibility beyond the exact retained native diagonal boundaries.",
+      "recipe": "rail_hsr_diagonal_s_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-adjacent-crossover-left",
+      "new_id": "hsr-l2-two-track-crossover-adjacent-left",
+      "old_name": "HSR Adjacent Crossover Left",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Adjacent Crossover Left",
+      "rationale": "rail_features._adjacent_layout and _adjacent_ports retain two physical two-track mainlines16m apart, four through movements, and one paired transfer hand. In authored0\u00b0, define reference approach south\u2192north: the left transfer moves from eastern B mainline BS to western A mainline AN (BS\u2192AN and reverse AN\u2192BS). Retain this existing handed topology and its support-review status. Add that explicit frame to README placement/engineering prose. Two-Track qualifies each retained adjacent mainline; it does not claim two tracks total.",
+      "recipe": "rail_hsr_adjacent_crossover_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-adjacent-crossover-right",
+      "new_id": "hsr-l2-two-track-crossover-adjacent-right",
+      "old_name": "HSR Adjacent Crossover Right",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Adjacent Crossover Right",
+      "rationale": "rail_features._adjacent_layout and _adjacent_ports retain two physical two-track mainlines16m apart, four through movements, and one paired transfer hand. In authored0\u00b0, define reference approach south\u2192north: the right transfer moves from western A mainline AS to eastern B mainline BN (AS\u2192BN and reverse BN\u2192AS). Retain this existing handed topology and its support-review status. Add that explicit frame to README placement/engineering prose. Two-Track qualifies each retained adjacent mainline; it does not claim two tracks total.",
+      "recipe": "rail_hsr_adjacent_crossover_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-adjacent-scissors-revised",
+      "new_id": "hsr-l2-two-track-scissors-adjacent",
+      "old_name": "HSR Adjacent Scissors Revised",
+      "new_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Adjacent Scissors",
+      "rationale": "The current rail_repairs.py recipe uses _adjacent_layout(height,both), retains both adjacent two-track mainlines16m apart, four through movements, and both paired transfer hands (eight movements total). Remove historical Revised because no other maintained scissors of this service competes with it. Retain the _revised recipe identifier, consolidated support geometry,5m\u00d75m clearance contract, and numeric identities. Two-Track qualifies each retained mainline, not the total track count.",
+      "recipe": "rail_hsr_adjacent_scissors_revised",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-ghsr-diagonal-s-left",
+      "new_id": "ghsr-ground-two-track-s-curve-diagonal-left",
+      "old_name": "GHSR Diagonal S-Curve Left",
+      "new_name": "GHSR Ground (1 m) \u2014 Two-Track Diagonal S-Curve Left",
+      "rationale": "rail_features._procedural and _ports define a two-track diagonal S-curve at1m with saved south\u2194east journeys. At authored0\u00b0, the reference approach enters the south end travelling northeast and exits east still travelling northeast. Centreline (16,-40)\u2192(40,0) shifts left of that approach; its control points are (16,-40),(30,-26),(26,-14),(40,0). Add that explicit frame to README placement/engineering prose; do not infer a reflection or compatibility beyond the exact retained native diagonal boundaries.",
+      "recipe": "rail_ghsr_diagonal_s_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-ghsr-diagonal-s-right",
+      "new_id": "ghsr-ground-two-track-s-curve-diagonal-right",
+      "old_name": "GHSR Diagonal S-Curve Right",
+      "new_name": "GHSR Ground (1 m) \u2014 Two-Track Diagonal S-Curve Right",
+      "rationale": "rail_features._procedural and _ports define a two-track diagonal S-curve at1m with saved south\u2194east journeys. At authored0\u00b0, the reference approach enters the south end travelling northeast and exits east still travelling northeast. Centreline (0,-40)\u2192(40,-16) shifts right of that approach; its control points are (0,-40),(14,-26),(26,-30),(40,-16). Add that explicit frame to README placement/engineering prose; do not infer a reflection or compatibility beyond the exact retained native diagonal boundaries.",
+      "recipe": "rail_ghsr_diagonal_s_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-ghsr-adjacent-crossover-left",
+      "new_id": "ghsr-ground-two-track-crossover-adjacent-left",
+      "old_name": "GHSR Adjacent Crossover Left",
+      "new_name": "GHSR Ground (1 m) \u2014 Two-Track Adjacent Crossover Left",
+      "rationale": "rail_features._adjacent_layout and _adjacent_ports retain two physical two-track mainlines16m apart, four through movements, and one paired transfer hand. In authored0\u00b0, define reference approach south\u2192north: the left transfer moves from eastern B mainline BS to western A mainline AN (BS\u2192AN and reverse AN\u2192BS). Retain this existing handed topology and its support-review status. Add that explicit frame to README placement/engineering prose. Two-Track qualifies each retained adjacent mainline; it does not claim two tracks total.",
+      "recipe": "rail_ghsr_adjacent_crossover_left",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-ghsr-adjacent-crossover-right",
+      "new_id": "ghsr-ground-two-track-crossover-adjacent-right",
+      "old_name": "GHSR Adjacent Crossover Right",
+      "new_name": "GHSR Ground (1 m) \u2014 Two-Track Adjacent Crossover Right",
+      "rationale": "rail_features._adjacent_layout and _adjacent_ports retain two physical two-track mainlines16m apart, four through movements, and one paired transfer hand. In authored0\u00b0, define reference approach south\u2192north: the right transfer moves from western A mainline AS to eastern B mainline BN (AS\u2192BN and reverse BN\u2192AS). Retain this existing handed topology and its support-review status. Add that explicit frame to README placement/engineering prose. Two-Track qualifies each retained adjacent mainline; it does not claim two tracks total.",
+      "recipe": "rail_ghsr_adjacent_crossover_right",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-ghsr-adjacent-scissors-revised",
+      "new_id": "ghsr-ground-two-track-scissors-adjacent",
+      "old_name": "GHSR Adjacent Scissors Revised",
+      "new_name": "GHSR Ground (1 m) \u2014 Two-Track Adjacent Scissors",
+      "rationale": "The current rail_repairs.py recipe uses _adjacent_layout(height,both), retains both adjacent two-track mainlines16m apart, four through movements, and both paired transfer hands (eight movements total). Remove historical Revised because no other maintained scissors of this service competes with it. Retain the _revised recipe identifier, consolidated support geometry,5m\u00d75m clearance contract, and numeric identities. Two-Track qualifies each retained mainline, not the total track count.",
+      "recipe": "rail_ghsr_adjacent_scissors_revised",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "rail-hsr-ghsr-transition",
+      "new_id": "ghsr-ground-and-hsr-l2-two-track-transition",
+      "old_name": "HSR to GHSR Transition",
+      "new_name": "GHSR Ground (1 m) \u2194 HSR Level 2 (15.5 m) \u2014 Two-Track Transition",
+      "rationale": "The exact native eight-cell adapter exposes1m GHSR and15.5m HSR and travels both ways. Put the lower ground service first in the undirected-and slug and bidirectional name. Transition retains the established native height/family-adapter meaning; keep all eight audited native model/PATH resources, rail_hsr_ghsr_transition recipe, and numeric identities.",
+      "recipe": "rail_hsr_ghsr_transition",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "tram-under-hsr",
+      "new_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+      "old_name": "HSR over Ground Tram",
+      "new_name": "HSR Level 2 (15.5 m) over Tram Ground (0 m) \u2014 Two-Track HSR over Tram Crossing 90\u00b0",
+      "rationale": "Saved ports and independent verify.py contract establish upper paired HSR15.5m east/west, lower primary Tram engine6 at0m north/south, and tram-related auxiliary engine3 duplicating those lower channels. Ground0m is measured; no nominal Tram Level0 is declared. Mixed avoids equating two directed Tram routes with a reviewed physical two-track profile. The readable arrangement qualifies the verified upper HSR only; auxiliaryUDI is not another physical railway. Existing preview lacks visible lower track detail and cannot establish lower physical track count. Preserve native GLR580e0700 geometry/PATH data, recipe tram_under_hsr, and experimental status.",
+      "recipe": "tram_under_hsr",
+      "domain": "high-speed-rail"
+    },
+    {
+      "old_id": "hsr-component-modular-paired-climb",
+      "new_id": "hsr-l2-and-l4-two-track-ramp",
+      "old_name": "HSR Modular Two-Track L2 to L4 Climb",
+      "new_name": "HSR Level 2 (15.5 m) \u2194 Level 4 (30.5 m) \u2014 Two-Track Ramp",
+      "rationale": "Retained self-contained 128 m eased ramp with two opposite-direction tracks, 15.5 m and 30.5 m endpoints, 8 m flat collars, 16 m easing, and eight supports. Use the functional Ramp name after removing the unused analytic duplicate; retain this type's existing recipe, geometry, and numeric resources.",
+      "recipe": "hsr_component_modular_paired_climb",
+      "domain": "high-speed-rail"
+    }
+  ],
+  "assemblies": [
+    {
+      "old_id": "straight-stem-trumpet",
+      "new_id": "hsr-trumpet-straight-stem",
+      "old_name": "Straight-stem HSR trumpet",
+      "new_name": "HSR \u2014 Trumpet \u2014 Straight Stem",
+      "rationale": "The registered plan and README describe28placements of14reusable types in20\u00d723tiles with105occupiedtiles. W/E/S outside ports all expose paired HSR Level2(15.5m); internal routes also use Level4(30.5m) and Custom(23m), with the custom interface not relabelled Level3. The assembly name describes the complete trumpet and its straight stem rather than implying all routes are L2. Update the separately stored cycle_button.title to SCP | ASSEMBLY | HSR \u2014 Trumpet \u2014 Straight Stem while preserving layout selector trumpet, numeric game resources, placement labels/coordinates, and frozen evidence. Explicit current user scope authorizes migrating the legacyfolder/derivedID despite the policy\u2019s ordinary stability examples.",
+      "domain": "high-speed-rail"
+    }
+  ]
+}

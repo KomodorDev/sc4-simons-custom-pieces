@@ -24,7 +24,7 @@ S3D = (0x5AD0E817, 0xBADB57F1)
 PATH = (0x296678F7, 0xA966883F)
 SHADOW = (0x7AB50E44, 0x2BC2759A)
 FAN_ID = 'hsr-component-l2-paired-fan-compact-join'
-FAN_CORE_ID = 'hsr-component-l2-paired-fan-compact-core'
+FAN_CORE_ID = 'hsr-l2-mixed-fan-compact-recessed-web'
 CORE_INHERITED_EDGE_SUPPORTS = {
     (112., 32.): ((2, 1), '02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a'),
     (128., 32.): ((3, 1), '8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91'),

@@ -19,7 +19,7 @@ from scp_hsr.rail_geometry import _global_decks
 
 
 STRAIGHT = 'hsr_component_upper_paired_straight'
-RAMP = 'hsr_component_paired_ramp_l2_to_l4'
+RAMP = 'hsr_component_modular_paired_climb'
 CROSSING = 'hsr_component_modular_crossing_core'
 ADAPTER = 'hsr_component_upper_paired_to_single_adapter'
 PAIRED = 'hsr_component_upper_paired_curve90_'
@@ -42,6 +42,15 @@ def _fragments(recipe):
 
 
 class HsrComponentsLayoutTests(unittest.TestCase):
+    def test_deleted_analytic_ramp_has_no_registered_recipe_or_geometry_producer(self):
+        deleted = 'hsr_component_paired_ramp_l2_to_l4'
+        self.assertNotIn(deleted, RECIPES)
+        self.assertNotIn(deleted, INFO)
+        self.assertNotIn(deleted, CONTRACTS)
+        for function in (component_layout, component_routes, physical_decks):
+            with self.subTest(function=function.__name__), self.assertRaisesRegex(ValueError, 'Unknown HSR component'):
+                function(deleted)
+
     def test_core_literal_native_ports(self):
         expected = {
             STRAIGHT: {'S>N': ((2., -8., 30.5), (2., 8., 30.5)),

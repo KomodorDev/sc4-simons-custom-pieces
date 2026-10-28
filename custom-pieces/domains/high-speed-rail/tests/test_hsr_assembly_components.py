@@ -19,12 +19,12 @@ from scp_hsr.hsr_components_verify import check_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.interchange_verify import PATH, _encoded_routes, _graph
 from scp.track_paths import encode_paths
+from scp.subject_identity import piece_directory
 from scp.verify import parse_paths
 
 
 def fixture(recipe):
-    slug = recipe.replace('_', '-')
-    spec = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/slug/'piece.json').read_text())
+    spec = json.loads((piece_directory(recipe, ROOT)/'piece.json').read_text())
     layout = component_layout(recipe)
     resources = {(*PATH, int(tile, 16)):
         encode_paths(layout[tuple(cell)]['routes'])

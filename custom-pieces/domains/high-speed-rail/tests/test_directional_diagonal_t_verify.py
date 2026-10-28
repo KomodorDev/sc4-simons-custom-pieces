@@ -51,7 +51,7 @@ class DirectionalDiagonalTVerifierTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         contract = CONTRACTS[RECIPE]
-        cls.spec = {'recipe': RECIPE, 'name': 'HSR Smooth Diagonal Full T — At Grade',
+        cls.spec = {'recipe': RECIPE, 'name': 'HSR Level 2 (15.5 m) — Two-Track Smooth Diagonal T Junction — At Grade',
                     'footprint': [13, 14], 'cells': [list(cell) for cell in contract['cells']],
                     'tile_ids': [f'{0x7f900000+0x100*x+0x10*row:08x}' for x, row in contract['cells']],
                     'preview_id': '7f900ff5', 'puzzle_id': 'f8ff',

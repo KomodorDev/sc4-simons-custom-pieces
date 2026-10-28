@@ -1,5 +1,11 @@
 // title: "Custom-piece project registry"
 // summary: "Identify the library and locate its transport domains, dependency profile, allocation ledger, and release policy."
+//
+// Used when: Commands load the catalogue, locate the library root, select a dependency profile, or dispatch work to a transport domain.
+// Read by: scp.catalog.load_catalog(), scp.providers.implementation(), and custom-pieces/installer/build_bundle.py; scp.paths.project_root() locates the library by checking that this file exists.
+// Updated by: A maintainer when project identity, version, domain entry points, or shared configuration paths deliberately change; builds do not regenerate it.
+// Affects: Which domain registries, piece collections, assemblies, dependency fingerprints, and permanent allocation records enter library workflows.
+// Reference: custom-pieces/STRUCTURE.md explains the source layout, and custom-pieces/docs/FRAMEWORK_ENGINEERING.md explains catalogue boundaries.
 {
   "purpose": "Shared project identity and explicit transport-domain entry points. Piece and assembly lists belong to each domain registry.",
   "schema_version": 1,

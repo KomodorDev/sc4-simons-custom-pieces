@@ -492,6 +492,47 @@ def refresh_manual_record(previous, generated):
     return output
 
 
+def _require_declared_manual_identity(previous, current, *, root=None):
+    from .subject_identity import canonical_subject_id
+
+    _require(previous['kind'] == current['kind'] and previous['id'] != current['id'],
+             'An identity migration requires different IDs for the same subject kind')
+    _require(canonical_subject_id(previous['id'], kind=previous['kind'], root=root) == current['id'],
+             'Manual record identity change is not a declared subject migration')
+
+
+def refresh_renamed_manual_record(previous, generated, *, root=None):
+    """Start fresh scopes for one explicitly declared same-kind ID migration.
+
+    The old cases remain unchanged historical evidence, including unobserved
+    cases and their original dependency keys. No observation or applicability
+    declaration is transferred to a case under the new identity. Ordinary
+    refreshes continue to require identical subjects in refresh_manual_record.
+    """
+    previous, generated = _expanded_record(previous), _expanded_record(generated)
+    validate_manual_record(previous)
+    validate_manual_record(generated)
+    old, current = previous['subject'], generated['subject']
+    _require_declared_manual_identity(old, current, root=root)
+    _require(all(case['scope'].get('subject_id') == old['id'] for case in previous['cases']),
+             'Previous current cases belong to another subject')
+    _require(all(case['scope'].get('subject_id') == current['id']
+                 and not case.get('observations') and case['applicability'] == 'applicable'
+                 and not case.get('not_applicable_declaration') for case in generated['cases'])
+             and not generated.get('removed_cases'),
+             'A renamed subject requires newly generated unverified cases')
+    output = deepcopy(generated)
+    history = deepcopy(previous.get('removed_cases', [])) + deepcopy(previous['cases'])
+    identifiers = [case['id'] for case in history]
+    _require(len(identifiers) == len(set(identifiers))
+             and not set(identifiers).intersection(case['id'] for case in output['cases']),
+             'Historical identity cases conflict with current or other historical scopes')
+    if history:
+        output['removed_cases'] = history
+    validate_manual_record(output)
+    return output
+
+
 def _has_case_history(case):
     return bool(case.get('observations') or case.get('not_applicable_declaration')
                 or case.get('applicability') == 'not_applicable')
@@ -1268,6 +1309,15 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     directory = Path(directory)
     checks = directory/'checks'
     record_path = checks/'manual-tests.json'
+    previous = json.loads(record_path.read_text()) if refresh_metadata and record_path.exists() else None
+    migration_root = None
+    if previous is not None:
+        validate_manual_record(previous)
+        expected = {'id': subject['id'], 'kind': subject['kind']}
+        if previous['subject'] != expected:
+            from .paths import project_root
+            migration_root = project_root(directory)
+            _require_declared_manual_identity(previous['subject'], expected, root=migration_root)
     if not refresh_metadata:
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
@@ -1280,7 +1330,6 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
         _testing_heading_level(_ensure_testing_document(directory, subject), subject)
     matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if refresh_metadata:
-        previous = json.loads(record_path.read_text()) if record_path.exists() else None
         manual_orientations = None
         if matrix_enabled:
             supported = _orientation_scopes(connections)
@@ -1295,7 +1344,10 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
                                       split_journey_observations=matrix_enabled or numbered_piece,
                                       manual_check_orientations=manual_orientations)
         if previous is not None:
-            generated = refresh_manual_record(previous, generated)
+            if previous['subject'] == generated['subject']:
+                generated = refresh_manual_record(previous, generated)
+            else:
+                generated = refresh_renamed_manual_record(previous, generated, root=migration_root)
         (directory/'connections.json').write_text(json.dumps(connections, indent=2, allow_nan=False)+'\n')
         record_path.write_text(json.dumps(compact_manual_record(generated), indent=2, allow_nan=False)+'\n')
     _write_subject_views(directory, subject, connections, generated, piece_link)
@@ -1320,11 +1372,34 @@ def declare_not_applicable(record, case_id, *, explicit_user_confirmation, revie
     return output
 
 
+def _require_current_observation_identity(directory, subject):
+    """Keep preserved old-ID records read-only until their scoped refresh."""
+    directory = Path(directory)
+    current_id = subject['id']
+    if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
+        current_id = json.loads((directory/'piece.json').read_text())['id']
+    elif subject['kind'] == 'assembly' and (directory/'assembly.json').is_file():
+        from .paths import project_root
+        from .subject_identity import canonical_subject_id
+        try:
+            root = project_root(directory)
+        except ValueError:
+            root = None
+        if root is not None:
+            declared = canonical_subject_id(subject['id'], kind='assembly', root=root)
+            if declared == directory.name:
+                current_id = declared
+    _require(current_id == subject['id'],
+             'Manual record for historical subject '+subject['id']+' cannot receive observations for '+current_id+
+             '; refresh measured metadata for the current ID before recording a new observation')
+
+
 def record_observation_file(record_path, observation_path):
     """Apply one user-authored observation file and refresh only its derived views."""
     record_path,observation_path=Path(record_path),Path(observation_path)
     record=json.loads(record_path.read_text());request=json.loads(observation_path.read_text())
     directory=record_path.parent.parent
+    _require_current_observation_identity(directory, record['subject'])
     document_state = _preflight_piece_documents(directory, record['subject'])
     readme=directory/'README.md'
     numbered_piece = (record['subject']['kind'] == 'piece' and not readme.is_file()) or _numbered_piece_enabled(directory, record['subject'])

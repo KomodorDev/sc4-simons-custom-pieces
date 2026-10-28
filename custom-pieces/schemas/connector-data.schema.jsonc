@@ -1,5 +1,11 @@
 // title: "Resolved connector export schema"
 // summary: "Validate machine-readable connector exports produced from authored declarations and measured piece boundaries."
+//
+// Used when: Resolved connector-data.json consumer exports are generated or loaded and their required fields, types, identifiers, and route structure must be checked.
+// Read by: scp.connector_metadata._schema() for build_exports() and load_exports(), which pass this schema to validate_structure(); packaged Python resources provide the same schema outside a source checkout.
+// Updated by: A maintainer alongside an intentional connector-export contract change and its validator, producer, consumer, and regression checks; export generation does not rewrite the schema.
+// Affects: Structural acceptance of resolved consumer exports before further source-freshness and compiled-resource checks; this file contains validation rules, not a piece's measured connector data or compatibility results.
+// Reference: custom-pieces/docs/CONNECTOR_METADATA.md defines connector exports, source binding, validation order, and verification limits.
 {
   "type": "object",
   "properties": {

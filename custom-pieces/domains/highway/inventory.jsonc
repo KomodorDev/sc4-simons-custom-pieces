@@ -1,5 +1,15 @@
 // title: "Highway domain catalogue"
 // summary: "Generate domain navigation and collection membership from registered sources; subject records remain authoritative."
+//
+// Used when: Contributors inspect the generated highway catalogue totals, subordinate inventory locations, and named collection membership after an inventory refresh; the current domain has zero pieces and zero assemblies.
+//
+// Read by: Contributors and catalogue validation tests inspect this generated view; custom-pieces/framework/scp/catalog.py load_catalog() reads domain.jsonc, collections.jsonc, and registered subject sources rather than using this file as build input.
+//
+// Updated by: custom-pieces/framework/scp/inventory.py write_inventories(), invoked by python3 -B custom-pieces/scp.py inventory and by relevant documentation refreshes, derives this payload from the current catalogue while retaining its leading comments.
+//
+// Affects: A machine-readable navigation view of the highway domain; its piece_inventory and assembly_inventory fields point to the two generated child catalogues, and editing this view does not register subjects or change authoritative test observations.
+//
+// Reference: custom-pieces/docs/WORKFLOW_DOCUMENTATION_GENERATION.md
 {
   "schema_version": 2,
   "purpose": "Generated domain navigation and collection membership; subject test records remain authoritative.",

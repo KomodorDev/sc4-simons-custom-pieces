@@ -85,8 +85,8 @@ class RailPortablePackageTests(unittest.TestCase):
         from scp_hsr.rail_repairs import RECIPES as SWITCHES
         current = set(FEATURES) | set(SWITCHES)
         selected = [piece['id'] for piece in load_catalog(ROOT)['pieces'] if piece['recipe'] in current]
-        priority=['rail-hsr-adjacent-crossover-right','rail-hsr-adjacent-scissors-revised',
-                  'rail-hsr-ghsr-transition','rail-hsr-diagonal-s-left']
+        priority=['hsr-l2-two-track-crossover-adjacent-right','hsr-l2-two-track-scissors-adjacent',
+                  'ghsr-ground-and-hsr-l2-two-track-transition','hsr-l2-two-track-s-curve-diagonal-left']
         include=priority+[slug for slug in selected if slug not in priority]
         if len(include)!=11 or set(include)!=set(selected):
             raise AssertionError('Expected exactly eleven current rail-feature and switch recipes')
@@ -204,7 +204,7 @@ class RailPortablePackageTests(unittest.TestCase):
             self.assertNotIn((*PATH,base),resources)
 
     def test_reversed_crossover_branch_fails_after_hash_and_classes_are_updated(self):
-        slug='rail-hsr-adjacent-crossover-right'
+        slug='hsr-l2-two-track-crossover-adjacent-right'
         tile=int(self.pieces[slug]['tile_ids'][4],16)
         def mutate(resources,manifest):
             parsed=parse_paths(resources[*PATH,tile])
@@ -217,7 +217,7 @@ class RailPortablePackageTests(unittest.TestCase):
             verify_build(self.output,write_report=False)
 
     def test_removed_scissors_movement_fails_after_valid_path_count_and_hash_update(self):
-        slug='rail-hsr-adjacent-scissors-revised'
+        slug='hsr-l2-two-track-scissors-adjacent'
         piece=self.pieces[slug]
         tile=int(piece['tile_ids'][piece['cells'].index([0,2])],16)
         def mutate(resources,manifest):
@@ -231,7 +231,7 @@ class RailPortablePackageTests(unittest.TestCase):
             verify_build(self.output,write_report=False)
 
     def test_adapter_height_teleport_fails_after_rehashing(self):
-        slug='rail-hsr-ghsr-transition'
+        slug='ghsr-ground-and-hsr-l2-two-track-transition'
         tile=int(self.pieces[slug]['tile_ids'][3],16)
         def mutate(resources,manifest):
             parsed=parse_paths(resources[*PATH,tile])
@@ -244,7 +244,7 @@ class RailPortablePackageTests(unittest.TestCase):
             verify_build(self.output,write_report=False)
 
     def test_changed_diagonal_s_native_port_fails_after_rehashing(self):
-        slug='rail-hsr-diagonal-s-left'
+        slug='hsr-l2-two-track-s-curve-diagonal-left'
         tile=int(self.pieces[slug]['tile_ids'][0],16)
         def mutate(resources,manifest):
             parsed=parse_paths(resources[*PATH,tile])
@@ -258,7 +258,7 @@ class RailPortablePackageTests(unittest.TestCase):
             verify_build(self.output,write_report=False)
 
     def test_wrong_empty_origin_tile_base_fails_even_when_controller_manifest_agree(self):
-        piece=self.pieces['rail-hsr-diagonal-s-left']
+        piece=self.pieces['hsr-l2-two-track-s-curve-diagonal-left']
         puzzle=int(piece['puzzle_id'],16)
         x,y=piece['cells'][0]
         base=int(piece['tile_ids'][0],16)-x*0x100-y*0x10
@@ -277,7 +277,7 @@ class RailPortablePackageTests(unittest.TestCase):
             verify_build(self.output,write_report=False)
 
     def test_shifted_mainline_uvs_fail_with_models_preview_and_shadows_consistent(self):
-        slug='rail-hsr-adjacent-crossover-right'
+        slug='hsr-l2-two-track-crossover-adjacent-right'
         def mutate(resources,manifest):
             for key in list(resources):
                 if key[:2]!=S3D:

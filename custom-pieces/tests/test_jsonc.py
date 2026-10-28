@@ -31,7 +31,12 @@ class JsoncTests(unittest.TestCase):
     def test_rewriting_keeps_authored_leading_comments_and_is_idempotent(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/'ledger.jsonc'
-            prefix = '// title: "My ledger"\n// summary: "My explanation"\n/* Retain this note. */\n\n'
+            prefix = ('// title: "My ledger"\n// summary: "My explanation"\n//\n'
+                      '// Used when: Registering an approved piece.\n'
+                      '// Read by: Catalogue validation.\n'
+                      '// Updated by: The registration tool.\n'
+                      '// Affects: Permanent resource reservations.\n'
+                      '/* Retain this note. */\n\n')
             path.write_text(prefix+'{"old":1}\n', encoding='utf-8')
             jsonc.dump(path, {'new': 2}, title='Default title', summary='Default summary')
             self.assertEqual(path.read_text(), prefix+'{\n  "new": 2\n}\n')

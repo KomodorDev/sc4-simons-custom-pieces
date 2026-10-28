@@ -192,21 +192,38 @@ The repository-level `.github/workflows/installer-release.yml` checks the Window
 
 ### 5.1 Shared JSONC sources and strict JSON exports
 
-**JSON** is a structured data format. **JSONC** adds comments to that format. In this first migration phase, maintained shared configuration, project and domain registries, collections, menu layouts, connector profiles, schemas, documentation templates, audits, and generated catalogues use `.jsonc`. This includes the shared inventories directly inside `00_pieces/` and `01_assemblies/`; individual subject definitions, observations, artwork evidence, and frozen reports retain their current formats.
+**JSON** is a structured data format. **JSONC** adds comments to that format. Every new maintained JSON-format source file must use the `.jsonc` extension and begin with the complete introductory comment header below. This rule applies throughout the repository, including configuration, registries, schemas, templates, audits, maintained generated catalogues, and future piece and assembly authoring records. It also applies when deliberately migrating an existing source to JSONC.
 
-Start every shared JSONC file with two human-readable comment lines. The title identifies the file, and the summary explains why it exists and what owns its data. Keep each value on one physical line as a quoted string:
+The current migration covers shared sources, including the inventories directly inside `00_pieces/` and `01_assemblies/`. Existing individual subject definitions, observations, artwork evidence, and frozen reports retain their current formats. Current piece and assembly tools still expect their documented `.json` files; the policy alone does not add JSONC support to those tools. Before future authoring introduces a JSONC replacement, update the affected readers, writers, registry paths, schema references, packaging, tests, and workflow examples together. Renaming a file without those changes does not satisfy the rule or produce a working subject. Preserve existing evidence and report any affected fingerprints honestly.
+
+Start each new JSONC source with a short explanation of its role. The required header fields are `title`, `summary`, `Used when`, `Read by`, `Updated by`, and `Affects`; `Reference` is optional. Keep `title` and `summary` as the first two comment lines, with each value on one physical line as a quoted string. After a blank comment line, explain when the file is used, who or what reads it, who or what updates it, and what it affects:
 
 ```jsonc
 // title: "Permanent piece resource allocations"
 // summary: "Reserve game-resource identifiers so existing saved cities keep stable piece identities."
+//
+// Used when: A contributor allocates a piece, or catalogue loading checks existing resource reservations before a build.
+// Read by: scp.catalog.validate_catalog(), the scaffold command, and domain registration tools.
+// Updated by: The scaffold command and scp.registration.apply_registration() when registering a new piece.
+// Affects: Permanent construction, model, preview, and menu identifiers used by the game and saved cities.
 {
   "schema_version": 1
 }
 ```
 
-These comments are documentation, rather than additional JSON properties. Preserve existing payload fields, schema versions, identifiers, measurements, and observation states. Shared readers use `scp.jsonc.load`; writer-managed registries and generated views use `scp.jsonc.dump` or transactional `scp.jsonc.document` to retain the existing title, summary, and leading comments. The owning writer regenerates the payload, so keep durable file explanations in that leading header. The parser accepts `//` and `/* */` comments, but rejects trailing commas, duplicate keys, and non-finite numeric values.
+| Header label | What to explain |
+| --- | --- |
+| `Used when` | The actual trigger or workflow stage, such as loading the catalogue, selecting a build collection, refreshing extracted metadata, or deliberately applying a GitHub policy. |
+| `Read by` | The concrete command, Python function, or human procedure that uses this file. A **reader** consumes its data; name a reference-only audience when no program reads it. |
+| `Updated by` | The responsible contributor or the exact generator or registration tool. A **writer** creates or changes the file; distinguish hand-authored configuration from generated output. |
+| `Affects` | The selections, decisions, generated files, or game resources that depend on this file. Explain the practical consequence rather than repeating its filename. |
+| `Reference` (optional) | The repository-relative path to the guide that explains the procedure or data meanings in detail. Paths start at the repository root; Python module and function names identify the corresponding implementation. |
 
-Machine interfaces that require strict JSON keep strict JSON. Build manifests, connector exports, installer reports, install receipts, CLI responses, and GitHub API payloads are examples. Convert a JSONC source explicitly with `python3 -m scp.jsonc INPUT.jsonc --output OUTPUT.json`; omitting `--output` prints strict JSON to standard output. Use the documented [GitHub template conversion](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#7-required-checks-for-maintainers) before applying branch-protection policies. A published schema's `$id` remains stable even when its maintained source filename becomes `.schema.jsonc`.
+Trace these descriptions to actual callers and writers. A template is used when someone copies or converts it, a generated inventory is a browsing output rather than a build registry, and a saved audit can be human reference without a runtime reader. State those roles explicitly. Editing a generated inventory does not change an authoritative piece definition, and converting a GitHub template does not apply its policy. Keep each comment paragraph on one physical source line, and update the header when the file's real ownership or use changes.
+
+These comments are documentation, rather than additional JSON properties. Preserve existing payload fields, schema versions, identifiers, measurements, and observation states. New source readers must use `scp.jsonc.load`; writer-managed registries and generated views use `scp.jsonc.dump` or transactional `scp.jsonc.document` to retain the existing title, summary, and leading comments. A generator that creates a new maintained JSONC file must supply the complete header on its first write and preserve it on later writes. The owning writer regenerates the payload, so keep durable file explanations in that leading header. The parser accepts `//` and `/* */` comments, but rejects trailing commas, duplicate keys, and non-finite numeric values.
+
+Machine interfaces that require strict JSON, meaning JSON without comments, keep strict JSON. Build manifests, connector exports, installer reports, install receipts, CLI responses, and GitHub API payloads are examples. Their `.json` outputs are exceptions to the source-file rule; document their purpose, producer, and consumer in the owning guide or generator instead of adding invalid comments to the output. Preserve imported files, original backups, and frozen evidence in their original formats. Convert a JSONC source explicitly with `python3 -m scp.jsonc INPUT.jsonc --output OUTPUT.json`; omitting `--output` prints strict JSON to standard output. Use the documented [GitHub template conversion](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#7-required-checks-for-maintainers) before applying branch-protection policies. A published schema's `$id` remains stable even when its maintained source filename becomes `.schema.jsonc`.
 
 Exactly four shared `.json` files remain as generated compatibility views: each domain's `connection-classes.json`, plus HSR's `junction-design-review.json` and `native-diagonal-port-cap-audit.json`. Existing piece definitions and guides still reference those paths. Edit their `.jsonc` authorities, then run `python3 -m scp.jsonc --sync-legacy-exports custom-pieces` from the repository root to refresh only those four strict-JSON views. Do not author a second independent copy. Connection-class generation updates its matching compatibility view automatically.
 

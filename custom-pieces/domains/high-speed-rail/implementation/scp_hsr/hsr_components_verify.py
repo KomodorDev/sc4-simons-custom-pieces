@@ -43,17 +43,7 @@ CONTRACTS = {
         'min_height': 30.5, 'max_height': 30.5, 'max_grade': 0.,
         'support_centres_xz': [(0., 0.)],
     },
-    'hsr_component_paired_ramp_l2_to_l4': {
-        **_COMMON, 'kind': 'paired_ramp', 'cells': [(0, row) for row in range(8)],
-        'footprint': (1, 8), 'cost': 800,
-        'ports': {'Sin': (2., -120., 15.5), 'Nout': (2., 8., 30.5),
-                  'Nin': (-2., 8., 30.5), 'Sout': (-2., -120., 15.5)},
-        'port_vectors': {'Sin': (0., 1.), 'Nout': (0., 1.),
-                         'Nin': (0., -1.), 'Sout': (0., -1.)},
-        'movements': [('Sin', 'Nout'), ('Nin', 'Sout')],
-        'min_height': 15.5, 'max_height': 30.5, 'max_grade': .156251,
-        'flat_collar_m': 8., 'support_centres_xz': [(0., 16.*row) for row in range(8)],
-    },
+
 }
 
 
@@ -250,23 +240,12 @@ def check_paths(resources, spec, donors=None):
     quality, maximum_grade = {}, 0.
     for movement, points in journeys.items():
         maximum_grade = max(maximum_grade, audit_height_profile(points, contract))
-        if contract['kind'] in ('paired_straight', 'paired_ramp'):
+        if contract['kind'] == 'paired_straight':
             axis = 0 if abs(points[-1][0]-points[0][0]) < EPS else 1
             require(all(abs(point[axis]-points[0][axis]) <= EPS for point in points),
                     'HSR component straight track departs from its literal native offset')
         limits = contract.get('quality_limits', {}).get(movement, _STRAIGHT)
         quality['>'.join(movement)] = measure_journey_quality(points, limits)
-    if contract['kind'] == 'paired_ramp':
-        north, south = journeys['Sin', 'Nout'], list(reversed(journeys['Nin', 'Sout']))
-        for first, second in ((north, south), (south, north)):
-            index = 0
-            for point in first:
-                while index < len(second)-2 and second[index+1][1] < point[1]-EPS:
-                    index += 1
-                a, b = second[index:index+2]
-                t = (point[1]-a[1])/(b[1]-a[1])
-                require(-EPS <= t <= 1.+EPS and abs(point[2]-(a[2]+t*(b[2]-a[2]))) <= EPS,
-                        'HSR component paired ramp tracks do not share the same height profile')
     report = {'tile_count': len(contract['cells']), 'encoded_routes_checked': len(records),
               'external_ports_checked': ports, 'permitted_movements_checked': movements,
               'native_facing_port_tangents_checked': len(native),

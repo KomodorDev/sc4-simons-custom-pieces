@@ -19,59 +19,59 @@ UPPER = 30.5
 EXTRA_DEFINITIONS = {
     'hsr_component_lower_paired_straight': {
         'kind': 'lower_paired_straight', 'height': LOWER,
-        'name': 'HSR L2 Two-Track Straight',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Two-Track Straight',
         'description': 'Native-width two-track HSR at 15.5 m with opposite-direction paths; an individually selectable lower straight.',
     },
     'hsr_component_lower_oneway_straight': {
         'kind': 'lower_oneway_straight', 'height': LOWER,
-        'name': 'One-Way HSR L2 Eight-Metre Straight',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Straight \u2014 8 m Deck Width',
         'description': 'One centred northbound track on an eight-metre slab at 15.5 m; matches the new single-track curved ramps.',
     },
     'hsr_component_lower_zero_turn_split': {
         'kind': 'zero_turn_split', 'height': LOWER,
-        'name': 'HSR L2 Parallel One-Way Split',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Parallel Split from Two-Track Mainline',
         'description': 'Keep the two-track mainline straight while its right-hand forward track separates into a parallel one-way track one tile away.',
     },
     'hsr_component_lower_zero_turn_merge': {
         'kind': 'zero_turn_merge', 'height': LOWER,
-        'name': 'HSR L2 Parallel One-Way Merge',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Parallel Merge to Two-Track Mainline',
         'description': 'A parallel one-way track one tile to the right merges into the forward track of the straight two-track mainline.',
     },
     'hsr_component_lower_zero_turn_double_merge': {
         'kind': 'zero_turn_double_merge', 'height': LOWER,
-        'name': 'HSR L2 Opposite-Direction Parallel Merges',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Opposed Parallel Merges to Two-Track Mainline',
         'description': 'Two outside one-way tracks merge into their matching directions of one straight two-track mainline, without crossing either track.',
     },
     'hsr_component_lower_oneway_curve90_right_wide': {
         'kind': 'lower_oneway_curve_wide', 'height': LOWER,
         'hand': 'right', 'angle': 90,
-        'name': 'One-Way HSR L2 Wide 90 Degree Curve Right',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide, 8 m Deck Width',
         'description': 'A centred one-way track turns right through 90 degrees at 15.5 m; 136 m displacement in each cardinal direction and flat connection collars.',
     },
     'hsr_component_upper_paired_curve90_right_wide': {
         'kind': 'upper_paired_curve_wide', 'height': UPPER,
         'hand': 'right', 'angle': 90,
-        'name': 'HSR L4 Wide Two-Track 90 Degree Curve Right',
+        'name': 'HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Right \u2014 Wide',
         'description': 'Two close opposite-direction tracks turn on one upper slab at 30.5 m; two copies form the large northern half-circle of the straight-stem trumpet.',
     },
     'hsr_component_upper_paired_to_single_adapter_compact': {
         'kind': 'paired_to_single_adapter_compact', 'height': UPPER,
-        'name': 'HSR L4 Compact Two-Track to Separate Tracks',
+        'name': 'HSR Level 4 (30.5 m) \u2014 Two-Track to Separate Single-Track Adapter \u2014 Compact',
         'description': 'A 96 m long upper adapter spreads native opposite-direction tracks into two eight-metre single-track decks, with centres one tile apart and matching flat collars.',
     },
     'hsr_component_lower_zero_turn_split_compact': {
         'kind': 'zero_turn_split_compact', 'height': LOWER,
-        'name': 'HSR L2 Compact Parallel One-Way Split',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Parallel Split from Two-Track Mainline \u2014 Compact',
         'description': 'A 96 m long turnout separates the forward track into a parallel one-way track one tile to the right; the opposite mainline track remains straight.',
     },
     'hsr_component_lower_zero_turn_merge_compact': {
         'kind': 'zero_turn_merge_compact', 'height': LOWER,
-        'name': 'HSR L2 Compact Parallel One-Way Merge',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Parallel Merge to Two-Track Mainline \u2014 Compact',
         'description': 'A 96 m long turnout merges a parallel one-way track one tile to the right into the forward mainline track, while preserving the opposite straight track.',
     },
     'hsr_component_lower_zero_turn_split_merge': {
         'kind': 'zero_turn_split_merge', 'height': LOWER,
-        'name': 'HSR L2 Symmetric Parallel Split and Return Merge',
+        'name': 'HSR Level 2 (15.5 m) \u2014 Parallel Split and Return Merge with Two-Track Mainline',
         'description': 'A shared 128 m two-track stem splits a northbound track to the right and merges its mirrored southbound return from the left, with both branch ends at the north side.',
     },
 }

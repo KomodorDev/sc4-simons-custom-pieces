@@ -1,0 +1,119 @@
+// Purpose: Declare source-owned boundaries, physical channels, and measured-endpoint associations.
+// Shared concepts and profile reference: ../../../../docs/CONNECTOR_METADATA.md
+{
+  "schema_version": 3, // Version of this metadata structure; distinct from the v1 in a profile ID.
+  "purpose": "Authored physical channel identities and complete boundary bundles. Exact geometry and journeys remain measured from compiled game resources.",
+  "piece_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight", // Reusable piece type; each future placed copy has a separate instance ID.
+  "source_binding": { // Exact file fingerprints make stale declarations detectable.
+    "piece_sha256": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33", // Fingerprint of this folder's piece.json definition.
+    "connections_sha256": "202dc820ada371ec4dc772d427904d4e848c1ad33c6e2561535deafb4e9da453" // Fingerprint of this folder's measured connections.json.
+  },
+  "components": [ // Logical route groups. Coordinates belong to source cells and paths, not component names.
+    {
+      "id": "graded-corner", // Both curve ends belong to this route, although their heights differ.
+      "network": "hsr" // High Speed Rail service; must agree with this component's profiles.
+    }
+  ],
+  "channels": [ // Physical passages, separate from directed path records and their member IDs.
+    {
+      "id": "curve-channel-01", // Same channel at both ends; association follows actual permitted journeys.
+      "component_id": "graded-corner", // Logical route ownership, never a coordinate.
+      "kind": "rail", // Physical passage kind; other domains can describe road lanes or walkways.
+      "traffic_modes": ["monorail"] // Explicit game travel mode; the network service is separately HSR.
+    },
+    {
+      "id": "curve-channel-02", // Same channel at both ends; association follows actual permitted journeys.
+      "component_id": "graded-corner", // Logical route ownership, never a coordinate.
+      "kind": "rail", // Physical passage kind; other domains can describe road lanes or walkways.
+      "traffic_modes": ["monorail"] // Explicit game travel mode; the network service is separately HSR.
+    }
+  ],
+  "groups": [ // Each group describes a service section at a joining boundary; physical channels are associated explicitly below.
+    {
+      "id": "curve-end-a", // Stable end name; currently south in the authored 0-degree orientation.
+      "component_id": "graded-corner", // Refers to the logical route listed in components above.
+      // profile_id selects optional inherited defaults in ../../connector-profiles.json. Read its tokens left to right:
+      //   hsr          = High Speed Rail service.
+      //   h23000mm     = Custom path height 23 m; no nominal level is assigned.
+      //   orth         = Tracks meet this tile boundary perpendicularly; it describes the end, not the whole piece.
+      //   scp-paired15 = Simon's Custom Pieces paired section; historical 15 m visual-family name; actual models supply physical geometry.
+      //   t2-opposed   = Two physical tracks with opposite travel directions.
+      //   rhd          = Right-hand running in this reviewed example; measured positions and explicit flows supply the facts.
+      //   v1           = Revision 1 of this named defaults entry; not the JSONC schema, piece, or NAM version.
+      // Inherits service, engine, and role defaults from the abstract hsr-orth-scp-paired15-t2-opposed-rhd-v1 parent.
+      // Looking outward means standing inside this piece and facing across this tile boundary.
+      // The measured endpoints are in at +2 m and out at -2 m in the outward-left frame: centres 4 m apart.
+      // Lane offsets are relative to the section origin set by section_offset_m below.
+      // Flatness comes separately from endpoint_grade: 0 in the registry, not from the word orth.
+      // This custom 23 m end is the tight paired intermediate joint; it is not an ordinary Level 3 interface.
+      "profile_id": "hsr-h23000mm-orth-scp-paired15-t2-opposed-rhd-v1", // Optional defaults reference; matching compares resolved boundary facts, never this ID or a declared width.
+      "members": [ // References below supply the exact measured positions, travel directions and grades.
+        {
+          "id": "curve-end-a-track-01", // Stable directed-member identity; this number is not a physical-channel identity or a direction.
+          "source_port_id": "Sin", // Existing measured port in connections.json; its old name does not define geometry.
+          "direction": "in", // Travel relative to this piece; checked against the measured source endpoint.
+          "channel_id": "curve-channel-01", // Physical passage above; its other end can have a different member-number suffix.
+          "cut_id": "curve-end-a-cut-01" // One physical crossing of this tile edge; a bidirectional cut may have several members.
+        },
+        {
+          "id": "curve-end-a-track-02", // Stable directed-member identity; this number is not a physical-channel identity or a direction.
+          "source_port_id": "Sout", // Existing measured port in connections.json; its old name does not define geometry.
+          "direction": "out", // Travel relative to this piece; checked against the measured source endpoint.
+          "channel_id": "curve-channel-02", // Physical passage above; its other end can have a different member-number suffix.
+          "cut_id": "curve-end-a-cut-02" // One physical crossing of this tile edge; a bidirectional cut may have several members.
+        }
+      ],
+      "section_offset_m": 0.0 // Shift from this tile-boundary centre, in metres: 0 = no shift; positive = outward-left.
+    },
+    {
+      "id": "curve-end-b", // Stable end name; currently east in the authored 0-degree orientation.
+      "component_id": "graded-corner", // Refers to the logical route listed in components above.
+      // profile_id selects optional inherited defaults in ../../connector-profiles.json. Read its tokens left to right:
+      //   hsr          = High Speed Rail service.
+      //   l2           = Nominal Level 2; exact path height 15.5 m, not the deck top.
+      //   orth         = Tracks meet this tile boundary perpendicularly; it describes the end, not the whole piece.
+      //   scp-paired15 = Simon's Custom Pieces paired section; historical 15 m visual-family name; actual models supply physical geometry.
+      //   t2-opposed   = Two physical tracks with opposite travel directions.
+      //   rhd          = Right-hand running in this reviewed example; measured positions and explicit flows supply the facts.
+      //   v1           = Revision 1 of this named defaults entry; not the JSONC schema, piece, or NAM version.
+      // Inherits service, engine, and role defaults from the abstract hsr-orth-scp-paired15-t2-opposed-rhd-v1 parent.
+      // Looking outward means standing inside this piece and facing across this tile boundary.
+      // The measured endpoints are in at +2 m and out at -2 m in the outward-left frame: centres 4 m apart.
+      // Lane offsets are relative to the section origin set by section_offset_m below.
+      // Flatness comes separately from endpoint_grade: 0 in the registry, not from the word orth.
+      // This 15.5 m end uses the native paired Level 2 family; complete boundary facts still decide agreement.
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1", // Optional defaults reference; matching compares resolved boundary facts, never this ID or a declared width.
+      "members": [ // References below supply the exact measured positions, travel directions and grades.
+        {
+          "id": "curve-end-b-track-01", // Stable directed-member identity; this number is not a physical-channel identity or a direction.
+          "source_port_id": "Ein", // Existing measured port in connections.json; its old name does not define geometry.
+          "direction": "in", // Travel relative to this piece; checked against the measured source endpoint.
+          "channel_id": "curve-channel-02", // Physical passage above; its other end can have a different member-number suffix.
+          "cut_id": "curve-end-b-cut-01" // One physical crossing of this tile edge; a bidirectional cut may have several members.
+        },
+        {
+          "id": "curve-end-b-track-02", // Stable directed-member identity; this number is not a physical-channel identity or a direction.
+          "source_port_id": "Eout", // Existing measured port in connections.json; its old name does not define geometry.
+          "direction": "out", // Travel relative to this piece; checked against the measured source endpoint.
+          "channel_id": "curve-channel-01", // Physical passage above; its other end can have a different member-number suffix.
+          "cut_id": "curve-end-b-cut-02" // One physical crossing of this tile edge; a bidirectional cut may have several members.
+        }
+      ],
+      "section_offset_m": 0.0 // Shift from this tile-boundary centre, in metres: 0 = no shift; positive = outward-left.
+    }
+  ],
+  "boundary_bundles": [ // All groups at one particular source tile edge must join using the same placement.
+    {
+      "id": "cell-0-3-south", // Local reference for this physical source boundary.
+      "source_cell": [0, 3], // Zero-based [column east, row south]: first column, fourth row.
+      "edge": "south", // Tile edge in the authored orientation; independent of train travel direction.
+      "connector_ids": ["curve-end-a"] // References group IDs above; additional levels/services on this same edge join this list.
+    },
+    {
+      "id": "cell-3-0-east", // Local reference for this physical source boundary.
+      "source_cell": [3, 0], // Zero-based [column east, row south]: fourth column, first row.
+      "edge": "east", // Tile edge in the authored orientation; independent of train travel direction.
+      "connector_ids": ["curve-end-b"] // References group IDs above; additional levels/services on this same edge join this list.
+    }
+  ]
+}

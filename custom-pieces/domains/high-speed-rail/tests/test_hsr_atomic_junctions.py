@@ -52,8 +52,8 @@ def encoded_movement(recipe, movement):
 class AtomicJunctionSourceTests(unittest.TestCase):
     def test_current_junction_geometry_keeps_its_frozen_source_bytes(self):
         for identifier, digest in {
-            'hsr-component-l2-short-mainline-diverge-core': 'cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c',
-            'hsr-component-l2-short-opposed-merge-core': '61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9',
+            'hsr-l2-two-track-mainline-split-oblique-cut': 'cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c',
+            'hsr-l2-two-track-mainline-opposed-merges-oblique-cuts': '61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9',
         }.items():
             self.assertEqual(hashlib.sha256((PIECES/identifier/'geometry.json').read_bytes()).hexdigest(), digest)
 

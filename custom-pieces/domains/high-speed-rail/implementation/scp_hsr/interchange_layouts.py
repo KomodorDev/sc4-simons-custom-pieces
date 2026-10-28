@@ -262,10 +262,10 @@ PENDING_CROSSINGS['interchange_hsr_oneway_over_ground']={
 for _recipe,_definition in PENDING_CROSSINGS.items():
     _variant=_definition['crossing_variant']
     if _variant=='ground_single_under_hsr_dual':
-        _definition['name']='Ground One-Way Track under HSR'
+        _definition['name']='HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track over Single-Track One-Way Crossing 90\u00b0'
         _definition['one_way_position']='lower'
     elif _variant=='hsr_single_over_ground_dual':
-        _definition['name']='One-Way HSR over GHSR'
+        _definition['name']='HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0'
         _definition['one_way_position']='upper'
     else:
         _lower_label='GHSR' if _definition['lower_level']=='ground' else 'HSR'

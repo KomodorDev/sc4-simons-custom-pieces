@@ -1,5 +1,15 @@
 // title: "Highway piece catalogue"
 // summary: "Generate the reusable-type index, canonical picture links, and scoped coverage from authoritative piece and observation records."
+//
+// Used when: Contributors inspect the generated index of highway reusable piece types, canonical picture links, and saved manual-test coverage after an inventory refresh; no highway pieces are currently registered.
+//
+// Read by: Contributors and catalogue validation tests inspect this generated view, and the parent highway inventory.jsonc names its location; normal catalogue loading reads registered piece.json definitions and does not use this generated file as build input.
+//
+// Updated by: custom-pieces/framework/scp/inventory.py write_inventories(), invoked by python3 -B custom-pieces/scp.py inventory and by relevant documentation refreshes, derives the piece list and status data from registered definitions, available connections.json records, and checks/manual-tests.json records while retaining its leading comments.
+//
+// Affects: The machine-readable counterpart of the adjacent generated INVENTORY.md; neither regenerating this view nor editing its status fields records a human observation, confirms compatibility, or creates a highway piece.
+//
+// Reference: custom-pieces/docs/TESTING.md
 {
   "schema_version": 2,
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",

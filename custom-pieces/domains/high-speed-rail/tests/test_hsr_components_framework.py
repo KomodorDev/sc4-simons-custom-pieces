@@ -21,6 +21,7 @@ from scp.catalog import load_catalog, select_pieces
 from scp.build import preflight_allocations
 from scp.recipes import build_piece
 from scp.verify import check_piece_paths, _check_piece_geometry
+from scp.subject_identity import canonical_piece_id
 
 
 def registration_module():
@@ -37,7 +38,8 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         project = jsonc.load(FRAMEWORK / 'project.jsonc')
-        paths = ['project.jsonc', project['profile'], project['allocations']]
+        paths = ['project.jsonc', project['profile'], project['allocations'],
+                 'config/subject-id-migration.jsonc']
         for domain in project['domains'].values():
             directory = Path(domain['path'])
             paths.extend(str(directory/name) for name in ('AGENTS.md', 'README.md'))
@@ -165,10 +167,18 @@ class HSRComponentRegistrationTests(unittest.TestCase):
                 self.assertEqual(piece['structural_cells'],
                                  [list(cell) for cell in INFO[piece['recipe']]['structural_cells']])
 
+    def test_default_registration_does_not_recreate_the_deleted_analytic_ramp(self):
+        deleted = 'hsr_component_paired_ramp_l2_to_l4'
+        with patch.object(self.module, 'write_inventories'), redirect_stdout(io.StringIO()):
+            report = self.module.register_components(root=self.root)
+        catalog = load_catalog(self.root)
+        self.assertNotIn(deleted, {piece['recipe'] for piece in catalog['pieces']})
+        self.assertNotIn(canonical_piece_id(deleted, self.root), report['pieces'])
+
     def test_adapter_registration_preserves_existing_components_and_other_selections(self):
         from scp_hsr.hsr_components import INFO, RECIPES
         adapter = 'hsr_component_upper_paired_to_single_adapter'
-        slug = adapter.replace('_', '-')
+        slug = canonical_piece_id(adapter, self.root)
         registry_path = self.root/'domains/high-speed-rail/domain.jsonc'
         ledger_path = self.root/'config/allocations.jsonc'
         registry = jsonc.load(registry_path)
@@ -268,7 +278,7 @@ class HSRComponentDispatchTests(unittest.TestCase):
     def test_actual_component_menu_icons_are_valid_and_all_distinct(self):
         from scp_hsr.hsr_components_layout import RECIPES
         from scp_hsr.icons import make_icon, validate_icon
-        icons = [make_icon(recipe.replace('_', '-')) for recipe in RECIPES]
+        icons = [make_icon(canonical_piece_id(recipe, FRAMEWORK)) for recipe in RECIPES]
         self.assertEqual(len(set(icons)), len(RECIPES))
         for icon in icons:
             validate_icon(icon)

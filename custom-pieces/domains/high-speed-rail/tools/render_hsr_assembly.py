@@ -10,7 +10,7 @@ unchanged. This is a software model renderer, never an in-game placement test.
 Example scene:
   {"title":"HSR assembly", "instances":[
     {"id":"crossing", "build":"../dist/current",
-     "piece_id":"hsr-component-modular-crossing-core", "origin_m":[0,0],
+     "piece_id":"hsr-l4-over-hsr-l2-two-track-crossing-90deg", "origin_m":[0,0],
      "rotation_ccw_degrees":0}]}
 
 Paths inside a scene are relative to the scene file. No model files, donor
@@ -369,7 +369,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             labels_caption = f'{len(sources)} named placements | positions in side panels'
             _caption(draw, f'X/Y tile coordinates | 1 tile = 16 m | {labels_caption}',
                      143, 20, width, color='#586a7e')
-            if provenance.get('coordinate_system', {}).get('layout') == 'straight-stem-trumpet':
+            if provenance.get('coordinate_system', {}).get('layout') == 'hsr-trumpet-straight-stem':
                 _caption(draw, 'Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m',
                          170, 18, width, color='#586a7e')
         camera = make_camera(vertices, azimuth, elevation, view_width, view_height,

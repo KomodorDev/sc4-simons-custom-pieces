@@ -1,0 +1,109 @@
+// Authored complete physical channels; actual saved PATHs supply measured positions and directions.
+// Both paired ends use the measured recessed-web profile. Equal route classes do not erase a concrete-body difference.
+// Curved branch cuts, where present, retain their exact measured endpoints and headings without a straight profile claim.
+{
+  "schema_version": 3,
+  "purpose": "Declare the complete saved-resource joining boundaries and physical tracks of this recessed-web HSR type. Profile labels preserve the measured concrete distinction; route positions and movement permissions remain actual saved-PATH facts.",
+  "piece_id": "hsr-l2-two-track-straight-recessed-web",
+  "source_binding": {
+    "piece_sha256": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
+    "connections_sha256": "3a4d9ed95fead5e1b45fbf430d50c68971806bd255275d7fc72efb53ab8c1d80"
+  },
+  "components": [
+    {
+      "id": "paired-route",
+      "network": "hsr",
+      "construction_network": "monorail"
+    }
+  ],
+  "channels": [
+    {
+      "id": "northbound-track",
+      "component_id": "paired-route",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "southbound-track",
+      "component_id": "paired-route",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "south-end",
+      "component_id": "paired-route",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "south-sout",
+          "source_port_id": "Sout",
+          "direction": "out",
+          "channel_id": "southbound-track",
+          "cut_id": "south-southbound-track-cut"
+        },
+        {
+          "id": "south-sin",
+          "source_port_id": "Sin",
+          "direction": "in",
+          "channel_id": "northbound-track",
+          "cut_id": "south-northbound-track-cut"
+        }
+      ],
+      "section_offset_m": 0.0,
+      "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
+    },
+    {
+      "id": "north-end",
+      "component_id": "paired-route",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "north-nin",
+          "source_port_id": "Nin",
+          "direction": "in",
+          "channel_id": "southbound-track",
+          "cut_id": "north-southbound-track-cut"
+        },
+        {
+          "id": "north-nout",
+          "source_port_id": "Nout",
+          "direction": "out",
+          "channel_id": "northbound-track",
+          "cut_id": "north-northbound-track-cut"
+        }
+      ],
+      "section_offset_m": 0.0,
+      "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "cell-0-0-south",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "south-end"
+      ]
+    },
+    {
+      "id": "cell-0-0-north",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "north-end"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,15 @@
 // title: "Release branch protection template"
 // summary: "Require Tests and Release policy checks for main while preserving human control of release merges."
+//
+// Used when: A repository administrator reviews or deliberately changes protection for the main release branch after the required workflows exist on the default dev branch; cloning this repository, committing this file, or running CI does not apply these settings.
+//
+// Read by: The conversion command in docs/GITHUB.md runs custom-pieces/framework/scp/jsonc.py to create local/github-api/main-protection.json under custom-pieces; an administrator then supplies that strict-JSON file to the separate gh api --method PUT branches/main/protection operation.
+//
+// Updated by: Human maintainers edit this template when the release-branch policy, required Tests or Release policy checks, or their GitHub Actions bindings change, regenerate the disposable API payload, and inspect it before applying it to their intended repository.
+//
+// Affects: Only a deliberately applied API payload changes GitHub protection: the branch must be up to date, Tests and Release policy must pass, conversations must be resolved, administrator enforcement applies, and force pushes and deletion are blocked; zero approving reviews are required.
+//
+// Reference: docs/GITHUB.md
 {
   "required_status_checks": {
     "strict": true,

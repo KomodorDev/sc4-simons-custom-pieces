@@ -1,0 +1,101 @@
+// Authored connector associations for ONE paired L2/L4 graded quarter-turn.
+// Positions, tangents, heights, and journeys come from the final saved PATHs.
+// See ../../../../docs/CONNECTOR_METADATA.md for the shared vocabulary.
+{
+  "schema_version": 3, // Metadata structure version; not the profile's v1 token.
+  "purpose": "Declare complete low/high boundaries and two continuous physical track channels, using actual saved-resource measurements.",
+  "piece_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right", // Permanent reusable type ID, not a placed instance ID.
+  "source_binding": { // SHA-256 fingerprints identify exact audited source bytes.
+    "piece_sha256": "0aff6b2f0cfd57f3c21ad38de18739a391b4e3156e1396b502c0a19af9ec21d0",
+    "connections_sha256": "63cda8d4fbbb5f44b87d49dd639aae18e575924327bbdaf0d7d6a73c66bafbe1"
+  },
+  "components": [
+    {"id": "graded-quarter-turn", "network": "hsr"} // One logical rail route changes height inside the curve.
+  ],
+  "channels": [ // A channel is one physical track, rather than one local endpoint record.
+    {
+      "id": "climbing-track", // Retained at both ends because Sin→Eout is one measured continuous journey.
+      "component_id": "graded-quarter-turn",
+      "kind": "rail",
+      "traffic_modes": ["monorail"] // Explicit permitted game mode; HSR service is a separate classification.
+    },
+    {
+      "id": "descending-track", // Retained at both ends because Ein→Sout is the other measured continuous journey.
+      "component_id": "graded-quarter-turn",
+      "kind": "rail",
+      "traffic_modes": ["monorail"]
+    }
+  ],
+  "groups": [ // Each service group describes the whole paired section at one joining end.
+    {
+      "id": "low-south",
+      "component_id": "graded-quarter-turn",
+      // hsr = High Speed Rail; l2 = nominal Level 2 with PATH height 15.5 m.
+      // orth = this boundary meets the track perpendicularly; scp-paired15 = the native paired slab family.
+      // t2-opposed = two physical tracks carrying opposite directions; rhd = right-hand running.
+      // v1 = revision 1 of these named defaults, separate from schema 3, the piece, or NAM 50.
+      // The inherited service is HSR, engine class 7, and primary routing role; endpoint grade is exactly zero.
+      // The profile name does not establish compatibility: actual measured channels and complete boundaries do.
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+      "members": [ // Member IDs are local directed records; they do not replace continuous channel IDs.
+        {
+          "id": "low-in",
+          "source_port_id": "Sin", // Existing actual-PATH port identity is preserved.
+          "direction": "in", // Train enters this piece at its low end and climbs.
+          "channel_id": "climbing-track",
+          "cut_id": "low-climbing-cut" // One physical intersection with this particular tile edge.
+        },
+        {
+          "id": "low-out",
+          "source_port_id": "Sout",
+          "direction": "out", // Train leaves after descending on the other physical track.
+          "channel_id": "descending-track",
+          "cut_id": "low-descending-cut"
+        }
+      ],
+      "section_offset_m": 0.0 // Paired section is centred on its own tile edge; positive would mean outward-left.
+    },
+    {
+      "id": "high-east",
+      "component_id": "graded-quarter-turn",
+      // hsr = High Speed Rail; l4 = nominal Level 4 with PATH height 30.5 m.
+      // orth = perpendicular boundary alignment; scp-paired15 = the same native paired slab family.
+      // t2-opposed = two physical tracks with opposite travel directions; rhd = right-hand running.
+      // v1 = revision 1 of the named defaults; it does not identify the schema, NAM version, or piece version.
+      // This profile also inherits HSR service, engine class 7, primary role, and a zero-grade joining edge.
+      // Equal physical channels continue through this piece while their heights change inside it.
+      "profile_id": "hsr-l4-orth-scp-paired15-t2-opposed-rhd-v1",
+      "members": [
+        {
+          "id": "high-in",
+          "source_port_id": "Ein",
+          "direction": "in", // East-to-south traffic descends on descending-track.
+          "channel_id": "descending-track",
+          "cut_id": "high-descending-cut"
+        },
+        {
+          "id": "high-out",
+          "source_port_id": "Eout",
+          "direction": "out", // South-to-east traffic finishes climbing on climbing-track.
+          "channel_id": "climbing-track",
+          "cut_id": "high-climbing-cut"
+        }
+      ],
+      "section_offset_m": 0.0 // Centred on the east edge of source tile [6,0], rather than the whole-piece centre.
+    }
+  ],
+  "boundary_bundles": [ // Every required channel on one tile edge must join using one common placement.
+    {
+      "id": "cell-0-6-south",
+      "source_cell": [0, 6], // Column increases east; row increases south. Picture location is X0/Y0.
+      "edge": "south", // Boundary direction, not the incoming train's travel heading.
+      "connector_ids": ["low-south"]
+    },
+    {
+      "id": "cell-6-0-east",
+      "source_cell": [6, 0], // Same physical boundary appears at picture X6/Y6.
+      "edge": "east",
+      "connector_ids": ["high-east"]
+    }
+  ]
+}

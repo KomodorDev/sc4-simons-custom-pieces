@@ -27,7 +27,7 @@ The existing compiled pieces are **experimental local builds**. Public redistrib
 
 After a human promotes `dev` to `main`, the [automatic installer workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) runs the complete test command, builds the Windows x64 bundle, checks its contents, runs the packaged executable's self-test and GUI startup smoke check, and publishes an experimental GitHub prerelease only after every required job succeeds. Source commits, ZIP checksums, member indexes, and self-test reports identify the exact candidate. The deterministic `installer-<commit-prefix>` tag does not promote the library's development version to a stable release. Pull requests produce review artifacts and do not publish releases.
 
-The installer selects all implemented registered pieces, currently 167 types, and prepares the registered trumpet assembly menu. On the user's computer, it validates the audited profile, derives required Road captures from exact selected resources, builds and verifies the files, and installs one receipt-owned SCP folder. It does not modify original game or NAM archives. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
+The installer selects all implemented registered pieces, currently 166 types, and prepares the registered trumpet assembly menu. On the user's computer, it validates the audited profile, derives required Road captures from exact selected resources, builds and verifies the files, and installs one receipt-owned SCP folder. It does not modify original game or NAM archives. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
 
 Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The gates below continue to assess a proposed compiled-plugin package; installer CI cannot mark them passed.
 
@@ -135,7 +135,7 @@ Publication approval and permission evidence are separate facts. A permission re
 
 ## 7. Build-specific game evidence
 
-Each selected piece can reference a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-diagonal-ghsr.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
+Each selected piece can reference a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
 
 ```json
 {

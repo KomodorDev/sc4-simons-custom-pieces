@@ -12,6 +12,7 @@ from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
 from scp.autotile import validate_auto_tile_addresses
+from scp.subject_identity import canonical_piece_id, canonical_piece_name
 
 
 def register_examples(info_by_recipe,recipes,selection_name):
@@ -24,13 +25,19 @@ def register_examples(info_by_recipe,recipes,selection_name):
                  for value in [p['preview_id'],*p['tile_ids'],*p.get('resource_blocks',[])]}
     selected=[];added=[]
     for recipe in recipes:
-        info=info_by_recipe[recipe];slug=recipe.replace('_','-');selected.append(slug)
+        info=info_by_recipe[recipe]
+        owners=[piece for piece in catalog['pieces'] if piece['recipe']==recipe]
+        require(len(owners)<=1, f'Ambiguous example recipe owner: {recipe}')
+        require(not owners or owners[0]['domain']=='high-speed-rail',
+                'An HSR example recipe must belong to the high-speed-rail domain')
+        slug=owners[0]['id'] if owners else canonical_piece_id(recipe, ROOT)
+        selected.append(slug)
         cells=[list(cell) for cell in info['cells']]
         footprint=list(info['footprint'])
         validate_auto_tile_addresses({'id':slug,'footprint':footprint,'cells':cells,
             'tile_ids':[f'{0x100*x+0x10*y:08x}' for x,y in cells]})
         if slug in current:
-            require(current[slug]['cells']==cells and current[slug]['footprint']==footprint,
+            require(current[slug]['recipe']==recipe and current[slug]['cells']==cells and current[slug]['footprint']==footprint,
                     'Existing example coordinates are frozen; add a new recipe for a redesign')
             continue
         require(slug not in ledger['pieces'],'An existing allocation must not be reused')
@@ -42,7 +49,7 @@ def register_examples(info_by_recipe,recipes,selection_name):
         blocks=[block+part*0x1000 for part in range(span)]
         used_puzzles.add(puzzle);used_blocks.update(blocks)
         tiles=[f'{block+0x100*x+0x10*row:08x}' for x,row in cells]
-        name=info.get('name','HSR Smooth T-Junction — At Grade')
+        name=canonical_piece_name(recipe, info.get('name','HSR Smooth T-Junction — At Grade'), ROOT)
         orientation='Diagonal' if 'diagonal' in recipe else 'Straight'
         description=info.get('description') or (f'{name}. {orientation} HSR mainline with four direct smooth turning connections. '
             'All routes stay at the native HSR path height of 15.5 m. '

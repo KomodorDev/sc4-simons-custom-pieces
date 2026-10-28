@@ -21,7 +21,7 @@ from scp_hsr.interchange_verify import _encoded_routes, _graph, _turn
 from scp_hsr.directional_t_verify import _journeys, _world_triangles
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
-ID = 'blind-hsr-rise-quarter-turn'
+ID = 'hsr-l2-and-l4-two-track-curve-ramp-90deg-right'
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -56,7 +56,7 @@ def check(build, native_hsr=None):
     manifest=json.loads((build/'manifest.json').read_text())
     by_id={p['id']:p for p in manifest['pieces']}
     loaded={}
-    for slug in (ID,'hsr-component-lower-paired-straight','hsr-component-upper-paired-straight'):
+    for slug in (ID,'hsr-l2-two-track-straight','hsr-l4-two-track-straight'):
         spec=by_id[slug];path=build/spec['asset_file']
         loaded[slug]=(spec,{k:decompress(v) for k,v in entries(path.read_bytes()).items()})
     piece,resources=loaded[ID]
@@ -90,8 +90,8 @@ def check(build, native_hsr=None):
     journeys=_journeys(records,CONTRACTS[piece['recipe']])
     # Independent locations in source east/north metres. The upper straight
     # turns clockwise to extend east. All placements own disjoint city cells.
-    placements=[(ID,0,(0.,0.)),('hsr-component-lower-paired-straight',0,(0.,-112.)),
-                ('hsr-component-upper-paired-straight',3,(112.,0.))]
+    placements=[(ID,0,(0.,0.)),('hsr-l2-two-track-straight',0,(0.,-112.)),
+                ('hsr-l4-two-track-straight',3,(112.,0.))]
     occupied=set();combined=[];model_vertices=[];sources=[]
     for slug,turns,anchor in placements:
         spec,data=loaded[slug]

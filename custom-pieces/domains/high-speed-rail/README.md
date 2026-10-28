@@ -13,11 +13,11 @@ document_type: "guide"
 
 **HSR** means elevated High Speed Rail; **GHSR** means Ground High Speed Rail. Both carry the game's Monorail traffic. A **piece** is one reusable construction type, selected through a standalone button or an assembly’s component cycle. An **assembly** is a documented arrangement of several placed pieces; the trumpet is an assembly. A **collection** is a named selection of existing pieces used when building the plugin, not an extra game button.
 
-New or intentionally refreshed pieces have a three-chapter README for views, placement, and the intrinsic connection matrix, with Testing navigation to a separate six-chapter TESTING document. Existing combined piece guides remain intact until deliberately migrated. The **[Straight-stem HSR trumpet](01_assemblies/straight-stem-trumpet/README.md)** has a four-section assembly overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
+New or intentionally refreshed pieces have a three-chapter README for views, placement, and the intrinsic connection matrix, with Testing navigation to a separate six-chapter TESTING document. Existing combined piece guides remain intact until deliberately migrated. The **[HSR — Trumpet — Straight Stem](01_assemblies/hsr-trumpet-straight-stem/README.md)** has a four-section assembly overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
 
-The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Connector declarations, exports, and overview cards cover all [fourteen current reusable trumpet types](01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types within this 167-type rail catalogue. The shorter fan core and its matching straight declare their measured recessed-web profile separately from ordinary paired straights. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
+The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Connector declarations, exports, and overview cards cover all [fourteen current reusable trumpet types](01_assemblies/hsr-trumpet-straight-stem/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types within this 167-type rail catalogue. The shorter fan core and its matching straight declare their measured recessed-web profile separately from ordinary paired straights. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
-For the current split documentation pattern, open the [paired climb README](00_pieces/hsr-component-modular-paired-climb/README.md) and [TESTING document](00_pieces/hsr-component-modular-paired-climb/TESTING.md), or the [two-level crossing README](00_pieces/hsr-component-modular-crossing-core/README.md) and [TESTING document](00_pieces/hsr-component-modular-crossing-core/TESTING.md). Their README chapters are **1. Views**, **2. Piece and placement**, and **3. Connection matrix**; Testing opens the separate six-chapter document. The [paired rising quarter-turn](00_pieces/blind-hsr-rise-quarter-turn/README.md) and [HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md) remain useful geometry and connector-authoring examples, retaining their older version-1 combined guides until explicitly refreshed. Their matrices distinguish saved-route checks, the game’s Route Query, and observed travel. A generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#2-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#1-implementation-entry-points) when adapting the pattern.
+For the current split documentation pattern, open the [paired climb README](00_pieces/hsr-l2-and-l4-two-track-ramp/README.md) and [TESTING document](00_pieces/hsr-l2-and-l4-two-track-ramp/TESTING.md), or the [two-level crossing README](00_pieces/hsr-l4-over-hsr-l2-two-track-crossing-90deg/README.md) and [TESTING document](00_pieces/hsr-l4-over-hsr-l2-two-track-crossing-90deg/TESTING.md). Their README chapters are **1. Views**, **2. Piece and placement**, and **3. Connection matrix**; Testing opens the separate six-chapter document. The [paired rising quarter-turn](00_pieces/hsr-l2-and-l4-two-track-curve-ramp-90deg-right/README.md) and [HSR above parallel Road](00_pieces/hsr-l2-over-road-l0-mixed-parallel-stack/README.md) remain useful geometry and connector-authoring examples, retaining their older version-1 combined guides until explicitly refreshed. Their matrices distinguish saved-route checks, the game’s Route Query, and observed travel. A generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#2-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#1-implementation-entry-points) when adapting the pattern.
 
 The current library does not supply automatic compatibility discovery. Most existing pieces are not yet migrated to the new connector-export format; that absence establishes neither compatibility nor incompatibility. Ordinary piece validation does not generate a manual test for every possible neighbour.
 
@@ -27,7 +27,7 @@ The current library does not supply automatic compatibility discovery. Most exis
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 166 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
@@ -51,7 +51,7 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `redesigned-junction-example`: 1 piece types.
 - `redesigned-diagonal-junction-example`: 1 piece types.
 - `smooth-t-junctions`: 2 piece types.
-- `hsr-all-components`: 33 piece types.
+- `hsr-all-components`: 32 piece types.
 - `hsr-modular-connection-parts`: 3 piece types.
 - `hsr-split-and-climb`: 2 piece types.
 - `hsr-crossing-core-and-approaches`: 3 piece types.
@@ -76,12 +76,12 @@ A **port** is a track entrance or exit at the edge of a piece. Its height, headi
 | A branch within the upper narrow network | Rail L4 Split/Merge; its mainline is also single-track |
 | A change of one-way track height | A directed One-Way … to … Ramp with matching entry and exit levels |
 | Separate upper and lower routes on the same tile | A combined crossing containing both routes |
-| A same-height full T | [Straight smooth T](00_pieces/directional-hsr-t-smooth-at-grade/README.md) or [diagonal smooth T](00_pieces/directional-hsr-t-smooth-diagonal-at-grade/README.md) |
-| A railway that shifts sideways while staying diagonal | HSR/GHSR Diagonal S-Curve Left/Right |
+| A same-height full T | [Straight smooth T](00_pieces/hsr-l2-two-track-t-junction-at-grade-smooth/README.md) or [diagonal smooth T](00_pieces/hsr-l2-two-track-t-junction-diagonal-at-grade-smooth/README.md) |
+| A railway that shifts sideways while staying diagonal | HSR/GHSR Ground (1 m) — Two-Track Diagonal S-Curve Left/Right |
 | A transfer between two neighbouring paired mainlines | Adjacent Crossover Left/Right or Adjacent Scissors Revised |
-| A paired change between HSR and GHSR | HSR to GHSR Transition |
+| A paired change between HSR and GHSR | GHSR Ground (1 m) ↔ HSR Level 2 (15.5 m) — Two-Track Transition |
 | Reusable upper paired track, graded corners, spacing adapters or compact connections | The `hsr-all-components` collection in the inventory |
-| The complete modular trumpet | The [assembly README](01_assemblies/straight-stem-trumpet/README.md) and `hsr-straight-stem-trumpet` collection |
+| The complete modular trumpet | The [assembly README](01_assemblies/hsr-trumpet-straight-stem/README.md) and `hsr-straight-stem-trumpet` collection |
 
 A 45°, 90° or 135° branch angle describes the change in heading. Wide modular branches have at least twice the sampled minimum radius of their Compact counterparts, so they require more land. A larger **radius** means a gentler curve. Use the exact footprint in the piece README; a diagonal half-tile and a complete diagonal pair are not interchangeable in every layout.
 
@@ -133,7 +133,7 @@ A managed SCP installation has one combined controller and menu for its complete
 
 A **split** allows trains to leave a mainline; a **merge** accepts that branch onto a mainline. GHSR and HSR L2 split/merge mainlines retain both travel directions. L4 branch mainlines are also one-way. A return journey needs its own permitted path.
 
-For a simple branch, select **SCP | HSR L2 Split 90 Degree Compact**. Its base orientation has a north/south paired mainline and a branch leaving northbound traffic toward the east. Keep its 2 × 2 construction rectangle clear, place it, then join native paired HSR to the two mainline ends. Select **SCP | One-Way HSR L2 Straight**, rotate its arrow eastward and place it against the branch. To receive that branch at another mainline, use **SCP | HSR L2 Merge 90 Degree Compact** rotated 180°: its west entry accepts the eastbound branch and joins southbound mainline traffic. Check the actual ports before clicking, then test both mainlines and the permitted branch journey.
+For a simple branch, select **SCP | HSR Level 2 (15.5 m) — Split 90° Right from Two-Track Mainline — Compact**. Its base orientation has a north/south paired mainline and a branch leaving northbound traffic toward the east. Keep its 2 × 2 construction rectangle clear, place it, then join native paired HSR to the two mainline ends. Select **SCP | HSR Level 2 (15.5 m) — Single-Track One-Way Straight — 7.5 m Deck Width**, rotate its arrow eastward and place it against the branch. To receive that branch at another mainline, use **SCP | HSR Level 2 (15.5 m) — Merge 90° Right to Two-Track Mainline — Compact** rotated 180°: its west entry accepts the eastbound branch and joins southbound mainline traffic. Check the actual ports before clicking, then test both mainlines and the permitted branch journey.
 
 Use matching ground pieces for a GHSR branch. Use the exact **… to …** ramp name for a height change; rotation changes its heading, not the direction of ascent along its one-way journey. The [network height table](NETWORK_SPEC.md#2-connection-levels-and-piece-families) lists the four available levels and ramp lengths. A spacing adapter changes the track arrangement at one height and cannot replace a height ramp.
 
@@ -147,23 +147,23 @@ The coordinates below describe the software test fixture's construction rows, no
 
 | Step | Exact name after `SCP \|` | Construction reference | Orientation and occupied cells |
 | --- | --- | --- | --- |
-| 1 | HSR L2 Split 90 Degree Compact | `(0, 0)` | Paired north/south mainline; branch east |
-| 2 | One-Way HSR L2 to Rail L4 Ramp | `(9, 0)` | Arrow east; low west, high east; columns 2–9 on row 0 |
-| 3 | One-Way L4 over GHSR Crossing | `(10, 0)` | Upper arrow east; columns 10–12 on row 0; lower GHSR north/south through column 11 |
-| 4 | One-Way Rail L4 to HSR L2 Ramp | `(20, 0)` | Arrow east; high west, low east; columns 13–20 on row 0 |
-| 5 | HSR L2 Merge 90 Degree Compact | `(22, 1)` | Rotate 180°; west entry accepts the branch; cells `(21, 0)`, `(22, 0)`, `(22, 1)` |
+| 1 | HSR Level 2 (15.5 m) — Split 90° Right from Two-Track Mainline — Compact | `(0, 0)` | Paired north/south mainline; branch east |
+| 2 | HSR Level 2 (15.5 m) → Level 4 (30.5 m) — Single-Track One-Way Ramp | `(9, 0)` | Arrow east; low west, high east; columns 2–9 on row 0 |
+| 3 | HSR Level 4 (30.5 m) over GHSR Ground (1 m) — Single-Track One-Way over Two-Track Crossing 90° | `(10, 0)` | Upper arrow east; columns 10–12 on row 0; lower GHSR north/south through column 11 |
+| 4 | HSR Level 4 (30.5 m) → Level 2 (15.5 m) — Single-Track One-Way Ramp | `(20, 0)` | Arrow east; high west, low east; columns 13–20 on row 0 |
+| 5 | HSR Level 2 (15.5 m) — Merge 90° Right to Two-Track Mainline — Compact | `(22, 1)` | Rotate 180°; west entry accepts the branch; cells `(21, 0)`, `(22, 0)`, `(22, 1)` |
 
 Place the pieces in table order. Join the ramp's low west end to the split's eastern branch; connect the lower GHSR only to the crossing's middle cell. Join the descending ramp to the merge's west entry. Extend compatible paired HSR away from the split and merge. The branch journey runs from split to merge; it does not permit a reverse journey.
 
-For a ground-level start, use **GHSR Split 90 Degree Compact** and add **One-Way GHSR to HSR L2 Ramp** before the climb. For a ground-level finish, add **One-Way HSR L2 to GHSR Ramp** after the descent and choose the ground merge. Those added ramps lengthen the corridor; do not reuse the five-piece positions unchanged.
+For a ground-level start, use **GHSR Ground (1 m) — Split 90° Right from Two-Track Mainline — Compact** and add **GHSR Ground (1 m) → HSR Level 2 (15.5 m) — Single-Track One-Way Ramp** before the climb. For a ground-level finish, add **HSR Level 2 (15.5 m) → GHSR Ground (1 m) — Single-Track One-Way Ramp** after the descent and choose the ground merge. Those added ramps lengthen the corridor; do not reuse the five-piece positions unchanged.
 
 <a id="two-track-s-curves-switches-and-transitions"></a>
 
 ## 6. Two-track S-curves, switches and transitions
 
-**HSR to GHSR Transition** joins paired elevated and ground lines across an eight-tile straight gap. Its base orientation has HSR at the north end and GHSR at the south; rotate 180° to exchange those ends. Connect matching native paired track at each outside edge. It does not join a centred one-way port.
+**GHSR Ground (1 m) ↔ HSR Level 2 (15.5 m) — Two-Track Transition** joins paired elevated and ground lines across an eight-tile straight gap. Its base orientation has HSR at the north end and GHSR at the south; rotate 180° to exchange those ends. Connect matching native paired track at each outside edge. It does not join a centred one-way port.
 
-A **diagonal S-curve** shifts a railway sideways while its entry and exit remain parallel. Select **HSR/GHSR Diagonal S-Curve Left/Right**, choose the matching level and shift, then rotate to the incoming diagonal. Keep the 3 × 3 rectangle clear and place the complete four-cell piece. Its construction reference cell is empty; do not fill unused cells with ordinary Monorail. Extend compatible native diagonal track at both ends and verify that the outgoing line stays parallel to the incoming one.
+A **diagonal S-curve** shifts a railway sideways while its entry and exit remain parallel. Select **HSR/GHSR Ground (1 m) — Two-Track Diagonal S-Curve Left/Right**, choose the matching level and shift, then rotate to the incoming diagonal. Keep the 3 × 3 rectangle clear and place the complete four-cell piece. Its construction reference cell is empty; do not fill unused cells with ordinary Monorail. Extend compatible native diagonal track at both ends and verify that the outgoing line stays parallel to the incoming one.
 
 **Adjacent mainlines** here means two paired lines in neighbouring tile columns, with no empty column between them. Leave a three-tile-long break in both lines, select the matching HSR/GHSR **Adjacent Crossover Left/Right** or **Adjacent Scissors Revised**, align its two north/south mainlines with those columns, and place the whole 2 × 3 block. Rotate for east/west lines and connect all four outside ends. Both original mainlines continue through the block.
 

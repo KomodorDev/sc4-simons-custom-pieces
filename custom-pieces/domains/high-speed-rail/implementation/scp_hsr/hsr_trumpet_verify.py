@@ -9,12 +9,14 @@ Geometry writers never supply the expected answers for verification.
 from __future__ import annotations
 
 from collections import defaultdict
+from copy import deepcopy
 import hashlib
 import json
 import math
 
 from pathlib import Path
 from scp.paths import project_root
+from scp.subject_identity import canonical_subject_id
 
 def _root(root=None):
     return Path(root or project_root()).resolve()
@@ -58,18 +60,35 @@ def physical_layout(scene):
             'placements': placed}
 
 
+def canonical_layout_identities(layout, *, root=None):
+    """Translate only declared piece IDs after validating a frozen layout hash.
+
+    Positions, rotations, ports, dimensions, and coordinate references remain
+    exact values. Historical layout records and their hashes are never edited.
+    """
+    output = deepcopy(layout)
+    for placement in output['placements']:
+        placement['piece_id'] = canonical_subject_id(placement['piece_id'], root=root)
+    output['placements'].sort(key=lambda item: (item['position_m'], item['piece_id'],
+                                               item['rotation_degrees_ccw']))
+    return output
+
+
 def audit_approved_layout(scene, assembly_id, root=None):
     """Compare against the independently reviewed current layout, never a writer."""
-    if assembly_id != 'straight-stem-trumpet':
+    source_root = _root(root)
+    assembly_id = canonical_subject_id(assembly_id, kind='assembly', root=source_root)
+    if assembly_id != 'hsr-trumpet-straight-stem':
         raise ValueError('No independently reviewed physical layout for this assembly')
-    path = _root(root)/'domains/high-speed-rail/01_assemblies'/assembly_id/'checks/layout.json'
+    path = source_root/'domains/high-speed-rail/01_assemblies'/assembly_id/'checks/layout.json'
     frozen = json.loads(path.read_text())
     raw = json.dumps(frozen['layout'], sort_keys=True, separators=(',', ':')).encode()
-    if (frozen.get('schema_version') != 1 or frozen.get('assembly_id') != assembly_id
+    if (frozen.get('schema_version') != 1
+            or canonical_subject_id(frozen.get('assembly_id'), kind='assembly', root=source_root) != assembly_id
             or hashlib.sha256(raw).hexdigest() != frozen.get('layout_sha256')):
         raise ValueError('Independent assembly layout record is malformed or changed')
     actual = physical_layout(scene)
-    if actual != frozen['layout']:
+    if canonical_layout_identities(actual, root=source_root) != canonical_layout_identities(frozen['layout'], root=source_root):
         raise ValueError('Assembly physical layout differs from its reviewed placement contract')
     return {'assembly_id': assembly_id, 'layout_sha256': frozen['layout_sha256'],
             'reviewed_placements_preserved': len(actual['placements']),

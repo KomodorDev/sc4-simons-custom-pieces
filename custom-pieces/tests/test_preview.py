@@ -17,6 +17,7 @@ from scp.dbpf import pack_dbpf
 from scp.models import parse_s3d, pack_s3d
 from scp.shadows import encode_shadow_fsh
 from scp_hsr.test_support import donor
+from connector_source_fixture import write_connector_source_fixture
 try:
     import numpy as np
     from scp import preview
@@ -29,18 +30,14 @@ class PreviewTitleBindingTests(unittest.TestCase):
     def test_commented_shared_sources_keep_titles_and_invalidate_exact_title_fingerprints(self):
         from scp.catalog import load_catalog
         catalog = load_catalog(ROOT)
-        identifier = 'hsr-component-modular-crossing-core'
+        identifier = 'hsr-l4-over-hsr-l2-two-track-crossing-90deg'
         piece = next(piece for piece in catalog['pieces'] if piece['id'] == identifier)
         domain = Path(catalog['domains'][piece['domain']]['path'])
         names = [domain/'domain.jsonc', domain/'connector-profiles.jsonc']
         names.extend(domain/'00_pieces'/identifier/name
                      for name in ('piece.json', 'connections.json', 'connector-groups.jsonc'))
         with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            for relative in names:
-                target = root/relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes((ROOT/relative).read_bytes())
+            root = write_connector_source_fixture(temporary, [identifier], source_root=ROOT)
             first_title, first_inputs = preview._canonical_title(root, catalog, piece)
             registry = root/domain/'domain.jsonc'
             registry.write_text(registry.read_text()+'\n// A new authoring explanation.\n')

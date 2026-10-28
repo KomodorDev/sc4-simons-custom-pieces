@@ -12,6 +12,7 @@ import tempfile
 import unittest
 
 from scp.track_paths import _parse_paths, encode_paths
+from scp.subject_identity import legacy_piece_id
 from scp_hsr.directional_t_verify import _journeys
 from scp_hsr.hsr_components_layout import component_layout
 from scp_hsr.hsr_trumpet_verify import CONTRACT, key, rotate
@@ -64,7 +65,7 @@ def source_world():
     All six complete historical point counts and hashes remain mandatory.
     """
     domain = ROOT/'domains/high-speed-rail'
-    assembly = domain/'01_assemblies/straight-stem-trumpet'
+    assembly = domain/'01_assemblies/hsr-trumpet-straight-stem'
     snapshot = assembly/'evidence/design-history/before-border-piece-integration'
     scene_path = snapshot/'assembly.json'
     raw = scene_path.read_bytes()
@@ -189,6 +190,59 @@ class MergeExtractionPreservationTests(unittest.TestCase):
         tiles.pop((64., 0.))
         with self.assertRaisesRegex(ValueError, '105 occupied world cells'):
             audit_world_resources(tiles, baseline)
+
+    def test_declared_owner_aliases_preserve_frozen_world_records_and_exact_resources(self):
+        tiles, baseline = synthetic_world()
+        for record in baseline['world_cells']:
+            record['piece_id'] = legacy_piece_id(record['piece_id'], root=ROOT)
+        previous = deepcopy(baseline)
+        self.assertEqual(audit_world_resources(tiles, baseline)['unchanged_world_cells_all_resources_exact'], 103)
+        self.assertEqual(baseline, previous)
+        for identifier in ('unknown-piece', 'straight-stem-trumpet'):
+            changed = deepcopy(tiles)
+            changed[64., 0.]['piece_id'] = identifier
+            with self.subTest(identifier=identifier), self.assertRaisesRegex(ValueError, 'unchanged world owner'):
+                audit_world_resources(changed, baseline)
+        tiles[64., 0.]['resources']['path'] += b'changed'
+        with self.assertRaisesRegex(ValueError, 'retained saved PATH'):
+            audit_world_resources(tiles, baseline)
+
+    def test_declared_archive_basename_aliases_keep_byte_hashes_and_owners_mandatory(self):
+        for prefix in ('', '20_Pieces/SCP_'):
+            with self.subTest(prefix=prefix), tempfile.TemporaryDirectory() as temporary:
+                directory = Path(temporary)
+                pieces, saved = {}, []
+                identifiers = [MERGE_ID, STRAIGHT_ID, *[f'fixture-{number}' for number in range(11)]]
+                for number, identifier in enumerate(identifiers):
+                    old_id = legacy_piece_id(identifier, root=ROOT)
+                    raw = ('original archive for ' + old_id).encode()
+                    current_path, old_path = prefix + identifier + '.dat', prefix + old_id + '.dat'
+                    piece = {'id': identifier, 'recipe': f'fixed_recipe_{number}', 'asset_file': current_path}
+                    pieces[identifier] = piece
+                    target = directory/current_path
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(raw)
+                    saved.append({**piece, 'id': old_id, 'asset_file': old_path,
+                                  'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
+                pieces[MERGE_ID].update(cells=[[column, 0] for column in range(4)],
+                                       tile_ids=[f'7f585{column}00' for column in range(1, 5)])
+                build, baseline = {'path': directory, 'pieces': pieces}, {'pieces': saved}
+                original = deepcopy(baseline)
+                self.assertEqual(audit_unchanged_archives(build, baseline)['unchanged_complete_archives_exact'], 12)
+                self.assertEqual(baseline, original)
+                straight = pieces[STRAIGHT_ID]
+                correct_path = straight['asset_file']
+                straight['asset_file'] = 'arbitrary-name.dat'
+                with self.assertRaisesRegex(ValueError, 'retained archive identity'):
+                    audit_unchanged_archives(build, baseline)
+                straight['asset_file'] = correct_path
+                straight['id'] = 'straight-stem-trumpet'
+                with self.assertRaisesRegex(ValueError, 'retained archive identity'):
+                    audit_unchanged_archives(build, baseline)
+                straight['id'] = STRAIGHT_ID
+                (directory/correct_path).write_bytes(b'changed archive')
+                with self.assertRaisesRegex(ValueError, 'unaffected archive'):
+                    audit_unchanged_archives(build, baseline)
 
     def test_wrong_retained_local_mapping_and_replacement_pose_are_rejected(self):
         tiles, baseline = synthetic_world()

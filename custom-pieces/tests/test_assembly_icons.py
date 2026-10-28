@@ -80,7 +80,7 @@ class AssemblyIconTests(unittest.TestCase):
                                            for dx in (-1, 0, 1) for dy in (-1, 0, 1)), 110)
 
     def test_network_identity_is_explicit_and_changes_only_the_small_footer(self):
-        self.assertEqual(assembly_icon_network('straight-stem-trumpet'), 'HSR')
+        self.assertEqual(assembly_icon_network('hsr-trumpet-straight-stem'), 'HSR')
         with self.assertRaises(ValueError):
             assembly_icon_network('unknown-assembly')
         routes = [[(-80., 0., 15.5), (80., 0., 15.5)]]

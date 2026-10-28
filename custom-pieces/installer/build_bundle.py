@@ -110,7 +110,7 @@ def runtime_allowed(relative: str, domain_names: set[str], subjects: set[str]) -
     if parts[0] == "docs":
         return path.suffix in {".md", ".png", ".svg", ".jsonc", ".txt"}
     if parts[0] == "config":
-        return relative in {"config/allocations.jsonc", "config/release.jsonc", "config/installer.jsonc"} or (
+        return relative in {"config/allocations.jsonc", "config/release.jsonc", "config/installer.jsonc", "config/subject-id-migration.jsonc"} or (
             len(parts) == 3 and parts[1] == "profiles" and path.suffix == ".jsonc")
     if parts[0] != "domains" or len(parts) < 3 or parts[1] not in domain_names:
         return False

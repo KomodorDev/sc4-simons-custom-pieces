@@ -11,7 +11,7 @@ RECIPE = 'hsr_component_blind_rise_quarter_turn'
 DEFINITIONS = {RECIPE: {
     'kind': 'paired_curved_grade', 'height': 15.5,
     'from_height': 15.5, 'to_height': 30.5, 'hand': 'right', 'angle': 90,
-    'name': 'HSR Paired Quarter-Turn Level 2 to Level 4',
+    'name': 'HSR Level 2 (15.5 m) \u2194 Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Right Ramp',
     'description': 'A native-width paired right quarter-turn rises from L2 (15.5 m) at its south end to L4 (30.5 m) at its east end. The return track descends. Both ends retain 8 m straight, flat native collars.',
 }}
 

@@ -1,0 +1,122 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact.",
+  "schema_version": 1,
+  "id": "hsr-l4-single-track-oneway-split-90deg-right-compact",
+  "name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact",
+  "description": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Right from Single-Track One-Way Mainline \u2014 Compact. Fixed click-to-place piece in a 2 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The L4 mainline and branch are both one-way single tracks.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_split_90_compact",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7f8",
+  "tile_ids": [
+    "7f556000",
+    "7f556100",
+    "7f556010"
+  ],
+  "preview_id": "7f556ff5",
+  "effect_name": "preview_scp_interchg_f7f8_0",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7f8",
+    "order": "7011f7f8",
+    "style": "interchange-l4-split-90-compact"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f556000",
+      "source": "7f556000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f556100",
+      "source": "7f556100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f556010",
+      "source": "7f556010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -24,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8,
+        30.5
+      ],
+      [
+        24,
+        0.0,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "l4",
+    "height": 30.5,
+    "angle": 90,
+    "radius": "compact",
+    "mode": "split"
+  },
+  "design_review": {
+    "status": "review-needed",
+    "summary": "Closely spaced pillars need a support-consolidation review.",
+    "reasons": [
+      "Separate 1.3 m-square pillar foundations have centres less than 2.6 m apart near shared rail geometry. The foundations do not overlap, but the close pair should be reviewed and consolidated to address the reported duplicate-pillar appearance. The 2.6 m review cutoff is an authoring convention, not a structural or game collision threshold."
+    ],
+    "reason_codes": [
+      "clustered-supports"
+    ],
+    "reviewed_build": "0.4.1.dev1",
+    "evidence": "domains/high-speed-rail/junction-design-review.json"
+  }
+}

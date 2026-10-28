@@ -24,7 +24,7 @@ from scp.catalog import load_catalog, release_status, select_pieces, validate_ca
 class CatalogTests(unittest.TestCase):
     def test_additive_wide_grid_that_aliases_in_game_is_rejected(self):
         catalog = self._catalog()
-        piece = next(p for p in catalog['pieces'] if p['id'] == 'tram-under-hsr')
+        piece = next(p for p in catalog['pieces'] if p['id'] == 'hsr-l2-over-tram-ground-mixed-crossing-90deg')
         piece['footprint'] = [17, 2]
         piece['cells'] = [[0, 0], [16, 0], [0, 1]]
         piece['tile_ids'] = [f'{0x7f503000+0x100*x+0x10*y:08x}' for x,y in piece['cells']]
@@ -33,9 +33,9 @@ class CatalogTests(unittest.TestCase):
 
     def test_failed_placement_can_be_inspected_but_cannot_be_built(self):
         catalog = self._catalog()
-        piece = next(p for p in catalog['pieces'] if p['id'] == 'tram-under-hsr')
+        piece = next(p for p in catalog['pieces'] if p['id'] == 'hsr-l2-over-tram-ground-mixed-crossing-90deg')
         piece['game_tests']['placement'] = 'failed'
-        with self.assertRaisesRegex(ValueError, 'failed placement tests.*tram-under-hsr'):
+        with self.assertRaisesRegex(ValueError, 'failed placement tests.*hsr-l2-over-tram-ground-mixed-crossing-90deg'):
             select_pieces(catalog, [piece['id']])
         self.assertNotIn(piece['id'], {p['id'] for p in select_pieces(catalog)})
 
@@ -153,7 +153,7 @@ class CatalogTests(unittest.TestCase):
     def test_extra_allocation_cannot_occupy_another_pieces_reserved_empty_cell(self):
         catalog = self._catalog()
         ledger = catalog['_allocations']['pieces']
-        owner = ledger['interchange-oneway-ground-straight']
+        owner = ledger['ghsr-ground-single-track-oneway-straight']
         base = int(owner['tile_base'],16)
         ledger['conflicting-allocation'] = {
             'puzzle_id':'f8ff','menu_id':'6a47f8ff',
@@ -202,19 +202,19 @@ class CatalogTests(unittest.TestCase):
     def test_default_selection_excludes_disabled_experiment(self):
         selected = select_pieces(self._catalog())
         self.assertEqual(len(selected), self.default_count)
-        self.assertNotIn('tram-under-hsr', [p['id'] for p in selected])
+        self.assertNotIn('hsr-l2-over-tram-ground-mixed-crossing-90deg', [p['id'] for p in selected])
         self.assertTrue(all(p['enabled_by_default'] for p in selected))
 
     def test_explicit_selection_can_select_disabled_piece(self):
-        selected = select_pieces(self._catalog(), include=['tram-under-hsr'])
-        self.assertEqual([p['id'] for p in selected], ['tram-under-hsr'])
+        selected = select_pieces(self._catalog(), include=['hsr-l2-over-tram-ground-mixed-crossing-90deg'])
+        self.assertEqual([p['id'] for p in selected], ['hsr-l2-over-tram-ground-mixed-crossing-90deg'])
 
 
     def test_explicit_selection_preserves_requested_order(self):
         selected = select_pieces(self._catalog(),
-                                 include=['tram-under-hsr', 'hsr-diagonal-ghsr'])
+                                 include=['hsr-l2-over-tram-ground-mixed-crossing-90deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'])
         self.assertEqual([p['id'] for p in selected],
-                         ['tram-under-hsr', 'hsr-diagonal-ghsr'])
+                         ['hsr-l2-over-tram-ground-mixed-crossing-90deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'])
 
     def test_explicit_empty_selection_does_not_fall_back_to_defaults(self):
         self.assertEqual(select_pieces(self._catalog(), include=[]), [])
@@ -225,27 +225,27 @@ class CatalogTests(unittest.TestCase):
 
     def test_duplicate_explicit_selection_is_rejected(self):
         with self.assertRaises(ValueError):
-            select_pieces(self._catalog(), include=['tram-under-hsr', 'tram-under-hsr'])
+            select_pieces(self._catalog(), include=['hsr-l2-over-tram-ground-mixed-crossing-90deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'])
 
     def test_registering_a_disabled_draft_does_not_break_default_selection(self):
         catalog = self._catalog()
         catalog['pieces'][1]['status'] = 'draft'
         validate_catalog(catalog)
         self.assertEqual(len(select_pieces(catalog)), self.default_count)
-        self.assertNotIn('tram-under-hsr', [p['id'] for p in select_pieces(catalog)])
+        self.assertNotIn('hsr-l2-over-tram-ground-mixed-crossing-90deg', [p['id'] for p in select_pieces(catalog)])
 
     def test_duplicate_or_outside_sparse_cells_are_rejected(self):
         for cells in ([[1, 0], [1, 0]], [[0, 0], [3, 0]], [[1, 0], [1, True]]):
             with self.subTest(cells=cells):
                 catalog = self._catalog()
-                piece = next(p for p in catalog['pieces'] if p['id'] == 'rail-hsr-diagonal-s-left')
+                piece = next(p for p in catalog['pieces'] if p['id'] == 'hsr-l2-two-track-s-curve-diagonal-left')
                 piece['cells'] = cells
                 with self.assertRaisesRegex(ValueError, 'cells'):
                     validate_catalog(catalog)
 
     def test_sparse_tile_ids_must_match_construction_cell_coordinates(self):
         catalog = self._catalog()
-        piece = next(p for p in catalog['pieces'] if p['id'] == 'rail-hsr-diagonal-s-left')
+        piece = next(p for p in catalog['pieces'] if p['id'] == 'hsr-l2-two-track-s-curve-diagonal-left')
         piece['cells'][1], piece['cells'][2] = piece['cells'][2], piece['cells'][1]
         with self.assertRaisesRegex(ValueError, 'AutoTileBase'):
             validate_catalog(catalog)
@@ -262,7 +262,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_recorded_cell_coordinates_cannot_be_shifted_under_saved_ids(self):
         catalog = self._catalog()
-        piece = next(p for p in catalog['pieces'] if p['id'] == 'rail-hsr-diagonal-s-left')
+        piece = next(p for p in catalog['pieces'] if p['id'] == 'hsr-l2-two-track-s-curve-diagonal-left')
         piece['cells'] = [[x-1, y] for x, y in piece['cells']]
         # The shift is also an unsafe runtime bit-field allocation, which is
         # rejected before the frozen-coordinate comparison is reached.
@@ -270,7 +270,7 @@ class CatalogTests(unittest.TestCase):
             validate_catalog(catalog)
 
     def test_piece_sets_reject_unknown_or_duplicate_members(self):
-        for members in (['does-not-exist'], ['hsr-diagonal-ghsr', 'hsr-diagonal-ghsr']):
+        for members in (['does-not-exist'], ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg']):
             catalog = self._catalog()
             catalog['piece_sets']['broken-example'] = members
             with self.assertRaisesRegex(ValueError, 'piece set'):
@@ -280,7 +280,7 @@ class CatalogTests(unittest.TestCase):
         catalog = self._catalog()
         catalog['pieces'][1]['status'] = 'draft'
         with self.assertRaises(ValueError):
-            select_pieces(catalog, include=['tram-under-hsr'])
+            select_pieces(catalog, include=['hsr-l2-over-tram-ground-mixed-crossing-90deg'])
 
     def test_duplicate_piece_ids_are_rejected_even_when_disabled(self):
         catalog = self._catalog()

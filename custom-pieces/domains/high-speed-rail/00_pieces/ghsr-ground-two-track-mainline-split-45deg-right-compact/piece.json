@@ -1,0 +1,170 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Ground (1 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact.",
+  "schema_version": 1,
+  "id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+  "name": "GHSR Ground (1 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact",
+  "description": "GHSR Ground (1 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact. Fixed click-to-place piece in a 3 by 4 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_ground_split_45_compact",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7dc",
+  "tile_ids": [
+    "7f53a000",
+    "7f53a200",
+    "7f53a010",
+    "7f53a110",
+    "7f53a210",
+    "7f53a020",
+    "7f53a120",
+    "7f53a030"
+  ],
+  "preview_id": "7f53aff5",
+  "effect_name": "preview_scp_interchg_f7dc_0",
+  "footprint": [
+    3,
+    4
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7dc",
+    "order": "7011f7dc",
+    "style": "interchange-ground-split-45-compact"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f53a000",
+      "source": "7f53a000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a200",
+      "source": "7f53a200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a010",
+      "source": "7f53a010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a110",
+      "source": "7f53a110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a210",
+      "source": "7f53a210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a020",
+      "source": "7f53a020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a120",
+      "source": "7f53a120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53a030",
+      "source": "7f53a030",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        8,
+        1.0
+      ],
+      [
+        2.0,
+        -56,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -56,
+        1.0
+      ],
+      [
+        2.0,
+        8,
+        1.0
+      ],
+      [
+        40,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "ground",
+    "height": 1.0,
+    "angle": 45,
+    "radius": "compact",
+    "mode": "split"
+  }
+}

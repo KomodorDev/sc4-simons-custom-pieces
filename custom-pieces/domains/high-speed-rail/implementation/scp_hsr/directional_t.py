@@ -133,7 +133,7 @@ def _support_centers(cells):
 _LAYOUT = directional_layout()
 _CELLS = list(_LAYOUT)
 INFO = {RECIPE: {
-    'recipe':RECIPE, 'name':'HSR Smooth Full T — At Grade',
+    'recipe':RECIPE, 'name':'HSR Level 2 (15.5 m) — Two-Track Smooth T Junction — At Grade',
     'kind':'smooth_at_grade_t', 'category':'directional-review-prototype',
     'height':HEIGHT, 'footprint':(7,11), 'cells':_CELLS,
     'cost':100*len(_CELLS), 'effect_donor':EFFECT_DONOR,

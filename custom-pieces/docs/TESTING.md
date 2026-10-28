@@ -91,7 +91,7 @@ After creating or deliberately changing artwork, first run `python3 custom-piece
 5. Open Terminal in the project folder containing `custom-pieces`. On a new source checkout, follow [Build and install](BUILD_AND_INSTALL.md#4-build-a-selected-collection) to install Python dependencies and register the editable packages. Copy the subject-specific record command from its generated test section and run it. For the trumpet, it is:
 
 ```sh
-python3 -m scp.content record --record custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/manual-tests.json --observation custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/observation.json
+python3 -m scp.content record --record custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/checks/manual-tests.json --observation custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/checks/observation.json
 ```
 
 6. Read the result and reopen the subject’s TESTING page, or the README test section of a legacy combined piece guide. The command updates the authoritative JSON record, generated summaries, and inventories. Do not type checkmarks into Markdown.

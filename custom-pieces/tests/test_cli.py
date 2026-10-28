@@ -50,7 +50,7 @@ class PortableCLITests(unittest.TestCase):
                                   for p in self.root.rglob('*') if p.is_file()})
 
     def test_documentation_check_reports_a_broken_case_link_without_repairing_it(self):
-        identifier = 'hsr-component-modular-paired-climb'
+        identifier = 'hsr-l2-and-l4-two-track-ramp'
         directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
         readme = directory/'README.md'
         readme.write_text(readme.read_text()+'\n[Removed case](TESTING.md#case-removed-observation)\n')
@@ -75,7 +75,7 @@ class PortableCLITests(unittest.TestCase):
         files = [self.root/'config/allocations.jsonc',
                  self.root/'domains/high-speed-rail/domain.jsonc']
         before = {str(path): path.read_bytes() for path in files}
-        for identifier, name in [('duplicate-display-name', 'HSR over Diagonal GHSR'),
+        for identifier, name in [('duplicate-display-name', 'HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal'),
                                  ('blank-display-name', '   ')]:
             result = self.call('scaffold', '--id', identifier, '--name', name)
             self.assertNotEqual(result.returncode, 0)
@@ -186,7 +186,7 @@ class PortableCLITests(unittest.TestCase):
     def test_scaffold_does_not_inherit_sparse_cells_from_the_first_piece(self):
         path = self.root / 'domains/high-speed-rail/domain.jsonc'
         registry = jsonc.loads(path.read_text())
-        first = '00_pieces/rail-hsr-diagonal-s-left/piece.json'
+        first = '00_pieces/hsr-l2-two-track-s-curve-diagonal-left/piece.json'
         registry['pieces'].remove(first)
         registry['pieces'].insert(0, first)
         path.write_text(json.dumps(registry))
@@ -208,7 +208,7 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         with zipfile.ZipFile(target) as archive:
             self.assertIsNone(archive.testzip())
-            for identifier in ('hsr-component-modular-crossing-core', 'hsr-component-tight-paired-curve90-l4-to-mid'):
+            for identifier in ('hsr-l4-over-hsr-l2-two-track-crossing-90deg', 'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight'):
                 relative = Path('domains/high-speed-rail/00_pieces') / identifier / 'connector-groups.jsonc'
                 matches = [name for name in archive.namelist() if name.endswith('/' + relative.as_posix())]
                 self.assertEqual(len(matches), 1, f'Commented connector source missing from export: {relative}')
@@ -234,7 +234,7 @@ class PortableCLITests(unittest.TestCase):
         self.assertFalse(json.loads(result.stdout)['public_release_ready'])
 
     def test_failed_piece_can_be_inspected_but_not_selected_for_build(self):
-        slug = 'tram-under-hsr'
+        slug = 'hsr-l2-over-tram-ground-mixed-crossing-90deg'
         path = self.root / 'domains/high-speed-rail/00_pieces' / slug / 'piece.json'
         piece = json.loads(path.read_text())
         piece['game_tests']['placement'] = 'failed'

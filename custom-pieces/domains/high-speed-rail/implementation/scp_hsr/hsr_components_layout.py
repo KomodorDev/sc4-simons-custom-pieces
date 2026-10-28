@@ -48,18 +48,12 @@ _HALF_TRACK_SPACING = 2.
 _DEFINITIONS = {
     'hsr_component_upper_paired_straight': {
         'kind': 'upper_paired_straight',
-        'name': 'HSR L4 Two-Track Straight',
+        'name': 'HSR Level 4 (30.5 m) \u2014 Two-Track Straight',
         'description': 'Native-width opposite-direction two-track HSR at 30.5 m; connect only matching upper two-track ports.',
-    },
-    'hsr_component_paired_ramp_l2_to_l4': {
-        'kind': 'paired_grade',
-        'name': 'HSR Two-Track L2 to L4 Ramp',
-        'description': 'Two adjacent opposite-direction tracks change between 15.5 and 30.5 m; northbound climbs and southbound descends.',
-        'from_height': LOWER, 'to_height': UPPER,
     },
     'hsr_component_upper_paired_to_single_adapter': {
         'kind': 'paired_to_separated_adapter',
-        'name': 'HSR L4 Two-Track to Separate One-Way Adapter',
+        'name': 'HSR Level 4 (30.5 m) \u2014 Two-Track to Separate Single-Track Adapter',
         'description': 'Full native two-track HSR at the south end opens into separate centred one-way tracks one tile apart at the north end; all paths stay at 30.5 m.',
     },
 }
@@ -156,13 +150,6 @@ def _canonical(recipe):
                   'N>S': [(-2., 8., UPPER), (-2., -8., UPPER)]}
         decks = [_deck('upper_straight', [(0., -8., UPPER), (0., 8., UPPER)],
                        15., (0., 1.), (0., 1.))]
-    elif kind == 'paired_grade':
-        distances = [0., COLLAR, *(COLLAR+.5*i for i in range(1, 225)), 128.]
-        center = [(0., -120.+distance, _height(distance, 128., LOWER, UPPER))
-                  for distance in distances]
-        routes = {'S>N': [(2., y, z) for _, y, z in center],
-                  'N>S': [(-2., y, z) for _, y, z in reversed(center)]}
-        decks = [_deck('paired_ramp', center, 15., (0., 1.), (0., 1.))]
     elif kind == 'paired_to_separated_adapter':
         # Both physical sheets are ordered south-to-north.  The western
         # train route runs in the reverse direction.  The exact paired end
@@ -375,7 +362,7 @@ for _recipe, _definition in _DEFINITIONS.items():
         _ports.setdefault(_target, {})['out'] = _points[-1]
     INFO[_recipe] = {
         **deepcopy(_definition), 'recipe': _recipe, 'category': 'hsr-components',
-        'height': _definition.get('height', LOWER if _definition['kind'] in ('paired_grade', 'oneway_curved_grade') else UPPER),
+        'height': _definition.get('height', LOWER if _definition['kind'] == 'oneway_curved_grade' else UPPER),
         'upper_height': UPPER, 'footprint': (max(x for x, _ in _cells)+1, max(y for _, y in _cells)+1),
         'cells': _cells, 'cost': 100*len(_cells), 'origin_shift': _shift,
         'ports': _ports, 'movements': [tuple(movement.split('>')) for movement in _routes],

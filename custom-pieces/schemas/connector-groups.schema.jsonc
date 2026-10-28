@@ -1,5 +1,11 @@
 // title: "Connector declaration schema"
 // summary: "Validate authored physical channels, boundary cuts, associations, and permissions for an individual reusable piece."
+//
+// Used when: An individual piece's authored connector-groups.jsonc declarations are resolved before source-owned connector validation, export, or overview generation.
+// Read by: scp.connector_metadata.validate_piece() through _schema() and validate_structure(); load_library() supplies the piece definition, measured connections, authored groups, and resolved profiles.
+// Updated by: A maintainer alongside an intentional connector-authoring contract change and its resolver, semantic checks, and regression checks; piece authors edit their own declarations instead of this shared schema.
+// Affects: Required declaration fields and structural constraints for physical channels, boundary bundles, associations, and permissions; passing this schema does not prove physical seams or in-game operation.
+// Reference: custom-pieces/docs/CONNECTOR_METADATA.md explains the declaration model and the additional cross-file and measurement checks.
 {
   "type": "object",
   "properties": {

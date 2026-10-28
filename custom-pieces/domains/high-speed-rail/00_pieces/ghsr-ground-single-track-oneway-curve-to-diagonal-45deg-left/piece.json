@@ -1,0 +1,93 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal.",
+  "schema_version": 1,
+  "id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-left",
+  "name": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal",
+  "description": "GHSR Ground (1 m) \u2014 Single-Track One-Way Curve 45\u00b0 Left \u2014 Orthogonal to Diagonal. Fixed click-to-place piece in a 1 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_ground_curve_out_left",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7c3",
+  "tile_ids": [
+    "7f521000",
+    "7f521010"
+  ],
+  "preview_id": "7f521ff5",
+  "effect_name": "preview_scp_interchg_f7c3_0",
+  "footprint": [
+    1,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7c3",
+    "order": "7011f7c3",
+    "style": "interchange-oneway-ground-curve-out-left"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f521000",
+      "source": "7f521000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f521010",
+      "source": "7f521010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -24.0,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        -8.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_filler",
+    "level": "ground",
+    "height": 1.0,
+    "radius": "compact"
+  }
+}

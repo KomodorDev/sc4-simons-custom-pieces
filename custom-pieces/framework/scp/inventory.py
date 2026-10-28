@@ -15,11 +15,18 @@ from .paths import project_root
 def _status(directory):
     path=directory/'checks/manual-tests.json'
     if not path.is_file():return {'record_present':False,'summary':None}
-    return {'record_present':True,'summary':summarize_manual_record(json.loads(path.read_text()))}
+    record=json.loads(path.read_text())
+    result={'record_present':True,'summary':summarize_manual_record(record)}
+    recorded_id=record.get('subject',{}).get('id')
+    if recorded_id and recorded_id!=directory.name:
+        result['historical_subject_id']=recorded_id
+    return result
 
 
 def _coverage(status,kind):
     if not status['record_present']:return '[ ] Unverified; record missing'
+    if status.get('historical_subject_id'):
+        return '[ ] Historical record; verification under the current ID pending'
     summary=status['summary']
     counts=(summary.get('journey_coverage',summary['by_kind'].get(kind,{}))
             if kind=='in_game_journey' else summary['by_kind'].get(kind,{}))
@@ -39,6 +46,9 @@ def _matrix_status(directory):
             return {'available': False, 'reason': f'Unverified; {name} missing'}
     connections = json.loads((directory/'connections.json').read_text())
     record = json.loads((directory/'checks/manual-tests.json').read_text())
+    if (connections.get('subject_id',directory.name)!=directory.name
+            or record.get('subject',{}).get('id',directory.name)!=directory.name):
+        return {'available':False,'reason':'Historical record; verification under the current ID pending'}
     return {'available': True, **summarize_assembly_connection_matrix(connections, record)}
 
 

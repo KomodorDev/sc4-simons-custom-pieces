@@ -98,7 +98,7 @@ class InstallerBundleTests(unittest.TestCase):
         for name in ("project.jsonc", "installer/scp_installer/service.py", "framework/scp/build.py",
                      "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
                      "config/profiles/fixture.jsonc", "config/allocations.jsonc", "config/release.jsonc",
-                     "config/installer.jsonc", "domains/fixture/domain.jsonc",
+                     "config/installer.jsonc", "config/subject-id-migration.jsonc", "domains/fixture/domain.jsonc",
                      "domains/fixture/00_pieces/inventory.jsonc", "domains/fixture/01_assemblies/inventory.jsonc",
                      "domains/fixture/00_pieces/example/geometry.json",
                      "domains/fixture/00_pieces/example/evidence/design-history/record.json"):
@@ -115,7 +115,7 @@ class InstallerBundleTests(unittest.TestCase):
     def test_commented_sources_survive_runtime_and_archive_while_reports_stay_strict_json(self):
         source = self._source()
         included = ("project.jsonc", "domains/fixture/domain.jsonc", "config/installer.jsonc",
-                    "config/allocations.jsonc", "config/release.jsonc", "config/profiles/fixture.jsonc",
+                    "config/allocations.jsonc", "config/release.jsonc", "config/subject-id-migration.jsonc", "config/profiles/fixture.jsonc",
                     "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
                     "domains/fixture/inventory.jsonc", "domains/fixture/00_pieces/inventory.jsonc",
                     "domains/fixture/01_assemblies/inventory.jsonc")

@@ -19,6 +19,7 @@ from scp import jsonc
 from scp.catalog import load_catalog, select_pieces, safe_relative
 from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, _owned
+from scp.subject_identity import canonical_subject_id
 
 
 class InstallationCancelled(ValueError):
@@ -263,7 +264,13 @@ def installed_selection(root, installation):
         retained = previous.get("piece_ids")
         if not isinstance(retained, list) or any(not isinstance(value, str) for value in retained):
             raise ValueError("The existing installation has no valid piece selection. Keep it unchanged and use its original installer to recover it.")
-        missing = set(retained) - set(ids)
+        # Receipts bind an installed version and retain its original IDs.
+        # A declared selection-ID migration does not remove its numeric game
+        # resources; compare through the piece-only ledger without rewriting
+        # the receipt or treating an unknown/assembly identity as a piece.
+        current = set(ids)
+        missing = {identifier for identifier in retained
+                   if canonical_subject_id(identifier, kind="piece", root=root) not in current}
         if missing:
             raise ValueError("This version would remove installed pieces: " + ", ".join(sorted(missing)) + ". Keep the existing version; remove their placed pieces from cities before deliberately uninstalling it.")
     return ids

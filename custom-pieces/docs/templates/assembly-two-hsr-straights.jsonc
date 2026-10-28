@@ -1,5 +1,15 @@
 // title: "Two-straight HSR assembly starter"
 // summary: "Provide an unregistered training placement plan for two existing paired straights without allocating another reusable piece type."
+//
+// Used when: A contributor follows section 12 of custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md to learn assembly authoring with two placements of the existing hsr-l2-two-track-straight type; this is an explicitly unverified training example.
+//
+// Read by: The section 12.1 Python command calls scp.jsonc.load() to read this commented template and writes a separate strict-JSON assembly.json; normal scp.catalog.load_catalog() calls do not read or register this template.
+//
+// Updated by: Contributors maintaining the shared assembly starter edit this template alongside its runnable workflow example when the referenced reusable type, expected placement plan, or required plan fields change.
+//
+// Affects: Only a deliberately created copy receives this placement plan; registering that copy and adding its menu layout are separate steps, no new piece-resource allocation is needed, and the template supplies no compiled geometry verification or game observations.
+//
+// Reference: custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md
 {
   "purpose": "Unregistered authoring starter: place two copies of the existing HSR Level 2 two-track straight. Copy and deliberately register this plan before using the assembly workflow; this template supplies no new verification or game observations.",
   "title": "Two-tile HSR starter",
@@ -21,22 +31,22 @@
   },
   "placements": [
     {
-      "name": "HSR L2 Two-Track Straight at P01",
+      "name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight at P01",
       "instance_id": "P01",
       "label": "P01",
-      "piece_id": "hsr-component-lower-paired-straight",
-      "menu_name": "HSR L2 Two-Track Straight",
+      "piece_id": "hsr-l2-two-track-straight",
+      "menu_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight",
       "origin_m": [0.0, 0.0],
       "rotation_degrees_ccw": 0,
       "display_origin_m": [0.0, 0.0],
       "display_origin_tiles_en": [0.0, 0.0]
     },
     {
-      "name": "HSR L2 Two-Track Straight at P02",
+      "name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight at P02",
       "instance_id": "P02",
       "label": "P02",
-      "piece_id": "hsr-component-lower-paired-straight",
-      "menu_name": "HSR L2 Two-Track Straight",
+      "piece_id": "hsr-l2-two-track-straight",
+      "menu_name": "HSR Level 2 (15.5 m) \u2014 Two-Track Straight",
       "origin_m": [0.0, 16.0],
       "rotation_degrees_ccw": 0,
       "display_origin_m": [0.0, 16.0],

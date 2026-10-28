@@ -46,9 +46,9 @@ class CrossingDonorTests(unittest.TestCase):
             cls.context[label] = {key: decompress(value) for key, value in entries(raw).items()}
             cls.donors.update(cls.context[label])
         allocated = [
-            ('hsr_straight_ghsr', 'hsr-straight-ghsr', 'f7a2', ['7f500000'], '7f500ff5'),
-            ('diagonal_hsr_straight_ghsr', 'diagonal-hsr-straight-ghsr', 'f7a3', ['7f501000', '7f501010'], '7f501ff5'),
-            ('diagonal_hsr_diagonal_ghsr', 'diagonal-hsr-diagonal-ghsr', 'f7a4', ['7f502000', '7f502010'], '7f502ff5'),
+            ('hsr_straight_ghsr', 'hsr-l2-over-ghsr-ground-two-track-crossing-90deg', 'f7a2', ['7f500000'], '7f500ff5'),
+            ('diagonal_hsr_straight_ghsr', 'hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg', 'f7a3', ['7f501000', '7f501010'], '7f501ff5'),
+            ('diagonal_hsr_diagonal_ghsr', 'hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg', 'f7a4', ['7f502000', '7f502010'], '7f502ff5'),
         ]
         cls.specs, cls.built = {}, {}
         for n, (recipe, slug, puzzle, tiles, preview) in enumerate(allocated):

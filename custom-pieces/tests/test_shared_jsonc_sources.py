@@ -16,6 +16,7 @@ LIBRARY_SOURCES = {
     'config/local.example.jsonc',
     'config/profiles/nam50-rhd.jsonc',
     'config/release.jsonc',
+    'config/subject-id-migration.jsonc',
     'docs/templates/assembly-two-hsr-straights.jsonc',
     'schemas/connector-data.schema.jsonc',
     'schemas/connector-groups.schema.jsonc',
@@ -67,14 +68,24 @@ class SharedJsoncSourceTests(unittest.TestCase):
             value = json.loads(line[len(prefix):])
             self.assertIsInstance(value, str, f'{path}: {field} must be text')
             self.assertTrue(value.strip(), f'{path}: {field} must explain the document')
+        stripped = jsonc.strip_comments(source)
+        payload_start = len(stripped) - len(stripped.lstrip())
+        header = source[:payload_start]
+        for label in ('Used when', 'Read by', 'Updated by', 'Affects'):
+            prefix = f'// {label}: '
+            entries = [line[len(prefix):] for line in header.splitlines() if line.startswith(prefix)]
+            self.assertEqual(len(entries), 1, f'{path}: needs one {label} explanation')
+            self.assertTrue(entries[0].strip(), f'{path}: {label} explanation must be nonempty')
         payload = jsonc.loads(source)
         self.assertIsInstance(payload, dict, str(path))
+        self.assertTrue(jsonc.document(payload, source=source).startswith(header),
+                        f'{path}: regeneration must preserve the complete usage header')
         return payload
 
     def test_real_library_source_roster_has_readable_metadata_and_valid_payloads(self):
         sources = {relative: path for relative, path in shared_files() if path.suffix == '.jsonc'}
         self.assertEqual(set(sources), LIBRARY_SOURCES)
-        self.assertEqual(len(sources), 26)
+        self.assertEqual(len(sources), 27)
         for relative, path in sources.items():
             with self.subTest(source=relative):
                 self.assert_document(path)

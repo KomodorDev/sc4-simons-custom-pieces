@@ -20,6 +20,7 @@ from scp.catalog import load_catalog, number, piece_cells, validate_catalog
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
+from scp.subject_identity import canonical_piece_id, canonical_piece_name
 
 SELECTION = 'hsr-all-components'
 
@@ -49,7 +50,7 @@ def register_components(info_by_recipe=None, recipes=None, *, root=None, selecti
         info = info_by_recipe[recipe]
         cells = [list(cell) for cell in info['cells']]
         validate_auto_tile_addresses({
-            'id': recipe.replace('_', '-'), 'footprint': list(info['footprint']),
+            'id': canonical_piece_id(recipe, root), 'footprint': list(info['footprint']),
             'cells': cells,
             'tile_ids': [f'{column*0x100 + row*0x10:08x}' for column, row in cells],
         })
@@ -76,7 +77,7 @@ def register_components(info_by_recipe=None, recipes=None, *, root=None, selecti
                 'An HSR component recipe must belong to the high-speed-rail domain')
         # A scaffold allocates a permanent type ID independently of its later
         # recipe name. Resolve that existing owner before deriving a new slug.
-        slug = owners[0]['id'] if owners else recipe.replace('_', '-')
+        slug = owners[0]['id'] if owners else canonical_piece_id(recipe, root)
         selected.append(slug)
         cells = [list(cell) for cell in info['cells']]
         footprint = list(info['footprint'])
@@ -113,7 +114,7 @@ def register_components(info_by_recipe=None, recipes=None, *, root=None, selecti
                 component[key] = deepcopy(info[key])
         effect_tag = info.get('effect_tag', 'hsrcomp')
         piece = {
-            'schema_version': 1, 'id': slug, 'name': info['name'],
+            'schema_version': 1, 'id': slug, 'name': canonical_piece_name(recipe, info['name'], root),
             'description': info['description'], 'domain': 'high-speed-rail',
             'recipe': recipe, 'status': 'experimental', 'enabled_by_default': False,
             'puzzle_id': f'{puzzle:04x}', 'tile_ids': tiles,

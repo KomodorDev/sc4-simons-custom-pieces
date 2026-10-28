@@ -1,0 +1,182 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact.",
+  "schema_version": 1,
+  "id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+  "name": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact",
+  "description": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Compact. Fixed click-to-place piece in a 3 by 4 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_hsr_split_45_compact",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7e8",
+  "tile_ids": [
+    "7f546000",
+    "7f546200",
+    "7f546010",
+    "7f546110",
+    "7f546210",
+    "7f546020",
+    "7f546120",
+    "7f546030"
+  ],
+  "preview_id": "7f546ff5",
+  "effect_name": "preview_scp_interchg_f7e8_0",
+  "footprint": [
+    3,
+    4
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7e8",
+    "order": "7011f7e8",
+    "style": "interchange-hsr-split-45-compact"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f546000",
+      "source": "7f546000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546200",
+      "source": "7f546200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546010",
+      "source": "7f546010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546110",
+      "source": "7f546110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546210",
+      "source": "7f546210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546020",
+      "source": "7f546020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546120",
+      "source": "7f546120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f546030",
+      "source": "7f546030",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        8,
+        15.5
+      ],
+      [
+        2.0,
+        -56,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -56,
+        15.5
+      ],
+      [
+        2.0,
+        8,
+        15.5
+      ],
+      [
+        40,
+        0.0,
+        15.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "hsr",
+    "height": 15.5,
+    "angle": 45,
+    "radius": "compact",
+    "mode": "split"
+  },
+  "design_review": {
+    "status": "review-needed",
+    "summary": "Closely spaced pillars need a support-consolidation review.",
+    "reasons": [
+      "Separate 1.3 m-square pillar foundations have centres less than 2.6 m apart near shared rail geometry. The foundations do not overlap, but the close pair should be reviewed and consolidated to address the reported duplicate-pillar appearance. The 2.6 m review cutoff is an authoring convention, not a structural or game collision threshold."
+    ],
+    "reason_codes": [
+      "clustered-supports"
+    ],
+    "reviewed_build": "0.4.1.dev1",
+    "evidence": "domains/high-speed-rail/junction-design-review.json"
+  }
+}

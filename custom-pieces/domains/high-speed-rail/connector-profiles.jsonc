@@ -1,5 +1,11 @@
 // title: "High-speed rail connector profiles"
 // summary: "Supply reviewed rail boundary and channel defaults for authored connector declarations without inferring neighbour compatibility."
+//
+// Used when: Authored connector-groups.jsonc records inherit a reviewed rail profile during connector validation, export, or overview generation.
+// Read by: scp.connector_metadata.load_library loads and resolves these defaults through domain.jsonc; connector exports and scp.connector_overview use the resolved data. scp.preview and the connector tools include this file in source-freshness fingerprints.
+// Updated by: The rail-domain maintainer authors reviewed profile defaults and inheritance after checking the actual boundary and channel measurements; no extraction command automatically invents or approves a profile.
+// Affects: The effective network, height, direction, and boundary/channel defaults of connector declarations that reference these profiles. Names and inheritance do not prove physical fit, neighbour compatibility, or game operation; changing the source also invalidates dependent freshness checks.
+// Reference: custom-pieces/docs/CONNECTOR_METADATA.md and custom-pieces/domains/high-speed-rail/NETWORK_SPEC.md.
 {
   "schema_version": 2,
   "purpose": "Optional inherited authoring defaults for source-owned connection descriptions. Measurements and explicit physical channels decide boundary agreement; profile IDs are descriptive references.",
@@ -51,7 +57,7 @@
       "path_height_m": 15.5,
       "nominal_level": "l2",
       "label": "HSR L2 paired interface with recessed structural web",
-      "scope_note": "Measured fan-family concrete profile: 15 m outer slab and border envelope, with the exposed structural web approximately 6.963052 m from the centre at heights 14.590025–16.358057 m. The ordinary paired straight has its corresponding web approximately 7 m from the centre and is not a full physical-profile equivalent. Route height, two opposed channels, 4 m track spacing, and right-hand running remain unchanged. Complete saved-face evidence belongs to 01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json; an inherited native-neighbour transition is recorded separately rather than declared universally compatible."
+      "scope_note": "Measured fan-family concrete profile: 15 m outer slab and border envelope, with the exposed structural web approximately 6.963052 m from the centre at heights 14.590025–16.358057 m. The ordinary paired straight has its corresponding web approximately 7 m from the centre and is not a full physical-profile equivalent. Route height, two opposed channels, 4 m track spacing, and right-hand running remain unchanged. Complete saved-face evidence belongs to 01_assemblies/hsr-trumpet-straight-stem/evidence/fan-atomization-review.json; an inherited native-neighbour transition is recorded separately rather than declared universally compatible."
     }
   }
 }

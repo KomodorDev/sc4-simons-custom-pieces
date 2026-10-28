@@ -510,15 +510,15 @@ class InstallTests(unittest.TestCase):
     def test_upgrade_cannot_omit_installed_piece_ids(self):
         path = self.output / 'manifest.json'
         manifest = json.loads(path.read_text())
-        manifest['pieces'] = [{'id': 'hsr-diagonal-ghsr'}, {'id': 'tram-under-hsr'}]
+        manifest['pieces'] = [{'id': 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'}, {'id': 'hsr-l2-over-tram-ground-mixed-crossing-90deg'}]
         path.write_text(json.dumps(manifest))
         self.install()
         receipt = json.loads((self.plugins / FOLDER / RECEIPT).read_text())
-        self.assertEqual(receipt['piece_ids'], ['hsr-diagonal-ghsr', 'tram-under-hsr'])
+        self.assertEqual(receipt['piece_ids'], ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'])
         subset = self.make_build('subset-build', b'only diagonal piece')
         path = subset / 'manifest.json'
         manifest = json.loads(path.read_text())
-        manifest['pieces'] = [{'id': 'hsr-diagonal-ghsr'}]
+        manifest['pieces'] = [{'id': 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'}]
         path.write_text(json.dumps(manifest))
         before, backups = self.managed_hashes(), set(self.backups.iterdir())
         with self.assertRaisesRegex(ValueError, 'New build omits installed pieces.*saved cities'):
@@ -529,24 +529,24 @@ class InstallTests(unittest.TestCase):
     def test_upgrade_can_add_pieces_without_dropping_existing_ids(self):
         path = self.output / 'manifest.json'
         manifest = json.loads(path.read_text())
-        manifest['pieces'] = [{'id': 'hsr-diagonal-ghsr'}]
+        manifest['pieces'] = [{'id': 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'}]
         path.write_text(json.dumps(manifest))
         self.install()
         superset = self.make_build('superset-build', b'diagonal plus tram')
         path = superset / 'manifest.json'
         manifest = json.loads(path.read_text())
-        manifest['pieces'] = [{'id': 'hsr-diagonal-ghsr'}, {'id': 'tram-under-hsr'}]
+        manifest['pieces'] = [{'id': 'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg'}, {'id': 'hsr-l2-over-tram-ground-mixed-crossing-90deg'}]
         path.write_text(json.dumps(manifest))
         result = self.install(superset)
         self.assertEqual(result['status'], 'installed')
         receipt = json.loads((self.plugins / FOLDER / RECEIPT).read_text())
-        self.assertEqual(receipt['piece_ids'], ['hsr-diagonal-ghsr', 'tram-under-hsr'])
+        self.assertEqual(receipt['piece_ids'], ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'])
 
     def test_receipt_piece_dat_paths_independently_prevent_silent_piece_removal(self):
         path = self.output / 'manifest.json'
         manifest = json.loads(path.read_text())
         raw = archive({(1, 2, 3): b'tram piece asset'})
-        relative = f'{FOLDER}/20_Pieces/SCP_tram-under-hsr.dat'
+        relative = f'{FOLDER}/20_Pieces/SCP_hsr-l2-over-tram-ground-mixed-crossing-90deg.dat'
         donor = self.output / relative
         donor.parent.mkdir()
         donor.write_bytes(raw)
@@ -559,7 +559,7 @@ class InstallTests(unittest.TestCase):
         receipt_path.write_text(json.dumps(receipt))
         subset = self.make_build('subset-build', b'only diagonal piece')
         before = self.managed_hashes()
-        with self.assertRaisesRegex(ValueError, 'New build omits installed pieces.*SCP_tram-under-hsr.dat'):
+        with self.assertRaisesRegex(ValueError, 'New build omits installed pieces.*SCP_hsr-l2-over-tram-ground-mixed-crossing-90deg.dat'):
             self.install(subset)
         self.assertEqual(before, self.managed_hashes())
 

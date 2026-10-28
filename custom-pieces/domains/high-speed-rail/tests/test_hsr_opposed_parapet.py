@@ -193,7 +193,7 @@ class OpposedParapetSavedFaceTests(unittest.TestCase):
         faces += quad(((-8., bed, -INNER), (-8., top, -INNER),
                        (-5.5, top, -INNER), (-5.5, bed, -INNER)))
         raw = _pack(source, faces)
-        piece = Path(__file__).resolve().parents[1]/'00_pieces/hsr-component-l2-short-opposed-merge-core'
+        piece = Path(__file__).resolve().parents[1]/'00_pieces/hsr-l2-two-track-mainline-opposed-merges-oblique-cuts'
         collar = json.loads((piece/'geometry.json').read_text())['west_straight_extraction']['native_west_parapet_collar']
         collar['baseline_cell_model_sha256'] = hashlib.sha256(raw).hexdigest()
         return native, raw, collar, bed, top
@@ -233,7 +233,7 @@ class OpposedParapetSavedFaceTests(unittest.TestCase):
                                    'baseline_cell_model_sha256': '0'*64})
 
     def test_original_authored_source_values_are_preserved(self):
-        piece = Path(__file__).resolve().parents[1]/'00_pieces/hsr-component-l2-short-opposed-merge-core'
+        piece = Path(__file__).resolve().parents[1]/'00_pieces/hsr-l2-two-track-mainline-opposed-merges-oblique-cuts'
         original = json.loads((piece/'evidence/design-history/before-ballast-border-repair/geometry.json').read_text())
         revised = json.loads((piece/'geometry.json').read_text())
         revised.pop('opposed_parapet_alignment')

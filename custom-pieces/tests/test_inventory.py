@@ -74,7 +74,7 @@ class InventoryArtworkTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);domain=root/'domains/fixture';domain.mkdir(parents=True)
             assemblies=[]
-            for identifier,title in (('trumpet-stable-id','Straight-stem HSR trumpet'),
+            for identifier,title in (('trumpet-stable-id','HSR \u2014 Trumpet \u2014 Straight Stem'),
                                      ('missing',None),('blank','  '),('invalid',7)):
                 local=domain/'01_assemblies'/identifier
                 (local/'previews').mkdir(parents=True)
@@ -87,8 +87,8 @@ class InventoryArtworkTests(unittest.TestCase):
                      'pieces':[],'piece_sets':{},'_assemblies':assemblies}
             with patch('scp.inventory.load_catalog',return_value=catalog):write_inventories(root)
             text=(domain/'01_assemblies/INVENTORY.md').read_text()
-            self.assertIn('[Straight-stem HSR trumpet](trumpet-stable-id/README.md)',text)
-            self.assertIn('[![Straight-stem HSR trumpet](trumpet-stable-id/previews/preview.png)](trumpet-stable-id/previews/preview.png)',text)
+            self.assertIn('[HSR \u2014 Trumpet \u2014 Straight Stem](trumpet-stable-id/README.md)',text)
+            self.assertIn('[![HSR \u2014 Trumpet \u2014 Straight Stem](trumpet-stable-id/previews/preview.png)](trumpet-stable-id/previews/preview.png)',text)
             self.assertNotIn('[trumpet-stable-id](trumpet-stable-id/README.md)',text)
             for identifier in ('missing','blank','invalid'):
                 self.assertIn(f'[{identifier}]({identifier}/README.md)',text)
@@ -237,6 +237,23 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         self.assertEqual(text.splitlines()[-1].count('[x] 1/1 passed'), 2)
         self.assertIn('Route Query: 0/1 confirmed; 1 not established', text)
         self.assertEqual((self.local/'TESTING.md').read_text(), 'Every preview and game check passed: [x].\n')
+
+    def test_renamed_subject_does_not_present_old_identity_results_as_current(self):
+        self.observe('preview_review')
+        self.observe('in_game_render')
+        self.generate()
+        original = (self.local/'checks/manual-tests.json').read_bytes()
+        renamed = self.local.with_name('renamed-fixture')
+        self.local.rename(renamed)
+        self.catalog['_assemblies'][0].update(
+            id='renamed-fixture', path='domains/fixture/01_assemblies/renamed-fixture')
+        with patch('scp.inventory.load_catalog', return_value=self.catalog):
+            write_inventories(self.root)
+        text = (self.domain/'01_assemblies/INVENTORY.md').read_text()
+        self.assertIn('Historical record; verification under the current ID pending', text)
+        self.assertNotIn('[x] 1/1 passed', text)
+        self.assertNotIn('Saved PATH: 2/2 confirmed', text)
+        self.assertEqual((renamed/'checks/manual-tests.json').read_bytes(), original)
 
     def test_missing_matrix_or_inputs_never_fall_back_to_journey_case_totals(self):
         self.generate()
