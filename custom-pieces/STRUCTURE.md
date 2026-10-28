@@ -21,6 +21,7 @@ custom-pieces/
 │   ├── WORKFLOW_ASSEMBLY_CREATION.md       Design a layout made from several pieces
 │   ├── WORKFLOW_DOCUMENTATION_GENERATION.md Generate README/TESTING documents, artwork, exports, and cards
 │   ├── CONNECTOR_METADATA.md              Meaning of connection data and matching rules
+│   ├── INSTALLER.md                       Use the self-contained graphical installer
 │   ├── BUILD_AND_INSTALL.md               Operate build, install, and package commands
 │   ├── FRAMEWORK_ENGINEERING.md           Shared implementation contracts
 │   ├── TESTING.md                         Interpret and record exact observations
@@ -73,7 +74,8 @@ These fields describe the document; piece and connector data retain their own au
 | --- | --- |
 | `project.json`, domain `domain.json`, and `collections.json` | Explicit project/domain registries and named build selections. |
 | Domain `menu-layout.json` | Assembly membership, component-cycle order, the single assembly-button presentation, and locally reserved IDs. Ordinary piece compilation supplies the inputs; [assembly-menu packaging](docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) prepares every final assembly menu. |
-| `config/allocations.json`, `config/profiles/`, and `config/release.json` | Identifier ownership, audited dependency contracts, and release requirements. |
+| `config/allocations.json`, `config/profiles/`, and `config/release.json` | Identifier ownership, audited dependency contracts, and compiled-plugin release requirements. |
+| `config/installer.json` | Experimental local-builder distribution policy, complete implemented-catalogue selection, assembly presentation, supported game profile, installer platforms, and release provenance requirements. It does not change `config/release.json` or manual observations. |
 | `00_pieces/<piece>/piece.json`, plus `geometry.json` where needed | Definition, resource identities, and local geometry source for one reusable type. |
 | `01_assemblies/<assembly>/assembly.json` | Placed instances, stable labels, positions, and rotations. |
 | Subject `connections.json` | Intrinsic directional interfaces, permitted journeys, forbidden transfers, and resource fingerprints extracted from the subject's actual resources. Historical records can retain deprecated endpoint shortlists; current extraction does not discover neighbours. |
@@ -89,9 +91,12 @@ These fields describe the document; piece and connector data retain their own au
 | Domain `assets/figures/` | Shared reference images explained in the player guide. |
 | `docs/templates/` | Unregistered authoring examples. Copy and deliberately register a starter through its documented procedure; files here are not piece or assembly entries and reserve no game identities. |
 | `framework/scp/` and `tests/` | Shared, transport-neutral tools and tests. |
+| `installer/`, including `installer/scp_installer/service.py` | Graphical installer, self-contained bundle construction, publication checks, and orchestration of the existing resource audit, build, verification, assembly-menu, and receipt-based installation tools. |
 | Domain `implementation/`, `tools/`, and `tests/`; assembly `tests/` | Network-specific generation and independent checks with their owning domain or layout. |
 | `local/` | Private workstation settings, supported native inputs, and rebuildable working data. |
 | `dist/` | Disposable builds and exports; source definitions and observations live with their owners. |
+
+The repository-level `.github/workflows/installer-release.yml` checks the Windows x64 installer bundle. Pull requests produce review artifacts; accepted `main` pushes publish experimental installer prereleases only after the workflow's full test, packaged executable self-test, GUI startup smoke check, and archive checks pass. The [contributor workflow](../docs/GITHUB.md#automatic-installer-prereleases) owns that process, and the [installer guide](docs/INSTALLER.md) owns player steps. Downloadable installers contain the local builder and its runtime; native game resources are read and compiled on the user's computer.
 
 ## Generated views
 

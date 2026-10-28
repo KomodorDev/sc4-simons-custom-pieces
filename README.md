@@ -14,6 +14,7 @@ A **piece** is one reusable construction type. An **assembly** is a layout made 
 | I want to… | Start here |
 | --- | --- |
 | Browse available pieces and assemblies | [Library guide](custom-pieces/README.md) and [illustrated piece inventory](custom-pieces/domains/high-speed-rail/00_pieces/INVENTORY.md) |
+| Install without Python or build commands | [Windows installer guide](custom-pieces/docs/INSTALLER.md) |
 | Build or install a plugin from source | [Build and install](custom-pieces/docs/BUILD_AND_INSTALL.md) |
 | Understand connector declarations and generated exports | [Connector reference](custom-pieces/docs/CONNECTOR_METADATA.md) |
 | Create pieces, assemblies, or documentation | [Authoring workflows](custom-pieces/README.md) |
@@ -60,6 +61,8 @@ python -B tools/run_tests.py
 The test command runs the library's framework, registered domain, and assembly suites. Pillow handles images, and NumPy supports numerical rendering tests. These portable checks do not require a game installation. Tests that need unavailable NAM resources or saved development builds report explicit skips. NAM means Network Addon Mod, an external game dependency. Automated checks do not establish observed game behavior or update manual observations.
 
 ## Build and use the mod
+
+For the graphical installer, follow [Install SCP without Python](custom-pieces/docs/INSTALLER.md). Each accepted update to `main` starts a tested Windows installer build and publishes an **experimental prerelease** after every required installer job succeeds. Download the Windows x64 ZIP from [Releases](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases), extract it, open **SCP Installer.exe**, choose the game folder, and select **Install**. The installer includes its runtime, builds all implemented pieces from the user's installed game and NAM, prepares the trumpet's assembly button, and installs one managed plugin folder. See the guide's supported-profile limits and first-launch instructions.
 
 Building the game plugin requires the exact supported NAM inputs described in the [build guide](custom-pieces/docs/BUILD_AND_INSTALL.md#prepare-local-development-inputs). The repository provides a [workstation-settings example](custom-pieces/config/local.example.json) and an [audited NAM profile](custom-pieces/config/profiles/nam50-rhd.json). Each contributor supplies their own local game resources and ignored settings; existing build folders are optional and can be regenerated. Build outputs are written under `custom-pieces/dist/`. Neither the installed game resources nor personal settings belong in Git.
 

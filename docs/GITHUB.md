@@ -16,7 +16,7 @@ This repository contains the custom-piece library in `custom-pieces/` and its in
 | Source code, schemas, registries, piece definitions, assembly definitions, and tests | Personal settings and native game inputs under `custom-pieces/local/` |
 | Library guides, canonical images, connector exports, and current evidence | Private reports, captured game inputs, and temporary review workspaces under `custom-pieces/local/` |
 | `README.md`, `AGENTS.md`, `.gitignore`, `docs/GITHUB.md`, `requirements-ci.txt`, and `tools/run_tests.py` | Build output under `custom-pieces/dist/`, virtual environments, and caches |
-| `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/branch-protection.json`, and `.github/branch-protection-main.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
+| `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/workflows/installer-release.yml`, `.github/branch-protection.json`, and `.github/branch-protection-main.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
 
 The root [ignore rules](../.gitignore) and [library rules](../custom-pieces/.gitignore) keep this boundary explicit. An **ignored file** remains on disk but is omitted from ordinary `git add` commands. GitHub does not back up ignored files. Keep separate backups of game saves, local inputs, and private configuration. Do not force-add personal paths, credentials, downloaded game archives, or disposable outputs.
 
@@ -104,14 +104,27 @@ Local settings and ignored files stay outside Git throughout this workflow. A ge
 
 ## Submit a release
 
-A **release promotion** accepts the tested development version into `main`. It is a source-history step; it does not install a game plugin or authorize public binary distribution. Ordinary work branches must first pass through `dev`.
+A **release promotion** accepts the tested development version into `main`. Ordinary work branches must first pass through `dev`. An accepted `main` update also starts the [automatic installer workflow](#automatic-installer-prereleases), which publishes an experimental local-builder prerelease after its checks pass. Promoting source does not install a game plugin, change game observations, or clear redistribution of locally compiled NAM-derived resources.
 
 1. Confirm that the intended changes have been merged into the canonical repository's `dev` branch and that its `Tests` run has passed.
 2. On the canonical GitHub repository, select **Pull requests → New pull request**. Select **base: main** and **compare: dev**, both in the canonical repository. A fork's branch named `dev` is not an accepted release source.
 3. Review **Files changed**, enter the release title and explanation, and select **Create pull request**.
 4. Wait for both `Tests` and `Release policy` to pass. `Tests` checks the proposed merge, and `Release policy` checks that its source is this repository's `dev` branch. Resolve conversations and update the source through reviewed PRs if the current base has changed.
 5. A human maintainer reviews the release and selects **Create a merge commit**, then confirms the merge. Keep the long-lived `dev` and `main` branches. Agents must leave the merge to the human maintainer.
-6. If `dev` is now behind the release commit on `main`, open a synchronization PR with **base: dev** and **compare: main**. A human maintainer merges it after `Tests` passes. This brings the release history back into development without pushing directly to a protected branch.
+6. Open **Actions → Installer release**, and inspect the run for the resulting `main` commit. Its full tests, Windows build, packaged self-test, GUI startup smoke check, and archive verification must pass before publication. When it succeeds, inspect the new **SCP Installer — experimental** prerelease and its asset checksums. A failed run leaves the source promotion in place; fix the cause through a PR to `dev`, or rerun the same commit for a temporary runner failure. Do not bypass a verifier to produce an asset.
+7. If `dev` is now behind the release commit on `main`, open a synchronization PR with **base: dev** and **compare: main**. A human maintainer merges it after `Tests` passes. This brings the release history back into development without pushing directly to a protected branch.
+
+## Automatic installer prereleases
+
+The [installer workflow](../.github/workflows/installer-release.yml) builds a self-contained graphical local builder for **Windows x64**. It bundles the runtime, maintained source, required configuration, and documentation, and excludes local settings, captured native resources, and generated game DATs. On the user's computer, the installer reads that user's game and NAM, creates required Road captures, builds every implemented piece, prepares the registered trumpet assembly menu, verifies the saved resources, and uses the receipt-based installer. Player steps and exact supported-profile limits belong in [INSTALLER.md](../custom-pieces/docs/INSTALLER.md).
+
+Pull-request runs build Windows review artifacts without publishing a GitHub Release. A push to the canonical repository's `main` branch runs the full shared test command, the Windows build, the packaged executable's self-test, a GUI startup smoke check, and archive verification. Only after all required jobs succeed does the publication job receive repository-content write permission and create the prerelease for that exact source commit. No workflow merges a PR or enables automatic merging. Ordinary `dev` updates do not publish installer releases.
+
+The tag is **`installer-<first 12 characters of the main commit>`**. It identifies one source revision independently of the library's development version. The Windows build supplies six assets: `SCP-Installer-windows-x64-<commit>.zip`, its `.zip.sha256` checksum, `bundle-index-windows-x64.json`, `archive-check-windows-x64.json`, `self-test-windows-x64.json`, and `gui-smoke-test-windows-x64.json`. The ZIP also records its source commit and exact members. Publication verifies the complete expected asset set. Rerunning the same revision may reuse an already published release only after its commit and asset identities agree; it must not replace an unrelated tag or overwrite different existing assets. A new source revision gets a new tag.
+
+These are **experimental installer prereleases**. They do not assert that all 166 current catalogue types have passed game tests, that public resource IDs are reserved, or that NAM-derived DAT redistribution has been cleared. [`config/installer.json`](../custom-pieces/config/installer.json) describes this distribution, while [`config/release.json`](../custom-pieces/config/release.json) continues to govern compiled-plugin readiness. The installer bundles neither NAM nor the game. Its Windows executable is unsigned; player instructions explain the possible first-launch prompt.
+
+The workflow publishes automatically after a human source promotion; it does not need a separate manual GitHub Release action. Implementing or testing the workflow on a work branch does not publish a release. Use **Actions** artifacts to review the installer before promoting the change through `dev` into `main`. Hosted self-tests check the packaged application's runtime and metadata. Native resource checks requiring proprietary game inputs can remain explicit skips in hosted CI; a successful installer build does not claim that a full game installation or an in-game test ran on the runner.
 
 ## Automated checks and coverage
 
