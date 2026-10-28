@@ -8,7 +8,7 @@
     23
   ],
   "occupied_tiles": 105,
-  "module_placements": 25,
+  "module_placements": 26,
   "component_types_used": 13,
   "separately_available_component_types": 32,
   "external_ports": {
@@ -189,18 +189,18 @@
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
       "recipe": "hsr_component_l2_short_opposed_merge_core",
       "origin_m": [
-        32.0,
+        48.0,
         0.0
       ],
       "rotation_degrees_ccw": 0,
       "rotation_degrees": 0,
       "menu_name": "HSR L2 Short Opposed Merge Core",
       "display_origin_m": [
-        144.0,
+        160.0,
         208.0
       ],
       "display_origin_tiles_en": [
-        9.0,
+        10.0,
         13.0
       ]
     },
@@ -623,6 +623,28 @@
         8.0,
         6.0
       ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P26",
+      "instance_id": "P26",
+      "label": "P26",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        32.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        144.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        9.0,
+        13.0
+      ]
     }
   ],
   "component_list": [
@@ -636,7 +658,7 @@
       "recipe": "hsr_component_lower_paired_straight",
       "piece_id": "hsr-component-lower-paired-straight",
       "menu_name": "HSR L2 Two-Track Straight",
-      "placements": 6
+      "placements": 7
     },
     {
       "recipe": "hsr_component_l2_shortened_departure_curve",
@@ -776,13 +798,19 @@
     "layout_contract": "checks/layout.json",
     "quality_contract": "checks/contract.json",
     "decision_record": "checks/atomization.json",
-    "policy": "Preserve the outside ports, fixed city grid, construction rectangle,59 support positions outside the redesigned modules, and all85 unaffected world-cell resources. The approved current layout and resource contracts record the authorized fan/merge redesign, explicit74-support plan, and reusable-core substitution; earlier atomization measurements remain historical decisions in checks/atomization.json.",
+    "policy": "Preserve the outside ports, fixed city grid, construction rectangle, 59 support positions outside the redesigned modules, and all 85 world-cell resources unaffected by the earlier junction redesign. Current contracts additionally preserve all six journeys, all 74 supports, and the 103 world cells outside the two-cell western merge extraction region. Historical atomization measurements remain in checks/atomization.json; each later bounded change has separate evidence.",
     "resource_contract": "checks/resources.json"
   },
   "standalone_piece_preview_policy": "One canonical 0-degree angled image per type; new types also have a top view, all on their own southwest-zero local X/Y grid. P labels belong only to the assembly plan and guide.",
   "redesign_scope": {
     "historical_atomization_decision_record": "checks/atomization.json",
-    "policy": "Unify the adjoining fan and opposed-merge branch angles with the existing Short Mainline Diverge Core. Replace the former P03CW straight and P03C diverge with one retained core at [176,0] m, rotated 180 degrees; preserve all other placement positions, outside ports, grid, and support spacing. Renumber the resulting placements consecutively P01 through P25.",
-    "in_game_status": "unverified"
+    "policy": "The earlier junction-angle redesign unified the adjoining fan and opposed-merge branch angles with the existing Short Mainline Diverge Core, replaced the former P03CW straight and P03C diverge with one retained core at [176,0] m rotated 180 degrees, and renumbered that layout P01 through P25. The subsequent western merge-tail extraction is recorded separately below and adds P26 while preserving every existing label.",
+    "in_game_status": "unverified",
+    "western_merge_tail_extraction": {
+      "policy": "Replace the current merge western tile with the existing native paired straight at P26; retain P01 through P25 and move P07 origin one tile east. Preserve all world track paths, 105 occupied cells, 74 support positions, and the construction rectangle. Normalize only the declared native parapet seam by at most 3.4524 mm.",
+      "placement": "P26 at (X9,Y13), 270 degrees; P07 at (X10,Y13), 0 degrees, four tiles.",
+      "evidence": "evidence/merge-west-tail-extraction.json",
+      "in_game_status": "unverified"
+    }
   }
 }

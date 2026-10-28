@@ -1,6 +1,6 @@
 // Authored physical-channel associations; geometry and movement permissions resolve from saved PATH evidence.
 // One physical track keeps its channel ID at its exposed ends; each directed member and edge cut has its own local ID.
-// Fan channels continue north-to-west and east-to-north. Merge branches enter their matching mainline only through saved journeys.
+// The north and south merge branches enter their matching mainline tracks only through saved journeys.
 // Paired ends use native flat L2 defaults. Single curved cuts deliberately have no perpendicular/paired profile.
 // A curved cut carries its measured position and heading; it is not an ordinary straight joining boundary.
 // Separate branch channels can merge into a mainline track only through the measured internal journeys.
@@ -9,8 +9,8 @@
   "purpose": "Declare the complete measured boundaries and physical tracks of the redesigned reusable HSR component. Internal movements remain measured saved-resource journeys.",
   "piece_id": "hsr-component-l2-short-opposed-merge-core",
   "source_binding": {
-    "piece_sha256": "3ea3869a23ae31a1c3b31de16023ce921e603536f11e168bc3912dd9d3100e78",
-    "connections_sha256": "d1796059d6162739011ceebabbd317fe4c77a50b60f8fe66640ec7c1f5350837"
+    "piece_sha256": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
+    "connections_sha256": "d6c5fa437ce480754f5e1a3a1a1e19b95c2a0489e2294122cb80448143091f23"
   },
   "components": [
     {
@@ -150,9 +150,9 @@
       ]
     },
     {
-      "id": "cell-4-0-east",
+      "id": "cell-3-0-east",
       "source_cell": [
-        4,
+        3,
         0
       ],
       "edge": "east",
@@ -161,9 +161,9 @@
       ]
     },
     {
-      "id": "cell-3-0-north",
+      "id": "cell-2-0-north",
       "source_cell": [
-        3,
+        2,
         0
       ],
       "edge": "north",
@@ -172,9 +172,9 @@
       ]
     },
     {
-      "id": "cell-2-0-south",
+      "id": "cell-1-0-south",
       "source_cell": [
-        2,
+        1,
         0
       ],
       "edge": "south",

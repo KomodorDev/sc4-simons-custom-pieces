@@ -4,13 +4,15 @@
 
 [1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This reusable High Speed Rail (HSR) junction carries a paired mainline and receives two directed curved branches. The mainline and branch traffic remain at nominal Level 2 (L2), with a train-path height of 15.5 m. A placed copy is one component; a complete interchange needs additional pieces.
+This reusable High Speed Rail (HSR) junction carries a paired mainline and receives two directed curved branches within a **four-tile core**. Its ordinary western approach uses the existing paired-straight type as a separate placement. The mainline and branch traffic remain at nominal Level 2 (L2), with a train-path height of 15.5 m. A placed copy is one component; a complete interchange needs additional pieces.
 
 **Status: experimental.** Human image approval and operation inside SimCity 4 require their own recorded observations. The permanent type ID is `hsr-component-l2-short-opposed-merge-core`; its existing game-resource identifiers are retained. This guide describes the reusable type independently of any assembly placement label.
 
 ## 1. Views
 
 Both clean pictures show the same complete saved model at the authored 0° orientation. North is up in the top view; X increases eastward, Y increases northward, and each city tile measures 16 × 16 m. The standalone grid belongs to this piece. It does not use an interchange's placement positions or rotations.
+
+The current pictures and connection cards show the four-tile saved model. Their source and image fingerprints are linked from [TESTING](TESTING.md#3-software-checks); earlier five-tile reports remain separate historical evidence. A software picture does not approve appearance in the game.
 
 <!-- BEGIN PIECE VIEWS -->
 
@@ -26,17 +28,19 @@ The generated connection overview in chapter 3 identifies complete joining bound
 
 <!-- BEGIN PIECE OVERVIEW -->
 
-Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.
+Four-tile flat native L2 mainline with opposed one-way merges; both mainline ends accept the native paired straight, the northern branch retains the Short Mainline Diverge Core angle, and all retained track paths remain unchanged.
 
 Exact reusable identifier: `hsr-component-l2-short-opposed-merge-core`.
 
-Footprint: **5 × 1 tiles**. Exact menu name: **HSR L2 Short Opposed Merge Core**.
+Footprint: **4 × 1 tiles**. Exact menu name: **HSR L2 Short Opposed Merge Core**.
 
 <!-- END PIECE OVERVIEW -->
 
 ### Function and complete joining boundaries
 
 The two ordinary mainline ends continue paired HSR, while the directed branch entrances merge into their declared mainline directions. The current fan-facing branch is reworked to share the branch-angle policy of the paired fan and existing Short Mainline Diverge Core. The complete permitted entrance-to-exit movements come from the actual saved traffic resources, shown in the generated matrix below.
+
+The source footprint is **4 × 1 tiles**, with four occupied cells. The previously included western straight tile is a separate **HSR L2 Two-Track Straight** (`hsr-component-lower-paired-straight`); at an east/west mainline join, use that type at 270°. The core's own source cells and local picture coordinates start again at zero. Follow the [test document](TESTING.md#3-software-checks) for the exact rebase, bounded seam adjustment, and current verification scope.
 
 A joining boundary is the complete tile edge where this piece meets its neighbour. Both directions of the paired mainline need the matching paired profile. The curved branch entrances have specific positions, headings, physical deck shapes, and train-clearance requirements; matching only the 15.5 m height does not establish a valid join. The library does not supply automatic compatibility discovery.
 
@@ -130,7 +134,7 @@ This service group is required at this edge.
 | `west-paired-end-win` / `Win` | `eastbound-mainline` / `west-paired-end-eastbound-mainline-cut` / monorail | Incoming | `[-8,-2,15.5]` | +2 | 270° | 0 |
 | `west-paired-end-wout` / `Wout` | `westbound-mainline` / `west-paired-end-westbound-mainline-cut` / monorail | Outgoing | `[-8,2,15.5]` | -2 | 270° | 0 |
 
-#### Boundary B: `cell-2-0-south`
+#### Boundary B: `cell-1-0-south`
 
 This service group is required at this edge.
 
@@ -140,7 +144,7 @@ This service group is required at this edge.
 | --- | --- |
 | End / component | `south-curved-cut` / `opposed-merge` |
 | Network / game class / role | hsr / Monorail (7); primary |
-| Source cell / edge | `[2,0]` / South |
+| Source cell / edge | `[1,0]` / South |
 | Section origin [E,N] (m) | Not declared; see member endpoints |
 | Centring / section offset | Not declared |
 | Level (path height) | Level 2 (15.5 m) |
@@ -155,9 +159,9 @@ This service group is required at this edge.
 
 | Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
 | --- | --- | --- | --- | ---: | ---: | ---: |
-| `south-curved-cut-sin` / `Sin` | `south-branch` / `south-curved-cut-south-branch-cut` / monorail | Incoming | `[25.6015,-8,15.5]` | Not declared | 248.011° | 0 |
+| `south-curved-cut-sin` / `Sin` | `south-branch` / `south-curved-cut-south-branch-cut` / monorail | Incoming | `[9.60148,-8,15.5]` | Not declared | 248.011° | 0 |
 
-#### Boundary C: `cell-3-0-north`
+#### Boundary C: `cell-2-0-north`
 
 This service group is required at this edge.
 
@@ -167,7 +171,7 @@ This service group is required at this edge.
 | --- | --- |
 | End / component | `north-curved-cut` / `opposed-merge` |
 | Network / game class / role | hsr / Monorail (7); primary |
-| Source cell / edge | `[3,0]` / North |
+| Source cell / edge | `[2,0]` / North |
 | Section origin [E,N] (m) | Not declared; see member endpoints |
 | Centring / section offset | Not declared |
 | Level (path height) | Level 2 (15.5 m) |
@@ -182,9 +186,9 @@ This service group is required at this edge.
 
 | Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
 | --- | --- | --- | --- | ---: | ---: | ---: |
-| `north-curved-cut-nin` / `Nin` | `north-branch` / `north-curved-cut-north-branch-cut` / monorail | Incoming | `[54.3985,8,15.5]` | Not declared | 68.0109° | 0 |
+| `north-curved-cut-nin` / `Nin` | `north-branch` / `north-curved-cut-north-branch-cut` / monorail | Incoming | `[38.3985,8,15.5]` | Not declared | 68.0109° | 0 |
 
-#### Boundary D: `cell-4-0-east`
+#### Boundary D: `cell-3-0-east`
 
 This service group is required at this edge.
 
@@ -194,8 +198,8 @@ This service group is required at this edge.
 | --- | --- |
 | End / component | `east-paired-end` / `opposed-merge` |
 | Network / game class / role | hsr / Monorail (7); primary |
-| Source cell / edge | `[4,0]` / East |
-| Section origin [E,N] (m) | `[72,0]` |
+| Source cell / edge | `[3,0]` / East |
+| Section origin [E,N] (m) | `[56,0]` |
 | Centring / section offset | Centred; 0 m |
 | Level (path height) | Level 2 (15.5 m) |
 | Outward heading | 90° (East) |
@@ -209,8 +213,8 @@ This service group is required at this edge.
 
 | Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
 | --- | --- | --- | --- | ---: | ---: | ---: |
-| `east-paired-end-ein` / `Ein` | `westbound-mainline` / `east-paired-end-westbound-mainline-cut` / monorail | Incoming | `[72,2,15.5]` | +2 | 90° | 0 |
-| `east-paired-end-eout` / `Eout` | `eastbound-mainline` / `east-paired-end-eastbound-mainline-cut` / monorail | Outgoing | `[72,-2,15.5]` | -2 | 90° | 0 |
+| `east-paired-end-ein` / `Ein` | `westbound-mainline` / `east-paired-end-westbound-mainline-cut` / monorail | Incoming | `[56,2,15.5]` | +2 | 90° | 0 |
+| `east-paired-end-eout` / `Eout` | `eastbound-mainline` / `east-paired-end-eastbound-mainline-cut` / monorail | Outgoing | `[56,-2,15.5]` | -2 | 90° | 0 |
 
 Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
 

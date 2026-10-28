@@ -53,7 +53,7 @@ class AtomicJunctionSourceTests(unittest.TestCase):
     def test_current_junction_geometry_keeps_its_frozen_source_bytes(self):
         for identifier, digest in {
             'hsr-component-l2-short-mainline-diverge-core': '7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0',
-            'hsr-component-l2-short-opposed-merge-core': '9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c',
+            'hsr-component-l2-short-opposed-merge-core': '8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8',
         }.items():
             self.assertEqual(hashlib.sha256((PIECES/identifier/'geometry.json').read_bytes()).hexdigest(), digest)
 
@@ -67,33 +67,34 @@ class AtomicJunctionSourceTests(unittest.TestCase):
             'S': {'out': (38.39851855221686, -8., 15.5)},
         })
         self.assertEqual(first['support_centers'], [(0., 0.), (16., 0.), (32., 0.), (48., 0.)])
-        self.assertEqual(second['footprint'], (5, 1))
-        self.assertEqual(second['cells'], [(x, 0) for x in range(5)])
-        self.assertEqual(second['ports']['E'], {'out': (72., -2., 15.5), 'in': (72., 2., 15.5)})
-        self.assertAlmostEqual(second['ports']['N']['in'][0], 54.39851855221686, places=10)
+        self.assertEqual(second['footprint'], (4, 1))
+        self.assertEqual(second['cells'], [(x, 0) for x in range(4)])
+        self.assertEqual(second['ports']['E'], {'out': (56., -2., 15.5), 'in': (56., 2., 15.5)})
+        self.assertAlmostEqual(second['ports']['N']['in'][0], 38.39851855221686, places=10)
         self.assertEqual(second['ports']['N']['in'][1:], (8., 15.5))
-        self.assertEqual(second['ports']['S']['in'], (25.601481447783137, -8., 15.5))
-        self.assertEqual(second['support_centers'], [(16.*x, 0.) for x in range(5)])
+        self.assertEqual(second['ports']['S']['in'], (9.601481447783137, -8., 15.5))
+        self.assertEqual(second['support_centers'], [(16.*x, 0.) for x in range(4)])
         for recipe in RECIPES:
             mapping, inputs = model_inputs(recipe)
             self.assertEqual(len(mapping), len(atomic_info(recipe)['cells']))
-            self.assertEqual(len(inputs['support_centers']), len(mapping))
+            selected_supports = [(east, north) for east, north in inputs['support_centers']
+                                 if (round(east/16.), round(-north/16.)) in mapping.values()]
+            self.assertEqual(len(selected_supports), len(mapping))
 
     def test_encoded_direct_slip_sections_remain_mirror_reverses(self):
         west = [(x-96., n, h) for x, n, h in encoded_movement(DIVERGE, 'W>S')]
-        east = [(x+32., n, h) for x, n, h in encoded_movement(MERGE, 'S>E')]
+        east = [(x+48., n, h) for x, n, h in encoded_movement(MERGE, 'S>E')]
         reflected = [(-x, n, h) for x, n, h in reversed(east)]
         self.assertEqual(len(west), len(reflected))
         self.assertLessEqual(max(math.dist(a, b) for a, b in zip(west, reflected)), 2e-9)
 
     def test_reworked_north_merge_reuses_the_exact_reflected_reversed_diverge_branch(self):
         branch = atomic_routes(DIVERGE)['W>S']
-        expected = [(x+16., -north, height) for x, north, height in reversed(branch)]
+        expected = [(x, -north, height) for x, north, height in reversed(branch)]
         actual = atomic_routes(MERGE)['N>W']
-        self.assertGreaterEqual(len(actual), len(expected))
+        self.assertEqual(len(actual), len(expected))
         self.assertLess(max(math.dist(a, b) for a, b in zip(expected, actual)), 2e-9)
         self.assertEqual(actual[-1], (-8., 2., 15.5))
-        self.assertTrue(all(point[1:] == (2., 15.5) for point in actual[len(expected):]))
         tangent = atomic_info(DIVERGE)['port_vectors']['Sout']
         self.assertEqual(atomic_info(MERGE)['port_vectors']['Nin'], (-tangent[0], tangent[1]))
 
@@ -101,7 +102,7 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         unchanged = [[cell, {**data, 'routes': [route for route in data['routes'] if route['movement'] != 'N>W']}]
                      for cell, data in _source(MERGE)['layout']]
         digest = hashlib.sha256(json.dumps(unchanged, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-        self.assertEqual(digest, 'b31ac1d5767d4faf205b345dec32dfcb4bee9b6e824ba4c1b98065f0f5223c9e')
+        self.assertEqual(digest, 'a925be3cf41e6e996b48374aec8d266988ba180f6ef12747f63501d14f22b561')
         expected = {
             ('surface_context', 'native_east_west_main'): 'f3158f8eb882cfcc89d6afbdf31c454af1908ecf24ad259743931901d4910204',
             ('retained_surface_context', 'native_east_west_main'): 'f3158f8eb882cfcc89d6afbdf31c454af1908ecf24ad259743931901d4910204',
@@ -164,7 +165,7 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         # remains a separate build check rather than an implied game result.
         expected = {
             DIVERGE: '3d1aa91de0f3833eba19922270fb2ab2fd821682b329a4e08e50be5265270a85',
-            MERGE: '7c99a741e17de515a3b15cbd6515dc81211902f21a35181ea02c2b08c10083f5',
+            MERGE: '7935e98203ec9166f7fa4ee39e68c7f249c6caa54ff944d10f866566267b5539',
         }
         for recipe, digest in expected.items():
             fingerprints = [[list(cell), hashlib.sha256(
@@ -182,7 +183,7 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         self.assertEqual(decision['deck_extension_beyond_native_width_m'], .5)
 
     def test_two_analytic_contexts_have_disjoint_complete_output_and_support_ownership(self):
-        for recipe, revised_cell in ((DIVERGE, (0, 0)), (MERGE, (4, 0))):
+        for recipe, revised_cell in ((DIVERGE, (0, 0)), (MERGE, (3, 0))):
             with self.subTest(recipe=recipe):
                 parts = compilation_parts(recipe)
                 self.assertEqual(len(parts), 2)

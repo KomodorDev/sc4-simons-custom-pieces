@@ -73,7 +73,7 @@ class TrumpetLiteralContractTests(unittest.TestCase):
     def test_current_plan_preserves_approved_rectangle_grid_and_outside_ports(self):
         report=audit_approved_layout(json.loads(SCENE.read_text()))
         self.assertTrue(report['approved_external_ports_rectangle_and_grid'])
-        self.assertEqual(report['reviewed_placements'],25)
+        self.assertEqual(report['reviewed_placements'],26)
 
     def test_a_moved_module_is_rejected(self):
         scene=json.loads(SCENE.read_text());scene['placements'][0]['origin_m'][0]+=16.

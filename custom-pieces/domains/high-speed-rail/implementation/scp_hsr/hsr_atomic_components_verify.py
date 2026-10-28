@@ -43,20 +43,20 @@ CONTRACTS = {
         'native_sections': [('east', -8., 1., 0., 15.)],
     },
     'hsr_component_l2_short_opposed_merge_core': {
-        **COMMON, 'footprint': (5, 1), 'cost': 500,
-        'cells': [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)], 'structural_cells': [],
+        **COMMON, 'footprint': (4, 1), 'cost': 400,
+        'cells': [(0, 0), (1, 0), (2, 0), (3, 0)], 'structural_cells': [],
         'ports': {'Win': (-8., -2., 15.5), 'Wout': (-8., 2., 15.5),
-                  'Eout': (72., -2., 15.5), 'Ein': (72., 2., 15.5),
-                  'Nin': (54.398519, 8., 15.5), 'Sin': (25.601481, -8., 15.5)},
+                  'Eout': (56., -2., 15.5), 'Ein': (56., 2., 15.5),
+                  'Nin': (38.398519, 8., 15.5), 'Sin': (9.601481, -8., 15.5)},
         'port_vectors': {'Win': (1., 0.), 'Wout': (-1., 0.),
                          'Eout': (1., 0.), 'Ein': (-1., 0.),
                          'Nin': (-.927254808965, -.374430927211),
                          'Sin': (.927254808965, .374430927211)},
         'movements': [('Win', 'Eout'), ('Ein', 'Wout'), ('Nin', 'Wout'), ('Sin', 'Eout')],
-        'support_centres_xz': [(0., 0.), (16., 0.), (32., 0.), (48., 0.), (64., 0.)],
+        'support_centres_xz': [(0., 0.), (16., 0.), (32., 0.), (48., 0.)],
         'custom_curve_ports': ('Nin', 'Sin'),
         'geometric_custom_rail_wedges': True,
-        'native_sections': [('east', 72., -1., 0., 15.)],
+        'native_sections': [('east', -8., 1., 0., 15.), ('east', 56., -1., 0., 15.)],
     },
     'hsr_component_l2_shortened_departure_curve': {
         **COMMON, 'footprint': (5, 6), 'cost': 1200,
@@ -108,7 +108,7 @@ def _contract(spec):
     return contract
 
 
-def _section_intervals(triangles, axis, station, height, centre):
+def _section_intervals(triangles, axis, station, height, centre, *, merge_gap_m=.00005):
     """Intersect all saved horizontal faces; clip to this port's own tile."""
     along, lateral = (0, 2) if axis == 'east' else (2, 0)
     # S3D south is the opposite of north. East sections use north laterally.
@@ -131,7 +131,7 @@ def _section_intervals(triangles, axis, station, height, centre):
                 found.append((first, last))
     merged = []
     for first, last in sorted(found):
-        if merged and first <= merged[-1][1]+.00005:
+        if merged and first <= merged[-1][1]+merge_gap_m:
             merged[-1] = merged[-1][0], max(last, merged[-1][1])
         else:
             merged.append((first, last))
@@ -142,8 +142,8 @@ def audit_native_sections(triangles, contract):
     """Require native slab, underside and parapet at each newly created join.
 
     Other interfaces retain exact approved bytes in the whole-assembly guard.
-    In particular, the existing opposed merge's west parapet end is inherited;
-    this atomization does not silently replace it with different geometry.
+    Both paired ends of the shortened opposed merge must now match the native
+    straight, including its newly exposed western joining section.
     """
     triangles = list(triangles)
     checked = 0

@@ -10,8 +10,10 @@ from __future__ import annotations
 
 from copy import deepcopy
 from functools import lru_cache
+import hashlib
 import json
 from pathlib import Path
+import struct
 
 from scp.dbpf import require
 
@@ -125,7 +127,114 @@ def build_models(native_hsr, recipe):
             result[local] = models[source]
     require(set(result) == set(atomic_info(recipe)['cells']),
             'Analytic junction contexts leave an unowned tile')
+    collar = _source(recipe).get('west_straight_extraction', {}).get('native_west_parapet_collar')
+    if collar is not None:
+        cell = tuple(collar['cell'])
+        require(cell in result, 'West parapet collar has no retained owner')
+        result[cell] = normalize_west_parapet(result[cell], native_hsr, collar)
     return result
+
+
+def normalize_west_parapet(raw_model, native_hsr, collar):
+    """Join the reviewed northern parapet to a native straight in a2.5m collar.
+
+    This explicit source rule acts only on the hash-pinned retained west cell.
+    Every face is split at the continuous warp's affine region boundaries,
+    so existing collinear edges and T junctions remain aligned. Exact clipping
+    and retained tiny triangle fans avoid opening gaps at those boundaries.
+    The original vertex UV attributes are retained, and new cut attributes
+    are interpolated; the UV field inside the deformed collar can change.
+    """
+    from scp.models import parse_s3d, pack_s3d
+    from scp.render_meshes import _triangles
+    from .single_track_models import _native, _pack
+    require(hashlib.sha256(raw_model).hexdigest() == collar['baseline_cell_model_sha256'],
+            'West parapet normalization requires its exact reviewed retained model')
+    start, end = collar['west_boundary_east_m'], collar['blend_end_east_m']
+    inner, target, outer = (collar[key] for key in
+                            ('inner_north_before_m', 'native_inner_north_m', 'outer_north_m'))
+    lower = collar['lower_north_m']
+    delta = inner-target
+    require(start == -8. and end == -5.5 and 0. < delta <= collar['maximum_displacement_m'] <= .0034524
+            and lower == 5. and inner == 6. and outer == 7.5
+            and collar['minimum_height_m'] == 16.1892
+            and collar['falloff'] == 'piecewise-affine-hat',
+            'West parapet normalization exceeds its explicitly approved collar')
+
+    def along(vertex):
+        return (end-vertex[0])/(end-start)
+
+    def low(vertex):
+        return (-vertex[2]-lower)/(inner-lower)
+
+    def high(vertex):
+        return (outer+vertex[2])/(outer-inner)
+
+    planes = (lambda vertex: end-vertex[0],
+              lambda vertex: -vertex[2]-lower,
+              lambda vertex: outer+vertex[2],
+              lambda vertex: along(vertex)-low(vertex),
+              lambda vertex: along(vertex)-high(vertex))
+
+    def clip_exact(polygon, plane, positive):
+        # An expanded epsilon half-plane can produce a hairline opening when
+        # its neighbour retains a tiny real face. Keep exact signed cuts and
+        # every resulting fan, including encoded degenerate triangles.
+        result = []
+        previous = polygon[-1]
+        previous_value = plane(previous)
+        previous_inside = previous_value >= 0. if positive else previous_value <= 0.
+        for current in polygon:
+            current_value = plane(current)
+            current_inside = current_value >= 0. if positive else current_value <= 0.
+            if current_inside != previous_inside:
+                fraction = previous_value/(previous_value-current_value)
+                result.append(tuple(a+fraction*(b-a) for a, b in zip(previous, current)))
+            if current_inside:
+                result.append(current)
+            previous, previous_value, previous_inside = current, current_value, current_inside
+        return result
+
+    model, triangles, changed = parse_s3d(raw_model), [], 0
+    for mesh in model['meshes']:
+        require(mesh['frames'] and all(frame == mesh['frames'][0] for frame in mesh['frames']),
+                'West parapet normalization requires static model frames')
+        for encoded in _triangles(model, mesh['frames'][0]):
+            require(all(len(vertex) == 20 for vertex in encoded), 'West parapet requires native XYZUV vertices')
+            triangle = tuple(struct.unpack('<5f', vertex) for vertex in encoded)
+            if (min(v[0] for v in triangle) >= end or max(-v[2] for v in triangle) <= lower
+                    or min(-v[2] for v in triangle) >= outer
+                    or min(v[1] for v in triangle) < collar['minimum_height_m']):
+                triangles.append(triangle)
+                continue
+            polygons = [list(triangle)]
+            for plane in planes:
+                parts = []
+                for polygon in polygons:
+                    values = [plane(vertex) for vertex in polygon]
+                    if min(values) < 0. and max(values) > 0.:
+                        parts.extend(part for part in (clip_exact(polygon, plane, True),
+                                                        clip_exact(polygon, plane, False))
+                                     if len(part) >= 3)
+                    else:
+                        parts.append(polygon)
+                polygons = parts
+            for polygon in polygons:
+                vertices = []
+                for vertex in polygon:
+                    amount = delta*max(0., min(along(vertex), low(vertex), high(vertex)))
+                    require(0. <= amount <= collar['maximum_displacement_m'],
+                            'West parapet vertex exceeds its displacement bound')
+                    x, height, south, u, v = vertex
+                    vertices.append((x, height, south+amount, u, v))
+                    changed += amount > 0.
+                triangles.extend((vertices[0], vertices[index], vertices[index+1])
+                                 for index in range(1, len(vertices)-1))
+    require(changed, 'West parapet normalization changed no reviewed vertices')
+    normalized = parse_s3d(_pack(_native(native_hsr), triangles, preserve_encoded_triangles=True))
+    for mesh in normalized['meshes']:
+        mesh['name'] = b'SCP HSR junction native west parapet collar\0'
+    return pack_s3d(normalized)
 
 
 def compilation_parts(recipe):

@@ -25,13 +25,9 @@ ADAPTER = 'hsr_component_upper_paired_to_single_adapter'
 PAIRED = 'hsr_component_upper_paired_curve90_'
 SINGLE = 'hsr_component_oneway_curve90_'
 
-# The north branch and westbound mainline share this one continuation into
-# cell (0, 0). No other interior split or merge is permitted by this test.
-INTERIOR_JUNCTION_DEGREES = {
-    'hsr_component_l2_short_opposed_merge_core': {
-        (8., 2., 15.5): {'incoming': 2, 'outgoing': 1},
-    },
-}
+# The shortened opposed merge's north branch now joins the mainline at its
+# western external boundary; the separate straight owns their continuation.
+INTERIOR_JUNCTION_DEGREES = {}
 
 
 def _point(point):

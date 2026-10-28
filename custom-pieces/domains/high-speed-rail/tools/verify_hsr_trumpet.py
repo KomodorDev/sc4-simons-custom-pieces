@@ -30,6 +30,7 @@ from scp_hsr.hsr_trumpet_verify import CONTRACT, direct_slip_symmetry, key, phys
 from scp_hsr.interchange_verify import _graph, _clearance_segments
 from scp_hsr.assembly_inspection import encoded_records, load_build, number, placements, rotation, sha256, triangle_count, world_tiles, _world_triangles
 from scp_hsr.hsr_compact_fan_verify import audit_bed_corridors
+from scp_hsr.hsr_merge_extraction_verify import audit_merge_extraction
 from scp_hsr.hsr_trumpet_rework_verify import (CURRENT_LAYOUT, ALLOWED_CELLS, REWORKED_SOURCES,
     read_rework_record, audit_redesign_scope, audit_target_joins, audit_preserved_journeys, audit_redesign_supports, audit_removed_cell_evidence, prove_removed_structural_cells, audit_route_movement, audit_matching_route_movement)
 
@@ -110,7 +111,7 @@ def audit_quality_contract(path=QUALITY_PATH):
     expected = {
         'schema_version': 2, 'id': 'straight-stem-trumpet', 'occupied_cells': expected_occupied_cells(),
         'encoded_fragments': resource_descriptor(RESOURCES_PATH).get('encoded_fragments', 167),
-        'unique_piers': 74, 'placements': 25, 'unique_piece_types': 13,
+        'unique_piers': 74, 'placements': 26, 'unique_piece_types': 13,
         'candidate_eligibility_strictly_below_m': .005, 'minimum_pier_spacing_m': 16.,
         'minimum_clearance': 5., 'actual_tile_triangles': resource_descriptor(RESOURCES_PATH)['actual_tile_triangles'],
         'current_resource_contract': 'resources.json',
@@ -145,7 +146,7 @@ def audit_approved_layout(scene):
             == CURRENT_LAYOUT,
             'Trumpet independently reviewed layout record changed')
     require(physical_layout(scene) == frozen['layout'], 'Trumpet physical layout differs from its approved positions')
-    return {'layout_sha256': frozen['layout_sha256'], 'reviewed_placements': 25,
+    return {'layout_sha256': frozen['layout_sha256'], 'reviewed_placements': 26,
             'approved_external_ports_rectangle_and_grid': True}
 
 
@@ -303,8 +304,8 @@ def audit_candidate_without_current_pins(build_path, scene, *, completed_rework)
         rework['removed_cell_proof'] = empty_proof
     empty_cells = audit_removed_cell_evidence(rework)
     require(set(build['pieces']) == set(CURRENT_IDS), 'Trumpet candidate must contain exactly 13 retained piece types')
-    require([item.get('label') for item in placements(scene)] == [f'P{i:02}' for i in range(1, 26)],
-            'Trumpet placements must use consecutive labels P01 through P25')
+    require([item.get('label') for item in placements(scene)] == [f'P{i:02}' for i in range(1, 27)],
+            'Trumpet placements must use consecutive labels P01 through P26')
     for instance in placements(scene):
         require(instance.get('instance_id') == instance['label']
                 and instance['recipe'] == build['pieces'][instance['piece_id']]['recipe'],
@@ -344,8 +345,9 @@ def audit_candidate_without_current_pins(build_path, scene, *, completed_rework)
         for east, south in CONTRACTS[piece['recipe']]['support_centres_xz']:
             x, north, _ = rotate((east, -south, 0.), rotation(instance))
             supports.append(key((x+instance['origin_m'][0], north+instance['origin_m'][1], 0.))[:2])
-    require(len(placements(scene)) == 25 and len(checked) == 13, 'Trumpet placement/type totals differ')
+    require(len(placements(scene)) == 26 and len(checked) == 13, 'Trumpet placement/type totals differ')
     support_report = audit_redesign_supports(supports, rework)
+    geometry['merge_west_tail_extraction'] = audit_merge_extraction(candidate, build, journeys, supports)
     triangles = sum(triangle_count(t['resources']['model_0']) for t in candidate.values())
     require(triangles == sum(s['preview_triangles'] for s in sources),
             'Trumpet ownership or actual preview triangle inventory differs')
@@ -436,7 +438,7 @@ def capture_current_resources(build_path, scene_path=SCENE):
         'encoded_fragments': audited['paths']['encoded_fragments'], 'actual_tile_triangles': audited['triangles']}
     quality = json.loads(QUALITY_PATH.read_text())
     quality.update(occupied_cells=len(tiles), encoded_fragments=audited['paths']['encoded_fragments'],
-                   unique_piers=74, placements=25, unique_piece_types=13,
+                   unique_piers=74, placements=26, unique_piece_types=13,
                    actual_tile_triangles=audited['triangles'], whole_route_quality=whole_route_policy(),
                    junction_rework_contract='junction-rework.json')
     # All checks above are read-only. Capture writes start only after their success.

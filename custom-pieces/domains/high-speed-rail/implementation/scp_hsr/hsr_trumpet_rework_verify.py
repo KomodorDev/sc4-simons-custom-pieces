@@ -16,7 +16,7 @@ from scp.dbpf import require
 BASELINE_COMMIT = '086d33bc276a21fe31693456d490f7a5b44725d9'
 BASELINE_ATOMIZATION_HISTORY = '616e7daadab6a141e84a615f64bfcf8bc3e7fee06f7129d41e57c5b09f3eaa73'
 BASELINE_LAYOUT = '7d230df3d8697640ed5b197f448e041abd75cab62be2a9886562e4fc52909ee6'
-CURRENT_LAYOUT = '4966ac4e75d7d1ca54f31bb75d88538fbad8338d77989031956aafbc97c5af3f'
+CURRENT_LAYOUT = '46ae93230a5fc56f8471780cdd9aff94c8ebdb697ab299b9c0dffbbf106d9411'
 UNCHANGED_WORLD_SHA256 = '868188775970987d31234974a833e9c1e0135db33d5fa202c521cfe86d8ab898'
 UNCHANGED_SUPPORTS_SHA256 = 'b798566058c682faf5dde311a34be33226984f61af761409bce6c6f79023ac91'
 PRESERVED_JOURNEYS_SHA256 = '38e8b11748b6a85c8647fe6cf34a0c0c82bd728155f0c5f73856e738c81e6ec1'
@@ -128,7 +128,7 @@ def audit_redesign_scope(tiles, build, record):
     current_region = ALLOWED_CELLS - removed
     require(set(tiles) == set(expected) | current_region,
             'Trumpet redesign occupied world cells differ from the approved change scope')
-    region = {position for position, tile in tiles.items() if tile['instance_id'] in ('P06', 'P07', 'P08')}
+    region = {position for position, tile in tiles.items() if tile['instance_id'] in ('P06', 'P07', 'P08', 'P26')}
     require(region == current_region, 'Trumpet redesigned placements leave their authorized 24-cell region')
     for position, baseline in expected.items():
         tile = tiles[position]

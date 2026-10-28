@@ -9,7 +9,7 @@ document_type: "guide"
 
 [1. Views](#1-views) · [2. Pieces](#2-pieces) · [3. Placements](#3-placements) · [4. Connection matrix](#4-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This **modular blueprint** is an arrangement built from reusable component types. A **placement** is one copy of a component in the city. The trumpet uses **25 placements of 13 types**, within a **20 × 23 tile** rectangle, with **105 occupied tiles** and **74 support positions**.
+This **modular blueprint** is an arrangement built from reusable component types. A **placement** is one copy of a component in the city. The trumpet uses **26 placements of 13 types**, within a **20 × 23 tile** rectangle, with **105 occupied tiles** and **74 support positions**.
 
 Open **Transportation → Rail**, select the **SCP | ASSEMBLY | HSR Trumpet** button, and press **Tab** to cycle forward through its components or **Shift+Tab** to cycle backward. Each click places the selected component. Use the placement table to complete the arrangement. [Build and install the assembly menu](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) before following these menu instructions.
 
@@ -18,6 +18,8 @@ Open **Transportation → Rail**, select the **SCP | ASSEMBLY | HSR Trumpet** bu
 ## 1. Views
 
 Every image is titled **Assembly - Straight-stem HSR trumpet** and uses the same city grid. Its second row identifies its purpose and camera direction. The first two are **Clean view** images without part names. The next three are **Component guide** images with exact component names and placement labels in the side legend. The final **Construction view** shows tile ownership: adjacent placements have clearly different colours and thick boundaries, even when they reuse the same button. The [render report](evidence/render.json) identifies the actual saved models and image hashes.
+
+The current pictures show the four-tile P07 and separate P26, with all 26 placement labels and the revised tile ownership. Their actual-model evidence is separate from human picture approval and game-test results.
 
 ![clean top view on the fixed X/Y city grid](previews/overview-top.png)
 
@@ -38,7 +40,7 @@ Use **Tab** or **Shift+Tab** on the assembly button to select the component name
 | Standalone angled picture | Component name and permanent piece ID | Placements | Quantity |
 | --- | --- | --- | ---: |
 | [![HSR L2 Short Mainline Diverge Core: canonical angled view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-top.png) | **[HSR L2 Short Mainline Diverge Core](../../00_pieces/hsr-component-l2-short-mainline-diverge-core/README.md)**<br>`hsr-component-l2-short-mainline-diverge-core` | P01, P08 | 2 |
-| [![HSR L2 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-paired-straight/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-top.png) | **[HSR L2 Two-Track Straight](../../00_pieces/hsr-component-lower-paired-straight/README.md)**<br>`hsr-component-lower-paired-straight` | P02, P09, P14, P15, P22, P23 | 6 |
+| [![HSR L2 Two-Track Straight: canonical angled view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-paired-straight/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-lower-paired-straight/previews/preview-top.png) | **[HSR L2 Two-Track Straight](../../00_pieces/hsr-component-lower-paired-straight/README.md)**<br>`hsr-component-lower-paired-straight` | P02, P09, P14, P15, P22, P23, P26 | 7 |
 | [![HSR L2 Shortened One-Way Departure Curve: canonical angled view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-thumb.png)](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-top.png) | **[HSR L2 Shortened One-Way Departure Curve](../../00_pieces/hsr-component-l2-shortened-departure-curve/README.md)**<br>`hsr-component-l2-shortened-departure-curve` | P03 | 1 |
 | [![HSR Modular Symmetric Split and Return: canonical angled view](../../00_pieces/hsr-component-modular-south-junction/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-south-junction/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-modular-south-junction/previews/preview-top.png) | **[HSR Modular Symmetric Split and Return](../../00_pieces/hsr-component-modular-south-junction/README.md)**<br>`hsr-component-modular-south-junction` | P04 | 1 |
 | [![HSR Modular Two-Track L2 to L4 Climb: canonical angled view](../../00_pieces/hsr-component-modular-paired-climb/previews/preview-thumb.png)](../../00_pieces/hsr-component-modular-paired-climb/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-modular-paired-climb/previews/preview-top.png) | **[HSR Modular Two-Track L2 to L4 Climb](../../00_pieces/hsr-component-modular-paired-climb/README.md)**<br>`hsr-component-modular-paired-climb` | P05 | 1 |
@@ -51,7 +53,7 @@ Use **Tab** or **Shift+Tab** on the assembly button to select the component name
 | [![HSR Tight Two-Track Corner 23 to 15.5 Metres: canonical angled view](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-thumb.png)](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-top.png) | **[HSR Tight Two-Track Corner 23 to 15.5 Metres](../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/README.md)**<br>`hsr-component-tight-paired-curve90-mid-to-l2` | P21 | 1 |
 | [![One-Way HSR L2 Eight-Metre Straight: canonical angled view](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-thumb.png)](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview.png)<br>[Top view](../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-top.png) | **[One-Way HSR L2 Eight-Metre Straight](../../00_pieces/hsr-component-lower-oneway-straight/README.md)**<br>`hsr-component-lower-oneway-straight` | P24, P25 | 2 |
 
-The [standalone-picture report](evidence/piece-previews.json) records the current component images, their saved-model sources, and all 25 placements. Each canonical picture shows 0°; use the rotation in the placement table when building. Quantities count placements, so the same component can appear several times in the arrangement.
+The [standalone-picture report](evidence/piece-previews.json) records the current component images, their saved-model sources, and all 26 placements. Each canonical picture shows 0°; use the rotation in the placement table when building. Quantities count placements, so the same component can appear several times in the arrangement.
 
 ## 3. Placements
 
@@ -65,7 +67,7 @@ Use each position and rotation together; standalone component pictures show 0°.
 | P04 | HSR Modular Symmetric Split and Return | (X6, Y5) | 0° | 14 |
 | P05 | HSR Modular Two-Track L2 to L4 Climb | (X7, Y11) | 0° | 8 |
 | P06 | HSR L2 Compact Paired Fan Join | (X11, Y18) | 0° | 11 |
-| P07 | HSR L2 Short Opposed Merge Core | (X9, Y13) | 0° | 5 |
+| P07 | HSR L2 Short Opposed Merge Core | (X10, Y13) | 0° | 4 |
 | P08 | HSR L2 Short Mainline Diverge Core | (X18, Y13) | 180° | 4 |
 | P09 | HSR L2 Two-Track Straight | (X19, Y13) | 270° | 1 |
 | P10 | HSR L2 Shortened One-Way Return Curve | (X8, Y12) | 0° | 12 |
@@ -84,10 +86,11 @@ Use each position and rotation together; standalone component pictures show 0°.
 | P23 | HSR L2 Two-Track Straight | (X14, Y13) | 270° | 1 |
 | P24 | One-Way HSR L2 Eight-Metre Straight | (X6, Y6) | 180° | 1 |
 | P25 | One-Way HSR L2 Eight-Metre Straight | (X8, Y6) | 0° | 1 |
+| P26 | HSR L2 Two-Track Straight | (X9, Y13) | 270° | 1 |
 
-The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01's reference is **(X1, Y13)** because P22 owns the western approach tile at **(X0, Y13)**. Every occupied tile has exactly one owner. P01 and P08 reuse the same Short Mainline Diverge Core: P01 is at 0°, and P08 is at 180°. P08 replaces the earlier separate eastern diverge and its western straight; the fan and opposed merge have matching revised branch angles. The retained component types keep their permanent game identifiers.
+The [machine-readable plan](assembly.json) is authoritative for identities and model translations. P01's reference is **(X1, Y13)** because P22 owns the western approach tile at **(X0, Y13)**. P26 similarly owns the ordinary tile at **(X9, Y13)**, and P07's four-tile core starts at **(X10, Y13)**. Every occupied tile has exactly one owner. P01 and P08 reuse the same Short Mainline Diverge Core: P01 is at 0°, and P08 is at 180°. P08 replaces the earlier separate eastern diverge and its western straight; the fan and opposed merge have matching revised branch angles. The retained component types keep their permanent game identifiers.
 
-P06 uses the approved wider Compact Paired Fan Join: its paired structure stays 15 m wide through the approach before widening into the fork. This changes the shoulders and walls while preserving the track routes, radii, joining cuts, and support positions. The other 12 component DATs remain byte-identical to the preceding verified build. See the [fan width comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) for measured cross-sections, and the complete geometry audit below for the assembled joins and clearances.
+P06 uses the approved wider Compact Paired Fan Join: its paired structure stays 15 m wide through the approach before widening into the fork. Its [fan width comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) records the shoulders-and-walls change and preservation of the fan's routes, radii, joining cuts, and support positions. The subsequent [P07/P26 extraction audit](evidence/merge-west-tail-extraction.json) verifies the current four-tile core, separate straight, and narrowly bounded seam adjustment. Detailed scope and historical comparisons remain in [TESTING](TESTING.md#western-merge-approach-extraction).
 
 <!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 

@@ -37,10 +37,10 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 | --- | --- | --- | --- | --- |
 | `Win` | hsr / 7 / primary | in | [-8.0, -2.0, 15.5]; [1.0, 0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
 | `Wout` | hsr / 7 / primary | out | [-8.0, 2.0, 15.5]; [-1.0, 0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `Sin` | hsr / 7 / primary | in | [25.601481, -8.0, 15.5]; [0.9272548089646255, 0.3744309272108488]; 0.0 | `path-interface-0f4b8204e68941486c48` |
-| `Nin` | hsr / 7 / primary | in | [54.398519, 8.0, 15.5]; [-0.9272548089646255, -0.3744309272108488]; 0.0 | `path-interface-0f4b8204e68941486c48` |
-| `Eout` | hsr / 7 / primary | out | [72.0, -2.0, 15.5]; [1.0, 0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
-| `Ein` | hsr / 7 / primary | in | [72.0, 2.0, 15.5]; [-1.0, 0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
+| `Sin` | hsr / 7 / primary | in | [9.601481, -8.0, 15.5]; [0.9272548089646255, 0.3744309272108488]; 0.0 | `path-interface-0f4b8204e68941486c48` |
+| `Nin` | hsr / 7 / primary | in | [38.398519, 8.0, 15.5]; [-0.9272548089646255, -0.3744309272108488]; 0.0 | `path-interface-0f4b8204e68941486c48` |
+| `Eout` | hsr / 7 / primary | out | [56.0, -2.0, 15.5]; [1.0, 0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
+| `Ein` | hsr / 7 / primary | in | [56.0, 2.0, 15.5]; [-1.0, 0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
 
 #### Directed journeys
 
@@ -76,13 +76,21 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ### Engineering sources and limits
 
-The construction rectangle contains **5 × 1 tiles**, and all **five cells** are owned. Five supports remain centred along the mainline at 16 m intervals. Both paired mainline ends are ordinary, flat L2 boundaries; the northern and southern branch entrances are custom oblique cuts.
+The construction rectangle contains **4 × 1 tiles**, and all **four cells** are owned. Four supports remain centred along the mainline at 16 m intervals. Both paired mainline ends are ordinary, flat L2 boundaries; the northern and southern branch entrances are custom oblique cuts. The former western tile is now a separate placement of the existing paired straight, which owns that tile and its support.
+
+The retained source cells were previously columns 1–4 of the five-tile core. Their local east coordinates are rebased by −16 m, and the core's assembly position moves +16 m east; the two changes preserve the retained geometry's world positions. The approved physical adjustment affects the upper northern parapet and adjacent upper bed strip within **2.5 m** of the new western boundary, by at most **3.4524 mm**. The [collar proof](evidence/west-parapet-collar-proof.json) measures a maximum of **3.452301025 mm**. The rail region, slab underside, pier, outside connections, and support positions are preserved. Intersecting triangles are partitioned at the blend boundaries, and texture coordinates at new vertices are interpolated; the deformation can change where the texture falls inside the collar.
+
+The collar proof performed **6,518 finite section checks** at three heights and found **zero new gaps above 2 micrometres** in that scan. A micrometre is 0.001 mm. This finite scan is not an unrestricted proof that every surface is watertight. The later [complete-assembly extraction audit](../../01_assemblies/straight-stem-trumpet/evidence/merge-west-tail-extraction.json) independently checks the saved seam at all five zooms, six native joining sections, and 87 collar sections, using the declared position and gap tolerances.
 
 The northern merge reuses the Short Mainline Diverge Core’s branch samples after reflecting the north/south coordinate and reversing travel. Both mainline routes, the direct southern route fragments, and each analytic context’s southern deck retain their earlier source values. The branch tracks are separate physical channels until their measured internal journeys merge into the appropriate mainline track; assigning them one component does not permit extra transfers.
 
 The [geometry source](geometry.json) owns route samples, physical sweeps, selected cells, and support positions. Independent software contracts inspect encoded endpoints, direction, L2 height, route continuity, curvature, bed coverage, visible rail alignment, supports, and model budgets. These checks do not approve arbitrary neighbours, terrain behaviour, game appearance, or train operation. The generated matrix and checklist retain the scope and current state of each measured or observed result.
 
-Actual saved-resource software checks are recorded in [the current resource-check report](evidence/saved-resource-checks.json). Current canonical picture provenance belongs in [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connection-overview evidence](evidence/connection-overview.json). The [earlier combined preview report](evidence/design-history/preview-before-junction-rework.json) is preserved as historical evidence for the geometry before this redesign. It does not describe the current pictures.
+The [fresh resource-check report](evidence/saved-resource-checks.json) identifies the actual four-tile DAT from `dist/trumpet-merge-west-tail-parts-01`, with SHA-256 `a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f`. The normal piece builder and saved-resource verifiers ran. Unchanged analytic surface contexts were reused from a verified saved-model cache, and the production collar normalizer executed from the current source; this run does not claim a cold recompilation of those analytic contexts. The report binds the resulting model to the independent collar proof and complete-assembly audit.
+
+Current canonical artwork has its own [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connection-overview evidence](evidence/connection-overview.json). The [executed connector refresh report](../../01_assemblies/straight-stem-trumpet/evidence/merge-west-tail-connectors.json) covers actual rerendering and independent freshness checks for all 15 migrated types, preserving all 56 canonical PNGs of the other 14 types and all manual records during that pass. Software verification and refreshed pictures supply no new human image approval or game observation.
+
+The original five-tile [saved-resource report](evidence/design-history/saved-resource-checks-before-west-tail-extraction.json), [angled-view report](evidence/design-history/preview-before-west-tail-extraction.json), [top-view report](evidence/design-history/preview-top-before-west-tail-extraction.json), and [connection-overview report](evidence/design-history/connection-overview-before-west-tail-extraction.json) retain their original fingerprints and results. The [earlier combined preview report](evidence/design-history/preview-before-junction-rework.json) describes an even earlier stage before the branch-angle redesign and also remains historical.
 
 ### Reproduce this piece’s software checks
 
@@ -171,6 +179,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:29:44.936700+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/saved-resource-checks.json, evidence/west-parapet-collar-proof.json]; environment: {}
 
 </details>
 
@@ -201,6 +210,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:29:44.936700+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/saved-resource-checks.json, evidence/west-parapet-collar-proof.json]; environment: {}
 
 </details>
 
@@ -1076,5 +1086,11 @@ No observation recorded.
 <!-- END MANUAL CHECKS -->
 
 ## 6. Design history
+
+### Western approach extraction
+
+The preceding version owned five tiles and five supports. After the separately approved northern branch-angle redesign, its westernmost cell contained only the two ordinary mainline routes. The accepted decomposition reuses the existing paired straight for that tile and retains the remaining four cells as this core. In the trumpet, P26 owns **(X9, Y13)** at 270°, while P07's four-tile core starts at **(X10, Y13)** at 0°. The external layout, train routes, and support positions are preserved; the narrow parapet-and-upper-bed adjustment has its own bound in chapter 3.
+
+The historical **6.437054 mm** western-tail rejection in the assembly's [original decision ledger](../../01_assemblies/straight-stem-trumpet/checks/atomization.json) measured the deleted predecessor before its northern branch was redesigned. It is not a measurement of the later straight cell. The earlier **4.018 mm** eastern-tail extraction and its separate **24.5 mm** adjoining-curve bound also retain their original scope. See the assembly's [current extraction history](../../01_assemblies/straight-stem-trumpet/TESTING.md#western-merge-approach-extraction) for the placement mapping; frozen five-tile reports and original observations are preserved rather than relabelled as new verification or game evidence.
 
 The retained evidence describes the version and scope recorded by its original report. A documentation reorganization does not create a new test run or extend an earlier observation to different inputs.
