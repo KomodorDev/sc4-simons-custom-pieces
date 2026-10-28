@@ -3,14 +3,13 @@
   "schema_version": 1,
   "id": "hsr-component-l2-short-opposed-merge-core",
   "name": "HSR L2 Short Opposed Merge Core",
-  "description": "Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.",
+  "description": "Four-tile flat native L2 mainline with opposed one-way merges; both mainline ends accept the native paired straight, the northern branch retains the Short Mainline Diverge Core angle, and all retained track paths remain unchanged.",
   "domain": "high-speed-rail",
   "recipe": "hsr_component_l2_short_opposed_merge_core",
   "status": "experimental",
   "enabled_by_default": false,
   "puzzle_id": "f827",
   "tile_ids": [
-    "7f585000",
     "7f585100",
     "7f585200",
     "7f585300",
@@ -19,7 +18,7 @@
   "preview_id": "7f585ff5",
   "effect_name": "preview_scp_hsrcomp_f827_00",
   "footprint": [
-    5,
+    4,
     1
   ],
   "cells": [
@@ -38,10 +37,6 @@
     [
       3,
       0
-    ],
-    [
-      4,
-      0
     ]
   ],
   "orientation_count": 8,
@@ -57,11 +52,6 @@
     "style": "hsr-component-l2-short-opposed-merge-core"
   },
   "shadow_mappings": [
-    {
-      "tile": "7f585000",
-      "source": "7f585000",
-      "rotation": 0
-    },
     {
       "tile": "7f585100",
       "source": "7f585100",
@@ -84,7 +74,7 @@
     }
   ],
   "provenance": {
-    "geometry": "Retains the earlier native east-tail correction and exact southern direct-slip routes; the authorized northern-fan redesign reuses the unchanged Short Mainline Diverge Core branch samples by reflection and travel reversal.",
+    "geometry": "Retains the approved opposed-merge track paths in four tiles; the western straight tile is replaced by the existing paired straight, with only the declared native parapet seam normalized by at most 3.4524 mm.",
     "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
     "redistribution": "permission-pending"
   },
@@ -116,10 +106,6 @@
       [
         48.0,
         0.0
-      ],
-      [
-        64.0,
-        0.0
       ]
     ],
     "support_foundation_width": 1.3,
@@ -141,26 +127,26 @@
     },
     "E": {
       "out": [
-        72.0,
+        56.0,
         -2.0,
         15.5
       ],
       "in": [
-        72.0,
+        56.0,
         2.0,
         15.5
       ]
     },
     "N": {
       "in": [
-        54.39851855221686,
+        38.39851855221686,
         8.0,
         15.5
       ]
     },
     "S": {
       "in": [
-        25.601481447783137,
+        9.601481447783137,
         -8.0,
         15.5
       ]

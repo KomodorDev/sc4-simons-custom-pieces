@@ -4,13 +4,13 @@
   "piece_id": "hsr-component-l2-short-opposed-merge-core",
   "domain_id": "high-speed-rail",
   "source_binding": {
-    "compiled_build": "dist/trumpet-icon-no-tab-parts",
-    "compiled_manifest_sha256": "467a09cc7aad0f042530e5274254812ad05f8f6cfe0c93840e270393b5c1ec43",
+    "compiled_build": "dist/trumpet-merge-west-tail-parts-01",
+    "compiled_manifest_sha256": "ae5696604494de71d95d38c2a0a8fe8774a2257c9fb2ced341a7365ce91e736a",
     "files": {
-      "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
-      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "d1796059d6162739011ceebabbd317fe4c77a50b60f8fe66640ec7c1f5350837",
-      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "22e3d0b37957eac8d4fca870fbf8cf216d9f19096835a177da8df6e5bdfb7f45",
-      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "3ea3869a23ae31a1c3b31de16023ce921e603536f11e168bc3912dd9d3100e78",
+      "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "d6c5fa437ce480754f5e1a3a1a1e19b95c2a0489e2294122cb80448143091f23",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "d73e7d41dd4151149a4bf33eb008761212a628ff0bd81b7c16c9e2df377d5622",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
       "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
       "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
       "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
@@ -22,9 +22,9 @@
       "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
       "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d36288f967a7a107d0a23fcc5d1e1265b0093be127624870e3ddb312b5a2ee5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "445f6300959310053b62865198698be714751de1291e4aaad40b6eb92643707b",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "9618c75c37f88b1b3a72fcc8e75a14e204ca9a372ef2ff194d51e1000cbeb554",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "de209c0a61ece97d8ee5e7068d2159c3fc014faabe8feba5a724d386741a4da1",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
@@ -32,8 +32,9 @@
       "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "e6cf3456c68fc57f103f6735bfaf15e5bfeb1c8b8c26778dabb44d1f2d76137f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd",
@@ -44,7 +45,7 @@
       "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "e5c192be2e6a96e7f135caad204b5fd041c2cd30a21c513c77c21e2ffc1a6eb5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "910eafa974eabe70f94bf95a3610e529ea9a4e7f8142340c44c9f7ae73fc327d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
       "domains/high-speed-rail/implementation/scp_hsr/icons.py": "6a449968af8993cb96ea540ea1791aac1849c8843882a74ca1356bf8e3d5c928",
       "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
@@ -68,14 +69,16 @@
       "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
       "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
       "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
-      "framework/scp/checks.py": "e53a8b95807d530081c9721d62a2a24147464967496828ece947ddd68e37822e",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
       "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
       "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
-      "framework/scp/connector_metadata.py": "cd562a666b63fae087a4b3bc2a446adcda70e9a013f00f4da48ad49add899d50",
-      "framework/scp/connector_overview.py": "5a5856f774f4d4d166011a3e81391928c3266a10ce8904f200674b0dadcd3a6f",
-      "framework/scp/content.py": "f477103efe3ace402adbc080e4be386b08fb976199a71de81e615b6f7773cade",
+      "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+      "framework/scp/connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+      "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
       "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
       "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
       "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
       "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
       "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
@@ -86,12 +89,12 @@
       "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
       "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
       "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
-      "framework/scp/piece_matrix.py": "ebf4d29bce4bb59d8f61e39b4cfc9f6745ac4c01c327ec8320417c200c8e1826",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
       "framework/scp/piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
       "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
       "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
       "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
-      "framework/scp/registration.py": "0abd859485be079e9b0ec6765a2da0ea18699b717bfd62e1556140443b37f2dd",
+      "framework/scp/registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
       "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
       "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
       "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
@@ -125,14 +128,13 @@
       "schema_version": 1,
       "id": "hsr-component-l2-short-opposed-merge-core",
       "name": "HSR L2 Short Opposed Merge Core",
-      "description": "Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.",
+      "description": "Four-tile flat native L2 mainline with opposed one-way merges; both mainline ends accept the native paired straight, the northern branch retains the Short Mainline Diverge Core angle, and all retained track paths remain unchanged.",
       "domain": "high-speed-rail",
       "recipe": "hsr_component_l2_short_opposed_merge_core",
       "status": "experimental",
       "enabled_by_default": false,
       "puzzle_id": "f827",
       "tile_ids": [
-        "7f585000",
         "7f585100",
         "7f585200",
         "7f585300",
@@ -141,7 +143,7 @@
       "preview_id": "7f585ff5",
       "effect_name": "preview_scp_hsrcomp_f827_00",
       "footprint": [
-        5,
+        4,
         1
       ],
       "cells": [
@@ -160,10 +162,6 @@
         [
           3,
           0
-        ],
-        [
-          4,
-          0
         ]
       ],
       "orientation_count": 8,
@@ -179,11 +177,6 @@
         "style": "hsr-component-l2-short-opposed-merge-core"
       },
       "shadow_mappings": [
-        {
-          "tile": "7f585000",
-          "source": "7f585000",
-          "rotation": 0
-        },
         {
           "tile": "7f585100",
           "source": "7f585100",
@@ -206,7 +199,7 @@
         }
       ],
       "provenance": {
-        "geometry": "Retains the earlier native east-tail correction and exact southern direct-slip routes; the authorized northern-fan redesign reuses the unchanged Short Mainline Diverge Core branch samples by reflection and travel reversal.",
+        "geometry": "Retains the approved opposed-merge track paths in four tiles; the western straight tile is replaced by the existing paired straight, with only the declared native parapet seam normalized by at most 3.4524 mm.",
         "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
         "redistribution": "permission-pending"
       },
@@ -238,10 +231,6 @@
           [
             48.0,
             0.0
-          ],
-          [
-            64.0,
-            0.0
           ]
         ],
         "support_foundation_width": 1.3,
@@ -263,26 +252,26 @@
         },
         "E": {
           "out": [
-            72.0,
+            56.0,
             -2.0,
             15.5
           ],
           "in": [
-            72.0,
+            56.0,
             2.0,
             15.5
           ]
         },
         "N": {
           "in": [
-            54.39851855221686,
+            38.39851855221686,
             8.0,
             15.5
           ]
         },
         "S": {
           "in": [
-            25.601481447783137,
+            9.601481447783137,
             -8.0,
             15.5
           ]
@@ -321,21 +310,15 @@
         "basis": "actual decompressed saved resources",
         "resource_fingerprints": {
           "effect:hsr-component-l2-short-opposed-merge-core:ea5118b0-ea5118b1-7f585ff5": "61a19c47abcb24195bb8967963e3d5a260bb05dcaf1139d4de7e97f6b2fd42e0",
-          "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585000": "1dc31bf36c0446f654de3bae90d0b2cd8fcf0ab94d434018b1c2d544b0fbb096",
           "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585100": "7313fc768119b7acab986078d949137e71e111fab55f58dda1937b7b735905db",
           "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585200": "9d618f36246f0350ad26cd07189f2b139dc34b1480c0735c14e7451920a836c8",
           "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585300": "5e9c47233ba7d6c19d16864fc0cb7df6bea85f93b03647e5cc107ee17e884f6e",
           "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585400": "6c2fc8f84583de0e1f681e32ff498b124b3b6263160c3a81673b7eb145c8b5b1",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
@@ -351,17 +334,11 @@
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
           "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "88a31aac012286e0facaacd1687f8e558fdba2320579bc07c8d9ed076575aab5",
-          "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "6a032e49125ae3e750551a4db24b217c704483ebf02004dbe5175cf9f30c39d3",
           "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100": "c99af55fa96361055e7959d95513f61406ddb66fa17e6f514af77c044c9bf91c",
           "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200": "000ae8858cdb0deace3e13d5b687c175b01e5a8633f3fe6661c47b61a16ff2dc",
           "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300": "8ccc3c065b6a147e72a13f18657f2d3f2ea6ffba26f252409e4413769b927357",
           "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400": "b34a20f60ddd73567022a93cc64b61408933d16281df9e3d0324ed8a8c8d4a9e",
-          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
-          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
-          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
-          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
-          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585100": "0fcb0d9fb961297a50a371170ada3046eec61e30dd4147a7a259ec3fb1cf77ec",
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585101": "a4ab5d4d9aaa96171184dec909099e56e0be0025ba4ac6cc2277fcaf9f39e6f6",
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585102": "ac76c42fcde88ba3641516401bdf56f0f3df700c78f09da953e8cfd194b72033",
@@ -382,12 +359,11 @@
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585402": "2ab8e6fd430ab8b729674639d2e6ab5fe5e46e80d41e9d6a328789421becbb67",
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585403": "13791935ae7a6ce60ab97469b8f83afd8b8a7c4a2361f74cf874edb6f22e30e9",
           "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585404": "7bfe36b30328803a1a0dcbdec0d3d5e186190f903e121fdeaa7b3cae61b85e0b",
-          "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585000": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
           "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585100": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
           "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585200": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
           "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585300": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
           "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585400": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
-          "construction:hsr-component-l2-short-opposed-merge-core": "d19f481ebe6af2dfd471458ba735ca7464cfefc0528e59bcda43a3f0f196c849"
+          "construction:hsr-component-l2-short-opposed-merge-core": "b7a2d7804d5a3dea51fd47398c0cfad733a8e252e09dd53c8f8e92d85c83a923"
         },
         "reviewed_contract_available": true,
         "scope": "one piece only; no counterpart catalogue is consulted",
@@ -425,16 +401,16 @@
           "endpoint_basis": "actual_saved_PATH",
           "tangent_basis": "reviewed_contract",
           "resource_keys": [
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004",
-            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
             "construction:hsr-component-l2-short-opposed-merge-core"
           ],
           "source_route_ids": [
-            "path-7f585000-route-000"
+            "path-7f585100-route-000"
           ],
           "boundary_sources": [
             {
@@ -443,7 +419,7 @@
                 0
               ],
               "edge": 0,
-              "tile_id": "7f585000"
+              "tile_id": "7f585100"
             }
           ],
           "connection_class": "path-interface-12d12be31d2057c5763d"
@@ -478,16 +454,17 @@
           "endpoint_basis": "actual_saved_PATH",
           "tangent_basis": "reviewed_contract",
           "resource_keys": [
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003",
-            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004",
-            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
             "construction:hsr-component-l2-short-opposed-merge-core"
           ],
           "source_route_ids": [
-            "path-7f585000-route-001"
+            "path-7f585100-route-001",
+            "path-7f585100-route-002"
           ],
           "boundary_sources": [
             {
@@ -496,7 +473,7 @@
                 0
               ],
               "edge": 0,
-              "tile_id": "7f585000"
+              "tile_id": "7f585100"
             }
           ],
           "connection_class": "path-interface-fba09fbeb87ad95c667a"
@@ -512,7 +489,7 @@
           "engine_transport": 7,
           "edge": 3,
           "endpoint_m": [
-            25.601481,
+            9.601481,
             -8.0,
             15.5
           ],
@@ -545,7 +522,7 @@
           "boundary_sources": [
             {
               "cell": [
-                2,
+                1,
                 0
               ],
               "edge": 3,
@@ -565,7 +542,7 @@
           "engine_transport": 7,
           "edge": 1,
           "endpoint_m": [
-            54.398519,
+            38.398519,
             8.0,
             15.5
           ],
@@ -598,7 +575,7 @@
           "boundary_sources": [
             {
               "cell": [
-                3,
+                2,
                 0
               ],
               "edge": 1,
@@ -618,7 +595,7 @@
           "engine_transport": 7,
           "edge": 2,
           "endpoint_m": [
-            72.0,
+            56.0,
             -2.0,
             15.5
           ],
@@ -652,7 +629,7 @@
           "boundary_sources": [
             {
               "cell": [
-                4,
+                3,
                 0
               ],
               "edge": 2,
@@ -672,7 +649,7 @@
           "engine_transport": 7,
           "edge": 2,
           "endpoint_m": [
-            72.0,
+            56.0,
             2.0,
             15.5
           ],
@@ -705,7 +682,7 @@
           "boundary_sources": [
             {
               "cell": [
-                4,
+                3,
                 0
               ],
               "edge": 2,
@@ -858,8 +835,8 @@
       "purpose": "Declare the complete measured boundaries and physical tracks of the redesigned reusable HSR component. Internal movements remain measured saved-resource journeys.",
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
       "source_binding": {
-        "piece_sha256": "3ea3869a23ae31a1c3b31de16023ce921e603536f11e168bc3912dd9d3100e78",
-        "connections_sha256": "d1796059d6162739011ceebabbd317fe4c77a50b60f8fe66640ec7c1f5350837"
+        "piece_sha256": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
+        "connections_sha256": "d6c5fa437ce480754f5e1a3a1a1e19b95c2a0489e2294122cb80448143091f23"
       },
       "components": [
         {
@@ -991,9 +968,9 @@
           ]
         },
         {
-          "id": "cell-4-0-east",
+          "id": "cell-3-0-east",
           "source_cell": [
-            4,
+            3,
             0
           ],
           "edge": "east",
@@ -1002,9 +979,9 @@
           ]
         },
         {
-          "id": "cell-3-0-north",
+          "id": "cell-2-0-north",
           "source_cell": [
-            3,
+            2,
             0
           ],
           "edge": "north",
@@ -1013,9 +990,9 @@
           ]
         },
         {
-          "id": "cell-2-0-south",
+          "id": "cell-1-0-south",
           "source_cell": [
-            2,
+            1,
             0
           ],
           "edge": "south",
@@ -1040,10 +1017,6 @@
       ],
       [
         3,
-        0
-      ],
-      [
-        4,
         0
       ]
     ],
@@ -1083,16 +1056,16 @@
             "endpoint_basis": "actual_saved_PATH",
             "tangent_basis": "reviewed_contract",
             "resource_keys": [
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004",
-              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
               "construction:hsr-component-l2-short-opposed-merge-core"
             ],
             "source_route_ids": [
-              "path-7f585000-route-000"
+              "path-7f585100-route-000"
             ],
             "boundary_sources": [
               {
@@ -1101,7 +1074,7 @@
                   0
                 ],
                 "edge": 0,
-                "tile_id": "7f585000"
+                "tile_id": "7f585100"
               }
             ],
             "connection_class": "path-interface-12d12be31d2057c5763d",
@@ -1149,16 +1122,17 @@
             "endpoint_basis": "actual_saved_PATH",
             "tangent_basis": "reviewed_contract",
             "resource_keys": [
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003",
-              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004",
-              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
               "construction:hsr-component-l2-short-opposed-merge-core"
             ],
             "source_route_ids": [
-              "path-7f585000-route-001"
+              "path-7f585100-route-001",
+              "path-7f585100-route-002"
             ],
             "boundary_sources": [
               {
@@ -1167,7 +1141,7 @@
                   0
                 ],
                 "edge": 0,
-                "tile_id": "7f585000"
+                "tile_id": "7f585100"
               }
             ],
             "connection_class": "path-interface-fba09fbeb87ad95c667a",
@@ -1294,7 +1268,7 @@
             "engine_transport": 7,
             "edge": 2,
             "endpoint_m": [
-              72.0,
+              56.0,
               2.0,
               15.5
             ],
@@ -1327,7 +1301,7 @@
             "boundary_sources": [
               {
                 "cell": [
-                  4,
+                  3,
                   0
                 ],
                 "edge": 2,
@@ -1360,7 +1334,7 @@
             "engine_transport": 7,
             "edge": 2,
             "endpoint_m": [
-              72.0,
+              56.0,
               -2.0,
               15.5
             ],
@@ -1394,7 +1368,7 @@
             "boundary_sources": [
               {
                 "cell": [
-                  4,
+                  3,
                   0
                 ],
                 "edge": 2,
@@ -1432,17 +1406,17 @@
           "label": "HSR L2 paired straight interface"
         },
         "source_cell": [
-          4,
+          3,
           0
         ],
         "edge": "east",
         "tile_seam_center_m": [
-          72.0,
+          56.0,
           0.0,
           15.5
         ],
         "anchor_m": [
-          72.0,
+          56.0,
           0.0,
           15.5
         ],
@@ -1461,7 +1435,7 @@
                   "east-paired-end-ein"
                 ],
                 "endpoint_m": [
-                  72.0,
+                  56.0,
                   2.0,
                   15.5
                 ],
@@ -1488,7 +1462,7 @@
                   "east-paired-end-eout"
                 ],
                 "endpoint_m": [
-                  72.0,
+                  56.0,
                   -2.0,
                   15.5
                 ],
@@ -1507,7 +1481,7 @@
           1.0,
           0.0
         ],
-        "boundary_bundle_id": "cell-4-0-east"
+        "boundary_bundle_id": "cell-3-0-east"
       },
       {
         "id": "north-curved-cut",
@@ -1525,7 +1499,7 @@
             "engine_transport": 7,
             "edge": 1,
             "endpoint_m": [
-              54.398519,
+              38.398519,
               8.0,
               15.5
             ],
@@ -1558,7 +1532,7 @@
             "boundary_sources": [
               {
                 "cell": [
-                  3,
+                  2,
                   0
                 ],
                 "edge": 1,
@@ -1591,12 +1565,12 @@
         },
         "section_offset_m": null,
         "source_cell": [
-          3,
+          2,
           0
         ],
         "edge": "north",
         "tile_seam_center_m": [
-          48.0,
+          32.0,
           8.0,
           15.5
         ],
@@ -1616,7 +1590,7 @@
                   "north-curved-cut-nin"
                 ],
                 "endpoint_m": [
-                  54.398519,
+                  38.398519,
                   8.0,
                   15.5
                 ],
@@ -1635,7 +1609,7 @@
           0.0,
           1.0
         ],
-        "boundary_bundle_id": "cell-3-0-north"
+        "boundary_bundle_id": "cell-2-0-north"
       },
       {
         "id": "south-curved-cut",
@@ -1653,7 +1627,7 @@
             "engine_transport": 7,
             "edge": 3,
             "endpoint_m": [
-              25.601481,
+              9.601481,
               -8.0,
               15.5
             ],
@@ -1686,7 +1660,7 @@
             "boundary_sources": [
               {
                 "cell": [
-                  2,
+                  1,
                   0
                 ],
                 "edge": 3,
@@ -1719,12 +1693,12 @@
         },
         "section_offset_m": null,
         "source_cell": [
-          2,
+          1,
           0
         ],
         "edge": "south",
         "tile_seam_center_m": [
-          32.0,
+          16.0,
           -8.0,
           15.5
         ],
@@ -1744,7 +1718,7 @@
                   "south-curved-cut-sin"
                 ],
                 "endpoint_m": [
-                  25.601481,
+                  9.601481,
                   -8.0,
                   15.5
                 ],
@@ -1763,7 +1737,7 @@
           0.0,
           -1.0
         ],
-        "boundary_bundle_id": "cell-2-0-south"
+        "boundary_bundle_id": "cell-1-0-south"
       }
     ],
     "boundary_bundles": [
@@ -1779,9 +1753,9 @@
         ]
       },
       {
-        "id": "cell-4-0-east",
+        "id": "cell-3-0-east",
         "source_cell": [
-          4,
+          3,
           0
         ],
         "edge": "east",
@@ -1790,9 +1764,9 @@
         ]
       },
       {
-        "id": "cell-3-0-north",
+        "id": "cell-2-0-north",
         "source_cell": [
-          3,
+          2,
           0
         ],
         "edge": "north",
@@ -1801,9 +1775,9 @@
         ]
       },
       {
-        "id": "cell-2-0-south",
+        "id": "cell-1-0-south",
         "source_cell": [
-          2,
+          1,
           0
         ],
         "edge": "south",
@@ -2005,76 +1979,24 @@
   },
   "routes": [
     {
-      "id": "path-7f585000-route-000",
-      "source_route_index": 0,
-      "source_class": 0,
-      "compatibility": 0,
-      "engine_transport": 7,
-      "cell": [
-        0,
-        0
-      ],
-      "tile_id": "7f585000",
-      "points": [
-        [
-          -8.0,
-          -2.0,
-          15.5
-        ],
-        [
-          8.0,
-          -2.0,
-          15.5
-        ]
-      ],
-      "entry_edge": 0,
-      "exit_edge": 2
-    },
-    {
-      "id": "path-7f585000-route-001",
-      "source_route_index": 1,
-      "source_class": 0,
-      "compatibility": 0,
-      "engine_transport": 7,
-      "cell": [
-        0,
-        0
-      ],
-      "tile_id": "7f585000",
-      "points": [
-        [
-          8.0,
-          2.0,
-          15.5
-        ],
-        [
-          -8.0,
-          2.0,
-          15.5
-        ]
-      ],
-      "entry_edge": 2,
-      "exit_edge": 0
-    },
-    {
       "id": "path-7f585100-route-000",
       "source_route_index": 0,
       "source_class": 0,
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        1,
+        0,
         0
       ],
       "tile_id": "7f585100",
       "points": [
         [
-          8.0,
+          -8.0,
           -2.0,
           15.5
         ],
         [
-          24.0,
+          8.0,
           -2.0,
           15.5
         ]
@@ -2089,18 +2011,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        1,
+        0,
         0
       ],
       "tile_id": "7f585100",
       "points": [
         [
-          24.0,
+          8.0,
           2.0,
           15.5
         ],
         [
-          8.0,
+          -8.0,
           2.0,
           15.5
         ]
@@ -2115,213 +2037,213 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        1,
+        0,
         0
       ],
       "tile_id": "7f585100",
       "points": [
         [
-          24.0,
+          8.0,
           2.286369051,
           15.5
         ],
         [
-          23.789600198,
+          7.789600198,
           2.276805359,
           15.5
         ],
         [
-          23.365040367,
+          7.365040367,
           2.258420836,
           15.5
         ],
         [
-          22.940451621,
+          6.940451621,
           2.240857813,
           15.5
         ],
         [
-          22.515836218,
+          6.515836218,
           2.224028371,
           15.5
         ],
         [
-          22.09119628,
+          6.09119628,
           2.207861779,
           15.5
         ],
         [
-          21.666533804,
+          5.666533804,
           2.19230313,
           15.5
         ],
         [
-          21.241850662,
+          5.241850662,
           2.177311959,
           15.5
         ],
         [
-          20.817148606,
+          4.817148606,
           2.162860866,
           15.5
         ],
         [
-          20.392429276999998,
+          4.392429277,
           2.14893414,
           15.5
         ],
         [
-          19.967694205,
+          3.967694205,
           2.135526372,
           15.5
         ],
         [
-          19.542944817,
+          3.542944817,
           2.122641074,
           15.5
         ],
         [
-          19.118182439,
+          3.118182439,
           2.110289293,
           15.5
         ],
         [
-          18.693408304000002,
+          2.693408304,
           2.098488222,
           15.5
         ],
         [
-          18.268623553,
+          2.268623553,
           2.087259817,
           15.5
         ],
         [
-          17.843829241999998,
+          1.843829242,
           2.076629405,
           15.5
         ],
         [
-          17.419026346,
+          1.419026346,
           2.066624296,
           15.5
         ],
         [
-          16.994215761,
+          0.994215761,
           2.057272393,
           15.5
         ],
         [
-          16.569398311,
+          0.569398311,
           2.048600804,
           15.5
         ],
         [
-          16.144574751,
+          0.144574751,
           2.040634448,
           15.5
         ],
         [
-          15.71974577,
+          -0.28025423,
           2.033394669,
           15.5
         ],
         [
-          15.294911997,
+          -0.705088003,
           2.026897842,
           15.5
         ],
         [
-          14.870074004,
+          -1.129925996,
           2.021153981,
           15.5
         ],
         [
-          14.445232307,
+          -1.554767693,
           2.016165352,
           15.5
         ],
         [
-          14.020387375,
+          -1.979612625,
           2.011925082,
           15.5
         ],
         [
-          13.595539627,
+          -2.404460373,
           2.008415761,
           15.5
         ],
         [
-          13.170689441,
+          -2.829310559,
           2.005608062,
           15.5
         ],
         [
-          12.745837154,
+          -3.254162846,
           2.00345934,
           15.5
         ],
         [
-          12.320983066,
+          -3.679016934,
           2.001912248,
           15.5
         ],
         [
-          11.896127441,
+          -4.103872559,
           2.000893341,
           15.5
         ],
         [
-          11.471270515,
+          -4.528729485,
           2.00031169,
           15.5
         ],
         [
-          11.046412493,
+          -4.953587507,
           2.000057486,
           15.5
         ],
         [
-          10.621553554,
+          -5.378446446,
           2.000000655,
           15.5
         ],
         [
-          10.5,
+          -5.5,
           2.0,
           15.5
         ],
         [
-          10.196693854,
+          -5.803306146,
           2.0,
           15.5
         ],
         [
-          9.771833527,
+          -6.228166473,
           2.0,
           15.5
         ],
         [
-          9.346972688000001,
+          -6.653027312,
           2.0,
           15.5
         ],
         [
-          8.922111435,
+          -7.077888565,
           2.0,
           15.5
         ],
         [
-          8.497249851,
+          -7.502750149,
           2.0,
           15.5
         ],
         [
-          8.072388004,
+          -7.927611996,
           2.0,
           15.5
         ],
         [
-          8.0,
+          -8.0,
           2.0,
           15.5
         ]
@@ -2336,18 +2258,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        2,
+        1,
         0
       ],
       "tile_id": "7f585200",
       "points": [
         [
-          24.0,
+          8.0,
           -2.0,
           15.5
         ],
         [
-          40.0,
+          24.0,
           -2.0,
           15.5
         ]
@@ -2362,18 +2284,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        2,
+        1,
         0
       ],
       "tile_id": "7f585200",
       "points": [
         [
-          40.0,
+          24.0,
           2.0,
           15.5
         ],
         [
-          24.0,
+          8.0,
           2.0,
           15.5
         ]
@@ -2388,193 +2310,193 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        2,
+        1,
         0
       ],
       "tile_id": "7f585200",
       "points": [
         [
-          25.601481448,
+          9.601481448000001,
           -8.0,
           15.5
         ],
         [
-          25.712289788,
+          9.712289788,
           -7.955254943,
           15.5
         ],
         [
-          26.113850671999998,
+          10.113850672,
           -7.796254579,
           15.5
         ],
         [
-          26.516245127,
+          10.516245127000001,
           -7.640045481,
           15.5
         ],
         [
-          26.919451999,
+          10.919451999,
           -7.486611385,
           15.5
         ],
         [
-          27.32345038,
+          11.32345038,
           -7.335935541,
           15.5
         ],
         [
-          27.72821961,
+          11.72821961,
           -7.188000722,
           15.5
         ],
         [
-          28.133739287,
+          12.133739287000001,
           -7.042789228,
           15.5
         ],
         [
-          28.539989268,
+          12.539989268,
           -6.900282899,
           15.5
         ],
         [
-          28.946949677,
+          12.946949677,
           -6.760463119,
           15.5
         ],
         [
-          29.354600907,
+          13.354600907,
           -6.623310829,
           15.5
         ],
         [
-          29.762923625,
+          13.762923624999999,
           -6.48880653,
           15.5
         ],
         [
-          30.171898777,
+          14.171898777,
           -6.356930294,
           15.5
         ],
         [
-          30.581507592,
+          14.581507592,
           -6.227661776,
           15.5
         ],
         [
-          30.991731582,
+          14.991731582,
           -6.100980218,
           15.5
         ],
         [
-          31.402552551,
+          15.402552551,
           -5.976864458,
           15.5
         ],
         [
-          31.813952594,
+          15.813952594,
           -5.855292945,
           15.5
         ],
         [
-          32.225914101,
+          16.225914101,
           -5.736243739,
           15.5
         ],
         [
-          32.638419761,
+          16.638419761,
           -5.619694529,
           15.5
         ],
         [
-          33.051452562,
+          17.051452562,
           -5.505622636,
           15.5
         ],
         [
-          33.464995794000004,
+          17.464995794,
           -5.394005026,
           15.5
         ],
         [
-          33.87903305,
+          17.87903305,
           -5.284818318,
           15.5
         ],
         [
-          34.293548233,
+          18.293548233,
           -5.178038794,
           15.5
         ],
         [
-          34.708525548,
+          18.708525548,
           -5.073642407,
           15.5
         ],
         [
-          35.123949513,
+          19.123949513,
           -4.971604792,
           15.5
         ],
         [
-          35.539804951,
+          19.539804951,
           -4.871901277,
           15.5
         ],
         [
-          35.956076999,
+          19.956076999,
           -4.774506892,
           15.5
         ],
         [
-          36.372751101,
+          20.372751101,
           -4.679396374,
           15.5
         ],
         [
-          36.789813016,
+          20.789813016,
           -4.586544185,
           15.5
         ],
         [
-          37.207248809,
+          21.207248809,
           -4.495924516,
           15.5
         ],
         [
-          37.625044859,
+          21.625044859,
           -4.407511299,
           15.5
         ],
         [
-          38.043187855,
+          22.043187855,
           -4.321278216,
           15.5
         ],
         [
-          38.461664794,
+          22.461664794,
           -4.23719871,
           15.5
         ],
         [
-          38.880462985,
+          22.880462985,
           -4.155245994,
           15.5
         ],
         [
-          39.299570041,
+          23.299570041,
           -4.075393062,
           15.5
         ],
         [
-          39.718973885,
+          23.718973885,
           -3.997612698,
           15.5
         ],
         [
-          40.0,
+          24.0,
           -3.946899957,
           15.5
         ]
@@ -2589,208 +2511,208 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        2,
+        1,
         0
       ],
       "tile_id": "7f585200",
       "points": [
         [
-          40.0,
+          24.0,
           3.946899957,
           15.5
         ],
         [
-          39.861337256,
+          23.861337256,
           3.921877485,
           15.5
         ],
         [
-          39.441374852,
+          23.441374852,
           3.84815982,
           15.5
         ],
         [
-          39.02115007,
+          23.02115007,
           3.776431916,
           15.5
         ],
         [
-          38.600673779,
+          22.600673779,
           3.706665819,
           15.5
         ],
         [
-          38.179956546,
+          22.179956546,
           3.638833416,
           15.5
         ],
         [
-          37.759008648,
+          21.759008648,
           3.572906441,
           15.5
         ],
         [
-          37.337840066,
+          21.337840066,
           3.508856492,
           15.5
         ],
         [
-          36.91646049,
+          20.91646049,
           3.446655036,
           15.5
         ],
         [
-          36.494879326,
+          20.494879326,
           3.38627342,
           15.5
         ],
         [
-          36.073105692,
+          20.073105692,
           3.327682882,
           15.5
         ],
         [
-          35.651148427,
+          19.651148427,
           3.27085456,
           15.5
         ],
         [
-          35.229016092,
+          19.229016092000002,
           3.215759503,
           15.5
         ],
         [
-          34.806716973,
+          18.806716973,
           3.16236868,
           15.5
         ],
         [
-          34.384259084,
+          18.384259084,
           3.11065299,
           15.5
         ],
         [
-          33.961650174,
+          17.961650174,
           3.060583272,
           15.5
         ],
         [
-          33.538897727,
+          17.538897727,
           3.012130316,
           15.5
         ],
         [
-          33.116008968,
+          17.116008968,
           2.965264872,
           15.5
         ],
         [
-          32.692990868,
+          16.692990868,
           2.91995766,
           15.5
         ],
         [
-          32.269850144,
+          16.269850144,
           2.876179377,
           15.5
         ],
         [
-          31.846593269,
+          15.846593269,
           2.833900715,
           15.5
         ],
         [
-          31.423226471,
+          15.423226471,
           2.79309236,
           15.5
         ],
         [
-          30.999755742,
+          14.999755742,
           2.753725012,
           15.5
         ],
         [
-          30.576186839000002,
+          14.576186839,
           2.715769387,
           15.5
         ],
         [
-          30.152525291,
+          14.152525291,
           2.679196233,
           15.5
         ],
         [
-          29.728776403,
+          13.728776403,
           2.643976332,
           15.5
         ],
         [
-          29.304945259,
+          13.304945259,
           2.610080521,
           15.5
         ],
         [
-          28.881036732,
+          12.881036732,
           2.57747969,
           15.5
         ],
         [
-          28.45705548,
+          12.457055480000001,
           2.5461448,
           15.5
         ],
         [
-          28.033005962,
+          12.033005962,
           2.516046889,
           15.5
         ],
         [
-          27.608892433,
+          11.608892433000001,
           2.487157084,
           15.5
         ],
         [
-          27.184718956,
+          11.184718956000001,
           2.459446608,
           15.5
         ],
         [
-          26.760489402,
+          10.760489402000001,
           2.432886792,
           15.5
         ],
         [
-          26.336207459,
+          10.336207459,
           2.407449083,
           15.5
         ],
         [
-          25.911876637,
+          9.911876636999999,
           2.383105056,
           15.5
         ],
         [
-          25.487500267999998,
+          9.487500268,
           2.359826422,
           15.5
         ],
         [
-          25.063081518,
+          9.063081518,
           2.337585038,
           15.5
         ],
         [
-          24.638623387,
+          8.638623386999999,
           2.316352918,
           15.5
         ],
         [
-          24.214128718,
+          8.214128718000001,
           2.29610224,
           15.5
         ],
         [
-          24.0,
+          8.0,
           2.286369051,
           15.5
         ]
@@ -2805,18 +2727,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        3,
+        2,
         0
       ],
       "tile_id": "7f585300",
       "points": [
         [
-          40.0,
+          24.0,
           -2.0,
           15.5
         ],
         [
-          56.0,
+          40.0,
           -2.0,
           15.5
         ]
@@ -2831,18 +2753,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        3,
+        2,
         0
       ],
       "tile_id": "7f585300",
       "points": [
         [
-          56.0,
+          40.0,
           2.0,
           15.5
         ],
         [
-          40.0,
+          24.0,
           2.0,
           15.5
         ]
@@ -2857,208 +2779,208 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        3,
+        2,
         0
       ],
       "tile_id": "7f585300",
       "points": [
         [
-          40.0,
+          24.0,
           -3.946899957,
           15.5
         ],
         [
-          40.138662744,
+          24.138662744,
           -3.921877485,
           15.5
         ],
         [
-          40.558625148,
+          24.558625148,
           -3.84815982,
           15.5
         ],
         [
-          40.97884993,
+          24.97884993,
           -3.776431916,
           15.5
         ],
         [
-          41.399326221,
+          25.399326221,
           -3.706665819,
           15.5
         ],
         [
-          41.820043454,
+          25.820043454,
           -3.638833416,
           15.5
         ],
         [
-          42.240991352,
+          26.240991352,
           -3.572906441,
           15.5
         ],
         [
-          42.662159934,
+          26.662159934,
           -3.508856492,
           15.5
         ],
         [
-          43.08353951,
+          27.08353951,
           -3.446655036,
           15.5
         ],
         [
-          43.505120674,
+          27.505120674,
           -3.38627342,
           15.5
         ],
         [
-          43.926894308,
+          27.926894308,
           -3.327682882,
           15.5
         ],
         [
-          44.348851573,
+          28.348851573,
           -3.27085456,
           15.5
         ],
         [
-          44.770983908,
+          28.770983907999998,
           -3.215759503,
           15.5
         ],
         [
-          45.193283027,
+          29.193283027,
           -3.16236868,
           15.5
         ],
         [
-          45.615740916,
+          29.615740916,
           -3.11065299,
           15.5
         ],
         [
-          46.038349826,
+          30.038349826,
           -3.060583272,
           15.5
         ],
         [
-          46.461102273,
+          30.461102273,
           -3.012130316,
           15.5
         ],
         [
-          46.883991032,
+          30.883991032,
           -2.965264872,
           15.5
         ],
         [
-          47.307009132,
+          31.307009132,
           -2.91995766,
           15.5
         ],
         [
-          47.730149856,
+          31.730149856,
           -2.876179377,
           15.5
         ],
         [
-          48.153406731,
+          32.153406731,
           -2.833900715,
           15.5
         ],
         [
-          48.576773529,
+          32.576773529,
           -2.79309236,
           15.5
         ],
         [
-          49.000244258,
+          33.000244258,
           -2.753725012,
           15.5
         ],
         [
-          49.423813161,
+          33.423813161,
           -2.715769387,
           15.5
         ],
         [
-          49.847474709,
+          33.847474709,
           -2.679196233,
           15.5
         ],
         [
-          50.271223597,
+          34.271223597,
           -2.643976332,
           15.5
         ],
         [
-          50.695054741,
+          34.695054741,
           -2.610080521,
           15.5
         ],
         [
-          51.118963268,
+          35.118963268,
           -2.57747969,
           15.5
         ],
         [
-          51.54294452,
+          35.54294452,
           -2.5461448,
           15.5
         ],
         [
-          51.966994038,
+          35.966994038,
           -2.516046889,
           15.5
         ],
         [
-          52.391107567,
+          36.391107567,
           -2.487157084,
           15.5
         ],
         [
-          52.815281044,
+          36.815281044,
           -2.459446608,
           15.5
         ],
         [
-          53.239510598,
+          37.239510598,
           -2.432886792,
           15.5
         ],
         [
-          53.663792541,
+          37.663792541,
           -2.407449083,
           15.5
         ],
         [
-          54.088123363,
+          38.088123363,
           -2.383105056,
           15.5
         ],
         [
-          54.512499732,
+          38.512499732,
           -2.359826422,
           15.5
         ],
         [
-          54.936918482,
+          38.936918482,
           -2.337585038,
           15.5
         ],
         [
-          55.361376613,
+          39.361376613,
           -2.316352918,
           15.5
         ],
         [
-          55.785871282,
+          39.785871282,
           -2.29610224,
           15.5
         ],
         [
-          56.0,
+          40.0,
           -2.286369051,
           15.5
         ]
@@ -3073,193 +2995,193 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        3,
+        2,
         0
       ],
       "tile_id": "7f585300",
       "points": [
         [
-          54.398518552,
+          38.398518552,
           8.0,
           15.5
         ],
         [
-          54.287710212,
+          38.287710212,
           7.955254943,
           15.5
         ],
         [
-          53.886149328,
+          37.886149328,
           7.796254579,
           15.5
         ],
         [
-          53.483754873,
+          37.483754873,
           7.640045481,
           15.5
         ],
         [
-          53.080548001,
+          37.080548001,
           7.486611385,
           15.5
         ],
         [
-          52.67654962,
+          36.67654962,
           7.335935541,
           15.5
         ],
         [
-          52.27178039,
+          36.27178039,
           7.188000722,
           15.5
         ],
         [
-          51.866260713,
+          35.866260713,
           7.042789228,
           15.5
         ],
         [
-          51.460010732,
+          35.460010732,
           6.900282899,
           15.5
         ],
         [
-          51.053050323,
+          35.053050323,
           6.760463119,
           15.5
         ],
         [
-          50.645399093,
+          34.645399093,
           6.623310829,
           15.5
         ],
         [
-          50.237076375,
+          34.237076375,
           6.48880653,
           15.5
         ],
         [
-          49.828101223,
+          33.828101223,
           6.356930294,
           15.5
         ],
         [
-          49.418492408,
+          33.418492408,
           6.227661776,
           15.5
         ],
         [
-          49.008268418,
+          33.008268418,
           6.100980218,
           15.5
         ],
         [
-          48.597447449,
+          32.597447449,
           5.976864458,
           15.5
         ],
         [
-          48.186047406,
+          32.186047406,
           5.855292945,
           15.5
         ],
         [
-          47.774085899,
+          31.774085899,
           5.736243739,
           15.5
         ],
         [
-          47.361580239,
+          31.361580239,
           5.619694529,
           15.5
         ],
         [
-          46.948547438,
+          30.948547438,
           5.505622636,
           15.5
         ],
         [
-          46.535004205999996,
+          30.535004206,
           5.394005026,
           15.5
         ],
         [
-          46.12096695,
+          30.12096695,
           5.284818318,
           15.5
         ],
         [
-          45.706451767,
+          29.706451767,
           5.178038794,
           15.5
         ],
         [
-          45.291474452,
+          29.291474452,
           5.073642407,
           15.5
         ],
         [
-          44.876050487,
+          28.876050487,
           4.971604792,
           15.5
         ],
         [
-          44.460195049,
+          28.460195049,
           4.871901277,
           15.5
         ],
         [
-          44.043923001,
+          28.043923001,
           4.774506892,
           15.5
         ],
         [
-          43.627248899,
+          27.627248899,
           4.679396374,
           15.5
         ],
         [
-          43.210186984,
+          27.210186984,
           4.586544185,
           15.5
         ],
         [
-          42.792751191,
+          26.792751191,
           4.495924516,
           15.5
         ],
         [
-          42.374955141,
+          26.374955141,
           4.407511299,
           15.5
         ],
         [
-          41.956812145,
+          25.956812145,
           4.321278216,
           15.5
         ],
         [
-          41.538335206,
+          25.538335206,
           4.23719871,
           15.5
         ],
         [
-          41.119537015,
+          25.119537015,
           4.155245994,
           15.5
         ],
         [
-          40.700429959,
+          24.700429959,
           4.075393062,
           15.5
         ],
         [
-          40.281026115,
+          24.281026115,
           3.997612698,
           15.5
         ],
         [
-          40.0,
+          24.0,
           3.946899957,
           15.5
         ]
@@ -3274,18 +3196,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        4,
+        3,
         0
       ],
       "tile_id": "7f585400",
       "points": [
         [
-          56.0,
+          40.0,
           -2.0,
           15.5
         ],
         [
-          72.0,
+          56.0,
           -2.0,
           15.5
         ]
@@ -3300,18 +3222,18 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        4,
+        3,
         0
       ],
       "tile_id": "7f585400",
       "points": [
         [
-          72.0,
+          56.0,
           2.0,
           15.5
         ],
         [
-          56.0,
+          40.0,
           2.0,
           15.5
         ]
@@ -3326,213 +3248,213 @@
       "compatibility": 0,
       "engine_transport": 7,
       "cell": [
-        4,
+        3,
         0
       ],
       "tile_id": "7f585400",
       "points": [
         [
-          56.0,
+          40.0,
           -2.286369051,
           15.5
         ],
         [
-          56.210399802,
+          40.210399802,
           -2.276805359,
           15.5
         ],
         [
-          56.634959633,
+          40.634959633,
           -2.258420836,
           15.5
         ],
         [
-          57.059548379,
+          41.059548379,
           -2.240857813,
           15.5
         ],
         [
-          57.484163782,
+          41.484163782,
           -2.224028371,
           15.5
         ],
         [
-          57.90880372,
+          41.90880372,
           -2.207861779,
           15.5
         ],
         [
-          58.333466196,
+          42.333466196,
           -2.19230313,
           15.5
         ],
         [
-          58.758149338,
+          42.758149338,
           -2.177311959,
           15.5
         ],
         [
-          59.182851394,
+          43.182851394,
           -2.162860866,
           15.5
         ],
         [
-          59.607570723,
+          43.607570723,
           -2.14893414,
           15.5
         ],
         [
-          60.032305795,
+          44.032305795,
           -2.135526372,
           15.5
         ],
         [
-          60.457055183,
+          44.457055183,
           -2.122641074,
           15.5
         ],
         [
-          60.881817561,
+          44.881817561,
           -2.110289293,
           15.5
         ],
         [
-          61.306591696,
+          45.306591696,
           -2.098488222,
           15.5
         ],
         [
-          61.731376447,
+          45.731376447,
           -2.087259817,
           15.5
         ],
         [
-          62.156170758,
+          46.156170758,
           -2.076629405,
           15.5
         ],
         [
-          62.580973654,
+          46.580973654,
           -2.066624296,
           15.5
         ],
         [
-          63.005784239,
+          47.005784239,
           -2.057272393,
           15.5
         ],
         [
-          63.430601689,
+          47.430601689,
           -2.048600804,
           15.5
         ],
         [
-          63.855425249,
+          47.855425249,
           -2.040634448,
           15.5
         ],
         [
-          64.28025423,
+          48.28025423,
           -2.033394669,
           15.5
         ],
         [
-          64.705088003,
+          48.705088003,
           -2.026897842,
           15.5
         ],
         [
-          65.129925996,
+          49.129925996,
           -2.021153981,
           15.5
         ],
         [
-          65.554767693,
+          49.554767693,
           -2.016165352,
           15.5
         ],
         [
-          65.979612625,
+          49.979612625,
           -2.011925082,
           15.5
         ],
         [
-          66.404460373,
+          50.404460373,
           -2.008415761,
           15.5
         ],
         [
-          66.829310559,
+          50.829310559,
           -2.005608062,
           15.5
         ],
         [
-          67.254162846,
+          51.254162846,
           -2.00345934,
           15.5
         ],
         [
-          67.679016934,
+          51.679016934,
           -2.001912248,
           15.5
         ],
         [
-          68.103872559,
+          52.103872559,
           -2.000893341,
           15.5
         ],
         [
-          68.528729485,
+          52.528729485,
           -2.00031169,
           15.5
         ],
         [
-          68.953587507,
+          52.953587507,
           -2.000057486,
           15.5
         ],
         [
-          69.378446446,
+          53.378446446,
           -2.000000655,
           15.5
         ],
         [
-          69.5,
+          53.5,
           -2.0,
           15.5
         ],
         [
-          69.803306146,
+          53.803306146,
           -2.0,
           15.5
         ],
         [
-          70.228166473,
+          54.228166473,
           -2.0,
           15.5
         ],
         [
-          70.653027312,
+          54.653027312,
           -2.0,
           15.5
         ],
         [
-          71.077888565,
+          55.077888565,
           -2.0,
           15.5
         ],
         [
-          71.502750149,
+          55.502750149,
           -2.0,
           15.5
         ],
         [
-          71.927611996,
+          55.927611996,
           -2.0,
           15.5
         ],
         [
-          72.0,
+          56.0,
           -2.0,
           15.5
         ]
@@ -3543,10 +3465,11 @@
   ],
   "endpoint_route_refs": {
     "west-paired-end-win": [
-      "path-7f585000-route-000"
+      "path-7f585100-route-000"
     ],
     "west-paired-end-wout": [
-      "path-7f585000-route-001"
+      "path-7f585100-route-001",
+      "path-7f585100-route-002"
     ],
     "east-paired-end-ein": [
       "path-7f585400-route-001"
@@ -3566,10 +3489,10 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
-      "dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
-      "model_sha256": "88a31aac012286e0facaacd1687f8e558fdba2320579bc07c8d9ed076575aab5",
-      "resource_fingerprints_checked": 67,
+      "dat_path": "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+      "dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+      "model_sha256": "6a032e49125ae3e750551a4db24b217c704483ebf02004dbe5175cf9f30c39d3",
+      "resource_fingerprints_checked": 54,
       "directional_ports_reextracted": 6,
       "directed_journeys_reextracted": 4,
       "compiled_definition": "passed",
@@ -3585,5 +3508,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "6197ac07af130d986aea0739fc54e40bfc26982779aae9374c794578459d7bfe"
+  "content_sha256": "e9e8a5230cadd4a6f7cd30c2197de8636b3d46608ac7091dc74c0e04390b98f2"
 }

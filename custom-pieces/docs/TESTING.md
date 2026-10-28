@@ -7,11 +7,11 @@ document_type: "procedure"
 
 # Record and interpret test results
 
-A **piece** is one reusable menu type. An **assembly** is a layout made from placed copies. Read a piece's README or an assembly's TESTING page to find its exact checks. A **case** is one specific observation, such as a directed journey at a stated rotation and game environment. A pass for one case does not cover a different direction, transport, rotation, or platform.
+A **piece** is one reusable menu type. An **assembly** is a layout made from placed copies. Read the subject’s TESTING document to find its exact checks; a legacy combined piece guide keeps those checks in its README until deliberately migrated. A **case** is one specific observation, such as a directed journey at a stated rotation and game environment. A pass for one case does not cover a different direction, transport, rotation, or platform.
 
 [Understand results](#understand-the-displayed-results) · [Record an observation](#record-one-observation) · [Data ownership and stale evidence](#data-ownership-and-stale-evidence) · [Piece validation](#piece-validation-and-compatibility-discovery) · [Investigate demolition](#investigate-single-tile-demolition-and-connected-survivors)
 
-Assembly TESTING pages follow the shared [six-chapter layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-assembly-testing-layout). Use chapter 2 to prepare the layout, chapter 3 for software checks, chapter 4 for game actions, and chapter 5 for known issues and the generated checklist. This guide owns the common recording procedure; each assembly supplies its exact conditions, case links, and recording command.
+New or intentionally refreshed pieces and assemblies follow the shared [six-chapter TESTING layout](WORKFLOW_DOCUMENTATION_GENERATION.md#required-piece-and-assembly-testing-layout). Use chapter 1 for exact scope and technical connections, chapter 2 for preparation, chapter 3 for software checks, chapter 4 for game actions, chapter 5 for known issues and the generated checklist, and chapter 6 for design history. Split pieces also keep their generated manual summary in chapter 5. Their three-chapter README links each matrix result to `TESTING.md#case-…`. This guide owns the common recording procedure; each subject supplies its exact conditions, case links, and recording command. Existing version-1 and unmarked combined guides retain their test sections until explicitly migrated.
 
 ## Piece validation and compatibility discovery
 
@@ -19,7 +19,7 @@ Assembly TESTING pages follow the shared [six-chapter layout](WORKFLOW_DOCUMENTA
 
 **Compatibility discovery** means finding candidate joins by comparing complete shared boundaries of pieces with current, validated connector exports. The current library does not supply an automatic discovery operation. A future consumer must check all required services and channels under one placement and explicitly exclude unmigrated, stale, missing, or invalid inputs. Exclusion does not establish incompatibility. Do not use historical per-port counterpart shortlists as compatibility results.
 
-Developer tests verify generators and source-validation rules, while focused in-game observations investigate new behavior, changed game assumptions, or reported problems. Existing rendering, placement, journey, demolition, and save/reload records retain their particular scope. Public-release evidence remains governed by [RELEASE.md](RELEASE.md). No per-piece test-plan file or automatic all-pairs manual checklist is required.
+Developer tests verify generators and source-validation rules, while focused in-game observations investigate new behavior, changed game assumptions, or reported problems. Existing rendering, placement, journey, demolition, and save/reload records retain their particular scope. Public-release evidence remains governed by [RELEASE.md](RELEASE.md). The split piece TESTING document contains the subject’s plan and results; do not add another test-plan helper or an automatic all-pairs manual checklist.
 
 ## Investigate single-tile demolition and connected survivors
 
@@ -74,7 +74,7 @@ When reporting a software test run, use the test runner's actual totals and labe
 
 After creating or deliberately changing artwork, first run `python3 custom-pieces/scp.py observations refresh-images --piece EXACT-PIECE-ID` from the parent project directory, followed by `python3 custom-pieces/scp.py inventory`. Replace the identifier with the actual selected type. This gives each existing angled, top, and connector-overview PNG its own exact review scope without extracting routes, computing compatibility, changing game cases, or recording an approval. Follow the [final-artifact sequence](WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging) for the complete generation and packaging order. A prose-only refresh intentionally preserves the observation record and cannot supply this missing image binding.
 
-1. Open the piece README or assembly TESTING page and find `Test checklist`. Click the relevant check/service group, such as `Journey — hsr`, to open its rotation table. Locate the entry/exit or port pair, then click the matching exact-scope title below the table. Copy the case ID beside the required rotation, such as `90° CCW`; `CCW` means counterclockwise. Check its service, entry/exit or counterpart, relative position, rotation, and tested environment. For historical evidence, use its separately labeled section instead.
+1. Open the subject’s TESTING page and find `Test checklist`; for a legacy combined piece guide, use that section in its README. Click the relevant check/service group, such as `Journey — hsr`, to open its rotation table. Locate the entry/exit or port pair, then click the matching exact-scope title below the table. Copy the case ID beside the required rotation, such as `90° CCW`; `CCW` means counterclockwise. Check its service, entry/exit or counterpart, relative position, rotation, and tested environment. For historical evidence, use its separately labeled section instead.
 2. Perform that exact check. For a game observation, record the platform, game version, and NAM profile. Inspect the relevant rotation and direction; do not infer the other orientations.
 3. In the subject's `checks` folder, copy `observation.example.json` to a new `observation.json`. The example is a blank template, not evidence. Set `case_id`, `result` (`passed` or `failed`), `reviewer`, `confirmed_at` (an ISO date such as `2026-10-20`), and `evidence` (screenshot paths or explicit observed facts). Fill all three environment fields for game cases.
 4. Set `explicit_user_confirmation` to `true` only after the human user confirms that precise observation. An agent must not infer confirmation. Leave the supplied example unchanged.
@@ -84,7 +84,7 @@ After creating or deliberately changing artwork, first run `python3 custom-piece
 python3 -m scp.content record --record custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/manual-tests.json --observation custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/checks/observation.json
 ```
 
-6. Read the result and reopen the piece README or assembly TESTING page. The command updates the authoritative JSON record, generated summaries, and inventories. Do not type checkmarks into Markdown.
+6. Read the result and reopen the subject’s TESTING page, or the README test section of a legacy combined piece guide. The command updates the authoritative JSON record, generated summaries, and inventories. Do not type checkmarks into Markdown.
 
 For a justified not-applicable declaration, use `result: "not_applicable"` and provide a nonempty `reason`. A failing result should retain its actual description and evidence. The tool rejects a manual pass without explicit confirmation, identity, date, evidence, and required game environment.
 

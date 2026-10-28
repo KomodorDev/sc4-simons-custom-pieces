@@ -4,25 +4,25 @@
   "status": "passed",
   "scope": "actual approved current saved compiled resources; game operation unverified",
   "scene_file": "assembly.json",
-  "scene_sha256": "57e520ee5e54e5e46a72a696d4d657afd4b53ea564a580f9140bcd1741ff5ace",
-  "manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
+  "scene_sha256": "4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3",
+  "manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
   "audited_manifest_file": "audited-build-manifest.json",
   "manifest_hash_scope": "Exact input manifest at audit start; documentation metadata may change later. DAT fingerprints are independently pinned.",
-  "current_resource_contract_sha256": "3becf81758cceaf522820038640e73127ac3180291a5e38f592b83c5c439bf8c",
+  "current_resource_contract_sha256": "73ea63d07a012b4f93379e48ad9c272f187dc743c8fbbee9dc264a67028d3f98",
   "deleted_predecessor_resource_inputs_required": false,
   "reviewed_layout": {
-    "layout_sha256": "4966ac4e75d7d1ca54f31bb75d88538fbad8338d77989031956aafbc97c5af3f",
-    "reviewed_placements": 25,
+    "layout_sha256": "46ae93230a5fc56f8471780cdd9aff94c8ebdb697ab299b9c0dffbbf106d9411",
+    "reviewed_placements": 26,
     "approved_external_ports_rectangle_and_grid": true
   },
   "independent_quality_contract": {
-    "contract_sha256": "acecd50680b7d8e341a968d6e814dc539c28ac73877ca8b7b5c09112a818eb84",
+    "contract_sha256": "83836bbde05140fc4b45d896b12daf50a12cbf1387421ed1f435381ced118d93",
     "candidate_eligibility_and_actual_edit_limits_are_separate": true,
     "independent_ports_movements_clearance_and_budgets_checked": true,
     "predecessor_resource_inputs_required": false
   },
   "atomization_decisions": {
-    "ledger_sha256": "a09a61be8a114e2c472fab4beb0f1dabb58ac8e92d450594cdda56b918fc42c6",
+    "ledger_sha256": "f27beaf9a3e843119bed0a06d5cc910b57015479c8b73f1b392705f2b998f008",
     "eligible_atomized_candidates": {
       "p01a-west-tail": {
         "recorded_original_path_deviation_m": 0.004018411269782,
@@ -37,7 +37,7 @@
         "recorded_original_visible_rail_deviation_m": 0.004018597831425552,
         "recorded_actual_rework_bound_m": 0.0245,
         "historical_replacement_geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833",
-        "current_replacement_geometry_sha256": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+        "current_replacement_geometry_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
         "historical_source_superseded_by_explicit_redesign": true
       },
       "p01b-south-tail": {
@@ -99,13 +99,51 @@
       "owner_clipped_corridor_fragments_checked": 4688,
       "corridor_clipped_to_literal_ownership": false,
       "external_custom_collar_requires_unclipped_actual_assembly_check": false,
-      "visible_native_rail_triangles_matched_to_paths": 106686,
-      "visible_native_rail_centre_segments_matched_to_paths": 38588,
+      "visible_native_rail_triangles_matched_to_paths": 106677,
+      "visible_native_rail_centre_segments_matched_to_paths": 38584,
       "unused_visible_native_rails": false,
       "complete_train_clearance_segments_checked": 4688,
-      "actual_module_instances_checked": 25,
+      "actual_module_instances_checked": 26,
       "actual_neighbour_models_used": 105,
       "strict_unclipped_actual_path_audit": true
+    },
+    "merge_west_tail_extraction": {
+      "status": "passed",
+      "baseline_resource_archives_required": false,
+      "manual_or_game_observations_added": 0,
+      "occupied_world_cells_preserved": 105,
+      "unchanged_world_cells_all_resources_exact": 103,
+      "retained_world_path_bytes_identical": 104,
+      "model_shadow_change_world_cells_en_m": [
+        [
+          32.0,
+          0.0
+        ],
+        [
+          48.0,
+          0.0
+        ]
+      ],
+      "replacement_decoded_routes_identical": 2,
+      "every_world_path_geometry_preserved": true,
+      "unchanged_complete_archives_exact": 12,
+      "retained_merge_tile_resource_ids_unchanged": 4,
+      "complete_journey_counts_and_point_hashes_identical": 6,
+      "support_positions_preserved": 74,
+      "support_positions_sha256": "76d116a6f8cb5d6e48ab681dd679eb8d67bb137c2badb72943290d0860b82d1d",
+      "actual_native_joining_sections_checked": 6,
+      "native_profile_tolerance_m": 5e-05,
+      "seam_model_zooms_pinned_to_bounded_edit": 5,
+      "seam_model_sha256": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+      "normalization_collar_world_east_m": [
+        40.0,
+        42.5
+      ],
+      "maximum_authorized_parapet_change_m": 0.0034524,
+      "collar_section_stations_checked": 29,
+      "collar_horizontal_sections_checked": 87,
+      "collar_gap_tolerance_m": 2e-06,
+      "collar_profile_position_tolerance_m": 5e-05
     },
     "empty_structural_cells": {
       "removed_cells_proved_empty": 4,
@@ -113,7 +151,7 @@
     },
     "occupied_cells": 105,
     "strict_byte_identity_cells": 105,
-    "actual_tile_triangles": 708930,
+    "actual_tile_triangles": 709002,
     "tile_resource_fingerprints_checked": 1155,
     "exact_current_ownership_and_rotations_checked": true,
     "original_standard_straight_replacements": 4
@@ -721,9 +759,9 @@
     {
       "instance": "P07",
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
-      "dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
-      "cells": 5,
-      "preview_triangles": 40943,
+      "dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+      "cells": 4,
+      "preview_triangles": 40694,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
@@ -868,6 +906,14 @@
       "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
       "cells": 1,
       "preview_triangles": 252,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P26",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "cells": 1,
+      "preview_triangles": 321,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     }
   ],
@@ -1620,19 +1666,19 @@
     },
     {
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
-      "dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+      "dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
       "audit": {
         "paths": {
-          "tile_count": 5,
-          "encoded_routes_checked": 16,
+          "tile_count": 4,
+          "encoded_routes_checked": 14,
           "external_ports_checked": 6,
           "permitted_movements_checked": 4,
           "unique_complete_journeys_checked": 4,
           "literal_port_tangents_checked": 6,
           "journey_quality": {
             "Win>Eout": {
-              "length_m": 80.0,
-              "direct_distance_m": 80.0,
+              "length_m": 64.0,
+              "direct_distance_m": 64.0,
               "length_ratio": 1.0,
               "total_turn_degrees": 0.0,
               "minimum_sampled_radius_m": null,
@@ -1651,8 +1697,8 @@
               }
             },
             "Ein>Wout": {
-              "length_m": 80.0,
-              "direct_distance_m": 80.0,
+              "length_m": 64.0,
+              "direct_distance_m": 64.0,
               "length_ratio": 1.0,
               "total_turn_degrees": 0.0,
               "minimum_sampled_radius_m": null,
@@ -1671,38 +1717,38 @@
               }
             },
             "Nin>Wout": {
-              "length_m": 63.08652733666486,
-              "direct_distance_m": 62.68632365511126,
-              "length_ratio": 1.0063842263865312,
-              "total_turn_degrees": 21.024133291248795,
-              "minimum_sampled_radius_m": 65.76698992844622,
-              "maximum_sample_turn_degrees": 1.7175140579649109,
+              "length_m": 47.08652733666499,
+              "direct_distance_m": 46.78485401701453,
+              "length_ratio": 1.0064480979152088,
+              "total_turn_degrees": 21.028711445789476,
+              "minimum_sampled_radius_m": 65.68040939653629,
+              "maximum_sample_turn_degrees": 1.7114775604833132,
               "maximum_raw_encoded_turn_degrees": 0.38575697438252654,
               "minimum_resolved_raw_radius_m": 41.8025697688068,
-              "maximum_endpoint_curvature_per_m": 0.01520519642282533,
-              "maximum_curvature_change_per_m2": 0.0009437024426951491,
+              "maximum_endpoint_curvature_per_m": 0.015225240055411954,
+              "maximum_curvature_change_per_m2": 0.0010509823887540997,
               "maximum_grade_change_per_m": 0.0,
-              "quality_sample_spacing_m": 1.9714539792707768,
-              "signed_turn_degrees": -21.02413329124879,
+              "quality_sample_spacing_m": 1.961938639027708,
+              "signed_turn_degrees": -21.028711445789483,
               "maximum_raw_grade_change_per_m": 0.0,
               "native_endpoint_curvature_per_m": {
-                "Wout": 0.0
+                "Wout": 0.000248898284082033
               }
             },
             "Sin>Eout": {
               "length_m": 47.08652733666502,
               "direct_distance_m": 46.78485401701453,
               "length_ratio": 1.0064480979152095,
-              "total_turn_degrees": 21.0287114457895,
-              "minimum_sampled_radius_m": 65.68040939653555,
-              "maximum_sample_turn_degrees": 1.7114775604833388,
+              "total_turn_degrees": 21.02871144578948,
+              "minimum_sampled_radius_m": 65.68040939653682,
+              "maximum_sample_turn_degrees": 1.7114775604833006,
               "maximum_raw_encoded_turn_degrees": 0.38575697438350964,
               "minimum_resolved_raw_radius_m": 41.802569768698326,
-              "maximum_endpoint_curvature_per_m": 0.015225240055412126,
+              "maximum_endpoint_curvature_per_m": 0.01522524005541183,
               "maximum_curvature_change_per_m2": 0.0010509823887540942,
               "maximum_grade_change_per_m": 0.0,
               "quality_sample_spacing_m": 1.9619386390277092,
-              "signed_turn_degrees": -21.028711445789504,
+              "signed_turn_degrees": -21.02871144578948,
               "maximum_raw_grade_change_per_m": 0.0,
               "native_endpoint_curvature_per_m": {
                 "Eout": 0.000248898284082034
@@ -1715,14 +1761,14 @@
           "grade_separated_crossings_checked": 0,
           "grade_separated_projected_contacts_checked": 0,
           "grade_separated_crossings": [],
-          "same_direction_shared_tail_contacts_checked": 32,
+          "same_direction_shared_tail_contacts_checked": 30,
           "independent_at_grade_conflicts_checked": 0
         },
         "models": {
           "authored_clearance_height_m": 5.0,
           "authored_clearance_width_m": 5.0,
           "bed_union_width_m": 5.0,
-          "complete_native_join_sections_checked": 3,
+          "complete_native_join_sections_checked": 6,
           "coplanar_overlap_meshing_tolerance_m": 0.0001,
           "corridor_clipped_to_literal_ownership": true,
           "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
@@ -1733,7 +1779,7 @@
               "label": "Nin",
               "maximum_depth_m": 2.7240813077567143,
               "source_cell": [
-                3,
+                2,
                 0
               ]
             },
@@ -1743,7 +1789,7 @@
               "label": "Sin",
               "maximum_depth_m": 2.7240813077567143,
               "source_cell": [
-                2,
+                1,
                 0
               ]
             }
@@ -1754,26 +1800,26 @@
           ],
           "custom_port_caps_clipped_to_literal_owned_cells": true,
           "external_custom_collar_requires_unclipped_actual_assembly_check": true,
-          "full_width_bed_union_segments_checked": 240,
+          "full_width_bed_union_segments_checked": 238,
           "global_support_spacing_checked": true,
           "height_aware_bed_union_checked": true,
-          "maximum_coplanar_bed_overlap_area_m2": 4.4229786055893783e-07,
-          "maximum_coplanar_bed_overlap_thickness_m": 4.7410215131549194e-07,
-          "maximum_uncovered_bed_area_m2": 1.4606180968712579e-05,
+          "maximum_coplanar_bed_overlap_area_m2": 4.4229785167715363e-07,
+          "maximum_coplanar_bed_overlap_thickness_m": 4.741021584209193e-07,
+          "maximum_uncovered_bed_area_m2": 1.4606180997134288e-05,
           "minimum_support_centre_distance_m": 16.0,
           "model_polygons_cut_at_custom_caps": 773,
-          "models_checked": 26,
+          "models_checked": 21,
           "native_join_profile_tolerance_m": 5e-05,
           "native_join_widths_m": [
             15.0
           ],
           "native_material_preserved": true,
-          "owner_clipped_corridor_fragments_checked": 252,
-          "path_nodes_covered_by_visible_bed": 256,
-          "positive_area_coplanar_bed_pairs": 4401,
+          "owner_clipped_corridor_fragments_checked": 250,
+          "path_nodes_covered_by_visible_bed": 252,
+          "positive_area_coplanar_bed_pairs": 4399,
           "preview_matches_tiles": true,
           "rail_crossing_ribbon_nodes": 4,
-          "render_budget_models_checked": 26,
+          "render_budget_models_checked": 21,
           "render_group_budget_checked": true,
           "sloped_support_heads_checked": 0,
           "support_centres_sc4path_xy": [
@@ -1792,23 +1838,19 @@
             [
               48.0,
               -0.0
-            ],
-            [
-              64.0,
-              -0.0
             ]
           ],
-          "support_columns_checked": 5,
-          "support_contact_points_checked": 45,
+          "support_columns_checked": 4,
+          "support_contact_points_checked": 36,
           "support_foundations_within_reserved_cells": true,
           "support_tops_touch_deck": true,
           "texture_ids": [
             200728731
           ],
-          "train_clearance_segments_checked": 240,
+          "train_clearance_segments_checked": 238,
           "unused_visible_rails_outside_declared_custom_caps": false,
-          "visible_native_rail_centre_segments_matched_to_paths": 3014,
-          "visible_native_rail_triangles_matched_to_paths": 10059
+          "visible_native_rail_centre_segments_matched_to_paths": 2988,
+          "visible_native_rail_triangles_matched_to_paths": 10018
         }
       }
     },

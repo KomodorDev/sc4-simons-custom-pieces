@@ -6,6 +6,7 @@ whole-assembly audits remain separate geometry checks.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 import hashlib
 import json
 import math
@@ -18,9 +19,49 @@ from scp_hsr.hsr_partition_components import (
     RECIPES, build_models, model_inputs, partition_info, partition_layout,
 )
 from scp_hsr.hsr_partition_components_verify import CONTRACTS, MODULE_TILE_FINGERPRINTS
+from scp_hsr.hsr_components_verify import CONTRACTS as COMPONENT_CONTRACTS, _contract, check_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+
+
+class LiteralComponentSupportMetadataTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        domain = ROOT/'domains/high-speed-rail'
+        assembly = json.loads((domain/'01_assemblies/straight-stem-trumpet/assembly.json').read_text())
+        cls.sources = {}
+        for identifier in {row['piece_id'] for row in assembly['placements']}:
+            directory = domain/'00_pieces'/identifier
+            if (directory/'geometry.json').is_file():
+                cls.sources[identifier] = (
+                    json.loads((directory/'piece.json').read_text()),
+                    json.loads((directory/'geometry.json').read_text())['metadata'])
+
+    def test_all_eight_literal_trumpet_definitions_match_geometry_and_independent_supports(self):
+        self.assertEqual(len(self.sources), 8)
+        for identifier, (piece, geometry) in self.sources.items():
+            with self.subTest(piece=identifier):
+                self.assertEqual(piece['component']['support_centers'], geometry['support_centers'])
+                contract = _contract(piece)
+                self.assertIs(contract, COMPONENT_CONTRACTS[piece['recipe']])
+
+    def test_changed_support_coordinates_are_rejected_for_every_literal_type(self):
+        for identifier, (piece, _) in self.sources.items():
+            with self.subTest(piece=identifier):
+                changed = deepcopy(piece)
+                changed['component']['support_centers'][0][0] += 1.
+                with self.assertRaisesRegex(ValueError, 'declared supports differ'):
+                    check_paths({}, changed)
+
+    def test_obsolete_seven_support_fan_declaration_is_rejected(self):
+        piece, _ = self.sources['hsr-component-l2-paired-fan-compact-join']
+        changed = deepcopy(piece)
+        changed['component']['support_centers'] = [
+            [48., 0.], [48., -16.], [48., -32.], [40., -46.],
+            [56., -46.], [32., -64.], [64., -64.]]
+        with self.assertRaisesRegex(ValueError, 'declared supports differ'):
+            check_paths({}, changed)
 
 
 class ReusableModuleSourceTests(unittest.TestCase):

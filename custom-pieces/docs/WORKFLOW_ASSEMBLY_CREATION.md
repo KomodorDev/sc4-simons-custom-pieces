@@ -166,6 +166,167 @@ Register the assembly and keep its player overview in `domains/<domain>/01_assem
 
 The [current trumpet README](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) demonstrates the current four-section overview: **1. Views**, **2. Pieces**, **3. Placements**, and **4. Connection matrix**. Its top navigation labels the Testing link as a separate document. It includes the six-image set, component thumbnails, exact placements, and directed connection statuses. Its [TESTING page](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md) owns the layout-specific measurements, current resource contract, technical limitations, and scoped checks. Reuse that structure without copying its particular dimensions or rail assumptions into unrelated assemblies.
 
+## Start a small HSR assembly from existing pieces
+
+Use this bounded example to learn the registration and first-documentation sequence before attempting a junction. It creates a **two-tile training layout**, using two copies of the existing `hsr-component-lower-paired-straight` type at 15.5 m. Its expected footprint is one tile east–west and two tiles north–south. It introduces no new reusable type, puzzle identifier, or model-resource allocation. Both placements share one component-cycle entry; a multi-type assembly adds its distinct types in first-use order. This example does not establish physical fit, native construction, game traffic, or a complete interchange.
+
+Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) alongside these steps. Run commands from the repository root after the [Python installation and editable project installation](WORKFLOW_PIECE_CREATION.md#1-open-the-project-and-inspect-the-existing-pieces). If several checkouts exist, run the editable installation for the checkout you are actually editing. Prepare the supported native inputs through [Build and install](BUILD_AND_INSTALL.md#build-a-selected-collection) before any build or actual-model render. Replace `/path/to/SimCity 4/Plugins` below with the existing Plugins directory containing the required native inputs; it is read for resources and collision checks.
+
+### 1. Copy the unregistered placement template
+
+The [starter JSON](templates/assembly-two-hsr-straights.json) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. The following commands deliberately create a new assembly folder and copy the plan into it. Stop if `two-tile-hsr-starter` already exists; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
+
+```sh
+mkdir custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter
+cp -n custom-pieces/docs/templates/assembly-two-hsr-straights.json custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.json
+```
+
+Open the copied `assembly.json`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
+
+The template's external-port positions are authored expectations from that exact type: south at northing −8 m and north at northing 24 m, with opposing track centres at easting ±2 m and height 15.5 m. Its count fields describe the intended placement plan. Leave `geometry_status` explicitly unverified until real checks justify a more specific statement. Do not paste the trumpet's dimensions, source hashes, or observations into this new subject.
+
+### 2. Register the plan in the owning domain
+
+Run the following command to append the new relative path to `custom-pieces/domains/high-speed-rail/domain.json`. It checks that the plan exists and refuses duplicate registration; it preserves the existing piece and assembly entries.
+
+```sh
+python3 - <<'PY'
+import json
+from pathlib import Path
+domain = Path('custom-pieces/domains/high-speed-rail')
+relative = '01_assemblies/two-tile-hsr-starter/assembly.json'
+if not (domain / relative).is_file():
+    raise SystemExit('Create the assembly.json plan first.')
+path = domain / 'domain.json'
+registry = json.loads(path.read_text())
+assemblies = registry.setdefault('assemblies', [])
+if relative in assemblies:
+    raise SystemExit('This assembly is already registered; inspect it instead of adding a duplicate.')
+assemblies.append(relative)
+path.write_text(json.dumps(registry, indent=2) + '\n')
+print('Registered ' + relative)
+PY
+```
+
+The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry entry is relative to the domain directory; it must have the form `01_assemblies/<assembly-id>/assembly.json`. Do not run the piece scaffold for this assembly: its member type already owns the piece's game-resource identities.
+
+### 3. Add its separate menu layout
+
+`menu-layout.json` connects the registered assembly to its single button. Its layout key is the name passed to `assembly-menu --layout`; it is separate from the permanent assembly ID. The command below uses `two-tile-hsr-starter` for both to keep the example clear. It reserves a new **local presentation ID**, meaning the identifier for this assembly's button resources, rather than reusing the trumpet's or a member piece's button ID.
+
+Run this command once. It chooses an unused candidate in a small local menu-prefix range after checking current piece-menu reservations and every registered domain's existing layout entries, then writes the complete accepted layout object. This is a local development choice, rather than a public reservation. The later `assembly-menu` operation must still check that candidate against the actual installed Plugins resources. If that check reports a collision, replace only the new button's `id` with another locally unused candidate and repeat the final checks; preserve existing identities.
+
+```sh
+python3 - <<'PY'
+import json
+from pathlib import Path
+from scp.catalog import load_catalog
+root = Path('custom-pieces').resolve()
+catalog = load_catalog(root)
+path = root / 'domains/high-speed-rail/menu-layout.json'
+menu = json.loads(path.read_text())
+key = 'two-tile-hsr-starter'
+if key in menu['layouts']:
+    raise SystemExit('This menu layout already exists; inspect it instead of replacing it.')
+used = {int(piece['menu']['id'], 16) for piece in catalog['pieces']}
+for domain in catalog['domains'].values():
+    layouts_path = root / domain['path'] / 'menu-layout.json'
+    if not layouts_path.is_file():
+        continue
+    for layout in json.loads(layouts_path.read_text()).get('layouts', {}).values():
+        for field in ('cycle_button', 'submenu'):
+            if field in layout:
+                used.add(int(layout[field]['id'], 16))
+candidate = next((value for value in range(0x6A47FE00, 0x6A47FF00) if value not in used), None)
+if candidate is None:
+    raise SystemExit('The example range is full; obtain another reviewed local presentation range.')
+menu['layouts'][key] = {
+    'assembly_id': key,
+    'member_order': 'first-use-in-assembly',
+    'cycle_button': {
+        'id': f'{candidate:08x}',
+        'order': f'7010{candidate & 0xffff:04x}',
+        'title': 'SCP | ASSEMBLY | Two-tile HSR starter',
+        'description': 'Select the reusable HSR straight. Tab and Shift+Tab select component types; each click places one copy. Rebuild the two placements from the assembly guide.'
+    }
+}
+path.write_text(json.dumps(menu, indent=2) + '\n')
+print('Locally reserved assembly presentation: ' + f'{candidate:08x}')
+PY
+```
+
+Open the changed `menu-layout.json` and inspect the new entry. `member_order` must be exactly `first-use-in-assembly`. The button must contain exactly `id`, `order`, `title`, and `description`; both numeric strings have eight hexadecimal digits. **Hexadecimal** is base-16 notation, using 0–9 and a–f. `order` places the button in the Rail menu's accepted `70000000`–`7fffffff` range. Keep the full readable title and component-placement explanation; the icon cannot replace those instructions.
+
+### 4. Declare the HSR icon identity and generate artwork
+
+The current HSR icon adapter requires an explicit network declaration for every assembly ID. Open `custom-pieces/domains/high-speed-rail/implementation/scp_hsr/icons.py`, find `assembly_icon_network`, and add `'two-tile-hsr-starter': 'HSR'` to its existing `networks` dictionary, retaining all existing entries. For the current registry, that dictionary becomes:
+
+```python
+networks = {
+    'straight-stem-trumpet': 'HSR',
+    'two-tile-hsr-starter': 'HSR',
+}
+```
+
+This is a deliberate domain-adapter edit: the current API receives an assembly ID and does not read an arbitrary network field from `assembly.json`. It selects the truthful network code for the button; it changes no track geometry or piece identities. The HSR route artwork helper currently supports its authored component recipes, including this straight. Another family or network needs its owning adapter implemented and checked before this artwork/menu path applies.
+
+Generate the canonical assembly icon from the source placements:
+
+```sh
+python3 -B custom-pieces/scp.py assembly-icons --domain high-speed-rail
+```
+
+This command refreshes all registered HSR assembly icons and their `evidence/icon.json` reports, including the new one; inspect that scope before running it. Inspect the actual 44 × 44 pixels in each of the four button states. Keep the route drawing legible, the small SCP brand in the top-left corner, and the ASM HSR label near the bottom with its required clearance. An icon is a source-derived illustration, rather than compiled-model or game evidence.
+
+### 5. Build the member and populate the first document pair
+
+Choose a fresh output directory; replace `review-01` consistently if it already exists. This assembly uses only one distinct member type, so one `--include` supplies both copies:
+
+```sh
+python3 custom-pieces/scp.py build --include hsr-component-lower-paired-straight --output custom-pieces/dist/two-tile-hsr-parts-review-01
+python3 custom-pieces/scp.py verify --output custom-pieces/dist/two-tile-hsr-parts-review-01
+python3 -m scp_hsr.hsr_connections --root custom-pieces --build custom-pieces/dist/two-tile-hsr-parts-review-01
+```
+
+The last command intentionally omits `--piece`. The build-wide HSR extractor measures supported members in that verified build, preserves uncaptured measured records, composes affected registered assembly graphs, and refreshes shared connection/inventory views. Because this straight also belongs to the trumpet, inspect changes to that existing assembly and shared views too. The command preserves human observations and applies dependency staleness; it does not approve them. Exact-piece extraction deliberately defers assemblies, so it cannot perform this first assembly population.
+
+Open the new assembly's generated `README.md` and `TESTING.md`, plus `connections.json`, `checks/manual-tests.json`, and `checks/observation.example.json`. The initial README has the four required chapters and the separate Testing navigation; TESTING has six chapters. The generated matrix describes encoded routes at the saved poses. Matching PATH endpoints do not establish complete physical boundaries, support clearance, native construction, or game operation. Ordinary `python3 -m scp.content refresh --root custom-pieces` refreshes views from existing records; it skips a new assembly without connection/manual records and is not a substitute for this initial extraction.
+
+### 6. Complete the views, authored instructions, and checks
+
+Stage the actual-model review pictures from that verified build:
+
+```sh
+python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.json --build custom-pieces/dist/two-tile-hsr-parts-review-01 --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/two-tile-hsr-review --prefix reviewed-two-tile
+```
+
+Follow the shared [six-image review and promotion handoff](WORKFLOW_DOCUMENTATION_GENERATION.md#current-renderer-support-and-canonical-top-views). The renderer stages images and their real report under `local/`; it does not install canonical source images automatically. Inspect the pictures, retain their actual source and output fingerprints, and deliberately integrate the accepted images under the assembly's `previews/` and the render report under `evidence/`. Complete README chapters 1–3 with links, the one-type/two-placement quantities, P01/P02 positions, 0° rotations, 15.5 m connections, and the Tab/component instructions. Complete TESTING with real preparation, the checks actually performed, the remaining physical/game limitations, and design history. Add a link to this assembly from the owning domain's human README. Keep authored text outside generated blocks, and record no game pass without a matching human observation.
+
+After the final images and text are present, run:
+
+```sh
+python3 custom-pieces/scp.py observations refresh-images --assembly two-tile-hsr-starter
+python3 -m scp.content refresh --root custom-pieces
+python3 custom-pieces/scp.py inventory
+python3 -B custom-pieces/scp.py docs-check --assembly two-tile-hsr-starter
+python3 -B tools/run_tests.py
+```
+
+`docs-check` validates the current pair, required files, and local links without creating missing outputs or changing observations. An initial scaffold can satisfy the chapter structure while still containing pending instructions; complete and review those instructions before calling it a documented experimental candidate. The software suite does not prove the new assembly's physical joins or game behaviour; add and execute the independent checks required by the actual claims, and report skips. If the whole catalogue/shared guides need checking, run `python3 -B custom-pieces/scp.py docs-check` without selectors.
+
+### 7. Prepare a fresh final assembly-menu candidate
+
+Finish source documentation, icon artwork, measurements, and applicable checks first. Then build a fresh ordinary source selection, prepare this layout's single button, verify the candidate, and package it without `--refresh-docs`:
+
+```sh
+python3 custom-pieces/scp.py build --include hsr-component-lower-paired-straight --output custom-pieces/dist/two-tile-hsr-parts-final-01
+python3 custom-pieces/scp.py assembly-menu --domain high-speed-rail --layout two-tile-hsr-starter --source custom-pieces/dist/two-tile-hsr-parts-final-01 --output custom-pieces/dist/two-tile-hsr-menu-final-01 --plugins '/path/to/SimCity 4/Plugins'
+python3 custom-pieces/scp.py verify --output custom-pieces/dist/two-tile-hsr-menu-final-01
+python3 custom-pieces/scp.py package --output custom-pieces/dist/two-tile-hsr-menu-final-01 --destination custom-pieces/dist/two-tile-hsr-menu-final-01.zip
+```
+
+Use unused output names, and preserve previous candidates. Include other wanted SCP types in the same fresh ordinary source selection before preparing a candidate intended to replace an existing installation. The menu builder checks the new presentation ID against installed resources, verifies the canonical icon and member definitions, and freezes the source proof. This one-type training example has one cycle entry and still requires two placements. Its archived pending menu checks are not observations. Follow the [separate install and game-testing procedures](BUILD_AND_INSTALL.md#install-remove-or-roll-back-a-test-build) only when installation and testing are intended; producing this ZIP installs and publishes nothing.
+
 ## Clear piece ownership and reusable types
 
 A placement label (P05, P06, P04E) identifies one copy in the assembly; it does not create a new menu piece type. Reuse one existing straight type at every compatible placement, applying proper rotations. Do not create east/west or numbered variants merely to preserve different triangle ordering, texture repeat counts, or endpoint tessellation. Preserve model and route geometry, direction, height, native connection profiles, pillar positions, and shadow silhouettes; verify any permitted resource substitution explicitly and narrowly. Keep exact resource checks on unaffected curves, junctions, and ramps. Include a type-to-placement/quantity table so repeated copies are obvious to players. For an exact-position design, do not replace tiny curve tails or shared branch-deck wings merely because they look straight in the overview.
@@ -187,6 +348,29 @@ A saved comparison must identify its exact input files and distinguish equivalen
 ## Atomize to the smallest useful reusable module
 
 A useful module has an independently placeable function, valid construction addresses, meaningful ports, and practical uses beyond one pictured location. It need not be one tile. Inspect every apparently straight tile's actual PATH samples and full deck before extracting it. Shared branches, widened wings, small curve tails, slope easing, and support ownership can require a larger coordinated module. Reuse an existing standard type when compatible; do not create cardinal/P-label variants of an ordinary straight. Under an exact-layout requirement do not snap a tiny curve to make an extraction fit. Explain the measured limitation, preserve the geometry, and split only proven useful blocks.
+
+### Required line drawing for user-requested atomization
+
+**Atomization** means dividing a larger piece or assembly into smaller, useful, reusable pieces. Whenever a user asks to atomize, split further, or check whether an existing design can be divided, produce and show a coordinate-labelled line drawing with the recommendation. This applies to individual pieces, complete assemblies, analysis-only requests, and reviews concluding that no further useful split is possible. Produce the drawing early enough to explain the proposed work; this requirement does not add another approval step when the user has already authorized that work.
+
+The drawing must let a reader see which track sections are straight, which bend, where a cut is proposed, and why each reviewed cut is feasible, conditional, blocked, or unverified. A textured model preview and a prose recommendation do not supply this line drawing. Use these steps:
+
+1. **Identify the input and coordinate frame.** Name the piece or assembly, identify the reviewed source version or input fingerprints, state the orientation, and show a north arrow, tile boundaries, X/Y labels, and tile scale. A standalone review uses the piece's local grid; an assembly review uses its fixed global grid and placement labels. Show the original reviewed extent before any extraction, and keep its coordinates consistent across alternatives. Label the drawing as a proposal, implemented result, or historical review, as applicable.
+2. **Draw the actual routes as lines.** Use saved PATH coordinates when available; explicitly label source-only analysis when saved resources have not been checked. Include every participating route, travel direction, and relevant level or height change. Keep the top view's horizontal and vertical scales equal. Clearly distinguish straight stretches from curved stretches, with an in-picture legend and readable labels or line styles as well as colour. Branch identity alone does not distinguish curvature: a branch can contain a straight stretch, and a straight-looking top view can conceal a necessary slope transition.
+3. **Mark the proposed boundaries and outcomes.** Draw candidate cut lines, show the resulting module extents, and put the decision and short reason beside each cut. Where a standard piece can be reused, name its exact type and rotation. Distinguish the recommended arrangement from optional alternatives, and account for retained interior and structural cells. For a large review, use several readable panels on the same coordinate frame rather than covering the tracks with labels.
+4. **Show physical obstacles as well as route geometry.** Mark a necessary deck wing, wall, support, shared tile, or slope transition at the affected cut. Add a footprint outline or a small cross-section/detail panel when route lines cannot show the obstacle. Straight traffic paths alone cannot establish that an ordinary straight replaces the complete physical piece. If the visible model has not been checked, mark that cut unverified.
+5. **Make small differences explicit.** Print the measured deviation and applicable limit beside an almost-straight candidate. Show any required adjoining correction separately from the candidate's eligibility measurement. Use a labelled close-up when millimetre differences disappear at overview scale; state its scale and any exaggeration. Never straighten the plotted route, hide a physical obstacle, or imply that a tolerance authorizes an otherwise forbidden redesign.
+
+Use the following decision legend, or equally explicit wording, inside the drawing. Do not rely on colour alone, and keep decision status separate from whether a change has been implemented:
+
+| Decision | Meaning for the reader |
+| --- | --- |
+| **Reusable as is** | The proposed split preserves the current requirements, and the exact replacement and necessary route, physical, and construction checks are established. |
+| **Requires bounded redesign** | The split needs a stated local change. Show what changes, its measured or proposed bound, and whether the current user authorization covers it. This is not an unchanged extraction. |
+| **Retain** | The candidate cannot be separated under the current requirements. Show the specific measured or structural obstacle. |
+| **Unverified** | Required inputs or checks are missing. State what must be measured before deciding; an attractive line fit is insufficient. |
+
+Show the diagram directly in the user review, and persist it with the owning piece or assembly under the shared [atomization review artwork rule](WORKFLOW_DOCUMENTATION_GENERATION.md#atomization-review-artwork). Link the measured decisions and evidence from that subject's existing TESTING document, using chapter 3 for the current analysis and chapter 6 for historical proposals. If the user authorizes an implementation, update or supplement the drawing to identify the final split and its checked inputs. Preserve any retained earlier proposal with its original coordinates and clearly historical scope. A drawing records an explanation; actual saved-resource verification and human game observations retain their separate authority.
 
 ## Persist atomization decisions and coordinate parallel work
 
@@ -212,4 +396,4 @@ Each subject's `checks/manual-tests.json` is its sole observation record, includ
 
 ## Compact documentation ownership
 
-Follow [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md#readme-layouts-and-generated-sections) for the one-README piece layout, assembly README/TESTING layout, generated-block ownership, inventories, and preservation checks. Keep source-specific design decisions and measurements with the owning subject; shared presentation and regeneration rules stay in that workflow.
+Follow [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md#readme-layouts-and-generated-sections) for the split piece and assembly README/TESTING layouts, generated-block ownership, inventories, and preservation checks. Intentionally retained legacy piece guides remain combined until explicitly refreshed. Keep source-specific design decisions and measurements with the owning subject; shared presentation and regeneration rules stay in that workflow.

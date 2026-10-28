@@ -10,7 +10,7 @@ import unittest
 sys.path.insert(0, str(next(path for path in Path(__file__).resolve().parents
                           if (path/'project.json').is_file())/'framework'))
 from scp.content import (ASSEMBLY_TESTING_CHAPTERS, ASSEMBLY_TESTING_LAYOUT_MARKER,
-                         _ensure_testing_document, fingerprint,
+                         _ensure_testing_document, assembly_document_scaffold, fingerprint,
                          new_manual_record, record_observation_file, record_user_result,
                          render_connections, render_manual_checklist, write_subject_content)
 
@@ -78,14 +78,14 @@ class AssemblyTestingLayoutTests(unittest.TestCase):
             self.assertIn('TESTING.md#test-checklist', (directory/'README.md').read_text())
             self.assertNotIn('<!-- BEGIN CONNECTIONS -->', (directory/'README.md').read_text())
 
-    def test_refresh_and_confirmed_observation_preserve_authored_chapters_and_case_ids_in_both_modes(self):
-        for matrix in (False, True):
-            with self.subTest(matrix=matrix), TemporaryDirectory() as temporary:
+    def test_refresh_and_confirmed_observation_preserve_current_chapters_and_exact_case_ids(self):
+        for extra_prose in (False, True):
+            with self.subTest(extra_prose=extra_prose), TemporaryDirectory() as temporary:
                 directory = Path(temporary)
-                authored_readme = '# Fixture assembly\n\nKeep this exact player introduction.\n'
-                if matrix:
-                    authored_readme += ('\n<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->\nPending.\n'
-                                        '<!-- END ASSEMBLY CONNECTION MATRIX -->\n')
+                authored_readme = assembly_document_scaffold(self.subject)['README.md']
+                if extra_prose:
+                    authored_readme = authored_readme.replace('## 1. Views',
+                        'Keep this exact player introduction.\n\n## 1. Views')
                 (directory/'README.md').write_text(authored_readme)
                 testing = _ensure_testing_document(directory, self.subject)
                 text = testing.read_text().replace('## 2. Test setup',

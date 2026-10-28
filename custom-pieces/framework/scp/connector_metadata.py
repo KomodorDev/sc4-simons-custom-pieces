@@ -606,6 +606,10 @@ def build_exports(custom_root, piece_ids, build, domain_id="high-speed-rail"):
 def write_exports(custom_root, exports, domain_id="high-speed-rail"):
     """Publish only complete validated results; authored JSONC is never rewritten."""
     root = Path(custom_root).resolve()
+    from .document_validation import validate_subject_documents
+    for piece_id in exports:
+        directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}")
+        validate_subject_documents(directory, {'id': piece_id, 'kind': 'piece'})
     paths = {}
     for piece_id, value in exports.items():
         path = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}/connector-data.json")
@@ -707,6 +711,11 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
 def refresh_connections(custom_root, piece_ids, build, *, domain_id="high-speed-rail", plugins=None, render=True):
     """Re-extract and validate before publishing generated data and documentation."""
     exports = build_exports(custom_root, piece_ids, build, domain_id)
+    from .document_validation import validate_subject_documents
+    root = Path(custom_root).resolve()
+    for identifier in exports:
+        directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{identifier}")
+        validate_subject_documents(directory, {'id': identifier, 'kind': 'piece'})
     figures = None
     if render:
         from .connector_overview import render_overviews

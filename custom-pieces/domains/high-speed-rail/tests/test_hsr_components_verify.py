@@ -360,7 +360,8 @@ class NativeComponentModelTests(unittest.TestCase):
                 if recipe in compact_fan_contracts or recipe in atomic_contracts:
                     self.assertFalse(report['unused_visible_rails_outside_declared_custom_caps'])
                     if recipe in atomic_contracts:
-                        self.assertEqual(report['complete_native_join_sections_checked'], 3)
+                        expected = 6 if recipe == 'hsr_component_l2_short_opposed_merge_core' else 3
+                        self.assertEqual(report['complete_native_join_sections_checked'], expected)
                 else:
                     self.assertFalse(report['unused_visible_native_rails'])
                 if contract['kind'] == 'paired_to_single_adapter':

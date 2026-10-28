@@ -157,7 +157,7 @@ class CompactFanSourceTests(unittest.TestCase):
         self.assertLess(math.dist(fan_east_world, (176.-sx, -sy, sh)), 1e-9)
         fan_west_world = tuple(v + d for v, d in zip(actual['Wout'], (64., 80., 0.)))
         self.assertLess(math.dist(fan_west_world,
-                                 tuple(v+d for v, d in zip(merge['ports']['N']['in'], (32., 0., 0.)))), 1e-9)
+                                 tuple(v+d for v, d in zip(merge['ports']['N']['in'], (48., 0., 0.)))), 1e-9)
         tangent = diverge['port_vectors']['Sout']
         self.assertEqual(info['port_vectors']['Ein'], tuple(-v for v in tangent))
         self.assertEqual(info['port_vectors']['Wout'], (-tangent[0], tangent[1]))
@@ -166,6 +166,15 @@ class CompactFanSourceTests(unittest.TestCase):
         copies = [row for row in scene['placements'] if row['piece_id'] == DIVERGE.replace('_', '-')]
         self.assertEqual([(row['origin_m'], row['rotation_degrees_ccw']) for row in copies],
                          [([-96., 0.], 0), ([176., 0.], 180)])
+        # P26 owns the extracted western approach, so P07's local origin
+        # moves east by one tile while this fan connection stays fixed.
+        by_label = {row['label']: row for row in scene['placements']}
+        self.assertEqual((by_label['P07']['piece_id'], by_label['P07']['origin_m'],
+                          by_label['P07']['rotation_degrees_ccw']),
+                         (MERGE.replace('_', '-'), [48., 0.], 0))
+        self.assertEqual((by_label['P26']['piece_id'], by_label['P26']['origin_m'],
+                          by_label['P26']['rotation_degrees_ccw']),
+                         ('hsr-component-lower-paired-straight', [32., 0.], 270))
         self.assertFalse(any(row['piece_id'] == 'hsr-component-l2-compact-fan-diverge'
                              for row in scene['placements']))
 

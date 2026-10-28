@@ -120,11 +120,11 @@ Follow the design workflow to atomize useful track modules. A combined overpass 
 | Flat symmetric split and return | [hsr-component-lower-zero-turn-split-merge](00_pieces/hsr-component-lower-zero-turn-split-merge/README.md#engineering-contract) |
 | Symmetric graded Y | [hsr-component-symmetric-graded-y](00_pieces/hsr-component-symmetric-graded-y/README.md#engineering-contract) |
 | Standard lower one-way quarter-turn | [hsr-component-lower-oneway-curve90-right](00_pieces/hsr-component-lower-oneway-curve90-right/README.md#engineering-contract) |
-| Tight paired corner, L4 to custom | [hsr-component-tight-paired-curve90-l4-to-mid](00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/README.md#engineering-contract) |
-| Tight paired corner, custom to L2 | [hsr-component-tight-paired-curve90-mid-to-l2](00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/README.md#engineering-contract) |
-| Upper paired straight | [hsr-component-upper-paired-straight](00_pieces/hsr-component-upper-paired-straight/README.md#engineering-contract) |
+| Tight paired corner, L4 to custom | [hsr-component-tight-paired-curve90-l4-to-mid](00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/TESTING.md#3-software-checks) |
+| Tight paired corner, custom to L2 | [hsr-component-tight-paired-curve90-mid-to-l2](00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/TESTING.md#3-software-checks) |
+| Upper paired straight | [hsr-component-upper-paired-straight](00_pieces/hsr-component-upper-paired-straight/TESTING.md#3-software-checks) |
 | Paired L2/L4 ramp | [hsr-component-paired-ramp-l2-to-l4](00_pieces/hsr-component-paired-ramp-l2-to-l4/README.md#engineering-contract) |
-| One-tile paired crossing | [hsr-component-modular-crossing-core](00_pieces/hsr-component-modular-crossing-core/README.md#engineering-contract) |
+| One-tile paired crossing | [hsr-component-modular-crossing-core](00_pieces/hsr-component-modular-crossing-core/TESTING.md#3-software-checks) |
 | Full paired-to-single adapter | [hsr-component-upper-paired-to-single-adapter](00_pieces/hsr-component-upper-paired-to-single-adapter/README.md#engineering-contract) |
 
 The two standard upper paired turns and four single curved height ramps retain separate [right paired](00_pieces/hsr-component-upper-paired-curve90-right/README.md#engineering-contract), [left paired](00_pieces/hsr-component-upper-paired-curve90-left/README.md#engineering-contract), [right L2→L4](00_pieces/hsr-component-oneway-curve90-right-l2-to-l4/README.md#engineering-contract), [right L4→L2](00_pieces/hsr-component-oneway-curve90-right-l4-to-l2/README.md#engineering-contract), [left L2→L4](00_pieces/hsr-component-oneway-curve90-left-l2-to-l4/README.md#engineering-contract), and [left L4→L2](00_pieces/hsr-component-oneway-curve90-left-l4-to-l2/README.md#engineering-contract) contracts. Full-length and compact variants remain different types, and the wider curves retain their own bounds. Do not move their ports to make another variant fit.

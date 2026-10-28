@@ -29,14 +29,15 @@ def apply_registration(root, additions, ledger, collections, icons=None, *, doma
         record = {'purpose': 'Authoritative build definition and permanent game-resource identity for '+piece['name']+'.', **piece}
         pending[target] = (json.dumps(record, indent=2)+'\n').encode()
         overview = target.parent/'README.md'
+        for name in ('README.md', 'TESTING.md'):
+            document = safe_relative(root, (target.parent/name).relative_to(root).as_posix())
+            require(not document.is_symlink(), 'Registration document cannot be a symbolic link')
         if not overview.exists():
-            pending[overview] = (f'# {piece["name"]}\n\n'
-                'Purpose: explain this newly registered piece while its implementation and evidence are prepared.\n\n'
-                f'{piece["description"]}\n\n'
-                'Definition: [piece.json](piece.json).\n\n'
-                'Preview, connection metadata and manual observations are pending. '
-                'Implement the recipe and its independent verifier before building; '
-                'generate the actual-resource connection pages and checks after verification.\n').encode()
+            from .content import piece_document_scaffold
+            for name, text in piece_document_scaffold(piece).items():
+                document = target.parent/name
+                if not document.exists():
+                    pending[document] = text.encode()
         registry['pieces'].append(target.relative_to(directory).as_posix())
     selections['collections'].update(collections)
     pending[root / current['allocations']] = (json.dumps(ledger, indent=2)+'\n').encode()

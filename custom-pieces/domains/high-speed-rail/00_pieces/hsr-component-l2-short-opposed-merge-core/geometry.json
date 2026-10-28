@@ -25,19 +25,15 @@
       [
         48.0,
         0.0
-      ],
-      [
-        64.0,
-        0.0
       ]
     ],
     "name": "HSR L2 Short Opposed Merge Core",
-    "description": "Flat native L2 mainline with opposed one-way merges; the northern merge shares the retained Short Mainline Diverge Core branch angle, while the southern direct-slip route remains unchanged.",
+    "description": "Four-tile flat native L2 mainline with opposed one-way merges; both mainline ends accept the native paired straight, the northern branch retains the Short Mainline Diverge Core angle, and all retained track paths remain unchanged.",
     "recipe": "hsr_component_l2_short_opposed_merge_core",
     "category": "hsr-components",
     "upper_height": 30.5,
     "footprint": [
-      5,
+      4,
       1
     ],
     "cells": [
@@ -56,15 +52,11 @@
       [
         3,
         0
-      ],
-      [
-        4,
-        0
       ]
     ],
-    "cost": 500,
+    "cost": 400,
     "origin_shift": [
-      -32.0,
+      -48.0,
       0.0
     ],
     "ports": {
@@ -82,26 +74,26 @@
       },
       "E": {
         "out": [
-          72.0,
+          56.0,
           -2.0,
           15.5
         ],
         "in": [
-          72.0,
+          56.0,
           2.0,
           15.5
         ]
       },
       "N": {
         "in": [
-          54.39851855221686,
+          38.39851855221686,
           8.0,
           15.5
         ]
       },
       "S": {
         "in": [
-          25.601481447783137,
+          9.601481447783137,
           -8.0,
           15.5
         ]
@@ -138,25 +130,18 @@
           1,
           0
         ],
-        131074
+        50462722
       ],
       [
         [
           2,
           0
         ],
-        50462722
-      ],
-      [
-        [
-          3,
-          0
-        ],
         131842
       ],
       [
         [
-          4,
+          3,
           0
         ],
         131074
@@ -181,7 +166,7 @@
     "minimum_radius_m": 24.0,
     "at_grade_conflicts": false,
     "orientation_policy": "rotate-only-preserve-direction",
-    "provenance": "Retains the earlier native east-tail correction and exact southern direct-slip routes; the authorized northern-fan redesign reuses the unchanged Short Mainline Diverge Core branch samples by reflection and travel reversal.",
+    "provenance": "Retains the approved opposed-merge track paths in four tiles; the western straight tile is replaced by the existing paired straight, with only the declared native parapet seam normalized by at most 3.4524 mm.",
     "custom_curved_interfaces": true,
     "support_centers": [
       [
@@ -198,10 +183,6 @@
       ],
       [
         48.0,
-        0.0
-      ],
-      [
-        64.0,
         0.0
       ]
     ],
@@ -236,73 +217,6 @@
     [
       [
         0,
-        0
-      ],
-      {
-        "routes": [
-          {
-            "transport": 7,
-            "entry": 0,
-            "exit": 2,
-            "points": [
-              [
-                -8,
-                -2.0,
-                15.5
-              ],
-              [
-                8,
-                -2.0,
-                15.5
-              ]
-            ],
-            "role": "main",
-            "movement": "W>E",
-            "junction": false,
-            "tangent_in": [
-              1.0,
-              0.0
-            ],
-            "tangent_out": [
-              1.0,
-              0.0
-            ]
-          },
-          {
-            "transport": 7,
-            "entry": 2,
-            "exit": 0,
-            "points": [
-              [
-                8,
-                2.0,
-                15.5
-              ],
-              [
-                -8,
-                2.0,
-                15.5
-              ]
-            ],
-            "role": "main",
-            "movement": "E>W",
-            "junction": false,
-            "tangent_in": [
-              -1.0,
-              0.0
-            ],
-            "tangent_out": [
-              -1.0,
-              0.0
-            ]
-          }
-        ],
-        "decks": []
-      }
-    ],
-    [
-      [
-        1,
         0
       ],
       {
@@ -592,7 +506,7 @@
     ],
     [
       [
-        2,
+        1,
         0
       ],
       {
@@ -1080,7 +994,7 @@
     ],
     [
       [
-        3,
+        2,
         0
       ],
       {
@@ -1568,7 +1482,7 @@
     ],
     [
       [
-        4,
+        3,
         0
       ],
       {
@@ -1865,23 +1779,13 @@
           0
         ],
         [
-          1,
-          5
-        ]
-      ],
-      [
-        [
-          1,
-          0
-        ],
-        [
           2,
           5
         ]
       ],
       [
         [
-          2,
+          1,
           0
         ],
         [
@@ -1891,7 +1795,7 @@
       ],
       [
         [
-          3,
+          2,
           0
         ],
         [
@@ -1901,7 +1805,7 @@
       ],
       [
         [
-          4,
+          3,
           0
         ],
         [
@@ -13662,7 +13566,7 @@
           0
         ],
         [
-          1,
+          2,
           5
         ]
       ],
@@ -13672,23 +13576,13 @@
           0
         ],
         [
-          2,
-          5
-        ]
-      ],
-      [
-        [
-          2,
-          0
-        ],
-        [
           3,
           5
         ]
       ],
       [
         [
-          3,
+          2,
           0
         ],
         [
@@ -25558,11 +25452,11 @@
         12
       ]
     ],
-    "purpose": "Literal unchanged sweep context for this current type’s retained tiles. Its remote curve miters and texture phase preserve exact existing models; only the explicitly listed collar tile uses the revised context."
+    "purpose": "Literal unchanged sweep context for this current type\u2019s retained tiles. Its remote curve miters and texture phase preserve exact existing models; only the explicitly listed collar tile uses the revised context."
   },
   "revised_surface_cells": [
     [
-      4,
+      3,
       0
     ]
   ],
@@ -25625,5 +25519,49 @@
       ]
     },
     "preservation": "Both pieces retain their own mainline and southern direct-slip surface decks; the opposing merge retains its original revised-versus-retained compilation contexts."
+  },
+  "west_straight_extraction": {
+    "purpose": "Retain the original four eastern cells and exact route fragments after replacing the western cell with the existing paired straight. The new west parapet collar is the only retained-surface correction.",
+    "removed_original_cell": [
+      0,
+      0
+    ],
+    "retained_original_cells": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "assembly_reference_shift_east_m": 16.0,
+    "route_fragments_changed": false,
+    "native_west_parapet_collar": {
+      "cell": [
+        0,
+        0
+      ],
+      "baseline_cell_model_sha256": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+      "west_boundary_east_m": -8.0,
+      "blend_end_east_m": -5.5,
+      "lower_north_m": 5.0,
+      "inner_north_before_m": 6.0,
+      "native_inner_north_m": 5.996547698974609,
+      "outer_north_m": 7.5,
+      "minimum_height_m": 16.1892,
+      "maximum_displacement_m": 0.0034524,
+      "falloff": "piecewise-affine-hat",
+      "scope": "Only the upper northern parapet and adjacent bed within east [-8, -5.5] m and north [5, 7.5] m are displaced, by at most 3.4524 mm. Every intersecting face is split at the continuous piecewise-affine warp's region boundaries, with exact clipping and all tiny triangle fans retained. Rails, the outer rim, the slab underside, the pier, and every other retained model remain unchanged. Existing vertex UV attributes are retained, and new cut attributes are interpolated; the spatial UV field inside the deformed collar can change."
+    }
   }
 }

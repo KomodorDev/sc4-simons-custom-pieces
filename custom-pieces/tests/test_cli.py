@@ -1,5 +1,6 @@
 """Exercise portable entry points in an isolated copy, never the live project."""
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -32,6 +33,41 @@ class PortableCLITests(unittest.TestCase):
         registered = [path for domain in project['domains'].values()
                       for path in json.loads((self.root / domain['registry']).read_text())['pieces']]
         self.assertEqual(len(json.loads(result.stdout)['pieces']), len(registered))
+
+    def test_documentation_check_is_read_only_and_reports_retained_legacy_guides(self):
+        paths = [p for p in self.root.rglob('*') if p.is_file()]
+        before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+        result = self.call('docs-check')
+        self.assertEqual(result.returncode, 0, result.stderr+result.stdout)
+        report = json.loads(result.stdout)
+        self.assertTrue(report['all_passed'])
+        self.assertGreaterEqual(report['current_layouts'], 14)
+        self.assertTrue(report['legacy_subjects'])
+        self.assertGreater(report['local_links_checked'], 1000)
+        self.assertEqual(before, {p: hashlib.sha256(p.read_bytes()).hexdigest()
+                                  for p in self.root.rglob('*') if p.is_file()})
+
+    def test_documentation_check_reports_a_broken_case_link_without_repairing_it(self):
+        identifier = 'hsr-component-modular-paired-climb'
+        directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
+        readme = directory/'README.md'
+        readme.write_text(readme.read_text()+'\n[Removed case](TESTING.md#case-removed-observation)\n')
+        before = {p: p.read_bytes() for p in (readme, directory/'TESTING.md',
+                                             directory/'checks/manual-tests.json')}
+        result = self.call('docs-check', '--piece', identifier)
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn('case-removed-observation', result.stdout)
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
+
+    def test_documentation_check_accepts_a_draft_pair_without_fabricated_evidence(self):
+        identifier = 'documentation-only-draft'
+        result = self.call('scaffold', '--id', identifier, '--name', 'Documentation Only Draft')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        result = self.call('docs-check', '--piece', identifier)
+        self.assertEqual(result.returncode, 0, result.stderr+result.stdout)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['current_layouts'], 1)
+        self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/identifier/'checks').exists())
 
     def test_invalid_display_names_do_not_reserve_ids_or_break_the_registry(self):
         files = [self.root/'config/allocations.json',
@@ -68,6 +104,51 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(piece['status'], 'draft')
         self.assertNotEqual(self.call('scaffold', '--id', 'future-crossing', '--name', 'Again').returncode, 0)
 
+    def test_scaffold_creates_separate_piece_testing_without_claiming_evidence(self):
+        result = self.call('scaffold', '--id', 'split-guide-draft', '--name', 'Split Guide Draft')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        directory = self.root/'domains/high-speed-rail/00_pieces/split-guide-draft'
+        readme, testing = [(directory/name).read_text() for name in ('README.md', 'TESTING.md')]
+        self.assertIn('<!-- PIECE README LAYOUT: 2 -->', readme)
+        self.assertIn('[Testing ↗ (separate document)](TESTING.md)', readme)
+        self.assertNotIn('## 4. Testing', readme)
+        self.assertIn('<!-- PIECE TESTING LAYOUT: 1 -->', testing)
+        self.assertIn('## 6. Design history', testing)
+        self.assertIn('<!-- BEGIN CONNECTIONS -->', testing)
+        self.assertIn('<!-- BEGIN MANUAL SUMMARY -->', testing)
+        self.assertIn('<!-- BEGIN MANUAL CHECKS -->', testing)
+        self.assertNotIn('passed', readme+testing)
+        self.assertNotIn('evidence/', readme+testing)
+        self.assertFalse((directory/'checks').exists())
+
+    def test_scaffold_preserves_existing_authored_documents_without_migrating_them(self):
+        directory = self.root/'domains/high-speed-rail/00_pieces/authored-draft'
+        directory.mkdir()
+        original = {'README.md': b'# Authored guide\n\nKeep this precise placement note.\n',
+                    'TESTING.md': b'# Authored testing\n\nKeep this precise procedure.\n'}
+        for name, raw in original.items():
+            (directory/name).write_bytes(raw)
+        result = self.call('scaffold', '--id', 'authored-draft', '--name', 'Authored Draft')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(original, {name: (directory/name).read_bytes() for name in original})
+
+    def test_testing_document_and_temporary_symlinks_reject_the_whole_registration(self):
+        outside = self.root.parent/'private-test-notes'
+        outside.write_bytes(b'Keep this file outside the checkout unchanged.\n')
+        for number, name in enumerate(('TESTING.md', 'TESTING.md.tmp')):
+            identifier = 'testing-symlink-'+str(number)
+            directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
+            directory.mkdir()
+            (directory/name).symlink_to(outside)
+            paths = [self.root/'config/allocations.json', self.root/'domains/high-speed-rail/domain.json']
+            before = {path: path.read_bytes() for path in paths}
+            result = self.call('scaffold', '--id', identifier, '--name', 'Testing Symlink '+str(number))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, {path: path.read_bytes() for path in paths})
+            self.assertFalse((directory/'piece.json').exists())
+            self.assertFalse((directory/'README.md').exists())
+            self.assertEqual(outside.read_bytes(), b'Keep this file outside the checkout unchanged.\n')
+
     def test_scaffold_routes_a_draft_into_the_selected_domain(self):
         result = self.call('scaffold', '--domain', 'highway', '--id', 'highway-draft', '--name', 'Highway Draft')
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -82,10 +163,12 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual((self.root / 'config/allocations.json').read_bytes(), ledger)
 
     def test_invalid_scaffold_leaves_all_registry_bytes_unchanged(self):
-        before = {p.name: p.read_bytes() for p in (self.root / 'project.json', self.root / 'config/allocations.json')}
+        snapshot = lambda: {p.relative_to(self.root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                            for p in self.root.rglob('*') if p.is_file()}
+        before = snapshot()
         result = self.call('scaffold', '--id', '../escape', '--name', 'Bad', '--width', '0')
         self.assertNotEqual(result.returncode, 0)
-        self.assertEqual(before, {p.name: p.read_bytes() for p in (self.root / 'project.json', self.root / 'config/allocations.json')})
+        self.assertEqual(before, snapshot())
 
     def test_scaffold_does_not_inherit_sparse_cells_from_the_first_piece(self):
         path = self.root / 'domains/high-speed-rail/domain.json'

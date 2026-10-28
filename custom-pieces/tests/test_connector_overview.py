@@ -41,6 +41,17 @@ def resolved_piece():
 
 @unittest.skipIf(overview is None, "Pillow/NumPy overview dependencies unavailable")
 class ConnectorOverviewTests(unittest.TestCase):
+    def test_connection_cards_stay_within_both_numbered_readme_layouts(self):
+        from scp.piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
+        content = "## Connection overview\n\n### Boundary A\n\nMeasured facts.\n"
+        for marker in (LAYOUT_MARKER, SPLIT_LAYOUT_MARKER):
+            with self.subTest(layout=marker):
+                original = "# Piece\n\n" + marker + "\n\n## 3. Connection matrix\n"
+                nested = overview.readme_overview(original, content)
+                self.assertEqual(nested, "### Connection overview\n\n#### Boundary A\n\nMeasured facts.\n")
+                self.assertEqual(overview.readme_overview(original, nested), nested)
+        self.assertEqual(overview.readme_overview("# Legacy piece\n", content), content)
+
     def test_explicit_channels_and_cuts_are_distinct_from_directed_members(self):
         piece = resolved_piece()
         group = piece["groups"][0]
