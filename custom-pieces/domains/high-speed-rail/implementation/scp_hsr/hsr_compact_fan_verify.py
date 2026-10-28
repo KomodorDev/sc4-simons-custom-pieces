@@ -33,22 +33,6 @@ _COMMON = {
 }
 
 CONTRACTS = {
-    'hsr_component_l2_paired_fan_compact_join': {
-        **_COMMON, 'footprint': (7, 5), 'cost': 1500,
-        'cells': [(3, 0), (3, 1), (3, 2), (2, 3), (3, 3), (4, 3),
-                  (1, 4), (2, 4), (3, 4), (4, 4), (5, 4)],
-        'structural_cells': [(2, 3), (4, 3)],
-        'ports': {'Nin': (46., 8., 15.5), 'Nout': (50., 8., 15.5),
-                  'Wout': (22.398519, -72., 15.5), 'Ein': (73.601481, -72., 15.5)},
-        'port_vectors': {'Nin': (0., -1.), 'Nout': (0., 1.),
-                         'Wout': (-.927254808965, -.374430927211),
-                         'Ein': (-.927254808965, .374430927211)},
-        'movements': [('Nin', 'Wout'), ('Ein', 'Nout')],
-        'support_centres_xz': [(48., 0.), (48., 16.), (48., 32.), (48., 48.),
-                               (32., 64.), (64., 64.)],
-        'custom_curve_ports': ('Wout', 'Ein'),
-        'geometric_custom_rail_wedges': True,
-    },
     'hsr_component_l2_paired_fan_compact_core': {
         **_COMMON, 'footprint': (5, 3), 'cost': 1300,
         'cells': [(2, 0), (1, 1), (2, 1), (3, 1),

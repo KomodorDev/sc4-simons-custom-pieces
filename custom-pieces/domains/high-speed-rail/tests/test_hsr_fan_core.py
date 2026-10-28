@@ -27,35 +27,49 @@ class FanCoreExtractionTests(unittest.TestCase):
         cls.directory = PIECES/CORE.replace('_', '-')
         cls.spec = json.loads((cls.directory/'piece.json').read_text())
         cls.source = json.loads((cls.directory/'geometry.json').read_text())
-        cls.full_source = json.loads((PIECES/FULL.replace('_', '-')/'geometry.json').read_text())
+        cls.extraction = json.loads((cls.directory/'evidence/fan-core-extraction.json').read_text())
         cls.paths = {
             (*PATH, int(tile, 16)): encode_paths(data['routes']) if data['routes'] else EMPTY_STRUCTURAL_PATH
             for (_, data), tile in zip(compact_layout(CORE).items(), cls.spec['tile_ids'])
         }
 
-    def test_original_full_fan_source_and_identity_are_unchanged(self):
-        directory = PIECES/FULL.replace('_', '-')
-        self.assertEqual(hashlib.sha256((directory/'geometry.json').read_bytes()).hexdigest(),
-                         'd5366120c1f9c38b8b1eccc7fc8927dabb6e28d8ba1dd08427ed4e0b1c74aa0b')
-        self.assertEqual(len(compact_info(FULL)['cells']), 11)
-        self.assertEqual(len(compact_info(FULL)['support_centers']), 6)
+    def test_superseded_full_fan_has_no_source_identity_or_compatibility_copy(self):
+        self.assertFalse((PIECES/FULL.replace('_', '-')).exists())
+        with self.assertRaisesRegex(ValueError, 'Unknown compact HSR fan recipe'):
+            compact_info(FULL)
+        allocation = json.loads((ROOT/'config/allocations.json').read_text())['pieces']
+        self.assertNotIn(FULL.replace('_', '-'), allocation)
+        domain = json.loads((PIECES.parent/'domain.json').read_text())
+        self.assertNotIn('00_pieces/'+FULL.replace('_', '-')+'/piece.json', domain['pieces'])
+        collections = json.loads((PIECES.parent/'collections.json').read_text())['collections']
+        self.assertFalse(any(FULL.replace('_', '-') in members for members in collections.values()))
+        replacements = {CORE.replace('_', '-'), 'hsr-component-l2-paired-straight-recessed-web'}
+        self.assertEqual(set(collections['hsr-compact-fan-parts']), replacements)
+        self.assertTrue(replacements <= set(collections['hsr-all-components']))
 
     def test_complete_computation_signature_is_exactly_the_approved_full_fan(self):
-        full_mapping, full_configuration = model_inputs(FULL)
         mapping, configuration = model_inputs(CORE)
-        self.assertEqual(configuration, full_configuration)
+        # Frozen from the independently approved computation configuration
+        # before the superseded build type was deleted; no old source is read.
+        signature = json.dumps(configuration, sort_keys=True, separators=(',', ':'), allow_nan=False)
+        self.assertEqual(hashlib.sha256(signature.encode()).hexdigest(),
+                         '64eb051980d057ab76e1c7a6748b3691e85191a778f50e394adb106ef90a9d59')
         self.assertEqual(len(configuration['layout']), 11)
         self.assertEqual(len(configuration['support_centers']), 6)
         self.assertEqual(len(mapping), 9)
-        self.assertEqual(set(mapping.values()), set(full_mapping.values())-{(6, 0), (6, 1)})
+        self.assertEqual(set(mapping.values()), {(6, 2), (5, 3), (6, 3), (7, 3),
+                                                (4, 4), (5, 4), (6, 4), (7, 4), (8, 4)})
 
     def test_nine_retained_local_fragments_have_no_resampling_or_reshaping(self):
-        old = {tuple(cell): value for cell, value in self.full_source['layout']}
+        self.assertEqual(hashlib.sha256((self.directory/'geometry.json').read_bytes()).hexdigest(),
+                         '8ee99c79beec4dc3f45fcc8419a19910d025c76e9e3ddc4ef0a12bde97ef5874')
         self.assertEqual(len(self.source['layout']), 9)
-        for cell, value in self.source['layout']:
-            self.assertEqual(value, old[cell[0]+1, cell[1]+2])
-        self.assertEqual(self.source['central_parapet_alignment'],
-                         self.full_source['central_parapet_alignment'])
+        for (cell, value), tile in zip(self.source['layout'], self.spec['tile_ids']):
+            pin = PINS[tuple(cell)]
+            self.assertEqual(pin['old_cell'], (cell[0]+1, cell[1]+2))
+            self.assertEqual(hashlib.sha256(self.paths[*PATH, int(tile, 16)]).hexdigest(),
+                             pin['path_sha256'])
+        self.assertEqual(self.source['central_parapet_alignment']['reflection_axis_source_east_m'], 96.)
 
     def test_only_four_original_supports_are_owned(self):
         self.assertEqual(compact_info(CORE)['support_centers'],
@@ -88,7 +102,7 @@ class FanCoreExtractionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'eleven-cell computation context'):
                 model_inputs(CORE)
 
-    def test_full_context_opt_in_cannot_change_the_existing_full_fan(self):
+    def test_full_context_opt_in_cannot_restore_a_deleted_build_type(self):
         with patch('scp_hsr.hsr_compact_fan._source', return_value=self.source):
             with self.assertRaisesRegex(ValueError, 'Only the extracted fan pieces'):
                 model_inputs(FULL)
@@ -120,17 +134,22 @@ class FanCoreExtractionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'tile list is incomplete'):
             audit_retained_core_paths(self.paths, changed)
 
-    def test_pins_match_the_frozen_actual_saved_full_fan_report(self):
-        report = json.loads((PIECES/FULL.replace('_', '-')/'evidence/saved-resource-checks.json').read_text())
-        actual = report['actual_saved_resource_fingerprints']
-        for cell, pin in PINS.items():
-            x, row = pin['old_cell']
-            base = 0x7f580000+0x100*x+0x10*row
-            for zoom in range(5):
-                identity = f'5ad0e817-badb57f1-{base+zoom:08x}'
-                self.assertEqual(actual[f'model:{FULL.replace("_", "-")}:{identity}'], pin['model_sha256'])
-                identity = f'7ab50e44-2bc2759a-{base+zoom:08x}'
-                self.assertEqual(actual[f'shadow:{FULL.replace("_", "-")}:{identity}'], pin['shadow_sha256'][zoom])
+    def test_pins_match_the_immutable_measured_extraction_report(self):
+        raw = (self.directory/'evidence/fan-core-extraction.json').read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+                         'd3f422393ddbab0972115bfef16e97996c9a30ff582c17767cc519e2252c1868')
+        self.assertEqual(len(self.extraction['retained_cells']), 9)
+        for cell in self.extraction['retained_cells']:
+            pin = PINS[tuple(cell['new_local_cell'])]
+            self.assertEqual(tuple(cell['original_full_fan_local_cell']), pin['old_cell'])
+            self.assertEqual(len(cell['resources']), 11)
+            for resource in cell['resources']:
+                expected = (pin['model_sha256'] if resource['kind'] == 'model' else
+                            pin['path_sha256'] if resource['kind'] == 'path' else
+                            pin['shadow_sha256'][resource['zoom']])
+                self.assertEqual(resource['before_sha256'], expected)
+                self.assertEqual(resource['after_sha256'], expected)
+                self.assertTrue(resource['bytes_identical'])
 
     def test_sparse_new_allocation_has_unique_native_addresses(self):
         validate_auto_tile_addresses(self.spec)

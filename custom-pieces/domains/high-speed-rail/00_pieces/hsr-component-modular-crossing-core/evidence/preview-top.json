@@ -12,7 +12,7 @@
     "model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478"
   },
   "file": "previews/preview-top.png",
-  "sha256": "78bef9185c57f364641e1161d3ce619655c58eeaaf0411f7a3e5c72b1d9e5355",
+  "sha256": "0520bc2e40989ac483424bf2ff9b0648b02afda71688a6379f1b42f61d2c57eb",
   "size": [
     1600,
     1200
@@ -318,6 +318,12 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
@@ -457,7 +463,7 @@
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -488,7 +494,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -521,14 +527,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
   "title_source_inputs": {
     "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/piece.json": "0087e27275a2c11ee126ce4254ded8a1f22eb18fe7448ae2b7062a4ef7a2a90f",
     "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connections.json": "e2eff89bdfc26e8713e1596a62f0754f4560c015973528afbfab70244d1d60ff",
     "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connector-groups.jsonc": "11b6717a39d170272abd2b6c115283808704ab5428dddfa1b93a3e1507f367e5",
-    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
   },
-  "input_fingerprint": "336617fc03f6f9049117e54a3b4254f0344859d1ac4e755081b0041be038acc9"
+  "input_fingerprint": "186cdf8bf4e289d4f89664eaefa847f712c76845cf8ce28e9c821e76b49e251e"
 }

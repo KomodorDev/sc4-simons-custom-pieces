@@ -53,7 +53,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
 
     def test_trumpet_sources_preserve_complete_measured_ends_and_physical_channels(self):
         expected = {
-            "hsr-component-l2-paired-fan-compact-join": {
+            "hsr-component-l2-paired-fan-compact-core": {
                 "Nin": "north-to-west-track", "Wout": "north-to-west-track",
                 "Ein": "east-to-north-track", "Nout": "east-to-north-track"},
             "hsr-component-l2-short-opposed-merge-core": {
@@ -77,7 +77,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                 self.assertTrue(all(group["construction_network"] == "monorail" for group in piece["groups"]))
 
     def test_trumpet_curved_cuts_do_not_invent_paired_profiles_or_section_origins(self):
-        slugs = ["hsr-component-l2-paired-fan-compact-join", "hsr-component-l2-short-opposed-merge-core"]
+        slugs = ["hsr-component-l2-paired-fan-compact-core", "hsr-component-l2-short-opposed-merge-core"]
         resolved = metadata.load_library(CUSTOM_ROOT, slugs)["pieces"]
         for slug in slugs:
             with self.subTest(piece=slug):
@@ -94,7 +94,10 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                     self.assertIsNone(group["members"][0]["section_offset_m"])
                     self.assertNotEqual(group["members"][0]["heading_outward_degrees"] % 90, 0)
                 for group in paired:
-                    self.assertEqual(group["profile_id"], "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1")
+                    expected_profile = ("hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
+                                        if slug == "hsr-component-l2-paired-fan-compact-core"
+                                        else "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1")
+                    self.assertEqual(group["profile_id"], expected_profile)
                     self.assertEqual(group["section_offset_m"], 0)
                     self.assertIsNotNone(group["anchor_m"])
                     self.assertEqual(len(group["members"]), 2)

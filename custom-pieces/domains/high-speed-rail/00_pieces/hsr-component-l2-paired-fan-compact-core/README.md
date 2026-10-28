@@ -4,7 +4,7 @@
 
 [1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This reusable High Speed Rail (HSR) fork connects a north-facing pair of tracks to two curved southern branch ends. At its authored 0° orientation, traffic entering from the north leaves through the western branch; traffic entering from the eastern branch continues north. Both routes remain at nominal Level 2 (L2), with a train-path height of 15.5 m. The shorter core retains the nine fork cells of the [complete Compact Paired Fan Join](../hsr-component-l2-paired-fan-compact-join/README.md); its two straight approach tiles are separate reusable pieces.
+This reusable High Speed Rail (HSR) fork connects a north-facing pair of tracks to two curved southern branch ends. At its authored 0° orientation, traffic entering from the north leaves through the western branch; traffic entering from the eastern branch continues north. Both routes remain at nominal Level 2 (L2), with a train-path height of 15.5 m. The shorter core retains the nine fork cells of the former complete Compact Paired Fan Join, as recorded in its [saved extraction proof](evidence/fan-core-extraction.json). The complete predecessor has been removed after separating its two straight approach tiles into reusable pieces.
 
 **Status: experimental.** Software resource checks, human image review, and operation inside SimCity 4 are recorded separately. The permanent type ID is `hsr-component-l2-paired-fan-compact-core`. This guide describes the type independently of any assembly placement label.
 

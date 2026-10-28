@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "assembly_id": "straight-stem-trumpet",
+  "status": "superseded-parent-retired",
+  "retired_piece": {
+    "id": "hsr-component-l2-paired-fan-compact-join",
+    "historical_source_inputs": {
+      "piece.json": "72a02fb797fa076dd834f23046c2e5cdc61cdea86274290ece98e3522cfaa559",
+      "geometry.json": "d5366120c1f9c38b8b1eccc7fc8927dabb6e28d8ba1dd08427ed4e0b1c74aa0b"
+    },
+    "historical_approved_archive_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797",
+    "active_piece_directory_present": false,
+    "active_registration_present": false,
+    "compatibility_source_copy_created": false
+  },
+  "current_replacements": [
+    {
+      "id": "hsr-component-l2-paired-fan-compact-core",
+      "source_inputs": {
+        "piece.json": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
+        "geometry.json": "8ee99c79beec4dc3f45fcc8419a19910d025c76e9e3ddc4ef0a12bde97ef5874"
+      },
+      "archive_sha256": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+      "physical_extraction_evidence": {
+        "evidence/fan-core-extraction.json": "d3f422393ddbab0972115bfef16e97996c9a30ff582c17767cc519e2252c1868"
+      }
+    },
+    {
+      "id": "hsr-component-l2-paired-straight-recessed-web",
+      "source_inputs": {
+        "piece.json": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
+        "geometry.json": "520858866e0bebbfc24e4e7af67a735c2d2d784e3fc32702817e3a48896ffb28"
+      },
+      "archive_sha256": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
+      "physical_extraction_evidence": {
+        "evidence/straight-extraction.json": "9320f6a0ae56efd8046d39069f45f8fcb5431ab183ff22acfb22d687934b55df"
+      }
+    }
+  ],
+  "preserved_integration_files": {
+    "checks/resources.json": "b18ae71c247f95ee2f09d79c816170d29d593a974d17b355e6bf1d6e3034d535",
+    "checks/border-piece-integration.json": "d3108f171e2f8ff065a98db4ab7e0c974360ceefb7ddf0fe4d39677cf8f599a7",
+    "evidence/border-piece-integration-initial-validation.json": "628d6943f802820f20105cc472c867fae5f1b618e027989a2b244a781096d071",
+    "evidence/border-piece-integration-initial-build-manifest.json": "4e3787d481cc6399286e617c67501495af709206066c5ff4c2fb02a8a775927b"
+  },
+  "standalone_revisions_sha256": "94c4679fed3b33cc0af14fe5f8734d752b1c7d180c0ae73df5c7d4496b516163",
+  "historical_source_replay_available_for_retired_piece": false,
+  "historical_source_scope": "The completed initial integration and seven original standalone decisions retain their original input hashes and measured facts. The deleted parent source and its piece-local snapshots are no longer replay inputs.",
+  "current_acceptance_scope": "All fourteen retained piece sources and exact approved archives remain required. The existing physical audit is inherited through byte-identical models, PATHs, shadows, placements, and supports; retirement does not claim a new physical execution.",
+  "new_physical_audit_executed": false,
+  "assembly_geometry_changed": false,
+  "assembly_render_regenerated": false,
+  "historical_decisions_rewritten": false,
+  "manual_or_game_observations_added": false,
+  "installed": false
+}

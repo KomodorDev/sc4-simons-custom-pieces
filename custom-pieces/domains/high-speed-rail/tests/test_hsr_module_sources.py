@@ -54,9 +54,9 @@ class LiteralComponentSupportMetadataTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'declared supports differ'):
                     check_paths({}, changed)
 
-    def test_obsolete_seven_support_fan_declaration_is_rejected(self):
+    def test_obsolete_seven_support_fan_declaration_is_rejected_for_the_core(self):
         piece = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/
-                            'hsr-component-l2-paired-fan-compact-join/piece.json').read_text())
+                            'hsr-component-l2-paired-fan-compact-core/piece.json').read_text())
         changed = deepcopy(piece)
         changed['component']['support_centers'] = [
             [48., 0.], [48., -16.], [48., -32.], [40., -46.],

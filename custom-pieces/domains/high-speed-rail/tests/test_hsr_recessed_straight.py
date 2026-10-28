@@ -1,5 +1,6 @@
 """Check the separately reusable straight's exact fan-family physical profile."""
 from copy import deepcopy
+import hashlib
 import json
 from pathlib import Path
 import unittest
@@ -16,7 +17,7 @@ from scp_hsr.hsr_recessed_straight_verify import (
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 RECIPE = 'hsr_component_l2_paired_straight_recessed_web'
-FULL = 'hsr_component_l2_paired_fan_compact_join'
+CORE = 'hsr_component_l2_paired_fan_compact_core'
 
 
 class RecessedStraightTests(unittest.TestCase):
@@ -31,16 +32,17 @@ class RecessedStraightTests(unittest.TestCase):
 
     def test_full_original_configuration_is_preserved_but_one_cell_is_emitted(self):
         mapping, config = model_inputs(RECIPE)
-        self.assertEqual(config, model_inputs(FULL)[1])
+        self.assertEqual(config, model_inputs(CORE)[1])
+        signature = json.dumps(config, sort_keys=True, separators=(',', ':'), allow_nan=False)
+        self.assertEqual(hashlib.sha256(signature.encode()).hexdigest(),
+                         '64eb051980d057ab76e1c7a6748b3691e85191a778f50e394adb106ef90a9d59')
         self.assertEqual(mapping, {(0, 0):(6, 1)})
         self.assertEqual(len(config['layout']), 11)
         self.assertEqual(len(config['support_centers']), 6)
         self.assertEqual(compact_info(RECIPE)['support_centers'], [(0., 0.)])
 
     def test_exact_original_interior_path_bytes_are_retained(self):
-        source = json.loads((PIECES/FULL.replace('_', '-')/'geometry.json').read_text())
-        old = next(value for cell, value in source['layout'] if cell == [3, 1])
-        self.assertEqual(self.raw_path, encode_paths(old['routes']))
+        self.assertEqual(hashlib.sha256(self.raw_path).hexdigest(), PATH_SHA256)
         self.assertEqual(self.source['extraction']['canonical_old_local_cell'], [3, 1])
         self.assertEqual({route['movement'] for route in self.source['layout'][0][1]['routes']},
                          {'N>S', 'S>N'})
@@ -71,13 +73,20 @@ class RecessedStraightTests(unittest.TestCase):
         self.assertEqual(actual, {(0, 0): b'[6, 1]'})
 
     def test_pins_identify_the_independent_approved_interior_model_and_shadows(self):
-        report = json.loads((PIECES/FULL.replace('_', '-')/'evidence/saved-resource-checks.json').read_text())
-        actual = report['actual_saved_resource_fingerprints']
-        for zoom in range(5):
-            model_key = f'model:{FULL.replace("_", "-")}:5ad0e817-badb57f1-{0x7f580310+zoom:08x}'
-            shadow_key = f'shadow:{FULL.replace("_", "-")}:7ab50e44-2bc2759a-{0x7f580310+zoom:08x}'
-            self.assertEqual(actual[model_key], MODEL_SHA256)
-            self.assertEqual(actual[shadow_key], SHADOW_SHA256[zoom])
+        raw = (self.directory/'evidence/straight-extraction.json').read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+                         '9320f6a0ae56efd8046d39069f45f8fcb5431ab183ff22acfb22d687934b55df')
+        cells = json.loads(raw)['retained_cells']
+        self.assertEqual(len(cells), 1)
+        self.assertEqual(cells[0]['original_full_fan_local_cell'], [3, 1])
+        self.assertEqual(len(cells[0]['resources']), 11)
+        for resource in cells[0]['resources']:
+            expected = (MODEL_SHA256 if resource['kind'] == 'model' else
+                        PATH_SHA256 if resource['kind'] == 'path' else
+                        SHADOW_SHA256[resource['zoom']])
+            self.assertEqual(resource['before_sha256'], expected)
+            self.assertEqual(resource['after_sha256'], expected)
+            self.assertTrue(resource['bytes_identical'])
         self.assertEqual(audit_retained_straight_paths(self.resources, self.spec),
                          {'exact_recessed_web_path_cells_checked': 1})
 

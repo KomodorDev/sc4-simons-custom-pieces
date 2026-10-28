@@ -154,6 +154,6 @@ This service group is required at this edge.
 | `south-sin` / `Sin` | `northbound-track` / `south-northbound-track-cut` / monorail | Incoming | `[2,-120,15.5]` | +2 | 180° | 0 |
 | `south-sout` / `Sout` | `southbound-track` / `south-southbound-track-cut` / monorail | Outgoing | `[-2,-120,15.5]` | -2 | 180° | 0 |
 
-Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
 
 <!-- END CONNECTOR OVERVIEW -->

@@ -64,13 +64,15 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 This tight paired graded corner owns ten cells, including three structural cells, and has six literal support centres. Its cardinal displacement is 56 m, its deck width is 15 m, its track offsets are ±2 m, and its flat collars are 8 m.
 
 The tight-corner polynomial applies only to these two tight graded recipes. Their independent minimum-radius limit is 24 m; their approximately 0.1238 maximum grade remains inside the unchanged 0.156251 limit. Curvature, grade change, and the 5 × 5 m train corridor remain independently checked. These are software geometry criteria, rather than measured game limits.
 
 The [independent source contract](../../implementation/scp_hsr/hsr_components_verify.py) and [piece definition](piece.json) supply the exact expectations. Each of the two physical channels retains its identity through the curve; its member names differ at the two ends because those names identify local crossings, rather than new tracks.
 
-The [documentation-refresh audit](evidence/documentation-refresh.json) records the exact unchanged saved files, actual-resource connector checks, image identities, and preserved observations.
+The earlier [documentation-refresh audit](evidence/documentation-refresh.json) records the unchanged saved files, actual-resource connector checks, image identities, and preserved observations at that refresh.
 
 The [measured saved-route record](connections.json), [authored connector declaration](connector-groups.jsonc), [resolved connector export](connector-data.json), and [connection-overview evidence](evidence/connection-overview.json) identify the current software scope. A PATH resource contains travel routes; an S3D resource contains visible triangles. Neither a correct route nor a rendered model establishes traffic operation in the game.
 
@@ -176,65 +178,6 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast | <a href="#case-preview_review-a9790b691fbde7664203">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top | <a href="#case-preview_review-b469758fbb87449dcd1e">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview | <a href="#case-preview_review-fa6f03435675f4f2d88d">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast</summary>
-
-<a id="case-preview_review-a9790b691fbde7664203"></a>
-
-**General: unverified** — `preview_review-a9790b691fbde7664203`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top</summary>
-
-<a id="case-preview_review-b469758fbb87449dcd1e"></a>
-
-**General: unverified** — `preview_review-b469758fbb87449dcd1e`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview</summary>
-
-<a id="case-preview_review-fa6f03435675f4f2d88d"></a>
-
-**General: unverified** — `preview_review-fa6f03435675f4f2d88d`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview.
-
-No observation recorded.
 
 </details>
 
@@ -759,6 +702,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: Ein; to port: Eout; from service: hsr; to service: hsr; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast | <a href="#case-preview_review-a9790b691fbde7664203">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top | <a href="#case-preview_review-b469758fbb87449dcd1e">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview | <a href="#case-preview_review-fa6f03435675f4f2d88d">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast</summary>
+
+<a id="case-preview_review-a9790b691fbde7664203"></a>
+
+**General: unverified** — `preview_review-a9790b691fbde7664203`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top</summary>
+
+<a id="case-preview_review-b469758fbb87449dcd1e"></a>
+
+**General: unverified** — `preview_review-b469758fbb87449dcd1e`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview</summary>
+
+<a id="case-preview_review-fa6f03435675f4f2d88d"></a>
+
+**General: unverified** — `preview_review-fa6f03435675f4f2d88d`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-tight-paired-curve90-l4-to-mid:connection-overview.
 
 No observation recorded.
 

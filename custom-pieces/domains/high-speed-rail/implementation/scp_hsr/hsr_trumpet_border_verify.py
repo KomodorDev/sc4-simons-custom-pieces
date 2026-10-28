@@ -237,6 +237,76 @@ SOURCE_INPUTS = {'hsr-component-l2-paired-fan-compact-join': {'piece.json': '72a
  'hsr-component-tight-paired-curve90-mid-to-l2': {'piece.json': '02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33'},
  'hsr-component-upper-paired-straight': {'piece.json': 'be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3'}}
 
+# These are facts of the completed integration, not claims that its superseded
+# parent remains an active authoring subject. The separate retirement decision
+# below preserves that distinction without copying deleted parent sources.
+PARENT_RETIREMENT_RELATIVE = Path('checks/fan-parent-retirement.json')
+PARENT_RETIREMENT_SHA256 = 'a1f448bbdfdce9442500d193b809b1d20adbfcf4795b7d626c3733f7ecab782c'
+PRESERVED_INTEGRATION_FILES = {
+    'checks/resources.json': 'b18ae71c247f95ee2f09d79c816170d29d593a974d17b355e6bf1d6e3034d535',
+    'checks/border-piece-integration.json': 'd3108f171e2f8ff065a98db4ab7e0c974360ceefb7ddf0fe4d39677cf8f599a7',
+    'evidence/border-piece-integration-initial-validation.json': '628d6943f802820f20105cc472c867fae5f1b618e027989a2b244a781096d071',
+    'evidence/border-piece-integration-initial-build-manifest.json': INITIAL_INTEGRATION_MANIFEST_SHA256,
+}
+
+
+def parent_retirement_record():
+    """Describe the exact successor source scope without rewriting old audits."""
+    return {
+        'schema_version': 1, 'assembly_id': 'straight-stem-trumpet',
+        'status': 'superseded-parent-retired',
+        'retired_piece': {
+            'id': FULL_FAN_ID, 'historical_source_inputs': deepcopy(SOURCE_INPUTS[FULL_FAN_ID]),
+            'historical_approved_archive_sha256': REPAIRED_ARCHIVES[FULL_FAN_ID],
+            'active_piece_directory_present': False, 'active_registration_present': False,
+            'compatibility_source_copy_created': False,
+        },
+        'current_replacements': [
+            {'id': identifier, 'source_inputs': deepcopy(inputs), 'archive_sha256': digest,
+             'physical_extraction_evidence': deepcopy(EXTRACTED_STANDALONE_EVIDENCE[identifier])}
+            for identifier, inputs, digest in ((CORE_ID, CORE_SOURCE_INPUTS, CORE_ARCHIVE_SHA256),
+                                               (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS, STRAIGHT_ARCHIVE_SHA256))
+        ],
+        'preserved_integration_files': deepcopy(PRESERVED_INTEGRATION_FILES),
+        'standalone_revisions_sha256': STANDALONE_REVISIONS_SHA256,
+        'historical_source_replay_available_for_retired_piece': False,
+        'historical_source_scope': 'The completed initial integration and seven original standalone decisions retain their original input hashes and measured facts. The deleted parent source and its piece-local snapshots are no longer replay inputs.',
+        'current_acceptance_scope': 'All fourteen retained piece sources and exact approved archives remain required. The existing physical audit is inherited through byte-identical models, PATHs, shadows, placements, and supports; retirement does not claim a new physical execution.',
+        'new_physical_audit_executed': False, 'assembly_geometry_changed': False,
+        'assembly_render_regenerated': False, 'historical_decisions_rewritten': False,
+        'manual_or_game_observations_added': False, 'installed': False,
+    }
+
+
+def audit_parent_retirement(*, root=ROOT, ledger=None):
+    """Require only this explicit retirement, with every retained proof intact."""
+    root = Path(root)
+    assembly = root/ASSEMBLY_RELATIVE
+    raw = (assembly/PARENT_RETIREMENT_RELATIVE).read_bytes()
+    require(isinstance(PARENT_RETIREMENT_SHA256, str) and sha256(raw) == PARENT_RETIREMENT_SHA256
+            and json.loads(raw) == parent_retirement_record(),
+            'Trumpet parent retirement decision differs from its exact successor scope')
+    domain = root/'domains/high-speed-rail'
+    require(not (domain/'00_pieces'/FULL_FAN_ID).exists(),
+            'Trumpet retired parent cannot remain an active or compatibility source')
+    registry = json.loads((domain/'domain.json').read_text())
+    collections = json.loads((domain/'collections.json').read_text())['collections']
+    require('00_pieces/'+FULL_FAN_ID+'/piece.json' not in registry['pieces']
+            and all(FULL_FAN_ID not in selection for selection in collections.values()),
+            'Trumpet retired parent remains registered in an active piece selection')
+    for relative, digest in PRESERVED_INTEGRATION_FILES.items():
+        require(sha256((assembly/relative).read_bytes()) == digest,
+                'Trumpet parent retirement changes its preserved integration proof: '+relative)
+    if ledger is None:
+        ledger = json.loads((assembly/'checks/atomization.json').read_text())
+    require(canonical_sha256(ledger.get('subsequent_piece_revisions')) == STANDALONE_REVISIONS_SHA256,
+            'Trumpet parent retirement changes its seven standalone history rows')
+    for identifier, inputs in ((CORE_ID, CORE_SOURCE_INPUTS), (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS)):
+        for relative, digest in {**inputs, **EXTRACTED_STANDALONE_EVIDENCE[identifier]}.items():
+            require(sha256((domain/'00_pieces'/identifier/relative).read_bytes()) == digest,
+                    'Trumpet parent retirement changes a retained source or extraction proof: '+identifier+'/'+relative)
+    return json.loads(raw)
+
 
 def canonical_sha256(value):
     return sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode())
@@ -261,8 +331,16 @@ def frozen_inputs(root=ROOT):
 
 
 def audit_source_inputs(root=ROOT):
-    """Bind original authorship, both extracted pieces, and seven historical rows."""
+    """Bind retained authorship and the separate retirement of its old parent.
+
+    The returned map preserves the completed integration's original source
+    record. Only its explicitly retired parent is historical rather than a
+    currently replayable source; the other fourteen subjects stay mandatory.
+    """
+    audit_parent_retirement(root=root)
     for identifier, files in SOURCE_INPUTS.items():
+        if identifier == FULL_FAN_ID:
+            continue
         folder = Path(root)/'domains/high-speed-rail/00_pieces'/identifier
         for relative, digest in files.items():
             require(sha256((folder/relative).read_bytes()) == digest,
@@ -468,6 +546,13 @@ def audit_border_scope(tiles, build, scene, *, root=ROOT):
     require(len(policy['allowed_model_world_cells_east_north_m']) == 37,
             'Trumpet border integration model scope differs from its reviewed 37 cells')
     return {'status': 'passed', **policy,
+            'policy_scope': 'Historical initial-integration policy, preserved exactly; its parent-retained statement describes that execution rather than the current active library.',
+            'current_source_retirement': {
+                'record_file': PARENT_RETIREMENT_RELATIVE.as_posix(),
+                'record_sha256': PARENT_RETIREMENT_SHA256, 'retired_piece_id': FULL_FAN_ID,
+                'parent_active_in_current_library': False,
+                'parent_source_replay_available': False,
+                'historical_policy_rewritten': False},
             'actual_model_changed_world_cells_east_north_m': sorted(changed),
             'all_fourteen_archives_match_independent_prior_approval': True,
             'retained_nine_core_tiles_exact_at_all_five_zooms': True,

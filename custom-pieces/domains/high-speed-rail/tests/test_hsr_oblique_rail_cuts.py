@@ -123,8 +123,7 @@ class ObliqueRailCutTests(unittest.TestCase):
         from scp_hsr.hsr_atomic_components_verify import CONTRACTS as atomic
         selected = {name for name, contract in {**fans, **atomic}.items()
                     if contract.get('geometric_custom_rail_wedges', False)}
-        self.assertEqual(selected, {'hsr_component_l2_paired_fan_compact_join',
-                                    'hsr_component_l2_paired_fan_compact_core',
+        self.assertEqual(selected, {'hsr_component_l2_paired_fan_compact_core',
                                     'hsr_component_l2_short_opposed_merge_core'})
         self.assertEqual(fans['hsr_component_l2_paired_fan_compact_core']['custom_curve_ports'],
                          ('Wout', 'Ein'))

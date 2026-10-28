@@ -9,7 +9,7 @@ document_type: "procedure"
 
 The **SCP Installer** includes the programs needed to build and install Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool. It builds from your own installed SimCity 4 and Network Addon Mod (NAM) resources; the download does not include those resources.
 
-The installer selects **every implemented piece in its bundled catalogue**, currently **168 experimental types**, and prepares the trumpet's assembly button. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [piece inventory](../domains/high-speed-rail/00_pieces/INVENTORY.md) and [assembly inventory](../domains/high-speed-rail/01_assemblies/INVENTORY.md). Check a subject's guide and testing record before using it in an important city.
+The installer selects **every implemented piece in its bundled catalogue**, currently **167 experimental types**, and prepares the trumpet's assembly button. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [piece inventory](../domains/high-speed-rail/00_pieces/INVENTORY.md) and [assembly inventory](../domains/high-speed-rail/01_assemblies/INVENTORY.md). Check a subject's guide and testing record before using it in an important city.
 
 ## 1. Check the game installation
 

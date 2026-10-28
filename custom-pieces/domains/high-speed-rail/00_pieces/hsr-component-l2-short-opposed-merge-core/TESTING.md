@@ -74,6 +74,8 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Engineering sources and limits
 
 The construction rectangle contains **4 × 1 tiles**, and all **four cells** are owned. Four supports remain centred along the mainline at 16 m intervals. Both paired mainline ends are ordinary, flat L2 boundaries; the northern and southern branch entrances are custom oblique cuts. The former western tile is now a separate placement of the existing paired straight, which owns that tile and its support.

@@ -82,6 +82,8 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Engineering contract
 
 Both paired levels meet in one occupied cell: upper north/south paths are at 30.5 m, and lower east/west paths are at 15.5 m. The encoded graph has four grade-separated track crossings with no turning transfer. Use matching separately placed standard straight approaches when assembling a larger crossing. Encoded no-transfer checks do not establish actual in-game level isolation.
@@ -190,65 +192,6 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:canonical-southeast | <a href="#case-preview_review-d05a525f61d0bcb557b7">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:canonical-top | <a href="#case-preview_review-f5e92b1e244c8ca1bd7e">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:connection-overview | <a href="#case-preview_review-11ea34ddb70834f03b05">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-crossing-core:canonical-southeast</summary>
-
-<a id="case-preview_review-d05a525f61d0bcb557b7"></a>
-
-**General: unverified** — `preview_review-d05a525f61d0bcb557b7`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-crossing-core:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-crossing-core:canonical-top</summary>
-
-<a id="case-preview_review-f5e92b1e244c8ca1bd7e"></a>
-
-**General: unverified** — `preview_review-f5e92b1e244c8ca1bd7e`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-crossing-core:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-crossing-core:connection-overview</summary>
-
-<a id="case-preview_review-11ea34ddb70834f03b05"></a>
-
-**General: unverified** — `preview_review-11ea34ddb70834f03b05`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-crossing-core:connection-overview.
-
-No observation recorded.
 
 </details>
 
@@ -1431,6 +1374,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: Ein; to port: Eout; from service: hsr; to service: hsr; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:canonical-southeast | <a href="#case-preview_review-d05a525f61d0bcb557b7">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:canonical-top | <a href="#case-preview_review-f5e92b1e244c8ca1bd7e">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-modular-crossing-core:connection-overview | <a href="#case-preview_review-11ea34ddb70834f03b05">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-crossing-core:canonical-southeast</summary>
+
+<a id="case-preview_review-d05a525f61d0bcb557b7"></a>
+
+**General: unverified** — `preview_review-d05a525f61d0bcb557b7`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-crossing-core:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-crossing-core:canonical-top</summary>
+
+<a id="case-preview_review-f5e92b1e244c8ca1bd7e"></a>
+
+**General: unverified** — `preview_review-f5e92b1e244c8ca1bd7e`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-crossing-core:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-crossing-core:connection-overview</summary>
+
+<a id="case-preview_review-11ea34ddb70834f03b05"></a>
+
+**General: unverified** — `preview_review-11ea34ddb70834f03b05`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-crossing-core:connection-overview.
 
 No observation recorded.
 

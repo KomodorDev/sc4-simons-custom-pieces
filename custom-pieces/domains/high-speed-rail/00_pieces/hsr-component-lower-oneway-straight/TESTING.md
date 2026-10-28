@@ -58,9 +58,11 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Software evidence and limits
 
-The current documentation refresh re-extracted the selected type’s actual saved PATH resources from the existing verified `dist/trumpet-icon-no-tab-parts` build. The connector check independently re-extracts every directed endpoint and journey, verifies source bindings and saved resource fingerprints, validates the complete preview model, and checks current exported data and artwork. See [the scoped saved-resource report](evidence/documentation-refresh.json), [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connector-overview evidence](evidence/connection-overview.json). This reuses unchanged game resources; it does not claim a new geometry build or game test.
+The earlier documentation refresh re-extracted the selected type’s actual saved PATH resources from the then-verified `dist/trumpet-icon-no-tab-parts` build. The connector check independently re-extracts every directed endpoint and journey, verifies source bindings and saved resource fingerprints, validates the complete preview model, and checks current exported data and artwork. See [the scoped saved-resource report](evidence/documentation-refresh.json), [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connector-overview evidence](evidence/connection-overview.json). This reuses unchanged game resources; it does not claim a new geometry build or game test.
 
 To repeat extraction, use `--piece hsr-component-lower-oneway-straight` with the HSR extraction command, and select the same verified build. Follow [documentation generation](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md) for actual-resource extraction, both canonical views, connector refresh and check, image-review binding, and final packaging in that order. Building, rendering, and packaging do not install the piece.
 
@@ -167,65 +169,6 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 - result: passed; authority: software; reviewer: Scoped actual-PATH extraction and independent connector verifier; confirmed at: 2026-10-27; evidence: [evidence/documentation-refresh.json, connector-data.json, connections.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:canonical-southeast | <a href="#case-preview_review-aa75de39788afe3c324a">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:canonical-top | <a href="#case-preview_review-640f208b88c60d8936af">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:connection-overview | <a href="#case-preview_review-5d21852a54ea6c875199">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:canonical-southeast</summary>
-
-<a id="case-preview_review-aa75de39788afe3c324a"></a>
-
-**General: unverified** — `preview_review-aa75de39788afe3c324a`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-lower-oneway-straight:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:canonical-top</summary>
-
-<a id="case-preview_review-640f208b88c60d8936af"></a>
-
-**General: unverified** — `preview_review-640f208b88c60d8936af`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-lower-oneway-straight:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:connection-overview</summary>
-
-<a id="case-preview_review-5d21852a54ea6c875199"></a>
-
-**General: unverified** — `preview_review-5d21852a54ea6c875199`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-lower-oneway-straight:connection-overview.
-
-No observation recorded.
 
 </details>
 
@@ -554,6 +497,65 @@ No observation recorded.
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:canonical-southeast | <a href="#case-preview_review-aa75de39788afe3c324a">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:canonical-top | <a href="#case-preview_review-640f208b88c60d8936af">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-lower-oneway-straight:connection-overview | <a href="#case-preview_review-5d21852a54ea6c875199">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:canonical-southeast</summary>
+
+<a id="case-preview_review-aa75de39788afe3c324a"></a>
+
+**General: unverified** — `preview_review-aa75de39788afe3c324a`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-lower-oneway-straight:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:canonical-top</summary>
+
+<a id="case-preview_review-640f208b88c60d8936af"></a>
+
+**General: unverified** — `preview_review-640f208b88c60d8936af`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-lower-oneway-straight:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-lower-oneway-straight:connection-overview</summary>
+
+<a id="case-preview_review-5d21852a54ea6c875199"></a>
+
+**General: unverified** — `preview_review-5d21852a54ea6c875199`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-lower-oneway-straight:connection-overview.
 
 No observation recorded.
 

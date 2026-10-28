@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-lower-oneway-straight",
   "menu_name": "One-Way HSR L2 Eight-Metre Straight",
-  "display_title": "Piece - One-Way HSR L2 Eight-Metre Straight",
+  "display_title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5"
   },
   "file": "previews/preview-top.png",
-  "sha256": "445e57addaf9e6978257f97e1e6e97721657e6987c3468b96c3579d18b53bb7e",
+  "sha256": "ab078095fee0c66dcc1c6092f5d15fab9535a6c74f033c9a09b365f03a3ab0fc",
   "size": [
     1600,
     1200
@@ -318,17 +318,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - One-Way HSR L2 Eight-Metre Straight",
+      "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - One-Way HSR L2 Eight-Metre Straight",
+        "text": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -339,7 +345,7 @@
         "bounds": [
           30,
           27,
-          782,
+          1001,
           59
         ]
       },
@@ -439,11 +445,11 @@
     }
   ],
   "captions": [
-    "Piece - One-Way HSR L2 Eight-Metre Straight",
+    "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -474,7 +480,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -507,8 +513,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "9d09cc70a76795770f52624a892b296788d18f3a12a2436cffcad76e84320210"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d",
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connections.json": "9e50f746ba44c3bf17f0015e79812c5668467f7c50593eeab7f5c28718222c72",
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connector-groups.jsonc": "a1ea662a9e5f76c6cc7ad25057d09ad1fdee2563ca337183aa5d33355783c5f1",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "77758177196367b5d44a423b57cbf9c4f44a42952ca76d1cc206152180d6cf05"
 }

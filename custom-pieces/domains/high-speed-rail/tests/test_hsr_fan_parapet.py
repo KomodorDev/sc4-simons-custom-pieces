@@ -172,7 +172,7 @@ class FanParapetNativeSweepTests(unittest.TestCase):
         from scp_hsr.hsr_mesh import _surface_triangles
         source = _native(decompress(entries(NATIVE_DONOR.read_bytes())[
             0x5ad0e817, 0xbadb57f1, 0x5dd31500]))
-        config = model_inputs('hsr_component_l2_paired_fan_compact_join')[1]
+        config = model_inputs('hsr_component_l2_paired_fan_compact_core')[1]
         original = {}
 
         def capture(source, deck):

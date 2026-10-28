@@ -40,6 +40,7 @@ from scp_hsr.hsr_trumpet_border_verify import (
     integration_policy, audit_border_scope, audit_current_native_seam,
     audit_preserved_current_journeys, read_border_integration_record, CURRENT_INTEGRATION_LAYOUT,
     CORE_ID, STRAIGHT_ID as RECESSED_STRAIGHT_ID, expected_current_placements,
+    FULL_FAN_ID, audit_parent_retirement,
     prove_current_removed_structural_cells, audit_current_removed_cell_evidence, audit_current_route_movement,
 )
 from scp_hsr.hsr_trumpet_rework_verify import (CURRENT_LAYOUT, ALLOWED_CELLS, REWORKED_SOURCES,
@@ -335,6 +336,12 @@ def audit_subsequent_piece_revisions(ledger, *, root=ROOT):
                     and previous['after_sha256'] == successor['before_sha256']
                     == successor['before_piece_snapshot']['geometry_sha256'],
                     'Trumpet standalone piece revision source chain is disconnected')
+        if chain[0]['piece_id'] == FULL_FAN_ID:
+            # Its exact original row remains evidence of the old execution.
+            # Retirement explicitly removes source replay rather than making
+            # an invisible exception to current retained-piece acceptance.
+            audit_parent_retirement(root=root, ledger=ledger)
+            continue
         for number, revision in enumerate(chain):
             directory = None
             if number+1 < len(chain):
@@ -565,6 +572,7 @@ def audit_candidate_ledger(path=None, descriptor=None, *, redesign=None):
             'strict_original_threshold_m': .005, 'old_deviation_and_actual_work_recorded_separately': True,
             'historical_measurements_are_frozen_not_remeasured': True,
             'subsequent_piece_revisions': ledger['subsequent_piece_revisions'],
+            'retired_parent_source_replay': 'unavailable; exact historical row and immutable integration proof retained',
             'current_assembly_resource_audit_claimed_by_this_ledger_check': False,
             'deleted_predecessor_resources_required': False}
 

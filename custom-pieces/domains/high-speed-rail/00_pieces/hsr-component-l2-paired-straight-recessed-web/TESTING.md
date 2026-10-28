@@ -66,9 +66,11 @@ These instructions prepare a future repeatable game check. They do not record in
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Exact saved interior tile
 
-The canonical model comes from source cell `[3,1]` of the accepted [Compact Paired Fan Join](../hsr-component-l2-paired-fan-compact-join/README.md). The extraction allocates a separate one-tile identity and retains the canonical tile's five model zooms, PATH resource, five shadow resources, complete concrete body, rails, ballast, and single support. Its two routes are straight at local east −2 m and +2 m, travelling in opposite directions. Its support is centred in the tile.
+The canonical model comes from source cell `[3,1]` of the former complete Compact Paired Fan Join, identified as a measured historical source in the [immutable extraction proof](evidence/straight-extraction.json). The complete predecessor has been removed. The extraction allocates a separate one-tile identity and retains the canonical tile's five model zooms, PATH resource, five shadow resources, complete concrete body, rails, ballast, and single support. Its two routes are straight at local east −2 m and +2 m, travelling in opposite directions. Its support is centred in the tile.
 
 The [native extraction proof](evidence/straight-extraction.json) records actual saved resource hashes and exact comparisons with the approved parent. The [current saved-resource report](evidence/saved-resource-checks.json) records independent checks of routes, geometry, supports, train clearance, and model budgets. Building the piece does not establish appearance or traffic inside the game.
 
@@ -789,4 +791,4 @@ No observation recorded.
 
 The [coordinate-labelled extraction drawing and measured decision](../../01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json) split the accepted eleven-cell fan into a nine-cell curved core and two copies of this straight. The existing ordinary straight was rejected because its complete structural profile differs. This separately allocated type preserves the fan's recessed web rather than changing the accepted core to fit another type.
 
-Every public source, picture, report, and original observation of the complete fan remains with that original type. New software and game results belong to this new type's own cases; they are not copied from its parent as approvals.
+The complete fan's superseded definition, standalone artwork, and registration have been removed. This piece's immutable extraction proof preserves its measured source identity and exact comparisons. Software and game results belong to this type's own cases; predecessor results are not copied as approvals.

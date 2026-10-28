@@ -24,7 +24,6 @@ from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.rail_geometry import _route
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
-FAN = 'hsr_component_l2_paired_fan_compact_join'
 CORE = 'hsr_component_l2_paired_fan_compact_core'
 STRAIGHT = 'hsr_component_l2_paired_straight_recessed_web'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
@@ -37,13 +36,13 @@ def _point(point):
 
 
 def encoded_fan():
-    info = compact_info(FAN)
+    info = compact_info(CORE)
     tiles = [f'{0x7ff00000+x*0x100+y*0x10:08x}' for x, y in info['cells']]
-    spec = {'id': FAN.replace('_', '-'), 'recipe': FAN, 'cells': info['cells'],
+    spec = {'id': CORE.replace('_', '-'), 'recipe': CORE, 'cells': info['cells'],
             'footprint': info['footprint'], 'structural_cells': info['structural_cells'], 'tile_ids': tiles}
     resources = {(*PATH, int(tile, 16)): encode_paths(data['routes'])
                  if data['routes'] else EMPTY_STRUCTURAL_PATH
-                 for tile, data in zip(tiles, compact_layout(FAN).values())}
+                 for tile, data in zip(tiles, compact_layout(CORE).values())}
     return spec, resources
 
 
@@ -89,7 +88,7 @@ def sampled_native_profile(deck):
 
 class CompactFanSourceTests(unittest.TestCase):
     def test_parallel_stem_keeps_full_native_pair_width_before_the_arms_turn(self):
-        decks = model_inputs(FAN)[1]['surface_decks']
+        decks = model_inputs(CORE)[1]['surface_decks']
 
         def paired_widths(profiles):
             return [max(vertex[0] for _, _, changed in profiles for vertex in changed[2*number][1])
@@ -112,7 +111,7 @@ class CompactFanSourceTests(unittest.TestCase):
                 self.assertAlmostEqual(width, 15., places=8)
 
     def test_shoulder_width_fix_preserves_rails_and_the_eight_metre_lower_cut(self):
-        for deck in model_inputs(FAN)[1]['surface_decks']:
+        for deck in model_inputs(CORE)[1]['surface_decks']:
             with self.subTest(deck=deck['name']):
                 sections, original, changed = sampled_native_profile(deck)
                 self.assertEqual([triangle for kind, triangle in changed if kind == 'rail'],
@@ -128,36 +127,38 @@ class CompactFanSourceTests(unittest.TestCase):
                     for expected, actual in zip(before, after):
                         self.assertAlmostEqual(actual, expected, places=10)
 
-    def test_exact_fan_family_is_registered_and_full_fan_ownership_is_preserved(self):
-        self.assertEqual(RECIPES, (FAN, CORE, STRAIGHT))
-        self.assertEqual(set(CONTRACTS), {FAN, CORE, STRAIGHT})
-        info = compact_info(FAN)
-        self.assertEqual(info['footprint'], (7, 5))
-        self.assertEqual(info['cells'], [(3, 0), (3, 1), (3, 2), (2, 3), (3, 3), (4, 3),
-                                         (1, 4), (2, 4), (3, 4), (4, 4), (5, 4)])
-        self.assertEqual(info['structural_cells'], [(2, 3), (4, 3)])
-        self.assertEqual(info['support_centers'], [(48., 0.), (48., -16.), (48., -32.),
-                                                  (48., -48.), (32., -64.), (64., -64.)])
-        self.assertEqual(list(compact_layout(FAN)), info['cells'])
-        mapping, context = model_inputs(FAN)
-        self.assertEqual(len(mapping), 11)
+    def test_current_fan_family_has_only_the_core_and_matching_straight(self):
+        self.assertEqual(RECIPES, (CORE, STRAIGHT))
+        self.assertEqual(set(CONTRACTS), {CORE, STRAIGHT})
+        info = compact_info(CORE)
+        self.assertEqual(info['footprint'], (5, 3))
+        self.assertEqual(info['cells'], [(2, 0), (1, 1), (2, 1), (3, 1),
+                                         (0, 2), (1, 2), (2, 2), (3, 2), (4, 2)])
+        self.assertEqual(info['structural_cells'], [(1, 1), (3, 1)])
+        self.assertEqual(info['support_centers'], [(32., 0.), (32., -16.),
+                                                  (16., -32.), (48., -32.)])
+        self.assertEqual(list(compact_layout(CORE)), info['cells'])
+        mapping, context = model_inputs(CORE)
+        self.assertEqual(len(mapping), 9)
+        self.assertEqual(len(context['layout']), 11)
         self.assertTrue(all('compact_native_corner' not in deck for deck in context['surface_decks']))
+        compilation_cells = {tuple(cell) for cell, _ in context['layout']}
         for x, north in context['support_centers']:
-            self.assertIn((math.floor((x+8)/16), math.floor((-north+8)/16)), set(mapping.values()))
+            self.assertIn((math.floor((x+8)/16), math.floor((-north+8)/16)), compilation_cells)
 
     def test_fan_ports_use_p01a_angles_and_meet_the_reused_rotated_piece_exactly(self):
-        info = compact_info(FAN)
-        self.assertEqual(info['ports']['N'], {'in': (46., 8., 15.5), 'out': (50., 8., 15.5)})
-        expected = {'Wout': (22.39851855221686, -72., 15.5),
-                    'Ein': (73.60148144778314, -72., 15.5)}
+        info = compact_info(CORE)
+        self.assertEqual(info['ports']['N'], {'in': (30., 8., 15.5), 'out': (34., 8., 15.5)})
+        expected = {'Wout': (6.39851855221686, -40., 15.5),
+                    'Ein': (57.60148144778314, -40., 15.5)}
         actual = {'Wout': info['ports']['W']['out'], 'Ein': info['ports']['E']['in']}
         for label in expected:
             self.assertLess(math.dist(actual[label], expected[label]), 1e-9)
         diverge, merge = atomic_info(DIVERGE), atomic_info(MERGE)
         sx, sy, sh = diverge['ports']['S']['out']
-        fan_east_world = tuple(v + d for v, d in zip(actual['Ein'], (64., 80., 0.)))
+        fan_east_world = tuple(v + d for v, d in zip(actual['Ein'], (80., 48., 0.)))
         self.assertLess(math.dist(fan_east_world, (176.-sx, -sy, sh)), 1e-9)
-        fan_west_world = tuple(v + d for v, d in zip(actual['Wout'], (64., 80., 0.)))
+        fan_west_world = tuple(v + d for v, d in zip(actual['Wout'], (80., 48., 0.)))
         self.assertLess(math.dist(fan_west_world,
                                  tuple(v+d for v, d in zip(merge['ports']['N']['in'], (48., 0., 0.)))), 1e-9)
         tangent = diverge['port_vectors']['Sout']
@@ -182,13 +183,13 @@ class CompactFanSourceTests(unittest.TestCase):
 
     def test_local_fragments_have_only_the_two_permitted_directed_journeys(self):
         graph = defaultdict(set)
-        for (column, row), data in compact_layout(FAN).items():
+        for (column, row), data in compact_layout(CORE).items():
             for route in data['routes']:
                 first, last = (_point((x+16*column, north-16*row, height))
                                for x, north, height in (route['points'][0], route['points'][-1]))
                 graph[first].add(last)
-        exits = {(22.398519, -72., 15.5): 'W', (50., 8., 15.5): 'N'}
-        for start, expected in {(46., 8., 15.5): {'W'}, (73.601481, -72., 15.5): {'N'}}.items():
+        exits = {(6.398519, -40., 15.5): 'W', (34., 8., 15.5): 'N'}
+        for start, expected in {(30., 8., 15.5): {'W'}, (57.601481, -40., 15.5): {'N'}}.items():
             reached, pending = set(), [start]
             while pending:
                 point = pending.pop()
@@ -198,11 +199,11 @@ class CompactFanSourceTests(unittest.TestCase):
             self.assertEqual({exits[point] for point in reached if point in exits}, expected)
 
     def test_two_fan_arms_are_reflected_reverses_at_the_same_native_l2_height(self):
-        routes = compact_routes(FAN)
+        routes = compact_routes(CORE)
         self.assertEqual(set(routes), {'N>W', 'E>N'})
         first, last = routes['N>W'], list(reversed(routes['E>N']))
         self.assertEqual(len(first), len(last))
-        self.assertLess(max(math.dist(a, (96.-b[0], b[1], b[2]))
+        self.assertLess(max(math.dist(a, (64.-b[0], b[1], b[2]))
                             for a, b in zip(first, last)), 2e-9)
         self.assertTrue(all(point[2] == 15.5 for route in routes.values() for point in route))
 
@@ -228,9 +229,9 @@ class CompactFanSourceTests(unittest.TestCase):
         changed[tile] = EMPTY_STRUCTURAL_PATH
         with self.assertRaises(ValueError):
             check_paths(changed, spec)
-        stale = deepcopy(CONTRACTS[FAN])
+        stale = deepcopy(CONTRACTS[CORE])
         stale['ports']['Wout'] = (16.562689, -72., 15.5)
-        with patch.dict(CONTRACTS, {FAN: stale}), self.assertRaises(ValueError):
+        with patch.dict(CONTRACTS, {CORE: stale}), self.assertRaises(ValueError):
             check_paths(resources, spec)
 
 

@@ -66,6 +66,8 @@ These steps describe a future repeatable game trial. They do not record an insta
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Exact retained fork
 
 The new core owns nine cells of the accepted complete fan: original source cells `[3,2]`, `[2,3]`, `[3,3]`, `[4,3]`, `[1,4]`, `[2,4]`, `[3,4]`, `[4,4]`, and `[5,4]`. Subtract `[1,2]` from each original [column, row] to obtain this core's local cells. Its footprint is 5 × 3 tiles, including two structural cells and four supports.
@@ -787,6 +789,6 @@ No observation recorded.
 
 ## 6. Design history
 
-The [original full fan](../hsr-component-l2-paired-fan-compact-join/README.md) remains a separate reusable type with its source, observations, evidence, and artwork unchanged. Its accepted central border is retained in every saved core cell. The [assembly-owned extraction decision and drawing](../../01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json) explain the two straight cuts and the three resulting placements.
+The original complete fan has been removed after its approach was separated into reusable straight tiles. Its accepted central border remains in every saved core cell; the [immutable extraction proof](evidence/fan-core-extraction.json) retains the measured predecessor identity and exact retained-resource comparisons. The [assembly-owned extraction decision and drawing](../../01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json) explain the two straight cuts and the three resulting placements.
 
 The new matching straight uses the original interior tile `[3,1]` twice. Replacing the original outer tile `[3,0]` changes triangulation and whole-repeat texture phases, removes fourteen redundant northern cap triangles, and replaces ten submicrometre texture slivers. Continuous saved-face coverage, exact support/material checks, and the retained native neighbour's closing faces bound that cleanup. The nine core models are preserved exactly; the extraction does not reinterpret a source layout change as a human or game pass.

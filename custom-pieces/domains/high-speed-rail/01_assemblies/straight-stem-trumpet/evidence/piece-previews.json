@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "purpose": "Current source-verified reusable-type picture index for all28 placements; twelve accepted canonical type picture pairs are reused unchanged, and the two new type picture pairs retain their actual current standalone native-build provenance.",
+  "purpose": "Current source-verified canonical reusable-type picture index for all 28 placements. All fourteen types use the current standalone picture standard; this index refresh does not render or alter the assembly pictures.",
   "scene_file": "assembly.json",
   "scene_sha256": "b0628a3061eee319c8b1c052c7cc820cb4106f79a88fa587ef49938f6eb8b257",
   "paths_relative_to": "evidence/piece-previews.json",
@@ -9,8 +9,11 @@
     "unique_pieces_checked": 14,
     "every_source_preview_sha256_matches_current_dat": true,
     "every_source_dat_matches_current_verified_build": true,
-    "retained_canonical_types": 12,
-    "freshly_rendered_revised_types": 2
+    "retained_canonical_types": 2,
+    "freshly_rendered_revised_types": 12,
+    "presentation_only_refresh": true,
+    "compiled_resources_unchanged": true,
+    "assembly_rendered": false
   },
   "images": [
     {
@@ -6270,14 +6273,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/piece.json": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connections.json": "956f6764cfb57162144e72df471b0ca53e036f7dd7bfc8783409181802c5faed",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connector-groups.jsonc": "6eb33dc3b9ea632eba4e4742ba7e774f9be514a3cc1fbd288854104476c0acf3",
-        "domains/high-speed-rail/domain.json": "54edd743aaeaff1db9a0e4ea0354427d8e20b73bb55f5783aba5c5c5299da3b5",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
         "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "0d0ea5942fa4c72e23d961d8fc6164f837a5dc2978551689910324c0650a7896",
+      "input_fingerprint": "2b77fec1844a0885169aec28ff0023ed538bb44868ed6ae3f21032fb0ceb40c2",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-paired-fan-compact-core/evidence/preview.json",
-      "per_view_evidence_sha256": "6aae315f10ae53da1ef5b1903d3589205d5ceb97b6cf03b8886c31ca8ca1ac8b",
-      "preserved_existing_image_bytes": false,
-      "retained_image_basis": "Freshly rendered new type from its actual passing standalone native build; actual DAT/model and image hashes match this assembly build."
+      "per_view_evidence_sha256": "d47b57a4516ededea076201cac76334242114998970704763b06ff617d6c6077",
+      "preserved_existing_image_bytes": true,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -6803,14 +6806,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/piece.json": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connections.json": "3a4d9ed95fead5e1b45fbf430d50c68971806bd255275d7fc72efb53ab8c1d80",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connector-groups.jsonc": "8ce54ecdd123d059c8824c072b258fca96ccd75b9f3528a64b9ef90fc19d97fb",
-        "domains/high-speed-rail/domain.json": "54edd743aaeaff1db9a0e4ea0354427d8e20b73bb55f5783aba5c5c5299da3b5",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
         "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "25f75cffab6974d1fb7d4b5eecb7055c5a3b66bd8c840569fbcef33717046103",
+      "input_fingerprint": "ca65d38db7e0db254080d6fcc09db9e5ca2874f414fe18d1f4dd07bb122cc0a5",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-paired-straight-recessed-web/evidence/preview.json",
-      "per_view_evidence_sha256": "998c488ef957ad75c665d5e7b9141cf29a9534104ee800aedf9089c644267898",
-      "preserved_existing_image_bytes": false,
-      "retained_image_basis": "Freshly rendered new type from its actual passing standalone native build; actual DAT/model and image hashes match this assembly build."
+      "per_view_evidence_sha256": "6e14e7ef90318079b51364e6865e91ccc32ab312caf2c4ed8e7533f95aabd613",
+      "preserved_existing_image_bytes": true,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -6826,7 +6829,7 @@
         "model_sha256": "7fde537a6e643630798d1f15849a2a7d41aa76634ff9577c3b91596eb6d8e370"
       },
       "file": "../../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview.png",
-      "sha256": "6cdf1980aba33aba42a7a6a8e6bfd63f98365913ae8c58c6454af35f9af6f0fc",
+      "sha256": "69a69e9deadf6cfaaabb9844b1ce5c863c63e8ae6c9c097ce6bc81da69e31cf6",
       "size": [
         1600,
         1200
@@ -8062,7 +8065,7 @@
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -8093,7 +8096,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -8131,7 +8134,7 @@
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-thumb.png",
-        "sha256": "816517a76a886d9a9d05feeedc90d0efcb321c424dfbe5245522b2de8bd725a8",
+        "sha256": "5c9c991636979dab1abb79013592a26d1b3e1a1e24be6da172ce37c12ac4f092",
         "size": [
           360,
           270
@@ -8141,14 +8144,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connections.json": "998f30197430b9b501f55ef230291749c94199e6179ef109c7f090972c9acb18",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connector-groups.jsonc": "40605ce79ba96b9eebfdffdba38829dbb71eba98e6d4fa04b41e007ec0e6697c",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "509de28feeda53cff16067553df4d2f8869b67bd6d92d756642bdba06895c4a1",
+      "input_fingerprint": "e3ba11bb8ce63419677b563bb524c8a47df394fa0c996566b55210a86418d809",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-short-mainline-diverge-core/evidence/preview.json",
-      "per_view_evidence_sha256": "7c5ed8731286654d8c6c69f3c1bde44f9232716562a528a50d4013baaa9eca6e",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "938f128b0872739d2757701422174a1003430be87d8886322c540bb87531569b",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -8164,7 +8167,7 @@
         "model_sha256": "d2f410894469b6491796d7566de5d8e3e2c982aaeb411330b6afccfff620a2c7"
       },
       "file": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview.png",
-      "sha256": "45bf55c8b77d226a681862feeae2e76ab722b5a5dc517fdb7ab72ff4774b88fa",
+      "sha256": "4fecd9f35e939adea10095d2aa7e1e667f69c574e9ab950fb31bcb3e94a0717e",
       "size": [
         1600,
         1200
@@ -9875,7 +9878,7 @@
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -9906,7 +9909,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -9944,7 +9947,7 @@
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-thumb.png",
-        "sha256": "803c2a818c773d0edd26cd604212ad44b1b197f0a17b96c4fd28894beaf6c76e",
+        "sha256": "9393d3f15e32df861072265db03cbd31a45c0660e50174027fb35a1822b0f62f",
         "size": [
           360,
           270
@@ -9954,20 +9957,20 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "e4616618593cb4006fcedc6a32821518f1f9c0ae071b900a60b96d944555fe5d",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "b919f0502dc0fee764a17464aa7a6ca787c602c508814f6d7709161fe3a3d0c7",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "e4cd605f3caa0a8c8ee2e6f090949e9b9f5c045b955c06dacbc813554aa0d12d",
+      "input_fingerprint": "77ec64ae55b3e3ec4e32473d6f4b847fa342b07b119aee59f57f208b33287cbd",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/evidence/preview.json",
-      "per_view_evidence_sha256": "48d2be5508c302c28e0c675b0c733347336629dca68de12f495afc865dd5672a",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "25e78a085f04a9b98aa833f427ea2d42f3a1d71838f10c6f2e80bdc78e9b280b",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-l2-shortened-departure-curve",
       "menu_name": "HSR L2 Shortened One-Way Departure Curve",
-      "display_title": "Piece - HSR L2 Shortened One-Way Departure Curve",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -9977,7 +9980,7 @@
         "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801"
       },
       "file": "../../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview.png",
-      "sha256": "8237a55133a89a17ef7079248415aa561b66b2b2fdc18ad0fed63d124bf62eba",
+      "sha256": "a203b273180d23314e882e1d792a32cc26cfa98de04374a57796e75a18d61b3d",
       "size": [
         1600,
         1200
@@ -10592,13 +10595,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Shortened One-Way Departure Curve",
+          "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Shortened One-Way Departure Curve",
+            "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -10609,7 +10612,7 @@
             "bounds": [
               30,
               27,
-              904,
+              1124,
               59
             ]
           },
@@ -12629,11 +12632,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Shortened One-Way Departure Curve",
+        "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -12664,7 +12667,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -12697,28 +12700,35 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-thumb.png",
-        "sha256": "f73b4c4ed7fe4dce81d05034c2bdaa5fdb7d902b5c364b5868a25297546aed68",
+        "sha256": "b3b50de69c01d093245411db3d92cfa0522d7b60f8f013f95fa955e95bb082da",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "10e9f3014bf2dec432e6a1951700668184a1e0aca6fde61e4e8edc050f866fda",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "06b9f7a9564b4a86cd3ebb9ab7e956f931fea591beeb5e07e765027432086fdc",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-shortened-departure-curve/evidence/preview.json",
-      "per_view_evidence_sha256": "22b2ef6f6f91828e558ba51a82ce4c2bde4568ffb58131ff13cbeea2c15b2a4e",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "56baef5745057338cf7209e39289bfbce98dc2c699b3549f85817614a1e8a5cd",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-l2-shortened-return-curve",
       "menu_name": "HSR L2 Shortened One-Way Return Curve",
-      "display_title": "Piece - HSR L2 Shortened One-Way Return Curve",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -12728,7 +12738,7 @@
         "model_sha256": "5ac61de87d9e396988d7e7db7aa68ac493eb00fa5a04f72eac81db25de4028d2"
       },
       "file": "../../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview.png",
-      "sha256": "13a6395dda0ca19044c901648276f86c44ecc1d76260bb1dc4a82b2c40964abc",
+      "sha256": "c0f39ebd1dfc1e47b9e62dfd30bc3d46252f03837598d93505237fdce0178f48",
       "size": [
         1600,
         1200
@@ -13343,13 +13353,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Shortened One-Way Return Curve",
+          "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Shortened One-Way Return Curve",
+            "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -13360,7 +13370,7 @@
             "bounds": [
               30,
               27,
-              851,
+              1071,
               59
             ]
           },
@@ -15618,11 +15628,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Shortened One-Way Return Curve",
+        "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -15653,7 +15663,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -15686,28 +15696,35 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-thumb.png",
-        "sha256": "2a2844f7a243ed4a1509d2828e0ca29cf4a5674d1fb620236ae2f7edeb3475cb",
+        "sha256": "716085ca9c04161a74186276ecfcc9839108c28969959b616bd8a97a52d65efc",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "4b01f1734219a34b7d4b50e4fc29923553528ae7725a3cd2fd285414358c5080",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/piece.json": "668ace6a67fef74c1609816ec75868d526dcd15b0de60bbc6c9e16a9285de8f9",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connections.json": "ba38884f0da8b906a10edb46bf6c173f307b5635a468520db2bf0d49befd7a2a",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connector-groups.jsonc": "cbdd3dd888a381412a168205c61577d396ff4bd2d741227e107231acddddb1d6",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "b5b9142cc56d8f61bc3091943ed0139f71da17f858e6c6d9f618a6e004e35dc2",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-shortened-return-curve/evidence/preview.json",
-      "per_view_evidence_sha256": "7e41ed60737c0451837de090d78f7f26b24a83ebc54e5bb29d670d8682a7180a",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "433c6bf49cedc2677c06c0dce157db5516f95b0f7e498f8dabe7298b3fa7211b",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-lower-oneway-straight",
       "menu_name": "One-Way HSR L2 Eight-Metre Straight",
-      "display_title": "Piece - One-Way HSR L2 Eight-Metre Straight",
+      "display_title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -15717,7 +15734,7 @@
         "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5"
       },
       "file": "../../../00_pieces/hsr-component-lower-oneway-straight/previews/preview.png",
-      "sha256": "8e4f08ca9d10d87e11a8598436e2057a95a11e12d28e8772e8f78279281bdf1a",
+      "sha256": "a22c29d3d74b772c9927fce36905743ec4402f6c56553bca78b3f6e31ba4b576",
       "size": [
         1600,
         1200
@@ -16027,13 +16044,13 @@
       },
       "header": {
         "captions": [
-          "Piece - One-Way HSR L2 Eight-Metre Straight",
+          "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - One-Way HSR L2 Eight-Metre Straight",
+            "text": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -16044,7 +16061,7 @@
             "bounds": [
               30,
               27,
-              782,
+              1001,
               59
             ]
           },
@@ -16144,11 +16161,11 @@
         }
       ],
       "captions": [
-        "Piece - One-Way HSR L2 Eight-Metre Straight",
+        "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -16179,7 +16196,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -16212,28 +16229,35 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-thumb.png",
-        "sha256": "968052ab883c6a2447babad2e588f01300b7c224079000985628e51b4ee0ba18",
+        "sha256": "14ab17da8297d0adc55c03e8c203cd7bf9b0bed4872081cf9df82f23e7b90a1c",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "feeb8f6215a3be78030fbf8b613c2f61aeb14407bc2ee66c32c29795a9d1412e",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connections.json": "9e50f746ba44c3bf17f0015e79812c5668467f7c50593eeab7f5c28718222c72",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connector-groups.jsonc": "a1ea662a9e5f76c6cc7ad25057d09ad1fdee2563ca337183aa5d33355783c5f1",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "904404a76f7d5d8f513caf6dfb96ef326dd06c9f6c1c50640c400041f420a2ac",
       "per_view_evidence": "../../../00_pieces/hsr-component-lower-oneway-straight/evidence/preview.json",
-      "per_view_evidence_sha256": "c660422240c0dce2e9e4486909972017515ecfaadf3264101a60f8888ad31fb5",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "3dd326b2f9a9fb8cacdb83ef80de7caab73f5dbfc487a0a4ce4d435b0b5f4aac",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-lower-paired-straight",
       "menu_name": "HSR L2 Two-Track Straight",
-      "display_title": "Piece - HSR L2 Two-Track Straight",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -16243,7 +16267,7 @@
         "model_sha256": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44"
       },
       "file": "../../../00_pieces/hsr-component-lower-paired-straight/previews/preview.png",
-      "sha256": "f5536c084662c85549175bff5529981214573898cdfc0c3dfd4757b7979e8ca3",
+      "sha256": "6b170c4bf9cd9540b74bdd99de633432126d7038627b80827cb70c1b3aaa4f3b",
       "size": [
         1600,
         1200
@@ -16553,13 +16577,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Two-Track Straight",
+          "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Two-Track Straight",
+            "text": "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -16570,7 +16594,7 @@
             "bounds": [
               30,
               27,
-              600,
+              819,
               59
             ]
           },
@@ -16670,11 +16694,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Two-Track Straight",
+        "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -16705,7 +16729,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -16738,22 +16762,29 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png",
-        "sha256": "57c70e2463805f51170ab3b8570b95d925d0e1e98ea25564415f20ebb83b0595",
+        "sha256": "3dec0b2c27aad09a9aecc4958066288462512ac891c7f4a91391877af9adc0ff",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "123038ebac1e2918b4107f62df6af7b819249319af5f8ba140444f9fb3c3293d",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/piece.json": "e9d39b4cc65ed2e60527cc99be2b57c47eb7fe3bbcbec1a3419f2239af4b6265",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connections.json": "93d187278776cc7afb9e5aa07296509b9ea2047d491f6e7a02999390673dbdea",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connector-groups.jsonc": "531da9e9703d24368ff7d62169555c0153fc152139a4c24dba27f6db69d95d75",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "b89e33e3497a295391e31fa028e7e2f2ea84d3eb204a1f5e77e0e034042b1b84",
       "per_view_evidence": "../../../00_pieces/hsr-component-lower-paired-straight/evidence/preview.json",
-      "per_view_evidence_sha256": "3c86454eec03ffae190f93374d95460d21900e93a741af80cf389fb39d52eb9f",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "be24160a60a95dd8b237c9d241d6642e4ff91538125945ec11676ca52d6fad32",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -16769,7 +16800,7 @@
         "model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478"
       },
       "file": "../../../00_pieces/hsr-component-modular-crossing-core/previews/preview.png",
-      "sha256": "bde49a8485b493f83d78718b25ad10b1616c4e1b480bffda70a89acfc237aee8",
+      "sha256": "400537ca5419c208b2ba09c950f040227030ee8d6cd8e2697581cc1a035bdb0e",
       "size": [
         1600,
         1200
@@ -17214,7 +17245,7 @@
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -17245,7 +17276,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -17278,11 +17309,12 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-modular-crossing-core/previews/preview-thumb.png",
-        "sha256": "c19ac82276eb99102084bc74a65888aff8e5d4e2dbed459e81bab3d4d313a6e6",
+        "sha256": "7144419b786aaaa7e906cab8f693f3084ebff6c276fa2872f5fadd9a2aaed5ec",
         "size": [
           360,
           270
@@ -17292,20 +17324,20 @@
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/piece.json": "0087e27275a2c11ee126ce4254ded8a1f22eb18fe7448ae2b7062a4ef7a2a90f",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connections.json": "e2eff89bdfc26e8713e1596a62f0754f4560c015973528afbfab70244d1d60ff",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connector-groups.jsonc": "11b6717a39d170272abd2b6c115283808704ab5428dddfa1b93a3e1507f367e5",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "af1689dc8b510b38bd684c816d864490c79cbd933296ac0eb7efe2279b66e859",
+      "input_fingerprint": "289ff5321bd9d04ea610057a30bfd36f2cf98124eb793dade7569f6477a462e3",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-crossing-core/evidence/preview.json",
-      "per_view_evidence_sha256": "285074537134abcaac460b99ed416ad7fc836e374f8ce2c69bf621a232674747",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "c8849998a269cc2e6d64090127935150054750ac820338bf6d7ced3e415d0812",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-modular-paired-climb",
       "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
-      "display_title": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+      "display_title": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -17315,7 +17347,7 @@
         "model_sha256": "1e209a1b1bc0c9be3c776225a926d76e406086370f3a77a7672102518be46b50"
       },
       "file": "../../../00_pieces/hsr-component-modular-paired-climb/previews/preview.png",
-      "sha256": "5f6c359e1123eda805fb7f7f95a081179f9e7ba52210220e0c8a56f107a2f24b",
+      "sha256": "a39887697ee51f9650b0fa09e6149364c6c96ec872c98d95ed8439874ea2362f",
       "size": [
         1600,
         1200
@@ -17856,13 +17888,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR Modular Two-Track L2 to L4 Climb",
+          "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+            "text": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -17873,8 +17905,8 @@
             "bounds": [
               30,
               27,
-              803,
-              52
+              1243,
+              59
             ]
           },
           {
@@ -18379,11 +18411,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR Modular Two-Track L2 to L4 Climb",
+        "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -18414,7 +18446,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -18447,22 +18479,29 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-modular-paired-climb/previews/preview-thumb.png",
-        "sha256": "c67a9196539cac68ac812df599bff7e85d74bd4bd25d8cb0669ef80e63846a30",
+        "sha256": "51bc5ab9ce45d24b5729fd7d0d4bee647d563b2d1a582cbe0e9645f0ee8b35b1",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "e7987643803768fa540cdf4fb7f506f8ff2164a0b8674ff83e283f7aebbc7cde",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/piece.json": "0d67af67113bdf0d99fac71f74ff35c6f9e1d5596f5e2480e55a88d23cfe04e3",
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connections.json": "944ddb9e33c8ef9a47d87e6278b9e49453b0beaeda65a490956f2a02341cd8b9",
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connector-groups.jsonc": "3694822d083c5b4a104bf264f88b19b296135c9973d51010c96662619dcf1b53",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "acc154957363423c72a4d52934c4da00792de842d9b1f0f48995ba835bd2cf28",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-paired-climb/evidence/preview.json",
-      "per_view_evidence_sha256": "1c67152994bcdc4d09ec9a56e610ed8342a6cd4ab06173898f0c65a9cb5b99df",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "3bcd0b2768c9678774bc64ef4c768543c4d9826bfe04206c1c93dac148c2015c",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -18478,7 +18517,7 @@
         "model_sha256": "98087d2e71617e4a1e8ff9570ca72fd09d64c83f4ed592b674dda6056ecadaf7"
       },
       "file": "../../../00_pieces/hsr-component-modular-south-junction/previews/preview.png",
-      "sha256": "cb9e71f45660cb63c53be7daa26ca7c4c6cc52a5d71de99b92d7bc03a6af5437",
+      "sha256": "6df426cec38373bce269b966fdaa49e8db651e04dafd26f2d95a7b1f8bba24b3",
       "size": [
         1600,
         1200
@@ -21615,7 +21654,7 @@
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -21646,7 +21685,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -21684,7 +21723,7 @@
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-modular-south-junction/previews/preview-thumb.png",
-        "sha256": "e9b41cadd026d1075154d815759ed4528bddb0339120d36e15967806df888fac",
+        "sha256": "04f928203eac7e4bcfc29888c62f71f5a1f72d313fef0cdd1f185cf937a8e777",
         "size": [
           360,
           270
@@ -21694,14 +21733,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/piece.json": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connections.json": "e368222484cb14debddad08a229db33bfa0422b5a896cc81c8feb34d955566e2",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connector-groups.jsonc": "cb23f3a60c4c8367df1017f3bcc1688a470b523e043d36f457c85e1eeec36f9c",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "c730e2caa70a9f0022b9f61f5ade5ce9d46a876d08b1da1528ce8e44cc19375a",
+      "input_fingerprint": "9705132777bdda2d731c95e891c61022568e02b401c9787f39f087eb6d651b7e",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-south-junction/evidence/preview.json",
-      "per_view_evidence_sha256": "d25697f7b0e647586576289e3ed4c124b371f4be58db5f96bbe0cbf7b5b6ad9a",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "09e759ca83bb806a6fc130309e5600a676b40839c837268baa5a84a2d4d61c88",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -21717,7 +21756,7 @@
         "model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc"
       },
       "file": "../../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview.png",
-      "sha256": "94d9598c1a418f809b8be4ca796b71fb8b782328fe401c3b51497c79d4762006",
+      "sha256": "70525feeb70947d3a16b6601f0263582afa2f388fb83f44d3f106ec296b78d22",
       "size": [
         1600,
         1200
@@ -25956,7 +25995,7 @@
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -25987,7 +26026,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -26020,11 +26059,12 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview-thumb.png",
-        "sha256": "17438e8e35972678ed705a21b3973b95d729524e6db4935ad75d0c89960bcde9",
+        "sha256": "1d8883953de8d8351fde360f7bbfe4b83a0f913139d22a241447181d08bca85e",
         "size": [
           360,
           270
@@ -26034,20 +26074,20 @@
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "5454e3fa7d19b7d4b0804ec533fcbbca9054d45d6add1c7771446ecc43cdb747",
+      "input_fingerprint": "283c1621494e969ecd1a2e83d4a1848db649cc41ccff49e9eeb4f538ee98c4c5",
       "per_view_evidence": "../../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/evidence/preview.json",
-      "per_view_evidence_sha256": "f37911247cbac67f504f60091aaf8060b0cc9f10e874d5348303b65df839c371",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "fb4fd913dcf980bf613dc3396647358fb5dbdcdf6b2a1bc9bfc1b442c72b6448",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
       "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
-      "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -26057,7 +26097,7 @@
         "model_sha256": "2c6d650e8025641c75234216bc5296bfe432b7cdce723e7c3e9d69576ec4b1a6"
       },
       "file": "../../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview.png",
-      "sha256": "a6a19f56c0085f2f711422f27330fc8891b161d86ac3a465cc245ec104a2c40b",
+      "sha256": "bc81df69db2843f86948b6300ebdde513caf77e0c6a9af028e182008976a4f40",
       "size": [
         1600,
         1200
@@ -26577,13 +26617,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+          "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+            "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -26594,7 +26634,7 @@
             "bounds": [
               30,
               27,
-              918,
+              1505,
               59
             ]
           },
@@ -30292,11 +30332,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+        "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -30327,7 +30367,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -30360,28 +30400,35 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-thumb.png",
-        "sha256": "df74e63e7d95af1ecf66bdbee2864c2428cc5b90d31ac58fe65318525dcba1a2",
+        "sha256": "466a0050da615e81481bb098f2ef1f9483756d0e50085b60554b6d7d707e4a64",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "ca36d7886620bbe4fb2220b45ca6a25a55cb3c404d4995e66e561f53827e3104",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/piece.json": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33",
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connections.json": "202dc820ada371ec4dc772d427904d4e848c1ad33c6e2561535deafb4e9da453",
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connector-groups.jsonc": "aac15d314e47fc0b0f9be5274c35cadfd79d83b49716fdc5b66040d33052a587",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "78923b1ff9d1c7fba77e2207b2a90a58b4dd5b2a9b4fa6f6fdd4a3e6b458063a",
       "per_view_evidence": "../../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/evidence/preview.json",
-      "per_view_evidence_sha256": "e71983e18c3afe23f30ca4a40a345decd2bbca2c79f304882f527defbbc7eca5",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "de6c80dafb2891449807f23cef2808764025aae86aae9c4170d0cf81c2a61bd1",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-upper-paired-straight",
       "menu_name": "HSR L4 Two-Track Straight",
-      "display_title": "Piece - HSR L4 Two-Track Straight",
+      "display_title": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
       "view_role": "angled",
       "canonical_filename": "preview.png",
       "source": {
@@ -30391,7 +30438,7 @@
         "model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788"
       },
       "file": "../../../00_pieces/hsr-component-upper-paired-straight/previews/preview.png",
-      "sha256": "a41556c084130d8ce0e0f20638ade50297f34bf0babe75d1749f28e232b9900d",
+      "sha256": "55c438bccb44741cb3ab37c8b31c93325e376c741a83778ed36d5a3ef54b2042",
       "size": [
         1600,
         1200
@@ -30701,13 +30748,13 @@
       },
       "header": {
         "captions": [
-          "Piece - HSR L4 Two-Track Straight",
+          "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
           "Clean view | Southeast view | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L4 Two-Track Straight",
+            "text": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -30718,7 +30765,7 @@
             "bounds": [
               30,
               27,
-              600,
+              819,
               59
             ]
           },
@@ -30818,11 +30865,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L4 Two-Track Straight",
+        "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
         "Clean view | Southeast view | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -30853,7 +30900,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -30886,22 +30933,29 @@
         "view_role": "angled",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": null,
         "duplicate_grid_footer_visible": false
       },
       "thumbnail": {
         "file": "../../../00_pieces/hsr-component-upper-paired-straight/previews/preview-thumb.png",
-        "sha256": "7176c2a44a7f6b4225bb49389b57cccb6247b2376a7c8997ec378b7ef415ad4c",
+        "sha256": "092e13a635c088fa92a9c11e87bb05a8c69ca0b59dc025771ed876b0f9a3465c",
         "size": [
           360,
           270
         ]
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "b681d72e3dedfdd7af3bbdd208934243698acfacaa9734fd7c7316be897a6ea5",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/piece.json": "be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3",
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connections.json": "5ddb81eb87261514de6f641e2352c477395e9a5ddb6e31d9b138365310611bc4",
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connector-groups.jsonc": "d6ce99b5a0ff92348fbfa83cc7be617d9a2bb0e2d0ac22dc8a4f997a8e3a7d80",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "6a4a409cd76d7d7ed6021be97da306f8037f54afc9f45220482ce7e881980349",
       "per_view_evidence": "../../../00_pieces/hsr-component-upper-paired-straight/evidence/preview.json",
-      "per_view_evidence_sha256": "83b9d77a084dd3e5de9378068222fa8df8db6b7d637e8ed3f4a84b5a4dab201e",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "51da642e98ce538d609f85ac4cd7563dfb01b9118d738a2f422bedc0463d051a",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     }
   ],
   "top_images": [
@@ -37165,14 +37219,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/piece.json": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connections.json": "956f6764cfb57162144e72df471b0ca53e036f7dd7bfc8783409181802c5faed",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connector-groups.jsonc": "6eb33dc3b9ea632eba4e4742ba7e774f9be514a3cc1fbd288854104476c0acf3",
-        "domains/high-speed-rail/domain.json": "54edd743aaeaff1db9a0e4ea0354427d8e20b73bb55f5783aba5c5c5299da3b5",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
         "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "1c1195423003c80765d6b53b78734f7536c0c339232fdcdc3e563812f59178a7",
+      "input_fingerprint": "36c197b5f9e00ce049bd80c689c98f594848dac7275b90edc7c0e4bbd536560d",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-paired-fan-compact-core/evidence/preview-top.json",
-      "per_view_evidence_sha256": "fb5d996519ef0633391d35a41323d378aa34c6b0a4a9389ad556e0f2c5d2e96d",
-      "preserved_existing_image_bytes": false,
-      "retained_image_basis": "Freshly rendered new type from its actual passing standalone native build; actual DAT/model and image hashes match this assembly build."
+      "per_view_evidence_sha256": "aee15edf6de7628e92d88f2c8d88d721a89a08fd3b0c092dd77d9131f6bb1d22",
+      "preserved_existing_image_bytes": true,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -37701,14 +37755,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/piece.json": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connections.json": "3a4d9ed95fead5e1b45fbf430d50c68971806bd255275d7fc72efb53ab8c1d80",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connector-groups.jsonc": "8ce54ecdd123d059c8824c072b258fca96ccd75b9f3528a64b9ef90fc19d97fb",
-        "domains/high-speed-rail/domain.json": "54edd743aaeaff1db9a0e4ea0354427d8e20b73bb55f5783aba5c5c5299da3b5",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
         "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "0502e501db22c3e611044c549c7a6a5af6f7527f2c1e7ab500790b6b5b6595ae",
+      "input_fingerprint": "bcce7474e3f529cefb98b783c7069f1c231176544038a6d1807ebd374b0507be",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-paired-straight-recessed-web/evidence/preview-top.json",
-      "per_view_evidence_sha256": "0ffac4e1108d968bb7124c02289dac43db9381384dd4bfe24bd8219880ada876",
-      "preserved_existing_image_bytes": false,
-      "retained_image_basis": "Freshly rendered new type from its actual passing standalone native build; actual DAT/model and image hashes match this assembly build."
+      "per_view_evidence_sha256": "1124e49aaec4540b870b456bc8e2143ea3ca529cb46290f43ebcce0838fd16c2",
+      "preserved_existing_image_bytes": true,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -37724,7 +37778,7 @@
         "model_sha256": "7fde537a6e643630798d1f15849a2a7d41aa76634ff9577c3b91596eb6d8e370"
       },
       "file": "../../../00_pieces/hsr-component-l2-short-mainline-diverge-core/previews/preview-top.png",
-      "sha256": "5d1931ecd21c49fe4553392c5a56a9298c45d8948aa3e0d8dfb70bd8973f1da2",
+      "sha256": "3e6d2aa32a29577d9bad96987ab2b9bfbdd3d5a6840c0d2be755c77b3c17dcd5",
       "size": [
         1600,
         1200
@@ -38966,7 +39020,7 @@
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -38997,7 +39051,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -39042,14 +39096,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connections.json": "998f30197430b9b501f55ef230291749c94199e6179ef109c7f090972c9acb18",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connector-groups.jsonc": "40605ce79ba96b9eebfdffdba38829dbb71eba98e6d4fa04b41e007ec0e6697c",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "b348e9a68d64caae149c013d038207e1f725054a1bf6a7808dda1ec157608ea3",
+      "input_fingerprint": "b8803b810a6e90aa0e4d7bead17fa56b014b2ab58220814bdfbaefe4bd326011",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-short-mainline-diverge-core/evidence/preview-top.json",
-      "per_view_evidence_sha256": "208f4be5e309474e3fa4c55cb022edd113d9112ae26d7113db234a5bc05e7340",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "d3af54dae1bfc5cc43518fc419fd82dcc069151f360c50362b19e71d32f386b6",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -39065,7 +39119,7 @@
         "model_sha256": "d2f410894469b6491796d7566de5d8e3e2c982aaeb411330b6afccfff620a2c7"
       },
       "file": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/previews/preview-top.png",
-      "sha256": "4d10ffa9e94fde54b6a7127ecfc84de46918417a8268700d848aca9b4a68e4f7",
+      "sha256": "76078f1f535390bbe13ebe1e441492897def70a9228375ed6fe5cf85e71f2387",
       "size": [
         1600,
         1200
@@ -40782,7 +40836,7 @@
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -40813,7 +40867,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -40858,20 +40912,20 @@
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "e4616618593cb4006fcedc6a32821518f1f9c0ae071b900a60b96d944555fe5d",
         "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "b919f0502dc0fee764a17464aa7a6ca787c602c508814f6d7709161fe3a3d0c7",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "e0194779eaff34cb47f23bee3853f818adf4542c02c089403b352881a74fe5bd",
+      "input_fingerprint": "963d2b53dda728ed87740407b74ebb2306725f0b1846bc996dc0a39887976d3d",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/evidence/preview-top.json",
-      "per_view_evidence_sha256": "8b04e677d73e4d10b9f0808ca7225ef222af8a52fc03e08f132877f2d66990cb",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "130600cabbf9302526a3feb7ab81b412e596d976a884132296b9462323c74bd5",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-l2-shortened-departure-curve",
       "menu_name": "HSR L2 Shortened One-Way Departure Curve",
-      "display_title": "Piece - HSR L2 Shortened One-Way Departure Curve",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -40881,7 +40935,7 @@
         "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801"
       },
       "file": "../../../00_pieces/hsr-component-l2-shortened-departure-curve/previews/preview-top.png",
-      "sha256": "6b24fa0a0f8d4ea14c0280db0f7ffc6a3e4a4b137a16499cff66fd62a97ed3c9",
+      "sha256": "47d3830ec9a430a6c0d412b95d0630743b95f3829627f1f32a92087de963cda7",
       "size": [
         1600,
         1200
@@ -41492,17 +41546,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Shortened One-Way Departure Curve",
+          "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Shortened One-Way Departure Curve",
+            "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -41513,7 +41573,7 @@
             "bounds": [
               30,
               27,
-              904,
+              1124,
               59
             ]
           },
@@ -43533,11 +43593,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Shortened One-Way Departure Curve",
+        "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -43568,7 +43628,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -43601,20 +43661,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "20c52cb3dac6786e3a3672c2d9a7bca9da69170212f812a70b14016d8d6aa00c",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "5506ed6753ec427162f509da8d9a0a13e669a2482ff53181162a489322c66e9c",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-shortened-departure-curve/evidence/preview-top.json",
-      "per_view_evidence_sha256": "5a601ae7956c4069074ea06d643d4ef5ef2bf7b2a1d1fac6b247f3ce3474afe4",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "11cf963c9fde6c19bb34c6e95dfccc5c415baa076ac221967e381bd9f52c655f",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-l2-shortened-return-curve",
       "menu_name": "HSR L2 Shortened One-Way Return Curve",
-      "display_title": "Piece - HSR L2 Shortened One-Way Return Curve",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -43624,7 +43696,7 @@
         "model_sha256": "5ac61de87d9e396988d7e7db7aa68ac493eb00fa5a04f72eac81db25de4028d2"
       },
       "file": "../../../00_pieces/hsr-component-l2-shortened-return-curve/previews/preview-top.png",
-      "sha256": "b8fa23bfbf380626bdd0530d584a4beeefdf2b9cadbf8c3921f35c2d3337de0e",
+      "sha256": "6bbe4198321d2e2d5dc7d69df9534c95489fb7df414ad2bd580ad4cb23d7368c",
       "size": [
         1600,
         1200
@@ -44235,17 +44307,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Shortened One-Way Return Curve",
+          "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Shortened One-Way Return Curve",
+            "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -44256,7 +44334,7 @@
             "bounds": [
               30,
               27,
-              851,
+              1071,
               59
             ]
           },
@@ -46514,11 +46592,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Shortened One-Way Return Curve",
+        "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -46549,7 +46627,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -46582,20 +46660,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "3483dd2901e0b4cdaa9ff3de0b135c6e0da340e39bc1cc828b4878fc355ee304",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/piece.json": "668ace6a67fef74c1609816ec75868d526dcd15b0de60bbc6c9e16a9285de8f9",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connections.json": "ba38884f0da8b906a10edb46bf6c173f307b5635a468520db2bf0d49befd7a2a",
+        "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connector-groups.jsonc": "cbdd3dd888a381412a168205c61577d396ff4bd2d741227e107231acddddb1d6",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "233a9ec907d120af5df128fc517d723e09fbf54fdbb46a795c7340e350cb22e6",
       "per_view_evidence": "../../../00_pieces/hsr-component-l2-shortened-return-curve/evidence/preview-top.json",
-      "per_view_evidence_sha256": "09c33cbf7679f1730209b1a59a26e0f6030774df225efade54436f5b7b274c46",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "071f25278f55105d6dace00357b80de61c71a67214440d69d67f9f2afa2f2384",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-lower-oneway-straight",
       "menu_name": "One-Way HSR L2 Eight-Metre Straight",
-      "display_title": "Piece - One-Way HSR L2 Eight-Metre Straight",
+      "display_title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -46605,7 +46695,7 @@
         "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5"
       },
       "file": "../../../00_pieces/hsr-component-lower-oneway-straight/previews/preview-top.png",
-      "sha256": "445e57addaf9e6978257f97e1e6e97721657e6987c3468b96c3579d18b53bb7e",
+      "sha256": "ab078095fee0c66dcc1c6092f5d15fab9535a6c74f033c9a09b365f03a3ab0fc",
       "size": [
         1600,
         1200
@@ -46911,17 +47001,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - One-Way HSR L2 Eight-Metre Straight",
+          "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - One-Way HSR L2 Eight-Metre Straight",
+            "text": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -46932,7 +47028,7 @@
             "bounds": [
               30,
               27,
-              782,
+              1001,
               59
             ]
           },
@@ -47032,11 +47128,11 @@
         }
       ],
       "captions": [
-        "Piece - One-Way HSR L2 Eight-Metre Straight",
+        "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -47067,7 +47163,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -47100,20 +47196,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "9d09cc70a76795770f52624a892b296788d18f3a12a2436cffcad76e84320210",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connections.json": "9e50f746ba44c3bf17f0015e79812c5668467f7c50593eeab7f5c28718222c72",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connector-groups.jsonc": "a1ea662a9e5f76c6cc7ad25057d09ad1fdee2563ca337183aa5d33355783c5f1",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "77758177196367b5d44a423b57cbf9c4f44a42952ca76d1cc206152180d6cf05",
       "per_view_evidence": "../../../00_pieces/hsr-component-lower-oneway-straight/evidence/preview-top.json",
-      "per_view_evidence_sha256": "182431ec0de0583bd2226ca8ae8782d419ff6420cb18208e49abb0cab7628a72",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "44f3d0334b562ce0705bd0231fc6e57fa2cadc9167efccd86b7709f888a49303",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-lower-paired-straight",
       "menu_name": "HSR L2 Two-Track Straight",
-      "display_title": "Piece - HSR L2 Two-Track Straight",
+      "display_title": "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -47123,7 +47231,7 @@
         "model_sha256": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44"
       },
       "file": "../../../00_pieces/hsr-component-lower-paired-straight/previews/preview-top.png",
-      "sha256": "b242e582b06a31e72e85cbb508b56ea0a20506db0b5d9525c4ee41db8952628a",
+      "sha256": "4f8106326cdeddb9f4789fd35d1e6fa831feddfa125dcb7b8322d8887325d4b8",
       "size": [
         1600,
         1200
@@ -47429,17 +47537,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR L2 Two-Track Straight",
+          "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L2 Two-Track Straight",
+            "text": "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -47450,7 +47564,7 @@
             "bounds": [
               30,
               27,
-              600,
+              819,
               59
             ]
           },
@@ -47550,11 +47664,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L2 Two-Track Straight",
+        "Piece - HSR Level 2 (15.5 m) Two-Track Straight",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -47585,7 +47699,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -47618,14 +47732,26 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "da0a0c6d1c9cff67bac58f2443787c3195b6fb908f0af11e928aa33a436c30b0",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/piece.json": "e9d39b4cc65ed2e60527cc99be2b57c47eb7fe3bbcbec1a3419f2239af4b6265",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connections.json": "93d187278776cc7afb9e5aa07296509b9ea2047d491f6e7a02999390673dbdea",
+        "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connector-groups.jsonc": "531da9e9703d24368ff7d62169555c0153fc152139a4c24dba27f6db69d95d75",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "62669d7d545e8181cdebcc02c8b2f57630ace0ea35c59f9355cef06f9fe797f5",
       "per_view_evidence": "../../../00_pieces/hsr-component-lower-paired-straight/evidence/preview-top.json",
-      "per_view_evidence_sha256": "324d41ee9d468622652d3961b0fcfe9779f36818c8b5f100474e5939a04510f8",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "b7be73e25efa0c72dbf256c6a9822ca16cf8b16beb61bf01b11d02229054cb30",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -47641,7 +47767,7 @@
         "model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478"
       },
       "file": "../../../00_pieces/hsr-component-modular-crossing-core/previews/preview-top.png",
-      "sha256": "78bef9185c57f364641e1161d3ce619655c58eeaaf0411f7a3e5c72b1d9e5355",
+      "sha256": "0520bc2e40989ac483424bf2ff9b0648b02afda71688a6379f1b42f61d2c57eb",
       "size": [
         1600,
         1200
@@ -47947,6 +48073,12 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
@@ -48086,7 +48218,7 @@
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -48117,7 +48249,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -48150,26 +48282,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
       "title_source_inputs": {
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/piece.json": "0087e27275a2c11ee126ce4254ded8a1f22eb18fe7448ae2b7062a4ef7a2a90f",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connections.json": "e2eff89bdfc26e8713e1596a62f0754f4560c015973528afbfab70244d1d60ff",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connector-groups.jsonc": "11b6717a39d170272abd2b6c115283808704ab5428dddfa1b93a3e1507f367e5",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "336617fc03f6f9049117e54a3b4254f0344859d1ac4e755081b0041be038acc9",
+      "input_fingerprint": "186cdf8bf4e289d4f89664eaefa847f712c76845cf8ce28e9c821e76b49e251e",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-crossing-core/evidence/preview-top.json",
-      "per_view_evidence_sha256": "13c3fe2ad066db90d2bc212a29a676940d9e4d77e8cd00da9c315309b9332e61",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "b36aea4ad546f6ca432570cfc86fccef4e90d025dd5e537df9d565d8c172410b",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-modular-paired-climb",
       "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
-      "display_title": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+      "display_title": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -48179,7 +48317,7 @@
         "model_sha256": "1e209a1b1bc0c9be3c776225a926d76e406086370f3a77a7672102518be46b50"
       },
       "file": "../../../00_pieces/hsr-component-modular-paired-climb/previews/preview-top.png",
-      "sha256": "f6284e2e00390b24f0d551e0b105614270a2431d0d900f4c07cafa5965486312",
+      "sha256": "21e855b868c87ad840a60f25dca11e98e7fe65355d920b79b8c62ae956e64a40",
       "size": [
         1600,
         1200
@@ -48716,17 +48854,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR Modular Two-Track L2 to L4 Climb",
+          "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+            "text": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -48737,8 +48881,8 @@
             "bounds": [
               30,
               27,
-              803,
-              52
+              1243,
+              59
             ]
           },
           {
@@ -49243,11 +49387,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR Modular Two-Track L2 to L4 Climb",
+        "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -49278,7 +49422,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -49311,14 +49455,26 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "b2da6bc8472b7db0f7f8de73ebff64076e1067dcfc3e678ad9b3883afbe3eaee",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/piece.json": "0d67af67113bdf0d99fac71f74ff35c6f9e1d5596f5e2480e55a88d23cfe04e3",
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connections.json": "944ddb9e33c8ef9a47d87e6278b9e49453b0beaeda65a490956f2a02341cd8b9",
+        "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connector-groups.jsonc": "3694822d083c5b4a104bf264f88b19b296135c9973d51010c96662619dcf1b53",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "a463a1d82da9139c18f1ea3ad65e4bd1220acfc6faa1e3008d093e8262bf4484",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-paired-climb/evidence/preview-top.json",
-      "per_view_evidence_sha256": "b4cf0ad3fc5bc5ffe21b3beda6e3e783367c33a655feb5d8e1193daa7b8682a8",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "9a99fb623a70135766daee7f469a817dc6587ec3dd3c87831e11466f0e78bfd3",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -49334,7 +49490,7 @@
         "model_sha256": "98087d2e71617e4a1e8ff9570ca72fd09d64c83f4ed592b674dda6056ecadaf7"
       },
       "file": "../../../00_pieces/hsr-component-modular-south-junction/previews/preview-top.png",
-      "sha256": "31aaad1620e8b9d0630314d6972b31a249f8f35398ef181839fd710c7fed25ab",
+      "sha256": "cf17ef5dbc73c19ee6f1edbb99055f4c74181bfecffb05751cf7a5a30b2325c8",
       "size": [
         1600,
         1200
@@ -52477,7 +52633,7 @@
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -52508,7 +52664,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "8b785f58b277bc74211d4545b34ada9e34d4abfb94e77c9de543ceb49c5fceed",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -52553,14 +52709,14 @@
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/piece.json": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connections.json": "e368222484cb14debddad08a229db33bfa0422b5a896cc81c8feb34d955566e2",
         "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connector-groups.jsonc": "cb23f3a60c4c8367df1017f3bcc1688a470b523e043d36f457c85e1eeec36f9c",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "091f7511f6770f577ffbbecd31e7c3799186dfa5a4d96adde9e9b2e769e68f70",
+      "input_fingerprint": "ec343d1cc6228f483878ca426d7ad1c74971dda0a654c1474b3eaea891ae5c53",
       "per_view_evidence": "../../../00_pieces/hsr-component-modular-south-junction/evidence/preview-top.json",
-      "per_view_evidence_sha256": "fd831724d17af715cb11f41306c3cad9275697a43e742ddad4f69e3230af0b00",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "347cec9c1d5ef09a03420bc6e45d84c55834a5d2ebd9aa891a9cb213a1d8b9a3",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
@@ -52576,7 +52732,7 @@
         "model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc"
       },
       "file": "../../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/previews/preview-top.png",
-      "sha256": "12230f267daa471a1cf4be1c98f8a9923f653a5a4af2d651dcf4c6bf2ec71bba",
+      "sha256": "5480c4acfb13065d727e78da57a64f8b0405eb6329175357b26153b50f0490e5",
       "size": [
         1600,
         1200
@@ -53092,6 +53248,12 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
@@ -56815,7 +56977,7 @@
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -56846,7 +57008,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -56879,26 +57041,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
       "title_source_inputs": {
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
         "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
-        "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-        "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
       },
-      "input_fingerprint": "97f6e834a8a4a79ad6bfe9fcd6df4c695dffcf71eaa29b75ee9db74302510005",
+      "input_fingerprint": "faa0e7520b4ce76323e74e8da7dd99a371d33371df12990c0ce56ba07087b10b",
       "per_view_evidence": "../../../00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/evidence/preview-top.json",
-      "per_view_evidence_sha256": "957c69b859272fea18369bfe066271b7d120fffcbfe5344a2ca5345c619ddeee",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "c4de34464f5f6b4675d72a0a337db922679cda06570abcc23b81181aac9d725a",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
       "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
-      "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -56908,7 +57076,7 @@
         "model_sha256": "2c6d650e8025641c75234216bc5296bfe432b7cdce723e7c3e9d69576ec4b1a6"
       },
       "file": "../../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/previews/preview-top.png",
-      "sha256": "a9919ae58f936aff9812db3f3329eca3ed3c859ce1a35e435bef9ab33175e0c0",
+      "sha256": "8c294a66c6ccd1d8bbe38e761c58b1ba937a1696ad87523ec4e94f8eb81737ec",
       "size": [
         1600,
         1200
@@ -57424,17 +57592,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+          "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+            "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -57445,7 +57619,7 @@
             "bounds": [
               30,
               27,
-              918,
+              1505,
               59
             ]
           },
@@ -61143,11 +61317,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+        "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -61178,7 +61352,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -61211,20 +61385,32 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "62642edf27bac0e7c94bcf533252d837207bccedf3e0d633af8fb1b8755554e2",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/piece.json": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33",
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connections.json": "202dc820ada371ec4dc772d427904d4e848c1ad33c6e2561535deafb4e9da453",
+        "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connector-groups.jsonc": "aac15d314e47fc0b0f9be5274c35cadfd79d83b49716fdc5b66040d33052a587",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "a2f8cf69792f951ba54fb50504ecf12865a1eca191217f7480f9fd5814ce603b",
       "per_view_evidence": "../../../00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/evidence/preview-top.json",
-      "per_view_evidence_sha256": "399f55bb2a8481100b9e00db781853301508119bceca92feb62fd75c25c6caed",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "a5fd994f96fda17948158dbfb5654534d861fb4e046422b5c753dce3643e0e32",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     },
     {
       "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
       "piece_id": "hsr-component-upper-paired-straight",
       "menu_name": "HSR L4 Two-Track Straight",
-      "display_title": "Piece - HSR L4 Two-Track Straight",
+      "display_title": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
       "view_role": "top-down",
       "canonical_filename": "preview-top.png",
       "source": {
@@ -61234,7 +61420,7 @@
         "model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788"
       },
       "file": "../../../00_pieces/hsr-component-upper-paired-straight/previews/preview-top.png",
-      "sha256": "b57df2bd62370af7e3a53db5d1a8769a6de7e8fb3b1dca264e5be069880508a7",
+      "sha256": "aa11aedc9ab722e04aa5a0a64b74c4e3e0a414509354528066755ce86223bd2c",
       "size": [
         1600,
         1200
@@ -61540,17 +61726,23 @@
           ],
           "world_coordinates": "(east, north, height)",
           "s3d_coordinates": "(east, height, -north)"
+        },
+        "line_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
         }
       },
       "header": {
         "captions": [
-          "Piece - HSR L4 Two-Track Straight",
+          "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
           "Clean view | Top view, north up | Authored orientation: 0\u00b0",
           "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
         ],
         "rows": [
           {
-            "text": "Piece - HSR L4 Two-Track Straight",
+            "text": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
             "colour": "#172b42",
             "font_pixels": 35,
             "bold": true,
@@ -61561,7 +61753,7 @@
             "bounds": [
               30,
               27,
-              600,
+              819,
               59
             ]
           },
@@ -61661,11 +61853,11 @@
         }
       ],
       "captions": [
-        "Piece - HSR L4 Two-Track Straight",
+        "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
         "Clean view | Top view, north up | Authored orientation: 0\u00b0",
         "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
         "Complete reusable piece shown at its authored orientation.",
-        "Software model preview; in-game placement and traffic remain unverified."
+        "Software model preview."
       ],
       "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
       "assembly_labels_visible": false,
@@ -61696,7 +61888,7 @@
         ],
         "geometry_simplified": false,
         "layout": "one canonical view with independent local city grid",
-        "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+        "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
         "header": {
           "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
           "row_colours": [
@@ -61729,14 +61921,26 @@
         "view_role": "top",
         "tile_metres": 16.0,
         "origin_marker_visible": false,
+        "top_grid_overlay": {
+          "colour": "#00ff00",
+          "line_width_pixels": 2,
+          "major_line_width_pixels": 3,
+          "drawn_above_model": true
+        },
         "duplicate_grid_footer_visible": false
       },
-      "title_source_inputs": {},
-      "input_fingerprint": "c81bb8dae8ba3f86a2cb39ae76a321392e8d9b0b4f264ab089716f1a462a0207",
+      "title_source_inputs": {
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/piece.json": "be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3",
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connections.json": "5ddb81eb87261514de6f641e2352c477395e9a5ddb6e31d9b138365310611bc4",
+        "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connector-groups.jsonc": "d6ce99b5a0ff92348fbfa83cc7be617d9a2bb0e2d0ac22dc8a4f997a8e3a7d80",
+        "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+        "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+      },
+      "input_fingerprint": "beb90acabebcf6b0c2b732e92e5e722e7dd53688795e717f7463a1189529c70a",
       "per_view_evidence": "../../../00_pieces/hsr-component-upper-paired-straight/evidence/preview-top.json",
-      "per_view_evidence_sha256": "7748041e8c9ca6d96cabfbb96618b7d7ebd159bdf807560a270303248ef4801a",
-      "preserved_existing_image_bytes": true,
-      "retained_image_basis": "Exact accepted canonical piece picture; actual source DAT/model and image hashes independently matched to this current assembly build without rerendering the piece."
+      "per_view_evidence_sha256": "f3c5ff0302ad3fc43bf0936cf53c43948a598ddcf6e5fa69907e7d11eb5c4d8a",
+      "preserved_existing_image_bytes": false,
+      "retained_image_basis": "Same approved compiled DAT and preview model; current standalone caption and grid presentation."
     }
   ],
   "placements": [

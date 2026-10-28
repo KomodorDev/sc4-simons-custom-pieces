@@ -208,6 +208,6 @@ This service group is required at this edge.
 | `lower-end-b-track-01` / `Ein` | `lower-channel-02` / `lower-end-b-cut-01` / monorail | Incoming | `[8,2,15.5]` | +2 | 90° | 0 |
 | `lower-end-b-track-02` / `Eout` | `lower-channel-01` / `lower-end-b-cut-02` / monorail | Outgoing | `[8,-2,15.5]` | -2 | 90° | 0 |
 
-Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
 
 <!-- END CONNECTOR OVERVIEW -->

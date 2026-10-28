@@ -69,6 +69,22 @@ def saved_historical():
     return build, tiles, descriptor
 
 
+def copy_retirement_inputs(root):
+    """Copy retained proofs for mutation tests, never retired parent sources."""
+    from scp_hsr import hsr_trumpet_border_verify as current
+    paths = [ROOT/'domains/high-speed-rail'/relative for relative in ('domain.json','collections.json')]
+    paths.extend(SCENE.parent/relative for relative in (
+        current.PARENT_RETIREMENT_RELATIVE, 'checks/atomization.json', *current.PRESERVED_INTEGRATION_FILES))
+    for identifier, inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
+                               (current.STRAIGHT_ID,current.STRAIGHT_SOURCE_INPUTS)):
+        paths.extend(ROOT/'domains/high-speed-rail/00_pieces'/identifier/relative
+                     for relative in {**inputs,**current.EXTRACTED_STANDALONE_EVIDENCE[identifier]})
+    for source in paths:
+        target=root/source.relative_to(ROOT)
+        target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(source,target)
+
+
 class TrumpetLiteralContractTests(unittest.TestCase):
     def test_current_acceptance_has_no_predecessor_resource_dependency(self):
         self.assertFalse(audit_quality_contract()['predecessor_resource_inputs_required'])
@@ -142,12 +158,12 @@ class AuthorizedJunctionReworkControls(unittest.TestCase):
             read_rework_record(REWORK_PATH,root=ROOT)
 
     def test_each_later_reworked_piece_fails_the_strict_completed_current_reader(self):
+        from scp_hsr import hsr_trumpet_rework_verify as rework_verify
         ledger=json.loads((SCENE.parent/'checks/atomization.json').read_text())
         originals={}
         for item in ledger['subsequent_piece_revisions']:
             originals.setdefault(item['piece_id'],item)
-        identifiers=('hsr-component-l2-paired-fan-compact-join',
-                     'hsr-component-l2-short-opposed-merge-core')
+        identifiers=('hsr-component-l2-short-opposed-merge-core',)
         for changed_identifier in identifiers:
             with self.subTest(piece=changed_identifier),tempfile.TemporaryDirectory() as temporary:
                 root=Path(temporary)
@@ -160,8 +176,23 @@ class AuthorizedJunctionReworkControls(unittest.TestCase):
                     target=root/revision['source_file']
                     target.parent.mkdir(parents=True)
                     target.write_bytes((current if identifier==changed_identifier else previous).read_bytes())
-                with self.assertRaisesRegex(ValueError,'current geometry differs'):
-                    read_rework_record(REWORK_PATH,root=root)
+                # Check the retained source first so the separate missing
+                # retired parent cannot satisfy this mutation control.
+                ordered={identifier:rework_verify.REWORKED_SOURCES[identifier]
+                         for identifier in (changed_identifier,'hsr-component-l2-paired-fan-compact-join')}
+                with patch.object(rework_verify,'REWORKED_SOURCES',ordered):
+                    with self.assertRaisesRegex(ValueError,'independently audited source'):
+                        read_rework_record(REWORK_PATH,root=root)
+                    (root/originals[changed_identifier]['source_file']).write_bytes(previous.read_bytes())
+                    with self.assertRaisesRegex(ValueError,'historical source is no longer active'):
+                        read_rework_record(REWORK_PATH,root=root)
+
+    def test_retired_parent_is_not_recreated_to_replay_historical_source(self):
+        from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID,audit_parent_retirement
+        self.assertFalse((ROOT/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID).exists())
+        self.assertFalse(audit_parent_retirement()['historical_source_replay_available_for_retired_piece'])
+        with self.assertRaisesRegex(ValueError,'historical source is no longer active'):
+            read_rework_record(REWORK_PATH,root=ROOT)
 
     def test_expanding_the_change_region_is_rejected(self):
         with self.assertRaisesRegex(ValueError,'authorized 24-cell'):
@@ -265,6 +296,11 @@ class RemovedStructuralCellProjectionControls(unittest.TestCase):
         self.resources[0x5ad0e817,0xbadb57f1,0x7f580ff5]=self.shift(self.model,48.,0.)
         self.build={'pieces':{self.spec['id']:self.spec},'manifest_sha256':'1'*64,
                     'resources':lambda spec:{'sha256':'2'*64,'resources':self.resources}}
+        self.temporary=tempfile.TemporaryDirectory();self.addCleanup(self.temporary.cleanup)
+        self.root=Path(self.temporary.name)
+        source=self.root/'domains/high-speed-rail/00_pieces'/self.spec['id']/'geometry.json'
+        source.parent.mkdir(parents=True)
+        source.write_text('{"purpose":"Synthetic saved-model projection fixture, not a retired authoring source."}')
 
     @staticmethod
     def shift(raw,east,south):
@@ -278,7 +314,7 @@ class RemovedStructuralCellProjectionControls(unittest.TestCase):
         return pack_s3d(model)
 
     def prove(self):
-        return prove_removed_structural_cells(self.build,self.record,root=ROOT)
+        return prove_removed_structural_cells(self.build,self.record,root=self.root)
 
     def test_exact_tile_borders_have_no_positive_open_area(self):
         self.assertEqual(_projected_tile_intersection_area([(-9.,0.),(-8.,0.),(-8.,1.)],(-8.,-8.,8.,8.)),0.)
@@ -535,7 +571,10 @@ class SubsequentStandalonePieceRevisionControls(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root=Path(self.temporary.name)
         self.source=self.root/self.revision['source_file']
+        copy_retirement_inputs(self.root)
         for revision in self.ledger['subsequent_piece_revisions']:
+            if revision['piece_id']=='hsr-component-l2-paired-fan-compact-join':
+                continue
             source=self.root/revision['source_file']
             original_source=ROOT/revision['source_file']
             source.parent.mkdir(parents=True,exist_ok=True)
@@ -578,7 +617,7 @@ class SubsequentStandalonePieceRevisionControls(unittest.TestCase):
         self.assertEqual(len(result['hsr-component-modular-south-junction']),2)
         self.assertEqual(len(result['hsr-component-l2-short-opposed-merge-core']),2)
         self.assertFalse((self.root/'dist').exists())
-        self.assertFalse((self.root/'domains/high-speed-rail/01_assemblies').exists())
+        self.assertFalse((self.root/'domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join').exists())
 
     def test_changing_either_end_of_the_source_chain_is_rejected(self):
         for field in ('before_sha256','after_sha256','preserved_geometry_semantic_sha256'):
@@ -715,6 +754,8 @@ class SubsequentStandalonePieceRevisionControls(unittest.TestCase):
 
     def test_each_new_source_rejects_a_wider_wall_or_changed_existing_path(self):
         for revision in self.ledger['subsequent_piece_revisions'][1:4]:
+            if revision['piece_id']=='hsr-component-l2-paired-fan-compact-join':
+                continue  # Its exact old row is checked through the separate retirement proof.
             target=self.root/revision['source_file']
             latest=next(item for item in reversed(self.ledger['subsequent_piece_revisions'])
                         if item['piece_id']==revision['piece_id'])
@@ -744,6 +785,8 @@ class SubsequentStandalonePieceRevisionControls(unittest.TestCase):
                     changed['subsequent_piece_revisions'][number]['standalone_evidence'][relative]='0'*64
                     with self.assertRaisesRegex(ValueError,'exact standalone authorization'):
                         audit_subsequent_piece_revisions(changed,root=self.root)
+                    if revision['piece_id']=='hsr-component-l2-paired-fan-compact-join':
+                        continue
                     target=self.revision_source(revision).parent/relative
                     original=target.read_bytes();target.write_bytes(original+b'\n')
                     with self.assertRaisesRegex(ValueError,'standalone evidence fingerprint differs'):self.audit()
@@ -751,6 +794,8 @@ class SubsequentStandalonePieceRevisionControls(unittest.TestCase):
 
     def test_each_new_snapshot_rejects_changed_index_source_observations_report_and_image(self):
         for revision in self.ledger['subsequent_piece_revisions'][1:4]:
+            if revision['piece_id']=='hsr-component-l2-paired-fan-compact-join':
+                continue  # Removed piece-local evidence is explicitly unavailable for replay.
             snapshot=(self.root/revision['source_file']).parent/revision['before_piece_snapshot']['snapshot_directory']
             for relative in ('index.json','geometry.json','checks/manual-tests.json',
                              'evidence/saved-resource-checks.json','previews/preview.png'):
@@ -1100,7 +1145,7 @@ class CurrentFanAtomizationSourceControls(unittest.TestCase):
         self.assertIn(CORE_ID,selected);self.assertIn(STRAIGHT_ID,selected)
         self.assertIn('hsr-component-lower-paired-straight',selected)
         self.assertNotIn(FULL_FAN_ID,selected)
-        self.assertTrue((ROOT/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID/'piece.json').is_file())
+        self.assertFalse((ROOT/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID).exists())
 
 
 class CurrentSavedResourceMutationControls(unittest.TestCase):
@@ -1149,6 +1194,77 @@ class CurrentSavedResourceMutationControls(unittest.TestCase):
         widened=[tuple((x,h,z*1.01,u,v) for x,h,z,u,v in tri) for tri in triangles]
         with self.assertRaisesRegex(ValueError,'native joining section differs'):
             audit_native_sections(widened,contract)
+
+
+class SupersededFanParentRetirementControls(unittest.TestCase):
+    def setUp(self):
+        self.temporary=tempfile.TemporaryDirectory();self.addCleanup(self.temporary.cleanup)
+        self.root=Path(self.temporary.name)
+        copy_retirement_inputs(self.root)
+
+    def audit(self):
+        from scp_hsr.hsr_trumpet_border_verify import audit_parent_retirement
+        return audit_parent_retirement(root=self.root)
+
+    def test_retirement_preserves_original_audit_without_claiming_a_new_execution(self):
+        from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID
+        record=self.audit()
+        self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID).exists())
+        self.assertFalse(record['historical_source_replay_available_for_retired_piece'])
+        for field in ('new_physical_audit_executed','assembly_geometry_changed','assembly_render_regenerated',
+                      'historical_decisions_rewritten','manual_or_game_observations_added','installed'):
+            self.assertFalse(record[field])
+        initial=json.loads((self.root/SCENE.parent.relative_to(ROOT)/'checks/border-piece-integration.json').read_text())
+        self.assertTrue(initial['policy']['full_fan_retained_in_library_unchanged'])
+        self.assertFalse(record['retired_piece']['active_piece_directory_present'])
+
+    def test_recreating_any_retired_source_directory_is_rejected(self):
+        from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID
+        (self.root/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID).mkdir()
+        with self.assertRaisesRegex(ValueError,'active or compatibility source'):
+            self.audit()
+
+    def test_reintroducing_the_retired_identity_in_a_registry_or_collection_is_rejected(self):
+        from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID
+        domain=self.root/'domains/high-speed-rail'
+        for relative in ('domain.json','collections.json'):
+            target=domain/relative;raw=target.read_bytes();record=json.loads(raw)
+            if relative=='domain.json':record['pieces'].append('00_pieces/'+FULL_FAN_ID+'/piece.json')
+            else:record['collections']['retired-copy']=[FULL_FAN_ID]
+            target.write_text(json.dumps(record))
+            with self.subTest(registry=relative),self.assertRaisesRegex(ValueError,'active piece selection'):
+                self.audit()
+            target.write_bytes(raw)
+
+    def test_coordinated_retirement_rehash_cannot_change_identity_pins_or_verification_scope(self):
+        from scp_hsr import hsr_trumpet_border_verify as current
+        target=self.root/SCENE.parent.relative_to(ROOT)/current.PARENT_RETIREMENT_RELATIVE
+        original=target.read_bytes()
+        changes=[lambda r:r['retired_piece'].__setitem__('id',current.CORE_ID),
+                 lambda r:r['retired_piece']['historical_source_inputs'].__setitem__('geometry.json','0'*64),
+                 lambda r:r['current_replacements'][0].__setitem__('archive_sha256','0'*64),
+                 lambda r:r.__setitem__('status','passed-new-physical-audit'),
+                 lambda r:r.__setitem__('historical_source_replay_available_for_retired_piece',True),
+                 lambda r:r.__setitem__('new_physical_audit_executed',True),
+                 lambda r:r.__setitem__('standalone_revisions_sha256','0'*64)]
+        for number,change in enumerate(changes):
+            record=json.loads(original);change(record);raw=(json.dumps(record)+'\n').encode();target.write_bytes(raw)
+            with self.subTest(mutation=number),patch.object(current,'PARENT_RETIREMENT_SHA256',hashlib.sha256(raw).hexdigest()),self.assertRaisesRegex(ValueError,'exact successor scope'):
+                self.audit()
+        target.write_bytes(original)
+
+    def test_changed_historical_gate_or_retained_extraction_source_cannot_inherit_acceptance(self):
+        from scp_hsr import hsr_trumpet_border_verify as current
+        targets=[self.root/SCENE.parent.relative_to(ROOT)/relative for relative in current.PRESERVED_INTEGRATION_FILES]
+        for identifier,inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
+                                  (current.STRAIGHT_ID,current.STRAIGHT_SOURCE_INPUTS)):
+            targets.extend(self.root/'domains/high-speed-rail/00_pieces'/identifier/relative
+                           for relative in {**inputs,**current.EXTRACTED_STANDALONE_EVIDENCE[identifier]})
+        for target in targets:
+            raw=target.read_bytes();target.write_bytes(raw+b'\n')
+            with self.subTest(file=target.relative_to(self.root)),self.assertRaisesRegex(ValueError,'changes its preserved integration proof|changes a retained source or extraction proof'):
+                self.audit()
+            target.write_bytes(raw)
 
 
 class CurrentFanIntegrationSavedControls(unittest.TestCase):
@@ -1213,10 +1329,11 @@ class CurrentFanIntegrationSavedControls(unittest.TestCase):
         from scp_hsr import hsr_trumpet_border_verify as current
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary)
+            copy_retirement_inputs(root)
             all_inputs={**current.SOURCE_INPUTS,current.CORE_ID:current.CORE_SOURCE_INPUTS,
                         current.STRAIGHT_ID:current.STRAIGHT_SOURCE_INPUTS}
             all_inputs={identifier:{**files,**current.EXTRACTED_STANDALONE_EVIDENCE.get(identifier,{})}
-                        for identifier,files in all_inputs.items()}
+                        for identifier,files in all_inputs.items() if identifier!=current.FULL_FAN_ID}
             targets=[]
             for identifier,files in all_inputs.items():
                 for relative in files:
@@ -1230,7 +1347,7 @@ class CurrentFanIntegrationSavedControls(unittest.TestCase):
             current.audit_source_inputs(root)
             for target in targets:
                 raw=target.read_bytes();target.write_bytes(raw+b'\n')
-                with self.subTest(file=target.relative_to(root)),self.assertRaisesRegex(ValueError,'differs|seven standalone history rows'):
+                with self.subTest(file=target.relative_to(root)),self.assertRaisesRegex(ValueError,'differs|changes|seven standalone history rows'):
                     current.audit_source_inputs(root)
                 target.write_bytes(raw)
 
@@ -1259,6 +1376,9 @@ class CurrentFanIntegrationSavedControls(unittest.TestCase):
         self.assertEqual(report['exact_recessed_web_straight_path_substitutions'],2)
         self.assertEqual(report['unchanged_world_shadow_sets'],102)
         self.assertTrue(report['retained_nine_core_tiles_exact_at_all_five_zooms'])
+        self.assertIn('Historical initial-integration policy',report['policy_scope'])
+        self.assertFalse(report['current_source_retirement']['parent_active_in_current_library'])
+        self.assertFalse(report['current_source_retirement']['historical_policy_rewritten'])
 
     def test_no_placed_model_or_path_or_shadow_can_change_even_inside_the_allowed_piece_region(self):
         from scp_hsr.hsr_trumpet_border_verify import audit_border_scope

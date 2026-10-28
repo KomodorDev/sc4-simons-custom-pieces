@@ -69,6 +69,8 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Engineering contract
 
 The current documentation uses the saved piece from the verified X3 right-border extension build, with the previously accepted left curve preserved. A parapet is the raised grey border. Its left side stays straight into X1, then follows the branch's brown ballast outline into the existing grey border at the bottom of X2. There is no perpendicular cap, or closing end face, on this continuous left border. The right border in X3 now follows the branch’s inside ballast outline into the retained curved grey border, with a continuous top and inside wall and no perpendicular end cap. [Saved-resource evidence](evidence/saved-resource-checks.json) identifies the current source DAT, independent border checks, routes, models, construction rules, and shadows. The [before/after comparison](evidence/parapet-alignment.json) records what changed and what remained identical. Construction, traffic demand, demolition, shadows, and save/reload remain separate game checks.

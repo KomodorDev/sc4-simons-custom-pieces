@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-lower-oneway-straight",
   "menu_name": "One-Way HSR L2 Eight-Metre Straight",
-  "display_title": "Piece - One-Way HSR L2 Eight-Metre Straight",
+  "display_title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
   "view_role": "angled",
   "canonical_filename": "preview.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5"
   },
   "file": "previews/preview.png",
-  "sha256": "8e4f08ca9d10d87e11a8598436e2057a95a11e12d28e8772e8f78279281bdf1a",
+  "sha256": "a22c29d3d74b772c9927fce36905743ec4402f6c56553bca78b3f6e31ba4b576",
   "size": [
     1600,
     1200
@@ -322,13 +322,13 @@
   },
   "header": {
     "captions": [
-      "Piece - One-Way HSR L2 Eight-Metre Straight",
+      "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
       "Clean view | Southeast view | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - One-Way HSR L2 Eight-Metre Straight",
+        "text": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -339,7 +339,7 @@
         "bounds": [
           30,
           27,
-          782,
+          1001,
           59
         ]
       },
@@ -439,11 +439,11 @@
     }
   ],
   "captions": [
-    "Piece - One-Way HSR L2 Eight-Metre Straight",
+    "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
     "Clean view | Southeast view | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -474,7 +474,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -507,16 +507,23 @@
     "view_role": "angled",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": null,
     "duplicate_grid_footer_visible": false
   },
   "thumbnail": {
     "file": "previews/preview-thumb.png",
-    "sha256": "968052ab883c6a2447babad2e588f01300b7c224079000985628e51b4ee0ba18",
+    "sha256": "14ab17da8297d0adc55c03e8c203cd7bf9b0bed4872081cf9df82f23e7b90a1c",
     "size": [
       360,
       270
     ]
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "feeb8f6215a3be78030fbf8b613c2f61aeb14407bc2ee66c32c29795a9d1412e"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/piece.json": "6a3d5332a6610e2b81a51494bd4f1d23abd89f60959ea200ded91370fc00987d",
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connections.json": "9e50f746ba44c3bf17f0015e79812c5668467f7c50593eeab7f5c28718222c72",
+    "domains/high-speed-rail/00_pieces/hsr-component-lower-oneway-straight/connector-groups.jsonc": "a1ea662a9e5f76c6cc7ad25057d09ad1fdee2563ca337183aa5d33355783c5f1",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "904404a76f7d5d8f513caf6dfb96ef326dd06c9f6c1c50640c400041f420a2ac"
 }

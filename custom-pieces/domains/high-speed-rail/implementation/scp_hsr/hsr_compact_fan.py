@@ -14,13 +14,12 @@ from pathlib import Path
 from scp.dbpf import require
 
 RECIPES = (
-    'hsr_component_l2_paired_fan_compact_join',
     'hsr_component_l2_paired_fan_compact_core',
     'hsr_component_l2_paired_straight_recessed_web',
 )
 
 
-@lru_cache(maxsize=3)
+@lru_cache(maxsize=2)
 def _source(recipe):
     """Read only this module's own maintained geometry source."""
     require(recipe in RECIPES, 'Unknown compact HSR fan recipe')

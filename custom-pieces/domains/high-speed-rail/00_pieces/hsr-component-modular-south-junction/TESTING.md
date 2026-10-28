@@ -73,6 +73,8 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Engineering contract
 
 The construction rectangle is 3 × 6 tiles, containing fourteen occupied cells and eight authored supports. Two occupied cells carry structure without a traffic path; the other empty positions remain absent from the owned-cell mask. Source [column,row] cells increase eastward and southward, while picture X/Y increase eastward and northward. Use the generated grid conversion to identify the recessed central connection rather than treating a source row as a picture Y label.

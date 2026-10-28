@@ -58,9 +58,11 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 The saved route and model checks are separate from a game observation. The generated intrinsic matrix covers this piece’s single directed journey. The authored physical channel keeps the same channel ID at both exposed ends, while each local directed member and boundary cut has its own ID.
 
-The [documentation-refresh audit](evidence/documentation-refresh.json) records the exact unchanged saved files, actual-resource connector checks, image identities, and preserved observations.
+The earlier [documentation-refresh audit](evidence/documentation-refresh.json) records the unchanged saved files, actual-resource connector checks, image identities, and preserved observations at that refresh.
 
 The [measured saved-route record](connections.json), [authored connector declaration](connector-groups.jsonc), [resolved connector export](connector-data.json), and [connection-overview evidence](evidence/connection-overview.json) identify the current software scope. A PATH resource contains travel routes; an S3D resource contains visible triangles. Neither a correct route nor a rendered model establishes traffic operation in the game.
 
@@ -168,65 +170,6 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 - result: passed; authority: software; reviewer: verify_hsr_trumpet_v4.py plus independent staged build resource checks; confirmed at: 2026-10-20T10:42:35.062051+00:00; evidence: [../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast | <a href="#case-preview_review-61ced121192cf435cfcc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:canonical-top | <a href="#case-preview_review-2a07200751b816a8ffdd">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:connection-overview | <a href="#case-preview_review-becf79702eb5e0f77906">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast</summary>
-
-<a id="case-preview_review-61ced121192cf435cfcc"></a>
-
-**General: unverified** — `preview_review-61ced121192cf435cfcc`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:canonical-top</summary>
-
-<a id="case-preview_review-2a07200751b816a8ffdd"></a>
-
-**General: unverified** — `preview_review-2a07200751b816a8ffdd`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-shortened-departure-curve:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:connection-overview</summary>
-
-<a id="case-preview_review-becf79702eb5e0f77906"></a>
-
-**General: unverified** — `preview_review-becf79702eb5e0f77906`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-shortened-departure-curve:connection-overview.
-
-No observation recorded.
 
 </details>
 
@@ -555,6 +498,65 @@ No observation recorded.
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:Win>Sout; entry: Win; exit: Sout.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast | <a href="#case-preview_review-61ced121192cf435cfcc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:canonical-top | <a href="#case-preview_review-2a07200751b816a8ffdd">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-shortened-departure-curve:connection-overview | <a href="#case-preview_review-becf79702eb5e0f77906">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast</summary>
+
+<a id="case-preview_review-61ced121192cf435cfcc"></a>
+
+**General: unverified** — `preview_review-61ced121192cf435cfcc`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-shortened-departure-curve:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:canonical-top</summary>
+
+<a id="case-preview_review-2a07200751b816a8ffdd"></a>
+
+**General: unverified** — `preview_review-2a07200751b816a8ffdd`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-shortened-departure-curve:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-shortened-departure-curve:connection-overview</summary>
+
+<a id="case-preview_review-becf79702eb5e0f77906"></a>
+
+**General: unverified** — `preview_review-becf79702eb5e0f77906`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-shortened-departure-curve:connection-overview.
 
 No observation recorded.
 
