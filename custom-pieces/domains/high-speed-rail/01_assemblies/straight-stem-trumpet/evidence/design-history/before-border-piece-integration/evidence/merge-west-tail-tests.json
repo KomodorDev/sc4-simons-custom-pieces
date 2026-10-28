@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "purpose": "Executed portable regression checks for the approved western straight extraction; separate actual native saved-build audits are referenced below.",
+  "checked_at_utc": "2026-10-28T10:01:58.399066+00:00",
+  "command": "python3 -B tools/run_tests.py",
+  "environment": {
+    "private_settings_present": false,
+    "native_game_inputs_present": false,
+    "staged_builds_present": false,
+    "SCP_environment_variables_present": false,
+    "PYTHONPATH_override_present": false
+  },
+  "suites": [
+    {
+      "scope": "framework",
+      "reported_tests": 637,
+      "seconds": 57.632,
+      "explicit_skips": 10,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "scope": "high-speed-rail",
+      "reported_tests": 338,
+      "seconds": 81.594,
+      "explicit_skips": 64,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "scope": "straight-stem-trumpet",
+      "reported_tests": 48,
+      "seconds": 1.989,
+      "explicit_skips": 4,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "totals": {
+    "reported_tests": 1023,
+    "explicit_skips": 78,
+    "failures": 0,
+    "errors": 0
+  },
+  "skip_scope": "Tests needing unavailable audited native game inputs or staged saved builds explicitly skipped. This portable run does not claim those native cases executed.",
+  "test_snapshot": {
+    "baseline_head": "0b9f68b733fa9c5b785ad4cc284f521143875408",
+    "public_files_copied": 2050,
+    "all_copied_public_files_equal_worktree_at_recording": true,
+    "path_sha256_inventory_digest": "5306e2d54566a6cb283b0bbbdf7dc9267a8a8b81cd359b9ead5f89681683c728",
+    "digest_format": "SHA-256 of UTF-8 compact JSON mapping repository-relative file paths to file-byte SHA-256 hashes, sorted by key. Snapshot precedes this report and its subsequent maintained documentation links."
+  },
+  "key_inputs_sha256": {
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "de209c0a61ece97d8ee5e7068d2159c3fc014faabe8feba5a724d386741a4da1",
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "445f6300959310053b62865198698be714751de1291e4aaad40b6eb92643707b",
+    "custom-pieces/domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "910eafa974eabe70f94bf95a3610e529ea9a4e7f8142340c44c9f7ae73fc327d",
+    "custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py": "3921a0898ea310fb739e89876e03336aa9eebedcf3bd92ec985792dcffd21172",
+    "custom-pieces/domains/high-speed-rail/tests/test_hsr_merge_extraction.py": "31a0ed104f1539adec90118bfeb61d10ddce5b7586461fedbb6a2871a2b51206",
+    "custom-pieces/domains/high-speed-rail/tests/test_hsr_compact_fan.py": "16e70b87034a7ea5cfd1156a40b9cc27e4fe7989c02f6bd83ac267444d878602",
+    "custom-pieces/tests/test_connectivity.py": "1b810225d01dd371adf32b1d9663f76b96a158feb09df9d6f70e4df621bb4561",
+    "custom-pieces/domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+    "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json": "4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3"
+  },
+  "documentation_check": {
+    "subjects": 167,
+    "current_layouts": 14,
+    "retained_legacy_guides": 153,
+    "documents": 45,
+    "local_links": 2094,
+    "errors": 0,
+    "scope": "Documentation at portable-run snapshot; subsequent report links receive a separate final docs-check."
+  },
+  "separate_executed_native_evidence": [
+    {
+      "file": "evidence/merge-west-tail-extraction.json",
+      "sha256": "fca2e07d59e0f61ce59abb5d3f1864b5de66ad1863ca4c0ad7446b0c6943c082"
+    },
+    {
+      "file": "evidence/merge-west-tail-connectors.json",
+      "sha256": "e880473f31c3c004c24602507afcf9065c765853518ee870afcbef3717121e1c"
+    },
+    {
+      "file": "evidence/assembly-menu.json",
+      "sha256": "9b9744258fc0fb33323ba8d6132bb91638bd131890721ac6d65c4d90e58a01e8"
+    }
+  ],
+  "manual_game_observations_added": 0,
+  "installed": false,
+  "in_game_tested": false,
+  "merged": false
+}

@@ -269,6 +269,8 @@ class ConnectorOverviewTests(unittest.TestCase):
         self.assertEqual(rows[1]["text"], "Connection overview | Southeast view | Authored orientation: 0°")
         self.assertIn("1 tile = 16 m", rows[2]["text"])
         self.assertEqual(sum(value.count("1 tile = 16 m") for value in evidence["figure_text"]), 1)
+        self.assertIn("Software model preview with source-defined connection cards.", evidence["figure_text"])
+        self.assertNotRegex(" ".join(evidence["figure_text"]).lower(), r"\bunverified\b|\bpassed\b|\bfailed\b")
         self.assertGreaterEqual(evidence["viewport_offset_xy"][1], max(row["bounds"][3] for row in rows))
 
 

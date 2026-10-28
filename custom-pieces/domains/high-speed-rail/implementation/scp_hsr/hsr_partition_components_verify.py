@@ -106,6 +106,9 @@ def _fingerprints(resources, spec, kind):
     for (column, row), tile in zip(contract['cells'], spec['tile_ids']):
         source = expected[column, row]
         prefix, digest = (PATH, source[1]) if kind == 'PATH' else (S3D, source[0])
+        if kind == 'S3D' and spec['recipe'] == 'hsr_component_modular_south_junction':
+            digest = SYMMETRIC_WEDGE_MODEL_FINGERPRINTS.get((column, row), digest)
+            digest = SYMMETRIC_STEM_MODEL_FINGERPRINTS.get((column, row), digest)
         for zoom in range(1 if kind == 'PATH' else 5):
             raw = resources[*prefix, _number(tile)+zoom]
             require(hashlib.sha256(raw).hexdigest() == digest,
@@ -252,13 +255,19 @@ def _cached_models(spec_json, immutable):
     triangles = _world_triangles(resources, spec, contract)
     report.update(audit_bed_overlaps(triangles))
     report.update(audit_supports(triangles, contract))
+    if spec['recipe'] == 'hsr_component_modular_south_junction':
+        from .hsr_symmetric_parapet_verify import audit_symmetric_wedges
+        report.update(audit_symmetric_wedges(triangles))
+        from .hsr_symmetric_stem_verify import audit_symmetric_stem
+        report.update(audit_symmetric_stem(triangles))
     budgets = [assert_render_budget(parse_s3d(raw)) for key, raw in immutable if key[:2] == S3D]
     report.update(
         frozen_module_model_zooms_checked=models,
         frozen_module_path_files_checked=paths,
         frozen_module_recipe=spec['recipe'],
         frozen_module_source_dat_sha256=MODULE_SOURCE_DAT_SHA256[spec['recipe']],
-        all_module_local_model_bytes_unchanged=True,
+        all_module_local_model_bytes_unchanged=(spec['recipe'] != 'hsr_component_modular_south_junction'),
+        original_module_faces_preserved=(spec['recipe'] == 'hsr_component_modular_south_junction'),
         all_module_local_path_bytes_unchanged=True,
         render_budget_models_checked=len(budgets), render_group_budget_checked=True,
         full_width_bed_validation_scope='Every local mesh and train path matches the current reusable-module baseline; complete assembled corridor coverage is checked separately.',
@@ -319,3 +328,23 @@ MODULE_TILE_FINGERPRINTS = {'hsr_component_modular_south_junction': {(0, 0): ('0
                                                  '49aafbad70dd9180ca28f1eaeccfe96f5294c69e5bf12e1b64775dc78e6c82bf')},
  'hsr_component_modular_crossing_core': {(0, 0): ('0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478',
                                                   '7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3')}}
+
+
+# Reviewed concrete-only additions; original baseline literals above and every
+# PATH fingerprint remain frozen. The saved-face audit checks the new shape.
+SYMMETRIC_WEDGE_MODEL_FINGERPRINTS = {
+    (0, 1): 'b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67',
+    (2, 1): '3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073',
+    (0, 2): '95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99',
+    (1, 2): '4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d',
+    (2, 2): '008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb',
+    (1, 3): 'bb5073fb9b80da10cfc5158a80dfe218171c873f5d57caaf25b0193e88b0e27a',
+}
+
+# Explicit succeeding stem-only additions; retain all original and accepted
+# northern-wedge fingerprints above as historical resource contracts.
+SYMMETRIC_STEM_MODEL_FINGERPRINTS = {
+    (1, 3): 'e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023',
+    (1, 4): '2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5',
+    (1, 5): 'd95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2',
+}

@@ -78,17 +78,27 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 The construction rectangle contains **4 × 1 tiles**, and all **four cells** are owned. Four supports remain centred along the mainline at 16 m intervals. Both paired mainline ends are ordinary, flat L2 boundaries; the northern and southern branch entrances are custom oblique cuts. The former western tile is now a separate placement of the existing paired straight, which owns that tile and its support.
 
-The retained source cells were previously columns 1–4 of the five-tile core. Their local east coordinates are rebased by −16 m, and the core's assembly position moves +16 m east; the two changes preserve the retained geometry's world positions. The approved physical adjustment affects the upper northern parapet and adjacent upper bed strip within **2.5 m** of the new western boundary, by at most **3.4524 mm**. The [collar proof](evidence/west-parapet-collar-proof.json) measures a maximum of **3.452301025 mm**. The rail region, slab underside, pier, outside connections, and support positions are preserved. Intersecting triangles are partitioned at the blend boundaries, and texture coordinates at new vertices are interpolated; the deformation can change where the texture falls inside the collar.
+The retained source cells were previously columns 1–4 of the five-tile core. Their local east coordinates are rebased by −16 m, and the core's assembly position moves +16 m east; the two changes preserve the retained geometry's world positions. The earlier west-tail extraction applied a bounded adjustment to the upper northern parapet and adjacent upper bed strip within **2.5 m** of the new western boundary, by at most **3.4524 mm**. The ballast-following border revision below keeps the original bed adjustment and supplies the native upper concrete directly. The [collar proof](evidence/west-parapet-collar-proof.json) measures a maximum of **3.452301025 mm**. The rail region, slab underside, pier, outside connections, and support positions are preserved. Intersecting triangles are partitioned at the blend boundaries, and texture coordinates at new vertices are interpolated; the deformation can change where the texture falls inside the collar.
 
-The collar proof performed **6,518 finite section checks** at three heights and found **zero new gaps above 2 micrometres** in that scan. A micrometre is 0.001 mm. This finite scan is not an unrestricted proof that every surface is watertight. The later [complete-assembly extraction audit](../../01_assemblies/straight-stem-trumpet/evidence/merge-west-tail-extraction.json) independently checks the saved seam at all five zooms, six native joining sections, and 87 collar sections, using the declared position and gap tolerances.
+That historical collar proof performed **6,518 finite section checks** at three heights and found **zero new gaps above 2 micrometres** in that scan. A micrometre is 0.001 mm. This finite scan is not an unrestricted proof that every surface is watertight. The later [complete-assembly extraction audit](../../01_assemblies/straight-stem-trumpet/evidence/merge-west-tail-extraction.json) independently checks the saved seam at all five zooms, six native joining sections, and 87 collar sections, using the declared position and gap tolerances.
 
 The northern merge reuses the Short Mainline Diverge Core’s branch samples after reflecting the north/south coordinate and reversing travel. Both mainline routes, the direct southern route fragments, and each analytic context’s southern deck retain their earlier source values. The branch tracks are separate physical channels until their measured internal journeys merge into the appropriate mainline track; assigning them one component does not permit extra transfers.
 
 The [geometry source](geometry.json) owns route samples, physical sweeps, selected cells, and support positions. Independent software contracts inspect encoded endpoints, direction, L2 height, route continuity, curvature, bed coverage, visible rail alignment, supports, and model budgets. These checks do not approve arbitrary neighbours, terrain behaviour, game appearance, or train operation. The generated matrix and checklist retain the scope and current state of each measured or observed result.
 
-The [fresh resource-check report](evidence/saved-resource-checks.json) identifies the actual four-tile DAT from `dist/trumpet-merge-west-tail-parts-01`, with SHA-256 `a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f`. The normal piece builder and saved-resource verifiers ran. Unchanged analytic surface contexts were reused from a verified saved-model cache, and the production collar normalizer executed from the current source; this run does not claim a cold recompilation of those analytic contexts. The report binds the resulting model to the independent collar proof and complete-assembly audit.
+### Ballast-following concrete borders
 
-Current canonical artwork has its own [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connection-overview evidence](evidence/connection-overview.json). The [executed connector refresh report](../../01_assemblies/straight-stem-trumpet/evidence/merge-west-tail-connectors.json) covers actual rerendering and independent freshness checks for all 15 migrated types, preserving all 56 canonical PNGs of the other 14 types and all manual records during that pass. Software verification and refreshed pictures supply no new human image approval or game observation.
+The raised grey border continues along the northern branch's inside ballast outline from X1 into the retained curved concrete at the top of X2. The southern border follows the corresponding curve from X2 into the retained concrete at the bottom of X1. These accepted continuous banks remain intact. Positions use the standalone top view's authored 0° orientation; every cell is in Y0. The separate northern strip in X3 and southern strip in X0 now follow their actual branch ballast boundaries into the original curved wings, including the matching inside walls. The earlier perpendicular end faces are removed, so neither strip stops at a square cap before its curved wing.
+
+The continuous sections follow the existing branch's exact mitered offsets at **2.6 m** from its centreline, while the existing minimum train half-width remains **2.5 m**. Both the concrete top and the inside wall continue into the original curved wing. The straight native parapet spans approximately **5.9965477–7.5 m** from the mainline centre; the branch profile uses a different reviewed width. Neither profile is narrowed to make the correction pass.
+
+The source-derived northern X3 join follows the sampled ballast curve between [east,north] **[40.361872523,5.996547699] m** at the inside edge and **[43.654740688,7.5] m** at the outside edge. The southern X0 join follows the corresponding curve between [east,south] **[7.638127477,5.996547699] m** and **[4.330997170,7.5] m**. East increases rightward; north increases upward, and south increases downward in the top picture. These are source-backed join coordinates that the independent saved-model checks verify, rather than measurements read from pixels.
+
+The [saved-model comparison](evidence/parapet-alignment.json) records the actual accepted-bank baseline and current DAT hashes, raised-top sections, inside-wall coverage, absence of the former flat caps, preserved continuous banks, resource identities, and unchanged encoded floor, rail, support, and original wing triangles. The independent checker rejects the earlier square-ended strips, interrupted tops, missing inside walls, overlapping faces, and concrete across the required branch openings. It runs alongside the existing complete-model train-clearance check. The [regression tests](../../tests/test_hsr_opposed_parapet.py) include positive controls and deliberate broken shapes.
+
+The [current resource-check report](evidence/saved-resource-checks.json) identifies the one-piece build in `dist/opposed-outer-border-joined` and its normal saved-resource verification. The two complete analytic surface contexts were compiled for this correction, and the production west-collar normalizer ran against the measured new raw west-cell signature. The repaired upper concrete already supplies the native western profile, so this opt-in revision preserves those above-bed faces directly while retaining the original ballast-floor warp exactly; applying the old concrete displacement a second time would narrow the native joining profile by another 3.4523 mm. The current `opposed_parapet_alignment` rule adds the two outer curved joins while retaining its accepted continuous-bank values. All geometry outside that rule and the earlier west-collar definition retain their exact source values. Reusing those newly computed context models inside the same ordinary build does not introduce a different geometry source.
+
+The canonical [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connection-overview evidence](evidence/connection-overview.json) identify the current saved model. The [original border-repair snapshot](evidence/design-history/before-ballast-border-repair/index.json) preserves the state before the continuous banks were repaired. The [accepted-bank snapshot](evidence/design-history/before-outer-border-joins/index.json) preserves the exact source, artwork, reports, connector records, and observations before the subsequent X0/X3 curved joins. Earlier reports and observation dictionaries retain their exact original fingerprints and source scope; current evidence maps their active-path references to the corresponding preserved reports. Earlier whole-assembly and west-tail extraction proofs do not certify this border revision's assembled fit. The trumpet assembly has not been rebuilt or rerendered for these changes, and no new human approval or game observation is inferred.
 
 The original five-tile [saved-resource report](evidence/design-history/saved-resource-checks-before-west-tail-extraction.json), [angled-view report](evidence/design-history/preview-before-west-tail-extraction.json), [top-view report](evidence/design-history/preview-top-before-west-tail-extraction.json), and [connection-overview report](evidence/design-history/connection-overview-before-west-tail-extraction.json) retain their original fingerprints and results. The [earlier combined preview report](evidence/design-history/preview-before-junction-rework.json) describes an even earlier stage before the branch-angle redesign and also remains historical.
 
@@ -180,6 +190,8 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/saved-resource-checks.json, evidence/west-parapet-collar-proof.json]; environment: {}
+- result: passed; authority: software; reviewer: Current one-piece normal saved-build verification, independent continuous opposed-border audit, and selected actual-resource extraction; confirmed at: 2026-10-28T15:43:47.113215+00:00; evidence: [evidence/saved-resource-checks.json, evidence/parapet-alignment.json]; environment: {}
+- result: passed; authority: software; reviewer: Current one-piece native saved-build verification, independent X0/X3 curved-join and retained continuous-bank audits, selected actual PATH extraction, and connector freshness check; confirmed at: 2026-10-28T16:37:56.742438+00:00; evidence: [evidence/saved-resource-checks.json, evidence/parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -211,65 +223,8 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent atomic opposed-merge PATH and model contracts; confirmed at: 2026-10-27T18:41:49.788201+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/saved-resource-checks.json, evidence/west-parapet-collar-proof.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast | <a href="#case-preview_review-82efb43975086d8a2c0f">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top | <a href="#case-preview_review-7b1a76173037cf9da141">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview | <a href="#case-preview_review-348a0bea35fd99141ff0">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast</summary>
-
-<a id="case-preview_review-82efb43975086d8a2c0f"></a>
-
-**General: unverified** — `preview_review-82efb43975086d8a2c0f`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top</summary>
-
-<a id="case-preview_review-7b1a76173037cf9da141"></a>
-
-**General: unverified** — `preview_review-7b1a76173037cf9da141`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview</summary>
-
-<a id="case-preview_review-348a0bea35fd99141ff0"></a>
-
-**General: unverified** — `preview_review-348a0bea35fd99141ff0`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview.
-
-No observation recorded.
+- result: passed; authority: software; reviewer: Current one-piece normal saved-build verification, independent continuous opposed-border audit, and selected actual-resource extraction; confirmed at: 2026-10-28T15:43:47.113215+00:00; evidence: [evidence/saved-resource-checks.json, evidence/parapet-alignment.json]; environment: {}
+- result: passed; authority: software; reviewer: Current one-piece native saved-build verification, independent X0/X3 curved-join and retained continuous-bank audits, selected actual PATH extraction, and connector freshness check; confirmed at: 2026-10-28T16:37:56.742438+00:00; evidence: [evidence/saved-resource-checks.json, evidence/parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -1076,6 +1031,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: Ein; to port: Eout; from service: hsr; to service: hsr; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast | <a href="#case-preview_review-82efb43975086d8a2c0f">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top | <a href="#case-preview_review-7b1a76173037cf9da141">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview | <a href="#case-preview_review-348a0bea35fd99141ff0">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast</summary>
+
+<a id="case-preview_review-82efb43975086d8a2c0f"></a>
+
+**General: unverified** — `preview_review-82efb43975086d8a2c0f`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-short-opposed-merge-core:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top</summary>
+
+<a id="case-preview_review-7b1a76173037cf9da141"></a>
+
+**General: unverified** — `preview_review-7b1a76173037cf9da141`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-short-opposed-merge-core:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview</summary>
+
+<a id="case-preview_review-348a0bea35fd99141ff0"></a>
+
+**General: unverified** — `preview_review-348a0bea35fd99141ff0`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-short-opposed-merge-core:connection-overview.
 
 No observation recorded.
 

@@ -1,0 +1,142 @@
+{
+  "purpose": "Record freshly compiled V4 models and fingerprint-checked reuse of ten unchanged DATs; the complete staged candidate still passes independent production resource checks.",
+  "schema_version": 1,
+  "selection": "hsr-straight-stem-trumpet-v4",
+  "freshly_compiled_recipes": [
+    "hsr_component_l2_short_mainline_diverge_core",
+    "hsr_component_l2_short_opposed_merge_core",
+    "hsr_component_l2_shortened_departure_curve",
+    "hsr_component_l2_shortened_return_curve"
+  ],
+  "unchanged_resource_reuse": [
+    {
+      "piece_id": "hsr-component-lower-paired-straight",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-modular-south-junction",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-modular-paired-climb",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "e801f34faa5d13f83fdb31e465a932a6fb5ea82bbe82bc1fe8731ac86d45f258",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "309d4e411f043b9ca66ff3b80c4d0670eec4032f81114858bacdcf49d2ba1f04",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-modular-crossing-core",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-upper-paired-straight",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "source_stage": "straight-stem-trumpet-v3",
+      "source_dat_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+      "definition_unchanged": true
+    },
+    {
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "source_stage": "current",
+      "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "definition_unchanged": true
+    }
+  ],
+  "fresh_model_provenance": [
+    {
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "proof_sha256": "345283aa663a9c746ed37381ec1cbbdab544700f8908bbe5a57a015f65e3fdf1",
+      "geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
+      "actual_model_sha256": {
+        "0,0": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
+        "1,0": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
+        "2,0": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
+        "3,0": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b"
+      },
+      "exact_compiler_inputs_checked": true
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "proof_sha256": "eb554189f87b6525db17ad82a22bd029e98d3ac56c98077583b4c2a9ff2f3133",
+      "geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
+      "actual_model_sha256": {
+        "0,0": "2ad46a8196ac49dd30e80dd85bfaeda4ff2df5ae9cd7355b7423e9b9d0515a77",
+        "1,0": "3b82826d7416b68cb3d60372f6717da1b6b0851c2d0e5e1d8ccd58d8edf4f536",
+        "2,0": "3744bd007965f45b2e55f37d112f295a2f6dd311ad74127b6e9b9718c52f804d",
+        "3,0": "cdb4c3908c548fae0b4480f2216e425e76b81ad5d7b9a90ca27bec65c0490a3b",
+        "2,1": "601e8c0cb0bf4614df22ecbf49b1c5ad5b814901b8e103071aea648317421e9e",
+        "3,1": "31579c54c0c4c27981da746f5cd796b1aaac1914dbf7b530e7201fe4aff3d2c3",
+        "4,1": "f38e38c980ff6a7db7111c6ee2e9fb7abf0c0fd2214a8a28e01a6a2e43676153",
+        "3,2": "a273547f12f104a9861386f9d33003d7129ffbdc8a71a473dbd476a0b78a94e4",
+        "4,2": "6e984861f6049c5ac3394c5d569eb726e1156b85736e55da9489b3f268d1acdf",
+        "4,3": "41a331b05cf6cd16d95ad5bc142cb20485502675c6d193c24a16418dab59d449",
+        "4,4": "352f0005975025b4ca202217e73967e5821fa5422c3a5c7bacacdabf1c0aff18",
+        "4,5": "d58413c9af00aa15f05a7203d68407d1f9cfe0c640ec04045e1d5928b94ad311"
+      },
+      "exact_compiler_inputs_checked": true
+    },
+    {
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "proof_sha256": "c5d1002eb953409cb04331ad0a1414ee55cab9ac0e2cae8294d664071ea09992",
+      "geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833",
+      "actual_model_sha256": {
+        "0,0": "feebd7ef4fdaf084ea87ae46a847460a10782766a4185736b3a3ee6fc8df17ed",
+        "1,0": "3dfbd53c5d977734acabcbdf0603c41590ee842535f80e7607a769a0e116a062",
+        "2,0": "857c41fc75c81e345535f4746e2532486548c2b33b054fd8dc80c69c00dee7a4",
+        "3,0": "ebc9f7552129f3571b748093d232085e5869f6c38280a61caa4829febd271555",
+        "4,0": "15571d63519721d2b82e5cbc8e8dbc3868918d9477841400594697d7dd5a0c8f"
+      },
+      "exact_compiler_inputs_checked": true
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "proof_sha256": "d2ac2851873bd648a088917afee44349a033d755a286ee2ff66257ff55bbc3f8",
+      "geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
+      "actual_model_sha256": {
+        "1,0": "d78c582a59ba65e20e8d14d3b2c1a95e76e4db4eb065fb47b0baf384138d9ad8",
+        "2,0": "c0eb5325316f2b2ed22c66e9a510177f882738331a3387d8c9be7c15a74710b4",
+        "3,0": "3275fe82e2361444a6dbc373f1384a40c67cbced6599a1e388b55613ef21d430",
+        "4,0": "71806cc8aa0e76fa516d95d7e56a87f151f553bc4aaa9301683c2b0908aedd7c",
+        "0,1": "47a523cd6834f57ba2f645bddadfe3e791cfc9a6af44c1f397fefdd54499b124",
+        "1,1": "655f1df7cf386e9bb5980ad2bb04b6656239ac6315856fa16ba2f1190dafa0c9",
+        "2,1": "2d9191fe940744407be51540f1e58ef58155bfa85d47c49ca356eebdb9a7543b",
+        "0,2": "7c86a70d962331663877598c411ba0897f5da4d6bfb26f604d2222de0ee6155f",
+        "1,2": "32b92e79004c0bb3603184c5c976728f3eedddfe91e2d5f796cab3ce301e8414",
+        "0,3": "13223289da78d040b69ecdbb8d095b992f4a3add6f511ba5df7a9be156f0cad1",
+        "0,4": "7d46de441928522e0316c823b67c399e2f134ede80ed4d70c985269be39ba255",
+        "0,5": "d5f7ce76e32b94a0ef0c73464d7ce0b0358b427abaed82119a93b84ee70827ad"
+      },
+      "exact_compiler_inputs_checked": true
+    }
+  ],
+  "verification": "All selected actual resources, controller, menu and dependencies verified by build_project.",
+  "installation_changed": false
+}

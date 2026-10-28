@@ -15,10 +15,12 @@ from scp.dbpf import require
 
 RECIPES = (
     'hsr_component_l2_paired_fan_compact_join',
+    'hsr_component_l2_paired_fan_compact_core',
+    'hsr_component_l2_paired_straight_recessed_web',
 )
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=3)
 def _source(recipe):
     """Read only this module's own maintained geometry source."""
     require(recipe in RECIPES, 'Unknown compact HSR fan recipe')
@@ -101,14 +103,27 @@ def model_inputs(recipe):
     """Return selected native sweep cells and the exact independent context."""
     context = deepcopy(_source(recipe)['surface_context'])
     mapping = {tuple(local): tuple(source) for local, source in context['selected_cells']}
-    return mapping, {
-        'layout': [[list(source), {'routes': [], 'decks': []}] for source in mapping.values()],
+    compilation_cells = context.get('compilation_cells', list(mapping.values()))
+    if 'compilation_cells' in context:
+        extraction_sizes = {'hsr_component_l2_paired_fan_compact_core': 9,
+                            'hsr_component_l2_paired_straight_recessed_web': 1}
+        require(recipe in extraction_sizes and len(mapping) == extraction_sizes[recipe]
+                and len(compilation_cells) == 11
+                and len({tuple(cell) for cell in compilation_cells}) == 11
+                and set(mapping.values()) <= {tuple(cell) for cell in compilation_cells},
+                'Only the extracted fan pieces may retain their full eleven-cell computation context')
+    config = {
+        'layout': [[list(source), {'routes': [], 'decks': []}] for source in compilation_cells],
         'surface_decks': context['surface_decks'],
         'surface_partition_cells': context['partition_cells'],
         'support_centers': context['support_centers'],
         'support_foundation_width': 1.3,
         'support_min_spacing': 16.,
     }
+    rule = _source(recipe).get('central_parapet_alignment')
+    if rule is not None:
+        config['central_parapet_alignment'] = deepcopy(rule)
+    return mapping, config
 
 
 def build_models(native_hsr, recipe):
@@ -116,5 +131,23 @@ def build_models(native_hsr, recipe):
     from .hsr_components import _cached_models
     mapping, config = model_inputs(recipe)
     signature = json.dumps(config, sort_keys=True, separators=(',', ':'), allow_nan=False)
-    models = dict(_cached_models(native_hsr, signature))
+    compiler = _cached_fan_models if 'central_parapet_alignment' in config else _cached_models
+    models = dict(compiler(native_hsr, signature))
     return {local: models[source] for local, source in mapping.items()}
+
+
+@lru_cache(maxsize=2)
+def _cached_fan_models(native_hsr, signature):
+    """Keep the central-border correction exclusive to this owned fan."""
+    from .hsr_fan_parapet import corrected_fan_sweeps
+    from .hsr_mesh import _compile_models
+    from .single_track_models import _native
+    config = json.loads(signature)
+    layout = {tuple(cell): data for cell, data in config['layout']}
+    sweeps = corrected_fan_sweeps(_native(native_hsr), config['surface_decks'],
+                                  config['central_parapet_alignment'])
+
+    def sweep(source, deck):
+        return sweeps[deck['name']]
+
+    return tuple(_compile_models(native_hsr, layout, config, sweep_function=sweep).items())

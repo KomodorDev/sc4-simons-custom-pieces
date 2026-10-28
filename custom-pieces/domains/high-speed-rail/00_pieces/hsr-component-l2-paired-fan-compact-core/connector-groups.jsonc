@@ -1,0 +1,125 @@
+// Authored complete physical channels; actual saved PATHs supply measured positions and directions.
+// Both paired ends use the measured recessed-web profile. Equal route classes do not erase a concrete-body difference.
+// Curved branch cuts, where present, retain their exact measured endpoints and headings without a straight profile claim.
+{
+  "schema_version": 3,
+  "purpose": "Declare the complete saved-resource joining boundaries and physical tracks of this recessed-web HSR type. Profile labels preserve the measured concrete distinction; route positions and movement permissions remain actual saved-PATH facts.",
+  "piece_id": "hsr-component-l2-paired-fan-compact-core",
+  "source_binding": {
+    "piece_sha256": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
+    "connections_sha256": "956f6764cfb57162144e72df471b0ca53e036f7dd7bfc8783409181802c5faed"
+  },
+  "components": [
+    {
+      "id": "paired-fan-core",
+      "network": "hsr",
+      "construction_network": "monorail"
+    }
+  ],
+  "channels": [
+    {
+      "id": "north-to-west-track",
+      "component_id": "paired-fan-core",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    },
+    {
+      "id": "east-to-north-track",
+      "component_id": "paired-fan-core",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "north-paired-end",
+      "component_id": "paired-fan-core",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "north-paired-end-nin",
+          "source_port_id": "Nin",
+          "direction": "in",
+          "channel_id": "north-to-west-track",
+          "cut_id": "north-paired-end-north-to-west-track-cut"
+        },
+        {
+          "id": "north-paired-end-nout",
+          "source_port_id": "Nout",
+          "direction": "out",
+          "channel_id": "east-to-north-track",
+          "cut_id": "north-paired-end-east-to-north-track-cut"
+        }
+      ],
+      "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1",
+      "section_offset_m": 0.0
+    },
+    {
+      "id": "west-curved-cut",
+      "component_id": "paired-fan-core",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "west-curved-cut-wout",
+          "source_port_id": "Wout",
+          "direction": "out",
+          "channel_id": "north-to-west-track",
+          "cut_id": "west-curved-cut-north-to-west-track-cut"
+        }
+      ]
+    },
+    {
+      "id": "east-curved-cut",
+      "component_id": "paired-fan-core",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "east-curved-cut-ein",
+          "source_port_id": "Ein",
+          "direction": "in",
+          "channel_id": "east-to-north-track",
+          "cut_id": "east-curved-cut-east-to-north-track-cut"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "cell-2-0-north",
+      "source_cell": [
+        2,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "north-paired-end"
+      ]
+    },
+    {
+      "id": "cell-0-2-south",
+      "source_cell": [
+        0,
+        2
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "west-curved-cut"
+      ]
+    },
+    {
+      "id": "cell-4-2-south",
+      "source_cell": [
+        4,
+        2
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "east-curved-cut"
+      ]
+    }
+  ]
+}

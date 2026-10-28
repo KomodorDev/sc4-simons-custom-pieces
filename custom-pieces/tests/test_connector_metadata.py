@@ -21,6 +21,10 @@ BUILD = ROOT/'dist/straight-stem-trumpet'
 def bound_source_names(values):
     names = set().union(*(set(value['source_binding']['files']) for value in values.values()))
     names.update(value['source_binding']['compiled_build']+'/manifest.json' for value in values.values())
+    # Export publication also validates the owning piece's document pair.
+    # Include those real inputs in each temporary fixture before writing.
+    names.update(f'domains/{value["domain_id"]}/00_pieces/{identifier}/{document}'
+                 for identifier, value in values.items() for document in ('README.md', 'TESTING.md'))
     return names
 
 
@@ -126,7 +130,15 @@ class ConnectorSourceTests(unittest.TestCase):
             for piece in load_catalog(ROOT)['pieces']
             if (ROOT/f'domains/{piece["domain"]}/00_pieces/{piece["id"]}/connector-groups.jsonc').is_file()
         }
-        self.assertEqual({name for name in names if name.endswith('/connector-groups.jsonc')}, expected)
+        declarations = {name for name in names if name.endswith('/connector-groups.jsonc')}
+        current = {name for name in declarations if len(Path(name).parts) == 5}
+        self.assertEqual(current, expected)
+        # Original declarations remain in preserved evidence snapshots. They
+        # are source-package history, rather than additional active pieces.
+        for name in declarations-current:
+            parts = Path(name).parts
+            self.assertEqual(parts[4:6], ('evidence', 'design-history'), name)
+            self.assertIn('/'.join(parts[:4])+'/connector-groups.jsonc', expected)
         self.assertTrue({f'domains/high-speed-rail/00_pieces/{identifier}/connector-groups.jsonc' for identifier in IDS} <= expected)
 
 

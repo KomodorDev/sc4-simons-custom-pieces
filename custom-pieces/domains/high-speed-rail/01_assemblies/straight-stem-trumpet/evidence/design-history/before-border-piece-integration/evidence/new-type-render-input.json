@@ -1,0 +1,313 @@
+{
+  "purpose": "Select only the four final new reusable types for canonical angled/top rendering. The complete frozen assembly remains assembly.json; no physical placement changes are made.",
+  "title": "Straight-stem HSR trumpet V4 | bounded tail atomization",
+  "geometry_status": "Four small tails extracted with bounded adjoining-collar redesign; actual compiled evidence recorded separately; game observations unverified",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "construction_rectangle_tiles": [
+    20,
+    23
+  ],
+  "occupied_tiles": 109,
+  "module_placements": 26,
+  "component_types_used": 14,
+  "separately_available_component_types": 39,
+  "external_ports": {
+    "W": {
+      "in": [
+        -120.0,
+        -2.0,
+        15.5
+      ],
+      "out": [
+        -120.0,
+        2.0,
+        15.5
+      ]
+    },
+    "E": {
+      "in": [
+        200.0,
+        2.0,
+        15.5
+      ],
+      "out": [
+        200.0,
+        -2.0,
+        15.5
+      ]
+    },
+    "S": {
+      "in": [
+        2.0,
+        -216.0,
+        15.5
+      ],
+      "out": [
+        -2.0,
+        -216.0,
+        15.5
+      ]
+    }
+  },
+  "placements": [
+    {
+      "name": "HSR L2 Short Mainline Diverge Core at P01A",
+      "instance_id": "HSR L2 Short Mainline Diverge Core at P01A",
+      "label": "P01A",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "origin_m": [
+        -96.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Short Mainline Diverge Core",
+      "display_origin_m": [
+        16.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        1.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Shortened One-Way Departure Curve at P01B",
+      "instance_id": "HSR L2 Shortened One-Way Departure Curve at P01B",
+      "label": "P01B",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "origin_m": [
+        -80.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Shortened One-Way Departure Curve",
+      "display_origin_m": [
+        32.0,
+        192.0
+      ],
+      "display_origin_tiles_en": [
+        2.0,
+        12.0
+      ]
+    },
+    {
+      "name": "HSR L2 Short Opposed Merge Core at P03B",
+      "instance_id": "HSR L2 Short Opposed Merge Core at P03B",
+      "label": "P03B",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "origin_m": [
+        32.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Short Opposed Merge Core",
+      "display_origin_m": [
+        144.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        9.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Shortened One-Way Return Curve at P03D",
+      "instance_id": "HSR L2 Shortened One-Way Return Curve at P03D",
+      "label": "P03D",
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "origin_m": [
+        16.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Shortened One-Way Return Curve",
+      "display_origin_m": [
+        128.0,
+        192.0
+      ],
+      "display_origin_tiles_en": [
+        8.0,
+        12.0
+      ]
+    }
+  ],
+  "component_list": [
+    {
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "menu_name": "HSR L2 Short Mainline Diverge Core",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_lower_paired_straight",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "menu_name": "HSR L2 Two-Track Straight",
+      "placements": 7
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "menu_name": "HSR L2 Shortened One-Way Departure Curve",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_south_junction",
+      "piece_id": "hsr-component-modular-south-junction",
+      "menu_name": "HSR Modular Symmetric Split and Return",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_paired_climb",
+      "piece_id": "hsr-component-modular-paired-climb",
+      "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_paired_fan_compact_join",
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "menu_name": "HSR L2 Compact Paired Fan Join",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "menu_name": "HSR L2 Short Opposed Merge Core",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_compact_fan_diverge",
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "menu_name": "HSR L2 Compact Fan Diverge",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "menu_name": "HSR L2 Shortened One-Way Return Curve",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_crossing_core",
+      "piece_id": "hsr-component-modular-crossing-core",
+      "menu_name": "HSR Modular One-Tile Two-Level Crossing",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_upper_paired_straight",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "placements": 6
+    },
+    {
+      "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "menu_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_lower_oneway_straight",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "menu_name": "One-Way HSR L2 Eight-Metre Straight",
+      "placements": 2
+    }
+  ],
+  "source_builds": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "used_component_types": 14,
+    "new_component_types": 4,
+    "reused_component_types": 10,
+    "controller_policy": "One coordinated staged build; do not stack controllers from separate builds"
+  },
+  "compiled_assembly_validation": "evidence/validation.json",
+  "render_evidence": "evidence/render.json",
+  "coordinate_system": {
+    "layout": "straight-stem-trumpet-v4",
+    "origin_name": "southwest tile centre of complete construction rectangle",
+    "origin_world_m": [
+      -112.0,
+      -208.0
+    ],
+    "tile_size_m": 16.0,
+    "axes": "east,north,height; S3D east,height,-north",
+    "tile_boundaries_offset_m": 8.0,
+    "display_tile_centres_bounds_en": [
+      0,
+      0,
+      19,
+      22
+    ],
+    "authoring_tile_centres_bounds_en": [
+      -7,
+      -13,
+      12,
+      9
+    ],
+    "construction_bounds_world_m": [
+      -120.0,
+      -216.0,
+      200.0,
+      152.0
+    ],
+    "bounds_order": "west,south,east,north",
+    "authoring_origin_name": "central HSR-over-HSR crossing tile centre",
+    "authoring_origin_world_m": [
+      0.0,
+      0.0
+    ],
+    "crossing_display_tiles_en": [
+      7,
+      13
+    ],
+    "authoring_to_display_tile_offset_en": [
+      7,
+      13
+    ],
+    "conversion": "display X = authoring east metres / 16 + 7; display Y = authoring north metres / 16 + 13",
+    "origin_note": "The southwest tile centre is implicit (X0,Y0) in every view. It is retained here for projection only; no global origin marker or caption is drawn. origin_m remains the unchanged authoring/model reference, not a verified mouse-click anchor.",
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_axes": "X increases east/right; Y increases north/up on the north-up plan",
+    "origin_marker_visible": false,
+    "origin_caption_visible": false
+  },
+  "render_source_build": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "policy": "Supply the explicitly verified V4 staged build containing these14required types; exact input fingerprints are retained in evidence/render.json."
+  },
+  "placement_plan_image": "previews/tile-ownership.png",
+  "placement_plan_title": "Straight-stem HSR trumpet V4 | tile ownership and placement positions",
+  "baseline": {
+    "layout_contract": "checks/layout.json",
+    "quality_contract": "checks/contract.json",
+    "decision_record": "checks/atomization.json",
+    "policy": "Use the approved current physical layout and current resource contract; original atomization eligibility remains recorded history.",
+    "resource_contract": "checks/resources.json"
+  },
+  "standalone_piece_preview_policy": "One canonical 0-degree angled image per type; new types also have a top view, all on their own southwest-zero local X/Y grid. P labels belong only to the assembly plan and guide.",
+  "redesign_scope": {
+    "decision_record": "checks/atomization.json",
+    "policy": "An original tail deviation strictly below 5 mm selects a candidate. Actual adjoining-collar movement is independently bounded at 24.5 mm for paired junctions and 8.2 mm for one-way curves. Preserve the outside layout and supports.",
+    "in_game_status": "unverified"
+  },
+  "metadata_cleanup": {
+    "original_render_input_sha256": "20d639d7557838e096fdc71f5ed88159448a9c0a96a56dbe9682708314d7ad39",
+    "physical_geometry_unchanged": true,
+    "scope": "Removed obsolete predecessor references from non-rendered metadata only."
+  }
+}

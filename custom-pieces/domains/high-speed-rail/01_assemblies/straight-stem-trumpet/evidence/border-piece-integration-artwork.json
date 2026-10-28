@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "assembly_id": "straight-stem-trumpet",
+  "purpose": "Record current whole-assembly artwork, twelve retained and two new standalone picture pairs, and exact historical observation bindings after integrating the accepted border repairs and reviewed three-piece fan extraction.",
+  "completed_at_utc": "2026-10-28T18:16:00.644573+00:00",
+  "current_executed_inputs": {
+    "source_build": "dist/trumpet-fan-core-parts-audit-01",
+    "source_manifest_sha256": "4e3787d481cc6399286e617c67501495af709206066c5ff4c2fb02a8a775927b",
+    "source_verification_sha256": "2ecd008f5d2c0cecbb8e304b0644409d749865daa015a185f420902cab9f4e4b",
+    "validation_file": "evidence/border-piece-integration-initial-validation.json",
+    "validation_sha256": "628d6943f802820f20105cc472c867fae5f1b618e027989a2b244a781096d071",
+    "integration_record": "checks/border-piece-integration.json",
+    "integration_record_sha256": "d3108f171e2f8ff065a98db4ab7e0c974360ceefb7ddf0fe4d39677cf8f599a7",
+    "scene_sha256": "b0628a3061eee319c8b1c052c7cc820cb4106f79a88fa587ef49938f6eb8b257",
+    "layout_contract_file_sha256": "817412f6e0d6431aedfba9df65d5f6b856b3172f5f65733e0220fc96ff296e23",
+    "physical_layout_sha256": "5bcb0546c645a95f5cfdcc77134362047ba98af42320395a57160f14d26c670e",
+    "scene_and_layout_match_initial_audit_bytes": true,
+    "all25_original_non_fan_placement_dictionaries_unchanged": true,
+    "original_single_P06_replaced_by_reviewed_P06_P06A_P06B": true
+  },
+  "canonical_assembly_artwork": {
+    "render_report": "evidence/render.json",
+    "render_report_sha256": "02c811eeadddd439e75b4f243416b55360195b9cab3c00a01f9ff0e462f30519",
+    "six_images": [
+      {
+        "file": "../previews/named-southeast.png",
+        "sha256": "2142549d482bc052bc0c143f367a48deb0a0108c17fac2de50ba0d208374b918",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "named"
+      },
+      {
+        "file": "../previews/preview.png",
+        "sha256": "94b292fc398ffb96ae8c2baa02554ba62f04ceb09d405e076dfa5b4d7ecb847b",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "clean"
+      },
+      {
+        "file": "../previews/named-northwest.png",
+        "sha256": "a04e66c988e217d1b37a19a0795a95a13535d330be08c7dba112d92629f53602",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "named"
+      },
+      {
+        "file": "../previews/named-top.png",
+        "sha256": "8b3e87049c48aec7b4090f5a64d79066621e667a86d688760f3c92b4ea396860",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "named"
+      },
+      {
+        "file": "../previews/overview-top.png",
+        "sha256": "3c2b0779138d8a2c04e718dcb29a1bdf1e270c29736d5335570369e4021aa3f0",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "clean"
+      },
+      {
+        "file": "../previews/tile-ownership.png",
+        "sha256": "4863163e88e2bb55a1506682554faaebb2d09cf7272b5909c4d7a06704b2f848",
+        "dimensions_px": [
+          2800,
+          2600
+        ],
+        "purpose": "construction-plan"
+      }
+    ],
+    "all_geometry_from_current_verified_saved_models": true,
+    "all25_original_non_fan_placement_dictionaries_unchanged": true,
+    "all28_current_placements_match_initial_audit": true,
+    "visible_test_status_drawn": false,
+    "visible_fixed_captions": {
+      "../previews/named-southeast.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Component guide | Southeast view | looking northwest",
+        "Actual compiled S3D track, decks, and supports | software preview",
+        "X/Y tile coordinates | 1 tile = 16 m | 28 named placements | positions in side panels",
+        "Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m",
+        "All model geometry shown; no simulated trains, terrain, or game lighting."
+      ],
+      "../previews/preview.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Clean view | Southeast view | looking northwest",
+        "Actual compiled S3D track, decks, and supports | software preview",
+        "X/Y tile coordinates | 1 tile = 16 m",
+        "All model geometry shown; no simulated trains, terrain, or game lighting."
+      ],
+      "../previews/named-northwest.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Component guide | Northwest view | looking southeast",
+        "Actual compiled S3D track, decks, and supports | software preview",
+        "X/Y tile coordinates | 1 tile = 16 m | 28 named placements | positions in side panels",
+        "Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m",
+        "All model geometry shown; no simulated trains, terrain, or game lighting."
+      ],
+      "../previews/named-top.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Component guide | Top view | north up",
+        "Actual compiled S3D track, decks, and supports | software preview",
+        "X/Y tile coordinates | 1 tile = 16 m | 28 named placements | positions in side panels",
+        "Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m",
+        "All model geometry shown; no simulated trains, terrain, or game lighting."
+      ],
+      "../previews/overview-top.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Clean view | Top view | north up",
+        "Actual compiled S3D track, decks, and supports | software preview",
+        "X/Y tile coordinates | 1 tile = 16 m",
+        "All model geometry shown; no simulated trains, terrain, or game lighting."
+      ],
+      "../previews/tile-ownership.png": [
+        "Assembly - Straight-stem HSR trumpet",
+        "Construction view | Top view | north up",
+        "Piece labels match the model views and guide | diamonds mark piece reference positions, not cursor anchors",
+        "105 occupied tiles | blank squares remain empty | same P-labels in every view",
+        "Match the shown positions and rotations; reference diamonds mark model origins."
+      ]
+    },
+    "game_evidence": false
+  },
+  "canonical_piece_picture_index": {
+    "file": "evidence/piece-previews.json",
+    "sha256": "0fbd1aae1935566c8e98c67ac141f94d6f448ba7b5b4dc5ca25c8ae67ea13a32",
+    "retained_types": 12,
+    "new_types": 2,
+    "angled_images": 14,
+    "top_images": 14,
+    "placements": 28,
+    "standalone_piece_files_changed_by_assembly_refresh": false
+  },
+  "icon": {
+    "file": "icon.png",
+    "sha256": "30d511c8abbf51e06dd3d6058a3778f9740b5767ad4584f6c50512c10be396e1",
+    "matches_frozen_icon_pixels": true,
+    "basis": "Unchanged placed source routes; schematic menu artwork, separate from compiled-model views.",
+    "evidence_file": "evidence/icon.json",
+    "evidence_sha256": "2296fe9d6b2f195652aad82c79a07f4d7f34f8f4e3116315b8956bac1cc014fc"
+  },
+  "historical_state": {
+    "snapshot": "evidence/design-history/before-border-piece-integration/index.json",
+    "snapshot_sha256": "081bb2475ef153d0b6df13d9d1bb21bf190f6cd8a427ad56f654728a1661cbd4",
+    "frozen_files_verified": 47
+  },
+  "historical_software_observation_evidence": [
+    {
+      "case_id": "software_resources-fe740c153144a3695751",
+      "kind": "software_resources",
+      "confirmed_at": "2026-10-27T14:12:46.158490+00:00",
+      "dependency_fingerprint": "b5d83ee4bb133f9d1270fea0cfca3f32a887300c41523316790d0e62900cb800",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-before-junction-rework.json",
+          "preserved_report_sha256": "f1aec14eb822efbdcb281aff767579ada899876d9ec41a66699f734b341fb3da"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-junction-rework.json",
+          "preserved_report_sha256": "b1b6eb3f95fa910708a216cda46f96231a3489b136a2cc661355ef4e466c7848"
+        }
+      ],
+      "recorded_source_manifest_sha256": "5441ae5bbf30866970a40a8735a6be9f3fc43d6947d940f7c726aa6e3306594e",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_resources-fe740c153144a3695751",
+      "kind": "software_resources",
+      "confirmed_at": "2026-10-27T19:05:41.349287+00:00",
+      "dependency_fingerprint": "e607a09e7d985994ebfee12dfc64b698e321d7ce004624db59e18fd621742464",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-at-junction-rework-capture.json",
+          "preserved_report_sha256": "bdd1072f1a876596a6587671169187456f64e4c58d20c43f2068b616f9e308ee"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-fan-width.json",
+          "preserved_report_sha256": "65582e90affa4ca5c89274513214fcbbd59f5eb3605a6b234af141fd117cb87c"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/junction-rework-build-before-fan-width.json",
+          "preserved_report_sha256": "c62eda73760a64994065590e435c7a4a67cc943506decfaa34e58057fdf9315c"
+        }
+      ],
+      "recorded_source_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_resources-fe740c153144a3695751",
+      "kind": "software_resources",
+      "confirmed_at": "2026-10-27T19:17:27.127678+00:00",
+      "dependency_fingerprint": "e607a09e7d985994ebfee12dfc64b698e321d7ce004624db59e18fd621742464",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-before-fan-width.json",
+          "preserved_report_sha256": "d8da2dfd060ec36fe286c0d23b16e273596495d819b524e10c2de52b72c4dea7"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-fan-width.json",
+          "preserved_report_sha256": "65582e90affa4ca5c89274513214fcbbd59f5eb3605a6b234af141fd117cb87c"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/junction-rework-build-before-fan-width.json",
+          "preserved_report_sha256": "c62eda73760a64994065590e435c7a4a67cc943506decfaa34e58057fdf9315c"
+        }
+      ],
+      "recorded_source_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_resources-fe740c153144a3695751",
+      "kind": "software_resources",
+      "confirmed_at": "2026-10-27T21:59:37.265650+00:00",
+      "dependency_fingerprint": "a47a7610652465cc4bbc08a749c62e58559d760aacc5d247268928b58ac35fcb",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json",
+          "preserved_report_sha256": "6d4a13c9675750fe5aae98f95ca6dfc9ef16d1aa17e044a49a32d0b7637a64ac"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/evidence-audited-build-manifest-before-merge-west-tail-extraction.json",
+          "preserved_report_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/junction-rework-build.json",
+          "preserved_report_sha256": "64d7794b22b1746ff3e1b3db0005ac50c791376cfe79e95c7e91ef116497a781"
+        }
+      ],
+      "recorded_source_manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_resources-fe740c153144a3695751",
+      "kind": "software_resources",
+      "confirmed_at": "2026-10-28T09:50:03.583685+00:00",
+      "dependency_fingerprint": "425332fb8f2b8a97de7bdbfa0715587ad1970e09d7d3d2069f34ff7a1e2bd011",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/merge-west-tail-extraction.json",
+        "evidence/audited-build-manifest.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/validation.json",
+          "preserved_report_sha256": "229287906d54422b43ab0fa3dc343b5d8afa054e1aa5421ed48fe656936b0c53"
+        },
+        {
+          "original_reference": "evidence/merge-west-tail-extraction.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/merge-west-tail-extraction.json",
+          "preserved_report_sha256": "fca2e07d59e0f61ce59abb5d3f1864b5de66ad1863ca4c0ad7446b0c6943c082"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/audited-build-manifest.json",
+          "preserved_report_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d"
+        }
+      ],
+      "recorded_source_manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_connectivity-fe740c153144a3695751",
+      "kind": "software_connectivity",
+      "confirmed_at": "2026-10-27T14:12:46.158490+00:00",
+      "dependency_fingerprint": "97008d7105a5a62b9281596cae204290c307f3bbaa54636b72f09be346d5abae",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-before-junction-rework.json",
+          "preserved_report_sha256": "f1aec14eb822efbdcb281aff767579ada899876d9ec41a66699f734b341fb3da"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-junction-rework.json",
+          "preserved_report_sha256": "b1b6eb3f95fa910708a216cda46f96231a3489b136a2cc661355ef4e466c7848"
+        }
+      ],
+      "recorded_source_manifest_sha256": "5441ae5bbf30866970a40a8735a6be9f3fc43d6947d940f7c726aa6e3306594e",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_connectivity-fe740c153144a3695751",
+      "kind": "software_connectivity",
+      "confirmed_at": "2026-10-27T19:05:41.349287+00:00",
+      "dependency_fingerprint": "2ad5187b22b5539abc841dad7e007efc09c243fb8ff04bf1b153a53245266929",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-at-junction-rework-capture.json",
+          "preserved_report_sha256": "bdd1072f1a876596a6587671169187456f64e4c58d20c43f2068b616f9e308ee"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-fan-width.json",
+          "preserved_report_sha256": "65582e90affa4ca5c89274513214fcbbd59f5eb3605a6b234af141fd117cb87c"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/junction-rework-build-before-fan-width.json",
+          "preserved_report_sha256": "c62eda73760a64994065590e435c7a4a67cc943506decfaa34e58057fdf9315c"
+        }
+      ],
+      "recorded_source_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_connectivity-fe740c153144a3695751",
+      "kind": "software_connectivity",
+      "confirmed_at": "2026-10-27T19:17:27.127678+00:00",
+      "dependency_fingerprint": "2ad5187b22b5539abc841dad7e007efc09c243fb8ff04bf1b153a53245266929",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/validation-before-fan-width.json",
+          "preserved_report_sha256": "d8da2dfd060ec36fe286c0d23b16e273596495d819b524e10c2de52b72c4dea7"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/audited-build-manifest-before-fan-width.json",
+          "preserved_report_sha256": "65582e90affa4ca5c89274513214fcbbd59f5eb3605a6b234af141fd117cb87c"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/junction-rework-build-before-fan-width.json",
+          "preserved_report_sha256": "c62eda73760a64994065590e435c7a4a67cc943506decfaa34e58057fdf9315c"
+        }
+      ],
+      "recorded_source_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_connectivity-fe740c153144a3695751",
+      "kind": "software_connectivity",
+      "confirmed_at": "2026-10-27T21:59:37.265650+00:00",
+      "dependency_fingerprint": "2ad5187b22b5539abc841dad7e007efc09c243fb8ff04bf1b153a53245266929",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/audited-build-manifest.json",
+        "evidence/junction-rework-build.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json",
+          "preserved_report_sha256": "6d4a13c9675750fe5aae98f95ca6dfc9ef16d1aa17e044a49a32d0b7637a64ac"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/evidence-audited-build-manifest-before-merge-west-tail-extraction.json",
+          "preserved_report_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1"
+        },
+        {
+          "original_reference": "evidence/junction-rework-build.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/junction-rework-build.json",
+          "preserved_report_sha256": "64d7794b22b1746ff3e1b3db0005ac50c791376cfe79e95c7e91ef116497a781"
+        }
+      ],
+      "recorded_source_manifest_sha256": "7c3701b7d6a651aff107570cab38d7aed36fc304edfedb02c40ca186acc62fa1",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    },
+    {
+      "case_id": "software_connectivity-fe740c153144a3695751",
+      "kind": "software_connectivity",
+      "confirmed_at": "2026-10-28T09:50:03.583685+00:00",
+      "dependency_fingerprint": "ab111b0cc2f23dcf67762ba54f868f7891351b5e5e21697ef6174bd2356d75ef",
+      "original_evidence_references": [
+        "evidence/validation.json",
+        "evidence/merge-west-tail-extraction.json",
+        "evidence/audited-build-manifest.json"
+      ],
+      "preserved_reports": [
+        {
+          "original_reference": "evidence/validation.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/validation.json",
+          "preserved_report_sha256": "229287906d54422b43ab0fa3dc343b5d8afa054e1aa5421ed48fe656936b0c53"
+        },
+        {
+          "original_reference": "evidence/merge-west-tail-extraction.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/merge-west-tail-extraction.json",
+          "preserved_report_sha256": "fca2e07d59e0f61ce59abb5d3f1864b5de66ad1863ca4c0ad7446b0c6943c082"
+        },
+        {
+          "original_reference": "evidence/audited-build-manifest.json",
+          "preserved_report": "evidence/design-history/before-border-piece-integration/evidence/audited-build-manifest.json",
+          "preserved_report_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d"
+        }
+      ],
+      "recorded_source_manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
+      "binding_scope": "Archived report for the recorded source/input version; each report keeps its original execution and metadata scope. This mapping creates no new historical test run.",
+      "observation_dictionary_changed": false
+    }
+  ],
+  "observation_preservation": {
+    "original_observation_dictionaries_retained_exactly": true,
+    "previous_case_ids_retained": true,
+    "old_observations_preserved": 10,
+    "new_software_observations": 2,
+    "new_human_observations": 0,
+    "human_approval_inferred_from_user_feedback": false
+  },
+  "installed": false,
+  "in_game_appearance_verified": false,
+  "in_game_train_operation_verified": false
+}

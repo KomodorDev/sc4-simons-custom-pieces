@@ -16,6 +16,10 @@ from .preview import font, render_fast_view, renderer_settings as raster_setting
 from .render_headers import draw_header, grid_caption, header_settings, piece_heading, view_caption
 
 
+TOP_GRID_OVERLAY = {'colour': '#00ff00', 'line_width_pixels': 2,
+                    'major_line_width_pixels': 3, 'drawn_above_model': True}
+
+
 def sha256(raw):
     return hashlib.sha256(raw).hexdigest()
 
@@ -26,6 +30,20 @@ def _caption(draw, text, y, size, width, *, bold=False, color='#172b42'):
         size -= 1
         chosen = font(size, bold)
     draw.text((30, y), text, font=chosen, fill=color)
+
+
+def _overlay_top_grid(image, grid):
+    """Keep true tile edges visible across opaque surfaces in a piece plan.
+
+    Reuse the ground grid's projected boundary endpoints, so this overlay
+    changes only documentation pixels, never the camera or model geometry.
+    """
+    draw = ImageDraw.Draw(image)
+    for line in grid['grid_lines']:
+        width = TOP_GRID_OVERLAY['major_line_width_pixels' if line['major'] else 'line_width_pixels']
+        draw.line([tuple(point) for point in line['pixels']],
+                  fill=TOP_GRID_OVERLAY['colour'], width=width)
+    grid['line_overlay'] = dict(TOP_GRID_OVERLAY)
 
 
 def local_piece_grid(piece):
@@ -112,9 +130,11 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     textures, texture_sources = library.for_model(model)
     view = render_fast_view(model, textures, azimuth, elevation, width, view_height,
                            camera=camera, background_image=background)
+    if view_role == 'top':
+        _overlay_top_grid(view, grid)
     canvas.paste(view, (0, top))
     footer = ['Complete reusable piece shown at its authored orientation.',
-              'Software model preview; in-game placement and traffic remain unverified.']
+              'Software model preview.']
     for caption, y_position, size in zip(footer, (height-68, height-35), (22, 21)):
         _caption(draw, caption, y_position, size, width, color='#586a7e')
     captions.extend(footer)
@@ -155,7 +175,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     return image
 
 
-_LAYOUT_HELPERS=(local_piece_grid,_caption,render_piece,make_camera,make_city_grid)
+_LAYOUT_HELPERS=(local_piece_grid,_caption,_overlay_top_grid,render_piece,make_camera,make_city_grid)
 
 
 def preview_settings(*, width=1600, height=1200, view_role='angled'):
@@ -171,6 +191,7 @@ def preview_settings(*, width=1600, height=1200, view_role='angled'):
             'image_size':[width,height], 'view_size':[width,height-230],
             'views':[{'azimuth':azimuth,'elevation':elevation}], 'view_role':view_role,
             'tile_metres':16., 'origin_marker_visible':False, 'geometry_simplified':False,
+            'top_grid_overlay':dict(TOP_GRID_OVERLAY) if view_role == 'top' else None,
             'duplicate_grid_footer_visible':False}
 
 

@@ -8083,5 +8083,26 @@
       ]
     ],
     "purpose": "Complete surface boundary ownership mask for deterministic overhang assignment; only selected module cells are packed into models."
+  },
+  "junction_wedge_alignment": {
+    "purpose": "Close the two visible triangular concrete gaps beside the recessed northern paired end, following the original branch ballast boundaries; preserve existing models, tracks, routes, supports, and identities.",
+    "left_branch": "symmetric_fan_left",
+    "right_branch": "symmetric_fan_right",
+    "branch_inner_half_width_m": 2.6,
+    "paired_centre_east_m": 16.0,
+    "recessed_end_local_south_m": 24.0,
+    "minimum_train_half_width_m": 2.5
+  },
+  "stem_parapet_alignment": {
+    "purpose": "Keep both southern paired borders straight until the first branch ballast outline, then follow that outline through the adjacent northern row; preserve the accepted recessed wedges and every original face, rail, route, support, and identity.",
+    "left_branch": "symmetric_fan_left",
+    "right_branch": "symmetric_fan_right",
+    "branch_inner_half_width_m": 2.6,
+    "paired_centre_east_m": 16.0,
+    "stem_scope_local_south_m": [
+      48.0,
+      88.0
+    ],
+    "minimum_train_half_width_m": 2.5
   }
 }

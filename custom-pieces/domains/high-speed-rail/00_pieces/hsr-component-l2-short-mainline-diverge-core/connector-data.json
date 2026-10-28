@@ -4,12 +4,12 @@
   "piece_id": "hsr-component-l2-short-mainline-diverge-core",
   "domain_id": "high-speed-rail",
   "source_binding": {
-    "compiled_build": "dist/trumpet-merge-west-tail-parts-01",
-    "compiled_manifest_sha256": "ae5696604494de71d95d38c2a0a8fe8774a2257c9fb2ced341a7365ce91e736a",
+    "compiled_build": "dist/diverge-right-border-joined",
+    "compiled_manifest_sha256": "e5fb7799bece2129223d2c762e03206a63b4c4bbb0e32f7ceee67fcc78735c46",
     "files": {
-      "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
-      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connections.json": "5925223e9a6e68d860c9a8b0ae914bb8c96569c66c7ceaeb9ff26bbccba1c916",
-      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connector-groups.jsonc": "0f0d6c076792fb8b7377f3b52795d78ebd0bdee3189bc353f29d8d891b1d0ca7",
+      "dist/diverge-right-border-joined/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connections.json": "998f30197430b9b501f55ef230291749c94199e6179ef109c7f090972c9acb18",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connector-groups.jsonc": "40605ce79ba96b9eebfdffdba38829dbb71eba98e6d4fa04b41e007ec0e6697c",
       "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a",
       "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
       "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
@@ -22,27 +22,33 @@
       "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
       "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "445f6300959310053b62865198698be714751de1291e4aaad40b6eb92643707b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d66f970865f76f6b02fb5ae1caafffd7630957783a19246e3dc791df9c985fa3",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "de209c0a61ece97d8ee5e7068d2159c3fc014faabe8feba5a724d386741a4da1",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "ecb4874121a0135cc1371ca37d0d305dd9d4d33c9025fd1a38b5d9a277ec09c1",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "f238345479371c5e383dc293019f97fba79b5dc8687d68be02d2874693f75042",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "19294e94ce360db2f243dcd8fe4573cbf0c2e7a44c11ec197be0d32631347406",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "e8e305e17c7ed5bc71d5e776fbe61a43d091034de5236c9733bcbc0be822a45b",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "445d313bc9190e1a6689ba61f042c94942bfe0d8be5ac90a0c15abcd3aa079f4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "7691078d19bfdd43a41002ae8f6769e17bc7eb07bf03fcb9fa0092336b14c678",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "7b98fa779671a94560bd0f9e812e32b091e19839aa1ab2d5eb3ee917032e100a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "9f551be8ac2cfa8a6e819f2334376a2f28d2ae35d84ecac141f668fff5366478",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "0a3455ed0ba9efa9867fcda304b253f4ec19f3e9b23e44e514b1233da96628b7",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "910eafa974eabe70f94bf95a3610e529ea9a4e7f8142340c44c9f7ae73fc327d",
@@ -90,7 +96,7 @@
       "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
       "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
       "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
-      "framework/scp/piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+      "framework/scp/piece_previews.py": "f0d410a7ddf913d9d48567fa16a510fc3fdc662cab832f08439954c042523452",
       "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
       "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
       "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
@@ -303,27 +309,27 @@
           "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584100": "c9cf2654259e0b523cd56d539f9ad18b6c75df6b73827c27550e156d28015127",
           "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584200": "e216dadccdd2f46e6a79ac8c0a31a581323353e928414b86d8fac6ae239aa66b",
           "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584300": "b4f7008047961f4ba5c5543465955c99b284a78eb9c5f4ec718ec3040cf5fa5c",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "7619c82eacd3945fb9a03c6195e44f50758fa0494dc853b80b396aa0238f687f",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "39f152ca89d3cf2e6c20247a69588a7420ed65641750c74b067eb49bb5fe1588",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "a7e5997fd493082df3f1ec86bef929d83eea9bae00eae64943f98ff60d8fde87",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "82296c52edb308db2654768111d11c18c9b96a341fc54ec552befae852dd596b",
-          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "45122988d5ade6a9425adbcf87d643f4d38cd2800fa2282f8344a751a7092982",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "1ccfef7e5a698ac64aee21db1356082d8bb21255abd16fe847fe044f206ff8eb",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "1ccfef7e5a698ac64aee21db1356082d8bb21255abd16fe847fe044f206ff8eb",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "1ccfef7e5a698ac64aee21db1356082d8bb21255abd16fe847fe044f206ff8eb",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "1ccfef7e5a698ac64aee21db1356082d8bb21255abd16fe847fe044f206ff8eb",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "1ccfef7e5a698ac64aee21db1356082d8bb21255abd16fe847fe044f206ff8eb",
+          "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "7fde537a6e643630798d1f15849a2a7d41aa76634ff9577c3b91596eb6d8e370",
           "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000": "75926011370ec7ddce8846b45248596daf2c804c54df3a5664e69dc0d27f9d81",
           "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584100": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
           "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
@@ -355,7 +361,8 @@
           "construction:hsr-component-l2-short-mainline-diverge-core": "b50b21acb3df2f620281cfa2ba8208f5e2b5b07421ef6a338464ebb9818b0af2"
         },
         "reviewed_contract_available": true,
-        "construction_basis": "Actual emitted per-piece rule sections and Ordering rotation list from the verified V4 staged build."
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
       },
       "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
       "ports": [
@@ -397,6 +404,20 @@
             "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000",
             "construction:hsr-component-l2-short-mainline-diverge-core"
           ],
+          "source_route_ids": [
+            "path-7f584000-route-000",
+            "path-7f584000-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f584000"
+            }
+          ],
           "connection_class": "path-interface-12d12be31d2057c5763d"
         },
         {
@@ -436,6 +457,19 @@
             "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004",
             "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000",
             "construction:hsr-component-l2-short-mainline-diverge-core"
+          ],
+          "source_route_ids": [
+            "path-7f584000-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f584000"
+            }
           ],
           "connection_class": "path-interface-fba09fbeb87ad95c667a"
         },
@@ -477,6 +511,19 @@
             "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200",
             "construction:hsr-component-l2-short-mainline-diverge-core"
           ],
+          "source_route_ids": [
+            "path-7f584200-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "edge": 3,
+              "tile_id": "7f584200"
+            }
+          ],
           "connection_class": "path-interface-d819a6d05c5e43d11db7"
         },
         {
@@ -516,6 +563,19 @@
             "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304",
             "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300",
             "construction:hsr-component-l2-short-mainline-diverge-core"
+          ],
+          "source_route_ids": [
+            "path-7f584300-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f584300"
+            }
           ],
           "connection_class": "path-interface-12d12be31d2057c5763d"
         },
@@ -557,14 +617,27 @@
             "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300",
             "construction:hsr-component-l2-short-mainline-diverge-core"
           ],
+          "source_route_ids": [
+            "path-7f584300-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f584300"
+            }
+          ],
           "connection_class": "path-interface-fba09fbeb87ad95c667a"
         }
       ],
       "journeys": [
         {
-          "id": "7:Win>Eout",
+          "id": "7:Win>Sout",
           "entry_port": "Win",
-          "exit_port": "Eout",
+          "exit_port": "Sout",
           "service_network": "hsr",
           "role": "primary",
           "engine_transport_classes": [
@@ -577,9 +650,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "7:Win>Sout",
+          "id": "7:Win>Eout",
           "entry_port": "Win",
-          "exit_port": "Sout",
+          "exit_port": "Eout",
           "service_network": "hsr",
           "role": "primary",
           "engine_transport_classes": [
@@ -682,7 +755,7 @@
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
       "source_binding": {
         "piece_sha256": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a",
-        "connections_sha256": "5925223e9a6e68d860c9a8b0ae914bb8c96569c66c7ceaeb9ff26bbccba1c916"
+        "connections_sha256": "998f30197430b9b501f55ef230291749c94199e6179ef109c7f090972c9acb18"
       },
       "components": [
         {
@@ -877,6 +950,20 @@
               "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000",
               "construction:hsr-component-l2-short-mainline-diverge-core"
             ],
+            "source_route_ids": [
+              "path-7f584000-route-000",
+              "path-7f584000-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f584000"
+              }
+            ],
             "connection_class": "path-interface-12d12be31d2057c5763d",
             "source_port_id": "Win",
             "channel_id": "eastbound-mainline",
@@ -929,6 +1016,19 @@
               "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004",
               "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000",
               "construction:hsr-component-l2-short-mainline-diverge-core"
+            ],
+            "source_route_ids": [
+              "path-7f584000-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f584000"
+              }
             ],
             "connection_class": "path-interface-fba09fbeb87ad95c667a",
             "source_port_id": "Wout",
@@ -1081,6 +1181,19 @@
               "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300",
               "construction:hsr-component-l2-short-mainline-diverge-core"
             ],
+            "source_route_ids": [
+              "path-7f584300-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  3,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f584300"
+              }
+            ],
             "connection_class": "path-interface-fba09fbeb87ad95c667a",
             "source_port_id": "Ein",
             "channel_id": "westbound-mainline",
@@ -1133,6 +1246,19 @@
               "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304",
               "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300",
               "construction:hsr-component-l2-short-mainline-diverge-core"
+            ],
+            "source_route_ids": [
+              "path-7f584300-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  3,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f584300"
+              }
             ],
             "connection_class": "path-interface-12d12be31d2057c5763d",
             "source_port_id": "Eout",
@@ -1285,6 +1411,19 @@
               "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200",
               "construction:hsr-component-l2-short-mainline-diverge-core"
             ],
+            "source_route_ids": [
+              "path-7f584200-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  2,
+                  0
+                ],
+                "edge": 3,
+                "tile_id": "7f584200"
+              }
+            ],
             "connection_class": "path-interface-d819a6d05c5e43d11db7",
             "source_port_id": "Sout",
             "channel_id": "departure-branch",
@@ -1421,24 +1560,6 @@
     ],
     "journeys": [
       {
-        "id": "west-paired-end-win>east-paired-end-eout",
-        "entry_port": "west-paired-end-win",
-        "exit_port": "east-paired-end-eout",
-        "service_network": "hsr",
-        "role": "primary",
-        "engine_transport_classes": [
-          7
-        ],
-        "endpoint_variants": [
-          "hsr",
-          "hsr"
-        ],
-        "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "7:Win>Eout",
-        "source_entry_port": "Win",
-        "source_exit_port": "Eout"
-      },
-      {
         "id": "west-paired-end-win>south-curved-cut-sout",
         "entry_port": "west-paired-end-win",
         "exit_port": "south-curved-cut-sout",
@@ -1455,6 +1576,24 @@
         "source_id": "7:Win>Sout",
         "source_entry_port": "Win",
         "source_exit_port": "Sout"
+      },
+      {
+        "id": "west-paired-end-win>east-paired-end-eout",
+        "entry_port": "west-paired-end-win",
+        "exit_port": "east-paired-end-eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Win>Eout",
+        "source_entry_port": "Win",
+        "source_exit_port": "Eout"
       },
       {
         "id": "east-paired-end-ein>west-paired-end-wout",
@@ -2419,9 +2558,9 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
-      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
-      "model_sha256": "45122988d5ade6a9425adbcf87d643f4d38cd2800fa2282f8344a751a7092982",
+      "dat_path": "dist/diverge-right-border-joined/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
+      "dat_sha256": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
+      "model_sha256": "7fde537a6e643630798d1f15849a2a7d41aa76634ff9577c3b91596eb6d8e370",
       "resource_fingerprints_checked": 54,
       "directional_ports_reextracted": 5,
       "directed_journeys_reextracted": 3,
@@ -2438,5 +2577,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "e74b27feac15843983c9a30fa035f6ad0ab05d451d173e4dae7efa800d143e44"
+  "content_sha256": "50df66125f94abc548dce2afd905d20864b68ae3ad7c3ace285fe63353c6fec2"
 }

@@ -40,6 +40,7 @@ _MODULAR_KIND = {
     'hsr-component-modular-paired-climb': 'RMP',
     'hsr-component-modular-crossing-core': 'XNG',
     'hsr-component-l2-paired-fan-compact-join': 'JCT',
+    'hsr-component-l2-paired-fan-compact-core': 'JCT',
 }
 _FOOTER_LETTER = {
     'A': ('010', '101', '101', '111', '101', '101', '101'),

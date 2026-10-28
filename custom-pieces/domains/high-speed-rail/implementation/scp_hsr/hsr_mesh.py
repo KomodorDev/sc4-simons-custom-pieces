@@ -354,8 +354,33 @@ def _surface_triangles(source, decks, sweep):
         own_clearance = _index_corridors(
             [{**corridor, 'polygon': polygon} for corridor in corridors
              for polygon in corridor.get('clearance_polygons', [])], True)
+        following_cuts = []
+        if any(kind == 'following_parapet' for kind, _ in surfaces):
+            for number, other in enumerate(swept):
+                if number == index:
+                    continue
+                polygons = [polygon for corridor in other[1]
+                            for polygon in corridor.get('parapet_opening_polygons', [])]
+                require(polygons and other[1], 'Following parapet lacks its exact branch opening')
+                following_cuts.extend({**other[1][0], 'polygon': polygon} for polygon in polygons)
+        following_cuts = _index_corridors(following_cuts, True)
         for kind, triangle in surfaces:
             if kind in ('bed', 'rail', 'underside'):
+                continue
+            if kind in ('aligned_inner_wall', 'preclipped_parapet'):
+                # The owning wrapper already clipped these faces to its exact
+                # original inside-wall boundary. A second clearance-mask cut
+                # would detach a tapered cap from that matching wall.
+                triangles.append(triangle)
+                continue
+            if kind == 'following_parapet':
+                for fragment in _subtract_corridors(triangle, following_cuts, wall=True):
+                    triangles.extend(_subtract_corridors(fragment, own_clearance, wall=True))
+                continue
+            if kind == 'aligned_parapet':
+                # Explicit junction caps were authored against the ballast
+                # outline and checked independently against train clearance.
+                triangles.extend(_subtract_corridors(triangle, own_clearance, wall=True))
                 continue
             for fragment in _subtract_corridors(triangle, other_corridors, wall=True):
                 if kind == 'inner_wall':

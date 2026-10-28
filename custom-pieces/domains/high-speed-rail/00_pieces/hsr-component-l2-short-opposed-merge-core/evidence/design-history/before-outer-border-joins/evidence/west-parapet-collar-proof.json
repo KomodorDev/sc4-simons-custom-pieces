@@ -1,0 +1,417 @@
+{
+  "purpose": "Offline execution of the actual frozen source helper on the verified saved original C1 model, independently equal to the private affine-exact prototype. This is not a native build, assembly capture, or game observation.",
+  "baseline_model_sha256": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+  "source_geometry_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+  "source_loader_sha256": "de209c0a61ece97d8ee5e7068d2159c3fc014faabe8feba5a724d386741a4da1",
+  "normalization_rule": {
+    "cell": [
+      0,
+      0
+    ],
+    "baseline_cell_model_sha256": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "west_boundary_east_m": -8.0,
+    "blend_end_east_m": -5.5,
+    "lower_north_m": 5.0,
+    "inner_north_before_m": 6.0,
+    "native_inner_north_m": 5.996547698974609,
+    "outer_north_m": 7.5,
+    "minimum_height_m": 16.1892,
+    "maximum_displacement_m": 0.0034524,
+    "falloff": "piecewise-affine-hat",
+    "scope": "Only the upper northern parapet and adjacent bed within east [-8, -5.5] m and north [5, 7.5] m are displaced, by at most 3.4524 mm. Every intersecting face is split at the continuous piecewise-affine warp's region boundaries, with exact clipping and all tiny triangle fans retained. Rails, the outer rim, the slab underside, the pier, and every other retained model remain unchanged. Existing vertex UV attributes are retained, and new cut attributes are interpolated; the spatial UV field inside the deformed collar can change."
+  },
+  "outside_collar_note": "The warp is zero outside the declared bounds. Face partitioning can add vertices to unchanged outside surface fragments, so exact outside triangle bytes and spatial UV interpolation are not claimed unchanged. Native float32 interpolation can round these new edge points; tight section scans separately test for new gaps.",
+  "model_sha256": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+  "triangles": 6914,
+  "changed_vertex_occurrences": 264,
+  "maximum_displacement_m": 0.003452301025390625,
+  "moved_bounds": [
+    [
+      -8.0,
+      -5.500008046636271
+    ],
+    [
+      16.1893253326416,
+      16.98932647705078
+    ],
+    [
+      5.000003218654508,
+      7.383012988262608
+    ]
+  ],
+  "section_scans": [
+    {
+      "height": 14.01067,
+      "stations": 2100,
+      "merge_tolerance_m": 2e-06,
+      "before_max_gap": [
+        0.00022161894988537156,
+        -5.49999
+      ],
+      "after_max_gap": [
+        0.00022161894988537156,
+        -5.49999
+      ],
+      "before_gaps_count": 1,
+      "after_gaps_count": 1,
+      "new_gaps_count": 0,
+      "new_gaps": [],
+      "x_minus_7_5_before": [
+        [
+          -7.5,
+          7.5
+        ]
+      ],
+      "x_minus_7_5_after": [
+        [
+          -7.5,
+          7.5
+        ]
+      ]
+    },
+    {
+      "height": 16.189326,
+      "stations": 2330,
+      "merge_tolerance_m": 2e-06,
+      "before_max_gap": [
+        2.0,
+        -6.653027296066284
+      ],
+      "after_max_gap": [
+        2.0,
+        -6.653027296066284
+      ],
+      "before_gaps_count": 1,
+      "after_gaps_count": 1,
+      "new_gaps_count": 0,
+      "new_gaps": [],
+      "x_minus_7_5_before": [
+        [
+          -7.5,
+          7.5
+        ]
+      ],
+      "x_minus_7_5_after": [
+        [
+          -7.5,
+          7.5
+        ]
+      ]
+    },
+    {
+      "height": 16.98933,
+      "stations": 2088,
+      "merge_tolerance_m": 2e-06,
+      "before_max_gap": [
+        0,
+        null
+      ],
+      "after_max_gap": [
+        0,
+        null
+      ],
+      "before_gaps_count": 0,
+      "after_gaps_count": 0,
+      "new_gaps_count": 0,
+      "new_gaps": [],
+      "x_minus_7_5_before": [
+        [
+          -7.5,
+          -5.996546745300293
+        ],
+        [
+          6.0,
+          7.5
+        ]
+      ],
+      "x_minus_7_5_after": [
+        [
+          -7.5,
+          -5.996546745300293
+        ],
+        [
+          5.997238140672391,
+          7.5
+        ]
+      ]
+    }
+  ],
+  "protected": {
+    "below_bed": {
+      "before_hash": "c8fa5af147448019aad716a79adedf93f8737b87190309c58ab6f9c53d87fed3",
+      "after_hash": "c8fa5af147448019aad716a79adedf93f8737b87190309c58ab6f9c53d87fed3",
+      "before_count": 1316,
+      "after_count": 1316,
+      "equal": true
+    },
+    "rail_region": {
+      "before_hash": "777a9a7c67916ca3deb6cdba06be92e5e76e0daff9030159c2b9566cc077e498",
+      "after_hash": "777a9a7c67916ca3deb6cdba06be92e5e76e0daff9030159c2b9566cc077e498",
+      "before_count": 6103,
+      "after_count": 6103,
+      "equal": true
+    }
+  },
+  "shadows": [
+    {
+      "zoom": 0,
+      "sha256": "0fcb0d9fb961297a50a371170ada3046eec61e30dd4147a7a259ec3fb1cf77ec",
+      "equals_original": true
+    },
+    {
+      "zoom": 1,
+      "sha256": "a4ab5d4d9aaa96171184dec909099e56e0be0025ba4ac6cc2277fcaf9f39e6f6",
+      "equals_original": true
+    },
+    {
+      "zoom": 2,
+      "sha256": "ac76c42fcde88ba3641516401bdf56f0f3df700c78f09da953e8cfd194b72033",
+      "equals_original": true
+    },
+    {
+      "zoom": 3,
+      "sha256": "5e7df2e9af15472007f7ec5ae0820d29b10d8e49d2c3ff4605d2c7f28422573c",
+      "equals_original": true
+    },
+    {
+      "zoom": 4,
+      "sha256": "6049511938d2a5b2cd4311971989a9c5733925371d340c51d65683a267b2bedc",
+      "equals_original": true
+    }
+  ],
+  "west_native_sections": {
+    "14.01067": [
+      [
+        -7.5,
+        7.5
+      ]
+    ],
+    "16.189326": [
+      [
+        -7.499999973366469,
+        7.5
+      ]
+    ],
+    "16.98933": [
+      [
+        -7.5,
+        -5.996546745300293
+      ],
+      [
+        5.996547700012098,
+        7.5
+      ]
+    ]
+  },
+  "model_validation": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 6914,
+    "mesh_count": 14,
+    "bounds_xyz_m": [
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          -8.0,
+          7.407336235046387
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -3.257526397705078,
+          2.092717170715332
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          16.189327239990234,
+          16.189327239990234
+        ],
+        [
+          -1.1360048055648804,
+          3.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          8.0
+        ],
+        [
+          16.1893253326416,
+          16.189327239990234
+        ],
+        [
+          -1.2853364944458008,
+          8.0
+        ]
+      ],
+      [
+        [
+          4.007020950317383,
+          8.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.290499210357666,
+          8.0
+        ]
+      ],
+      [
+        [
+          3.424166202545166,
+          6.211024284362793
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.189719200134277,
+          1.0
+        ]
+      ],
+      [
+        [
+          0.9093812704086304,
+          4.064744472503662
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.120877742767334,
+          1.0
+        ]
+      ],
+      [
+        [
+          -1.1804468631744385,
+          1.4888942241668701
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.0563740730285645,
+          1.0
+        ]
+      ],
+      [
+        [
+          -3.2715606689453125,
+          -0.6614813804626465
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.020836353302002,
+          1.0
+        ]
+      ],
+      [
+        [
+          -5.500010967254639,
+          -2.8117785453796387
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.003422737121582,
+          1.0
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -6.0,
+          7.5
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -7.5,
+          4.0
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          7.5
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf6e09b"
+    ]
+  },
+  "scope_limit": "Offline saved-model transformation, finite cross-section comparisons, and fixed-resource fingerprints. This is not an unrestricted watertightness proof, a cold analytic sweep compilation, a complete assembly audit, or a game observation. The later actual saved-build audit must match this model hash."
+}

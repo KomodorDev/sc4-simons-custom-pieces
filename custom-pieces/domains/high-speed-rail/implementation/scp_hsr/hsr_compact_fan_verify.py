@@ -49,6 +49,32 @@ CONTRACTS = {
         'custom_curve_ports': ('Wout', 'Ein'),
         'geometric_custom_rail_wedges': True,
     },
+    'hsr_component_l2_paired_fan_compact_core': {
+        **_COMMON, 'footprint': (5, 3), 'cost': 1300,
+        'cells': [(2, 0), (1, 1), (2, 1), (3, 1),
+                  (0, 2), (1, 2), (2, 2), (3, 2), (4, 2)],
+        'structural_cells': [(1, 1), (3, 1)],
+        'ports': {'Nin': (30., 8., 15.5), 'Nout': (34., 8., 15.5),
+                  'Wout': (6.398519, -40., 15.5), 'Ein': (57.601481, -40., 15.5)},
+        'port_vectors': {'Nin': (0., -1.), 'Nout': (0., 1.),
+                         'Wout': (-.927254808965, -.374430927211),
+                         'Ein': (-.927254808965, .374430927211)},
+        'movements': [('Nin', 'Wout'), ('Ein', 'Nout')],
+        'support_centres_xz': [(32., 0.), (32., 16.), (16., 32.), (48., 32.)],
+        'custom_curve_ports': ('Wout', 'Ein'),
+        'geometric_custom_rail_wedges': True,
+    },
+    'hsr_component_l2_paired_straight_recessed_web': {
+        **_COMMON, 'footprint': (1, 1), 'cost': 100,
+        'cells': [(0, 0)], 'structural_cells': [],
+        'ports': {'Nin': (-2., 8., 15.5), 'Nout': (2., 8., 15.5),
+                  'Sin': (2., -8., 15.5), 'Sout': (-2., -8., 15.5)},
+        'port_vectors': {'Nin': (0., -1.), 'Nout': (0., 1.),
+                         'Sin': (0., 1.), 'Sout': (0., -1.)},
+        'movements': [('Nin', 'Sout'), ('Sin', 'Nout')],
+        'support_centres_xz': [(0., 0.)],
+        'custom_curve_ports': (), 'custom_curved_interfaces': False,
+    },
 }
 
 
@@ -310,6 +336,12 @@ def _contract(spec):
 
 def check_paths(resources, spec, donors=None):
     contract = _contract(spec)
+    if spec['recipe'] == 'hsr_component_l2_paired_fan_compact_core':
+        from .hsr_fan_core_verify import audit_retained_core_paths
+        audit_retained_core_paths(resources, spec)
+    if spec['recipe'] == 'hsr_component_l2_paired_straight_recessed_web':
+        from .hsr_recessed_straight_verify import audit_retained_straight_paths
+        audit_retained_straight_paths(resources, spec)
     records = _encoded_routes(resources, spec, contract)
     ports, movements = _graph(records, contract)
     headings = _native_port_headings(records, contract)
@@ -349,12 +381,20 @@ def check_paths(resources, spec, donors=None):
 
 def check_models(resources, spec, donors=None):
     _contract(spec)
+    preservation = {}
+    if spec['recipe'] == 'hsr_component_l2_paired_fan_compact_core':
+        from .hsr_fan_core_verify import audit_retained_core_resources
+        preservation = audit_retained_core_resources(resources, spec)
+    if spec['recipe'] == 'hsr_component_l2_paired_straight_recessed_web':
+        from .hsr_recessed_straight_verify import audit_retained_straight_resources
+        preservation = audit_retained_straight_resources(resources, spec)
     keys = {(*S3D, _number(spec['preview_id']))}
     for tile in map(_number, spec['tile_ids']):
         keys.update((*S3D, tile+zoom) for zoom in range(5))
         keys.update({(*PATH, tile), (*EXEMPLAR, tile)})
     immutable = tuple((key, resources[key]) for key in sorted(keys))
-    return json.loads(_cached_models(json.dumps(spec, sort_keys=True), immutable))
+    return {**json.loads(_cached_models(json.dumps(spec, sort_keys=True), immutable)),
+            **preservation}
 
 
 @lru_cache(maxsize=4)
@@ -368,6 +408,13 @@ def _cached_models(spec_json, immutable):
     report.update(audit_bed_overlaps(triangles))
     report.update(audit_visible_rails_at_custom_cuts(triangles, records, contract))
     report.update(audit_supports(triangles, contract))
+    from .hsr_fan_parapet_verify import audit_central_parapet
+    original_frame = triangles
+    if spec['recipe'] == 'hsr_component_l2_paired_fan_compact_core':
+        original_frame = [tuple((v[0]+16., v[1], v[2]+32., *v[3:]) for v in triangle)
+                          for triangle in triangles]
+    if spec['recipe'] != 'hsr_component_l2_paired_straight_recessed_web':
+        report.update(audit_central_parapet(original_frame))
     budgets = [assert_render_budget(parse_s3d(raw)) for key, raw in immutable if key[:2] == S3D]
     report.update(render_budget_models_checked=len(budgets), render_group_budget_checked=True)
     return json.dumps(report, sort_keys=True)

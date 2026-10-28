@@ -56,6 +56,9 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertEqual([image['label'] for image in report['images']], expected_second_rows)
         drawn_rows = [call.args[1] for call in caption.call_args_list if call.args[2] in (22, 72)]
         self.assertEqual(drawn_rows, [row for image in report['images'] for row in image['header_rows']])
+        all_visible_captions = ' '.join(call.args[1] for call in caption.call_args_list)
+        self.assertNotRegex(all_visible_captions.lower(), r'\bunverified\b|\bpassed\b|\bfailed\b|not verified in.game')
+        self.assertIn('software preview', all_visible_captions)
         self.assertEqual(report['render_model_sha256'], expected_model)
         self.assertFalse(report['geometry_hidden'])
         self.assertFalse(report['geometry_simplified'])

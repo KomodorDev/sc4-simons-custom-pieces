@@ -52,8 +52,8 @@ def encoded_movement(recipe, movement):
 class AtomicJunctionSourceTests(unittest.TestCase):
     def test_current_junction_geometry_keeps_its_frozen_source_bytes(self):
         for identifier, digest in {
-            'hsr-component-l2-short-mainline-diverge-core': '7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0',
-            'hsr-component-l2-short-opposed-merge-core': '8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8',
+            'hsr-component-l2-short-mainline-diverge-core': 'cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c',
+            'hsr-component-l2-short-opposed-merge-core': '61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9',
         }.items():
             self.assertEqual(hashlib.sha256((PIECES/identifier/'geometry.json').read_bytes()).hexdigest(), digest)
 
@@ -207,6 +207,31 @@ class AtomicJunctionSourceTests(unittest.TestCase):
         for recipe, digest in expected.items():
             kept = _source(recipe)['retained_surface_context']
             self.assertEqual(hashlib.sha256(json.dumps(kept, sort_keys=True, separators=(',', ':')).encode()).hexdigest(), digest)
+
+    def test_diverge_alignment_is_separate_from_literal_surface_contexts(self):
+        source = _source(DIVERGE)
+        rule = source['south_parapet_alignment']
+        self.assertEqual(rule['left_branch'], 'direct_west_south_curve')
+        self.assertEqual(rule['left_inner_half_width_m'], 2.6)
+        self.assertEqual(rule['left_selection_limit_local_east_m'], 32.)
+        self.assertNotIn('right_local_east_cap_m', rule)
+        self.assertEqual(rule['right_join'], 'continuous_branch_inside_outline')
+        self.assertEqual(rule['right_inner_half_width_m'], 2.6)
+        self.assertEqual(rule['right_inner_join_local_east_m'], 40.361872522872716)
+        self.assertEqual(rule['right_outer_join_local_east_m'], 43.669002829692054)
+        self.assertNotIn('local_east_caps_m', rule)
+        self.assertEqual(rule['source_east_offset_m'], 16.)
+        self.assertEqual(rule['minimum_train_half_width_m'], 2.5)
+        for mapping, inputs in compilation_parts(DIVERGE):
+            for deck in inputs['surface_decks']:
+                self.assertEqual(deck['south_parapet_alignment'], rule)
+        for key in ('surface_context', 'retained_surface_context'):
+            self.assertTrue(all('south_parapet_alignment' not in deck
+                                for deck in source[key]['surface_decks']))
+        self.assertNotIn('south_parapet_alignment', _source(MERGE))
+        for mapping, inputs in compilation_parts(MERGE):
+            self.assertTrue(all('south_parapet_alignment' not in deck
+                                for deck in inputs['surface_decks']))
 
 
 if __name__ == '__main__':

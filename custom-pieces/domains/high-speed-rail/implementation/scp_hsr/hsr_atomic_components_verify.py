@@ -15,7 +15,7 @@ from scp.dbpf import require
 from scp.models import parse_s3d
 from scp.render_meshes import assert_render_budget
 from .directional_t_verify import _journeys, _world_triangles, _TURN_LIMITS, _resample, audit_visible_rails
-from .hsr_mesh_verify import audit_bed_overlaps, audit_crossings, audit_supports, measure_journey_quality, _coalesce_grid_cuts
+from .hsr_mesh_verify import audit_bed_overlaps, audit_crossings, audit_supports, measure_journey_quality, _coalesce_grid_cuts, _component_union_area
 from .hsr_compact_fan_verify import audit_bed_corridors, audit_visible_rails_at_custom_cuts, _clip_attribute_polygon
 from .interchange_verify import S3D, PATH, EXEMPLAR, _number, _encoded_routes, _graph, _native_port_headings, _models
 
@@ -41,6 +41,24 @@ CONTRACTS = {
         'support_centres_xz': [(0., 0.), (16., 0.), (32., 0.), (48., 0.)],
         'custom_curve_ports': ('Sout',),
         'native_sections': [('east', -8., 1., 0., 15.)],
+        'south_parapet_right_join_points_east_south_m': (
+            (40.361872522872716, 5.996547698974609),
+            (40.50181658234007, 6.055294665339927),
+            (40.91635935607245, 6.232687350697354),
+            (41.33000604477013, 6.413101531669849),
+            (41.74273022684391, 6.596551049678716),
+            (42.154505258903015, 6.783049131744317),
+            (42.56530428579969, 6.972608383111493),
+            (42.975100250921244, 7.165240780177557),
+            (43.38386590672171, 7.360957663730825),
+            (43.669002829692054, 7.5)),
+        'south_parapet_left_sections_east_inner_outer_m': (
+            (8., 5.9965477, 7.5), (16., 5.9965477, 7.5),
+            (20., 5.9965477, 7.5),
+            (21., 6.087372560, 7.503469160),
+            (22., 6.243395951, 7.661687198),
+            (24., 6.589828567, 8.), (26., 6.985743322, 8.),
+            (28., 7.435250367, 8.), (30., 7.942643462, 8.)),
     },
     'hsr_component_l2_short_opposed_merge_core': {
         **COMMON, 'footprint': (4, 1), 'cost': 400,
@@ -163,6 +181,111 @@ def audit_native_sections(triangles, contract):
     return {'complete_native_join_sections_checked': checked,
             'native_join_widths_m': sorted({s[4] for s in contract['native_sections']}),
             'native_join_profile_tolerance_m': .00005}
+
+
+def _wall_section_south_positions(triangles, east, height):
+    """Intersect actual vertical faces with one east/height line."""
+    positions = []
+    for triangle in triangles:
+        cuts = []
+        for a, b in zip(triangle, triangle[1:]+triangle[:1]):
+            if abs(a[0]-east) < 1e-7:
+                cuts.append(a)
+            if min(a[0], b[0]) < east < max(a[0], b[0]):
+                t = (east-a[0])/(b[0]-a[0])
+                cuts.append(tuple(x+t*(y-x) for x, y in zip(a, b)))
+        for a, b in zip(cuts, cuts[1:]+cuts[:1]):
+            if abs(a[1]-height) < 1e-7:
+                positions.append(a[2])
+            if min(a[1], b[1]) < height < max(a[1], b[1]):
+                t = (height-a[1])/(b[1]-a[1])
+                positions.append(a[2]+t*(b[2]-a[2]))
+    return positions
+
+
+def audit_south_parapet_alignment(triangles, contract):
+    """Measure both continuous raised banks and reject the old square end."""
+    right_points = contract.get('south_parapet_right_join_points_east_south_m')
+    if right_points is None:
+        return {}
+    triangles = list(triangles)
+    inner, outer, bed, top = 5.9965477, 7.5, 16.1893253, 16.9893265
+    tolerance = .00005
+    left_sections = contract['south_parapet_left_sections_east_inner_outer_m']
+    stations = [(east, [(-outside, -inside)], 8.) for east, inside, outside in left_sections]
+    stations.extend((east, [], outer) for east in (31., 32., 40.))
+    stations.extend((east, [(-south, -inner)], outer) for east, south in right_points[1:])
+    stations.extend((east, [(-outer, -inner)], outer) for east in (48., 55.))
+    for east, expected, south_limit in stations:
+        intervals = _section_intervals(triangles, 'east', east, top, 0.)
+        actual = [(max(a, -south_limit), min(b, -inner)) for a, b in intervals
+                  if min(b, -inner)-max(a, -south_limit) > tolerance]
+        require(len(actual) == len(expected) and all(
+            abs(a-c) <= tolerance and abs(b-d) <= tolerance
+            for (a, b), (c, d) in zip(actual, expected)),
+            f'Trumpet south parapet does not follow its continuous ballast outline: east={east}, '
+            f'actual={actual}, expected={expected}')
+    curved_sections = [(east, south) for east, south, _ in left_sections]+list(right_points[1:])
+    for east, expected_south in curved_sections:
+        actual = _wall_section_south_positions(triangles, east, (bed+top)/2.)
+        require(any(abs(south-expected_south) <= tolerance for south in actual),
+                f'Trumpet curved south parapet has no closed inside face: east={east}, '
+                f'expected_south={expected_south}, actual={actual}')
+    for east, _ in right_points[1:]:
+        actual = _wall_section_south_positions(triangles, east, (bed+top)/2.)
+        require(any(abs(south-inner) <= tolerance for south in actual),
+                f'Trumpet extended right parapet has no straight inside face: east={east}')
+    right_tops, opening_tops = [], []
+    for triangle in triangles:
+        if not all(abs(p[1]-top) <= tolerance for p in triangle):
+            continue
+        polygon = list(triangle)
+        for plane in (lambda p: p[0]-32., lambda p: 56.-p[0],
+                      lambda p: p[2]-inner, lambda p: outer-p[2]):
+            if polygon:
+                polygon = _clip_attribute_polygon(polygon, plane, True)
+        if len(polygon) >= 3:
+            right_tops.append([(p[0], p[2]) for p in polygon])
+        if polygon:
+            polygon = _clip_attribute_polygon(polygon, lambda p: right_points[0][0]-p[0], True)
+        if len(polygon) >= 3:
+            opening_tops.append([(p[0], p[2]) for p in polygon])
+    reference = [right_points[0], (56., inner), (56., outer), *reversed(right_points[1:])]
+    expected_area = abs(sum(a[0]*b[1]-b[0]*a[1]
+                            for a, b in zip(reference, reference[1:]+reference[:1])))/2.
+    right_area = _component_union_area(right_tops)
+    sum_area = sum(abs(sum(a[0]*b[1]-b[0]*a[1]
+                           for a, b in zip(poly, poly[1:]+poly[:1])))/2. for poly in right_tops)
+    require(abs(right_area-expected_area) <= .0003
+            and _component_union_area(opening_tops) <= .0001,
+            'Trumpet right parapet has an incomplete curved join or a roof in its opening')
+    require(sum_area-right_area <= .0001, 'Trumpet right parapet has overlapping concrete tops')
+    # Neither continuous bank has a perpendicular end within its join.
+    for east in (20.97718809637104, 43.776078282276934):
+        polygons = []
+        for triangle in triangles:
+            if not all(abs(p[0]-east) <= tolerance for p in triangle):
+                continue
+            polygon = list(triangle)
+            for plane in (lambda p: p[2]-inner, lambda p: outer-p[2],
+                          lambda p: p[1]-bed, lambda p: top-p[1]):
+                if polygon:
+                    polygon = _clip_attribute_polygon(polygon, plane, True)
+            if len(polygon) >= 3:
+                polygons.append([(p[1], p[2]) for p in polygon])
+        require(_component_union_area(polygons) <= .0001,
+                f'Trumpet continuous parapet retains a perpendicular end cap: east={east}')
+    return {'south_parapet_top_sections_checked': len(stations),
+            'south_parapet_inside_wall_sections_checked': len(curved_sections)+len(right_points)-1,
+            'south_parapet_closed_end_faces_checked': 0,
+            'south_parapet_right_inner_join_east_m': right_points[0][0],
+            'south_parapet_right_outer_join_east_m': right_points[-1][0],
+            'south_parapet_native_thickness_m': outer-inner,
+            'south_parapet_right_top_union_area_m2': right_area,
+            'south_parapet_right_expected_top_union_area_m2': expected_area,
+            'south_parapet_right_top_overlap_area_m2': sum_area-right_area,
+            'south_parapet_left_perpendicular_cap_absent': True,
+            'south_parapet_right_perpendicular_cap_absent': True}
 
 
 def audit_inherited_cap_model(resources, spec, contract):
@@ -294,6 +417,10 @@ def _cached_models(spec_json, immutable):
     report.update(cap_evidence)
     report.update(audit_supports(triangles, contract))
     report.update(audit_native_sections(triangles, contract))
+    report.update(audit_south_parapet_alignment(triangles, contract))
+    if spec['recipe'] == 'hsr_component_l2_short_opposed_merge_core':
+        from .hsr_opposed_parapet_verify import audit_opposed_parapet_alignment
+        report.update(audit_opposed_parapet_alignment(triangles))
     budgets = [assert_render_budget(parse_s3d(raw)) for key, raw in immutable if key[:2] == S3D]
     report.update(render_budget_models_checked=len(budgets), render_group_budget_checked=True)
     return json.dumps(report, sort_keys=True)

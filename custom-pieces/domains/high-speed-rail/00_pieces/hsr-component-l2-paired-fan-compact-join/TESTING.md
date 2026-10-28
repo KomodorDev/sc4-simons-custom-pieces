@@ -78,6 +78,16 @@ The [geometry source](geometry.json) owns route samples, physical sweeps, select
 
 Actual saved-resource software checks are recorded in [the current resource-check report](evidence/saved-resource-checks.json). Current canonical picture provenance belongs in [angled-view evidence](evidence/preview.json), [top-view evidence](evidence/preview-top.json), and [connection-overview evidence](evidence/connection-overview.json). The [earlier combined preview report](evidence/design-history/preview-before-junction-rework.json) is preserved as historical evidence for the geometry before this redesign. It does not describe the current pictures.
 
+### Central raised border repair
+
+The former central fork triangle was missing because each arm’s grey border was cut against the other arm’s complete deck, including concrete shoulders. The repair uses both existing tapered ballast boundaries instead. Each top half owns one side of the exact reflection plane, so the halves meet without overlapping. Both vertical inside faces continue to that meeting point; a flat patch at ballast height does not satisfy this contract.
+
+The [current saved-model comparison](evidence/central-parapet-alignment.json) compares the exact original DAT, the corrected DAT, and their encoded triangles. Independent saved-model checks measure six top sections and six inside-wall sections, reject the original missing triangle, and check for duplicate concrete tops. The complete model retains its separate **5 m train-clearance requirement**. The new cap edges use the actual retained inside-wall top edges, avoiding the fractional-millimetre difference introduced by separately warping an expanded clearance polygon. The original distant wings keep their native triangulation; their old cap-to-wall offsets are not promoted as a new closed-face result. The correction changes only `central_parapet_alignment` in the authored geometry; route samples, taper settings, floor geometry, structural undersides, supports, tile ownership, and resource identities remain unchanged.
+
+The local reflection plane is east **48 m**, corresponding to source-sweep east **96 m**. Measured cross-sections at local south **50 m** and **52 m** require one continuous raised top; sections at south **54 m** and **56 m** retain the two separate original grey arms. These measurements use the saved model’s east/south coordinates. The standalone image’s Y axis points north, so a south coordinate must not be read as a picture Y label.
+
+The [preserved before-repair snapshot](evidence/design-history/before-central-parapet-repair/index.json) retains the exact original source, reports, observations, connector declarations, and pictures. Existing observations keep their original dictionaries and dependency fingerprints; the current software report maps historical software results to their exact preserved reports. New canonical images require their own human review. The earlier width-review approval does not approve this new central border. Complete trumpet assembly integration, assembly rendering, and game operation remain deferred.
+
 ### Reproduce this piece’s software checks
 
 Run these commands from the repository root, the folder containing `custom-pieces/`, after completing the [shared dependency and native-input preparation](../../../../docs/BUILD_AND_INSTALL.md). Replace `/path/to/Plugins` with the existing NAM Plugins directory, and keep the quotation marks if its path contains spaces. Use a new output directory so an earlier build remains available for comparison.
@@ -105,7 +115,7 @@ The generated status and checklist below retain the authoritative observations i
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 2/3 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 2 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/8 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/8 applicable cases passed; 0 failed, 0 stale.
@@ -124,7 +134,16 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 41, passed: 4, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 41, passed: 2, failed: 0, stale: 2, not_applicable: 0.
+
+#### Failed and stale cases
+
+These cases remain visible while the detailed groups are collapsed. Historical cases retain their stored dependency snapshots and are outside current coverage.
+
+| State | Coverage | Exact check / scope | Rotation | Case details |
+| --- | --- | --- | --- | --- |
+| stale | Current | Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast | General | <a href="#case-preview_review-3cb6c2661802b929620d"><code>preview_review-3cb6c2661802b929620d</code></a> |
+| stale | Current | Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top | General | <a href="#case-preview_review-f59bcfa100a7ff0db938"><code>preview_review-f59bcfa100a7ff0db938</code></a> |
 
 #### Record an observation
 
@@ -165,6 +184,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:29:02.017861+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:41:49.586746+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Current normal native saved-build verification, independent central parapet sections, actual PATH extraction, and selected connector freshness check; confirmed at: 2026-10-28T15:43:26.993159+00:00; evidence: [evidence/saved-resource-checks.json, evidence/central-parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -195,69 +215,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:29:02.017861+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Normal saved-build verifier with independent compact-fan PATH and model contracts; confirmed at: 2026-10-27T18:41:49.586746+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 1, passed: 2</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast | <a href="#case-preview_review-3cb6c2661802b929620d">[x] passed</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top | <a href="#case-preview_review-f59bcfa100a7ff0db938">[x] passed</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview | <a href="#case-preview_review-407c1640d6da76516db5">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast</summary>
-
-<a id="case-preview_review-3cb6c2661802b929620d"></a>
-
-**General: passed** — `preview_review-3cb6c2661802b929620d`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast.
-
-Recorded observations (chronological; the state above checks the relevant dependency snapshot):
-
-- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top</summary>
-
-<a id="case-preview_review-f59bcfa100a7ff0db938"></a>
-
-**General: passed** — `preview_review-f59bcfa100a7ff0db938`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top.
-
-Recorded observations (chronological; the state above checks the relevant dependency snapshot):
-
-- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview</summary>
-
-<a id="case-preview_review-407c1640d6da76516db5"></a>
-
-**General: unverified** — `preview_review-407c1640d6da76516db5`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview.
-
-No observation recorded.
+- result: passed; authority: software; reviewer: Current normal native saved-build verification, independent central parapet sections, actual PATH extraction, and selected connector freshness check; confirmed at: 2026-10-28T15:43:26.993159+00:00; evidence: [evidence/saved-resource-checks.json, evidence/central-parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -782,6 +740,69 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: Ein; to port: Wout; from service: hsr; to service: hsr; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details open>
+<summary>Preview review — Images — 3 cases; unverified: 1, stale: 2</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast | <a href="#case-preview_review-3cb6c2661802b929620d">[ ] stale</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top | <a href="#case-preview_review-f59bcfa100a7ff0db938">[ ] stale</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview | <a href="#case-preview_review-407c1640d6da76516db5">[ ] unverified</a> | — | — | — | — |
+
+
+<details open>
+<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast</summary>
+
+<a id="case-preview_review-3cb6c2661802b929620d"></a>
+
+**General: stale** — `preview_review-3cb6c2661802b929620d`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-southeast.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
+
+</details>
+
+
+<details open>
+<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top</summary>
+
+<a id="case-preview_review-f59bcfa100a7ff0db938"></a>
+
+**General: stale** — `preview_review-f59bcfa100a7ff0db938`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-paired-fan-compact-join:canonical-top.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-10-27T21:48:27.631996+00:00; evidence: [evidence/fan-width-audit.json]; environment: observation type: software-rendered image review; note: Explicit user approval of the unchanged clean angled and top fan-width review images: yeah looks good. go ahead and rerender the trumpet assembly, refresh the geometry audit. No game observation was supplied.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview</summary>
+
+<a id="case-preview_review-407c1640d6da76516db5"></a>
+
+**General: unverified** — `preview_review-407c1640d6da76516db5`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-l2-paired-fan-compact-join:connection-overview.
 
 No observation recorded.
 

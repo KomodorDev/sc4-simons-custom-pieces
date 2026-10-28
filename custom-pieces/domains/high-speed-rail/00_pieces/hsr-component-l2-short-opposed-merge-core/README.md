@@ -24,6 +24,8 @@ The current pictures and connection cards show the four-tile saved model. Their 
 
 The generated connection overview in chapter 3 identifies complete joining boundaries and their required channels. Its cards report the measured facts for the saved model. Software pictures show geometry and selected textures; they do not establish game appearance or train operation.
 
+In the top view, the southern grey strip in X0 and the northern grey strip in X3 now meet their curved wings along the existing brown ballast boundaries. Ballast means the stones beneath the tracks. Each join has a continuous raised top and a matching vertical face toward the tracks. The accepted northern border from X1 into X2 and southern border from X2 into X1 remain intact.
+
 ## 2. Piece and placement
 
 <!-- BEGIN PIECE OVERVIEW -->

@@ -312,7 +312,7 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     draw = ImageDraw.Draw(canvas)
     _caption(draw, f'{len(owners)} occupied tiles | blank squares remain empty | same P-labels in every view',
              height-77, 21, width, color='#586a7e')
-    _caption(draw, 'Match the shown positions and rotations; reference diamonds are not verified in-game mouse-click positions.',
+    _caption(draw, 'Match the shown positions and rotations; reference diamonds mark model origins.',
              height-42, 20, width, color='#586a7e')
     return canvas, {'kind': 'construction tile-ownership plan', 'camera': camera.metadata(),
                     'header_rows': list(header_rows), 'label': header_rows[1],
@@ -389,9 +389,6 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         _caption(draw,
                  'All model geometry shown; no simulated trains, terrain, or game lighting.',
                  height-65, 20, width, color='#586a7e')
-        _caption(draw,
-                 'Not a SimCity 4 screenshot. Placement, traffic, and game shadows remain unverified.',
-                 height-36, 20, width, color='#586a7e')
         target = destination/f'{prefix}-{name}-xy.png'
         canvas.save(target)
         image = {'file': target.name, 'sha256': sha256(target.read_bytes()),
@@ -424,8 +421,6 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean.paste(clean_view, (0, top))
             _caption(cd, 'All model geometry shown; no simulated trains, terrain, or game lighting.',
                      height-65, 20, width, color='#586a7e')
-            _caption(cd, 'Not a SimCity 4 screenshot. Placement, traffic, and game shadows remain unverified.',
-                     height-36, 20, width, color='#586a7e')
             clean_target = destination/f'{prefix}-{name}-clean-xy.png'
             clean.save(clean_target)
             images.append({'file': clean_target.name, 'sha256': sha256(clean_target.read_bytes()),

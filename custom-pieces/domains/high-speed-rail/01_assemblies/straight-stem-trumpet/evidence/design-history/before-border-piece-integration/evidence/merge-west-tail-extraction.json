@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "purpose": "Actual saved-build and complete-assembly acceptance of the approved existing-straight plus four-tile merge decomposition.",
+  "checked_at_utc": "2026-10-28T09:42:38.033060+00:00",
+  "baseline_commit": "0b9f68b733fa9c5b785ad4cc284f521143875408",
+  "baseline_resource_record": "design-history/checks-resources-before-merge-west-tail-extraction.json",
+  "current_scene_sha256": "4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3",
+  "current_build": "dist/trumpet-merge-west-tail-parts-01",
+  "current_build_manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
+  "current_saved_verification_sha256": "febc4e73218f6f4023219ec4f2ce983ae91c35cac54844abce97bf012ac344ec",
+  "merge_DAT_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+  "merge_geometry_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+  "independent_preservation": {
+    "status": "passed",
+    "baseline_resource_archives_required": false,
+    "manual_or_game_observations_added": 0,
+    "occupied_world_cells_preserved": 105,
+    "unchanged_world_cells_all_resources_exact": 103,
+    "retained_world_path_bytes_identical": 104,
+    "model_shadow_change_world_cells_en_m": [
+      [
+        32.0,
+        0.0
+      ],
+      [
+        48.0,
+        0.0
+      ]
+    ],
+    "replacement_decoded_routes_identical": 2,
+    "every_world_path_geometry_preserved": true,
+    "unchanged_complete_archives_exact": 12,
+    "retained_merge_tile_resource_ids_unchanged": 4,
+    "complete_journey_counts_and_point_hashes_identical": 6,
+    "support_positions_preserved": 74,
+    "support_positions_sha256": "76d116a6f8cb5d6e48ab681dd679eb8d67bb137c2badb72943290d0860b82d1d",
+    "actual_native_joining_sections_checked": 6,
+    "native_profile_tolerance_m": 5e-05,
+    "seam_model_zooms_pinned_to_bounded_edit": 5,
+    "seam_model_sha256": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
+    "normalization_collar_world_east_m": [
+      40.0,
+      42.5
+    ],
+    "maximum_authorized_parapet_change_m": 0.0034524,
+    "collar_section_stations_checked": 29,
+    "collar_horizontal_sections_checked": 87,
+    "collar_gap_tolerance_m": 2e-06,
+    "collar_profile_position_tolerance_m": 5e-05
+  },
+  "normal_saved_build_verification": {
+    "static_checks_passed": true,
+    "files_checked": 15,
+    "resources_checked": 1237,
+    "construction": {
+      "original_rul0_restored": true,
+      "original_network_ini_restored": true,
+      "separate_piece_menu_roots": 13,
+      "states_per_root": 8,
+      "runtime_tile_addresses_checked": 89,
+      "ordering_sections_checked": 1,
+      "custom_rotation_rings_in_ordering": 13,
+      "native_rotation_rings_preserved": 132
+    },
+    "dependency_records_cover_all_references": true
+  },
+  "bounded_collar_proof": {
+    "file": "../../../00_pieces/hsr-component-l2-short-opposed-merge-core/evidence/west-parapet-collar-proof.json",
+    "sha256": "6552487b50f3d389d2076e65d1fd01be2ac1b8bc62959a104deeb0cb36e6eb62",
+    "maximum_measured_displacement_m": 0.003452301025390625,
+    "finite_section_checks": 6518,
+    "new_gaps_above_2um_in_finite_scan": 0
+  },
+  "build_provenance": {
+    "original_build_piece_and_all_normal_verifiers_active": true,
+    "normalizer_executed_from_current_source": true,
+    "twelve_other_complete_DATs_byte_identical": true,
+    "unchanged_analytic_context_model_cache_reused": true,
+    "analytic_contexts": [
+      {
+        "key": "36d17b579edb189eb11649ce96b6aa030c3e892cdeb634fa78de377adc7d04c3",
+        "source_cells": [
+          [
+            5,
+            5
+          ]
+        ],
+        "source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "source_geometry_sha256": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+        "surface_decks_partition_source_pose_and_owned_supports_exact": true
+      },
+      {
+        "key": "1c6e6c7d35709adea184d9a3811c76a25bf45dcecfe49563e119d364d9e9f848",
+        "source_cells": [
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "source_geometry_sha256": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+        "surface_decks_partition_source_pose_and_owned_supports_exact": true
+      }
+    ],
+    "cold_analytic_sweep_compilation_claimed": false
+  },
+  "source_input_archives": [
+    {
+      "filename": "NetworkAddonMod_Controller.dat",
+      "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+    },
+    {
+      "filename": "High Speed Rail.dat",
+      "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a"
+    }
+  ],
+  "installed": false,
+  "in_game_tested": false,
+  "manual_observations_added": 0
+}
