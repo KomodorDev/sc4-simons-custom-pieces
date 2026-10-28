@@ -5,7 +5,7 @@ import unittest
 
 from PIL import Image, ImageDraw
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path.insert(0,str(ROOT/'framework'))
 from scp.preview import font
 from scp.render_headers import draw_header, piece_heading, piece_title, view_caption

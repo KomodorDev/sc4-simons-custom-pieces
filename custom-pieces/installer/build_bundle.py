@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from hashlib import sha256
+from importlib.util import module_from_spec, spec_from_file_location
 import importlib.metadata
 import json
 import os
@@ -29,6 +30,15 @@ BUILD_INFO = "installer/build-info.json"
 SOURCE_EXTENSIONS = {".py", ".json", ".jsonc", ".md", ".png", ".svg", ".txt", ".toml"}
 FORBIDDEN_PARTS = {"local", "dist", "__pycache__", ".git", ".venv", "node_modules"}
 GAME_EXTENSIONS = {".dat", ".sc4model", ".sc4lot", ".sc4desc", ".dll", ".exe"}
+
+
+def _source_json(path: Path):
+    """Use this source tree's JSONC reader before any application bootstrap."""
+    reader_path = Path(__file__).resolve().parents[1] / "framework/scp/jsonc.py"
+    spec = spec_from_file_location("_scp_bundle_jsonc", reader_path)
+    reader = module_from_spec(spec)
+    spec.loader.exec_module(reader)
+    return reader.load(path)
 
 
 def _json(path: Path, value: object) -> None:
@@ -92,39 +102,39 @@ def runtime_allowed(relative: str, domain_names: set[str], subjects: set[str]) -
     if path.suffix.lower() not in SOURCE_EXTENSIONS:
         return False
     if len(parts) == 1:
-        return path.name in {"project.json", "pyproject.toml", "README.md", "AGENTS.md", "scp.py"}
+        return path.name in {"project.jsonc", "pyproject.toml", "README.md", "AGENTS.md", "scp.py"}
     if parts[0] in {"framework", "schemas"}:
-        return path.suffix in {".py", ".json"}
+        return path.suffix in {".py", ".jsonc"}
     if parts[0] == "installer":
         return path.suffix == ".py" and (len(parts) == 2 or len(parts) == 3 and parts[1] == "scp_installer")
     if parts[0] == "docs":
-        return path.suffix in {".md", ".png", ".svg", ".json", ".txt"}
+        return path.suffix in {".md", ".png", ".svg", ".jsonc", ".txt"}
     if parts[0] == "config":
-        return relative in {"config/allocations.json", "config/release.json", "config/installer.json"} or (
-            len(parts) == 3 and parts[1] == "profiles" and path.suffix == ".json")
+        return relative in {"config/allocations.jsonc", "config/release.jsonc", "config/installer.jsonc"} or (
+            len(parts) == 3 and parts[1] == "profiles" and path.suffix == ".jsonc")
     if parts[0] != "domains" or len(parts) < 3 or parts[1] not in domain_names:
         return False
     if len(parts) == 3:
-        return path.suffix in {".json", ".md"}
+        return path.suffix in {".json", ".jsonc", ".md"}
     if parts[2] in {"implementation", "tools"}:
         return path.suffix == ".py"
     if parts[2] == "assets":
         return path.suffix in {".png", ".svg"}
     if parts[2] in {"00_pieces", "01_assemblies"}:
         if len(parts) == 4:
-            return path.name in {"inventory.json", "INVENTORY.md"}
+            return path.name in {"inventory.jsonc", "INVENTORY.md"}
         return "/".join(parts[:4]) in subjects and path.suffix in {
             ".json", ".jsonc", ".md", ".png", ".svg", ".txt"}
     return False
 
 
 def _runtime_paths(root: Path) -> list[Path]:
-    project = json.loads((root / "project.json").read_text(encoding="utf-8"))
+    project = _source_json(root / "project.jsonc")
     domains = set(project["domains"])
     subjects = set()
     for record in project["domains"].values():
         registry_path = _relative(record["registry"])
-        registry = json.loads(root.joinpath(*registry_path.parts).read_text(encoding="utf-8"))
+        registry = _source_json(root.joinpath(*registry_path.parts))
         directory = _relative(record["path"])
         for name in (*registry.get("pieces", []), *registry.get("assemblies", [])):
             subjects.add((directory / _relative(name)).parent.as_posix())
@@ -165,8 +175,9 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
         output = destination / relative
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_bytes(raw)
-    required = {"project.json", "pyproject.toml", "installer/main.py", "installer/build_bundle.py",
-                "installer/scp_installer/service.py", "config/installer.json", "framework/scp/check_bootstrap.py"}
+    required = {"project.jsonc", "pyproject.toml", "installer/main.py", "installer/build_bundle.py",
+                "installer/scp_installer/service.py", "config/installer.jsonc", "framework/scp/check_bootstrap.py",
+                "framework/scp/jsonc.py"}
     missing = required - {path.relative_to(source).as_posix() for path in sources}
     if missing:
         raise ValueError("Installer runtime is missing required source files: " + ", ".join(sorted(missing)))

@@ -89,7 +89,7 @@ Once the intended shape is clear, carry out routine implementation decisions wit
 
 ## 4. Check existing pieces and prove the connection plan
 
-Inspect `project.json`, the domain inventory, current manifests, and verified builds. Similar names or appearances do not prove that two pieces connect.
+Inspect `project.jsonc`, the domain inventory, current manifests, and verified builds. Similar names or appearances do not prove that two pieces connect.
 
 Create a parts table with one row per required functional module:
 
@@ -215,11 +215,19 @@ Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-
 
 ### 12.1 Copy the unregistered placement template
 
-The [starter JSON](templates/assembly-two-hsr-straights.json) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. The following commands deliberately create a new assembly folder and copy the plan into it. Stop if `two-tile-hsr-starter` already exists; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
+The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the commented template and writes a strict-JSON assembly plan because individual assembly files have not migrated yet. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
 
 ```sh
-mkdir custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter
-cp -n custom-pieces/docs/templates/assembly-two-hsr-straights.json custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.json
+python3 - <<'PY'
+import json
+from pathlib import Path
+from scp import jsonc
+target = Path('custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter')
+plan = jsonc.load('custom-pieces/docs/templates/assembly-two-hsr-straights.jsonc')
+target.mkdir()
+with (target / 'assembly.json').open('x', encoding='utf-8') as stream:
+    stream.write(json.dumps(plan, indent=2, allow_nan=False) + '\n')
+PY
 ```
 
 Open the copied `assembly.json`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
@@ -230,23 +238,23 @@ The template's external-port positions are authored expectations from that exact
 
 ### 12.2 Register the plan in the owning domain
 
-Run the following command to append the new relative path to `custom-pieces/domains/high-speed-rail/domain.json`. It checks that the plan exists and refuses duplicate registration; it preserves the existing piece and assembly entries.
+Run the following command to append the new relative path to `custom-pieces/domains/high-speed-rail/domain.jsonc`. It checks that the plan exists and refuses duplicate registration; it preserves the existing piece and assembly entries.
 
 ```sh
 python3 - <<'PY'
-import json
 from pathlib import Path
+from scp import jsonc
 domain = Path('custom-pieces/domains/high-speed-rail')
 relative = '01_assemblies/two-tile-hsr-starter/assembly.json'
 if not (domain / relative).is_file():
     raise SystemExit('Create the assembly.json plan first.')
-path = domain / 'domain.json'
-registry = json.loads(path.read_text())
+path = domain / 'domain.jsonc'
+registry = jsonc.load(path)
 assemblies = registry.setdefault('assemblies', [])
 if relative in assemblies:
     raise SystemExit('This assembly is already registered; inspect it instead of adding a duplicate.')
 assemblies.append(relative)
-path.write_text(json.dumps(registry, indent=2) + '\n')
+jsonc.dump(path, registry)
 print('Registered ' + relative)
 PY
 ```
@@ -257,28 +265,28 @@ The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry en
 
 ### 12.3 Add its separate menu layout
 
-`menu-layout.json` connects the registered assembly to its single button. Its layout key is the name passed to `assembly-menu --layout`; it is separate from the permanent assembly ID. The command below uses `two-tile-hsr-starter` for both to keep the example clear. It reserves a new **local presentation ID**, meaning the identifier for this assembly's button resources, rather than reusing the trumpet's or a member piece's button ID.
+`menu-layout.jsonc` connects the registered assembly to its single button. Its layout key is the name passed to `assembly-menu --layout`; it is separate from the permanent assembly ID. The command below uses `two-tile-hsr-starter` for both to keep the example clear. It reserves a new **local presentation ID**, meaning the identifier for this assembly's button resources, rather than reusing the trumpet's or a member piece's button ID.
 
 Run this command once. It chooses an unused candidate in a small local menu-prefix range after checking current piece-menu reservations and every registered domain's existing layout entries, then writes the complete accepted layout object. This is a local development choice, rather than a public reservation. The later `assembly-menu` operation must still check that candidate against the actual installed Plugins resources. If that check reports a collision, replace only the new button's `id` with another locally unused candidate and repeat the final checks; preserve existing identities.
 
 ```sh
 python3 - <<'PY'
-import json
 from pathlib import Path
+from scp import jsonc
 from scp.catalog import load_catalog
 root = Path('custom-pieces').resolve()
 catalog = load_catalog(root)
-path = root / 'domains/high-speed-rail/menu-layout.json'
-menu = json.loads(path.read_text())
+path = root / 'domains/high-speed-rail/menu-layout.jsonc'
+menu = jsonc.load(path)
 key = 'two-tile-hsr-starter'
 if key in menu['layouts']:
     raise SystemExit('This menu layout already exists; inspect it instead of replacing it.')
 used = {int(piece['menu']['id'], 16) for piece in catalog['pieces']}
 for domain in catalog['domains'].values():
-    layouts_path = root / domain['path'] / 'menu-layout.json'
+    layouts_path = root / domain['path'] / 'menu-layout.jsonc'
     if not layouts_path.is_file():
         continue
-    for layout in json.loads(layouts_path.read_text()).get('layouts', {}).values():
+    for layout in jsonc.load(layouts_path).get('layouts', {}).values():
         for field in ('cycle_button', 'submenu'):
             if field in layout:
                 used.add(int(layout[field]['id'], 16))
@@ -295,12 +303,12 @@ menu['layouts'][key] = {
         'description': 'Select the reusable HSR straight. Tab and Shift+Tab select component types; each click places one copy. Rebuild the two placements from the assembly guide.'
     }
 }
-path.write_text(json.dumps(menu, indent=2) + '\n')
+jsonc.dump(path, menu)
 print('Locally reserved assembly presentation: ' + f'{candidate:08x}')
 PY
 ```
 
-Open the changed `menu-layout.json` and inspect the new entry. `member_order` must be exactly `first-use-in-assembly`. The button must contain exactly `id`, `order`, `title`, and `description`; both numeric strings have eight hexadecimal digits. **Hexadecimal** is base-16 notation, using 0–9 and a–f. `order` places the button in the Rail menu's accepted `70000000`–`7fffffff` range. Keep the full readable title and component-placement explanation; the icon cannot replace those instructions.
+Open the changed `menu-layout.jsonc` and inspect the new entry. `member_order` must be exactly `first-use-in-assembly`. The button must contain exactly `id`, `order`, `title`, and `description`; both numeric strings have eight hexadecimal digits. **Hexadecimal** is base-16 notation, using 0–9 and a–f. `order` places the button in the Rail menu's accepted `70000000`–`7fffffff` range. Keep the full readable title and component-placement explanation; the icon cannot replace those instructions.
 
 <a id="4-declare-the-hsr-icon-identity-and-generate-artwork"></a>
 

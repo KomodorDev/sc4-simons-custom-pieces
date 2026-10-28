@@ -13,9 +13,10 @@ import types
 import unittest
 from unittest.mock import Mock, patch
 
-FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(FRAMEWORK / 'framework'))
 
+from scp import jsonc
 from scp.catalog import load_catalog, select_pieces
 from scp.build import preflight_allocations
 from scp.recipes import build_piece
@@ -35,13 +36,13 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix='scp-component-registration-')
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        project = json.loads((FRAMEWORK / 'project.json').read_text())
-        paths = ['project.json', project['profile'], project['allocations']]
+        project = jsonc.load(FRAMEWORK / 'project.jsonc')
+        paths = ['project.jsonc', project['profile'], project['allocations']]
         for domain in project['domains'].values():
             directory = Path(domain['path'])
             paths.extend(str(directory/name) for name in ('AGENTS.md', 'README.md'))
             paths.append(domain['registry'])
-            registry = json.loads((FRAMEWORK/domain['registry']).read_text())
+            registry = jsonc.load(FRAMEWORK/domain['registry'])
             paths.append(str(directory/registry['collections']))
             paths.extend(str(directory/relative) for relative in registry['assemblies'])
             for relative in registry['pieces']:
@@ -77,14 +78,14 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         before = load_catalog(self.root)
         manifests = {piece['id']: self.manifest_path(piece).read_bytes()
                      for piece in before['pieces']}
-        project_bytes = (self.root/'project.json').read_bytes()
+        project_bytes = (self.root/'project.jsonc').read_bytes()
         report = self.register()
         after = load_catalog(self.root)
         slug = self.recipe.replace('_', '-')
         piece = next(piece for piece in after['pieces'] if piece['id'] == slug)
         self.assertEqual(report['added'], 1)
         self.assertFalse(report['installed'])
-        self.assertEqual((self.root/'project.json').read_bytes(), project_bytes,
+        self.assertEqual((self.root/'project.jsonc').read_bytes(), project_bytes,
                          'Domain registration must not edit shared project routing')
         self.assertIn('Authoritative build definition', piece['purpose'])
         self.assertTrue((self.manifest_path(piece).parent/'icon.png').is_file())
@@ -122,14 +123,14 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         piece = json.loads(path.read_text())
         piece['id'] = new_id
         path.write_text(json.dumps(piece, indent=2)+'\n')
-        registry = self.root/'domains/high-speed-rail/domain.json'
+        registry = self.root/'domains/high-speed-rail/domain.jsonc'
         registry.write_text(registry.read_text().replace(old_id, new_id))
-        collections = registry.parent/'collections.json'
+        collections = registry.parent/'collections.jsonc'
         collections.write_text(collections.read_text().replace(old_id, new_id))
-        ledger = self.root/'config/allocations.json'
-        data = json.loads(ledger.read_text())
+        ledger = self.root/'config/allocations.jsonc'
+        data = jsonc.load(ledger)
         data['pieces'][new_id] = data['pieces'].pop(old_id)
-        ledger.write_text(json.dumps(data, indent=2)+'\n')
+        jsonc.dump(ledger, data)
         before = self.snapshot()
         report = self.register()
         self.assertEqual(report['added'], 0)
@@ -168,12 +169,12 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         from scp_hsr.hsr_components import INFO, RECIPES
         adapter = 'hsr_component_upper_paired_to_single_adapter'
         slug = adapter.replace('_', '-')
-        registry_path = self.root/'domains/high-speed-rail/domain.json'
-        ledger_path = self.root/'config/allocations.json'
-        registry = json.loads(registry_path.read_text())
+        registry_path = self.root/'domains/high-speed-rail/domain.jsonc'
+        ledger_path = self.root/'config/allocations.jsonc'
+        registry = jsonc.load(registry_path)
         collection_path = registry_path.parent/registry['collections']
-        selections = json.loads(collection_path.read_text())
-        ledger = json.loads(ledger_path.read_text())
+        selections = jsonc.load(collection_path)
+        ledger = jsonc.load(ledger_path)
         # Remove only the adapter in this private fixture. Its shared project
         # routing remains intact; domain registry and collections own membership.
         registry['pieces'] = [relative for relative in registry['pieces']
@@ -185,9 +186,9 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         piece_directory = self.root/'domains/high-speed-rail/00_pieces'/slug
         (piece_directory/'piece.json').unlink(missing_ok=True)
         (piece_directory/'icon.png').unlink(missing_ok=True)
-        registry_path.write_text(json.dumps(registry, indent=2)+'\n')
-        collection_path.write_text(json.dumps(selections, indent=2)+'\n')
-        ledger_path.write_text(json.dumps(ledger, indent=2)+'\n')
+        jsonc.dump(registry_path, registry)
+        jsonc.dump(collection_path, selections)
+        jsonc.dump(ledger_path, ledger)
         with patch.object(self.module, 'write_inventories'), redirect_stdout(io.StringIO()):
             self.module.register_components(INFO, [recipe for recipe in RECIPES if recipe != adapter],
                                             root=self.root)

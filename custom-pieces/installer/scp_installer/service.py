@@ -15,6 +15,7 @@ import sys
 import tempfile
 import uuid
 
+from scp import jsonc
 from scp.catalog import load_catalog, select_pieces, safe_relative
 from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, _owned
@@ -243,7 +244,7 @@ def all_implemented_ids(root):
 
 
 def _policy(root):
-    policy = json.loads((Path(root) / "config/installer.json").read_text())
+    policy = jsonc.load(Path(root) / "config/installer.jsonc")
     if (policy.get("schema_version") != 1 or policy.get("selection") != "all-implemented"
             or policy.get("bundles_nam_resources") is not False
             or policy.get("bundles_game_resources") is not False):

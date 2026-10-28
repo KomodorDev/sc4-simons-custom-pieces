@@ -8,7 +8,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.models import parse_s3d, pack_s3d
 from scp_hsr.test_support import donor
 try:

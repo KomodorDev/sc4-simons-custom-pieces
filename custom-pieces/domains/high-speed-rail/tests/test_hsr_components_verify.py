@@ -10,9 +10,11 @@ import sys
 import struct
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp_hsr.hsr_components_verify import (
     CONTRACTS, check_paths, check_models, check_construction_fields, audit_height_profile, audit_adapter_native_profiles,
@@ -306,9 +308,9 @@ class NativeComponentModelTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.donors, cls.models = None, {}
-        local = ROOT/'local/settings.json'
+        local = local_settings(ROOT)
         if local.is_file():
-            plugins = Path(json.loads(local.read_text())['plugins'])
+            plugins = Path(jsonc.load(local)['plugins'])
             candidates = list(plugins.rglob('High Speed Rail.dat'))
             if len(candidates) == 1:
                 cls.donors = {key: decompress(raw) for key, raw in entries(candidates[0].read_bytes()).items()}

@@ -26,7 +26,7 @@ A **piece** is one reusable construction type. An **assembly** is a documented l
 | Folder slug and internal ID | `piece.json` field `id`; the enclosing folder must match it exactly | The folder containing registered `assembly.json`; its basename becomes the ID | Stable selection and file location |
 | Canonical readable name | `piece.json` field `name` | `assembly.json` field `title` | Describe the subject to a person |
 | Picture heading | Shared renderer adds `Piece - ` and source-backed height formatting | Owning renderer adds `Assembly - ` | Identify the kind of subject and its readable name |
-| Installed menu title | Domain menu generator adds the SCP prefix, badge, and applicable design-review warning to the registered piece name | Domain `menu-layout.json`, under `layouts.<layout-key>.cycle_button.title` | Present the subject in the game menu |
+| Installed menu title | Domain menu generator adds the SCP prefix, badge, and applicable design-review warning to the registered piece name | Domain `menu-layout.jsonc`, under `layouts.<layout-key>.cycle_button.title` | Present the subject in the game menu |
 | Placement label | Not part of a reusable type's identity | The assembly's recorded labels, such as `P01` | Distinguish copies and positions in one layout |
 
 The required source locations, relative to `custom-pieces/`, are:
@@ -235,7 +235,7 @@ The 64-character rule applies to IDs, not readable names. Do not invent an equiv
 For a new subject:
 
 1. Decide whether it is one reusable piece or an assembly using the [piece-versus-assembly decision](WORKFLOW_PIECE_CREATION.md#1-decide-between-a-piece-and-an-assembly). Choose its owning domain.
-2. Open that domain's `domain.json`, piece inventory, assembly inventory, and network specification where implemented. Look for an existing reusable type before reserving another ID. Check candidate IDs and readable names across every domain, including names that differ only in capitalization.
+2. Open that domain's `domain.jsonc`, piece inventory, assembly inventory, and network specification where implemented. Look for an existing reusable type before reserving another ID. Check candidate IDs and readable names across every domain, including names that differ only in capitalization.
 3. Establish the facts listed above, choose the folder slug using the appropriate pattern, and count its complete 2–64-character length. Choose its canonical readable name independently using the same factual vocabulary.
 4. For a piece, use the [scaffold and allocation workflow](WORKFLOW_PIECE_CREATION.md#3-create-a-draft-and-allocate-its-local-identifiers), keeping folder and `id` identical. For an assembly, follow [assembly registration](WORKFLOW_ASSEMBLY_CREATION.md#12-start-a-small-hsr-assembly-from-existing-pieces), using the folder basename as ID and `title` as the readable name. A scaffold's placeholder name must be completed before presenting a finished subject.
 5. Follow [documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md) for source-backed names, cards, guides, artwork, and exports. Inspect the exact rendered headings and menu title within the supported verification scope.

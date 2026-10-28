@@ -1,13 +1,9 @@
+// title: "High-speed rail build collections"
+// summary: "Select named groups of existing reusable rail types for builds without creating additional pieces or placements."
 {
-  "schema_version": 2,
-  "purpose": "Generated domain navigation and collection membership; subject test records remain authoritative.",
-  "version": "0.6.0.dev1",
-  "domain": "high-speed-rail",
-  "count": 167,
-  "assembly_count": 1,
-  "piece_inventory": "00_pieces/inventory.json",
-  "assembly_inventory": "01_assemblies/inventory.json",
-  "piece_sets": {
+  "schema_version": 1,
+  "purpose": "Named build selections of existing pieces; a collection is not a new construction button or an assembly.",
+  "collections": {
     "hsr-crossings": [
       "hsr-diagonal-ghsr",
       "hsr-straight-ghsr",

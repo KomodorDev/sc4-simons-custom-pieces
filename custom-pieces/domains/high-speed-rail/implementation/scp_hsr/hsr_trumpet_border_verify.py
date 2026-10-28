@@ -12,6 +12,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from scp import jsonc
 from scp.dbpf import require
 from scp.verification_fixtures import resource_descriptor
 from .assembly_inspection import _world_triangles, sha256, number
@@ -23,7 +24,7 @@ from .hsr_trumpet_rework_verify import (
     _projected_tile_intersection_area, _tile_intersection_surface_area,
 )
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 ASSEMBLY_RELATIVE = Path('domains/high-speed-rail/01_assemblies/straight-stem-trumpet')
 SNAPSHOT_RELATIVE = Path('evidence/design-history/before-border-piece-integration')
 SNAPSHOT_INDEX_SHA256 = '081bb2475ef153d0b6df13d9d1bb21bf190f6cd8a427ad56f654728a1661cbd4'
@@ -289,8 +290,8 @@ def audit_parent_retirement(*, root=ROOT, ledger=None):
     domain = root/'domains/high-speed-rail'
     require(not (domain/'00_pieces'/FULL_FAN_ID).exists(),
             'Trumpet retired parent cannot remain an active or compatibility source')
-    registry = json.loads((domain/'domain.json').read_text())
-    collections = json.loads((domain/'collections.json').read_text())['collections']
+    registry = jsonc.load(domain/'domain.jsonc')
+    collections = jsonc.load(domain/'collections.jsonc')['collections']
     require('00_pieces/'+FULL_FAN_ID+'/piece.json' not in registry['pieces']
             and all(FULL_FAN_ID not in selection for selection in collections.values()),
             'Trumpet retired parent remains registered in an active piece selection')

@@ -18,4 +18,4 @@ packages = ["scp", "scp.schemas", "scp_hsr", "scp_hsr_tools"]
 package-dir = {"scp" = "framework/scp", "scp.schemas" = "schemas", "scp_hsr" = "domains/high-speed-rail/implementation/scp_hsr", "scp_hsr_tools" = "domains/high-speed-rail/tools"}
 
 [tool.setuptools.package-data]
-"scp.schemas" = ["*.json"]
+"scp.schemas" = ["*.jsonc"]

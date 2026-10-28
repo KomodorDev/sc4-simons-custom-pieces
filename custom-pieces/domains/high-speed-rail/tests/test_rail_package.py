@@ -20,9 +20,11 @@ import tempfile
 import unittest
 import zipfile
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.build import build_project,package_build
 from scp.catalog import load_catalog
 from scp.dbpf import entries,decompress,pack_dbpf
@@ -74,8 +76,8 @@ def _reachable(resources,piece,start):
 class RailPortablePackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local=ROOT/'local/settings.json'
-        settings=json.loads(local.read_text()) if local.is_file() else {}
+        local=local_settings(ROOT)
+        settings=jsonc.load(local) if local.is_file() else {}
         plugins=os.environ.get('SCP_TEST_NAM_PLUGINS',settings.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS')
@@ -179,7 +181,7 @@ class RailPortablePackageTests(unittest.TestCase):
 
 
     def test_empty_origin_s_allocations_match_permanent_ledger_and_controller(self):
-        ledger=json.loads((ROOT/'config/allocations.json').read_text())['pieces']
+        ledger=jsonc.load(ROOT/'config/allocations.jsonc')['pieces']
         controller_path=Path(next(iter(self.pieces.values()))['asset_file']).parents[1]/'00_SCP_Controller_NAM50.dat'
         rul=_read_dat(self.output/controller_path)[RUL0].decode('ascii')
         for piece in self.pieces.values():

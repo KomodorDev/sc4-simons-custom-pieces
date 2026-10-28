@@ -15,7 +15,7 @@ This specification owns HSR/GHSR source facts and reviewed rail-family rules. Fo
 
 Use the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md) when changing one type and the [assembly-creation workflow](../../docs/WORKFLOW_ASSEMBLY_CREATION.md) for layouts. The shared [documentation-generation workflow](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md) owns canonical previews, cards, exports, and README generation. [Framework engineering](../../docs/FRAMEWORK_ENGINEERING.md) owns format/coordinate conversion, runtime addressing, controller composition, generic geometry/render/shadow guards, and cache correctness.
 
-The [domain registry](domain.json), [piece inventory](00_pieces/INVENTORY.md), and [assembly inventory](01_assemblies/INVENTORY.md) identify the current owners. [STRUCTURE.md](../../STRUCTURE.md) explains source authority and generated views. Read each type's authored engineering notes for its own footprint, ports, supports, bounds, and scoped exceptions.
+The [domain registry](domain.jsonc), [piece inventory](00_pieces/INVENTORY.md), and [assembly inventory](01_assemblies/INVENTORY.md) identify the current owners. [STRUCTURE.md](../../STRUCTURE.md) explains source authority and generated views. Read each type's authored engineering notes for its own footprint, ports, supports, bounds, and scoped exceptions.
 
 <a id="implementation-entry-points"></a>
 
@@ -97,7 +97,7 @@ Adjacent paired mainline centres are 16 m apart with no empty column between the
 
 ## 3. Saved rail design review
 
-`junction-design-review.json` retains the measured review of 130 current pieces. Thirty-two modular branches/crossovers need a support-spacing review; no measured wall-defect records remain in this catalogue. The two accepted smooth T junctions have separate independent audits and are outside this earlier review's scope. The 2.6 m support-centre cutoff is a visual-authoring convention, not an engineering rule. No recorded objection is not game compatibility.
+`junction-design-review.jsonc` retains the measured review of 130 current pieces. Thirty-two modular branches/crossovers need a support-spacing review; no measured wall-defect records remain in this catalogue. The two accepted smooth T junctions have separate independent audits and are outside this earlier review's scope. The 2.6 m support-centre cutoff is a visual-authoring convention, not an engineering rule. No recorded objection is not game compatibility.
 
 `../../framework/scp/design_review.py` validates the separate `design_review` flags. `tools/apply_junction_review.py` applies the saved evidence idempotently, refreshes per-piece review flags and inventories. Flags appear in individual previews and future menu titles/tooltips. Preserve them when regenerating catalogues; never clear them merely because static checks pass. Release assessment also looks up current flags by permanent ID, so an older manifest cannot hide a newer objection. Review evidence and generated views must refer only to currently registered pieces. The JSON remains authoritative; there is no separate review Markdown catalogue.
 
@@ -225,7 +225,7 @@ HSR and GHSR straight lanes use lateral offsets `+2` and `-2` m. A centred singl
 
 ### 8.1 Measure the native diagonal half exactly
 
-The audited NAM 50 right-hand donor PATH is `296678f7-a966883f-5dd01a00`, from `High Speed Rail.dat` pinned by the [dependency profile](../../config/profiles/nam50-rhd.json). Its decompressed PATH SHA-256 is `fa76b58784c3c536246c365291dbf5790f18adc0d5f8ec2bc7779ea763218636`. The following measurements describe that exact saved half at 0° rotation in the shared `[east,north,height]` metre frame. A **chord** is the vector from one saved route point to the next; these two-point records each have one chord.
+The audited NAM 50 right-hand donor PATH is `296678f7-a966883f-5dd01a00`, from `High Speed Rail.dat` pinned by the [dependency profile](../../config/profiles/nam50-rhd.jsonc). Its decompressed PATH SHA-256 is `fa76b58784c3c536246c365291dbf5790f18adc0d5f8ec2bc7779ea763218636`. The following measurements describe that exact saved half at 0° rotation in the shared `[east,north,height]` metre frame. A **chord** is the vector from one saved route point to the next; these two-point records each have one chord.
 
 | Native directed member | Entry point `[E,N,H]` (m) | Exit point `[E,N,H]` (m) | Travel chord `[ΔE,ΔN]` (m) |
 | --- | --- | --- | --- |

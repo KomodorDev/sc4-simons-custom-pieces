@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from unittest.mock import patch
+from scp import jsonc
 from scp.inventory import write_inventories
 from scp.content import (fingerprint, new_manual_record, record_software_result,
                          record_user_result, split_markdown_metadata)
@@ -38,8 +39,17 @@ class InventoryArtworkTests(unittest.TestCase):
                        'pieces': [{'id': 'piece', 'name': 'Piece', 'domain': 'fixture', 'footprint': [1, 1]}],
                        'piece_sets': {}, '_assemblies': [{'id': 'assembly', 'domain': 'fixture',
                            'path': 'domains/fixture/01_assemblies/assembly', 'scene': {'placements': []}}]}
+            machine_paths = [domain/'inventory.jsonc', domain/'00_pieces/inventory.jsonc',
+                             domain/'01_assemblies/inventory.jsonc']
+            prefix = '// title: "Authored inventory"\n// summary: "Keep this explanation."\n/* Retain this note. */\n'
+            for path in machine_paths:
+                path.write_text(prefix+'{}\n', encoding='utf-8')
             with patch('scp.inventory.load_catalog', return_value=catalog):
                 write_inventories(root)
+            machine_before = {path: path.read_bytes() for path in machine_paths}
+            for path in machine_paths:
+                self.assertTrue(path.read_text(encoding='utf-8').startswith(prefix))
+                self.assertFalse(path.with_suffix('.json').exists())
             paths = [domain/'README.md', domain/'00_pieces/INVENTORY.md', domain/'01_assemblies/INVENTORY.md']
             first = {path: path.read_text() for path in paths}
             self.assertIn('[1. Reference](#1-reference) · [2. Inventories and collections](#2-inventories-and-collections)'
@@ -57,6 +67,7 @@ class InventoryArtworkTests(unittest.TestCase):
             with patch('scp.inventory.load_catalog', return_value=catalog):
                 write_inventories(root)
             self.assertEqual(first, {path: path.read_text() for path in paths})
+            self.assertEqual(machine_before, {path: path.read_bytes() for path in machine_paths})
             self.assertEqual(sources, {file: file.read_bytes() for file in sources})
 
     def test_assembly_human_titles_preserve_ids_paths_and_missing_title_fallback(self):
@@ -82,7 +93,7 @@ class InventoryArtworkTests(unittest.TestCase):
             for identifier in ('missing','blank','invalid'):
                 self.assertIn(f'[{identifier}]({identifier}/README.md)',text)
                 self.assertIn(f'[![{identifier}]({identifier}/previews/preview.png)]',text)
-            machine=json.loads((domain/'01_assemblies/inventory.json').read_text())['assemblies']
+            machine=jsonc.loads((domain/'01_assemblies/inventory.jsonc').read_text())['assemblies']
             self.assertEqual(set(machine),{'trumpet-stable-id','missing','blank','invalid'})
             for identifier,status in machine.items():
                 self.assertEqual(status['path'],identifier+'/README.md')
@@ -137,7 +148,7 @@ class InventoryArtworkTests(unittest.TestCase):
             self.assertIn('Individual pieces: 1 menu types',text)
             self.assertIn('`test-collection`: 1 piece types.',text)
             self.assertFalse((domain/'INVENTORY.md').exists())
-            self.assertTrue((domain/'inventory.json').is_file())
+            self.assertTrue((domain/'inventory.jsonc').is_file())
             self.assertEqual(set(result['written']),{'domains/fixture/00_pieces/INVENTORY.md','domains/fixture/01_assemblies/INVENTORY.md'})
             inventory=(domain/'00_pieces/INVENTORY.md').read_text()
             header,body=inventory.split('---\n',2)[1:]
@@ -214,7 +225,7 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         self.assertIn('Route Query: 0/1 confirmed; 1 failed', self.generate())
         self.connections['journeys'][0]['id'] = 'changed-graph'
         self.assertIn('Saved PATH: 0/2 confirmed; 2 not established', self.generate())
-        machine = json.loads((self.domain/'01_assemblies/inventory.json').read_text())['assemblies']['fixture']
+        machine = jsonc.loads((self.domain/'01_assemblies/inventory.jsonc').read_text())['assemblies']['fixture']
         self.assertEqual(machine['connection_matrix']['metrics']['saved_path'],
                          {'confirmed': 0, 'failed': 0, 'not_established': 2})
 

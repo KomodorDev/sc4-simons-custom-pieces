@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import json
+from . import jsonc
 from pathlib import Path
 from .catalog import load_catalog, piece_cells
 from .content import markdown_metadata, summarize_manual_record, _replace_generated, _assembly_matrix_enabled
@@ -159,8 +160,10 @@ def write_inventories(root):
         (directory/'INVENTORY.md').unlink(missing_ok=True)
         overview_data={'schema_version':2,'purpose':'Generated domain navigation and collection membership; subject test records remain authoritative.',
             'version':catalog['version'],'domain':slug,'count':len(pieces),'assembly_count':len(assemblies),
-            'piece_inventory':'00_pieces/inventory.json','assembly_inventory':'01_assemblies/inventory.json','piece_sets':sets}
-        (directory/'inventory.json').write_text(json.dumps(overview_data,indent=2)+'\n')
+            'piece_inventory':'00_pieces/inventory.jsonc','assembly_inventory':'01_assemblies/inventory.jsonc','piece_sets':sets}
+        jsonc.dump(directory/'inventory.jsonc', overview_data,
+                   title=domain['name']+' domain inventory',
+                   summary='Generated navigation and collection membership; subject test records remain authoritative.')
         sections=((directory/'00_pieces',piece_rows,{'count':len(pieces),'pieces':pieces,'status':piece_status}),
                   (directory/'01_assemblies',assembly_rows,{'count':len(assemblies),'assemblies':assembly_status}))
         for target,rows,data in sections:
@@ -168,7 +171,9 @@ def write_inventories(root):
             (target/'INVENTORY.md').write_text(format_markdown_navigation('\n'.join(rows)+'\n'))
             data={'schema_version':2,'purpose':'Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.',
                   'version':catalog['version'],'domain':slug,**data}
-            (target/'inventory.json').write_text(json.dumps(data,indent=2)+'\n')
+            jsonc.dump(target/'inventory.jsonc', data,
+                       title=domain['name']+(' piece inventory' if target.name=='00_pieces' else ' assembly inventory'),
+                       summary='Generated current subject index and manual coverage; each subject owns its authoritative observation record.')
             written.append(str((target/'INVENTORY.md').relative_to(root)))
     return {'written':written,'installed':False}
 

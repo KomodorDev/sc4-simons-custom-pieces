@@ -1,7 +1,15 @@
+// title: "High-speed rail domain catalogue"
+// summary: "Generate domain navigation and collection membership from registered sources; subject records remain authoritative."
 {
-  "schema_version": 1,
-  "purpose": "Named build selections of existing pieces; a collection is not a new construction button or an assembly.",
-  "collections": {
+  "schema_version": 2,
+  "purpose": "Generated domain navigation and collection membership; subject test records remain authoritative.",
+  "version": "0.6.0.dev1",
+  "domain": "high-speed-rail",
+  "count": 167,
+  "assembly_count": 1,
+  "piece_inventory": "00_pieces/inventory.jsonc",
+  "assembly_inventory": "01_assemblies/inventory.jsonc",
+  "piece_sets": {
     "hsr-crossings": [
       "hsr-diagonal-ghsr",
       "hsr-straight-ghsr",

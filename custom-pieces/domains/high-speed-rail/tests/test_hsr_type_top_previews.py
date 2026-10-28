@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 from PIL import Image
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT/'framework'))
 
 from scp_hsr.test_support import donor

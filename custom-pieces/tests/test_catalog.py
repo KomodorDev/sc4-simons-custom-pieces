@@ -13,10 +13,11 @@ import sys
 import tempfile
 import unittest
 
-FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(FRAMEWORK / 'framework'))
 sys.path.insert(0, str(FRAMEWORK / 'domains/high-speed-rail/implementation'))
 
+from scp import jsonc
 from scp.catalog import load_catalog, release_status, select_pieces, validate_catalog
 
 
@@ -69,7 +70,7 @@ class CatalogTests(unittest.TestCase):
                     FRAMEWORK / 'domains/high-speed-rail/tools/register_directional_t.py')
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        before = {name:(self.root/name).read_bytes() for name in ('project.json','config/allocations.json')}
+        before = {name:(self.root/name).read_bytes() for name in ('project.jsonc','config/allocations.jsonc')}
         recipe = 'directional_hsr_unsafe_grid_probe'
         info = {'cells':[(0,0),(16,0),(0,1)],'footprint':(17,2)}
         with patch.object(module,'ROOT',self.root):
@@ -82,7 +83,7 @@ class CatalogTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix='scp-catalog-test-')
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        self.project = json.loads((FRAMEWORK / 'project.json').read_text())
+        self.project = jsonc.loads((FRAMEWORK / 'project.jsonc').read_text())
         self.piece_paths = []
         self.registries = {}
         for domain in self.project.get('domains', {}).values():
@@ -90,30 +91,33 @@ class CatalogTests(unittest.TestCase):
             directory.mkdir(parents=True, exist_ok=True)
             for name in ('AGENTS.md', 'README.md'):
                 (directory / name).write_text((FRAMEWORK / domain['path'] / name).read_text())
-            registry = json.loads((FRAMEWORK / domain['registry']).read_text())
+            registry = jsonc.loads((FRAMEWORK / domain['registry']).read_text())
             self.registries[registry['id']] = registry
             self._write(domain['registry'], registry)
             for relative in registry['pieces']:
                 path = str(Path(domain['path']) / relative)
                 self.piece_paths.append(path)
-                self._write(path, json.loads((FRAMEWORK / path).read_text()))
+                self._write(path, jsonc.loads((FRAMEWORK / path).read_text()))
             for relative in [registry['collections'], *registry.get('assemblies', [])]:
                 path = str(Path(domain['path']) / relative)
-                self._write(path, json.loads((FRAMEWORK / path).read_text()))
+                self._write(path, jsonc.loads((FRAMEWORK / path).read_text()))
         profile_path = self.project['profile']
-        self._write(profile_path, json.loads((FRAMEWORK / profile_path).read_text()))
+        self._write(profile_path, jsonc.loads((FRAMEWORK / profile_path).read_text()))
         if self.project.get('allocations'):
             relative = self.project['allocations']
-            self._write(relative, json.loads((FRAMEWORK / relative).read_text()))
-        self._write('config/release.json', json.loads((FRAMEWORK / 'config/release.json').read_text()))
-        self._write('project.json', self.project)
-        self.default_count = sum(json.loads((self.root / path).read_text())['enabled_by_default']
+            self._write(relative, jsonc.loads((FRAMEWORK / relative).read_text()))
+        self._write('config/release.jsonc', jsonc.loads((FRAMEWORK / 'config/release.jsonc').read_text()))
+        self._write('project.jsonc', self.project)
+        self.default_count = sum(jsonc.loads((self.root / path).read_text())['enabled_by_default']
                                  for path in self.piece_paths)
 
     def _write(self, relative, value):
         destination = self.root / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(json.dumps(value, indent=2) + '\n')
+        if destination.suffix == '.jsonc':
+            jsonc.dump(destination, value, title=relative, summary='Isolated catalogue fixture.')
+        else:
+            destination.write_text(json.dumps(value, indent=2) + '\n')
         return destination
 
     def _catalog(self):
@@ -126,7 +130,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_manifest_cannot_be_registered_in_another_domain(self):
         relative = self.piece_paths[0]
-        piece = json.loads((self.root / relative).read_text())
+        piece = jsonc.loads((self.root / relative).read_text())
         piece['domain'] = 'highway'
         self._write(relative, piece)
         with self.assertRaisesRegex(ValueError, 'unknown transport domain'):
@@ -134,7 +138,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_unknown_domain_is_rejected(self):
         relative = self.piece_paths[0]
-        piece = json.loads((self.root / relative).read_text())
+        piece = jsonc.loads((self.root / relative).read_text())
         piece['domain'] = 'missing'
         self._write(relative, piece)
         with self.assertRaisesRegex(ValueError, 'unknown transport domain'):
@@ -142,7 +146,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_domain_path_cannot_escape_project(self):
         self.project['domains']['highway']['path'] = '../outside'
-        self._write('project.json', self.project)
+        self._write('project.jsonc', self.project)
         with self.assertRaises(ValueError):
             self._catalog()
 
@@ -365,13 +369,13 @@ class CatalogTests(unittest.TestCase):
     def test_unknown_project_schema_is_rejected(self):
         project = deepcopy(self.project)
         project['schema_version'] = 99
-        self._write('project.json', project)
+        self._write('project.jsonc', project)
         with self.assertRaises(ValueError):
             self._catalog()
 
     def test_unknown_profile_schema_is_rejected(self):
         profile_path = self.project['profile']
-        profile = json.loads((self.root / profile_path).read_text())
+        profile = jsonc.loads((self.root / profile_path).read_text())
         profile['schema_version'] = 99
         self._write(profile_path, profile)
         with self.assertRaises(ValueError):
@@ -445,7 +449,7 @@ class CatalogTests(unittest.TestCase):
     def test_profile_path_cannot_escape_the_catalog(self):
         project = deepcopy(self.project)
         project['profile'] = '../outside.json'
-        self._write('project.json', project)
+        self._write('project.jsonc', project)
         with self.assertRaises(ValueError):
             self._catalog()
 
@@ -469,11 +473,11 @@ class CatalogTests(unittest.TestCase):
         self.assertTrue(result['blocked'])
 
     def test_passing_gate_labels_without_evidence_are_not_sufficient(self):
-        gates = json.loads((self.root / 'config/release.json').read_text())
+        gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())
         for value in gates.values():
             if isinstance(value, dict) and 'status' in value:
                 value['status'], value['evidence'] = 'passed', None
-        self._write('config/release.json', gates)
+        self._write('config/release.jsonc', gates)
         pieces = self._catalog()['pieces']
         for piece in pieces:
             piece['status'] = 'tested'
@@ -482,26 +486,26 @@ class CatalogTests(unittest.TestCase):
         self.assertFalse(release_status(self.root, pieces)['public_release_ready'])
 
     def test_release_gate_labels_do_not_replace_piece_game_tests(self):
-        gates = json.loads((self.root / 'config/release.json').read_text())
+        gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())
         for value in gates.values():
             if isinstance(value, dict) and 'status' in value:
                 value['status'], value['evidence'] = 'passed', 'test-fixture-evidence'
-        self._write('config/release.json', gates)
+        self._write('config/release.jsonc', gates)
         pieces = self._catalog()['pieces']
         for piece in pieces:
             piece['provenance']['redistribution'] = 'permission-recorded'
         self.assertFalse(release_status(self.root, pieces)['public_release_ready'])
 
     def test_complete_mock_evidence_can_pass_release_assessment(self):
-        gates = json.loads((self.root / 'config/release.json').read_text())
+        gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())
         for value in gates.values():
             if isinstance(value, dict) and 'status' in value:
                 value['status'], value['evidence'] = 'passed', 'test-fixture-evidence'
-        self._write('config/release.json', gates)
+        self._write('config/release.jsonc', gates)
         # This positive fixture represents a catalogue after design approval.
         # Passing game labels alone must not erase real recorded objections.
         for relative in self.piece_paths:
-            piece=json.loads((self.root/relative).read_text())
+            piece=jsonc.loads((self.root/relative).read_text())
             piece.pop('design_review',None)
             self._write(relative,piece)
         pieces = self._catalog()['pieces']

@@ -13,6 +13,7 @@ from copy import deepcopy
 from datetime import datetime
 import hashlib
 import json
+from . import jsonc
 import math
 import os
 from pathlib import Path
@@ -769,7 +770,7 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
              'Generated from [connections.json](connections.json). Coordinates are canonical east, north, and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
              orientation_text, '',
              'A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.', '',
-             'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.', '',
+             'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.jsonc) for shared route-interface membership.', '',
              '| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |',
              '| --- | --- | --- | --- | --- |']
     for port in connections.get('ports', []):
@@ -1632,10 +1633,12 @@ def refresh_catalog_content(root, *, records=None, changed_piece_ids=None, scope
                 classes.setdefault(port['connection_class'],{'ports':[],
                     'physical_profile_status':'unreviewed; membership alone establishes no game result'})['ports'].append(
                     {'piece_id':identifier,'port_id':port['id']})
-        file=root/domain['path']/'connection-classes.json'
-        file.write_text(json.dumps({'schema_version':1,
+        file=root/domain['path']/'connection-classes.jsonc'
+        jsonc.dump(file, {'schema_version':1,
             'purpose':'Shared classes derived from actual encoded route interfaces; membership does not establish physical fit or game compatibility.',
-            'classes':classes},indent=2)+'\n')
+            'classes':classes}, title=domain.get('name', slug)+' connection classes',
+            summary='Generated route-interface memberships; membership alone does not establish physical fit or game compatibility.')
+        jsonc.export(file, file.with_suffix('.json'))
     deferred=({'inventory_refresh_required':bool(subjects or assembly_results),
                'connection_classes_refresh_required':bool(metadata_refresh and subjects),
                'deferred_assembly_ids':deferred_assembly_ids} if scope_to_changed else {})

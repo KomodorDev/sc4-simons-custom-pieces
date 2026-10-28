@@ -6,6 +6,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+from scp import jsonc
 from scp.autotile import validate_auto_tile_addresses
 from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import (
@@ -15,7 +16,7 @@ from scp_hsr.hsr_compact_fan_verify import check_paths
 from scp_hsr.hsr_fan_core_verify import PINS, audit_retained_core_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 CORE = 'hsr_component_l2_paired_fan_compact_core'
 FULL = 'hsr_component_l2_paired_fan_compact_join'
@@ -37,11 +38,11 @@ class FanCoreExtractionTests(unittest.TestCase):
         self.assertFalse((PIECES/FULL.replace('_', '-')).exists())
         with self.assertRaisesRegex(ValueError, 'Unknown compact HSR fan recipe'):
             compact_info(FULL)
-        allocation = json.loads((ROOT/'config/allocations.json').read_text())['pieces']
+        allocation = jsonc.load(ROOT/'config/allocations.jsonc')['pieces']
         self.assertNotIn(FULL.replace('_', '-'), allocation)
-        domain = json.loads((PIECES.parent/'domain.json').read_text())
+        domain = jsonc.load(PIECES.parent/'domain.jsonc')
         self.assertNotIn('00_pieces/'+FULL.replace('_', '-')+'/piece.json', domain['pieces'])
-        collections = json.loads((PIECES.parent/'collections.json').read_text())['collections']
+        collections = jsonc.load(PIECES.parent/'collections.jsonc')['collections']
         self.assertFalse(any(FULL.replace('_', '-') in members for members in collections.values()))
         replacements = {CORE.replace('_', '-'), 'hsr-component-l2-paired-straight-recessed-web'}
         self.assertEqual(set(collections['hsr-compact-fan-parts']), replacements)
@@ -153,7 +154,7 @@ class FanCoreExtractionTests(unittest.TestCase):
 
     def test_sparse_new_allocation_has_unique_native_addresses(self):
         validate_auto_tile_addresses(self.spec)
-        ledger = json.loads((ROOT/'config/allocations.json').read_text())['pieces'][CORE.replace('_', '-')]
+        ledger = jsonc.load(ROOT/'config/allocations.jsonc')['pieces'][CORE.replace('_', '-')]
         self.assertEqual(ledger['cells'], self.spec['cells'])
         self.assertEqual(ledger['tile_ids'], self.spec['tile_ids'])
         self.assertEqual(ledger['tile_base'], '7f505000')

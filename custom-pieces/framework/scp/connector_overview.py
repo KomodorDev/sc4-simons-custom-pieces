@@ -17,6 +17,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from . import jsonc
 from .render_headers import draw_header, grid_caption, header_settings, level_and_height, piece_title, view_caption
 
 EDGE_NAMES = {0: "West", 1: "North", 2: "East", 3: "South"}
@@ -677,8 +678,9 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     manifest_files = {item["path"]: item for item in manifest["files"]}
     if plugins is None:
         fixture = root / "local/validation-inputs/Plugins"
-        settings = root / "local/settings.json"
-        plugins = fixture if fixture.is_dir() else json_read(settings).get("plugins") if settings.is_file() else None
+        from .paths import local_settings
+        settings = local_settings(root)
+        plugins = fixture if fixture.is_dir() else jsonc.load(settings).get("plugins") if settings.is_file() else None
     if plugins is None:
         raise ValueError("Overview rendering needs an existing texture directory; pass plugins explicitly")
     library = TextureLibrary(Path(plugins).expanduser().resolve())
@@ -728,10 +730,10 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
                                 and old_source.get("source_dat_sha256") == sha256(raw_dat)
                                 and old_evidence.get("textures") == texture_sources)
         source_files = [directory / filename for filename in ("piece.json", "connections.json", "connector-groups.jsonc")]
-        source_files.append(domain / "domain.json")
+        source_files.append(domain / "domain.jsonc")
         source_files.extend(root / "schemas" / name for name in
-                            ("connector-groups.schema.json", "connector-profiles.schema.json"))
-        profile_path = domain / json_read(domain / "domain.json").get("connector_profiles", "connector-profiles.json")
+                            ("connector-groups.schema.jsonc", "connector-profiles.schema.jsonc"))
+        profile_path = domain / jsonc.load(domain / "domain.jsonc").get("connector_profiles", "connector-profiles.jsonc")
         if profile_path.is_file():
             source_files.append(profile_path)
         evidence.update({

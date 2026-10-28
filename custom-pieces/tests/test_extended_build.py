@@ -19,9 +19,11 @@ import tempfile
 import unittest
 import zipfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.build import build_project, package_build
 from scp.dbpf import entries, decompress, pack_dbpf
 from scp.models import parse_s3d, pack_s3d
@@ -42,8 +44,8 @@ def path_bytes(parsed):
 class ExtendedPortablePackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
-        config = json.loads(local.read_text()) if local.is_file() else {}
+        local = local_settings(ROOT)
+        config = jsonc.loads(local.read_text()) if local.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS')

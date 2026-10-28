@@ -2,7 +2,7 @@
 
 The integration cases use only temporary output folders. They never install
 anything or modify donor archives. Set SCP_TEST_NAM_PLUGINS, or supply the
-private local/settings.json used by the CLI, to enable them on an audited workstation.
+private local/settings.jsonc (or existing settings.json) used by the CLI, to enable them on an audited workstation.
 """
 from __future__ import annotations
 
@@ -18,9 +18,11 @@ import tempfile
 import unittest
 import zipfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.catalog import load_catalog
 from scp.build import build_project, package_build, preflight_allocations
 from scp.dbpf import entries, decompress, exemplar, encode_exemplar, pack_dbpf
@@ -85,8 +87,8 @@ class AllocationPreflightTests(unittest.TestCase):
 class RealNAMBuildTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        config_path = ROOT / 'local/settings.json'
-        config = json.loads(config_path.read_text()) if config_path.is_file() else {}
+        config_path = local_settings(ROOT)
+        config = jsonc.loads(config_path.read_text()) if config_path.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests')

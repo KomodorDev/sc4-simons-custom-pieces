@@ -150,7 +150,7 @@ def assess_build(project_root: Path, manifest: dict) -> dict:
 
     # Current projects have one authoritative record per subject. A coarse
     # flag in an older candidate must never hide a failed or untested port.
-    if (root/'project.json').is_file():
+    if (root/'project.jsonc').is_file():
         try:
             from .catalog import load_catalog, safe_relative
             from .content import summarize_manual_record

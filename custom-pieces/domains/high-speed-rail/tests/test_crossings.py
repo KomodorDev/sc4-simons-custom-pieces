@@ -13,11 +13,13 @@ import re
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp_hsr.crossings import build_crossing, check_paths, check_models, INFO, PATH, S3D
 from scp_hsr.crossings import _read_paths
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp.models import parse_s3d
 from scp.verify import parse_rules
@@ -26,12 +28,12 @@ from scp.verify import parse_rules
 class CrossingDonorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
-        config = json.loads(local.read_text()) if local.is_file() else {}
+        local = local_settings(ROOT)
+        config = jsonc.load(local) if local.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS')
-        profile = json.loads((ROOT / 'config/profiles/nam50-rhd.json').read_text())
+        profile = jsonc.load(ROOT / 'config/profiles/nam50-rhd.jsonc')
         cls.context, cls.donors = {}, {}
         for label in ('controller', 'hsr', 'urail'):
             expected = profile['files'][label]

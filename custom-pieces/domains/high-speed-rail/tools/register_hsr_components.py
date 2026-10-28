@@ -11,9 +11,10 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
 from scp.autotile import validate_auto_tile_addresses
 from scp.catalog import load_catalog, number, piece_cells, validate_catalog
 from scp.dbpf import require
@@ -56,8 +57,8 @@ def register_components(info_by_recipe=None, recipes=None, *, root=None, selecti
                 'Every component requires its own name and joining description')
 
     catalog = load_catalog(root)
-    project = json.loads((root / 'project.json').read_text())
-    ledger = json.loads((root / 'config/allocations.json').read_text())
+    project = jsonc.load(root / 'project.jsonc')
+    ledger = jsonc.load(root / 'config/allocations.jsonc')
     current = {piece['id']: piece for piece in catalog['pieces']}
     used_puzzles = {number(piece['puzzle_id']) for piece in ledger['pieces'].values()}
     used_blocks = {number(value) & 0xfffff000

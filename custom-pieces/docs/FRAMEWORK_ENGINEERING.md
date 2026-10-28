@@ -17,7 +17,7 @@ Read [STRUCTURE.md](../STRUCTURE.md) for the directory map, [BUILD_AND_INSTALL.m
 
 ## 1. Source ownership and implementation entry points
 
-The [project registry](../project.json) names domain registries. Each domain has a short README and AGENTS router, a `domain.json`, and named selections in `collections.json`. One selectable type owns `00_pieces/<piece-id>/`; one multi-placement blueprint owns `01_assemblies/<assembly-id>/`. A collection selects existing types and creates neither a new type nor a complete-interchange button.
+The [project registry](../project.jsonc) names domain registries. Each domain has a short README and AGENTS router, a `domain.jsonc`, and named selections in `collections.jsonc`. One selectable type owns `00_pieces/<piece-id>/`; one multi-placement blueprint owns `01_assemblies/<assembly-id>/`. A collection selects existing types and creates neither a new type nor a complete-interchange button.
 
 | Entry point | Responsibility |
 | --- | --- |
@@ -41,7 +41,7 @@ Reuse the current shared and domain helpers. Do not recreate the removed prototy
 
 ## 2. Current identifiers and runtime addressing
 
-[Allocations](../config/allocations.json) contain current types only. Preserve each retained piece's logical ID, puzzle/menu roots, resource families, and construction coordinates. Explicitly deleted subjects retain no definitions, compatibility snapshots or tombstones. The local puzzle range is F7A0–F8FF and model families use 7F500000–7F5FFFFF; these are local identifiers, not confirmed public reservations. Preflight against actual installed resources before building.
+[Allocations](../config/allocations.jsonc) contain current types only. Preserve each retained piece's logical ID, puzzle/menu roots, resource families, and construction coordinates. Explicitly deleted subjects retain no definitions, compatibility snapshots or tombstones. The local puzzle range is F7A0–F8FF and model families use 7F500000–7F5FFFFF; these are local identifiers, not confirmed public reservations. Preflight against actual installed resources before building.
 
 Use the [piece-authoring procedure](WORKFLOW_PIECE_CREATION.md) to reserve and complete a disabled draft before enabling a new type. The runtime rules below apply independently of the piece's transport domain.
 
@@ -192,7 +192,7 @@ The exemplar's type property stays **40**, the native network-menu type. The bui
 | User Visible Name Key | `8a416a99` | The custom title TGI |
 | Item Description Key | `ca416ab5` | The custom description TGI |
 
-Each button's last four hexadecimal digits match its construction sequence root. The accepted straight and diagonal smooth T junctions use `6a47f864` and `6a47f865`. The two scissors switches use `6a47f862` and `6a47f863`. Other current piece IDs are recorded in their manifests and `config/allocations.json`. Artwork and text use those same instance numbers with their respective resource types and groups. Do not assume the current collection occupies a contiguous ID range.
+Each button's last four hexadecimal digits match its construction sequence root. The accepted straight and diagonal smooth T junctions use `6a47f864` and `6a47f865`. The two scissors switches use `6a47f862` and `6a47f863`. Other current piece IDs are recorded in their manifests and `config/allocations.jsonc`. Artwork and text use those same instance numbers with their respective resource types and groups. Do not assume the current collection occupies a contiguous ID range.
 
 These identifiers were checked against the locally installed Plugins files. They are private project identifiers; public allocation has not been confirmed. The build must repeat collision checks before producing a package.
 
@@ -234,7 +234,7 @@ These are static file checks. The separate SCP buttons and their selection behav
 
 ### 9.3 Assembly component menu
 
-The normal compilation stage gives each reusable type its own button and independent construction family. Every final assembly delivery uses the [assembly-menu step](BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu): one button selects that assembly's components through Tab and Shift+Tab. The owning domain's `menu-layout.json` declares the assembly, first-use component order, and cycle-button presentation ID. The final menu removes member-specific presentations and keeps unrelated piece buttons unchanged. Existing piece and construction identifiers remain authoritative.
+The normal compilation stage gives each reusable type its own button and independent construction family. Every final assembly delivery uses the [assembly-menu step](BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu): one button selects that assembly's components through Tab and Shift+Tab. The owning domain's `menu-layout.jsonc` declares the assembly, first-use component order, and cycle-button presentation ID. The final menu removes member-specific presentations and keeps unrelated piece buttons unchanged. Existing piece and construction identifiers remain authoritative.
 
 In RUL0 Ordering, **RotationRing** supplies Home/End rotation states, and subsequent **AddTypes** rows supply Tab/Shift+Tab component changes within that family. The transformation changes only selected ordering rows, retains every state and construction definition, and records the original controller as verification proof. Each click places one selected component. See the [NAM controls reference](https://www.sc4nam.com/docs/getting-started/frequently-asked-questions/#how-do-i-move-between-the-different-puzzleflexstarter-pieces-and-how-do-i-rotate-them).
 
@@ -333,7 +333,7 @@ The [source map](../STRUCTURE.md) identifies each definition, placement, extract
 
 Connector source semantics, schemas, and authoring-versus-derived fields are defined in [CONNECTOR_METADATA.md](CONNECTOR_METADATA.md). The [documentation-generation workflow](WORKFLOW_DOCUMENTATION_GENERATION.md) owns extraction prerequisites, refresh/check commands, coverage, output locations, artwork, README views, and evidence. The framework integration contract is that `connector_metadata.py` validates and resolves source declarations, `connector_overview.py` renders verified compiled resources, and consumers use the shared export API rather than copying parsers or extractors.
 
-Keep authored prose outside named HTML comment blocks. `scp.content` replaces only its generated overview, summary, connection, and manual-check blocks. New or deliberately migrated pieces use `<!-- PIECE README LAYOUT: 2 -->` for the three-chapter overview and `<!-- PIECE TESTING LAYOUT: 1 -->` for the six-chapter TESTING document; README matrix results link to exact cases in TESTING. Legacy combined guides remain in their existing layout until explicitly migrated. Preserve the canonical README/TESTING pair while removing only superseded connection, checklist, or recording-helper pages; refreshes must not recreate duplicates. The two illustrated inventories stay in `00_pieces/` and `01_assemblies/`; collection navigation/counts are generated inside the domain README. Domain `inventory.json` remains a machine-readable index.
+Keep authored prose outside named HTML comment blocks. `scp.content` replaces only its generated overview, summary, connection, and manual-check blocks. New or deliberately migrated pieces use `<!-- PIECE README LAYOUT: 2 -->` for the three-chapter overview and `<!-- PIECE TESTING LAYOUT: 1 -->` for the six-chapter TESTING document; README matrix results link to exact cases in TESTING. Legacy combined guides remain in their existing layout until explicitly migrated. Preserve the canonical README/TESTING pair while removing only superseded connection, checklist, or recording-helper pages; refreshes must not recreate duplicates. The two illustrated inventories stay in `00_pieces/` and `01_assemblies/`; collection navigation/counts are generated inside the domain README. Domain `inventory.jsonc` remains a machine-readable index.
 
 A prose-only `scp.content` refresh preserves observation, connection, and class JSON byte for byte; changed DAT resources require upstream extraction and scoped case regeneration. Recording a confirmed observation also refreshes its subject and inventories. Generated matrices retain each current case's service, pose, rotation, environment, identity, and failed or stale results. Current generation does not expand legacy endpoint/counterpart shortlists into manual cases. Their explicit retirement operation preserves observed and explicitly not-applicable history without promoting it to complete-edge evidence. [Documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md#124-refresh-generated-markdown-and-inventories) owns refresh commands, and [TESTING.md](TESTING.md) owns observation recording and legacy-case retirement.
 

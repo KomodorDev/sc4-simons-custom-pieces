@@ -22,14 +22,14 @@ This repository contains the custom-piece library in `custom-pieces/` and its in
 | Source code, schemas, registries, piece definitions, assembly definitions, and tests | Personal settings and native game inputs under `custom-pieces/local/` |
 | Library guides, canonical images, connector exports, and current evidence | Private reports, captured game inputs, and temporary review workspaces under `custom-pieces/local/` |
 | `README.md`, `AGENTS.md`, `.gitignore`, `docs/GITHUB.md`, `requirements-ci.txt`, and `tools/run_tests.py` | Build output under `custom-pieces/dist/`, virtual environments, and caches |
-| `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/workflows/installer-release.yml`, `.github/branch-protection.json`, and `.github/branch-protection-main.json` | Additional top-level files that are not explicitly allowed by the root ignore rules |
+| `.github/workflows/ci.yml`, `.github/workflows/release-policy.yml`, `.github/workflows/installer-release.yml`, `.github/branch-protection.jsonc`, and `.github/branch-protection-main.jsonc` | Additional top-level files that are not explicitly allowed by the root ignore rules |
 
 The root [ignore rules](../.gitignore) and [library rules](../custom-pieces/.gitignore) keep this boundary explicit. An **ignored file** remains on disk but is omitted from ordinary `git add` commands. GitHub does not back up ignored files. Keep separate backups of game saves, local inputs, and private configuration. Do not force-add personal paths, credentials, downloaded game archives, or disposable outputs.
 
 To see which rule excludes a file, run this example from the repository root:
 
 ```sh
-git check-ignore -v custom-pieces/local/settings.json
+git check-ignore -v custom-pieces/local/settings.jsonc
 ```
 
 <a id="clone-and-prepare-the-project"></a>
@@ -52,7 +52,7 @@ git check-ignore -v custom-pieces/local/settings.json
    python -B tools/run_tests.py
    ```
 
-4. For game builds or native integration checks, prepare the supported NAM inputs and private `custom-pieces/local/settings.json` using the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md). A clone does not contain installed game resources, personal Plugins paths, or existing development builds. Keep those inputs outside version control.
+4. For game builds or native integration checks, prepare the supported NAM inputs and private `custom-pieces/local/settings.jsonc` using the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md). A clone does not contain installed game resources, personal Plugins paths, or existing development builds. Keep those inputs outside version control.
 
 An **editable installation**, created by `python -m pip install -e custom-pieces`, imports the source files directly. If you move the repository or switch to another clone, create a fresh virtual environment and install that editable package there so module commands use the intended source tree. Existing build folders and caches are optional. The [local-input guide](../custom-pieces/docs/BUILD_AND_INSTALL.md#3-prepare-local-development-inputs) distinguishes the public settings example, private game inputs, and generated builds.
 
@@ -138,7 +138,7 @@ Pull-request runs build Windows review artifacts without publishing a GitHub Rel
 
 The tag is **`installer-<first 12 characters of the main commit>`**. It identifies one source revision independently of the library's development version. The Windows build supplies six assets: `SCP-Installer-windows-x64-<commit>.zip`, its `.zip.sha256` checksum, `bundle-index-windows-x64.json`, `archive-check-windows-x64.json`, `self-test-windows-x64.json`, and `gui-smoke-test-windows-x64.json`. The ZIP also records its source commit and exact members. Publication verifies the complete expected asset set. Rerunning the same revision may reuse an already published release only after its commit and asset identities agree; it must not replace an unrelated tag or overwrite different existing assets. A new source revision gets a new tag.
 
-These are **experimental installer prereleases**. They do not assert that all 167 current catalogue types have passed game tests, that public resource IDs are reserved, or that NAM-derived DAT redistribution has been cleared. [`config/installer.json`](../custom-pieces/config/installer.json) describes this distribution, while [`config/release.json`](../custom-pieces/config/release.json) continues to govern compiled-plugin readiness. The installer bundles neither NAM nor the game. Its Windows executable is unsigned; player instructions explain the possible first-launch prompt.
+These are **experimental installer prereleases**. They do not assert that all 167 current catalogue types have passed game tests, that public resource IDs are reserved, or that NAM-derived DAT redistribution has been cleared. [`config/installer.jsonc`](../custom-pieces/config/installer.jsonc) describes this distribution, while [`config/release.jsonc`](../custom-pieces/config/release.jsonc) continues to govern compiled-plugin readiness. The installer bundles neither NAM nor the game. Its Windows executable is unsigned; player instructions explain the possible first-launch prompt.
 
 The workflow publishes automatically after a human source promotion; it does not need a separate manual GitHub Release action. Implementing or testing the workflow on a work branch does not publish a release. Use **Actions** artifacts to review the installer before promoting the change through `dev` into `main`. Hosted self-tests check the packaged application's runtime and metadata. Native resource checks requiring proprietary game inputs can remain explicit skips in hosted CI; a successful installer build does not claim that a full game installation or an in-game test ran on the runner.
 
@@ -169,12 +169,22 @@ For local native integration checks, use private Plugins settings or set `SCP_TE
 
 The canonical repository uses `dev` as its default branch and protects both `dev` and `main`. `dev` requires the `Tests` check; `main` requires both `Tests` and `Release policy`. A work branch must include the current base version, required conversations must be resolved, and the rules apply to administrators. Force pushes and branch deletion are blocked. No approving review is required by the saved templates, so a human maintainer can merge a tested PR without a second reviewer. Fork owners manage their own repository settings; cloning or committing these templates does not apply branch protection.
 
-Maintainers with repository administration permission can deliberately apply the [development protection template](../.github/branch-protection.json) and the [release protection template](../.github/branch-protection-main.json) from the repository root:
+Maintainers with repository administration permission can deliberately apply the [development protection template](../.github/branch-protection.jsonc) and the [release protection template](../.github/branch-protection-main.jsonc). GitHub accepts strict JSON, so first convert the commented sources into disposable API payloads from the repository root:
 
 ```sh
-gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/dev/protection --input .github/branch-protection.json
-gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/main/protection --input .github/branch-protection-main.json
+mkdir -p custom-pieces/local/github-api
+python3 -B custom-pieces/framework/scp/jsonc.py .github/branch-protection.jsonc --output custom-pieces/local/github-api/dev-protection.json
+python3 -B custom-pieces/framework/scp/jsonc.py .github/branch-protection-main.jsonc --output custom-pieces/local/github-api/main-protection.json
 ```
+
+Open both generated files, confirm that conversion succeeded and that the required checks match the intended policy, then apply those strict-JSON payloads:
+
+```sh
+gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/dev/protection --input custom-pieces/local/github-api/dev-protection.json
+gh api --method PUT repos/KomodorDev/sc4-simons-custom-pieces/branches/main/protection --input custom-pieces/local/github-api/main-protection.json
+```
+
+The JSONC files remain the authoring sources. The ignored `local/github-api/` files are generated API inputs; converting them changes no GitHub setting until a maintainer deliberately runs the corresponding `gh api` command.
 
 When introducing this setup, merge the workflow changes into the default `dev` branch through a tested PR before expecting release PRs to report `Release policy`. Requiring the check on `main` before that first human merge intentionally blocks release merges until the workflow is available. Do not bypass protection or merge the setup PR as an agent to install it.
 

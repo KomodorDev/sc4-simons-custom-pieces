@@ -10,9 +10,11 @@ import struct
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp_hsr.directional_diagonal_t import (
     RECIPE, INFO, directional_layout, build_rules, build_directional,
@@ -58,8 +60,8 @@ class DirectionalDiagonalTVerifierTests(unittest.TestCase):
         cls.paths = {(*PATH, int(tile, 16)): encode_paths(layout[cell]['routes'])
                      for tile, cell in zip(cls.spec['tile_ids'], contract['cells'])}
         cls.models, cls.donors = None, None
-        if (ROOT/'local/settings.json').is_file():
-            plugins = Path(json.loads((ROOT/'local/settings.json').read_text())['plugins'])
+        if local_settings(ROOT).is_file():
+            plugins = Path(jsonc.load(local_settings(ROOT))['plugins'])
             candidates = list(plugins.rglob('High Speed Rail.dat'))
             if len(candidates) == 1:
                 cls.donors = {key: decompress(raw) for key, raw in entries(candidates[0].read_bytes()).items()}

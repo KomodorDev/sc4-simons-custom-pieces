@@ -23,7 +23,7 @@ from scp_hsr.directional_t_verify import _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.rail_geometry import _route
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 CORE = 'hsr_component_l2_paired_fan_compact_core'
 STRAIGHT = 'hsr_component_l2_paired_straight_recessed_web'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'

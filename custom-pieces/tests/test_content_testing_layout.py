@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 sys.path.insert(0, str(next(path for path in Path(__file__).resolve().parents
-                          if (path/'project.json').is_file())/'framework'))
+                          if (path/'project.jsonc').is_file())/'framework'))
 from scp.content import (ASSEMBLY_TESTING_CHAPTERS, ASSEMBLY_TESTING_LAYOUT_MARKER,
                          _ensure_testing_document, assembly_document_scaffold, fingerprint,
                          new_manual_record, record_observation_file, record_user_result,

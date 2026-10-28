@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path / "project.json").is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path / "project.jsonc").is_file())
 sys.path.insert(0, str(ROOT / "installer"))
 from scp_installer import service
 from scp.catalog import load_catalog

@@ -15,7 +15,7 @@ import tempfile
 import unittest
 
 
-CUSTOM_ROOT = next(parent for parent in Path(__file__).resolve().parents if (parent / "project.json").is_file())
+CUSTOM_ROOT = next(parent for parent in Path(__file__).resolve().parents if (parent / "project.jsonc").is_file())
 DOMAIN = Path("domains/high-speed-rail")
 CROSSING = "hsr-component-modular-crossing-core"
 CORNER = "hsr-component-tight-paired-curve90-l4-to-mid"
@@ -33,7 +33,7 @@ def read_json(path):
 class ConnectorSourceRegressionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.registry = read_json(CUSTOM_ROOT / DOMAIN / "connector-profiles.json")
+        cls.registry = read_json(CUSTOM_ROOT / DOMAIN / "connector-profiles.jsonc")
         cls.profiles = metadata.resolve_profiles(cls.registry)
         cls.raw = {}
         for slug in PILOT_IDS:
@@ -376,7 +376,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
         self.assertEqual(before, {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths})
 
     def test_source_binding_detects_even_prose_only_source_change(self):
-        relatives = [Path("project.json"), DOMAIN / "domain.json", DOMAIN / "connector-profiles.json"]
+        relatives = [Path("project.jsonc"), DOMAIN / "domain.jsonc", DOMAIN / "connector-profiles.jsonc"]
         relatives.extend(DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "connector-groups.jsonc"))
         with tempfile.TemporaryDirectory(prefix="scp-planner-binding-") as temporary:
             root = Path(temporary)
@@ -393,7 +393,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                 metadata.load_library(root, PILOT_IDS)
 
     def test_profile_reference_rejects_absolute_and_parent_traversal_paths(self):
-        relatives = [Path("project.json"), DOMAIN / "domain.json", DOMAIN / "connector-profiles.json"]
+        relatives = [Path("project.jsonc"), DOMAIN / "domain.jsonc", DOMAIN / "connector-profiles.jsonc"]
         relatives.extend(DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "connector-groups.jsonc"))
         with tempfile.TemporaryDirectory(prefix="scp-planner-path-") as temporary:
             root = Path(temporary)
@@ -402,9 +402,9 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(CUSTOM_ROOT / relative, destination)
             self.assertEqual(metadata.load_library(root, PILOT_IDS)["status"], "metadata_validated")
-            domain_path = root / DOMAIN / "domain.json"
+            domain_path = root / DOMAIN / "domain.jsonc"
             original = read_json(domain_path)
-            for unsafe in (str(root / DOMAIN / "connector-profiles.json"), "../high-speed-rail/connector-profiles.json"):
+            for unsafe in (str(root / DOMAIN / "connector-profiles.jsonc"), "../high-speed-rail/connector-profiles.jsonc"):
                 with self.subTest(path=unsafe):
                     altered = deepcopy(original)
                     altered["connector_profiles"] = unsafe
@@ -413,7 +413,7 @@ class ConnectorSourceRegressionTests(unittest.TestCase):
                         metadata.load_library(root, PILOT_IDS)
 
     def test_legacy_json_sidecar_is_not_a_fallback(self):
-        relatives = [DOMAIN / "domain.json", DOMAIN / "connector-profiles.json"]
+        relatives = [DOMAIN / "domain.jsonc", DOMAIN / "connector-profiles.jsonc"]
         relatives.extend(DOMAIN / "00_pieces" / slug / filename for slug in PILOT_IDS for filename in ("piece.json", "connections.json", "connector-groups.jsonc"))
         with tempfile.TemporaryDirectory(prefix="scp-planner-no-fallback-") as temporary:
             root = Path(temporary)

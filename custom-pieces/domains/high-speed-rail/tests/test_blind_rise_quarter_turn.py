@@ -14,7 +14,7 @@ from scp_hsr.interchange_verify import _encoded_routes
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.test_support import floor
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 
 def fixture():
     spec = next(p for p in load_catalog(ROOT)['pieces'] if p['id']=='blind-hsr-rise-quarter-turn')

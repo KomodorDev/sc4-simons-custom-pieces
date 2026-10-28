@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.content import (case_state, fingerprint, new_manual_record, record_software_result,
     record_user_result, refresh_manual_record, render_manual_checklist,
     resource_fingerprints, summarize_manual_record, validate_manual_record, write_subject_content,
@@ -561,7 +561,7 @@ class ManualContentTests(unittest.TestCase):
 
     def test_manual_workflow_uses_exact_portable_subject_command(self):
         with tempfile.TemporaryDirectory() as directory:
-            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.json').write_text('{}')
+            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.jsonc').write_text('{}')
             subject=root/'domains/hsr/00_pieces/fixture'
             write_subject_content(subject,{'id':'fixture','kind':'piece'},self.connections,self.hashes)
             text=(subject/'TESTING.md').read_text()

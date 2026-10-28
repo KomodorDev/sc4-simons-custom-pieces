@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 import unittest
 
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp_hsr.interchange_layouts import INFO, interchange_layout
 from scp.track_paths import encode_paths, _parse_paths
 

@@ -19,7 +19,7 @@ Research checked on **18 October 2026**. This document distinguishes statements 
 
 ## 1. Current release status
 
-The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The project also supplies an **experimental local-builder installer**, which contains the runtime and maintained source and reads native resources from the user's own installed game and NAM. It does not distribute the compiled DATs, NAM archives, or base-game archives. Its [separate distribution policy](../config/installer.json) does not mark the [compiled-plugin readiness record](../config/release.json) passed or published.
+The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The project also supplies an **experimental local-builder installer**, which contains the runtime and maintained source and reads native resources from the user's own installed game and NAM. It does not distribute the compiled DATs, NAM archives, or base-game archives. Its [separate distribution policy](../config/installer.jsonc) does not mark the [compiled-plugin readiness record](../config/release.jsonc) passed or published.
 
 <a id="experimental-installer-distribution"></a>
 

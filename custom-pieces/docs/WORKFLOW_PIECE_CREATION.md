@@ -103,7 +103,7 @@ The concrete example uses the `high-speed-rail` domain. For a different network,
 python3 custom-pieces/scp.py scaffold --domain high-speed-rail --id example-crossing --name 'Example Crossing' --width 1 --depth 2
 ```
 
-The command creates `custom-pieces/domains/high-speed-rail/00_pieces/example-crossing/piece.json` and its pending `README.md`/`TESTING.md` pair, registers the draft, and records its local identifiers in `custom-pieces/config/allocations.json`. Open all three new files and inspect the allocated definition and the pending authored chapters. The README has three chapters, and TESTING has six; their generated blocks will receive actual connection and observation data later. A draft cannot be included in a working build until its construction recipe and verification are implemented.
+The command creates `custom-pieces/domains/high-speed-rail/00_pieces/example-crossing/piece.json` and its pending `README.md`/`TESTING.md` pair, registers the draft, and records its local identifiers in `custom-pieces/config/allocations.jsonc`. Open all three new files and inspect the allocated definition and the pending authored chapters. The README has three chapters, and TESTING has six; their generated blocks will receive actual connection and observation data later. A draft cannot be included in a working build until its construction recipe and verification are implemented.
 
 Check the initial document structure without building game resources:
 
@@ -159,7 +159,7 @@ For example, modeled cells `(19,4)` and `(3,5)` both receive key `0x54`. The lat
 
 Before registration, use `framework/scp/autotile.py` to validate the modeled origin, lookup uniqueness, selected resource IDs, and all five zoom slots. The independent verifier must decode the emitted construction rules and verify those facts again; a correct manifest cannot repair incorrect controller rules. Include a colliding layout tested with different bases and a valid wider sparse layout as negative and positive controls. A prototype with an explicitly failed placement result remains inspectable, but must not become a selectable build.
 
-A **dependency profile** pins the supported input archives and their SHA-256 fingerprints, meaning hashes identifying exact file bytes. The existing profile is `custom-pieces/config/profiles/nam50-rhd.json`; `rhd` means right-hand traffic. Inspect and re-audit a changed donor before updating its fingerprint, and add an audited entry for a new dependency. This input profile is separate from optional connector defaults.
+A **dependency profile** pins the supported input archives and their SHA-256 fingerprints, meaning hashes identifying exact file bytes. The existing profile is `custom-pieces/config/profiles/nam50-rhd.jsonc`; `rhd` means right-hand traffic. Inspect and re-audit a changed donor before updating its fingerprint, and add an audited entry for a new dependency. This input profile is separate from optional connector defaults.
 
 <a id="4-implement-the-recipe-and-the-independent-verifier"></a>
 
@@ -224,7 +224,7 @@ When that implementation exists, change the manifest's `status` to `experimental
 
 ## 6. Build and check only the new piece
 
-Before the first native build, complete [Prepare local development inputs](BUILD_AND_INSTALL.md#3-prepare-local-development-inputs). A **native input** is an actual game or NAM resource archive read by the builder. That chapter identifies the audited inputs and explains how to create the ignored `custom-pieces/local/settings.json` file and supply every active Plugins directory. From the repository root, with the same virtual environment active, check the new piece's declared dependencies and allocated identifiers:
+Before the first native build, complete [Prepare local development inputs](BUILD_AND_INSTALL.md#3-prepare-local-development-inputs). A **native input** is an actual game or NAM resource archive read by the builder. That chapter identifies the audited inputs and explains how to create the ignored `custom-pieces/local/settings.jsonc` file and supply every active Plugins directory. From the repository root, with the same virtual environment active, check the new piece's declared dependencies and allocated identifiers:
 
 ```sh
 python3 custom-pieces/scp.py doctor --include example-crossing

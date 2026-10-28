@@ -9,7 +9,7 @@ import sys
 import unittest
 import zlib
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp.dbpf import encode_exemplar, exemplar

@@ -156,7 +156,7 @@ def validate_structure(value, schema, location="$", document=None):
 @_validated
 def resolve_profiles(registry):
     """Resolve optional version-2 defaults, never a physical mesh contract."""
-    validate_structure(registry, _schema("connector-profiles.schema.json"))
+    validate_structure(registry, _schema("connector-profiles.schema.jsonc"))
     raw, resolved, pending = registry["profiles"], {}, set()
     def visit(identifier):
         _need(identifier in raw, f"Unknown profile parent: {identifier}")
@@ -194,7 +194,7 @@ def validate_piece(piece, connections, groups, profiles):
     output. Coordinates remain in the piece's canonical east/north/height frame.
     File hashes are checked separately by load_pilot, which has the raw bytes.
     """
-    validate_structure(groups, _schema("connector-groups.schema.json"))
+    validate_structure(groups, _schema("connector-groups.schema.jsonc"))
     # Old measured records retain their exact bytes and historical endpoint
     # shortlists. Current resolved data contains this piece's intrinsic facts;
     # neighbour discovery belongs to the separate complete-boundary consumer.
@@ -397,10 +397,10 @@ def load_library(custom_root, piece_ids, domain_id="high-speed-rail"):
     root = Path(custom_root).resolve()
     _need(isinstance(domain_id, str) and re.fullmatch(r"[a-z][a-z0-9-]*", domain_id), "Invalid domain ID")
     domain = _safe_relative(root, "domains/" + domain_id)
-    registry = json.loads(_safe_relative(domain, "domain.json").read_text())
+    registry = jsonc.load(_safe_relative(domain, "domain.jsonc"))
     _need(registry.get("schema_version") == 1 and registry.get("id") == domain_id, "Invalid HSR domain registry schema or ID")
-    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.json"))
-    profiles = resolve_profiles(jsonc.loads(profile_path.read_text())) if profile_path.is_file() else {}
+    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
+    profiles = resolve_profiles(jsonc.load(profile_path)) if profile_path.is_file() else {}
     registered = {Path(p).parent.name: p for p in registry["pieces"]}
     _need(isinstance(piece_ids, (list, tuple)) and piece_ids and len(set(piece_ids)) == len(piece_ids), "Pilot needs unique selected piece IDs")
     result = {}
@@ -443,7 +443,7 @@ def _registered_adapter(root, domain_id):
     import importlib
     import sys
     domain = root / "domains" / domain_id
-    registry = jsonc.load(domain / "domain.json")
+    registry = jsonc.load(domain / "domain.jsonc")
     name = registry.get("connector_adapter")
     _need(isinstance(name, str) and all(p.isidentifier() for p in name.split(".")), "Domain needs an explicit connector_adapter registration")
     location = domain / "implementation"
@@ -544,16 +544,16 @@ def _source_files(root, domain_id, piece_id, compiled):
     files = [directory/name for name in ("piece.json", "connections.json", "connector-groups.jsonc")]
     # The manifest's compiled facts have their own semantic fingerprint. Its
     # documentation snapshot must be allowed to change after final rendering.
-    files += [domain/"domain.json", root/compiled["pieces"][piece_id]["dat_path"]]
-    registry = jsonc.load(domain/"domain.json")
-    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.json"))
+    files += [domain/"domain.jsonc", root/compiled["pieces"][piece_id]["dat_path"]]
+    registry = jsonc.load(domain/"domain.jsonc")
+    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
     if profile_path.is_file():
         files.append(profile_path)
     # Contract providers can import reviewed tangent/geometry helpers. Bind the
     # complete owning implementation, rather than only its thin adapter module.
     files += list((domain/"implementation").rglob("*.py"))
     files += list((root/"framework/scp").glob("*.py"))
-    files += list((root/"schemas").glob("*.schema.json"))
+    files += list((root/"schemas").glob("*.schema.jsonc"))
     for path in files:
         _need(path.resolve().is_relative_to(root), "Source fingerprint file escapes library")
     return {path.relative_to(root).as_posix(): _sha(path.read_bytes()) for path in sorted(set(files))}
@@ -598,7 +598,7 @@ def build_exports(custom_root, piece_ids, build, domain_id="high-speed-rail"):
                              "occupied_cells": "unverified", **{key: "unverified" for key in LIMITATIONS}},
         }
         value["content_sha256"] = _sha(_canonical(value))
-        validate_structure(value, _schema("connector-data.schema.json"))
+        validate_structure(value, _schema("connector-data.schema.jsonc"))
         result[piece_id] = value
     return result
 
@@ -628,7 +628,7 @@ def load_exports(custom_root, piece_ids, domain_id="high-speed-rail"):
         path = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}/connector-data.json")
         _export_need(path.is_file(), f"{piece_id}: missing connector-data.json; run connectors refresh", "missing_export")
         value = jsonc.load(path)
-        validate_structure(value, _schema("connector-data.schema.json"))
+        validate_structure(value, _schema("connector-data.schema.jsonc"))
         _need(value["piece_id"] == piece_id and value["domain_id"] == domain_id, "Export identity mismatch")
         unhashed = {k:v for k,v in value.items() if k != "content_sha256"}
         _need(_sha(_canonical(unhashed)) == value["content_sha256"], f"{piece_id}: export content fingerprint mismatch")
@@ -690,7 +690,8 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     from .models import parse_s3d
     from .dbpf import decompress, entries
     if plugins is None:
-        fixture, settings = root/"local/validation-inputs/Plugins", root/"local/settings.json"
+        from .paths import local_settings
+        fixture, settings = root/"local/validation-inputs/Plugins", local_settings(root)
         plugins = fixture if fixture.is_dir() else jsonc.load(settings).get("plugins") if settings.is_file() else None
     _need(plugins is not None, "Overview texture freshness needs --plugins or configured texture inputs; use --no-render for data-only checks")
     payload = entries(_safe_relative(root,evidence["source_dat"]).read_bytes())

@@ -22,7 +22,7 @@ from scp_hsr.hsr_partition_components_verify import CONTRACTS, MODULE_TILE_FINGE
 from scp_hsr.hsr_components_verify import CONTRACTS as COMPONENT_CONTRACTS, _contract, check_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 
 
 class LiteralComponentSupportMetadataTests(unittest.TestCase):

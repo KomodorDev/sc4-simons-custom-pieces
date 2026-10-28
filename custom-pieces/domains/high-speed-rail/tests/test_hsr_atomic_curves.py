@@ -22,7 +22,7 @@ from scp_hsr.track_shapes import _construction_flags
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.hsr_atomic_components_verify import check_paths
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 DEPARTURE = 'hsr_component_l2_shortened_departure_curve'
 RETURN = 'hsr_component_l2_shortened_return_curve'

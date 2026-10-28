@@ -21,7 +21,7 @@ import tempfile
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path[:0] = [str(ROOT/'framework'), str(ROOT/'domains/high-speed-rail/implementation')]
 
 from scp.dbpf import require, entries

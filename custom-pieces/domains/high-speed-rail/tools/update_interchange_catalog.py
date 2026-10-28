@@ -12,8 +12,9 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog, number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
@@ -56,8 +57,8 @@ def presentation(recipe, info):
 
 def main():
     catalog = load_catalog(ROOT)
-    project_path, ledger_path = ROOT/'project.json', ROOT/'config/allocations.json'
-    project, ledger = json.loads(project_path.read_text()), json.loads(ledger_path.read_text())
+    project_path, ledger_path = ROOT/'project.jsonc', ROOT/'config/allocations.jsonc'
+    project, ledger = jsonc.load(project_path), jsonc.load(ledger_path)
     current = {piece['id']: piece for piece in catalog['pieces']}
     used_names = {piece['name'].casefold() for piece in catalog['pieces']}
     used_puzzles = {number(record['puzzle_id']) for record in ledger['pieces'].values()}

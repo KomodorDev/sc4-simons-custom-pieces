@@ -164,16 +164,16 @@ The alias `build-the-piece` in this example preserves a link written before chap
 
 | Location | Purpose |
 | --- | --- |
-| `project.json`, domain `domain.json`, and `collections.json` | Explicit project/domain registries and named build selections. |
-| Domain `menu-layout.json` | Assembly membership, component-cycle order, the single assembly-button presentation, and locally reserved IDs. Ordinary piece compilation supplies the inputs; [assembly-menu packaging](docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu) prepares every final assembly menu. |
-| `config/allocations.json`, `config/profiles/`, and `config/release.json` | Identifier ownership, audited dependency contracts, and compiled-plugin release requirements. |
-| `config/installer.json` | Experimental local-builder distribution policy, complete implemented-catalogue selection, assembly presentation, supported game profile, installer platforms, and release provenance requirements. It does not change `config/release.json` or manual observations. |
+| `project.jsonc`, domain `domain.jsonc`, and `collections.jsonc` | Explicit project/domain registries and named build selections. |
+| Domain `menu-layout.jsonc` | Assembly membership, component-cycle order, the single assembly-button presentation, and locally reserved IDs. Ordinary piece compilation supplies the inputs; [assembly-menu packaging](docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu) prepares every final assembly menu. |
+| `config/allocations.jsonc`, `config/profiles/`, and `config/release.jsonc` | Identifier ownership, audited dependency contracts, and compiled-plugin release requirements. |
+| `config/installer.jsonc` | Experimental local-builder distribution policy, complete implemented-catalogue selection, assembly presentation, supported game profile, installer platforms, and release provenance requirements. It does not change `config/release.jsonc` or manual observations. |
 | `00_pieces/<piece>/piece.json`, plus `geometry.json` where needed | Definition, resource identities, and local geometry source for one reusable type. |
 | `01_assemblies/<assembly>/assembly.json` | Placed instances, stable labels, positions, and rotations. |
 | Subject `connections.json` | Intrinsic directional interfaces, permitted journeys, forbidden transfers, and resource fingerprints extracted from the subject's actual resources. Historical records can retain deprecated endpoint shortlists; current extraction does not discover neighbours. |
-| Subject `connector-groups.jsonc` and optional domain `connector-profiles.json` | Authored connector associations and shared defaults; meanings and file versions belong to the [connector reference](docs/CONNECTOR_METADATA.md). |
+| Subject `connector-groups.jsonc` and optional domain `connector-profiles.jsonc` | Authored connector associations and shared defaults; meanings and file versions belong to the [connector reference](docs/CONNECTOR_METADATA.md). |
 | Subject `connector-data.json` | Generated resolved consumer data; generation and freshness belong to [documentation generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md). |
-| `schemas/connector-*.schema.json`; `framework/scp/connector_metadata.py` and `jsonc.py` | Source-format rules, parsing, cross-file validation, and export. |
+| `schemas/connector-*.schema.jsonc`; `framework/scp/connector_metadata.py` and `jsonc.py` | Source-format rules, parsing, cross-file validation, and export. |
 | Subject `checks/manual-tests.json` | Authoritative record of scoped observations; follow [TESTING](docs/TESTING.md). |
 | Subject `checks/` and `evidence/` | Contracts, measurement rationale, and current verification/render evidence. |
 | Subject `icon.png`, beside `piece.json` or `assembly.json` | Canonical four-state menu icon for that reusable piece or assembly button; icon encoding belongs to [framework engineering](docs/FRAMEWORK_ENGINEERING.md#91-icon-encoding-and-maintenance). |
@@ -189,6 +189,30 @@ The alias `build-the-piece` in this example preserves a link written before chap
 | `dist/` | Disposable builds and exports; source definitions and observations live with their owners. |
 
 The repository-level `.github/workflows/installer-release.yml` checks the Windows x64 installer bundle. Pull requests produce review artifacts; accepted `main` pushes publish experimental installer prereleases only after the workflow's full test, packaged executable self-test, GUI startup smoke check, and archive checks pass. The [contributor workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) owns that process, and the [installer guide](docs/INSTALLER.md) owns player steps. Downloadable installers contain the local builder and its runtime; native game resources are read and compiled on the user's computer.
+
+### 5.1 Shared JSONC sources and strict JSON exports
+
+**JSON** is a structured data format. **JSONC** adds comments to that format. In this first migration phase, maintained shared configuration, project and domain registries, collections, menu layouts, connector profiles, schemas, documentation templates, audits, and generated catalogues use `.jsonc`. This includes the shared inventories directly inside `00_pieces/` and `01_assemblies/`; individual subject definitions, observations, artwork evidence, and frozen reports retain their current formats.
+
+Start every shared JSONC file with two human-readable comment lines. The title identifies the file, and the summary explains why it exists and what owns its data. Keep each value on one physical line as a quoted string:
+
+```jsonc
+// title: "Permanent piece resource allocations"
+// summary: "Reserve game-resource identifiers so existing saved cities keep stable piece identities."
+{
+  "schema_version": 1
+}
+```
+
+These comments are documentation, rather than additional JSON properties. Preserve existing payload fields, schema versions, identifiers, measurements, and observation states. Shared readers use `scp.jsonc.load`; writer-managed registries and generated views use `scp.jsonc.dump` or transactional `scp.jsonc.document` to retain the existing title, summary, and leading comments. The owning writer regenerates the payload, so keep durable file explanations in that leading header. The parser accepts `//` and `/* */` comments, but rejects trailing commas, duplicate keys, and non-finite numeric values.
+
+Machine interfaces that require strict JSON keep strict JSON. Build manifests, connector exports, installer reports, install receipts, CLI responses, and GitHub API payloads are examples. Convert a JSONC source explicitly with `python3 -m scp.jsonc INPUT.jsonc --output OUTPUT.json`; omitting `--output` prints strict JSON to standard output. Use the documented [GitHub template conversion](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#7-required-checks-for-maintainers) before applying branch-protection policies. A published schema's `$id` remains stable even when its maintained source filename becomes `.schema.jsonc`.
+
+Exactly four shared `.json` files remain as generated compatibility views: each domain's `connection-classes.json`, plus HSR's `junction-design-review.json` and `native-diagonal-port-cap-audit.json`. Existing piece definitions and guides still reference those paths. Edit their `.jsonc` authorities, then run `python3 -m scp.jsonc --sync-legacy-exports custom-pieces` from the repository root to refresh only those four strict-JSON views. Do not author a second independent copy. Connection-class generation updates its matching compatibility view automatically.
+
+New private workstation settings use ignored `local/settings.jsonc`. An existing `local/settings.json` remains readable when it is the only settings file; having both files is rejected so a build cannot silently select a different configuration. Private settings and disposable runtime JSON are outside this source-file migration.
+
+Changing a shared source's filename, comment bytes, or reader implementation can invalidate the exact input fingerprints in existing connector exports and render evidence. Preserve those subject records and report their freshness honestly. This source-format migration supplies no new extraction, picture approval, or game observation; refresh a subject's evidence only through its scoped verification and generation workflow.
 
 <a id="generated-views"></a>
 

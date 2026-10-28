@@ -11,7 +11,7 @@ from unittest.mock import Mock, patch
 
 from PIL import Image, ImageDraw
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 from scp.dbpf import pack_dbpf
 from scp.models import parse_s3d, pack_s3d
@@ -22,6 +22,36 @@ try:
     from scp import preview
 except ModuleNotFoundError:
     preview=None
+
+
+@unittest.skipIf(preview is None, 'NumPy preview dependency is unavailable')
+class PreviewTitleBindingTests(unittest.TestCase):
+    def test_commented_shared_sources_keep_titles_and_invalidate_exact_title_fingerprints(self):
+        from scp.catalog import load_catalog
+        catalog = load_catalog(ROOT)
+        identifier = 'hsr-component-modular-crossing-core'
+        piece = next(piece for piece in catalog['pieces'] if piece['id'] == identifier)
+        domain = Path(catalog['domains'][piece['domain']]['path'])
+        names = [domain/'domain.jsonc', domain/'connector-profiles.jsonc']
+        names.extend(domain/'00_pieces'/identifier/name
+                     for name in ('piece.json', 'connections.json', 'connector-groups.jsonc'))
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for relative in names:
+                target = root/relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT/relative).read_bytes())
+            first_title, first_inputs = preview._canonical_title(root, catalog, piece)
+            registry = root/domain/'domain.jsonc'
+            registry.write_text(registry.read_text()+'\n// A new authoring explanation.\n')
+            second_title, second_inputs = preview._canonical_title(root, catalog, piece)
+            self.assertEqual(first_title, second_title)
+            key = (domain/'domain.jsonc').as_posix()
+            self.assertNotEqual(first_inputs[key], second_inputs[key])
+            self.assertEqual(second_inputs[key], hashlib.sha256(registry.read_bytes()).hexdigest())
+            self.assertEqual(set(first_inputs), {name.as_posix() for name in names})
+            for name in names[1:]:
+                self.assertEqual(first_inputs[name.as_posix()], second_inputs[name.as_posix()])
 
 
 @unittest.skipIf(preview is None,'NumPy preview dependency is unavailable')

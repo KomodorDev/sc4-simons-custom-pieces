@@ -1,3 +1,5 @@
+// title: "Custom-piece project registry"
+// summary: "Identify the library and locate its transport domains, dependency profile, allocation ledger, and release policy."
 {
   "purpose": "Shared project identity and explicit transport-domain entry points. Piece and assembly lists belong to each domain registry.",
   "schema_version": 1,
@@ -6,20 +8,20 @@
   "slug": "simons-custom-pieces",
   "version": "0.6.0.dev1",
   "plugin_folder": "zzz_Simons_Custom_Pieces",
-  "profile": "config/profiles/nam50-rhd.json",
+  "profile": "config/profiles/nam50-rhd.jsonc",
   "public_ids_reserved": false,
-  "allocations": "config/allocations.json",
+  "allocations": "config/allocations.jsonc",
   "domains": {
     "high-speed-rail": {
       "name": "High Speed Rail and Ground High Speed Rail",
       "path": "domains/high-speed-rail",
-      "registry": "domains/high-speed-rail/domain.json"
+      "registry": "domains/high-speed-rail/domain.jsonc"
     },
     "highway": {
       "name": "Highway (reserved; no pieces implemented)",
       "path": "domains/highway",
-      "registry": "domains/highway/domain.json"
+      "registry": "domains/highway/domain.jsonc"
     }
   },
-  "release": "config/release.json"
+  "release": "config/release.jsonc"
 }

@@ -6,7 +6,7 @@ import sys
 import unittest
 
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 
 from scp.models import ModelError, pack_s3d, parse_s3d, validate_s3d
 from scp.render_meshes import MAX_TRIANGLES, MAX_VERTICES, assert_render_budget, repack_s3d

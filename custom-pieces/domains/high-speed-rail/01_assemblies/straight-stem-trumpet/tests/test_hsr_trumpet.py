@@ -17,6 +17,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from scp import jsonc
 from scp.models import parse_s3d, pack_s3d
 from scp.track_paths import encode_paths, _parse_paths
 from scp.verification_fixtures import resource_descriptor, verification_resources
@@ -72,7 +73,7 @@ def saved_historical():
 def copy_retirement_inputs(root):
     """Copy retained proofs for mutation tests, never retired parent sources."""
     from scp_hsr import hsr_trumpet_border_verify as current
-    paths = [ROOT/'domains/high-speed-rail'/relative for relative in ('domain.json','collections.json')]
+    paths = [ROOT/'domains/high-speed-rail'/relative for relative in ('domain.jsonc','collections.jsonc')]
     paths.extend(SCENE.parent/relative for relative in (
         current.PARENT_RETIREMENT_RELATIVE, 'checks/atomization.json', *current.PRESERVED_INTEGRATION_FILES))
     for identifier, inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
@@ -1138,7 +1139,7 @@ class CurrentFanAtomizationSourceControls(unittest.TestCase):
 
     def test_selected_types_keep_ordinary_straight_and_retained_full_fan_registration(self):
         from scp_hsr.hsr_trumpet_border_verify import CORE_ID,STRAIGHT_ID,FULL_FAN_ID
-        collections=json.loads((ROOT/'domains/high-speed-rail/collections.json').read_text())['collections']
+        collections=jsonc.load(ROOT/'domains/high-speed-rail/collections.jsonc')['collections']
         selected=collections['hsr-straight-stem-trumpet']
         self.assertEqual(set(selected),set(CURRENT_IDS))
         self.assertEqual(len(selected),14)
@@ -1227,11 +1228,11 @@ class SupersededFanParentRetirementControls(unittest.TestCase):
     def test_reintroducing_the_retired_identity_in_a_registry_or_collection_is_rejected(self):
         from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID
         domain=self.root/'domains/high-speed-rail'
-        for relative in ('domain.json','collections.json'):
-            target=domain/relative;raw=target.read_bytes();record=json.loads(raw)
-            if relative=='domain.json':record['pieces'].append('00_pieces/'+FULL_FAN_ID+'/piece.json')
+        for relative in ('domain.jsonc','collections.jsonc'):
+            target=domain/relative;raw=target.read_bytes();record=jsonc.loads(raw.decode())
+            if relative=='domain.jsonc':record['pieces'].append('00_pieces/'+FULL_FAN_ID+'/piece.json')
             else:record['collections']['retired-copy']=[FULL_FAN_ID]
-            target.write_text(json.dumps(record))
+            jsonc.dump(target, record)
             with self.subTest(registry=relative),self.assertRaisesRegex(ValueError,'active piece selection'):
                 self.audit()
             target.write_bytes(raw)

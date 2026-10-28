@@ -11,7 +11,7 @@ from scp_hsr.hsr_symmetric_parapet_verify import (
     TOP, BED, BOTTOM, INNER, SECTIONS, audit_symmetric_wedges,
 )
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 PIECE = ROOT/'domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction'
 
 

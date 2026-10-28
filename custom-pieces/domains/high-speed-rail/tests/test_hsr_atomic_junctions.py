@@ -21,7 +21,7 @@ from scp_hsr.directional_t_verify import measure_route_quality, _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.hsr_atomic_components_verify import check_paths
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 DIVERGE, MERGE = RECIPES
 

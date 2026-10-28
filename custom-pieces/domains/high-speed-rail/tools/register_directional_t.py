@@ -4,8 +4,9 @@ import json
 from pathlib import Path
 import sys
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog,number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
@@ -15,8 +16,8 @@ from scp.autotile import validate_auto_tile_addresses
 
 def register_examples(info_by_recipe,recipes,selection_name):
     catalog=load_catalog(ROOT)
-    project=json.loads((ROOT/'project.json').read_text())
-    ledger=json.loads((ROOT/'config/allocations.json').read_text())
+    project=jsonc.load(ROOT/'project.jsonc')
+    ledger=jsonc.load(ROOT/'config/allocations.jsonc')
     current={p['id']:p for p in catalog['pieces']}
     used_puzzles={number(p['puzzle_id']) for p in ledger['pieces'].values()}
     used_blocks={number(value)&0xfffff000 for p in ledger['pieces'].values()

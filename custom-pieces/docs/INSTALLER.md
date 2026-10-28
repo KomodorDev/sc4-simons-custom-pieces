@@ -19,7 +19,7 @@ The installer selects **every implemented piece in its bundled catalogue**, curr
 
 Install SimCity 4 Deluxe and NAM before running SCP. The currently audited game profile is **SimCity 4 Deluxe for Windows, version 1.1.641, NAM 50, and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The installer checks exact resource fingerprints, meaning identifiers calculated from file contents, rather than accepting a NAM version label alone.
 
-The download runs on **64-bit Windows with an Intel or AMD processor**. The [profile](../config/profiles/nam50-rhd.json) records the supported game resources. The installer cannot add a missing game, install NAM, or convert an unsupported game profile automatically.
+The download runs on **64-bit Windows with an Intel or AMD processor**. The [profile](../config/profiles/nam50-rhd.jsonc) records the supported game resources. The installer cannot add a missing game, install NAM, or convert an unsupported game profile automatically.
 
 Close SimCity 4 before installing or updating SCP. Keep a backup of any city you intend to use for experimental pieces. Building can take some time because the installer generates the complete catalogue on your computer; the progress display identifies the current stage.
 

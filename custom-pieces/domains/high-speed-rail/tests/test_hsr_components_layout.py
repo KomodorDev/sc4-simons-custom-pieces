@@ -9,7 +9,7 @@ import sys
 import unittest
 
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 
 from scp_hsr.hsr_components_layout import (INFO, RECIPES, component_layout, component_routes,
                                        physical_decks, deck_half_widths)

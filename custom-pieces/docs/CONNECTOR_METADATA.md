@@ -69,7 +69,7 @@ An **exposed edge** faces a tile that the piece does not own. An edge between tw
 | Required continuation or declared termination | Which movements must cross the edge, and any explicitly supported end behavior | Missing data is not an optional route or an automatic end cap. |
 | Source evidence | References and fingerprints tying the declarations to measured routes, owned cells, and existing models | The declarations must describe the actual piece. |
 
-These are the shared comparison requirements. The [authored-group schema](../schemas/connector-groups.schema.json), [optional-profile schema](../schemas/connector-profiles.schema.json), and [generated-data schema](../schemas/connector-data.schema.json) define the actual file structures. Source-backed channel associations and permissions belong in the declarations; measured geometry is resolved from the existing sources. Section 7 states the current implementation limits.
+These are the shared comparison requirements. The [authored-group schema](../schemas/connector-groups.schema.jsonc), [optional-profile schema](../schemas/connector-profiles.schema.jsonc), and [generated-data schema](../schemas/connector-data.schema.jsonc) define the actual file structures. Source-backed channel associations and permissions belong in the declarations; measured geometry is resolved from the existing sources. Section 7 states the current implementation limits.
 
 A **tangent** is a direction vector at a point on a route; a **vector** is a numerical arrow with direction and length. Path position, tangent, and slope come from the measured traffic routes. Path height is the route's vertical coordinate; it is not the top or thickness of a rendered surface. If members on one edge have different heights, headings, or slopes, preserve their individual values. A common displayed value is appropriate only when the members agree.
 
@@ -262,7 +262,7 @@ The library uses three separate connector files so that authored meaning, measur
 
 `piece.json` remains the authority for the reusable type, source cells, and resource identities. Existing compiled resources remain the authority for measured traffic routes and models. The declarations do not require a second hand-authored description of decks, walls, supports, or mesh cross-sections. Rendering loads those actual models; future physical checks must derive from them and retain their own evidence.
 
-The optional domain `connector-profiles.json` supplies shared defaults. After expansion, validation and matching use the resulting facts. A profile name, parent, or identical ID cannot erase a difference in service, channel arrangement, position, height, heading, slope, or permissions. Equivalent resolved geometry can have different labels, but its equivalence must be established from actual data. A profile reference is not mandatory for every group, and no code infers geometry or traffic rules by parsing a profile ID.
+The optional domain `connector-profiles.jsonc` supplies shared defaults. After expansion, validation and matching use the resulting facts. A profile name, parent, or identical ID cannot erase a difference in service, channel arrangement, position, height, heading, slope, or permissions. Equivalent resolved geometry can have different labels, but its equivalence must be established from actual data. A profile reference is not mandatory for every group, and no code infers geometry or traffic rules by parsing a profile ID.
 
 The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [piece and assembly design skill](../skills/network-piece-and-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Application-specific placement, candidate discovery, and reports belong in a separate consumer, using the generated export rather than another source parser.
 
@@ -272,7 +272,7 @@ The current library does not supply automatic compatibility discovery. A future 
 
 ## 7. Current library format and implementation limits
 
-The library owns the [version-3 authored-group schema](../schemas/connector-groups.schema.json), [version-2 optional-profile schema](../schemas/connector-profiles.schema.json), and [version-1 generated-data schema](../schemas/connector-data.schema.json). A schema checks file structure. The shared [connector validator](../framework/scp/connector_metadata.py) additionally checks cross-file references, measured directions and geometry, complete membership, exposed source edges, optional inheritance, permissions, and source bindings. A structurally valid file can still fail those checks.
+The library owns the [version-3 authored-group schema](../schemas/connector-groups.schema.jsonc), [version-2 optional-profile schema](../schemas/connector-profiles.schema.jsonc), and [version-1 generated-data schema](../schemas/connector-data.schema.jsonc). A schema checks file structure. The shared [connector validator](../framework/scp/connector_metadata.py) additionally checks cross-file references, measured directions and geometry, complete membership, exposed source edges, optional inheritance, permissions, and source bindings. A structurally valid file can still fail those checks.
 
 **JSONC** means JSON with comments. The shared [reader](../framework/scp/jsonc.py) accepts `//` line comments and `/* ... */` block comments, preserves comment-like text inside strings, and rejects `#` comments and trailing commas. Only authored connector-group files use JSONC. Shared profiles, piece definitions, measured connections, and generated exports remain strict JSON. Explanations belong in actual comments, rather than a `documentation` data field or encoded matching rule.
 
@@ -296,7 +296,7 @@ These two detailed examples preserve the actual measured data. Railway-specific 
 
 ### 8.1 Reading the example tables and current profile IDs
 
-The source files are the [crossing JSONC](../domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connector-groups.jsonc), [curve JSONC](../domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc), and shared [profile registry](../domains/high-speed-rail/connector-profiles.json).
+The source files are the [crossing JSONC](../domains/high-speed-rail/00_pieces/hsr-component-modular-crossing-core/connector-groups.jsonc), [curve JSONC](../domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc), and shared [profile registry](../domains/high-speed-rail/connector-profiles.jsonc).
 
 Each table includes identity and component, source tile and edge, network and traffic classification, outward connection heading, channel counts and arrangement, centring and exact positions, nominal level, path height, and slope at the edge. Measurements are local to the authored 0° orientation. An instance's anchor position and rotation apply to all rows together.
 

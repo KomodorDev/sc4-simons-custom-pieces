@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp_hsr.hsr_assembly_components_verify import CONTRACTS

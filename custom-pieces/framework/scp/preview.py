@@ -22,6 +22,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from . import dbpf as read_dbpf
+from . import jsonc
 from .models import parse_s3d
 
 S3D = (0x5ad0e817, 0xbadb57f1)
@@ -525,9 +526,9 @@ def _canonical_title(root, catalog, piece):
     resolved = load_library(root, [piece['id']], domain_id=piece['domain'])['pieces'][piece['id']]
     title = piece_title(piece['id'], title_records(resolved), piece['name'])
     paths = [directory/name for name in ('piece.json', 'connections.json', 'connector-groups.jsonc')]
-    registry = root/relative/'domain.json'; paths.append(registry)
-    domain_data = json.loads(registry.read_text())
-    profiles = root/relative/domain_data.get('connector_profiles', 'connector-profiles.json')
+    registry = root/relative/'domain.jsonc'; paths.append(registry)
+    domain_data = jsonc.load(registry)
+    profiles = root/relative/domain_data.get('connector_profiles', 'connector-profiles.jsonc')
     if profiles.is_file(): paths.append(profiles)
     return title, {path.relative_to(root).as_posix(): _sha(path.read_bytes()) for path in paths}
 
@@ -647,7 +648,7 @@ def main():
     parser.add_argument('--catalog',action='store_true',help='Write selected canonical reusable-piece views in their piece folders (default: angled view and thumbnail)')
     parser.add_argument('--views', nargs='+', choices=('angled', 'top'), default=['angled'],
                         help='Canonical --catalog views: angled, top, or both; top writes previews/preview-top.png without changing an existing angle')
-    parser.add_argument('--root',type=Path,default=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()))
+    parser.add_argument('--root',type=Path,default=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()))
     parser.add_argument('--index',type=Path,help='Portable JSON coverage index for --catalog')
     parser.add_argument('--force',action='store_true',help='Render even when all input and image hashes match')
     parser.add_argument('--progress',action='store_true')

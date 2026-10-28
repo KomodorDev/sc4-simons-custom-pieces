@@ -1,10 +1,12 @@
+// title: "High-speed rail domain registry"
+// summary: "Locate registered reusable pieces, assembly placement plans, build collections, and implementation entry points for HSR and GHSR."
 {
   "schema_version": 1,
   "purpose": "Explicit registry of maintained pieces, documented assemblies, implementation and build collections for this transport domain.",
   "id": "high-speed-rail",
   "name": "High Speed Rail and Ground High Speed Rail",
   "implementation": "scp_hsr",
-  "connector_profiles": "connector-profiles.json",
+  "connector_profiles": "connector-profiles.jsonc",
   "pieces": [
     "00_pieces/hsr-diagonal-ghsr/piece.json",
     "00_pieces/tram-under-hsr/piece.json",
@@ -177,7 +179,7 @@
   "assemblies": [
     "01_assemblies/straight-stem-trumpet/assembly.json"
   ],
-  "collections": "collections.json",
+  "collections": "collections.jsonc",
   "scaffold": {
     "dependencies": [
       "controller",

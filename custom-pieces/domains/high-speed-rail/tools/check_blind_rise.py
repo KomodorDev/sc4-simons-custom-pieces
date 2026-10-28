@@ -20,7 +20,7 @@ from scp_hsr.hsr_components_verify import CONTRACTS, check_paths
 from scp_hsr.interchange_verify import _encoded_routes, _graph, _turn
 from scp_hsr.directional_t_verify import _journeys, _world_triangles
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 ID = 'blind-hsr-rise-quarter-turn'
 
 def sha(path):
