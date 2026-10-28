@@ -9,11 +9,10 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
 from scp.dbpf import require
 from scp.track_paths import _parse_paths
-from scp.subject_identity import canonical_subject_id
 from .hsr_trumpet_verify import rotate
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
@@ -23,8 +22,8 @@ FROZEN_FILES = {
     'checks-layout-before-merge-west-tail-extraction.json': '2b149a52ed2c04c0bf3628f4c91189a48d906da7ae295d0878d3aa05db5d9976',
     'assembly-before-merge-west-tail-extraction.json': '57e520ee5e54e5e46a72a696d4d657afd4b53ea564a580f9140bcd1741ff5ace',
 }
-MERGE_ID = 'hsr-l2-two-track-mainline-opposed-merges-oblique-cuts'
-STRAIGHT_ID = 'hsr-l2-two-track-straight'
+MERGE_ID = 'hsr-component-l2-short-opposed-merge-core'
+STRAIGHT_ID = 'hsr-component-lower-paired-straight'
 REPLACEMENT = (32., 0.)
 SEAM = (48., 0.)
 SUPPORTS_SHA256 = '76d116a6f8cb5d6e48ab681dd679eb8d67bb137c2badb72943290d0860b82d1d'
@@ -35,21 +34,6 @@ SEAM_MODEL_SHA256 = '59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e
 
 def canonical_sha256(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-
-
-def _piece_id(identifier):
-    """Translate only a declared piece identity, never a recipe or resource hash."""
-    return canonical_subject_id(identifier, kind='piece', root=ROOT)
-
-
-def _archive_identity(filename, identifier):
-    """Translate an exact owned DAT basename without changing its parent path."""
-    path = PurePosixPath(filename)
-    current = _piece_id(identifier)
-    for prefix in ('', 'SCP_'):
-        if path.name == prefix + identifier + '.dat':
-            return path.with_name(prefix + current + '.dat').as_posix()
-    return filename
 
 
 def frozen_baseline(directory=HISTORY):
@@ -78,18 +62,18 @@ def audit_world_resources(tiles, baseline):
         require(set(hashes) == set(record['resources_sha256']),
                 'Merge extraction changes a world-cell resource inventory')
         if position == REPLACEMENT:
-            require(_piece_id(tile['piece_id']) == STRAIGHT_ID and tuple(tile['cell']) == (0, 0)
+            require(tile['piece_id'] == STRAIGHT_ID and tuple(tile['cell']) == (0, 0)
                     and tile['rotation'] == 3 and tile['instance_id'] == 'P26',
                     'Merge extraction replacement must be the existing rotated P26 straight')
             standard = expected[(-112., 0.)]
             require(hashes == standard['resources_sha256'],
                     'Merge extraction replacement differs from the existing standard straight')
             continue
-        require(_piece_id(tile['piece_id']) == _piece_id(record['piece_id'])
+        require(tile['piece_id'] == record['piece_id']
                 and tile['rotation'] == record['rotation_quarter_turns_ccw'],
                 'Merge extraction changes an unchanged world owner or rotation')
         cell = tuple(record['cell'])
-        if _piece_id(record['piece_id']) == MERGE_ID:
+        if record['piece_id'] == MERGE_ID:
             cell = (cell[0]-1, cell[1])
         require(tuple(tile['cell']) == cell,
                 'Merge extraction changes the retained world-cell mapping')
@@ -127,22 +111,18 @@ def audit_replacement_paths(tile):
 
 def audit_unchanged_archives(build, baseline):
     """Changing the merge must not silently rebuild the twelve other archives."""
-    old = {_piece_id(piece['id']): piece for piece in baseline['pieces']}
-    current = {_piece_id(identifier): piece for identifier, piece in build['pieces'].items()}
-    require(len(old) == len(baseline['pieces']) and len(current) == len(build['pieces'])
-            and set(current) == set(old), 'Merge extraction changes the thirteen retained types')
+    old = {piece['id']: piece for piece in baseline['pieces']}
+    require(set(build['pieces']) == set(old), 'Merge extraction changes the thirteen retained types')
     for identifier, record in old.items():
-        piece = current[identifier]
-        require(_piece_id(piece['id']) == identifier and piece['recipe'] == record['recipe']
-                and _archive_identity(piece['asset_file'], piece['id'])
-                == _archive_identity(record['asset_file'], record['id']),
+        piece = build['pieces'][identifier]
+        require(piece['recipe'] == record['recipe'] and piece['asset_file'] == record['asset_file'],
                 'Merge extraction changes a retained archive identity')
         if identifier == MERGE_ID:
             require(piece['cells'] == [[column, 0] for column in range(4)]
                     and piece['tile_ids'] == [f'7f585{column}00' for column in range(1, 5)],
                     'Merge extraction reassigns retained active cell resource IDs')
             continue
-        raw = (Path(build['path'])/piece['asset_file']).read_bytes()
+        raw = (Path(build['path'])/record['asset_file']).read_bytes()
         require(len(raw) == record['bytes'] and hashlib.sha256(raw).hexdigest() == record['sha256'],
                 'Merge extraction changes an unaffected archive: '+identifier)
     return {'unchanged_complete_archives_exact': 12, 'retained_merge_tile_resource_ids_unchanged': 4}

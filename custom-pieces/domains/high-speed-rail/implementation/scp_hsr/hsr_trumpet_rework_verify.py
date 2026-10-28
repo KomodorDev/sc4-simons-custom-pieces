@@ -12,7 +12,6 @@ import math
 from pathlib import Path
 
 from scp.dbpf import require
-from scp.subject_identity import canonical_subject_id
 
 BASELINE_COMMIT = '086d33bc276a21fe31693456d490f7a5b44725d9'
 BASELINE_ATOMIZATION_HISTORY = '616e7daadab6a141e84a615f64bfcf8bc3e7fee06f7129d41e57c5b09f3eaa73'
@@ -76,8 +75,7 @@ def canonical_sha256(value):
 def read_rework_record(path, *, root, require_completed=True):
     """Validate immutable baseline evidence and exact authorized change scope."""
     record = json.loads(Path(path).read_text())
-    require(record.get('schema_version') == 1
-            and canonical_subject_id(record.get('assembly_id'), kind='assembly', root=root) == 'hsr-trumpet-straight-stem'
+    require(record.get('schema_version') == 1 and record.get('assembly_id') == 'straight-stem-trumpet'
             and record.get('baseline_commit') == BASELINE_COMMIT
             and record.get('baseline_layout_sha256') == BASELINE_LAYOUT
             and record.get('baseline_atomization_history_sha256') == BASELINE_ATOMIZATION_HISTORY,
@@ -112,7 +110,7 @@ def read_rework_record(path, *, root, require_completed=True):
         require(binding.get('before_sha256') == before,
                 'Trumpet redesign historical source binding differs')
         if require_completed:
-            source = Path(root)/'domains/high-speed-rail/00_pieces'/canonical_subject_id(identifier, root=root)/'geometry.json'
+            source = Path(root)/'domains/high-speed-rail/00_pieces'/identifier/'geometry.json'
             require(source.is_file(),
                     'Trumpet redesign current geometry differs: its historical source is no longer active')
             actual = hashlib.sha256(source.read_bytes()).hexdigest()
@@ -137,21 +135,15 @@ def audit_redesign_scope(tiles, build, record):
     require(region == current_region, 'Trumpet redesigned placements leave their authorized 24-cell region')
     for position, baseline in expected.items():
         tile = tiles[position]
-        require(canonical_subject_id(tile['piece_id']) == canonical_subject_id(baseline['piece_id'])
-                and list(tile['cell']) == baseline['cell']
+        require(tile['piece_id'] == baseline['piece_id'] and list(tile['cell']) == baseline['cell']
                 and tile['rotation'] == baseline['rotation_quarter_turns_ccw'],
                 f'Trumpet redesign changed an unaffected tile owner or pose at {position}')
         hashes = {name: hashlib.sha256(raw).hexdigest() for name, raw in tile['resources'].items()}
         require(hashes == baseline['resources_sha256'],
                 f'Trumpet redesign changed resources outside its authorized region at {position}')
     for baseline in record['unchanged_piece_archives']:
-        identifier = canonical_subject_id(baseline['id'])
-        spec = build['pieces'].get(identifier)
-        old_asset = Path(baseline['asset_file'])
-        current_asset = (old_asset.with_name('SCP_'+identifier+'.dat').as_posix()
-                         if old_asset.name == 'SCP_'+baseline['id']+'.dat' else baseline['asset_file'])
-        require(spec is not None and spec['recipe'] == baseline['recipe']
-                and spec['asset_file'] == current_asset,
+        spec = build['pieces'].get(baseline['id'])
+        require(spec is not None and spec['recipe'] == baseline['recipe'] and spec['asset_file'] == baseline['asset_file'],
                 'Trumpet redesign changed an unaffected type identity')
         raw = (build['path']/spec['asset_file']).read_bytes()
         require(len(raw) == baseline['bytes'] and hashlib.sha256(raw).hexdigest() == baseline['sha256'],

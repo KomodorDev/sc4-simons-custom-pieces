@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scp.autotile import validate_auto_tile_addresses
-from scp.subject_identity import piece_directory
+from scp.subject_sources import piece_directory
 from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import build_models, compact_info, compact_layout, model_inputs
 from scp_hsr.hsr_compact_fan_verify import check_paths

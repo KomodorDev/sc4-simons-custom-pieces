@@ -16,7 +16,6 @@ import shutil
 import tempfile
 import uuid
 
-from .subject_identity import canonical_subject_id
 
 FOLDER = 'zzz_Simons_Custom_Pieces'
 RECEIPT = '.scp-install.json'
@@ -259,30 +258,9 @@ def _exclusive_operation(function):
     return wrapped
 
 
-def _piece_file_identities(owned, source_root):
-    """Translate only declared IDs in exact managed per-piece DAT basenames."""
-    identities = set()
-    for name in owned:
-        if not (name.startswith('20_Pieces/SCP_') and name.endswith('.dat')):
-            continue
-        match = re.fullmatch(r'20_Pieces/SCP_([a-z](?:[a-z0-9]|-[a-z0-9])+)\.dat', name)
-        current = name
-        if match and len(match[1]) <= 64:
-            current = f'20_Pieces/SCP_{canonical_subject_id(match[1], root=source_root)}.dat'
-        if current in identities:
-            raise ValueError('Managed piece archives have duplicate identities after declared aliases')
-        identities.add(current)
-    return identities
-
-
 @_exclusive_operation
-def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None,
-                  source_root=None) -> dict:
-    """Verify, snapshot, and install the manifest's one managed plugin folder.
-
-    The source project's declared subject aliases permit an identity rename.
-    They do not change a receipt, file ownership, archive hashes, or rollback.
-    """
+def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
+    """Verify, snapshot, and install the manifest's one managed plugin folder."""
     output, plugins, backup_root = _locations(output, plugins, backup_root, extra_roots=extra_roots)
     from .build import verify_build  # Delay the import to avoid a CLI/build cycle.
     verify_build(output)
@@ -311,15 +289,12 @@ def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots
     previous = _owned(managed)
     piece_ids = sorted({piece['id'] for piece in manifest.get('pieces', [])})
     if previous is not None:
-        previous_ids = {canonical_subject_id(identifier, root=source_root)
-                        for identifier in previous.get('piece_ids', [])}
-        current_ids = {canonical_subject_id(identifier, root=source_root)
-                       for identifier in piece_ids}
-        omitted_ids = previous_ids - current_ids
-        # Check declared per-piece DAT paths independently of the ID list.
-        # A known basename alias does not authorize moving an arbitrary file.
-        omitted_files = (_piece_file_identities(previous['files'], source_root)
-                         - _piece_file_identities(files, source_root))
+        omitted_ids = set(previous.get('piece_ids', [])) - set(piece_ids)
+        previous_files = {name for name in previous['files']
+                          if name.startswith('20_Pieces/SCP_') and name.endswith('.dat')}
+        current_files = {name for name in files
+                         if name.startswith('20_Pieces/SCP_') and name.endswith('.dat')}
+        omitted_files = previous_files - current_files
         if omitted_ids or omitted_files:
             omitted = ', '.join(sorted(omitted_ids | omitted_files))
             raise ValueError(f'New build omits installed pieces: {omitted}. '

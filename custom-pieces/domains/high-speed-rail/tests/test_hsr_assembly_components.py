@@ -19,7 +19,7 @@ from scp_hsr.hsr_components_verify import check_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.interchange_verify import PATH, _encoded_routes, _graph
 from scp.track_paths import encode_paths
-from scp.subject_identity import piece_directory
+from scp.subject_sources import piece_directory
 from scp.verify import parse_paths
 
 

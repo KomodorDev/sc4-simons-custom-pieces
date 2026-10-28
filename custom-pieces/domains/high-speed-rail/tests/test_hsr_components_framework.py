@@ -21,7 +21,7 @@ from scp.catalog import load_catalog, select_pieces
 from scp.build import preflight_allocations
 from scp.recipes import build_piece
 from scp.verify import check_piece_paths, _check_piece_geometry
-from scp.subject_identity import canonical_piece_id
+from scp.subject_sources import piece_id_for_recipe
 
 
 def registration_module():
@@ -38,8 +38,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         project = jsonc.load(FRAMEWORK / 'project.jsonc')
-        paths = ['project.jsonc', project['profile'], project['allocations'],
-                 'config/subject-id-migration.jsonc']
+        paths = ['project.jsonc', project['profile'], project['allocations']]
         for domain in project['domains'].values():
             directory = Path(domain['path'])
             paths.extend(str(directory/name) for name in ('AGENTS.md', 'README.md'))
@@ -151,7 +150,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         data['recipe'] = self.recipe
         path.write_text(json.dumps(data, indent=2)+'\n')
         before = self.snapshot()
-        with self.assertRaisesRegex(ValueError, 'Ambiguous component recipe owner'):
+        with self.assertRaisesRegex(ValueError, 'Ambiguous registered recipe owner'):
             self.register()
         self.assertEqual(before, self.snapshot())
 
@@ -173,12 +172,12 @@ class HSRComponentRegistrationTests(unittest.TestCase):
             report = self.module.register_components(root=self.root)
         catalog = load_catalog(self.root)
         self.assertNotIn(deleted, {piece['recipe'] for piece in catalog['pieces']})
-        self.assertNotIn(canonical_piece_id(deleted, self.root), report['pieces'])
+        self.assertNotIn(piece_id_for_recipe(deleted, self.root), report['pieces'])
 
     def test_adapter_registration_preserves_existing_components_and_other_selections(self):
         from scp_hsr.hsr_components import INFO, RECIPES
         adapter = 'hsr_component_upper_paired_to_single_adapter'
-        slug = canonical_piece_id(adapter, self.root)
+        slug = piece_id_for_recipe(adapter, self.root)
         registry_path = self.root/'domains/high-speed-rail/domain.jsonc'
         ledger_path = self.root/'config/allocations.jsonc'
         registry = jsonc.load(registry_path)
@@ -203,6 +202,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
             self.module.register_components(INFO, [recipe for recipe in RECIPES if recipe != adapter],
                                             root=self.root)
         before, files = load_catalog(self.root), self.snapshot()
+        slug = piece_id_for_recipe(adapter, self.root)
         with patch.object(self.module, 'write_inventories'), redirect_stdout(io.StringIO()):
             report = self.module.register_components(root=self.root)
         after = load_catalog(self.root)
@@ -278,7 +278,8 @@ class HSRComponentDispatchTests(unittest.TestCase):
     def test_actual_component_menu_icons_are_valid_and_all_distinct(self):
         from scp_hsr.hsr_components_layout import RECIPES
         from scp_hsr.icons import make_icon, validate_icon
-        icons = [make_icon(canonical_piece_id(recipe, FRAMEWORK)) for recipe in RECIPES]
+        pieces = {piece['recipe']: piece for piece in load_catalog(FRAMEWORK)['pieces']}
+        icons = [make_icon(pieces[recipe]['menu']['style']) for recipe in RECIPES]
         self.assertEqual(len(set(icons)), len(RECIPES))
         for icon in icons:
             validate_icon(icon)

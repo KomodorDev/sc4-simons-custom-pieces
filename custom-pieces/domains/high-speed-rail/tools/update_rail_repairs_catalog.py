@@ -11,7 +11,7 @@ from scp.catalog import load_catalog, number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
-from scp.subject_identity import canonical_piece_id, canonical_piece_name
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 
 def main():
@@ -30,7 +30,7 @@ def main():
         require(len(owners) <= 1, f'Ambiguous scissors recipe owner: {recipe}')
         require(not owners or owners[0]['domain'] == 'high-speed-rail',
                 'A rail scissors recipe must belong to the high-speed-rail domain')
-        slug = owners[0]['id'] if owners else canonical_piece_id(recipe, ROOT)
+        slug = owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
         identifiers.append(slug)
         cells = [list(cell) for cell in info['cells']]
         if slug in current:
@@ -45,7 +45,7 @@ def main():
         level = 'ghsr' if recipe.startswith('rail_ghsr_') else 'hsr'
         style = f'rail-{level}-scissors-revised'
         tiles = [f'{block+x*0x100+row*0x10:08x}' for x,row in cells]
-        name = canonical_piece_name(recipe, f'{level.upper()} Adjacent Scissors Revised', ROOT)
+        name = piece_name_for_recipe(recipe, f'{level.upper()} Adjacent Scissors Revised', ROOT)
         description = (f'{name}. Corrected rail deck union and branch openings; '
                        'one shared support per occupied elevated tile, no ground-track pillars. '
                        'Authored 5 m wide by 5 m high route clearance check. '

@@ -26,13 +26,11 @@ sys.path[:0] = [str(ROOT/'framework'), str(ROOT/'domains/high-speed-rail/impleme
 
 from scp.dbpf import require, entries
 from scp.verification_fixtures import resource_descriptor, verification_resources
-from scp.subject_identity import canonical_subject_id
+from scp.subject_sources import piece_id_for_recipe
 from scp_hsr.directional_t_verify import _journeys, audit_visible_rails, _TURN_LIMITS
 from scp_hsr.hsr_components_verify import CONTRACTS, verify_component
 from scp_hsr.hsr_mesh_verify import audit_crossings, measure_journey_quality
-from scp_hsr.hsr_trumpet_verify import (
-    CONTRACT, canonical_layout_identities, direct_slip_symmetry, key, physical_layout, rotate, split_flags,
-)
+from scp_hsr.hsr_trumpet_verify import CONTRACT, direct_slip_symmetry, key, physical_layout, rotate, split_flags
 from scp_hsr.interchange_verify import _graph, _clearance_segments
 from scp_hsr.assembly_inspection import encoded_records, load_build, number, placements, rotation, sha256, triangle_count, world_tiles, _world_triangles
 from scp_hsr.hsr_compact_fan_verify import audit_bed_corridors
@@ -57,33 +55,35 @@ REWORK_PATH = ASSEMBLY/'checks/junction-rework.json'
 INTEGRATION_PATH = ASSEMBLY/'checks/border-piece-integration.json'
 HISTORICAL_RESOURCES_PATH = ASSEMBLY/SNAPSHOT_RELATIVE/'checks/resources.json'
 FROZEN_REWORK_SHA256 = 'fd260acf137b4d690ec111aef4edf747cc0eb0b7f75155bf61c81fd4843d85dc'
-STRAIGHT_ID = 'hsr-l2-two-track-straight'
-ONEWAY_ID = 'hsr-l2-single-track-oneway-straight-width8m'
-NEW_IDS = frozenset({
-    'hsr-l2-two-track-mainline-split-oblique-cut', 'hsr-l2-two-track-mainline-opposed-merges-oblique-cuts',
-    'hsr-l2-single-track-oneway-curve-oblique-entry', 'hsr-l2-single-track-oneway-curve-oblique-exit',
-})
-CURRENT_IDS = NEW_IDS | frozenset({
-    CORE_ID, RECESSED_STRAIGHT_ID,
-    'hsr-l2-two-track-straight', 'hsr-l2-single-track-oneway-straight-width8m',
-    'hsr-l2-two-track-mainline-split-merge-parallel-recessed-end', 'hsr-component-modular-paired-climb',
-    'hsr-l4-over-hsr-l2-two-track-crossing-90deg', 'hsr-l4-two-track-straight',
-    'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight', 'hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight',
-})
-CURRENT_IDS = frozenset(canonical_subject_id(identifier, root=ROOT) for identifier in CURRENT_IDS)
+CURRENT_ASSEMBLY_ID = 'hsr-trumpet-straight-stem'
+
+# These literal IDs belong to the immutable atomization proof only.
+STRAIGHT_ID = 'hsr-component-lower-paired-straight'
+ONEWAY_ID = 'hsr-component-lower-oneway-straight'
+NEW_IDS = frozenset(piece_id_for_recipe(recipe, ROOT) for recipe in (
+    'hsr_component_l2_short_mainline_diverge_core', 'hsr_component_l2_short_opposed_merge_core',
+    'hsr_component_l2_shortened_departure_curve', 'hsr_component_l2_shortened_return_curve',
+))
+CURRENT_IDS = NEW_IDS | frozenset(piece_id_for_recipe(recipe, ROOT) for recipe in (
+    'hsr_component_l2_paired_fan_compact_core', 'hsr_component_l2_paired_straight_recessed_web',
+    'hsr_component_lower_paired_straight', 'hsr_component_lower_oneway_straight',
+    'hsr_component_modular_south_junction', 'hsr_component_modular_paired_climb',
+    'hsr_component_modular_crossing_core', 'hsr_component_upper_paired_straight',
+    'hsr_component_tight_paired_curve90_l4_to_mid', 'hsr_component_tight_paired_curve90_mid_to_l2',
+))
 REPLACEMENTS = {
     (-112., 0.): (STRAIGHT_ID, 3), (112., 0.): (STRAIGHT_ID, 3),
     (-16., -112.): (ONEWAY_ID, 2), (16., -112.): (ONEWAY_ID, 0),
 }
 ELIGIBLE_CANDIDATES = {
     'p01a-west-tail': ({(-112., 0.), (-96., 0.)},
-                       'hsr-l2-two-track-mainline-split-oblique-cut', STRAIGHT_ID, 270, .0245),
+                       'hsr-component-l2-short-mainline-diverge-core', STRAIGHT_ID, 270, .0245),
     'p03b-east-tail': ({(96., 0.), (112., 0.)},
-                       'hsr-l2-two-track-mainline-opposed-merges-oblique-cuts', STRAIGHT_ID, 270, .0245),
+                       'hsr-component-l2-short-opposed-merge-core', STRAIGHT_ID, 270, .0245),
     'p01b-south-tail': ({(-16., -112.), (-16., -96.)},
-                        'hsr-l2-single-track-oneway-curve-oblique-entry', ONEWAY_ID, 180, .0082),
+                        'hsr-component-l2-shortened-departure-curve', ONEWAY_ID, 180, .0082),
     'p03d-south-tail': ({(16., -112.), (16., -96.)},
-                        'hsr-l2-single-track-oneway-curve-oblique-exit', ONEWAY_ID, 0, .0082),
+                        'hsr-component-l2-shortened-return-curve', ONEWAY_ID, 0, .0082),
 }
 
 
@@ -302,27 +302,6 @@ def canonical_sha256(value):
     return sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode())
 
 
-def _current_source_path(relative, *, root=ROOT):
-    """Resolve an explicit historical piece folder without changing its proof."""
-    path = Path(relative)
-    parts = path.parts
-    if len(parts) >= 5 and parts[0] == 'domains' and parts[2] == '00_pieces':
-        path = Path(*parts[:3], canonical_subject_id(parts[3], root=root), *parts[4:])
-    resolved = (Path(root)/path).resolve()
-    require(resolved.is_relative_to(Path(root).resolve()), 'Trumpet source path escapes its project')
-    return resolved
-
-
-def _current_piece_mapping(mapping, *, root=ROOT):
-    """Translate declared identity keys, rejecting alias collisions."""
-    result = {}
-    for identifier, value in mapping.items():
-        current = canonical_subject_id(identifier, root=root)
-        require(current not in result, 'Trumpet historical piece identities collide')
-        result[current] = value
-    return result
-
-
 def read_frozen_rework_record(path=None):
     """Read the completed historical audit without certifying later models.
 
@@ -354,7 +333,7 @@ def audit_subsequent_piece_revisions(ledger, *, root=ROOT):
             'Trumpet subsequent piece revision differs from its exact standalone authorization')
     chains = {}
     for revision in revisions:
-        chains.setdefault(canonical_subject_id(revision['piece_id'], root=root), []).append(revision)
+        chains.setdefault(revision['piece_id'], []).append(revision)
     for chain in chains.values():
         for previous, successor in zip(chain, chain[1:]):
             require(previous['source_file'] == successor['source_file']
@@ -371,7 +350,7 @@ def audit_subsequent_piece_revisions(ledger, *, root=ROOT):
             directory = None
             if number+1 < len(chain):
                 successor = chain[number+1]
-                directory = _current_source_path(revision['source_file'], root=root).parent/successor[
+                directory = (Path(root)/revision['source_file']).parent/successor[
                     'before_piece_snapshot']['snapshot_directory']
             _audit_standalone_piece_revision(revision, root=root, source_directory=directory)
     return chains
@@ -383,7 +362,7 @@ def _audit_standalone_piece_revision(revision, *, root, source_directory=None):
     A later revision supplies the snapshot of its accepted predecessor. Older
     archive references remain relative to the original owning piece folder.
     """
-    original_source = _current_source_path(revision['source_file'], root=root)
+    original_source = Path(root)/revision['source_file']
     source = original_source if source_directory is None else source_directory/original_source.name
     raw = source.read_bytes()
     existing = json.loads(raw)
@@ -464,7 +443,7 @@ def audit_quality_contract(path=QUALITY_PATH):
     literal = json.loads(Path(path).read_text())
     integrated = 'border_piece_integration_sha256' in resource_descriptor(RESOURCES_PATH)
     expected = {
-        'schema_version': 2, 'id': 'hsr-trumpet-straight-stem', 'occupied_cells': expected_occupied_cells(),
+        'schema_version': 2, 'id': CURRENT_ASSEMBLY_ID, 'occupied_cells': expected_occupied_cells(),
         'encoded_fragments': resource_descriptor(RESOURCES_PATH).get('encoded_fragments', 167),
         'unique_piers': 74, 'placements': 28 if integrated else 26,
         'unique_piece_types': 14 if integrated else 13,
@@ -474,8 +453,7 @@ def audit_quality_contract(path=QUALITY_PATH):
         'required_grade_separated_crossings': 4,
         'expected_crossings_xyz': [list(p) for p in CONTRACT['expected_crossings_xyz']],
     }
-    require(all((canonical_subject_id(literal.get(k), kind='assembly', root=ROOT) == v
-                 if k == 'id' else literal.get(k) == v) for k, v in expected.items()),
+    require(all(literal.get(k) == v for k, v in expected.items()),
             'Trumpet independent quality contract differs from its literal acceptance policy')
     require({k: tuple(v) for k, v in literal['ports'].items()} == CONTRACT['ports']
             and [tuple(v) for v in literal['movements']] == CONTRACT['movements'],
@@ -503,14 +481,11 @@ def audit_approved_layout(scene, *, current_border_integration=True):
             ASSEMBLY/SNAPSHOT_RELATIVE/'checks/layout.json')
     frozen = json.loads(path.read_text())
     normalized = canonical_sha256(frozen['layout'])
-    require(frozen['schema_version'] == 1
-            and canonical_subject_id(frozen['assembly_id'], kind='assembly', root=ROOT) == 'hsr-trumpet-straight-stem'
+    require(frozen['schema_version'] == 1 and frozen['assembly_id'] == CURRENT_ASSEMBLY_ID
             and normalized == frozen['layout_sha256']
             == (CURRENT_INTEGRATION_LAYOUT if current_border_integration else CURRENT_LAYOUT),
             'Trumpet independently reviewed layout record changed')
-    require(canonical_layout_identities(physical_layout(scene), root=ROOT)
-            == canonical_layout_identities(frozen['layout'], root=ROOT),
-            'Trumpet physical layout differs from its approved positions')
+    require(physical_layout(scene) == frozen['layout'], 'Trumpet physical layout differs from its approved positions')
     return {'layout_sha256': frozen['layout_sha256'], 'reviewed_placements': 28 if current_border_integration else 26,
             'approved_external_ports_rectangle_and_grid': True}
 
@@ -520,8 +495,7 @@ def audit_candidate_ledger(path=None, descriptor=None, *, redesign=None):
     path = ASSEMBLY/'checks/atomization.json' if path is None else Path(path)
     ledger = json.loads(path.read_text())
     descriptor = resource_descriptor(RESOURCES_PATH) if descriptor is None else descriptor
-    require(ledger.get('schema_version') == 2
-            and canonical_subject_id(ledger.get('assembly_id'), kind='assembly', root=ROOT) == 'hsr-trumpet-straight-stem'
+    require(ledger.get('schema_version') == 2 and ledger.get('assembly_id') == 'straight-stem-trumpet'
             and ledger.get('historical_inputs_required') is False,
             'Trumpet atomization ledger identity or historical-input policy differs')
     policy = ledger['policy']
@@ -545,9 +519,9 @@ def audit_candidate_ledger(path=None, descriptor=None, *, redesign=None):
         require(abs(visible-measured) <= .000005,
                 'Trumpet recorded original visible rail does not support its sub5mm PATH eligibility')
         replacement, work = candidate['replacement'], candidate['actual_rework']
-        require(canonical_subject_id(replacement['straight_piece_id'], root=ROOT) == straight_id
+        require(replacement['straight_piece_id'] == straight_id
                 and replacement['straight_rotation_degrees'] == angle
-                and canonical_subject_id(replacement['new_core_piece_id'], root=ROOT) == core_id,
+                and replacement['new_core_piece_id'] == core_id,
                 'Trumpet candidate replacement differs from its approved native type or direction')
         require(work['independent_bound_m'] == bound and 0. <= work['maximum_route_change_m'] <= bound
                 and set(map(tuple, work['allowed_world_cells_en_m'])) == cells,
@@ -562,7 +536,7 @@ def audit_candidate_ledger(path=None, descriptor=None, *, redesign=None):
             if predecessor != historical_source:
                 prior_redesign_used = True
                 approved_redesign = read_frozen_rework_record() if redesign is None else redesign
-                prior = _current_piece_mapping(approved_redesign['source_geometry']).get(core_id, {})
+                prior = approved_redesign['source_geometry'].get(core_id, {})
                 require(prior.get('before_sha256') == historical_source
                         and prior.get('after_sha256') == predecessor,
                         'Trumpet atomization decision is stale for its changed replacement geometry')
@@ -613,8 +587,7 @@ def audit_current_world_tiles(candidate, descriptor):
             'Trumpet occupied world tiles differ from the approved current resource contract')
     for position, tile in candidate.items():
         record = expected[position]
-        require(canonical_subject_id(tile['piece_id'], root=ROOT)
-                == canonical_subject_id(record['piece_id'], root=ROOT) and list(tile['cell']) == record['cell']
+        require(tile['piece_id'] == record['piece_id'] and list(tile['cell']) == record['cell']
                 and tile['rotation'] == record['rotation_quarter_turns_ccw'],
                 f'Trumpet approved current tile owner, local cell or orientation changed at {position}')
         hashes = {family: sha256(raw) for family, raw in tile['resources'].items()}
@@ -696,12 +669,9 @@ def audit_candidate_without_current_pins(build_path, scene, *, completed_rework,
         if empty_proof is not None:
             rework['removed_cell_proof'] = empty_proof
         empty_cells = audit_removed_cell_evidence(rework)
-        expected_ids = frozenset(canonical_subject_id(piece['id'], root=ROOT)
-                                 for piece in frozen_border_inputs()['descriptor']['pieces'])
+        expected_ids = frozenset(piece['id'] for piece in frozen_border_inputs()['descriptor']['pieces'])
         expected_labels = [f'P{i:02}' for i in range(1, 27)]
-    actual_ids = [canonical_subject_id(identifier, root=ROOT) for identifier in build['pieces']]
-    require(len(actual_ids) == len(set(actual_ids)) and set(actual_ids) == set(expected_ids),
-            'Trumpet candidate selected piece types differ')
+    require(set(build['pieces']) == set(expected_ids), 'Trumpet candidate selected piece types differ')
     require([item.get('label') for item in placements(scene)] == expected_labels,
             'Trumpet placements differ from their exact approved instance labels')
     for instance in placements(scene):
@@ -787,7 +757,7 @@ def verify(build_path, scene_path=SCENE):
     quality = audit_quality_contract()
     descriptor = resource_descriptor(RESOURCES_PATH)
     verification_resources(RESOURCES_PATH, build_path, selected_piece_ids=CURRENT_IDS,
-                           assembly_id='hsr-trumpet-straight-stem')
+                           assembly_id=CURRENT_ASSEMBLY_ID)
     integration = read_border_integration_record(descriptor=descriptor)
     audited = audit_candidate_without_current_pins(build_path, scene, completed_rework=False,
                                                     current_border_integration=True)
@@ -873,7 +843,7 @@ def capture_current_resources(build_path, scene_path=SCENE):
                          'resource_sha256': {'-'.join(f'{v:08x}' for v in key): sha256(value)
                                              for key, value in saved.items()}})
     descriptor = {'purpose': 'Current border-repair and three-piece fan integration pins, captured after independent standalone archive identity and complete physical assembly audits.',
-        'schema_version': 3, 'id': 'straight-stem-trumpet-current-resources', 'assembly_id': 'hsr-trumpet-straight-stem',
+        'schema_version': 3, 'id': 'straight-stem-trumpet-current-resources', 'assembly_id': CURRENT_ASSEMBLY_ID,
         'pieces': archives, 'layout_sha256': audited['layout']['layout_sha256'],
         'junction_rework_sha256': sha256(REWORK_PATH.read_bytes()),
         'atomization_history_sha256': canonical_sha256(history),
@@ -884,7 +854,7 @@ def capture_current_resources(build_path, scene_path=SCENE):
         'journeys': [{'movement': list(movement), 'encoded_points': len(points), 'points_sha256': canonical_sha256(points)}
                      for movement, points in sorted(journeys.items())],
         'encoded_fragments': audited['paths']['encoded_fragments'], 'actual_tile_triangles': audited['triangles']}
-    integration = {'schema_version': 1, 'assembly_id': 'hsr-trumpet-straight-stem', 'status': 'passed',
+    integration = {'schema_version': 1, 'assembly_id': CURRENT_ASSEMBLY_ID, 'status': 'passed',
         'purpose': 'Integrate the approved border repairs and atomized three-piece fan into the complete trumpet; preserve all seven earlier source-only decisions and historical redesign proofs.',
         'baseline_snapshot': {'directory': SNAPSHOT_RELATIVE.as_posix(), 'index_sha256': SNAPSHOT_INDEX_SHA256},
         'layout_sha256': audited['layout']['layout_sha256'], 'scene_sha256': sha256(Path(scene_path).read_bytes()),

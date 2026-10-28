@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp import jsonc
 from scp.paths import local_settings
-from scp.subject_identity import piece_directory
+from scp.subject_sources import piece_directory
 from scp.track_paths import encode_paths
 from scp.dbpf import entries, decompress
 from scp_hsr.hsr_components_verify import (

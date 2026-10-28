@@ -10,7 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from functools import lru_cache
 import json
-from scp.subject_identity import canonical_piece_name, piece_directory
+from scp.subject_sources import piece_name_for_recipe, piece_directory
 
 RECIPES = (
     'hsr_component_modular_south_junction',
@@ -33,7 +33,7 @@ def _source(recipe):
 def partition_info(recipe):
     """Return local module metadata, independent of any other piece recipe."""
     info = deepcopy(_source(recipe)['metadata'])
-    info['name'] = canonical_piece_name(recipe, info['name'])
+    info['name'] = piece_name_for_recipe(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): flag for cell, flag in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]

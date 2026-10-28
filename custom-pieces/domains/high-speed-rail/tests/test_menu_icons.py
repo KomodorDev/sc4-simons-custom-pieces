@@ -50,17 +50,17 @@ class MenuIconCategoryTests(unittest.TestCase):
 
     def test_network_and_type_codes_distinguish_ground_mixed_and_upper_parts(self):
         expected = {
-            'ghsr-ground-two-track-mainline-split-45deg-right-compact': ('GSR', 'SPL'),
-            'hsr-l2-two-track-mainline-merge-90deg-right-wide': ('HSR', 'MRG'),
-            'hsr-l4-over-ghsr-ground-mixed-crossing-90deg': ('MIX', 'XNG'),
-            'hsr-l4-over-hsr-l2-mixed-crossing-90deg': ('HSR', 'XNG'),
-            'ghsr-ground-to-hsr-l2-single-track-oneway-ramp': ('MIX', 'RMP'),
-            'hsr-l3-to-l4-single-track-oneway-ramp': ('HSR', 'RMP'),
+            'interchange-ground-split-45-compact': ('GSR', 'SPL'),
+            'interchange-hsr-merge-90-wide': ('HSR', 'MRG'),
+            'interchange-l4-oneway-over-ground': ('MIX', 'XNG'),
+            'interchange-l4-oneway-over-hsr': ('HSR', 'XNG'),
+            'interchange-oneway-grade-ground-to-hsr': ('MIX', 'RMP'),
+            'interchange-oneway-grade-l3-to-l4': ('HSR', 'RMP'),
             'rail-ghsr-s-left': ('GSR', 'CRV'),
             'rail-transition': ('MIX', 'RMP'),
             'tram-hsr': ('TRAM', 'XNG'),
             'cross-dd': ('MIX', 'XNG'),
-            'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight': ('HSR', 'CRV'),
+            'hsr-component-tight-paired-curve90-l4-to-mid': ('HSR', 'CRV'),
         }
         for style, wanted in expected.items():
             with self.subTest(style=style):
@@ -84,14 +84,14 @@ class MenuIconCategoryTests(unittest.TestCase):
 
     def test_native_four_state_strips_include_distinct_colours_and_greyscale(self):
         for style in ('cross-dd', 'rail-ghsr-scissors-revised',
-                      'hsr-l2-two-track-t-junction-at-grade-smooth',
-                      'hsr-l2-two-track-t-junction-diagonal-at-grade-smooth'):
+                      'directional-hsr-t-smooth-at-grade',
+                      'directional-hsr-t-smooth-diagonal-at-grade'):
             with self.subTest(style=style):
                 report = validate_icon(make_icon(style))
                 self.assertEqual((report['width'], report['height']), (176, 44))
                 self.assertEqual(report['states'], ['locked', 'normal', 'selected', 'highlighted'])
         part = Image.open(BytesIO(make_icon('cross-dd'))).convert('RGBA')
-        pnp = Image.open(BytesIO(make_icon('hsr-l2-two-track-t-junction-at-grade-smooth'))).convert('RGBA')
+        pnp = Image.open(BytesIO(make_icon('directional-hsr-t-smooth-at-grade'))).convert('RGBA')
         # Antialiasing can move a boundary pixel's RGB value slightly. The
         # channel relationships still independently identify teal and purple.
         teal, purple = part.getpixel((44 + 10, 4)), pnp.getpixel((44 + 10, 4))
@@ -116,7 +116,7 @@ class MenuIconCategoryTests(unittest.TestCase):
                         self.assertLess(max(pixel[:3]), 40)
 
     def test_pnp_word_remains_readable_without_colour(self):
-        image = Image.open(BytesIO(make_icon('hsr-l2-two-track-t-junction-at-grade-smooth'))).convert('RGBA')
+        image = Image.open(BytesIO(make_icon('directional-hsr-t-smooth-at-grade'))).convert('RGBA')
         # Centre PNP HSR in 44 pixels: the P starts at x=9.
         n = ('101', '111', '111', '111', '111', '111', '101')
         for y, row in enumerate(n):
@@ -128,7 +128,7 @@ class MenuIconCategoryTests(unittest.TestCase):
 
     def test_menu_category_is_explicit_in_native_title_and_tooltip(self):
         for style, badge in (('cross-dd', 'PART'),
-                             ('hsr-l2-two-track-t-junction-at-grade-smooth', 'PNP')):
+                             ('directional-hsr-t-smooth-at-grade', 'PNP')):
             spec = piece(style)
             resources, report = build_menu_resources(donor(), spec)
             iid = int(spec['menu']['id'], 16)
@@ -161,7 +161,7 @@ class MenuIconCategoryTests(unittest.TestCase):
         spec = piece('cross-dd')
         resources, _ = build_menu_resources(donor(), spec)
         resources = deepcopy(resources)
-        resources[*ICON, int(spec['menu']['id'], 16)] = make_icon('hsr-l2-two-track-t-junction-at-grade-smooth')
+        resources[*ICON, int(spec['menu']['id'], 16)] = make_icon('directional-hsr-t-smooth-at-grade')
         with self.assertRaisesRegex(ValueError, 'artwork does not match'):
             validate_menu_resources(resources, donor(), spec)
 

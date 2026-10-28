@@ -455,8 +455,7 @@ def _placed_route_join(first, second):
     return False
 
 
-def assembly_connectivity(subject_id, scene, piece_records, pieces, *,
-                          allow_historical_identities=False, identity_root=None):
+def assembly_connectivity(subject_id, scene, piece_records, pieces):
     """Compose saved intrinsic graphs using directly checked placed seams.
 
     Distinct instance/port nodes prevent coincident endpoints from inventing
@@ -465,25 +464,16 @@ def assembly_connectivity(subject_id, scene, piece_records, pieces, *,
     inputs need no rewrite and the resulting evidence is explicitly limited
     to the encoded-route graph; complete boundary compatibility is separate.
     """
-    require(type(allow_historical_identities) is bool, 'Historical identity selection must be explicit')
     placements = scene.get('placements', scene.get('instances', []))
     require(placements, 'An assembly needs actual registered placements')
     graph, nodes, positions = defaultdict(set), {}, defaultdict(list)
     resource_hashes, poses, occupied = {}, [], {}
     lattice_origin = None
-    historical_identities = {}
     for index, placement in enumerate(placements):
         identifier = placement['piece_id']
         require(identifier in piece_records and identifier in pieces, 'Assembly placement has no measured piece record')
         record, spec = piece_records[identifier], pieces[identifier]
-        recorded_id = record.get('subject_id')
-        if allow_historical_identities and recorded_id != identifier:
-            from .subject_identity import canonical_subject_id
-            require(canonical_subject_id(recorded_id, root=identity_root) == identifier,
-                    'Assembly measurement belongs to another piece')
-            historical_identities[identifier] = recorded_id
-        else:
-            require(recorded_id == identifier, 'Assembly measurement belongs to another piece')
+        require(record.get('subject_id') == identifier, 'Assembly measurement belongs to another piece')
         angle = placement.get('rotation_degrees_ccw', placement.get('rotation_ccw_degrees', 0))
         origin = placement.get('origin_m', [0., 0.])
         require(not isinstance(angle, bool) and angle in ROTATIONS and len(origin) == 2 and
@@ -508,9 +498,7 @@ def assembly_connectivity(subject_id, scene, piece_records, pieces, *,
                     len(port['tangent']) == 2 and all(math.isfinite(value) for value in port['tangent']) and
                     math.isfinite(port['grade']), 'Assembly port has invalid measured direction or geometry')
             boundaries = []
-            boundary_spec = ({**spec, 'id': recorded_id}
-                             if identifier in historical_identities else spec)
-            for cell, edge in _port_boundary_sources(original, boundary_spec):
+            for cell, edge in _port_boundary_sources(original, spec):
                 local = rotate((16.*cell[0], -16.*cell[1]), angle)
                 centre = _point((local[0]+origin[0], local[1]+origin[1]))
                 boundaries.append((centre, (edge-angle//90) % 4))
@@ -616,9 +604,8 @@ def assembly_connectivity(subject_id, scene, piece_records, pieces, *,
             'ports': ports, 'journeys': journeys, 'forbidden_transfers': forbidden,
             'encoded_route_joins': sorted(joins, key=lambda item: str(item)),
             'source': {'basis': 'intrinsic graphs measured from saved PATH resources and explicit saved assembly poses',
-                       'scope': 'encoded_route_graph_only', 'resource_fingerprints': resource_hashes,
-                       **({'historical_subject_ids': historical_identities} if historical_identities else {})},
-            'software_status': {'path_extraction': 'unverified' if historical_identities else 'passed', 'placed_encoded_route_joins': 'passed',
+                       'scope': 'encoded_route_graph_only', 'resource_fingerprints': resource_hashes},
+            'software_status': {'path_extraction': 'passed', 'placed_encoded_route_joins': 'passed',
                                 'complete_boundary_compatibility': 'not_evaluated',
                                 'physical_seams': 'unverified', 'in_game': 'unverified'},
             'compatibility_policy': 'Individual encoded-route seams only. Complete physical-channel boundary agreement, '

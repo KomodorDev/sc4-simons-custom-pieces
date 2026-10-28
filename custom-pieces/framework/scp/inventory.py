@@ -19,14 +19,14 @@ def _status(directory):
     result={'record_present':True,'summary':summarize_manual_record(record)}
     recorded_id=record.get('subject',{}).get('id')
     if recorded_id and recorded_id!=directory.name:
-        result['historical_subject_id']=recorded_id
+        result['identity_mismatch']=True
     return result
 
 
 def _coverage(status,kind):
     if not status['record_present']:return '[ ] Unverified; record missing'
-    if status.get('historical_subject_id'):
-        return '[ ] Historical record; verification under the current ID pending'
+    if status.get('identity_mismatch'):
+        return '[ ] Unverified; record subject does not match this folder'
     summary=status['summary']
     counts=(summary.get('journey_coverage',summary['by_kind'].get(kind,{}))
             if kind=='in_game_journey' else summary['by_kind'].get(kind,{}))
@@ -48,7 +48,7 @@ def _matrix_status(directory):
     record = json.loads((directory/'checks/manual-tests.json').read_text())
     if (connections.get('subject_id',directory.name)!=directory.name
             or record.get('subject',{}).get('id',directory.name)!=directory.name):
-        return {'available':False,'reason':'Historical record; verification under the current ID pending'}
+        return {'available':False,'reason':'Unverified; record subject does not match this folder'}
     return {'available': True, **summarize_assembly_connection_matrix(connections, record)}
 
 

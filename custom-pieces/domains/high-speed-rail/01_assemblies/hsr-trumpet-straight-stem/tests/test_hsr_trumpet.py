@@ -22,14 +22,15 @@ from scp import jsonc
 from scp.models import parse_s3d, pack_s3d
 from scp.track_paths import encode_paths, _parse_paths
 from scp.verification_fixtures import resource_descriptor, verification_resources
-from scp.subject_identity import canonical_subject_id, legacy_piece_id
+from scp.subject_sources import piece_directory
 from scp_hsr.rail_feature_verify import _triangles
 from scp_hsr.hsr_atomic_components_verify import (
     CONTRACTS, check_paths, audit_native_sections, audit_inherited_cap_model, audit_trumpet_visible_rails,
 )
 from scp_hsr_tools.verify_hsr_trumpet import (
     ROOT, SCENE, QUALITY_PATH, RESOURCES_PATH, REWORK_PATH, HISTORICAL_RESOURCES_PATH, NEW_IDS, CURRENT_IDS, STRAIGHT_ID,
-    ONEWAY_ID, REPLACEMENTS, audit_quality_contract, audit_approved_layout,
+    ONEWAY_ID, REPLACEMENTS, audit_quality_contract as _audit_quality_contract,
+    audit_approved_layout as _audit_approved_layout,
     load_build, world_tiles, audit_current_world_tiles, encoded_records,
     _journeys, CONTRACT, audit_current_journeys, verify,
     audit_candidate_ledger as _audit_candidate_ledger, audit_whole_route_quality,
@@ -44,16 +45,94 @@ from scp_hsr.hsr_trumpet_rework_verify import (
 )
 
 
-def current_piece_source(relative, root=ROOT):
-    """Resolve an archived source reference without editing its recorded text."""
-    parts = Path(relative).parts
-    if len(parts) >= 5 and parts[0] == 'domains' and parts[2] == '00_pieces':
-        relative = Path(*parts[:3], canonical_subject_id(parts[3]), *parts[4:])
-    return Path(root)/relative
+@lru_cache(maxsize=1)
+def historical_recipes():
+    """Use this proof's own pinned manifest, never a subject-ID crosswalk."""
+    from scp_hsr.hsr_trumpet_border_verify import frozen_inputs, CORE_IDENTITY, STRAIGHT_IDENTITY
+    pieces = frozen_inputs()['manifest']['pieces'] + [CORE_IDENTITY, STRAIGHT_IDENTITY]
+    return {piece['id']: piece['recipe'] for piece in pieces}
 
 
 def piece_folder(identifier, root=ROOT):
-    return Path(root)/'domains/high-speed-rail/00_pieces'/canonical_subject_id(identifier)
+    historical = Path(root)/'domains/high-speed-rail/00_pieces'/identifier
+    if Path(root) != ROOT or historical.is_dir():
+        return historical
+    return piece_directory(historical_recipes()[identifier], ROOT)
+
+
+def current_piece_source(relative, root=ROOT):
+    """Copy retained source bytes into tests of their original historical paths.
+
+    Only this test fixture locates surviving source by the recipe in its own
+    immutable manifest. Production selection never accepts the archived ID.
+    Temporary roots deliberately reconstruct the original proof's layout.
+    """
+    parts = Path(relative).parts
+    if len(parts) >= 5 and parts[0] == 'domains' and parts[2] == '00_pieces':
+        return piece_folder(parts[3], root).joinpath(*parts[4:])
+    return Path(root)/relative
+
+
+def historical_scene():
+    from scp_hsr.hsr_trumpet_border_verify import frozen_inputs, expected_current_placements
+    scene = json.loads(SCENE.read_text())
+    scene['placements'] = expected_current_placements(frozen_inputs())
+    return scene
+
+
+def audit_quality_contract(*args, **kwargs):
+    """Exercise the unchanged historical physical policy under its original ID."""
+    with patch('scp_hsr_tools.verify_hsr_trumpet.CURRENT_ASSEMBLY_ID', 'straight-stem-trumpet'):
+        return _audit_quality_contract(*args, **kwargs)
+
+
+def audit_approved_layout(*args, **kwargs):
+    """Exercise the exact historical layout; current callers remain strict."""
+    with patch('scp_hsr_tools.verify_hsr_trumpet.CURRENT_ASSEMBLY_ID', 'straight-stem-trumpet'):
+        return _audit_approved_layout(*args, **kwargs)
+
+
+def copy_historical_revisions(root, ledger):
+    """Reconstruct only the byte-pinned historical source-chain test inputs."""
+    for revision in ledger['subsequent_piece_revisions']:
+        if revision['piece_id'] == 'hsr-component-l2-paired-fan-compact-join':
+            continue
+        original = current_piece_source(revision['source_file'])
+        source = current_piece_source(revision['source_file'], root)
+        source.parent.mkdir(parents=True, exist_ok=True)
+        source.write_bytes(original.read_bytes())
+        for relative in revision['standalone_evidence']:
+            target = source.parent/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((original.parent/relative).read_bytes())
+        prior = revision.get('superseded_attempt', revision.get('before_piece_snapshot'))
+        original_snapshot = original.parent/prior['snapshot_directory']
+        snapshot = source.parent/prior['snapshot_directory']
+        files = json.loads((original_snapshot/'index.json').read_text())['files']
+        relatives = list(files) if isinstance(files, dict) else [
+            item.get('snapshot_file', item.get('path')) for item in files]
+        for relative in ['index.json', *relatives]:
+            target = snapshot/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((original_snapshot/relative).read_bytes())
+
+
+@lru_cache(maxsize=1)
+def historical_source_fixture():
+    temporary = tempfile.TemporaryDirectory()
+    root = Path(temporary.name)
+    ledger = json.loads((SCENE.parent/'checks/atomization.json').read_text())
+    copy_historical_revisions(root, ledger)
+    # Two unchanged atomization sources have no later standalone revision.
+    for candidate in ledger['candidates']:
+        if candidate['decision'] != 'atomized':
+            continue
+        identifier = candidate['replacement']['new_core_piece_id']
+        target = piece_folder(identifier, root)/'geometry.json'
+        if not target.is_file():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((piece_folder(identifier)/'geometry.json').read_bytes())
+    return temporary
 
 
 @contextmanager
@@ -71,15 +150,18 @@ def independent_retirement_fixture():
 
 
 def audit_candidate_ledger(*args, **kwargs):
-    with independent_retirement_fixture():
+    root = Path(historical_source_fixture().name)
+    with independent_retirement_fixture(), patch('scp_hsr_tools.verify_hsr_trumpet.ROOT', root), patch(
+            'scp_hsr_tools.verify_hsr_trumpet.audit_subsequent_piece_revisions',
+            lambda ledger: _audit_subsequent_piece_revisions(ledger, root=root)):
         return _audit_candidate_ledger(*args, **kwargs)
 
 
 def audit_subsequent_piece_revisions(*args, **kwargs):
+    if kwargs.get('root', ROOT) == ROOT:
+        kwargs['root'] = Path(historical_source_fixture().name)
     with independent_retirement_fixture():
-        result = _audit_subsequent_piece_revisions(*args, **kwargs)
-    # Assertions about historical rows retain their original recorded keys.
-    return {legacy_piece_id(identifier): chain for identifier, chain in result.items()}
+        return _audit_subsequent_piece_revisions(*args, **kwargs)
 
 
 @lru_cache(maxsize=1)
@@ -87,8 +169,14 @@ def saved_current():
     if not (SCENE.parent/'checks/border-piece-integration.json').is_file():
         raise unittest.SkipTest('Current fan integration has no completed capture; historical fixture is audited separately')
     path = Path(os.environ.get('SCP_TRUMPET_BUILD', ROOT/'dist/trumpet-fan-core-parts-audit-01'))
+    descriptor = resource_descriptor(RESOURCES_PATH)
+    if descriptor['assembly_id'] == 'straight-stem-trumpet':
+        from scp_hsr.hsr_trumpet_border_verify import PRESERVED_INTEGRATION_FILES
+        if hashlib.sha256(RESOURCES_PATH.read_bytes()).hexdigest() != PRESERVED_INTEGRATION_FILES['checks/resources.json']:
+            raise ValueError('Historical assembly resource descriptor bytes changed')
+        raise unittest.SkipTest('Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately')
     checked = verification_resources(RESOURCES_PATH, path, selected_piece_ids=CURRENT_IDS,
-                                     assembly_id='straight-stem-trumpet', required=False)
+                                     assembly_id='hsr-trumpet-straight-stem', required=False)
     if checked is None:
         raise unittest.SkipTest('Current actual staged build absent; no saved-resource claim made')
     build = load_build(checked)
@@ -114,18 +202,20 @@ def saved_historical():
 def copy_retirement_inputs(root):
     """Copy retained proofs for mutation tests, never retired parent sources."""
     from scp_hsr import hsr_trumpet_border_verify as current
-    paths = [ROOT/'config/subject-id-migration.jsonc']
+    paths = []
     paths.extend(ROOT/'domains/high-speed-rail'/relative for relative in ('domain.jsonc','collections.jsonc'))
     paths.extend(SCENE.parent/relative for relative in (
         current.PARENT_RETIREMENT_RELATIVE, 'checks/atomization.json', *current.PRESERVED_INTEGRATION_FILES))
-    for identifier, inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
-                               (current.STRAIGHT_ID,current.STRAIGHT_SOURCE_INPUTS)):
-        paths.extend(piece_folder(identifier)/relative
-                     for relative in {**inputs,**current.EXTRACTED_STANDALONE_EVIDENCE[legacy_piece_id(identifier)]})
     for source in paths:
         target=root/source.relative_to(ROOT)
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(source,target)
+    for identifier, inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
+                               (current.STRAIGHT_ID,current.STRAIGHT_SOURCE_INPUTS)):
+        for relative in {**inputs, **current.EXTRACTED_STANDALONE_EVIDENCE[identifier]}:
+            target = piece_folder(identifier, root)/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(piece_folder(identifier)/relative, target)
 
 
 def synthetic_retirement_manifests(case, root):
@@ -150,8 +240,18 @@ def synthetic_retirement_manifests(case, root):
 
 
 class TrumpetLiteralContractTests(unittest.TestCase):
-    def test_current_acceptance_has_no_predecessor_resource_dependency(self):
+    def test_historical_acceptance_has_no_predecessor_resource_dependency(self):
         self.assertFalse(audit_quality_contract()['predecessor_resource_inputs_required'])
+
+    def test_current_identity_rejects_the_unchanged_historical_acceptance(self):
+        with self.assertRaisesRegex(ValueError, 'independent quality contract'):
+            _audit_quality_contract()
+        with self.assertRaisesRegex(ValueError, 'reviewed layout record changed'):
+            _audit_approved_layout(json.loads(SCENE.read_text()))
+        with self.assertRaisesRegex(ValueError, 'descriptor assembly identity differs'):
+            verification_resources(RESOURCES_PATH, ROOT/'dist/absent-current-fixture',
+                                   selected_piece_ids=CURRENT_IDS, assembly_id='hsr-trumpet-straight-stem',
+                                   required=False)
 
     def test_relaxing_a_physical_limit_or_threshold_is_rejected(self):
         literal = json.loads(QUALITY_PATH.read_text())
@@ -172,18 +272,18 @@ class TrumpetLiteralContractTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'outside connections'):
                 audit_quality_contract(path)
 
-    def test_current_plan_preserves_approved_rectangle_grid_and_outside_ports(self):
-        report=audit_approved_layout(json.loads(SCENE.read_text()))
+    def test_historical_plan_preserves_approved_rectangle_grid_and_outside_ports(self):
+        report=audit_approved_layout(historical_scene())
         self.assertTrue(report['approved_external_ports_rectangle_and_grid'])
         self.assertEqual(report['reviewed_placements'],28)
 
     def test_a_moved_module_is_rejected(self):
-        scene=json.loads(SCENE.read_text());scene['placements'][0]['origin_m'][0]+=16.
+        scene=historical_scene();scene['placements'][0]['origin_m'][0]+=16.
         with self.assertRaisesRegex(ValueError,'approved positions'):
             audit_approved_layout(scene)
 
     def test_a_reflection_cannot_replace_a_proper_rotation(self):
-        scene=json.loads(SCENE.read_text());scene['placements'][0]['rotation_degrees_ccw']=45
+        scene=historical_scene();scene['placements'][0]['rotation_degrees_ccw']=45
         with self.assertRaisesRegex(ValueError,'proper cardinal rotation'):
             audit_approved_layout(scene)
 
@@ -231,8 +331,6 @@ class AuthorizedJunctionReworkControls(unittest.TestCase):
         for changed_identifier in identifiers:
             with self.subTest(piece=changed_identifier),tempfile.TemporaryDirectory() as temporary:
                 root=Path(temporary)
-                (root/'config').mkdir()
-                shutil.copyfile(ROOT/'config/subject-id-migration.jsonc', root/'config/subject-id-migration.jsonc')
                 for identifier in identifiers:
                     revision=originals[identifier]
                     current=current_piece_source(revision['source_file'], ROOT)
@@ -1108,10 +1206,9 @@ class CurrentFanAtomizationSourceControls(unittest.TestCase):
     def test_exact_new_poses_preserve_every_other_placement_dictionary(self):
         from scp_hsr.hsr_trumpet_border_verify import frozen_inputs, expected_current_placements
         frozen=frozen_inputs()
-        actual=json.loads(SCENE.read_text())['placements']
+        actual=historical_scene()['placements']
         def physical(item):
             result={key:deepcopy(value) for key,value in item.items() if key not in ('name','menu_name')}
-            result['piece_id']=canonical_subject_id(result['piece_id'])
             return result
         self.assertEqual([physical(item) for item in actual],
                          [physical(item) for item in expected_current_placements(frozen)])
@@ -1133,7 +1230,7 @@ class CurrentFanAtomizationSourceControls(unittest.TestCase):
         from scp_hsr.hsr_trumpet_rework_verify import CURRENT_LAYOUT
         self.assertNotEqual(CURRENT_INTEGRATION_LAYOUT,CURRENT_LAYOUT)
         self.assertEqual(frozen_inputs()['descriptor']['layout_sha256'],CURRENT_LAYOUT)
-        self.assertEqual(audit_approved_layout(json.loads(SCENE.read_text()))['layout_sha256'],CURRENT_INTEGRATION_LAYOUT)
+        self.assertEqual(audit_approved_layout(historical_scene())['layout_sha256'],CURRENT_INTEGRATION_LAYOUT)
 
     def straight_routes(self):
         return [{'role':'branch','transport':7,'class':0,'entry':1,'exit':3,'junction':0,
@@ -1211,13 +1308,16 @@ class CurrentFanAtomizationSourceControls(unittest.TestCase):
             self.assertFalse(new.exists())
 
     def test_selected_types_keep_ordinary_straight_and_retained_full_fan_registration(self):
-        from scp_hsr.hsr_trumpet_border_verify import CORE_ID,STRAIGHT_ID,FULL_FAN_ID
+        from scp_hsr.hsr_trumpet_border_verify import FULL_FAN_ID
+        from scp.subject_sources import piece_id_for_recipe
         collections=jsonc.load(ROOT/'domains/high-speed-rail/collections.jsonc')['collections']
         selected=collections['hsr-straight-stem-trumpet']
         self.assertEqual(set(selected),set(CURRENT_IDS))
         self.assertEqual(len(selected),14)
-        self.assertIn(CORE_ID,selected);self.assertIn(STRAIGHT_ID,selected)
-        self.assertIn(canonical_subject_id('hsr-component-lower-paired-straight'),selected)
+        for recipe in ('hsr_component_l2_paired_fan_compact_core',
+                       'hsr_component_l2_paired_straight_recessed_web',
+                       'hsr_component_lower_paired_straight'):
+            self.assertIn(piece_id_for_recipe(recipe, ROOT), selected)
         self.assertNotIn(FULL_FAN_ID,selected)
         self.assertFalse((ROOT/'domains/high-speed-rail/00_pieces'/FULL_FAN_ID).exists())
 
@@ -1334,7 +1434,7 @@ class SupersededFanParentRetirementControls(unittest.TestCase):
         for identifier,inputs in ((current.CORE_ID,current.CORE_SOURCE_INPUTS),
                                   (current.STRAIGHT_ID,current.STRAIGHT_SOURCE_INPUTS)):
             targets.extend(self.root/'domains/high-speed-rail/00_pieces'/identifier/relative
-                           for relative in {**inputs,**current.EXTRACTED_STANDALONE_EVIDENCE[legacy_piece_id(identifier)]})
+                           for relative in {**inputs,**current.EXTRACTED_STANDALONE_EVIDENCE[identifier]})
         for target in targets:
             raw=target.read_bytes();target.write_bytes(raw+b'\n')
             with self.subTest(file=target.relative_to(self.root)),self.assertRaisesRegex(ValueError,'changes its preserved integration proof|changes a retained source or extraction proof'):

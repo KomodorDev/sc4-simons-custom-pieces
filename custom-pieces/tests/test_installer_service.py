@@ -202,35 +202,21 @@ class InstallerSelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "would remove installed pieces: retired-in-city"):
                 service.installed_selection(ROOT, plan)
 
-    def test_update_preserves_all_declared_historical_piece_selections_without_rewriting_receipts(self):
+    def test_update_accepts_current_piece_selections_without_rewriting_receipts(self):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
-        migration = jsonc.load(ROOT / "config/subject-id-migration.jsonc")
-        receipt = {"piece_ids": [record["old_id"] for record in migration["pieces"]]}
-        previous = deepcopy(receipt)
         expected = service.all_implemented_ids(ROOT)
+        receipt = {"piece_ids": expected[:3]}
+        previous = deepcopy(receipt)
         with patch.object(service, "_owned", return_value=receipt):
             self.assertEqual(service.installed_selection(ROOT, plan), expected)
         self.assertEqual(receipt, previous)
 
-    def test_declared_old_id_still_blocks_an_update_that_omits_its_current_piece(self):
+    def test_assembly_ids_are_not_accepted_as_installed_piece_identities(self):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
-        record = jsonc.load(ROOT / "config/subject-id-migration.jsonc")["pieces"][0]
-        selected = [identifier for identifier in service.all_implemented_ids(ROOT)
-                    if identifier != record["new_id"]]
-        receipt = {"piece_ids": [record["old_id"]]}
-        with patch.object(service, "_owned", return_value=receipt), \
-                patch.object(service, "all_implemented_ids", return_value=selected):
-            with self.assertRaisesRegex(ValueError, "would remove installed pieces: " + record["old_id"]):
+        identifier = load_catalog(ROOT)["_assemblies"][0]["id"]
+        with patch.object(service, "_owned", return_value={"piece_ids": [identifier]}):
+            with self.assertRaisesRegex(ValueError, "would remove installed pieces: " + identifier):
                 service.installed_selection(ROOT, plan)
-
-    def test_assembly_aliases_are_not_accepted_as_installed_piece_identities(self):
-        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
-        record = jsonc.load(ROOT / "config/subject-id-migration.jsonc")["assemblies"][0]
-        for identifier in (record["old_id"], record["new_id"]):
-            with self.subTest(identifier=identifier), \
-                    patch.object(service, "_owned", return_value={"piece_ids": [identifier]}):
-                with self.assertRaisesRegex(ValueError, "would remove installed pieces: " + identifier):
-                    service.installed_selection(ROOT, plan)
 
 
 class CaptureTests(unittest.TestCase):

@@ -20,7 +20,7 @@ from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp_hsr.interchange_layouts import RECIPES, INFO
 from scp.inventory import write_inventories
-from scp.subject_identity import canonical_piece_id, canonical_piece_name
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 LEVEL_NAMES = {'ground': 'GHSR', 'hsr': 'HSR L2', 'l3': 'Rail L3', 'l4': 'Rail L4'}
 
@@ -40,7 +40,7 @@ def presentation(recipe, info, root=None):
         name = f'One-Way L4 over {LEVEL_NAMES[info["lower_level"]]} Crossing'
     else:
         name = info.get('name', recipe.removeprefix('interchange_').replace('_', ' ').title())
-    name = canonical_piece_name(recipe, info.get('name', name), ROOT if root is None else root)
+    name = piece_name_for_recipe(recipe, info.get('name', name), ROOT if root is None else root)
     width, depth = info['footprint']
     description = info.get('description') or (
         f'{name}. Fixed click-to-place piece in a {width} by {depth} tile area. '
@@ -74,7 +74,7 @@ def main():
         require(len(owners) <= 1, f'Ambiguous interchange recipe owner: {recipe}')
         require(not owners or owners[0]['domain'] == 'high-speed-rail',
                 'An interchange recipe must belong to the high-speed-rail domain')
-        slug = owners[0]['id'] if owners else canonical_piece_id(recipe, ROOT)
+        slug = owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
         require(len(slug) <= 64, 'Recipe identifier exceeds the catalog limit')
         cells = [list(cell) for cell in info['cells']]
         footprint = list(info['footprint'])

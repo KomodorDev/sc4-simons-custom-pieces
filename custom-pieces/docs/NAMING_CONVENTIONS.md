@@ -13,7 +13,7 @@ document_type: "reference"
 
 Use descriptive, stable folder names to identify source files, and consistent readable names to help players choose the correct piece or assembly. Both names describe the same subject, but they have different formatting and maintenance rules. These conventions apply across transport domains; the owning network specification supplies the actual network names, levels, permissions, and profiles.
 
-Apply the rules when creating a new subject or deliberately revising its identity or readable name. Folder and ID changes require an explicitly authorized migration; the current catalogue migration has that authorization. Its [subject identity mapping](../config/subject-id-migration.jsonc) records the previous and current IDs and canonical names, their recipes, their domains, and the source-backed reason for each change. Future editorial changes do not automatically authorize another identity migration, artwork refresh, or functional change. Bounded training examples in the creation workflows retain their explicitly identified placeholder names.
+Apply the rules when creating a new subject or deliberately revising its identity or readable name. Folder and ID changes require explicit authorization and coordinated updates to current references. The catalogue uses only its current registered IDs; it maintains no old-to-new ID mapping or compatibility aliases. Future editorial changes do not automatically authorize another identity change, artwork refresh, or functional change. Bounded training examples in the creation workflows retain their explicitly identified placeholder names.
 
 <a id="names-and-their-authoritative-sources"></a>
 
@@ -38,7 +38,7 @@ domains/<domain>/01_assemblies/<assembly-id>/assembly.json
 
 Do not add an assembly `id` field merely to imitate a piece definition. The current catalogue derives that ID from the folder. The menu layout key, such as `trumpet`, is a separate selector and can differ from the assembly ID, such as `hsr-trumpet-straight-stem`.
 
-Game-resource numbers, a recipe's Python identifier, procedural artwork styles, effect names, connector-group IDs, and placement labels are separate identities. The catalogue migration preserves them while changing registered subject IDs and readable names. A style containing an old subject word remains a valid internal artwork selector; its spelling is not the current subject ID. Catalogue producers resolve a recipe's unique registered owner before updating its definition, rather than deriving a replacement ID from the recipe's historical spelling. See [structure and ownership](../STRUCTURE.md#5-source-and-data-ownership) for the full source map.
+Game-resource numbers, a recipe's Python identifier, procedural artwork styles, effect names, connector-group IDs, and placement labels are separate identities. Changing a registered subject ID or readable name does not automatically change them. A style containing an old subject word remains a valid internal artwork selector; its spelling is not the current subject ID. Catalogue producers resolve a recipe's unique registered owner before updating its definition, rather than deriving a replacement ID from the recipe's spelling. See [structure and ownership](../STRUCTURE.md#5-source-and-data-ownership) for the full source map.
 
 <a id="facts-to-establish-before-choosing-either-name"></a>
 
@@ -65,7 +65,7 @@ For every new piece or assembly slug:
 5. Use a functional name. Exclude personal names, dates, temporary task names, test results, and historical suffixes such as `new`, `final`, `fixed`, `revised`, `v2`, or `copy`. Distinguish concurrently maintained designs by their actual function or profile.
 6. Leave `piece`, `assembly`, `component`, and `interchange` out when they merely repeat the enclosing folder's classification. Do not add sequence numbers or assembly placement labels, such as `p01`, to reusable piece IDs.
 
-The stricter spelling convention is equivalent to `^[a-z](?:[a-z0-9]|-[a-z0-9])+$`, with the separate 2–64-character limit. A **regular expression** is a pattern for checking text. The current piece validator and scaffold use the looser `[a-z][a-z0-9-]{1,63}` pattern, which also accepts some doubled or trailing hyphens. The stricter convention is an authoring rule; it is not an assertion that every legacy ID has been migrated or that all assembly IDs are already checked in software.
+The stricter spelling convention is equivalent to `^[a-z](?:[a-z0-9]|-[a-z0-9])+$`, with the separate 2–64-character limit. A **regular expression** is a pattern for checking text. The current piece validator and scaffold use the looser `[a-z][a-z0-9-]{1,63}` pattern, which also accepts some doubled or trailing hyphens. Apply the stricter authoring rule when choosing an ID, even when an existing validator accepts looser spelling.
 
 <a id="piece-folder-pattern"></a>
 
@@ -105,7 +105,7 @@ Use the established layout name, such as `trumpet`, followed by a meaningful var
 
 Include an explicitly qualified interface difference only when it distinguishes two maintained assemblies. For example, an `external-l2` variant identifies external connection level, whereas an unqualified `l2` could incorrectly suggest that all internal routes stay at that level. Keep the full outside-connection and internal-height summaries in the assembly's description. A different placement rotation of the same complete design does not create a new assembly ID.
 
-The authorized migration changes `straight-stem-trumpet` to `hsr-trumpet-straight-stem`, while preserving its `trumpet` menu-layout selector, placements, and numeric game resources. Its recorded historical evidence retains the original identity where that identity belongs to the measured source version.
+The trumpet assembly uses `hsr-trumpet-straight-stem` as its registered ID and `trumpet` as its separate menu-layout selector. Its placements and numeric game resources have their own identities. Recorded historical evidence retains the identity of the source version it actually measured.
 
 <a id="readable-name-pattern"></a>
 
@@ -134,7 +134,7 @@ Piece names must remain unique across the library without relying on letter case
 
 The complete displayed level form is `Level 2 (15.5 m)`. For an unassigned nominal level, use `Custom (23 m)`. Use a decimal point, a space before `m`, and no unnecessary trailing zeros: `23 m`, rather than `23.0 Metres`. Retain precision needed to distinguish the actual interfaces; do not invent or round a height merely to make a label shorter. These values identify traffic-path height, rather than deck-top height, underside clearance, or a promise of compatibility.
 
-Use measured, source-backed height annotations in a new or deliberately migrated canonical name. When the renderer normalizes or supplies those annotations, derive them from the same verified connection records and show each named level and height once. Keep custom classification as well as the number: a 23 m custom end must not acquire a Level 3 label through numerical resemblance. If required facts are missing, leave the subject's deliberate naming migration pending until they are established; do not replace them with a guessed level.
+Use measured, source-backed height annotations in a new or deliberately revised canonical name. When the renderer normalizes or supplies those annotations, derive them from the same verified connection records and show each named level and height once. Keep custom classification as well as the number: a 23 m custom end must not acquire a Level 3 label through numerical resemblance. If required facts are missing, leave the name change pending until they are established; do not replace them with a guessed level.
 
 | Relationship | Display rule | Meaning |
 | --- | --- | --- |
@@ -204,13 +204,13 @@ External connections: HSR Level 2 (15.5 m).
 Internal routes also use Level 4 (30.5 m) and Custom (23 m).
 ```
 
-The authorized migration adopts this canonical trumpet title and updates its separately stored menu title. It does not establish a new render, build, or game observation. When two maintained assemblies need their external levels in their names to distinguish them, use an explicit variant such as `External Connections Level 2 (15.5 m)`. Do not use a bare `Level 2` label for a multilevel layout. List exact arm-by-arm interfaces, quantities, dimensions, and component order in the assembly's existing README and connection records.
+The trumpet uses this canonical title and a separately stored menu title. A name change does not establish a new render, build, or game observation. When two maintained assemblies need their external levels in their names to distinguish them, use an explicit variant such as `External Connections Level 2 (15.5 m)`. Do not use a bare `Level 2` label for a multilevel layout. List exact arm-by-arm interfaces, quantities, dimensions, and component order in the assembly's existing README and connection records.
 
 <a id="examples-of-the-complete-convention"></a>
 
 ## 8. Examples of the complete convention
 
-These examples illustrate convention-form names for new allocation or an authorized migration. They do not register additional copies of existing types or replace folder IDs automatically. Each assumes its named geometry and permissions have been established; the migration mapping records which existing subjects adopt each form.
+These examples illustrate convention-form names for new allocation or an authorized identity change. They do not register additional copies of existing types or replace folder IDs automatically. Each assumes its named geometry and permissions have been established; each current subject's registered definition supplies its actual ID and name.
 
 | Kind | Convention-form folder slug | Complete displayed heading |
 | --- | --- | --- |
@@ -224,7 +224,7 @@ These examples illustrate convention-form names for new allocation or an authori
 | Piece | `hsr-l2-two-track-mainline-split-45deg-right-wide` | `Piece - HSR Level 2 (15.5 m) — Split 45° Right from Two-Track Mainline — Wide` |
 | Assembly | `hsr-trumpet-straight-stem` | `Assembly - HSR — Trumpet — Straight Stem` |
 
-The migrated lower straight illustrates the separate identities: its selection ID is `hsr-l2-two-track-straight`, its canonical name is `HSR Level 2 (15.5 m) — Two-Track Straight`, and its recipe and procedural icon style retain their historical `hsr_component_lower_paired_straight` and `hsr-component-lower-paired-straight` spellings. The recorded numeric resource allocations remain the same. The explicit migration, rather than the existence of a historical word alone, authorizes the folder and selection-ID change.
+The lower straight illustrates the separate identities: its selection ID is `hsr-l2-two-track-straight`, its canonical name is `HSR Level 2 (15.5 m) — Two-Track Straight`, its recipe is `hsr_component_lower_paired_straight`, and its procedural icon style is `hsr-component-lower-paired-straight`. The recipe selects implementation code, the style selects artwork, and the registered ID selects the piece. Their different spellings do not imply an old-ID alias.
 
 <a id="presentation-and-current-software-behavior"></a>
 
@@ -234,7 +234,7 @@ Keep `Piece - `, `Assembly - `, `SCP`, menu badges, and current review warnings 
 
 Use the same canonical descriptive words across current guides, inventories, component lists, and pictures. Height normalization and required context prefixes are presentation transformations. They must not become independent editorial names for the same type. When a current assembly placement stores a copied `name` or `menu_name`, update that copy alongside a deliberate source-name change; the assembly renderer checks explicit menu names against the registered piece name.
 
-Current software has narrower behavior than this authoring policy. [The shared picture-title helper](../framework/scp/render_headers.py) normalizes level shorthand and measured-height annotations. Deliberately migrated canonical names retain their source wording, including Two-Track, Custom, Ground, and mixed-service relationships; historical title exceptions apply only to legacy source names. Assembly menu titles remain separately stored. Registration tools must preserve an existing registered recipe owner, canonical name, and procedural artwork style during a rerun. Adopting the convention requires coordinating those actual producers when subjects are migrated; a documentation update alone does not regenerate their names or artwork.
+Current software has narrower behavior than this authoring policy. [The shared picture-title helper](../framework/scp/render_headers.py) normalizes level shorthand and measured-height annotations. Canonical names retain their source wording, including Two-Track, Custom, Ground, and mixed-service relationships. Assembly menu titles remain separately stored. Registration tools must preserve an existing registered recipe owner, canonical name, and procedural artwork style during a rerun. Adopting the convention requires coordinating those actual producers when subjects are renamed; a documentation update alone does not regenerate their names or artwork.
 
 The 64-character rule applies to IDs, not readable names. Do not invent an equivalent display-name limit. Prefer names that stay legible at the actual delivered picture and menu size. Shared picture headers shrink to fit and fail if the text still exceeds the available width; inspect the resulting image rather than treating a successful text edit as a layout check. Menu text encoding accepts Unicode, but visible support for arrows, degree signs, and em dashes requires checking the intended game environment. If a target needs text equivalents, format `→` as `to`, `↔` as `between … and …`, `°` as `degrees`, and `—` as ` | ` in that presentation, while preserving the canonical source name and recording the rendering choice.
 
@@ -252,11 +252,11 @@ For a new subject:
 
 For a deliberate readable-name change, record an old-name → new-name mapping keyed by the unchanged ID in the change description. Edit the owning definition and every current copied label or name-producing source that applies. Refresh the selected generated views through their documented workflow. A source-name edit can require a fresh build because menu text changes and preview generation compares the current definition with the build manifest, even when geometry is unchanged. Preserve original frozen artifacts and their recorded names and hashes; inspect a newly generated artifact under its actual source version.
 
-A folder or ID change is a separate migration, not an ordinary display-name edit. It requires an explicit scope that includes that identity change. Before moving anything, enumerate the registry paths, allocation-ledger keys, collections, recipe dispatch references where relevant, assembly placements, menu-layout references, build selections, subject links, generated exports, resource filenames, and observation dependencies that use the old identity. Record the previous and current identities in the [migration mapping](../config/subject-id-migration.jsonc). Keep permanent numeric game IDs, recipe identifiers, procedural icon styles, effect names, construction coordinates, and accepted geometry unchanged unless a separately authorized functional change requires a change. Resolve historical IDs through that mapping only at declared tooling boundaries; do not fabricate duplicate registered types. Confirm how saved resources and tooling references will continue to resolve. Do not leave a half-renamed subject or create a replacement type merely to improve an old folder's wording.
+A folder or ID change is a separate identity change that requires explicit scope. Before moving anything, enumerate and update the registry paths, allocation-ledger keys, collections, recipe dispatch references where relevant, assembly placements, menu-layout references, build selections, subject links, generated exports, resource filenames, and observation dependencies that use that identity. Keep permanent numeric game IDs, recipe identifiers, procedural icon styles, effect names, construction coordinates, and accepted geometry unchanged unless a separately authorized functional change requires a change. Use only the current registered ID in active tools and data; do not add a migration ledger, old-ID aliases, or duplicate registered types. Preserve original frozen artifacts and their recorded names and hashes as historical evidence rather than teaching current tools to accept their old subject IDs. Do not leave a half-renamed subject or create a replacement type merely to improve an old folder's wording.
 
-Only explicit matching human observations can establish game-test results. Preserve observation records and their original evidence when changing names. Frozen measured records can retain historical subject IDs, resource keys, names, paths, and hashes that identify their original source version; the migration mapping explains their relationship to the current registered subject. If changed source fingerprints make a result stale, retain that state and use the existing [observation workflow](TESTING.md#5-data-ownership-and-stale-evidence); never edit old fingerprints to manufacture a current pass. Frozen evidence, imported materials, and original backup snapshots retain their recorded names. A successful naming check does not make historical artwork, connector extraction, native builds, or game observations current.
+Only explicit matching human observations can establish game-test results. Preserve observation records and their original evidence when changing names. Frozen measured records can retain historical subject IDs, resource keys, names, paths, and hashes that identify their original source version; they do not establish a current-ID result. Current checks compare IDs exactly. If changed identities or source fingerprints make a result stale, retain that state and use the existing [observation workflow](TESTING.md#5-data-ownership-and-stale-evidence); never edit old fingerprints to manufacture a current pass. Frozen evidence, imported materials, and original backup snapshots retain their recorded names. A successful naming check does not make historical artwork, connector extraction, native builds, or game observations current.
 
-Run these commands from the repository root after changing the maintained naming rules or applying an authorized migration:
+Run these commands from the repository root after changing the maintained naming rules or applying an authorized identity change:
 
 ```sh
 python3 -B custom-pieces/scp.py docs-check

@@ -13,7 +13,7 @@ from pathlib import Path
 import unittest
 
 from scp.track_paths import PATH, encode_paths, _parse_paths
-from scp.subject_identity import piece_directory
+from scp.subject_sources import piece_directory
 from scp_hsr.hsr_atomic_curves import (
     RECIPES, atomic_info, atomic_layout, atomic_routes, model_inputs,
 )

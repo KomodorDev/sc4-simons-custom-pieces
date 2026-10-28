@@ -34,16 +34,9 @@ def level_and_height(record):
 def piece_title(piece_id, records, source_name):
     """Use the same source-backed title in every view, without duplicate levels."""
     records = list(records)
-    by_id = {record['id']: record for record in records}
     height_annotation = (r'\(\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+)'
                          r'(?:[eE][+-]?\d+)?)\s*m\s*\)')
     canonical = ' — ' in source_name and re.search(height_annotation, source_name) is not None
-    if not canonical and piece_id == 'hsr-component-tight-paired-curve90-l4-to-mid':
-        return piece_heading('HSR Tight Two-Track Corner — ' + level_and_height(by_id['curve-end-a'])
-                             + ' to ' + level_and_height(by_id['curve-end-b']))
-    if not canonical and piece_id == 'hsr-component-modular-crossing-core':
-        return piece_heading('HSR Modular One-Tile Crossing — ' + level_and_height(by_id['upper-end-a'])
-                             + ' over ' + level_and_height(by_id['lower-end-a']))
     labels = sorted({level_and_height(record) for record in records})
     levels = {}
     for record in records:
@@ -64,7 +57,7 @@ def piece_title(piece_id, records, source_name):
                    r'(?:\s*\(\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)'
                    r'(?:[eE][+-]?\d+)?\s*m\s*\))?')
     title = re.sub(level_token, replace, source_name, flags=re.IGNORECASE)
-    # Deliberately migrated names already distinguish Custom, Ground, and
+    # Canonical names already distinguish Custom, Ground, and
     # each service. A measured 0 m pedestrian group must not append an extra
     # Custom label to an explicitly named Road Level 0 interface, for example.
     # Only consume heights actually written in the source-backed title; keep

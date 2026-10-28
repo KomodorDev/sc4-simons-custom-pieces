@@ -12,7 +12,7 @@ from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
 from scp.autotile import validate_auto_tile_addresses
-from scp.subject_identity import canonical_piece_id, canonical_piece_name
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 
 def register_examples(info_by_recipe,recipes,selection_name):
@@ -30,7 +30,7 @@ def register_examples(info_by_recipe,recipes,selection_name):
         require(len(owners)<=1, f'Ambiguous example recipe owner: {recipe}')
         require(not owners or owners[0]['domain']=='high-speed-rail',
                 'An HSR example recipe must belong to the high-speed-rail domain')
-        slug=owners[0]['id'] if owners else canonical_piece_id(recipe, ROOT)
+        slug=owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
         selected.append(slug)
         cells=[list(cell) for cell in info['cells']]
         footprint=list(info['footprint'])
@@ -49,7 +49,7 @@ def register_examples(info_by_recipe,recipes,selection_name):
         blocks=[block+part*0x1000 for part in range(span)]
         used_puzzles.add(puzzle);used_blocks.update(blocks)
         tiles=[f'{block+0x100*x+0x10*row:08x}' for x,row in cells]
-        name=canonical_piece_name(recipe, info.get('name','HSR Smooth T-Junction — At Grade'), ROOT)
+        name=piece_name_for_recipe(recipe, info.get('name','HSR Smooth T-Junction — At Grade'), ROOT)
         orientation='Diagonal' if 'diagonal' in recipe else 'Straight'
         description=info.get('description') or (f'{name}. {orientation} HSR mainline with four direct smooth turning connections. '
             'All routes stay at the native HSR path height of 15.5 m. '

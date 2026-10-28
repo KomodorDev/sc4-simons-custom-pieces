@@ -14,7 +14,6 @@ from pathlib import Path
 
 from scp import jsonc
 from scp.dbpf import require
-from scp.subject_identity import canonical_subject_id, legacy_piece_id
 from scp.verification_fixtures import resource_descriptor
 from .assembly_inspection import _world_triangles, sha256, number
 from .hsr_merge_extraction_verify import (
@@ -124,9 +123,9 @@ ACCEPTED_WEDGE_SHADOW_TRANSITION = {'piece_id': 'hsr-component-modular-south-jun
                 'resource_id': '7ab50e44-2bc2759a-7f58c224',
                 'before_sha256': 'b15d62a9a4701f21534677e4ec178d8becfed519fce3774643fe4c6c28a90b5f',
                 'after_sha256': '9fd2999a9f6f4fd1f2672ed8d95bb7b0b61ef87ecce472a77a4125d146a0b1ab'}]}
-CORE_ID = canonical_subject_id('hsr-component-l2-paired-fan-compact-core')
+CORE_ID = 'hsr-component-l2-paired-fan-compact-core'
 FULL_FAN_ID = 'hsr-component-l2-paired-fan-compact-join'
-STRAIGHT_ID = canonical_subject_id('hsr-component-l2-paired-straight-recessed-web')
+STRAIGHT_ID = 'hsr-component-l2-paired-straight-recessed-web'
 CURRENT_INTEGRATION_LAYOUT = '5bcb0546c645a95f5cfdcc77134362047ba98af42320395a57160f14d26c670e'
 CORE_ARCHIVE_SHA256 = '7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd'
 CORE_SOURCE_INPUTS = {'piece.json': '69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f',
@@ -266,8 +265,8 @@ def parent_retirement_record():
         'current_replacements': [
             {'id': identifier, 'source_inputs': deepcopy(inputs), 'archive_sha256': digest,
              'physical_extraction_evidence': deepcopy(EXTRACTED_STANDALONE_EVIDENCE[identifier])}
-            for identifier, inputs, digest in ((legacy_piece_id(CORE_ID), CORE_SOURCE_INPUTS, CORE_ARCHIVE_SHA256),
-                                               (legacy_piece_id(STRAIGHT_ID), STRAIGHT_SOURCE_INPUTS, STRAIGHT_ARCHIVE_SHA256))
+            for identifier, inputs, digest in ((CORE_ID, CORE_SOURCE_INPUTS, CORE_ARCHIVE_SHA256),
+                                               (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS, STRAIGHT_ARCHIVE_SHA256))
         ],
         'preserved_integration_files': deepcopy(PRESERVED_INTEGRATION_FILES),
         'standalone_revisions_sha256': STANDALONE_REVISIONS_SHA256,
@@ -304,34 +303,15 @@ def audit_parent_retirement(*, root=ROOT, ledger=None):
     require(canonical_sha256(ledger.get('subsequent_piece_revisions')) == STANDALONE_REVISIONS_SHA256,
             'Trumpet parent retirement changes its seven standalone history rows')
     for identifier, inputs in ((CORE_ID, CORE_SOURCE_INPUTS), (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS)):
-        for relative, digest in {**inputs, **EXTRACTED_STANDALONE_EVIDENCE[legacy_piece_id(identifier)]}.items():
-            require(sha256((domain/'00_pieces'/identifier/relative).read_bytes()) == digest,
+        for relative, digest in {**inputs, **EXTRACTED_STANDALONE_EVIDENCE[identifier]}.items():
+            source = domain/'00_pieces'/identifier/relative
+            require(source.is_file() and sha256(source.read_bytes()) == digest,
                     'Trumpet parent retirement changes a retained source or extraction proof: '+identifier+'/'+relative)
     return json.loads(raw)
 
 
 def canonical_sha256(value):
     return sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode())
-
-
-def _canonical_piece_mapping(mapping, *, root=ROOT):
-    result = {}
-    for identifier, value in mapping.items():
-        current = canonical_subject_id(identifier, root=root)
-        require(current not in result, 'Trumpet historical piece identities collide')
-        result[current] = value
-    return result
-
-
-def _piece_folder(identifier, root):
-    return Path(root)/'domains/high-speed-rail/00_pieces'/canonical_subject_id(identifier, root=root)
-
-
-def _placement_contract(placement, *, root=ROOT):
-    """Ignore renamed prose, preserving every placement and recipe fact."""
-    result = {key: deepcopy(value) for key, value in placement.items() if key not in ('name', 'menu_name')}
-    result['piece_id'] = canonical_subject_id(result['piece_id'], root=root)
-    return result
 
 
 def frozen_inputs(root=ROOT):
@@ -363,7 +343,7 @@ def audit_source_inputs(root=ROOT):
     for identifier, files in SOURCE_INPUTS.items():
         if identifier == FULL_FAN_ID:
             continue
-        folder = _piece_folder(identifier, root)
+        folder = Path(root)/'domains/high-speed-rail/00_pieces'/identifier
         for relative, digest in files.items():
             require(sha256((folder/relative).read_bytes()) == digest,
                     'Trumpet border integration current source input differs: '+identifier+'/'+relative)
@@ -372,7 +352,7 @@ def audit_source_inputs(root=ROOT):
             'Trumpet border integration changes its seven standalone history rows')
     for identifier, inputs in ((CORE_ID, CORE_SOURCE_INPUTS), (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS)):
         require(inputs, 'Trumpet extracted piece awaits its final independently verified source pins: '+identifier)
-        folder = _piece_folder(identifier, root)
+        folder = Path(root)/'domains/high-speed-rail/00_pieces'/identifier
         for relative, digest in inputs.items():
             require(sha256((folder/relative).read_bytes()) == digest,
                     'Trumpet extracted piece source input differs: '+identifier+'/'+relative)
@@ -382,33 +362,26 @@ def audit_source_inputs(root=ROOT):
     require(EXTRACTED_STANDALONE_EVIDENCE, 'Trumpet extracted pieces await their final standalone evidence pins')
     for identifier, inputs in EXTRACTED_STANDALONE_EVIDENCE.items():
         for relative, digest in inputs.items():
-            require(sha256((_piece_folder(identifier, root)/relative).read_bytes()) == digest,
+            require(sha256((Path(root)/'domains/high-speed-rail/00_pieces'/identifier/relative).read_bytes()) == digest,
                     'Trumpet extracted piece standalone evidence differs: '+identifier+'/'+relative)
     require(FAN_ATOMIZATION_INPUTS, 'Trumpet fan atomization awaits final replay and drawing pins')
     for relative, digest in FAN_ATOMIZATION_INPUTS.items():
         require(sha256((Path(root)/ASSEMBLY_RELATIVE/relative).read_bytes()) == digest,
                 'Trumpet fan atomization evidence, replay source, or drawing differs: '+relative)
-    return {**deepcopy(SOURCE_INPUTS), legacy_piece_id(CORE_ID): deepcopy(CORE_SOURCE_INPUTS),
-            legacy_piece_id(STRAIGHT_ID): deepcopy(STRAIGHT_SOURCE_INPUTS)}
+    return {**deepcopy(SOURCE_INPUTS), CORE_ID: deepcopy(CORE_SOURCE_INPUTS),
+            STRAIGHT_ID: deepcopy(STRAIGHT_SOURCE_INPUTS)}
 
 
 def piece_identity(piece):
-    result = {name: deepcopy(piece[name]) for name in IDENTITY_FIELDS if name in piece}
-    identifier = result['id']
-    result['id'] = canonical_subject_id(identifier)
-    if 'asset_file' in result:
-        path = Path(result['asset_file'])
-        if path.name == 'SCP_'+identifier+'.dat':
-            result['asset_file'] = path.with_name('SCP_'+result['id']+'.dat').as_posix()
-    return result
+    return {name: piece[name] for name in IDENTITY_FIELDS if name in piece}
 
 
 def expected_archives(frozen):
     require(isinstance(CORE_ARCHIVE_SHA256, str) and len(CORE_ARCHIVE_SHA256) == 64,
             'Trumpet fan core awaits its final independently verified standalone DAT')
-    expected = _canonical_piece_mapping({piece['id']: piece['sha256'] for piece in frozen['descriptor']['pieces']
-                                        if piece['id'] != FULL_FAN_ID})
-    expected.update(_canonical_piece_mapping({key: value for key, value in REPAIRED_ARCHIVES.items() if key != FULL_FAN_ID}))
+    expected = {piece['id']: piece['sha256'] for piece in frozen['descriptor']['pieces']
+                if piece['id'] != FULL_FAN_ID}
+    expected.update({key: value for key, value in REPAIRED_ARCHIVES.items() if key != FULL_FAN_ID})
     require(isinstance(STRAIGHT_ARCHIVE_SHA256, str) and len(STRAIGHT_ARCHIVE_SHA256) == 64,
             'Trumpet recessed-web straight awaits its independently verified standalone DAT')
     expected[CORE_ID] = CORE_ARCHIVE_SHA256
@@ -420,16 +393,16 @@ def expected_current_placements(frozen):
     """Apply only the three independently reviewed P06 replacement poses."""
     original = next(item for item in frozen['scene']['placements'] if item['label'] == 'P06')
     core = deepcopy(original)
-    name = 'HSR Level 2 (15.5 m) \u2014 Fan with Two-Track Stem \u2014 Compact, Recessed Web'
+    name = 'HSR Level 2 Compact Paired Fan Core'
     core.update(name=name+' at P06', piece_id=CORE_ID, recipe='hsr_component_l2_paired_fan_compact_core',
                 origin_m=[80., 48.], menu_name=name, display_origin_m=[192., 256.],
                 display_origin_tiles_en=[12., 16.])
     extras = []
     for label, north, display_y in (('P06A', 80., 18.), ('P06B', 64., 17.)):
         straight = deepcopy(original)
-        straight.update(name='HSR Level 2 (15.5 m) \u2014 Two-Track Straight \u2014 Recessed Web at '+label, instance_id=label, label=label,
+        straight.update(name='HSR Level 2 Paired Straight with Recessed Web at '+label, instance_id=label, label=label,
                         piece_id=STRAIGHT_ID, recipe='hsr_component_l2_paired_straight_recessed_web',
-                        origin_m=[112., north], menu_name='HSR Level 2 (15.5 m) \u2014 Two-Track Straight \u2014 Recessed Web',
+                        origin_m=[112., north], menu_name='HSR Level 2 Paired Straight with Recessed Web',
                         display_origin_m=[224., north+208.], display_origin_tiles_en=[14., display_y])
         extras.append(straight)
     result = []
@@ -441,8 +414,7 @@ def expected_current_placements(frozen):
 def integration_policy(frozen):
     cells = [row['world_east_north_m'] for row in frozen['descriptor']['world_cells']
              if row['piece_id'] in REPAIRED_ARCHIVES]
-    return {'allowed_model_piece_ids': sorted([key for key in REPAIRED_ARCHIVES if key != FULL_FAN_ID]
-                                            +[legacy_piece_id(CORE_ID), legacy_piece_id(STRAIGHT_ID)]),
+    return {'allowed_model_piece_ids': sorted([key for key in REPAIRED_ARCHIVES if key != FULL_FAN_ID]+[CORE_ID, STRAIGHT_ID]),
             'allowed_changed_placements': ['P01', 'P04', 'P06', 'P06A', 'P06B', 'P07', 'P08'],
             'allowed_model_world_cells_east_north_m': sorted(cells),
             'unchanged_complete_archives': 9, 'unchanged_world_cells': 68,
@@ -461,8 +433,7 @@ def integration_policy(frozen):
             'fan_core_rebase_old_cell_offset': [1, 2],
             'full_fan_retained_in_library_unchanged': True,
             'old_full_fan_approved_archive_sha256': REPAIRED_ARCHIVES[FULL_FAN_ID],
-            'independently_approved_current_archives': {
-                legacy_piece_id(identifier): digest for identifier, digest in expected_archives(frozen).items()}}
+            'independently_approved_current_archives': expected_archives(frozen)}
 
 
 def _core_tile_payload(resources, piece):
@@ -480,7 +451,7 @@ def _core_tile_payload(resources, piece):
 
 def _world_identity(old):
     if old['piece_id'] != FULL_FAN_ID:
-        return canonical_subject_id(old['piece_id']), old['cell'], old['rotation_quarter_turns_ccw'], None
+        return old['piece_id'], old['cell'], old['rotation_quarter_turns_ccw'], None
     if old['cell'] == [3, 0]:
         return STRAIGHT_ID, [0, 0], 0, 'P06A'
     if old['cell'] == [3, 1]:
@@ -493,17 +464,16 @@ def audit_border_scope(tiles, build, scene, *, root=ROOT):
     frozen = frozen_inputs(root)
     audit_source_inputs(root)
     baseline = frozen['descriptor']
-    old_pieces = _canonical_piece_mapping({piece['id']: piece for piece in frozen['manifest']['pieces']}, root=root)
+    old_pieces = {piece['id']: piece for piece in frozen['manifest']['pieces']}
     approved = expected_archives(frozen)
     require(set(build['pieces']) == set(approved) and len(approved) == 14,
             'Trumpet border integration changes its fourteen selected piece identities')
-    require([_placement_contract(item, root=root) for item in scene['placements']]
-            == [_placement_contract(item, root=root) for item in expected_current_placements(frozen)],
+    require(scene['placements'] == expected_current_placements(frozen),
             'Trumpet fan atomization changes an unapproved placement or its metadata')
-    archive_records = _canonical_piece_mapping({piece['id']: piece for piece in baseline['pieces']}, root=root)
+    archive_records = {piece['id']: piece for piece in baseline['pieces']}
     shadow_transitions = {item['resource_id']: item for item in ACCEPTED_WEDGE_SHADOW_TRANSITION['resources']}
     for identifier, piece in build['pieces'].items():
-        identity = (piece_identity(CORE_IDENTITY) if identifier == CORE_ID else piece_identity(STRAIGHT_IDENTITY)
+        identity = (CORE_IDENTITY if identifier == CORE_ID else STRAIGHT_IDENTITY
                     if identifier == STRAIGHT_ID else piece_identity(old_pieces[identifier]))
         require(piece_identity(piece) == identity,
                 'Trumpet border integration changes a permanent piece identity: '+identifier)
@@ -528,8 +498,7 @@ def audit_border_scope(tiles, build, scene, *, root=ROOT):
         for tgi, digest in old_hashes.items():
             if tgi.startswith('5ad0e817-'):
                 continue
-            transition = (shadow_transitions.get(tgi)
-                          if identifier == canonical_subject_id(ACCEPTED_WEDGE_SHADOW_TRANSITION['piece_id'], root=root) else None)
+            transition = shadow_transitions.get(tgi) if identifier == ACCEPTED_WEDGE_SHADOW_TRANSITION['piece_id'] else None
             expected_digest = transition['after_sha256'] if transition is not None else digest
             require(transition is None or digest == transition['before_sha256'],
                     'Trumpet accepted wedge shadow transition predecessor differs')
@@ -655,8 +624,7 @@ def read_border_integration_record(path=None, *, descriptor=None, root=ROOT, ini
     require(sha256(raw) == descriptor.get('border_piece_integration_sha256'),
             'Trumpet current border integration record fingerprint differs')
     frozen = frozen_inputs(root)
-    require(record.get('schema_version') == 1
-            and canonical_subject_id(record.get('assembly_id'), kind='assembly', root=root) == 'hsr-trumpet-straight-stem'
+    require(record.get('schema_version') == 1 and record.get('assembly_id') == 'straight-stem-trumpet'
             and record.get('status') == 'passed', 'Trumpet border integration is not completed')
     require(record.get('baseline_snapshot') == {'directory': SNAPSHOT_RELATIVE.as_posix(),
             'index_sha256': SNAPSHOT_INDEX_SHA256}, 'Trumpet border integration baseline differs')
@@ -669,7 +637,7 @@ def read_border_integration_record(path=None, *, descriptor=None, root=ROOT, ini
             and record.get('scene_sha256') == sha256((assembly/'assembly.json').read_bytes()),
             'Trumpet border integration scene or layout binding differs')
     expected = expected_archives(frozen)
-    require(_canonical_piece_mapping({piece['id']: piece['sha256'] for piece in descriptor['pieces']}, root=root) == expected,
+    require({piece['id']: piece['sha256'] for piece in descriptor['pieces']} == expected,
             'Trumpet current descriptor differs from independently approved archive bytes')
     compiled = record.get('compiled_audit', {})
     require(type(CURRENT_TILE_TRIANGLES) is int and CURRENT_TILE_TRIANGLES > 0,
@@ -679,7 +647,7 @@ def read_border_integration_record(path=None, *, descriptor=None, root=ROOT, ini
     require(isinstance(INITIAL_INTEGRATION_MANIFEST_SHA256, str)
             and compiled.get('manifest_sha256') == sha256(initial_manifest_raw) == INITIAL_INTEGRATION_MANIFEST_SHA256,
             'Trumpet current integration initial audit manifest differs')
-    require(_canonical_piece_mapping(compiled.get('archive_sha256', {}), root=root) == expected
+    require(compiled.get('archive_sha256') == expected
             and compiled.get('world_cells_sha256') == canonical_sha256(descriptor['world_cells'])
             and compiled.get('journeys_sha256') == canonical_sha256(descriptor['journeys'])
             and compiled.get('encoded_fragments') == descriptor.get('encoded_fragments') == 166
@@ -753,7 +721,7 @@ def prove_current_removed_structural_cells(build, *, root=ROOT):
     spec = build['pieces'][CORE_ID]
     saved = build['resources'](spec)
     resources = saved['resources']
-    require(piece_identity(spec) == piece_identity(CORE_IDENTITY) and saved['sha256'] == CORE_ARCHIVE_SHA256,
+    require(piece_identity(spec) == CORE_IDENTITY and saved['sha256'] == CORE_ARCHIVE_SHA256,
             'Trumpet empty-cell proof requires the independently approved exact core DAT')
     cells = []
     for east, north in removed:

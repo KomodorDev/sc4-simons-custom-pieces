@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scp import jsonc
-from scp.subject_identity import canonical_piece_id, piece_directory
+from scp.subject_sources import piece_id_for_recipe, piece_directory
 from scp.autotile import validate_auto_tile_addresses
 from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import (
@@ -45,7 +45,7 @@ class FanCoreExtractionTests(unittest.TestCase):
         self.assertNotIn('00_pieces/'+FULL.replace('_', '-')+'/piece.json', domain['pieces'])
         collections = jsonc.load(PIECES.parent/'collections.jsonc')['collections']
         self.assertFalse(any(FULL.replace('_', '-') in members for members in collections.values()))
-        replacements = {canonical_piece_id(CORE, ROOT), 'hsr-l2-two-track-straight-recessed-web'}
+        replacements = {piece_id_for_recipe(CORE, ROOT), 'hsr-l2-two-track-straight-recessed-web'}
         self.assertEqual(set(collections['hsr-compact-fan-parts']), replacements)
         self.assertTrue(replacements <= set(collections['hsr-all-components']))
 
@@ -155,7 +155,7 @@ class FanCoreExtractionTests(unittest.TestCase):
 
     def test_sparse_new_allocation_has_unique_native_addresses(self):
         validate_auto_tile_addresses(self.spec)
-        ledger = jsonc.load(ROOT/'config/allocations.jsonc')['pieces'][canonical_piece_id(CORE, ROOT)]
+        ledger = jsonc.load(ROOT/'config/allocations.jsonc')['pieces'][piece_id_for_recipe(CORE, ROOT)]
         self.assertEqual(ledger['cells'], self.spec['cells'])
         self.assertEqual(ledger['tile_ids'], self.spec['tile_ids'])
         self.assertEqual(ledger['tile_base'], '7f505000')
@@ -164,7 +164,7 @@ class FanCoreExtractionTests(unittest.TestCase):
 
     def test_new_core_menu_identifies_a_junction_component(self):
         from scp_hsr.icons import icon_identity
-        identity = icon_identity(canonical_piece_id(CORE, ROOT))
+        identity = icon_identity(self.spec['menu']['style'])
         self.assertEqual(identity['kind'], 'JCT')
         self.assertEqual(identity['badge'], 'PART')
 

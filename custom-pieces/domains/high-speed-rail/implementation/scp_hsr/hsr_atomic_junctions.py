@@ -12,7 +12,7 @@ from copy import deepcopy
 from functools import lru_cache
 import hashlib
 import json
-from scp.subject_identity import canonical_piece_name, piece_directory
+from scp.subject_sources import piece_name_for_recipe, piece_directory
 import struct
 
 from scp.dbpf import require
@@ -36,7 +36,7 @@ def _source(recipe):
 def atomic_info(recipe):
     """Return literal ports, construction cells and the retained support plan."""
     info = deepcopy(_source(recipe)['metadata'])
-    info['name'] = canonical_piece_name(recipe, info['name'])
+    info['name'] = piece_name_for_recipe(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): flag for cell, flag in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]

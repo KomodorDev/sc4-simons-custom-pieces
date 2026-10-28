@@ -57,4 +57,4 @@ The **connection matrix summary** counts displayed matrix entries for each check
 
 | Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |
 | --- | --- | --- | --- | --- | --- |
-| [![HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/previews/preview.png)](hsr-trumpet-straight-stem/previews/preview.png) | [HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/README.md) | 28 / 14 | [ ] Historical record; verification under the current ID pending | [ ] Historical record; verification under the current ID pending | Historical record; verification under the current ID pending |
+| [![HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/previews/preview.png)](hsr-trumpet-straight-stem/previews/preview.png) | [HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/README.md) | 28 / 14 | [ ] Unverified; record subject does not match this folder | [ ] Unverified; record subject does not match this folder | Unverified; record subject does not match this folder |

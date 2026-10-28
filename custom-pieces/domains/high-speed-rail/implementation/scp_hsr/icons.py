@@ -41,29 +41,8 @@ _MODULAR_KIND = {
     'hsr-component-modular-crossing-core': 'XNG',
     'hsr-component-l2-paired-fan-compact-core': 'JCT',
 }
-# Subject selection IDs and procedural artwork styles are separate identities.
-# These original subjects already used styles that differed from their IDs;
-# their renamed IDs must still draw the exact same pixels and category badges.
-_SUBJECT_STYLES = {
-    'blind-hsr-rise-quarter-turn': 'hsr-component-blind-rise-quarter-turn',
-    'blind-hsr-road-stack': 'rail-hsr-road-stack',
-    'hsr-diagonal-ghsr': 'diagonal-hsr',
-    'hsr-straight-ghsr': 'cross-oo',
-    'diagonal-hsr-straight-ghsr': 'cross-do',
-    'diagonal-hsr-diagonal-ghsr': 'cross-dd',
-    'tram-under-hsr': 'tram-hsr',
-    'rail-hsr-diagonal-s-left': 'rail-hsr-s-left',
-    'rail-hsr-diagonal-s-right': 'rail-hsr-s-right',
-    'rail-ghsr-diagonal-s-left': 'rail-ghsr-s-left',
-    'rail-ghsr-diagonal-s-right': 'rail-ghsr-s-right',
-    'rail-hsr-adjacent-crossover-left': 'rail-hsr-crossover-left',
-    'rail-hsr-adjacent-crossover-right': 'rail-hsr-crossover-right',
-    'rail-ghsr-adjacent-crossover-left': 'rail-ghsr-crossover-left',
-    'rail-ghsr-adjacent-crossover-right': 'rail-ghsr-crossover-right',
-    'rail-hsr-adjacent-scissors-revised': 'rail-hsr-scissors-revised',
-    'rail-ghsr-adjacent-scissors-revised': 'rail-ghsr-scissors-revised',
-    'rail-hsr-ghsr-transition': 'rail-transition',
-}
+# Each piece declares one of these stable procedural keys in menu.style.
+# Selection IDs and folder names do not select or rename artwork styles.
 _FOOTER_LETTER = {
     'A': ('010', '101', '101', '111', '101', '101', '101'),
     'C': ('111', '100', '100', '100', '100', '100', '111'),
@@ -86,14 +65,6 @@ _FOOTER_LETTER = {
 }
 
 
-def _procedural_style(style: str) -> str:
-    """Resolve a selected subject without renaming its original artwork style."""
-    from scp.subject_identity import legacy_piece_id
-
-    original = legacy_piece_id(style)
-    return _SUBJECT_STYLES.get(original, original)
-
-
 def icon_identity(style: str) -> dict:
     """Give menu labels and artwork one deterministic category vocabulary.
 
@@ -101,7 +72,6 @@ def icon_identity(style: str) -> dict:
     HSR together with ground GHSR; TRAM identifies the rail/tram crossing.
     Layout assembly blueprints never become PNP merely by sharing a name.
     """
-    style = _procedural_style(style)
     category = 'pnp' if style in PNP_STYLES else 'part'
     if 'tram' in style:
         network = 'TRAM'
@@ -153,7 +123,7 @@ _LETTER = {
 
 def assembly_icon_network(assembly_id):
     """Declare an assembly's network explicitly, including future mixed layouts."""
-    networks = {'straight-stem-trumpet': 'HSR', 'hsr-trumpet-straight-stem': 'HSR'}
+    networks = {'hsr-trumpet-straight-stem': 'HSR'}
     _require(assembly_id in networks, f'No declared assembly icon network: {assembly_id}')
     return networks[assembly_id]
 
@@ -263,7 +233,6 @@ def _decode_rgba(raw: bytes) -> tuple[int, int, bytes]:
 def _frame(style: str, state: str):
     from PIL import Image, ImageDraw, ImageOps
 
-    style = _procedural_style(style)
     identity = icon_identity(style)
     badge_colour = ((169, 127, 226, 255) if identity['category'] == 'pnp'
                     else (52, 193, 181, 255))
@@ -503,7 +472,6 @@ def _frame(style: str, state: str):
 def make_icon(style: str) -> bytes:
     """Return one deterministic native-format strip, with an SCP badge."""
     from PIL import Image
-    style = _procedural_style(style)
     if style.startswith('hsr-component-'):
         from .hsr_components_layout import RECIPES
         known = style.replace('-', '_') in RECIPES

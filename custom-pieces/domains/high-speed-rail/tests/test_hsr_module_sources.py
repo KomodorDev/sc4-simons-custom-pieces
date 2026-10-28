@@ -15,7 +15,7 @@ import unittest
 from unittest.mock import patch
 
 from scp.track_paths import encode_paths
-from scp.subject_identity import piece_directory
+from scp.subject_sources import piece_directory
 from scp_hsr.hsr_partition_components import (
     RECIPES, build_models, model_inputs, partition_info, partition_layout,
 )

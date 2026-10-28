@@ -238,7 +238,7 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         self.assertIn('Route Query: 0/1 confirmed; 1 not established', text)
         self.assertEqual((self.local/'TESTING.md').read_text(), 'Every preview and game check passed: [x].\n')
 
-    def test_renamed_subject_does_not_present_old_identity_results_as_current(self):
+    def test_subject_mismatch_does_not_count_another_records_observations(self):
         self.observe('preview_review')
         self.observe('in_game_render')
         self.generate()
@@ -250,7 +250,7 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         with patch('scp.inventory.load_catalog', return_value=self.catalog):
             write_inventories(self.root)
         text = (self.domain/'01_assemblies/INVENTORY.md').read_text()
-        self.assertIn('Historical record; verification under the current ID pending', text)
+        self.assertIn('Unverified; record subject does not match this folder', text)
         self.assertNotIn('[x] 1/1 passed', text)
         self.assertNotIn('Saved PATH: 2/2 confirmed', text)
         self.assertEqual((renamed/'checks/manual-tests.json').read_bytes(), original)
