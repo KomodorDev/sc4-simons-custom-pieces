@@ -1,0 +1,1411 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-paired-fan-compact-core",
+  "result": "pass",
+  "scope": "Intrinsic independently reusable piece extraction. Assembly replacement, removed former outer caps, and external closure are audited separately by the linked full saved-triangle review.",
+  "source_bindings": [
+    {
+      "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/geometry.json",
+      "sha256": "8ee99c79beec4dc3f45fcc8419a19910d025c76e9e3ddc4ef0a12bde97ef5874"
+    },
+    {
+      "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/piece.json",
+      "sha256": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f"
+    }
+  ],
+  "actual_native_build": {
+    "output": "dist/fan-core-and-recessed-straight-audit-02",
+    "command": "python3 -B custom-pieces/scp.py build --include hsr-component-l2-paired-fan-compact-core --include hsr-component-l2-paired-straight-recessed-web --output custom-pieces/dist/fan-core-and-recessed-straight-audit-02 --plugins <native-Plugins>",
+    "method_note": "The ordinary builder was invoked in-process with a guarded expensive-model cache. The public command describes ordinary selection and output; the measured cache method is recorded below. Native inputs remain private.",
+    "manifest_sha256": "a977843987f98d72ea703f8b449145d3f43e4a5c25e13a0e6e5e71749ceb0427",
+    "verification_sha256": "dbbd589b1fedab603340e7d421e5204c01c8f542f034ffdff36468293d413f27",
+    "dat": {
+      "path": "dist/fan-core-and-recessed-straight-audit-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-core.dat",
+      "sha256": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd"
+    },
+    "all_saved_checks_passed": true,
+    "normal_non_model_resources_regenerated": true,
+    "normal_native_audit_and_all_saved_verifiers_active": true
+  },
+  "approved_original": {
+    "piece_id": "hsr-component-l2-paired-fan-compact-join",
+    "geometry_sha256": "d5366120c1f9c38b8b1eccc7fc8927dabb6e28d8ba1dd08427ed4e0b1c74aa0b",
+    "dat_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797",
+    "manifest_sha256": "f41fa160a981c24cf19117f656da72f2a3c85112e895fcf62db551c0ccc989c8"
+  },
+  "exact_retained_resource_audit": {
+    "exact_retained_path_cells_checked": 9,
+    "exact_retained_model_zoom_resources_checked": 45,
+    "exact_retained_shadow_zoom_resources_checked": 45,
+    "retained_geometry_and_uv_bytes_unchanged": true,
+    "original_fan_local_to_core_offset_cells": [
+      1,
+      2
+    ],
+    "retained_fan_source_dat_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797"
+  },
+  "retained_cells": [
+    {
+      "original_full_fan_local_cell": [
+        3,
+        2
+      ],
+      "new_local_cell": [
+        2,
+        0
+      ],
+      "source_computation_cell": [
+        6,
+        2
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "after_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "after_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "after_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "after_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "after_sha256": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "730f3e37d3f9913457e486377b77ed235d744c4ec63272e53daf2ff56a779f1f",
+          "after_sha256": "730f3e37d3f9913457e486377b77ed235d744c4ec63272e53daf2ff56a779f1f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "6ac0f3b42c3dbdaf9306fca1c252cfaa234797241ed1f1f08d4b389645bee367",
+          "after_sha256": "6ac0f3b42c3dbdaf9306fca1c252cfaa234797241ed1f1f08d4b389645bee367",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "24635a47b5716859bb34c89d7a0b91af96f32007b3921207de9db6ee907721bc",
+          "after_sha256": "24635a47b5716859bb34c89d7a0b91af96f32007b3921207de9db6ee907721bc",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "0d615ad4e834e295c67b500a20094e6d155151fc348752302d499746014669a3",
+          "after_sha256": "0d615ad4e834e295c67b500a20094e6d155151fc348752302d499746014669a3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "254bac6aa670ce47724b77fa582a73e1ba12e6d1efa5caaa2fc978ab6a97c1dc",
+          "after_sha256": "254bac6aa670ce47724b77fa582a73e1ba12e6d1efa5caaa2fc978ab6a97c1dc",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "fe978d10b8d814b6ed4dae2d12312a7a7169daec530e3ffe6b91df9dd8240f5d",
+          "after_sha256": "fe978d10b8d814b6ed4dae2d12312a7a7169daec530e3ffe6b91df9dd8240f5d",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        2,
+        3
+      ],
+      "new_local_cell": [
+        1,
+        1
+      ],
+      "source_computation_cell": [
+        5,
+        3
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "after_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "after_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "after_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "after_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "after_sha256": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "after_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "3129f50b6a7b41c58e3d115e08584a7736e12e0bdac8892dab1aa0f9427146e1",
+          "after_sha256": "3129f50b6a7b41c58e3d115e08584a7736e12e0bdac8892dab1aa0f9427146e1",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "78de091fda28f0f020a1539c515e4a8953bf159351bd74a5f287a530a74ebe36",
+          "after_sha256": "78de091fda28f0f020a1539c515e4a8953bf159351bd74a5f287a530a74ebe36",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "830f1aec7d95981fbc0437a848d4ad3ad34eaf0a89c072e7187747394145ea71",
+          "after_sha256": "830f1aec7d95981fbc0437a848d4ad3ad34eaf0a89c072e7187747394145ea71",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "8979596bf7305ed92c0f1f091b673fae49fc8d5d6f4d369d573508f8e7466836",
+          "after_sha256": "8979596bf7305ed92c0f1f091b673fae49fc8d5d6f4d369d573508f8e7466836",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "e04dd666811758166868c821d9ac421e1e1d1651a64297679d41fcafc526175f",
+          "after_sha256": "e04dd666811758166868c821d9ac421e1e1d1651a64297679d41fcafc526175f",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        3,
+        3
+      ],
+      "new_local_cell": [
+        2,
+        1
+      ],
+      "source_computation_cell": [
+        6,
+        3
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "after_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "after_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "after_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "after_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "after_sha256": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "16d4a4c57486aedf001496e5a4d0ec20b66bb3d9df2ee37bdee4eb5cd0ed152a",
+          "after_sha256": "16d4a4c57486aedf001496e5a4d0ec20b66bb3d9df2ee37bdee4eb5cd0ed152a",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "6a156bfd3207f6b49dbe9c824d3626f39b9223834276c74154e41d0a4c05d505",
+          "after_sha256": "6a156bfd3207f6b49dbe9c824d3626f39b9223834276c74154e41d0a4c05d505",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "ff6899740fd3c4286ec28ed24efd72936eb25fff5c5b0fcf4f690355dd0f08d1",
+          "after_sha256": "ff6899740fd3c4286ec28ed24efd72936eb25fff5c5b0fcf4f690355dd0f08d1",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "2499afcfbf1d59f85f68be82183db419063bc8428e8aea3ebebf3b56db5dc4fe",
+          "after_sha256": "2499afcfbf1d59f85f68be82183db419063bc8428e8aea3ebebf3b56db5dc4fe",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "bfc0f3c5b1394309a28dc7ce703d4ccb698387aac3d2826761826b0012622b8f",
+          "after_sha256": "bfc0f3c5b1394309a28dc7ce703d4ccb698387aac3d2826761826b0012622b8f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "b46242127386547f88c575fa3227e1ef2368207ddbc0758635bf8bd5aff474c8",
+          "after_sha256": "b46242127386547f88c575fa3227e1ef2368207ddbc0758635bf8bd5aff474c8",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        4,
+        3
+      ],
+      "new_local_cell": [
+        3,
+        1
+      ],
+      "source_computation_cell": [
+        7,
+        3
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "after_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "after_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "after_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "after_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "after_sha256": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "after_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "346404e4cdcf4fb0444d344e3f1b184af4a64a69019d70453b7589574213f4cc",
+          "after_sha256": "346404e4cdcf4fb0444d344e3f1b184af4a64a69019d70453b7589574213f4cc",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "4b507c5edbabb8830023c36914cb1fa3003537e11001d6ee733d15a2b1c60f70",
+          "after_sha256": "4b507c5edbabb8830023c36914cb1fa3003537e11001d6ee733d15a2b1c60f70",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "da5c54e4e5815de7edc6e020dd54613d95cfd9399d04d9c46a2e8e7ae24c5095",
+          "after_sha256": "da5c54e4e5815de7edc6e020dd54613d95cfd9399d04d9c46a2e8e7ae24c5095",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "4e779bb793c0a3fe73b4efa648fa4881d8f6b03a92940ee20e7f52f40c4ef8cf",
+          "after_sha256": "4e779bb793c0a3fe73b4efa648fa4881d8f6b03a92940ee20e7f52f40c4ef8cf",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "dd1748336dcc18735a141841439ebd8a822fdd252b8b59261f11f1f6a242289e",
+          "after_sha256": "dd1748336dcc18735a141841439ebd8a822fdd252b8b59261f11f1f6a242289e",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        1,
+        4
+      ],
+      "new_local_cell": [
+        0,
+        2
+      ],
+      "source_computation_cell": [
+        4,
+        4
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "after_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "after_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "after_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "after_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "after_sha256": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "bb6d40d7ac8962529b7d1d6aa614dae1b1310148f1d467b70228ae1bea077744",
+          "after_sha256": "bb6d40d7ac8962529b7d1d6aa614dae1b1310148f1d467b70228ae1bea077744",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "ed0ba1eefc04281bf996deb1232813b9558913b90abc91fb7e11a681049554f2",
+          "after_sha256": "ed0ba1eefc04281bf996deb1232813b9558913b90abc91fb7e11a681049554f2",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "fbb068b8caf2806262bebef1417022f53f0b22e5c239e4467d6b55aee5686a3c",
+          "after_sha256": "fbb068b8caf2806262bebef1417022f53f0b22e5c239e4467d6b55aee5686a3c",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "c06d0c65f9535805e2727a0f1fdb79898060c51cc8f84a75d31340b681a27b93",
+          "after_sha256": "c06d0c65f9535805e2727a0f1fdb79898060c51cc8f84a75d31340b681a27b93",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "53c3402b65bd29015e44fc0cdb57e9c1584336230d0cf776dad2f9d06f8f5a78",
+          "after_sha256": "53c3402b65bd29015e44fc0cdb57e9c1584336230d0cf776dad2f9d06f8f5a78",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "23a05e74545f5d976f6d65df393bdda87a5452fd0d0f0553e55c77847e3d9e2d",
+          "after_sha256": "23a05e74545f5d976f6d65df393bdda87a5452fd0d0f0553e55c77847e3d9e2d",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        2,
+        4
+      ],
+      "new_local_cell": [
+        1,
+        2
+      ],
+      "source_computation_cell": [
+        5,
+        4
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "after_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "after_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "after_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "after_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "after_sha256": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "7dc91b6f8de0341ecd0a0d97cc4264d6e805916c0899bac6f23e6c919adcb0d2",
+          "after_sha256": "7dc91b6f8de0341ecd0a0d97cc4264d6e805916c0899bac6f23e6c919adcb0d2",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "2c0d9ffdfdfb363e8f7cd88cee95e39664955fcb4657f567b6bdaf4348dfd5ef",
+          "after_sha256": "2c0d9ffdfdfb363e8f7cd88cee95e39664955fcb4657f567b6bdaf4348dfd5ef",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "86cccc9e9464a59bc890fd4e2bdab6cba9561eaae3461deb4dbed49c41ee3c58",
+          "after_sha256": "86cccc9e9464a59bc890fd4e2bdab6cba9561eaae3461deb4dbed49c41ee3c58",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "1edd0a2b6b70d3a665a9deea89c48e6456c94e801b7002f8a6c97ce24a04aac5",
+          "after_sha256": "1edd0a2b6b70d3a665a9deea89c48e6456c94e801b7002f8a6c97ce24a04aac5",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "057c6f7e812a2ea8aeb3aea0e926c334d3275d627dc0e408e91d3a93c6302481",
+          "after_sha256": "057c6f7e812a2ea8aeb3aea0e926c334d3275d627dc0e408e91d3a93c6302481",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "7b8f09e5e977b667682de971945c8d4d4b8356301ddb41f9a71cf89b3b5c1af8",
+          "after_sha256": "7b8f09e5e977b667682de971945c8d4d4b8356301ddb41f9a71cf89b3b5c1af8",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        3,
+        4
+      ],
+      "new_local_cell": [
+        2,
+        2
+      ],
+      "source_computation_cell": [
+        6,
+        4
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "after_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "after_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "after_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "after_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "after_sha256": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "26739a95ef096cba8e8f9147580bfa48ea8ca5126f42b5d798e4d91371d3f849",
+          "after_sha256": "26739a95ef096cba8e8f9147580bfa48ea8ca5126f42b5d798e4d91371d3f849",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "c6b53ea9cd8423c8b6d9b414dfa07725224b220c2971392223dd09180a2bac9f",
+          "after_sha256": "c6b53ea9cd8423c8b6d9b414dfa07725224b220c2971392223dd09180a2bac9f",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "d07109aced729a5bc41bfcb4d8dab376d51701e9a54fc7b69fcf05550ea23a83",
+          "after_sha256": "d07109aced729a5bc41bfcb4d8dab376d51701e9a54fc7b69fcf05550ea23a83",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "e74ddc662e3ddd40d5c905476d68d2f67824ab3a9aa8fa24f1a6b12210aceeeb",
+          "after_sha256": "e74ddc662e3ddd40d5c905476d68d2f67824ab3a9aa8fa24f1a6b12210aceeeb",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "2b370c1af360ec8224333257b5513f9506ab2904e901f1c920c053205b8148bf",
+          "after_sha256": "2b370c1af360ec8224333257b5513f9506ab2904e901f1c920c053205b8148bf",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "ee40c799eb9bb7466a074e6e2a949699da39453d87d1797bed24b71c8f7f3451",
+          "after_sha256": "ee40c799eb9bb7466a074e6e2a949699da39453d87d1797bed24b71c8f7f3451",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        4,
+        4
+      ],
+      "new_local_cell": [
+        3,
+        2
+      ],
+      "source_computation_cell": [
+        7,
+        4
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "after_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "after_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "after_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "after_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "after_sha256": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "298339d654160ce8b59169483543a1b69f39c11aaf01be7ae368634ce3c5ed1d",
+          "after_sha256": "298339d654160ce8b59169483543a1b69f39c11aaf01be7ae368634ce3c5ed1d",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "3473a448ba3caecfbbc5494caea1dc5a4975dcd5d53e28c0d82b8cedb1208f05",
+          "after_sha256": "3473a448ba3caecfbbc5494caea1dc5a4975dcd5d53e28c0d82b8cedb1208f05",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "e222e57b410f84c94dbd0ba861ecf8a951a64186e377fc184412fbc69ba75418",
+          "after_sha256": "e222e57b410f84c94dbd0ba861ecf8a951a64186e377fc184412fbc69ba75418",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "1709c673ef50b707d3cbd9854dd7a1eeb5dd21ad25d97aa44f772f95684740a3",
+          "after_sha256": "1709c673ef50b707d3cbd9854dd7a1eeb5dd21ad25d97aa44f772f95684740a3",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "a371304c00a8ca2a1056de147f5525453c9f3bb59c24c619f2d714de31d64c7e",
+          "after_sha256": "a371304c00a8ca2a1056de147f5525453c9f3bb59c24c619f2d714de31d64c7e",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "6f1a5e2db927be39c74d33566915bb5ae98fc13b7195f48fd7ec2f6af87f2aa1",
+          "after_sha256": "6f1a5e2db927be39c74d33566915bb5ae98fc13b7195f48fd7ec2f6af87f2aa1",
+          "bytes_identical": true
+        }
+      ]
+    },
+    {
+      "original_full_fan_local_cell": [
+        5,
+        4
+      ],
+      "new_local_cell": [
+        4,
+        2
+      ],
+      "source_computation_cell": [
+        8,
+        4
+      ],
+      "resources": [
+        {
+          "kind": "model",
+          "zoom": 0,
+          "before_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "after_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 1,
+          "before_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "after_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 2,
+          "before_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "after_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 3,
+          "before_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "after_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "bytes_identical": true
+        },
+        {
+          "kind": "model",
+          "zoom": 4,
+          "before_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "after_sha256": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "bytes_identical": true
+        },
+        {
+          "kind": "path",
+          "zoom": null,
+          "before_sha256": "4436273bd66af492acca9f7ef9c384a2213a4a42300dbbeb55997896d321c580",
+          "after_sha256": "4436273bd66af492acca9f7ef9c384a2213a4a42300dbbeb55997896d321c580",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 0,
+          "before_sha256": "240ae21a7b115e7fccc5cf9754db8af002e90455173fa56a79d122ab3c00b2c6",
+          "after_sha256": "240ae21a7b115e7fccc5cf9754db8af002e90455173fa56a79d122ab3c00b2c6",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 1,
+          "before_sha256": "cdeef00e6c6fa881bfd55f908f8083649b03bc07739d011fd048b7ed1bdb8efd",
+          "after_sha256": "cdeef00e6c6fa881bfd55f908f8083649b03bc07739d011fd048b7ed1bdb8efd",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 2,
+          "before_sha256": "7fe7b830ca5a59e311ff07c930075c51a2fdded221fa679a99f25358534d2d47",
+          "after_sha256": "7fe7b830ca5a59e311ff07c930075c51a2fdded221fa679a99f25358534d2d47",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 3,
+          "before_sha256": "f5120868fff198ba623794791112b9341e0892a0991369c8deec14b32b86fde9",
+          "after_sha256": "f5120868fff198ba623794791112b9341e0892a0991369c8deec14b32b86fde9",
+          "bytes_identical": true
+        },
+        {
+          "kind": "shadow",
+          "zoom": 4,
+          "before_sha256": "f3d3e3121defe91896318368b340e8697e33287bec2ce92edc434b6711584fce",
+          "after_sha256": "f3d3e3121defe91896318368b340e8697e33287bec2ce92edc434b6711584fce",
+          "bytes_identical": true
+        }
+      ]
+    }
+  ],
+  "full_computation_context": {
+    "computed_cells": 11,
+    "computed_supports": 6,
+    "emitted_cells": 9,
+    "emitted_owned_supports": 4,
+    "extra_context_cells_are_not_part_of_piece_footprint": true,
+    "full_surface_decks_partition_cells_and_computation_supports_equal_original": true
+  },
+  "guarded_model_reuse": {
+    "cache_kind": "selected source-cell outputs reconstructed from the exact approved cold-verified DAT, with matching native bytes, full configuration, leaf compiler AST, and all mesh helper bytes",
+    "native_decoded_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+    "native_archives": [
+      {
+        "filename": "NetworkAddonMod_Controller.dat",
+        "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+      },
+      {
+        "filename": "High Speed Rail.dat",
+        "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a"
+      }
+    ],
+    "configuration_semantic_sha256": "64eb051980d057ab76e1c7a6748b3691e85191a778f50e394adb106ef90a9d59",
+    "leaf_compiler_ast_sha256": "f851aa5b660ff4293d956cf6e3b92b85ac05ef2f0e79272056db6c789aca6cd9",
+    "current_dispatch_module_sha256": "bfd3151a6185a677dfce68de52935b60519de0584f96e37754b5dde017301d8c",
+    "unchanged_generator_bindings": [
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py",
+        "sha256": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py",
+        "sha256": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py",
+        "sha256": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py",
+        "sha256": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py",
+        "sha256": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af"
+      },
+      {
+        "path": "domains/high-speed-rail/implementation/scp_hsr/directional_t.py",
+        "sha256": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43"
+      }
+    ],
+    "same_complete_configuration_as_original_verified_cold_build": true,
+    "leaf_compiler_ast_exactly_matches_original_cold_build": true,
+    "all_source_native_configuration_and_helper_guards_passed": true,
+    "fresh_cold_mesh_generation_claimed": false,
+    "normal_resource_builder_and_verifiers_replaced": false
+  },
+  "saved_paths": {
+    "tile_count": 9,
+    "encoded_routes_checked": 10,
+    "external_ports_checked": 4,
+    "permitted_movements_checked": 2,
+    "literal_port_tangents_checked": 4,
+    "unique_complete_journeys_checked": 2,
+    "journey_quality": {
+      "Nin>Wout": {
+        "length_m": 58.221241973739716,
+        "direct_distance_m": 53.48859603124166,
+        "length_ratio": 1.0884795319685303,
+        "total_turn_degrees": 67.22285930018602,
+        "minimum_sampled_radius_m": 30.189600971011522,
+        "maximum_sample_turn_degrees": 3.683199184548466,
+        "maximum_raw_encoded_turn_degrees": 0.39215241161663345,
+        "minimum_resolved_raw_radius_m": 30.936382036492432,
+        "maximum_endpoint_curvature_per_m": 0.01704296310069592,
+        "maximum_curvature_change_per_m2": 0.0012701832474485706,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.9407080657913238,
+        "signed_turn_degrees": -67.22285930018602,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Nin": 0.0
+        }
+      },
+      "Ein>Nout": {
+        "length_m": 58.22124197373971,
+        "direct_distance_m": 53.48859603124166,
+        "length_ratio": 1.0884795319685303,
+        "total_turn_degrees": 67.22285930018609,
+        "minimum_sampled_radius_m": 30.189600971012318,
+        "maximum_sample_turn_degrees": 3.6831991845483407,
+        "maximum_raw_encoded_turn_degrees": 0.3921524116169933,
+        "minimum_resolved_raw_radius_m": 30.936382036549677,
+        "maximum_endpoint_curvature_per_m": 0.01704296310069655,
+        "maximum_curvature_change_per_m2": 0.0012701832474464683,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.9407080657913236,
+        "signed_turn_degrees": -67.2228593001861,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Nout": 1.8865559799147738e-15
+        }
+      }
+    },
+    "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+    "exact_3d_cell_seams": true,
+    "maximum_encoded_grade": 0.0,
+    "native_port_heights_m": [
+      15.5
+    ],
+    "game_operation": "unverified",
+    "grade_separated_crossings_checked": 0,
+    "grade_separated_projected_contacts_checked": 0,
+    "grade_separated_crossings": [],
+    "same_direction_shared_tail_contacts_checked": 0,
+    "independent_at_grade_conflicts_checked": 0
+  },
+  "saved_model_checks": {
+    "authored_clearance_height_m": 5.0,
+    "authored_clearance_width_m": 5.0,
+    "bed_union_width_m": 5.0,
+    "central_parapet_inside_wall_sections_checked": 6,
+    "central_parapet_reflection_axis_local_east_m": 48.0,
+    "central_parapet_top_overlap_area_m2": 2.6260604268912857e-06,
+    "central_parapet_top_sections_checked": 6,
+    "central_parapet_top_union_area_m2": 15.05597348309018,
+    "coplanar_overlap_meshing_tolerance_m": 0.0001,
+    "corridor_clipped_to_literal_ownership": true,
+    "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+    "custom_port_boundary_wedges": [
+      {
+        "edge": "south",
+        "half_width_m": 1.1,
+        "label": "Wout",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          0,
+          2
+        ]
+      },
+      {
+        "edge": "south",
+        "half_width_m": 1.1,
+        "label": "Ein",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          4,
+          2
+        ]
+      }
+    ],
+    "custom_port_cap_labels": [
+      "Wout",
+      "Ein"
+    ],
+    "custom_port_caps_clipped_to_literal_owned_cells": true,
+    "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+    "full_width_bed_union_segments_checked": 540,
+    "global_support_spacing_checked": true,
+    "height_aware_bed_union_checked": true,
+    "maximum_coplanar_bed_overlap_area_m2": 4.630352776757718e-07,
+    "maximum_coplanar_bed_overlap_thickness_m": 5.210942610744951e-07,
+    "maximum_uncovered_bed_area_m2": 2.121823848733051e-06,
+    "minimum_support_centre_distance_m": 16.0,
+    "model_polygons_cut_at_custom_caps": 809,
+    "models_checked": 46,
+    "native_material_preserved": true,
+    "owner_clipped_corridor_fragments_checked": 684,
+    "path_nodes_covered_by_visible_bed": 550,
+    "positive_area_coplanar_bed_pairs": 19936,
+    "preview_matches_tiles": true,
+    "rail_crossing_ribbon_nodes": 0,
+    "render_budget_models_checked": 46,
+    "render_group_budget_checked": true,
+    "sloped_support_heads_checked": 0,
+    "support_centres_sc4path_xy": [
+      [
+        16.0,
+        -32.0
+      ],
+      [
+        32.0,
+        -16.0
+      ],
+      [
+        32.0,
+        -0.0
+      ],
+      [
+        48.0,
+        -32.0
+      ]
+    ],
+    "support_columns_checked": 4,
+    "support_contact_points_checked": 36,
+    "support_foundations_within_reserved_cells": true,
+    "support_tops_touch_deck": true,
+    "train_clearance_segments_checked": 540,
+    "unused_visible_rails_outside_declared_custom_caps": false,
+    "visible_native_rail_centre_segments_matched_to_paths": 7621,
+    "visible_native_rail_triangles_matched_to_paths": 20825,
+    "exact_retained_path_cells_checked": 9,
+    "exact_retained_model_zoom_resources_checked": 45,
+    "exact_retained_shadow_zoom_resources_checked": 45,
+    "retained_geometry_and_uv_bytes_unchanged": true,
+    "original_fan_local_to_core_offset_cells": [
+      1,
+      2
+    ],
+    "retained_fan_source_dat_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797"
+  },
+  "menu_icon_identity": {
+    "category": "part",
+    "badge": "PART",
+    "network": "HSR",
+    "palette": "teal",
+    "kind": "JCT",
+    "meaning": "Individual building piece"
+  },
+  "unchanged_existing_alternatives": {
+    "hsr-component-l2-paired-fan-compact-join": {
+      "compared_with_build": "dist/trumpet-border-integration-parts-audit-01",
+      "all_public_files_unchanged": true,
+      "files_checked": 46,
+      "files": [
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/README.md",
+          "sha256": "5dc71cec9fbd0d9b6e18ccb5b160149a7e3e2f1c09a2f6adbe5c15213b7c9c29"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/TESTING.md",
+          "sha256": "3419a345a6461dbe5db13e88e0f5b66e4cf34890d1f7f7df83fded0a39964b6d"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/checks/manual-tests.json",
+          "sha256": "682827f4c78af221c031d125cf0eb6d917ff580ee089f112793555a64d833b27"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/checks/observation.example.json",
+          "sha256": "1c63d04efb5af61c5ae9736745dd63d4c5c12de1f842d0676116a84025069c91"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/connections.json",
+          "sha256": "73d2f9530eb8325c822105926811377c2007bdabe6ea59ca1b37b77210265eeb"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/connector-data.json",
+          "sha256": "72a3ebd1d90e0e67864e6fee6cfc1b852eedf167f8a6eafca4387c6432f89886"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/connector-groups.jsonc",
+          "sha256": "059128c2098b8da183f243826a8eb895fc544b9e7e32c0e0c09d909226db8291"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/central-parapet-alignment.json",
+          "sha256": "80638f599c9dc3ef5ba0ee5df75029d147a5615088acb1431938000e7e02f606"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/connection-overview.json",
+          "sha256": "4d6b47ce9bffcfe35311da5712eaf90ab5161758b41c92868a671fbe84c6a25a"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/README.md",
+          "sha256": "6796ae7bd816a1954f5ee5d24cda407158a2f0ebfe57bc046613bc78ee3c7043"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/TESTING.md",
+          "sha256": "474ad1bc7220cc8964777398ca83caa9d4e7c839cf4cb8a641a7d467b55aa1d4"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/checks/manual-tests.json",
+          "sha256": "985a6cc558f8daaddafa88198f17b163a4f3c166d5a6dffd18e35bf5891fa025"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/connections.json",
+          "sha256": "b46b568fcaa77d9187728cd5ea78dfd89e0a5a77bef14973395d4e4f4ad484e5"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/connector-data.json",
+          "sha256": "93b2eaa112d23e8dec420ac567055206f1e45e5c2bd18cd52aa4fb328cb54ab3"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/connector-groups.jsonc",
+          "sha256": "fe666d44c2d7f20c1a106a70baf2aae10fc3b6427611b5cdfc5383a31d6512ee"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/connection-overview.json",
+          "sha256": "ee3630387663ca01e801668b03fe1174e06fb2fab50a20cbdb4acb513f68b2c6"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/fan-width-audit.json",
+          "sha256": "37c54db9dd09134e413fbc9ac5501a7ab34c04226035e40ae8cc32bb932ade74"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/icon.json",
+          "sha256": "10a764de5c33cd578a5dca45ed004818a8219ceb510cea946ff07866337fbef2"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/preview-top.json",
+          "sha256": "e3d33e9d6db4bea10d721d88e7b7c5ffaa740732841c5e6b53b53efba6d1f4fc"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/preview.json",
+          "sha256": "a676e6ebcf2aa6d75d46a3703b709fb77365f192f7019994190c5719ede561ec"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/evidence/saved-resource-checks.json",
+          "sha256": "dfdbd0c856499ff4d27c2ded0b87b3e3f2c88d649b9de8e48e5877b670bd2224"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/geometry.json",
+          "sha256": "d034aa453bfa95fb3a537736d12a40d0be427cbe59baffebf8f73424c7f7a090"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/index.json",
+          "sha256": "49b3578b3c1a041eaf1a6ebcacf0b771380312fac263b2d4bafc1af4f4d2cdbb"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/piece.json",
+          "sha256": "72a02fb797fa076dd834f23046c2e5cdc61cdea86274290ece98e3522cfaa559"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/previews/connection-overview.png",
+          "sha256": "a69268c400051e22438e7455c4542ec94fe858e84e3322a4290dfc684c8c95fd"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/previews/preview-thumb.png",
+          "sha256": "011f21e43d83169a2d772fad224553a658e61d3a08c0ffdabbcbe55d3fc0aa4d"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/previews/preview-top.png",
+          "sha256": "364701bee374b801285279a92ed15a013dacca8e24ceb3f6d9437474ec6753ae"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/before-central-parapet-repair/previews/preview.png",
+          "sha256": "a88d72324091d1ecf6d4a4dfaab6d8979c1bae45ead1117a5970e413d024fa8a"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/connection-overview-before-fan-width.json",
+          "sha256": "446a4f5b26dd40c4be217fa361d461d129779a0fe899a3d40cf31c860e77cdd3"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/connections-before-fan-width.json",
+          "sha256": "2df652ba09d7ef764b12a38be927f3f63f26bf833835e030089832af9511ac4f"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/preview-before-fan-width.json",
+          "sha256": "108ef30efef60c8f169defcf166176a8f4e5fd295d8775d38ab7096802b9860a"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/preview-before-junction-rework.json",
+          "sha256": "04d590122a1632ee2701af8b84151ecfbd59a2e9fe927aef4fc3b27d48e4fa85"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/preview-top-before-fan-width.json",
+          "sha256": "9cd45b4ec0bf73dc4a4202eb7cea4a7f912b4acfd9c3bb78638a6fd8655ef7c5"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/design-history/saved-resource-checks-before-final-fan-width-build.json",
+          "sha256": "0a8e3a12c5932fd53b59d5fe7c6e282bfe6d84c1406d8866e44b35972b9551d9"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json",
+          "sha256": "37c54db9dd09134e413fbc9ac5501a7ab34c04226035e40ae8cc32bb932ade74"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/icon.json",
+          "sha256": "10a764de5c33cd578a5dca45ed004818a8219ceb510cea946ff07866337fbef2"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/preview-top.json",
+          "sha256": "5a2b634414476afd044f7d686d5b39c6ec24b3c85ea2d3687bc07056f801036c"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/preview.json",
+          "sha256": "8d9057a2c93ba12cc67acb180a9a2c4a2fd0e7afc8f3e83ba6d0a9dae73aec89"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/saved-resource-checks.json",
+          "sha256": "e69c8a6a2fb71d9fedb483d31927b2b9ebe6a1d6c7055861504aedad333c20cb"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json",
+          "sha256": "d5366120c1f9c38b8b1eccc7fc8927dabb6e28d8ba1dd08427ed4e0b1c74aa0b"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/icon.png",
+          "sha256": "78151fa8a3555c43e5071289f29b8d492ec37aebc6e0c22848576672291e1e8c"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/piece.json",
+          "sha256": "72a02fb797fa076dd834f23046c2e5cdc61cdea86274290ece98e3522cfaa559"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/previews/connection-overview.png",
+          "sha256": "6518c097a4d9b4296ef3ca401133d099e2f4eda8af13ffccdd3b7cae9eaf3b04"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-thumb.png",
+          "sha256": "e007e45a0c84cd5c60a8ce116d791ba39817bb8098ec8ca9e9c789134960a5bd"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview-top.png",
+          "sha256": "46924a085349a44b6fa3aa3d5f02b5d9410accacd196b09972787debf36401f0"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/previews/preview.png",
+          "sha256": "81cd50555f72dc3a5a6560d70f92e6218ceeb4e3e7b1fa457c5254bed912ea8d"
+        }
+      ]
+    },
+    "hsr-component-lower-paired-straight": {
+      "compared_with_build": "dist/trumpet-border-integration-parts-audit-01",
+      "all_public_files_unchanged": true,
+      "files_checked": 22,
+      "files": [
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/README.md",
+          "sha256": "f25c29d9312d53c32c341bb8f29f1216124406724d3bec1786874c2c370680f0"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/TESTING.md",
+          "sha256": "327f523910d01dc0b422b38f39f927ebc270e21048766ab202018983e09d314b"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/checks/manual-tests.json",
+          "sha256": "b49fdf8150b1f7272cbcebaa7c240c4520cc39b8b9df64718099b3a81c714f53"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/checks/observation.example.json",
+          "sha256": "7bf43dc20f6e5cc66a3c75f6cdb0332a3ae6aa6e8237c121097ccbc90a7863da"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connections.json",
+          "sha256": "93d187278776cc7afb9e5aa07296509b9ea2047d491f6e7a02999390673dbdea"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connector-data.json",
+          "sha256": "bf637d4a584b9e67d2694c28eec0463a3cf7423c192827c2edf5d81cea71b4ce"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/connector-groups.jsonc",
+          "sha256": "531da9e9703d24368ff7d62169555c0153fc152139a4c24dba27f6db69d95d75"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/connection-overview.json",
+          "sha256": "77fdb035ee05ce663530da3d71a5cb75f758917638ae4e1e42d6ff2ce8f6d388"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/design-history/connections-before-documentation-refresh.json",
+          "sha256": "4b59f31d9425d12c722bfc7f846b7bb1e12a1186df9a9d047347dcb8d5fb5c93"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/design-history/preview-before-documentation-refresh.json",
+          "sha256": "1fde80ced90031bec471403264999ee7adb8b6d0b6cfe987893d980a4b246877"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/design-history/preview-before-documentation-refresh.png",
+          "sha256": "64c920145acf685579b206dc39761df873ed52eb6163ed0823ecf2fc714cd84d"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/design-history/preview-thumb-before-documentation-refresh.png",
+          "sha256": "2413105fe87796c7aa9a580abbcab732815548922688c38b48d90dfdab42e5fd"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/documentation-refresh.json",
+          "sha256": "25d2f707f76e16b5c6f53e0e34b14580d881aee92a898c09e07009da3afff060"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/preview-top.json",
+          "sha256": "324d41ee9d468622652d3961b0fcfe9779f36818c8b5f100474e5939a04510f8"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/preview.json",
+          "sha256": "3c86454eec03ffae190f93374d95460d21900e93a741af80cf389fb39d52eb9f"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/evidence/saved-resource-checks.json",
+          "sha256": "6f722bdb8b2c77927c246bb35efea9b19614b5ea9f1c89dc3d85d9baf3787c88"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/icon.png",
+          "sha256": "38d7f1745ea7960a88426552a2ef9a81d14c6e5fe045fe631133818c6ba31e02"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/piece.json",
+          "sha256": "e9d39b4cc65ed2e60527cc99be2b57c47eb7fe3bbcbec1a3419f2239af4b6265"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/previews/connection-overview.png",
+          "sha256": "7c18c7e7d48d57f7c29a0ab331a1c485f47f3e04d186c631a1d15b4793c4e002"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/previews/preview-thumb.png",
+          "sha256": "57c70e2463805f51170ab3b8570b95d925d0e1e98ea25564415f20ebb83b0595"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/previews/preview-top.png",
+          "sha256": "b242e582b06a31e72e85cbb508b56ea0a20506db0b5d9525c4ee41db8952628a"
+        },
+        {
+          "path": "domains/high-speed-rail/00_pieces/hsr-component-lower-paired-straight/previews/preview.png",
+          "sha256": "f5536c084662c85549175bff5529981214573898cdfc0c3dfd4757b7979e8ca3"
+        }
+      ]
+    }
+  },
+  "assembly_replacement_review": {
+    "path": "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json",
+    "sha256": "4a8ed74719cad1fa58c4cebc545ecb9be20d97fca68fe6ad5f4afeebccffb181"
+  },
+  "limits": {
+    "installed": false,
+    "game_observations_added": false,
+    "game_placement_traffic_rendering_claimed": false,
+    "ordinary_standard_straight_profile_equivalence_claimed": false
+  },
+  "core_specific": {
+    "original_local_to_new_grid_offset_cells": [
+      1,
+      2
+    ],
+    "accepted_central_parapet_body_inside_walls_material_uv_and_supports_preserved_exactly": true,
+    "only_original_cells_3_0_and_3_1_removed_from_footprint": true,
+    "removed_approach_cells_replaced_by_separate_recessed_web_straight_piece": "hsr-component-l2-paired-straight-recessed-web"
+  }
+}

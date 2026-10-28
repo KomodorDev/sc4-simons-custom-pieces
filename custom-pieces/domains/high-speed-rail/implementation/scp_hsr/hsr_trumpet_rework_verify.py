@@ -110,7 +110,10 @@ def read_rework_record(path, *, root, require_completed=True):
         require(binding.get('before_sha256') == before,
                 'Trumpet redesign historical source binding differs')
         if require_completed:
-            actual = hashlib.sha256((Path(root)/'domains/high-speed-rail/00_pieces'/identifier/'geometry.json').read_bytes()).hexdigest()
+            source = Path(root)/'domains/high-speed-rail/00_pieces'/identifier/'geometry.json'
+            require(source.is_file(),
+                    'Trumpet redesign current geometry differs: its historical source is no longer active')
+            actual = hashlib.sha256(source.read_bytes()).hexdigest()
             require(binding.get('after_sha256') == actual,
                     'Trumpet redesign current geometry differs from its independently audited source')
     if require_completed:

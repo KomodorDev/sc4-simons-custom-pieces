@@ -151,6 +151,6 @@ This service group is required at this edge.
 | --- | --- | --- | --- | ---: | ---: | ---: |
 | `north-nout` / `Nout` | `northbound-track` / `north-northbound-track-cut` / monorail | Outgoing | `[0,8,15.5]` | +0 | 0° | 0 |
 
-Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
 
 <!-- END CONNECTOR OVERVIEW -->

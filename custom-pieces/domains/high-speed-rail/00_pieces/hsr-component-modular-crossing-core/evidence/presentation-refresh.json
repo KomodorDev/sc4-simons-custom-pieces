@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-modular-crossing-core",
+  "purpose": "Record the current standalone picture presentation and source-bound connector refresh while preserving approved game resources and earlier executed verification evidence.",
+  "scope": "Canonical angled and top software pictures, connection overview, connector export, guide presentation, and image-review bindings; no assembly rendering or new native geometry compilation.",
+  "source_build": "dist/trumpet-fan-core-parts-final-01",
+  "source_manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "source_verification_sha256": "cc66cbf3c3bb8549c9a4365f5b4e00d8af1ff7c6bf9c462e4c7bac1914b42d91",
+  "normal_native_verification_scope": "Reference to the earlier executed verified native build. Its report and all fourteen DAT archives remain unchanged; the native verifier was not rerun as part of this picture refresh.",
+  "compiled_resource_checks_executed": {
+    "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-crossing-core.dat",
+    "dat_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+    "model_sha256": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "resource_fingerprints_checked": 15,
+    "directional_ports_reextracted": 8,
+    "directed_journeys_reextracted": 4,
+    "compiled_definition": "passed",
+    "manifest_payload": "passed",
+    "saved_resource_fingerprints": "passed",
+    "actual_path_facts": "passed",
+    "preview_model_structure": "passed",
+    "construction_rules_reextracted": false
+  },
+  "connector_check": {
+    "status": "passed",
+    "compiled_paths": "passed",
+    "export_freshness": "passed",
+    "overview": {
+      "status": "passed",
+      "boundary_cards": 4,
+      "output_sha256": "8f8468791f4506deffe20c02a8350becb5c61c024c080356a3afd9f21659f157"
+    }
+  },
+  "connector_export": {
+    "file": "connector-data.json",
+    "sha256": "2f18aa7e142b3099447dc5030a13c930b607dee710328736ae9629541c97878c"
+  },
+  "artwork": [
+    {
+      "evidence": "evidence/preview.json",
+      "evidence_sha256": "c8849998a269cc2e6d64090127935150054750ac820338bf6d7ced3e415d0812",
+      "file": "previews/preview.png",
+      "sha256": "400537ca5419c208b2ba09c950f040227030ee8d6cd8e2697581cc1a035bdb0e",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Modular One-Tile Crossing \u2014 Level 4 (30.5 m) over Level 2 (15.5 m)",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/preview-top.json",
+      "evidence_sha256": "b36aea4ad546f6ca432570cfc86fccef4e90d025dd5e537df9d565d8c172410b",
+      "file": "previews/preview-top.png",
+      "sha256": "0520bc2e40989ac483424bf2ff9b0648b02afda71688a6379f1b42f61d2c57eb",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Modular One-Tile Crossing \u2014 Level 4 (30.5 m) over Level 2 (15.5 m)",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/connection-overview.json",
+      "evidence_sha256": "fdd54965c02095c84f145162118990fc9a8c41ba3473a4018e4bbd7cd0b15762",
+      "file": "previews/connection-overview.png",
+      "sha256": "8f8468791f4506deffe20c02a8350becb5c61c024c080356a3afd9f21659f157",
+      "size": [
+        2000,
+        5772
+      ],
+      "title": "Piece - HSR Modular One-Tile Crossing \u2014 Level 4 (30.5 m) over Level 2 (15.5 m)",
+      "png_changed": true
+    }
+  ],
+  "angled_thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "7144419b786aaaa7e906cab8f693f3084ebff6c276fa2872f5fadd9a2aaed5ec"
+  },
+  "presentation": {
+    "authored_rotation_ccw_degrees": 0,
+    "coordinate_scope": "Independent local X/Y tile-centre grid",
+    "tile_metres": 16,
+    "top_grid": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
+    "captions": "Shared Piece title with measured heights, view purpose, camera direction, and fixed software/source identification. Changing game-test status remains in the generated matrix and linked test cases."
+  },
+  "earlier_software_reports_preserved": {
+    "evidence/saved-resource-checks.json": "cf3e4e884dd2f70e4af0d6e180b17e620f148f7a11b587f3367e099b679af20e"
+  },
+  "geometry_changed": false,
+  "game_identities_changed": false,
+  "route_measurements_changed": false,
+  "icon_changed": false,
+  "non_image_cases_preserved": true,
+  "original_observation_dictionaries_preserved": true,
+  "original_observations_sha256": "2406ccc6a9ddb498456cc212d74f03f0b1cdcc4a6c49f3eeb42d136095ff022a",
+  "manual_observations_added": 0,
+  "native_geometry_recompiled": false,
+  "assembly_rendered": false,
+  "installed": false,
+  "software_visual_review": {
+    "reviewer": "Coding agent inspecting the actual generated PNGs through standalone-view and overview-scene/caption contact sheets",
+    "result": "passed",
+    "scope": "Complete model, local coordinates, title and view wording, readable green top boundaries, fixed footer, and overview marker placement. This is not an added human observation.",
+    "connection_card_bitmaps_unchanged_from_verified_build_docs": 4
+  }
+}

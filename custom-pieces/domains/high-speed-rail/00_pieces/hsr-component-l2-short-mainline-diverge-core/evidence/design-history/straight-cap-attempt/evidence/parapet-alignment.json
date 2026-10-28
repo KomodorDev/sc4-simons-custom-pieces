@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+  "purpose": "Actual before/after saved-resource comparison for the raised south-parapet correction; no assembly rendering, installation, human approval, or game observation.",
+  "checked_at_utc": "2026-10-28T13:07:47.447896+00:00",
+  "source_comparison": {
+    "baseline_git_commit": "feb3583cdde00cce3f764f961acf6644599e733b",
+    "only_added_geometry_property": "south_parapet_alignment",
+    "all_existing_authored_values_unchanged": true,
+    "existing_geometry_semantic_sha256": "871c42775ee4315b47cfb7f97059a8fd3c35623f1b7525f1e0c0c5d338bed5b5"
+  },
+  "builds": {
+    "diverge-border-before": {
+      "directory": "dist/diverge-border-before",
+      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "manifest_sha256": "a90b2f888f7328c6ae5a18bd59ddd087f2dc132787b75627b2e817d8838edb2a"
+    },
+    "diverge-border-fix": {
+      "directory": "dist/diverge-border-fix",
+      "dat_sha256": "d2bbfc88f62b3a41c7756f0d7701c0c301073cb462a5258e9402db1c3bbe6795",
+      "manifest_sha256": "d5988fb0a91dd5a334e0f00646bf3c68a669afc282be89d61cb1b178f809c7fe"
+    }
+  },
+  "saved_resources": {
+    "resource_count": 54,
+    "identities_unchanged": true,
+    "unchanged_non_model_non_shadow_resources": [
+      "2026960b-2a592fd1-7f584000",
+      "2026960b-2a592fd1-7f584100",
+      "2026960b-2a592fd1-7f584200",
+      "2026960b-2a592fd1-7f584300",
+      "296678f7-a966883f-7f584000",
+      "296678f7-a966883f-7f584100",
+      "296678f7-a966883f-7f584200",
+      "296678f7-a966883f-7f584300",
+      "6534284a-a8434037-7f584000",
+      "6534284a-a8434037-7f584100",
+      "6534284a-a8434037-7f584200",
+      "6534284a-a8434037-7f584300",
+      "ea5118b0-ea5118b1-7f584ff5"
+    ],
+    "changed_resources": [
+      "5ad0e817-badb57f1-7f584000",
+      "5ad0e817-badb57f1-7f584001",
+      "5ad0e817-badb57f1-7f584002",
+      "5ad0e817-badb57f1-7f584003",
+      "5ad0e817-badb57f1-7f584004",
+      "5ad0e817-badb57f1-7f584100",
+      "5ad0e817-badb57f1-7f584101",
+      "5ad0e817-badb57f1-7f584102",
+      "5ad0e817-badb57f1-7f584103",
+      "5ad0e817-badb57f1-7f584104",
+      "5ad0e817-badb57f1-7f584300",
+      "5ad0e817-badb57f1-7f584301",
+      "5ad0e817-badb57f1-7f584302",
+      "5ad0e817-badb57f1-7f584303",
+      "5ad0e817-badb57f1-7f584304",
+      "5ad0e817-badb57f1-7f584ff5"
+    ],
+    "floor_triangles": [
+      {
+        "tile_id": "7f584000",
+        "unchanged_encoded_triangles": 4896,
+        "sha256": "1f33234f342f401a778335770341afdbb7c968b1899c82a7f6a5e7255ba67dcd"
+      },
+      {
+        "tile_id": "7f584100",
+        "unchanged_encoded_triangles": 5660,
+        "sha256": "f196e5bb6f0f015a2521b02ed03e8a658f6b7ddd200a766d07f198403e21895d"
+      },
+      {
+        "tile_id": "7f584200",
+        "unchanged_encoded_triangles": 7294,
+        "sha256": "e83e5400bfd537697667ce9b8b1718d9c5c78bb0736a7554a90534d0ca9d9c81"
+      },
+      {
+        "tile_id": "7f584300",
+        "unchanged_encoded_triangles": 660,
+        "sha256": "79306ffa9236382f5a3d2a333cd6e7b30c0226e283887df156c71c03fab9192b"
+      }
+    ],
+    "support_triangles": [
+      {
+        "tile_id": "7f584000",
+        "unchanged_encoded_triangles": 26,
+        "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+      },
+      {
+        "tile_id": "7f584100",
+        "unchanged_encoded_triangles": 26,
+        "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+      },
+      {
+        "tile_id": "7f584200",
+        "unchanged_encoded_triangles": 26,
+        "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+      },
+      {
+        "tile_id": "7f584300",
+        "unchanged_encoded_triangles": 26,
+        "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+      }
+    ],
+    "all_shadow_resources_unchanged": true
+  },
+  "alignment": {
+    "local_east_caps_m": [
+      20.97718809637104,
+      43.776078282276934
+    ],
+    "references": "Dark outside branch-ballast outlines; not the rails.",
+    "minimum_distance_to_complete_source_branch_m": [
+      2.513637261250441,
+      2.646930233297493
+    ],
+    "required_train_half_width_m": 2.5,
+    "scope": "The exact left cap replaces the generic 2.6 m opening margin locally; the independently checked required 5 m-wide train envelope remains unchanged.",
+    "method": "Minimum segment-to-segment Euclidean distance between each complete native south-parapet rectangle and every segment of the unchanged piece-owned branch centreline."
+  },
+  "limitations": [
+    "Saved-model and route software checks; in-game appearance and train operation remain unverified.",
+    "Trumpet assembly refresh deferred as requested."
+  ]
+}

@@ -496,9 +496,8 @@ def compose_figure(piece, records, scene, camera, local, font_factory):
     if any(record["anchor_enh_m"] is None for record in records):
         conventions.append("Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.")
     evidence_text = [
-        "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
-        "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
-        "Unverified: physical seams, construction clearance, model collisions, and game operation.",
+        "Software model preview with source-defined connection cards.",
+        "Sources: current compiled model, declared boundary metadata, and saved route-resource identities.",
     ]
     def lines(sentences):
         return [line for value in sentences for line in
@@ -597,7 +596,7 @@ def markdown_overview(evidence):
                              f"{'Incoming' if member['direction'] == 'in' else 'Outgoing'} | `{coordinate_text(member['endpoint_m'])}` | "
                              f"{member_offset_label(member)} | {member['outward_heading_degrees']:g}° | {member['outward_slope_at_edge_percent']:g} |")
             lines.append("")
-    lines.extend(["Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.", ""])
+    lines.extend(["The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.", ""])
     return "\n".join(lines)
 
 

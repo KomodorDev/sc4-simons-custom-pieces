@@ -1,0 +1,4551 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "hsr-component-l2-paired-fan-compact-core",
+  "domain_id": "high-speed-rail",
+  "source_binding": {
+    "compiled_build": "dist/trumpet-fan-core-parts-final-01",
+    "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
+    "files": {
+      "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-core.dat": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connections.json": "956f6764cfb57162144e72df471b0ca53e036f7dd7bfc8783409181802c5faed",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/connector-groups.jsonc": "6eb33dc3b9ea632eba4e4742ba7e774f9be514a3cc1fbd288854104476c0acf3",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-core/piece.json": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
+      "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4",
+      "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+      "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "9bb0b030178285097528e5ca23c85b5a8a8a1ea79d2322b888934980c08c41eb",
+      "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
+      "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d66f970865f76f6b02fb5ae1caafffd7630957783a19246e3dc791df9c985fa3",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "ecb4874121a0135cc1371ca37d0d305dd9d4d33c9025fd1a38b5d9a277ec09c1",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "a90fc3f1f8f2b53dba5ea6abf619d0cbec2cf4b9996475f4de709ccc8146103b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "5a7629ccdcf60cff289fa928f09ab1d8ca16ce82b365a80cd0501dbbfa42a4b2",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_core_verify.py": "5d6fbcc842bb588dcc9ac35b0624859fe9ea22e37b52f53835566de09e06313f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "6f457c3d73c3b1b0859eee3ebc42d3c0af2789b67ceafec3ec4712b3462ba211",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "8c27ed386fbca11abb9b711219e44fb7686e42dfa089ef39913f3e23d32b0b4f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "b893fe75e683e4ec2c793c1b7f97a5bc29c68d800b1a4299af58f5d3fe3eadbd",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_recessed_straight_verify.py": "04b09b27ddd1af4bc71a207b056dd581917b03d46a5a7e91b92ce725f5faee43",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem.py": "73c4c71e758aa37f21b3036f77c2c710b4b8b9190e6323054a6c32ba9aee8d38",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem_verify.py": "406d22ba293fe0f15c38bc34adec2644b54201c9058049470bd1309e07c0ee1f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_border_verify.py": "629dc983bb3c28eebda5bfd943b43bc0a5d8c6950e517f15ad7007bd44cba165",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "52a40ec5f06f714e23ac0ddac2cef33d9adc276e84c1cad9996acce3b3d4502b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "eb6fb9568489f524f8200e26d30902eb207542dd51f27f03b77b552a455adc00",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
+      "domains/high-speed-rail/implementation/scp_hsr/menu.py": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_features.py": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
+      "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866",
+      "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+      "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
+      "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+      "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+      "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+      "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+      "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+      "framework/scp/connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
+      "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+      "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+      "framework/scp/jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+      "framework/scp/menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+      "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
+      "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+      "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+      "framework/scp/verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd",
+      "schemas/connector-data.schema.json": "78a77d6c231f59d06605ff15dfac87df07bf89804680fc731fd9ca513efb20c9",
+      "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+      "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "hsr-component-l2-paired-fan-compact-core",
+    "piece": {
+      "purpose": "Authoritative permanent identity for the independently reusable nine-tile compact paired fan core.",
+      "schema_version": 1,
+      "orientation_count": 8,
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "id": "hsr-component-l2-paired-fan-compact-core",
+      "name": "HSR Level 2 Compact Paired Fan Core",
+      "description": "Nine-tile Level 2 paired fan fork with a paired north mouth using the recessed structural web, two matching curved branch cuts, and four owned supports; use the matching recessed-web paired straights for its approach.",
+      "recipe": "hsr_component_l2_paired_fan_compact_core",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f7a8",
+      "tile_ids": [
+        "7f505200",
+        "7f505110",
+        "7f505210",
+        "7f505310",
+        "7f505020",
+        "7f505120",
+        "7f505220",
+        "7f505320",
+        "7f505420"
+      ],
+      "preview_id": "7f505ff5",
+      "effect_name": "preview_scp_f7a8________001",
+      "footprint": [
+        5,
+        3
+      ],
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f7a8",
+        "order": "7012f7a8",
+        "style": "hsr-component-l2-paired-fan-compact-core"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f505200",
+          "source": "7f505200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505110",
+          "source": "7f505110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505210",
+          "source": "7f505210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505310",
+          "source": "7f505310",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505020",
+          "source": "7f505020",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505120",
+          "source": "7f505120",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505220",
+          "source": "7f505220",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505320",
+          "source": "7f505320",
+          "rotation": 0
+        },
+        {
+          "tile": "7f505420",
+          "source": "7f505420",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Exact nine-cell extraction of the approved compact paired fan; original per-cell models, traffic paths, rail texture coordinates, curved cuts, and four retained support positions remain unchanged under a fixed local-grid translation.",
+        "construction": "New permanent native additive-grid allocation with independently checked sparse cells and four proper rotations.",
+        "redistribution": "permission-pending"
+      },
+      "domain": "high-speed-rail",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "structural_cells": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "component": {
+        "kind": "partition_component",
+        "support_centers": [
+          [
+            32.0,
+            0.0
+          ],
+          [
+            32.0,
+            -16.0
+          ],
+          [
+            16.0,
+            -32.0
+          ],
+          [
+            48.0,
+            -32.0
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0,
+        "custom_curved_interfaces": true
+      },
+      "ports": {
+        "N": {
+          "in": [
+            30.0,
+            8.0,
+            15.5
+          ],
+          "out": [
+            34.0,
+            8.0,
+            15.5
+          ]
+        },
+        "W": {
+          "out": [
+            6.3985185522168635,
+            -40.0,
+            15.5
+          ]
+        },
+        "E": {
+          "in": [
+            57.60148144778313,
+            -40.0,
+            15.5
+          ]
+        }
+      },
+      "movements": [
+        [
+          "N",
+          "W"
+        ],
+        [
+          "E",
+          "N"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "category": "hsr-components",
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Nine-cell exact native extraction; independent software and game evidence recorded separately."
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "hsr-component-l2-paired-fan-compact-core",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:hsr-component-l2-paired-fan-compact-core:ea5118b0-ea5118b1-7f505ff5": "d0cd9fb8ce370de1b8499918b7efa0871e774d7af877402f7fa8732136235dcc",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505020": "827ab5ab84b0ea0eb30dcb9b9594713fa48194685e45dca252ad2d109f5cd4de",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505110": "16aaba130b7ed4a1dd2186e965fb707d844555ba55371c44791a0c6f54b66e20",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505120": "5cce09ea3ef796331b6e443e32482a27ca8a289dec758fb7645f70cb49f4a23e",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505200": "ebdb7b48b7c59981a4c7f76f55b650c52101dfa4b8cbf6e0eaf7b395aadd1b35",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505210": "fd59713f34cd20d915dc296af41b9e4567eecbf204a69f86238b74855b0b90a3",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505220": "05c9bedb8c9faf342f1a196681178fecc7a3bf17652e32d7a32446be5b6b348d",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505310": "b29cb71f3d58fecc22ab5e4bddef9b5c2b6a63338ac7fc8c78b439ecc848426d",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505320": "b49187b8f41645676863163668ee637511407f10ba14656e86c40b8843808c6d",
+          "exemplar:hsr-component-l2-paired-fan-compact-core:6534284a-a8434037-7f505420": "91b240806c13ca90af4f27b285295fa054258e9f63332fe8b05c3fda5f93ab74",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505020": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505021": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505022": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505023": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505024": "11b6d8dfa48e526a81b63ab02d265aac0fb18a4469ab1764a99b601671f9d861",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505110": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505111": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505112": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505113": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505114": "a5fa9d8f8ab186b7cda574ea6cc7c1539e756a4aee759de4dbebd4202a0701b3",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505120": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505121": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505122": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505123": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505124": "168096349e13a0ddba30abed76d838438cb291c5c8d431c882ee6c82ff21f2a8",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505200": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505201": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505202": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505203": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505204": "230192de5c90345fed778582d976c9dc2c6102052768887fcd1b92e36962a41f",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505210": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505211": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505212": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505213": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505214": "02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505220": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505221": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505222": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505223": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505224": "9d37cd0b6e61bfbc83bd97260323faee18f9a5e0368195e33af5c43afa1f3ca6",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505310": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505311": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505312": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505313": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505314": "8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505320": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505321": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505322": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505323": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505324": "1e8f1c0ab0bbd3b7baa150f760d732612a0a912950962a711cdf0cf7bd4fd088",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505420": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505421": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505422": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505423": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505424": "572309b6cdac484c51482d880aaad9ee351d29afda3483825856e18e5a209727",
+          "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505ff5": "8e72f560c4aefe08ec2082dda57c6fd6641bc44b5d5df8939b4a64b5d078247c",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505020": "bb6d40d7ac8962529b7d1d6aa614dae1b1310148f1d467b70228ae1bea077744",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505110": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505120": "7dc91b6f8de0341ecd0a0d97cc4264d6e805916c0899bac6f23e6c919adcb0d2",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505200": "730f3e37d3f9913457e486377b77ed235d744c4ec63272e53daf2ff56a779f1f",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505210": "16d4a4c57486aedf001496e5a4d0ec20b66bb3d9df2ee37bdee4eb5cd0ed152a",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505220": "26739a95ef096cba8e8f9147580bfa48ea8ca5126f42b5d798e4d91371d3f849",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505310": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505320": "298339d654160ce8b59169483543a1b69f39c11aaf01be7ae368634ce3c5ed1d",
+          "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505420": "4436273bd66af492acca9f7ef9c384a2213a4a42300dbbeb55997896d321c580",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505020": "ed0ba1eefc04281bf996deb1232813b9558913b90abc91fb7e11a681049554f2",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505021": "fbb068b8caf2806262bebef1417022f53f0b22e5c239e4467d6b55aee5686a3c",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505022": "c06d0c65f9535805e2727a0f1fdb79898060c51cc8f84a75d31340b681a27b93",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505023": "53c3402b65bd29015e44fc0cdb57e9c1584336230d0cf776dad2f9d06f8f5a78",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505024": "23a05e74545f5d976f6d65df393bdda87a5452fd0d0f0553e55c77847e3d9e2d",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505110": "3129f50b6a7b41c58e3d115e08584a7736e12e0bdac8892dab1aa0f9427146e1",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505111": "78de091fda28f0f020a1539c515e4a8953bf159351bd74a5f287a530a74ebe36",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505112": "830f1aec7d95981fbc0437a848d4ad3ad34eaf0a89c072e7187747394145ea71",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505113": "8979596bf7305ed92c0f1f091b673fae49fc8d5d6f4d369d573508f8e7466836",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505114": "e04dd666811758166868c821d9ac421e1e1d1651a64297679d41fcafc526175f",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505120": "2c0d9ffdfdfb363e8f7cd88cee95e39664955fcb4657f567b6bdaf4348dfd5ef",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505121": "86cccc9e9464a59bc890fd4e2bdab6cba9561eaae3461deb4dbed49c41ee3c58",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505122": "1edd0a2b6b70d3a665a9deea89c48e6456c94e801b7002f8a6c97ce24a04aac5",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505123": "057c6f7e812a2ea8aeb3aea0e926c334d3275d627dc0e408e91d3a93c6302481",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505124": "7b8f09e5e977b667682de971945c8d4d4b8356301ddb41f9a71cf89b3b5c1af8",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505200": "6ac0f3b42c3dbdaf9306fca1c252cfaa234797241ed1f1f08d4b389645bee367",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505201": "24635a47b5716859bb34c89d7a0b91af96f32007b3921207de9db6ee907721bc",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505202": "0d615ad4e834e295c67b500a20094e6d155151fc348752302d499746014669a3",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505203": "254bac6aa670ce47724b77fa582a73e1ba12e6d1efa5caaa2fc978ab6a97c1dc",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505204": "fe978d10b8d814b6ed4dae2d12312a7a7169daec530e3ffe6b91df9dd8240f5d",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505210": "6a156bfd3207f6b49dbe9c824d3626f39b9223834276c74154e41d0a4c05d505",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505211": "ff6899740fd3c4286ec28ed24efd72936eb25fff5c5b0fcf4f690355dd0f08d1",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505212": "2499afcfbf1d59f85f68be82183db419063bc8428e8aea3ebebf3b56db5dc4fe",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505213": "bfc0f3c5b1394309a28dc7ce703d4ccb698387aac3d2826761826b0012622b8f",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505214": "b46242127386547f88c575fa3227e1ef2368207ddbc0758635bf8bd5aff474c8",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505220": "c6b53ea9cd8423c8b6d9b414dfa07725224b220c2971392223dd09180a2bac9f",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505221": "d07109aced729a5bc41bfcb4d8dab376d51701e9a54fc7b69fcf05550ea23a83",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505222": "e74ddc662e3ddd40d5c905476d68d2f67824ab3a9aa8fa24f1a6b12210aceeeb",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505223": "2b370c1af360ec8224333257b5513f9506ab2904e901f1c920c053205b8148bf",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505224": "ee40c799eb9bb7466a074e6e2a949699da39453d87d1797bed24b71c8f7f3451",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505310": "346404e4cdcf4fb0444d344e3f1b184af4a64a69019d70453b7589574213f4cc",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505311": "4b507c5edbabb8830023c36914cb1fa3003537e11001d6ee733d15a2b1c60f70",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505312": "da5c54e4e5815de7edc6e020dd54613d95cfd9399d04d9c46a2e8e7ae24c5095",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505313": "4e779bb793c0a3fe73b4efa648fa4881d8f6b03a92940ee20e7f52f40c4ef8cf",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505314": "dd1748336dcc18735a141841439ebd8a822fdd252b8b59261f11f1f6a242289e",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505320": "3473a448ba3caecfbbc5494caea1dc5a4975dcd5d53e28c0d82b8cedb1208f05",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505321": "e222e57b410f84c94dbd0ba861ecf8a951a64186e377fc184412fbc69ba75418",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505322": "1709c673ef50b707d3cbd9854dd7a1eeb5dd21ad25d97aa44f772f95684740a3",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505323": "a371304c00a8ca2a1056de147f5525453c9f3bb59c24c619f2d714de31d64c7e",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505324": "6f1a5e2db927be39c74d33566915bb5ae98fc13b7195f48fd7ec2f6af87f2aa1",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505420": "240ae21a7b115e7fccc5cf9754db8af002e90455173fa56a79d122ab3c00b2c6",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505421": "cdeef00e6c6fa881bfd55f908f8083649b03bc07739d011fd048b7ed1bdb8efd",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505422": "7fe7b830ca5a59e311ff07c930075c51a2fdded221fa679a99f25358534d2d47",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505423": "f5120868fff198ba623794791112b9341e0892a0991369c8deec14b32b86fde9",
+          "shadow:hsr-component-l2-paired-fan-compact-core:7ab50e44-2bc2759a-7f505424": "f3d3e3121defe91896318368b340e8697e33287bec2ce92edc434b6711584fce",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505020": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505110": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505120": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505200": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505210": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505220": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505310": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505320": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "text:hsr-component-l2-paired-fan-compact-core:2026960b-2a592fd1-7f505420": "375d70c4f5552c06db75cd003b6f4403fcef700d5c8c5c1dfdee0930c3a1f836",
+          "construction:hsr-component-l2-paired-fan-compact-core": "6c28c82643715e64d02d36885f54900245964bc2d126fe1f420275afb92787fe"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "Wout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            6.398519,
+            -40.0,
+            15.5
+          ],
+          "tangent": [
+            -0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "sampled_tangent": [
+            -0.927254928799029,
+            -0.37443063044829483
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505020",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505021",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505022",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505023",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505024",
+            "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505020",
+            "construction:hsr-component-l2-paired-fan-compact-core"
+          ],
+          "source_route_ids": [
+            "path-7f505020-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                2
+              ],
+              "edge": 3,
+              "tile_id": "7f505020"
+            }
+          ],
+          "connection_class": "path-interface-0f4b8204e68941486c48"
+        },
+        {
+          "id": "Nin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            30.0,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505200",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505201",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505202",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505203",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505204",
+            "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505200",
+            "construction:hsr-component-l2-paired-fan-compact-core"
+          ],
+          "source_route_ids": [
+            "path-7f505200-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f505200"
+            }
+          ],
+          "connection_class": "path-interface-12d12be31d2057c5763d"
+        },
+        {
+          "id": "Nout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            34.0,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505200",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505201",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505202",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505203",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505204",
+            "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505200",
+            "construction:hsr-component-l2-paired-fan-compact-core"
+          ],
+          "source_route_ids": [
+            "path-7f505200-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f505200"
+            }
+          ],
+          "connection_class": "path-interface-fba09fbeb87ad95c667a"
+        },
+        {
+          "id": "Ein",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            57.601481,
+            -40.0,
+            15.5
+          ],
+          "tangent": [
+            -0.9272548089646255,
+            0.3744309272108488
+          ],
+          "sampled_tangent": [
+            -0.9272549287990274,
+            0.3744306304482987
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505420",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505421",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505422",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505423",
+            "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505424",
+            "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505420",
+            "construction:hsr-component-l2-paired-fan-compact-core"
+          ],
+          "source_route_ids": [
+            "path-7f505420-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                4,
+                2
+              ],
+              "edge": 3,
+              "tile_id": "7f505420"
+            }
+          ],
+          "connection_class": "path-interface-d819a6d05c5e43d11db7"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "7:Nin>Wout",
+          "entry_port": "Nin",
+          "exit_port": "Wout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Ein>Nout",
+          "entry_port": "Ein",
+          "exit_port": "Nout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Ein",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f7a8",
+            "0004f7a8"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f7a8",
+            "0007f7a8"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f7a8",
+            "0006f7a8"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f7a8",
+            "0005f7a8"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Declare the complete saved-resource joining boundaries and physical tracks of this recessed-web HSR type. Profile labels preserve the measured concrete distinction; route positions and movement permissions remain actual saved-PATH facts.",
+      "piece_id": "hsr-component-l2-paired-fan-compact-core",
+      "source_binding": {
+        "piece_sha256": "69339858ff584deeacc8934ab845b55947d977147c865077d52540b612ce548f",
+        "connections_sha256": "956f6764cfb57162144e72df471b0ca53e036f7dd7bfc8783409181802c5faed"
+      },
+      "components": [
+        {
+          "id": "paired-fan-core",
+          "network": "hsr",
+          "construction_network": "monorail"
+        }
+      ],
+      "channels": [
+        {
+          "id": "north-to-west-track",
+          "component_id": "paired-fan-core",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "east-to-north-track",
+          "component_id": "paired-fan-core",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "north-paired-end",
+          "component_id": "paired-fan-core",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "north-paired-end-nin",
+              "source_port_id": "Nin",
+              "direction": "in",
+              "channel_id": "north-to-west-track",
+              "cut_id": "north-paired-end-north-to-west-track-cut"
+            },
+            {
+              "id": "north-paired-end-nout",
+              "source_port_id": "Nout",
+              "direction": "out",
+              "channel_id": "east-to-north-track",
+              "cut_id": "north-paired-end-east-to-north-track-cut"
+            }
+          ],
+          "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1",
+          "section_offset_m": 0.0
+        },
+        {
+          "id": "west-curved-cut",
+          "component_id": "paired-fan-core",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "west-curved-cut-wout",
+              "source_port_id": "Wout",
+              "direction": "out",
+              "channel_id": "north-to-west-track",
+              "cut_id": "west-curved-cut-north-to-west-track-cut"
+            }
+          ]
+        },
+        {
+          "id": "east-curved-cut",
+          "component_id": "paired-fan-core",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "east-curved-cut-ein",
+              "source_port_id": "Ein",
+              "direction": "in",
+              "channel_id": "east-to-north-track",
+              "cut_id": "east-curved-cut-east-to-north-track-cut"
+            }
+          ]
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "cell-2-0-north",
+          "source_cell": [
+            2,
+            0
+          ],
+          "edge": "north",
+          "connector_ids": [
+            "north-paired-end"
+          ]
+        },
+        {
+          "id": "cell-0-2-south",
+          "source_cell": [
+            0,
+            2
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "west-curved-cut"
+          ]
+        },
+        {
+          "id": "cell-4-2-south",
+          "source_cell": [
+            4,
+            2
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "east-curved-cut"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "groups": [
+      {
+        "id": "north-paired-end",
+        "component_id": "paired-fan-core",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "north-paired-end-nin",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              30.0,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              -1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              -1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505200",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505201",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505202",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505203",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505204",
+              "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505200",
+              "construction:hsr-component-l2-paired-fan-compact-core"
+            ],
+            "source_route_ids": [
+              "path-7f505200-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  2,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f505200"
+              }
+            ],
+            "connection_class": "path-interface-12d12be31d2057c5763d",
+            "source_port_id": "Nin",
+            "channel_id": "north-to-west-track",
+            "cut_id": "north-paired-end-north-to-west-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.0,
+              1.0
+            ],
+            "heading_outward_degrees": 0.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "north-paired-end-nout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              34.0,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505200",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505201",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505202",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505203",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505204",
+              "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505200",
+              "construction:hsr-component-l2-paired-fan-compact-core"
+            ],
+            "source_route_ids": [
+              "path-7f505200-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  2,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f505200"
+              }
+            ],
+            "connection_class": "path-interface-fba09fbeb87ad95c667a",
+            "source_port_id": "Nout",
+            "channel_id": "east-to-north-track",
+            "cut_id": "north-paired-end-east-to-north-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.0,
+              1.0
+            ],
+            "heading_outward_degrees": 0.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1",
+        "section_offset_m": 0.0,
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 15.5,
+          "nominal_level": "l2",
+          "label": "HSR L2 paired interface with recessed structural web",
+          "scope_note": "Measured fan-family concrete profile: 15 m outer slab and border envelope, with the exposed structural web approximately 6.963052 m from the centre at heights 14.590025\u201316.358057 m. The ordinary paired straight has its corresponding web approximately 7 m from the centre and is not a full physical-profile equivalent. Route height, two opposed channels, 4 m track spacing, and right-hand running remain unchanged. Complete saved-face evidence belongs to 01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json; an inherited native-neighbour transition is recorded separately rather than declared universally compatible."
+        },
+        "source_cell": [
+          2,
+          0
+        ],
+        "edge": "north",
+        "tile_seam_center_m": [
+          32.0,
+          8.0,
+          15.5
+        ],
+        "anchor_m": [
+          32.0,
+          8.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "north-to-west-track",
+            "component_id": "paired-fan-core",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "north-paired-end-north-to-west-track-cut",
+                "member_ids": [
+                  "north-paired-end-nin"
+                ],
+                "endpoint_m": [
+                  30.0,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.0,
+                  1.0
+                ],
+                "heading_outward_degrees": 0.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "east-to-north-track",
+            "component_id": "paired-fan-core",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "north-paired-end-east-to-north-track-cut",
+                "member_ids": [
+                  "north-paired-end-nout"
+                ],
+                "endpoint_m": [
+                  34.0,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.0,
+                  1.0
+                ],
+                "heading_outward_degrees": 0.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          1.0
+        ],
+        "boundary_bundle_id": "cell-2-0-north"
+      },
+      {
+        "id": "west-curved-cut",
+        "component_id": "paired-fan-core",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "west-curved-cut-wout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              6.398519,
+              -40.0,
+              15.5
+            ],
+            "tangent": [
+              -0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "sampled_tangent": [
+              -0.927254928799029,
+              -0.37443063044829483
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505020",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505021",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505022",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505023",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505024",
+              "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505020",
+              "construction:hsr-component-l2-paired-fan-compact-core"
+            ],
+            "source_route_ids": [
+              "path-7f505020-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  2
+                ],
+                "edge": 3,
+                "tile_id": "7f505020"
+              }
+            ],
+            "connection_class": "path-interface-0f4b8204e68941486c48",
+            "source_port_id": "Wout",
+            "channel_id": "north-to-west-track",
+            "cut_id": "west-curved-cut-north-to-west-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "heading_outward_degrees": 248.01085496362973,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          2
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          0.0,
+          -40.0,
+          15.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "north-to-west-track",
+            "component_id": "paired-fan-core",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "west-curved-cut-north-to-west-track-cut",
+                "member_ids": [
+                  "west-curved-cut-wout"
+                ],
+                "endpoint_m": [
+                  6.398519,
+                  -40.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.9272548089646255,
+                  -0.3744309272108488
+                ],
+                "heading_outward_degrees": 248.01085496362973,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-0-2-south"
+      },
+      {
+        "id": "east-curved-cut",
+        "component_id": "paired-fan-core",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "east-curved-cut-ein",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              57.601481,
+              -40.0,
+              15.5
+            ],
+            "tangent": [
+              -0.9272548089646255,
+              0.3744309272108488
+            ],
+            "sampled_tangent": [
+              -0.9272549287990274,
+              0.3744306304482987
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505420",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505421",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505422",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505423",
+              "model:hsr-component-l2-paired-fan-compact-core:5ad0e817-badb57f1-7f505424",
+              "path:hsr-component-l2-paired-fan-compact-core:296678f7-a966883f-7f505420",
+              "construction:hsr-component-l2-paired-fan-compact-core"
+            ],
+            "source_route_ids": [
+              "path-7f505420-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  4,
+                  2
+                ],
+                "edge": 3,
+                "tile_id": "7f505420"
+              }
+            ],
+            "connection_class": "path-interface-d819a6d05c5e43d11db7",
+            "source_port_id": "Ein",
+            "channel_id": "east-to-north-track",
+            "cut_id": "east-curved-cut-east-to-north-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "heading_outward_degrees": 111.98914503637027,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          4,
+          2
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          64.0,
+          -40.0,
+          15.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "east-to-north-track",
+            "component_id": "paired-fan-core",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "east-curved-cut-east-to-north-track-cut",
+                "member_ids": [
+                  "east-curved-cut-ein"
+                ],
+                "endpoint_m": [
+                  57.601481,
+                  -40.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.9272548089646255,
+                  -0.3744309272108488
+                ],
+                "heading_outward_degrees": 111.98914503637027,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-4-2-south"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "cell-2-0-north",
+        "source_cell": [
+          2,
+          0
+        ],
+        "edge": "north",
+        "connector_ids": [
+          "north-paired-end"
+        ]
+      },
+      {
+        "id": "cell-0-2-south",
+        "source_cell": [
+          0,
+          2
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "west-curved-cut"
+        ]
+      },
+      {
+        "id": "cell-4-2-south",
+        "source_cell": [
+          4,
+          2
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "east-curved-cut"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "north-to-west-track",
+        "component_id": "paired-fan-core",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "east-to-north-track",
+        "component_id": "paired-fan-core",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "north-paired-end-nin>west-curved-cut-wout",
+        "entry_port": "north-paired-end-nin",
+        "exit_port": "west-curved-cut-wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Nin>Wout",
+        "source_entry_port": "Nin",
+        "source_exit_port": "Wout"
+      },
+      {
+        "id": "east-curved-cut-ein>north-paired-end-nout",
+        "entry_port": "east-curved-cut-ein",
+        "exit_port": "north-paired-end-nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Ein>Nout",
+        "source_entry_port": "Ein",
+        "source_exit_port": "Nout"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "north-paired-end-nin",
+        "to_port": "north-paired-end-nout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Nin",
+        "source_to_port": "Nout"
+      },
+      {
+        "from_port": "east-curved-cut-ein",
+        "to_port": "west-curved-cut-wout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Ein",
+        "source_to_port": "Wout"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f7a8",
+          "0004f7a8"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f7a8",
+          "0007f7a8"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f7a8",
+          "0006f7a8"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f7a8",
+          "0005f7a8"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f505200-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f505200",
+      "points": [
+        [
+          30.0,
+          8.0,
+          15.5
+        ],
+        [
+          30.0,
+          3.107072606,
+          15.5
+        ],
+        [
+          29.999998768,
+          2.908059447,
+          15.5
+        ],
+        [
+          29.999987684,
+          2.709046288,
+          15.5
+        ],
+        [
+          29.999956894,
+          2.510033131,
+          15.5
+        ],
+        [
+          29.999896547,
+          2.311019981,
+          15.5
+        ],
+        [
+          29.999796788,
+          2.112006847,
+          15.5
+        ],
+        [
+          29.999647766,
+          1.912993743,
+          15.5
+        ],
+        [
+          29.999439628,
+          1.713980693,
+          15.5
+        ],
+        [
+          29.99916252,
+          1.514967727,
+          15.5
+        ],
+        [
+          29.998806592,
+          1.315954886,
+          15.5
+        ],
+        [
+          29.998361989,
+          1.116942223,
+          15.5
+        ],
+        [
+          29.997818859,
+          0.917929805,
+          15.5
+        ],
+        [
+          29.997167349999998,
+          0.718917713,
+          15.5
+        ],
+        [
+          29.99639761,
+          0.519906042,
+          15.5
+        ],
+        [
+          29.995499785,
+          0.320894908,
+          15.5
+        ],
+        [
+          29.994464025,
+          0.121884444,
+          15.5
+        ],
+        [
+          29.993280476,
+          -0.077125196,
+          15.5
+        ],
+        [
+          29.991939287,
+          -0.276133836,
+          15.5
+        ],
+        [
+          29.990430606,
+          -0.475141276,
+          15.5
+        ],
+        [
+          29.988744582,
+          -0.674147293,
+          15.5
+        ],
+        [
+          29.986871365,
+          -0.873151636,
+          15.5
+        ],
+        [
+          29.984801103,
+          -1.072154027,
+          15.5
+        ],
+        [
+          29.982523947,
+          -1.271154158,
+          15.5
+        ],
+        [
+          29.980030046,
+          -1.470151691,
+          15.5
+        ],
+        [
+          29.977309553,
+          -1.669146255,
+          15.5
+        ],
+        [
+          29.97435262,
+          -1.868137445,
+          15.5
+        ],
+        [
+          29.971149398,
+          -2.067124824,
+          15.5
+        ],
+        [
+          29.967690042,
+          -2.266107915,
+          15.5
+        ],
+        [
+          29.963964706,
+          -2.465086204,
+          15.5
+        ],
+        [
+          29.959963547,
+          -2.664059137,
+          15.5
+        ],
+        [
+          29.955676721,
+          -2.863026121,
+          15.5
+        ],
+        [
+          29.951094387,
+          -3.061986518,
+          15.5
+        ],
+        [
+          29.946206707,
+          -3.260939649,
+          15.5
+        ],
+        [
+          29.941003841,
+          -3.459884786,
+          15.5
+        ],
+        [
+          29.935475954,
+          -3.658821158,
+          15.5
+        ],
+        [
+          29.929613212,
+          -3.857747943,
+          15.5
+        ],
+        [
+          29.923405784,
+          -4.056664271,
+          15.5
+        ],
+        [
+          29.916843842,
+          -4.255569219,
+          15.5
+        ],
+        [
+          29.909917559,
+          -4.454461813,
+          15.5
+        ],
+        [
+          29.902617112999998,
+          -4.653341025,
+          15.5
+        ],
+        [
+          29.894932684,
+          -4.852205771,
+          15.5
+        ],
+        [
+          29.886854456000002,
+          -5.051054909,
+          15.5
+        ],
+        [
+          29.878372617,
+          -5.24988724,
+          15.5
+        ],
+        [
+          29.869477359,
+          -5.448701505,
+          15.5
+        ],
+        [
+          29.860158879,
+          -5.647496383,
+          15.5
+        ],
+        [
+          29.850407377,
+          -5.84627049,
+          15.5
+        ],
+        [
+          29.840213061,
+          -6.04502238,
+          15.5
+        ],
+        [
+          29.829566143,
+          -6.243750537,
+          15.5
+        ],
+        [
+          29.81845684,
+          -6.442453383,
+          15.5
+        ],
+        [
+          29.806875377,
+          -6.641129268,
+          15.5
+        ],
+        [
+          29.794811984,
+          -6.839776473,
+          15.5
+        ],
+        [
+          29.782256899,
+          -7.038393208,
+          15.5
+        ],
+        [
+          29.769200367,
+          -7.236977609,
+          15.5
+        ],
+        [
+          29.755632643,
+          -7.43552774,
+          15.5
+        ],
+        [
+          29.741543988,
+          -7.634041587,
+          15.5
+        ],
+        [
+          29.726924672,
+          -7.832517059,
+          15.5
+        ],
+        [
+          29.714129595,
+          -8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f505200-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f505200",
+      "points": [
+        [
+          34.285870405,
+          -8.0,
+          15.5
+        ],
+        [
+          34.273075328,
+          -7.832517059,
+          15.5
+        ],
+        [
+          34.258456011999996,
+          -7.634041587,
+          15.5
+        ],
+        [
+          34.244367357,
+          -7.43552774,
+          15.5
+        ],
+        [
+          34.230799633000004,
+          -7.236977609,
+          15.5
+        ],
+        [
+          34.217743100999996,
+          -7.038393208,
+          15.5
+        ],
+        [
+          34.205188016,
+          -6.839776473,
+          15.5
+        ],
+        [
+          34.193124623,
+          -6.641129268,
+          15.5
+        ],
+        [
+          34.18154316,
+          -6.442453383,
+          15.5
+        ],
+        [
+          34.170433857,
+          -6.243750537,
+          15.5
+        ],
+        [
+          34.159786939,
+          -6.04502238,
+          15.5
+        ],
+        [
+          34.149592623000004,
+          -5.84627049,
+          15.5
+        ],
+        [
+          34.139841121,
+          -5.647496383,
+          15.5
+        ],
+        [
+          34.130522641,
+          -5.448701505,
+          15.5
+        ],
+        [
+          34.121627383,
+          -5.24988724,
+          15.5
+        ],
+        [
+          34.113145544,
+          -5.051054909,
+          15.5
+        ],
+        [
+          34.105067316,
+          -4.852205771,
+          15.5
+        ],
+        [
+          34.097382887,
+          -4.653341025,
+          15.5
+        ],
+        [
+          34.090082441,
+          -4.454461813,
+          15.5
+        ],
+        [
+          34.083156158,
+          -4.255569219,
+          15.5
+        ],
+        [
+          34.076594216000004,
+          -4.056664271,
+          15.5
+        ],
+        [
+          34.070386788,
+          -3.857747943,
+          15.5
+        ],
+        [
+          34.064524046,
+          -3.658821158,
+          15.5
+        ],
+        [
+          34.058996159,
+          -3.459884786,
+          15.5
+        ],
+        [
+          34.053793293,
+          -3.260939649,
+          15.5
+        ],
+        [
+          34.048905613,
+          -3.061986518,
+          15.5
+        ],
+        [
+          34.044323279,
+          -2.863026121,
+          15.5
+        ],
+        [
+          34.040036453,
+          -2.664059137,
+          15.5
+        ],
+        [
+          34.036035294,
+          -2.465086204,
+          15.5
+        ],
+        [
+          34.032309958,
+          -2.266107915,
+          15.5
+        ],
+        [
+          34.028850602,
+          -2.067124824,
+          15.5
+        ],
+        [
+          34.02564738,
+          -1.868137445,
+          15.5
+        ],
+        [
+          34.022690447,
+          -1.669146255,
+          15.5
+        ],
+        [
+          34.019969954,
+          -1.470151691,
+          15.5
+        ],
+        [
+          34.017476053,
+          -1.271154158,
+          15.5
+        ],
+        [
+          34.015198897,
+          -1.072154027,
+          15.5
+        ],
+        [
+          34.013128635,
+          -0.873151636,
+          15.5
+        ],
+        [
+          34.011255418,
+          -0.674147293,
+          15.5
+        ],
+        [
+          34.009569394,
+          -0.475141276,
+          15.5
+        ],
+        [
+          34.008060713,
+          -0.276133836,
+          15.5
+        ],
+        [
+          34.006719524,
+          -0.077125196,
+          15.5
+        ],
+        [
+          34.005535975,
+          0.121884444,
+          15.5
+        ],
+        [
+          34.004500215,
+          0.320894908,
+          15.5
+        ],
+        [
+          34.00360239,
+          0.519906042,
+          15.5
+        ],
+        [
+          34.00283265,
+          0.718917713,
+          15.5
+        ],
+        [
+          34.002181141,
+          0.917929805,
+          15.5
+        ],
+        [
+          34.001638011,
+          1.116942223,
+          15.5
+        ],
+        [
+          34.001193408,
+          1.315954886,
+          15.5
+        ],
+        [
+          34.00083748,
+          1.514967727,
+          15.5
+        ],
+        [
+          34.000560372,
+          1.713980693,
+          15.5
+        ],
+        [
+          34.000352234,
+          1.912993743,
+          15.5
+        ],
+        [
+          34.000203212,
+          2.112006847,
+          15.5
+        ],
+        [
+          34.000103453,
+          2.311019981,
+          15.5
+        ],
+        [
+          34.000043106,
+          2.510033131,
+          15.5
+        ],
+        [
+          34.000012316,
+          2.709046288,
+          15.5
+        ],
+        [
+          34.000001232,
+          2.908059447,
+          15.5
+        ],
+        [
+          34.0,
+          3.107072606,
+          15.5
+        ],
+        [
+          34.0,
+          8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f505210-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        1
+      ],
+      "tile_id": "7f505210",
+      "points": [
+        [
+          29.714129595,
+          -8.0,
+          15.5
+        ],
+        [
+          29.711764977,
+          -8.030951988,
+          15.5
+        ],
+        [
+          29.696055193,
+          -8.229344126,
+          15.5
+        ],
+        [
+          29.67978562,
+          -8.427691141,
+          15.5
+        ],
+        [
+          29.662946571,
+          -8.625990622,
+          15.5
+        ],
+        [
+          29.64552837,
+          -8.82424007,
+          15.5
+        ],
+        [
+          29.627521353,
+          -9.022436904,
+          15.5
+        ],
+        [
+          29.60891587,
+          -9.220578453,
+          15.5
+        ],
+        [
+          29.589702282,
+          -9.41866196,
+          15.5
+        ],
+        [
+          29.569870969,
+          -9.616684576,
+          15.5
+        ],
+        [
+          29.549412322,
+          -9.814643363,
+          15.5
+        ],
+        [
+          29.528316749,
+          -10.012535288999999,
+          15.5
+        ],
+        [
+          29.506574675,
+          -10.210357228,
+          15.5
+        ],
+        [
+          29.484176542,
+          -10.408105961,
+          15.5
+        ],
+        [
+          29.46111281,
+          -10.605778168,
+          15.5
+        ],
+        [
+          29.437373959,
+          -10.803370437,
+          15.5
+        ],
+        [
+          29.412950486,
+          -11.00087925,
+          15.5
+        ],
+        [
+          29.387832911,
+          -11.198300994,
+          15.5
+        ],
+        [
+          29.362011776,
+          -11.395631951,
+          15.5
+        ],
+        [
+          29.335477643,
+          -11.5928683,
+          15.5
+        ],
+        [
+          29.308221099,
+          -11.790006116,
+          15.5
+        ],
+        [
+          29.280232755,
+          -11.987041367,
+          15.5
+        ],
+        [
+          29.251503248,
+          -12.183969914,
+          15.5
+        ],
+        [
+          29.22202324,
+          -12.380787512,
+          15.5
+        ],
+        [
+          29.191783421,
+          -12.577489802,
+          15.5
+        ],
+        [
+          29.16077451,
+          -12.774072316,
+          15.5
+        ],
+        [
+          29.128987255,
+          -12.970530474,
+          15.5
+        ],
+        [
+          29.096412435,
+          -13.166859582,
+          15.5
+        ],
+        [
+          29.06304086,
+          -13.363054831,
+          15.5
+        ],
+        [
+          29.028863373,
+          -13.559111294000001,
+          15.5
+        ],
+        [
+          28.993870854,
+          -13.755023931,
+          15.5
+        ],
+        [
+          28.958054214,
+          -13.950787579,
+          15.5
+        ],
+        [
+          28.921404404,
+          -14.146396957,
+          15.5
+        ],
+        [
+          28.883912413,
+          -14.341846665,
+          15.5
+        ],
+        [
+          28.845569267000002,
+          -14.537131177,
+          15.5
+        ],
+        [
+          28.806366034,
+          -14.732244846,
+          15.5
+        ],
+        [
+          28.766293826000002,
+          -14.927181902000001,
+          15.5
+        ],
+        [
+          28.725343794,
+          -15.121936446,
+          15.5
+        ],
+        [
+          28.683507139,
+          -15.316502455,
+          15.5
+        ],
+        [
+          28.640775104,
+          -15.510873777,
+          15.5
+        ],
+        [
+          28.597138984,
+          -15.705044131,
+          15.5
+        ],
+        [
+          28.552590119,
+          -15.899007107,
+          15.5
+        ],
+        [
+          28.507119904,
+          -16.092756164,
+          15.5
+        ],
+        [
+          28.460719783000002,
+          -16.286284628,
+          15.5
+        ],
+        [
+          28.413381259,
+          -16.479585693,
+          15.5
+        ],
+        [
+          28.365095885,
+          -16.672652418,
+          15.5
+        ],
+        [
+          28.315855277,
+          -16.865477727,
+          15.5
+        ],
+        [
+          28.265651106,
+          -17.05805441,
+          15.5
+        ],
+        [
+          28.214475106000002,
+          -17.250375118,
+          15.5
+        ],
+        [
+          28.162319075,
+          -17.442432364,
+          15.5
+        ],
+        [
+          28.109174873,
+          -17.634218525,
+          15.5
+        ],
+        [
+          28.055034427,
+          -17.825725834,
+          15.5
+        ],
+        [
+          27.999889735,
+          -18.016946389,
+          15.5
+        ],
+        [
+          27.943732862,
+          -18.207872142,
+          15.5
+        ],
+        [
+          27.886555946999998,
+          -18.398494905,
+          15.5
+        ],
+        [
+          27.828351202,
+          -18.588806348,
+          15.5
+        ],
+        [
+          27.769110916,
+          -18.778797995,
+          15.5
+        ],
+        [
+          27.708827456,
+          -18.968461228,
+          15.5
+        ],
+        [
+          27.64749327,
+          -19.157787283,
+          15.5
+        ],
+        [
+          27.585100888,
+          -19.346767251,
+          15.5
+        ],
+        [
+          27.521642921999998,
+          -19.535392075,
+          15.5
+        ],
+        [
+          27.457112075,
+          -19.723652552,
+          15.5
+        ],
+        [
+          27.391501137,
+          -19.911539332,
+          15.5
+        ],
+        [
+          27.324802986999998,
+          -20.099042917,
+          15.5
+        ],
+        [
+          27.257010601,
+          -20.28615366,
+          15.5
+        ],
+        [
+          27.188117048,
+          -20.472861763,
+          15.5
+        ],
+        [
+          27.118115496,
+          -20.659157282,
+          15.5
+        ],
+        [
+          27.046999215,
+          -20.84503012,
+          15.5
+        ],
+        [
+          26.974761574,
+          -21.030470032,
+          15.5
+        ],
+        [
+          26.901396052,
+          -21.21546662,
+          15.5
+        ],
+        [
+          26.826896231,
+          -21.400009336,
+          15.5
+        ],
+        [
+          26.751255805,
+          -21.584087482,
+          15.5
+        ],
+        [
+          26.674468583,
+          -21.767690205,
+          15.5
+        ],
+        [
+          26.596528486,
+          -21.950806504,
+          15.5
+        ],
+        [
+          26.517429554,
+          -22.133425222,
+          15.5
+        ],
+        [
+          26.437165947,
+          -22.315535054999998,
+          15.5
+        ],
+        [
+          26.35573195,
+          -22.497124540999998,
+          15.5
+        ],
+        [
+          26.273121971000002,
+          -22.67818207,
+          15.5
+        ],
+        [
+          26.189330548,
+          -22.858695878,
+          15.5
+        ],
+        [
+          26.104215631,
+          -23.038943993,
+          15.5
+        ],
+        [
+          26.017913811,
+          -23.218626847,
+          15.5
+        ],
+        [
+          25.930428843,
+          -23.397736624,
+          15.5
+        ],
+        [
+          25.841764532,
+          -23.576265535,
+          15.5
+        ],
+        [
+          25.751924733,
+          -23.754205813,
+          15.5
+        ],
+        [
+          25.660913356000002,
+          -23.93154972,
+          15.5
+        ],
+        [
+          25.625212978,
+          -24.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f505210-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        1
+      ],
+      "tile_id": "7f505210",
+      "points": [
+        [
+          38.374787022,
+          -24.0,
+          15.5
+        ],
+        [
+          38.339086644,
+          -23.93154972,
+          15.5
+        ],
+        [
+          38.248075267,
+          -23.754205813,
+          15.5
+        ],
+        [
+          38.158235468,
+          -23.576265535,
+          15.5
+        ],
+        [
+          38.069571157,
+          -23.397736624,
+          15.5
+        ],
+        [
+          37.982086189,
+          -23.218626847,
+          15.5
+        ],
+        [
+          37.895784369,
+          -23.038943993,
+          15.5
+        ],
+        [
+          37.810669452,
+          -22.858695878,
+          15.5
+        ],
+        [
+          37.726878029,
+          -22.67818207,
+          15.5
+        ],
+        [
+          37.64426805,
+          -22.497124540999998,
+          15.5
+        ],
+        [
+          37.562834053,
+          -22.315535054999998,
+          15.5
+        ],
+        [
+          37.482570446,
+          -22.133425222,
+          15.5
+        ],
+        [
+          37.403471514,
+          -21.950806504,
+          15.5
+        ],
+        [
+          37.325531417,
+          -21.767690205,
+          15.5
+        ],
+        [
+          37.248744195,
+          -21.584087482,
+          15.5
+        ],
+        [
+          37.173103769,
+          -21.400009336,
+          15.5
+        ],
+        [
+          37.098603948,
+          -21.21546662,
+          15.5
+        ],
+        [
+          37.025238426,
+          -21.030470032,
+          15.5
+        ],
+        [
+          36.953000785,
+          -20.84503012,
+          15.5
+        ],
+        [
+          36.881884504,
+          -20.659157282,
+          15.5
+        ],
+        [
+          36.811882952,
+          -20.472861763,
+          15.5
+        ],
+        [
+          36.742989399,
+          -20.28615366,
+          15.5
+        ],
+        [
+          36.675197013,
+          -20.099042917,
+          15.5
+        ],
+        [
+          36.608498863,
+          -19.911539332,
+          15.5
+        ],
+        [
+          36.542887925,
+          -19.723652552,
+          15.5
+        ],
+        [
+          36.478357078,
+          -19.535392075,
+          15.5
+        ],
+        [
+          36.414899112,
+          -19.346767251,
+          15.5
+        ],
+        [
+          36.35250673,
+          -19.157787283,
+          15.5
+        ],
+        [
+          36.291172544,
+          -18.968461228,
+          15.5
+        ],
+        [
+          36.230889084,
+          -18.778797995,
+          15.5
+        ],
+        [
+          36.171648798,
+          -18.588806348,
+          15.5
+        ],
+        [
+          36.113444053,
+          -18.398494905,
+          15.5
+        ],
+        [
+          36.056267138,
+          -18.207872142,
+          15.5
+        ],
+        [
+          36.000110265,
+          -18.016946389,
+          15.5
+        ],
+        [
+          35.944965573,
+          -17.825725834,
+          15.5
+        ],
+        [
+          35.890825127,
+          -17.634218525,
+          15.5
+        ],
+        [
+          35.837680925,
+          -17.442432364,
+          15.5
+        ],
+        [
+          35.785524894,
+          -17.250375118,
+          15.5
+        ],
+        [
+          35.734348894,
+          -17.05805441,
+          15.5
+        ],
+        [
+          35.684144723,
+          -16.865477727,
+          15.5
+        ],
+        [
+          35.634904115,
+          -16.672652418,
+          15.5
+        ],
+        [
+          35.586618741,
+          -16.479585693,
+          15.5
+        ],
+        [
+          35.539280217,
+          -16.286284628,
+          15.5
+        ],
+        [
+          35.492880096,
+          -16.092756164,
+          15.5
+        ],
+        [
+          35.447409881,
+          -15.899007107,
+          15.5
+        ],
+        [
+          35.402861016,
+          -15.705044131,
+          15.5
+        ],
+        [
+          35.359224896,
+          -15.510873777,
+          15.5
+        ],
+        [
+          35.316492861,
+          -15.316502455,
+          15.5
+        ],
+        [
+          35.274656206,
+          -15.121936446,
+          15.5
+        ],
+        [
+          35.233706174,
+          -14.927181902000001,
+          15.5
+        ],
+        [
+          35.193633966,
+          -14.732244846,
+          15.5
+        ],
+        [
+          35.154430733,
+          -14.537131177,
+          15.5
+        ],
+        [
+          35.116087587,
+          -14.341846665,
+          15.5
+        ],
+        [
+          35.078595596,
+          -14.146396957,
+          15.5
+        ],
+        [
+          35.041945786,
+          -13.950787579,
+          15.5
+        ],
+        [
+          35.006129146,
+          -13.755023931,
+          15.5
+        ],
+        [
+          34.971136627,
+          -13.559111294000001,
+          15.5
+        ],
+        [
+          34.93695914,
+          -13.363054831,
+          15.5
+        ],
+        [
+          34.903587565,
+          -13.166859582,
+          15.5
+        ],
+        [
+          34.871012745,
+          -12.970530474,
+          15.5
+        ],
+        [
+          34.83922549,
+          -12.774072316,
+          15.5
+        ],
+        [
+          34.808216579,
+          -12.577489802,
+          15.5
+        ],
+        [
+          34.77797676,
+          -12.380787512,
+          15.5
+        ],
+        [
+          34.748496752,
+          -12.183969914,
+          15.5
+        ],
+        [
+          34.719767245,
+          -11.987041367,
+          15.5
+        ],
+        [
+          34.691778901,
+          -11.790006116,
+          15.5
+        ],
+        [
+          34.664522357,
+          -11.5928683,
+          15.5
+        ],
+        [
+          34.637988224,
+          -11.395631951,
+          15.5
+        ],
+        [
+          34.612167089,
+          -11.198300994,
+          15.5
+        ],
+        [
+          34.587049514,
+          -11.00087925,
+          15.5
+        ],
+        [
+          34.562626041,
+          -10.803370437,
+          15.5
+        ],
+        [
+          34.53888719,
+          -10.605778168,
+          15.5
+        ],
+        [
+          34.515823458,
+          -10.408105961,
+          15.5
+        ],
+        [
+          34.493425325,
+          -10.210357228,
+          15.5
+        ],
+        [
+          34.471683251,
+          -10.012535288999999,
+          15.5
+        ],
+        [
+          34.450587678,
+          -9.814643363,
+          15.5
+        ],
+        [
+          34.430129031,
+          -9.616684576,
+          15.5
+        ],
+        [
+          34.410297718,
+          -9.41866196,
+          15.5
+        ],
+        [
+          34.39108413,
+          -9.220578453,
+          15.5
+        ],
+        [
+          34.372478647,
+          -9.022436904,
+          15.5
+        ],
+        [
+          34.35447163,
+          -8.82424007,
+          15.5
+        ],
+        [
+          34.337053429,
+          -8.625990622,
+          15.5
+        ],
+        [
+          34.32021438,
+          -8.427691141,
+          15.5
+        ],
+        [
+          34.303944807,
+          -8.229344126,
+          15.5
+        ],
+        [
+          34.288235023,
+          -8.030951988,
+          15.5
+        ],
+        [
+          34.285870405,
+          -8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f505020-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        2
+      ],
+      "tile_id": "7f505020",
+      "points": [
+        [
+          8.0,
+          -39.330692018,
+          15.5
+        ],
+        [
+          7.852876358,
+          -39.39445693,
+          15.5
+        ],
+        [
+          7.670152173,
+          -39.472943273,
+          15.5
+        ],
+        [
+          7.487176357,
+          -39.550841183,
+          15.5
+        ],
+        [
+          7.088245466,
+          -39.718307953,
+          15.5
+        ],
+        [
+          6.688416133,
+          -39.882937657,
+          15.5
+        ],
+        [
+          6.398518552,
+          -40.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f505120-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        2
+      ],
+      "tile_id": "7f505120",
+      "points": [
+        [
+          24.0,
+          -26.75518206,
+          15.5
+        ],
+        [
+          23.938498962,
+          -26.847782351,
+          15.5
+        ],
+        [
+          23.82712459,
+          -27.013099263,
+          15.5
+        ],
+        [
+          23.71466236,
+          -27.177678055,
+          15.5
+        ],
+        [
+          23.601117162999998,
+          -27.341511568999998,
+          15.5
+        ],
+        [
+          23.486493938,
+          -27.504592678,
+          15.5
+        ],
+        [
+          23.37079767,
+          -27.66691429,
+          15.5
+        ],
+        [
+          23.254033392,
+          -27.828469343000002,
+          15.5
+        ],
+        [
+          23.136206182,
+          -27.989250812,
+          15.5
+        ],
+        [
+          23.017321165,
+          -28.149251702,
+          15.5
+        ],
+        [
+          22.897383513,
+          -28.308465055,
+          15.5
+        ],
+        [
+          22.776398442,
+          -28.466883944,
+          15.5
+        ],
+        [
+          22.654371215,
+          -28.624501481,
+          15.5
+        ],
+        [
+          22.531307139,
+          -28.781310808,
+          15.5
+        ],
+        [
+          22.407211567,
+          -28.937305106,
+          15.5
+        ],
+        [
+          22.282089896,
+          -29.092477589,
+          15.5
+        ],
+        [
+          22.155947569,
+          -29.246821508,
+          15.5
+        ],
+        [
+          22.028790072,
+          -29.40033015,
+          15.5
+        ],
+        [
+          21.900622937,
+          -29.552996837,
+          15.5
+        ],
+        [
+          21.771451738,
+          -29.70481493,
+          15.5
+        ],
+        [
+          21.641282093,
+          -29.855777825,
+          15.5
+        ],
+        [
+          21.510119665,
+          -30.005878955,
+          15.5
+        ],
+        [
+          21.377970158,
+          -30.155111792,
+          15.5
+        ],
+        [
+          21.24483932,
+          -30.303469846,
+          15.5
+        ],
+        [
+          21.110732942,
+          -30.450946662,
+          15.5
+        ],
+        [
+          20.975656856,
+          -30.597535827,
+          15.5
+        ],
+        [
+          20.839616939,
+          -30.743230963,
+          15.5
+        ],
+        [
+          20.702619107,
+          -30.888025736,
+          15.5
+        ],
+        [
+          20.564669319,
+          -31.031913845,
+          15.5
+        ],
+        [
+          20.425773576,
+          -31.174889033,
+          15.5
+        ],
+        [
+          20.285937918000002,
+          -31.316945081,
+          15.5
+        ],
+        [
+          20.145168427999998,
+          -31.458075811,
+          15.5
+        ],
+        [
+          20.003471229,
+          -31.598275082,
+          15.5
+        ],
+        [
+          19.860852484,
+          -31.737536799,
+          15.5
+        ],
+        [
+          19.717318397,
+          -31.875854902,
+          15.5
+        ],
+        [
+          19.57287521,
+          -32.013223376,
+          15.5
+        ],
+        [
+          19.427529206,
+          -32.149636246,
+          15.5
+        ],
+        [
+          19.281286707,
+          -32.285087579,
+          15.5
+        ],
+        [
+          19.134154074,
+          -32.419571483,
+          15.5
+        ],
+        [
+          18.986485843,
+          -32.552771811,
+          15.5
+        ],
+        [
+          18.837950932,
+          -32.685004991,
+          15.5
+        ],
+        [
+          18.688562163,
+          -32.816272769,
+          15.5
+        ],
+        [
+          18.538332253,
+          -32.946577059,
+          15.5
+        ],
+        [
+          18.38727381,
+          -33.075919939,
+          15.5
+        ],
+        [
+          18.235399333,
+          -33.204303649,
+          15.5
+        ],
+        [
+          18.08272121,
+          -33.331730588,
+          15.5
+        ],
+        [
+          17.929251722,
+          -33.458203312,
+          15.5
+        ],
+        [
+          17.775003037,
+          -33.583724534,
+          15.5
+        ],
+        [
+          17.619987213,
+          -33.708297115,
+          15.5
+        ],
+        [
+          17.464216194,
+          -33.831924069,
+          15.5
+        ],
+        [
+          17.307701815,
+          -33.954608553,
+          15.5
+        ],
+        [
+          17.150455795,
+          -34.076353874,
+          15.5
+        ],
+        [
+          16.992489742,
+          -34.197163474999996,
+          15.5
+        ],
+        [
+          16.833815149,
+          -34.317040944,
+          15.5
+        ],
+        [
+          16.674443399,
+          -34.435990005,
+          15.5
+        ],
+        [
+          16.514385756,
+          -34.554014514,
+          15.5
+        ],
+        [
+          16.353653373,
+          -34.671118463,
+          15.5
+        ],
+        [
+          16.192257288,
+          -34.787305974,
+          15.5
+        ],
+        [
+          16.030208425,
+          -34.902581296,
+          15.5
+        ],
+        [
+          15.867517593,
+          -35.016948805,
+          15.5
+        ],
+        [
+          15.704195487,
+          -35.130412999,
+          15.5
+        ],
+        [
+          15.540252686,
+          -35.242978499,
+          15.5
+        ],
+        [
+          15.375699656,
+          -35.354650044,
+          15.5
+        ],
+        [
+          15.210546747,
+          -35.465432491,
+          15.5
+        ],
+        [
+          15.044804196,
+          -35.575330812,
+          15.5
+        ],
+        [
+          14.878482126,
+          -35.684350089,
+          15.5
+        ],
+        [
+          14.711590545,
+          -35.792495518,
+          15.5
+        ],
+        [
+          14.544139346,
+          -35.899772401999996,
+          15.5
+        ],
+        [
+          14.37613831,
+          -36.006186151,
+          15.5
+        ],
+        [
+          14.207597105,
+          -36.111742278,
+          15.5
+        ],
+        [
+          14.038525284,
+          -36.216446399,
+          15.5
+        ],
+        [
+          13.868932287,
+          -36.320304232,
+          15.5
+        ],
+        [
+          13.698827445,
+          -36.423321591,
+          15.5
+        ],
+        [
+          13.528219972,
+          -36.525504388,
+          15.5
+        ],
+        [
+          13.357118974,
+          -36.62685863,
+          15.5
+        ],
+        [
+          13.185533444,
+          -36.727390416,
+          15.5
+        ],
+        [
+          13.013472266,
+          -36.827105934,
+          15.5
+        ],
+        [
+          12.84094421,
+          -36.926011464,
+          15.5
+        ],
+        [
+          12.66795794,
+          -37.024113372,
+          15.5
+        ],
+        [
+          12.49452201,
+          -37.121418109000004,
+          15.5
+        ],
+        [
+          12.320644863,
+          -37.217932209,
+          15.5
+        ],
+        [
+          12.146334835000001,
+          -37.313662289,
+          15.5
+        ],
+        [
+          11.971600157000001,
+          -37.408615046,
+          15.5
+        ],
+        [
+          11.79644895,
+          -37.502797255,
+          15.5
+        ],
+        [
+          11.62088923,
+          -37.596215768,
+          15.5
+        ],
+        [
+          11.444928908,
+          -37.688877512,
+          15.5
+        ],
+        [
+          11.268575788,
+          -37.780789486,
+          15.5
+        ],
+        [
+          11.091837573,
+          -37.871958764,
+          15.5
+        ],
+        [
+          10.914721861,
+          -37.962392487,
+          15.5
+        ],
+        [
+          10.737236147,
+          -38.052097866,
+          15.5
+        ],
+        [
+          10.559387825,
+          -38.141082181,
+          15.5
+        ],
+        [
+          10.381184187999999,
+          -38.229352775,
+          15.5
+        ],
+        [
+          10.202632429000001,
+          -38.316917055,
+          15.5
+        ],
+        [
+          10.023739641999999,
+          -38.403782494,
+          15.5
+        ],
+        [
+          9.844512821,
+          -38.489956623,
+          15.5
+        ],
+        [
+          9.664958863999999,
+          -38.575447033,
+          15.5
+        ],
+        [
+          9.485084571,
+          -38.660261376,
+          15.5
+        ],
+        [
+          9.304896648,
+          -38.744407358000004,
+          15.5
+        ],
+        [
+          9.124401706,
+          -38.827892743,
+          15.5
+        ],
+        [
+          8.94360626,
+          -38.910725349,
+          15.5
+        ],
+        [
+          8.762516734,
+          -38.992913046,
+          15.5
+        ],
+        [
+          8.581139461,
+          -39.074463757000004,
+          15.5
+        ],
+        [
+          8.39948068,
+          -39.155385455,
+          15.5
+        ],
+        [
+          8.217546542000001,
+          -39.235686161000004,
+          15.5
+        ],
+        [
+          8.035343111,
+          -39.315373947,
+          15.5
+        ],
+        [
+          8.0,
+          -39.330692018,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f505220-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        2
+      ],
+      "tile_id": "7f505220",
+      "points": [
+        [
+          25.625212978,
+          -24.0,
+          15.5
+        ],
+        [
+          25.568734357,
+          -24.10828954,
+          15.5
+        ],
+        [
+          25.475391748,
+          -24.284417588,
+          15.5
+        ],
+        [
+          25.380889587,
+          -24.459926202,
+          15.5
+        ],
+        [
+          25.285231985,
+          -24.634807749,
+          15.5
+        ],
+        [
+          25.188423102999998,
+          -24.809054621,
+          15.5
+        ],
+        [
+          25.090467152000002,
+          -24.982659239,
+          15.5
+        ],
+        [
+          24.991368393000002,
+          -25.155614054,
+          15.5
+        ],
+        [
+          24.891131135000002,
+          -25.327911541,
+          15.5
+        ],
+        [
+          24.789759738,
+          -25.499544207,
+          15.5
+        ],
+        [
+          24.687258613,
+          -25.670504586,
+          15.5
+        ],
+        [
+          24.583632215999998,
+          -25.840785242,
+          15.5
+        ],
+        [
+          24.478885056,
+          -26.01037877,
+          15.5
+        ],
+        [
+          24.373021688999998,
+          -26.179277791,
+          15.5
+        ],
+        [
+          24.266046719000002,
+          -26.34747496,
+          15.5
+        ],
+        [
+          24.157964799,
+          -26.514962962,
+          15.5
+        ],
+        [
+          24.04878063,
+          -26.68173451,
+          15.5
+        ],
+        [
+          24.0,
+          -26.75518206,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f505220-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        2
+      ],
+      "tile_id": "7f505220",
+      "points": [
+        [
+          40.0,
+          -26.75518206,
+          15.5
+        ],
+        [
+          39.95121937,
+          -26.68173451,
+          15.5
+        ],
+        [
+          39.842035201,
+          -26.514962962,
+          15.5
+        ],
+        [
+          39.733953281,
+          -26.34747496,
+          15.5
+        ],
+        [
+          39.626978311,
+          -26.179277791,
+          15.5
+        ],
+        [
+          39.521114944,
+          -26.01037877,
+          15.5
+        ],
+        [
+          39.416367784,
+          -25.840785242,
+          15.5
+        ],
+        [
+          39.312741387,
+          -25.670504586,
+          15.5
+        ],
+        [
+          39.210240262,
+          -25.499544207,
+          15.5
+        ],
+        [
+          39.108868865,
+          -25.327911541,
+          15.5
+        ],
+        [
+          39.008631607,
+          -25.155614054,
+          15.5
+        ],
+        [
+          38.909532848,
+          -24.982659239,
+          15.5
+        ],
+        [
+          38.811576897,
+          -24.809054621,
+          15.5
+        ],
+        [
+          38.714768015,
+          -24.634807749,
+          15.5
+        ],
+        [
+          38.619110413,
+          -24.459926202,
+          15.5
+        ],
+        [
+          38.524608252,
+          -24.284417588,
+          15.5
+        ],
+        [
+          38.431265643,
+          -24.10828954,
+          15.5
+        ],
+        [
+          38.374787022,
+          -24.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f505320-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        2
+      ],
+      "tile_id": "7f505320",
+      "points": [
+        [
+          56.0,
+          -39.330692018,
+          15.5
+        ],
+        [
+          55.964656889,
+          -39.315373947,
+          15.5
+        ],
+        [
+          55.782453458,
+          -39.235686161000004,
+          15.5
+        ],
+        [
+          55.600519320000004,
+          -39.155385455,
+          15.5
+        ],
+        [
+          55.418860539,
+          -39.074463757000004,
+          15.5
+        ],
+        [
+          55.237483266,
+          -38.992913046,
+          15.5
+        ],
+        [
+          55.05639374,
+          -38.910725349,
+          15.5
+        ],
+        [
+          54.875598294,
+          -38.827892743,
+          15.5
+        ],
+        [
+          54.695103352000004,
+          -38.744407358000004,
+          15.5
+        ],
+        [
+          54.514915429,
+          -38.660261376,
+          15.5
+        ],
+        [
+          54.335041136,
+          -38.575447033,
+          15.5
+        ],
+        [
+          54.155487179,
+          -38.489956623,
+          15.5
+        ],
+        [
+          53.976260358,
+          -38.403782494,
+          15.5
+        ],
+        [
+          53.797367571,
+          -38.316917055,
+          15.5
+        ],
+        [
+          53.618815812,
+          -38.229352775,
+          15.5
+        ],
+        [
+          53.440612175,
+          -38.141082181,
+          15.5
+        ],
+        [
+          53.262763853,
+          -38.052097866,
+          15.5
+        ],
+        [
+          53.085278138999996,
+          -37.962392487,
+          15.5
+        ],
+        [
+          52.908162427,
+          -37.871958764,
+          15.5
+        ],
+        [
+          52.731424212,
+          -37.780789486,
+          15.5
+        ],
+        [
+          52.555071092,
+          -37.688877512,
+          15.5
+        ],
+        [
+          52.37911077,
+          -37.596215768,
+          15.5
+        ],
+        [
+          52.20355105,
+          -37.502797255,
+          15.5
+        ],
+        [
+          52.028399843,
+          -37.408615046,
+          15.5
+        ],
+        [
+          51.853665165,
+          -37.313662289,
+          15.5
+        ],
+        [
+          51.679355137,
+          -37.217932209,
+          15.5
+        ],
+        [
+          51.50547799,
+          -37.121418109000004,
+          15.5
+        ],
+        [
+          51.33204206,
+          -37.024113372,
+          15.5
+        ],
+        [
+          51.15905579,
+          -36.926011464,
+          15.5
+        ],
+        [
+          50.986527734,
+          -36.827105934,
+          15.5
+        ],
+        [
+          50.814466556,
+          -36.727390416,
+          15.5
+        ],
+        [
+          50.642881026,
+          -36.62685863,
+          15.5
+        ],
+        [
+          50.471780028,
+          -36.525504388,
+          15.5
+        ],
+        [
+          50.301172555,
+          -36.423321591,
+          15.5
+        ],
+        [
+          50.131067713,
+          -36.320304232,
+          15.5
+        ],
+        [
+          49.961474716,
+          -36.216446399,
+          15.5
+        ],
+        [
+          49.792402895,
+          -36.111742278,
+          15.5
+        ],
+        [
+          49.62386169,
+          -36.006186151,
+          15.5
+        ],
+        [
+          49.455860654,
+          -35.899772401999996,
+          15.5
+        ],
+        [
+          49.288409455,
+          -35.792495518,
+          15.5
+        ],
+        [
+          49.121517874,
+          -35.684350089,
+          15.5
+        ],
+        [
+          48.955195804,
+          -35.575330812,
+          15.5
+        ],
+        [
+          48.789453253,
+          -35.465432491,
+          15.5
+        ],
+        [
+          48.624300344,
+          -35.354650044,
+          15.5
+        ],
+        [
+          48.459747314,
+          -35.242978499,
+          15.5
+        ],
+        [
+          48.295804513,
+          -35.130412999,
+          15.5
+        ],
+        [
+          48.132482407,
+          -35.016948805,
+          15.5
+        ],
+        [
+          47.969791575,
+          -34.902581296,
+          15.5
+        ],
+        [
+          47.807742712,
+          -34.787305974,
+          15.5
+        ],
+        [
+          47.646346627,
+          -34.671118463,
+          15.5
+        ],
+        [
+          47.485614244,
+          -34.554014514,
+          15.5
+        ],
+        [
+          47.325556601,
+          -34.435990005,
+          15.5
+        ],
+        [
+          47.166184851,
+          -34.317040944,
+          15.5
+        ],
+        [
+          47.007510258,
+          -34.197163474999996,
+          15.5
+        ],
+        [
+          46.849544205,
+          -34.076353874,
+          15.5
+        ],
+        [
+          46.692298185,
+          -33.954608553,
+          15.5
+        ],
+        [
+          46.535783806,
+          -33.831924069,
+          15.5
+        ],
+        [
+          46.380012787,
+          -33.708297115,
+          15.5
+        ],
+        [
+          46.224996963,
+          -33.583724534,
+          15.5
+        ],
+        [
+          46.070748277999996,
+          -33.458203312,
+          15.5
+        ],
+        [
+          45.91727879,
+          -33.331730588,
+          15.5
+        ],
+        [
+          45.764600666999996,
+          -33.204303649,
+          15.5
+        ],
+        [
+          45.612726190000004,
+          -33.075919939,
+          15.5
+        ],
+        [
+          45.461667747,
+          -32.946577059,
+          15.5
+        ],
+        [
+          45.311437837,
+          -32.816272769,
+          15.5
+        ],
+        [
+          45.162049068,
+          -32.685004991,
+          15.5
+        ],
+        [
+          45.013514157,
+          -32.552771811,
+          15.5
+        ],
+        [
+          44.865845926,
+          -32.419571483,
+          15.5
+        ],
+        [
+          44.718713293,
+          -32.285087579,
+          15.5
+        ],
+        [
+          44.572470794,
+          -32.149636246,
+          15.5
+        ],
+        [
+          44.42712479,
+          -32.013223376,
+          15.5
+        ],
+        [
+          44.282681603,
+          -31.875854902,
+          15.5
+        ],
+        [
+          44.139147516,
+          -31.737536799,
+          15.5
+        ],
+        [
+          43.996528771,
+          -31.598275082,
+          15.5
+        ],
+        [
+          43.854831572,
+          -31.458075811,
+          15.5
+        ],
+        [
+          43.714062082,
+          -31.316945081,
+          15.5
+        ],
+        [
+          43.574226424,
+          -31.174889033,
+          15.5
+        ],
+        [
+          43.435330680999996,
+          -31.031913845,
+          15.5
+        ],
+        [
+          43.297380892999996,
+          -30.888025736,
+          15.5
+        ],
+        [
+          43.160383061,
+          -30.743230963,
+          15.5
+        ],
+        [
+          43.024343144,
+          -30.597535827,
+          15.5
+        ],
+        [
+          42.889267058,
+          -30.450946662,
+          15.5
+        ],
+        [
+          42.75516068,
+          -30.303469846,
+          15.5
+        ],
+        [
+          42.622029842,
+          -30.155111792,
+          15.5
+        ],
+        [
+          42.489880335,
+          -30.005878955,
+          15.5
+        ],
+        [
+          42.358717907,
+          -29.855777825,
+          15.5
+        ],
+        [
+          42.228548262000004,
+          -29.70481493,
+          15.5
+        ],
+        [
+          42.099377063,
+          -29.552996837,
+          15.5
+        ],
+        [
+          41.971209928,
+          -29.40033015,
+          15.5
+        ],
+        [
+          41.844052431,
+          -29.246821508,
+          15.5
+        ],
+        [
+          41.717910104,
+          -29.092477589,
+          15.5
+        ],
+        [
+          41.592788433,
+          -28.937305106,
+          15.5
+        ],
+        [
+          41.468692861,
+          -28.781310808,
+          15.5
+        ],
+        [
+          41.345628785,
+          -28.624501481,
+          15.5
+        ],
+        [
+          41.223601558,
+          -28.466883944,
+          15.5
+        ],
+        [
+          41.102616487,
+          -28.308465055,
+          15.5
+        ],
+        [
+          40.982678835,
+          -28.149251702,
+          15.5
+        ],
+        [
+          40.863793818,
+          -27.989250812,
+          15.5
+        ],
+        [
+          40.745966608,
+          -27.828469343000002,
+          15.5
+        ],
+        [
+          40.62920233,
+          -27.66691429,
+          15.5
+        ],
+        [
+          40.513506062,
+          -27.504592678,
+          15.5
+        ],
+        [
+          40.398882837,
+          -27.341511568999998,
+          15.5
+        ],
+        [
+          40.28533764,
+          -27.177678055,
+          15.5
+        ],
+        [
+          40.17287541,
+          -27.013099263,
+          15.5
+        ],
+        [
+          40.061501038,
+          -26.847782351,
+          15.5
+        ],
+        [
+          40.0,
+          -26.75518206,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f505420-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        4,
+        2
+      ],
+      "tile_id": "7f505420",
+      "points": [
+        [
+          57.601481448,
+          -40.0,
+          15.5
+        ],
+        [
+          57.311583867,
+          -39.882937657,
+          15.5
+        ],
+        [
+          56.911754533999996,
+          -39.718307953,
+          15.5
+        ],
+        [
+          56.512823643,
+          -39.550841183,
+          15.5
+        ],
+        [
+          56.329847827,
+          -39.472943273,
+          15.5
+        ],
+        [
+          56.147123642,
+          -39.39445693,
+          15.5
+        ],
+        [
+          56.0,
+          -39.330692018,
+          15.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 0
+    }
+  ],
+  "endpoint_route_refs": {
+    "north-paired-end-nin": [
+      "path-7f505200-route-000"
+    ],
+    "north-paired-end-nout": [
+      "path-7f505200-route-001"
+    ],
+    "west-curved-cut-wout": [
+      "path-7f505020-route-000"
+    ],
+    "east-curved-cut-ein": [
+      "path-7f505420-route-000"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-core.dat",
+      "dat_sha256": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+      "model_sha256": "8e72f560c4aefe08ec2082dda57c6fd6641bc44b5d5df8939b4a64b5d078247c",
+      "resource_fingerprints_checked": 119,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "ba4bcc77cadc6b1f789a20e8800ea03d478058189005b76f1d9b2dadcf217ceb"
+}

@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-l2-shortened-departure-curve",
   "menu_name": "HSR L2 Shortened One-Way Departure Curve",
-  "display_title": "Piece - HSR L2 Shortened One-Way Departure Curve",
+  "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
   "view_role": "angled",
   "canonical_filename": "preview.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801"
   },
   "file": "previews/preview.png",
-  "sha256": "8237a55133a89a17ef7079248415aa561b66b2b2fdc18ad0fed63d124bf62eba",
+  "sha256": "a203b273180d23314e882e1d792a32cc26cfa98de04374a57796e75a18d61b3d",
   "size": [
     1600,
     1200
@@ -627,13 +627,13 @@
   },
   "header": {
     "captions": [
-      "Piece - HSR L2 Shortened One-Way Departure Curve",
+      "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
       "Clean view | Southeast view | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR L2 Shortened One-Way Departure Curve",
+        "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -644,7 +644,7 @@
         "bounds": [
           30,
           27,
-          904,
+          1124,
           59
         ]
       },
@@ -2664,11 +2664,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR L2 Shortened One-Way Departure Curve",
+    "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
     "Clean view | Southeast view | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -2699,7 +2699,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -2732,16 +2732,23 @@
     "view_role": "angled",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": null,
     "duplicate_grid_footer_visible": false
   },
   "thumbnail": {
     "file": "previews/preview-thumb.png",
-    "sha256": "f73b4c4ed7fe4dce81d05034c2bdaa5fdb7d902b5c364b5868a25297546aed68",
+    "sha256": "b3b50de69c01d093245411db3d92cfa0522d7b60f8f013f95fa955e95bb082da",
     "size": [
       360,
       270
     ]
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "10e9f3014bf2dec432e6a1951700668184a1e0aca6fde61e4e8edc050f866fda"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "06b9f7a9564b4a86cd3ebb9ab7e956f931fea591beeb5e07e765027432086fdc"
 }

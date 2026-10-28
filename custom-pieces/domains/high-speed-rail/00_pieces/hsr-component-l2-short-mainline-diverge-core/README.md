@@ -12,6 +12,8 @@ This reusable High Speed Rail (HSR) piece carries two opposite directions along 
 
 Both clean pictures show the same complete saved model at its authored 0° orientation. North is up in the top view; X increases eastward, Y increases northward, and each city tile measures 16 × 16 m. The local picture grid belongs to this reusable type. Its software reference is not a certified mouse-click anchor.
 
+The top view draws bright green tile boundaries over the tracks and deck, so each tile remains identifiable where the model would otherwise hide the grid.
+
 <!-- BEGIN PIECE VIEWS -->
 
 ![HSR L2 Short Mainline Diverge Core — Clean angled view](previews/preview.png)
@@ -37,6 +39,8 @@ Footprint: **4 × 1 tiles**. Exact menu name: **HSR L2 Short Mainline Diverge Co
 ### Function and complete joining boundaries
 
 A mainline is the pair of tracks continuing through the piece. At the authored 0° orientation, it runs east/west. Traffic entering from the west can continue east or leave through the southern curved cut; traffic entering from the east continues west. The saved resources provide no east-to-branch movement or mainline U-turn. The generated matrix identifies the exact entrances, exits, and unavailable movements.
+
+The raised grey south border, called a parapet, stays straight into X1, then follows the brown ballast outline into the existing curved grey border at the bottom of X2. Ballast is the stone bed around the rails. This left border is continuous, with no perpendicular end face interrupting the curve. Its straight section keeps the native thickness of approximately 1.50345 m; the curved continuation matches the existing branch border's 1.4 m profile measured across the curve. The straight right border in X3 now continues along the branch’s inside ballast outline into the existing curved grey border. Its top and inside wall meet that curve continuously; the former flat end face has been removed. The rails, traffic routes, four supports, and existing curved border retain their previous geometry. The [before/after comparison](evidence/parapet-alignment.json) records that preservation, and the [software checks](TESTING.md#3-software-checks) explain the exact dimensions and clearance limits.
 
 Both mainline ends require the complete paired Level 2 boundary, including its two directed tracks and native 15 m visual profile. The branch ends obliquely, meaning its track crosses the tile edge at an angle. It requires the exact matching curved continuation, rather than an arbitrary straight at the same height. Its card preserves the measured endpoint and outward heading without inventing a centred paired section.
 
@@ -179,6 +183,6 @@ This service group is required at this edge.
 | `east-paired-end-ein` / `Ein` | `westbound-mainline` / `east-paired-end-westbound-mainline-cut` / monorail | Incoming | `[56,2,15.5]` | +2 | 90° | 0 |
 | `east-paired-end-eout` / `Eout` | `eastbound-mainline` / `east-paired-end-eastbound-mainline-cut` / monorail | Outgoing | `[56,-2,15.5]` | -2 | 90° | 0 |
 
-Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
 
 <!-- END CONNECTOR OVERVIEW -->

@@ -1,16 +1,16 @@
 {
   "purpose": "Reconstruct the straight-stem HSR trumpet from reusable registered pieces at the recorded positions and rotations.",
   "title": "Straight-stem HSR trumpet",
-  "geometry_status": "Passed saved-resource software checks for 105 occupied cells, all six complete journeys, 74 supports, and four proper rotations. Game observations remain unverified.",
+  "geometry_status": "Current software checks are recorded in evidence/validation.json; game observations remain unverified.",
   "coordinate_units": "metres east,north,height; rotations counterclockwise",
   "construction_rectangle_tiles": [
     20,
     23
   ],
   "occupied_tiles": 105,
-  "module_placements": 26,
-  "component_types_used": 13,
-  "separately_available_component_types": 32,
+  "module_placements": 28,
+  "component_types_used": 14,
+  "separately_available_component_types": 34,
   "external_ports": {
     "W": {
       "in": [
@@ -161,25 +161,69 @@
       ]
     },
     {
-      "name": "HSR L2 Compact Paired Fan Join at P06",
-      "instance_id": "P06",
-      "label": "P06",
-      "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "recipe": "hsr_component_l2_paired_fan_compact_join",
+      "name": "HSR Level 2 Paired Straight with Recessed Web at P06A",
+      "instance_id": "P06A",
+      "label": "P06A",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "recipe": "hsr_component_l2_paired_straight_recessed_web",
       "origin_m": [
-        64.0,
+        112.0,
         80.0
       ],
       "rotation_degrees_ccw": 0,
       "rotation_degrees": 0,
-      "menu_name": "HSR L2 Compact Paired Fan Join",
+      "menu_name": "HSR Level 2 Paired Straight with Recessed Web",
       "display_origin_m": [
-        176.0,
+        224.0,
         288.0
       ],
       "display_origin_tiles_en": [
-        11.0,
+        14.0,
         18.0
+      ]
+    },
+    {
+      "name": "HSR Level 2 Paired Straight with Recessed Web at P06B",
+      "instance_id": "P06B",
+      "label": "P06B",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "recipe": "hsr_component_l2_paired_straight_recessed_web",
+      "origin_m": [
+        112.0,
+        64.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR Level 2 Paired Straight with Recessed Web",
+      "display_origin_m": [
+        224.0,
+        272.0
+      ],
+      "display_origin_tiles_en": [
+        14.0,
+        17.0
+      ]
+    },
+    {
+      "name": "HSR Level 2 Compact Paired Fan Core at P06",
+      "instance_id": "P06",
+      "label": "P06",
+      "piece_id": "hsr-component-l2-paired-fan-compact-core",
+      "recipe": "hsr_component_l2_paired_fan_compact_core",
+      "origin_m": [
+        80.0,
+        48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR Level 2 Compact Paired Fan Core",
+      "display_origin_m": [
+        192.0,
+        256.0
+      ],
+      "display_origin_tiles_en": [
+        12.0,
+        16.0
       ]
     },
     {
@@ -679,10 +723,16 @@
       "placements": 1
     },
     {
-      "recipe": "hsr_component_l2_paired_fan_compact_join",
-      "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "menu_name": "HSR L2 Compact Paired Fan Join",
+      "recipe": "hsr_component_l2_paired_fan_compact_core",
+      "piece_id": "hsr-component-l2-paired-fan-compact-core",
+      "menu_name": "HSR Level 2 Compact Paired Fan Core",
       "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_paired_straight_recessed_web",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "menu_name": "HSR Level 2 Paired Straight with Recessed Web",
+      "placements": 2
     },
     {
       "recipe": "hsr_component_l2_short_opposed_merge_core",
@@ -729,9 +779,9 @@
   ],
   "source_builds": {
     "selection": "hsr-straight-stem-trumpet",
-    "used_component_types": 13,
-    "new_component_types": 0,
-    "reused_component_types": 13,
+    "used_component_types": 14,
+    "new_component_types": 2,
+    "reused_component_types": 12,
     "controller_policy": "One coordinated staged build; do not stack controllers from separate builds"
   },
   "compiled_assembly_validation": "evidence/validation.json",
@@ -798,7 +848,7 @@
     "layout_contract": "checks/layout.json",
     "quality_contract": "checks/contract.json",
     "decision_record": "checks/atomization.json",
-    "policy": "Preserve the outside ports, fixed city grid, construction rectangle, 59 support positions outside the redesigned modules, and all 85 world-cell resources unaffected by the earlier junction redesign. Current contracts additionally preserve all six journeys, all 74 supports, and the 103 world cells outside the two-cell western merge extraction region. Historical atomization measurements remain in checks/atomization.json; each later bounded change has separate evidence.",
+    "policy": "Preserve the outside ports, fixed city grid, construction rectangle, all six directed train routes, and all 74 support positions. Historical junction-angle and western merge-tail audits retain their original source and resource scopes. Current border-repair and three-piece fan acceptance is recorded separately in checks/border-piece-integration.json and evidence/fan-atomization-review.json; the seven earlier standalone history rows remain unchanged.",
     "resource_contract": "checks/resources.json"
   },
   "standalone_piece_preview_policy": "One canonical 0-degree angled image per type; new types also have a top view, all on their own southwest-zero local X/Y grid. P labels belong only to the assembly plan and guide.",
@@ -810,6 +860,13 @@
       "policy": "Replace the current merge western tile with the existing native paired straight at P26; retain P01 through P25 and move P07 origin one tile east. Preserve all world track paths, 105 occupied cells, 74 support positions, and the construction rectangle. Normalize only the declared native parapet seam by at most 3.4524 mm.",
       "placement": "P26 at (X9,Y13), 270 degrees; P07 at (X10,Y13), 0 degrees, four tiles.",
       "evidence": "evidence/merge-west-tail-extraction.json",
+      "in_game_status": "unverified"
+    },
+    "border_and_fan_core_integration": {
+      "policy": "Integrate the approved standalone border repairs and replace only P06 with a nine-cell core plus two copies of the reusable recessed-web paired straight. Preserve every other placement, all world track geometry, 105 occupied cells, and all 74 supports; retain P06 for the core, and append P06A and P06B for the two straight copies. The recessed web preserves the original fan profile, including its inherited transition to the northern curve.",
+      "placements": "P06 core at (X12,Y16), P06A straight at (X14,Y18), and P06B straight at (X14,Y17), all at 0 degrees.",
+      "contract": "checks/border-piece-integration.json",
+      "atomization_record": "evidence/fan-atomization-review.json",
       "in_game_status": "unverified"
     }
   }

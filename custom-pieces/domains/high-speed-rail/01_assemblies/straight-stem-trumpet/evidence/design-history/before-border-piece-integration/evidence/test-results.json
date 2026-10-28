@@ -1,0 +1,55 @@
+{
+  "purpose": "Record the current framework, affected rail source/menu and actual V4 suites executed after deleting predecessors. Software passes establish no human game result.",
+  "schema_version": 2,
+  "status": "passed",
+  "suites": [
+    {
+      "name": "Shared framework",
+      "run": 349,
+      "passed": 349,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "log": "test-logs/framework.txt"
+    },
+    {
+      "name": "Affected rail source and menu regressions",
+      "run": 91,
+      "passed": 91,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "log": "test-logs/rail-domain.txt"
+    },
+    {
+      "name": "V4 actual saved resources",
+      "run": 35,
+      "passed": 35,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "log": "test-logs/v4-actual.txt"
+    }
+  ],
+  "totals": {
+    "run": 475,
+    "passed": 475,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "actual_v4": {
+    "status": "passed",
+    "scene_sha256": "b483dd04624167bfef5f4f7121ad8bab8675d2fdbfd4cd642f918ff49014dd4d",
+    "validation_sha256": "83d781282385548d1e74ac31e71c25bb3bb7a8c11a0e8ace11b434fd677065a0",
+    "occupied_cells": 109,
+    "placements": 26,
+    "unique_types": 14,
+    "triangles": 659271,
+    "encoded_fragments": 167,
+    "support_centres": 75,
+    "strict_byte_identity_cells": 109,
+    "proper_rotations": 4
+  },
+  "in_game_tests": "unverified"
+}

@@ -1,0 +1,1281 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "hsr-component-l2-short-mainline-diverge-core",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f826",
+        "0004f826"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f826",
+        "0007f826"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f826",
+        "0006f826"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f826",
+        "0005f826"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-l2-short-mainline-diverge-core": "b50b21acb3df2f620281cfa2ba8208f5e2b5b07421ef6a338464ebb9818b0af2",
+    "effect:hsr-component-l2-short-mainline-diverge-core:ea5118b0-ea5118b1-7f584ff5": "abbcf16f648f0cd0f32814b3c6313cc7c1efe8716280d8733192a0887161d6c4",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584000": "52b481ec4e5eef3d8940ce64495a302d097e775ba5d585ec4e4c69ac83434016",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584100": "c9cf2654259e0b523cd56d539f9ad18b6c75df6b73827c27550e156d28015127",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584200": "e216dadccdd2f46e6a79ac8c0a31a581323353e928414b86d8fac6ae239aa66b",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584300": "b4f7008047961f4ba5c5543465955c99b284a78eb9c5f4ec718ec3040cf5fa5c",
+    "graph:hsr-component-l2-short-mainline-diverge-core": "06b885ad7973ee4fa3413bb2a854b2ba7bba0b43cd7d775bf8a651f6c469beaf",
+    "image:hsr-component-l2-short-mainline-diverge-core:canonical-southeast": "77fba2bfa9bb8c49c495db3d9ad38b035cc0e8864113ea2aaf5a9b0110ea8312",
+    "image:hsr-component-l2-short-mainline-diverge-core:canonical-top": "85ff15429fcc5213eb1a58f1b02b130d5859548f7c4ca3c20a3e972b57878b96",
+    "image:hsr-component-l2-short-mainline-diverge-core:connection-overview": "91777c357c0a4ccec413fe0c7c34586398dd7bb72aa97fa90d8b5c60b6987141",
+    "interface:hsr-component-l2-short-mainline-diverge-core:Ein": "1dc1e3f212fb56983c5b594a1ab2e4a1e1e6dfea04319c78fa4117c70c277e73",
+    "interface:hsr-component-l2-short-mainline-diverge-core:Eout": "50c71d323b31fb0c901411950dc56a335c0c9393bfb2a0b09dc29f72c2084013",
+    "interface:hsr-component-l2-short-mainline-diverge-core:Sout": "9031a451edead005826964fbf21c8ab0b6bffadc119faa15e004d43e8089da9f",
+    "interface:hsr-component-l2-short-mainline-diverge-core:Win": "62495701f4ca4b2e92fae54dbc4804e54f4fa8d99205f4c4a3d766e252134866",
+    "interface:hsr-component-l2-short-mainline-diverge-core:Wout": "a0cb827c7c166f276a2f187064ee23ad99cb4cde6a9af1757ee01ecbf69927b6",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000": "75926011370ec7ddce8846b45248596daf2c804c54df3a5664e69dc0d27f9d81",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584100": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584100": "3bb1721dd705bc68463982dd19404faa936a87a7e38b1c61ca7879aac797e6ca",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584101": "41efe6ce481c8cb07fbce3ba12f65e66bf7688972dbe8714b6010cb38edf770c",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584102": "c9d6abd23ea89ac15453a857452941f56529b5c5095a71fd7b76437defe0da6b",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584103": "08121f8d5b7147e87b9a10166d659fbb0984e0229315231f5828f3b50a037d85",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584104": "edd38205df01c21ffd6199ef88b1836095c2d4c811aa2de23173356c17053e88",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584200": "fd1697df4d0901a6f1c9a26e9e7e840787e2da897f5061535b6eb806dbab4b3d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584201": "e1a1eff48d95b3ee463e49d17c744628a5b22443eafcd507102744ff020c59d0",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584202": "891475d14afb682f5448d1978100aba3e8b7c26e3e6f84027ce7d9f66d236948",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584203": "bfe22d5b624a835feb90ebeda5008748f90bc899cd29d00630107c680d7438ca",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584204": "e78608a96d7727520ff0c2c6e49e67c42417c0469c6ecb38d23296573da4b119",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584300": "43cfc9d6b1b6a56926d75c1851b8d85266a053fd557eec6a1e89b92fc5665d94",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584301": "c406ff75843b52bfebb9e21d09ffe123e969f1a0e60017b98e65a62a5ad1309c",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584302": "1c9eb0c6527cefe1402b3036dcc0133153d5ed20b56e2afab29832833d2d204d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584303": "4746a8aaf0abfdb45686bbac69cb680084913dc65c912f6ae2bf987c23da6403",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584304": "b5784429d61cce454135042454865c540f2aa6e01e597a06e8f8ac12c99edb18",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584000": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584100": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584200": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584300": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e"
+  },
+  "cases": [
+    {
+      "id": "software_resources-1be6a14c7095a92ca6a3",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "verify_hsr_trumpet_v4.py plus independent staged build resource checks",
+          "confirmed_at": "2026-10-20T10:42:34.857695+00:00",
+          "evidence": [
+            "../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "9f8ac253293351a3f914849122f8d01c075a75b2c3225b6d342f986e4d925377"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "9f8ac253293351a3f914849122f8d01c075a75b2c3225b6d342f986e4d925377"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Fresh one-piece normal saved-build verification, independent south-parapet audit, and selected actual-resource extraction",
+          "confirmed_at": "2026-10-28T13:09:27.334362+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "2265cc56e9d6b34be9ae197ddc6dc9ea0f037e5d876a4d9645a0cd936817e339"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Fresh one-piece saved-build verification, continuous-left-border surface/wall audit, and selected actual-resource extraction",
+          "confirmed_at": "2026-10-28T14:39:59.377541+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "3748488d10dfb155ae4c485bc3cc098452934265ea10c3b10d70979f1a48b944"
+        }
+      ],
+      "dependency_snapshot": "3748488d10dfb155ae4c485bc3cc098452934265ea10c3b10d70979f1a48b944",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "software_connectivity-1be6a14c7095a92ca6a3",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "verify_hsr_trumpet_v4.py plus independent staged build resource checks",
+          "confirmed_at": "2026-10-20T10:42:34.865101+00:00",
+          "evidence": [
+            "../../01_assemblies/straight-stem-trumpet-v4/evidence/validation.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "94c2d1564c008b70aa6c1bf8e796a68d125265702744f43ca9e91db8debe0c0c"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "94c2d1564c008b70aa6c1bf8e796a68d125265702744f43ca9e91db8debe0c0c"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Fresh one-piece normal saved-build verification, independent south-parapet audit, and selected actual-resource extraction",
+          "confirmed_at": "2026-10-28T13:09:27.334362+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "65f73899c7f27a4d6c477cf78677609b631b8820e315685c175c11e8eb8b8a74"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Fresh one-piece saved-build verification, continuous-left-border surface/wall audit, and selected actual-resource extraction",
+          "confirmed_at": "2026-10-28T14:39:59.377541+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "65f73899c7f27a4d6c477cf78677609b631b8820e315685c175c11e8eb8b8a74"
+        }
+      ],
+      "dependency_snapshot": "65f73899c7f27a4d6c477cf78677609b631b8820e315685c175c11e8eb8b8a74",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_render-5b28106d377daf5b6fa0",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e7245d3d196f062dd4b7798c7be2c8ecad8bb9d4615acf2c1245c9ec87455ad6",
+      "dependency_ref": "d82a0e0ad349cd073f85624c6c86bfec8b779f096cb7bd139cec4b5142956d90"
+    },
+    {
+      "id": "in_game_placement-5b28106d377daf5b6fa0",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "60dba8513b24cedb550986f00f6f8c404822b3da293bc8e27056bd338a18c910",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_demolition-5b28106d377daf5b6fa0",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "60dba8513b24cedb550986f00f6f8c404822b3da293bc8e27056bd338a18c910",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_save_reload-5b28106d377daf5b6fa0",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "60dba8513b24cedb550986f00f6f8c404822b3da293bc8e27056bd338a18c910",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_render-7befb4ecda34633d72ed",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ca6af2271d5533bbac283b093dcddace4518b774c28b43fddeb7e5fa8c24950d",
+      "dependency_ref": "d82a0e0ad349cd073f85624c6c86bfec8b779f096cb7bd139cec4b5142956d90"
+    },
+    {
+      "id": "in_game_placement-7befb4ecda34633d72ed",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9cbd1b918412af2222e083a123baf00037eddd3ad52f21e70097313d2337d05",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_demolition-7befb4ecda34633d72ed",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9cbd1b918412af2222e083a123baf00037eddd3ad52f21e70097313d2337d05",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_save_reload-7befb4ecda34633d72ed",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9cbd1b918412af2222e083a123baf00037eddd3ad52f21e70097313d2337d05",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_render-150e1f8cad64f39a2e4b",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "afe6ba833807388002cbeb92f9d31b7d030b2d48bea021e034f39adadbf5192e",
+      "dependency_ref": "d82a0e0ad349cd073f85624c6c86bfec8b779f096cb7bd139cec4b5142956d90"
+    },
+    {
+      "id": "in_game_placement-150e1f8cad64f39a2e4b",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a64e3784546e5e0f3a2df49699e1873503019bccb00370a040bf911d83d5938",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_demolition-150e1f8cad64f39a2e4b",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a64e3784546e5e0f3a2df49699e1873503019bccb00370a040bf911d83d5938",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_save_reload-150e1f8cad64f39a2e4b",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a64e3784546e5e0f3a2df49699e1873503019bccb00370a040bf911d83d5938",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_render-3571a612233cd36909b7",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e84d964c1ff3f572883d5250b5136f9fd09ba8094a53ab000337005ae55ec687",
+      "dependency_ref": "d82a0e0ad349cd073f85624c6c86bfec8b779f096cb7bd139cec4b5142956d90"
+    },
+    {
+      "id": "in_game_placement-3571a612233cd36909b7",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8d7f140f8576effa39f7225489f2fac54067522184c4b0968f299d5991db84b9",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_demolition-3571a612233cd36909b7",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8d7f140f8576effa39f7225489f2fac54067522184c4b0968f299d5991db84b9",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_save_reload-3571a612233cd36909b7",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8d7f140f8576effa39f7225489f2fac54067522184c4b0968f299d5991db84b9",
+      "dependency_ref": "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0"
+    },
+    {
+      "id": "in_game_route_query-6d0026d836d5154be176",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "474ee833db7eaeae4c1dc0167f5142221fdea2735fbe0c19596f9d5fb37b6b68",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-6d0026d836d5154be176",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "474ee833db7eaeae4c1dc0167f5142221fdea2735fbe0c19596f9d5fb37b6b68",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-f080eb7136ac872f4f8d",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a559390f2fb2b0d37b3ba2905dc5ddbf4ea51f0aa8df003267a6f2c08b539f0",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-f080eb7136ac872f4f8d",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a559390f2fb2b0d37b3ba2905dc5ddbf4ea51f0aa8df003267a6f2c08b539f0",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-f6edfc9aa1e2ff11c3d8",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f74d74d82cbb44f24a1b34742f8afea10bf7490ce93a346087be147c995a7d3d",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-f6edfc9aa1e2ff11c3d8",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f74d74d82cbb44f24a1b34742f8afea10bf7490ce93a346087be147c995a7d3d",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-1e8cc484450cd566a0aa",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "282aedb0aee63bed83b659ae0e22d99a70a0788cd6cb4381f18c4c87b6c8f5bc",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-1e8cc484450cd566a0aa",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "282aedb0aee63bed83b659ae0e22d99a70a0788cd6cb4381f18c4c87b6c8f5bc",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-73c9e40447db7eca5d77",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "af40994be30016f016c18be33b65d3915b14dd9dc7779cfb9c842150d9dc897d",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-73c9e40447db7eca5d77",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "af40994be30016f016c18be33b65d3915b14dd9dc7779cfb9c842150d9dc897d",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-d36bbc1685e39cff4604",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "86b9e3aa31d041e122bd7a7078758311bd7a3e1b5cc21f5811b9cae8040d9144",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-d36bbc1685e39cff4604",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "86b9e3aa31d041e122bd7a7078758311bd7a3e1b5cc21f5811b9cae8040d9144",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-820fc48049ad97989483",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "39d56d1efcf7ccc3c71d7179999659ffc61bd8f1da582be9e4f3a26355b7665e",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-820fc48049ad97989483",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "39d56d1efcf7ccc3c71d7179999659ffc61bd8f1da582be9e4f3a26355b7665e",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-23b20dbb37e7252472f9",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4a11ee429fb77cdf5150973eba53992a4fa1cbd95a0b208073cc7f9b50c1bbbc",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-23b20dbb37e7252472f9",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4a11ee429fb77cdf5150973eba53992a4fa1cbd95a0b208073cc7f9b50c1bbbc",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-184484f7197e20662425",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bdf55756edc46e1408a82d288676b656ca7ce8ce6f206a61cfb7906073edeab9",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-184484f7197e20662425",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bdf55756edc46e1408a82d288676b656ca7ce8ce6f206a61cfb7906073edeab9",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-1b7f0add07635c0c9883",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "852ea3215893c660372666936b72968c1d32ab878dca7ee2fef646107933b1ba",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-1b7f0add07635c0c9883",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "852ea3215893c660372666936b72968c1d32ab878dca7ee2fef646107933b1ba",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-cac25e7640a3a03b10d8",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cbab4a79eafb9a8ae0738aa9d89729c83b17d6bf2a5373d6e15bc64501fe9047",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-cac25e7640a3a03b10d8",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cbab4a79eafb9a8ae0738aa9d89729c83b17d6bf2a5373d6e15bc64501fe9047",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_route_query-8da684985233114279c5",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1d86ee642bf8ec36a335d9dbebdb3c42a197a252e8260df99d99f86d7c98d60f",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_visible_travel-8da684985233114279c5",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1d86ee642bf8ec36a335d9dbebdb3c42a197a252e8260df99d99f86d7c98d60f",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-305dc860de6ca3c81de5",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "cd528c350a17f079ee31ea0ab5b8d1bca2945b40041a9e4b9da35218d258ad80",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2cbaea5971ea5d4d66ac",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c544d3bd7f104931c6ffdb0e93dc0f6851dbef960b9352f5d723ca144738d3b3",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b3c46a596eba0a86626d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "659973e67cdb5c29c969c13143f8e3c58237e279740b5330787cad8ff50e8433",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-27d0b92decc6925bd802",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "55ff1a43a873a0a23a65a79bad42e6e2c1aa22ffddf4b606d951d30c0afa79ae",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-959b05f5b375b9250b7b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a8c2d4feb4e81a11838499cf3da2ccc06143b486facee08f767b6dbd8d6c1135",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a4c71b2e80b8da6a8859",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f60d6e7f6c12381bf5ddca60ad797eb51e37b90c91a53a51f42707675ca2ffea",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a07d73b10cb5071a1f58",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e2e21e31ac63adaa18bc65982fa60ef48abb27aedc528f48ea33e3808db322af",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e7c31ab107da46952bdb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fde307944fd37b53edd668703673a29e58522c14b434583f21a571981b7ec791",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cd77fab872666f8fde8f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5dedcbef5131f7bb49a46b1ee5c0757ab3f01709201afbe6e97a23705fcecc4e",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-88fc210200e0877a9132",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5b1ea37fd91ba3345f5d24d1811604096b4595a1d4aee01b6f0d1fc1dacfe294",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-df387881032facf6b964",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ec3c868fa5e3e26d466c40b8a0c34539cd84e24bc5db29e5e8647e93d4ce3d1d",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-11c688851431796030a6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c133d70f598fa0585357418578dd71bc9e227de3b794fd77d358bcc437852c72",
+      "dependency_ref": "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3"
+    },
+    {
+      "id": "preview_review-44db441b6df7ca3395fc",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "image_key": "image:hsr-component-l2-short-mainline-diverge-core:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6d3dbfee75b2b16903df35e4833593f14c6645aeafc64273404b10d93062a871",
+      "dependency_ref": "c3b181e32b407fdff9bc4bb15bedf0301128419396b24f1e83a267f59d49e206"
+    },
+    {
+      "id": "preview_review-c0f82e508ffbc60632bb",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "image_key": "image:hsr-component-l2-short-mainline-diverge-core:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "520772490de7935476630f9ae2741cb7037682c5377e448e2db52804a80b55d0",
+      "dependency_ref": "e27676773c2973bf952c5eca2f3c3b9bbe6ed08b1ad9444d3830ae049420a916"
+    },
+    {
+      "id": "preview_review-372750160002ee7c7ac4",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-l2-short-mainline-diverge-core",
+        "image_key": "image:hsr-component-l2-short-mainline-diverge-core:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "950d9fb8294222d7682aa5d0664d0d054f2d56ef12cb1131bcd1107729565e38",
+      "dependency_ref": "bff0c01b5df697c40dee103cbddba1f1ff4feb5e49496d136d01b3e4cd35d70a"
+    }
+  ],
+  "dependency_sets": {
+    "b419dbf9d582d82c591e909d284c5715e22882f2559e81e41e372716b56c34f0": {
+      "construction:hsr-component-l2-short-mainline-diverge-core": "b50b21acb3df2f620281cfa2ba8208f5e2b5b07421ef6a338464ebb9818b0af2",
+      "effect:hsr-component-l2-short-mainline-diverge-core:ea5118b0-ea5118b1-7f584ff5": "abbcf16f648f0cd0f32814b3c6313cc7c1efe8716280d8733192a0887161d6c4",
+      "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584000": "52b481ec4e5eef3d8940ce64495a302d097e775ba5d585ec4e4c69ac83434016",
+      "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584100": "c9cf2654259e0b523cd56d539f9ad18b6c75df6b73827c27550e156d28015127",
+      "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584200": "e216dadccdd2f46e6a79ac8c0a31a581323353e928414b86d8fac6ae239aa66b",
+      "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584300": "b4f7008047961f4ba5c5543465955c99b284a78eb9c5f4ec718ec3040cf5fa5c",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000": "75926011370ec7ddce8846b45248596daf2c804c54df3a5664e69dc0d27f9d81",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584100": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584100": "3bb1721dd705bc68463982dd19404faa936a87a7e38b1c61ca7879aac797e6ca",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584101": "41efe6ce481c8cb07fbce3ba12f65e66bf7688972dbe8714b6010cb38edf770c",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584102": "c9d6abd23ea89ac15453a857452941f56529b5c5095a71fd7b76437defe0da6b",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584103": "08121f8d5b7147e87b9a10166d659fbb0984e0229315231f5828f3b50a037d85",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584104": "edd38205df01c21ffd6199ef88b1836095c2d4c811aa2de23173356c17053e88",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584200": "fd1697df4d0901a6f1c9a26e9e7e840787e2da897f5061535b6eb806dbab4b3d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584201": "e1a1eff48d95b3ee463e49d17c744628a5b22443eafcd507102744ff020c59d0",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584202": "891475d14afb682f5448d1978100aba3e8b7c26e3e6f84027ce7d9f66d236948",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584203": "bfe22d5b624a835feb90ebeda5008748f90bc899cd29d00630107c680d7438ca",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584204": "e78608a96d7727520ff0c2c6e49e67c42417c0469c6ecb38d23296573da4b119",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584300": "43cfc9d6b1b6a56926d75c1851b8d85266a053fd557eec6a1e89b92fc5665d94",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584301": "c406ff75843b52bfebb9e21d09ffe123e969f1a0e60017b98e65a62a5ad1309c",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584302": "1c9eb0c6527cefe1402b3036dcc0133153d5ed20b56e2afab29832833d2d204d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584303": "4746a8aaf0abfdb45686bbac69cb680084913dc65c912f6ae2bf987c23da6403",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584304": "b5784429d61cce454135042454865c540f2aa6e01e597a06e8f8ac12c99edb18"
+    },
+    "68e9f04d475a2ebc3c2410daaf3db88c4760184d2203691a81b519edfd52fef3": {
+      "construction:hsr-component-l2-short-mainline-diverge-core": "b50b21acb3df2f620281cfa2ba8208f5e2b5b07421ef6a338464ebb9818b0af2",
+      "graph:hsr-component-l2-short-mainline-diverge-core": "06b885ad7973ee4fa3413bb2a854b2ba7bba0b43cd7d775bf8a651f6c469beaf",
+      "interface:hsr-component-l2-short-mainline-diverge-core:Ein": "1dc1e3f212fb56983c5b594a1ab2e4a1e1e6dfea04319c78fa4117c70c277e73",
+      "interface:hsr-component-l2-short-mainline-diverge-core:Eout": "50c71d323b31fb0c901411950dc56a335c0c9393bfb2a0b09dc29f72c2084013",
+      "interface:hsr-component-l2-short-mainline-diverge-core:Sout": "9031a451edead005826964fbf21c8ab0b6bffadc119faa15e004d43e8089da9f",
+      "interface:hsr-component-l2-short-mainline-diverge-core:Win": "62495701f4ca4b2e92fae54dbc4804e54f4fa8d99205f4c4a3d766e252134866",
+      "interface:hsr-component-l2-short-mainline-diverge-core:Wout": "a0cb827c7c166f276a2f187064ee23ad99cb4cde6a9af1757ee01ecbf69927b6",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000": "75926011370ec7ddce8846b45248596daf2c804c54df3a5664e69dc0d27f9d81",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584100": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
+      "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59"
+    },
+    "4276574d009c7d7feebbbd0aa3496c651f07b72c38148a13286e779f23982cf1": {
+      "image:hsr-component-l2-short-mainline-diverge-core:canonical-southeast": "4faf584b7d9feae79f246ab308cf18b539604fa6d03738cb79003c35b9f56ebb"
+    },
+    "a0ca460c56b7d82696e308104fd3e9e9a2ff22883cbfe1e5176d316acbd10a08": {
+      "image:hsr-component-l2-short-mainline-diverge-core:canonical-top": "a4a50cec7bd6f2292f43a42c7f2f5ebb22c213d91266ff606ef4de9c2355e2bc"
+    },
+    "6f1b9c6462a8fafee44d65ccfb034791d4b81c032aa9feb65bb8e16515b44868": {
+      "image:hsr-component-l2-short-mainline-diverge-core:connection-overview": "baba179dcbe1eb0e4b55d68046067017be1e5de8edbcadcbb8719657abde307d"
+    },
+    "d82a0e0ad349cd073f85624c6c86bfec8b779f096cb7bd139cec4b5142956d90": {
+      "effect:hsr-component-l2-short-mainline-diverge-core:ea5118b0-ea5118b1-7f584ff5": "abbcf16f648f0cd0f32814b3c6313cc7c1efe8716280d8733192a0887161d6c4",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+      "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584100": "3bb1721dd705bc68463982dd19404faa936a87a7e38b1c61ca7879aac797e6ca",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584101": "41efe6ce481c8cb07fbce3ba12f65e66bf7688972dbe8714b6010cb38edf770c",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584102": "c9d6abd23ea89ac15453a857452941f56529b5c5095a71fd7b76437defe0da6b",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584103": "08121f8d5b7147e87b9a10166d659fbb0984e0229315231f5828f3b50a037d85",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584104": "edd38205df01c21ffd6199ef88b1836095c2d4c811aa2de23173356c17053e88",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584200": "fd1697df4d0901a6f1c9a26e9e7e840787e2da897f5061535b6eb806dbab4b3d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584201": "e1a1eff48d95b3ee463e49d17c744628a5b22443eafcd507102744ff020c59d0",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584202": "891475d14afb682f5448d1978100aba3e8b7c26e3e6f84027ce7d9f66d236948",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584203": "bfe22d5b624a835feb90ebeda5008748f90bc899cd29d00630107c680d7438ca",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584204": "e78608a96d7727520ff0c2c6e49e67c42417c0469c6ecb38d23296573da4b119",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584300": "43cfc9d6b1b6a56926d75c1851b8d85266a053fd557eec6a1e89b92fc5665d94",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584301": "c406ff75843b52bfebb9e21d09ffe123e969f1a0e60017b98e65a62a5ad1309c",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584302": "1c9eb0c6527cefe1402b3036dcc0133153d5ed20b56e2afab29832833d2d204d",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584303": "4746a8aaf0abfdb45686bbac69cb680084913dc65c912f6ae2bf987c23da6403",
+      "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584304": "b5784429d61cce454135042454865c540f2aa6e01e597a06e8f8ac12c99edb18"
+    },
+    "c3b181e32b407fdff9bc4bb15bedf0301128419396b24f1e83a267f59d49e206": {
+      "image:hsr-component-l2-short-mainline-diverge-core:canonical-southeast": "77fba2bfa9bb8c49c495db3d9ad38b035cc0e8864113ea2aaf5a9b0110ea8312"
+    },
+    "e27676773c2973bf952c5eca2f3c3b9bbe6ed08b1ad9444d3830ae049420a916": {
+      "image:hsr-component-l2-short-mainline-diverge-core:canonical-top": "85ff15429fcc5213eb1a58f1b02b130d5859548f7c4ca3c20a3e972b57878b96"
+    },
+    "bff0c01b5df697c40dee103cbddba1f1ff4feb5e49496d136d01b3e4cd35d70a": {
+      "image:hsr-component-l2-short-mainline-diverge-core:connection-overview": "91777c357c0a4ccec413fe0c7c34586398dd7bb72aa97fa90d8b5c60b6987141"
+    }
+  }
+}

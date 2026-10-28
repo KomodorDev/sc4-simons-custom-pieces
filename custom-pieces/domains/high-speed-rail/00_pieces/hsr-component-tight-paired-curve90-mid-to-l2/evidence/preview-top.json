@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
   "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
-  "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+  "display_title": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "2c6d650e8025641c75234216bc5296bfe432b7cdce723e7c3e9d69576ec4b1a6"
   },
   "file": "previews/preview-top.png",
-  "sha256": "a9919ae58f936aff9812db3f3329eca3ed3c859ce1a35e435bef9ab33175e0c0",
+  "sha256": "8c294a66c6ccd1d8bbe38e761c58b1ba937a1696ad87523ec4e94f8eb81737ec",
   "size": [
     1600,
     1200
@@ -528,17 +528,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+        "text": "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -549,7 +555,7 @@
         "bounds": [
           30,
           27,
-          918,
+          1505,
           59
         ]
       },
@@ -4247,11 +4253,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres",
+    "Piece - HSR Tight Two-Track Corner 23 to 15.5 Metres \u2014 Custom (23 m) / Level 2 (15.5 m)",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -4282,7 +4288,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -4315,8 +4321,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "62642edf27bac0e7c94bcf533252d837207bccedf3e0d633af8fb1b8755554e2"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/piece.json": "02c1f5df59cead74c201b86f9af24d09f382e6199f305809dfbb4ea9572feb33",
+    "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connections.json": "202dc820ada371ec4dc772d427904d4e848c1ad33c6e2561535deafb4e9da453",
+    "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-mid-to-l2/connector-groups.jsonc": "aac15d314e47fc0b0f9be5274c35cadfd79d83b49716fdc5b66040d33052a587",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "a2f8cf69792f951ba54fb50504ecf12865a1eca191217f7480f9fd5814ce603b"
 }

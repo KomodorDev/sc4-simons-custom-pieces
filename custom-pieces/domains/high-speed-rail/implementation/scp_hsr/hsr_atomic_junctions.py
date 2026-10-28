@@ -117,11 +117,10 @@ def model_inputs(recipe):
 
 def build_models(native_hsr, recipe):
     """Compile real native-profile models, without any preview-only repair."""
-    from .hsr_components import _cached_models
     result = {}
     for mapping, config in compilation_parts(recipe):
         signature = json.dumps(config, sort_keys=True, separators=(',', ':'), allow_nan=False)
-        models = dict(_cached_models(native_hsr, signature))
+        models = dict(_cached_junction_models(native_hsr, signature))
         for local, source in mapping.items():
             require(local not in result, 'Two analytic contexts own one junction tile')
             result[local] = models[source]
@@ -129,10 +128,106 @@ def build_models(native_hsr, recipe):
             'Analytic junction contexts leave an unowned tile')
     collar = _source(recipe).get('west_straight_extraction', {}).get('native_west_parapet_collar')
     if collar is not None:
+        alignment = _source(recipe).get('opposed_parapet_alignment')
+        if alignment is not None and 'raw_west_cell_sha256' in alignment:
+            collar = deepcopy(collar)
+            collar['baseline_cell_model_sha256'] = alignment['raw_west_cell_sha256']
+            collar['preserve_native_upper_concrete'] = True
         cell = tuple(collar['cell'])
         require(cell in result, 'West parapet collar has no retained owner')
         result[cell] = normalize_west_parapet(result[cell], native_hsr, collar)
     return result
+
+
+@lru_cache(maxsize=4)
+def _cached_junction_models(native_hsr, signature):
+    from .hsr_mesh import _compile_models
+    config = json.loads(signature)
+    layout = {tuple(cell): data for cell, data in config['layout']}
+    return tuple(_compile_models(native_hsr, layout, config,
+                                sweep_function=_sweep_junction_profile).items())
+
+
+def _sweep_junction_profile(source, deck):
+    """Continue both concrete borders along the branch into their old wings.
+
+    Exact mitered inner-wall footprints cut the mainline top, and the matching
+    inside faces close that curved cut. The original outside face and wing,
+    rail floors, undersides, supports, and original curved wings are retained.
+    """
+    from .hsr_components import _sweep_component_profile
+    from .single_track_models import _clip, _triangulate
+    surfaces, corridors, points, lengths = _sweep_component_profile(source, deck)
+    if deck.get('opposed_parapet_alignment') is not None:
+        from .hsr_opposed_parapet import sweep_opposed_parapet
+        return sweep_opposed_parapet(source, deck, (surfaces, corridors, points, lengths))
+    alignment = deck.get('south_parapet_alignment')
+    if alignment is None:
+        return surfaces, corridors, points, lengths
+    offset = alignment['source_east_offset_m']
+    right = offset+alignment['right_inner_join_local_east_m']
+    require(alignment['right_join'] == 'continuous_branch_inside_outline'
+            and alignment['right_inner_half_width_m'] == 2.6,
+            'Right parapet requires its measured branch inside outline')
+    split = offset+alignment['left_selection_limit_local_east_m']
+    if deck['name'] == alignment['left_branch']:
+        from .rail_geometry import _route, _convex_parts
+        route, _, miters = _route(deck['points'], deck.get('start_tangent'), deck.get('end_tangent'))
+        half = alignment['left_inner_half_width_m']
+        polygons = []
+        for a, b, na, nb in zip(route, route[1:], miters, miters[1:]):
+            polygons.extend(_convex_parts([
+                (p[0]+cross*n[0], p[2]+cross*n[1])
+                for p, n, cross in ((a, na, -half), (a, na, half),
+                                    (b, nb, half), (b, nb, -half))]))
+        require(corridors and half == 2.6 and deck['width'] == 8.
+                and all(abs(point[1]-15.5) < 1e-8 for point in points),
+                'Following parapet requires its flat native single branch')
+        corridors[0]['parapet_opening_polygons'] = polygons
+        changed = list(surfaces)
+        for kind, triangle in surfaces:
+            if kind != 'inner_wall':
+                continue
+            for region in (lambda v: split-v[0], lambda v: v[0]-split):
+                polygon = list(triangle)
+                for plane in (lambda v: v[2]-source['inner'],
+                              # Retain the exact old nominal mainline mask.
+                              lambda v: 7.5-v[2], region):
+                    polygon = _clip(polygon, plane)
+                # Both native branch inside faces now close their matching
+                # raised mainline-to-wing continuations. Existing wing faces
+                # beyond the old mainline mask retain their original bytes.
+                changed.extend(('aligned_inner_wall', part) for part in _triangulate(polygon))
+        return changed, corridors, points, lengths
+    require(deck['name'] == 'native_east_west_main' and deck['width'] == 15.
+            and len(points) == 2 and points[0][0] < split < right < points[-1][0]
+            and all(abs(point[1]-15.5) < 1e-8 and abs(point[2]) < 1e-8 for point in points),
+            'South parapet alignment requires its flat native mainline')
+    changed = []
+    for kind, triangle in surfaces:
+        if (kind != 'wall' or min(v[2] for v in triangle) < source['inner']-1e-5
+                or max(v[1] for v in triangle) <= source['bed_y']+1e-5):
+            changed.append((kind, triangle))
+            continue
+        # Keep structural side faces below the ballast plane untouched.
+        if min(v[1] for v in triangle) < source['bed_y']-1e-5:
+            lower = _clip(list(triangle), lambda v: source['bed_y']-v[1])
+            changed.extend((kind, part) for part in _triangulate(lower))
+        upper = _clip(list(triangle), lambda v: v[1]-source['bed_y'])
+        left_polygon = _clip(upper, lambda v: split-v[0])
+        # The outside wall ends where the original curved outside face takes
+        # over. Only the top and inside face follow the inner ballast line.
+        left_kind = (kind if all(abs(v[2]-source['outer']) < 1e-5 for v in triangle)
+                     else 'following_parapet')
+        changed.extend((left_kind, part) for part in _triangulate(left_polygon))
+        right_polygon = _clip(upper, lambda v: v[0]-split)
+        # Continue the right top to the same inside outline as its wing.
+        # Its outer side remains clipped by the original full branch deck;
+        # no internal wall or obsolete perpendicular cap closes the join.
+        right_kind = (kind if all(abs(v[2]-source['outer']) < 1e-5 for v in triangle)
+                      else 'following_parapet')
+        changed.extend((right_kind, part) for part in _triangulate(right_polygon))
+    return changed, corridors, points, lengths
 
 
 def normalize_west_parapet(raw_model, native_hsr, collar):
@@ -196,12 +291,20 @@ def normalize_west_parapet(raw_model, native_hsr, collar):
         return result
 
     model, triangles, changed = parse_s3d(raw_model), [], 0
+    bed_height = _native(native_hsr)['bed_y']
     for mesh in model['meshes']:
         require(mesh['frames'] and all(frame == mesh['frames'][0] for frame in mesh['frames']),
                 'West parapet normalization requires static model frames')
         for encoded in _triangles(model, mesh['frames'][0]):
             require(all(len(vertex) == 20 for vertex in encoded), 'West parapet requires native XYZUV vertices')
             triangle = tuple(struct.unpack('<5f', vertex) for vertex in encoded)
+            if (collar.get('preserve_native_upper_concrete')
+                    and min(v[1] for v in triangle) >= bed_height-1e-5
+                    and max(v[1] for v in triangle) > bed_height+1e-5):
+                # The new border already supplies the native concrete face;
+                # retain the historical warp only for its original bed faces.
+                triangles.append(triangle)
+                continue
             if (min(v[0] for v in triangle) >= end or max(-v[2] for v in triangle) <= lower
                     or min(-v[2] for v in triangle) >= outer
                     or min(v[1] for v in triangle) < collar['minimum_height_m']):
@@ -266,4 +369,16 @@ def compilation_parts(recipe):
             'support_foundation_width': 1.3,
             'support_min_spacing': 16.,
         }))
+        alignment = data.get('south_parapet_alignment')
+        if alignment is not None:
+            for deck in parts[-1][1]['surface_decks']:
+                if deck['name'] in ('native_east_west_main', alignment['left_branch']):
+                    deck['south_parapet_alignment'] = deepcopy(alignment)
+        opposed = data.get('opposed_parapet_alignment')
+        if opposed is not None:
+            for deck in parts[-1][1]['surface_decks']:
+                deck['opposed_parapet_alignment'] = deepcopy(opposed)
+                # The normalizer checks this saved-cell proof independently;
+                # it does not change the sweep or its geometry cache key.
+                deck['opposed_parapet_alignment'].pop('raw_west_cell_sha256', None)
     return parts

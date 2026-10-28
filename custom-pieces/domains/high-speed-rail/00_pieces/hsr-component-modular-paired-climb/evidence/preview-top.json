@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-modular-paired-climb",
   "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
-  "display_title": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+  "display_title": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "1e209a1b1bc0c9be3c776225a926d76e406086370f3a77a7672102518be46b50"
   },
   "file": "previews/preview-top.png",
-  "sha256": "f6284e2e00390b24f0d551e0b105614270a2431d0d900f4c07cafa5965486312",
+  "sha256": "21e855b868c87ad840a60f25dca11e98e7fe65355d920b79b8c62ae956e64a40",
   "size": [
     1600,
     1200
@@ -549,17 +549,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - HSR Modular Two-Track L2 to L4 Climb",
+      "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR Modular Two-Track L2 to L4 Climb",
+        "text": "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -570,8 +576,8 @@
         "bounds": [
           30,
           27,
-          803,
-          52
+          1243,
+          59
         ]
       },
       {
@@ -1076,11 +1082,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR Modular Two-Track L2 to L4 Climb",
+    "Piece - HSR Modular Two-Track Level 2 (15.5 m) to Level 4 (30.5 m) Climb",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y7 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -1111,7 +1117,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -1144,8 +1150,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "b2da6bc8472b7db0f7f8de73ebff64076e1067dcfc3e678ad9b3883afbe3eaee"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/piece.json": "0d67af67113bdf0d99fac71f74ff35c6f9e1d5596f5e2480e55a88d23cfe04e3",
+    "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connections.json": "944ddb9e33c8ef9a47d87e6278b9e49453b0beaeda65a490956f2a02341cd8b9",
+    "domains/high-speed-rail/00_pieces/hsr-component-modular-paired-climb/connector-groups.jsonc": "3694822d083c5b4a104bf264f88b19b296135c9973d51010c96662619dcf1b53",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "a463a1d82da9139c18f1ea3ad65e4bd1220acfc6faa1e3008d093e8262bf4484"
 }

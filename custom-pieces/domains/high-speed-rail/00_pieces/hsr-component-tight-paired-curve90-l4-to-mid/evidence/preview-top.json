@@ -12,7 +12,7 @@
     "model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc"
   },
   "file": "previews/preview-top.png",
-  "sha256": "12230f267daa471a1cf4be1c98f8a9923f653a5a4af2d651dcf4c6bf2ec71bba",
+  "sha256": "5480c4acfb13065d727e78da57a64f8b0405eb6329175357b26153b50f0490e5",
   "size": [
     1600,
     1200
@@ -528,6 +528,12 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
@@ -4251,7 +4257,7 @@
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y3 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -4282,7 +4288,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -4315,14 +4321,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
   "title_source_inputs": {
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
-    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
-    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
   },
-  "input_fingerprint": "97f6e834a8a4a79ad6bfe9fcd6df4c695dffcf71eaa29b75ee9db74302510005"
+  "input_fingerprint": "faa0e7520b4ce76323e74e8da7dd99a371d33371df12990c0ce56ba07087b10b"
 }

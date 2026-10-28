@@ -292,9 +292,10 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         output = assembly_connectivity('straight-stem-trumpet', scene, records, specs)
         self.assertEqual({(j['entry_port'], j['exit_port']) for j in output['journeys']},
                          {(a+'.in', b+'.out') for a in 'WES' for b in 'WES' if a != b})
-        # Extracting P26 exposes two directed joins at P07's new western end;
-        # the complete assembly still has the same six outside journeys.
-        self.assertEqual(len(output['encoded_route_joins']), 50)
+        # The P26 extraction exposes two directed western merge joins, and
+        # splitting the fan into three placements exposes four more directed
+        # joins. The complete assembly keeps the same six outside journeys.
+        self.assertEqual(len(output['encoded_route_joins']), 54)
         extracted_seam = {
             (join['from_placement'], join['to_placement'], tuple(join['endpoint_m']))
             for join in output['encoded_route_joins']
@@ -303,6 +304,18 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         self.assertEqual(extracted_seam, {
             ('P07', 'P26', (40., 2., 15.5)),
             ('P26', 'P07', (40., -2., 15.5)),
+        })
+        fan_seams = {
+            (join['from_placement'], join['to_placement'], tuple(join['endpoint_m']))
+            for join in output['encoded_route_joins']
+            if {join['from_placement'], join['to_placement']}
+            in ({'P06A', 'P06B'}, {'P06B', 'P06'})
+        }
+        self.assertEqual(fan_seams, {
+            ('P06A', 'P06B', (110., 72., 15.5)),
+            ('P06B', 'P06A', (114., 72., 15.5)),
+            ('P06B', 'P06', (110., 56., 15.5)),
+            ('P06', 'P06B', (114., 56., 15.5)),
         })
         self.assertEqual(original, (directory/'connections.json').read_bytes())
         self.assertEqual(before, {identifier: path.read_bytes() for identifier, path in files.items()})

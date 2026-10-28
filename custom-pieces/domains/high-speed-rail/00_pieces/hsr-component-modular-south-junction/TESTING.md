@@ -46,8 +46,8 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 | --- | --- | --- |
 | hsr | `Lin` → `Sout` | primary |
 | hsr | `Nin` → `Sout` | primary |
-| hsr | `Sin` → `Nout` | primary |
 | hsr | `Sin` → `Rout` | primary |
+| hsr | `Sin` → `Nout` | primary |
 
 #### Forbidden transfers
 
@@ -73,11 +73,17 @@ Setup instructions describe a repeatable future test; they do not record a compl
 
 ## 3. Software checks
 
+The current [presentation-refresh record](evidence/presentation-refresh.json) identifies the canonical angled view, bright-green top grid, and connection overview rendered from the unchanged verified `dist/trumpet-fan-core-parts-final-01` resources. It records the current connector re-extraction and freshness checks, exact image hashes, and preserved observations. Earlier saved-resource and documentation-refresh reports retain their original native-check facts and picture fingerprints; this presentation refresh does not claim another geometry build or game observation.
+
 ### Engineering contract
 
 The construction rectangle is 3 × 6 tiles, containing fourteen occupied cells and eight authored supports. Two occupied cells carry structure without a traffic path; the other empty positions remain absent from the owned-cell mask. Source [column,row] cells increase eastward and southward, while picture X/Y increase eastward and northward. Use the generated grid conversion to identify the recessed central connection rather than treating a source row as a picture Y label.
 
-The current documentation uses the unchanged compiled piece from a verified source build. [Saved-resource evidence](evidence/saved-resource-checks.json) identifies the source DAT and the exact software-report scope; refreshing a guide does not claim another game test. Construction, traffic demand, demolition, shadows, and save/reload remain separate game checks.
+The raised grey concrete fills both triangular gaps beside the recessed northern paired end in picture tile X1,Y3. Each wedge follows the existing single-track branch’s inside ballast boundary at a 2.6 m offset, joins the original paired parapet, and includes its corresponding inside wall, missing underside, and closed northern face. This accepted wedge geometry remains intact during the subsequent southern stem correction. The original rails, ballast floor, supports, traffic paths, and native joining faces are retained; resource identities remain unchanged. The complete saved model retains the existing 5 × 5 m train-clearance requirement; the 2.6 m visual boundary does not replace that independent check.
+
+Both southern stem borders now remain straight through the lower part of X1,Y1 until their inside edges meet the first branch ballast boundary. They then follow that existing brown line northward through Y2. The inside face is the vertical concrete surface facing the tracks; it rises to the same top as the grey border. In the piece’s local east/south coordinates, the source-backed joins are [10.003452301,60.524241460] m on the left and [21.996547699,60.524241460] m on the right. East increases rightward, and south increases downward in the north-up picture. The saved-model verifier checks these source-derived joins and the raised tops and inside faces on both sides. Only uncovered concrete faces are added; every accepted encoded face, including the X1,Y3 wedges, is preserved. An additional 3.45 mm of concrete at the southern joining edge restores the native straight profile where the old eight-metre-wide branch cut had narrowed it.
+
+[Saved-resource evidence](evidence/saved-resource-checks.json) identifies the current verified source DAT. The [stem-border comparison](evidence/stem-parapet-alignment.json) checks the current straight-to-ballast joins, raised tops, inside faces, original-face preservation, and coplanar overlap. The earlier [concrete-wedge comparison](evidence/junction-wedge-alignment.json) retains its exact earlier source binding; the current saved-model verifier checks those northern wedges again. The [stem regression tests](../../tests/test_hsr_symmetric_stem.py) and [wedge regression tests](../../tests/test_hsr_symmetric_parapet.py) reject interrupted concrete and missing vertical faces while protecting the accepted northern shape. These software checks do not establish human preview approval, assembled fit, construction in the game, traffic demand, demolition, shadows, or save/reload.
 
 ## 4. Game checks
 
@@ -152,6 +158,8 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
+- result: passed; authority: software; reviewer: Actual one-piece normal saved-resource verification and selected saved-PATH extraction for symmetric concrete-wedge correction; original faces and full train clearance independently checked; confirmed at: 2026-10-28T15:24:20.972532+00:00; evidence: [evidence/saved-resource-checks.json, evidence/junction-wedge-alignment.json]; environment: {}
+- result: passed; authority: software; reviewer: Current one-piece native saved-build verification, independent straight-to-ballast stem-border and retained northern-wedge audits, selected actual PATH extraction, and connector freshness check; confirmed at: 2026-10-28T16:19:24.730882+00:00; evidence: [evidence/saved-resource-checks.json, evidence/stem-parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -179,65 +187,8 @@ Scope: Whole subject.
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
 - result: passed; authority: software; reviewer: Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks; confirmed at: 2026-10-27T21:57:25.376326+00:00; evidence: [evidence/saved-resource-checks.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:hsr-component-modular-south-junction:canonical-southeast | <a href="#case-preview_review-8219039bd1a0abdc25dc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-modular-south-junction:canonical-top | <a href="#case-preview_review-90d1cf88eac08860d51c">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:hsr-component-modular-south-junction:connection-overview | <a href="#case-preview_review-ebf8d0f8e2241af4df75">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-south-junction:canonical-southeast</summary>
-
-<a id="case-preview_review-8219039bd1a0abdc25dc"></a>
-
-**General: unverified** — `preview_review-8219039bd1a0abdc25dc`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-south-junction:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-south-junction:canonical-top</summary>
-
-<a id="case-preview_review-90d1cf88eac08860d51c"></a>
-
-**General: unverified** — `preview_review-90d1cf88eac08860d51c`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-south-junction:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:hsr-component-modular-south-junction:connection-overview</summary>
-
-<a id="case-preview_review-ebf8d0f8e2241af4df75"></a>
-
-**General: unverified** — `preview_review-ebf8d0f8e2241af4df75`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:hsr-component-modular-south-junction:connection-overview.
-
-No observation recorded.
+- result: passed; authority: software; reviewer: Actual one-piece normal saved-resource verification and selected saved-PATH extraction for symmetric concrete-wedge correction; original faces and full train clearance independently checked; confirmed at: 2026-10-28T15:24:20.972532+00:00; evidence: [evidence/saved-resource-checks.json, evidence/junction-wedge-alignment.json]; environment: {}
+- result: passed; authority: software; reviewer: Current one-piece native saved-build verification, independent straight-to-ballast stem-border and retained northern-wedge audits, selected actual PATH extraction, and connector freshness check; confirmed at: 2026-10-28T16:19:24.730882+00:00; evidence: [evidence/saved-resource-checks.json, evidence/stem-parapet-alignment.json]; environment: {}
 
 </details>
 
@@ -470,8 +421,8 @@ No observation recorded.
 | --- | --- | --- | --- | --- | --- |
 | **Route Query**<br>Service: hsr; role: primary; journey: 7:Lin>Sout; entry: Lin; exit: Sout | — | <a href="#case-in_game_route_query-cf0d19c93952223d47d1">[ ] unverified</a> | <a href="#case-in_game_route_query-99a86489e9fc55d03118">[ ] unverified</a> | <a href="#case-in_game_route_query-1af95c8b8bd42ddd5cf3">[ ] unverified</a> | <a href="#case-in_game_route_query-bebbb44b56b8a04d8932">[ ] unverified</a> |
 | **Route Query**<br>Service: hsr; role: primary; journey: 7:Nin>Sout; entry: Nin; exit: Sout | — | <a href="#case-in_game_route_query-591b8068a7af8a82744c">[ ] unverified</a> | <a href="#case-in_game_route_query-3aa7411072ac6311c728">[ ] unverified</a> | <a href="#case-in_game_route_query-7f7a05c21e7430a434d9">[ ] unverified</a> | <a href="#case-in_game_route_query-b952d326e1ae3d4859d5">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout | — | <a href="#case-in_game_route_query-3e9107af6496c7d3ac4a">[ ] unverified</a> | <a href="#case-in_game_route_query-4fcbc6382af0ddca4f05">[ ] unverified</a> | <a href="#case-in_game_route_query-1031f63a625910d37042">[ ] unverified</a> | <a href="#case-in_game_route_query-4bc1a9ed3b5f661138ac">[ ] unverified</a> |
 | **Route Query**<br>Service: hsr; role: primary; journey: 7:Sin>Rout; entry: Sin; exit: Rout | — | <a href="#case-in_game_route_query-abb9d42e6ab5a4275279">[ ] unverified</a> | <a href="#case-in_game_route_query-0da4374c45481e6e306e">[ ] unverified</a> | <a href="#case-in_game_route_query-9cdb0e38746c7f11a766">[ ] unverified</a> | <a href="#case-in_game_route_query-63f9dff6f384ed46d433">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout | — | <a href="#case-in_game_route_query-3e9107af6496c7d3ac4a">[ ] unverified</a> | <a href="#case-in_game_route_query-4fcbc6382af0ddca4f05">[ ] unverified</a> | <a href="#case-in_game_route_query-1031f63a625910d37042">[ ] unverified</a> | <a href="#case-in_game_route_query-4bc1a9ed3b5f661138ac">[ ] unverified</a> |
 
 
 <details>
@@ -567,52 +518,6 @@ No observation recorded.
 
 
 <details>
-<summary>Route Query — Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout</summary>
-
-<a id="case-in_game_route_query-3e9107af6496c7d3ac4a"></a>
-
-**0° CCW: unverified** — `in_game_route_query-3e9107af6496c7d3ac4a`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-4fcbc6382af0ddca4f05"></a>
-
-**90° CCW: unverified** — `in_game_route_query-4fcbc6382af0ddca4f05`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-1031f63a625910d37042"></a>
-
-**180° CCW: unverified** — `in_game_route_query-1031f63a625910d37042`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-4bc1a9ed3b5f661138ac"></a>
-
-**270° CCW: unverified** — `in_game_route_query-4bc1a9ed3b5f661138ac`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-</details>
-
-
-<details>
 <summary>Route Query — Service: hsr; role: primary; journey: 7:Sin>Rout; entry: Sin; exit: Rout</summary>
 
 <a id="case-in_game_route_query-abb9d42e6ab5a4275279"></a>
@@ -657,6 +562,52 @@ No observation recorded.
 
 </details>
 
+
+<details>
+<summary>Route Query — Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout</summary>
+
+<a id="case-in_game_route_query-3e9107af6496c7d3ac4a"></a>
+
+**0° CCW: unverified** — `in_game_route_query-3e9107af6496c7d3ac4a`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-4fcbc6382af0ddca4f05"></a>
+
+**90° CCW: unverified** — `in_game_route_query-4fcbc6382af0ddca4f05`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-1031f63a625910d37042"></a>
+
+**180° CCW: unverified** — `in_game_route_query-1031f63a625910d37042`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-4bc1a9ed3b5f661138ac"></a>
+
+**270° CCW: unverified** — `in_game_route_query-4bc1a9ed3b5f661138ac`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+</details>
+
 </details>
 
 <details>
@@ -666,8 +617,8 @@ No observation recorded.
 | --- | --- | --- | --- | --- | --- |
 | **Visible travel**<br>Service: hsr; role: primary; journey: 7:Lin>Sout; entry: Lin; exit: Sout | — | <a href="#case-in_game_visible_travel-cf0d19c93952223d47d1">[ ] unverified</a> | <a href="#case-in_game_visible_travel-99a86489e9fc55d03118">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1af95c8b8bd42ddd5cf3">[ ] unverified</a> | <a href="#case-in_game_visible_travel-bebbb44b56b8a04d8932">[ ] unverified</a> |
 | **Visible travel**<br>Service: hsr; role: primary; journey: 7:Nin>Sout; entry: Nin; exit: Sout | — | <a href="#case-in_game_visible_travel-591b8068a7af8a82744c">[ ] unverified</a> | <a href="#case-in_game_visible_travel-3aa7411072ac6311c728">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7f7a05c21e7430a434d9">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b952d326e1ae3d4859d5">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout | — | <a href="#case-in_game_visible_travel-3e9107af6496c7d3ac4a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4fcbc6382af0ddca4f05">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1031f63a625910d37042">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4bc1a9ed3b5f661138ac">[ ] unverified</a> |
 | **Visible travel**<br>Service: hsr; role: primary; journey: 7:Sin>Rout; entry: Sin; exit: Rout | — | <a href="#case-in_game_visible_travel-abb9d42e6ab5a4275279">[ ] unverified</a> | <a href="#case-in_game_visible_travel-0da4374c45481e6e306e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-9cdb0e38746c7f11a766">[ ] unverified</a> | <a href="#case-in_game_visible_travel-63f9dff6f384ed46d433">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout | — | <a href="#case-in_game_visible_travel-3e9107af6496c7d3ac4a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4fcbc6382af0ddca4f05">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1031f63a625910d37042">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4bc1a9ed3b5f661138ac">[ ] unverified</a> |
 
 
 <details>
@@ -763,52 +714,6 @@ No observation recorded.
 
 
 <details>
-<summary>Visible travel — Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout</summary>
-
-<a id="case-in_game_visible_travel-3e9107af6496c7d3ac4a"></a>
-
-**0° CCW: unverified** — `in_game_visible_travel-3e9107af6496c7d3ac4a`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-4fcbc6382af0ddca4f05"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-4fcbc6382af0ddca4f05`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-1031f63a625910d37042"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-1031f63a625910d37042`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-4bc1a9ed3b5f661138ac"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-4bc1a9ed3b5f661138ac`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
-
-No observation recorded.
-
-</details>
-
-
-<details>
 <summary>Visible travel — Service: hsr; role: primary; journey: 7:Sin>Rout; entry: Sin; exit: Rout</summary>
 
 <a id="case-in_game_visible_travel-abb9d42e6ab5a4275279"></a>
@@ -848,6 +753,52 @@ No observation recorded.
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: hsr; role: primary; journey: 7:Sin>Rout; entry: Sin; exit: Rout.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout</summary>
+
+<a id="case-in_game_visible_travel-3e9107af6496c7d3ac4a"></a>
+
+**0° CCW: unverified** — `in_game_visible_travel-3e9107af6496c7d3ac4a`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-4fcbc6382af0ddca4f05"></a>
+
+**90° CCW: unverified** — `in_game_visible_travel-4fcbc6382af0ddca4f05`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-1031f63a625910d37042"></a>
+
+**180° CCW: unverified** — `in_game_visible_travel-1031f63a625910d37042`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-4bc1a9ed3b5f661138ac"></a>
+
+**270° CCW: unverified** — `in_game_visible_travel-4bc1a9ed3b5f661138ac`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: hsr; role: primary; journey: 7:Sin>Nout; entry: Sin; exit: Nout.
 
 No observation recorded.
 
@@ -1098,8 +1049,69 @@ No observation recorded.
 
 </details>
 
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-component-modular-south-junction:canonical-southeast | <a href="#case-preview_review-8219039bd1a0abdc25dc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-modular-south-junction:canonical-top | <a href="#case-preview_review-90d1cf88eac08860d51c">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:hsr-component-modular-south-junction:connection-overview | <a href="#case-preview_review-ebf8d0f8e2241af4df75">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-south-junction:canonical-southeast</summary>
+
+<a id="case-preview_review-8219039bd1a0abdc25dc"></a>
+
+**General: unverified** — `preview_review-8219039bd1a0abdc25dc`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-south-junction:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-south-junction:canonical-top</summary>
+
+<a id="case-preview_review-90d1cf88eac08860d51c"></a>
+
+**General: unverified** — `preview_review-90d1cf88eac08860d51c`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-south-junction:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-component-modular-south-junction:connection-overview</summary>
+
+<a id="case-preview_review-ebf8d0f8e2241af4df75"></a>
+
+**General: unverified** — `preview_review-ebf8d0f8e2241af4df75`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:hsr-component-modular-south-junction:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
 <!-- END MANUAL CHECKS -->
 
 ## 6. Design history
+
+The [original missing-wedge snapshot](evidence/design-history/missing-junction-wedges/index.json) preserves the exact state before the northern X1,Y3 wedges were filled. The subsequent [accepted-wedge snapshot](evidence/design-history/before-stem-border-repair/index.json) preserves the complete standalone state before the southern X1,Y1/Y2 border correction. Both repairs add concrete around the existing sampled ballast boundaries without resampling either branch. Historical observation dictionaries retain their original timestamps, dependency fingerprints, and evidence references; the current saved-resource report maps those references to their preserved reports. The trumpet assembly has not been rebuilt or rerendered for these piece corrections.
 
 The retained evidence describes the version and scope recorded by its original report. A documentation reorganization does not create a new test run or extend an earlier observation to different inputs.

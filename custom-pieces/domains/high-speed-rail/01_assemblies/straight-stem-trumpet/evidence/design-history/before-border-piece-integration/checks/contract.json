@@ -1,0 +1,191 @@
+{
+  "purpose": "Independent current assembly acceptance: fixed ports, six HSR journeys, native joining profiles, supports, clearance, model budgets and exact approved saved-resource fingerprints. Historical atomization decisions are recorded separately; game operation remains unverified.",
+  "schema_version": 2,
+  "id": "straight-stem-trumpet",
+  "occupied_cells": 105,
+  "encoded_fragments": 166,
+  "unique_piers": 74,
+  "placements": 26,
+  "unique_piece_types": 13,
+  "candidate_eligibility_strictly_below_m": 0.005,
+  "minimum_pier_spacing_m": 16.0,
+  "minimum_clearance": 5.0,
+  "ports": {
+    "W_in": [
+      -120.0,
+      -2.0,
+      15.5
+    ],
+    "W_out": [
+      -120.0,
+      2.0,
+      15.5
+    ],
+    "E_in": [
+      200.0,
+      2.0,
+      15.5
+    ],
+    "E_out": [
+      200.0,
+      -2.0,
+      15.5
+    ],
+    "S_in": [
+      2.0,
+      -216.0,
+      15.5
+    ],
+    "S_out": [
+      -2.0,
+      -216.0,
+      15.5
+    ]
+  },
+  "movements": [
+    [
+      "W_in",
+      "E_out"
+    ],
+    [
+      "W_in",
+      "S_out"
+    ],
+    [
+      "E_in",
+      "W_out"
+    ],
+    [
+      "E_in",
+      "S_out"
+    ],
+    [
+      "S_in",
+      "W_out"
+    ],
+    [
+      "S_in",
+      "E_out"
+    ]
+  ],
+  "required_grade_separated_crossings": 4,
+  "expected_crossings_xyz": [
+    [
+      -2.0,
+      -2.0,
+      30.5,
+      15.5
+    ],
+    [
+      -2.0,
+      2.0,
+      30.5,
+      15.5
+    ],
+    [
+      2.0,
+      -2.0,
+      30.5,
+      15.5
+    ],
+    [
+      2.0,
+      2.0,
+      30.5,
+      15.5
+    ]
+  ],
+  "game_operation": "unverified",
+  "inherited_custom_cut_policy": {
+    "departure_port": "Win",
+    "return_port": "Eout",
+    "depth_m": 2.65,
+    "width_m": 5.2,
+    "require_exact_original_port_tile_models_all_five_zooms": true,
+    "whole_assembly_uses_strict_unclipped_actual_neighbour_paths": true,
+    "native_new_join_profile_tolerance_m": 5e-05
+  },
+  "current_resource_contract": "resources.json",
+  "actual_tile_triangles": 709002,
+  "whole_route_quality": {
+    "per_movement": {
+      "W_in>E_out": {
+        "max_length_ratio": 1.00001,
+        "max_total_turn_degrees": 0.01,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": 0.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "E_in>W_out": {
+        "max_length_ratio": 1.00001,
+        "max_total_turn_degrees": 0.01,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": 0.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "W_in>S_out": {
+        "max_length_ratio": 1.55,
+        "max_total_turn_degrees": 130.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": -90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "S_in>E_out": {
+        "max_length_ratio": 1.55,
+        "max_total_turn_degrees": 130.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "signed_turn_degrees": -90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "E_in>S_out": {
+        "max_length_ratio": 3.5,
+        "max_total_turn_degrees": 271.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "min_total_turn_degrees": 269.0,
+        "signed_turn_degrees": 90.0,
+        "max_signed_turn_error_degrees": 0.01
+      },
+      "S_in>W_out": {
+        "max_length_ratio": 3.5,
+        "max_total_turn_degrees": 271.0,
+        "max_sample_turn_degrees": 8.0,
+        "max_raw_turn_degrees": 3.0,
+        "min_radius_m": 24.0,
+        "max_curvature_change_per_m2": 0.0015,
+        "max_endpoint_curvature_per_m": 0.0005,
+        "max_grade_change_per_m": 0.025,
+        "min_total_turn_degrees": 269.0,
+        "signed_turn_degrees": -270.0,
+        "max_signed_turn_error_degrees": 0.01
+      }
+    },
+    "preserved_baseline_journeys": "Both mainlines and both direct slips; only collinear grid-cut subdivisions may differ.",
+    "constituent_module_limits_retained": true
+  },
+  "junction_rework_contract": "junction-rework.json"
+}

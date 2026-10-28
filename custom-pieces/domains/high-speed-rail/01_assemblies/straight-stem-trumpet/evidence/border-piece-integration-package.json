@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "purpose": "Completed current package index for the fourteen-type, twenty-eight-placement trumpet with the approved border repairs and three-placement compact fan approach.",
+  "status": "passed-final-build-menu-verification-and-package",
+  "checked_at_utc": "2026-10-28T18:48:28.168116+00:00",
+  "certificate": {
+    "path": "fan-core-package-handoff.json",
+    "sha256": "d098ade10103953bd335cff3aee8796148b54838a4994d0b95415a212810f90b"
+  },
+  "native_final_parts": {
+    "directory": "dist/trumpet-fan-core-parts-final-01",
+    "manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+    "verification_sha256": "cc66cbf3c3bb8549c9a4365f5b4e00d8af1ff7c6bf9c462e4c7bac1914b42d91"
+  },
+  "assembly_menu_final": {
+    "directory": "dist/trumpet-fan-core-menu-final-01",
+    "manifest_sha256": "599cd9c517abb688637893eabf53a9262b7b6ea32691f18f43a5b4a730c26322",
+    "verification_sha256": "842ad27bb7b4977e0a690dcdb3d3a34b9b2ac892124f6bdf8faa9bb83ef56d80",
+    "assembly_menu_buttons": 1,
+    "cycle_component_types": 14,
+    "member_buttons_hidden": 14,
+    "presentation_identifier_conflicts": 0,
+    "submenus_dll_required": false
+  },
+  "package": {
+    "path": "dist/trumpet-fan-core-menu-final-01.zip",
+    "sha256": "197907fedff68af76db728e99682b9c88dca6a5714be4b9c7f382e7a8ef7b42a",
+    "bytes": 194206694,
+    "zip_members": 2324,
+    "zip_integrity_passed": true,
+    "every_manifest_binary_and_document_member_hash_checked": true,
+    "documentation_refreshed": false,
+    "compiled_payloads_changed": false
+  },
+  "all_fourteen_piece_archives_byte_identical_to_initial_physical_audit": true,
+  "menu_icon_transition": {
+    "audit_source_menu_sha256": "54b762c5f0cf2b53ae613b6061a43bcf6ee57668c65b82a2fdabdf9a05f8db6d",
+    "final_parts_menu_sha256": "76f7d661112d3844c46f6518fd12a47decc82331e73c1b5699b592a87a8ca652",
+    "resource_identity_set_exact": true,
+    "only_changed_resource": "856ddbac-6a386d26-6a47f829",
+    "before_payload_sha256": "38d7f1745ea7960a88426552a2ef9a81d14c6e5fe045fe631133818c6ba31e02",
+    "after_payload_sha256": "c7822da75196fc582d0d78cda64f2ff3ab465858cbb114d6377abe4f3f3b4156",
+    "all_other_menu_resource_payloads_byte_identical": true,
+    "audit_and_final_parts_controller_bytes_exact": true,
+    "controller_sha256": "be517bf5ec0be17c7a7b296d9988ce89a0b631be22c629418193a5cc3e5453d8",
+    "all_14_piece_archives_exact": true,
+    "separate_assembly_menu_transformation": "Applied and audited afterward by the ordinary build_assembly_menu and verify_build functions."
+  },
+  "completed_test_report": {
+    "path": "evidence/border-piece-integration-tests.json",
+    "sha256": "1e7f42ae247fcdea415759156b97e4fa673b8cdf317ffe817cd554b1a9ed7b61",
+    "captured_before_final_source_build": true
+  },
+  "independent_final_handoff_check": {
+    "status": "passed",
+    "all_fourteen_piece_archives_compared_at_initial_parts_final_parts_and_final_menu": true,
+    "actual_manifests_and_verification_hashes_checked": true,
+    "actual_zip_hash_size_crc_and_member_count_checked": true,
+    "captured_pending_index_hash_and_content_checked": true,
+    "immutable_initial_physical_gate_unchanged": true
+  },
+  "self_hash_policy": {
+    "later_public_handoff_record": "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/fan-core-package-handoff.json",
+    "absent_from_final_parts_documentation": true,
+    "absent_from_zip": true,
+    "captured_pre_package_pending_index": {
+      "current_public_path": "domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/border-piece-integration-package.json",
+      "sha256": "8e285c6f71de60ca747d912992ad820d6e2bb72b0758599fbff378c07fd37f39",
+      "status": "pending-final-build-and-package-verification",
+      "included_in_frozen_source_capture_and_zip": true,
+      "zip_member": "docs/assembly-menu-source/documentation/docs/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/border-piece-integration-package.json"
+    },
+    "completed_public_index_and_new_certificate_are_outside_frozen_snapshot": true,
+    "reason": "The public handoff is written after its ZIP is frozen and records the ZIP hash. Excluding it from its own package prevents a circular file hash dependency; no frozen document is rewritten afterward."
+  },
+  "documentation_snapshot_notice": "The frozen ZIP contains the exact pre-package pending index recorded above. This completed index and its measured certificate were written afterward and remain outside that snapshot; consult these repository records for the final package result.",
+  "installed": false,
+  "published": false,
+  "game_test_claimed": false
+}

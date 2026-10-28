@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-l2-shortened-return-curve",
   "menu_name": "HSR L2 Shortened One-Way Return Curve",
-  "display_title": "Piece - HSR L2 Shortened One-Way Return Curve",
+  "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "5ac61de87d9e396988d7e7db7aa68ac493eb00fa5a04f72eac81db25de4028d2"
   },
   "file": "previews/preview-top.png",
-  "sha256": "b8fa23bfbf380626bdd0530d584a4beeefdf2b9cadbf8c3921f35c2d3337de0e",
+  "sha256": "6bbe4198321d2e2d5dc7d69df9534c95489fb7df414ad2bd580ad4cb23d7368c",
   "size": [
     1600,
     1200
@@ -623,17 +623,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - HSR L2 Shortened One-Way Return Curve",
+      "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR L2 Shortened One-Way Return Curve",
+        "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -644,7 +650,7 @@
         "bounds": [
           30,
           27,
-          851,
+          1071,
           59
         ]
       },
@@ -2902,11 +2908,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR L2 Shortened One-Way Return Curve",
+    "Piece - HSR Level 2 (15.5 m) Shortened One-Way Return Curve",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -2937,7 +2943,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -2970,8 +2976,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "3483dd2901e0b4cdaa9ff3de0b135c6e0da340e39bc1cc828b4878fc355ee304"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/piece.json": "668ace6a67fef74c1609816ec75868d526dcd15b0de60bbc6c9e16a9285de8f9",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connections.json": "ba38884f0da8b906a10edb46bf6c173f307b5635a468520db2bf0d49befd7a2a",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-return-curve/connector-groups.jsonc": "cbdd3dd888a381412a168205c61577d396ff4bd2d741227e107231acddddb1d6",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "233a9ec907d120af5df128fc517d723e09fbf54fdbb46a795c7340e350cb22e6"
 }

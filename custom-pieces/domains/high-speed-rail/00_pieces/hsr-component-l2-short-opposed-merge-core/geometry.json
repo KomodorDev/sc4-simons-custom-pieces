@@ -25563,5 +25563,24 @@
       "falloff": "piecewise-affine-hat",
       "scope": "Only the upper northern parapet and adjacent bed within east [-8, -5.5] m and north [5, 7.5] m are displaced, by at most 3.4524 mm. Every intersecting face is split at the continuous piecewise-affine warp's region boundaries, with exact clipping and all tiny triangle fans retained. Rails, the outer rim, the slab underside, the pier, and every other retained model remain unchanged. Existing vertex UV attributes are retained, and new cut attributes are interpolated; the spatial UV field inside the deformed collar can change."
     }
+  },
+  "opposed_parapet_alignment": {
+    "purpose": "Preserve both accepted continuous inner banks and join the separate outer strips in X0 and X3 along their own native branch inside outlines into the retained curved wings; retain all tracks, floors, supports, PATHs, and prior collar behavior.",
+    "mainline": "native_east_west_main",
+    "north_branch": "native_y_left",
+    "south_branch": "direct_south_east_merge",
+    "source_east_offset_m": 32.0,
+    "source_south_offset_m": 80.0,
+    "branch_inner_half_width_m": 2.6,
+    "mainline_half_width_m": 7.5,
+    "north_selection_limit_local_east_m": 32.0,
+    "south_selection_limit_local_east_m": 16.0,
+    "minimum_train_half_width_m": 2.5,
+    "raw_west_cell_sha256": "6449b8842ae2d90d39235960aa1b8a59e13fa6c7883f68a34f6e17888845d4e0",
+    "outer_join_mode": "continuous_branch_inside_outline",
+    "north_opposite_inner_join_local_east_m": 40.361872522872716,
+    "north_opposite_outer_join_local_east_m": 43.65474068840744,
+    "south_opposite_inner_join_local_east_m": 7.638127477127277,
+    "south_opposite_outer_join_local_east_m": 4.330997170307948
   }
 }

@@ -39,7 +39,7 @@ _MODULAR_KIND = {
     'hsr-component-modular-south-junction': 'JCT',
     'hsr-component-modular-paired-climb': 'RMP',
     'hsr-component-modular-crossing-core': 'XNG',
-    'hsr-component-l2-paired-fan-compact-join': 'JCT',
+    'hsr-component-l2-paired-fan-compact-core': 'JCT',
 }
 _FOOTER_LETTER = {
     'A': ('010', '101', '101', '111', '101', '101', '101'),
@@ -400,6 +400,14 @@ def _frame(style: str, state: str):
                                       Image.Resampling.LANCZOS)
     box((1, 14, 43, 43), background)
     image.alpha_composite(illustration, (round(22 * scale - illustration.width / 2), 14 * scale))
+    if style == 'hsr-component-l2-paired-straight-recessed-web':
+        # A schematic inset structural web distinguishes this profile while
+        # retaining the exact paired track silhouette and STR classification.
+        profile = [(31.5, 17.5), (39., 17.5), (39., 19.5), (37., 19.5),
+                   (37., 25.5), (39., 25.5), (39., 27.5), (31.5, 27.5),
+                   (31.5, 25.5), (33.5, 25.5), (33.5, 19.5), (31.5, 19.5),
+                   (31.5, 17.5)]
+        line(profile, (147, 178, 190, 255), .8)
     box((4, 3, 40, 13), badge_colour, radius=2)
     for number, letter in enumerate('SCP'):
         for y, row in enumerate(_LETTER[letter]):

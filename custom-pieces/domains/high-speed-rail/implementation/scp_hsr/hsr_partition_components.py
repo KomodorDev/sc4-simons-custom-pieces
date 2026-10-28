@@ -129,4 +129,17 @@ def build_models(native_hsr, recipe):
     mapping, config = model_inputs(recipe)
     signature = json.dumps(config, sort_keys=True, separators=(',', ':'), allow_nan=False)
     models = dict(_cached_models(native_hsr, signature))
-    return {local: models[source] for local, source in mapping.items()}
+    result = {local: models[source] for local, source in mapping.items()}
+    alignment = _source(recipe).get('junction_wedge_alignment')
+    if alignment is not None:
+        if recipe != 'hsr_component_modular_south_junction':
+            raise ValueError('Junction wedge repair belongs only to the symmetric split and return')
+        from .hsr_symmetric_parapet import repair_models
+        result = repair_models(native_hsr, result, mapping, alignment)
+    stem_alignment = _source(recipe).get('stem_parapet_alignment')
+    if stem_alignment is not None:
+        if recipe != 'hsr_component_modular_south_junction':
+            raise ValueError('Stem parapet repair belongs only to the symmetric split and return')
+        from .hsr_symmetric_stem import repair_stem_models
+        result = repair_stem_models(native_hsr, result, mapping, stem_alignment)
+    return result

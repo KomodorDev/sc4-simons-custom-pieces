@@ -1,0 +1,667 @@
+{
+  "schema_version": 4,
+  "piece_id": "hsr-component-l2-short-opposed-merge-core",
+  "purpose": "Saved native proof of both curved outer-border continuations in X0 and X3, preserving the accepted inner banks, native upper west collar, original ballast-floor warp, rails, supports, PATHs, and curved wings.",
+  "checked_at_utc": "2026-10-28T16:36:56.621688+00:00",
+  "source_comparison": {
+    "baseline_geometry_sha256": "3ad00c99b0d3eccf69c5113d426e3680f2d4a03bd9ecb27d5e79542b00e228c1",
+    "current_geometry_sha256": "61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9",
+    "only_changed_geometry_property": "opposed_parapet_alignment",
+    "all_preexisting_geometry_outside_alignment_unchanged": true,
+    "original_geometry_without_alignment_semantic_sha256": "50cace339297dad171b9b03dfc94e8dc97b9e4f19221239d4fb2462536542cea",
+    "accepted_inner_bank_rule_values_unchanged": {
+      "mainline": "native_east_west_main",
+      "north_branch": "native_y_left",
+      "south_branch": "direct_south_east_merge",
+      "source_east_offset_m": 32.0,
+      "source_south_offset_m": 80.0,
+      "branch_inner_half_width_m": 2.6,
+      "mainline_half_width_m": 7.5,
+      "north_selection_limit_local_east_m": 32.0,
+      "south_selection_limit_local_east_m": 16.0,
+      "minimum_train_half_width_m": 2.5
+    },
+    "changed_rule_properties": [
+      "north_opposite_cap_local_east_m",
+      "north_opposite_inner_join_local_east_m",
+      "north_opposite_outer_join_local_east_m",
+      "outer_join_mode",
+      "purpose",
+      "raw_west_cell_sha256",
+      "south_opposite_cap_local_east_m",
+      "south_opposite_inner_join_local_east_m",
+      "south_opposite_outer_join_local_east_m"
+    ],
+    "measured_raw_west_cell_sha256": "6449b8842ae2d90d39235960aa1b8a59e13fa6c7883f68a34f6e17888845d4e0",
+    "west_collar_normalizer_semantics_unchanged": true
+  },
+  "baseline": {
+    "directory_relative_to_library": "dist/opposed-parapet-follow-ballast",
+    "dat_sha256": "34026c4a0047da20b6e83fb9f9b675de8d5fe123342988dd3620d83106d8808e",
+    "actual_existing_verified_build_reused": true,
+    "baseline_rebuilt": false,
+    "snapshot": "evidence/design-history/before-outer-border-joins/index.json",
+    "snapshot_sha256": "f9aeaf66ef064e8e3f5d2e32fc84904002ca71649b3ca44a270e508930abe0d1",
+    "snapshot_files_verified": 21,
+    "original_report": "evidence/design-history/before-outer-border-joins/evidence/saved-resource-checks.json",
+    "original_report_sha256": "1bffd0fc02b6d8a64b19f0b35aacb71e4e6e09903d1631c109341510d7056718",
+    "original_alignment_proof": "evidence/design-history/before-outer-border-joins/evidence/parapet-alignment.json",
+    "original_alignment_proof_sha256": "12fbe3436f8aa129d791e91adb0ca5b6830287f465e15e7d90744cb512dc51f1"
+  },
+  "candidate": {
+    "directory_relative_to_library": "dist/opposed-outer-border-joined",
+    "dat_sha256": "14b9c18738ef1daa652f5834f2d4bf78a824d0894f974574288cab5bd264be4d",
+    "normal_builder_used": true,
+    "historical_baseline_models_substituted": false,
+    "exact_current_native_context_caches": [
+      {
+        "binding_sha256": "5cbd9b1bfc82db031ce760bde4edaf5a16d2eab883475bcbf37e32ee48777f28",
+        "index_sha256": "fb00c7fd4396537b63d213dc9277d48aef9dac693a0f9c110f61980dc8555c68",
+        "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+        "generator_bindings": {
+          "hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+          "hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+          "hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+          "rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+          "single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+          "atomic_sweep_function": "beff4e76d7c742a62333704c001af8189ef592ff5efa65b9b5e5f4b27705c428",
+          "atomic_compilation_parts_function": "0692369667576051e7990fd65e27a6b4fd683185fb69b4bba5f9eed3b2eff531"
+        },
+        "emitted_cell_models": [
+          {
+            "cell": [
+              5,
+              5
+            ],
+            "file": "cell-5-5.s3d",
+            "sha256": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c"
+          }
+        ]
+      },
+      {
+        "binding_sha256": "9c4a7386a379cb07f932acc8c59f8864eb78a0ca0c402ace4bd09a1d6468d5ce",
+        "index_sha256": "585a7f4e478806b3e6223004ea9cb76b84fec317a7103c72e6ca1ff21176ff54",
+        "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+        "generator_bindings": {
+          "hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+          "hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+          "hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+          "rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+          "single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+          "atomic_sweep_function": "beff4e76d7c742a62333704c001af8189ef592ff5efa65b9b5e5f4b27705c428",
+          "atomic_compilation_parts_function": "0692369667576051e7990fd65e27a6b4fd683185fb69b4bba5f9eed3b2eff531"
+        },
+        "emitted_cell_models": [
+          {
+            "cell": [
+              2,
+              5
+            ],
+            "file": "cell-2-5.s3d",
+            "sha256": "6449b8842ae2d90d39235960aa1b8a59e13fa6c7883f68a34f6e17888845d4e0"
+          },
+          {
+            "cell": [
+              3,
+              5
+            ],
+            "file": "cell-3-5.s3d",
+            "sha256": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b"
+          },
+          {
+            "cell": [
+              4,
+              5
+            ],
+            "file": "cell-4-5.s3d",
+            "sha256": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541"
+          }
+        ]
+      }
+    ]
+  },
+  "saved_resources": {
+    "identities_unchanged": true,
+    "resource_count": 54,
+    "changed_resources": [
+      "5ad0e817-badb57f1-7f585100",
+      "5ad0e817-badb57f1-7f585101",
+      "5ad0e817-badb57f1-7f585102",
+      "5ad0e817-badb57f1-7f585103",
+      "5ad0e817-badb57f1-7f585104",
+      "5ad0e817-badb57f1-7f585400",
+      "5ad0e817-badb57f1-7f585401",
+      "5ad0e817-badb57f1-7f585402",
+      "5ad0e817-badb57f1-7f585403",
+      "5ad0e817-badb57f1-7f585404",
+      "5ad0e817-badb57f1-7f585ff5"
+    ],
+    "all_non_model_non_shadow_resources_unchanged": true,
+    "all_shadow_resources_unchanged": true,
+    "unchanged_encoded_subsets": [
+      {
+        "tile_id": "7f585100",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 5242,
+          "sha256": "2c9e2c20e3ced5a99f863c70597aee1ffcee84d7289549647362aa76cf153fde"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 103,
+          "sha256": "e8c088c26266bbf6dc95cd0d99e1ac3ec468358b80161c1cdd0a711cb537017f"
+        },
+        "accepted_north_raised_bank": {
+          "unchanged_encoded_triangles": 28,
+          "sha256": "f7554a326f9623959a75b58db34f18629cb5590257091f2eafc88b0e2747c931"
+        },
+        "accepted_south_raised_bank": {
+          "unchanged_encoded_triangles": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "tile_id": "7f585200",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 10583,
+          "sha256": "ab5b15581f9a50e9205f581b95d617bdfa54d945cb37c5ede5caea2f1bbad6cd"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 367,
+          "sha256": "bdb8e32377f0557288a6d6a4b31b3f1d9aa73706fb3044783870b16c990b6221"
+        },
+        "accepted_north_raised_bank": {
+          "unchanged_encoded_triangles": 146,
+          "sha256": "0c3d48e30019cf2dfa2f89a193ff02ab773124a5a2cc1fd2d42c24d7b16e9e75"
+        },
+        "accepted_south_raised_bank": {
+          "unchanged_encoded_triangles": 190,
+          "sha256": "5be96ecaf84acba8dd599cfd0e0b5ec227c55d80124f0f610c174094aead646c"
+        }
+      },
+      {
+        "tile_id": "7f585300",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 10788,
+          "sha256": "d965eae78bda95da74b4b68c270b8c5d3cde35fbd14ceac5af018c7a95ef22ed"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 377,
+          "sha256": "162761a3c1491ef3be1030f94c1336d0bd574bc6f8486cc379e9433d4665e393"
+        },
+        "accepted_north_raised_bank": {
+          "unchanged_encoded_triangles": 205,
+          "sha256": "a8ae66cf77059d092e6eb506d05926e981f92f6a5b51bd2dedf9b5dc81644f5c"
+        },
+        "accepted_south_raised_bank": {
+          "unchanged_encoded_triangles": 144,
+          "sha256": "3f114af1196f4f5e24221ed758d4eab551d2a2e416ae474597787720837f1c99"
+        }
+      },
+      {
+        "tile_id": "7f585400",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 6178,
+          "sha256": "2e00ee9368162beb72db94cdae3217779bd4f733b4650e735de5920aea03de22"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 431,
+          "sha256": "a87d3bc0358e24fcc0ecf3f493800c5dea390058adc8c8551f5e9f0a8bc845c0"
+        },
+        "accepted_north_raised_bank": {
+          "unchanged_encoded_triangles": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "accepted_south_raised_bank": {
+          "unchanged_encoded_triangles": 30,
+          "sha256": "3b622209bcaeb748b3005cc5996d3e7b86fd5a1cd6d353fcaa4dcb8a61e4cefb"
+        }
+      }
+    ],
+    "unchanged_encoded_triangle_totals": {
+      "floor_and_rail": 32791,
+      "support": 104,
+      "retained_wing": 1278,
+      "accepted_north_raised_bank": 379,
+      "accepted_south_raised_bank": 364
+    },
+    "accepted_bank_subset_scope": "Complete raised triangles entirely west of local east32m in the northern bank, or entirely east of local east16m in the southern bank, at or above the ballast. This includes the already-native upper west collar; crossing triangles and floor-only faces are excluded here, and every floor and rail face is compared independently. Every comparison preserves exact saved vertex positions, height, UV attributes, and triangle winding."
+  },
+  "alignment": {
+    "shape": "Both formerly square-ended outer strips follow their independently sampled native branch inside ballast outlines into the retained curved wings; obsolete perpendicular caps are absent.",
+    "north_X3": {
+      "old_perpendicular_cap_east_m": 43.76798391999034,
+      "inner_join_east_north_m": [
+        40.361872522872716,
+        5.996547698974609
+      ],
+      "outer_join_east_north_m": [
+        43.65474068840744,
+        7.5
+      ],
+      "westward_extension_at_inner_edge_m": 3.406111397117627,
+      "westward_extension_at_outer_edge_m": 0.11324323158289928
+    },
+    "south_X0": {
+      "old_perpendicular_cap_east_m": 4.223921717723081,
+      "inner_join_east_south_m": [
+        7.638127477127277,
+        5.996547698974609
+      ],
+      "outer_join_east_south_m": [
+        4.330997170307948,
+        7.5
+      ],
+      "eastward_extension_at_inner_edge_m": 3.4142057594041963,
+      "eastward_extension_at_outer_edge_m": 0.10707545258486739
+    },
+    "branch_inside_half_width_m": 2.6,
+    "required_train_half_width_m": 2.5,
+    "saved_face_audit": {
+      "opposed_parapet_top_sections_checked": 55,
+      "opposed_parapet_inside_wall_sections_checked": 72,
+      "opposed_parapet_closed_end_faces_checked": 0,
+      "opposed_parapet_outer_perpendicular_caps_absent": true,
+      "opposed_parapet_outer_joins": [
+        {
+          "side": "north",
+          "inner_join_east_m": 40.361872522872716,
+          "outer_join_east_m": 43.65474068840744,
+          "saved_top_union_area_m2": 20.967628880715353,
+          "expected_top_union_area_m2": 20.967630188511805,
+          "curved_wall_facets": [
+            {
+              "start_east_distance_m": [
+                40.361872522872716,
+                5.9965477
+              ],
+              "end_east_distance_m": [
+                40.49959012004575,
+                6.054360021125547
+              ],
+              "saved_vertical_union_area_m2": 0.11948785651879038,
+              "expected_vertical_area_m2": 0.11948815632097835,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                40.49959012004575,
+                6.054360021125547
+              ],
+              "end_east_distance_m": [
+                40.69244178817003,
+                6.136462356674514
+              ],
+              "saved_vertical_union_area_m2": 0.16768100208300218,
+              "expected_vertical_area_m2": 0.1676810137348909,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                40.69244178817003,
+                6.136462356674514
+              ],
+              "end_east_distance_m": [
+                40.882912920452895,
+                6.218276280396111
+              ],
+              "saved_vertical_union_area_m2": 0.16583916849778713,
+              "expected_vertical_area_m2": 0.1658392460498987,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                40.882912920452895,
+                6.218276280396111
+              ],
+              "end_east_distance_m": [
+                41.07323363742216,
+                6.300763252994415
+              ],
+              "saved_vertical_union_area_m2": 0.1659417859133523,
+              "expected_vertical_area_m2": 0.16594207188669982,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                41.07323363742216,
+                6.300763252994415
+              ],
+              "end_east_distance_m": [
+                41.26339746176359,
+                6.38393256537303
+              ],
+              "saved_vertical_union_area_m2": 0.16604488619352553,
+              "expected_vertical_area_m2": 0.16604489773172362,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                41.26339746176359,
+                6.38393256537303
+              ],
+              "end_east_distance_m": [
+                41.45339781410213,
+                6.467793476528669
+              ],
+              "saved_vertical_union_area_m2": 0.16614748410248792,
+              "expected_vertical_area_m2": 0.16614772358516294,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                41.45339781410213,
+                6.467793476528669
+              ],
+              "end_east_distance_m": [
+                41.643228011681444,
+                6.552355212202386
+              ],
+              "saved_vertical_union_area_m2": 0.1662505378949235,
+              "expected_vertical_area_m2": 0.16625054944741188,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                41.643228011681444,
+                6.552355212202386
+              ],
+              "end_east_distance_m": [
+                41.83288126705301,
+                6.637626963504545
+              ],
+              "saved_vertical_union_area_m2": 0.1663533075022321,
+              "expected_vertical_area_m2": 0.1663533753182621,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                41.83288126705301,
+                6.637626963504545
+              ],
+              "end_east_distance_m": [
+                42.022350686777486,
+                6.723617885514599
+              ],
+              "saved_vertical_union_area_m2": 0.16645600255787496,
+              "expected_vertical_area_m2": 0.16645620119806162,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.022350686777486,
+                6.723617885514599
+              ],
+              "end_east_distance_m": [
+                42.211629270136484,
+                6.81033709585418
+              ],
+              "saved_vertical_union_area_m2": 0.16655889348123054,
+              "expected_vertical_area_m2": 0.16655902708691447,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.211629270136484,
+                6.81033709585418
+              ],
+              "end_east_distance_m": [
+                42.400709907856296,
+                6.897793673233579
+              ],
+              "saved_vertical_union_area_m2": 0.16666176365925178,
+              "expected_vertical_area_m2": 0.16666185298471856,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.400709907856296,
+                6.897793673233579
+              ],
+              "end_east_distance_m": [
+                42.589585380844596,
+                6.9859966559719595
+              ],
+              "saved_vertical_union_area_m2": 0.16676445828845,
+              "expected_vertical_area_m2": 0.1667646788918669,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.589585380844596,
+                6.9859966559719595
+              ],
+              "end_east_distance_m": [
+                42.77824835893911,
+                7.074955040489911
+              ],
+              "saved_vertical_union_area_m2": 0.1668674394692884,
+              "expected_vertical_area_m2": 0.16686750480847537,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.77824835893911,
+                7.074955040489911
+              ],
+              "end_east_distance_m": [
+                42.96669139966953,
+                7.164677779774792
+              ],
+              "saved_vertical_union_area_m2": 0.16697031913194582,
+              "expected_vertical_area_m2": 0.16697033073445036,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                42.96669139966953,
+                7.164677779774792
+              ],
+              "end_east_distance_m": [
+                43.15490694703385,
+                7.255173781818556
+              ],
+              "saved_vertical_union_area_m2": 0.1670729560114852,
+              "expected_vertical_area_m2": 0.16707315667002517,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                43.15490694703385,
+                7.255173781818556
+              ],
+              "end_east_distance_m": [
+                43.34288733028845,
+                7.346451908027632
+              ],
+              "saved_vertical_union_area_m2": 0.1671759703458271,
+              "expected_vertical_area_m2": 0.16717598261539096,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                43.34288733028845,
+                7.346451908027632
+              ],
+              "end_east_distance_m": [
+                43.53062476275295,
+                7.438520971604575
+              ],
+              "saved_vertical_union_area_m2": 0.16727879694678593,
+              "expected_vertical_area_m2": 0.16727880857072616,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                43.53062476275295,
+                7.438520971604575
+              ],
+              "end_east_distance_m": [
+                43.65474068840744,
+                7.5
+              ],
+              "saved_vertical_union_area_m2": 0.11080641381530354,
+              "expected_vertical_area_m2": 0.11080647341916346,
+              "duplicate_area_m2": 0.0
+            }
+          ]
+        },
+        {
+          "side": "south",
+          "inner_join_east_m": 7.638127477127277,
+          "outer_join_east_m": 4.330997170307948,
+          "saved_top_union_area_m2": 20.96260739937842,
+          "expected_top_union_area_m2": 20.962607993312233,
+          "curved_wall_facets": [
+            {
+              "start_east_distance_m": [
+                7.638127477127277,
+                5.9965477
+              ],
+              "end_east_distance_m": [
+                7.498183417659945,
+                6.055294665339915
+              ],
+              "saved_vertical_union_area_m2": 0.12141978676034519,
+              "expected_vertical_area_m2": 0.12141990564591133,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                7.498183417659945,
+                6.055294665339915
+              ],
+              "end_east_distance_m": [
+                7.083640643927524,
+                6.232687350697361
+              ],
+              "saved_vertical_union_area_m2": 0.3607231606927428,
+              "expected_vertical_area_m2": 0.3607232610313286,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                7.083640643927524,
+                6.232687350697361
+              ],
+              "end_east_distance_m": [
+                6.669993955229849,
+                6.4131015316698665
+              ],
+              "saved_vertical_union_area_m2": 0.3610237368371072,
+              "expected_vertical_area_m2": 0.3610238513787753,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                6.669993955229849,
+                6.4131015316698665
+              ],
+              "end_east_distance_m": [
+                6.257269773156125,
+                6.596551049678709
+              ],
+              "saved_vertical_union_area_m2": 0.36132673993757347,
+              "expected_vertical_area_m2": 0.36132696604509434,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                6.257269773156125,
+                6.596551049678709
+              ],
+              "end_east_distance_m": [
+                5.845494741096999,
+                6.783049131744306
+              ],
+              "saved_vertical_union_area_m2": 0.36163254887987595,
+              "expected_vertical_area_m2": 0.3616325867286056,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                5.845494741096999,
+                6.783049131744306
+              ],
+              "end_east_distance_m": [
+                5.434695714200288,
+                6.972608383111506
+              ],
+              "saved_vertical_union_area_m2": 0.3619406677540278,
+              "expected_vertical_area_m2": 0.36194069290471553,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                5.434695714200288,
+                6.972608383111506
+              ],
+              "end_east_distance_m": [
+                5.024899749078749,
+                7.1652407801775695
+              ],
+              "saved_vertical_union_area_m2": 0.362251021282058,
+              "expected_vertical_area_m2": 0.3622512617946327,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                5.024899749078749,
+                7.1652407801775695
+              ],
+              "end_east_distance_m": [
+                4.616134093278291,
+                7.360957663730829
+              ],
+              "saved_vertical_union_area_m2": 0.36256417591701506,
+              "expected_vertical_area_m2": 0.36256426833641153,
+              "duplicate_area_m2": 0.0
+            },
+            {
+              "start_east_distance_m": [
+                4.616134093278291,
+                7.360957663730829
+              ],
+              "end_east_distance_m": [
+                4.330997170307948,
+                7.5
+              ],
+              "saved_vertical_union_area_m2": 0.2537855775732911,
+              "expected_vertical_area_m2": 0.25378559520845184,
+              "duplicate_area_m2": 0.0
+            }
+          ]
+        }
+      ],
+      "opposed_parapet_maximum_top_overlap_area_m2": 8.717570381122641e-07
+    },
+    "previous_square_ended_saved_shape_rejected": true,
+    "previous_square_ended_saved_shape_rejection": "Opposed parapet does not follow its continuous ballast outline: side=-1.0, east=40.49959012004575, actual=[], expected=[(5.9965477, 6.054360021125547)]",
+    "each_actual_previous_outer_strip_independently_rejected": {
+      "north_X3": "Opposed parapet does not follow its continuous ballast outline: side=-1.0, east=40.49959012004575, actual=[], expected=[(5.9965477, 6.054360021125547)]",
+      "south_X0": "Opposed parapet does not follow its continuous ballast outline: side=1.0, east=7.498183417659945, actual=[], expected=[(5.9965477, 6.055294665339915)]"
+    }
+  },
+  "scope": {
+    "piece_only": true,
+    "assembly_integration": "deferred",
+    "trumpet_rendered": false,
+    "game_observations_added": false,
+    "human_preview_approval_inferred": false,
+    "installed": false
+  }
+}

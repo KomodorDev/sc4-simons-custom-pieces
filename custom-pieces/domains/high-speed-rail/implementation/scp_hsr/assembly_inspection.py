@@ -24,6 +24,11 @@ S3D = (0x5AD0E817, 0xBADB57F1)
 PATH = (0x296678F7, 0xA966883F)
 SHADOW = (0x7AB50E44, 0x2BC2759A)
 FAN_ID = 'hsr-component-l2-paired-fan-compact-join'
+FAN_CORE_ID = 'hsr-component-l2-paired-fan-compact-core'
+CORE_INHERITED_EDGE_SUPPORTS = {
+    (112., 32.): ((2, 1), '02b6aaaaffa6c07ad253e2c45efbb6b6709dbd64cce12672f3ce80556f29549a'),
+    (128., 32.): ((3, 1), '8d7a29768be30c12b9325315608b46c26ab01c3b2b0af46d8ca20913315beb91'),
+}
 INHERITED_EDGE_SUPPORTS = {
     (112., 32.): ((3, 3), 'e565971d06cf636dce72ed7473d1cf354ef38573021ca56e50f7adf019866f1a'),
     (128., 32.): ((4, 3), '216257d7ed1183f7965eceac3d894ef8b95afb863ea770b8d527906e31f9a195'),
@@ -173,6 +178,15 @@ def _preserved_edge_support_vertex(point, position, tile, tiles):
     cell, digest = INHERITED_EDGE_SUPPORTS[position]
     west = tiles.get((position[0]-16., position[1]))
     x, height, south, u, _ = point
+    if tile['piece_id'] == FAN_CORE_ID:
+        core_cell, core_digest = CORE_INHERITED_EDGE_SUPPORTS[position]
+        return (tile['cell'] == core_cell and tile['rotation'] == 0
+                and sha256(tile['resources']['model_0']) == core_digest
+                and west is not None and west['instance_id'] == tile['instance_id']
+                and west['piece_id'] == FAN_CORE_ID and west['cell'] == (core_cell[0]-1, core_cell[1])
+                and -8.650001 <= x < -8.00005
+                and -2.650001 <= south <= -1.349999
+                and 0. <= height <= 14.010672 and abs(u-.035) <= 1e-8)
     return (tile['piece_id'] == FAN_ID and tile['cell'] == cell and tile['rotation'] == 0
             and sha256(tile['resources']['model_0']) == digest
             and west is not None and west['instance_id'] == tile['instance_id']

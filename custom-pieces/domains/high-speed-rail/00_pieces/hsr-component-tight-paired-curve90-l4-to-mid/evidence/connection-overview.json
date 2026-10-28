@@ -2,7 +2,7 @@
   "display_title": "Piece - HSR Tight Two-Track Corner \u2014 Level 4 (30.5 m) to Custom (23 m)",
   "size": [
     2000,
-    3760
+    3724
   ],
   "camera": {
     "projection": "orthographic",
@@ -234,9 +234,8 @@
     "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
     "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
     "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
-    "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
-    "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
-    "Unverified: physical seams, construction clearance, model collisions, and game operation."
+    "Software model preview with source-defined connection cards.",
+    "Sources: current compiled model, declared boundary metadata, and saved route-resource identities."
   ],
   "boundary_cards": [
     {
@@ -3261,22 +3260,22 @@
   "schema_version": 1,
   "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
   "file": "previews/connection-overview.png",
-  "output_sha256": "77dc023889c30bf302f05284da0bfb6f63952e5436d675b933b4e2f4b275b6d6",
+  "output_sha256": "9f1432b032cf1ca46e6daedc83b5b8bacc61d42f17e9e8c921b1d0db604dbd4c",
   "source_inputs": {
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
     "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
-    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
     "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
     "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3",
-    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
   },
-  "generator_sha256": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+  "generator_sha256": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
   "metadata_resolver_sha256": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
-  "manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
-  "compiled_manifest_sha256": "ae5696604494de71d95d38c2a0a8fe8774a2257c9fb2ced341a7365ce91e736a",
-  "source_manifest": "dist/trumpet-merge-west-tail-parts-01/manifest.json",
-  "source_dat": "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
+  "manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
+  "source_manifest": "dist/trumpet-fan-core-parts-final-01/manifest.json",
+  "source_dat": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
   "source_preview_id": "7f582ff5",
   "source_dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
   "source_model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc",
@@ -7513,7 +7512,7 @@
     "city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
     "connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
     "connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
-    "connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+    "connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
     "content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
     "dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
     "design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
@@ -7530,7 +7529,7 @@
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
     "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
-    "piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+    "piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
     "preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
     "providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
     "recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
@@ -7548,7 +7547,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/evidence/preview.json",
-    "sha256": "f37911247cbac67f504f60091aaf8060b0cc9f10e874d5348303b65df839c371",
+    "sha256": "fb4fd913dcf980bf613dc3396647358fb5dbdcdf6b2a1bc9bfc1b442c72b6448",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,
@@ -7577,5 +7576,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "87d994c2d13a6b4bac4fa5b89535a28d31613d83989b3a30b13127e692e84a33"
+  "selectable_markdown_sha256": "102d188e0f4cf88d2a6c9a07ca24f3da889de2fea61f602ce5ec82c039f1f45c"
 }

@@ -22,6 +22,8 @@ Both clean pictures show the same complete saved model at its authored 0° orien
 
 The [angled-view evidence](evidence/preview.json) and [top-view evidence](evidence/preview-top.json) identify the actual saved model, textures, camera, captions, and image fingerprints. The connection overview in chapter 3 adds measured boundary cards to that same reusable type.
 
+In top-view X1,Y1, both grey borders of the southern paired track stay straight until they meet the first brown boundary line in the ballast, the stones beneath the tracks. Each border then follows that existing line through Y2, with a matching vertical face toward the tracks. The filled concrete wedges beside the recessed northern end in X1,Y3 remain intact.
+
 ## 2. Piece and placement
 
 <!-- BEGIN PIECE OVERVIEW -->
@@ -205,6 +207,6 @@ This service group is required at this edge.
 | --- | --- | --- | --- | ---: | ---: | ---: |
 | `right-northern-end-rout` / `Rout` | `right-departure-branch` / `right-northern-end-right-departure-branch-cut` / monorail | Outgoing | `[32,8,15.5]` | +0 | 0° | 0 |
 
-Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
 
 <!-- END CONNECTOR OVERVIEW -->

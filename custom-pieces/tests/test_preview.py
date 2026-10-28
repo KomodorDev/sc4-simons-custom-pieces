@@ -7,9 +7,9 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
@@ -121,7 +121,8 @@ class PreviewTests(unittest.TestCase):
         self.assertEqual(evidence['renderer']['views'],[{'azimuth':45.,'elevation':31.}])
         self.assertEqual(evidence['renderer']['view_size'],[1600,970])
         self.assertTrue(all(item['tile_index']>=0 for item in evidence['grid']['tile_labels']))
-        self.assertIn('in-game placement and traffic remain unverified',evidence['captions'][-1])
+        self.assertEqual(evidence['captions'][-1], 'Software model preview.')
+        self.assertNotRegex(' '.join(evidence['captions']).lower(), r'\bunverified\b|\bpassed\b|\bfailed\b')
         self.assertEqual(evidence['header']['rows'][1]['colour'], '#176eaf')
         self.assertEqual(evidence['header']['rows'][0]['text'],'Piece - Actual Test Piece')
         self.assertEqual(evidence['display_title'],evidence['header']['rows'][0]['text'])
@@ -169,6 +170,57 @@ class PreviewTests(unittest.TestCase):
         self.assertEqual(top['captions'][1],'Clean view | Top view, north up | Authored orientation: 0°')
         self.assertEqual(top['header']['rows'][1]['colour'],angle['header']['rows'][1]['colour'])
         self.assertTrue(result['coverage']['complete'])
+
+    def test_standalone_top_tile_edges_remain_green_over_opaque_geometry(self):
+        from scp import piece_previews
+        # Extend the synthetic deck across interior tile edges, so a background
+        # colour change alone cannot satisfy the visible-grid requirement.
+        model=parse_s3d(self.raw)
+        for block in model['vertices']:
+            data=bytearray(block['data'])
+            for offset in range(0,len(data),block['stride']):
+                for axis_offset in (0,8):
+                    value=struct.unpack_from('<f',data,offset+axis_offset)[0]
+                    struct.pack_into('<f',data,offset+axis_offset,3*value)
+            block['data']=bytes(data)
+        raw=pack_s3d(model)
+        piece={**self.piece,'cells':[[x,y] for x in range(-1,2) for y in range(-1,2)]}
+        library=Mock()
+        library.for_model.return_value=({0x0bf6e09b:np.ones((8,8,4))},[])
+        captured={}
+        def raster(*args,**kwargs):
+            image,depth=preview.render_fast_view(*args,**kwargs,return_depth=True)
+            captured.update(image=np.asarray(image).copy(),opaque=np.isfinite(depth))
+            return image
+        for role in ('top','angled'):
+            with self.subTest(role=role), patch.object(piece_previews,'render_fast_view',side_effect=raster):
+                evidence=piece_previews.render_piece(piece,raw,library,self.images/'grid-test',
+                    dat_hash='synthetic-fixture',width=800,height=800,view_role=role)
+            x,y=evidence['viewport_offset_xy']
+            width,height=evidence['camera']['image_size']
+            with Image.open(self.images/'grid-test'/evidence['file']) as bitmap:
+                actual=np.asarray(bitmap.crop((x,y,x+width,y+height)))
+            if role=='angled':
+                np.testing.assert_array_equal(actual,captured['image'])
+                self.assertNotIn('line_overlay',evidence['grid'])
+                self.assertIsNone(evidence['renderer']['top_grid_overlay'])
+                continue
+            style=evidence['grid']['line_overlay']
+            self.assertEqual(style,{'colour':'#00ff00','line_width_pixels':2,
+                                    'major_line_width_pixels':3,'drawn_above_model':True})
+            self.assertEqual(evidence['renderer']['top_grid_overlay'],style)
+            mask=Image.new('L',(width,height))
+            draw=ImageDraw.Draw(mask)
+            for line in evidence['grid']['grid_lines']:
+                draw.line([tuple(point) for point in line['pixels']],fill=255,
+                          width=3 if line['major'] else 2)
+            grid_pixels=np.asarray(mask)>0
+            self.assertTrue((grid_pixels & captured['opaque']).any())
+            self.assertTrue((grid_pixels & ~captured['opaque']).any())
+            self.assertTrue(np.all(actual[grid_pixels]==[0,255,0]))
+            np.testing.assert_array_equal(actual[~grid_pixels],captured['image'][~grid_pixels])
+            self.assertEqual(evidence['source']['model_sha256'],hashlib.sha256(raw).hexdigest())
+        self.assertEqual(pack_s3d(model),raw)
 
     def test_each_requested_view_has_an_independent_freshness_cache(self):
         first=self.render(view_roles=['angled','top'])

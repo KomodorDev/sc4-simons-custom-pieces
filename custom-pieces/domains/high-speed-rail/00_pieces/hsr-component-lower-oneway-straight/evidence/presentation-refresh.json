@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-lower-oneway-straight",
+  "purpose": "Record the current standalone picture presentation and source-bound connector refresh while preserving approved game resources and earlier executed verification evidence.",
+  "scope": "Canonical angled and top software pictures, connection overview, connector export, guide presentation, and image-review bindings; no assembly rendering or new native geometry compilation.",
+  "source_build": "dist/trumpet-fan-core-parts-final-01",
+  "source_manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "source_verification_sha256": "cc66cbf3c3bb8549c9a4365f5b4e00d8af1ff7c6bf9c462e4c7bac1914b42d91",
+  "normal_native_verification_scope": "Reference to the earlier executed verified native build. Its report and all fourteen DAT archives remain unchanged; the native verifier was not rerun as part of this picture refresh.",
+  "compiled_resource_checks_executed": {
+    "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-oneway-straight.dat",
+    "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+    "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+    "resource_fingerprints_checked": 15,
+    "directional_ports_reextracted": 2,
+    "directed_journeys_reextracted": 1,
+    "compiled_definition": "passed",
+    "manifest_payload": "passed",
+    "saved_resource_fingerprints": "passed",
+    "actual_path_facts": "passed",
+    "preview_model_structure": "passed",
+    "construction_rules_reextracted": false
+  },
+  "connector_check": {
+    "status": "passed",
+    "compiled_paths": "passed",
+    "export_freshness": "passed",
+    "overview": {
+      "status": "passed",
+      "boundary_cards": 2,
+      "output_sha256": "f328166108f637a17827ba26a0eb058cb9e1b4a46b7027f7fca97d49d1243d6c"
+    }
+  },
+  "connector_export": {
+    "file": "connector-data.json",
+    "sha256": "796ef55452824e90e10eaf09a6eed256fdfd8da55fc477c8d9aea636c17cb1b8"
+  },
+  "artwork": [
+    {
+      "evidence": "evidence/preview.json",
+      "evidence_sha256": "3dd326b2f9a9fb8cacdb83ef80de7caab73f5dbfc487a0a4ce4d435b0b5f4aac",
+      "file": "previews/preview.png",
+      "sha256": "a22c29d3d74b772c9927fce36905743ec4402f6c56553bca78b3f6e31ba4b576",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/preview-top.json",
+      "evidence_sha256": "44f3d0334b562ce0705bd0231fc6e57fa2cadc9167efccd86b7709f888a49303",
+      "file": "previews/preview-top.png",
+      "sha256": "ab078095fee0c66dcc1c6092f5d15fab9535a6c74f033c9a09b365f03a3ab0fc",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/connection-overview.json",
+      "evidence_sha256": "aca8c69cfeba110485c7df24e5e2db477c0ebf2bcb865f77fb48caee66e6c955",
+      "file": "previews/connection-overview.png",
+      "sha256": "f328166108f637a17827ba26a0eb058cb9e1b4a46b7027f7fca97d49d1243d6c",
+      "size": [
+        2000,
+        3528
+      ],
+      "title": "Piece - One-Way HSR Level 2 (15.5 m) Eight-Metre Straight",
+      "png_changed": true
+    }
+  ],
+  "angled_thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "14ab17da8297d0adc55c03e8c203cd7bf9b0bed4872081cf9df82f23e7b90a1c"
+  },
+  "presentation": {
+    "authored_rotation_ccw_degrees": 0,
+    "coordinate_scope": "Independent local X/Y tile-centre grid",
+    "tile_metres": 16,
+    "top_grid": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
+    "captions": "Shared Piece title with measured heights, view purpose, camera direction, and fixed software/source identification. Changing game-test status remains in the generated matrix and linked test cases."
+  },
+  "earlier_software_reports_preserved": {
+    "evidence/saved-resource-checks.json": "49320e4a6589b25790aaed6032ae4776a7de4f9dc3678ca13d802500ede113c2",
+    "evidence/documentation-refresh.json": "6467557669b30682a8abb7141d7ab6c16076bd99d30fc6f17d4357aea8b6375b"
+  },
+  "geometry_changed": false,
+  "game_identities_changed": false,
+  "route_measurements_changed": false,
+  "icon_changed": false,
+  "non_image_cases_preserved": true,
+  "original_observation_dictionaries_preserved": true,
+  "original_observations_sha256": "95b35213c523826d68bfe52d75923be73a1cfb4f5965733ff5567aa943c330e2",
+  "manual_observations_added": 0,
+  "native_geometry_recompiled": false,
+  "assembly_rendered": false,
+  "installed": false,
+  "software_visual_review": {
+    "reviewer": "Coding agent inspecting the actual generated PNGs through standalone-view and overview-scene/caption contact sheets",
+    "result": "passed",
+    "scope": "Complete model, local coordinates, title and view wording, readable green top boundaries, fixed footer, and overview marker placement. This is not an added human observation.",
+    "connection_card_bitmaps_unchanged_from_verified_build_docs": 2
+  }
+}

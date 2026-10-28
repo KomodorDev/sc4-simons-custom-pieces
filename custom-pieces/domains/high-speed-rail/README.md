@@ -11,7 +11,7 @@ document_type: "guide"
 
 New or intentionally refreshed pieces have a three-chapter README for views, placement, and the intrinsic connection matrix, with Testing navigation to a separate six-chapter TESTING document. Existing combined piece guides remain intact until deliberately migrated. The **[Straight-stem HSR trumpet](01_assemblies/straight-stem-trumpet/README.md)** has a four-section assembly overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
 
-The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Current connector exports and overview cards cover all [thirteen reusable trumpet types](01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: fifteen types within this 166-type rail catalogue. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
+The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Connector declarations, exports, and overview cards cover all [fourteen current reusable trumpet types](01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types within this 167-type rail catalogue. The shorter fan core and its matching straight declare their measured recessed-web profile separately from ordinary paired straights. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
 For the current split documentation pattern, open the [paired climb README](00_pieces/hsr-component-modular-paired-climb/README.md) and [TESTING document](00_pieces/hsr-component-modular-paired-climb/TESTING.md), or the [two-level crossing README](00_pieces/hsr-component-modular-crossing-core/README.md) and [TESTING document](00_pieces/hsr-component-modular-crossing-core/TESTING.md). Their README chapters are **1. Views**, **2. Piece and placement**, and **3. Connection matrix**; Testing opens the separate six-chapter document. The [paired rising quarter-turn](00_pieces/blind-hsr-rise-quarter-turn/README.md) and [HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md) remain useful geometry and connector-authoring examples, retaining their older version-1 combined guides until explicitly refreshed. Their matrices distinguish saved-route checks, the game’s Route Query, and observed travel. A generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#1-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#implementation-entry-points) when adapting the pattern.
 
@@ -21,7 +21,7 @@ The current library does not supply automatic compatibility discovery. Most exis
 
 ## Inventories and collections
 
-- [Individual pieces: 166 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
@@ -45,12 +45,12 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `redesigned-junction-example`: 1 piece types.
 - `redesigned-diagonal-junction-example`: 1 piece types.
 - `smooth-t-junctions`: 2 piece types.
-- `hsr-all-components`: 32 piece types.
+- `hsr-all-components`: 33 piece types.
 - `hsr-modular-connection-parts`: 3 piece types.
 - `hsr-split-and-climb`: 2 piece types.
 - `hsr-crossing-core-and-approaches`: 3 piece types.
-- `hsr-compact-fan-parts`: 1 piece types.
-- `hsr-straight-stem-trumpet`: 13 piece types.
+- `hsr-compact-fan-parts`: 2 piece types.
+- `hsr-straight-stem-trumpet`: 14 piece types.
 - `piece-authoring-examples`: 2 piece types.
 
 </details>

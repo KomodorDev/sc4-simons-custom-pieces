@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-l2-shortened-departure-curve",
   "menu_name": "HSR L2 Shortened One-Way Departure Curve",
-  "display_title": "Piece - HSR L2 Shortened One-Way Departure Curve",
+  "display_title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801"
   },
   "file": "previews/preview-top.png",
-  "sha256": "6b24fa0a0f8d4ea14c0280db0f7ffc6a3e4a4b137a16499cff66fd62a97ed3c9",
+  "sha256": "47d3830ec9a430a6c0d412b95d0630743b95f3829627f1f32a92087de963cda7",
   "size": [
     1600,
     1200
@@ -623,17 +623,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - HSR L2 Shortened One-Way Departure Curve",
+      "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR L2 Shortened One-Way Departure Curve",
+        "text": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -644,7 +650,7 @@
         "bounds": [
           30,
           27,
-          904,
+          1124,
           59
         ]
       },
@@ -2664,11 +2670,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR L2 Shortened One-Way Departure Curve",
+    "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y5 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -2699,7 +2705,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -2732,8 +2738,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "20c52cb3dac6786e3a3672c2d9a7bca9da69170212f812a70b14016d8d6aa00c"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/piece.json": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connections.json": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-shortened-departure-curve/connector-groups.jsonc": "3547c6c6341450192148858dcfa3c7c6314ad9c14adedaadb1969a6b5849188c",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "5506ed6753ec427162f509da8d9a0a13e669a2482ff53181162a489322c66e9c"
 }

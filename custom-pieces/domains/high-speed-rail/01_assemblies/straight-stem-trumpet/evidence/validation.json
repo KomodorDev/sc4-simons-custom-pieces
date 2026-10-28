@@ -4,41 +4,53 @@
   "status": "passed",
   "scope": "actual approved current saved compiled resources; game operation unverified",
   "scene_file": "assembly.json",
-  "scene_sha256": "4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3",
-  "manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
-  "audited_manifest_file": "audited-build-manifest.json",
+  "scene_sha256": "b0628a3061eee319c8b1c052c7cc820cb4106f79a88fa587ef49938f6eb8b257",
+  "manifest_sha256": "4e3787d481cc6399286e617c67501495af709206066c5ff4c2fb02a8a775927b",
+  "audited_manifest_file": "border-piece-integration-initial-build-manifest.json",
   "manifest_hash_scope": "Exact input manifest at audit start; documentation metadata may change later. DAT fingerprints are independently pinned.",
-  "current_resource_contract_sha256": "73ea63d07a012b4f93379e48ad9c272f187dc743c8fbbee9dc264a67028d3f98",
+  "current_resource_contract_sha256": "b18ae71c247f95ee2f09d79c816170d29d593a974d17b355e6bf1d6e3034d535",
   "deleted_predecessor_resource_inputs_required": false,
   "reviewed_layout": {
-    "layout_sha256": "46ae93230a5fc56f8471780cdd9aff94c8ebdb697ab299b9c0dffbbf106d9411",
-    "reviewed_placements": 26,
+    "layout_sha256": "5bcb0546c645a95f5cfdcc77134362047ba98af42320395a57160f14d26c670e",
+    "reviewed_placements": 28,
     "approved_external_ports_rectangle_and_grid": true
   },
   "independent_quality_contract": {
-    "contract_sha256": "83836bbde05140fc4b45d896b12daf50a12cbf1387421ed1f435381ced118d93",
+    "contract_sha256": "162a547dfeb6f4911b512e753010429db84e5e237aaa1633e0f592eac00c8ca7",
     "candidate_eligibility_and_actual_edit_limits_are_separate": true,
     "independent_ports_movements_clearance_and_budgets_checked": true,
     "predecessor_resource_inputs_required": false
   },
   "atomization_decisions": {
-    "ledger_sha256": "f27beaf9a3e843119bed0a06d5cc910b57015479c8b73f1b392705f2b998f008",
+    "ledger_sha256": "dc4a82bd6a773459e5507b6011aea89f7089736e7024e98a8a6a644a7d6ce5f7",
     "eligible_atomized_candidates": {
       "p01a-west-tail": {
         "recorded_original_path_deviation_m": 0.004018411269782,
         "recorded_original_visible_rail_deviation_m": 0.0040185610292082785,
         "recorded_actual_rework_bound_m": 0.0245,
         "historical_replacement_geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
-        "current_replacement_geometry_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
-        "historical_source_superseded_by_explicit_redesign": false
+        "current_replacement_geometry_sha256": "cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c",
+        "historical_source_superseded_by_explicit_redesign": false,
+        "historical_source_superseded_by_standalone_piece_revision": true,
+        "standalone_geometry_revision_chain": [
+          "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
+          "4ab1cb1c939a896800373840832be4dd02dc6b199a41f7831e18ee65cb3f1ca4",
+          "cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c"
+        ]
       },
       "p03b-east-tail": {
         "recorded_original_path_deviation_m": 0.004018411269782,
         "recorded_original_visible_rail_deviation_m": 0.004018597831425552,
         "recorded_actual_rework_bound_m": 0.0245,
         "historical_replacement_geometry_sha256": "42ce9230a30a536d358db4a6b5f3137ab38e19b3c33836293c074836b17ff833",
-        "current_replacement_geometry_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
-        "historical_source_superseded_by_explicit_redesign": true
+        "current_replacement_geometry_sha256": "61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9",
+        "historical_source_superseded_by_explicit_redesign": true,
+        "historical_source_superseded_by_standalone_piece_revision": true,
+        "standalone_geometry_revision_chain": [
+          "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+          "3ad00c99b0d3eccf69c5113d426e3680f2d4a03bd9ecb27d5e79542b00e228c1",
+          "61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9"
+        ]
       },
       "p01b-south-tail": {
         "recorded_original_path_deviation_m": 0.00205811399999,
@@ -46,7 +58,9 @@
         "recorded_actual_rework_bound_m": 0.0082,
         "historical_replacement_geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
         "current_replacement_geometry_sha256": "7ed9e49ca138d574844feab776efc773103b929e3847604034827c43b5a722e2",
-        "historical_source_superseded_by_explicit_redesign": false
+        "historical_source_superseded_by_explicit_redesign": false,
+        "historical_source_superseded_by_standalone_piece_revision": false,
+        "standalone_geometry_revision_chain": []
       },
       "p03d-south-tail": {
         "recorded_original_path_deviation_m": 0.00205811399999,
@@ -54,7 +68,9 @@
         "recorded_actual_rework_bound_m": 0.0082,
         "historical_replacement_geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
         "current_replacement_geometry_sha256": "0f04d613c74b98134ffd4466be454f3ac6cd646ecf424dab0d45e676ba1b2ef7",
-        "historical_source_superseded_by_explicit_redesign": false
+        "historical_source_superseded_by_explicit_redesign": false,
+        "historical_source_superseded_by_standalone_piece_revision": false,
+        "standalone_geometry_revision_chain": []
       }
     },
     "retained_candidates": 13,
@@ -62,99 +78,1061 @@
     "strict_original_threshold_m": 0.005,
     "old_deviation_and_actual_work_recorded_separately": true,
     "historical_measurements_are_frozen_not_remeasured": true,
+    "subsequent_piece_revisions": [
+      {
+        "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/geometry.json",
+        "before_sha256": "7760cdba90db6e0b12959708faf677121a0f5913edae65ef83d524006004baa0",
+        "after_sha256": "4ab1cb1c939a896800373840832be4dd02dc6b199a41f7831e18ee65cb3f1ca4",
+        "preserved_geometry_semantic_sha256": "871c42775ee4315b47cfb7f97059a8fd3c35623f1b7525f1e0c0c5d338bed5b5",
+        "only_added_geometry_property": "south_parapet_alignment",
+        "south_parapet_alignment": {
+          "purpose": "Continue the raised left mainline border along the branch's dark ballast outline into the existing curved grey wing at the bottom of X2; retain the separate straight right end, rails, PATHs, supports, and original outer faces.",
+          "left_branch": "direct_west_south_curve",
+          "left_inner_half_width_m": 2.6,
+          "left_selection_limit_local_east_m": 32.0,
+          "right_local_east_cap_m": 43.776078282276934,
+          "source_east_offset_m": 16.0,
+          "left_reference": "Follow the southern branch inside parapet at 2.6 m from its centreline, from its intersection with the mainline inside face through the retained curved wing.",
+          "right_reference": "Northern branch outside edge (+4 m cross offset) at the mainline inside edge (5.996547698974609 m south).",
+          "minimum_train_half_width_m": 2.5
+        },
+        "standalone_evidence": {
+          "evidence/parapet-alignment.json": "3f796a97d5ff2d317fdc0ffae6a184f695ee9e37a418d10cb2e24db505936eb2",
+          "evidence/saved-resource-checks.json": "5eb889298f79e441e76c3390afe9c99102dfffebf63449ae55d6a8b7c5f556d0"
+        },
+        "superseded_attempt": {
+          "status": "software-checked/superseded-after-border-shape-clarification",
+          "geometry_sha256": "4b0c7313fd3c7ece31aa43fca820cde4bb6ced03e95d4d1ba4604a230d800d51",
+          "snapshot_directory": "evidence/design-history/straight-cap-attempt",
+          "index_sha256": "981c7c5aaf35f7d00e3ed3b5cd6f7f5b741f46bd8836ee5a791af5806325bdcb"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-modular-south-junction",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/geometry.json",
+        "before_sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd",
+        "after_sha256": "d0c24a85209a56f0ac3e924b3f66e9ee291fd8362e65726c975b1033eaf3066a",
+        "preserved_geometry_semantic_sha256": "01764d043bcf43d4b6630748e9a132ebed4ebc568f77a704fdd5da3fe7f0a6bb",
+        "only_added_geometry_property": "junction_wedge_alignment",
+        "junction_wedge_alignment": {
+          "purpose": "Close the two visible triangular concrete gaps beside the recessed northern paired end, following the original branch ballast boundaries; preserve existing models, tracks, routes, supports, and identities.",
+          "left_branch": "symmetric_fan_left",
+          "right_branch": "symmetric_fan_right",
+          "branch_inner_half_width_m": 2.6,
+          "paired_centre_east_m": 16.0,
+          "recessed_end_local_south_m": 24.0,
+          "minimum_train_half_width_m": 2.5
+        },
+        "standalone_evidence": {
+          "evidence/junction-wedge-alignment.json": "a946a2856ff8fab56987eb1c2644979ae6385bfa6d59c07c8faaf0feb17d9511",
+          "evidence/saved-resource-checks.json": "da4237702a6c65347939a91bd98ceb248750b8bc7bd40cf335e2c010189c31fd"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd",
+          "snapshot_directory": "evidence/design-history/missing-junction-wedges",
+          "index_sha256": "38a1af1432bdb54e78095d9d1227738b757662863475f4e2a6b0f207166823a5"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-l2-paired-fan-compact-join",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-fan-compact-join/geometry.json",
+        "before_sha256": "d034aa453bfa95fb3a537736d12a40d0be427cbe59baffebf8f73424c7f7a090",
+        "after_sha256": "d5366120c1f9c38b8b1eccc7fc8927dabb6e28d8ba1dd08427ed4e0b1c74aa0b",
+        "preserved_geometry_semantic_sha256": "a021fb24b76304ca70e28478323e822913b15b9bc12f462947b1ffc0a874df2e",
+        "only_added_geometry_property": "central_parapet_alignment",
+        "central_parapet_alignment": {
+          "purpose": "Close the missing central raised grey triangle between the existing tapered ballast outlines, continuing both inside faces into the retained separate fork walls.",
+          "reflection_axis_source_east_m": 96.0,
+          "inside_sides": {
+            "native_y_left": 1,
+            "native_y_right": -1
+          },
+          "minimum_train_half_width_m": 2.5,
+          "preservation": "Keep all source route samples, taper settings, rails, ballast floor, undersides, supports, tile ownership, and resource identities unchanged."
+        },
+        "standalone_evidence": {
+          "evidence/central-parapet-alignment.json": "80638f599c9dc3ef5ba0ee5df75029d147a5615088acb1431938000e7e02f606",
+          "evidence/saved-resource-checks.json": "e69c8a6a2fb71d9fedb483d31927b2b9ebe6a1d6c7055861504aedad333c20cb"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "d034aa453bfa95fb3a537736d12a40d0be427cbe59baffebf8f73424c7f7a090",
+          "snapshot_directory": "evidence/design-history/before-central-parapet-repair",
+          "index_sha256": "49b3578b3c1a041eaf1a6ebcacf0b771380312fac263b2d4bafc1af4f4d2cdbb"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-l2-short-opposed-merge-core",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json",
+        "before_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+        "after_sha256": "3ad00c99b0d3eccf69c5113d426e3680f2d4a03bd9ecb27d5e79542b00e228c1",
+        "preserved_geometry_semantic_sha256": "50cace339297dad171b9b03dfc94e8dc97b9e4f19221239d4fb2462536542cea",
+        "only_added_geometry_property": "opposed_parapet_alignment",
+        "opposed_parapet_alignment": {
+          "purpose": "Continue both raised mainline borders along the existing branch ballast outlines into their retained curved wings, and close the separate opposite strips without changing tracks, supports, PATHs, or prior source contexts.",
+          "mainline": "native_east_west_main",
+          "north_branch": "native_y_left",
+          "south_branch": "direct_south_east_merge",
+          "source_east_offset_m": 32.0,
+          "source_south_offset_m": 80.0,
+          "branch_inner_half_width_m": 2.6,
+          "mainline_half_width_m": 7.5,
+          "north_selection_limit_local_east_m": 32.0,
+          "south_selection_limit_local_east_m": 16.0,
+          "north_opposite_cap_local_east_m": 43.76798391999034,
+          "south_opposite_cap_local_east_m": 4.223921717723081,
+          "minimum_train_half_width_m": 2.5,
+          "raw_west_cell_sha256": "eab267409283bcb38d6cd9adff9ad364100e2e06fdde8764fa2ea42695412605"
+        },
+        "standalone_evidence": {
+          "evidence/parapet-alignment.json": "12fbe3436f8aa129d791e91adb0ca5b6830287f465e15e7d90744cb512dc51f1",
+          "evidence/saved-resource-checks.json": "1bffd0fc02b6d8a64b19f0b35aacb71e4e6e09903d1631c109341510d7056718"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "8bf5a7e8439a29017cc2d556695552ae98d0be9eaf4e550e6505a9ef30c6f7f8",
+          "snapshot_directory": "evidence/design-history/before-ballast-border-repair",
+          "index_sha256": "0ab9571c36279cce131e14f567202296e3dc79d6277cfccbaecf6116b3b27a76"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/geometry.json",
+        "before_sha256": "4ab1cb1c939a896800373840832be4dd02dc6b199a41f7831e18ee65cb3f1ca4",
+        "after_sha256": "cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c",
+        "preserved_geometry_semantic_sha256": "871c42775ee4315b47cfb7f97059a8fd3c35623f1b7525f1e0c0c5d338bed5b5",
+        "only_changed_geometry_property": "south_parapet_alignment",
+        "south_parapet_alignment": {
+          "purpose": "Preserve the accepted left ballast-following border and continue the right raised border into its existing curved wing along the branch inside outline; retain rails, PATHs, supports, and original outside contours.",
+          "left_branch": "direct_west_south_curve",
+          "left_inner_half_width_m": 2.6,
+          "left_selection_limit_local_east_m": 32.0,
+          "source_east_offset_m": 16.0,
+          "left_reference": "Follow the southern branch inside parapet at 2.6 m from its centreline, from its intersection with the mainline inside face through the retained curved wing.",
+          "right_reference": "Continue the right concrete top and inside face along the branch inside outline (+2.6 m cross offset), joining its existing curved grey wing at the mainline outside edge.",
+          "minimum_train_half_width_m": 2.5,
+          "right_inner_join_local_east_m": 40.361872522872716,
+          "right_outer_join_local_east_m": 43.669002829692054,
+          "right_inner_half_width_m": 2.6,
+          "right_join": "continuous_branch_inside_outline"
+        },
+        "standalone_evidence": {
+          "evidence/parapet-alignment.json": "334d9a98246e19ed9678716a8992343a9a466b5331a560141665689843de3ccd",
+          "evidence/saved-resource-checks.json": "e4ba0e67558e74340272361a34fb8185fbdc76dd961514baa1bb238c793aaf18"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "4ab1cb1c939a896800373840832be4dd02dc6b199a41f7831e18ee65cb3f1ca4",
+          "snapshot_directory": "evidence/design-history/before-right-border-extension",
+          "index_sha256": "c00d46028afafa7ba2cc5f4b1a1a0042f729aee6ddaf8a7c6708ed1bae1607f7"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-modular-south-junction",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/geometry.json",
+        "before_sha256": "d0c24a85209a56f0ac3e924b3f66e9ee291fd8362e65726c975b1033eaf3066a",
+        "after_sha256": "fda2275ea4013c2e9333e3904fc8e5f96de483ce12982c7d45e2fc4d3485ef5e",
+        "preserved_geometry_semantic_sha256": "081cb9770cf3d44f82947db73d46dc83feb65078989168614172184c54f20b35",
+        "only_added_geometry_property": "stem_parapet_alignment",
+        "stem_parapet_alignment": {
+          "purpose": "Keep both southern paired borders straight until the first branch ballast outline, then follow that outline through the adjacent northern row; preserve the accepted recessed wedges and every original face, rail, route, support, and identity.",
+          "left_branch": "symmetric_fan_left",
+          "right_branch": "symmetric_fan_right",
+          "branch_inner_half_width_m": 2.6,
+          "paired_centre_east_m": 16.0,
+          "stem_scope_local_south_m": [
+            48.0,
+            88.0
+          ],
+          "minimum_train_half_width_m": 2.5
+        },
+        "standalone_evidence": {
+          "evidence/stem-parapet-alignment.json": "9cb68594306b1dee86bfc534562a7a390c9c06fdbc0f72cb9f1d51f9228fdf5e",
+          "evidence/saved-resource-checks.json": "2540c36e65f98f10f876a266abf3c8ba85e5f21c8e081bd8a560b7ea335e989f"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "d0c24a85209a56f0ac3e924b3f66e9ee291fd8362e65726c975b1033eaf3066a",
+          "snapshot_directory": "evidence/design-history/before-stem-border-repair",
+          "index_sha256": "cf8393df1f0aa2f5a4b9d8f4c3f8030607788b7cc97ad8828248371e0c1395f7"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      },
+      {
+        "piece_id": "hsr-component-l2-short-opposed-merge-core",
+        "source_file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json",
+        "before_sha256": "3ad00c99b0d3eccf69c5113d426e3680f2d4a03bd9ecb27d5e79542b00e228c1",
+        "after_sha256": "61083be80c1a6d067e4bd05e6434d5eb110b4485bd77452cfa671cad0cb9f6e9",
+        "preserved_geometry_semantic_sha256": "50cace339297dad171b9b03dfc94e8dc97b9e4f19221239d4fb2462536542cea",
+        "only_changed_geometry_property": "opposed_parapet_alignment",
+        "opposed_parapet_alignment": {
+          "purpose": "Preserve both accepted continuous inner banks and join the separate outer strips in X0 and X3 along their own native branch inside outlines into the retained curved wings; retain all tracks, floors, supports, PATHs, and prior collar behavior.",
+          "mainline": "native_east_west_main",
+          "north_branch": "native_y_left",
+          "south_branch": "direct_south_east_merge",
+          "source_east_offset_m": 32.0,
+          "source_south_offset_m": 80.0,
+          "branch_inner_half_width_m": 2.6,
+          "mainline_half_width_m": 7.5,
+          "north_selection_limit_local_east_m": 32.0,
+          "south_selection_limit_local_east_m": 16.0,
+          "minimum_train_half_width_m": 2.5,
+          "raw_west_cell_sha256": "6449b8842ae2d90d39235960aa1b8a59e13fa6c7883f68a34f6e17888845d4e0",
+          "outer_join_mode": "continuous_branch_inside_outline",
+          "north_opposite_inner_join_local_east_m": 40.361872522872716,
+          "north_opposite_outer_join_local_east_m": 43.65474068840744,
+          "south_opposite_inner_join_local_east_m": 7.638127477127277,
+          "south_opposite_outer_join_local_east_m": 4.330997170307948
+        },
+        "standalone_evidence": {
+          "evidence/parapet-alignment.json": "7267688f247384e1b6e6d6f0b61f585895886a760af30686a812d7ada20f97fa",
+          "evidence/saved-resource-checks.json": "db9ea281fce0c39c22c3e9cd3bcfd20b43ae2d7fb03b5411438013f65419db1e"
+        },
+        "before_piece_snapshot": {
+          "geometry_sha256": "3ad00c99b0d3eccf69c5113d426e3680f2d4a03bd9ecb27d5e79542b00e228c1",
+          "snapshot_directory": "evidence/design-history/before-outer-border-joins",
+          "index_sha256": "f9aeaf66ef064e8e3f5d2e32fc84904002ca71649b3ca44a270e508930abe0d1"
+        },
+        "status": "standalone-verified/assembly-integration-deferred",
+        "assembly_resource_pins_refreshed": false,
+        "assembly_render_refreshed": false
+      }
+    ],
+    "current_assembly_resource_audit_claimed_by_this_ledger_check": false,
     "deleted_predecessor_resources_required": false
   },
   "geometry": {
     "redesign_preservation": {
-      "allowed_changed_world_cells": 24,
-      "current_reworked_world_cells": 20,
-      "removed_structural_world_cells": [
-        [
-          64.0,
-          16.0
-        ],
-        [
-          96.0,
-          48.0
-        ],
-        [
-          128.0,
-          48.0
-        ],
-        [
-          160.0,
-          16.0
-        ]
-      ],
-      "unchanged_world_cells_preserved_byte_for_byte": 85,
-      "unchanged_type_archives_preserved_byte_for_byte": 11,
-      "baseline_commit": "086d33bc276a21fe31693456d490f7a5b44725d9",
-      "obsolete_resources_required": false
-    },
-    "complete_actual_assembly_corridors": {
-      "full_width_bed_union_segments_checked": 4688,
-      "bed_union_width_m": 5.0,
-      "maximum_uncovered_bed_area_m2": 1.4606181053977707e-05,
-      "height_aware_bed_union_checked": true,
-      "owner_clipped_corridor_fragments_checked": 4688,
-      "corridor_clipped_to_literal_ownership": false,
-      "external_custom_collar_requires_unclipped_actual_assembly_check": false,
-      "visible_native_rail_triangles_matched_to_paths": 106677,
-      "visible_native_rail_centre_segments_matched_to_paths": 38584,
-      "unused_visible_native_rails": false,
-      "complete_train_clearance_segments_checked": 4688,
-      "actual_module_instances_checked": 26,
-      "actual_neighbour_models_used": 105,
-      "strict_unclipped_actual_path_audit": true
-    },
-    "merge_west_tail_extraction": {
       "status": "passed",
-      "baseline_resource_archives_required": false,
-      "manual_or_game_observations_added": 0,
-      "occupied_world_cells_preserved": 105,
-      "unchanged_world_cells_all_resources_exact": 103,
-      "retained_world_path_bytes_identical": 104,
-      "model_shadow_change_world_cells_en_m": [
+      "allowed_model_piece_ids": [
+        "hsr-component-l2-paired-fan-compact-core",
+        "hsr-component-l2-paired-straight-recessed-web",
+        "hsr-component-l2-short-mainline-diverge-core",
+        "hsr-component-l2-short-opposed-merge-core",
+        "hsr-component-modular-south-junction"
+      ],
+      "allowed_changed_placements": [
+        "P01",
+        "P04",
+        "P06",
+        "P06A",
+        "P06B",
+        "P07",
+        "P08"
+      ],
+      "allowed_model_world_cells_east_north_m": [
         [
-          32.0,
+          -96.0,
           0.0
+        ],
+        [
+          -80.0,
+          0.0
+        ],
+        [
+          -64.0,
+          0.0
+        ],
+        [
+          -48.0,
+          0.0
+        ],
+        [
+          -16.0,
+          -192.0
+        ],
+        [
+          -16.0,
+          -176.0
+        ],
+        [
+          -16.0,
+          -160.0
+        ],
+        [
+          -16.0,
+          -144.0
+        ],
+        [
+          -16.0,
+          -128.0
+        ],
+        [
+          0.0,
+          -208.0
+        ],
+        [
+          0.0,
+          -192.0
+        ],
+        [
+          0.0,
+          -176.0
+        ],
+        [
+          0.0,
+          -160.0
+        ],
+        [
+          16.0,
+          -192.0
+        ],
+        [
+          16.0,
+          -176.0
+        ],
+        [
+          16.0,
+          -160.0
+        ],
+        [
+          16.0,
+          -144.0
+        ],
+        [
+          16.0,
+          -128.0
         ],
         [
           48.0,
           0.0
+        ],
+        [
+          64.0,
+          0.0
+        ],
+        [
+          80.0,
+          0.0
+        ],
+        [
+          80.0,
+          16.0
+        ],
+        [
+          96.0,
+          0.0
+        ],
+        [
+          96.0,
+          16.0
+        ],
+        [
+          96.0,
+          32.0
+        ],
+        [
+          112.0,
+          16.0
+        ],
+        [
+          112.0,
+          32.0
+        ],
+        [
+          112.0,
+          48.0
+        ],
+        [
+          112.0,
+          64.0
+        ],
+        [
+          112.0,
+          80.0
+        ],
+        [
+          128.0,
+          0.0
+        ],
+        [
+          128.0,
+          16.0
+        ],
+        [
+          128.0,
+          32.0
+        ],
+        [
+          144.0,
+          0.0
+        ],
+        [
+          144.0,
+          16.0
+        ],
+        [
+          160.0,
+          0.0
+        ],
+        [
+          176.0,
+          0.0
         ]
       ],
-      "replacement_decoded_routes_identical": 2,
-      "every_world_path_geometry_preserved": true,
-      "unchanged_complete_archives_exact": 12,
-      "retained_merge_tile_resource_ids_unchanged": 4,
-      "complete_journey_counts_and_point_hashes_identical": 6,
+      "unchanged_complete_archives": 9,
+      "unchanged_world_cells": 68,
+      "unchanged_world_path_sets": 103,
+      "exact_recessed_web_straight_path_substitutions": 2,
+      "unchanged_world_shadow_sets": 102,
+      "accepted_wedge_shadow_transition": {
+        "piece_id": "hsr-component-modular-south-junction",
+        "accepted_wedge_geometry_sha256": "d0c24a85209a56f0ac3e924b3f66e9ee291fd8362e65726c975b1033eaf3066a",
+        "accepted_wedge_dat_sha256": "9515ce33d06dbfbede515bb7d0c0a9224140b30b3f5ac97c696d9a2bf7c43a2b",
+        "current_approved_dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+        "original_wedge_comparison_sha256": "a946a2856ff8fab56987eb1c2644979ae6385bfa6d59c07c8faaf0feb17d9511",
+        "resources": [
+          {
+            "local_cell": [
+              0,
+              2
+            ],
+            "zoom": 0,
+            "resource_id": "7ab50e44-2bc2759a-7f58c020",
+            "before_sha256": "d3c6b3ac823ff1654d422a9d14da86a51a01ec34b78039ed3d45db1eaba779e8",
+            "after_sha256": "f6cb95bee4e184d9fcf4be8b93465e0a4e34381945c5b5aa0429c5a4f5ff9458"
+          },
+          {
+            "local_cell": [
+              0,
+              2
+            ],
+            "zoom": 1,
+            "resource_id": "7ab50e44-2bc2759a-7f58c021",
+            "before_sha256": "6f131fd4e602dd9fc15e204a89c51d15708291a897ea80e941f7a16e1e73ea03",
+            "after_sha256": "ea440da7cd408340ceb20a15aee9ea2ad13c0cfccaa5c22a76d3b9334906cd90"
+          },
+          {
+            "local_cell": [
+              0,
+              2
+            ],
+            "zoom": 2,
+            "resource_id": "7ab50e44-2bc2759a-7f58c022",
+            "before_sha256": "338197ea17732a1ab6ff931440a6721c8aacfe2dae6c8db95cd9d79cf42588c2",
+            "after_sha256": "f25e6d85f92aef1efcfd5e72dc3326060b63d4d6b7c095d8b3073bb087d6ec29"
+          },
+          {
+            "local_cell": [
+              0,
+              2
+            ],
+            "zoom": 3,
+            "resource_id": "7ab50e44-2bc2759a-7f58c023",
+            "before_sha256": "98f9f93de4a29175f8446e0cf27cf01f11226496c40fec133eade23670e8780f",
+            "after_sha256": "d12b790d8f47d9ae10a59468054394b79d01b7dbdf6ef74ebb06fbd48dc04f68"
+          },
+          {
+            "local_cell": [
+              0,
+              2
+            ],
+            "zoom": 4,
+            "resource_id": "7ab50e44-2bc2759a-7f58c024",
+            "before_sha256": "0c5ca68aa70f001eb050efdc49d0c237342b0c361bd0a39c112a831485a1158d",
+            "after_sha256": "63d2b36e4d519d1b824e6f4aff5fb740a1b0a6ce0da2f9c476963d3c916e0127"
+          },
+          {
+            "local_cell": [
+              1,
+              2
+            ],
+            "zoom": 0,
+            "resource_id": "7ab50e44-2bc2759a-7f58c120",
+            "before_sha256": "0d5cfe575e9fded2408b3caec5ef531e1bc116b23d07396c1ac68150e0602b79",
+            "after_sha256": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2"
+          },
+          {
+            "local_cell": [
+              1,
+              2
+            ],
+            "zoom": 1,
+            "resource_id": "7ab50e44-2bc2759a-7f58c121",
+            "before_sha256": "47638667e9907b567a30d914c390f37edd8fae601f0c247d0e284c6a1b00a12f",
+            "after_sha256": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409"
+          },
+          {
+            "local_cell": [
+              1,
+              2
+            ],
+            "zoom": 2,
+            "resource_id": "7ab50e44-2bc2759a-7f58c122",
+            "before_sha256": "d3fe50cacab77b419c59a15e194582b35e2ca10a74136d721d73e98d0be935d8",
+            "after_sha256": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd"
+          },
+          {
+            "local_cell": [
+              1,
+              2
+            ],
+            "zoom": 3,
+            "resource_id": "7ab50e44-2bc2759a-7f58c123",
+            "before_sha256": "4b7dd6ba0ec14aeb9242eb5b30da0e720d443fbdb4e5930dd7472f7635d9ba8c",
+            "after_sha256": "f22537853e4049367871bedd85d3a62cd1112cb0d960241d915dc61fbddf08ab"
+          },
+          {
+            "local_cell": [
+              1,
+              2
+            ],
+            "zoom": 4,
+            "resource_id": "7ab50e44-2bc2759a-7f58c124",
+            "before_sha256": "33f2f60a70dc39d256c3db6d04a25b12b96cb6a2b1b1c9aa944b83044bc8be72",
+            "after_sha256": "a69fb0276cf8d1284cf6594ecbed6dec30c83926e95b22dcd78647a943862b73"
+          },
+          {
+            "local_cell": [
+              2,
+              2
+            ],
+            "zoom": 0,
+            "resource_id": "7ab50e44-2bc2759a-7f58c220",
+            "before_sha256": "fca62d0dc9a2061c1e59aab5d149a98593989b26dd785afedd1e578e2008ca9a",
+            "after_sha256": "216a5a926c141e6a0788a061c31f085ec12230a833cb94db68bf02b6cf892ac9"
+          },
+          {
+            "local_cell": [
+              2,
+              2
+            ],
+            "zoom": 1,
+            "resource_id": "7ab50e44-2bc2759a-7f58c221",
+            "before_sha256": "400756b43e41fbd2c63f8c2d3c39ddced3ec82c37ff03ce8a3fd6995feb2415b",
+            "after_sha256": "f90e7c0a5531b4aecd6ac9afd4221eb11fc5f2c4833de83c57310cd8ff2b5826"
+          },
+          {
+            "local_cell": [
+              2,
+              2
+            ],
+            "zoom": 2,
+            "resource_id": "7ab50e44-2bc2759a-7f58c222",
+            "before_sha256": "0664237c3267e0cee2909a383ddff572df86421f6d5e1463a5bac47a06235e83",
+            "after_sha256": "54d2f1753cb0b039f9529f8f8fb3a8059683bdf5186312dca83eae36e31288ad"
+          },
+          {
+            "local_cell": [
+              2,
+              2
+            ],
+            "zoom": 3,
+            "resource_id": "7ab50e44-2bc2759a-7f58c223",
+            "before_sha256": "287c2d82d979b67d48a019825e1cb47d7815157a84a4fb4e9678b502d3af01d2",
+            "after_sha256": "a7d7b0e34ab05946116a9cd33c73b1b0b3d195aafb0d3ffdbefe6aa1db4a9dc4"
+          },
+          {
+            "local_cell": [
+              2,
+              2
+            ],
+            "zoom": 4,
+            "resource_id": "7ab50e44-2bc2759a-7f58c224",
+            "before_sha256": "b15d62a9a4701f21534677e4ec178d8becfed519fce3774643fe4c6c28a90b5f",
+            "after_sha256": "9fd2999a9f6f4fd1f2672ed8d95bb7b0b61ef87ecce472a77a4125d146a0b1ab"
+          }
+        ]
+      },
+      "complete_directed_journey_geometries_preserved": 6,
       "support_positions_preserved": 74,
-      "support_positions_sha256": "76d116a6f8cb5d6e48ab681dd679eb8d67bb137c2badb72943290d0860b82d1d",
+      "retained_piece_and_resource_identities_preserved": true,
+      "new_core_identity": {
+        "id": "hsr-component-l2-paired-fan-compact-core",
+        "recipe": "hsr_component_l2_paired_fan_compact_core",
+        "puzzle_id": "f7a8",
+        "menu": {
+          "id": "6a47f7a8",
+          "order": "7012f7a8",
+          "style": "hsr-component-l2-paired-fan-compact-core"
+        },
+        "effect_name": "preview_scp_f7a8________001",
+        "preview_id": "7f505ff5",
+        "tile_ids": [
+          "7f505200",
+          "7f505110",
+          "7f505210",
+          "7f505310",
+          "7f505020",
+          "7f505120",
+          "7f505220",
+          "7f505320",
+          "7f505420"
+        ],
+        "cells": [
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "footprint": [
+          5,
+          3
+        ],
+        "orientation_count": 8,
+        "orientation_policy": "rotate-only-preserve-direction",
+        "ports": {
+          "N": {
+            "in": [
+              30.0,
+              8.0,
+              15.5
+            ],
+            "out": [
+              34.0,
+              8.0,
+              15.5
+            ]
+          },
+          "W": {
+            "out": [
+              6.3985185522168635,
+              -40.0,
+              15.5
+            ]
+          },
+          "E": {
+            "in": [
+              57.60148144778313,
+              -40.0,
+              15.5
+            ]
+          }
+        },
+        "movements": [
+          [
+            "N",
+            "W"
+          ],
+          [
+            "E",
+            "N"
+          ]
+        ],
+        "component": {
+          "kind": "partition_component",
+          "support_centers": [
+            [
+              32.0,
+              0.0
+            ],
+            [
+              32.0,
+              -16.0
+            ],
+            [
+              16.0,
+              -32.0
+            ],
+            [
+              48.0,
+              -32.0
+            ]
+          ],
+          "support_foundation_width": 1.3,
+          "support_min_spacing": 16.0,
+          "custom_curved_interfaces": true
+        },
+        "structural_cells": [
+          [
+            1,
+            1
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "shadow_mappings": [
+          {
+            "tile": "7f505200",
+            "source": "7f505200",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505110",
+            "source": "7f505110",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505210",
+            "source": "7f505210",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505310",
+            "source": "7f505310",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505020",
+            "source": "7f505020",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505120",
+            "source": "7f505120",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505220",
+            "source": "7f505220",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505320",
+            "source": "7f505320",
+            "rotation": 0
+          },
+          {
+            "tile": "7f505420",
+            "source": "7f505420",
+            "rotation": 0
+          }
+        ],
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-fan-compact-core.dat"
+      },
+      "new_recessed_web_straight_identity": {
+        "id": "hsr-component-l2-paired-straight-recessed-web",
+        "recipe": "hsr_component_l2_paired_straight_recessed_web",
+        "puzzle_id": "f829",
+        "menu": {
+          "id": "6a47f829",
+          "order": "7012f829",
+          "style": "hsr-component-l2-paired-straight-recessed-web"
+        },
+        "effect_name": "preview_scp_f829________001",
+        "preview_id": "7f586ff5",
+        "tile_ids": [
+          "7f586000"
+        ],
+        "cells": [
+          [
+            0,
+            0
+          ]
+        ],
+        "footprint": [
+          1,
+          1
+        ],
+        "orientation_count": 8,
+        "orientation_policy": "rotate-only-preserve-direction",
+        "ports": {
+          "N": {
+            "in": [
+              -2.0,
+              8.0,
+              15.5
+            ],
+            "out": [
+              2.0,
+              8.0,
+              15.5
+            ]
+          },
+          "S": {
+            "in": [
+              2.0,
+              -8.0,
+              15.5
+            ],
+            "out": [
+              -2.0,
+              -8.0,
+              15.5
+            ]
+          }
+        },
+        "movements": [
+          [
+            "N",
+            "S"
+          ],
+          [
+            "S",
+            "N"
+          ]
+        ],
+        "component": {
+          "custom_curved_interfaces": false,
+          "kind": "partition_component",
+          "support_centers": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "support_foundation_width": 1.3,
+          "support_min_spacing": 16.0
+        },
+        "structural_cells": [],
+        "shadow_mappings": [
+          {
+            "rotation": 0,
+            "source": "7f586000",
+            "tile": "7f586000"
+          }
+        ],
+        "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-straight-recessed-web.dat"
+      },
+      "fan_core_atomization_decision_sha256": "4a8ed74719cad1fa58c4cebc545ecb9be20d97fca68fe6ad5f4afeebccffb181",
+      "fan_atomization_evidence": {
+        "evidence/fan-atomization-review.json": "4a8ed74719cad1fa58c4cebc545ecb9be20d97fca68fe6ad5f4afeebccffb181",
+        "evidence/fan-atomization-audit.py": "9137ed3e99662273e6d0601b8dd5302542b057df6005acf482c3b67cf0c212bc",
+        "previews/fan-atomization-review.png": "6c1e5c8ce2525ddaba604557352b8111deee1529206774c19bbb332850a8bab5",
+        "previews/fan-atomization-review.svg": "bf807e35f8b69db49aee956edb1493364dc24fe9eb44c0697b12d42b92f247d3",
+        "evidence/fan-core-parts-build.json": "8f233c16164fc8055014d173181d8cd829ffb3fb8f69962885eba62c9b560fee"
+      },
+      "extracted_piece_standalone_evidence": {
+        "hsr-component-l2-paired-fan-compact-core": {
+          "evidence/fan-core-extraction.json": "d3f422393ddbab0972115bfef16e97996c9a30ff582c17767cc519e2252c1868"
+        },
+        "hsr-component-l2-paired-straight-recessed-web": {
+          "evidence/straight-extraction.json": "9320f6a0ae56efd8046d39069f45f8fcb5431ab183ff22acfb22d687934b55df"
+        }
+      },
+      "profile_scope": "Preserve the accepted recessed structural web and original northern transition; canonical open straight excludes the original northern end cap only as explicitly recorded in the atomization decision.",
+      "new_core_retained_tile_payload_sha256": "e3b8be70dc59ffa82021710110dc5017bd74ce3268197f2ae051e4a87d27005b",
+      "fan_core_rebase_old_cell_offset": [
+        1,
+        2
+      ],
+      "full_fan_retained_in_library_unchanged": true,
+      "old_full_fan_approved_archive_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797",
+      "independently_approved_current_archives": {
+        "hsr-component-l2-short-mainline-diverge-core": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
+        "hsr-component-l2-short-opposed-merge-core": "14b9c18738ef1daa652f5834f2d4bf78a824d0894f974574288cab5bd264be4d",
+        "hsr-component-l2-shortened-departure-curve": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+        "hsr-component-l2-shortened-return-curve": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+        "hsr-component-lower-oneway-straight": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+        "hsr-component-lower-paired-straight": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+        "hsr-component-modular-crossing-core": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+        "hsr-component-modular-paired-climb": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "hsr-component-modular-south-junction": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+        "hsr-component-tight-paired-curve90-l4-to-mid": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+        "hsr-component-tight-paired-curve90-mid-to-l2": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+        "hsr-component-upper-paired-straight": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+        "hsr-component-l2-paired-fan-compact-core": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+        "hsr-component-l2-paired-straight-recessed-web": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375"
+      },
+      "actual_model_changed_world_cells_east_north_m": [
+        [
+          -96.0,
+          0.0
+        ],
+        [
+          -80.0,
+          0.0
+        ],
+        [
+          -64.0,
+          0.0
+        ],
+        [
+          -48.0,
+          0.0
+        ],
+        [
+          -16.0,
+          -160.0
+        ],
+        [
+          -16.0,
+          -144.0
+        ],
+        [
+          0.0,
+          -208.0
+        ],
+        [
+          0.0,
+          -192.0
+        ],
+        [
+          0.0,
+          -176.0
+        ],
+        [
+          0.0,
+          -160.0
+        ],
+        [
+          16.0,
+          -160.0
+        ],
+        [
+          16.0,
+          -144.0
+        ],
+        [
+          48.0,
+          0.0
+        ],
+        [
+          64.0,
+          0.0
+        ],
+        [
+          80.0,
+          0.0
+        ],
+        [
+          96.0,
+          0.0
+        ],
+        [
+          112.0,
+          32.0
+        ],
+        [
+          112.0,
+          80.0
+        ],
+        [
+          128.0,
+          0.0
+        ],
+        [
+          144.0,
+          0.0
+        ],
+        [
+          160.0,
+          0.0
+        ],
+        [
+          176.0,
+          0.0
+        ]
+      ],
+      "all_fourteen_archives_match_independent_prior_approval": true,
+      "retained_nine_core_tiles_exact_at_all_five_zooms": true,
+      "retained_world_PATH_and_shadow_payloads_preserved_except_scoped_transitions": true
+    },
+    "complete_actual_assembly_corridors": {
+      "full_width_bed_union_segments_checked": 4686,
+      "bed_union_width_m": 5.0,
+      "maximum_uncovered_bed_area_m2": 1.4606181053977707e-05,
+      "height_aware_bed_union_checked": true,
+      "owner_clipped_corridor_fragments_checked": 4686,
+      "corridor_clipped_to_literal_ownership": false,
+      "external_custom_collar_requires_unclipped_actual_assembly_check": false,
+      "visible_native_rail_triangles_matched_to_paths": 106667,
+      "visible_native_rail_centre_segments_matched_to_paths": 38574,
+      "unused_visible_native_rails": false,
+      "complete_train_clearance_segments_checked": 4686,
+      "actual_module_instances_checked": 28,
+      "actual_neighbour_models_used": 105,
+      "strict_unclipped_actual_path_audit": true
+    },
+    "current_merge_join_and_preserved_routes": {
       "actual_native_joining_sections_checked": 6,
       "native_profile_tolerance_m": 5e-05,
-      "seam_model_zooms_pinned_to_bounded_edit": 5,
-      "seam_model_sha256": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-      "normalization_collar_world_east_m": [
-        40.0,
-        42.5
-      ],
-      "maximum_authorized_parapet_change_m": 0.0034524,
+      "complete_current_models_independently_pinned": true,
       "collar_section_stations_checked": 29,
       "collar_horizontal_sections_checked": 87,
       "collar_gap_tolerance_m": 2e-06,
-      "collar_profile_position_tolerance_m": 5e-05
+      "collar_profile_position_tolerance_m": 5e-05,
+      "complete_directed_journey_geometries_preserved": 6,
+      "normalization": "Only exact collinear intermediate points; no angular or positional tolerance.",
+      "complete_journey_geometry_fingerprints": {
+        "E_in>S_out": {
+          "coalesced_points": 1484,
+          "coalesced_points_sha256": "b385b30465cca66aed6b43d68cb6dc29192dd64c82f57af74bed3befe4027640"
+        },
+        "E_in>W_out": {
+          "coalesced_points": 2,
+          "coalesced_points_sha256": "af3c934ce6cfbcf2ca860a2f6aa86d684e94bdc400f7e418e9a7d4f0d2d48adc"
+        },
+        "S_in>E_out": {
+          "coalesced_points": 526,
+          "coalesced_points_sha256": "feeacb3ad53e4de1f0e990ea7adcef7b958fb751d71334e815f4ce80fe27abb6"
+        },
+        "S_in>W_out": {
+          "coalesced_points": 1484,
+          "coalesced_points_sha256": "55a3cb46293bb9649918d768f740c6a4a45586cf3d6e08db74982a1335b6f9e0"
+        },
+        "W_in>E_out": {
+          "coalesced_points": 2,
+          "coalesced_points_sha256": "c7a7c143ae90dd4a395eb0cb4827f0927bb21b2163875284d621a716b144e4d7"
+        },
+        "W_in>S_out": {
+          "coalesced_points": 526,
+          "coalesced_points_sha256": "75031f110c3f4cd0a84bc0681f04d40b22701b5603f2aafdb1cd4350cb4248ee"
+        }
+      },
+      "support_positions_preserved": 74,
+      "support_positions_sha256": "76d116a6f8cb5d6e48ab681dd679eb8d67bb137c2badb72943290d0860b82d1d",
+      "historical_extraction_record_rewritten": false
     },
     "empty_structural_cells": {
       "removed_cells_proved_empty": 4,
-      "all_five_actual_native_model_zooms_checked": true
+      "actual_saved_core_model_resources_checked": 46,
+      "all_five_actual_native_model_zooms_checked": true,
+      "core_origin_east_north_m": [
+        80.0,
+        48.0
+      ]
     },
     "occupied_cells": 105,
     "strict_byte_identity_cells": 105,
-    "actual_tile_triangles": 709002,
+    "actual_tile_triangles": 715251,
     "tile_resource_fingerprints_checked": 1155,
     "exact_current_ownership_and_rotations_checked": true,
-    "original_standard_straight_replacements": 4
+    "original_standard_straight_replacements": 4,
+    "current_border_piece_integration": {
+      "record_file": "border-piece-integration.json",
+      "record_sha256": "d3108f171e2f8ff065a98db4ab7e0c974360ceefb7ddf0fe4d39677cf8f599a7",
+      "status": "passed",
+      "historical_standalone_rows_rewritten": false
+    }
   },
   "encoded_paths": {
     "encoded_fragments": 166,
@@ -268,7 +1246,7 @@
             "S_out"
           ],
           "baseline_points_sha256": "a2b2cb008e64c8625d0633fa73a231849dd529c9fbb04a7076dd80fcf3bab806",
-          "current_points_sha256": "04410f006db9b151450f7f3b20d0c7869eec5abfcce4bd2c0b79605be8d9e1b3",
+          "current_points_sha256": "e9085a202978cfd4b1470b354565fbd8feaedb4647f1b5a9a0a14b7957d608a2",
           "lower_bound_m": 5.0052087718989124,
           "upper_bound_m": 5.005308654952972,
           "before_to_after": {
@@ -294,7 +1272,7 @@
             "lower_bound_m": 5.0052087718989124,
             "upper_bound_m": 5.005308654952972,
             "sampled_points": 3758,
-            "adaptive_subdivisions": 1967,
+            "adaptive_subdivisions": 1968,
             "lower_bound_witness": {
               "source_point_east_north_height_m": [
                 120.513506,
@@ -316,7 +1294,7 @@
             "W_out"
           ],
           "baseline_points_sha256": "a74b3743bc61b2f429ab2b91866c267f9d5375f02727309fca2958a5089a0a58",
-          "current_points_sha256": "a997176c47529fe61e6f1b255ac6dd33fafd99eac265e584cec4711ec3400219",
+          "current_points_sha256": "7b34960478f77453f89b990329c087b3f8706d177c41be4c415a804aae80f1d1",
           "lower_bound_m": 5.0052087718989124,
           "upper_bound_m": 5.005308654952972,
           "before_to_after": {
@@ -342,7 +1320,7 @@
             "lower_bound_m": 5.0052087718989124,
             "upper_bound_m": 5.005308654952972,
             "sampled_points": 3776,
-            "adaptive_subdivisions": 1976,
+            "adaptive_subdivisions": 1977,
             "lower_bound_witness": {
               "source_point_east_north_height_m": [
                 103.486494,
@@ -702,6 +1680,40 @@
         "independent_at_grade_conflicts_checked": 0
       }
     ],
+    "atomized_route_movement_preservation": {
+      "exact_continuous_geometry_preserved": {
+        "complete_directed_journey_geometries_preserved": 6,
+        "normalization": "Only exact collinear intermediate points; no angular or positional tolerance.",
+        "complete_journey_geometry_fingerprints": {
+          "E_in>S_out": {
+            "coalesced_points": 1484,
+            "coalesced_points_sha256": "b385b30465cca66aed6b43d68cb6dc29192dd64c82f57af74bed3befe4027640"
+          },
+          "E_in>W_out": {
+            "coalesced_points": 2,
+            "coalesced_points_sha256": "af3c934ce6cfbcf2ca860a2f6aa86d684e94bdc400f7e418e9a7d4f0d2d48adc"
+          },
+          "S_in>E_out": {
+            "coalesced_points": 526,
+            "coalesced_points_sha256": "feeacb3ad53e4de1f0e990ea7adcef7b958fb751d71334e815f4ce80fe27abb6"
+          },
+          "S_in>W_out": {
+            "coalesced_points": 1484,
+            "coalesced_points_sha256": "55a3cb46293bb9649918d768f740c6a4a45586cf3d6e08db74982a1335b6f9e0"
+          },
+          "W_in>E_out": {
+            "coalesced_points": 2,
+            "coalesced_points_sha256": "c7a7c143ae90dd4a395eb0cb4827f0927bb21b2163875284d621a716b144e4d7"
+          },
+          "W_in>S_out": {
+            "coalesced_points": 526,
+            "coalesced_points_sha256": "75031f110c3f4cd0a84bc0681f04d40b22701b5603f2aafdb1cd4350cb4248ee"
+          }
+        }
+      },
+      "original_continuous_distance_intervals_overlap": true,
+      "historical_raw_point_hashes_preserved_as_original_facts": true
+    },
     "approved_current_journeys": {
       "complete_directed_journeys_frozen": 6,
       "all_encoded_point_positions_and_counts_identical": true
@@ -711,9 +1723,9 @@
     {
       "instance": "P01",
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
-      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "dat_sha256": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
       "cells": 4,
-      "preview_triangles": 23304,
+      "preview_triangles": 23420,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
@@ -735,9 +1747,9 @@
     {
       "instance": "P04",
       "piece_id": "hsr-component-modular-south-junction",
-      "dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
       "cells": 14,
-      "preview_triangles": 67808,
+      "preview_triangles": 73926,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
@@ -749,27 +1761,43 @@
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
+      "instance": "P06A",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "dat_sha256": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
+      "cells": 1,
+      "preview_triangles": 365,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
+      "instance": "P06B",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "dat_sha256": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
+      "cells": 1,
+      "preview_triangles": 365,
+      "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
+    },
+    {
       "instance": "P06",
-      "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "dat_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
-      "cells": 11,
-      "preview_triangles": 189710,
+      "piece_id": "hsr-component-l2-paired-fan-compact-core",
+      "dat_sha256": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+      "cells": 9,
+      "preview_triangles": 188830,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
       "instance": "P07",
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
-      "dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+      "dat_sha256": "14b9c18738ef1daa652f5834f2d4bf78a824d0894f974574288cab5bd264be4d",
       "cells": 4,
-      "preview_triangles": 40694,
+      "preview_triangles": 40743,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
       "instance": "P08",
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
-      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "dat_sha256": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
       "cells": 4,
-      "preview_triangles": 23304,
+      "preview_triangles": 23420,
       "preview_matches_actual_saved_tile_faces_materials_and_uvs": true
     },
     {
@@ -920,7 +1948,7 @@
   "independent_component_audits": [
     {
       "piece_id": "hsr-component-l2-short-mainline-diverge-core",
-      "dat_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+      "dat_sha256": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300",
       "audit": {
         "paths": {
           "tile_count": 4,
@@ -1020,7 +2048,7 @@
           "maximum_coplanar_bed_overlap_thickness_m": 4.681197651734692e-07,
           "maximum_uncovered_bed_area_m2": 8.56833048601402e-06,
           "minimum_support_centre_distance_m": 16.0,
-          "model_polygons_cut_at_custom_caps": 570,
+          "model_polygons_cut_at_custom_caps": 645,
           "models_checked": 21,
           "native_join_profile_tolerance_m": 5e-05,
           "native_join_widths_m": [
@@ -1035,6 +2063,17 @@
           "render_budget_models_checked": 21,
           "render_group_budget_checked": true,
           "sloped_support_heads_checked": 0,
+          "south_parapet_closed_end_faces_checked": 0,
+          "south_parapet_inside_wall_sections_checked": 27,
+          "south_parapet_left_perpendicular_cap_absent": true,
+          "south_parapet_native_thickness_m": 1.5034523000000002,
+          "south_parapet_right_expected_top_union_area_m2": 20.96260800125806,
+          "south_parapet_right_inner_join_east_m": 40.361872522872716,
+          "south_parapet_right_outer_join_east_m": 43.669002829692054,
+          "south_parapet_right_perpendicular_cap_absent": true,
+          "south_parapet_right_top_overlap_area_m2": 2.3002606042155094e-08,
+          "south_parapet_right_top_union_area_m2": 20.962600206914082,
+          "south_parapet_top_sections_checked": 23,
           "support_centres_sc4path_xy": [
             [
               0.0,
@@ -1295,7 +2334,7 @@
     },
     {
       "piece_id": "hsr-component-modular-south-junction",
-      "dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+      "dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
       "audit": {
         "paths": {
           "tile_count": 14,
@@ -1328,7 +2367,7 @@
           "native_straight_eight_metre_collars_checked": 8
         },
         "models": {
-          "all_module_local_model_bytes_unchanged": true,
+          "all_module_local_model_bytes_unchanged": false,
           "all_module_local_path_bytes_unchanged": true,
           "authored_clearance_height_m": 5.0,
           "authored_clearance_width_m": 5.0,
@@ -1345,6 +2384,7 @@
           "minimum_support_centre_distance_m": 16.0,
           "models_checked": 71,
           "native_material_preserved": true,
+          "original_module_faces_preserved": true,
           "path_nodes_covered_by_visible_bed": 574,
           "positive_area_coplanar_bed_pairs": 8223,
           "preview_matches_tiles": true,
@@ -1390,6 +2430,27 @@
           "support_contact_points_checked": 72,
           "support_foundations_within_reserved_cells": true,
           "support_tops_touch_deck": true,
+          "symmetric_stem_branch_inner_half_width_m": 2.6,
+          "symmetric_stem_inside_wall_sections_checked": 64,
+          "symmetric_stem_join_local_south_m": 60.52424146049998,
+          "symmetric_stem_maximum_top_overlap_area_m2": 1.1349266060278751e-07,
+          "symmetric_stem_meshing_tolerance_m": 0.0001,
+          "symmetric_stem_native_inside_east_m": [
+            10.00345230102539,
+            21.99654769897461
+          ],
+          "symmetric_stem_straight_to_curve_joins_checked": 2,
+          "symmetric_stem_top_overlap_pairs_checked": 8730,
+          "symmetric_stem_top_sections_checked": 32,
+          "symmetric_wedge_branch_inner_half_width_m": 2.6,
+          "symmetric_wedge_closed_end_caps_checked": 2,
+          "symmetric_wedge_end_plane_local_south_m": 24.0,
+          "symmetric_wedge_inside_wall_sections_checked": 36,
+          "symmetric_wedge_maximum_top_overlap_area_m2": 7.294032116078597e-07,
+          "symmetric_wedge_meshing_tolerance_m": 0.0001,
+          "symmetric_wedge_top_overlap_pairs_checked": 40894,
+          "symmetric_wedge_top_sections_checked": 18,
+          "symmetric_wedge_underside_sections_checked": 6,
           "texture_ids": [
             200728731
           ],
@@ -1455,6 +2516,7 @@
           "minimum_support_centre_distance_m": 16.0,
           "models_checked": 41,
           "native_material_preserved": true,
+          "original_module_faces_preserved": false,
           "path_nodes_covered_by_visible_bed": 498,
           "positive_area_coplanar_bed_pairs": 10,
           "preview_matches_tiles": true,
@@ -1508,52 +2570,54 @@
       }
     },
     {
-      "piece_id": "hsr-component-l2-paired-fan-compact-join",
-      "dat_sha256": "50b0885605f0583323b800b2ed8fc99df97a24d619a4eec59abdb9dca377d8be",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "dat_sha256": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
       "audit": {
         "paths": {
-          "tile_count": 11,
-          "encoded_routes_checked": 14,
+          "tile_count": 1,
+          "encoded_routes_checked": 2,
           "external_ports_checked": 4,
           "permitted_movements_checked": 2,
           "literal_port_tangents_checked": 4,
           "unique_complete_journeys_checked": 2,
           "journey_quality": {
-            "Nin>Wout": {
-              "length_m": 90.22124197373965,
-              "direct_distance_m": 83.40881191692735,
-              "length_ratio": 1.081675183955351,
-              "total_turn_degrees": 67.21398047295664,
-              "minimum_sampled_radius_m": 30.23222307515748,
-              "maximum_sample_turn_degrees": 3.7170887518418576,
-              "maximum_raw_encoded_turn_degrees": 0.3921524116148986,
-              "minimum_resolved_raw_radius_m": 30.936382036676573,
-              "maximum_endpoint_curvature_per_m": 0.017071277555964028,
-              "maximum_curvature_change_per_m2": 0.0012622258512775533,
+            "Nin>Sout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
               "maximum_grade_change_per_m": 0.0,
-              "quality_sample_spacing_m": 1.9613313472552099,
-              "signed_turn_degrees": -67.21398047295665,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
               "maximum_raw_grade_change_per_m": 0.0,
               "native_endpoint_curvature_per_m": {
-                "Nin": 0.0
+                "Nin": 0.0,
+                "Sout": 0.0
               }
             },
-            "Ein>Nout": {
-              "length_m": 90.22124197373967,
-              "direct_distance_m": 83.40881191692735,
-              "length_ratio": 1.0816751839553511,
-              "total_turn_degrees": 67.21398047295669,
-              "minimum_sampled_radius_m": 30.23222307515712,
-              "maximum_sample_turn_degrees": 3.7170887518419127,
-              "maximum_raw_encoded_turn_degrees": 0.39215241161453307,
-              "minimum_resolved_raw_radius_m": 30.936382036676573,
-              "maximum_endpoint_curvature_per_m": 0.017071277555965582,
-              "maximum_curvature_change_per_m2": 0.0012622258512773779,
+            "Sin>Nout": {
+              "length_m": 16.0,
+              "direct_distance_m": 16.0,
+              "length_ratio": 1.0,
+              "total_turn_degrees": 0.0,
+              "minimum_sampled_radius_m": null,
+              "maximum_sample_turn_degrees": 0.0,
+              "maximum_raw_encoded_turn_degrees": 0.0,
+              "minimum_resolved_raw_radius_m": null,
+              "maximum_endpoint_curvature_per_m": 0.0,
+              "maximum_curvature_change_per_m2": 0.0,
               "maximum_grade_change_per_m": 0.0,
-              "quality_sample_spacing_m": 1.96133134725521,
-              "signed_turn_degrees": -67.21398047295672,
+              "quality_sample_spacing_m": 2.0,
+              "signed_turn_degrees": 0.0,
               "maximum_raw_grade_change_per_m": 0.0,
               "native_endpoint_curvature_per_m": {
+                "Sin": 0.0,
                 "Nout": 0.0
               }
             }
@@ -1578,6 +2642,134 @@
           "coplanar_overlap_meshing_tolerance_m": 0.0001,
           "corridor_clipped_to_literal_ownership": true,
           "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+          "custom_port_cap_depth_m": 2.6,
+          "custom_port_cap_labels": [],
+          "custom_port_cap_width_m": 5.2,
+          "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+          "full_width_bed_union_segments_checked": 2,
+          "global_support_spacing_checked": true,
+          "height_aware_bed_union_checked": true,
+          "maximum_coplanar_bed_overlap_area_m2": 0.0,
+          "maximum_coplanar_bed_overlap_thickness_m": 0.0,
+          "maximum_uncovered_bed_area_m2": 6.152902187750442e-08,
+          "minimum_support_centre_distance_m": null,
+          "model_polygons_cut_at_custom_caps": 0,
+          "models_checked": 6,
+          "native_material_preserved": true,
+          "owner_clipped_corridor_fragments_checked": 2,
+          "path_nodes_covered_by_visible_bed": 4,
+          "positive_area_coplanar_bed_pairs": 0,
+          "preview_matches_tiles": true,
+          "rail_crossing_ribbon_nodes": 0,
+          "render_budget_models_checked": 6,
+          "render_group_budget_checked": true,
+          "sloped_support_heads_checked": 0,
+          "support_centres_sc4path_xy": [
+            [
+              0.0,
+              -0.0
+            ]
+          ],
+          "support_columns_checked": 1,
+          "support_contact_points_checked": 9,
+          "support_foundations_within_reserved_cells": true,
+          "support_tops_touch_deck": true,
+          "texture_ids": [
+            200728731
+          ],
+          "train_clearance_segments_checked": 2,
+          "unused_visible_rails_outside_declared_custom_caps": false,
+          "visible_native_rail_centre_segments_matched_to_paths": 22,
+          "visible_native_rail_triangles_matched_to_paths": 42,
+          "exact_recessed_web_path_cells_checked": 1,
+          "exact_recessed_web_model_zoom_resources_checked": 5,
+          "exact_recessed_web_shadow_zoom_resources_checked": 5,
+          "canonical_full_fan_local_cell": [
+            3,
+            1
+          ],
+          "recessed_web_body_rails_support_and_uv_unchanged": true,
+          "retained_fan_source_dat_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797",
+          "full_profile_equivalence_to_standard_straight_claimed": false
+        }
+      }
+    },
+    {
+      "piece_id": "hsr-component-l2-paired-fan-compact-core",
+      "dat_sha256": "7e0bfa1104cf42f55aa8e193ad97ff69b457da044861346f5e7e51222db9e3dd",
+      "audit": {
+        "paths": {
+          "tile_count": 9,
+          "encoded_routes_checked": 10,
+          "external_ports_checked": 4,
+          "permitted_movements_checked": 2,
+          "literal_port_tangents_checked": 4,
+          "unique_complete_journeys_checked": 2,
+          "journey_quality": {
+            "Nin>Wout": {
+              "length_m": 58.221241973739716,
+              "direct_distance_m": 53.48859603124166,
+              "length_ratio": 1.0884795319685303,
+              "total_turn_degrees": 67.22285930018602,
+              "minimum_sampled_radius_m": 30.189600971011522,
+              "maximum_sample_turn_degrees": 3.683199184548466,
+              "maximum_raw_encoded_turn_degrees": 0.39215241161663345,
+              "minimum_resolved_raw_radius_m": 30.936382036492432,
+              "maximum_endpoint_curvature_per_m": 0.01704296310069592,
+              "maximum_curvature_change_per_m2": 0.0012701832474485706,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9407080657913238,
+              "signed_turn_degrees": -67.22285930018602,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Nin": 0.0
+              }
+            },
+            "Ein>Nout": {
+              "length_m": 58.22124197373971,
+              "direct_distance_m": 53.48859603124166,
+              "length_ratio": 1.0884795319685303,
+              "total_turn_degrees": 67.22285930018609,
+              "minimum_sampled_radius_m": 30.189600971012318,
+              "maximum_sample_turn_degrees": 3.6831991845483407,
+              "maximum_raw_encoded_turn_degrees": 0.3921524116169933,
+              "minimum_resolved_raw_radius_m": 30.936382036549677,
+              "maximum_endpoint_curvature_per_m": 0.01704296310069655,
+              "maximum_curvature_change_per_m2": 0.0012701832474464683,
+              "maximum_grade_change_per_m": 0.0,
+              "quality_sample_spacing_m": 1.9407080657913236,
+              "signed_turn_degrees": -67.2228593001861,
+              "maximum_raw_grade_change_per_m": 0.0,
+              "native_endpoint_curvature_per_m": {
+                "Nout": 1.8865559799147738e-15
+              }
+            }
+          },
+          "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+          "exact_3d_cell_seams": true,
+          "maximum_encoded_grade": 0.0,
+          "native_port_heights_m": [
+            15.5
+          ],
+          "game_operation": "unverified",
+          "grade_separated_crossings_checked": 0,
+          "grade_separated_projected_contacts_checked": 0,
+          "grade_separated_crossings": [],
+          "same_direction_shared_tail_contacts_checked": 0,
+          "independent_at_grade_conflicts_checked": 0
+        },
+        "models": {
+          "authored_clearance_height_m": 5.0,
+          "authored_clearance_width_m": 5.0,
+          "bed_union_width_m": 5.0,
+          "central_parapet_inside_wall_sections_checked": 6,
+          "central_parapet_reflection_axis_local_east_m": 48.0,
+          "central_parapet_top_overlap_area_m2": 2.6260604268912857e-06,
+          "central_parapet_top_sections_checked": 6,
+          "central_parapet_top_union_area_m2": 15.05597348309018,
+          "coplanar_overlap_meshing_tolerance_m": 0.0001,
+          "corridor_clipped_to_literal_ownership": true,
+          "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
           "custom_port_boundary_wedges": [
             {
               "edge": "south",
@@ -1585,8 +2777,8 @@
               "label": "Wout",
               "maximum_depth_m": 2.7240813077567143,
               "source_cell": [
-                1,
-                4
+                0,
+                2
               ]
             },
             {
@@ -1595,8 +2787,8 @@
               "label": "Ein",
               "maximum_depth_m": 2.7240813077567143,
               "source_cell": [
-                5,
-                4
+                4,
+                2
               ]
             }
           ],
@@ -1606,67 +2798,68 @@
           ],
           "custom_port_caps_clipped_to_literal_owned_cells": true,
           "external_custom_collar_requires_unclipped_actual_assembly_check": true,
-          "full_width_bed_union_segments_checked": 546,
+          "full_width_bed_union_segments_checked": 540,
           "global_support_spacing_checked": true,
           "height_aware_bed_union_checked": true,
-          "maximum_coplanar_bed_overlap_area_m2": 4.6303523504320765e-07,
+          "maximum_coplanar_bed_overlap_area_m2": 4.630352776757718e-07,
           "maximum_coplanar_bed_overlap_thickness_m": 5.210942610744951e-07,
-          "maximum_uncovered_bed_area_m2": 2.1218216851304206e-06,
+          "maximum_uncovered_bed_area_m2": 2.121823848733051e-06,
           "minimum_support_centre_distance_m": 16.0,
           "model_polygons_cut_at_custom_caps": 809,
-          "models_checked": 56,
+          "models_checked": 46,
           "native_material_preserved": true,
-          "owner_clipped_corridor_fragments_checked": 690,
-          "path_nodes_covered_by_visible_bed": 560,
-          "positive_area_coplanar_bed_pairs": 19938,
+          "owner_clipped_corridor_fragments_checked": 684,
+          "path_nodes_covered_by_visible_bed": 550,
+          "positive_area_coplanar_bed_pairs": 19936,
           "preview_matches_tiles": true,
           "rail_crossing_ribbon_nodes": 0,
-          "render_budget_models_checked": 56,
+          "render_budget_models_checked": 46,
           "render_group_budget_checked": true,
           "sloped_support_heads_checked": 0,
           "support_centres_sc4path_xy": [
             [
-              32.0,
-              -64.0
+              16.0,
+              -32.0
             ],
             [
-              48.0,
-              -48.0
+              32.0,
+              -16.0
+            ],
+            [
+              32.0,
+              -0.0
             ],
             [
               48.0,
               -32.0
-            ],
-            [
-              48.0,
-              -16.0
-            ],
-            [
-              48.0,
-              -0.0
-            ],
-            [
-              64.0,
-              -64.0
             ]
           ],
-          "support_columns_checked": 6,
-          "support_contact_points_checked": 54,
+          "support_columns_checked": 4,
+          "support_contact_points_checked": 36,
           "support_foundations_within_reserved_cells": true,
           "support_tops_touch_deck": true,
           "texture_ids": [
             200728731
           ],
-          "train_clearance_segments_checked": 546,
+          "train_clearance_segments_checked": 540,
           "unused_visible_rails_outside_declared_custom_caps": false,
-          "visible_native_rail_centre_segments_matched_to_paths": 7675,
-          "visible_native_rail_triangles_matched_to_paths": 20919
+          "visible_native_rail_centre_segments_matched_to_paths": 7621,
+          "visible_native_rail_triangles_matched_to_paths": 20825,
+          "exact_retained_path_cells_checked": 9,
+          "exact_retained_model_zoom_resources_checked": 45,
+          "exact_retained_shadow_zoom_resources_checked": 45,
+          "retained_geometry_and_uv_bytes_unchanged": true,
+          "original_fan_local_to_core_offset_cells": [
+            1,
+            2
+          ],
+          "retained_fan_source_dat_sha256": "54086c7a5423f0d121d732d1b8081c1984e0663afb3d3c8a4604cdcc5b43c797"
         }
       }
     },
     {
       "piece_id": "hsr-component-l2-short-opposed-merge-core",
-      "dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
+      "dat_sha256": "14b9c18738ef1daa652f5834f2d4bf78a824d0894f974574288cab5bd264be4d",
       "audit": {
         "paths": {
           "tile_count": 4,
@@ -1814,6 +3007,382 @@
             15.0
           ],
           "native_material_preserved": true,
+          "opposed_parapet_closed_end_faces_checked": 0,
+          "opposed_parapet_inside_wall_sections_checked": 72,
+          "opposed_parapet_maximum_top_overlap_area_m2": 8.717570381122641e-07,
+          "opposed_parapet_outer_joins": [
+            {
+              "curved_wall_facets": [
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    40.49959012004575,
+                    6.054360021125547
+                  ],
+                  "expected_vertical_area_m2": 0.11948815632097835,
+                  "saved_vertical_union_area_m2": 0.11948785651879038,
+                  "start_east_distance_m": [
+                    40.361872522872716,
+                    5.9965477
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    40.69244178817003,
+                    6.136462356674514
+                  ],
+                  "expected_vertical_area_m2": 0.1676810137348909,
+                  "saved_vertical_union_area_m2": 0.16768100208300218,
+                  "start_east_distance_m": [
+                    40.49959012004575,
+                    6.054360021125547
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    40.882912920452895,
+                    6.218276280396111
+                  ],
+                  "expected_vertical_area_m2": 0.1658392460498987,
+                  "saved_vertical_union_area_m2": 0.16583916849778713,
+                  "start_east_distance_m": [
+                    40.69244178817003,
+                    6.136462356674514
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    41.07323363742216,
+                    6.300763252994415
+                  ],
+                  "expected_vertical_area_m2": 0.16594207188669982,
+                  "saved_vertical_union_area_m2": 0.1659417859133523,
+                  "start_east_distance_m": [
+                    40.882912920452895,
+                    6.218276280396111
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    41.26339746176359,
+                    6.38393256537303
+                  ],
+                  "expected_vertical_area_m2": 0.16604489773172362,
+                  "saved_vertical_union_area_m2": 0.16604488619352553,
+                  "start_east_distance_m": [
+                    41.07323363742216,
+                    6.300763252994415
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    41.45339781410213,
+                    6.467793476528669
+                  ],
+                  "expected_vertical_area_m2": 0.16614772358516294,
+                  "saved_vertical_union_area_m2": 0.16614748410248792,
+                  "start_east_distance_m": [
+                    41.26339746176359,
+                    6.38393256537303
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    41.643228011681444,
+                    6.552355212202386
+                  ],
+                  "expected_vertical_area_m2": 0.16625054944741188,
+                  "saved_vertical_union_area_m2": 0.1662505378949235,
+                  "start_east_distance_m": [
+                    41.45339781410213,
+                    6.467793476528669
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    41.83288126705301,
+                    6.637626963504545
+                  ],
+                  "expected_vertical_area_m2": 0.1663533753182621,
+                  "saved_vertical_union_area_m2": 0.1663533075022321,
+                  "start_east_distance_m": [
+                    41.643228011681444,
+                    6.552355212202386
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.022350686777486,
+                    6.723617885514599
+                  ],
+                  "expected_vertical_area_m2": 0.16645620119806162,
+                  "saved_vertical_union_area_m2": 0.16645600255787496,
+                  "start_east_distance_m": [
+                    41.83288126705301,
+                    6.637626963504545
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.211629270136484,
+                    6.81033709585418
+                  ],
+                  "expected_vertical_area_m2": 0.16655902708691447,
+                  "saved_vertical_union_area_m2": 0.16655889348123054,
+                  "start_east_distance_m": [
+                    42.022350686777486,
+                    6.723617885514599
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.400709907856296,
+                    6.897793673233579
+                  ],
+                  "expected_vertical_area_m2": 0.16666185298471856,
+                  "saved_vertical_union_area_m2": 0.16666176365925178,
+                  "start_east_distance_m": [
+                    42.211629270136484,
+                    6.81033709585418
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.589585380844596,
+                    6.9859966559719595
+                  ],
+                  "expected_vertical_area_m2": 0.1667646788918669,
+                  "saved_vertical_union_area_m2": 0.16676445828845,
+                  "start_east_distance_m": [
+                    42.400709907856296,
+                    6.897793673233579
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.77824835893911,
+                    7.074955040489911
+                  ],
+                  "expected_vertical_area_m2": 0.16686750480847537,
+                  "saved_vertical_union_area_m2": 0.1668674394692884,
+                  "start_east_distance_m": [
+                    42.589585380844596,
+                    6.9859966559719595
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    42.96669139966953,
+                    7.164677779774792
+                  ],
+                  "expected_vertical_area_m2": 0.16697033073445036,
+                  "saved_vertical_union_area_m2": 0.16697031913194582,
+                  "start_east_distance_m": [
+                    42.77824835893911,
+                    7.074955040489911
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    43.15490694703385,
+                    7.255173781818556
+                  ],
+                  "expected_vertical_area_m2": 0.16707315667002517,
+                  "saved_vertical_union_area_m2": 0.1670729560114852,
+                  "start_east_distance_m": [
+                    42.96669139966953,
+                    7.164677779774792
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    43.34288733028845,
+                    7.346451908027632
+                  ],
+                  "expected_vertical_area_m2": 0.16717598261539096,
+                  "saved_vertical_union_area_m2": 0.1671759703458271,
+                  "start_east_distance_m": [
+                    43.15490694703385,
+                    7.255173781818556
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    43.53062476275295,
+                    7.438520971604575
+                  ],
+                  "expected_vertical_area_m2": 0.16727880857072616,
+                  "saved_vertical_union_area_m2": 0.16727879694678593,
+                  "start_east_distance_m": [
+                    43.34288733028845,
+                    7.346451908027632
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    43.65474068840744,
+                    7.5
+                  ],
+                  "expected_vertical_area_m2": 0.11080647341916346,
+                  "saved_vertical_union_area_m2": 0.11080641381530354,
+                  "start_east_distance_m": [
+                    43.53062476275295,
+                    7.438520971604575
+                  ]
+                }
+              ],
+              "expected_top_union_area_m2": 20.967630188511805,
+              "inner_join_east_m": 40.361872522872716,
+              "outer_join_east_m": 43.65474068840744,
+              "saved_top_union_area_m2": 20.967628880715353,
+              "side": "north"
+            },
+            {
+              "curved_wall_facets": [
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    7.498183417659945,
+                    6.055294665339915
+                  ],
+                  "expected_vertical_area_m2": 0.12141990564591133,
+                  "saved_vertical_union_area_m2": 0.12141978676034519,
+                  "start_east_distance_m": [
+                    7.638127477127277,
+                    5.9965477
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    7.083640643927524,
+                    6.232687350697361
+                  ],
+                  "expected_vertical_area_m2": 0.3607232610313286,
+                  "saved_vertical_union_area_m2": 0.3607231606927428,
+                  "start_east_distance_m": [
+                    7.498183417659945,
+                    6.055294665339915
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    6.669993955229849,
+                    6.4131015316698665
+                  ],
+                  "expected_vertical_area_m2": 0.3610238513787753,
+                  "saved_vertical_union_area_m2": 0.3610237368371072,
+                  "start_east_distance_m": [
+                    7.083640643927524,
+                    6.232687350697361
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    6.257269773156125,
+                    6.596551049678709
+                  ],
+                  "expected_vertical_area_m2": 0.36132696604509434,
+                  "saved_vertical_union_area_m2": 0.36132673993757347,
+                  "start_east_distance_m": [
+                    6.669993955229849,
+                    6.4131015316698665
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    5.845494741096999,
+                    6.783049131744306
+                  ],
+                  "expected_vertical_area_m2": 0.3616325867286056,
+                  "saved_vertical_union_area_m2": 0.36163254887987595,
+                  "start_east_distance_m": [
+                    6.257269773156125,
+                    6.596551049678709
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    5.434695714200288,
+                    6.972608383111506
+                  ],
+                  "expected_vertical_area_m2": 0.36194069290471553,
+                  "saved_vertical_union_area_m2": 0.3619406677540278,
+                  "start_east_distance_m": [
+                    5.845494741096999,
+                    6.783049131744306
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    5.024899749078749,
+                    7.1652407801775695
+                  ],
+                  "expected_vertical_area_m2": 0.3622512617946327,
+                  "saved_vertical_union_area_m2": 0.362251021282058,
+                  "start_east_distance_m": [
+                    5.434695714200288,
+                    6.972608383111506
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    4.616134093278291,
+                    7.360957663730829
+                  ],
+                  "expected_vertical_area_m2": 0.36256426833641153,
+                  "saved_vertical_union_area_m2": 0.36256417591701506,
+                  "start_east_distance_m": [
+                    5.024899749078749,
+                    7.1652407801775695
+                  ]
+                },
+                {
+                  "duplicate_area_m2": 0.0,
+                  "end_east_distance_m": [
+                    4.330997170307948,
+                    7.5
+                  ],
+                  "expected_vertical_area_m2": 0.25378559520845184,
+                  "saved_vertical_union_area_m2": 0.2537855775732911,
+                  "start_east_distance_m": [
+                    4.616134093278291,
+                    7.360957663730829
+                  ]
+                }
+              ],
+              "expected_top_union_area_m2": 20.962607993312233,
+              "inner_join_east_m": 7.638127477127277,
+              "outer_join_east_m": 4.330997170307948,
+              "saved_top_union_area_m2": 20.96260739937842,
+              "side": "south"
+            }
+          ],
+          "opposed_parapet_outer_perpendicular_caps_absent": true,
+          "opposed_parapet_top_sections_checked": 55,
           "owner_clipped_corridor_fragments_checked": 250,
           "path_nodes_covered_by_visible_bed": 252,
           "positive_area_coplanar_bed_pairs": 4399,
@@ -2080,6 +3649,7 @@
           "minimum_support_centre_distance_m": null,
           "models_checked": 6,
           "native_material_preserved": true,
+          "original_module_faces_preserved": false,
           "path_nodes_covered_by_visible_bed": 8,
           "positive_area_coplanar_bed_pairs": 0,
           "preview_matches_tiles": true,

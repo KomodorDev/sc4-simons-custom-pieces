@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-modular-south-junction",
+  "purpose": "Independent saved-resource comparison of both southern stem borders: retain the native straight grey inside face until it meets the first branch ballast line, then follow that line through the neighbouring row; retain the accepted recessed northern wedges.",
+  "checked_at_utc": "2026-10-28T16:18:37.641690+00:00",
+  "source_comparison": {
+    "only_changed_geometry_property": "stem_parapet_alignment",
+    "all_preexisting_authored_values_unchanged": true,
+    "previous_geometry_sha256": "d0c24a85209a56f0ac3e924b3f66e9ee291fd8362e65726c975b1033eaf3066a",
+    "current_geometry_sha256": "fda2275ea4013c2e9333e3904fc8e5f96de483ce12982c7d45e2fc4d3485ef5e",
+    "existing_geometry_semantic_sha256": "081cb9770cf3d44f82947db73d46dc83feb65078989168614172184c54f20b35"
+  },
+  "builds": {
+    "before": {
+      "directory": "dist/symmetric-border-fixed",
+      "dat_sha256": "9515ce33d06dbfbede515bb7d0c0a9224140b30b3f5ac97c696d9a2bf7c43a2b",
+      "manifest_sha256": "b0c17ce2e9092af3edc1b964cf5a4febe11826c285b186dd88f7005c8af0139d"
+    },
+    "after": {
+      "directory": "dist/symmetric-stem-border-follow-ballast",
+      "dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+      "manifest_sha256": "c633247064554b70f861b611a4e43cc7ab01bd944d7d6fc5b39cabe583721819"
+    }
+  },
+  "saved_resources": {
+    "resource_identities_unchanged": true,
+    "all_non_model_non_shadow_resources_unchanged": true,
+    "all_path_resources_unchanged": true,
+    "all_shadow_resources_unchanged": true,
+    "all_accepted_encoded_model_faces_and_buffers_preserved": true,
+    "all_accepted_rail_ballast_support_and_recessed_wedge_triangles_unchanged": true,
+    "accepted_recessed_wedge_face_identification": "Exact encoded triangle multiset difference between the original pre-wedge DAT6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca and accepted wedge DAT9515ce33d06dbfbede515bb7d0c0a9224140b30b3f5ac97c696d9a2bf7c43a2b.",
+    "changed_resources": [
+      "5ad0e817-badb57f1-7f58c130",
+      "5ad0e817-badb57f1-7f58c131",
+      "5ad0e817-badb57f1-7f58c132",
+      "5ad0e817-badb57f1-7f58c133",
+      "5ad0e817-badb57f1-7f58c134",
+      "5ad0e817-badb57f1-7f58c140",
+      "5ad0e817-badb57f1-7f58c141",
+      "5ad0e817-badb57f1-7f58c142",
+      "5ad0e817-badb57f1-7f58c143",
+      "5ad0e817-badb57f1-7f58c144",
+      "5ad0e817-badb57f1-7f58c150",
+      "5ad0e817-badb57f1-7f58c151",
+      "5ad0e817-badb57f1-7f58c152",
+      "5ad0e817-badb57f1-7f58c153",
+      "5ad0e817-badb57f1-7f58c154",
+      "5ad0e817-badb57f1-7f58cff5"
+    ],
+    "per_tile_comparison": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "tile_id": "7f58c000",
+        "accepted_encoded_triangles_preserved": 3063,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 2117,
+        "rail_ballast_triangles_sha256": "d287660cabf901fae283253443d57a3bd51af3806546f665cfb2c37d14dfb6cc",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "tile_id": "7f58c200",
+        "accepted_encoded_triangles_preserved": 3252,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 2286,
+        "rail_ballast_triangles_sha256": "2e4d61f02f8e4e4c9a0a3234d8fa91f53f29ee52e4419eb9d1ba8b7df6856a8e",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "tile_id": "7f58c010",
+        "accepted_encoded_triangles_preserved": 6545,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 4616,
+        "rail_ballast_triangles_sha256": "299f865ffb400975732451926b96465041d8e666e9b13db9319704ead8ecea91",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 3,
+        "accepted_recessed_wedge_triangles_sha256": "aad26eb86dc00642fdc6fda3d7bc053971609df558e8eb341932e572b17fd464"
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "tile_id": "7f58c210",
+        "accepted_encoded_triangles_preserved": 7657,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 5652,
+        "rail_ballast_triangles_sha256": "8cc9e77fca88964854fa27c70f8abafd8bf01bfe34dc75d5f76b44cbef89c728",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 3,
+        "accepted_recessed_wedge_triangles_sha256": "d1b4bce4c20d654dc22f24b266de65d934b5e26ca953b9478faaee5add5a4875"
+      },
+      {
+        "cell": [
+          0,
+          2
+        ],
+        "tile_id": "7f58c020",
+        "accepted_encoded_triangles_preserved": 6756,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 5017,
+        "rail_ballast_triangles_sha256": "6009e0abc300a1dc79699e4f3e690142e1008bc4f9018ca9a4ea75fc3e1276e4",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 269,
+        "accepted_recessed_wedge_triangles_sha256": "95002509d2efca501c88af0f13bfc21fd1eaa967c6dd81a54597085606b01e0c"
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "tile_id": "7f58c120",
+        "accepted_encoded_triangles_preserved": 6089,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 681,
+        "rail_ballast_triangles_sha256": "bef4ab523d9695bb8fb4c3fe76068475da2e92e9e4db2ff62ea65a4444a4e9a2",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 3292,
+        "accepted_recessed_wedge_triangles_sha256": "b934b460125dfd8f9a190fd420bcc7e47057bcb1ed8d03db6d94a16b65b2877a"
+      },
+      {
+        "cell": [
+          2,
+          2
+        ],
+        "tile_id": "7f58c220",
+        "accepted_encoded_triangles_preserved": 7943,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 5973,
+        "rail_ballast_triangles_sha256": "1c3d239af4d4e29f989f9b370b3c9fcf7fd2fe4ec8da8e29ba1a894e88f443b1",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 442,
+        "accepted_recessed_wedge_triangles_sha256": "8fda7dfaead797755ca48716819d9ffefb94b2cb3af6e4bed999d8ddc5641f8d"
+      },
+      {
+        "cell": [
+          0,
+          3
+        ],
+        "tile_id": "7f58c030",
+        "accepted_encoded_triangles_preserved": 1844,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 832,
+        "rail_ballast_triangles_sha256": "8291d5afa98a27148d33877b8ea4af4cba208bd344a4498aaa40aeb141db4432",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          1,
+          3
+        ],
+        "tile_id": "7f58c130",
+        "accepted_encoded_triangles_preserved": 11918,
+        "new_concrete_triangles": 52,
+        "rail_ballast_triangles_unchanged": 10687,
+        "rail_ballast_triangles_sha256": "b1d833f53d6d8a4f9a1cd0c9abde8c8b74961f1d025b9b7080ed97b21a5ba0d2",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 42,
+        "accepted_recessed_wedge_triangles_sha256": "a6efa31a209f3d12f2e8101f691831a7c1b10e847feb4640f02185c5079d429e"
+      },
+      {
+        "cell": [
+          2,
+          3
+        ],
+        "tile_id": "7f58c230",
+        "accepted_encoded_triangles_preserved": 2037,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 1286,
+        "rail_ballast_triangles_sha256": "b0da3e60b6df7bc0531b9a638799e23875958fd73adf3ac1aef766dc591d48f6",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          0,
+          4
+        ],
+        "tile_id": "7f58c040",
+        "accepted_encoded_triangles_preserved": 82,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 12,
+        "rail_ballast_triangles_sha256": "13382f193fad7723edd4898e342a1aa5e8432245852cf70b9c1ace1e25258eab",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          1,
+          4
+        ],
+        "tile_id": "7f58c140",
+        "accepted_encoded_triangles_preserved": 10120,
+        "new_concrete_triangles": 1521,
+        "rail_ballast_triangles_unchanged": 8273,
+        "rail_ballast_triangles_sha256": "4637d83aae86262626cfff193bc1a2d90119fb72ab5e1ee9de9e5808a32bd5f7",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "tile_id": "7f58c240",
+        "accepted_encoded_triangles_preserved": 63,
+        "new_concrete_triangles": 0,
+        "rail_ballast_triangles_unchanged": 10,
+        "rail_ballast_triangles_sha256": "fce59ba15e3cc7d1e7e86ca4e85d46e4b611e579cdcf8454d05c57ac81550373",
+        "support_triangles_unchanged": 0,
+        "support_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "cell": [
+          1,
+          5
+        ],
+        "tile_id": "7f58c150",
+        "accepted_encoded_triangles_preserved": 4490,
+        "new_concrete_triangles": 494,
+        "rail_ballast_triangles_unchanged": 3848,
+        "rail_ballast_triangles_sha256": "541ac114e4b609218d965c83794062f6f14dab0fb3b4c40367c65d3f39d7721a",
+        "support_triangles_unchanged": 26,
+        "support_triangles_sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501",
+        "accepted_recessed_wedge_triangles_unchanged": 0,
+        "accepted_recessed_wedge_triangles_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "alignment": {
+    "rule": {
+      "purpose": "Keep both southern paired borders straight until the first branch ballast outline, then follow that outline through the adjacent northern row; preserve the accepted recessed wedges and every original face, rail, route, support, and identity.",
+      "left_branch": "symmetric_fan_left",
+      "right_branch": "symmetric_fan_right",
+      "branch_inner_half_width_m": 2.6,
+      "paired_centre_east_m": 16.0,
+      "stem_scope_local_south_m": [
+        48.0,
+        88.0
+      ],
+      "minimum_train_half_width_m": 2.5
+    },
+    "saved_face_audit": {
+      "symmetric_stem_top_sections_checked": 32,
+      "symmetric_stem_inside_wall_sections_checked": 64,
+      "symmetric_stem_straight_to_curve_joins_checked": 2,
+      "symmetric_stem_join_local_south_m": 60.52424146049998,
+      "symmetric_stem_native_inside_east_m": [
+        10.00345230102539,
+        21.99654769897461
+      ],
+      "symmetric_stem_branch_inner_half_width_m": 2.6,
+      "symmetric_stem_top_overlap_pairs_checked": 8730,
+      "symmetric_stem_maximum_top_overlap_area_m2": 1.1349266060278751e-07,
+      "symmetric_stem_meshing_tolerance_m": 0.0001
+    },
+    "accepted_recessed_wedge_saved_face_audit_unchanged": {
+      "symmetric_wedge_top_sections_checked": 18,
+      "symmetric_wedge_inside_wall_sections_checked": 36,
+      "symmetric_wedge_underside_sections_checked": 6,
+      "symmetric_wedge_closed_end_caps_checked": 2,
+      "symmetric_wedge_top_overlap_pairs_checked": 40894,
+      "symmetric_wedge_maximum_top_overlap_area_m2": 7.294032116078597e-07,
+      "symmetric_wedge_branch_inner_half_width_m": 2.6,
+      "symmetric_wedge_meshing_tolerance_m": 0.0001,
+      "symmetric_wedge_end_plane_local_south_m": 24.0
+    },
+    "straight_to_ballast_line_join": {
+      "inside_local_east_m": [
+        10.00345230102539,
+        21.99654769897461
+      ],
+      "local_south_m": 60.52424146049998,
+      "reference": "Native paired inside face meets the exact original branch inner parapet boundary at a normal half-width of 2.6 m; the outside face is unchanged.",
+      "display_grid": "The join lies in X1,Y1; the curved continuation crosses the X1,Y2 neighbourhood. Y labels count north from the southern row."
+    },
+    "unmodified_train_clearance_width_m": 5.0,
+    "unmodified_train_clearance_height_m": 5.0,
+    "complete_model_clearance": "Passed the normal independent saved-resource verifier along all actual encoded journey segments.",
+    "previous_shape_rejected": true,
+    "previous_shape_failure": "Symmetric HSR stem roof differs from its straight-to-ballast outline at south 54.0: [(7.10170994337464, 8.5)]"
+  },
+  "history": {
+    "snapshot": "evidence/design-history/before-stem-border-repair/index.json",
+    "snapshot_sha256": "cf8393df1f0aa2f5a4b9d8f4c3f8030607788b7cc97ad8828248371e0c1395f7",
+    "accepted_wedge_report": "evidence/junction-wedge-alignment.json",
+    "accepted_wedge_report_sha256": "a946a2856ff8fab56987eb1c2644979ae6385bfa6d59c07c8faaf0feb17d9511",
+    "old_observations_preserved": true
+  },
+  "limitations": [
+    "Software verification does not establish human preview approval or in-game train operation.",
+    "Complete trumpet assembly integration, building, and rendering remain deferred."
+  ]
+}

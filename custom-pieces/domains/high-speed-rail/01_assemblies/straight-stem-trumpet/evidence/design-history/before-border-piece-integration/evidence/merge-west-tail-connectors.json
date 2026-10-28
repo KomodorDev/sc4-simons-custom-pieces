@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "types": 15,
+  "unchanged_types_with_identical_canonical_PNGs": 14,
+  "unchanged_PNG_files_checked": 56,
+  "all_manual_records_byte_unchanged": true,
+  "all_human_observation_histories_unchanged": true,
+  "README_content_outside_connector_blocks_unchanged": true,
+  "source_files_unchanged_during_run": true,
+  "installed": false,
+  "new_human_observations": 0,
+  "elapsed_seconds": 30.29639399982989,
+  "purpose": "Actual connector-overview rerenders and independent saved-resource freshness checks following the four-tile merge extraction; unchanged artwork and human observations are protected.",
+  "checks": [
+    {
+      "build": "dist/trumpet-merge-west-tail-parts-01",
+      "piece_ids": [
+        "hsr-component-l2-short-mainline-diverge-core",
+        "hsr-component-lower-paired-straight",
+        "hsr-component-l2-shortened-departure-curve",
+        "hsr-component-modular-south-junction",
+        "hsr-component-modular-paired-climb",
+        "hsr-component-l2-paired-fan-compact-join",
+        "hsr-component-l2-short-opposed-merge-core",
+        "hsr-component-l2-shortened-return-curve",
+        "hsr-component-modular-crossing-core",
+        "hsr-component-upper-paired-straight",
+        "hsr-component-tight-paired-curve90-l4-to-mid",
+        "hsr-component-tight-paired-curve90-mid-to-l2",
+        "hsr-component-lower-oneway-straight"
+      ],
+      "status": "passed",
+      "counts": {
+        "pieces": 13,
+        "groups": 34,
+        "ports": 55,
+        "boundary_bundles": 34
+      },
+      "compiled_paths": "passed",
+      "export_freshness": "passed"
+    },
+    {
+      "build": "dist/piece-authoring-examples",
+      "piece_ids": [
+        "blind-hsr-rise-quarter-turn"
+      ],
+      "status": "passed",
+      "counts": {
+        "pieces": 1,
+        "groups": 2,
+        "ports": 4,
+        "boundary_bundles": 2
+      },
+      "compiled_paths": "passed",
+      "export_freshness": "passed"
+    },
+    {
+      "build": "dist/road-edge-revision",
+      "piece_ids": [
+        "blind-hsr-road-stack"
+      ],
+      "status": "passed",
+      "counts": {
+        "pieces": 1,
+        "groups": 8,
+        "ports": 16,
+        "boundary_bundles": 4
+      },
+      "compiled_paths": "passed",
+      "export_freshness": "passed"
+    }
+  ]
+}

@@ -5,8 +5,8 @@
   "occupied_cells": 105,
   "encoded_fragments": 166,
   "unique_piers": 74,
-  "placements": 26,
-  "unique_piece_types": 13,
+  "placements": 28,
+  "unique_piece_types": 14,
   "candidate_eligibility_strictly_below_m": 0.005,
   "minimum_pier_spacing_m": 16.0,
   "minimum_clearance": 5.0,
@@ -106,7 +106,7 @@
     "native_new_join_profile_tolerance_m": 5e-05
   },
   "current_resource_contract": "resources.json",
-  "actual_tile_triangles": 709002,
+  "actual_tile_triangles": 715251,
   "whole_route_quality": {
     "per_movement": {
       "W_in>E_out": {
@@ -187,5 +187,6 @@
     "preserved_baseline_journeys": "Both mainlines and both direct slips; only collinear grid-cut subdivisions may differ.",
     "constituent_module_limits_retained": true
   },
-  "junction_rework_contract": "junction-rework.json"
+  "junction_rework_contract": "junction-rework.json",
+  "border_piece_integration_contract": "border-piece-integration.json"
 }

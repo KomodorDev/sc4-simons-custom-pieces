@@ -2,7 +2,7 @@
   "display_title": "Piece - HSR Level 2 (15.5 m) Short Opposed Merge Core",
   "size": [
     2000,
-    6024
+    5988
   ],
   "camera": {
     "projection": "orthographic",
@@ -212,9 +212,8 @@
     "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
     "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
     "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.",
-    "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
-    "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
-    "Unverified: physical seams, construction clearance, model collisions, and game operation."
+    "Software model preview with source-defined connection cards.",
+    "Sources: current compiled model, declared boundary metadata, and saved route-resource identities."
   ],
   "boundary_cards": [
     {
@@ -5873,33 +5872,33 @@
   "schema_version": 1,
   "piece_id": "hsr-component-l2-short-opposed-merge-core",
   "file": "previews/connection-overview.png",
-  "output_sha256": "f688a8472fe9af11b71adbe06d2a72289e17489861906a790de31d4445401aa2",
+  "output_sha256": "1b06215a8e11b285b335ef65dbe010a446f947aa40d6acb7f46fda11b8aa503e",
   "source_inputs": {
     "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
-    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "d6c5fa437ce480754f5e1a3a1a1e19b95c2a0489e2294122cb80448143091f23",
-    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "d73e7d41dd4151149a4bf33eb008761212a628ff0bd81b7c16c9e2df377d5622",
-    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "e4616618593cb4006fcedc6a32821518f1f9c0ae071b900a60b96d944555fe5d",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "b919f0502dc0fee764a17464aa7a6ca787c602c508814f6d7709161fe3a3d0c7",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
     "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
     "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3",
-    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
   },
-  "generator_sha256": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+  "generator_sha256": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
   "metadata_resolver_sha256": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
-  "manifest_sha256": "284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d",
-  "compiled_manifest_sha256": "ae5696604494de71d95d38c2a0a8fe8774a2257c9fb2ced341a7365ce91e736a",
-  "source_manifest": "dist/trumpet-merge-west-tail-parts-01/manifest.json",
-  "source_dat": "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+  "manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
+  "source_manifest": "dist/trumpet-fan-core-parts-final-01/manifest.json",
+  "source_dat": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
   "source_preview_id": "7f585ff5",
-  "source_dat_sha256": "a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f",
-  "source_model_sha256": "6a032e49125ae3e750551a4db24b217c704483ebf02004dbe5175cf9f30c39d3",
-  "render_model_sha256": "6a032e49125ae3e750551a4db24b217c704483ebf02004dbe5175cf9f30c39d3",
+  "source_dat_sha256": "14b9c18738ef1daa652f5834f2d4bf78a824d0894f974574288cab5bd264be4d",
+  "source_model_sha256": "d2f410894469b6491796d7566de5d8e3e2c982aaeb411330b6afccfff620a2c7",
+  "render_model_sha256": "d2f410894469b6491796d7566de5d8e3e2c982aaeb411330b6afccfff620a2c7",
   "model_validation": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 40694,
+    "triangles": 40743,
     "mesh_count": 86,
     "bounds_xyz_m": [
       [
@@ -5919,21 +5918,21 @@
       [
         [
           -8.0,
-          7.407336235046387
+          8.0
         ],
         [
           16.18932342529297,
           16.189327239990234
         ],
         [
-          -3.257526397705078,
-          2.092717170715332
+          -3.207165002822876,
+          3.0
         ]
       ],
       [
         [
-          -8.0,
-          8.0
+          -4.0,
+          4.0
         ],
         [
           16.189327239990234,
@@ -5941,7 +5940,7 @@
         ],
         [
           -1.1360048055648804,
-          3.0
+          -1.0
         ]
       ],
       [
@@ -5960,7 +5959,7 @@
       ],
       [
         [
-          4.007020950317383,
+          5.522752285003662,
           8.0
         ],
         [
@@ -5969,12 +5968,12 @@
         ],
         [
           -6.290499210357666,
-          8.0
+          7.852889060974121
         ]
       ],
       [
         [
-          3.424166202545166,
+          3.0045058727264404,
           6.211024284362793
         ],
         [
@@ -5989,20 +5988,20 @@
       [
         [
           0.9093812704086304,
-          4.064744472503662
+          3.635711431503296
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -6.120877742767334,
+          -6.1086745262146,
           1.0
         ]
       ],
       [
         [
-          -1.1804468631744385,
+          -1.5982112884521484,
           1.4888942241668701
         ],
         [
@@ -6016,29 +6015,29 @@
       ],
       [
         [
-          -3.2715606689453125,
-          -0.6614813804626465
+          -3.691096305847168,
+          -1.0917651653289795
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -6.020836353302002,
+          -6.015931129455566,
           1.0
         ]
       ],
       [
         [
           -5.500010967254639,
-          -2.8117785453796387
+          -3.2410993576049805
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -6.003422737121582,
+          -6.001894950866699,
           1.0
         ]
       ],
@@ -6052,7 +6051,7 @@
           16.1893253326416
         ],
         [
-          -6.0,
+          -6.25,
           7.5
         ]
       ],
@@ -6122,27 +6121,27 @@
           16.98932647705078
         ],
         [
-          4.656566143035889,
+          4.785302639007568,
           8.0
         ]
       ],
       [
         [
-          15.951152801513672,
-          22.24266815185547
+          15.533443450927734,
+          21.829551696777344
         ],
         [
           16.18932342529297,
           16.189327239990234
         ],
         [
-          3.3413732051849365,
-          6.697761058807373
+          3.428642749786377,
+          6.815148830413818
         ]
       ],
       [
         [
-          18.69893455505371,
+          19.535371780395508,
           24.0
         ],
         [
@@ -6151,26 +6150,26 @@
         ],
         [
           -4.963051795959473,
-          5.386379718780518
+          5.473717212677002
         ]
       ],
       [
         [
           8.0,
-          24.0
+          20.20863914489746
         ],
         [
           16.18932342529297,
           16.189327239990234
         ],
         [
-          -4.2076096534729,
-          3.0
+          -4.31845760345459,
+          -1.2853364944458008
         ]
       ],
       [
         [
-          10.928436279296875,
+          8.0,
           24.0
         ],
         [
@@ -6179,20 +6178,20 @@
         ],
         [
           -2.9309282302856445,
-          -1.0
+          3.0
         ]
       ],
       [
         [
           8.0,
-          16.0
+          22.481252670288086
         ],
         [
-          16.189327239990234,
+          16.1893253326416,
           16.189327239990234
         ],
         [
-          -1.844247817993164,
+          -2.674497127532959,
           -1.0
         ]
       ],
@@ -6206,7 +6205,7 @@
           16.189327239990234
         ],
         [
-          -2.1644394397735596,
+          -2.164415121078491,
           -1.0
         ]
       ],
@@ -6220,14 +6219,14 @@
           16.189327239990234
         ],
         [
-          -2.155074119567871,
+          -2.1644394397735596,
           7.58089542388916
         ]
       ],
       [
         [
-          9.509231567382812,
-          13.812931060791016
+          9.081146240234375,
+          13.36839771270752
         ],
         [
           16.1893253326416,
@@ -6240,7 +6239,7 @@
       ],
       [
         [
-          11.668376922607422,
+          11.602924346923828,
           15.13482666015625
         ],
         [
@@ -6324,7 +6323,7 @@
       ],
       [
         [
-          21.148849487304688,
+          21.55214500427246,
           24.0
         ],
         [
@@ -6338,57 +6337,57 @@
       ],
       [
         [
-          18.312835693359375,
-          22.77485466003418
+          18.719316482543945,
+          23.211027145385742
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -7.526105880737305,
-          0.7234281897544861
+          -7.589268207550049,
+          0.6283273100852966
         ]
       ],
       [
         [
-          15.046205520629883,
-          19.735092163085938
+          15.455912590026855,
+          20.168167114257812
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -7.13176965713501,
+          -7.183160305023193,
           1.0
         ]
       ],
       [
         [
-          11.342592239379883,
-          16.222848892211914
+          11.755485534667969,
+          16.663957595825195
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -6.775290489196777,
+          -6.81478214263916,
           1.0
         ]
       ],
       [
         [
           8.443402290344238,
-          12.277538299560547
+          12.713944435119629
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -6.4782867431640625,
+          -6.506412029266357,
           1.0
         ]
       ],
@@ -6408,7 +6407,7 @@
       ],
       [
         [
-          14.691914558410645,
+          11.659317970275879,
           24.0
         ],
         [
@@ -6479,20 +6478,20 @@
       [
         [
           24.0,
-          32.23533630371094
+          30.573110580444336
         ],
         [
           14.01067066192627,
           16.98932647705078
         ],
         [
-          1.8424152135849,
-          7.589267253875732
+          2.018421173095703,
+          7.859991073608398
         ]
       ],
       [
         [
-          31.628997802734375,
+          29.922588348388672,
           40.0
         ],
         [
@@ -6501,13 +6500,13 @@
         ],
         [
           -8.0,
-          3.871051788330078
+          4.05386209487915
         ]
       ],
       [
         [
-          29.050220489501953,
-          36.61198425292969
+          29.86874008178711,
+          37.842529296875
         ],
         [
           16.18932342529297,
@@ -6515,21 +6514,21 @@
         ],
         [
           -8.0,
-          -4.103176116943359
+          -4.317146301269531
         ]
       ],
       [
         [
-          24.0,
-          29.953166961669922
+          24.515674591064453,
+          30.79279327392578
         ],
         [
           16.18932342529297,
           16.189327239990234
         ],
         [
-          -6.147130966186523,
-          -2.9373488426208496
+          -6.360210418701172,
+          -3.0926055908203125
         ]
       ],
       [
@@ -6542,7 +6541,7 @@
           16.189327239990234
         ],
         [
-          -4.981288433074951,
+          -5.137109756469727,
           2.9309282302856445
         ]
       ],
@@ -6590,22 +6589,22 @@
       ],
       [
         [
-          26.06939697265625,
-          30.50139617919922
+          25.63083267211914,
+          30.094070434570312
         ],
         [
           16.1893253326416,
           16.1893253326416
         ],
         [
-          -0.8606517314910889,
+          -0.8070322871208191,
           7.4647016525268555
         ]
       ],
       [
         [
-          29.13741111755371,
-          33.36387634277344
+          28.69940185546875,
+          32.953792572021484
         ],
         [
           16.1893253326416,
@@ -6613,13 +6612,13 @@
         ],
         [
           -1.0,
-          7.033698558807373
+          7.081957817077637
         ]
       ],
       [
         [
-          32.217655181884766,
-          36.65740966796875
+          31.777151107788086,
+          36.24451446533203
         ],
         [
           16.1893253326416,
@@ -6627,13 +6626,13 @@
         ],
         [
           -1.0,
-          6.737167835235596
+          6.775290489196777
         ]
       ],
       [
         [
-          35.72246170043945,
-          39.55659866333008
+          35.28605651855469,
+          39.141502380371094
         ],
         [
           16.1893253326416,
@@ -6641,12 +6640,12 @@
         ],
         [
           -1.0,
-          6.4782867431640625
+          6.506412029266357
         ]
       ],
       [
         [
-          38.252254486083984,
+          38.33231735229492,
           40.0
         ],
         [
@@ -6655,12 +6654,12 @@
         ],
         [
           -7.580631732940674,
-          6.311588764190674
+          6.332352638244629
         ]
       ],
       [
         [
-          35.52699279785156,
+          36.61198425292969,
           39.772884368896484
         ],
         [
@@ -6668,14 +6667,14 @@
           16.1893253326416
         ],
         [
-          -8.0,
-          -3.4265682697296143
+          -7.026732921600342,
+          -3.5835111141204834
         ]
       ],
       [
         [
           33.744537353515625,
-          37.63258743286133
+          38.06200408935547
         ],
         [
           16.1893253326416,
@@ -6688,7 +6687,7 @@
       ],
       [
         [
-          31.992918014526367,
+          32.428192138671875,
           35.851680755615234
         ],
         [
@@ -6703,7 +6702,7 @@
       [
         [
           30.696622848510742,
-          33.95549392700195
+          34.4261589050293
         ],
         [
           16.1893253326416,
@@ -6753,7 +6752,7 @@
         ],
         [
           -8.0,
-          -0.4469884932041168
+          -0.47861701250076294
         ]
       ],
       [
@@ -6795,7 +6794,21 @@
         ],
         [
           -8.0,
-          6.311588764190674
+          6.451291561126709
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -5.533660888671875,
+          -0.11434017866849899
         ]
       ],
       [
@@ -6808,21 +6821,7 @@
           14.01067066192627
         ],
         [
-          -4.0,
-          7.5
-        ]
-      ],
-      [
-        [
-          32.0,
-          40.0
-        ],
-        [
-          14.01067066192627,
-          14.01067066192627
-        ],
-        [
-          6.290499210357666,
+          -1.7331573963165283,
           7.5
         ]
       ],
@@ -6857,10 +6856,10 @@
       [
         [
           40.0,
-          47.01100540161133
+          47.857452392578125
         ],
         [
-          14.01067066192627,
+          14.590024948120117,
           16.98932647705078
         ],
         [
@@ -6879,7 +6878,7 @@
         ],
         [
           -8.0,
-          3.1098856925964355
+          3.0484094619750977
         ]
       ],
       [
@@ -6912,8 +6911,8 @@
       ],
       [
         [
-          40.064979553222656,
-          43.69945526123047
+          40.92829513549805,
+          44.0
         ],
         [
           16.1893253326416,
@@ -6921,13 +6920,13 @@
         ],
         [
           -1.0,
-          6.254827976226807
+          6.237518787384033
         ]
       ],
       [
         [
-          43.077186584472656,
-          45.41490936279297
+          43.50624084472656,
+          45.83417892456055
         ],
         [
           16.1893253326416,
@@ -6935,13 +6934,13 @@
         ],
         [
           -1.0,
-          6.159548282623291
+          6.1454548835754395
         ]
       ],
       [
         [
-          44.793392181396484,
-          47.50885009765625
+          45.222599029541016,
+          47.92694091796875
         ],
         [
           16.1893253326416,
@@ -6949,13 +6948,13 @@
         ],
         [
           -1.0,
-          6.094309329986572
+          6.08297872543335
         ]
       ],
       [
         [
-          46.9409294128418,
-          49.59817123413086
+          47.37090301513672,
+          50.01606369018555
         ],
         [
           16.1893253326416,
@@ -6963,13 +6962,13 @@
         ],
         [
           -1.0,
-          6.0443949699401855
+          6.036543846130371
         ]
       ],
       [
         [
-          49.091766357421875,
-          51.69108200073242
+          49.52200698852539,
+          52.11139678955078
         ],
         [
           16.1893253326416,
@@ -6977,13 +6976,13 @@
         ],
         [
           -1.0,
-          6.012478828430176
+          6.008307933807373
         ]
       ],
       [
         [
-          51.2411003112793,
-          53.5000114440918
+          51.669952392578125,
+          54.65302658081055
         ],
         [
           16.1893253326416,
@@ -6991,12 +6990,12 @@
         ],
         [
           -1.0,
-          5.998442649841309
+          5.997434616088867
         ]
       ],
       [
         [
-          40.4348030090332,
+          40.24930953979492,
           56.0
         ],
         [
@@ -7018,7 +7017,7 @@
           16.1893253326416
         ],
         [
-          -7.8180389404296875,
+          -7.737257957458496,
           7.5
         ]
       ],
@@ -7047,21 +7046,7 @@
         ],
         [
           -8.0,
-          6.17412805557251
-        ]
-      ],
-      [
-        [
-          40.0,
-          48.0
-        ],
-        [
-          14.01067066192627,
-          14.01067066192627
-        ],
-        [
-          -7.5,
-          -4.0
+          6.062280654907227
         ]
       ],
       [
@@ -7089,6 +7074,20 @@
         ],
         [
           -4.0,
+          7.5
+        ]
+      ],
+      [
+        [
+          52.0,
+          53.803306579589844
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          5.996547698974609,
           7.5
         ]
       ],
@@ -7123,27 +7122,27 @@
     "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585200": "9d618f36246f0350ad26cd07189f2b139dc34b1480c0735c14e7451920a836c8",
     "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585300": "5e9c47233ba7d6c19d16864fc0cb7df6bea85f93b03647e5cc107ee17e884f6e",
     "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585400": "6c2fc8f84583de0e1f681e32ff498b124b3b6263160c3a81673b7eb145c8b5b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "59e736b92ef86c5cd6d0e69e94b5e93bc84bb09b832d906353ae685346e391c0",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
-    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "6a032e49125ae3e750551a4db24b217c704483ebf02004dbe5175cf9f30c39d3",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "44aa2e6a88143a873ce3b67e887fa7bc3cb46c87bc5bfd025cf360cf9f138b78",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "44aa2e6a88143a873ce3b67e887fa7bc3cb46c87bc5bfd025cf360cf9f138b78",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "44aa2e6a88143a873ce3b67e887fa7bc3cb46c87bc5bfd025cf360cf9f138b78",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "44aa2e6a88143a873ce3b67e887fa7bc3cb46c87bc5bfd025cf360cf9f138b78",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "44aa2e6a88143a873ce3b67e887fa7bc3cb46c87bc5bfd025cf360cf9f138b78",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404": "57982207f63df6c2488a82f23f8ba27b792973886ac2b58f933fa8c0a138b25c",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "d2f410894469b6491796d7566de5d8e3e2c982aaeb411330b6afccfff620a2c7",
     "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100": "c99af55fa96361055e7959d95513f61406ddb66fa17e6f514af77c044c9bf91c",
     "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200": "000ae8858cdb0deace3e13d5b687c175b01e5a8633f3fe6661c47b61a16ff2dc",
     "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300": "8ccc3c065b6a147e72a13f18657f2d3f2ea6ffba26f252409e4413769b927357",
@@ -7543,7 +7542,7 @@
     "city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
     "connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
     "connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
-    "connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+    "connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
     "content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
     "dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
     "design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
@@ -7560,7 +7559,7 @@
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
     "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
-    "piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+    "piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
     "preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
     "providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
     "recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
@@ -7578,7 +7577,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/evidence/preview.json",
-    "sha256": "075fc4ce1cfd7a2fc69f76a38bd65821bca9131f21e007e3fb6e721b9a82d988",
+    "sha256": "25e78a085f04a9b98aa833f427ea2d42f3a1d71838f10c6f2e80bdc78e9b280b",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,
@@ -7607,5 +7606,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "7d6e5e28827e83e9cb54b26e8f4e971724b7b366385d505e20bb6fa30d0b6feb"
+  "selectable_markdown_sha256": "a2d8315f0a6ce84af8ae6eccb3e5295161369895fa250aa982add69adb99de6a"
 }

@@ -4,17 +4,17 @@
   "piece_id": "hsr-component-modular-south-junction",
   "domain_id": "high-speed-rail",
   "source_binding": {
-    "compiled_build": "dist/trumpet-merge-west-tail-parts-01",
-    "compiled_manifest_sha256": "ae5696604494de71d95d38c2a0a8fe8774a2257c9fb2ced341a7365ce91e736a",
+    "compiled_build": "dist/trumpet-fan-core-parts-final-01",
+    "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
     "files": {
-      "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
-      "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connections.json": "e1c7e8f4053268b579cca192ac16ed662806107cf75e8102e06aae3fb898621d",
-      "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connector-groups.jsonc": "dacf42e2142214769918d7e2333dfdbd705fca14ca9d6fef73800986d46bac61",
+      "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+      "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connections.json": "e368222484cb14debddad08a229db33bfa0422b5a896cc81c8feb34d955566e2",
+      "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/connector-groups.jsonc": "cb23f3a60c4c8367df1017f3bcc1688a470b523e043d36f457c85e1eeec36f9c",
       "domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction/piece.json": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0",
-      "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
-      "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+      "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4",
+      "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
       "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
-      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "4af85a79d8e4b5fb0c8d8000a91afaa1d4482db0b544391dac0903e675bb7ed2",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "9bb0b030178285097528e5ca23c85b5a8a8a1ea79d2322b888934980c08c41eb",
       "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
       "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
       "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
@@ -22,32 +22,43 @@
       "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
       "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "445f6300959310053b62865198698be714751de1291e4aaad40b6eb92643707b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d66f970865f76f6b02fb5ae1caafffd7630957783a19246e3dc791df9c985fa3",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "de209c0a61ece97d8ee5e7068d2159c3fc014faabe8feba5a724d386741a4da1",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "ecb4874121a0135cc1371ca37d0d305dd9d4d33c9025fd1a38b5d9a277ec09c1",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "f238345479371c5e383dc293019f97fba79b5dc8687d68be02d2874693f75042",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "ad7fa8118d56b0d568af5c9fb4780e052b529c54466324fb7c4f49f53e277f68",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "a90fc3f1f8f2b53dba5ea6abf619d0cbec2cf4b9996475f4de709ccc8146103b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "5a7629ccdcf60cff289fa928f09ab1d8ca16ce82b365a80cd0501dbbfa42a4b2",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_core_verify.py": "5d6fbcc842bb588dcc9ac35b0624859fe9ea22e37b52f53835566de09e06313f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "b7c448d5b4a15241bea5fb4e11088e387b8a3c6db308021ab1e4500eb8d9fdff",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "f90c7fcbbf1330e3b3f38209995f41ed699442368a5f38128e9186c79afc03cd",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "445d313bc9190e1a6689ba61f042c94942bfe0d8be5ac90a0c15abcd3aa079f4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "6f457c3d73c3b1b0859eee3ebc42d3c0af2789b67ceafec3ec4712b3462ba211",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "8c27ed386fbca11abb9b711219e44fb7686e42dfa089ef39913f3e23d32b0b4f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "b893fe75e683e4ec2c793c1b7f97a5bc29c68d800b1a4299af58f5d3fe3eadbd",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_recessed_straight_verify.py": "04b09b27ddd1af4bc71a207b056dd581917b03d46a5a7e91b92ce725f5faee43",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem.py": "73c4c71e758aa37f21b3036f77c2c710b4b8b9190e6323054a6c32ba9aee8d38",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem_verify.py": "406d22ba293fe0f15c38bc34adec2644b54201c9058049470bd1309e07c0ee1f",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
-      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "910eafa974eabe70f94bf95a3610e529ea9a4e7f8142340c44c9f7ae73fc327d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_border_verify.py": "629dc983bb3c28eebda5bfd943b43bc0a5d8c6950e517f15ad7007bd44cba165",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "52a40ec5f06f714e23ac0ddac2cef33d9adc276e84c1cad9996acce3b3d4502b",
       "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
-      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "6a449968af8993cb96ea540ea1791aac1849c8843882a74ca1356bf8e3d5c928",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "eb6fb9568489f524f8200e26d30902eb207542dd51f27f03b77b552a455adc00",
       "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
       "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
       "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
@@ -73,7 +84,7 @@
       "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
       "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
       "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
-      "framework/scp/connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+      "framework/scp/connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
       "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
       "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
       "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
@@ -90,7 +101,7 @@
       "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
       "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
       "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
-      "framework/scp/piece_previews.py": "7065983d07957d7a12a50c006400830c506362d08db791f6cb72dfa2412a012c",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
       "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
       "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
       "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
@@ -454,16 +465,16 @@
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c002": "0f8c0cf6878b9a9e6b489b5fc018a92179184d79162d4339360196ad9d79ec43",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c003": "0f8c0cf6878b9a9e6b489b5fc018a92179184d79162d4339360196ad9d79ec43",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c004": "0f8c0cf6878b9a9e6b489b5fc018a92179184d79162d4339360196ad9d79ec43",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c010": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c011": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c012": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c013": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c014": "9aef806727bea00fe908dd4bd7e7bfe6184a2b944f04d67f0b75d6d21af776ca",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c020": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c021": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c022": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c023": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c024": "5658b783b1c414aaf7452ecdd3eccb0d208d12fa3497f633a20635fc22ac86cc",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c010": "b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c011": "b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c012": "b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c013": "b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c014": "b6c1e06961bfbbff5e6d113886413241d08b08d5b7bdfd460e403868a379ec67",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c020": "95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c021": "95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c022": "95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c023": "95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c024": "95403901c25217fb9ce8d0f799646004e43e3a0ef430256df932eca3ef22cc99",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c030": "36296490f4afc12bde43a0e40fa6ee1164297eb77cb440d846d17e75c63a3d55",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c031": "36296490f4afc12bde43a0e40fa6ee1164297eb77cb440d846d17e75c63a3d55",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c032": "36296490f4afc12bde43a0e40fa6ee1164297eb77cb440d846d17e75c63a3d55",
@@ -474,41 +485,41 @@
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c042": "01996dcdd494c7f5cb05395d66c10e7a95c67a6379011d3b39406bb9fc4f8504",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c043": "01996dcdd494c7f5cb05395d66c10e7a95c67a6379011d3b39406bb9fc4f8504",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c044": "01996dcdd494c7f5cb05395d66c10e7a95c67a6379011d3b39406bb9fc4f8504",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c120": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c121": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c122": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c123": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c124": "859cb2e1d73804803d3a76ebce89a64bee86b2dd09e9c8c4a09f3da0b40dae4e",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c130": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c131": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c132": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c133": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c134": "207f129523646a25bac80c76297529c48ccd5897e45d41c15032a5fd4219edc6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c140": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c141": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c142": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c143": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c144": "1e6b19453b3c3f4d1fa0aefe6f4b9f136b0affe60d87b0eb7fbab89890fe5838",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c150": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c151": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c152": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c153": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c154": "8887325ab85752c9cf440d686ed62f083d2479994be74179cb4ecd15ba137553",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c120": "4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c121": "4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c122": "4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c123": "4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c124": "4545b9f3222d6e821e8500c4c3ade7b2aa1840690823e2e0a20b4db91411586d",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c130": "e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c131": "e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c132": "e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c133": "e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c134": "e8165fa3ea4f869c5c868da613b296b8ad211c2cfc2de6b1d3dd709fa686e023",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c140": "2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c141": "2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c142": "2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c143": "2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c144": "2df4b8be9ff55fe932656991a0a35587b079167e582b7895decbccd89ca4ebb5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c150": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c151": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c152": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c153": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c154": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c200": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c201": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c202": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c203": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c204": "61fe1b4ddeaf846f52e3779859e212399b97a8c97f9ad1d46fb4583119a169c6",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c210": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c211": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c212": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c213": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c214": "b226af1a8240bac60a9af81fd4a306f94b49ae651070425e5f03c062d5c327dd",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c220": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c221": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c222": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c223": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c224": "4ecc705638ce4d1ed32381d9065eac4db873dd6665d65d2af86621ae190696c1",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c210": "3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c211": "3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c212": "3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c213": "3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c214": "3fd7bb7afc8fae281f31777a95ae49c430480b7db689d07ffbd2b47c5ea8b073",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c220": "008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c221": "008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c222": "008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c223": "008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c224": "008cc9fbe6bacd75bdfd16f174d1c33236d2af74a41d862d74521c12d01b1ffb",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c230": "d688b44d98b4c49194e97dbd40e962b492500fa9bbd6f1c07b1a6183333b3400",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c231": "d688b44d98b4c49194e97dbd40e962b492500fa9bbd6f1c07b1a6183333b3400",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c232": "d688b44d98b4c49194e97dbd40e962b492500fa9bbd6f1c07b1a6183333b3400",
@@ -519,7 +530,7 @@
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c242": "7b48a785f888af4c8a246cc7d77f3016ddc1dc5db08f8f6ec12e3f413ffc0ed7",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c243": "7b48a785f888af4c8a246cc7d77f3016ddc1dc5db08f8f6ec12e3f413ffc0ed7",
           "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c244": "7b48a785f888af4c8a246cc7d77f3016ddc1dc5db08f8f6ec12e3f413ffc0ed7",
-          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58cff5": "ad63cb1ab6a9359abd93c84617b0a081b5d6ec34d0c72a47097526f2199138d5",
+          "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58cff5": "98087d2e71617e4a1e8ff9570ca72fd09d64c83f4ed592b674dda6056ecadaf7",
           "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c000": "9ef50ace2d8f98b5718172ce20148ef63fd04382821c6f8978b5dd61ab84041a",
           "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c010": "4a1ff37f92144e7203c00e0ec8ce154bae022a7c4c6e38333b1ed61de4ab33fe",
           "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c020": "ed2a2544e09b01494183e666ff7eba86fda3170a00b532d4eb6afc99cc85a9a2",
@@ -544,11 +555,11 @@
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c012": "1010a32c289294055a11ad9421d7eea268fb76ed5a7b29247d6e6686fc1109f3",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c013": "5c2f890346b42bb27cb58a7742cf9bca3cfe2bcd7fc23340b75ec0bd5b3e0d94",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c014": "4fc141e82e330fb5f70c5fcdfe449cbbb662b9ba8001c811bff5f258683024bd",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c020": "d3c6b3ac823ff1654d422a9d14da86a51a01ec34b78039ed3d45db1eaba779e8",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c021": "6f131fd4e602dd9fc15e204a89c51d15708291a897ea80e941f7a16e1e73ea03",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c022": "338197ea17732a1ab6ff931440a6721c8aacfe2dae6c8db95cd9d79cf42588c2",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c023": "98f9f93de4a29175f8446e0cf27cf01f11226496c40fec133eade23670e8780f",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c024": "0c5ca68aa70f001eb050efdc49d0c237342b0c361bd0a39c112a831485a1158d",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c020": "f6cb95bee4e184d9fcf4be8b93465e0a4e34381945c5b5aa0429c5a4f5ff9458",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c021": "ea440da7cd408340ceb20a15aee9ea2ad13c0cfccaa5c22a76d3b9334906cd90",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c022": "f25e6d85f92aef1efcfd5e72dc3326060b63d4d6b7c095d8b3073bb087d6ec29",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c023": "d12b790d8f47d9ae10a59468054394b79d01b7dbdf6ef74ebb06fbd48dc04f68",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c024": "63d2b36e4d519d1b824e6f4aff5fb740a1b0a6ce0da2f9c476963d3c916e0127",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c030": "f844ff06a054b83102390ff6c61cbb041ab6eeda9c00f7c8df58815d5f903982",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c031": "c8067c02fe458888501e4460340dc46dea7111dfab1163d94200836d9f584fe2",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c032": "98f5f9a4a5df5511b560d92036c3b52dcb3584c8431a5a517fb7a488b99c09b0",
@@ -559,11 +570,11 @@
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c042": "f562c15afd8b97af7d339689321512e771051ce674efffc5d6f7ba3c39e9b8c4",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c043": "2570e827c8d7b5dcd6642a268ccd19c557921b5f1e40d2d828ece6cefc7523c8",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c044": "72a744da4899069db98bd9830e17cdeb98b65973c4775cf7f2667c87983de0ec",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c120": "0d5cfe575e9fded2408b3caec5ef531e1bc116b23d07396c1ac68150e0602b79",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c121": "47638667e9907b567a30d914c390f37edd8fae601f0c247d0e284c6a1b00a12f",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c122": "d3fe50cacab77b419c59a15e194582b35e2ca10a74136d721d73e98d0be935d8",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c123": "4b7dd6ba0ec14aeb9242eb5b30da0e720d443fbdb4e5930dd7472f7635d9ba8c",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c124": "33f2f60a70dc39d256c3db6d04a25b12b96cb6a2b1b1c9aa944b83044bc8be72",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c120": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c121": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c122": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c123": "f22537853e4049367871bedd85d3a62cd1112cb0d960241d915dc61fbddf08ab",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c124": "a69fb0276cf8d1284cf6594ecbed6dec30c83926e95b22dcd78647a943862b73",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c130": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c131": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c132": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd",
@@ -589,11 +600,11 @@
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c212": "2c8650372c4458f5e47bf480b667e8f8dccc2c585fa46dcca50850de3931aed2",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c213": "90efee3f2ba65e156a9b2d40343e448114e1b32061855f8ab7e056d699d6ecc6",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c214": "3bd954e120654fb50837c7c0e9023a36c6b39a68d6bab19cc69c2d8bd10de7c9",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c220": "fca62d0dc9a2061c1e59aab5d149a98593989b26dd785afedd1e578e2008ca9a",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c221": "400756b43e41fbd2c63f8c2d3c39ddced3ec82c37ff03ce8a3fd6995feb2415b",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c222": "0664237c3267e0cee2909a383ddff572df86421f6d5e1463a5bac47a06235e83",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c223": "287c2d82d979b67d48a019825e1cb47d7815157a84a4fb4e9678b502d3af01d2",
-          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c224": "b15d62a9a4701f21534677e4ec178d8becfed519fce3774643fe4c6c28a90b5f",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c220": "216a5a926c141e6a0788a061c31f085ec12230a833cb94db68bf02b6cf892ac9",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c221": "f90e7c0a5531b4aecd6ac9afd4221eb11fc5f2c4833de83c57310cd8ff2b5826",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c222": "54d2f1753cb0b039f9529f8f8fb3a8059683bdf5186312dca83eae36e31288ad",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c223": "a7d7b0e34ab05946116a9cd33c73b1b0b3d195aafb0d3ffdbefe6aa1db4a9dc4",
+          "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c224": "9fd2999a9f6f4fd1f2672ed8d95bb7b0b61ef87ecce472a77a4125d146a0b1ab",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c230": "d6c02d9914a173c247918423aa8264ae5fd51996b80881b7d46d9d86012491f3",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c231": "08a12579bb4e4eb1782b79adcc90b9142e3eca6f69bc932a2981af01ab9d43a1",
           "shadow:hsr-component-modular-south-junction:7ab50e44-2bc2759a-7f58c232": "eaa9ed69c73f2d63ce3f5a9041a518e1dcb75a395a123ba1741ce0e89db3ced9",
@@ -621,6 +632,7 @@
           "construction:hsr-component-modular-south-junction": "0667a6fc4e50800dd28fb2d06155e0ba9c06d4bed6417510c2148e5d4f818991"
         },
         "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
         "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
       },
       "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
@@ -663,6 +675,19 @@
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c000",
             "construction:hsr-component-modular-south-junction"
           ],
+          "source_route_ids": [
+            "path-7f58c000-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f58c000"
+            }
+          ],
           "connection_class": "path-interface-365752af76285c80cd0b"
         },
         {
@@ -702,6 +727,20 @@
             "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c154",
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c150",
             "construction:hsr-component-modular-south-junction"
+          ],
+          "source_route_ids": [
+            "path-7f58c150-route-001",
+            "path-7f58c150-route-003"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                5
+              ],
+              "edge": 3,
+              "tile_id": "7f58c150"
+            }
           ],
           "connection_class": "path-interface-12d12be31d2057c5763d"
         },
@@ -743,6 +782,19 @@
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c120",
             "construction:hsr-component-modular-south-junction"
           ],
+          "source_route_ids": [
+            "path-7f58c120-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                2
+              ],
+              "edge": 1,
+              "tile_id": "7f58c120"
+            }
+          ],
           "connection_class": "path-interface-12d12be31d2057c5763d"
         },
         {
@@ -782,6 +834,20 @@
             "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c154",
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c150",
             "construction:hsr-component-modular-south-junction"
+          ],
+          "source_route_ids": [
+            "path-7f58c150-route-000",
+            "path-7f58c150-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                5
+              ],
+              "edge": 3,
+              "tile_id": "7f58c150"
+            }
           ],
           "connection_class": "path-interface-fba09fbeb87ad95c667a"
         },
@@ -823,6 +889,19 @@
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c120",
             "construction:hsr-component-modular-south-junction"
           ],
+          "source_route_ids": [
+            "path-7f58c120-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                2
+              ],
+              "edge": 1,
+              "tile_id": "7f58c120"
+            }
+          ],
           "connection_class": "path-interface-fba09fbeb87ad95c667a"
         },
         {
@@ -863,6 +942,19 @@
             "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c200",
             "construction:hsr-component-modular-south-junction"
           ],
+          "source_route_ids": [
+            "path-7f58c200-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f58c200"
+            }
+          ],
           "connection_class": "path-interface-ac60d237d23f01143255"
         }
       ],
@@ -898,9 +990,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "7:Sin>Nout",
+          "id": "7:Sin>Rout",
           "entry_port": "Sin",
-          "exit_port": "Nout",
+          "exit_port": "Rout",
           "service_network": "hsr",
           "role": "primary",
           "engine_transport_classes": [
@@ -913,9 +1005,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "7:Sin>Rout",
+          "id": "7:Sin>Nout",
           "entry_port": "Sin",
-          "exit_port": "Rout",
+          "exit_port": "Nout",
           "service_network": "hsr",
           "role": "primary",
           "engine_transport_classes": [
@@ -1017,7 +1109,7 @@
       "piece_id": "hsr-component-modular-south-junction",
       "source_binding": {
         "piece_sha256": "71beee10351c0d7e9cc20a5900c94ec7dec3737ddceaf7629a6a0286799114b0",
-        "connections_sha256": "e1c7e8f4053268b579cca192ac16ed662806107cf75e8102e06aae3fb898621d"
+        "connections_sha256": "e368222484cb14debddad08a229db33bfa0422b5a896cc81c8feb34d955566e2"
       },
       "components": [
         {
@@ -1287,6 +1379,20 @@
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c150",
               "construction:hsr-component-modular-south-junction"
             ],
+            "source_route_ids": [
+              "path-7f58c150-route-000",
+              "path-7f58c150-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  5
+                ],
+                "edge": 3,
+                "tile_id": "7f58c150"
+              }
+            ],
             "connection_class": "path-interface-fba09fbeb87ad95c667a",
             "source_port_id": "Sin",
             "channel_id": "northbound-mainline",
@@ -1339,6 +1445,20 @@
               "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c154",
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c150",
               "construction:hsr-component-modular-south-junction"
+            ],
+            "source_route_ids": [
+              "path-7f58c150-route-001",
+              "path-7f58c150-route-003"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  5
+                ],
+                "edge": 3,
+                "tile_id": "7f58c150"
+              }
             ],
             "connection_class": "path-interface-12d12be31d2057c5763d",
             "source_port_id": "Sout",
@@ -1491,6 +1611,19 @@
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c120",
               "construction:hsr-component-modular-south-junction"
             ],
+            "source_route_ids": [
+              "path-7f58c120-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  2
+                ],
+                "edge": 1,
+                "tile_id": "7f58c120"
+              }
+            ],
             "connection_class": "path-interface-12d12be31d2057c5763d",
             "source_port_id": "Nin",
             "channel_id": "southbound-mainline",
@@ -1543,6 +1676,19 @@
               "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c124",
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c120",
               "construction:hsr-component-modular-south-junction"
+            ],
+            "source_route_ids": [
+              "path-7f58c120-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  2
+                ],
+                "edge": 1,
+                "tile_id": "7f58c120"
+              }
             ],
             "connection_class": "path-interface-fba09fbeb87ad95c667a",
             "source_port_id": "Nout",
@@ -1695,6 +1841,19 @@
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c000",
               "construction:hsr-component-modular-south-junction"
             ],
+            "source_route_ids": [
+              "path-7f58c000-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f58c000"
+              }
+            ],
             "connection_class": "path-interface-365752af76285c80cd0b",
             "source_port_id": "Lin",
             "channel_id": "left-return-branch",
@@ -1813,6 +1972,19 @@
               "model:hsr-component-modular-south-junction:5ad0e817-badb57f1-7f58c204",
               "path:hsr-component-modular-south-junction:296678f7-a966883f-7f58c200",
               "construction:hsr-component-modular-south-junction"
+            ],
+            "source_route_ids": [
+              "path-7f58c200-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  2,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f58c200"
+              }
             ],
             "connection_class": "path-interface-ac60d237d23f01143255",
             "source_port_id": "Rout",
@@ -2009,24 +2181,6 @@
         "source_exit_port": "Sout"
       },
       {
-        "id": "south-paired-end-sin>north-paired-end-nout",
-        "entry_port": "south-paired-end-sin",
-        "exit_port": "north-paired-end-nout",
-        "service_network": "hsr",
-        "role": "primary",
-        "engine_transport_classes": [
-          7
-        ],
-        "endpoint_variants": [
-          "hsr",
-          "hsr"
-        ],
-        "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "7:Sin>Nout",
-        "source_entry_port": "Sin",
-        "source_exit_port": "Nout"
-      },
-      {
         "id": "south-paired-end-sin>right-northern-end-rout",
         "entry_port": "south-paired-end-sin",
         "exit_port": "right-northern-end-rout",
@@ -2043,6 +2197,24 @@
         "source_id": "7:Sin>Rout",
         "source_entry_port": "Sin",
         "source_exit_port": "Rout"
+      },
+      {
+        "id": "south-paired-end-sin>north-paired-end-nout",
+        "entry_port": "south-paired-end-sin",
+        "exit_port": "north-paired-end-nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Sin>Nout",
+        "source_entry_port": "Sin",
+        "source_exit_port": "Nout"
       }
     ],
     "forbidden_transfers": [
@@ -5387,9 +5559,9 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/trumpet-merge-west-tail-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
-      "dat_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
-      "model_sha256": "ad63cb1ab6a9359abd93c84617b0a081b5d6ec34d0c72a47097526f2199138d5",
+      "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
+      "dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+      "model_sha256": "98087d2e71617e4a1e8ff9570ca72fd09d64c83f4ed592b674dda6056ecadaf7",
       "resource_fingerprints_checked": 184,
       "directional_ports_reextracted": 6,
       "directed_journeys_reextracted": 4,
@@ -5406,5 +5578,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "f634db4f066e8bddf2725436f564bfebc956a0810ea114d83188b522599ac22b"
+  "content_sha256": "adee3c6d67805bdba6d707c3b4b85cf61d49f4f88dcafbfa47b7c31ba91fdf2a"
 }

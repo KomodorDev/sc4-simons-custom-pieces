@@ -2,7 +2,7 @@
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "hsr-component-upper-paired-straight",
   "menu_name": "HSR L4 Two-Track Straight",
-  "display_title": "Piece - HSR L4 Two-Track Straight",
+  "display_title": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
@@ -12,7 +12,7 @@
     "model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788"
   },
   "file": "previews/preview-top.png",
-  "sha256": "b57df2bd62370af7e3a53db5d1a8769a6de7e8fb3b1dca264e5be069880508a7",
+  "sha256": "aa11aedc9ab722e04aa5a0a64b74c4e3e0a414509354528066755ce86223bd2c",
   "size": [
     1600,
     1200
@@ -318,17 +318,23 @@
       ],
       "world_coordinates": "(east, north, height)",
       "s3d_coordinates": "(east, height, -north)"
+    },
+    "line_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
     }
   },
   "header": {
     "captions": [
-      "Piece - HSR L4 Two-Track Straight",
+      "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - HSR L4 Two-Track Straight",
+        "text": "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -339,7 +345,7 @@
         "bounds": [
           30,
           27,
-          600,
+          819,
           59
         ]
       },
@@ -439,11 +445,11 @@
     }
   ],
   "captions": [
-    "Piece - HSR L4 Two-Track Straight",
+    "Piece - HSR Level 4 (30.5 m) Two-Track Straight",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
-    "Software model preview; in-game placement and traffic remain unverified."
+    "Software model preview."
   ],
   "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
   "assembly_labels_visible": false,
@@ -474,7 +480,7 @@
     ],
     "geometry_simplified": false,
     "layout": "one canonical view with independent local city grid",
-    "layout_sha256": "92b0ca70d9e9bdfbfd8885ef2ed7041f260071b745bb86e684b6352a1da494b1",
+    "layout_sha256": "7b3b9250060e98e974090fe0525afade018bd4d0f678c0f47211566011a5cef3",
     "header": {
       "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
       "row_colours": [
@@ -507,8 +513,20 @@
     "view_role": "top",
     "tile_metres": 16.0,
     "origin_marker_visible": false,
+    "top_grid_overlay": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
     "duplicate_grid_footer_visible": false
   },
-  "title_source_inputs": {},
-  "input_fingerprint": "c81bb8dae8ba3f86a2cb39ae76a321392e8d9b0b4f264ab089716f1a462a0207"
+  "title_source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/piece.json": "be891f6d7797899c98adcd21b88973903ca8e71b1bcab3c65c4f39f6bae368e3",
+    "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connections.json": "5ddb81eb87261514de6f641e2352c477395e9a5ddb6e31d9b138365310611bc4",
+    "domains/high-speed-rail/00_pieces/hsr-component-upper-paired-straight/connector-groups.jsonc": "d6ce99b5a0ff92348fbfa83cc7be617d9a2bb0e2d0ac22dc8a4f997a8e3a7d80",
+    "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+    "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4"
+  },
+  "input_fingerprint": "beb90acabebcf6b0c2b732e92e5e722e7dd53688795e717f7463a1189529c70a"
 }

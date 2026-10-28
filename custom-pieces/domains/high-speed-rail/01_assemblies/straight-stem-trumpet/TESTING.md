@@ -31,7 +31,7 @@ The README uses **✅** for a current pass, **❌** for a current failure, and *
 
 Manual game checks use the north-up test layout shown in the README. **0°** identifies that reference orientation in the record; the test plan does not require rebuilding and retesting the whole assembly at 90°, 180°, and 270°. Individual pieces still use the placement table's specified rotations. The independent software checks retain the supported construction rotations and their existing routing requirements.
 
-There is one Route Query case and one visible-travel case for each of the six permitted directions, one whole-assembly appearance case, and one negative case for each of the three forbidden U-turns. Placement, demolition, and save/reload each have one case for the reference layout. The six existing preview-review cases stay separate from actual game appearance. Historical results retain their original scope; no result for a different direction, layout, or environment establishes a current pass.
+There is one Route Query case and one visible-travel case for each of the six permitted directions, one whole-assembly appearance case, and one negative case for each of the three forbidden U-turns. Placement, demolition, and save/reload each have one case for the reference layout. The six layout-preview cases and the additional extraction-drawing review case stay separate from actual game appearance. Historical results retain their original scope; no result for a different direction, layout, or environment establishes a current pass.
 
 Use the exact case links in the matrix and the [test checklist](#test-checklist) to record results. A pass covers only its recorded game environment, layout, and inputs. See [4. Game checks](#4-game-checks) for the procedure and [known issues](#known-issues) for the open demolition defect.
 
@@ -87,7 +87,7 @@ Use the README's [views](README.md#1-views), [piece list](README.md#2-pieces), a
 
 ### Before you start
 
-Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to prepare the matching one-button assembly candidate and its required local dependencies. The four-tile P07/P26 candidate is `custom-pieces/dist/trumpet-merge-west-tail-menu-01`, prepared from the verified `custom-pieces/dist/trumpet-merge-west-tail-parts-01` resources. Its frozen source-proof documents retain their original capture; use the current repository README and TESTING documents for the 26-placement rebuilding instructions and current evidence. A candidate ZIP does not replace those current guides. Preparing or checking a candidate does not install it. Before a game test, record the actual candidate's file hashes, platform, game version, NAM profile, and disposable test city. Historical reports do not supply missing details of a new run.
+Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to prepare the matching one-button assembly candidate and local dependencies. The current whole-assembly input is the verified fourteen-type `custom-pieces/dist/trumpet-fan-core-parts-audit-01` build. The final parts and menu commands use `custom-pieces/dist/trumpet-fan-core-parts-final-01` and `custom-pieces/dist/trumpet-fan-core-menu-final-01`; consult the [package report](evidence/border-piece-integration-package.json) for the actual completed output hashes. Use the current repository README and TESTING documents for the 28-placement rebuild. Preparing or checking a candidate does not install it. Before a game trial, record its actual hashes, platform, game version, NAM profile, and disposable test city; historical reports do not supply a new run’s environment.
 
 ### Layout reference
 
@@ -105,7 +105,7 @@ A **port** is a track entrance or exit. Its position, direction, height, deck wi
 - P04's eastern one-way port meets P25, then P10. P10's custom curved end meets P07. P07's ordinary east end meets P23, then P08. P09 completes the east approach.
 - P15 meets P26, which owns the ordinary western approach at (X9, Y13). P26 meets P07's new ordinary west end at the boundary between (X9, Y13) and (X10, Y13); P07 owns only the four cells through (X13, Y13).
 - P04's paired end meets P05, which rises from 15.5 m to 30.5 m and meets P13. P11 carries upper north/south HSR over lower east/west HSR without a level transfer.
-- P12 and P16–P19 extend the upper stem. P20 and P21 join at 23 m. P21 descends to P06, whose custom curved ends meet P07 and P08.
+- P12 and P16–P19 extend the upper stem. P20 and P21 join at 23 m. P21 descends through matching recessed-web straight P06A, then another copy P06B, into fan core P06. Its custom curved ends meet P07 and P08. The inherited native-curve web transition is separately closed and verified in the extraction audit; matching height alone is not a full-profile claim.
 
 Each linked piece README lists its declared ports; these declarations do not establish complete compatibility with a neighbouring piece. The curves use their declared custom interfaces and the centred 8 m one-way profile at their southern ends.
 
@@ -119,8 +119,8 @@ Use clear, flat terrain for the first game test and keep the full **20 × 23 til
 2. Select **HSR L4 Two-Track Straight** and place P12/P13 at **(X7, Y14)** and **(X7, Y12)**, both 0°. Select **HSR L2 Two-Track Straight**, rotate 270°, and place P14/P15 at **(X6, Y13)** and **(X8, Y13)**.
 3. Place P05 **HSR Modular Two-Track L2 to L4 Climb** at **(X7, Y11)** and P04 **HSR Modular Symmetric Split and Return** at **(X6, Y5)**, both 0°. Match the climb's high end to P13 and its low end to P04.
 4. Place upper straights P16–P19 at **(X7, Y15)** through **(X7, Y18)**, all 0°. Place P20 **HSR Tight Two-Track Corner 30.5 to 23 Metres** at **(X7, Y22)**, 0°, and P21 **HSR Tight Two-Track Corner 23 to 15.5 Metres** at **(X14, Y22)**, 270°.
-5. Place P06 **HSR L2 Compact Paired Fan Join** at **(X11, Y18)** and the four-tile P07 **HSR L2 Short Opposed Merge Core** at **(X10, Y13)**, both 0°. Select **HSR L2 Short Mainline Diverge Core**, rotate it to **180°**, and place P08 at **(X18, Y13)**. Their custom branch ends must meet the pictured fan routes.
-6. Select the lower paired straight, rotate 270°, and place **P26 (X9, Y13)**, **P23 (X14, Y13)**, and **P09 (X19, Y13)**. P26 supplies the western tile formerly included in P07; the remaining four P07 tiles keep their world positions. P08 already owns the four eastern core tiles; no separate straight is placed at (X15, Y13).
+5. Select **HSR Level 2 Paired Straight with Recessed Web**, and place P06A at **(X14, Y18)** and P06B at **(X14, Y17)**, both 0°. Select **HSR Level 2 Compact Paired Fan Core**, and place P06 at **(X12, Y16)**, 0°. Place the four-tile P07 **HSR L2 Short Opposed Merge Core** at **(X10, Y13)**, 0°. Select **HSR L2 Short Mainline Diverge Core**, rotate it to **180°**, and place P08 at **(X18, Y13)**. Match the complete paired profiles and both custom curved fan cuts to the picture.
+6. Select **HSR L2 Two-Track Straight**, rotate 270°, and place **P26 (X9, Y13)**, **P23 (X14, Y13)**, and **P09 (X19, Y13)**. P26 supplies the western tile formerly included in P07; the remaining four P07 tiles keep their world positions. P08 already owns the four eastern core tiles; no separate straight is placed at (X15, Y13).
 7. Place P01 **HSR L2 Short Mainline Diverge Core** at **(X1, Y13)**, 0°. Use the same paired straight at 270° for **P22 (X0, Y13)** and **P02 (X5, Y13)**.
 8. Place P03 **HSR L2 Shortened One-Way Departure Curve** at **(X2, Y12)** and P10 **HSR L2 Shortened One-Way Return Curve** at **(X8, Y12)**, both 0°.
 9. Select **One-Way HSR L2 Eight-Metre Straight**. Place **P24 (X6, Y6)** at **180°**, pointing south, and **P25 (X8, Y6)** at **0°**, pointing north. These complete the two connections between the curves and P04; select the same cycle component at the two specified rotations.
@@ -138,8 +138,8 @@ The selected pieces support proper **0°, 90°, 180°, and 270°** rotations in 
 | East → West | P09 → P08 → P23 → P07 → P26 → P15 → P11 → P14 → P02 → P01 → P22 |
 | West → South | P22 → P01 → P03 → P24 → P04 |
 | South → East | P04 → P25 → P10 → P07 → P23 → P08 → P09 |
-| South → West | P04 → P05 → P13 → P11 → P12 → P16 → P17 → P18 → P19 → P20 → P21 → P06 → P07 → P26 → P15 → P11 → P14 → P02 → P01 → P22 |
-| East → South | P09 → P08 → P06 → P21 → P20 → P19 → P18 → P17 → P16 → P12 → P11 → P13 → P05 → P04 |
+| South → West | P04 → P05 → P13 → P11 → P12 → P16 → P17 → P18 → P19 → P20 → P21 → P06A → P06B → P06 → P07 → P26 → P15 → P11 → P14 → P02 → P01 → P22 |
+| East → South | P09 → P08 → P06 → P06B → P06A → P21 → P20 → P19 → P18 → P17 → P16 → P12 → P11 → P13 → P05 → P04 |
 
 U-turns and transfers between the two crossing levels are forbidden. The separate Route Query and visible-travel cases come from this assembly’s authoritative record and appear in [5. Results and known issues](#5-results-and-known-issues).
 
@@ -147,9 +147,21 @@ U-turns and transfers between the two crossing levels are forbidden. The separat
 
 ## 3. Software checks
 
-The current assembly uses **26 placements of 13 types**, with the existing paired straight replacing the former western merge tile. The executed [validation report](evidence/validation.json) and [extraction proof](evidence/merge-west-tail-extraction.json) accept the actual saved four-tile resources and complete arrangement: **105 occupied tiles**, **74 support positions**, **709,002 placed-tile triangles**, and **166 encoded PATH fragments**. Support spacing remains at least **16 m**. Historical test logs, build provenance, and preservation audits remain linked in the [design history](#design-history). These software results create no human image approval, installation, or game-test pass.
+The current arrangement uses **28 placements of 14 types**, within the unchanged **20 × 23 tile** rectangle, with **105 occupied tiles**, **74 support positions**, **715,251 actual placed-tile triangles**, and **166 encoded PATH fragments**. The [current validation](evidence/validation.json), [immutable initial integration gate](evidence/border-piece-integration-initial-validation.json), and [current integration record](checks/border-piece-integration.json) bind the actual saved fourteen-type candidate and complete physical checks. These software results establish neither a human picture approval nor an installed or observed game result.
 
-The current [portable regression report](evidence/merge-west-tail-tests.json) records **1,023 reported tests**, **78 explicit skips**, zero failures, and zero errors from `python3 -B tools/run_tests.py`. Its clean source snapshot excludes private settings, native game inputs, and staged builds; the skipped native cases are not counted as executed. The saved-resource, complete-assembly, connector, and menu checks above have their own separately executed evidence.
+The current [test report](evidence/border-piece-integration-tests.json) separates each executed source/native scope and its explicit skips. The [package report](evidence/border-piece-integration-package.json) identifies the actual final parts, one-button menu, and delivery outputs; it is kept outside its own hashed delivery archive. Older numerical test and extraction results below retain their original run scope.
+
+The preceding four-tile-merge capture used **26 placements of 13 types**, with the existing paired straight replacing the former western merge tile. Its preserved [validation report](evidence/design-history/before-border-piece-integration/evidence/validation.json) and [extraction proof](evidence/merge-west-tail-extraction.json) accept the actual saved four-tile resources and complete arrangement: **105 occupied tiles**, **74 support positions**, **709,002 placed-tile triangles**, and **166 encoded PATH fragments**. Support spacing remains at least **16 m**. Historical test logs, build provenance, and preservation audits remain linked in the [design history](#design-history). These software results create no human image approval, installation, or game-test pass.
+
+The preserved four-tile-merge [portable regression report](evidence/merge-west-tail-tests.json) records **1,023 reported tests**, **78 explicit skips**, zero failures, and zero errors from `python3 -B tools/run_tests.py`. Its clean source snapshot excludes private settings, native game inputs, and staged builds; the skipped native cases are not counted as executed. The saved-resource, complete-assembly, connector, and menu checks above have their own separately executed evidence.
+
+### Accepted border corrections and three-piece fan extraction
+
+The current build uses the accepted grey-border repairs in P01 and P08 (the same diverge type at opposite rotations), P04 (the symmetric split and return), P07 (the opposed merge), and P06 (the retained fan fork). The [standalone revision chain](checks/atomization.json) preserves the separate piece-only history; its earlier assembly deferrals are superseded by this separately verified current integration, not rewritten as old assembly passes.
+
+P06 now owns the exact nine saved fork cells. P06A and P06B are two copies of the new one-tile recessed-web paired straight. The [required coordinate-labelled drawing and saved-input audit](evidence/fan-atomization-review.json) explain why the ordinary straight was rejected, compare every non-cap surface and the complete supports/materials, and record the small texture/tessellation cleanup and fourteen redundant northern cap removals. All nine core models remain exact. The unchanged native neighbour's actual end-plane faces continuously cover the inherited structural-web transition, so no new closure patch is introduced.
+
+The current [native parts audit](evidence/fan-core-parts-build.json), both [core extraction](../../00_pieces/hsr-component-l2-paired-fan-compact-core/evidence/fan-core-extraction.json) and [straight extraction](../../00_pieces/hsr-component-l2-paired-straight-recessed-web/evidence/straight-extraction.json) proofs, and the complete current physical audit have separate scopes. The other twenty-five original placement dictionaries are unchanged. Track directions, all six complete journeys, support positions, outside ports, and the city grid remain preserved; the inherited northern web transition is not universal native-profile compatibility.
 
 ### Current independent acceptance scope
 
@@ -157,9 +169,9 @@ A **PATH** describes train movement. An **S3D model** contains visible triangles
 
 Use the [quality contract](checks/contract.json) and [layout contract](checks/layout.json) with the resource fingerprints below; these source records define the current acceptance requirements.
 
-The schema-3 [resource contract](checks/resources.json) binds the 13 selected piece DATs, their identities, recipes, sizes, resource counts, and hashes, plus the models, PATHs, and shadows of the 105 placed tiles, their owners and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The approved pins identify the actually verified four-tile build. The [extraction proof](evidence/merge-west-tail-extraction.json) confirms exact resource preservation in **103 world cells**, byte-identical PATHs in **104 retained world cells**, identical decoded routes for the replacement straight's **two routes**, **12 byte-identical complete DATs**, identical point counts and hashes for **all six complete journeys**, and all **74 support positions** preserved. The preceding [five-tile-merge audit](evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json) recorded **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**; those figures remain facts about that earlier capture.
+The current [resource contract](checks/resources.json) binds the 14 selected piece DATs, their identities, recipes, sizes, resource counts, and hashes, plus the models, PATHs, and shadows of the 105 placed tiles, their owners and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The current pins identify the newly audited fourteen-type assembly; the following older extraction figures retain their original four-tile-merge scope. The [extraction proof](evidence/merge-west-tail-extraction.json) confirms exact resource preservation in **103 world cells**, byte-identical PATHs in **104 retained world cells**, identical decoded routes for the replacement straight's **two routes**, **12 byte-identical complete DATs**, identical point counts and hashes for **all six complete journeys**, and all **74 support positions** preserved. The preceding [five-tile-merge audit](evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json) recorded **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**; those figures remain facts about that earlier capture.
 
-The candidate placement contract requires **26 placements, 13 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. P26 owns the extracted tile and its existing support, and P07's reference moves 16 m east while its retained geometry is rebased 16 m west locally. The approved local physical adjustment affects the upper northern parapet and adjacent upper bed strip within a **2.5 m** collar at the new western seam, by at most **3.4524 mm**. The rail region, slab underside, pier, outside ports, and support positions are preserved. The executed audit checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer, as well as the new P26/P07 seam and **six native joining sections**. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
+The current placement contract requires **28 placements, 14 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. P26 owns the extracted tile and its existing support, and P07's reference was moved 16 m east while its retained geometry was rebased 16 m west locally. The approved local physical adjustment affects the upper northern parapet and adjacent upper bed strip within a **2.5 m** collar at the new western seam, by at most **3.4524 mm**. The rail region, slab underside, pier, outside ports, and support positions are preserved. The executed audit checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer, as well as the new P26/P07 seam and **six native joining sections**. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
 
 The production blend's [independent collar proof](../../00_pieces/hsr-component-l2-short-opposed-merge-core/evidence/west-parapet-collar-proof.json) records a measured maximum displacement of **3.452301025 mm** and **6,518 finite section checks** with zero new gaps above **2 micrometres** in that scan. A micrometre is 0.001 mm. The complete saved-build audit additionally checks **87 collar sections** at 29 positions and matches all five zooms to the approved seam model. These finite checks do not establish unrestricted watertightness. Triangle partitioning interpolates texture coordinates at new vertices; texture placement inside the deformed collar is not asserted unchanged.
 
@@ -174,11 +186,11 @@ Every complete journey must also stay within **3°** of heading change between r
 | East → South | 3.5 | 269°–271° | +90° |
 | South → West | 3.5 | 269°–271° | −270° |
 
-The redesigned fan owns **11 tiles**. Four former structural cells are omitted only after every saved model zoom has no surface or positive-area projection inside those cells, their PATH resources are absent, and no support is owned there. The two earlier near-centre fan supports are replaced by one support at **(112 m, 32 m)** in assembly authoring coordinates. The explicit plan retains all **59 support positions** outside the redesigned modules and has **74 positions** overall. The [junction redesign record](checks/junction-rework.json) holds the baseline hashes, exact allowed region, fixed sockets, and actual saved-resource proof.
+The accepted fan region contains **11 tiles**, now split between the nine-tile P06 core and one-tile placements P06A and P06B. Four former structural cells remain omitted only after every saved model zoom has no surface or positive-area projection inside those cells, their PATH resources are absent, and no support is owned there. The two earlier near-centre fan supports are replaced by one support at **(112 m, 32 m)** in assembly authoring coordinates. The explicit plan retains all **59 support positions** outside the redesigned modules and has **74 positions** overall. The [junction redesign record](checks/junction-rework.json) holds the baseline hashes, exact allowed region, fixed sockets, and actual saved-resource proof.
 
 ### Approved paired-fan structure width
 
-The paired part of P06 now retains its native **15 m** width through the approach and the start of the fork. Each shoulder taper begins at 48 m and ends at 72 m along its authored sweep. The [saved-model comparison](../../00_pieces/hsr-component-l2-paired-fan-compact-join/evidence/fan-width-audit.json) measures bed and underside cross-sections, confirms exact identity of all **21,245 visible rail triangles**, and confirms unchanged bytes for all **11 PATH resources**. The approved angled and top pictures have their own image-bound user observations; that approval does not establish game appearance or operation.
+The paired part of P06 retains its native **15 m** width through the approach and the start of the fork. Each shoulder taper begins at 48 m and ends at 72 m along its authored sweep. The retained [fan-width build provenance](evidence/junction-rework-build.json) identifies the approved historical geometry and exact saved-model reuse; the [package handoff](evidence/fan-width-package-handoff.json) records the complete DAT comparisons performed at that stage. The original standalone comparison and its artwork were removed with the superseded complete fan type. Current core and matching-straight acceptance is bound separately by the [retirement record](checks/fan-parent-retirement.json) and the [extraction audit](evidence/fan-atomization-review.json). Earlier image approvals remain historical observations and do not establish approval of refreshed pictures or game operation.
 
 The preceding fan-width baseline reran the full independent geometry audit from the approved fan DAT and twelve byte-identical earlier component DATs. Its [normal build provenance](evidence/junction-rework-build.json) distinguishes reuse of verified saved meshes from resource generation and verification, and its [executed native test report](evidence/junction-rework-tests.json) identifies the exact inputs and results. Those executions predate the four-tile merge extraction. The later [extraction proof](evidence/merge-west-tail-extraction.json) identifies the new saved build and current normalizer execution. Earlier audits and render reports remain preserved under `evidence/design-history/*-before-fan-width.json`.
 
@@ -193,14 +205,14 @@ The two shortened one-way curves retain their custom-end tiles. Their standalone
 To check the existing staged candidate, open a terminal in the repository folder containing `custom-pieces`, and activate this checkout's Python environment using [Python setup](../../../../docs/BUILD_AND_INSTALL.md#python-setup-for-a-checkout-or-source-zip). The commands below use `python`, which selects that environment's interpreter on macOS, Linux, and Windows. Verify the candidate, then write a private assembly-audit report under `custom-pieces/local/`. If `trumpet-validation.json` already contains a run you need to retain, choose an unused report filename:
 
 ```sh
-python custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-merge-west-tail-menu-01
-python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/trumpet-merge-west-tail-menu-01 --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/local/trumpet-validation.json
+python custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-fan-core-menu-final-01
+python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/trumpet-fan-core-menu-final-01 --scene custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json --output custom-pieces/local/trumpet-validation.json
 ```
 
 Next, set `SCP_TRUMPET_BUILD`, an **environment variable** that tells the integration checks which candidate directory to inspect. Some saved-resource checks default to `custom-pieces/dist/straight-stem-trumpet` when this variable is absent; the complete-candidate integration check requires it explicitly. The check runner resolves relative candidate paths from the repository root. The following commands set an absolute path, run the assembly checks, and remove the variable afterward. On macOS or Linux, use:
 
 ```sh
-export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/trumpet-merge-west-tail-menu-01"
+export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/trumpet-fan-core-menu-final-01"
 python custom-pieces/scp.py check --scope straight-stem-trumpet
 unset SCP_TRUMPET_BUILD
 ```
@@ -208,16 +220,16 @@ unset SCP_TRUMPET_BUILD
 On Windows, use PowerShell:
 
 ```powershell
-$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/trumpet-merge-west-tail-menu-01').Path
+$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/trumpet-fan-core-menu-final-01').Path
 python custom-pieces/scp.py check --scope straight-stem-trumpet
 Remove-Item Env:SCP_TRUMPET_BUILD
 ```
 
-If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/trumpet-merge-west-tail-menu-02`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
+If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/trumpet-fan-core-menu-final-02`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
 
-For the fresh run, replace `custom-pieces/dist/trumpet-merge-west-tail-menu-01` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
+For the fresh run, replace `custom-pieces/dist/trumpet-fan-core-menu-final-01` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
 
-The [validation report](evidence/validation.json) and [public binary-payload projection of its audit input manifest](evidence/audited-build-manifest.json) identify the executed whole-assembly audit of the four-tile merge and 26-placement scene. The exact input manifest's hash is `manifest_sha256` in the validation report. Read the projection's declared scope before comparing its own file hash with that original manifest. The dedicated [extraction proof](evidence/merge-west-tail-extraction.json) binds the merge DAT with SHA-256 `a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f`, preserved world routes and supports, and the bounded collar difference. The normal piece builder and normal saved-resource verifiers ran; unchanged analytic surface contexts were reused from verified cached models, and the production affine collar normalizer executed from the current source. This capture does not claim a cold recompilation of those unchanged analytic contexts. A missing current descriptor, missing required staged build, or changed resource must fail verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
+The preceding [validation report](evidence/design-history/before-border-piece-integration/evidence/validation.json) and [public binary-payload projection of its audit input manifest](evidence/design-history/before-border-piece-integration/evidence/audited-build-manifest.json) identify that earlier four-tile-merge audit and 26-placement scene. Its exact input manifest's hash is `manifest_sha256` in that preserved validation report. Read the projection's declared scope before comparing its own file hash with that original manifest. The dedicated [extraction proof](evidence/merge-west-tail-extraction.json) binds the merge DAT with SHA-256 `a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f`, preserved world routes and supports, and the bounded collar difference. The normal piece builder and normal saved-resource verifiers ran; unchanged analytic surface contexts were reused from verified cached models, and the production affine collar normalizer executed from the current source. This capture does not claim a cold recompilation of those unchanged analytic contexts. A missing current descriptor, missing required staged build, or changed resource must fail verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
 
 The preceding [25-placement validation](evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json) and its [audit-input manifest](evidence/design-history/evidence-audited-build-manifest-before-merge-west-tail-extraction.json) preserve the five-tile merge's original accepted inputs. Its [build provenance](evidence/junction-rework-build.json) records two freshly generated revised mesh types and guarded reuse of unchanged model meshes for the other 11 types. The normal builder regenerated their PATHs, shadows, construction definitions, previews, effects, and rules; all 11 unchanged complete DAT archives were compared byte for byte with that run's accepted baseline. The earlier [branch-angle proof](evidence/design-history/checks-junction-rework-before-merge-west-tail-extraction.json) records its 85 preserved world cells, four empty removed cells, fixed sockets, support plan, and complete-route movement measurements. Those are historical facts about that execution, rather than fresh proof of the western-tile extraction.
 
@@ -229,9 +241,9 @@ The [earlier executed capture](evidence/design-history/validation-at-junction-re
 
 ### Artwork evidence
 
-The six assembly pictures start with `Assembly - Straight-stem HSR trumpet`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their [render report](evidence/render.json) records the exact images, renderer settings, and saved-model inputs for the current P01–P26 layout. The named views and construction plan show the four-tile P07 and separate P26; the merge's canonical angled/top pictures and connection overview also use the revised saved model. The [preceding render report](evidence/design-history/evidence-render-before-merge-west-tail-extraction.json) retains the earlier P01–P25 capture and five-tile ownership. The current [component picture report](evidence/piece-previews.json) maps all 26 placements to their reusable type images.
+The six assembly pictures start with `Assembly - Straight-stem HSR trumpet`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their [render report](evidence/render.json) records the exact images, fixed captions, renderer settings, and saved-model inputs for all **28 placements**. The named views and construction plan show the nine-tile P06 core, separate P06A and P06B recessed-web straights, four-tile P07, and separate P26. The [artwork audit](evidence/border-piece-integration-artwork.json) binds those six pictures to the immutable whole-assembly gate and preserves the original observations. The [preceding 26-placement render report](evidence/design-history/before-border-piece-integration/evidence/render.json) and [earlier P01–P25 render report](evidence/design-history/evidence-render-before-merge-west-tail-extraction.json) retain their original scopes. The current [component picture report](evidence/piece-previews.json) maps all 28 placements to the 14 reusable type-picture pairs.
 
-The [executed connector refresh](evidence/merge-west-tail-connectors.json) rerendered and independently checked all 15 migrated types after the owning implementation changed. All **56 canonical PNGs for the other 14 types** remained byte-identical, and every authoritative manual record remained unchanged during that pass. Refreshed image bindings and generated case summaries remain views of the original observations; they create no human image approval or game-test pass.
+The preceding [executed connector refresh](evidence/merge-west-tail-connectors.json) rerendered and independently checked all 15 then-supported migrated types after the owning implementation changed. All **56 canonical PNGs for the other 14 types** remained byte-identical, and every authoritative manual record remained unchanged during that pass. Refreshed image bindings and generated case summaries remain views of the original observations; they create no human image approval or game-test pass.
 
 <a id="game-testing"></a>
 
@@ -241,7 +253,7 @@ Use the exact reference layout from chapter 2 and the verified candidate from ch
 
 ### Menu and placement
 
-The current assembly menu requires one **SCP | ASSEMBLY | HSR Trumpet** button containing its **13 component types**. Check that Tab visits all 13 types, Shift+Tab reverses that order, and one click places only the selected component. The [assembly-menu guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) explains these candidate-specific checks. Software acceptance requires a fresh [assembly-menu audit](evidence/assembly-menu.json) confirming one button, a 13-type cycle, unchanged component DAT archives, and no submenu for `custom-pieces/dist/trumpet-merge-west-tail-menu-01`. The previous 14-type execution is historical and does not validate the redesigned menu; its results must not be relabelled as a new run. Preparing the candidate does not install it. Static verification does not establish the button's appearance or keyboard behaviour in the game.
+The current assembly menu requires one **SCP | ASSEMBLY | HSR Trumpet** button containing its **14 component types**. Check that Tab visits all 14 types, Shift+Tab reverses that order, and one click places only the selected component. The [assembly-menu guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) owns those preparation steps. Current static acceptance belongs to the [final package report](evidence/border-piece-integration-package.json), which records the actual fourteen-type cycle, unchanged component DATs, one button, and no submenu for the new candidate. The preceding [menu audit](evidence/design-history/before-border-piece-integration/evidence/assembly-menu.json) retains its original thirteen-type scope; older menu results do not certify the new cycle. Static verification does not establish the button’s appearance or keyboard behaviour inside the game.
 
 ### Appearance and travel
 
@@ -271,7 +283,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Human game checks are required only at 0° CCW. Supported construction orientations and software rotation checks retain their separate scope; these human cases do not establish observations at the other orientations.
 
-Current totals: unverified: 25, passed: 2, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 26, passed: 2, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -313,6 +325,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/validation.json, evidence/merge-west-tail-extraction.json, evidence/audited-build-manifest.json]; environment: {}
+- result: passed; authority: software; reviewer: Current normal native 14-type saved build, independent complete 28-placement assembly integration, and actual saved-PATH extraction with all25 non-fan placement dictionaries unchanged and the reviewed three-piece fan decomposition; confirmed at: 2026-10-28T18:16:00.644573+00:00; evidence: [evidence/border-piece-integration-initial-validation.json, checks/border-piece-integration.json, evidence/border-piece-integration-artwork.json]; environment: {}
 
 </details>
 
@@ -344,116 +357,7 @@ Recorded observations (chronological; the state above checks the relevant depend
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
 - result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/validation.json, evidence/merge-west-tail-extraction.json, evidence/audited-build-manifest.json]; environment: {}
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 6 cases; unverified: 6</summary>
-
-| Check / exact scope | General | 0° |
-| --- | --- | --- |
-| **Preview review**<br>Image: image:straight-stem-trumpet:clean-southeast | <a href="#case-preview_review-4255f74d1a0022065ce4">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:clean-top | <a href="#case-preview_review-8f00df0ccb26670bca5a">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-northwest | <a href="#case-preview_review-09c7f0560ea1efecf6f1">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-southeast | <a href="#case-preview_review-b0defe1adfa80a596bb8">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-top | <a href="#case-preview_review-ecf9be65aaa4dd4c3c7b">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:tile-ownership | <a href="#case-preview_review-a613bd9fbd07c6e7cb5f">[ ] unverified</a> | — |
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:clean-southeast</summary>
-
-<a id="case-preview_review-4255f74d1a0022065ce4"></a>
-
-**General: unverified** — `preview_review-4255f74d1a0022065ce4`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:clean-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:clean-top</summary>
-
-<a id="case-preview_review-8f00df0ccb26670bca5a"></a>
-
-**General: unverified** — `preview_review-8f00df0ccb26670bca5a`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:clean-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-northwest</summary>
-
-<a id="case-preview_review-09c7f0560ea1efecf6f1"></a>
-
-**General: unverified** — `preview_review-09c7f0560ea1efecf6f1`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:named-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-southeast</summary>
-
-<a id="case-preview_review-b0defe1adfa80a596bb8"></a>
-
-**General: unverified** — `preview_review-b0defe1adfa80a596bb8`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:named-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-top</summary>
-
-<a id="case-preview_review-ecf9be65aaa4dd4c3c7b"></a>
-
-**General: unverified** — `preview_review-ecf9be65aaa4dd4c3c7b`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:named-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:tile-ownership</summary>
-
-<a id="case-preview_review-a613bd9fbd07c6e7cb5f"></a>
-
-**General: unverified** — `preview_review-a613bd9fbd07c6e7cb5f`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:straight-stem-trumpet:tile-ownership.
-
-No observation recorded.
+- result: passed; authority: software; reviewer: Current normal native 14-type saved build, independent complete 28-placement assembly integration, and actual saved-PATH extraction with all25 non-fan placement dictionaries unchanged and the reviewed three-piece fan decomposition; confirmed at: 2026-10-28T18:16:00.644573+00:00; evidence: [evidence/border-piece-integration-initial-validation.json, checks/border-piece-integration.json, evidence/border-piece-integration-artwork.json]; environment: {}
 
 </details>
 
@@ -838,6 +742,133 @@ No observation recorded.
 
 </details>
 
+<details>
+<summary>Preview review — Images — 7 cases; unverified: 7</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:straight-stem-trumpet:clean-southeast | <a href="#case-preview_review-4255f74d1a0022065ce4">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:clean-top | <a href="#case-preview_review-8f00df0ccb26670bca5a">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:fan-atomization-review | <a href="#case-preview_review-11a85f8a26bcca0d56f4">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:named-northwest | <a href="#case-preview_review-09c7f0560ea1efecf6f1">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:named-southeast | <a href="#case-preview_review-b0defe1adfa80a596bb8">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:named-top | <a href="#case-preview_review-ecf9be65aaa4dd4c3c7b">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:straight-stem-trumpet:tile-ownership | <a href="#case-preview_review-a613bd9fbd07c6e7cb5f">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:clean-southeast</summary>
+
+<a id="case-preview_review-4255f74d1a0022065ce4"></a>
+
+**General: unverified** — `preview_review-4255f74d1a0022065ce4`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:clean-top</summary>
+
+<a id="case-preview_review-8f00df0ccb26670bca5a"></a>
+
+**General: unverified** — `preview_review-8f00df0ccb26670bca5a`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:fan-atomization-review</summary>
+
+<a id="case-preview_review-11a85f8a26bcca0d56f4"></a>
+
+**General: unverified** — `preview_review-11a85f8a26bcca0d56f4`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:fan-atomization-review.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:named-northwest</summary>
+
+<a id="case-preview_review-09c7f0560ea1efecf6f1"></a>
+
+**General: unverified** — `preview_review-09c7f0560ea1efecf6f1`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:named-southeast</summary>
+
+<a id="case-preview_review-b0defe1adfa80a596bb8"></a>
+
+**General: unverified** — `preview_review-b0defe1adfa80a596bb8`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:named-top</summary>
+
+<a id="case-preview_review-ecf9be65aaa4dd4c3c7b"></a>
+
+**General: unverified** — `preview_review-ecf9be65aaa4dd4c3c7b`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:straight-stem-trumpet:tile-ownership</summary>
+
+<a id="case-preview_review-a613bd9fbd07c6e7cb5f"></a>
+
+**General: unverified** — `preview_review-a613bd9fbd07c6e7cb5f`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:straight-stem-trumpet:tile-ownership.
+
+No observation recorded.
+
+</details>
+
+</details>
+
 <!-- END MANUAL CHECKS -->
 
 <a id="design-history"></a>
@@ -846,7 +877,7 @@ No observation recorded.
 
 ### Western merge approach extraction
 
-The approved decomposition moves the ordinary western tile out of the five-tile Short Opposed Merge Core and reuses the existing **HSR L2 Two-Track Straight** there. The new straight is **P26 at (X9, Y13), 270°**. **P07 starts at (X10, Y13), 0°**, and owns four tiles through (X13, Y13). All existing P01–P25 labels are retained, so the complete plan now has 26 placements of the same 13 types. Occupied world cells, outside routes, and support positions stay fixed; the only approved local physical change is the bounded parapet-and-upper-bed adjustment described in chapter 3.
+The approved decomposition moves the ordinary western tile out of the five-tile Short Opposed Merge Core and reuses the existing **HSR L2 Two-Track Straight** there. The new straight is **P26 at (X9, Y13), 270°**. **P07 starts at (X10, Y13), 0°**, and owns four tiles through (X13, Y13). At that extraction stage, all existing P01–P25 labels were retained, giving 26 placements of the same 13 types before the later three-piece fan extraction. Occupied world cells, outside routes, and support positions stay fixed; the only approved local physical change is the bounded parapet-and-upper-bed adjustment described in chapter 3.
 
 The historical P03B western-tail decision below measured **6.437054 mm** in the deleted predecessor before branch-angle unification. The later northern branch redesign changed that cell's contents; the subsequent review identified an ordinary paired-route tile. The original five-tile report, decision history, and observations retain their original identities and inputs. They are not relabelled as proof of the new four-tile core. The new [extraction audit](evidence/merge-west-tail-extraction.json), [current validation](evidence/validation.json), and [render report](evidence/render.json) identify the later executed work. No software comparison or picture refresh creates a game pass.
 

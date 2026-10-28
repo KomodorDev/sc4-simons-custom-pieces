@@ -9191,12 +9191,26 @@
         7
       ]
     ],
-    "purpose": "Literal unchanged sweep context for this current type’s retained tiles. Its remote curve miters and texture phase preserve exact existing models; only the explicitly listed collar tile uses the revised context."
+    "purpose": "Literal unchanged sweep context for this current type\u2019s retained tiles. Its remote curve miters and texture phase preserve exact existing models; only the explicitly listed collar tile uses the revised context."
   },
   "revised_surface_cells": [
     [
       0,
       0
     ]
-  ]
+  ],
+  "south_parapet_alignment": {
+    "purpose": "Preserve the accepted left ballast-following border and continue the right raised border into its existing curved wing along the branch inside outline; retain rails, PATHs, supports, and original outside contours.",
+    "left_branch": "direct_west_south_curve",
+    "left_inner_half_width_m": 2.6,
+    "left_selection_limit_local_east_m": 32.0,
+    "source_east_offset_m": 16.0,
+    "left_reference": "Follow the southern branch inside parapet at 2.6 m from its centreline, from its intersection with the mainline inside face through the retained curved wing.",
+    "right_reference": "Continue the right concrete top and inside face along the branch inside outline (+2.6 m cross offset), joining its existing curved grey wing at the mainline outside edge.",
+    "minimum_train_half_width_m": 2.5,
+    "right_inner_join_local_east_m": 40.361872522872716,
+    "right_outer_join_local_east_m": 43.669002829692054,
+    "right_inner_half_width_m": 2.6,
+    "right_join": "continuous_branch_inside_outline"
+  }
 }
