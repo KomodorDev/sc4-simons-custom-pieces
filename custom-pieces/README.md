@@ -15,6 +15,8 @@ A **piece** is one reusable component type. An **assembly** places copies of typ
 | --- | --- |
 | Find, connect, and rotate rail pieces | [Rail player guide](domains/high-speed-rail/README.md) |
 | Rebuild the modular trumpet | [Trumpet README](domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) |
+| Install all implemented pieces without Python | [Graphical installer for Windows](docs/INSTALLER.md) |
+| Understand when and how installer downloads are created | [Automatic releases, explained simply](docs/AUTOMATIC_RELEASES.md) |
 | Build, inspect, or install the plugin | [Build and install](docs/BUILD_AND_INSTALL.md) |
 | Read or record a test result | [Testing and observations](docs/TESTING.md) |
 | Understand the folder structure | [Structure and ownership](STRUCTURE.md) |
@@ -25,7 +27,7 @@ A **piece** is one reusable component type. An **assembly** places copies of typ
 | Check which source files and outputs a new subject needs | [Creation checklist and producing commands](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) |
 | Look up measured HSR/GHSR values and their implementation | [High-speed rail network specification](domains/high-speed-rail/NETWORK_SPEC.md) |
 | Maintain shared code or classify a crossing | [Framework engineering](docs/FRAMEWORK_ENGINEERING.md) |
-| Prepare a future public release | [Release requirements](docs/RELEASE.md) |
+| Understand installer releases and compiled-plugin requirements | [Release requirements](docs/RELEASE.md) |
 
 For authoring, start with the relevant creation workflow and follow its documentation-generation step. Use the [creation checklist](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) for staged file requirements, and the [small assembly starter](docs/WORKFLOW_ASSEMBLY_CREATION.md#start-a-small-hsr-assembly-from-existing-pieces) for a runnable registration example using existing types. Consult the network specification for that network's measured values and the framework reference for shared implementation details. To refresh an existing README or picture, start directly with the documentation-generation workflow. From the repository root, `python3 -B custom-pieces/scp.py docs-check` checks current documentation without changing it; its [scope and limits](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#check-documentation-without-changing-it) are separate from build and game checks.
 

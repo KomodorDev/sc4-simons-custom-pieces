@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "purpose": "Experimental installer distribution policy; local building does not establish public DAT redistribution permission or in-game verification.",
+  "maturity": "experimental",
+  "distribution": "local-builder",
+  "selection": "all-implemented",
+  "assembly_menu": {
+    "domain": "high-speed-rail",
+    "layout": "trumpet"
+  },
+  "supported_profile": "config/profiles/nam50-rhd.json",
+  "supported_game": {
+    "edition": "SimCity 4 Deluxe for Windows",
+    "version": "1.1.641",
+    "nam": "50",
+    "drive_side": "right",
+    "native_macos_supported": false,
+    "compatibility_layer_game_tests": "unverified"
+  },
+  "installer_platforms": [
+    "windows-x64"
+  ],
+  "requires_user_python": false,
+  "bundles_nam_resources": false,
+  "bundles_game_resources": false,
+  "capture_policy": "Read exact source archives from the user's installed game and NAM, verify the recorded resource identities, and create required captures locally without modifying the originals.",
+  "publication": {
+    "channel": "prerelease",
+    "trigger": "successful-main-push",
+    "tag": "installer-<first-12-source-commit-hex>",
+    "required_platforms": "windows-x64",
+    "source_commit_required": true,
+    "sha256_required": true,
+    "windows_authenticode_signed": false
+  },
+  "manual_observations": "Preserve existing failed, stale, and unverified cases; installer and pipeline checks do not record game passes.",
+  "compiled_plugin_release_policy": "config/release.json"
+}

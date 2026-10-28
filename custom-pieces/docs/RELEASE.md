@@ -1,17 +1,27 @@
 ---
-title: "Public release requirements and controller maintenance"
-summary: "Explain the evidence, permissions and identifier requirements for a publishable release."
+title: "Installer releases, compiled-plugin requirements, and controller maintenance"
+summary: "Distinguish experimental local-builder installer releases from permission, identifier, and game-evidence requirements for compiled-plugin distribution."
 audience: "Maintainers and release authors"
 document_type: "reference"
 ---
 
-# Public release requirements and controller maintenance
+# Installer releases, compiled-plugin requirements, and controller maintenance
+
+For a beginner-friendly explanation of what GitHub does automatically and how to find the Windows download, start with [Automatic releases, explained simply](AUTOMATIC_RELEASES.md).
 
 Research checked on **18 October 2026**. This document distinguishes statements found in the sources from release practices recommended for this project. It does not grant permission, reserve identifiers, or claim that a prototype has passed an in-game test.
 
 ## Current release status
 
-The existing pieces are **private experimental builds**. A public binary release is not cleared by the permission evidence currently recorded here. Local development, reproducible builds, and preparation of a review package can continue while those release questions remain open.
+The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The project also supplies an **experimental local-builder installer**, which contains the runtime and maintained source and reads native resources from the user's own installed game and NAM. It does not distribute the compiled DATs, NAM archives, or base-game archives. Its [separate distribution policy](../config/installer.json) does not mark the [compiled-plugin readiness record](../config/release.json) passed or published.
+
+### Experimental installer distribution
+
+After a human promotes `dev` to `main`, the [automatic installer workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) runs the complete test command, builds the Windows x64 bundle, checks its contents, runs the packaged executable's self-test and GUI startup smoke check, and publishes an experimental GitHub prerelease only after every required job succeeds. Source commits, ZIP checksums, member indexes, and self-test reports identify the exact candidate. The deterministic `installer-<commit-prefix>` tag does not promote the library's development version to a stable release. Pull requests produce review artifacts and do not publish releases.
+
+The installer selects all implemented registered pieces, currently 166 types, and prepares the registered trumpet assembly menu. On the user's computer, it validates the audited profile, derives required Road captures from exact selected resources, builds and verifies the files, and installs one receipt-owned SCP folder. It does not modify original game or NAM archives. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
+
+Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The gates below continue to assess a proposed compiled-plugin package; installer CI cannot mark them passed.
 
 Current compiled piece DATs contain copied or adapted NAM models, paths, and effects. A selected build has one separate controller DAT containing the complete **RUL0 resource** and the **NetworkINI resource**, with additions, plus one separate menu DAT. It does not copy every resource from the original `NetworkAddonMod_Controller.dat` archive. An old staged ZIP is not a prerequisite for preparing or assessing a fresh candidate.
 
@@ -37,7 +47,7 @@ Definitions:
 
 **Recommended permission record:** for every externally authored component, record the original author/team, source URL, source version, resource TGIs, the modification made, the permission or license relied on, the evidence location, its scope, and any attribution or distribution conditions. Cover models, textures, paths, effects, copied rule templates, and complete overlaid resources separately where the scope differs. An unanswered request is not an approval. No message has been sent and no permission is claimed by this audit.
 
-One possible future distribution is a builder that reads the user's own NAM installation and produces an overlay locally. This avoids shipping the copied binary resources themselves. It does not automatically resolve permission questions for any copied source text or templates included with the builder. Another route is an accepted NAM contribution; the [official FAQ invites prospective contributors to show a prototype](https://www.sc4nam.com/docs/getting-started/frequently-asked-questions/#id-like-to-contribute-to-the-nam-how-do-i-do-so).
+The [local-builder installer](INSTALLER.md) reads the user's own NAM installation and produces an overlay locally. This avoids shipping the copied native binary resources themselves. It does not automatically resolve permission questions for any copied source text or templates included with the builder. Another route is an accepted NAM contribution; the [official FAQ invites prospective contributors to show a prototype](https://www.sc4nam.com/docs/getting-started/frequently-asked-questions/#id-like-to-contribute-to-the-nam-how-do-i-do-so).
 
 ## Identifier reservation before public release
 
@@ -92,7 +102,7 @@ known_issues; install_instructions; uninstall_instructions; upgrade_policy
 archive_members; dat_sha256; archive_sha256; support_url
 ```
 
-Publication approval and permission evidence are separate facts. A permission record does not publish anything. This workflow must not upload a file, send a message, or publish a listing merely because it can build a release archive.
+Publication approval and permission evidence are separate facts. A permission record does not publish anything. The configured installer workflow publishes only its authorized local-builder prereleases after an accepted `main` update and successful checks. A compiled-plugin build or release-readiness assessment does not itself authorize uploading DATs, sending a message, or publishing a Simtropolis listing.
 
 ## When NAM changes
 
