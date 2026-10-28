@@ -14,7 +14,6 @@ import unittest
 from scp.track_paths import _parse_paths, encode_paths
 from scp_hsr.directional_t_verify import _journeys
 from scp_hsr.hsr_components_layout import component_layout
-from scp_hsr.hsr_components_verify import CONTRACTS
 from scp_hsr.hsr_trumpet_verify import CONTRACT, key, rotate
 from scp_hsr.hsr_merge_extraction_verify import (
     FROZEN_FILES, HISTORY, MERGE_ID, ROOT, SEAM_MODEL_SHA256, STRAIGHT_ID,
@@ -56,18 +55,45 @@ def synthetic_world():
 
 
 def source_world():
-    """Recompose the exact historical 26-placement west-tail extraction."""
+    """Replay historical measured definitions without deleted authoring files.
+
+    The frozen manifest owns the old cells and support positions. The nine
+    retained fan cells still have exact source layouts in the current core;
+    the two removed approach cells use routes measured in the immutable
+    atomization report, including row zero's original collinear midpoint.
+    All six complete historical point counts and hashes remain mandatory.
+    """
     domain = ROOT/'domains/high-speed-rail'
-    scene_path = domain/'01_assemblies/straight-stem-trumpet/evidence/design-history/before-border-piece-integration/assembly.json'
+    assembly = domain/'01_assemblies/straight-stem-trumpet'
+    snapshot = assembly/'evidence/design-history/before-border-piece-integration'
+    scene_path = snapshot/'assembly.json'
     raw = scene_path.read_bytes()
     if hashlib.sha256(raw).hexdigest() != '4b1f60aaeab042da2155be530caaf491c2a56079fa82b830b25c04e5f06540d3':
         raise ValueError('Historical west-tail extraction scene differs from its frozen index')
     scene = json.loads(raw)
+    raw = (snapshot/'evidence/audited-build-manifest.json').read_bytes()
+    if hashlib.sha256(raw).hexdigest() != '284282461312db0641e31f03ee98195d0171b84c5f2ae74cc1d935d87c0c8c9d':
+        raise ValueError('Historical west-tail extraction manifest differs from its frozen index')
+    pieces = {piece['id']: piece for piece in json.loads(raw)['pieces']}
+    raw = (assembly/'evidence/fan-atomization-review.json').read_bytes()
+    if hashlib.sha256(raw).hexdigest() != '4a8ed74719cad1fa58c4cebc545ecb9be20d97fca68fe6ad5f4afeebccffb181':
+        raise ValueError('Historical measured fan approach routes differ from the immutable atomization report')
+    approaches = json.loads(raw)['saved_input']['candidate_tiles'][:2]
+    core = component_layout('hsr_component_l2_paired_fan_compact_core')
+    historical_fan = {(column+1, row+2): data for (column,row),data in core.items()}
+    historical_fan.update({tuple(tile['source_cell']): {
+        'routes': [{**route, 'role':'historical-measured'} for route in tile['encoded_routes']]}
+        for tile in approaches})
     records, supports, occupied = [], [], []
     for placement in scene['placements']:
-        piece = json.loads((domain/'00_pieces'/placement['piece_id']/'piece.json').read_text())
+        piece = pieces[placement['piece_id']]
         turns, origin = placement['rotation_degrees_ccw']//90, placement['origin_m']
-        for cell, data in component_layout(piece['recipe']).items():
+        layout = (historical_fan if piece['id']=='hsr-component-l2-paired-fan-compact-join'
+                  else component_layout(piece['recipe']))
+        if set(layout) != set(map(tuple,piece['cells'])):
+            raise ValueError('Historical west-tail extraction source cells differ from the frozen manifest')
+        for cell in map(tuple,piece['cells']):
+            data = layout[cell]
             east, north, _ = rotate((16.*cell[0], -16.*cell[1], 0.), turns)
             centre = east+origin[0], north+origin[1]
             occupied.append(centre)
@@ -80,8 +106,8 @@ def source_world():
                     points.append(key((east+centre[0], north+centre[1], height)))
                 records.append(((placement['instance_id'], *cell),
                                 {**route, 'instance_id': placement['instance_id']}, points))
-        for east, south in CONTRACTS[piece['recipe']]['support_centres_xz']:
-            east, north, _ = rotate((east, -south, 0.), turns)
+        for east, north in piece['component']['support_centers']:
+            east, north, _ = rotate((east, north, 0.), turns)
             supports.append((east+origin[0], north+origin[1]))
     return scene, occupied, _journeys(records, CONTRACT), supports
 
