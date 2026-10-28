@@ -41,15 +41,29 @@ class InstallerEntryTests(unittest.TestCase):
             self.assertFalse(value['live_game_modified'])
 
     def test_running_game_is_rejected_using_exact_process_name(self):
-        processes = SimpleNamespace(stdout='"notepad.exe","100"\n"SimCity 4.exe","101"\n')
+        processes = SimpleNamespace(stdout=b'"notepad.exe","100"\n"SimCity 4.exe","101"\n')
         with patch.object(ui_support.sys, 'platform', 'win32'), patch.object(ui_support.subprocess, 'run', return_value=processes):
             with self.assertRaisesRegex(ValueError, 'Close SimCity 4'):
                 ui_support.require_game_closed()
 
     def test_unrelated_process_with_similar_name_does_not_block_installation(self):
-        processes = SimpleNamespace(stdout='"my SimCity 4.exe notes.txt","100"\n"explorer.exe","101"\n')
+        processes = SimpleNamespace(stdout=b'"my SimCity 4.exe notes.txt","100"\n"explorer.exe","101"\n')
         with patch.object(ui_support.sys, 'platform', 'win32'), patch.object(ui_support.subprocess, 'run', return_value=processes):
             ui_support.require_game_closed()
+
+    def test_localized_non_utf8_process_output_preserves_game_detection(self):
+        for running in (False, True):
+            with self.subTest(running=running):
+                output = b'"explorer.exe","100","Sitzung\x81","1","123\xa0K"\r\n'
+                if running:
+                    output += b'"SimCity4.exe","101","Sitzung\x81","1","123\xa0K"\r\n'
+                processes = SimpleNamespace(stdout=output)
+                with patch.object(ui_support.sys, 'platform', 'win32'), patch.object(ui_support.subprocess, 'run', return_value=processes):
+                    if running:
+                        with self.assertRaisesRegex(ValueError, 'Close SimCity 4'):
+                            ui_support.require_game_closed()
+                    else:
+                        ui_support.require_game_closed()
 
     def test_failed_process_scan_stops_instead_of_assuming_game_is_closed(self):
         with patch.object(ui_support.sys, 'platform', 'win32'), patch.object(ui_support.subprocess, 'run', side_effect=OSError('unavailable')):

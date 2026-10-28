@@ -21,11 +21,15 @@ def require_game_closed():
         return
     try:
         result = subprocess.run(["tasklist", "/FO", "CSV", "/NH"], capture_output=True,
-                                text=True, timeout=15, check=True,
+                                timeout=15, check=True,
                                 creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     except (OSError, subprocess.SubprocessError) as error:
         raise ValueError("Windows could not check whether SimCity 4 is closed. Close the game, and try again.") from error
-    processes = {row[0].casefold() for row in csv.reader(io.StringIO(result.stdout)) if row}
+    # Windows utilities can emit a local code page even in a UTF-8 Python
+    # process. Only the two ASCII game image names matter here; replacement
+    # characters in unrelated localized columns must not block this check.
+    output = result.stdout.decode("ascii", errors="replace")
+    processes = {row[0].casefold() for row in csv.reader(io.StringIO(output)) if row}
     if processes & {"simcity 4.exe", "simcity4.exe"}:
         raise ValueError("Close SimCity 4 before installing or undoing an installation, then try again.")
 
