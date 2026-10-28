@@ -103,6 +103,16 @@ class DiscoveryTests(unittest.TestCase):
             self.discover(self.game, player_data=invalid)
         self.assertEqual(list(invalid.iterdir()), [])
 
+    def test_failed_shell_documents_lookup_uses_secondary_data_folder_flow(self):
+        with patch.object(service, "_documents", side_effect=ValueError("Windows could not locate Documents")):
+            with self.assertRaises(service.PlayerDataSelectionRequired) as raised:
+                service.discover_installation(self.game, platform="win32", home=self.home)
+            self.assertEqual(raised.exception.candidate_paths, [])
+            plan = service.discover_installation(self.game, platform="win32", home=self.home,
+                                                player_data=self.plugins)
+        self.assertEqual(plan.plugins, self.plugins)
+        self.assertEqual(plan.game_folder, self.game)
+
     def test_explicit_data_selection_resolves_ambiguous_documents(self):
         (self.documents / "SimCity 4 Windows/Plugins").mkdir(parents=True)
         with patch.object(service, "_registered_games", return_value=[self.game]):
@@ -270,10 +280,48 @@ class CaptureTests(unittest.TestCase):
         self.source.unlink()
         audit = json.loads((self.library / "audit.json").read_text())
         audit["scope"]["archive"] = "<Game>/SimCity_3.dat"
+        source_bytes = pack_dbpf({self.key: self.stored})
+        audit["matches"][0]["archive_sha256"] = hashlib.sha256(source_bytes).hexdigest()
         (self.library / "audit.json").write_text(json.dumps(audit))
-        (self.game / "SimCity_3.dat").write_bytes(pack_dbpf({self.key: self.stored}))
+        (self.game / "SimCity_3.dat").write_bytes(source_bytes)
         roots, _ = self.prepare()
         self.assertEqual(next(roots[0].rglob(self.record["filename"])).read_bytes(), self.expected)
+
+    def test_game_archive_with_identical_resource_but_different_whole_hash_is_rejected(self):
+        self.source.unlink()
+        audited_archive = pack_dbpf({self.key: self.stored, (1, 2, 3): b"audited other resource"})
+        changed_archive = pack_dbpf({self.key: self.stored, (1, 2, 3): b"different other resource"})
+        audit = json.loads((self.library / "audit.json").read_text())
+        audit["scope"]["archive"] = "<Game>/SimCity_3.dat"
+        audit["matches"][0]["archive_sha256"] = hashlib.sha256(audited_archive).hexdigest()
+        (self.library / "audit.json").write_text(json.dumps(audit))
+        source = self.game / "SimCity_3.dat"
+        source.write_bytes(changed_archive)
+        with self.assertRaisesRegex(ValueError, "even when its pavement resource is identical"):
+            self.prepare()
+        self.assertFalse((self.work / "local").exists())
+        self.assertEqual(source.read_bytes(), changed_archive)
+
+    def test_existing_exact_capture_cannot_bypass_the_game_archive_fingerprint(self):
+        self.source.unlink()
+        audited_archive = pack_dbpf({self.key: self.stored, (1, 2, 3): b"audited game"})
+        changed_archive = pack_dbpf({self.key: self.stored, (1, 2, 3): b"another game"})
+        audit = json.loads((self.library / "audit.json").read_text())
+        audit["scope"]["archive"] = "<Game>/SimCity_3.dat"
+        audit["matches"][0]["archive_sha256"] = hashlib.sha256(audited_archive).hexdigest()
+        (self.library / "audit.json").write_text(json.dumps(audit))
+        source = self.game / "SimCity_3.dat"
+        source.write_bytes(changed_archive)
+        captured = self.plugins / self.record["filename"]
+        captured.write_bytes(self.expected)
+        with self.assertRaisesRegex(ValueError, "differs from the exact supported game archive"):
+            self.prepare()
+        self.assertFalse((self.work / "local").exists())
+        self.assertEqual(captured.read_bytes(), self.expected)
+        source.write_bytes(audited_archive)
+        roots, records = self.prepare()
+        self.assertEqual((roots, records), ([], []))
+        self.assertFalse((self.work / "local").exists())
 
     def test_capture_final_archive_hash_is_independently_checked(self):
         self.record["sha256"] = "0" * 64

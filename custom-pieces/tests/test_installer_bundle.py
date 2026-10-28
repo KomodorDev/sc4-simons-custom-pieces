@@ -176,6 +176,16 @@ class InstallerBundleTests(unittest.TestCase):
             self.assertTrue(info.external_attr >> 16 & stat.S_IXUSR)
         self.assertEqual(archive.with_name("installer.zip.sha256").read_text(), result["zip_sha256"] + "  installer.zip\n")
 
+    def test_versioned_asset_keeps_a_short_enclosing_folder_for_windows_extraction(self):
+        folder = self.directory / bundle.APP_NAME
+        self._write(folder, "SCP Installer.exe", b"MZ synthetic executable fixture")
+        archive = self.directory / ("SCP-Installer-windows-x64-" + COMMIT[:12] + ".zip")
+        bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        with zipfile.ZipFile(archive) as saved:
+            self.assertTrue(all(name.startswith("SCP Installer/") for name in saved.namelist()))
+            self.assertNotIn(archive.stem + "/SCP Installer.exe", saved.namelist())
+        self.assertEqual(bundle.verify_archive(archive)["source_commit"], COMMIT)
+
     def test_archive_changed_member_is_rejected(self):
         _, archive = self._archive()
         self._rewrite_zip(archive, lambda records: [(info, b"changed" if info.filename.endswith("project.json") else raw)

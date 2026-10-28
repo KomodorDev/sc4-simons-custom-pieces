@@ -74,7 +74,7 @@ jobs:
           INSTALLER_COMMIT: ${{ github.sha }}
         run: >-
           python -B custom-pieces/installer/build_bundle.py build
-          --output custom-pieces/dist/installer
+          --output "$RUNNER_TEMP/scp-installer"
           --source-commit "$INSTALLER_COMMIT"
           --platform "$INSTALLER_PLATFORM"
       - name: Keep verified installer and review evidence
@@ -84,12 +84,12 @@ jobs:
           if-no-files-found: error
           retention-days: 14
           path: |
-            custom-pieces/dist/installer/*.zip
-            custom-pieces/dist/installer/*.zip.sha256
-            custom-pieces/dist/installer/bundle-index-*.json
-            custom-pieces/dist/installer/archive-check-*.json
-            custom-pieces/dist/installer/self-test-*.json
-            custom-pieces/dist/installer/gui-smoke-test-*.json
+            ${{ runner.temp }}/scp-installer/*.zip
+            ${{ runner.temp }}/scp-installer/*.zip.sha256
+            ${{ runner.temp }}/scp-installer/bundle-index-*.json
+            ${{ runner.temp }}/scp-installer/archive-check-*.json
+            ${{ runner.temp }}/scp-installer/self-test-*.json
+            ${{ runner.temp }}/scp-installer/gui-smoke-test-*.json
 
   publish:
     name: Publish experimental installer

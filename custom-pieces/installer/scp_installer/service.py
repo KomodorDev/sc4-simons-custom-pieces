@@ -185,7 +185,10 @@ def discover_installation(selected, *, platform=None, home=None, documents=None,
     elif direct_plugins is not None and direct_plugins.resolve() != (game_plugins.resolve() if game_plugins else None):
         candidates = [direct_plugins]
     else:
-        docs = Path(documents).expanduser().resolve() if documents is not None else _documents(home)
+        try:
+            docs = Path(documents).expanduser().resolve() if documents is not None else _documents(home)
+        except ValueError as error:
+            raise PlayerDataSelectionRequired(str(error) + " Choose your existing player-data or Plugins folder.", []) from error
         candidates = []
         for base in (docs / "SimCity 4", docs / "SimCity 4 Windows"):
             candidate = _data_plugins(base)
@@ -290,16 +293,17 @@ def prepare_captures(root, installation, work_root, piece_ids, *, progress=None,
             continue
         _cancelled(cancel)
         _notify(progress, "capture", dependency=label)
+        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
+        key = evidence["tgi"]
+        source_name = evidence["scope"]["archive"].replace("\\", "/").rsplit("/", 1)[-1]
         existing = [path for folder in roots for path in folder.rglob("*")
                     if path.is_file() and path.name.casefold() == record["filename"].casefold()
                     and not (installation.plugins / FOLDER) in path.parents]
         if existing:
             if len(existing) != 1 or hashlib.sha256(existing[0].read_bytes()).hexdigest() != record["sha256"]:
                 raise ValueError(f"Existing {record['filename']} is duplicated or differs from the supported source. Keep your current Plugins unchanged and resolve that dependency first.")
-            continue
-        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
-        key = evidence["tgi"]
-        source_name = evidence["scope"]["archive"].replace("\\", "/").rsplit("/", 1)[-1]
+            if source_name.casefold() != "simcity_3.dat":
+                continue
         if source_name.casefold() == "simcity_3.dat":
             source = _child(installation.game_folder, source_name)
             matches = [source] if source is not None and source.is_file() else []
@@ -315,6 +319,11 @@ def prepare_captures(root, installation, work_root, piece_ids, *, progress=None,
         if (audit["status"] != "complete" or audit["matching_index_entries"] != 1
                 or audit["matches"][0]["stored_resource_sha256"] != expected):
             raise ValueError(f"{source_name} does not contain the exact supported {label} resource. This game/NAM variant needs a new compatibility audit.")
+        if (source_name.casefold() == "simcity_3.dat"
+                and audit["matches"][0]["archive_sha256"] != evidence["matches"][0].get("archive_sha256")):
+            raise ValueError("SimCity_3.dat differs from the exact supported game archive. This game edition needs a new compatibility audit, even when its pavement resource is identical.")
+        if existing:
+            continue
         target = donors / label
         report = capture_resource(original, key, target, root=work_root, plugins=installation.plugins)
         captured = target / report["capture"]["file"]

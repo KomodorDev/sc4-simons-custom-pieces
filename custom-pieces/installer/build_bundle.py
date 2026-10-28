@@ -367,7 +367,9 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     # Neither discovery nor freezing may modify the exact source payload.
     verify_runtime(runtime)
     name = "SCP-Installer-" + target + "-" + source_commit[:12]
-    folder = output / name
+    # Keep extracted paths short on Windows. The downloadable asset remains
+    # versioned; the folder inside it needs no repeated platform or commit.
+    folder = output / APP_NAME
     folder.mkdir()
     frozen = output / "work/frozen"
     shutil.copytree(frozen / APP_NAME, folder, dirs_exist_ok=True)
