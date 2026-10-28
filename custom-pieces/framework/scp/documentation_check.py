@@ -6,6 +6,75 @@ import re
 from urllib.parse import unquote, urlsplit
 
 from .catalog import load_catalog
+from .markdown_navigation import (NAVIGATION_BEGIN, NAVIGATION_END,
+                                  _active_lines, _body_start, _navigation_label, markdown_headings)
+
+
+def check_shared_document_navigation(text):
+    """Check maintained guides without rewriting authored prose or legacy anchors."""
+    headings = markdown_headings(text)
+    errors = []
+
+    def error(line, message):
+        errors.append({'line': line, 'error': message})
+
+    titles = [heading for heading in headings if heading.level == 1]
+    if len(titles) != 1:
+        error(titles[1].line if len(titles) > 1 else 1,
+              'Shared Markdown needs exactly one unnumbered H1 document title')
+    for title in titles:
+        if re.match(r'^(?:\d+\.|\d+(?:\.\d+)+\.?)(?:\s|$)', title.title):
+            error(title.line, 'The H1 document title must be unnumbered')
+    if titles and headings[0] != titles[0]:
+        error(headings[0].line, 'The H1 document title must precede all chapters')
+
+    chapters = [heading for heading in headings if heading.level == 2]
+    if not chapters:
+        error(titles[0].line if titles else 1,
+              'Shared Markdown needs at least one numbered H2 chapter, starting with 1.')
+    counters = [0] * 5
+    for heading in headings:
+        if heading.level == 1:
+            continue
+        depth = heading.level - 2
+        missing_parent = depth and not counters[depth - 1]
+        counters[depth] += 1
+        counters[depth + 1:] = [0] * (4 - depth)
+        if missing_parent:
+            error(heading.line, 'H'+str(heading.level)+' heading skips its H'
+                  +str(heading.level - 1)+' parent: '+heading.title)
+            continue
+        number = '.'.join(str(value) for value in counters[:depth + 1])
+        token = number + ('.' if depth == 0 else '')
+        if not re.fullmatch(re.escape(token) + r'[ \t]+\S.*', heading.title):
+            suffix = ('; subsection numbers have no trailing period' if depth else '')
+            error(heading.line, 'Expected H'+str(heading.level)+' heading numbered '
+                  +token+' followed by its title'+suffix+': '+heading.title)
+
+    lines = text.splitlines(keepends=True)
+    active = _active_lines(lines)
+    begins = [index for index, line in enumerate(lines)
+              if active[index] and line.strip() == NAVIGATION_BEGIN]
+    ends = [index for index, line in enumerate(lines)
+            if active[index] and line.strip() == NAVIGATION_END]
+    if len(begins) != 1 or len(ends) != 1:
+        error((begins[0] + 1) if begins else (titles[0].line + 1 if titles else 1),
+              'Shared Markdown needs exactly one DOCUMENT NAVIGATION block with one BEGIN and one END')
+        return errors
+    start, end = begins[0], ends[0]
+    if end <= start:
+        error(end + 1, 'DOCUMENT NAVIGATION END must follow its BEGIN')
+        return errors
+    if titles and start != _body_start(lines):
+        error(start + 1, 'DOCUMENT NAVIGATION must appear immediately after the H1 title and any required layout markers, separated only by blank lines')
+    if end != start + 2:
+        error(start + 1, 'DOCUMENT NAVIGATION must contain exactly one physical line of chapter links')
+    else:
+        expected = ' · '.join('['+_navigation_label(heading.title)+'](#'+heading.slug+')'
+                              for heading in chapters)
+        if lines[start + 1].strip() != expected:
+            error(start + 2, 'DOCUMENT NAVIGATION must link every H2 chapter with its exact label and fragment, in chapter order, and contain no subsection links')
+    return errors
 
 
 def _without_fences(text):
@@ -140,13 +209,22 @@ def check_documentation(root, *, piece_ids=None, assembly_ids=None):
                 errors.append({'subject': subject['id'], 'error': 'Missing implemented-subject file: '+name})
     # Shared maintained instructions are checked on the default catalogue run.
     if not selected:
-        documents += [root/name for name in ('README.md', 'STRUCTURE.md', 'AGENTS.md')]
-        documents += list((root/'docs').glob('*.md'))
-        documents += list((root/'skills').glob('*/SKILL.md'))
+        shared = [root/name for name in ('README.md', 'STRUCTURE.md', 'AGENTS.md')]
+        shared += list((root/'docs').glob('*.md'))
+        shared += list((root/'skills').glob('*/SKILL.md'))
         for domain in catalog['domains'].values():
             directory = root/domain['path']
-            documents += [directory/name for name in ('README.md', 'AGENTS.md', 'NETWORK_SPEC.md')
-                          if (directory/name).is_file()]
+            shared += [directory/name for name in ('README.md', 'AGENTS.md', 'NETWORK_SPEC.md',
+                                                  '00_pieces/INVENTORY.md', '01_assemblies/INVENTORY.md')
+                       if (directory/name).is_file()]
+        # Source archives and portable tests can put the self-contained library
+        # under any directory name. Only a real checkout has repository guides.
+        if root.name == 'custom-pieces' and (root.parent/'.git').exists():
+            shared += [root.parent/name for name in ('README.md', 'AGENTS.md', 'docs/GITHUB.md')]
+        for path in shared:
+            errors += [{'file': path.relative_to(root.parent).as_posix(), **item}
+                       for item in check_shared_document_navigation(path.read_text(encoding='utf-8'))]
+        documents += shared
     links = check_local_links(documents, boundary=root.parent)
     errors += links['errors']
     return {'all_passed': not errors, 'subjects_checked': len(subjects),

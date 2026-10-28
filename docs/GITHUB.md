@@ -7,7 +7,13 @@ document_type: "procedure"
 
 # Contributor workflow
 
-## Repository scope
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Repository scope](#1-repository-scope) · [2. Clone and prepare the project](#2-clone-and-prepare-the-project) · [3. Submit a change](#3-submit-a-change) · [4. Submit a release](#4-submit-a-release) · [5. Automatic installer prereleases](#5-automatic-installer-prereleases) · [6. Automated checks and coverage](#6-automated-checks-and-coverage) · [7. Required checks for maintainers](#7-required-checks-for-maintainers)
+<!-- END DOCUMENT NAVIGATION -->
+
+<a id="repository-scope"></a>
+
+## 1. Repository scope
 
 This repository contains the custom-piece library in `custom-pieces/` and its instructions, documentation, Git rules, and automated-test support. A **repository root** is the directory containing `custom-pieces/` and the root README. Its parent directory and name on your computer are your choice.
 
@@ -26,7 +32,9 @@ To see which rule excludes a file, run this example from the repository root:
 git check-ignore -v custom-pieces/local/settings.json
 ```
 
-## Clone and prepare the project
+<a id="clone-and-prepare-the-project"></a>
+
+## 2. Clone and prepare the project
 
 **Git** records file versions locally. A **commit** is one saved version. **GitHub** hosts a remote copy. A **clone** downloads the tracked files and history into a directory on your computer.
 
@@ -37,7 +45,7 @@ git check-ignore -v custom-pieces/local/settings.json
    cd sc4-simons-custom-pieces
    ```
 
-2. Follow the [Python environment instructions](../README.md#prepare-python-and-run-the-tests). They cover macOS, Linux, and Windows, and install both normal and rendering test dependencies.
+2. Follow the [Python environment instructions](../README.md#2-prepare-python-and-run-the-tests). They cover macOS, Linux, and Windows, and install both normal and rendering test dependencies.
 3. Run the tests from the repository root, with that environment active:
 
    ```sh
@@ -46,9 +54,11 @@ git check-ignore -v custom-pieces/local/settings.json
 
 4. For game builds or native integration checks, prepare the supported NAM inputs and private `custom-pieces/local/settings.json` using the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md). A clone does not contain installed game resources, personal Plugins paths, or existing development builds. Keep those inputs outside version control.
 
-An **editable installation**, created by `python -m pip install -e custom-pieces`, imports the source files directly. If you move the repository or switch to another clone, create a fresh virtual environment and install that editable package there so module commands use the intended source tree. Existing build folders and caches are optional. The [local-input guide](../custom-pieces/docs/BUILD_AND_INSTALL.md#prepare-local-development-inputs) distinguishes the public settings example, private game inputs, and generated builds.
+An **editable installation**, created by `python -m pip install -e custom-pieces`, imports the source files directly. If you move the repository or switch to another clone, create a fresh virtual environment and install that editable package there so module commands use the intended source tree. Existing build folders and caches are optional. The [local-input guide](../custom-pieces/docs/BUILD_AND_INSTALL.md#3-prepare-local-development-inputs) distinguishes the public settings example, private game inputs, and generated builds.
 
-## Submit a change
+<a id="submit-a-change"></a>
+
+## 3. Submit a change
 
 A **branch** is a named line of work. `dev` is the default branch and holds accepted development changes; `main` holds deliberately promoted releases. A **push** uploads commits, and a **pull** downloads and incorporates remote commits. A **pull request**, or **PR**, proposes merging one branch into another on GitHub. Its **base** is the destination, and its **head** is the source. Agents may create PRs, but only human maintainers may merge them. Agents must not enable automatic merging or treat successful tests as merge authorization.
 
@@ -102,9 +112,11 @@ The following example assumes that you can push branches to the canonical reposi
 
 Local settings and ignored files stay outside Git throughout this workflow. A generated build belongs to the source version from which it was created; rebuild deliberately before installing outputs from a newer version. Build, install, source publication, and public plugin distribution remain separate operations.
 
-## Submit a release
+<a id="submit-a-release"></a>
 
-A **release promotion** accepts the tested development version into `main`. Ordinary work branches must first pass through `dev`. An accepted `main` update also starts the [automatic installer workflow](#automatic-installer-prereleases), which publishes an experimental local-builder prerelease after its checks pass. Promoting source does not install a game plugin, change game observations, or clear redistribution of locally compiled NAM-derived resources.
+## 4. Submit a release
+
+A **release promotion** accepts the tested development version into `main`. Ordinary work branches must first pass through `dev`. An accepted `main` update also starts the [automatic installer workflow](#5-automatic-installer-prereleases), which publishes an experimental local-builder prerelease after its checks pass. Promoting source does not install a game plugin, change game observations, or clear redistribution of locally compiled NAM-derived resources.
 
 1. Confirm that the intended changes have been merged into the canonical repository's `dev` branch and that its `Tests` run has passed.
 2. On the canonical GitHub repository, select **Pull requests → New pull request**. Select **base: main** and **compare: dev**, both in the canonical repository. A fork's branch named `dev` is not an accepted release source.
@@ -114,7 +126,9 @@ A **release promotion** accepts the tested development version into `main`. Ordi
 6. Open **Actions → Installer release**, and inspect the run for the resulting `main` commit. Its full tests, Windows build, packaged self-test, GUI startup smoke check, and archive verification must pass before publication. When it succeeds, inspect the new **SCP Installer — experimental** prerelease and its asset checksums. A failed run leaves the source promotion in place; fix the cause through a PR to `dev`, or rerun the same commit for a temporary runner failure. Do not bypass a verifier to produce an asset.
 7. If `dev` is now behind the release commit on `main`, open a synchronization PR with **base: dev** and **compare: main**. A human maintainer merges it after `Tests` passes. This brings the release history back into development without pushing directly to a protected branch.
 
-## Automatic installer prereleases
+<a id="automatic-installer-prereleases"></a>
+
+## 5. Automatic installer prereleases
 
 Start with [Automatic releases, explained simply](../custom-pieces/docs/AUTOMATIC_RELEASES.md) for a beginner-friendly explanation of Actions, the branch-to-release sequence, the exact buttons to use, and the separate build on the player's computer.
 
@@ -128,7 +142,9 @@ These are **experimental installer prereleases**. They do not assert that all 16
 
 The workflow publishes automatically after a human source promotion; it does not need a separate manual GitHub Release action. Implementing or testing the workflow on a work branch does not publish a release. Use **Actions** artifacts to review the installer before promoting the change through `dev` into `main`. Hosted self-tests check the packaged application's runtime and metadata. Native resource checks requiring proprietary game inputs can remain explicit skips in hosted CI; a successful installer build does not claim that a full game installation or an in-game test ran on the runner.
 
-## Automated checks and coverage
+<a id="automated-checks-and-coverage"></a>
+
+## 6. Automated checks and coverage
 
 **Continuous integration**, or **CI**, runs checks automatically when changes reach GitHub. A **runner** is the computer that executes a job, and a **status check** is GitHub's reported result. The [workflow](../.github/workflows/ci.yml) runs on a hosted Ubuntu runner with Python 3.11 and the dependencies in [requirements-ci.txt](../requirements-ci.txt). It calls the same [test script](../tools/run_tests.py) used locally.
 
@@ -147,7 +163,9 @@ The library discovers its framework, registered domain, and registered assembly 
 
 For local native integration checks, use private Plugins settings or set `SCP_TEST_NAM_PLUGINS` to the directory containing the exact audited inputs. Follow the [build guide](../custom-pieces/docs/BUILD_AND_INSTALL.md) for input verification and saved-build requirements.
 
-## Required checks for maintainers
+<a id="required-checks-for-maintainers"></a>
+
+## 7. Required checks for maintainers
 
 The canonical repository uses `dev` as its default branch and protects both `dev` and `main`. `dev` requires the `Tests` check; `main` requires both `Tests` and `Release policy`. A work branch must include the current base version, required conversations must be resolved, and the rules apply to administrators. Force pushes and branch deletion are blocked. No approving review is required by the saved templates, so a human maintainer can merge a tested PR without a second reviewer. Fork owners manage their own repository settings; cloning or committing these templates does not apply branch protection.
 

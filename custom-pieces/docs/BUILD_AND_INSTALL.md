@@ -7,19 +7,27 @@ document_type: "procedure"
 
 # Build, install, and inspect SCP
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Current pieces and assembly design](#1-current-pieces-and-assembly-design) · [2. Recognize SCP menu icons](#2-recognize-scp-menu-icons) · [3. Prepare local development inputs](#3-prepare-local-development-inputs) · [4. Build a selected collection](#4-build-a-selected-collection) · [5. Optional isolated native inputs](#5-optional-isolated-native-inputs) · [6. Rebuild generated development outputs](#6-rebuild-generated-development-outputs) · [7. Install, remove, or roll back a test build](#7-install-remove-or-roll-back-a-test-build) · [8. Prepare the assembly menu](#8-prepare-the-assembly-menu) · [9. Project files and future additions](#9-project-files-and-future-additions) · [10. Check and prepare distribution](#10-check-and-prepare-distribution)
+<!-- END DOCUMENT NAVIGATION -->
+
 For a graphical installation without Python or terminal commands, use the [self-contained installer](INSTALLER.md). Extract the Windows ZIP, open SCP Installer, select **Choose game folder…**, and select **Install**. It finds Plugins, builds the complete implemented catalogue, captures required Road inputs automatically from the user's existing game and NAM, prepares the assembly menu, and uses the same verified, receipt-based installation described below. The following sections document the contributor and source-command workflow.
 
-An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in **Transportation → Rail**. Every assembly delivery then uses the [assembly-menu step](#prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
+An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in **Transportation → Rail**. Every assembly delivery then uses the [assembly-menu step](#8-prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#2-recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
 
-## Current pieces and assembly design
+<a id="current-pieces-and-assembly-design"></a>
+
+## 1. Current pieces and assembly design
 
 The [rail player guide](../domains/high-speed-rail/README.md) explains network levels, matching approaches and the main piece families. Browse the [illustrated pieces](../domains/high-speed-rail/00_pieces/INVENTORY.md) or [assembly blueprints](../domains/high-speed-rail/01_assemblies/INVENTORY.md) for current types, pictures and scoped status. Named collections and their current counts are in the player guide. The [trumpet rebuilding guide](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) identifies every module, position and rotation.
 
-Use the [assembly workflow](WORKFLOW_ASSEMBLY_CREATION.md) to agree on a schematic, inventory compatible types, build missing useful modules and review actual compiled grid renders. The [engineering reference](FRAMEWORK_ENGINEERING.md#mixed-network-ownership) owns mixed-network classification. Complete complex interchanges use documented modular blueprints; the existing accepted smooth-T buttons remain PNP types.
+Use the [assembly workflow](WORKFLOW_ASSEMBLY_CREATION.md) to agree on a schematic, inventory compatible types, build missing useful modules and review actual compiled grid renders. The [engineering reference](FRAMEWORK_ENGINEERING.md#10-mixed-network-ownership) owns mixed-network classification. Complete complex interchanges use documented modular blueprints; the existing accepted smooth-T buttons remain PNP types.
 
 Use [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md) to produce README files, previews, connector exports, and cards from the appropriate verified inputs; the [connector reference](CONNECTOR_METADATA.md) defines the connection data.
 
-## Recognize SCP menu icons
+<a id="recognize-scp-menu-icons"></a>
+
+## 2. Recognize SCP menu icons
 
 Open **Transportation → Rail** and hover over a button beginning **SCP |** to read its full name and description. Teal **PART** means one independently placeable building block. Purple **PNP** means an implemented complete junction placed with one click. PNP does not mean game operation has passed testing. A collection or assembly guide does not create a complete-interchange button.
 
@@ -47,11 +55,15 @@ Assembly icons use the available button area for a drawing of the complete layou
 
 The exact angle, height, handedness and footprint remain in the full name and tooltip; the small code is a browsing aid. The revised scissors retain their small green check beside the silhouette and their names still end in **Revised**. Recorded design-review warnings remain in titles and tooltips.
 
-## Prepare local development inputs
+<a id="prepare-local-development-inputs"></a>
+
+## 3. Prepare local development inputs
 
 The Git checkout supplies maintained source, canonical artwork, schemas, tests, and recorded evidence. A **template** is an example file that each contributor copies and fills in for their own machine. A fresh checkout can run portable tests without a game installation; cases requiring native game resources or saved builds report explicit skips.
 
-### Python setup for a checkout or source ZIP
+<a id="python-setup-for-a-checkout-or-source-zip"></a>
+
+### 3.1 Python setup for a checkout or source ZIP
 
 Install Python 3.11 or newer from the [official Python downloads](https://www.python.org/downloads/) if it is not already available. CI uses Python 3.11. A **virtual environment** keeps this project's Python packages separate from other installations. Create a new environment for each checkout; do not copy an old environment or rely on an editable installation pointing at another checkout.
 
@@ -84,7 +96,9 @@ The version must be 3.11 or newer. The requirements install Pillow for images an
 
 All later Python commands in this guide assume that the environment remains active and that you are in the directory containing `custom-pieces/`. The macOS double-click launcher uses `python3` from its command search path; it does not automatically activate `.venv`. Use the terminal commands here when selecting the new environment explicitly.
 
-### Native game inputs and supported baseline
+<a id="native-game-inputs-and-supported-baseline"></a>
+
+### 3.2 Native game inputs and supported baseline
 
 The Python tools can run on macOS, Linux, and Windows. The audited game profile is **SimCity 4 Deluxe version 1.1.641 for Windows, with NAM 50 and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The profile does not establish support for the native macOS game port. See the [NAM Team's official installation instructions](https://www.sc4nam.com/docs/getting-started/installation/) for obtaining NAM and its installer, DLL, and game requirements.
 
@@ -95,12 +109,14 @@ A NAM version label alone does not prove that its files match this project's aud
 | Workstation settings | [`config/local.example.json`](../config/local.example.json) | Copy to ignored `custom-pieces/local/settings.json`, then supply every active Plugins directory. |
 | Supported NAM input identities | [`config/profiles/nam50-rhd.json`](../config/profiles/nam50-rhd.json) | Supply the matching four core archives from your own NAM installation, plus any optional captured dependencies required by your selected pieces. |
 | Python dependencies and package definitions | Library requirements and `pyproject.toml` | Install them in a newly created environment for this checkout. |
-| Isolated native inputs | No game archives | Optional private copies under `custom-pieces/local/validation-inputs/` support repeatable texture and verification work. Follow the [preparation procedure](#optional-isolated-native-inputs). |
+| Isolated native inputs | No game archives | Optional private copies under `custom-pieces/local/validation-inputs/` support repeatable texture and verification work. Follow the [preparation procedure](#5-optional-isolated-native-inputs). |
 | Compiled builds, packages, and caches | No generated build templates | Generate them from source and matching NAM inputs. Existing `dist/` directories are convenient retained outputs, rather than prerequisites for starting source development. |
 
 For native builds, use the settings-copy command in the next section. Keep real filesystem paths in that ignored settings file. An empty `extra_plugins` list is correct only when there are no additional active Plugins directories. Builds and native tests need writable output and operating-system temporary directories; their storage and runtime depend on the selected pieces.
 
-## Build a selected collection
+<a id="build-a-selected-collection"></a>
+
+## 4. Build a selected collection
 
 Run these commands from the project folder containing `custom-pieces`. First type `python --version`; the printed version must be 3.11 or newer. Complete the environment setup above first. For a build-only environment, the minimum dependency and package commands are:
 
@@ -171,11 +187,15 @@ python custom-pieces/scp.py build --set hsr-all-components --progress --output c
 python custom-pieces/scp.py verify --output custom-pieces/dist/hsr-all-components
 ```
 
-## Optional isolated native inputs
+<a id="optional-isolated-native-inputs"></a>
+
+## 5. Optional isolated native inputs
 
 This is an optional private copy of selected game archives. Ordinary builds can read the installed Plugins directories directly. An isolated copy is useful for repeatable checks or rendering without scanning unrelated mods; it does not replace a game installation or establish game compatibility.
 
-### Prepare a new private copy
+<a id="prepare-a-new-private-copy"></a>
+
+### 5.1 Prepare a new private copy
 
 1. Complete the private Plugins settings and run `doctor` as described above. Locate the four core archives under the profile's `controller`, `hsr`, `urail`, and `glr` keys within those configured Plugins directories. This six-file preparation procedure does not require every optional entry in the profile's `files` table. If more than one candidate exists, resolve the ambiguity before copying anything.
 2. For the current HSR overview work, also locate `High Speed Rail_Textures.dat` and `NetworkAddonMod_GroundLightRail_Plugin_Textures.dat`. These are texture providers. Their full-file fingerprints are not declared by the public core profile, and `doctor` does not certify them. Preserve which source files you selected; later rendering and freshness checks still need their exact texture inputs.
@@ -202,7 +222,9 @@ This record stores fingerprints of the copied files; it is not another compatibi
 
 If a selected piece declares optional captured dependencies, prepare them separately by following that piece's README before building it. For example, [HSR above parallel Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md#native-inputs-and-source-reproduction) needs three narrow captures (the ordinary Road PATH, Road texture, and pavement texture) in addition to the core inputs. These captures are separate files with their own pinned profile hashes and source-audit records. Do not copy a full unrelated Road override into the six-file directory or change the core-copy procedure to require optional inputs for every piece. Pass the prepared capture directory explicitly through `--extra-plugins` when building or checking that selected piece.
 
-### Transfer an existing private copy
+<a id="transfer-an-existing-private-copy"></a>
+
+### 5.2 Transfer an existing private copy
 
 Copy the complete `custom-pieces/local/validation-inputs/` directory, including `Plugins/` and the existing `sources.json`, into the same relative location in the new checkout. Run the following command from the directory containing `custom-pieces/`. It checks every recorded file against the original record, rejects filenames containing a directory, and compares only the four core records (`controller`, `hsr`, `urail`, and `glr`) with the public NAM profile. Optional piece-specific capture entries are not required by this core transfer check. Any mismatch produces an unsuccessful exit:
 
@@ -212,7 +234,9 @@ python -c "import hashlib, json; from pathlib import Path; r=Path('custom-pieces
 
 A missing file or unreadable record is a failure to investigate. The two texture providers remain private captured inputs, rather than entries in the public core baseline. Transfer any separate optional capture directory only when the selected piece requires it, and verify those captures against their own pinned profile hashes and source-audit records. Preserve the old directories until the transfer has been checked.
 
-### Select isolated inputs explicitly
+<a id="select-isolated-inputs-explicitly"></a>
+
+### 5.3 Select isolated inputs explicitly
 
 Connector rendering prefers `local/validation-inputs/Plugins/` when it exists. Incomplete or outdated copies can therefore affect checks even while live Plugins settings are correct. Some native tests also read `extra_plugins` from private settings when `SCP_TEST_NAM_PLUGINS` selects another primary directory; that environment variable alone does not establish a fully isolated scan.
 
@@ -220,7 +244,9 @@ For isolated native checks, use a separate test checkout. Set its private `plugi
 
 Rendering records the actual fonts, Pillow, NumPy, and renderer inputs. The renderer uses system Arial and Menlo where available, with fallback fonts otherwise. A different machine can therefore report stale artwork without a missing dependency. Follow the [documentation-generation workflow](WORKFLOW_DOCUMENTATION_GENERATION.md) to investigate or deliberately refresh presentation; do not rewrite evidence fingerprints to bypass a mismatch.
 
-## Rebuild generated development outputs
+<a id="rebuild-generated-development-outputs"></a>
+
+## 6. Rebuild generated development outputs
 
 If you need a complete replacement for an existing installation, rebuild all retained types, rather than assuming the default selection contains them:
 
@@ -231,11 +257,13 @@ python custom-pieces/scp.py verify --output custom-pieces/dist/current
 
 Run these commands from the repository root. Building and verification do not install anything. The installer rejects a replacement that omits an installed piece, so a smaller default build is not automatically a replacement for a larger installed selection. A rebuild must be checked against the intended source and inputs; it does not inherit manual game approval from an older build.
 
-The optional native saved-resource checks for the trumpet need its compiled assembly candidate. Follow [Prepare the assembly menu](#prepare-the-assembly-menu) for the complete preparation sequence using fresh output directories. Then follow the trumpet's [software checks](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md#run-the-software-checks), using that candidate's actual path for verification and `SCP_TRUMPET_BUILD`. Rechecking an existing candidate does not require preparing its assembly menu again.
+The optional native saved-resource checks for the trumpet need its compiled assembly candidate. Follow [Prepare the assembly menu](#8-prepare-the-assembly-menu) for the complete preparation sequence using fresh output directories. Then follow the trumpet's [software checks](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/TESTING.md#run-the-software-checks), using that candidate's actual path for verification and `SCP_TRUMPET_BUILD`. Rechecking an existing candidate does not require preparing its assembly menu again.
 
 Keep original evidence and archived builds intact when they are needed to interpret recorded observations. Neither a new clone nor a fresh build requires copying old review workspaces, disposable reports, or Python caches into the active checkout.
 
-## Install, remove, or roll back a test build
+<a id="install-remove-or-roll-back-a-test-build"></a>
+
+## 7. Install, remove, or roll back a test build
 
 Use a disposable city. Save and quit SimCity 4 first. Keep backups outside all Plugins folders. In the commands below, replace `/absolute/path/to/SCP Backups` with a real backup directory, keep the quotation marks, and use the same directory for rollback. On Windows, a full path can use a drive letter, such as `C:/SCP Backups`. For example:
 
@@ -243,7 +271,7 @@ Use a disposable city. Save and quit SimCity 4 first. Keep backups outside all P
 python custom-pieces/scp.py install --output custom-pieces/dist/smooth-t-junctions --backup-root '/absolute/path/to/SCP Backups'
 ```
 
-The installer checks exact NAM fingerprints and current files. It prints a `backup_id`; save that value if you may need rollback. Start the game, open **Transportation → Rail**, and hover over a teal **SCP** button to read its full title. Click the button; use **Home** or **End** to rotate; click clear terrain once to place the piece. **Tab** and **Shift+Tab** select the next or previous type in a declared construction family. The ordinary piece-compilation stage gives each type its own family. A final assembly build replaces its member buttons with one assembly entry and groups those types into the same Tab cycle; follow [Prepare the assembly menu](#prepare-the-assembly-menu) before packaging an assembly. Directional pieces repeat four proper rotations across their eight rotation states so reflection cannot silently reverse travel direction.
+The installer checks exact NAM fingerprints and current files. It prints a `backup_id`; save that value if you may need rollback. Start the game, open **Transportation → Rail**, and hover over a teal **SCP** button to read its full title. Click the button; use **Home** or **End** to rotate; click clear terrain once to place the piece. **Tab** and **Shift+Tab** select the next or previous type in a declared construction family. The ordinary piece-compilation stage gives each type its own family. A final assembly build replaces its member buttons with one assembly entry and groups those types into the same Tab cycle; follow [Prepare the assembly menu](#8-prepare-the-assembly-menu) before packaging an assembly. Directional pieces repeat four proper rotations across their eight rotation states so reflection cannot silently reverse travel direction.
 
 Existing sc4pac DLL shortcuts are supported when each points to a regular Windows DLL inside an explicitly scanned Plugins folder. A DLL is a Windows code library. The installer leaves these shortcuts and their targets intact. Linked folders, linked game-resource archives, broken links, and DLL shortcuts pointing outside the scanned folders remain blocked.
 
@@ -263,7 +291,9 @@ python custom-pieces/scp.py uninstall --backup-root '/absolute/path/to/SCP Backu
 
 Removal checks its ownership receipt and saves a snapshot first. The tools do not edit city files or NAM's original archives.
 
-## Prepare the assembly menu
+<a id="prepare-the-assembly-menu"></a>
+
+## 8. Prepare the assembly menu
 
 Every assembly is delivered through **one assembly button**. Click that button, use **Tab** or **Shift+Tab** to select a component type, use **Home** or **End** to rotate that component, and click to place one copy. This is a component selector; it does not stamp the complete arrangement. The trumpet's button is **SCP | ASSEMBLY | HSR Trumpet**, and its fourteen distinct types appear once each in the cycle, in their first-use order in the assembly plan.
 
@@ -296,15 +326,17 @@ python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-tr
 
 The domain's [menu-layout.json](../domains/high-speed-rail/menu-layout.json) owns the assembly selection, its single presentation ID, its Rail-menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. The current builder prepares one assembly per final candidate and rejects an already grouped source; it does not silently combine overlapping assembly cycles. The historical `menu-test` command remains a compatibility entry point, while new delivery instructions use `assembly-menu`.
 
-To create a second layout, follow the [bounded HSR assembly starter](WORKFLOW_ASSEMBLY_CREATION.md#start-a-small-hsr-assembly-from-existing-pieces) for the ordered `assembly.json`, domain registration, `menu-layout.json`, icon-adapter, and initial documentation steps. A new assembly using existing member types needs its own presentation identity, rather than copied trumpet IDs or another piece allocation.
+To create a second layout, follow the [bounded HSR assembly starter](WORKFLOW_ASSEMBLY_CREATION.md#12-start-a-small-hsr-assembly-from-existing-pieces) for the ordered `assembly.json`, domain registration, `menu-layout.json`, icon-adapter, and initial documentation steps. A new assembly using existing member types needs its own presentation identity, rather than copied trumpet IDs or another piece allocation.
 
-The assembly owns its canonical four-state `icon.png` beside `assembly.json`; its larger layout images stay in `previews/`. Assembly-menu preparation reads that icon and checks its expected artwork before packaging. If a registered assembly's icon is missing or intentionally needs regeneration, follow the [artwork-only command](WORKFLOW_DOCUMENTATION_GENERATION.md#menu-artwork-and-source-registration) before preparing a fresh candidate. The icon's fixed location requires no additional field in `assembly.json` or `menu-layout.json`.
+The assembly owns its canonical four-state `icon.png` beside `assembly.json`; its larger layout images stay in `previews/`. Assembly-menu preparation reads that icon and checks its expected artwork before packaging. If a registered assembly's icon is missing or intentionally needs regeneration, follow the [artwork-only command](WORKFLOW_DOCUMENTATION_GENERATION.md#10-menu-artwork-and-source-registration) before preparing a fresh candidate. The icon's fixed location requires no additional field in `assembly.json` or `menu-layout.json`.
 
 Read `docs/assembly-menu/README.md` inside the output for the exact component order. Its adjacent `game-checks.json` is a frozen list of pending checks, not a passing observation record. The verifier reconstructs the original source build, performs its normal strict validation, and independently checks the allowed menu removal, single added button, and actual Tab ordering. The `.proof` source archives stay outside the managed plugin folder and are not additional game plugins. Candidate packaging preserves this frozen proof and rejects `package --refresh-docs`. For updated documentation, repeat the fresh normal source build and assembly-menu steps above; do not relabel an older candidate as current. Public release remains blocked until the required game evidence exists.
 
-This menu presentation uses native construction-family ordering and needs no Submenus DLL. Its actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm that Rail shows one assembly entry, that its members have no duplicate individual entries, and that unrelated standalone types remain available. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish train travel or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#install-remove-or-roll-back-a-test-build) with the complete candidate.
+This menu presentation uses native construction-family ordering and needs no Submenus DLL. Its actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm that Rail shows one assembly entry, that its members have no duplicate individual entries, and that unrelated standalone types remain available. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish train travel or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#7-install-remove-or-roll-back-a-test-build) with the complete candidate.
 
-## Project files and future additions
+<a id="project-files-and-future-additions"></a>
+
+## 9. Project files and future additions
 
 See [STRUCTURE.md](../STRUCTURE.md) for the full source map.
 
@@ -318,13 +350,15 @@ The scaffold creates a disabled **draft** and allocates its local identifiers. I
 
 A **DAT** is the game's archive of models, traffic paths, menu records, and other resources. Every build combines all selected pieces into one coordinated controller overlay, one SCP menu archive, and one DAT per piece. Output is staged and verified before a managed build is replaced. Do not remove a piece DAT manually from a build; rebuild its intended selection so menus and rules stay consistent. Builds refuse arbitrary output folders and identifier collisions. Installation receipts, backups, and rollback protect managed files.
 
-## Check and prepare distribution
+<a id="check-and-prepare-distribution"></a>
+
+## 10. Check and prepare distribution
 
 The [automatic installer workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) publishes a self-contained **local builder**, with no compiled NAM or game resources, as an experimental GitHub prerelease. Its policy lives in [`config/installer.json`](../config/installer.json), and its player instructions live in [INSTALLER.md](INSTALLER.md). This is distinct from packaging and distributing the locally compiled plugin DATs below; their permission, identifier, and game-evidence gates remain unchanged.
 
-Run `python3 -B custom-pieces/scp.py docs-check` from the repository root for the read-only catalogue/shared-guide layout and local-link check. Repeat `--piece EXACT-ID` or `--assembly EXACT-ID` to limit the subject selection. The command reports retained legacy guides and checks current required files; it requires no native game inputs, writes no evidence, and does not establish that pending instructions or game tests are complete. Use the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#creation-checklist-and-output-files) for required authored and generated artifacts.
+Run `python3 -B custom-pieces/scp.py docs-check` from the repository root for the read-only catalogue/shared-guide layout and local-link check. Repeat `--piece EXACT-ID` or `--assembly EXACT-ID` to limit the subject selection. The command reports retained legacy guides and checks current required files; it requires no native game inputs, writes no evidence, and does not establish that pending instructions or game tests are complete. Use the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-checklist-and-output-files) for required authored and generated artifacts.
 
-After the final README, artwork, and connector exports are ready, follow the [final-artifact procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#final-artifacts-and-packaging), and choose the packaging branch that matches the build. For an **ordinary verified piece build**, replace `BUILD_NAME` below with its existing build directory to package current documentation without rebuilding its compiled resources:
+After the final README, artwork, and connector exports are ready, follow the [final-artifact procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#13-final-artifacts-and-packaging), and choose the packaging branch that matches the build. For an **ordinary verified piece build**, replace `BUILD_NAME` below with its existing build directory to package current documentation without rebuilding its compiled resources:
 
 ```sh
 python custom-pieces/scp.py package --output custom-pieces/dist/BUILD_NAME --destination custom-pieces/dist/BUILD_NAME-current-docs.zip --refresh-docs
@@ -332,7 +366,7 @@ python custom-pieces/scp.py package --output custom-pieces/dist/BUILD_NAME --des
 
 The command preserves the ordinary input build and its compiled resources, and writes the current portable documentation plus matching hashes into the ZIP. Omitting `--refresh-docs` deliberately packages its original build-time documentation snapshot; label that archive as historical when its documentation has been superseded.
 
-For an **assembly-menu candidate**, follow [Prepare the assembly menu](#prepare-the-assembly-menu): finalize documentation before a fresh normal source build, create a fresh final candidate, and package it without `--refresh-docs`. The candidate requires its frozen proof documents and rejects that option. Preserve any earlier candidate unchanged as historical evidence. Packaging remains separate from publication and records no game observation.
+For an **assembly-menu candidate**, follow [Prepare the assembly menu](#8-prepare-the-assembly-menu): finalize documentation before a fresh normal source build, create a fresh final candidate, and package it without `--refresh-docs`. The candidate requires its frozen proof documents and rejects that option. Preserve any earlier candidate unchanged as historical evidence. Packaging remains separate from publication and records no game observation.
 
 ```sh
 python custom-pieces/scp.py check --scope all

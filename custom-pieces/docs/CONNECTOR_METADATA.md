@@ -7,6 +7,10 @@ document_type: "reference"
 
 # Connector metadata: matching pieces at their shared edge
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. A connection is agreement at the shared edge](#1-a-connection-is-agreement-at-the-shared-edge) · [2. Information required at each exposed edge](#2-information-required-at-each-exposed-edge) · [3. Positions, headings, heights, and slopes use one comparison frame](#3-positions-headings-heights-and-slopes-use-one-comparison-frame) · [4. Complete boundaries, shared channels, and junctions](#4-complete-boundaries-shared-channels-and-junctions) · [5. Matching procedure and evidence](#5-matching-procedure-and-evidence) · [6. Stable identity, reuse, and file ownership](#6-stable-identity-reuse-and-file-ownership) · [7. Current library format and implementation limits](#7-current-library-format-and-implementation-limits) · [8. Examples: the two existing HSR pieces](#8-examples-the-two-existing-hsr-pieces)
+<!-- END DOCUMENT NAVIGATION -->
+
 **Implementation scope:** The source library owns connector declarations, schemas, source validation, resolved exports, and generated connection overviews. The current declaration/export migration covers sixteen piece types, forty-six connector groups, and seventy-nine measured directional endpoints: all fourteen current reusable types in the [trumpet’s piece index](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md#2-pieces), the [paired rising quarter-turn](../domains/high-speed-rail/00_pieces/blind-hsr-rise-quarter-turn/README.md), and [parallel High Speed Rail (HSR) above ordinary Road](../domains/high-speed-rail/00_pieces/blind-hsr-road-stack/README.md). This is a defined subset of the 167-type rail catalogue, not full-catalogue coverage. The Road example includes measured vehicle and pedestrian paths. Their authored group files use schema version 3, the optional shared-profile registry uses version 2, and generated `connector-data.json` files use version 1. The rules below apply across transport networks; a rule is not evidence that an untested source family works. Full-scene placement, terrain-aware construction, general model-collision and seam discovery, and actual game operation remain separate capabilities; each piece's evidence defines any narrower checks already performed. See [generation and overview instructions](WORKFLOW_DOCUMENTATION_GENERATION.md) for the exact authoring commands and output ownership.
 
 ## 1. A connection is agreement at the shared edge
@@ -15,7 +19,9 @@ document_type: "reference"
 
 **A connection exists when both pieces expose compatible network services and the same geometric continuation at their shared edge, with complementary permitted movements.** Each piece describes its own side. A consumer can compare both descriptions under one proposed placement in a layout.
 
-### Network-neutral terms
+<a id="network-neutral-terms"></a>
+
+### 1.1 Network-neutral terms
 
 | Term | Meaning | Example or distinction |
 | --- | --- | --- |
@@ -69,7 +75,9 @@ A **tangent** is a direction vector at a point on a route; a **vector** is a num
 
 A section origin is useful for a clearly defined arrangement. It is not mandatory to invent one for every kind of passage. If an origin or a single centreline is not meaningful, label centring and section offset as not applicable, and compare the actual measured intersections. Distinguish not applicable from unknown or missing required data.
 
-### Channel counts, directed movements, and multiple edges
+<a id="channel-counts-directed-movements-and-multiple-edges"></a>
+
+### 2.1 Channel counts, directed movements, and multiple edges
 
 Count physical channels from their established source associations, rather than by counting route records or traffic modes. Compare the associated required movements separately. A direct join must account for the channels and movements required by both sides; it cannot silently merge, split, or discard them. A merge or split belongs to an explicitly represented transition or internal journey.
 
@@ -79,7 +87,9 @@ Raw route-record counts need not agree across source formats. For example, one s
 
 A diagonal two-channel section near a tile corner can put one channel through the north edge and the other through the east edge. Preserve the complete section relationship and the actual edge intersections. Neither edge acquires an invented second endpoint, and a single intersection does not turn the complete two-channel section into a one-channel section. All required shared segments must fit under the same placement. This case requires source-backed coverage of every cut and every affected edge. The migrated types do not establish that complete two-channel diagonal case; the fan and merge instead expose individually declared one-channel oblique cuts.
 
-### Rendering from the existing models
+<a id="rendering-from-the-existing-models"></a>
+
+### 2.2 Rendering from the existing models
 
 The renderer and matcher use the same piece anchor, rotation, and measured endpoints. The renderer loads the existing piece/build model and applies that placement. Connection markers and route overlays derive from the measured paths, so they remain attached to the correct ends.
 
@@ -87,13 +97,15 @@ A schematic view can simplify the presentation. Visibility toggles can reveal lo
 
 A **mesh** is the collection of surfaces making up a 3D model. Future seam and collision checks can derive evidence from the placed meshes, including supports and overhangs. Bind any generated collision data to the model's source fingerprint. This generated evidence is separate from connector metadata; no duplicate manual end-shape description is required. Until those checks run, their results remain unverified.
 
-### Physical projection, ownership, and clearance
+<a id="physical-projection-ownership-and-clearance"></a>
+
+### 2.3 Physical projection, ownership, and clearance
 
 The **construction rectangle** is the declared width and depth around a piece, and the **owned-cell mask** identifies its actual claimed game tiles. Neither describes every surface of its model. A **physical projection** records the ground-plane area touched by actual model triangles, including decks, parapets, caps, and foundations. A **keep-clear restriction** states space that neighbouring construction must avoid, including any unowned projection cells and their relevant height ranges. An empty cell inside the rectangle, or a cell outside the owned mask, is not automatically clear.
 
 Derive physical-space evidence from saved models using triangle-to-tile intersection, record exact affected cells and geometric scope, and bind it to the inspected model fingerprints. State the clipping tolerance and whether boundary-only contact counts. A vertex-only count can miss a triangle crossing a cell without a vertex inside it. Keep support-foundation ownership, complete overhang projection, and dimensioned traffic-corridor clearance as separate measurements. Preserve the results in the owning piece's existing engineering notes and evidence; the current connector schemas do not define a physical-footprint or keep-clear export.
 
-Checking claimed cells for overlap does not reserve unowned projections or prove model clearance there. A future consumer needs source-bound physical-space data alongside owned cells and construction restrictions before it can enforce those reservations. Even then, a conservative two-dimensional reservation cannot establish three-dimensional fit: height-dependent collisions, traffic corridors, supports, and native deck seams require the actual placed geometry and explicit check scope. The [piece-creation support procedure](WORKFLOW_PIECE_CREATION.md#check-complete-support-solids-and-physical-space) explains the authoring checks. Keep such results unverified wherever those checks have not run.
+Checking claimed cells for overlap does not reserve unowned projections or prove model clearance there. A future consumer needs source-bound physical-space data alongside owned cells and construction restrictions before it can enforce those reservations. Even then, a conservative two-dimensional reservation cannot establish three-dimensional fit: height-dependent collisions, traffic corridors, supports, and native deck seams require the actual placed geometry and explicit check scope. The [piece-creation support procedure](WORKFLOW_PIECE_CREATION.md#52-check-complete-support-solids-and-physical-space) explains the authoring checks. Keep such results unverified wherever those checks have not run.
 
 ## 3. Positions, headings, heights, and slopes use one comparison frame
 
@@ -138,7 +150,7 @@ A **connection-axis angle** describes a horizontal line without choosing one of 
 
 Measured tangent vectors are the authority. Derive displayed angles from them instead of entering a second angle that could disagree. Reverse an incoming member's travel tangent to obtain its outward direction. An outgoing member's travel tangent already points outward.
 
-Measure both actual complementary native members independently. Use the saved nonzero PATH chord adjacent to each joining intersection, retain its asymmetry, and compare both complete boundaries under the same placement. A nominal diagonal label does not require identical 45° tangents on both channels. The [audited native HSR half](../domains/high-speed-rail/NETWORK_SPEC.md#measure-the-native-diagonal-half-exactly), for example, has a 5.1 m/5.2 m chord on one member and a 10.9 m/10.9 m chord on the other. Rounded headings, symmetric replacement offsets, or agreement on only one member cannot replace those measurements. Native PATH agreement remains separate from the physical model seam and game construction.
+Measure both actual complementary native members independently. Use the saved nonzero PATH chord adjacent to each joining intersection, retain its asymmetry, and compare both complete boundaries under the same placement. A nominal diagonal label does not require identical 45° tangents on both channels. The [audited native HSR half](../domains/high-speed-rail/NETWORK_SPEC.md#81-measure-the-native-diagonal-half-exactly), for example, has a 5.1 m/5.2 m chord on one member and a 10.9 m/10.9 m chord on the other. Rounded headings, symmetric replacement offsets, or agreement on only one member cannot replace those measurements. Native PATH agreement remains separate from the physical model seam and game construction.
 
 Spacing perpendicular to a route differs from spacing measured along a tile edge. For example, two parallel 45° centrelines spaced 4 m apart perpendicular to their direction intersect an east edge approximately 5.657 m apart. Do not substitute straight-section edge offsets for actual diagonal intersections.
 
@@ -202,7 +214,7 @@ Perform the following checks in order:
 
 “Same” means agreement under explicit numerical tolerances: documented limits on acceptable measurement differences. The current [validator](../framework/scp/connector_metadata.py) uses `EPS = 0.00002`: position-vector comparisons use 0.00002 m, unit-tangent comparisons use a dimensionless vector-distance limit of 0.00002, and grade comparisons use 0.00002 rise/run, or 0.002 percentage points. The consumer reuses that constant. Angles displayed in degrees are derived from those tangents; rounded display labels never control the decision. A route-coordinate tolerance is not a physical-clearance allowance. Any additional source adapter must state its measured precision and use compatible comparison limits. Missing required data never counts as agreement.
 
-Keep numeric policies tied to the property they measure. A visual texture-stripe exception, for example, must not change connector positions, unit tangents, grades, visible rail-centre checks, or support clearance. Record its original and replacement limits, exact geometric subset, measured maximum, source fingerprints, and independent negative controls in the owning piece's contract. Test the subset boundary and unchanged defaults explicitly. The [independent-verification procedure](WORKFLOW_PIECE_CREATION.md#keep-independent-checks-and-numeric-exceptions-scoped) defines that authoring requirement; this reference introduces no additional tolerance or exception.
+Keep numeric policies tied to the property they measure. A visual texture-stripe exception, for example, must not change connector positions, unit tangents, grades, visible rail-centre checks, or support clearance. Record its original and replacement limits, exact geometric subset, measured maximum, source fingerprints, and independent negative controls in the owning piece's contract. Test the subset boundary and unchanged defaults explicitly. The [independent-verification procedure](WORKFLOW_PIECE_CREATION.md#53-keep-independent-checks-and-numeric-exceptions-scoped) defines that authoring requirement; this reference introduces no additional tolerance or exception.
 
 ### 5.1 Edge cases and evidence still needed
 
@@ -252,7 +264,7 @@ The library uses three separate connector files so that authored meaning, measur
 
 The optional domain `connector-profiles.json` supplies shared defaults. After expansion, validation and matching use the resulting facts. A profile name, parent, or identical ID cannot erase a difference in service, channel arrangement, position, height, heading, slope, or permissions. Equivalent resolved geometry can have different labels, but its equivalence must be established from actual data. A profile reference is not mandatory for every group, and no code infers geometry or traffic rules by parsing a profile ID.
 
-The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [authoring skill](../skills/network-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Application-specific placement, candidate discovery, and reports belong in a separate consumer, using the generated export rather than another source parser.
+The [overview procedure](WORKFLOW_DOCUMENTATION_GENERATION.md) owns generation commands, marker ordering, card content, output files, and freshness checks. The [piece and assembly design skill](../skills/network-piece-and-assembly-design/SKILL.md) routes the individual-piece and assembly workflows. The framework owns source-format parsing, validation, export, and generic generation; each domain owns its source adapters and reviewed network semantics. Application-specific placement, candidate discovery, and reports belong in a separate consumer, using the generated export rather than another source parser.
 
 The current declaration/export set covers the [trumpet’s fourteen current reusable types](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types in total. The core and matching straight use a distinct measured recessed-web profile; a matching route class or outer slab width does not erase a structural-body difference. Do not imply full-catalogue coverage from that subset, and do not manufacture missing geometry or channel associations to extend coverage. Current resolved exports omit legacy per-port counterpart shortlists and candidate counts, while unchanged measured files retain their original bytes. Piece validation and extraction do not compute neighbouring candidates or generate a manual pair-testing matrix.
 
@@ -294,7 +306,7 @@ Each table includes identity and component, source tile and edge, network and tr
 
 **Level versus height:** L2 denotes these measured 15.5 m ends, and L4 denotes these measured 30.5 m ends. The 23 m paired end has no assigned nominal level, so its entry says “Custom; no nominal level.” It must not be relabelled ordinary L3 because 23 m also occurs in another track family. A matching level label cannot replace the actual height or arrangement.
 
-Each piece owns a fresh compiled-model [connection overview](WORKFLOW_DOCUMENTATION_GENERATION.md#reading-an-overview), with short boundary markers, complete structured cards, a conventions-only legend, and separate evidence. The tables below retain the measured source facts for these worked examples; the export, cards, and generated README overview derive from the same complete resolved representation. Consumers can read the generated `connector-data.json`.
+Each piece owns a fresh compiled-model [connection overview](WORKFLOW_DOCUMENTATION_GENERATION.md#114-reading-an-overview), with short boundary markers, complete structured cards, a conventions-only legend, and separate evidence. The tables below retain the measured source facts for these worked examples; the export, cards, and generated README overview derive from the same complete resolved representation. Consumers can read the generated `connector-data.json`.
 
 The current profile ID is an exact registry key. Its readable concrete naming pattern is:
 
@@ -384,7 +396,7 @@ Both figures use the actual compiled models, measured source positions, and libr
 
 ### 8.6 Additional measured authoring examples
 
-Use these complete piece guides to follow source authoring, saved-resource verification, canonical views, connector declarations, generated cards, and scoped manual checks together. The trumpet’s [reusable types](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md#2-pieces) demonstrate the current split README/TESTING layout; the two blind examples below retain version-1 combined guides until explicitly refreshed. All retain intrinsic movement matrices; none supplies an automatic neighbour-compatibility catalogue.
+Use these complete piece guides to follow source authoring, saved-resource verification, canonical views, connector declarations, generated cards, and scoped manual checks together. The trumpet’s [reusable types](../domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md#2-pieces) demonstrate the current split README/TESTING layout; the two blind examples below retain version-1 combined guides until explicitly migrated. All retain intrinsic movement matrices; none supplies an automatic neighbour-compatibility catalogue.
 
 | Maintained example | Additional measured scope | Connector sources |
 | --- | --- | --- |

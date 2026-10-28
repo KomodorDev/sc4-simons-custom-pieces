@@ -7,8 +7,17 @@ document_type: "agent-instructions"
 
 # Project documentation conventions
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Contributor rules](#1-contributor-rules)
+<!-- END DOCUMENT NAVIGATION -->
+
+<a id="contributor-rules"></a>
+
+## 1. Contributor rules
+
 - Write each prose paragraph on one physical source line. Let the editor or viewer wrap it to the available screen width; do not insert line breaks at a fixed character count.
-- Apply the shared Markdown metadata convention in [custom-pieces/STRUCTURE.md](custom-pieces/STRUCTURE.md#markdown-metadata) to maintained non-piece guides, agent instructions, skills, catalogues, and assembly documents in the library. Preserve compatible skill front matter and generated headers; leave individual piece manuals and frozen/imported evidence in their existing format.
+- Apply the shared Markdown metadata convention in [custom-pieces/STRUCTURE.md](custom-pieces/STRUCTURE.md#3-markdown-metadata) to maintained non-piece guides, agent instructions, skills, catalogues, and assembly documents in the library. Preserve compatible skill front matter and generated headers; leave individual piece manuals and frozen/imported evidence in their existing format.
+- Apply the shared [heading numbering and navigation convention](custom-pieces/STRUCTURE.md#4-markdown-heading-numbering-and-navigation): keep the document title unnumbered, start second-level chapters at 1, number subsections as 2.1 and deeper, and link only second-level chapters in the navigation below the title. Preserve existing heading anchors, update generators that own generated Markdown, and leave piece and assembly manuals outside the current shared-document migration.
 - Separate paragraphs with blank lines. Preserve the required structure and intentional breaks in headings, lists, tables, code blocks, quoted material and embedded markup.
 - Documentation generators must emit the same paragraph style. Python source may wrap string literals for readability as long as the generated Markdown paragraph stays on one line.
 - For Git and GitHub work, use [the repository workflow](docs/GITHUB.md). Keep maintained source, canonical artwork, and evidence in Git, and keep private settings and game inputs ignored. Run `python3 -B tools/run_tests.py` for the library's framework, domain, and assembly checks, report skips accurately, and keep building, installing, and publishing separate.

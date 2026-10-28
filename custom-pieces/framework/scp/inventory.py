@@ -7,6 +7,7 @@ from .catalog import load_catalog, piece_cells
 from .content import markdown_metadata, summarize_manual_record, _replace_generated, _assembly_matrix_enabled
 from .assembly_matrix import summarize_assembly_connection_matrix
 from .design_review import review_label
+from .markdown_navigation import format_markdown_navigation
 from .paths import project_root
 
 
@@ -76,7 +77,8 @@ def write_inventories(root):
         pieces=[piece for piece in catalog['pieces'] if piece['domain']==slug]
         assemblies=[item for item in catalog.get('_assemblies',[]) if item['domain']==slug]
         piece_rows=_heading(domain['name']+' — individual pieces','Find each separate menu button, one reusable type image, its connections, and current test coverage.')
-        piece_rows += ['| Preview | Exact menu name / piece ID | Footprint; occupied | Design review | Preview reviewed | Renders correctly in game | Directed journey cases |',
+        piece_rows += ['## Individual pieces', '',
+                       '| Preview | Exact menu name / piece ID | Footprint; occupied | Design review | Preview reviewed | Renders correctly in game | Directed journey cases |',
                        '| --- | --- | --- | --- | --- | --- | --- |']
         piece_status={}
         for piece in pieces:
@@ -112,12 +114,13 @@ def write_inventories(root):
             '- **Renders correctly in game** reads the `in_game_render` cases.', '',
             '**`TESTING.md` displays the same saved observations. The inventory does not read its checkboxes.** Editing text or ticking a checkbox in `TESTING.md` does not update the observation record or the inventory results.', '',
             'The **Connection matrix summary** uses the same calculation as the README matrix. It combines the movements and current software evidence in `connections.json` with the results in `checks/manual-tests.json`; it does not read the rendered Markdown table.', '',
-            'To update a human result, perform the exact check, obtain explicit human confirmation, and save that observation using the [recording procedure](../../../docs/TESTING.md#record-one-observation). In this repository, the recording command updates the saved record and refreshes `TESTING.md`, the README matrix, and the inventory. Regenerating documents alone does not record a pass.', '',
+            'To update a human result, perform the exact check, obtain explicit human confirmation, and save that observation using the [recording procedure](../../../docs/TESTING.md#4-record-one-observation). In this repository, the recording command updates the saved record and refreshes `TESTING.md`, the README matrix, and the inventory. Regenerating documents alone does not record a pass.', '',
             '### How to read the results', '',
             'A **case** is one specific check. In the two review columns, `0/6 passed` means zero of six applicable current cases have a recorded pass. `[x]` means all applicable current cases passed; `[ ]` means that condition is not met. **Unverified** means no qualifying result is recorded, **failed** means an observation found a problem, and **stale** means relevant resources or conditions changed after the recorded result. Unverified does not mean failed. Explicit not-applicable cases and historical observations are excluded from these case fractions. `Not applicable / no declared cases` means there are no applicable cases to count, and `Unverified; record missing` means the observation record is absent; neither is a pass.', '',
             'The **connection matrix summary** counts displayed matrix entries for each check: **confirmed** matches ✅, **failed** matches ❌, and **not established** matches ?. An entry is confirmed only when all checks required for its declared orientations are current passes. Missing, stale, ambiguous, or not-applicable evidence leaves an entry not established. **Saved PATH** checks the saved traffic routes; **Route Query** uses the game’s route-inspection tool; **Visible travel** requires observing a vehicle complete the journey; and **Forbidden in game** checks that a prohibited movement stays unavailable. One software result can support several Saved PATH entries, so these are matrix-entry counts, not independent test-case counts. Game appearance stays in its own column. Open the blueprint’s **Testing** link for the detailed observations and checks outside the matrix.', '',
         ]
-        assembly_rows+=['| Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |',
+        assembly_rows+=['## Assembly blueprints', '',
+                        '| Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |',
                         '| --- | --- | --- | --- | --- | --- |']
         assembly_status={}
         for assembly in assemblies:
@@ -152,6 +155,7 @@ def write_inventories(root):
             readme.write_text(markdown_metadata(domain['name'], 'Find this domain’s pieces, assemblies, and named selections.',
                                                'players', 'guide')+'# '+domain['name']+'\n')
         _replace_generated(readme,'COLLECTIONS','\n'.join(overview))
+        readme.write_text(format_markdown_navigation(readme.read_text()))
         (directory/'INVENTORY.md').unlink(missing_ok=True)
         overview_data={'schema_version':2,'purpose':'Generated domain navigation and collection membership; subject test records remain authoritative.',
             'version':catalog['version'],'domain':slug,'count':len(pieces),'assembly_count':len(assemblies),
@@ -161,7 +165,7 @@ def write_inventories(root):
                   (directory/'01_assemblies',assembly_rows,{'count':len(assemblies),'assemblies':assembly_status}))
         for target,rows,data in sections:
             target.mkdir(exist_ok=True)
-            (target/'INVENTORY.md').write_text('\n'.join(rows)+'\n')
+            (target/'INVENTORY.md').write_text(format_markdown_navigation('\n'.join(rows)+'\n'))
             data={'schema_version':2,'purpose':'Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.',
                   'version':catalog['version'],'domain':slug,**data}
             (target/'inventory.json').write_text(json.dumps(data,indent=2)+'\n')

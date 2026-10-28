@@ -8,9 +8,57 @@ from scp.inventory import write_inventories
 from scp.content import (fingerprint, new_manual_record, record_software_result,
                          record_user_result, split_markdown_metadata)
 from scp.assembly_matrix import MARKER
+from scp.markdown_navigation import (NAVIGATION_BEGIN, format_markdown_navigation,
+                                     markdown_headings)
 
 
 class InventoryArtworkTests(unittest.TestCase):
+    def test_regeneration_numbers_shared_views_and_leaves_subject_sources_untouched(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            domain = root/'domains/fixture'
+            domain.mkdir(parents=True)
+            (domain/'README.md').write_text(
+                '# Fixture\n\nAn authored introduction.\n\n## Reference\n\n'
+                '### Values\n\nKeep these exact values.\n\n'
+                '<!-- BEGIN COLLECTIONS -->\nOld counts\n<!-- END COLLECTIONS -->\n'
+                '\n## Further reading\n\nKeep this exact final paragraph.\n')
+            sources = {}
+            for kind, identifier, filename in (('00_pieces', 'piece', 'piece.json'),
+                                                ('01_assemblies', 'assembly', 'assembly.json')):
+                local = domain/kind/identifier
+                local.mkdir(parents=True)
+                for name, text in (('README.md', '# Subject\n\n## Unnumbered subject heading\n'),
+                                   ('TESTING.md', '# Subject checks\n'), (filename, '{"unchanged": true}\n'),
+                                   ('connections.json', '{}\n')):
+                    file = local/name
+                    file.write_text(text)
+                    sources[file] = file.read_bytes()
+            catalog = {'version': 'fixture', 'domains': {'fixture': {'path': 'domains/fixture', 'name': 'Fixture'}},
+                       'pieces': [{'id': 'piece', 'name': 'Piece', 'domain': 'fixture', 'footprint': [1, 1]}],
+                       'piece_sets': {}, '_assemblies': [{'id': 'assembly', 'domain': 'fixture',
+                           'path': 'domains/fixture/01_assemblies/assembly', 'scene': {'placements': []}}]}
+            with patch('scp.inventory.load_catalog', return_value=catalog):
+                write_inventories(root)
+            paths = [domain/'README.md', domain/'00_pieces/INVENTORY.md', domain/'01_assemblies/INVENTORY.md']
+            first = {path: path.read_text() for path in paths}
+            self.assertIn('[1. Reference](#1-reference) · [2. Inventories and collections](#2-inventories-and-collections)'
+                          ' · [3. Further reading](#3-further-reading)', first[paths[0]])
+            self.assertIn('### 1.1 Values\n', first[paths[0]])
+            self.assertIn('<a id="reference"></a>', first[paths[0]])
+            self.assertEqual([heading.title for heading in markdown_headings(first[paths[1]]) if heading.level == 2],
+                             ['1. Individual pieces'])
+            self.assertEqual([heading.title for heading in markdown_headings(first[paths[2]]) if heading.level > 1],
+                             ['1. Legend', '1.1 Where the results come from', '1.2 How to read the results',
+                              '2. Assembly blueprints'])
+            for text in first.values():
+                self.assertEqual(text.count(NAVIGATION_BEGIN), 1)
+                self.assertEqual(format_markdown_navigation(text), text)
+            with patch('scp.inventory.load_catalog', return_value=catalog):
+                write_inventories(root)
+            self.assertEqual(first, {path: path.read_text() for path in paths})
+            self.assertEqual(sources, {file: file.read_bytes() for file in sources})
+
     def test_assembly_human_titles_preserve_ids_paths_and_missing_title_fallback(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);domain=root/'domains/fixture';domain.mkdir(parents=True)

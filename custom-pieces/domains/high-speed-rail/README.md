@@ -7,19 +7,25 @@ document_type: "guide"
 
 # High-speed rail player guide
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Inventories and collections](#1-inventories-and-collections) · [2. Choose the right family](#2-choose-the-right-family) · [3. Build a selected collection](#3-build-a-selected-collection) · [4. Place and rotate pieces](#4-place-and-rotate-pieces) · [5. One-way branches and height changes](#5-one-way-branches-and-height-changes) · [6. Two-track S-curves, switches and transitions](#6-two-track-s-curves-switches-and-transitions) · [7. Reference sheets and current limitations](#7-reference-sheets-and-current-limitations)
+<!-- END DOCUMENT NAVIGATION -->
+
 **HSR** means elevated High Speed Rail; **GHSR** means Ground High Speed Rail. Both carry the game's Monorail traffic. A **piece** is one reusable construction type, selected through a standalone button or an assembly’s component cycle. An **assembly** is a documented arrangement of several placed pieces; the trumpet is an assembly. A **collection** is a named selection of existing pieces used when building the plugin, not an extra game button.
 
 New or intentionally refreshed pieces have a three-chapter README for views, placement, and the intrinsic connection matrix, with Testing navigation to a separate six-chapter TESTING document. Existing combined piece guides remain intact until deliberately migrated. The **[Straight-stem HSR trumpet](01_assemblies/straight-stem-trumpet/README.md)** has a four-section assembly overview and a separate testing reference. Its assembly menu has one button, with Tab and Shift+Tab cycling through the reusable components. Design history and measurements remain in its TESTING document.
 
 The library's [connector reference](../../docs/CONNECTOR_METADATA.md) explains complete shared boundaries, physical channels, measured positions, and permissions, retaining the modular crossing and tight curve as worked examples. Connector declarations, exports, and overview cards cover all [fourteen current reusable trumpet types](01_assemblies/straight-stem-trumpet/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types within this 167-type rail catalogue. The shorter fan core and its matching straight declare their measured recessed-web profile separately from ordinary paired straights. Authors use the shared [generation procedure](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md); the remaining types retain their existing measured connection views until intentionally migrated. A displayed route candidate remains separate from physical fit and an observed game connection.
 
-For the current split documentation pattern, open the [paired climb README](00_pieces/hsr-component-modular-paired-climb/README.md) and [TESTING document](00_pieces/hsr-component-modular-paired-climb/TESTING.md), or the [two-level crossing README](00_pieces/hsr-component-modular-crossing-core/README.md) and [TESTING document](00_pieces/hsr-component-modular-crossing-core/TESTING.md). Their README chapters are **1. Views**, **2. Piece and placement**, and **3. Connection matrix**; Testing opens the separate six-chapter document. The [paired rising quarter-turn](00_pieces/blind-hsr-rise-quarter-turn/README.md) and [HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md) remain useful geometry and connector-authoring examples, retaining their older version-1 combined guides until explicitly refreshed. Their matrices distinguish saved-route checks, the game’s Route Query, and observed travel. A generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#1-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#implementation-entry-points) when adapting the pattern.
+For the current split documentation pattern, open the [paired climb README](00_pieces/hsr-component-modular-paired-climb/README.md) and [TESTING document](00_pieces/hsr-component-modular-paired-climb/TESTING.md), or the [two-level crossing README](00_pieces/hsr-component-modular-crossing-core/README.md) and [TESTING document](00_pieces/hsr-component-modular-crossing-core/TESTING.md). Their README chapters are **1. Views**, **2. Piece and placement**, and **3. Connection matrix**; Testing opens the separate six-chapter document. The [paired rising quarter-turn](00_pieces/blind-hsr-rise-quarter-turn/README.md) and [HSR above parallel Road](00_pieces/blind-hsr-road-stack/README.md) remain useful geometry and connector-authoring examples, retaining their older version-1 combined guides until explicitly refreshed. Their matrices distinguish saved-route checks, the game’s Route Query, and observed travel. A generated picture or software pass does not establish operation in SimCity 4. Follow the [piece-creation workflow](../../docs/WORKFLOW_PIECE_CREATION.md#2-open-the-project-and-inspect-the-existing-pieces) and [implementation map](NETWORK_SPEC.md#1-implementation-entry-points) when adapting the pattern.
 
 The current library does not supply automatic compatibility discovery. Most existing pieces are not yet migrated to the new connector-export format; that absence establishes neither compatibility nor incompatibility. Ordinary piece validation does not generate a manual test for every possible neighbour.
 
 <!-- BEGIN COLLECTIONS -->
 
-## Inventories and collections
+<a id="inventories-and-collections"></a>
+
+## 1. Inventories and collections
 
 - [Individual pieces: 167 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
@@ -57,9 +63,11 @@ A collection selects existing piece types; it is not an additional piece or a on
 
 <!-- END COLLECTIONS -->
 
-## Choose the right family
+<a id="choose-the-right-family"></a>
 
-A **port** is a track entrance or exit at the edge of a piece. Its height, heading, width and permitted direction must match the neighbouring piece. **Paired** means two tracks carrying opposite directions; a **one-way** port has one centred track for one direction. A narrow one-way end cannot join one lane of ordinary paired HSR directly: use a compatible split, merge or spacing adapter. The [rail connection contracts](NETWORK_SPEC.md#connection-levels-and-piece-families) give the exact heights and widths.
+## 2. Choose the right family
+
+A **port** is a track entrance or exit at the edge of a piece. Its height, heading, width and permitted direction must match the neighbouring piece. **Paired** means two tracks carrying opposite directions; a **one-way** port has one centred track for one direction. A narrow one-way end cannot join one lane of ordinary paired HSR directly: use a compatible split, merge or spacing adapter. The [rail connection contracts](NETWORK_SPEC.md#2-connection-levels-and-piece-families) give the exact heights and widths.
 
 | You want… | Choose… |
 | --- | --- |
@@ -77,9 +85,11 @@ A **port** is a track entrance or exit at the edge of a piece. Its height, headi
 
 A 45°, 90° or 135° branch angle describes the change in heading. Wide modular branches have at least twice the sampled minimum radius of their Compact counterparts, so they require more land. A larger **radius** means a gentler curve. Use the exact footprint in the piece README; a diagonal half-tile and a complete diagonal pair are not interchangeable in every layout.
 
-The [menu legend](../../docs/BUILD_AND_INSTALL.md#recognize-scp-menu-icons) explains the icon colours and abbreviations. Teal **PART** identifies components, while purple **PNP** identifies the two separately placeable complete smooth T junctions. A complex assembly blueprint does not add a whole-assembly PNP button. Current Plop & Paint does not stamp these network blueprints; use the documented constituent pieces.
+The [menu legend](../../docs/BUILD_AND_INSTALL.md#2-recognize-scp-menu-icons) explains the icon colours and abbreviations. Teal **PART** identifies components, while purple **PNP** identifies the two separately placeable complete smooth T junctions. A complex assembly blueprint does not add a whole-assembly PNP button. Current Plop & Paint does not stamp these network blueprints; use the documented constituent pieces.
 
-## Build a selected collection
+<a id="build-a-selected-collection"></a>
+
+## 3. Build a selected collection
 
 Open a terminal in `custom-pieces`, the directory containing `scp.py`, and run:
 
@@ -103,27 +113,33 @@ The `piece-authoring-examples` collection selects only the paired rising quarter
 
 A managed SCP installation has one combined controller and menu for its complete selection. Installing a component-only selection replaces the previous managed selection; it does not add to it automatically. Include every SCP piece you want to retain when choosing a collection to install.
 
-## Place and rotate pieces
+<a id="place-and-rotate-pieces"></a>
+
+## 4. Place and rotate pieces
 
 1. Save and fully quit SimCity 4 before changing Plugins. Follow the installation guide, then open a disposable test city with flat, clear terrain.
 2. Open **Transportation → Rail**. Hover over an **SCP** icon to read its exact title, then click that button once.
 3. Move the construction preview over clear land. Press **Home** or **End** to rotate before placing. On the keyboard used for this installation, **Fn + ←** and **Fn + →** produce those keys.
-4. **Tab** and **Shift+Tab** select the next or previous type within a declared construction family. The ordinary piece-compilation stage keeps types separate. Every assembly delivery uses [one assembly button](../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu), with Tab/Shift+Tab selecting its member types; the final menu step hides duplicate member buttons and preserves unrelated standalone types. **Home** and **End** cycle rotation states. Directional pieces repeat four proper rotations: 0°, 90°, 180°, and 270°. Rotation turns the whole piece and its travel directions together; it does not turn a split into a merge or produce a 45° shape. Choose a separate diagonal or opposite-handed piece when needed.
+4. **Tab** and **Shift+Tab** select the next or previous type within a declared construction family. The ordinary piece-compilation stage keeps types separate. Every assembly delivery uses [one assembly button](../../docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu), with Tab/Shift+Tab selecting its member types; the final menu step hides duplicate member buttons and preserves unrelated standalone types. **Home** and **End** cycle rotation states. Directional pieces repeat four proper rotations: 0°, 90°, 180°, and 270°. Rotation turns the whole piece and its travel directions together; it does not turn a split into a merge or produce a 45° shape. Choose a separate diagonal or opposite-handed piece when needed.
 5. Keep the whole declared **construction rectangle** clear, including unused cells. It is the area reserved around the construction reference position. A gap in a software preview is not a promise that a road or building will fit there; native-width concrete can extend beyond occupied network cells.
 6. Check the port heights, profiles, headings and arrows, then click once. Place matching narrow fillers end to end: ordinary Monorail dragging does not extend narrow SCP track. Stop native two-track construction drags at the outside boundary of a compatible piece.
 7. Where two routes share a tile, use a combined crossing that contains both levels. Placing an independent upper filler on a lower railway can replace the lower route.
 8. Connect stations through compatible native paired lines. Authored narrow ports or upper heights do not establish direct compatibility with native stations, bridges or neighbour connections.
 9. Supply travel demand, inspect the game’s route query and moving trains, and test every permitted direction. Repeat relevant rotations, demolition, and save/reload checks. Open the piece’s TESTING document, or its existing combined README test section for a legacy guide, and use the shared [observation guide](../../docs/TESTING.md) to record the exact result.
 
-## One-way branches and height changes
+<a id="one-way-branches-and-height-changes"></a>
+
+## 5. One-way branches and height changes
 
 A **split** allows trains to leave a mainline; a **merge** accepts that branch onto a mainline. GHSR and HSR L2 split/merge mainlines retain both travel directions. L4 branch mainlines are also one-way. A return journey needs its own permitted path.
 
 For a simple branch, select **SCP | HSR L2 Split 90 Degree Compact**. Its base orientation has a north/south paired mainline and a branch leaving northbound traffic toward the east. Keep its 2 × 2 construction rectangle clear, place it, then join native paired HSR to the two mainline ends. Select **SCP | One-Way HSR L2 Straight**, rotate its arrow eastward and place it against the branch. To receive that branch at another mainline, use **SCP | HSR L2 Merge 90 Degree Compact** rotated 180°: its west entry accepts the eastbound branch and joins southbound mainline traffic. Check the actual ports before clicking, then test both mainlines and the permitted branch journey.
 
-Use matching ground pieces for a GHSR branch. Use the exact **… to …** ramp name for a height change; rotation changes its heading, not the direction of ascent along its one-way journey. The [network height table](NETWORK_SPEC.md#connection-levels-and-piece-families) lists the four available levels and ramp lengths. A spacing adapter changes the track arrangement at one height and cannot replace a height ramp.
+Use matching ground pieces for a GHSR branch. Use the exact **… to …** ramp name for a height change; rotation changes its heading, not the direction of ascent along its one-way journey. The [network height table](NETWORK_SPEC.md#2-connection-levels-and-piece-families) lists the four available levels and ramp lengths. A spacing adapter changes the track arrangement at one height and cannot replace a height ramp.
 
-### Worked example: an HSR branch above GHSR
+<a id="worked-example-an-hsr-branch-above-ghsr"></a>
+
+### 5.1 Worked example: an HSR branch above GHSR
 
 This five-piece example leaves a paired HSR line, climbs to L4, crosses a lower GHSR line, descends and joins another paired HSR line. The lower line is part of the combined crossing. Its encoded-route tests cover the 32 combinations of four rotations and GHSR/HSR choices at the start, finish and lower crossing; those software results do not establish game operation.
 
@@ -141,7 +157,9 @@ Place the pieces in table order. Join the ramp's low west end to the split's eas
 
 For a ground-level start, use **GHSR Split 90 Degree Compact** and add **One-Way GHSR to HSR L2 Ramp** before the climb. For a ground-level finish, add **One-Way HSR L2 to GHSR Ramp** after the descent and choose the ground merge. Those added ramps lengthen the corridor; do not reuse the five-piece positions unchanged.
 
-## Two-track S-curves, switches and transitions
+<a id="two-track-s-curves-switches-and-transitions"></a>
+
+## 6. Two-track S-curves, switches and transitions
 
 **HSR to GHSR Transition** joins paired elevated and ground lines across an eight-tile straight gap. Its base orientation has HSR at the north end and GHSR at the south; rotate 180° to exchange those ends. Connect matching native paired track at each outside edge. It does not join a centred one-way port.
 
@@ -153,7 +171,9 @@ A **crossover** transfers trains in one handed arrangement; a **scissors** combi
 
 Ground GHSR can pass under elevated HSR using a combined crossing. Passing below GHSR itself requires underground or tunnel pieces, which this kit does not implement.
 
-## Reference sheets and current limitations
+<a id="reference-sheets-and-current-limitations"></a>
+
+## 7. Reference sheets and current limitations
 
 These family sheets supplement the canonical preview in each piece README. They do not replace its exact port connections or current test status.
 
@@ -169,4 +189,4 @@ The saved [design review](junction-design-review.json) covers 130 current pieces
 
 Software checks examine encoded directions, matching 3D endpoints, connected seams, model clearance, supports, shadows and construction rules. They do not confirm placement, moving trains, long-car overhang, terrain, demolition or save/reload. In particular, same-network routes sharing a tile edge at different heights need game testing to ensure trains stay on their intended level. The [network specification](NETWORK_SPEC.md) defines the numerical checks and supported NAM profile; the [observation guide](../../docs/TESTING.md) explains the separate human checkmarks.
 
-For new layouts or atomizing reusable modules, follow the [assembly-design workflow](../../skills/network-assembly-design/SKILL.md). That workflow owns grid, image-labelling and review rules; this player guide does not duplicate them.
+For new layouts or atomizing reusable modules, use the [piece and assembly design skill](../../skills/network-piece-and-assembly-design/SKILL.md). It routes agents to the shared creation and documentation workflows that own grid, image-labelling, and review rules; this player guide does not duplicate them.

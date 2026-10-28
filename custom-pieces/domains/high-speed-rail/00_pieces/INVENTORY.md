@@ -7,7 +7,15 @@ document_type: "catalogue"
 
 # High Speed Rail and Ground High Speed Rail — individual pieces
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Individual pieces](#1-individual-pieces)
+<!-- END DOCUMENT NAVIGATION -->
+
 Generated from each subject’s authoritative `checks/manual-tests.json`. Checked means every applicable listed current case passed. Preview review and correct rendering inside SimCity 4 are separate checks. A result covers only its named scope, rotation, and recorded environment. Legacy endpoint observations remain historical evidence in the subject checklist and do not establish current compatibility coverage.
+
+<a id="individual-pieces"></a>
+
+## 1. Individual pieces
 
 | Preview | Exact menu name / piece ID | Footprint; occupied | Design review | Preview reviewed | Renders correctly in game | Directed journey cases |
 | --- | --- | --- | --- | --- | --- | --- |

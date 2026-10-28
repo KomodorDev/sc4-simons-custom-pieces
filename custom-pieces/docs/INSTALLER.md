@@ -7,6 +7,10 @@ document_type: "procedure"
 
 # Install SCP without Python
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Check the game installation](#1-check-the-game-installation) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the game folder](#3-select-the-game-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes)
+<!-- END DOCUMENT NAVIGATION -->
+
 The **SCP Installer** includes the programs needed to build and install Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool. It builds from your own installed SimCity 4 and Network Addon Mod (NAM) resources; the download does not include those resources.
 
 The installer selects **every implemented piece in its bundled catalogue**, currently **167 experimental types**, and prepares the trumpet's assembly button. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [piece inventory](../domains/high-speed-rail/00_pieces/INVENTORY.md) and [assembly inventory](../domains/high-speed-rail/01_assemblies/INVENTORY.md). Check a subject's guide and testing record before using it in an important city.
@@ -29,7 +33,9 @@ Download **`SCP-Installer-windows-x64-<commit>.zip`**. This contains the Windows
 
 Right-click the downloaded ZIP, select **Extract All…**, choose a destination, and select **Extract**. Open the extracted directory, and double-click **SCP Installer.exe**. Keep its accompanying `_internal` directory beside the executable; it contains the bundled runtime.
 
-### First-launch operating-system approval
+<a id="first-launch-operating-system-approval"></a>
+
+### 2.1 First-launch operating-system approval
 
 The executable is not signed with a publisher certificate, so Windows may display an unrecognized-app warning. Confirm that you downloaded the intended asset from this repository's release. On a SmartScreen dialog that offers them, select **More info**, inspect the application name, and select **Run anyway** if you trust the download. Managed computers can prevent this option. Keep Windows Security enabled; see [Microsoft's explanation of app reputation](https://learn.microsoft.com/windows/apps/package-and-deploy/smartscreen-reputation).
 
@@ -55,10 +61,12 @@ To update, close the game, download the intended newer installer, extract it, an
 
 To reverse the latest successful installation, close the game, open the installer, select the same game folder, and select **Undo last installation**. Read the confirmation, and select **Yes** to restore the previous managed SCP installation. If SCP was absent before that installation, undo removes its managed folder. The button is available when the installer has a saved transaction record; it does not offer a history of arbitrary versions. Existing file and backup checks can stop an undo if their contents have changed.
 
-Before an undo removes any piece types, remove those placed pieces from every city that uses them, and save those cities. Removing the resources first can leave saved cities referring to pieces that are no longer present. The [source workflow provides receipt-based uninstall and rollback commands](BUILD_AND_INSTALL.md#install-remove-or-roll-back-a-test-build) for maintainers who need other removal or recovery operations.
+Before an undo removes any piece types, remove those placed pieces from every city that uses them, and save those cities. Removing the resources first can leave saved cities referring to pieces that are no longer present. The [source workflow provides receipt-based uninstall and rollback commands](BUILD_AND_INSTALL.md#7-install-remove-or-roll-back-a-test-build) for maintainers who need other removal or recovery operations.
 
 If installation stops, read the reported filename and reason. A resource fingerprint mismatch means the file differs from the audited profile; replacing the expected hash would bypass the check. A controller conflict means another loaded add-on supplies the same shared rules; it requires deliberate reconciliation. An ownership error means the existing SCP directory cannot be safely replaced. Preserve the reported log, and open a [repository issue](https://github.com/KomodorDev/sc4-simons-custom-pieces/issues) with the installer release, operating system, game edition, NAM version, and exact error. Remove personal filesystem paths from a log before posting it publicly.
 
-## What a successful installer check establishes
+<a id="what-a-successful-installer-check-establishes"></a>
+
+## 6. What a successful installer check establishes
 
 The release workflow builds the Windows installer, runs the packaged executable's self-test and GUI startup smoke check, records the source revision and archive checksums, and creates an experimental prerelease after an accepted `main` update. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start; it does not install anything or play the game. The installer then builds and verifies your local resource files. Neither operation plays SimCity 4, approves a software preview, changes a manual observation, reserves public game identifiers, or clears redistribution of compiled NAM-derived resources. Those remain separate [release requirements](RELEASE.md).
