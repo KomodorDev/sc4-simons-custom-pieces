@@ -22,6 +22,7 @@ custom-pieces/
 │   ├── WORKFLOW_DOCUMENTATION_GENERATION.md Generate README/TESTING documents, artwork, exports, and cards
 │   ├── CONNECTOR_METADATA.md              Meaning of connection data and matching rules
 │   ├── INSTALLER.md                       Use the self-contained graphical installer
+│   ├── AUTOMATIC_RELEASES.md              Understand GitHub checks, installer downloads, and local building
 │   ├── BUILD_AND_INSTALL.md               Operate build, install, and package commands
 │   ├── FRAMEWORK_ENGINEERING.md           Shared implementation contracts
 │   ├── TESTING.md                         Interpret and record exact observations

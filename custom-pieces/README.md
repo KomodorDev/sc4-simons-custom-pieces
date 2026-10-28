@@ -16,6 +16,7 @@ A **piece** is one reusable component type. An **assembly** places copies of typ
 | Find, connect, and rotate rail pieces | [Rail player guide](domains/high-speed-rail/README.md) |
 | Rebuild the modular trumpet | [Trumpet README](domains/high-speed-rail/01_assemblies/straight-stem-trumpet/README.md) |
 | Install all implemented pieces without Python | [Graphical installer for Windows](docs/INSTALLER.md) |
+| Understand when and how installer downloads are created | [Automatic releases, explained simply](docs/AUTOMATIC_RELEASES.md) |
 | Build, inspect, or install the plugin | [Build and install](docs/BUILD_AND_INSTALL.md) |
 | Read or record a test result | [Testing and observations](docs/TESTING.md) |
 | Understand the folder structure | [Structure and ownership](STRUCTURE.md) |

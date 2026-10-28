@@ -116,6 +116,8 @@ A **release promotion** accepts the tested development version into `main`. Ordi
 
 ## Automatic installer prereleases
 
+Start with [Automatic releases, explained simply](../custom-pieces/docs/AUTOMATIC_RELEASES.md) for a beginner-friendly explanation of Actions, the branch-to-release sequence, the exact buttons to use, and the separate build on the player's computer.
+
 The [installer workflow](../.github/workflows/installer-release.yml) builds a self-contained graphical local builder for **Windows x64**. It bundles the runtime, maintained source, required configuration, and documentation, and excludes local settings, captured native resources, and generated game DATs. On the user's computer, the installer reads that user's game and NAM, creates required Road captures, builds every implemented piece, prepares the registered trumpet assembly menu, verifies the saved resources, and uses the receipt-based installer. Player steps and exact supported-profile limits belong in [INSTALLER.md](../custom-pieces/docs/INSTALLER.md).
 
 Pull-request runs build Windows review artifacts without publishing a GitHub Release. A push to the canonical repository's `main` branch runs the full shared test command, the Windows build, the packaged executable's self-test, a GUI startup smoke check, and archive verification. Only after all required jobs succeed does the publication job receive repository-content write permission and create the prerelease for that exact source commit. No workflow merges a PR or enables automatic merging. Ordinary `dev` updates do not publish installer releases.

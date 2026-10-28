@@ -7,6 +7,8 @@ document_type: "reference"
 
 # Installer releases, compiled-plugin requirements, and controller maintenance
 
+For a beginner-friendly explanation of what GitHub does automatically and how to find the Windows download, start with [Automatic releases, explained simply](AUTOMATIC_RELEASES.md).
+
 Research checked on **18 October 2026**. This document distinguishes statements found in the sources from release practices recommended for this project. It does not grant permission, reserve identifiers, or claim that a prototype has passed an in-game test.
 
 ## Current release status

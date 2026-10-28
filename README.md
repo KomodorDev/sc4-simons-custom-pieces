@@ -15,6 +15,7 @@ A **piece** is one reusable construction type. An **assembly** is a layout made 
 | --- | --- |
 | Browse available pieces and assemblies | [Library guide](custom-pieces/README.md) and [illustrated piece inventory](custom-pieces/domains/high-speed-rail/00_pieces/INVENTORY.md) |
 | Install without Python or build commands | [Windows installer guide](custom-pieces/docs/INSTALLER.md) |
+| Understand how GitHub creates installer downloads | [Automatic releases, explained simply](custom-pieces/docs/AUTOMATIC_RELEASES.md) |
 | Build or install a plugin from source | [Build and install](custom-pieces/docs/BUILD_AND_INSTALL.md) |
 | Understand connector declarations and generated exports | [Connector reference](custom-pieces/docs/CONNECTOR_METADATA.md) |
 | Create pieces, assemblies, or documentation | [Authoring workflows](custom-pieces/README.md) |
