@@ -25,6 +25,8 @@ from scp_hsr.rail_geometry import _route
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
 FAN = 'hsr_component_l2_paired_fan_compact_join'
+CORE = 'hsr_component_l2_paired_fan_compact_core'
+STRAIGHT = 'hsr_component_l2_paired_straight_recessed_web'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
 MERGE = 'hsr_component_l2_short_opposed_merge_core'
 STEM_NORTH = (8., 0., -16., -24., -28.)
@@ -126,9 +128,9 @@ class CompactFanSourceTests(unittest.TestCase):
                     for expected, actual in zip(before, after):
                         self.assertAlmostEqual(actual, expected, places=10)
 
-    def test_only_the_retained_fan_is_registered_with_its_literal_ownership_and_supports(self):
-        self.assertEqual(RECIPES, (FAN,))
-        self.assertEqual(set(CONTRACTS), {FAN})
+    def test_exact_fan_family_is_registered_and_full_fan_ownership_is_preserved(self):
+        self.assertEqual(RECIPES, (FAN, CORE, STRAIGHT))
+        self.assertEqual(set(CONTRACTS), {FAN, CORE, STRAIGHT})
         info = compact_info(FAN)
         self.assertEqual(info['footprint'], (7, 5))
         self.assertEqual(info['cells'], [(3, 0), (3, 1), (3, 2), (2, 3), (3, 3), (4, 3),

@@ -260,7 +260,12 @@ class GeneratedComponentContractTests(unittest.TestCase):
     def test_all_generated_paths_match_literal_ports_and_quality_limits(self):
         # The obsolete compact diverge is replaced by a second placement of
         # the existing mainline diverge; its recipe contract is reused.
-        self.assertEqual(len(self.specs), 33)
+        # The full fan remains available alongside its new nine-cell core
+        # and matching one-cell recessed-web straight.
+        self.assertEqual(len(self.specs), 35)
+        self.assertIn('hsr_component_l2_paired_fan_compact_join', self.specs)
+        self.assertIn('hsr_component_l2_paired_fan_compact_core', self.specs)
+        self.assertIn('hsr_component_l2_paired_straight_recessed_web', self.specs)
         self.assertNotIn('hsr_component_l2_compact_fan_diverge', self.specs)
         for recipe, spec in self.specs.items():
             with self.subTest(recipe=recipe):

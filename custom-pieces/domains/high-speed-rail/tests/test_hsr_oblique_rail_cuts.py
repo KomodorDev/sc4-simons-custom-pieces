@@ -118,13 +118,20 @@ class ObliqueRailCutTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Inherited custom-cut model exceptions'):
             audit_visible_rails_at_custom_cuts(self.base, self.records, contract)
 
-    def test_only_the_two_redesigned_contracts_opt_in(self):
+    def test_exact_redesigned_contracts_and_extracted_core_opt_in(self):
         from scp_hsr.hsr_compact_fan_verify import CONTRACTS as fans
         from scp_hsr.hsr_atomic_components_verify import CONTRACTS as atomic
         selected = {name for name, contract in {**fans, **atomic}.items()
                     if contract.get('geometric_custom_rail_wedges', False)}
         self.assertEqual(selected, {'hsr_component_l2_paired_fan_compact_join',
+                                    'hsr_component_l2_paired_fan_compact_core',
                                     'hsr_component_l2_short_opposed_merge_core'})
+        self.assertEqual(fans['hsr_component_l2_paired_fan_compact_core']['custom_curve_ports'],
+                         ('Wout', 'Ein'))
+        straight = fans['hsr_component_l2_paired_straight_recessed_web']
+        self.assertFalse(straight.get('geometric_custom_rail_wedges', False))
+        self.assertEqual(straight['custom_curve_ports'], ())
+        self.assertFalse(straight['custom_curved_interfaces'])
 
     def test_unselected_contracts_retain_the_original_literal_mask(self):
         contract = deepcopy(self.contract)
