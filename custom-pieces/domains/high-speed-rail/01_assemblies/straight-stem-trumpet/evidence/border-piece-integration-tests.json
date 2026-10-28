@@ -1,6 +1,242 @@
 {
   "schema_version": 1,
-  "purpose": "Current test handoff for integrating the four approved border repairs and splitting the compact fan into a nine-cell core plus two reused straight placements in the complete trumpet. This in-progress record makes the prepared documentation links resolvable; it does not assert that the final suites have run.",
-  "status": "pending-final-current-integration-suites",
-  "game_test_claimed": false
+  "purpose": "Completed software test handoff for the approved border repairs, three-placement compact fan extraction, current fourteen-type/twenty-eight-placement trumpet, and fixed render-caption policy from dev PR14.",
+  "status": "passed",
+  "checked_at_utc": "2026-10-28T18:38:19.909006+00:00",
+  "portable_repository_suite": {
+    "command": "python3 -B tools/run_tests.py",
+    "scope": "Public source snapshot including the four approved piece repairs, the nine-cell compact fan core and matching straight extraction, their fourteen-type/twenty-eight-placement whole-trumpet integration, and the updated dev render-caption policy, without private game inputs or staged builds.",
+    "public_files": 2309,
+    "returncode": 0,
+    "elapsed_seconds": 173.994,
+    "suite_runs": [
+      {
+        "tests": 709,
+        "seconds": 76.275
+      },
+      {
+        "tests": 424,
+        "seconds": 82.701
+      },
+      {
+        "tests": 109,
+        "seconds": 8.07
+      }
+    ],
+    "reported_tests_total": 1242,
+    "reported_skips_total": 82,
+    "skip_counts_by_suite": [
+      10,
+      67,
+      5
+    ],
+    "live_source_files_changed_during_test": [],
+    "snapshot_source_files_changed_during_test": [],
+    "log_sha256": "4dc480f1897211e5155ac7a5bb507c63002f8843c2a67d245c44ced7af0fc1b2",
+    "trumpet_assembly_rerendered": true,
+    "installed": false,
+    "source_snapshot_manifest_sha256": "037042a789d9f395d91731cabc7a205fc6240f2ba03095ffb2030da17dd5c88c",
+    "input_scope": "Fresh public-source snapshot without private NAM/game inputs, staged builds, or local configuration. The required repository test command ran against that snapshot.",
+    "skip_scope": "Explicit skips require native NAM/game inputs or staged compiled fixtures. Those skips are not counted as native passes; actual current native checks are recorded separately below."
+  },
+  "actual_native_current_and_historical_assembly_suite": {
+    "tests_run": 145,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "skip_reasons": [],
+    "was_successful": true,
+    "total_seconds": 617.672,
+    "test_only_correction": "The original x-only offset slid points along the two horizontal mainlines. The negative control now offsets perpendicular to each local tangent; a separate positive control accepts exact collinear resampling. Production code and geometry are unchanged.",
+    "log_sha256": "ab3f17e1ca684fa242685695db299ee7420c0c40a73c0923ae527a468b427fd8",
+    "current_build_directory_relative_to_library": "dist/trumpet-fan-core-parts-audit-01",
+    "historical_fixture_directory_relative_to_library": "dist/straight-stem-trumpet",
+    "current_initial_manifest_sha256": "4e3787d481cc6399286e617c67501495af709206066c5ff4c2fb02a8a775927b",
+    "initial_full_physical_validation": "border-piece-integration-initial-validation.json",
+    "initial_full_physical_validation_sha256": "628d6943f802820f20105cc472c867fae5f1b618e027989a2b244a781096d071",
+    "execution": "The complete ordinary discovered test_hsr_trumpet.py suite ran in an explicit local-source Python process after correcting one test-only route mutation. The initial full physical capture is retained separately. No verifier, production code, geometry, or physical gate changed to correct that test.",
+    "repeat_suite_command_from_repository_root": "SCP_TRUMPET_BUILD=custom-pieces/dist/trumpet-fan-core-parts-audit-01 python3 -B custom-pieces/scp.py check --scope straight-stem-trumpet --verbose"
+  },
+  "retained_initial_native_test_attempt": {
+    "summary": {
+      "tests_run": 144,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "skip_reasons": [],
+      "was_successful": false,
+      "total_seconds": 795.364
+    },
+    "log_sha256": "3bcc7f18a05a525b81401ca2f97e0b8391fb9d19cd119915ed08f80e83e73288",
+    "reason": "One test intended to create a one-micrometre bend instead moved a point along the same straight line for both through mainlines. The exact continuous-geometry verifier correctly accepted that collinear subdivision. The test now moves perpendicular to each local tangent and adds a positive control accepting collinear resampling. The initial failure is preserved and is not claimed as a pass.",
+    "production_or_geometry_changed_for_test_correction": false
+  },
+  "retained_initial_portable_attempt": {
+    "summary": {
+      "command": "python3 -B tools/run_tests.py",
+      "scope": "Public source snapshot including the four approved piece repairs, the nine-cell compact fan core and matching straight extraction, their fourteen-type/twenty-eight-placement whole-trumpet integration, and the updated dev render-caption policy, without private game inputs or staged builds.",
+      "public_files": 2309,
+      "returncode": 1,
+      "elapsed_seconds": 174.887,
+      "suite_runs": [
+        {
+          "tests": 709,
+          "seconds": 75.531
+        },
+        {
+          "tests": 424,
+          "seconds": 83.877
+        },
+        {
+          "tests": 109,
+          "seconds": 8.422
+        }
+      ],
+      "reported_tests_total": 1242,
+      "reported_skips_total": 82,
+      "skip_counts_by_suite": [
+        10,
+        67,
+        5
+      ],
+      "live_source_files_changed_during_test": [
+        "custom-pieces/tests/test_connectivity.py",
+        "custom-pieces/tests/test_installer_entry.py"
+      ],
+      "snapshot_source_files_changed_during_test": [],
+      "log_sha256": "5b47e66fc850e64c854e1baeb14ad9e1f10c4e9931fc6af5103af8f1e0a5b1bd",
+      "trumpet_assembly_rerendered": true,
+      "installed": false
+    },
+    "reason": "The initial run found stale catalogue-count and directed-join assertions, plus a historical west-tail extraction replay still reading the live assembly after fan atomization. Counts now require 168 types and 54 directed joins with all four new fan seams explicit. The historical replay uses the exact hash-pinned frozen 26-placement scene and retains every raw-point and support assertion. The failed run is preserved and not claimed as a pass.",
+    "production_or_geometry_changed_for_test_correction": false
+  },
+  "retained_second_portable_attempt": {
+    "summary": {
+      "command": "python3 -B tools/run_tests.py",
+      "scope": "Public source snapshot including the four approved piece repairs, the nine-cell compact fan core and matching straight extraction, their fourteen-type/twenty-eight-placement whole-trumpet integration, and the updated dev render-caption policy, without private game inputs or staged builds.",
+      "public_files": 2309,
+      "returncode": 1,
+      "elapsed_seconds": 177.71,
+      "suite_runs": [
+        {
+          "tests": 709,
+          "seconds": 80.365
+        },
+        {
+          "tests": 424,
+          "seconds": 82.416
+        },
+        {
+          "tests": 109,
+          "seconds": 8.142
+        }
+      ],
+      "reported_tests_total": 1242,
+      "reported_skips_total": 82,
+      "skip_counts_by_suite": [
+        10,
+        67,
+        5
+      ],
+      "live_source_files_changed_during_test": [],
+      "snapshot_source_files_changed_during_test": [],
+      "log_sha256": "e64ef21dba54ca1634f83fcd1299e53a110bc2488f1caef99d213dad56f5753f",
+      "trumpet_assembly_rerendered": true,
+      "installed": false
+    },
+    "reason": "The second run exposed three stale exact fan-family registration/contract expectations and the matching straight sharing the ordinary straight menu illustration. Family expectations now explicitly include both new identities and their inherited curved-port policy. Only the new straight receives a distinct recessed-web profile glyph; original icons and all physical piece resources remain unchanged. The failed run is preserved and is not claimed as a pass.",
+    "geometry_or_physical_reader_changed": false
+  },
+  "scoped_menu_icon_generation": {
+    "schema_version": 1,
+    "generator_before_sha256": "8e57eccf3ee4a7431016718b5048742d578eb544e47ba27b74015d2dc987df24",
+    "generator_after_sha256": "e06a00c2ef868073a4cb56d76da6d9f7ad095d4abb9b004f0df60e5fc7f721d4",
+    "icon_before_sha256": "38d7f1745ea7960a88426552a2ef9a81d14c6e5fe045fe631133818c6ba31e02",
+    "icon_after_sha256": "c7822da75196fc582d0d78cda64f2ff3ab465858cbb114d6377abe4f3f3b4156",
+    "component_count": 35,
+    "all_35_icons_distinct": true,
+    "all_other_34_generated_component_icons_byte_identical": true,
+    "scope": "Only the new recessed-web straight receives a schematic profile outline; exact route illustration, PART/HSR/STR identity, and every other existing generated icon remain unchanged.",
+    "measured_report_sha256": "50d0533644a61d988f4e777ec444a3eca5b50f516b096a45c390afa2a2ecad55",
+    "native_packing_scope": "The final package certificate separately requires all fourteen piece archives and the controller to remain exact, with only the declared menu image resource changed in the final parts menu archive."
+  },
+  "focused_render_caption_regressions": {
+    "purpose": "Actual focused regression results for the fixed render-caption policy requested after dev PR14; synthetic geometry fixtures exercise generated image captions without refreshing any canonical piece or trumpet artwork.",
+    "dev_guidance_commit": "0b7f3fd",
+    "reported_tests": 38,
+    "skips": 0,
+    "runs": [
+      {
+        "scope": "framework-preview",
+        "reported_tests": 17,
+        "elapsed_seconds": 6.673,
+        "status": "passed",
+        "skips": 0,
+        "log_sha256": "8844eec36a33a87c4446c72fd33d67b82ef738352611ae48c3f7de9c6ea4a895"
+      },
+      {
+        "scope": "connector-overview",
+        "reported_tests": 15,
+        "elapsed_seconds": 1.558,
+        "status": "passed",
+        "skips": 0,
+        "log_sha256": "5cde0fb1dd9c1551a13e98db32b41fce84eeca68ec50532ab5d33d59661fd960"
+      },
+      {
+        "scope": "assembly",
+        "reported_tests": 2,
+        "elapsed_seconds": 1.852,
+        "status": "passed",
+        "skips": 0,
+        "log_sha256": "c2a4ffd1485fd345f71a3535cccf6642f65cf17d8058116acaf3c3ffa077e847"
+      },
+      {
+        "scope": "hsr-top",
+        "reported_tests": 4,
+        "elapsed_seconds": 0.881,
+        "status": "passed",
+        "skips": 0,
+        "log_sha256": "1bfc8699a727e8cdd1c35c51ec0b0eb82a776f04841edbef731261b0354f5816"
+      }
+    ],
+    "canonical_images_refreshed": false
+  },
+  "independent_split_resource_and_profile_replay": {
+    "status": "passed",
+    "report_sha256": "d0175cd12a998e6076946486076e2c68a8d7c0c9560b71de90935be1ad6495c9",
+    "command_from_repository_root": "python3 -B custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/fan-atomization-audit.py --parent-build custom-pieces/dist/fan-central-parapet-follow-ballast --neighbour-build custom-pieces/dist/trumpet-fan-core-parts-audit-01",
+    "scope": "Decoded actual approved parent and current native neighbour resources; exact retained core payloads, full straight profiles, supports, and complete coverage of removed internal end caps. The inherited native-neighbour web step remains documented."
+  },
+  "preservation": {
+    "status": "passed",
+    "baseline_public_files": 2207,
+    "protected_individual_piece_files_unchanged": 1824,
+    "frozen_pre_integration_files_unchanged": 47,
+    "historical_standalone_revision_rows_unchanged": 7,
+    "historical_observations_preserved_exactly": 10,
+    "current_software_observations_added": 2,
+    "human_or_game_observations_added": 0,
+    "new_piece_software_observations": 4,
+    "original_non_fan_placement_dictionaries_unchanged": 25,
+    "fan_replaced_by": [
+      "P06",
+      "P06A",
+      "P06B"
+    ],
+    "current_placements": 28,
+    "current_selected_types": 14,
+    "occupied_cells": 105,
+    "construction_rectangle_and_external_ports_unchanged": true,
+    "assembly_icon_pixels_and_previous_frozen_history_unchanged": true
+  },
+  "preservation_report_sha256": "0a7a3acd2d11f219b24d565e7d2fa4e5a5292d94d739ed37dcc406e2ef9fb6ab",
+  "maintained_source_whitespace": {
+    "status": "passed",
+    "exception": "The generated fan-atomization-review.svg retains its original SVG path-attribute whitespace and frozen bf807e35f8b69db49aee956edb1493364dc24fe9eb44c0697b12d42b92f247d3 hash. It was excluded from the whitespace-only check; its exact bytes remain covered by the immutable physical and artwork bindings."
+  },
+  "reporting_snapshot_policy": "This completed test summary is written after the recorded source snapshot was tested. Final documentation links and evidence scope are checked again after this reporting-only update. Final package results are recorded separately.",
+  "installed": false,
+  "game_test_claimed": false,
+  "human_or_game_observations_added": false
 }
