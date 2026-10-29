@@ -1,0 +1,90 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) \u2014 Two-Track Diagonal S-Curve Right.",
+  "schema_version": 1,
+  "id": "hsr-l2-two-track-s-curve-diagonal-right",
+  "name": "HSR Level 2 (15.5 m) \u2014 Two-Track Diagonal S-Curve Right",
+  "description": "A two-way diagonal S-curve shifts a diagonal line sideways while preserving its entry and exit heading. Native HSR or GHSR track ends; select the matching height and handedness.",
+  "recipe": "rail_hsr_diagonal_s_right",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7b2",
+  "tile_ids": [
+    "7f510210",
+    "7f510020",
+    "7f510120",
+    "7f510220"
+  ],
+  "preview_id": "7f510ff5",
+  "effect_name": "preview_scp_rail_feat_00004",
+  "footprint": [
+    3,
+    3
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7b2",
+    "order": "7011f7b2",
+    "style": "rail-hsr-s-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f510210",
+      "source": "7f510210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f510020",
+      "source": "7f510020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f510120",
+      "source": "7f510120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f510220",
+      "source": "7f510220",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team HSR/GHSR texture and deck profiles; SCP procedural junctions and diagonal curves. Height adapters preserve the eight audited native ramp tile models.",
+    "construction": "SCP right-hand-running fixed-piece rules and explicit directed Monorail paths; native ramp coordinates retained.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "orientation_policy": "rotate-only-preserve-direction",
+  "cells": [
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "category": "diagonal-s-curves",
+  "domain": "high-speed-rail"
+}

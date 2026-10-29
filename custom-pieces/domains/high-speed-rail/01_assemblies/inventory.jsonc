@@ -1,0 +1,122 @@
+// title: "High-speed rail assembly catalogue"
+// summary: "Generate the assembly index, canonical picture links, placement counts, and scoped coverage from saved assembly records."
+//
+// Used when: A contributor or catalogue inspection needs the generated list of rail assembly blueprints, picture and manual-record paths, placement/type counts, and recorded coverage summaries.
+// Read by: Human readers and catalogue regression checks; it accompanies 01_assemblies/INVENTORY.md as generated data. Assembly menu preparation and connection analysis read registered assembly.json plans and subject records rather than this summary.
+// Updated by: scp.inventory.write_inventories, called by python3 -B custom-pieces/scp.py inventory and the full documentation refresh, reads saved placement plans, connections.json, image availability, and checks/manual-tests.json. Edit those owning records and regenerate.
+// Affects: The browseable assembly index, coverage totals, and connection-matrix summaries. Placements and game observations remain owned by each assembly; generating this index neither creates a one-click assembly nor confirms that its traffic works.
+// Reference: custom-pieces/docs/WORKFLOW_DOCUMENTATION_GENERATION.md#9-maintain-the-complete-preview-catalogue.
+{
+  "schema_version": 2,
+  "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
+  "version": "0.6.0.dev1",
+  "domain": "high-speed-rail",
+  "count": 1,
+  "assemblies": {
+    "hsr-trumpet-straight-stem": {
+      "record_present": true,
+      "summary": {
+        "total": 28,
+        "states": {
+          "unverified": 26,
+          "passed": 2,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 6,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 6,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 7,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 0,
+            "passed": 1,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 12,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "identity_mismatch": true,
+      "path": "hsr-trumpet-straight-stem/README.md",
+      "placements": 28,
+      "unique_piece_types": 14,
+      "journeys": 6,
+      "manual_record": "hsr-trumpet-straight-stem/checks/manual-tests.json",
+      "preview": "hsr-trumpet-straight-stem/previews/preview.png",
+      "connection_matrix": {
+        "available": false,
+        "reason": "Unverified; record subject does not match this folder"
+      }
+    }
+  }
+}

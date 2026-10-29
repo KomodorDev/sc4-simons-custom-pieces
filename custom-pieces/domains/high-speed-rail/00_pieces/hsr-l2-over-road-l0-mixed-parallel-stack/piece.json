@@ -1,0 +1,55 @@
+{
+  "purpose": "Authoritative definition and permanent identity for one parallel HSR/Road straight with two sidewalk pillars whose street-facing faces align with the Road/sidewalk boundaries.",
+  "schema_version": 1,
+  "orientation_count": 8,
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+  "name": "HSR Level 2 (15.5 m) over Road Level 0 (0 m) \u2014 Parallel Stack",
+  "description": "One owned 16 m tile carries north/south paired HSR at 15.5 m above two-way Road and all six native pedestrian paths at 0 m. Two pillars support the deck entirely from the sidewalks, with their street-facing faces aligned with the Road/sidewalk boundaries. Opaque native pavement bands keep the sidewalks visible. HSR, Road vehicles, and pedestrians continue together; no HSR/Road transfer.",
+  "recipe": "rail_hsr_road_stack",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f828",
+  "tile_ids": [
+    "7f591000"
+  ],
+  "preview_id": "7f591ff5",
+  "effect_name": "preview_scp_f828________001",
+  "footprint": [
+    1,
+    1
+  ],
+  "dependencies": [
+    "controller",
+    "hsr",
+    "ordinary_road",
+    "ordinary_road_texture",
+    "ordinary_sidewalk_texture"
+  ],
+  "menu": {
+    "id": "6a47f828",
+    "order": "7011f828",
+    "style": "rail-hsr-road-stack"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f591000",
+      "source": "7f591000",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Exact native NAM 50 5dd31500 HSR deck; US 00004b0e roadway clipped to its 10 m band without lane rescaling; two 3 m opaque native 08200004 pavement bands; two 0.45 m columns entirely on pavement, with street-facing faces at east offsets -5 m and +5 m, and a 15.80 m cap outside the authored vehicle and pedestrian corridors.",
+    "construction": "Authored parallel monorail/Road 02000200 flags; four proper rotations repeated without reflection; native filler effect 5ddf0100. Game placement remains unverified.",
+    "redistribution": "permission-pending"
+  },
+  "domain": "high-speed-rail"
+}

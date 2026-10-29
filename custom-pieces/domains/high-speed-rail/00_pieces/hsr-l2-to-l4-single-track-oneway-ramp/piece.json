@@ -1,0 +1,152 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Ramp.",
+  "schema_version": 1,
+  "id": "hsr-l2-to-l4-single-track-oneway-ramp",
+  "name": "HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Ramp",
+  "description": "HSR Level 2 (15.5 m) \u2192 Level 4 (30.5 m) \u2014 Single-Track One-Way Ramp. Fixed click-to-place piece in a 1 by 8 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_grade_hsr_to_l4",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f806",
+  "tile_ids": [
+    "7f564000",
+    "7f564010",
+    "7f564020",
+    "7f564030",
+    "7f564040",
+    "7f564050",
+    "7f564060",
+    "7f564070"
+  ],
+  "preview_id": "7f564ff5",
+  "effect_name": "preview_scp_interchg_f806_0",
+  "footprint": [
+    1,
+    8
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      0,
+      7
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f806",
+    "order": "7011f806",
+    "style": "interchange-oneway-grade-hsr-to-l4"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f564000",
+      "source": "7f564000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564010",
+      "source": "7f564010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564020",
+      "source": "7f564020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564030",
+      "source": "7f564030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564040",
+      "source": "7f564040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564050",
+      "source": "7f564050",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564060",
+      "source": "7f564060",
+      "rotation": 0
+    },
+    {
+      "tile": "7f564070",
+      "source": "7f564070",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-grades",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -120,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        0.0,
+        8,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_grade",
+    "from_level": "hsr",
+    "to_level": "l4"
+  }
+}

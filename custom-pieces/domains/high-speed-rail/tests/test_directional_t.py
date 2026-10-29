@@ -10,7 +10,7 @@ import unittest
 from unittest.mock import patch
 
 sys.dont_write_bytecode=True
-sys.path.insert(0,str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0,str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 
 from scp_hsr.directional_t import (INFO,RECIPE,build_models,build_rules,
                                directional_layout,directional_routes,

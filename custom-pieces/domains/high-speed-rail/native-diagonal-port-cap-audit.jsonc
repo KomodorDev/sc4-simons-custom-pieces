@@ -1,0 +1,98 @@
+// title: "Native diagonal HSR boundary audit"
+// summary: "Retain audited native diagonal boundary geometry and measurements without claiming a new resource audit or game observation."
+//
+// Used when: A maintainer checks why the exact native diagonal HSR donor needs a bounded port-cap exception instead of a general endpoint-distance test; the saved source identifier, hash, method, and measured vertices define its scope.
+// Read by: Contributors inspecting the smooth diagonal T piece guide, which links the generated .json compatibility copy. No runtime geometry generator or verifier loads this saved audit as configuration; their implemented checks remain separate.
+// Updated by: A maintainer records a new audit only after inspecting the actual donor triangles and PATH boundary. No repository command reproduces these measurements; scp.jsonc --sync-legacy-exports only copies the JSONC payload into its strict-JSON compatibility view.
+// Affects: The evidence supporting the documented, literal diagonal boundary exception. Editing this record does not change mesh checks, authorize wider tolerances, re-audit another donor, or create a game observation.
+// Reference: custom-pieces/domains/high-speed-rail/00_pieces/hsr-l2-two-track-t-junction-diagonal-at-grade-smooth/README.md#engineering-contract.
+{
+  "purpose": "Maintained design review and validation evidence for the current rail family; not in-game confirmation.",
+  "source_s3d_iid": "5dd01a00",
+  "source_s3d_sha256": "aa332d2f4a1e43bae23037419ea2a81ffe13ae128a8f1dfd1da3036a70a884b1",
+  "literal_native_north_out_port": [
+    2.9,
+    8.0,
+    15.5
+  ],
+  "literal_native_outward_tangent": [
+    1.0,
+    1.0
+  ],
+  "method": "UV-clip actual native floor triangles to native rail bands, retain authored-side halfspace north<=8, and inspect their actual vertices plus exact interpolated subtriangles. No replacement surface or relocated rail.",
+  "native_endcap_examples_exceeding_clamped_1_1m": [],
+  "native_endcap_vertices_exceeding_clamped_1_1m": [
+    {
+      "actual_native_floor_rail_band_point_east_north_m": [
+        4.200757072066867,
+        8.0
+      ],
+      "forward_m": 0.9197741463348407,
+      "perpendicular_m": -0.9197741463348407,
+      "finite_endpoint_distance_m": 1.3007570720668675,
+      "UV": [
+        0.41292840263638164,
+        -0.9603701591709376
+      ]
+    }
+  ],
+  "native_endcap_contained_subtriangle_centroids_exceeding_clamped_1_1m": [
+    {
+      "centroid_east_north_m": [
+        4.088666905574487,
+        7.962636595430265
+      ],
+      "forward_m": 0.8140945127642735,
+      "perpendicular_m": -0.8669343462432256,
+      "finite_endpoint_distance_m": 1.1892539831377775,
+      "method": "Subdivide one existing native UV-clipped floor triangle into a quarter-sized triangle at its native cap vertex; all geometry and UV interpolation stay on the original surface.",
+      "original_UV_clipped_triangle": [
+        [
+          4.200757072066867,
+          16.189324551196744,
+          -8.0,
+          0.41292840263638164,
+          -0.9603701591709376
+        ],
+        [
+          3.3040353246188428,
+          16.18932515557344,
+          -8.0,
+          0.4546116916973971,
+          -1.0
+        ],
+        [
+          3.7523968216063337,
+          16.18932485338489,
+          -7.55163914516318,
+          0.41292840263638164,
+          -1.0
+        ]
+      ],
+      "contained_subtriangle": [
+        [
+          4.200757072066867,
+          16.189324551196744,
+          -8.0,
+          0.41292840263638164,
+          -0.9603701591709376
+        ],
+        [
+          3.9765766352048613,
+          16.189324702290918,
+          -8.0,
+          0.4233492249016355,
+          -0.9702776193782032
+        ],
+        [
+          4.088667009451734,
+          16.18932462674378,
+          -7.887909786290795,
+          0.41292840263638164,
+          -0.9702776193782032
+        ]
+      ]
+    }
+  ],
+  "inference": "A clamped finite-PATH distance can reject native diagonal rail-band endcaps. Use only the declared port outward tangent, existing perpendicular allowance and authored halfspace; keep all interior checks."
+}

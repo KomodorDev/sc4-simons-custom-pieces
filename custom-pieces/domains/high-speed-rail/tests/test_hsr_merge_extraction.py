@@ -64,7 +64,7 @@ def source_world():
     All six complete historical point counts and hashes remain mandatory.
     """
     domain = ROOT/'domains/high-speed-rail'
-    assembly = domain/'01_assemblies/straight-stem-trumpet'
+    assembly = domain/'01_assemblies/hsr-trumpet-straight-stem'
     snapshot = assembly/'evidence/design-history/before-border-piece-integration'
     scene_path = snapshot/'assembly.json'
     raw = scene_path.read_bytes()

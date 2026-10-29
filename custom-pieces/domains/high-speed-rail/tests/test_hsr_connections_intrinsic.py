@@ -120,7 +120,8 @@ class IntrinsicMaterializeTests(unittest.TestCase):
                        'domains': {'high-speed-rail': {'path': 'domains/high-speed-rail', 'name': 'HSR'}},
                        '_assemblies': [{'id': 'affected', 'path': assembly_path,
                                         'scene': {'instances': [{'piece_id': 'first'}, {'piece_id': 'second'}]}}]}
-            protected = [domain/'connection-classes.json', domain/'00_pieces/INVENTORY.md']
+            protected = [domain/'connection-classes.jsonc', domain/'connection-classes.json',
+                         domain/'00_pieces/INVENTORY.md']
             for directory in (domain/'00_pieces/second', root/assembly_path):
                 protected.extend(directory/name for name in ('connections.json', 'checks/manual-tests.json', 'README.md'))
             for path in protected:

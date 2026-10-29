@@ -446,7 +446,7 @@ class AssemblyMatrixTests(unittest.TestCase):
         self.assertEqual(self.record, before_record)
 
     def test_current_trumpet_summary_counts_matrix_entries_and_its_selected_manual_scope(self):
-        base = Path(__file__).resolve().parents[1] / 'domains/high-speed-rail/01_assemblies/straight-stem-trumpet'
+        base = Path(__file__).resolve().parents[1] / 'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem'
         self.connections = json.loads((base / 'connections.json').read_text())
         self.record = json.loads((base / 'checks/manual-tests.json').read_text())
         self.assertEqual(self.record['manual_check_orientations'], [{'rotation_ccw_degrees': 0}])

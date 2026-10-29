@@ -4,18 +4,77 @@ import json
 import tempfile
 import unittest
 from unittest.mock import patch
+from scp import jsonc
 from scp.inventory import write_inventories
 from scp.content import (fingerprint, new_manual_record, record_software_result,
                          record_user_result, split_markdown_metadata)
 from scp.assembly_matrix import MARKER
+from scp.markdown_navigation import (NAVIGATION_BEGIN, format_markdown_navigation,
+                                     markdown_headings)
 
 
 class InventoryArtworkTests(unittest.TestCase):
+    def test_regeneration_numbers_shared_views_and_leaves_subject_sources_untouched(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            domain = root/'domains/fixture'
+            domain.mkdir(parents=True)
+            (domain/'README.md').write_text(
+                '# Fixture\n\nAn authored introduction.\n\n## Reference\n\n'
+                '### Values\n\nKeep these exact values.\n\n'
+                '<!-- BEGIN COLLECTIONS -->\nOld counts\n<!-- END COLLECTIONS -->\n'
+                '\n## Further reading\n\nKeep this exact final paragraph.\n')
+            sources = {}
+            for kind, identifier, filename in (('00_pieces', 'piece', 'piece.json'),
+                                                ('01_assemblies', 'assembly', 'assembly.json')):
+                local = domain/kind/identifier
+                local.mkdir(parents=True)
+                for name, text in (('README.md', '# Subject\n\n## Unnumbered subject heading\n'),
+                                   ('TESTING.md', '# Subject checks\n'), (filename, '{"unchanged": true}\n'),
+                                   ('connections.json', '{}\n')):
+                    file = local/name
+                    file.write_text(text)
+                    sources[file] = file.read_bytes()
+            catalog = {'version': 'fixture', 'domains': {'fixture': {'path': 'domains/fixture', 'name': 'Fixture'}},
+                       'pieces': [{'id': 'piece', 'name': 'Piece', 'domain': 'fixture', 'footprint': [1, 1]}],
+                       'piece_sets': {}, '_assemblies': [{'id': 'assembly', 'domain': 'fixture',
+                           'path': 'domains/fixture/01_assemblies/assembly', 'scene': {'placements': []}}]}
+            machine_paths = [domain/'inventory.jsonc', domain/'00_pieces/inventory.jsonc',
+                             domain/'01_assemblies/inventory.jsonc']
+            prefix = '// title: "Authored inventory"\n// summary: "Keep this explanation."\n/* Retain this note. */\n'
+            for path in machine_paths:
+                path.write_text(prefix+'{}\n', encoding='utf-8')
+            with patch('scp.inventory.load_catalog', return_value=catalog):
+                write_inventories(root)
+            machine_before = {path: path.read_bytes() for path in machine_paths}
+            for path in machine_paths:
+                self.assertTrue(path.read_text(encoding='utf-8').startswith(prefix))
+                self.assertFalse(path.with_suffix('.json').exists())
+            paths = [domain/'README.md', domain/'00_pieces/INVENTORY.md', domain/'01_assemblies/INVENTORY.md']
+            first = {path: path.read_text() for path in paths}
+            self.assertIn('[1. Reference](#1-reference) · [2. Inventories and collections](#2-inventories-and-collections)'
+                          ' · [3. Further reading](#3-further-reading)', first[paths[0]])
+            self.assertIn('### 1.1 Values\n', first[paths[0]])
+            self.assertIn('<a id="reference"></a>', first[paths[0]])
+            self.assertEqual([heading.title for heading in markdown_headings(first[paths[1]]) if heading.level == 2],
+                             ['1. Individual pieces'])
+            self.assertEqual([heading.title for heading in markdown_headings(first[paths[2]]) if heading.level > 1],
+                             ['1. Legend', '1.1 Where the results come from', '1.2 How to read the results',
+                              '2. Assembly blueprints'])
+            for text in first.values():
+                self.assertEqual(text.count(NAVIGATION_BEGIN), 1)
+                self.assertEqual(format_markdown_navigation(text), text)
+            with patch('scp.inventory.load_catalog', return_value=catalog):
+                write_inventories(root)
+            self.assertEqual(first, {path: path.read_text() for path in paths})
+            self.assertEqual(machine_before, {path: path.read_bytes() for path in machine_paths})
+            self.assertEqual(sources, {file: file.read_bytes() for file in sources})
+
     def test_assembly_human_titles_preserve_ids_paths_and_missing_title_fallback(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);domain=root/'domains/fixture';domain.mkdir(parents=True)
             assemblies=[]
-            for identifier,title in (('trumpet-stable-id','Straight-stem HSR trumpet'),
+            for identifier,title in (('trumpet-stable-id','HSR \u2014 Trumpet \u2014 Straight Stem'),
                                      ('missing',None),('blank','  '),('invalid',7)):
                 local=domain/'01_assemblies'/identifier
                 (local/'previews').mkdir(parents=True)
@@ -28,13 +87,13 @@ class InventoryArtworkTests(unittest.TestCase):
                      'pieces':[],'piece_sets':{},'_assemblies':assemblies}
             with patch('scp.inventory.load_catalog',return_value=catalog):write_inventories(root)
             text=(domain/'01_assemblies/INVENTORY.md').read_text()
-            self.assertIn('[Straight-stem HSR trumpet](trumpet-stable-id/README.md)',text)
-            self.assertIn('[![Straight-stem HSR trumpet](trumpet-stable-id/previews/preview.png)](trumpet-stable-id/previews/preview.png)',text)
+            self.assertIn('[HSR \u2014 Trumpet \u2014 Straight Stem](trumpet-stable-id/README.md)',text)
+            self.assertIn('[![HSR \u2014 Trumpet \u2014 Straight Stem](trumpet-stable-id/previews/preview.png)](trumpet-stable-id/previews/preview.png)',text)
             self.assertNotIn('[trumpet-stable-id](trumpet-stable-id/README.md)',text)
             for identifier in ('missing','blank','invalid'):
                 self.assertIn(f'[{identifier}]({identifier}/README.md)',text)
                 self.assertIn(f'[![{identifier}]({identifier}/previews/preview.png)]',text)
-            machine=json.loads((domain/'01_assemblies/inventory.json').read_text())['assemblies']
+            machine=jsonc.loads((domain/'01_assemblies/inventory.jsonc').read_text())['assemblies']
             self.assertEqual(set(machine),{'trumpet-stable-id','missing','blank','invalid'})
             for identifier,status in machine.items():
                 self.assertEqual(status['path'],identifier+'/README.md')
@@ -89,7 +148,7 @@ class InventoryArtworkTests(unittest.TestCase):
             self.assertIn('Individual pieces: 1 menu types',text)
             self.assertIn('`test-collection`: 1 piece types.',text)
             self.assertFalse((domain/'INVENTORY.md').exists())
-            self.assertTrue((domain/'inventory.json').is_file())
+            self.assertTrue((domain/'inventory.jsonc').is_file())
             self.assertEqual(set(result['written']),{'domains/fixture/00_pieces/INVENTORY.md','domains/fixture/01_assemblies/INVENTORY.md'})
             inventory=(domain/'00_pieces/INVENTORY.md').read_text()
             header,body=inventory.split('---\n',2)[1:]
@@ -166,7 +225,7 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         self.assertIn('Route Query: 0/1 confirmed; 1 failed', self.generate())
         self.connections['journeys'][0]['id'] = 'changed-graph'
         self.assertIn('Saved PATH: 0/2 confirmed; 2 not established', self.generate())
-        machine = json.loads((self.domain/'01_assemblies/inventory.json').read_text())['assemblies']['fixture']
+        machine = jsonc.loads((self.domain/'01_assemblies/inventory.jsonc').read_text())['assemblies']['fixture']
         self.assertEqual(machine['connection_matrix']['metrics']['saved_path'],
                          {'confirmed': 0, 'failed': 0, 'not_established': 2})
 
@@ -178,6 +237,23 @@ class AssemblyInventoryEvidenceTests(unittest.TestCase):
         self.assertEqual(text.splitlines()[-1].count('[x] 1/1 passed'), 2)
         self.assertIn('Route Query: 0/1 confirmed; 1 not established', text)
         self.assertEqual((self.local/'TESTING.md').read_text(), 'Every preview and game check passed: [x].\n')
+
+    def test_subject_mismatch_does_not_count_another_records_observations(self):
+        self.observe('preview_review')
+        self.observe('in_game_render')
+        self.generate()
+        original = (self.local/'checks/manual-tests.json').read_bytes()
+        renamed = self.local.with_name('renamed-fixture')
+        self.local.rename(renamed)
+        self.catalog['_assemblies'][0].update(
+            id='renamed-fixture', path='domains/fixture/01_assemblies/renamed-fixture')
+        with patch('scp.inventory.load_catalog', return_value=self.catalog):
+            write_inventories(self.root)
+        text = (self.domain/'01_assemblies/INVENTORY.md').read_text()
+        self.assertIn('Unverified; record subject does not match this folder', text)
+        self.assertNotIn('[x] 1/1 passed', text)
+        self.assertNotIn('Saved PATH: 2/2 confirmed', text)
+        self.assertEqual((renamed/'checks/manual-tests.json').read_bytes(), original)
 
     def test_missing_matrix_or_inputs_never_fall_back_to_journey_case_totals(self):
         self.generate()

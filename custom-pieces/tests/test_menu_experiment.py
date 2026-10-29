@@ -21,7 +21,7 @@ import unittest
 from unittest.mock import patch
 import zipfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp import verify as verification
@@ -95,7 +95,7 @@ class MenuExperimentTests(unittest.TestCase):
         # Source catalogue order deliberately differs from assembly first-use order.
         self.scene = {'placements': [{'piece_id': 'fixture-beta'}, {'piece_id': 'fixture-alpha'},
                                       {'piece_id': 'fixture-beta'}]}
-        self.config = self.project / 'domains/test/menu-layout.json'
+        self.config = self.project / 'domains/test/menu-layout.jsonc'
         self.write_layout()
         self.catalog = {'domains': {'high-speed-rail': {'path': 'domains/test'}},
                         '_assemblies': [{'id': 'fixture-assembly', 'domain': 'high-speed-rail',

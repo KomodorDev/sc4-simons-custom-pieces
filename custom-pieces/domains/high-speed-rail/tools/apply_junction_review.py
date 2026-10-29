@@ -5,8 +5,9 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog
 from scp.content import refresh_catalog_content
 from scp.design_review import LABELS
@@ -59,9 +60,9 @@ def apply_saved_review(root):
     """
     root = Path(root).resolve()
     domain = root / 'domains/high-speed-rail'
-    review = json.loads((domain / 'junction-design-review.json').read_text())
-    collection_file = domain / 'collections.json'
-    collections = json.loads(collection_file.read_text())
+    review = jsonc.load(domain / 'junction-design-review.jsonc')
+    collection_file = domain / 'collections.jsonc'
+    collections = jsonc.load(collection_file)
     known = {piece['id']: piece for piece in load_catalog(root)['pieces']}
     result = validate_saved_review(review, known)
     for record in review['pieces']:
@@ -93,9 +94,7 @@ def apply_saved_review(root):
             selections[selection] = ids
         else:
             selections.pop(selection, None)
-    updated = json.dumps(collections, indent=2) + '\n'
-    if collection_file.read_text() != updated:
-        collection_file.write_text(updated)
+    jsonc.dump(collection_file, collections)
     load_catalog(root)
     views = refresh_catalog_content(root)
     return {'flagged': len(result['flagged']), 'counts': result['counts'],

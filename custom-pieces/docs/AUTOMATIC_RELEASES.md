@@ -7,6 +7,10 @@ document_type: "explanation"
 
 # Automatic releases, explained simply
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. The route from a change to a download](#1-the-route-from-a-change-to-a-download) · [2. What runs on GitHub?](#2-what-runs-on-github) · [3. Why does a PR have an installer build before release?](#3-why-does-a-pr-have-an-installer-build-before-release) · [4. What do I click to publish and find the download?](#4-what-do-i-click-to-publish-and-find-the-download) · [5. What happens on the player's computer?](#5-what-happens-on-the-players-computer) · [6. What if something fails?](#6-what-if-something-fails)
+<!-- END DOCUMENT NAVIGATION -->
+
 **GitHub Actions** is GitHub's automation service. It follows our saved instructions on GitHub's temporary computers: check the code, package the Windows installer, and publish a download after a human accepts a release into `main`.
 
 You decide which changes to accept. GitHub handles testing and packaging; your computer does not need to stay switched on.

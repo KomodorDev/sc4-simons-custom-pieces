@@ -9,6 +9,8 @@ import shutil
 import tempfile
 import zipfile
 
+from . import jsonc
+from .paths import local_settings
 from .catalog import load_catalog, select_pieces, release_status
 from .dbpf import entries, decompress, index_plugins, pack_dbpf, require, tgi_string
 from .menu import build_menu_resources
@@ -34,8 +36,8 @@ def merge_resources(target, addition, owner):
 
 
 def roots_for(project_root, plugins, extra_roots=None):
-    local = Path(project_root) / 'local/settings.json'
-    settings = json.loads(local.read_text()) if local.is_file() else {}
+    local = local_settings(project_root)
+    settings = jsonc.load(local) if local.is_file() else {}
     extras = settings.get('extra_plugins', []) if extra_roots is None else extra_roots
     roots = [Path(plugins).expanduser().resolve()] + [Path(x).expanduser().resolve() for x in extras]
     require(len(roots) == len(set(roots)), 'Duplicate Plugins scan root')

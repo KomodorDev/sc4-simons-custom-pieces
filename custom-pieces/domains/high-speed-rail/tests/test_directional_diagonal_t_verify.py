@@ -10,9 +10,11 @@ import struct
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp_hsr.directional_diagonal_t import (
     RECIPE, INFO, directional_layout, build_rules, build_directional,
@@ -49,7 +51,7 @@ class DirectionalDiagonalTVerifierTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         contract = CONTRACTS[RECIPE]
-        cls.spec = {'recipe': RECIPE, 'name': 'HSR Smooth Diagonal Full T — At Grade',
+        cls.spec = {'recipe': RECIPE, 'name': 'HSR Level 2 (15.5 m) — Two-Track Smooth Diagonal T Junction — At Grade',
                     'footprint': [13, 14], 'cells': [list(cell) for cell in contract['cells']],
                     'tile_ids': [f'{0x7f900000+0x100*x+0x10*row:08x}' for x, row in contract['cells']],
                     'preview_id': '7f900ff5', 'puzzle_id': 'f8ff',
@@ -58,8 +60,8 @@ class DirectionalDiagonalTVerifierTests(unittest.TestCase):
         cls.paths = {(*PATH, int(tile, 16)): encode_paths(layout[cell]['routes'])
                      for tile, cell in zip(cls.spec['tile_ids'], contract['cells'])}
         cls.models, cls.donors = None, None
-        if (ROOT/'local/settings.json').is_file():
-            plugins = Path(json.loads((ROOT/'local/settings.json').read_text())['plugins'])
+        if local_settings(ROOT).is_file():
+            plugins = Path(jsonc.load(local_settings(ROOT))['plugins'])
             candidates = list(plugins.rglob('High Speed Rail.dat'))
             if len(candidates) == 1:
                 cls.donors = {key: decompress(raw) for key, raw in entries(candidates[0].read_bytes()).items()}

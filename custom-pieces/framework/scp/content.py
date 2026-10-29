@@ -13,6 +13,7 @@ from copy import deepcopy
 from datetime import datetime
 import hashlib
 import json
+from . import jsonc
 import math
 import os
 from pathlib import Path
@@ -769,7 +770,7 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
              'Generated from [connections.json](connections.json). Coordinates are canonical east, north, and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.', '',
              orientation_text, '',
              'A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.', '',
-             'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.json) for shared route-interface membership.', '',
+             'A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.jsonc) for shared route-interface membership.', '',
              '| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |',
              '| --- | --- | --- | --- | --- |']
     for port in connections.get('ports', []):
@@ -1267,10 +1268,16 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
     directory = Path(directory)
     checks = directory/'checks'
     record_path = checks/'manual-tests.json'
+    previous = json.loads(record_path.read_text()) if refresh_metadata and record_path.exists() else None
+    expected = {'id': subject['id'], 'kind': subject['kind']}
+    if previous is not None:
+        validate_manual_record(previous)
+        _require(previous['subject'] == expected, 'Cannot merge records for different subjects')
     if not refresh_metadata:
         _require(record_path.is_file(), 'No authoritative manual record for '+subject['id'])
         generated=json.loads(record_path.read_text())
         validate_manual_record(generated)
+        _require(generated['subject'] == expected, 'Cannot render records for different subjects')
     _preflight_piece_documents(directory, subject)
     checks.mkdir(parents=True, exist_ok=True)
     _ensure_piece_document(directory, subject)
@@ -1279,7 +1286,6 @@ def write_subject_content(directory, subject, connections, fingerprints, *, prev
         _testing_heading_level(_ensure_testing_document(directory, subject), subject)
     matrix_enabled = _assembly_matrix_enabled(directory, subject)
     if refresh_metadata:
-        previous = json.loads(record_path.read_text()) if record_path.exists() else None
         manual_orientations = None
         if matrix_enabled:
             supported = _orientation_scopes(connections)
@@ -1319,11 +1325,24 @@ def declare_not_applicable(record, case_id, *, explicit_user_confirmation, revie
     return output
 
 
+def _require_current_observation_identity(directory, subject):
+    """Require an observation record to belong to its authoritative subject."""
+    directory = Path(directory)
+    current_id = subject['id']
+    if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
+        current_id = json.loads((directory/'piece.json').read_text())['id']
+    elif subject['kind'] == 'assembly' and (directory/'assembly.json').is_file():
+        current_id = directory.name
+    _require(current_id == subject['id'],
+             'Manual record subject '+subject['id']+' does not match current subject '+current_id)
+
+
 def record_observation_file(record_path, observation_path):
     """Apply one user-authored observation file and refresh only its derived views."""
     record_path,observation_path=Path(record_path),Path(observation_path)
     record=json.loads(record_path.read_text());request=json.loads(observation_path.read_text())
     directory=record_path.parent.parent
+    _require_current_observation_identity(directory, record['subject'])
     document_state = _preflight_piece_documents(directory, record['subject'])
     readme=directory/'README.md'
     numbered_piece = (record['subject']['kind'] == 'piece' and not readme.is_file()) or _numbered_piece_enabled(directory, record['subject'])
@@ -1632,10 +1651,12 @@ def refresh_catalog_content(root, *, records=None, changed_piece_ids=None, scope
                 classes.setdefault(port['connection_class'],{'ports':[],
                     'physical_profile_status':'unreviewed; membership alone establishes no game result'})['ports'].append(
                     {'piece_id':identifier,'port_id':port['id']})
-        file=root/domain['path']/'connection-classes.json'
-        file.write_text(json.dumps({'schema_version':1,
+        file=root/domain['path']/'connection-classes.jsonc'
+        jsonc.dump(file, {'schema_version':1,
             'purpose':'Shared classes derived from actual encoded route interfaces; membership does not establish physical fit or game compatibility.',
-            'classes':classes},indent=2)+'\n')
+            'classes':classes}, title=domain.get('name', slug)+' connection classes',
+            summary='Generated route-interface memberships; membership alone does not establish physical fit or game compatibility.')
+        jsonc.export(file, file.with_suffix('.json'))
     deferred=({'inventory_refresh_required':bool(subjects or assembly_results),
                'connection_classes_refresh_required':bool(metadata_refresh and subjects),
                'deferred_assembly_ids':deferred_assembly_ids} if scope_to_changed else {})

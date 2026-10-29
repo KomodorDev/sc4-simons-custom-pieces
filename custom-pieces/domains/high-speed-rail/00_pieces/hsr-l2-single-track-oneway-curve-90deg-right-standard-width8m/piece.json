@@ -1,0 +1,284 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Standard, 8 m Deck Width.",
+  "schema_version": 1,
+  "id": "hsr-l2-single-track-oneway-curve-90deg-right-standard-width8m",
+  "name": "HSR Level 2 (15.5 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Standard, 8 m Deck Width",
+  "description": "A centred lower one-way track turns right through 90 degrees with 104 m cardinal displacement, smooth curvature and eight-metre flat collars.",
+  "domain": "high-speed-rail",
+  "recipe": "hsr_component_lower_oneway_curve90_right",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f823",
+  "tile_ids": [
+    "7f581200",
+    "7f581300",
+    "7f581400",
+    "7f581500",
+    "7f581600",
+    "7f581110",
+    "7f581210",
+    "7f581310",
+    "7f581020",
+    "7f581120",
+    "7f581030",
+    "7f581130",
+    "7f581040",
+    "7f581050",
+    "7f581060"
+  ],
+  "preview_id": "7f581ff5",
+  "effect_name": "preview_scp_hsrcomp_f823_00",
+  "footprint": [
+    7,
+    7
+  ],
+  "cells": [
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ]
+  ],
+  "orientation_count": 8,
+  "structural_cells": [
+    [
+      3,
+      1
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f823",
+    "order": "7012f823",
+    "style": "hsr-component-lower-oneway-curve90-right"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f581200",
+      "source": "7f581200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581300",
+      "source": "7f581300",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581400",
+      "source": "7f581400",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581500",
+      "source": "7f581500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581600",
+      "source": "7f581600",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581110",
+      "source": "7f581110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581210",
+      "source": "7f581210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581310",
+      "source": "7f581310",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581020",
+      "source": "7f581020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581120",
+      "source": "7f581120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581030",
+      "source": "7f581030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581130",
+      "source": "7f581130",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581040",
+      "source": "7f581040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581050",
+      "source": "7f581050",
+      "rotation": 0
+    },
+    {
+      "tile": "7f581060",
+      "source": "7f581060",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+    "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "hsr-components",
+  "component": {
+    "kind": "lower_oneway_curve",
+    "support_centers": [
+      [
+        64.0,
+        0.0
+      ],
+      [
+        80.0,
+        0.0
+      ],
+      [
+        96.0,
+        0.0
+      ],
+      [
+        0.0,
+        -64.0
+      ],
+      [
+        0.0,
+        -80.0
+      ],
+      [
+        0.0,
+        -96.0
+      ],
+      [
+        3.258463782,
+        -48.235071478
+      ],
+      [
+        12.96437295,
+        -26.436553182
+      ],
+      [
+        26.436553182,
+        -12.96437295
+      ],
+      [
+        48.235071478,
+        -3.258463782
+      ]
+    ],
+    "support_foundation_width": 1.3,
+    "support_min_spacing": 16.0
+  },
+  "ports": {
+    "S": {
+      "in": [
+        0.0,
+        -104.0,
+        15.5
+      ]
+    },
+    "E": {
+      "out": [
+        104.0,
+        0.0,
+        15.5
+      ]
+    }
+  },
+  "movements": [
+    [
+      "S",
+      "E"
+    ]
+  ],
+  "at_grade_conflicts": false,
+  "design_assessment": {
+    "stage": "reusable component prototype",
+    "scope": "Individual component; assembly and game operation unverified"
+  }
+}

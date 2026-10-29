@@ -15,8 +15,8 @@ from scp.dbpf import require
 from scp.track_paths import _parse_paths
 from .hsr_trumpet_verify import rotate
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
-HISTORY = ROOT/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/evidence/design-history'
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
+HISTORY = ROOT/'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/evidence/design-history'
 FROZEN_FILES = {
     'checks-resources-before-merge-west-tail-extraction.json': '3becf81758cceaf522820038640e73127ac3180291a5e38f592b83c5c439bf8c',
     'checks-layout-before-merge-west-tail-extraction.json': '2b149a52ed2c04c0bf3628f4c91189a48d906da7ae295d0878d3aa05db5d9976',

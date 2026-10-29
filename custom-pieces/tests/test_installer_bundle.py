@@ -36,16 +36,20 @@ class InstallerBundleTests(unittest.TestCase):
 
     def _source(self):
         root = self.directory / "source"
-        project = {"domains": {"fixture": {"registry": "domains/fixture/domain.json", "path": "domains/fixture"}}}
+        project = {"domains": {"fixture": {"registry": "domains/fixture/domain.jsonc", "path": "domains/fixture"}}}
         registry = {"pieces": ["00_pieces/example/piece.json"], "assemblies": []}
         for relative in ("pyproject.toml", "installer/main.py", "installer/build_bundle.py",
-                         "installer/scp_installer/service.py", "config/installer.json",
-                         "framework/scp/check_bootstrap.py", "framework/scp/__init__.py",
+                         "installer/scp_installer/service.py", "config/installer.jsonc",
+                         "framework/scp/check_bootstrap.py", "framework/scp/__init__.py", "framework/scp/jsonc.py",
                          "domains/fixture/00_pieces/example/piece.json", "domains/fixture/README.md"):
             self._write(root, relative)
-        self._write(root, "project.json", json.dumps(project).encode())
-        self._write(root, "domains/fixture/domain.json", json.dumps(registry).encode())
+        self._write(root, "project.jsonc", self._commented(project, "Installer fixture project"))
+        self._write(root, "domains/fixture/domain.jsonc", self._commented(registry, "Installer fixture domain"))
         return root
+
+    def _commented(self, value, title):
+        return ("// title: " + json.dumps(title) + '\n// summary: "Portable synthetic installer input."\n'
+                + json.dumps(value, indent=2) + "\n").encode()
 
     def _prepare(self):
         source = self._source()
@@ -59,7 +63,7 @@ class InstallerBundleTests(unittest.TestCase):
         folder = self.directory / "SCP-Installer-fixture"
         executable = self._write(folder, "SCP Installer.exe", b"MZ synthetic executable fixture")
         executable.chmod(0o755)
-        self._write(folder, "_internal/custom-pieces/project.json", b'{"fixture":true}\n')
+        self._write(folder, "_internal/custom-pieces/project.jsonc", b'{"fixture":true}\n')
         archive = self.directory / "installer.zip"
         bundle.create_archive(folder, archive, COMMIT, target)
         return folder, archive
@@ -91,17 +95,52 @@ class InstallerBundleTests(unittest.TestCase):
 
     def test_allowlist_excludes_private_builds_tests_and_unregistered_subjects(self):
         allowed = lambda name: bundle.runtime_allowed(name, {"fixture"}, {"domains/fixture/00_pieces/example"})
-        for name in ("project.json", "installer/scp_installer/service.py", "framework/scp/build.py",
+        for name in ("project.jsonc", "installer/scp_installer/service.py", "framework/scp/build.py",
+                     "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
+                     "config/profiles/fixture.jsonc", "config/allocations.jsonc", "config/release.jsonc",
+                     "config/installer.jsonc", "domains/fixture/domain.jsonc",
+                     "domains/fixture/00_pieces/inventory.jsonc", "domains/fixture/01_assemblies/inventory.jsonc",
                      "domains/fixture/00_pieces/example/geometry.json",
                      "domains/fixture/00_pieces/example/evidence/design-history/record.json"):
             with self.subTest(name=name):
                 self.assertTrue(allowed(name))
-        for name in ("local/settings.json", "dist/build/manifest.json", "tests/test_build.py",
-                     "config/local.example.json", "domains/fixture/00_pieces/unknown/piece.json",
+        for name in ("local/settings.json", "local/settings.jsonc", "dist/build/manifest.json", "tests/test_build.py",
+                     "project.json", "schemas/connector-groups.schema.json", "config/profiles/fixture.json",
+                     "config/local.example.jsonc", "domains/fixture/00_pieces/unknown/piece.json",
                      "domains/fixture/00_pieces/example/native.dat", "framework/scp/__pycache__/cache.pyc",
                      "installer/private/settings.json", "domains/fixture/local/secret.json"):
             with self.subTest(name=name):
                 self.assertFalse(allowed(name))
+
+    def test_commented_sources_survive_runtime_and_archive_while_reports_stay_strict_json(self):
+        source = self._source()
+        included = ("project.jsonc", "domains/fixture/domain.jsonc", "config/installer.jsonc",
+                    "config/allocations.jsonc", "config/release.jsonc", "config/profiles/fixture.jsonc",
+                    "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
+                    "domains/fixture/inventory.jsonc", "domains/fixture/00_pieces/inventory.jsonc",
+                    "domains/fixture/01_assemblies/inventory.jsonc")
+        for relative in included[2:]:
+            self._write(source, relative, self._commented({"fixture": relative}, "Installer shared source"))
+        self._write(source, "local/settings.jsonc", self._commented({"plugins": "private"}, "Private settings"))
+        self._write(source, "config/local.example.jsonc", self._commented({}, "Private settings example"))
+        expected = {relative: (source / relative).read_bytes() for relative in included}
+        runtime = self.directory / "distribution/custom-pieces"
+        with patch.object(bundle, "_source_paths", return_value=[path for path in source.rglob("*") if path.is_file()]):
+            bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64")
+        for relative, raw in expected.items():
+            with self.subTest(source=relative):
+                self.assertEqual((runtime / relative).read_bytes(), raw)
+        self.assertFalse((runtime / "local/settings.jsonc").exists())
+        self.assertFalse((runtime / "config/local.example.jsonc").exists())
+        for relative in (bundle.RUNTIME_MANIFEST, bundle.BUILD_INFO):
+            self.assertIsInstance(json.loads((runtime / relative).read_text()), dict)
+        archive = self.directory / "commented-runtime.zip"
+        bundle.create_archive(runtime.parent, archive, COMMIT, "windows-x64")
+        with zipfile.ZipFile(archive) as saved:
+            for relative, raw in expected.items():
+                self.assertEqual(saved.read("distribution/custom-pieces/" + relative), raw)
+            self.assertIsInstance(json.loads(saved.read("distribution/bundle-index.json")), dict)
+        self.assertEqual(bundle.verify_archive(archive)["status"], "passed")
 
     def test_runtime_retains_source_hierarchy_and_verifies_every_file(self):
         runtime = self._prepare()
@@ -188,7 +227,7 @@ class InstallerBundleTests(unittest.TestCase):
 
     def test_archive_changed_member_is_rejected(self):
         _, archive = self._archive()
-        self._rewrite_zip(archive, lambda records: [(info, b"changed" if info.filename.endswith("project.json") else raw)
+        self._rewrite_zip(archive, lambda records: [(info, b"changed" if info.filename.endswith("project.jsonc") else raw)
                                                   for info, raw in records])
         with self.assertRaisesRegex(ValueError, "member changed"):
             bundle.verify_archive(archive)

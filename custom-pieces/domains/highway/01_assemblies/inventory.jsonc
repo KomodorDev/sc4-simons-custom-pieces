@@ -1,0 +1,20 @@
+// title: "Highway assembly catalogue"
+// summary: "Generate the assembly index, canonical picture links, placement counts, and scoped coverage from saved assembly records."
+//
+// Used when: Contributors inspect the generated index of highway assembly blueprints, canonical picture links, placement counts, and saved manual-test coverage after an inventory refresh; no highway assemblies are currently registered.
+//
+// Read by: Contributors and catalogue validation tests inspect this generated view, and the parent highway inventory.jsonc names its location; normal catalogue loading follows registered assembly.json plans and does not use this generated file as build input.
+//
+// Updated by: custom-pieces/framework/scp/inventory.py write_inventories(), invoked by python3 -B custom-pieces/scp.py inventory and by relevant documentation refreshes, derives assembly entries from registered placement plans, available connection matrices, and checks/manual-tests.json records while retaining its leading comments.
+//
+// Affects: The machine-readable counterpart of the adjacent generated INVENTORY.md; this view neither registers a placement plan nor creates a construction button, and its generated coverage cannot turn unverified assembly cases into passed observations.
+//
+// Reference: custom-pieces/docs/TESTING.md
+{
+  "schema_version": 2,
+  "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
+  "version": "0.6.0.dev1",
+  "domain": "highway",
+  "count": 0,
+  "assemblies": {}
+}

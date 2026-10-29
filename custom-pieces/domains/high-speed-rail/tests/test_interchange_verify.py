@@ -9,9 +9,11 @@ import sys
 import unittest
 from unittest.mock import patch
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp_hsr.interchange_layouts import INFO, interchange_layout
 from scp_hsr.interchange_models import build_interchange, build_rules
@@ -50,10 +52,10 @@ class InterchangeVerifierTests(unittest.TestCase):
             cls.specs[recipe] = spec
             cls.routes[recipe] = {(*PATH, int(tile, 16)): encode_paths(layout[cell]['routes'])
                                  for cell, tile in zip(info['cells'], spec['tile_ids'])}
-        local = ROOT/'local/settings.json'
+        local = local_settings(ROOT)
         cls.donors = None
         if local.is_file():
-            plugins = Path(json.loads(local.read_text())['plugins'])
+            plugins = Path(jsonc.load(local)['plugins'])
             donors = list(plugins.rglob('High Speed Rail.dat'))
             if len(donors) == 1:
                 cls.donors = {key: decompress(raw) for key, raw in entries(donors[0].read_bytes()).items()}

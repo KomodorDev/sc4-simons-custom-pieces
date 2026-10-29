@@ -4,6 +4,8 @@ import json,os,struct,unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries,decompress,pack_dbpf
 from scp.models import parse_s3d,pack_s3d
 from scp.track_paths import S3D,PATH
@@ -12,7 +14,7 @@ from scp_hsr.road_stack import build
 from scp_hsr.road_stack_verify import check_paths,check_models
 from scp_hsr.hsr_connections import materialize,service_classifier
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 
 
 class RoadStackClassificationTests(unittest.TestCase):
@@ -36,15 +38,15 @@ class RoadStackClassificationTests(unittest.TestCase):
 class NativeRoadStackTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.spec=json.loads((ROOT/'domains/high-speed-rail/00_pieces/blind-hsr-road-stack/piece.json').read_text())
-        settings=json.loads((ROOT/'local/settings.json').read_text()) if (ROOT/'local/settings.json').is_file() else {}
+        cls.spec=json.loads((ROOT/'domains/high-speed-rail/00_pieces/hsr-l2-over-road-l0-mixed-parallel-stack/piece.json').read_text())
+        settings=jsonc.load(local_settings(ROOT)) if local_settings(ROOT).is_file() else {}
         fixture=Path(os.environ.get('SCP_TEST_NAM_PLUGINS',
                                     settings.get('plugins',ROOT/'local/validation-inputs/Plugins'))).expanduser()
-        profile=json.loads((ROOT/'config/profiles/nam50-rhd.json').read_text())['files']
+        profile=jsonc.load(ROOT/'config/profiles/nam50-rhd.jsonc')['files']
         names={key:profile[key]['filename'] for key in
                ('hsr','ordinary_road','ordinary_sidewalk_texture')}
         if not all((fixture/name).is_file() for name in names.values()):
-            raise unittest.SkipTest('Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.json, or local/validation-inputs/Plugins.')
+            raise unittest.SkipTest('Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.')
         cls.context={label:{k:decompress(v) for k,v in entries((fixture/name).read_bytes()).items()} for label,name in names.items()}
         generated,cls.rules=build(cls.spec,cls.context)
         # Read the serialized archive, rather than trusting only the in-memory result.

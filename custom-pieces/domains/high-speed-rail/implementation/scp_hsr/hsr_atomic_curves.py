@@ -10,7 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from functools import lru_cache
 import json
-from pathlib import Path
+from scp.subject_sources import piece_name_for_recipe, piece_directory
 
 from scp.dbpf import require
 
@@ -23,7 +23,7 @@ RECIPES = (
 @lru_cache(maxsize=2)
 def _source(recipe):
     require(recipe in RECIPES, 'Unknown shortened HSR curve recipe')
-    path = Path(__file__).resolve().parents[2]/'00_pieces'/recipe.replace('_', '-')/'geometry.json'
+    path = piece_directory(recipe)/'geometry.json'
     data = json.loads(path.read_text())
     require(data.get('schema_version') == 1 and data['metadata']['recipe'] == recipe,
             'Shortened HSR curve source identity or schema is invalid')
@@ -33,6 +33,7 @@ def _source(recipe):
 def atomic_info(recipe):
     """Return a fresh local connection, construction and support definition."""
     info = deepcopy(_source(recipe)['metadata'])
+    info['name'] = piece_name_for_recipe(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): value for cell, value in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]

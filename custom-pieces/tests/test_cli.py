@@ -9,7 +9,9 @@ import tempfile
 import unittest
 import zipfile
 
-SOURCE = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+SOURCE = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
+sys.path.insert(0, str(SOURCE / 'framework'))
+from scp import jsonc
 
 
 class PortableCLITests(unittest.TestCase):
@@ -29,9 +31,9 @@ class PortableCLITests(unittest.TestCase):
     def test_self_contained_list_needs_no_previous_prototype_directory(self):
         result = self.call('list')
         self.assertEqual(result.returncode, 0, result.stderr)
-        project = json.loads((self.root / 'project.json').read_text())
+        project = jsonc.loads((self.root / 'project.jsonc').read_text())
         registered = [path for domain in project['domains'].values()
-                      for path in json.loads((self.root / domain['registry']).read_text())['pieces']]
+                      for path in jsonc.loads((self.root / domain['registry']).read_text())['pieces']]
         self.assertEqual(len(json.loads(result.stdout)['pieces']), len(registered))
 
     def test_documentation_check_is_read_only_and_reports_retained_legacy_guides(self):
@@ -48,7 +50,7 @@ class PortableCLITests(unittest.TestCase):
                                   for p in self.root.rglob('*') if p.is_file()})
 
     def test_documentation_check_reports_a_broken_case_link_without_repairing_it(self):
-        identifier = 'hsr-component-modular-paired-climb'
+        identifier = 'hsr-l2-and-l4-two-track-ramp'
         directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
         readme = directory/'README.md'
         readme.write_text(readme.read_text()+'\n[Removed case](TESTING.md#case-removed-observation)\n')
@@ -70,10 +72,10 @@ class PortableCLITests(unittest.TestCase):
         self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/identifier/'checks').exists())
 
     def test_invalid_display_names_do_not_reserve_ids_or_break_the_registry(self):
-        files = [self.root/'config/allocations.json',
-                 self.root/'domains/high-speed-rail/domain.json']
+        files = [self.root/'config/allocations.jsonc',
+                 self.root/'domains/high-speed-rail/domain.jsonc']
         before = {str(path): path.read_bytes() for path in files}
-        for identifier, name in [('duplicate-display-name', 'HSR over Diagonal GHSR'),
+        for identifier, name in [('duplicate-display-name', 'HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal'),
                                  ('blank-display-name', '   ')]:
             result = self.call('scaffold', '--id', identifier, '--name', name)
             self.assertNotEqual(result.returncode, 0)
@@ -86,7 +88,7 @@ class PortableCLITests(unittest.TestCase):
         outside.mkdir()
         piece_dir = self.root/'domains/high-speed-rail/00_pieces/symlink-draft'
         piece_dir.symlink_to(outside, target_is_directory=True)
-        paths = [self.root/'config/allocations.json', self.root/'domains/high-speed-rail/domain.json']
+        paths = [self.root/'config/allocations.jsonc', self.root/'domains/high-speed-rail/domain.jsonc']
         before = {str(path): path.read_bytes() for path in paths}
         result = self.call('scaffold', '--id', 'symlink-draft', '--name', 'Symlink Draft')
         self.assertNotEqual(result.returncode, 0)
@@ -95,8 +97,19 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(self.call('list').returncode, 0)
 
     def test_scaffold_grid_and_reservations_do_not_collide(self):
+        shared = [self.root/name for name in ('config/allocations.jsonc',
+                  'domains/high-speed-rail/domain.jsonc', 'domains/high-speed-rail/collections.jsonc')]
+        prefixes = {}
+        for path in shared:
+            value = jsonc.load(path)
+            prefix = '// title: "Authored title"\n// summary: "Keep this authored explanation."\n/* Registration note. */\n'
+            path.write_text(prefix+json.dumps(value, indent=2)+'\n', encoding='utf-8')
+            prefixes[path] = prefix
         result = self.call('scaffold', '--id', 'future-crossing', '--name', 'Future Crossing', '--width', '2', '--depth', '2')
         self.assertEqual(result.returncode, 0, result.stderr)
+        for path, prefix in prefixes.items():
+            self.assertTrue(path.read_text(encoding='utf-8').startswith(prefix))
+            self.assertFalse(path.with_suffix('.json').exists())
         piece = json.loads((self.root / 'domains/high-speed-rail/00_pieces/future-crossing/piece.json').read_text())
         ids = [int(x, 16) for x in piece['tile_ids']]
         self.assertEqual(ids, [ids[0], ids[0] + 0x100, ids[0] + 0x10, ids[0] + 0x110])
@@ -140,7 +153,7 @@ class PortableCLITests(unittest.TestCase):
             directory = self.root/'domains/high-speed-rail/00_pieces'/identifier
             directory.mkdir()
             (directory/name).symlink_to(outside)
-            paths = [self.root/'config/allocations.json', self.root/'domains/high-speed-rail/domain.json']
+            paths = [self.root/'config/allocations.jsonc', self.root/'domains/high-speed-rail/domain.jsonc']
             before = {path: path.read_bytes() for path in paths}
             result = self.call('scaffold', '--id', identifier, '--name', 'Testing Symlink '+str(number))
             self.assertNotEqual(result.returncode, 0)
@@ -157,10 +170,10 @@ class PortableCLITests(unittest.TestCase):
         self.assertFalse(piece['enabled_by_default'])
 
     def test_unknown_domain_does_not_reserve_identifiers(self):
-        ledger = (self.root / 'config/allocations.json').read_bytes()
+        ledger = (self.root / 'config/allocations.jsonc').read_bytes()
         result = self.call('scaffold', '--domain', 'unknown', '--id', 'bad-domain', '--name', 'Bad Domain')
         self.assertNotEqual(result.returncode, 0)
-        self.assertEqual((self.root / 'config/allocations.json').read_bytes(), ledger)
+        self.assertEqual((self.root / 'config/allocations.jsonc').read_bytes(), ledger)
 
     def test_invalid_scaffold_leaves_all_registry_bytes_unchanged(self):
         snapshot = lambda: {p.relative_to(self.root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
@@ -171,9 +184,9 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(before, snapshot())
 
     def test_scaffold_does_not_inherit_sparse_cells_from_the_first_piece(self):
-        path = self.root / 'domains/high-speed-rail/domain.json'
-        registry = json.loads(path.read_text())
-        first = '00_pieces/rail-hsr-diagonal-s-left/piece.json'
+        path = self.root / 'domains/high-speed-rail/domain.jsonc'
+        registry = jsonc.loads(path.read_text())
+        first = '00_pieces/hsr-l2-two-track-s-curve-diagonal-left/piece.json'
         registry['pieces'].remove(first)
         registry['pieces'].insert(0, first)
         path.write_text(json.dumps(registry))
@@ -195,7 +208,7 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         with zipfile.ZipFile(target) as archive:
             self.assertIsNone(archive.testzip())
-            for identifier in ('hsr-component-modular-crossing-core', 'hsr-component-tight-paired-curve90-l4-to-mid'):
+            for identifier in ('hsr-l4-over-hsr-l2-two-track-crossing-90deg', 'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight'):
                 relative = Path('domains/high-speed-rail/00_pieces') / identifier / 'connector-groups.jsonc'
                 matches = [name for name in archive.namelist() if name.endswith('/' + relative.as_posix())]
                 self.assertEqual(len(matches), 1, f'Commented connector source missing from export: {relative}')
@@ -221,7 +234,7 @@ class PortableCLITests(unittest.TestCase):
         self.assertFalse(json.loads(result.stdout)['public_release_ready'])
 
     def test_failed_piece_can_be_inspected_but_not_selected_for_build(self):
-        slug = 'tram-under-hsr'
+        slug = 'hsr-l2-over-tram-ground-mixed-crossing-90deg'
         path = self.root / 'domains/high-speed-rail/00_pieces' / slug / 'piece.json'
         piece = json.loads(path.read_text())
         piece['game_tests']['placement'] = 'failed'

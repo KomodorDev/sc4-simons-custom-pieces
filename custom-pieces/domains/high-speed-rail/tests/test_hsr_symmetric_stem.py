@@ -10,8 +10,8 @@ from scp_hsr.hsr_symmetric_stem_verify import (
     TOP, BED, INNER, JOIN_SOUTH, STEM_SECTIONS, audit_symmetric_stem,
 )
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
-PIECE = ROOT/'domains/high-speed-rail/00_pieces/hsr-component-modular-south-junction'
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
+PIECE = ROOT/'domains/high-speed-rail/00_pieces/hsr-l2-two-track-mainline-split-merge-parallel-recessed-end'
 
 
 def quad(points):

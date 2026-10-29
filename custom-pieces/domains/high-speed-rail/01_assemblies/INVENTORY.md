@@ -7,9 +7,15 @@ document_type: "catalogue"
 
 # High Speed Rail and Ground High Speed Rail — assembly blueprints
 
+<!-- BEGIN DOCUMENT NAVIGATION -->
+[1. Legend](#1-legend) · [2. Assembly blueprints](#2-assembly-blueprints)
+<!-- END DOCUMENT NAVIGATION -->
+
 This inventory is generated from each assembly’s saved records. The source files and update procedure are explained under **Where the results come from** below. Checked means every applicable listed current case passed. Preview review and correct rendering inside SimCity 4 are separate checks. A result covers only its named scope, rotation, and recorded environment. Legacy endpoint observations remain historical evidence in the subject checklist and do not establish current compatibility coverage.
 
-## Legend
+<a id="legend"></a>
+
+## 1. Legend
 
 An **assembly** is a complete layout made from reusable pieces. A **piece type** is one reusable component design; a **placement** is one copy of that type at a particular position and rotation.
 
@@ -22,7 +28,9 @@ An **assembly** is a complete layout made from reusable pieces. A **piece type**
 | Renders correctly in game | Recorded human checks that the complete placed layout looks correct inside SimCity 4 under the declared conditions. This checks appearance; the connection matrix separately reports traffic. |
 | Connection matrix summary | A summary of the results displayed in the blueprint’s entrance → exit matrix. Saved PATH, Route Query, visible travel, and forbidden-movement checks have separate totals. Click **Open matrix** to inspect those entries and their exact evidence. |
 
-### Where the results come from
+<a id="where-the-results-come-from"></a>
+
+### 1.1 Where the results come from
 
 **Both appearance columns read `checks/manual-tests.json` inside the assembly’s folder.** This is the saved observation record:
 
@@ -33,14 +41,20 @@ An **assembly** is a complete layout made from reusable pieces. A **piece type**
 
 The **Connection matrix summary** uses the same calculation as the README matrix. It combines the movements and current software evidence in `connections.json` with the results in `checks/manual-tests.json`; it does not read the rendered Markdown table.
 
-To update a human result, perform the exact check, obtain explicit human confirmation, and save that observation using the [recording procedure](../../../docs/TESTING.md#record-one-observation). In this repository, the recording command updates the saved record and refreshes `TESTING.md`, the README matrix, and the inventory. Regenerating documents alone does not record a pass.
+To update a human result, perform the exact check, obtain explicit human confirmation, and save that observation using the [recording procedure](../../../docs/TESTING.md#4-record-one-observation). In this repository, the recording command updates the saved record and refreshes `TESTING.md`, the README matrix, and the inventory. Regenerating documents alone does not record a pass.
 
-### How to read the results
+<a id="how-to-read-the-results"></a>
+
+### 1.2 How to read the results
 
 A **case** is one specific check. In the two review columns, `0/6 passed` means zero of six applicable current cases have a recorded pass. `[x]` means all applicable current cases passed; `[ ]` means that condition is not met. **Unverified** means no qualifying result is recorded, **failed** means an observation found a problem, and **stale** means relevant resources or conditions changed after the recorded result. Unverified does not mean failed. Explicit not-applicable cases and historical observations are excluded from these case fractions. `Not applicable / no declared cases` means there are no applicable cases to count, and `Unverified; record missing` means the observation record is absent; neither is a pass.
 
 The **connection matrix summary** counts displayed matrix entries for each check: **confirmed** matches ✅, **failed** matches ❌, and **not established** matches ?. An entry is confirmed only when all checks required for its declared orientations are current passes. Missing, stale, ambiguous, or not-applicable evidence leaves an entry not established. **Saved PATH** checks the saved traffic routes; **Route Query** uses the game’s route-inspection tool; **Visible travel** requires observing a vehicle complete the journey; and **Forbidden in game** checks that a prohibited movement stays unavailable. One software result can support several Saved PATH entries, so these are matrix-entry counts, not independent test-case counts. Game appearance stays in its own column. Open the blueprint’s **Testing** link for the detailed observations and checks outside the matrix.
 
+<a id="assembly-blueprints"></a>
+
+## 2. Assembly blueprints
+
 | Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |
 | --- | --- | --- | --- | --- | --- |
-| [![Straight-stem HSR trumpet](straight-stem-trumpet/previews/preview.png)](straight-stem-trumpet/previews/preview.png) | [Straight-stem HSR trumpet](straight-stem-trumpet/README.md) | 28 / 14 | [ ] 0/7 passed; 7 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [Open matrix](straight-stem-trumpet/README.md#4-connection-matrix)<br>Saved PATH: 9/9 confirmed<br>Route Query: 0/6 confirmed; 6 not established<br>Visible travel: 0/6 confirmed; 6 not established<br>Forbidden in game: 0/3 confirmed; 3 not established |
+| [![HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/previews/preview.png)](hsr-trumpet-straight-stem/previews/preview.png) | [HSR — Trumpet — Straight Stem](hsr-trumpet-straight-stem/README.md) | 28 / 14 | [ ] Unverified; record subject does not match this folder | [ ] Unverified; record subject does not match this folder | Unverified; record subject does not match this folder |

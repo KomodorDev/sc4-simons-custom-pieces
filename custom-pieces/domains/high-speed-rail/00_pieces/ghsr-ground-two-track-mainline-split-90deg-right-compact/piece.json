@@ -1,0 +1,120 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Compact.",
+  "schema_version": 1,
+  "id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+  "name": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Compact",
+  "description": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Compact. Fixed click-to-place piece in a 2 by 2 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_ground_split_90_compact",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7e0",
+  "tile_ids": [
+    "7f53e000",
+    "7f53e100",
+    "7f53e010"
+  ],
+  "preview_id": "7f53eff5",
+  "effect_name": "preview_scp_interchg_f7e0_0",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7e0",
+    "order": "7011f7e0",
+    "style": "interchange-ground-split-90-compact"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f53e000",
+      "source": "7f53e000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53e100",
+      "source": "7f53e100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f53e010",
+      "source": "7f53e010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        8,
+        1.0
+      ],
+      [
+        2.0,
+        -24,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -24,
+        1.0
+      ],
+      [
+        2.0,
+        8,
+        1.0
+      ],
+      [
+        24,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "ground",
+    "height": 1.0,
+    "angle": 90,
+    "radius": "compact",
+    "mode": "split"
+  }
+}

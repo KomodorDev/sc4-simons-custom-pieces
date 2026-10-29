@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.content import (case_state, fingerprint, new_manual_record, record_software_result,
     record_user_result, refresh_manual_record, render_manual_checklist,
     resource_fingerprints, summarize_manual_record, validate_manual_record, write_subject_content,
@@ -116,6 +116,53 @@ class ManualContentTests(unittest.TestCase):
             for index in range(18)]
         return new_manual_record('fixture','piece',connections,self.hashes,
             {name:fingerprint(name.encode()) for name in ('southeast','top','connection-overview')})
+    def test_refresh_requires_the_same_subject(self):
+        other = new_manual_record('different-subject', 'piece',
+            {**self.connections, 'subject_id': 'different-subject'}, self.hashes, self.images)
+        before = deepcopy(self.record), deepcopy(other)
+        with self.assertRaisesRegex(ValueError, 'different subjects'):
+            refresh_manual_record(self.record, other)
+        self.assertEqual((self.record, other), before)
+
+    def test_writer_rejects_another_subject_before_writing_any_views(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            (directory/'checks').mkdir()
+            record = directory/'checks/manual-tests.json'
+            record.write_text(json.dumps(compact_manual_record(self.record))+'\n')
+            original = record.read_bytes()
+            for refresh_metadata in (False, True):
+                with self.subTest(refresh_metadata=refresh_metadata), self.assertRaisesRegex(ValueError, 'different subjects'):
+                    write_subject_content(directory, {'id': 'different-subject', 'kind': 'piece'},
+                        {**self.connections, 'subject_id': 'different-subject'}, self.hashes,
+                        refresh_metadata=refresh_metadata)
+            self.assertEqual(record.read_bytes(), original)
+            self.assertFalse((directory/'README.md').exists())
+            self.assertFalse((directory/'TESTING.md').exists())
+            self.assertFalse((directory/'connections.json').exists())
+
+    def test_observation_cannot_change_a_record_belonging_to_another_subject(self):
+        from scp.content import record_observation_file
+        for kind in ('piece', 'assembly'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temporary:
+                directory = Path(temporary)/'current-subject'
+                (directory/'checks').mkdir(parents=True)
+                definition = {'id': 'current-subject'} if kind == 'piece' else {'title': 'Current subject'}
+                (directory/(kind+'.json')).write_text(json.dumps(definition)+'\n')
+                record = new_manual_record('different-subject', kind,
+                    {**self.connections, 'subject_id': 'different-subject', 'subject_kind': kind},
+                    self.hashes, self.images)
+                path = directory/'checks/manual-tests.json'
+                path.write_text(json.dumps(compact_manual_record(record))+'\n')
+                request = directory/'checks/observation.json'
+                request.write_text('{}\n')
+                before = {file.relative_to(directory): file.read_bytes()
+                          for file in directory.rglob('*') if file.is_file()}
+                with self.assertRaisesRegex(ValueError, 'does not match current subject current-subject'):
+                    record_observation_file(path, request)
+                self.assertEqual({file.relative_to(directory): file.read_bytes()
+                                  for file in directory.rglob('*') if file.is_file()}, before)
+
     def test_defaults_never_infer_manual_or_software_pass(self):
         self.assertTrue(validate_manual_record(self.record))
         summary=summarize_manual_record(self.record)
@@ -561,7 +608,7 @@ class ManualContentTests(unittest.TestCase):
 
     def test_manual_workflow_uses_exact_portable_subject_command(self):
         with tempfile.TemporaryDirectory() as directory:
-            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.json').write_text('{}')
+            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.jsonc').write_text('{}')
             subject=root/'domains/hsr/00_pieces/fixture'
             write_subject_content(subject,{'id':'fixture','kind':'piece'},self.connections,self.hashes)
             text=(subject/'TESTING.md').read_text()

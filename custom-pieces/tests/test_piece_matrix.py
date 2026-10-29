@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents
-                          if (p/'project.json').is_file())/'framework'))
+                          if (p/'project.jsonc').is_file())/'framework'))
 
 from scp.content import (
     _expanded_record, case_state, compact_manual_record, fingerprint, new_manual_record,

@@ -5,7 +5,7 @@ import unittest
 
 from PIL import Image, ImageDraw
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path.insert(0,str(ROOT/'framework'))
 from scp.preview import font
 from scp.render_headers import draw_header, piece_heading, piece_title, view_caption
@@ -77,15 +77,38 @@ class RenderHeaderTests(unittest.TestCase):
         self.assertEqual(piece_title('test-ambiguous',records,'HSR L2'),
                          'Piece - HSR L2 — Level 2 (15.5 m) / Level 2 (16 m)')
 
-    def test_source_group_identity_keeps_the_two_special_piece_titles_distinct(self):
-        curve=[{'id':'curve-end-b','nominal_level':None,'path_height_m':23.},
-               {'id':'curve-end-a','nominal_level':'L4','path_height_m':30.5}]
-        crossing=[{'id':'lower-end-a','nominal_level':'L2','path_height_m':15.5},
-                  {'id':'upper-end-a','nominal_level':'L4','path_height_m':30.5}]
-        self.assertEqual(piece_title('hsr-component-tight-paired-curve90-l4-to-mid',curve,'Unchanged source menu name'),
-                         'Piece - HSR Tight Two-Track Corner — Level 4 (30.5 m) to Custom (23 m)')
-        self.assertEqual(piece_title('hsr-component-modular-crossing-core',crossing,'Different unchanged menu name'),
-                         'Piece - HSR Modular One-Tile Crossing — Level 4 (30.5 m) over Level 2 (15.5 m)')
+    def test_canonical_names_identify_curve_ramps_and_crossings(self):
+        cases=[
+            ('hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight',
+             [{'id':'curve-end-b','nominal_level':None,'path_height_m':23.},
+              {'id':'curve-end-a','nominal_level':'L4','path_height_m':30.5}],
+             'HSR Custom (23 m) ↔ Level 4 (30.5 m) — Two-Track Curve 90° Ramp — Tight'),
+            ('hsr-l4-over-hsr-l2-two-track-crossing-90deg',
+             [{'id':'lower-end-a','nominal_level':'L2','path_height_m':15.5},
+              {'id':'upper-end-a','nominal_level':'L4','path_height_m':30.5}],
+             'HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) — Two-Track Crossing 90°')]
+        for identifier,records,name in cases:
+            with self.subTest(identifier=identifier):
+                self.assertEqual(piece_title(identifier,records,name),'Piece - '+name)
+
+    def test_mixed_services_keep_each_known_height_visible_once(self):
+        records=[{'id':'hsr','nominal_level':'L2','path_height_m':15.5},
+                 {'id':'road','nominal_level':'L0','path_height_m':0.},
+                 {'id':'pedestrian','nominal_level':None,'path_height_m':0.}]
+        name='HSR Level 2 (15.5 m) over Road Level 0 (0 m) — Parallel Stack'
+        self.assertEqual(piece_title('hsr-l2-over-road-l0-mixed-parallel-stack',records,name),
+                         'Piece - '+name)
+        ground=[records[0],{'id':'tram','nominal_level':None,'path_height_m':0.}]
+        tram='HSR Level 2 (15.5 m) over Tram Ground (0 m) — Crossing 90°'
+        self.assertEqual(piece_title('hsr-l2-over-tram-ground-mixed-crossing-90deg',ground,tram),
+                         'Piece - '+tram)
+
+    def test_names_normalize_measured_levels_and_retain_unrepresented_heights(self):
+        records=[{'id':'low','nominal_level':'L2','path_height_m':15.5},
+                 {'id':'custom','nominal_level':None,'path_height_m':23.}]
+        name='HSR Level 2 (16 m) — Two-Track Adapter'
+        self.assertEqual(piece_title('test-adapter',records,name),
+                         'Piece - HSR Level 2 (15.5 m) — Two-Track Adapter — Custom (23 m)')
 
     def test_header_rows_have_consistent_colours_and_fit_the_reserved_width(self):
         canvas=Image.new('RGB',(1600,300),'white');draw=ImageDraw.Draw(canvas)

@@ -33,7 +33,7 @@ PNP_STYLES = frozenset({
 })
 # These exact new styles need explicit kinds because their names describe
 # extracted modules rather than the historical recipe naming conventions.
-# Keep this scoped to new IDs so every existing icon remains byte-identical.
+# Keep this scoped to these original styles so existing pixels remain stable.
 _MODULAR_KIND = {
     'hsr-component-blind-rise-quarter-turn': 'RMP',
     'hsr-component-modular-south-junction': 'JCT',
@@ -41,6 +41,8 @@ _MODULAR_KIND = {
     'hsr-component-modular-crossing-core': 'XNG',
     'hsr-component-l2-paired-fan-compact-core': 'JCT',
 }
+# Each piece declares one of these stable procedural keys in menu.style.
+# Selection IDs and folder names do not select or rename artwork styles.
 _FOOTER_LETTER = {
     'A': ('010', '101', '101', '111', '101', '101', '101'),
     'C': ('111', '100', '100', '100', '100', '100', '111'),
@@ -121,7 +123,7 @@ _LETTER = {
 
 def assembly_icon_network(assembly_id):
     """Declare an assembly's network explicitly, including future mixed layouts."""
-    networks = {'straight-stem-trumpet': 'HSR'}
+    networks = {'hsr-trumpet-straight-stem': 'HSR'}
     _require(assembly_id in networks, f'No declared assembly icon network: {assembly_id}')
     return networks[assembly_id]
 

@@ -20,14 +20,14 @@ DEFINITIONS = {
         'kind': 'tight_paired_curved_grade', 'height': 30.5,
         'from_height': 30.5, 'to_height': MID_HEIGHT_M,
         'hand': 'right', 'angle': 90,
-        'name': 'HSR Tight Two-Track Corner 30.5 to 23 Metres',
+        'name': 'HSR Custom (23 m) \u2194 Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Ramp \u2014 Tight',
         'description': 'A 56 m right-angle paired corner descends from 30.5 m to the custom 23 m matching connection. The reverse-direction track climbs; both ends have 8 m flat native collars.',
     },
     'hsr_component_tight_paired_curve90_mid_to_l2': {
         'kind': 'tight_paired_curved_grade', 'height': MID_HEIGHT_M,
         'from_height': MID_HEIGHT_M, 'to_height': 15.5,
         'hand': 'right', 'angle': 90,
-        'name': 'HSR Tight Two-Track Corner 23 to 15.5 Metres',
+        'name': 'HSR Level 2 (15.5 m) \u2194 Custom (23 m) \u2014 Two-Track Curve 90\u00b0 Ramp \u2014 Tight',
         'description': 'A 56 m right-angle paired corner descends from the custom 23 m connection to lower 15.5 m HSR. The reverse-direction track climbs; both ends have 8 m flat native collars.',
     },
 }

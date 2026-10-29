@@ -10,14 +10,19 @@ import sys
 import struct
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
+from scp.subject_sources import piece_directory
+from scp.track_paths import encode_paths
 from scp.dbpf import entries, decompress
 from scp_hsr.hsr_components_verify import (
     CONTRACTS, check_paths, check_models, check_construction_fields, audit_height_profile, audit_adapter_native_profiles,
 )
 from scp_hsr.hsr_mesh_verify import audit_bed_union, audit_supports
+from scp_hsr.hsr_partition_components_verify import audit_partition_climb
 from scp_hsr.interchange_verify import PATH, S3D, _bed, _graph, _clearance_segments
 from scp.verify import parse_paths, parse_rules
 from scp_hsr.test_support import spec_for, floor
@@ -38,7 +43,7 @@ def route(points, entry, exit_):
 
 
 def ramp_height(y):
-    """Literal 128m ramp: 8m collars and 16m grade easements."""
+    """Independent 128 m height-profile fixture: 8 m collars and 16 m easements."""
     s = min(112., max(0., y+112.))
     if s < 16.:
         rise = .15625*s*s/32.
@@ -53,12 +58,13 @@ def literal_core_paths(recipe):
     """Fixtures authored directly from the approved ports, without the writer."""
     spec = spec_for(recipe)
     result = {}
+    if recipe == 'hsr_component_modular_paired_climb':
+        source = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())
+        local = {tuple(cell): data for cell, data in source['layout']}
+        return spec, {(*PATH, int(tile, 16)): encode_paths(local[tuple(cell)]['routes'])
+                      for cell, tile in zip(spec['cells'], spec['tile_ids'])}
     for (x, row), raw_tile in zip(CONTRACTS[recipe]['cells'], spec['tile_ids']):
-        if recipe.endswith('paired_ramp_l2_to_l4'):
-            forward = [(2., -8.+n/2., ramp_height(-16.*row-8.+n/2.)) for n in range(33)]
-            reverse = [(-2., y, h) for _, y, h in reversed(forward)]
-            routes = [route(forward, 3, 1), route(reverse, 1, 3)]
-        elif recipe.endswith('upper_paired_straight'):
+        if recipe.endswith('upper_paired_straight'):
             routes = [route([(2., -8., 30.5), (2., 8., 30.5)], 3, 1),
                       route([(-2., 8., 30.5), (-2., -8., 30.5)], 1, 3)]
         else:
@@ -85,7 +91,7 @@ def sloped_pier(gradient=.1, top=14., x=0., z=5.):
 
 
 class CoreEncodedComponentTests(unittest.TestCase):
-    recipes = ('hsr_component_upper_paired_straight', 'hsr_component_paired_ramp_l2_to_l4')
+    recipes = ('hsr_component_upper_paired_straight', 'hsr_component_modular_paired_climb')
 
     def test_literal_ports_bidirectional_pair_and_isolated_crossing_levels(self):
         for recipe in self.recipes:
@@ -122,7 +128,7 @@ class CoreEncodedComponentTests(unittest.TestCase):
         key = *PATH, int(spec['tile_ids'][3], 16)
         routes = parse_paths(paths[key])['routes']
         routes[0]['points'][-1] = (*routes[0]['points'][-1][:2], routes[0]['points'][-1][2]-.01)
-        with self.assertRaisesRegex(ValueError, 'seam|disconnected'):
+        with self.assertRaisesRegex(ValueError, 'frozen module PATH bytes'):
             check_paths({**paths, key: encode_inspected(routes)}, spec)
         routes = parse_paths(paths[key])['routes']
         routes[0]['points'][-1] = (-2., *routes[0]['points'][-1][1:])
@@ -130,7 +136,7 @@ class CoreEncodedComponentTests(unittest.TestCase):
             check_paths({**paths, key: encode_inspected(routes)}, spec)
 
     def test_native_flat_collar_and_monotonic_grade_are_measured(self):
-        contract = CONTRACTS[self.recipes[1]]
+        contract = {**CONTRACTS[self.recipes[1]], 'flat_collar_m': 8.}
         valid = [(2., -120.+n/2., ramp_height(-120.+n/2.)) for n in range(257)]
         self.assertAlmostEqual(audit_height_profile(valid, contract), .15625)
         changed = list(valid)
@@ -147,20 +153,22 @@ class CoreEncodedComponentTests(unittest.TestCase):
             audit_height_profile(changed, contract)
 
     def test_flat_collar_is_checked_even_when_one_long_segment_spans_its_boundary(self):
-        contract = CONTRACTS[self.recipes[1]]
+        contract = {**CONTRACTS[self.recipes[1]], 'flat_collar_m': 8.}
         points = [(2., -120., 15.5), (2., -119., 15.5), (2., -100., 16.),
                   (2., 0., 30.5), (2., 8., 30.5)]
         with self.assertRaisesRegex(ValueError, 'full flat collar'):
             audit_height_profile(points, contract)
 
     def test_an_interior_lateral_wobble_cannot_pass_as_a_straight_native_track(self):
-        spec, paths = literal_core_paths(self.recipes[1])
-        key = *PATH, int(spec['tile_ids'][3], 16)
-        routes = parse_paths(paths[key])['routes']
-        x, y, h = routes[0]['points'][16]
-        routes[0]['points'][16] = x+.00001, y, h
-        with self.assertRaisesRegex(ValueError, 'native offset'):
-            check_paths({**paths, key: encode_inspected(routes)}, spec)
+        north = [(2., -120.+n/2., ramp_height(-120.+n/2.)) for n in range(257)]
+        south = [(-2., y, height) for _, y, height in reversed(north)]
+        self.assertEqual(audit_partition_climb({('Sin', 'Nout'): north, ('Nin', 'Sout'): south})
+                         ['paired_climb_horizontal_length_m'], 128.)
+        changed = list(north)
+        x, y, height = changed[128]
+        changed[128] = x+.00001, y, height
+        with self.assertRaisesRegex(ValueError, 'native straight track offsets'):
+            audit_partition_climb({('Sin', 'Nout'): changed, ('Nin', 'Sout'): south})
 
     def test_unknown_recipe_and_unreviewed_footprint_or_structural_cells_fail(self):
         spec, paths = literal_core_paths(self.recipes[0])
@@ -262,7 +270,7 @@ class GeneratedComponentContractTests(unittest.TestCase):
         # the existing mainline diverge; its recipe contract is reused.
         # The nine-cell core and matching recessed-web straight replace
         # the superseded full fan build type.
-        self.assertEqual(len(self.specs), 34)
+        self.assertEqual(len(self.specs), 33)
         self.assertNotIn('hsr_component_l2_paired_fan_compact_join', self.specs)
         self.assertIn('hsr_component_l2_paired_fan_compact_core', self.specs)
         self.assertIn('hsr_component_l2_paired_straight_recessed_web', self.specs)
@@ -306,9 +314,9 @@ class NativeComponentModelTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.donors, cls.models = None, {}
-        local = ROOT/'local/settings.json'
+        local = local_settings(ROOT)
         if local.is_file():
-            plugins = Path(json.loads(local.read_text())['plugins'])
+            plugins = Path(jsonc.load(local)['plugins'])
             candidates = list(plugins.rglob('High Speed Rail.dat'))
             if len(candidates) == 1:
                 cls.donors = {key: decompress(raw) for key, raw in entries(candidates[0].read_bytes()).items()}
@@ -397,15 +405,17 @@ class NativeComponentModelTests(unittest.TestCase):
     def test_duplicate_actual_support_is_rejected_across_different_cell_models(self):
         from scp.models import parse_s3d
         from scp.recipes import combine_meshes
-        recipe = 'hsr_component_paired_ramp_l2_to_l4'
+        recipe = 'hsr_component_upper_paired_to_single_adapter'
         spec = spec_for(recipe)
         resources = deepcopy(self.fixture(recipe))
         source = parse_s3d(resources[*S3D, int(spec['tile_ids'][0], 16)])
         target = parse_s3d(resources[*S3D, int(spec['tile_ids'][1], 16)])
         supports = [mesh for mesh in source['meshes'] if b'consolidated' in mesh['name']]
         self.assertTrue(supports)
+        before, after = spec['cells'][:2]
+        offset = (16.*(before[0]-after[0]), 0., 16.*(before[1]-after[1]))
         duplicate = combine_meshes([(target, target['meshes'], (0., 0., 0.)),
-                                    (source, supports, (0., 0., -16.))])
+                                    (source, supports, offset)])
         self.replace_model(resources, spec, 1, duplicate)
         with self.assertRaisesRegex(ValueError, 'duplicate support foundations'):
             check_models(resources, spec)

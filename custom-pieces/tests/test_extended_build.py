@@ -19,9 +19,11 @@ import tempfile
 import unittest
 import zipfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.build import build_project, package_build
 from scp.dbpf import entries, decompress, pack_dbpf
 from scp.models import parse_s3d, pack_s3d
@@ -42,8 +44,8 @@ def path_bytes(parsed):
 class ExtendedPortablePackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
-        config = json.loads(local.read_text()) if local.is_file() else {}
+        local = local_settings(ROOT)
+        config = jsonc.loads(local.read_text()) if local.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS')
@@ -51,10 +53,10 @@ class ExtendedPortablePackageTests(unittest.TestCase):
         cls.base = Path(cls.sandbox.name).resolve()
         cls.fixture = cls.base / 'fixture'
         try:
-            selected = ['hsr-diagonal-ghsr', 'hsr-straight-ghsr',
-                        'diagonal-hsr-straight-ghsr', 'diagonal-hsr-diagonal-ghsr',
-                        'interchange-oneway-hsr-straight', 'interchange-oneway-hsr-diagonal',
-                        'interchange-hsr-split-90-compact']
+            selected = ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-90deg',
+                        'hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg',
+                        'hsr-l2-single-track-oneway-straight-width7500mm', 'hsr-l2-single-track-oneway-straight-diagonal',
+                        'hsr-l2-two-track-mainline-split-90deg-right-compact']
             build_project(ROOT, plugins, cls.fixture, include=selected,
                           extra_roots=config.get('extra_plugins', []))
         except BaseException:
@@ -97,10 +99,10 @@ class ExtendedPortablePackageTests(unittest.TestCase):
         self.assertFalse(report['local_donor_comparison'])
         self.assertEqual(report['construction']['separate_piece_menu_roots'], len(self.pieces))
         self.assertEqual(report['construction']['states_per_root'], 8)
-        self.assertNotIn('tram-under-hsr', self.pieces)
+        self.assertNotIn('hsr-l2-over-tram-ground-mixed-crossing-90deg', self.pieces)
         self.assertEqual(len(self.pieces), 7)
-        self.assertTrue({'hsr-straight-ghsr', 'diagonal-hsr-straight-ghsr',
-                         'diagonal-hsr-diagonal-ghsr'} <= self.pieces.keys())
+        self.assertTrue({'hsr-l2-over-ghsr-ground-two-track-crossing-90deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg',
+                         'hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg'} <= self.pieces.keys())
         self.assertFalse(any(value for key, value in report.items() if key.startswith('in_game_')))
         archive = self.case / 'all-pieces.zip'
         package_build(self.output, archive)
@@ -111,8 +113,8 @@ class ExtendedPortablePackageTests(unittest.TestCase):
         self.assertTrue(verify_build(extracted, write_report=False)['static_checks_passed'])
 
     def test_each_new_crossing_rejects_a_crosslevel_path_after_rehashing(self):
-        for slug in ('hsr-straight-ghsr', 'diagonal-hsr-straight-ghsr',
-                     'diagonal-hsr-diagonal-ghsr'):
+        for slug in ('hsr-l2-over-ghsr-ground-two-track-crossing-90deg', 'hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg',
+                     'hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg'):
             with self.subTest(piece=slug):
                 # Restore the fixture between the three independent mutations.
                 shutil.rmtree(self.output)
@@ -129,7 +131,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
                     verify_build(self.output, write_report=False)
 
     def test_reversed_oneway_path_is_rejected_after_rehashing(self):
-        slug = 'interchange-oneway-hsr-straight'
+        slug = 'hsr-l2-single-track-oneway-straight-width7500mm'
         tile = int(self.pieces[slug]['tile_ids'][0], 16)
         def mutate(resources, manifest):
             parsed = parse_paths(resources[*PATH, tile])
@@ -142,7 +144,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_negative_oneway_path_class_is_rejected_after_rehashing(self):
-        slug = 'interchange-oneway-hsr-straight'
+        slug = 'hsr-l2-single-track-oneway-straight-width7500mm'
         tile = int(self.pieces[slug]['tile_ids'][0], 16)
         def mutate(resources, manifest):
             parsed = parse_paths(resources[*PATH, tile])
@@ -153,7 +155,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_split_junction_flag_is_rejected_after_rehashing(self):
-        slug = 'interchange-hsr-split-90-compact'
+        slug = 'hsr-l2-two-track-mainline-split-90deg-right-compact'
         def mutate(resources, manifest):
             tile = next(int(raw, 16) for raw in self.pieces[slug]['tile_ids']
                         if any(route['compatibility'] for route in
@@ -168,7 +170,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_changed_shadow_pixels_are_rejected_after_rehashing(self):
-        slug = 'interchange-oneway-hsr-diagonal'
+        slug = 'hsr-l2-single-track-oneway-straight-diagonal'
         tile = int(self.pieces[slug]['tile_ids'][0], 16)
         def mutate(resources, manifest):
             key = (*SHADOW, tile + 4)
@@ -180,7 +182,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_wrong_shadow_zoom_size_is_rejected_after_rehashing(self):
-        slug = 'interchange-oneway-hsr-straight'
+        slug = 'hsr-l2-single-track-oneway-straight-width7500mm'
         tile = int(self.pieces[slug]['tile_ids'][0], 16)
         def mutate(resources, manifest):
             resources[*SHADOW, tile + 4] = resources[*SHADOW, tile + 3]
@@ -189,7 +191,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_wrong_oneway_model_height_is_rejected_after_rehashing(self):
-        slug = 'interchange-oneway-hsr-straight'
+        slug = 'hsr-l2-single-track-oneway-straight-width7500mm'
         tile = int(self.pieces[slug]['tile_ids'][0], 16)
         def mutate(resources, manifest):
             model = parse_s3d(resources[*S3D, tile])
@@ -208,7 +210,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_shifted_rail_texture_uvs_fail_even_when_all_models_and_preview_agree(self):
-        slug = 'interchange-oneway-hsr-straight'
+        slug = 'hsr-l2-single-track-oneway-straight-width7500mm'
         def mutate(resources, manifest):
             for key in list(resources):
                 if key[:2] != S3D:
@@ -229,7 +231,7 @@ class ExtendedPortablePackageTests(unittest.TestCase):
             verify_build(self.output, write_report=False)
 
     def test_oneway_rotation_cannot_become_a_mirror_even_after_manifest_rehashing(self):
-        root = int(self.pieces['interchange-oneway-hsr-straight']['puzzle_id'], 16)
+        root = int(self.pieces['hsr-l2-single-track-oneway-straight-width7500mm']['puzzle_id'], 16)
         relative = 'zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat'
         def mutate(resources, manifest):
             suffix = manifest['overlay']['rul0']['suffix']

@@ -1,0 +1,248 @@
+// title: "Resolved connector export schema"
+// summary: "Validate machine-readable connector exports produced from authored declarations and measured piece boundaries."
+//
+// Used when: Resolved connector-data.json consumer exports are generated or loaded and their required fields, types, identifiers, and route structure must be checked.
+// Read by: scp.connector_metadata._schema() for build_exports() and load_exports(), which pass this schema to validate_structure(); packaged Python resources provide the same schema outside a source checkout.
+// Updated by: A maintainer alongside an intentional connector-export contract change and its validator, producer, consumer, and regression checks; export generation does not rewrite the schema.
+// Affects: Structural acceptance of resolved consumer exports before further source-freshness and compiled-resource checks; this file contains validation rules, not a piece's measured connector data or compatibility results.
+// Reference: custom-pieces/docs/CONNECTOR_METADATA.md defines connector exports, source binding, validation order, and verification limits.
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "piece_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_binding": {
+      "type": "object",
+      "properties": {
+        "compiled_build": {
+          "type": "string",
+          "minLength": 1
+        },
+        "files": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "compiled_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "compiled_build",
+        "files",
+        "compiled_manifest_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "coordinate_convention": {
+      "type": "object"
+    },
+    "resolved_piece": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "piece": {
+          "type": "object"
+        },
+        "connections": {
+          "type": "object"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "type": "array"
+          },
+          "minItems": 1
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 1
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 1
+        },
+        "boundary_bundles": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 1
+        },
+        "journeys": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "forbidden_transfers": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "supported_orientations": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "software_status": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "piece",
+        "connections",
+        "metadata",
+        "cells",
+        "groups",
+        "channels",
+        "boundary_bundles",
+        "journeys",
+        "forbidden_transfers",
+        "supported_orientations",
+        "software_status"
+      ],
+      "additionalProperties": false
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_route_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_class": {
+            "type": "integer"
+          },
+          "compatibility": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "engine_transport": {
+            "type": "integer"
+          },
+          "cell": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tile_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entry_edge": {
+            "type": "integer"
+          },
+          "exit_edge": {
+            "type": "integer"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 2
+          }
+        },
+        "required": [
+          "id",
+          "engine_transport",
+          "cell",
+          "tile_id",
+          "entry_edge",
+          "exit_edge",
+          "points"
+        ],
+        "additionalProperties": true
+      },
+      "minItems": 1
+    },
+    "endpoint_route_refs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1
+      }
+    },
+    "verification": {
+      "type": "object"
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "piece_id",
+    "domain_id",
+    "source_binding",
+    "coordinate_convention",
+    "resolved_piece",
+    "routes",
+    "endpoint_route_refs",
+    "verification",
+    "content_sha256"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SCP resolved consumer connection data, version 1",
+  "description": "Generated complete source description plus original compiled route fragments in piece-local east/north/height coordinates. Do not hand-edit."
+}

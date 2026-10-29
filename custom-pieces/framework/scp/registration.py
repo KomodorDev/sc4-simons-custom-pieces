@@ -1,6 +1,7 @@
 """Register new domain pieces and collections without editing global routing."""
 from copy import deepcopy
 import json
+from . import jsonc
 from pathlib import Path
 from .catalog import load_catalog, safe_relative, validate_catalog
 from .dbpf import require
@@ -18,9 +19,9 @@ def apply_registration(root, additions, ledger, collections, icons=None, *, doma
     route = current['domains'][domain]
     directory = safe_relative(root, route['path'])
     registry_file = safe_relative(root, route['registry'])
-    registry = json.loads(registry_file.read_text())
+    registry = jsonc.load(registry_file)
     collection_file = safe_relative(directory, registry['collections'])
-    selections = json.loads(collection_file.read_text())
+    selections = jsonc.load(collection_file)
     pending = {}
     for piece in additions:
         require(piece['domain'] == domain, 'New piece is assigned to the wrong domain')
@@ -40,9 +41,15 @@ def apply_registration(root, additions, ledger, collections, icons=None, *, doma
                     pending[document] = text.encode()
         registry['pieces'].append(target.relative_to(directory).as_posix())
     selections['collections'].update(collections)
-    pending[root / current['allocations']] = (json.dumps(ledger, indent=2)+'\n').encode()
-    pending[registry_file] = (json.dumps(registry, indent=2)+'\n').encode()
-    pending[collection_file] = (json.dumps(selections, indent=2)+'\n').encode()
+    for path, value, title, summary in (
+            (root / current['allocations'], ledger, 'Permanent resource allocations',
+             'Reserve game-resource identifiers so existing saved cities retain their piece identities.'),
+            (registry_file, registry, route['name'] + ' domain registry',
+             'Register maintained pieces, assemblies, implementation modules, and build collections for this domain.'),
+            (collection_file, selections, route['name'] + ' build collections',
+             'Select named groups of existing reusable piece types for explicit builds.')):
+        pending[path] = jsonc.document(value, source=path.read_text(encoding='utf-8'),
+                                      title=title, summary=summary).encode('utf-8')
     for identifier, raw in (icons or {}).items():
         require(identifier in {p['id'] for p in candidate['pieces'] if p['domain'] == domain},
                 'Icon does not identify a piece in this domain')

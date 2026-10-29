@@ -1,0 +1,402 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Left.",
+  "schema_version": 1,
+  "id": "hsr-l4-two-track-curve-90deg-left",
+  "name": "HSR Level 4 (30.5 m) \u2014 Two-Track Curve 90\u00b0 Left",
+  "description": "Close opposite-direction tracks on one native-width upper 90 degree slab, with flat cardinal connection collars.",
+  "domain": "high-speed-rail",
+  "recipe": "hsr_component_upper_paired_curve90_left",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f7ac",
+  "tile_ids": [
+    "7f50c000",
+    "7f50c100",
+    "7f50c200",
+    "7f50c300",
+    "7f50c400",
+    "7f50c500",
+    "7f50c210",
+    "7f50c310",
+    "7f50c410",
+    "7f50c510",
+    "7f50c610",
+    "7f50c420",
+    "7f50c520",
+    "7f50c620",
+    "7f50c530",
+    "7f50c630",
+    "7f50c540",
+    "7f50c640",
+    "7f50c650",
+    "7f50c660"
+  ],
+  "preview_id": "7f50cff5",
+  "effect_name": "preview_scp_hsrcomp_f7ac_00",
+  "footprint": [
+    7,
+    7
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      6
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7ac",
+    "order": "7012f7ac",
+    "style": "hsr-component-upper-paired-curve90-left"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f50c000",
+      "source": "7f50c000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c100",
+      "source": "7f50c100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c200",
+      "source": "7f50c200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c300",
+      "source": "7f50c300",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c400",
+      "source": "7f50c400",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c500",
+      "source": "7f50c500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c210",
+      "source": "7f50c210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c310",
+      "source": "7f50c310",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c410",
+      "source": "7f50c410",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c510",
+      "source": "7f50c510",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c610",
+      "source": "7f50c610",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c420",
+      "source": "7f50c420",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c520",
+      "source": "7f50c520",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c620",
+      "source": "7f50c620",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c530",
+      "source": "7f50c530",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c630",
+      "source": "7f50c630",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c540",
+      "source": "7f50c540",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c640",
+      "source": "7f50c640",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c650",
+      "source": "7f50c650",
+      "rotation": 0
+    },
+    {
+      "tile": "7f50c660",
+      "source": "7f50c660",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+    "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "hsr-components",
+  "component": {
+    "kind": "upper_paired_curve",
+    "structural_cells": [
+      [
+        5,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "support_centers": [
+      [
+        0.0,
+        -0.0
+      ],
+      [
+        16.0,
+        -0.0
+      ],
+      [
+        32.0,
+        -0.0
+      ],
+      [
+        48.0,
+        -0.0
+      ],
+      [
+        64.0,
+        -16.0
+      ],
+      [
+        80.0,
+        -16.0
+      ],
+      [
+        80.0,
+        -32.0
+      ],
+      [
+        96.0,
+        -48.0
+      ],
+      [
+        96.0,
+        -64.0
+      ],
+      [
+        96.0,
+        -80.0
+      ],
+      [
+        96.0,
+        -96.0
+      ]
+    ],
+    "support_foundation_width": 1.3,
+    "support_min_spacing": 16.0
+  },
+  "ports": {
+    "S": {
+      "in": [
+        98.0,
+        -104.0,
+        30.5
+      ],
+      "out": [
+        94.0,
+        -104.0,
+        30.5
+      ]
+    },
+    "W": {
+      "out": [
+        -8.0,
+        2.0,
+        30.5
+      ],
+      "in": [
+        -8.0,
+        -2.0,
+        30.5
+      ]
+    }
+  },
+  "movements": [
+    [
+      "S",
+      "W"
+    ],
+    [
+      "W",
+      "S"
+    ]
+  ],
+  "at_grade_conflicts": false,
+  "design_assessment": {
+    "stage": "reusable component prototype",
+    "scope": "Individual component; assembly and game operation unverified"
+  },
+  "structural_cells": [
+    [
+      5,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ]
+  ]
+}

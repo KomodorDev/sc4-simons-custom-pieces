@@ -1,0 +1,59 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 90\u00b0 \u2014 Both Diagonal.",
+  "schema_version": 1,
+  "id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+  "name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 90\u00b0 \u2014 Both Diagonal",
+  "description": "Diagonal elevated HSR crosses diagonal ground HSR at a right angle. Two tiles; no interchange.",
+  "recipe": "diagonal_hsr_diagonal_ghsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7a4",
+  "tile_ids": [
+    "7f502000",
+    "7f502010"
+  ],
+  "preview_id": "7f502ff5",
+  "effect_name": "preview_scp_hsr_cross_00003",
+  "footprint": [
+    1,
+    2
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr",
+    "urail"
+  ],
+  "menu": {
+    "id": "6a47f7a4",
+    "order": "7011f7a4",
+    "style": "cross-dd"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f502000",
+      "source": "5dd01a00",
+      "rotation": 0
+    },
+    {
+      "tile": "7f502010",
+      "source": "5dd01a00",
+      "rotation": 2
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team native HSR and GHSR model buffers",
+    "construction": "NAM AAC0/AAC2/AAC3 same-network two-height layout",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "domain": "high-speed-rail"
+}

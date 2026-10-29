@@ -12,6 +12,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from scp import jsonc
 from scp.dbpf import require
 from scp.verification_fixtures import resource_descriptor
 from .assembly_inspection import _world_triangles, sha256, number
@@ -23,8 +24,8 @@ from .hsr_trumpet_rework_verify import (
     _projected_tile_intersection_area, _tile_intersection_surface_area,
 )
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
-ASSEMBLY_RELATIVE = Path('domains/high-speed-rail/01_assemblies/straight-stem-trumpet')
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
+ASSEMBLY_RELATIVE = Path('domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem')
 SNAPSHOT_RELATIVE = Path('evidence/design-history/before-border-piece-integration')
 SNAPSHOT_INDEX_SHA256 = '081bb2475ef153d0b6df13d9d1bb21bf190f6cd8a427ad56f654728a1661cbd4'
 STANDALONE_REVISIONS_SHA256 = '94c4679fed3b33cc0af14fe5f8734d752b1c7d180c0ae73df5c7d4496b516163'
@@ -289,8 +290,8 @@ def audit_parent_retirement(*, root=ROOT, ledger=None):
     domain = root/'domains/high-speed-rail'
     require(not (domain/'00_pieces'/FULL_FAN_ID).exists(),
             'Trumpet retired parent cannot remain an active or compatibility source')
-    registry = json.loads((domain/'domain.json').read_text())
-    collections = json.loads((domain/'collections.json').read_text())['collections']
+    registry = jsonc.load(domain/'domain.jsonc')
+    collections = jsonc.load(domain/'collections.jsonc')['collections']
     require('00_pieces/'+FULL_FAN_ID+'/piece.json' not in registry['pieces']
             and all(FULL_FAN_ID not in selection for selection in collections.values()),
             'Trumpet retired parent remains registered in an active piece selection')
@@ -303,7 +304,8 @@ def audit_parent_retirement(*, root=ROOT, ledger=None):
             'Trumpet parent retirement changes its seven standalone history rows')
     for identifier, inputs in ((CORE_ID, CORE_SOURCE_INPUTS), (STRAIGHT_ID, STRAIGHT_SOURCE_INPUTS)):
         for relative, digest in {**inputs, **EXTRACTED_STANDALONE_EVIDENCE[identifier]}.items():
-            require(sha256((domain/'00_pieces'/identifier/relative).read_bytes()) == digest,
+            source = domain/'00_pieces'/identifier/relative
+            require(source.is_file() and sha256(source.read_bytes()) == digest,
                     'Trumpet parent retirement changes a retained source or extraction proof: '+identifier+'/'+relative)
     return json.loads(raw)
 

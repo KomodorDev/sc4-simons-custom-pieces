@@ -15,6 +15,7 @@ import unittest
 from unittest.mock import patch
 
 from scp.track_paths import PATH, encode_paths
+from scp.subject_sources import piece_id_for_recipe
 from scp_hsr.hsr_compact_fan import RECIPES, compact_info, compact_layout, compact_routes, model_inputs
 from scp_hsr.hsr_compact_fan_verify import CONTRACTS, check_paths
 from scp_hsr.hsr_atomic_junctions import atomic_info
@@ -23,7 +24,7 @@ from scp_hsr.directional_t_verify import _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.rail_geometry import _route
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 CORE = 'hsr_component_l2_paired_fan_compact_core'
 STRAIGHT = 'hsr_component_l2_paired_straight_recessed_web'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
@@ -165,8 +166,8 @@ class CompactFanSourceTests(unittest.TestCase):
         self.assertEqual(info['port_vectors']['Ein'], tuple(-v for v in tangent))
         self.assertEqual(info['port_vectors']['Wout'], (-tangent[0], tangent[1]))
         self.assertEqual(info['port_vectors']['Wout'], merge['port_vectors']['Nin'])
-        scene = json.loads((ROOT/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet/assembly.json').read_text())
-        copies = [row for row in scene['placements'] if row['piece_id'] == DIVERGE.replace('_', '-')]
+        scene = json.loads((ROOT/'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/assembly.json').read_text())
+        copies = [row for row in scene['placements'] if row['piece_id'] == piece_id_for_recipe(DIVERGE, ROOT)]
         self.assertEqual([(row['origin_m'], row['rotation_degrees_ccw']) for row in copies],
                          [([-96., 0.], 0), ([176., 0.], 180)])
         # P26 owns the extracted western approach, so P07's local origin
@@ -174,10 +175,10 @@ class CompactFanSourceTests(unittest.TestCase):
         by_label = {row['label']: row for row in scene['placements']}
         self.assertEqual((by_label['P07']['piece_id'], by_label['P07']['origin_m'],
                           by_label['P07']['rotation_degrees_ccw']),
-                         (MERGE.replace('_', '-'), [48., 0.], 0))
+                         (piece_id_for_recipe(MERGE, ROOT), [48., 0.], 0))
         self.assertEqual((by_label['P26']['piece_id'], by_label['P26']['origin_m'],
                           by_label['P26']['rotation_degrees_ccw']),
-                         ('hsr-component-lower-paired-straight', [32., 0.], 270))
+                         ('hsr-l2-two-track-straight', [32., 0.], 270))
         self.assertFalse(any(row['piece_id'] == 'hsr-component-l2-compact-fan-diverge'
                              for row in scene['placements']))
 

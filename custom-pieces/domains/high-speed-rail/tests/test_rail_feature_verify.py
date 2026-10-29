@@ -8,9 +8,11 @@ import struct
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp.models import parse_s3d, pack_s3d
 from scp_hsr.rail_features import INFO, build_feature, feature_layout, native_model, native_paths
@@ -34,10 +36,10 @@ def encode_inspected(routes):
 class RailFeatureVerifierTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
+        local = local_settings(ROOT)
         if not local.is_file():
             raise unittest.SkipTest('Audited local NAM donor is unavailable')
-        plugins = Path(json.loads(local.read_text())['plugins'])
+        plugins = Path(jsonc.load(local)['plugins'])
         candidates = list(plugins.rglob('High Speed Rail.dat'))
         if len(candidates) != 1:
             raise unittest.SkipTest('One audited native HSR donor is required')

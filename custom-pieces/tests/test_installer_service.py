@@ -8,10 +8,11 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path / "project.json").is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path / "project.jsonc").is_file())
 sys.path.insert(0, str(ROOT / "installer"))
 from scp_installer import service
 from scp.catalog import load_catalog
+from scp import jsonc
 from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, RUL0, NETWORK_INI
 
@@ -176,8 +177,8 @@ class InstallerSelectionTests(unittest.TestCase):
         expected = [piece["id"] for piece in catalog["pieces"] if piece["status"] != "draft"]
         actual = service.all_implemented_ids(ROOT)
         self.assertEqual(actual, expected)
-        self.assertIn("blind-hsr-road-stack", actual)
-        self.assertIn("blind-hsr-rise-quarter-turn", actual)
+        self.assertIn("hsr-l2-over-road-l0-mixed-parallel-stack", actual)
+        self.assertIn("hsr-l2-and-l4-two-track-curve-ramp-90deg-right", actual)
         self.assertEqual(len(actual), len(expected))
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
 
@@ -199,6 +200,22 @@ class InstallerSelectionTests(unittest.TestCase):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
         with patch.object(service, "_owned", return_value={"piece_ids": ["retired-in-city"]}):
             with self.assertRaisesRegex(ValueError, "would remove installed pieces: retired-in-city"):
+                service.installed_selection(ROOT, plan)
+
+    def test_update_accepts_current_piece_selections_without_rewriting_receipts(self):
+        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
+        expected = service.all_implemented_ids(ROOT)
+        receipt = {"piece_ids": expected[:3]}
+        previous = deepcopy(receipt)
+        with patch.object(service, "_owned", return_value=receipt):
+            self.assertEqual(service.installed_selection(ROOT, plan), expected)
+        self.assertEqual(receipt, previous)
+
+    def test_assembly_ids_are_not_accepted_as_installed_piece_identities(self):
+        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
+        identifier = load_catalog(ROOT)["_assemblies"][0]["id"]
+        with patch.object(service, "_owned", return_value={"piece_ids": [identifier]}):
+            with self.assertRaisesRegex(ValueError, "would remove installed pieces: " + identifier):
                 service.installed_selection(ROOT, plan)
 
 

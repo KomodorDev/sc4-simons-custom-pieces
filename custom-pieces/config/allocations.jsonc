@@ -1,0 +1,10132 @@
+// title: "Permanent piece resource allocations"
+// summary: "Reserve construction and game-resource identifiers for each reusable piece so saved-city identities remain stable."
+//
+// Used when: The catalogue is validated or a new reusable piece reserves numeric construction, model, preview, and menu identifiers.
+// Read by: scp.catalog.load_catalog()/validate_catalog() and the scaffold command in custom-pieces/scp.py; domain registration tools also load its existing reservations.
+// Updated by: The scaffold command or reviewed domain registration tools through scp.registration.apply_registration(); existing retained pieces keep their numeric reservations.
+// Affects: Identifier collision checks and rejection of changes to an existing piece's saved-city resource identity or construction coordinates; this is not proof of public ID allocation.
+// Reference: custom-pieces/docs/WORKFLOW_PIECE_CREATION.md describes allocation, and custom-pieces/docs/RELEASE.md describes public identifier requirements.
+{
+  "purpose": "Permanent local resource reservations; identifiers must not change for an existing piece.",
+  "schema_version": 1,
+  "globally_registered": false,
+  "pieces": {
+    "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg": {
+      "puzzle_id": "f7a1",
+      "tile_ids": [
+        "5dd0f200",
+        "5dd0f210"
+      ],
+      "preview_id": "5dd0f225",
+      "menu_id": "6a47f7a1",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "tile_base": "5dd0f200"
+    },
+    "hsr-l2-over-tram-ground-mixed-crossing-90deg": {
+      "puzzle_id": "f7a0",
+      "tile_ids": [
+        "5dd0f100"
+      ],
+      "preview_id": "5dd0f105",
+      "menu_id": "6a47f7a0",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tile_base": "5dd0f100"
+    },
+    "hsr-l2-over-ghsr-ground-two-track-crossing-90deg": {
+      "puzzle_id": "f7a2",
+      "tile_ids": [
+        "7f500000"
+      ],
+      "preview_id": "7f500ff5",
+      "menu_id": "6a47f7a2",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tile_base": "7f500000"
+    },
+    "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg": {
+      "puzzle_id": "f7a3",
+      "tile_ids": [
+        "7f501000",
+        "7f501010"
+      ],
+      "preview_id": "7f501ff5",
+      "menu_id": "6a47f7a3",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "tile_base": "7f501000"
+    },
+    "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg": {
+      "puzzle_id": "f7a4",
+      "tile_ids": [
+        "7f502000",
+        "7f502010"
+      ],
+      "preview_id": "7f502ff5",
+      "menu_id": "6a47f7a4",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "tile_base": "7f502000"
+    },
+    "hsr-l2-two-track-s-curve-diagonal-left": {
+      "puzzle_id": "f7b1",
+      "tile_ids": [
+        "7f50f200",
+        "7f50f210",
+        "7f50f120",
+        "7f50f220"
+      ],
+      "preview_id": "7f50fff5",
+      "menu_id": "6a47f7b1",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "tile_base": "7f50f000"
+    },
+    "hsr-l2-two-track-s-curve-diagonal-right": {
+      "puzzle_id": "f7b2",
+      "tile_ids": [
+        "7f510210",
+        "7f510020",
+        "7f510120",
+        "7f510220"
+      ],
+      "preview_id": "7f510ff5",
+      "menu_id": "6a47f7b2",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "tile_base": "7f510000"
+    },
+    "ghsr-ground-two-track-s-curve-diagonal-left": {
+      "puzzle_id": "f7b3",
+      "tile_ids": [
+        "7f511200",
+        "7f511210",
+        "7f511120",
+        "7f511220"
+      ],
+      "preview_id": "7f511ff5",
+      "menu_id": "6a47f7b3",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "tile_base": "7f511000"
+    },
+    "ghsr-ground-two-track-s-curve-diagonal-right": {
+      "puzzle_id": "f7b4",
+      "tile_ids": [
+        "7f512210",
+        "7f512020",
+        "7f512120",
+        "7f512220"
+      ],
+      "preview_id": "7f512ff5",
+      "menu_id": "6a47f7b4",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "tile_base": "7f512000"
+    },
+    "hsr-l2-two-track-crossover-adjacent-right": {
+      "puzzle_id": "f7b5",
+      "tile_ids": [
+        "7f513000",
+        "7f513100",
+        "7f513010",
+        "7f513110",
+        "7f513020",
+        "7f513120"
+      ],
+      "preview_id": "7f513ff5",
+      "menu_id": "6a47f7b5",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tile_base": "7f513000"
+    },
+    "hsr-l2-two-track-crossover-adjacent-left": {
+      "puzzle_id": "f7b6",
+      "tile_ids": [
+        "7f514000",
+        "7f514100",
+        "7f514010",
+        "7f514110",
+        "7f514020",
+        "7f514120"
+      ],
+      "preview_id": "7f514ff5",
+      "menu_id": "6a47f7b6",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tile_base": "7f514000"
+    },
+    "ghsr-ground-two-track-crossover-adjacent-right": {
+      "puzzle_id": "f7b8",
+      "tile_ids": [
+        "7f516000",
+        "7f516100",
+        "7f516010",
+        "7f516110",
+        "7f516020",
+        "7f516120"
+      ],
+      "preview_id": "7f516ff5",
+      "menu_id": "6a47f7b8",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tile_base": "7f516000"
+    },
+    "ghsr-ground-two-track-crossover-adjacent-left": {
+      "puzzle_id": "f7b9",
+      "tile_ids": [
+        "7f517000",
+        "7f517100",
+        "7f517010",
+        "7f517110",
+        "7f517020",
+        "7f517120"
+      ],
+      "preview_id": "7f517ff5",
+      "menu_id": "6a47f7b9",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tile_base": "7f517000"
+    },
+    "ghsr-ground-and-hsr-l2-two-track-transition": {
+      "puzzle_id": "f7bb",
+      "tile_ids": [
+        "7f519000",
+        "7f519010",
+        "7f519020",
+        "7f519030",
+        "7f519040",
+        "7f519050",
+        "7f519060",
+        "7f519070"
+      ],
+      "preview_id": "7f519ff5",
+      "menu_id": "6a47f7bb",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "tile_base": "7f519000"
+    },
+    "ghsr-ground-single-track-oneway-straight": {
+      "puzzle_id": "f7be",
+      "tile_ids": [
+        "7f51c000"
+      ],
+      "preview_id": "7f51cff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7be",
+      "tile_base": "7f51c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51c000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-straight-diagonal": {
+      "puzzle_id": "f7bf",
+      "tile_ids": [
+        "7f51d000",
+        "7f51d010"
+      ],
+      "preview_id": "7f51dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7bf",
+      "tile_base": "7f51d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51d000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-straight-diagonal-north-half": {
+      "puzzle_id": "f7c0",
+      "tile_ids": [
+        "7f51e000"
+      ],
+      "preview_id": "7f51eff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7c0",
+      "tile_base": "7f51e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51e000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-straight-diagonal-east-half": {
+      "puzzle_id": "f7c1",
+      "tile_ids": [
+        "7f51f000"
+      ],
+      "preview_id": "7f51fff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7c1",
+      "tile_base": "7f51f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51f000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-right": {
+      "puzzle_id": "f7c2",
+      "tile_ids": [
+        "7f520000",
+        "7f520010"
+      ],
+      "preview_id": "7f520ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7c2",
+      "tile_base": "7f520000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f520000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-left": {
+      "puzzle_id": "f7c3",
+      "tile_ids": [
+        "7f521000",
+        "7f521010"
+      ],
+      "preview_id": "7f521ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7c3",
+      "tile_base": "7f521000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f521000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-left": {
+      "puzzle_id": "f7c4",
+      "tile_ids": [
+        "7f522000",
+        "7f522010"
+      ],
+      "preview_id": "7f522ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7c4",
+      "tile_base": "7f522000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f522000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-right": {
+      "puzzle_id": "f7c5",
+      "tile_ids": [
+        "7f523000",
+        "7f523010"
+      ],
+      "preview_id": "7f523ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7c5",
+      "tile_base": "7f523000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f523000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-90deg-left-compact": {
+      "puzzle_id": "f7c6",
+      "tile_ids": [
+        "7f524000",
+        "7f524100",
+        "7f524110",
+        "7f524210",
+        "7f524220"
+      ],
+      "preview_id": "7f524ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7c6",
+      "tile_base": "7f524000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f524000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-90deg-right-compact": {
+      "puzzle_id": "f7c7",
+      "tile_ids": [
+        "7f525100",
+        "7f525200",
+        "7f525010",
+        "7f525110",
+        "7f525020"
+      ],
+      "preview_id": "7f525ff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7c7",
+      "tile_base": "7f525000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f525000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-straight": {
+      "puzzle_id": "f7c8",
+      "tile_ids": [
+        "7f526000"
+      ],
+      "preview_id": "7f526ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7c8",
+      "tile_base": "7f526000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f526000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-straight-diagonal": {
+      "puzzle_id": "f7c9",
+      "tile_ids": [
+        "7f527000",
+        "7f527010"
+      ],
+      "preview_id": "7f527ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7c9",
+      "tile_base": "7f527000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f527000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-straight-diagonal-north-half": {
+      "puzzle_id": "f7ca",
+      "tile_ids": [
+        "7f528000"
+      ],
+      "preview_id": "7f528ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7ca",
+      "tile_base": "7f528000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f528000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-straight-diagonal-east-half": {
+      "puzzle_id": "f7cb",
+      "tile_ids": [
+        "7f529000"
+      ],
+      "preview_id": "7f529ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7cb",
+      "tile_base": "7f529000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f529000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-right": {
+      "puzzle_id": "f7cc",
+      "tile_ids": [
+        "7f52a000",
+        "7f52a010"
+      ],
+      "preview_id": "7f52aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7cc",
+      "tile_base": "7f52a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52a000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-left": {
+      "puzzle_id": "f7cd",
+      "tile_ids": [
+        "7f52b000",
+        "7f52b010"
+      ],
+      "preview_id": "7f52bff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7cd",
+      "tile_base": "7f52b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52b000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-left": {
+      "puzzle_id": "f7ce",
+      "tile_ids": [
+        "7f52c000",
+        "7f52c010"
+      ],
+      "preview_id": "7f52cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7ce",
+      "tile_base": "7f52c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52c000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-right": {
+      "puzzle_id": "f7cf",
+      "tile_ids": [
+        "7f52d000",
+        "7f52d010"
+      ],
+      "preview_id": "7f52dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7cf",
+      "tile_base": "7f52d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52d000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-90deg-left-compact": {
+      "puzzle_id": "f7d0",
+      "tile_ids": [
+        "7f52e000",
+        "7f52e100",
+        "7f52e110",
+        "7f52e210",
+        "7f52e220"
+      ],
+      "preview_id": "7f52eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7d0",
+      "tile_base": "7f52e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52e000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-90deg-right-compact": {
+      "puzzle_id": "f7d1",
+      "tile_ids": [
+        "7f52f100",
+        "7f52f200",
+        "7f52f010",
+        "7f52f110",
+        "7f52f020"
+      ],
+      "preview_id": "7f52fff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7d1",
+      "tile_base": "7f52f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f52f000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-straight": {
+      "puzzle_id": "f7d2",
+      "tile_ids": [
+        "7f530000"
+      ],
+      "preview_id": "7f530ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7d2",
+      "tile_base": "7f530000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f530000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-straight-diagonal": {
+      "puzzle_id": "f7d3",
+      "tile_ids": [
+        "7f531000",
+        "7f531010"
+      ],
+      "preview_id": "7f531ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7d3",
+      "tile_base": "7f531000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f531000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-straight-diagonal-north-half": {
+      "puzzle_id": "f7d4",
+      "tile_ids": [
+        "7f532000"
+      ],
+      "preview_id": "7f532ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7d4",
+      "tile_base": "7f532000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f532000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-straight-diagonal-east-half": {
+      "puzzle_id": "f7d5",
+      "tile_ids": [
+        "7f533000"
+      ],
+      "preview_id": "7f533ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7d5",
+      "tile_base": "7f533000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f533000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-right": {
+      "puzzle_id": "f7d6",
+      "tile_ids": [
+        "7f534000",
+        "7f534010"
+      ],
+      "preview_id": "7f534ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7d6",
+      "tile_base": "7f534000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f534000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-left": {
+      "puzzle_id": "f7d7",
+      "tile_ids": [
+        "7f535000",
+        "7f535010"
+      ],
+      "preview_id": "7f535ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7d7",
+      "tile_base": "7f535000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f535000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-left": {
+      "puzzle_id": "f7d8",
+      "tile_ids": [
+        "7f536000",
+        "7f536010"
+      ],
+      "preview_id": "7f536ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7d8",
+      "tile_base": "7f536000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f536000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-right": {
+      "puzzle_id": "f7d9",
+      "tile_ids": [
+        "7f537000",
+        "7f537010"
+      ],
+      "preview_id": "7f537ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7d9",
+      "tile_base": "7f537000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f537000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-90deg-left-compact": {
+      "puzzle_id": "f7da",
+      "tile_ids": [
+        "7f538000",
+        "7f538100",
+        "7f538110",
+        "7f538210",
+        "7f538220"
+      ],
+      "preview_id": "7f538ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7da",
+      "tile_base": "7f538000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f538000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-90deg-right-compact": {
+      "puzzle_id": "f7db",
+      "tile_ids": [
+        "7f539100",
+        "7f539200",
+        "7f539010",
+        "7f539110",
+        "7f539020"
+      ],
+      "preview_id": "7f539ff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "menu_id": "6a47f7db",
+      "tile_base": "7f539000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f539000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-45deg-right-compact": {
+      "puzzle_id": "f7dc",
+      "tile_ids": [
+        "7f53a000",
+        "7f53a200",
+        "7f53a010",
+        "7f53a110",
+        "7f53a210",
+        "7f53a020",
+        "7f53a120",
+        "7f53a030"
+      ],
+      "preview_id": "7f53aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7dc",
+      "tile_base": "7f53a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53a000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-45deg-right-compact": {
+      "puzzle_id": "f7dd",
+      "tile_ids": [
+        "7f53b000",
+        "7f53b010",
+        "7f53b110",
+        "7f53b020",
+        "7f53b120",
+        "7f53b220",
+        "7f53b030",
+        "7f53b230"
+      ],
+      "preview_id": "7f53bff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7dd",
+      "tile_base": "7f53b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53b000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-45deg-right-wide": {
+      "puzzle_id": "f7de",
+      "tile_ids": [
+        "7f53c500",
+        "7f53c410",
+        "7f53c510",
+        "7f53c020",
+        "7f53c320",
+        "7f53c420",
+        "7f53c030",
+        "7f53c230",
+        "7f53c330",
+        "7f53c040",
+        "7f53c140",
+        "7f53c240",
+        "7f53c050",
+        "7f53c150",
+        "7f53c060",
+        "7f53c160",
+        "7f53c070",
+        "7f53c080"
+      ],
+      "preview_id": "7f53cff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7de",
+      "tile_base": "7f53c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53c000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-45deg-right-wide": {
+      "puzzle_id": "f7df",
+      "tile_ids": [
+        "7f53d000",
+        "7f53d010",
+        "7f53d020",
+        "7f53d120",
+        "7f53d030",
+        "7f53d130",
+        "7f53d040",
+        "7f53d140",
+        "7f53d240",
+        "7f53d050",
+        "7f53d250",
+        "7f53d350",
+        "7f53d060",
+        "7f53d360",
+        "7f53d460",
+        "7f53d470",
+        "7f53d570",
+        "7f53d580"
+      ],
+      "preview_id": "7f53dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7df",
+      "tile_base": "7f53d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53d000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-90deg-right-compact": {
+      "puzzle_id": "f7e0",
+      "tile_ids": [
+        "7f53e000",
+        "7f53e100",
+        "7f53e010"
+      ],
+      "preview_id": "7f53eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7e0",
+      "tile_base": "7f53e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53e000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-90deg-right-compact": {
+      "puzzle_id": "f7e1",
+      "tile_ids": [
+        "7f53f000",
+        "7f53f010",
+        "7f53f110"
+      ],
+      "preview_id": "7f53fff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7e1",
+      "tile_base": "7f53f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f53f000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-90deg-right-wide": {
+      "puzzle_id": "f7e2",
+      "tile_ids": [
+        "7f540000",
+        "7f540300",
+        "7f540400",
+        "7f540500",
+        "7f540010",
+        "7f540110",
+        "7f540210",
+        "7f540310",
+        "7f540020",
+        "7f540120",
+        "7f540030",
+        "7f540130",
+        "7f540040",
+        "7f540050"
+      ],
+      "preview_id": "7f540ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7e2",
+      "tile_base": "7f540000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f540000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-90deg-right-wide": {
+      "puzzle_id": "f7e3",
+      "tile_ids": [
+        "7f541000",
+        "7f541010",
+        "7f541020",
+        "7f541120",
+        "7f541030",
+        "7f541130",
+        "7f541040",
+        "7f541140",
+        "7f541240",
+        "7f541340",
+        "7f541050",
+        "7f541350",
+        "7f541450",
+        "7f541550"
+      ],
+      "preview_id": "7f541ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7e3",
+      "tile_base": "7f541000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f541000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-135deg-right-compact": {
+      "puzzle_id": "f7e4",
+      "tile_ids": [
+        "7f542000",
+        "7f542100",
+        "7f542200",
+        "7f542300",
+        "7f542400",
+        "7f542500",
+        "7f542010",
+        "7f542110",
+        "7f542510",
+        "7f542020",
+        "7f542120",
+        "7f542030",
+        "7f542040",
+        "7f542050"
+      ],
+      "preview_id": "7f542ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7e4",
+      "tile_base": "7f542000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f542000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-135deg-right-compact": {
+      "puzzle_id": "f7e5",
+      "tile_ids": [
+        "7f543000",
+        "7f543010",
+        "7f543020",
+        "7f543030",
+        "7f543130",
+        "7f543040",
+        "7f543140",
+        "7f543540",
+        "7f543050",
+        "7f543150",
+        "7f543250",
+        "7f543350",
+        "7f543450",
+        "7f543550"
+      ],
+      "preview_id": "7f543ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7e5",
+      "tile_base": "7f543000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f543000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-split-135deg-right-wide": {
+      "puzzle_id": "f7e6",
+      "tile_ids": [
+        "7f544500",
+        "7f544600",
+        "7f544700",
+        "7f544010",
+        "7f544310",
+        "7f544410",
+        "7f544510",
+        "7f544710",
+        "7f544810",
+        "7f544910",
+        "7f544a10",
+        "7f544020",
+        "7f544320",
+        "7f544a20",
+        "7f544b20",
+        "7f544030",
+        "7f544230",
+        "7f544330",
+        "7f544b30",
+        "7f544040",
+        "7f544140",
+        "7f544240",
+        "7f544050",
+        "7f544150",
+        "7f544060",
+        "7f544160",
+        "7f544070",
+        "7f544170",
+        "7f544080",
+        "7f544180",
+        "7f544090",
+        "7f5440a0",
+        "7f5440b0",
+        "7f5440c0"
+      ],
+      "preview_id": "7f544ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7e6",
+      "tile_base": "7f544000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f544000"
+      ]
+    },
+    "ghsr-ground-two-track-mainline-merge-135deg-right-wide": {
+      "puzzle_id": "f7e7",
+      "tile_ids": [
+        "7f545000",
+        "7f545010",
+        "7f545020",
+        "7f545030",
+        "7f545040",
+        "7f545140",
+        "7f545050",
+        "7f545150",
+        "7f545060",
+        "7f545160",
+        "7f545070",
+        "7f545170",
+        "7f545080",
+        "7f545180",
+        "7f545280",
+        "7f545090",
+        "7f545290",
+        "7f545390",
+        "7f545b90",
+        "7f5450a0",
+        "7f5453a0",
+        "7f545aa0",
+        "7f545ba0",
+        "7f5450b0",
+        "7f5453b0",
+        "7f5454b0",
+        "7f5455b0",
+        "7f5457b0",
+        "7f5458b0",
+        "7f5459b0",
+        "7f545ab0",
+        "7f5455c0",
+        "7f5456c0",
+        "7f5457c0"
+      ],
+      "preview_id": "7f545ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          7,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7e7",
+      "tile_base": "7f545000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f545000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-45deg-right-compact": {
+      "puzzle_id": "f7e8",
+      "tile_ids": [
+        "7f546000",
+        "7f546200",
+        "7f546010",
+        "7f546110",
+        "7f546210",
+        "7f546020",
+        "7f546120",
+        "7f546030"
+      ],
+      "preview_id": "7f546ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7e8",
+      "tile_base": "7f546000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f546000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-45deg-right-compact": {
+      "puzzle_id": "f7e9",
+      "tile_ids": [
+        "7f547000",
+        "7f547010",
+        "7f547110",
+        "7f547020",
+        "7f547120",
+        "7f547220",
+        "7f547030",
+        "7f547230"
+      ],
+      "preview_id": "7f547ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7e9",
+      "tile_base": "7f547000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f547000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-45deg-right-wide": {
+      "puzzle_id": "f7ea",
+      "tile_ids": [
+        "7f548500",
+        "7f548410",
+        "7f548510",
+        "7f548020",
+        "7f548320",
+        "7f548420",
+        "7f548030",
+        "7f548230",
+        "7f548330",
+        "7f548040",
+        "7f548140",
+        "7f548240",
+        "7f548050",
+        "7f548150",
+        "7f548060",
+        "7f548160",
+        "7f548070",
+        "7f548080"
+      ],
+      "preview_id": "7f548ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7ea",
+      "tile_base": "7f548000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f548000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-45deg-right-wide": {
+      "puzzle_id": "f7eb",
+      "tile_ids": [
+        "7f549000",
+        "7f549010",
+        "7f549020",
+        "7f549120",
+        "7f549030",
+        "7f549130",
+        "7f549040",
+        "7f549140",
+        "7f549240",
+        "7f549050",
+        "7f549250",
+        "7f549350",
+        "7f549060",
+        "7f549360",
+        "7f549460",
+        "7f549470",
+        "7f549570",
+        "7f549580"
+      ],
+      "preview_id": "7f549ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7eb",
+      "tile_base": "7f549000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f549000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-90deg-right-compact": {
+      "puzzle_id": "f7ec",
+      "tile_ids": [
+        "7f54a000",
+        "7f54a100",
+        "7f54a010"
+      ],
+      "preview_id": "7f54aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7ec",
+      "tile_base": "7f54a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54a000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-90deg-right-compact": {
+      "puzzle_id": "f7ed",
+      "tile_ids": [
+        "7f54b000",
+        "7f54b010",
+        "7f54b110"
+      ],
+      "preview_id": "7f54bff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7ed",
+      "tile_base": "7f54b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54b000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-90deg-right-wide": {
+      "puzzle_id": "f7ee",
+      "tile_ids": [
+        "7f54c000",
+        "7f54c300",
+        "7f54c400",
+        "7f54c500",
+        "7f54c010",
+        "7f54c110",
+        "7f54c210",
+        "7f54c310",
+        "7f54c020",
+        "7f54c120",
+        "7f54c030",
+        "7f54c130",
+        "7f54c040",
+        "7f54c050"
+      ],
+      "preview_id": "7f54cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7ee",
+      "tile_base": "7f54c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54c000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-90deg-right-wide": {
+      "puzzle_id": "f7ef",
+      "tile_ids": [
+        "7f54d000",
+        "7f54d010",
+        "7f54d020",
+        "7f54d120",
+        "7f54d030",
+        "7f54d130",
+        "7f54d040",
+        "7f54d140",
+        "7f54d240",
+        "7f54d340",
+        "7f54d050",
+        "7f54d350",
+        "7f54d450",
+        "7f54d550"
+      ],
+      "preview_id": "7f54dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7ef",
+      "tile_base": "7f54d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54d000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-135deg-right-compact": {
+      "puzzle_id": "f7f0",
+      "tile_ids": [
+        "7f54e000",
+        "7f54e100",
+        "7f54e200",
+        "7f54e300",
+        "7f54e400",
+        "7f54e500",
+        "7f54e010",
+        "7f54e110",
+        "7f54e510",
+        "7f54e020",
+        "7f54e120",
+        "7f54e030",
+        "7f54e040",
+        "7f54e050"
+      ],
+      "preview_id": "7f54eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7f0",
+      "tile_base": "7f54e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54e000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-135deg-right-compact": {
+      "puzzle_id": "f7f1",
+      "tile_ids": [
+        "7f54f000",
+        "7f54f010",
+        "7f54f020",
+        "7f54f030",
+        "7f54f130",
+        "7f54f040",
+        "7f54f140",
+        "7f54f540",
+        "7f54f050",
+        "7f54f150",
+        "7f54f250",
+        "7f54f350",
+        "7f54f450",
+        "7f54f550"
+      ],
+      "preview_id": "7f54fff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7f1",
+      "tile_base": "7f54f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f54f000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-135deg-right-wide": {
+      "puzzle_id": "f7f2",
+      "tile_ids": [
+        "7f550500",
+        "7f550600",
+        "7f550700",
+        "7f550010",
+        "7f550310",
+        "7f550410",
+        "7f550510",
+        "7f550710",
+        "7f550810",
+        "7f550910",
+        "7f550a10",
+        "7f550020",
+        "7f550320",
+        "7f550a20",
+        "7f550b20",
+        "7f550030",
+        "7f550230",
+        "7f550330",
+        "7f550b30",
+        "7f550040",
+        "7f550140",
+        "7f550240",
+        "7f550050",
+        "7f550150",
+        "7f550060",
+        "7f550160",
+        "7f550070",
+        "7f550170",
+        "7f550080",
+        "7f550180",
+        "7f550090",
+        "7f5500a0",
+        "7f5500b0",
+        "7f5500c0"
+      ],
+      "preview_id": "7f550ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7f2",
+      "tile_base": "7f550000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f550000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-135deg-right-wide": {
+      "puzzle_id": "f7f3",
+      "tile_ids": [
+        "7f551000",
+        "7f551010",
+        "7f551020",
+        "7f551030",
+        "7f551040",
+        "7f551140",
+        "7f551050",
+        "7f551150",
+        "7f551060",
+        "7f551160",
+        "7f551070",
+        "7f551170",
+        "7f551080",
+        "7f551180",
+        "7f551280",
+        "7f551090",
+        "7f551290",
+        "7f551390",
+        "7f551b90",
+        "7f5510a0",
+        "7f5513a0",
+        "7f551aa0",
+        "7f551ba0",
+        "7f5510b0",
+        "7f5513b0",
+        "7f5514b0",
+        "7f5515b0",
+        "7f5517b0",
+        "7f5518b0",
+        "7f5519b0",
+        "7f551ab0",
+        "7f5515c0",
+        "7f5516c0",
+        "7f5517c0"
+      ],
+      "preview_id": "7f551ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          7,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7f3",
+      "tile_base": "7f551000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f551000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-45deg-right-compact": {
+      "puzzle_id": "f7f4",
+      "tile_ids": [
+        "7f552000",
+        "7f552200",
+        "7f552010",
+        "7f552110",
+        "7f552210",
+        "7f552020",
+        "7f552120",
+        "7f552030"
+      ],
+      "preview_id": "7f552ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7f4",
+      "tile_base": "7f552000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f552000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-45deg-right-compact": {
+      "puzzle_id": "f7f5",
+      "tile_ids": [
+        "7f553000",
+        "7f553010",
+        "7f553110",
+        "7f553020",
+        "7f553120",
+        "7f553220",
+        "7f553030",
+        "7f553230"
+      ],
+      "preview_id": "7f553ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "menu_id": "6a47f7f5",
+      "tile_base": "7f553000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f553000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-45deg-right-wide": {
+      "puzzle_id": "f7f6",
+      "tile_ids": [
+        "7f554500",
+        "7f554410",
+        "7f554510",
+        "7f554020",
+        "7f554320",
+        "7f554420",
+        "7f554030",
+        "7f554230",
+        "7f554330",
+        "7f554040",
+        "7f554140",
+        "7f554240",
+        "7f554050",
+        "7f554150",
+        "7f554060",
+        "7f554160",
+        "7f554070",
+        "7f554080"
+      ],
+      "preview_id": "7f554ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7f6",
+      "tile_base": "7f554000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f554000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-45deg-right-wide": {
+      "puzzle_id": "f7f7",
+      "tile_ids": [
+        "7f555000",
+        "7f555010",
+        "7f555020",
+        "7f555120",
+        "7f555030",
+        "7f555130",
+        "7f555040",
+        "7f555140",
+        "7f555240",
+        "7f555050",
+        "7f555250",
+        "7f555350",
+        "7f555060",
+        "7f555360",
+        "7f555460",
+        "7f555470",
+        "7f555570",
+        "7f555580"
+      ],
+      "preview_id": "7f555ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7f7",
+      "tile_base": "7f555000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f555000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-90deg-right-compact": {
+      "puzzle_id": "f7f8",
+      "tile_ids": [
+        "7f556000",
+        "7f556100",
+        "7f556010"
+      ],
+      "preview_id": "7f556ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7f8",
+      "tile_base": "7f556000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f556000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-90deg-right-compact": {
+      "puzzle_id": "f7f9",
+      "tile_ids": [
+        "7f557000",
+        "7f557010",
+        "7f557110"
+      ],
+      "preview_id": "7f557ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "menu_id": "6a47f7f9",
+      "tile_base": "7f557000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f557000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-90deg-right-wide": {
+      "puzzle_id": "f7fa",
+      "tile_ids": [
+        "7f558000",
+        "7f558300",
+        "7f558400",
+        "7f558500",
+        "7f558010",
+        "7f558110",
+        "7f558210",
+        "7f558310",
+        "7f558020",
+        "7f558120",
+        "7f558030",
+        "7f558130",
+        "7f558040",
+        "7f558050"
+      ],
+      "preview_id": "7f558ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7fa",
+      "tile_base": "7f558000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f558000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-90deg-right-wide": {
+      "puzzle_id": "f7fb",
+      "tile_ids": [
+        "7f559000",
+        "7f559010",
+        "7f559020",
+        "7f559120",
+        "7f559030",
+        "7f559130",
+        "7f559040",
+        "7f559140",
+        "7f559240",
+        "7f559340",
+        "7f559050",
+        "7f559350",
+        "7f559450",
+        "7f559550"
+      ],
+      "preview_id": "7f559ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7fb",
+      "tile_base": "7f559000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f559000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-135deg-right-compact": {
+      "puzzle_id": "f7fc",
+      "tile_ids": [
+        "7f55a000",
+        "7f55a100",
+        "7f55a200",
+        "7f55a300",
+        "7f55a400",
+        "7f55a500",
+        "7f55a010",
+        "7f55a110",
+        "7f55a510",
+        "7f55a020",
+        "7f55a120",
+        "7f55a030",
+        "7f55a040",
+        "7f55a050"
+      ],
+      "preview_id": "7f55aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7fc",
+      "tile_base": "7f55a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55a000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-135deg-right-compact": {
+      "puzzle_id": "f7fd",
+      "tile_ids": [
+        "7f55b000",
+        "7f55b010",
+        "7f55b020",
+        "7f55b030",
+        "7f55b130",
+        "7f55b040",
+        "7f55b140",
+        "7f55b540",
+        "7f55b050",
+        "7f55b150",
+        "7f55b250",
+        "7f55b350",
+        "7f55b450",
+        "7f55b550"
+      ],
+      "preview_id": "7f55bff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f7fd",
+      "tile_base": "7f55b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55b000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-135deg-right-wide": {
+      "puzzle_id": "f7fe",
+      "tile_ids": [
+        "7f55c500",
+        "7f55c600",
+        "7f55c700",
+        "7f55c010",
+        "7f55c310",
+        "7f55c410",
+        "7f55c510",
+        "7f55c710",
+        "7f55c810",
+        "7f55c910",
+        "7f55ca10",
+        "7f55c020",
+        "7f55c220",
+        "7f55c320",
+        "7f55ca20",
+        "7f55cb20",
+        "7f55c030",
+        "7f55c230",
+        "7f55cb30",
+        "7f55c040",
+        "7f55c140",
+        "7f55c240",
+        "7f55c050",
+        "7f55c150",
+        "7f55c060",
+        "7f55c160",
+        "7f55c070",
+        "7f55c170",
+        "7f55c080",
+        "7f55c090",
+        "7f55c0a0",
+        "7f55c0b0",
+        "7f55c0c0"
+      ],
+      "preview_id": "7f55cff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7fe",
+      "tile_base": "7f55c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55c000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-135deg-right-wide": {
+      "puzzle_id": "f7ff",
+      "tile_ids": [
+        "7f55d000",
+        "7f55d010",
+        "7f55d020",
+        "7f55d030",
+        "7f55d040",
+        "7f55d050",
+        "7f55d150",
+        "7f55d060",
+        "7f55d160",
+        "7f55d070",
+        "7f55d170",
+        "7f55d080",
+        "7f55d180",
+        "7f55d280",
+        "7f55d090",
+        "7f55d290",
+        "7f55db90",
+        "7f55d0a0",
+        "7f55d2a0",
+        "7f55d3a0",
+        "7f55daa0",
+        "7f55dba0",
+        "7f55d0b0",
+        "7f55d3b0",
+        "7f55d4b0",
+        "7f55d5b0",
+        "7f55d7b0",
+        "7f55d8b0",
+        "7f55d9b0",
+        "7f55dab0",
+        "7f55d5c0",
+        "7f55d6c0",
+        "7f55d7c0"
+      ],
+      "preview_id": "7f55dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          7,
+          12
+        ]
+      ],
+      "menu_id": "6a47f7ff",
+      "tile_base": "7f55d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55d000"
+      ]
+    },
+    "ghsr-ground-to-hsr-l2-single-track-oneway-ramp": {
+      "puzzle_id": "f800",
+      "tile_ids": [
+        "7f55e000",
+        "7f55e010",
+        "7f55e020",
+        "7f55e030",
+        "7f55e040",
+        "7f55e050",
+        "7f55e060",
+        "7f55e070"
+      ],
+      "preview_id": "7f55eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f800",
+      "tile_base": "7f55e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55e000"
+      ]
+    },
+    "hsr-l2-to-ghsr-ground-single-track-oneway-ramp": {
+      "puzzle_id": "f801",
+      "tile_ids": [
+        "7f55f000",
+        "7f55f010",
+        "7f55f020",
+        "7f55f030",
+        "7f55f040",
+        "7f55f050",
+        "7f55f060",
+        "7f55f070"
+      ],
+      "preview_id": "7f55fff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f801",
+      "tile_base": "7f55f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f55f000"
+      ]
+    },
+    "hsr-l2-to-l3-single-track-oneway-ramp": {
+      "puzzle_id": "f802",
+      "tile_ids": [
+        "7f560000",
+        "7f560010",
+        "7f560020",
+        "7f560030",
+        "7f560040",
+        "7f560050"
+      ],
+      "preview_id": "7f560ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f802",
+      "tile_base": "7f560000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f560000"
+      ]
+    },
+    "hsr-l3-to-l2-single-track-oneway-ramp": {
+      "puzzle_id": "f803",
+      "tile_ids": [
+        "7f561000",
+        "7f561010",
+        "7f561020",
+        "7f561030",
+        "7f561040",
+        "7f561050"
+      ],
+      "preview_id": "7f561ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f803",
+      "tile_base": "7f561000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f561000"
+      ]
+    },
+    "hsr-l3-to-l4-single-track-oneway-ramp": {
+      "puzzle_id": "f804",
+      "tile_ids": [
+        "7f562000",
+        "7f562010",
+        "7f562020",
+        "7f562030",
+        "7f562040",
+        "7f562050"
+      ],
+      "preview_id": "7f562ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f804",
+      "tile_base": "7f562000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f562000"
+      ]
+    },
+    "hsr-l4-to-l3-single-track-oneway-ramp": {
+      "puzzle_id": "f805",
+      "tile_ids": [
+        "7f563000",
+        "7f563010",
+        "7f563020",
+        "7f563030",
+        "7f563040",
+        "7f563050"
+      ],
+      "preview_id": "7f563ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f805",
+      "tile_base": "7f563000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f563000"
+      ]
+    },
+    "hsr-l2-to-l4-single-track-oneway-ramp": {
+      "puzzle_id": "f806",
+      "tile_ids": [
+        "7f564000",
+        "7f564010",
+        "7f564020",
+        "7f564030",
+        "7f564040",
+        "7f564050",
+        "7f564060",
+        "7f564070"
+      ],
+      "preview_id": "7f564ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f806",
+      "tile_base": "7f564000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f564000"
+      ]
+    },
+    "hsr-l4-to-l2-single-track-oneway-ramp": {
+      "puzzle_id": "f807",
+      "tile_ids": [
+        "7f565000",
+        "7f565010",
+        "7f565020",
+        "7f565030",
+        "7f565040",
+        "7f565050",
+        "7f565060",
+        "7f565070"
+      ],
+      "preview_id": "7f565ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f807",
+      "tile_base": "7f565000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f565000"
+      ]
+    },
+    "hsr-l4-over-ghsr-ground-mixed-crossing-90deg": {
+      "puzzle_id": "f808",
+      "tile_ids": [
+        "7f566000",
+        "7f566100",
+        "7f566200"
+      ],
+      "preview_id": "7f566ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "menu_id": "6a47f808",
+      "tile_base": "7f566000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f566000"
+      ]
+    },
+    "hsr-l4-over-hsr-l2-mixed-crossing-90deg": {
+      "puzzle_id": "f809",
+      "tile_ids": [
+        "7f567000",
+        "7f567100",
+        "7f567200"
+      ],
+      "preview_id": "7f567ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "menu_id": "6a47f809",
+      "tile_base": "7f567000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f567000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-straight-width7500mm": {
+      "puzzle_id": "f80a",
+      "tile_ids": [
+        "7f568000"
+      ],
+      "preview_id": "7f568ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f80a",
+      "tile_base": "7f568000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f568000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-straight-diagonal": {
+      "puzzle_id": "f80b",
+      "tile_ids": [
+        "7f569000",
+        "7f569010"
+      ],
+      "preview_id": "7f569ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f80b",
+      "tile_base": "7f569000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f569000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-straight-diagonal-north-half": {
+      "puzzle_id": "f80c",
+      "tile_ids": [
+        "7f56a000"
+      ],
+      "preview_id": "7f56aff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f80c",
+      "tile_base": "7f56a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56a000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-straight-diagonal-east-half": {
+      "puzzle_id": "f80d",
+      "tile_ids": [
+        "7f56b000"
+      ],
+      "preview_id": "7f56bff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f80d",
+      "tile_base": "7f56b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56b000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-right": {
+      "puzzle_id": "f80e",
+      "tile_ids": [
+        "7f56c000",
+        "7f56c010"
+      ],
+      "preview_id": "7f56cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f80e",
+      "tile_base": "7f56c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56c000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-left": {
+      "puzzle_id": "f80f",
+      "tile_ids": [
+        "7f56d000",
+        "7f56d010"
+      ],
+      "preview_id": "7f56dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f80f",
+      "tile_base": "7f56d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56d000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-left": {
+      "puzzle_id": "f810",
+      "tile_ids": [
+        "7f56e000",
+        "7f56e010"
+      ],
+      "preview_id": "7f56eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f810",
+      "tile_base": "7f56e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56e000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-right": {
+      "puzzle_id": "f811",
+      "tile_ids": [
+        "7f56f000",
+        "7f56f010"
+      ],
+      "preview_id": "7f56fff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "menu_id": "6a47f811",
+      "tile_base": "7f56f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f56f000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-left-compact-width7500mm": {
+      "puzzle_id": "f812",
+      "tile_ids": [
+        "7f570000",
+        "7f570100",
+        "7f570110",
+        "7f570210",
+        "7f570220"
+      ],
+      "preview_id": "7f570ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f812",
+      "tile_base": "7f570000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f570000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-right-compact-width7500mm": {
+      "puzzle_id": "f813",
+      "tile_ids": [
+        "7f571100",
+        "7f571200",
+        "7f571010",
+        "7f571110",
+        "7f571020"
+      ],
+      "preview_id": "7f571ff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "menu_id": "6a47f813",
+      "tile_base": "7f571000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f571000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-90deg-left-wide": {
+      "puzzle_id": "f814",
+      "tile_ids": [
+        "7f572000",
+        "7f572100",
+        "7f572200",
+        "7f572210",
+        "7f572310",
+        "7f572320",
+        "7f572420",
+        "7f572430",
+        "7f572530",
+        "7f572540",
+        "7f572550"
+      ],
+      "preview_id": "7f572ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f814",
+      "tile_base": "7f572000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f572000"
+      ]
+    },
+    "ghsr-ground-single-track-oneway-curve-90deg-right-wide": {
+      "puzzle_id": "f815",
+      "tile_ids": [
+        "7f573300",
+        "7f573400",
+        "7f573500",
+        "7f573210",
+        "7f573310",
+        "7f573120",
+        "7f573220",
+        "7f573030",
+        "7f573130",
+        "7f573040",
+        "7f573050"
+      ],
+      "preview_id": "7f573ff5",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f815",
+      "tile_base": "7f573000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f573000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-left-wide-width7500mm": {
+      "puzzle_id": "f816",
+      "tile_ids": [
+        "7f574000",
+        "7f574100",
+        "7f574200",
+        "7f574210",
+        "7f574310",
+        "7f574320",
+        "7f574420",
+        "7f574430",
+        "7f574530",
+        "7f574540",
+        "7f574550"
+      ],
+      "preview_id": "7f574ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f816",
+      "tile_base": "7f574000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f574000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-right-wide-width7500mm": {
+      "puzzle_id": "f817",
+      "tile_ids": [
+        "7f575300",
+        "7f575400",
+        "7f575500",
+        "7f575210",
+        "7f575310",
+        "7f575120",
+        "7f575220",
+        "7f575030",
+        "7f575130",
+        "7f575040",
+        "7f575050"
+      ],
+      "preview_id": "7f575ff5",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f817",
+      "tile_base": "7f575000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f575000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-90deg-left-wide": {
+      "puzzle_id": "f818",
+      "tile_ids": [
+        "7f576000",
+        "7f576100",
+        "7f576200",
+        "7f576210",
+        "7f576310",
+        "7f576320",
+        "7f576420",
+        "7f576430",
+        "7f576530",
+        "7f576540",
+        "7f576550"
+      ],
+      "preview_id": "7f576ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f818",
+      "tile_base": "7f576000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f576000"
+      ]
+    },
+    "hsr-l3-single-track-oneway-curve-90deg-right-wide": {
+      "puzzle_id": "f819",
+      "tile_ids": [
+        "7f577300",
+        "7f577400",
+        "7f577500",
+        "7f577210",
+        "7f577310",
+        "7f577120",
+        "7f577220",
+        "7f577030",
+        "7f577130",
+        "7f577040",
+        "7f577050"
+      ],
+      "preview_id": "7f577ff5",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f819",
+      "tile_base": "7f577000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f577000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-90deg-left-wide": {
+      "puzzle_id": "f81a",
+      "tile_ids": [
+        "7f578000",
+        "7f578100",
+        "7f578200",
+        "7f578210",
+        "7f578310",
+        "7f578320",
+        "7f578420",
+        "7f578430",
+        "7f578530",
+        "7f578540",
+        "7f578550"
+      ],
+      "preview_id": "7f578ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f81a",
+      "tile_base": "7f578000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f578000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-curve-90deg-right-wide": {
+      "puzzle_id": "f81b",
+      "tile_ids": [
+        "7f579300",
+        "7f579400",
+        "7f579500",
+        "7f579210",
+        "7f579310",
+        "7f579120",
+        "7f579220",
+        "7f579030",
+        "7f579130",
+        "7f579040",
+        "7f579050"
+      ],
+      "preview_id": "7f579ff5",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f81b",
+      "tile_base": "7f579000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f579000"
+      ]
+    },
+    "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg": {
+      "puzzle_id": "f84c",
+      "tile_ids": [
+        "7f5da000",
+        "7f5da100",
+        "7f5da010",
+        "7f5da110",
+        "7f5da210",
+        "7f5da220"
+      ],
+      "preview_id": "7f5daff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f84c",
+      "tile_base": "7f5da000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5da000"
+      ]
+    },
+    "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg": {
+      "puzzle_id": "f84d",
+      "tile_ids": [
+        "7f5db100",
+        "7f5db200",
+        "7f5db010",
+        "7f5db110",
+        "7f5db020",
+        "7f5db120"
+      ],
+      "preview_id": "7f5dbff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "menu_id": "6a47f84d",
+      "tile_base": "7f5db000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5db000"
+      ]
+    },
+    "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg": {
+      "puzzle_id": "f84e",
+      "tile_ids": [
+        "7f5dc000",
+        "7f5dc100",
+        "7f5dc200",
+        "7f5dc010",
+        "7f5dc110",
+        "7f5dc210",
+        "7f5dc020",
+        "7f5dc220"
+      ],
+      "preview_id": "7f5dcff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f84e",
+      "tile_base": "7f5dc000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5dc000"
+      ]
+    },
+    "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg": {
+      "puzzle_id": "f84f",
+      "tile_ids": [
+        "7f5dd000",
+        "7f5dd100",
+        "7f5dd010",
+        "7f5dd110",
+        "7f5dd210",
+        "7f5dd220"
+      ],
+      "preview_id": "7f5ddff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f84f",
+      "tile_base": "7f5dd000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5dd000"
+      ]
+    },
+    "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg": {
+      "puzzle_id": "f850",
+      "tile_ids": [
+        "7f5de100",
+        "7f5de200",
+        "7f5de010",
+        "7f5de110",
+        "7f5de020",
+        "7f5de120"
+      ],
+      "preview_id": "7f5deff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "menu_id": "6a47f850",
+      "tile_base": "7f5de000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5de000"
+      ]
+    },
+    "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg": {
+      "puzzle_id": "f851",
+      "tile_ids": [
+        "7f5df000",
+        "7f5df100",
+        "7f5df200",
+        "7f5df010",
+        "7f5df110",
+        "7f5df210",
+        "7f5df020",
+        "7f5df220"
+      ],
+      "preview_id": "7f5dfff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "menu_id": "6a47f851",
+      "tile_base": "7f5df000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5df000"
+      ]
+    },
+    "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway": {
+      "puzzle_id": "f852",
+      "tile_ids": [
+        "7f5e0000",
+        "7f5e0010",
+        "7f5e0020"
+      ],
+      "preview_id": "7f5e0ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "menu_id": "6a47f852",
+      "tile_base": "7f5e0000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e0000"
+      ]
+    },
+    "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway": {
+      "puzzle_id": "f853",
+      "tile_ids": [
+        "7f5e1000",
+        "7f5e1100",
+        "7f5e1200"
+      ],
+      "preview_id": "7f5e1ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "menu_id": "6a47f853",
+      "tile_base": "7f5e1000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e1000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-45deg-left-compact": {
+      "puzzle_id": "f854",
+      "tile_ids": [
+        "7f5e2000",
+        "7f5e2200",
+        "7f5e2010",
+        "7f5e2110",
+        "7f5e2210",
+        "7f5e2120",
+        "7f5e2220",
+        "7f5e2230"
+      ],
+      "preview_id": "7f5e2ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "menu_id": "6a47f854",
+      "tile_base": "7f5e2000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e2000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-45deg-left-compact": {
+      "puzzle_id": "f855",
+      "tile_ids": [
+        "7f5e3200",
+        "7f5e3110",
+        "7f5e3210",
+        "7f5e3020",
+        "7f5e3120",
+        "7f5e3220",
+        "7f5e3030",
+        "7f5e3230"
+      ],
+      "preview_id": "7f5e3ff5",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "menu_id": "6a47f855",
+      "tile_base": "7f5e3000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e3000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-45deg-left-wide": {
+      "puzzle_id": "f856",
+      "tile_ids": [
+        "7f5e4000",
+        "7f5e4010",
+        "7f5e4110",
+        "7f5e4120",
+        "7f5e4220",
+        "7f5e4520",
+        "7f5e4230",
+        "7f5e4330",
+        "7f5e4530",
+        "7f5e4340",
+        "7f5e4440",
+        "7f5e4540",
+        "7f5e4450",
+        "7f5e4550",
+        "7f5e4460",
+        "7f5e4560",
+        "7f5e4570",
+        "7f5e4580"
+      ],
+      "preview_id": "7f5e4ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "menu_id": "6a47f856",
+      "tile_base": "7f5e4000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e4000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-45deg-left-wide": {
+      "puzzle_id": "f857",
+      "tile_ids": [
+        "7f5e5500",
+        "7f5e5510",
+        "7f5e5420",
+        "7f5e5520",
+        "7f5e5430",
+        "7f5e5530",
+        "7f5e5340",
+        "7f5e5440",
+        "7f5e5540",
+        "7f5e5250",
+        "7f5e5350",
+        "7f5e5550",
+        "7f5e5160",
+        "7f5e5260",
+        "7f5e5560",
+        "7f5e5070",
+        "7f5e5170",
+        "7f5e5080"
+      ],
+      "preview_id": "7f5e5ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "menu_id": "6a47f857",
+      "tile_base": "7f5e5000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e5000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-90deg-left-compact": {
+      "puzzle_id": "f858",
+      "tile_ids": [
+        "7f5e6000",
+        "7f5e6100",
+        "7f5e6110"
+      ],
+      "preview_id": "7f5e6ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "menu_id": "6a47f858",
+      "tile_base": "7f5e6000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e6000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-90deg-left-compact": {
+      "puzzle_id": "f859",
+      "tile_ids": [
+        "7f5e7100",
+        "7f5e7010",
+        "7f5e7110"
+      ],
+      "preview_id": "7f5e7ff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "menu_id": "6a47f859",
+      "tile_base": "7f5e7000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e7000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-90deg-left-wide": {
+      "puzzle_id": "f85a",
+      "tile_ids": [
+        "7f5e8000",
+        "7f5e8100",
+        "7f5e8200",
+        "7f5e8500",
+        "7f5e8210",
+        "7f5e8310",
+        "7f5e8410",
+        "7f5e8510",
+        "7f5e8420",
+        "7f5e8520",
+        "7f5e8430",
+        "7f5e8530",
+        "7f5e8540",
+        "7f5e8550"
+      ],
+      "preview_id": "7f5e8ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f85a",
+      "tile_base": "7f5e8000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e8000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-90deg-left-wide": {
+      "puzzle_id": "f85b",
+      "tile_ids": [
+        "7f5e9500",
+        "7f5e9510",
+        "7f5e9420",
+        "7f5e9520",
+        "7f5e9430",
+        "7f5e9530",
+        "7f5e9240",
+        "7f5e9340",
+        "7f5e9440",
+        "7f5e9540",
+        "7f5e9050",
+        "7f5e9150",
+        "7f5e9250",
+        "7f5e9550"
+      ],
+      "preview_id": "7f5e9ff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f85b",
+      "tile_base": "7f5e9000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5e9000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-135deg-left-compact": {
+      "puzzle_id": "f85c",
+      "tile_ids": [
+        "7f5ea000",
+        "7f5ea100",
+        "7f5ea200",
+        "7f5ea300",
+        "7f5ea400",
+        "7f5ea500",
+        "7f5ea010",
+        "7f5ea410",
+        "7f5ea510",
+        "7f5ea420",
+        "7f5ea520",
+        "7f5ea530",
+        "7f5ea540",
+        "7f5ea550"
+      ],
+      "preview_id": "7f5eaff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f85c",
+      "tile_base": "7f5ea000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5ea000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-135deg-left-compact": {
+      "puzzle_id": "f85d",
+      "tile_ids": [
+        "7f5eb500",
+        "7f5eb510",
+        "7f5eb520",
+        "7f5eb430",
+        "7f5eb530",
+        "7f5eb040",
+        "7f5eb440",
+        "7f5eb540",
+        "7f5eb050",
+        "7f5eb150",
+        "7f5eb250",
+        "7f5eb350",
+        "7f5eb450",
+        "7f5eb550"
+      ],
+      "preview_id": "7f5ebff5",
+      "cells": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "menu_id": "6a47f85d",
+      "tile_base": "7f5eb000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5eb000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-split-135deg-left-wide": {
+      "puzzle_id": "f85e",
+      "tile_ids": [
+        "7f5ec400",
+        "7f5ec500",
+        "7f5ec600",
+        "7f5ec110",
+        "7f5ec210",
+        "7f5ec310",
+        "7f5ec410",
+        "7f5ec610",
+        "7f5ec710",
+        "7f5ec810",
+        "7f5ecb10",
+        "7f5ec020",
+        "7f5ec120",
+        "7f5ec820",
+        "7f5ec920",
+        "7f5ecb20",
+        "7f5ec030",
+        "7f5ec930",
+        "7f5ecb30",
+        "7f5ec940",
+        "7f5eca40",
+        "7f5ecb40",
+        "7f5eca50",
+        "7f5ecb50",
+        "7f5eca60",
+        "7f5ecb60",
+        "7f5eca70",
+        "7f5ecb70",
+        "7f5ecb80",
+        "7f5ecb90",
+        "7f5ecba0",
+        "7f5ecbb0",
+        "7f5ecbc0"
+      ],
+      "preview_id": "7f5ecff5",
+      "cells": [
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          12
+        ]
+      ],
+      "menu_id": "6a47f85e",
+      "tile_base": "7f5ec000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5ec000"
+      ]
+    },
+    "hsr-l4-single-track-oneway-merge-135deg-left-wide": {
+      "puzzle_id": "f85f",
+      "tile_ids": [
+        "7f5edb00",
+        "7f5edb10",
+        "7f5edb20",
+        "7f5edb30",
+        "7f5edb40",
+        "7f5eda50",
+        "7f5edb50",
+        "7f5eda60",
+        "7f5edb60",
+        "7f5eda70",
+        "7f5edb70",
+        "7f5ed980",
+        "7f5eda80",
+        "7f5edb80",
+        "7f5ed090",
+        "7f5ed990",
+        "7f5edb90",
+        "7f5ed0a0",
+        "7f5ed1a0",
+        "7f5ed8a0",
+        "7f5ed9a0",
+        "7f5edba0",
+        "7f5ed1b0",
+        "7f5ed2b0",
+        "7f5ed3b0",
+        "7f5ed4b0",
+        "7f5ed6b0",
+        "7f5ed7b0",
+        "7f5ed8b0",
+        "7f5edbb0",
+        "7f5ed4c0",
+        "7f5ed5c0",
+        "7f5ed6c0"
+      ],
+      "preview_id": "7f5edff5",
+      "cells": [
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          1
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "menu_id": "6a47f85f",
+      "tile_base": "7f5ed000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5ed000"
+      ]
+    },
+    "hsr-l2-two-track-scissors-adjacent": {
+      "puzzle_id": "f862",
+      "tile_ids": [
+        "7f5f0000",
+        "7f5f0100",
+        "7f5f0010",
+        "7f5f0110",
+        "7f5f0020",
+        "7f5f0120"
+      ],
+      "preview_id": "7f5f0ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "menu_id": "6a47f862",
+      "tile_base": "7f5f0000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5f0000"
+      ]
+    },
+    "ghsr-ground-two-track-scissors-adjacent": {
+      "puzzle_id": "f863",
+      "tile_ids": [
+        "7f5f1000",
+        "7f5f1100",
+        "7f5f1010",
+        "7f5f1110",
+        "7f5f1020",
+        "7f5f1120"
+      ],
+      "preview_id": "7f5f1ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "menu_id": "6a47f863",
+      "tile_base": "7f5f1000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5f1000"
+      ]
+    },
+    "hsr-l2-two-track-t-junction-at-grade-smooth": {
+      "puzzle_id": "f864",
+      "tile_ids": [
+        "7f5f2000",
+        "7f5f2010",
+        "7f5f2020",
+        "7f5f2030",
+        "7f5f2130",
+        "7f5f2040",
+        "7f5f2140",
+        "7f5f2240",
+        "7f5f2050",
+        "7f5f2250",
+        "7f5f2350",
+        "7f5f2450",
+        "7f5f2550",
+        "7f5f2650",
+        "7f5f2060",
+        "7f5f2160",
+        "7f5f2260",
+        "7f5f2070",
+        "7f5f2170",
+        "7f5f2080",
+        "7f5f2090",
+        "7f5f20a0"
+      ],
+      "preview_id": "7f5f2ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "menu_id": "6a47f864",
+      "tile_base": "7f5f2000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5f2000"
+      ]
+    },
+    "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth": {
+      "puzzle_id": "f865",
+      "tile_ids": [
+        "7f5f3a00",
+        "7f5f3b00",
+        "7f5f3910",
+        "7f5f3a10",
+        "7f5f3820",
+        "7f5f3920",
+        "7f5f3730",
+        "7f5f3830",
+        "7f5f3640",
+        "7f5f3740",
+        "7f5f3840",
+        "7f5f3550",
+        "7f5f3650",
+        "7f5f3750",
+        "7f5f3460",
+        "7f5f3560",
+        "7f5f3760",
+        "7f5f3370",
+        "7f5f3470",
+        "7f5f3570",
+        "7f5f3670",
+        "7f5f3770",
+        "7f5f3870",
+        "7f5f3280",
+        "7f5f3380",
+        "7f5f3480",
+        "7f5f3580",
+        "7f5f3680",
+        "7f5f3780",
+        "7f5f3880",
+        "7f5f3190",
+        "7f5f3290",
+        "7f5f3890",
+        "7f5f3990",
+        "7f5f30a0",
+        "7f5f31a0",
+        "7f5f39a0",
+        "7f5f3aa0",
+        "7f5f30b0",
+        "7f5f3ab0",
+        "7f5f3bb0",
+        "7f5f3bc0"
+      ],
+      "preview_id": "7f5f3ff5",
+      "cells": [
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          12
+        ]
+      ],
+      "menu_id": "6a47f865",
+      "tile_base": "7f5f3000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f5f3000"
+      ]
+    },
+    "hsr-l4-two-track-straight": {
+      "puzzle_id": "f7a6",
+      "tile_ids": [
+        "7f503000"
+      ],
+      "preview_id": "7f503ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7a6",
+      "tile_base": "7f503000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f503000"
+      ]
+    },
+    "hsr-l4-two-track-curve-90deg-right": {
+      "puzzle_id": "f7a9",
+      "tile_ids": [
+        "7f506100",
+        "7f506200",
+        "7f506300",
+        "7f506400",
+        "7f506500",
+        "7f506600",
+        "7f506010",
+        "7f506110",
+        "7f506210",
+        "7f506310",
+        "7f506410",
+        "7f506020",
+        "7f506120",
+        "7f506220",
+        "7f506030",
+        "7f506130",
+        "7f506040",
+        "7f506140",
+        "7f506050",
+        "7f506060"
+      ],
+      "preview_id": "7f506ff5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7a9",
+      "tile_base": "7f506000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f506000"
+      ]
+    },
+    "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-right": {
+      "puzzle_id": "f7aa",
+      "tile_ids": [
+        "7f507200",
+        "7f507300",
+        "7f507400",
+        "7f507500",
+        "7f507600",
+        "7f507110",
+        "7f507210",
+        "7f507310",
+        "7f507020",
+        "7f507120",
+        "7f507030",
+        "7f507130",
+        "7f507040",
+        "7f507050",
+        "7f507060"
+      ],
+      "preview_id": "7f507ff5",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7aa",
+      "tile_base": "7f507000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f507000"
+      ]
+    },
+    "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-right": {
+      "puzzle_id": "f7ab",
+      "tile_ids": [
+        "7f50b200",
+        "7f50b300",
+        "7f50b400",
+        "7f50b500",
+        "7f50b600",
+        "7f50b110",
+        "7f50b210",
+        "7f50b310",
+        "7f50b020",
+        "7f50b120",
+        "7f50b030",
+        "7f50b130",
+        "7f50b040",
+        "7f50b050",
+        "7f50b060"
+      ],
+      "preview_id": "7f50bff5",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7ab",
+      "tile_base": "7f50b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f50b000"
+      ]
+    },
+    "hsr-l4-two-track-curve-90deg-left": {
+      "puzzle_id": "f7ac",
+      "tile_ids": [
+        "7f50c000",
+        "7f50c100",
+        "7f50c200",
+        "7f50c300",
+        "7f50c400",
+        "7f50c500",
+        "7f50c210",
+        "7f50c310",
+        "7f50c410",
+        "7f50c510",
+        "7f50c610",
+        "7f50c420",
+        "7f50c520",
+        "7f50c620",
+        "7f50c530",
+        "7f50c630",
+        "7f50c540",
+        "7f50c640",
+        "7f50c650",
+        "7f50c660"
+      ],
+      "preview_id": "7f50cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7ac",
+      "tile_base": "7f50c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f50c000"
+      ]
+    },
+    "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-left": {
+      "puzzle_id": "f7ad",
+      "tile_ids": [
+        "7f50d000",
+        "7f50d100",
+        "7f50d200",
+        "7f50d300",
+        "7f50d400",
+        "7f50d310",
+        "7f50d410",
+        "7f50d510",
+        "7f50d520",
+        "7f50d620",
+        "7f50d530",
+        "7f50d630",
+        "7f50d640",
+        "7f50d650",
+        "7f50d660"
+      ],
+      "preview_id": "7f50dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7ad",
+      "tile_base": "7f50d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f50d000"
+      ]
+    },
+    "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-left": {
+      "puzzle_id": "f7ae",
+      "tile_ids": [
+        "7f50e000",
+        "7f50e100",
+        "7f50e200",
+        "7f50e300",
+        "7f50e400",
+        "7f50e310",
+        "7f50e410",
+        "7f50e510",
+        "7f50e520",
+        "7f50e620",
+        "7f50e530",
+        "7f50e630",
+        "7f50e640",
+        "7f50e650",
+        "7f50e660"
+      ],
+      "preview_id": "7f50eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "menu_id": "6a47f7ae",
+      "tile_base": "7f50e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f50e000"
+      ]
+    },
+    "hsr-l4-two-track-adapter-separated": {
+      "puzzle_id": "f7af",
+      "tile_ids": [
+        "7f515000",
+        "7f515100",
+        "7f515010",
+        "7f515110",
+        "7f515020",
+        "7f515120",
+        "7f515030",
+        "7f515130",
+        "7f515040",
+        "7f515140",
+        "7f515050",
+        "7f515150",
+        "7f515060",
+        "7f515160",
+        "7f515070"
+      ],
+      "preview_id": "7f515ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f7af",
+      "tile_base": "7f515000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f515000"
+      ]
+    },
+    "hsr-l2-two-track-straight": {
+      "puzzle_id": "f7a5",
+      "tile_ids": [
+        "7f508000"
+      ],
+      "preview_id": "7f508ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7a5",
+      "tile_base": "7f508000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f508000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-straight-width8m": {
+      "puzzle_id": "f7b0",
+      "tile_ids": [
+        "7f509000"
+      ],
+      "preview_id": "7f509ff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f7b0",
+      "tile_base": "7f509000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f509000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-parallel": {
+      "puzzle_id": "f7b7",
+      "tile_ids": [
+        "7f50a000",
+        "7f50a100",
+        "7f50a010",
+        "7f50a110",
+        "7f50a020",
+        "7f50a120",
+        "7f50a030",
+        "7f50a130",
+        "7f50a040",
+        "7f50a140",
+        "7f50a050",
+        "7f50a150",
+        "7f50a060",
+        "7f50a070"
+      ],
+      "preview_id": "7f50aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f7b7",
+      "tile_base": "7f50a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f50a000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-parallel": {
+      "puzzle_id": "f7ba",
+      "tile_ids": [
+        "7f518000",
+        "7f518010",
+        "7f518020",
+        "7f518120",
+        "7f518030",
+        "7f518130",
+        "7f518040",
+        "7f518140",
+        "7f518050",
+        "7f518150",
+        "7f518060",
+        "7f518160",
+        "7f518070",
+        "7f518170"
+      ],
+      "preview_id": "7f518ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ]
+      ],
+      "menu_id": "6a47f7ba",
+      "tile_base": "7f518000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f518000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-opposed-merges-parallel": {
+      "puzzle_id": "f7bc",
+      "tile_ids": [
+        "7f51a000",
+        "7f51a100",
+        "7f51a010",
+        "7f51a110",
+        "7f51a020",
+        "7f51a120",
+        "7f51a220",
+        "7f51a030",
+        "7f51a130",
+        "7f51a230",
+        "7f51a040",
+        "7f51a140",
+        "7f51a240",
+        "7f51a050",
+        "7f51a150",
+        "7f51a250",
+        "7f51a160",
+        "7f51a260",
+        "7f51a170",
+        "7f51a270"
+      ],
+      "preview_id": "7f51aff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ]
+      ],
+      "menu_id": "6a47f7bc",
+      "tile_base": "7f51a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51a000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-right-wide-width8m": {
+      "puzzle_id": "f7bd",
+      "tile_ids": [
+        "7f51b300",
+        "7f51b400",
+        "7f51b500",
+        "7f51b600",
+        "7f51b700",
+        "7f51b800",
+        "7f51b110",
+        "7f51b210",
+        "7f51b310",
+        "7f51b410",
+        "7f51b120",
+        "7f51b220",
+        "7f51b030",
+        "7f51b130",
+        "7f51b040",
+        "7f51b140",
+        "7f51b050",
+        "7f51b060",
+        "7f51b070",
+        "7f51b080"
+      ],
+      "preview_id": "7f51bff5",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "menu_id": "6a47f7bd",
+      "tile_base": "7f51b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f51b000"
+      ]
+    },
+    "hsr-l4-two-track-curve-90deg-right-wide": {
+      "puzzle_id": "f81c",
+      "tile_ids": [
+        "7f57a400",
+        "7f57a500",
+        "7f57a600",
+        "7f57a700",
+        "7f57a800",
+        "7f57a900",
+        "7f57aa00",
+        "7f57ab00",
+        "7f57ac00",
+        "7f57a310",
+        "7f57a410",
+        "7f57a510",
+        "7f57a610",
+        "7f57a710",
+        "7f57a810",
+        "7f57a910",
+        "7f57a220",
+        "7f57a320",
+        "7f57a420",
+        "7f57a130",
+        "7f57a230",
+        "7f57a330",
+        "7f57a040",
+        "7f57a140",
+        "7f57a240",
+        "7f57a050",
+        "7f57a150",
+        "7f57a060",
+        "7f57a160",
+        "7f57a070",
+        "7f57a170",
+        "7f57a080",
+        "7f57a180",
+        "7f57a090",
+        "7f57a190",
+        "7f57a0a0",
+        "7f57a0b0",
+        "7f57a0c0"
+      ],
+      "preview_id": "7f57aff5",
+      "cells": [
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "menu_id": "6a47f81c",
+      "tile_base": "7f57a000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57a000"
+      ]
+    },
+    "hsr-l4-two-track-adapter-separated-compact": {
+      "puzzle_id": "f81d",
+      "tile_ids": [
+        "7f57b000",
+        "7f57b100",
+        "7f57b010",
+        "7f57b110",
+        "7f57b020",
+        "7f57b120",
+        "7f57b030",
+        "7f57b130",
+        "7f57b040",
+        "7f57b140",
+        "7f57b050"
+      ],
+      "preview_id": "7f57bff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f81d",
+      "tile_base": "7f57b000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57b000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-parallel-compact": {
+      "puzzle_id": "f81e",
+      "tile_ids": [
+        "7f57c000",
+        "7f57c100",
+        "7f57c010",
+        "7f57c110",
+        "7f57c020",
+        "7f57c120",
+        "7f57c030",
+        "7f57c130",
+        "7f57c040",
+        "7f57c140",
+        "7f57c050"
+      ],
+      "preview_id": "7f57cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "menu_id": "6a47f81e",
+      "tile_base": "7f57c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57c000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-merge-parallel-compact": {
+      "puzzle_id": "f81f",
+      "tile_ids": [
+        "7f57d000",
+        "7f57d010",
+        "7f57d110",
+        "7f57d020",
+        "7f57d120",
+        "7f57d030",
+        "7f57d130",
+        "7f57d040",
+        "7f57d140",
+        "7f57d050",
+        "7f57d150"
+      ],
+      "preview_id": "7f57dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "menu_id": "6a47f81f",
+      "tile_base": "7f57d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57d000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-merge-parallel": {
+      "puzzle_id": "f820",
+      "tile_ids": [
+        "7f57e000",
+        "7f57e100",
+        "7f57e200",
+        "7f57e010",
+        "7f57e110",
+        "7f57e210",
+        "7f57e020",
+        "7f57e120",
+        "7f57e220",
+        "7f57e030",
+        "7f57e130",
+        "7f57e230",
+        "7f57e040",
+        "7f57e140",
+        "7f57e240",
+        "7f57e050",
+        "7f57e150",
+        "7f57e250",
+        "7f57e160",
+        "7f57e170"
+      ],
+      "preview_id": "7f57eff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ]
+      ],
+      "menu_id": "6a47f820",
+      "tile_base": "7f57e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57e000"
+      ]
+    },
+    "hsr-l2-and-l4-mixed-y-junction-graded": {
+      "puzzle_id": "f821",
+      "tile_ids": [
+        "7f57f600",
+        "7f57f610",
+        "7f57f620",
+        "7f57f530",
+        "7f57f630",
+        "7f57f730",
+        "7f57f540",
+        "7f57f640",
+        "7f57f740",
+        "7f57f350",
+        "7f57f450",
+        "7f57f550",
+        "7f57f750",
+        "7f57f850",
+        "7f57f950",
+        "7f57f060",
+        "7f57f160",
+        "7f57f260",
+        "7f57f360",
+        "7f57f460",
+        "7f57f860",
+        "7f57f960",
+        "7f57fa60",
+        "7f57fb60",
+        "7f57fc60"
+      ],
+      "preview_id": "7f57fff5",
+      "cells": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          12,
+          6
+        ]
+      ],
+      "menu_id": "6a47f821",
+      "tile_base": "7f57f000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f57f000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-90deg-right-standard-width8m": {
+      "puzzle_id": "f823",
+      "tile_ids": [
+        "7f581200",
+        "7f581300",
+        "7f581400",
+        "7f581500",
+        "7f581600",
+        "7f581110",
+        "7f581210",
+        "7f581310",
+        "7f581020",
+        "7f581120",
+        "7f581030",
+        "7f581130",
+        "7f581040",
+        "7f581050",
+        "7f581060"
+      ],
+      "preview_id": "7f581ff5",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "menu_id": "6a47f823",
+      "tile_base": "7f581000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f581000"
+      ]
+    },
+    "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight": {
+      "puzzle_id": "f824",
+      "tile_ids": [
+        "7f582000",
+        "7f582100",
+        "7f582200",
+        "7f582300",
+        "7f582010",
+        "7f582110",
+        "7f582210",
+        "7f582020",
+        "7f582120",
+        "7f582030"
+      ],
+      "preview_id": "7f582ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "menu_id": "6a47f824",
+      "tile_base": "7f582000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f582000"
+      ]
+    },
+    "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight": {
+      "puzzle_id": "f825",
+      "tile_ids": [
+        "7f583000",
+        "7f583100",
+        "7f583200",
+        "7f583300",
+        "7f583010",
+        "7f583110",
+        "7f583210",
+        "7f583020",
+        "7f583120",
+        "7f583030"
+      ],
+      "preview_id": "7f583ff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "menu_id": "6a47f825",
+      "tile_base": "7f583000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f583000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end": {
+      "puzzle_id": "f82e",
+      "tile_ids": [
+        "7f58c000",
+        "7f58c200",
+        "7f58c010",
+        "7f58c210",
+        "7f58c020",
+        "7f58c120",
+        "7f58c220",
+        "7f58c030",
+        "7f58c130",
+        "7f58c230",
+        "7f58c040",
+        "7f58c140",
+        "7f58c240",
+        "7f58c150"
+      ],
+      "preview_id": "7f58cff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "menu_id": "6a47f82e",
+      "tile_base": "7f58c000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f58c000"
+      ]
+    },
+    "hsr-l2-and-l4-two-track-ramp": {
+      "puzzle_id": "f82f",
+      "tile_ids": [
+        "7f58d000",
+        "7f58d010",
+        "7f58d020",
+        "7f58d030",
+        "7f58d040",
+        "7f58d050",
+        "7f58d060",
+        "7f58d070"
+      ],
+      "preview_id": "7f58dff5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "menu_id": "6a47f82f",
+      "tile_base": "7f58d000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f58d000"
+      ]
+    },
+    "hsr-l4-over-hsr-l2-two-track-crossing-90deg": {
+      "puzzle_id": "f830",
+      "tile_ids": [
+        "7f58e000"
+      ],
+      "preview_id": "7f58eff5",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "menu_id": "6a47f830",
+      "tile_base": "7f58e000",
+      "state": "reserved-locally",
+      "resource_blocks": [
+        "7f58e000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-split-oblique-cut": {
+      "puzzle_id": "f826",
+      "tile_ids": [
+        "7f584000",
+        "7f584100",
+        "7f584200",
+        "7f584300"
+      ],
+      "preview_id": "7f584ff5",
+      "menu_id": "6a47f826",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "tile_base": "7f584000",
+      "resource_blocks": [
+        "7f584000"
+      ]
+    },
+    "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts": {
+      "puzzle_id": "f827",
+      "tile_ids": [
+        "7f585100",
+        "7f585200",
+        "7f585300",
+        "7f585400"
+      ],
+      "preview_id": "7f585ff5",
+      "menu_id": "6a47f827",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "tile_base": "7f585100",
+      "resource_blocks": [
+        "7f585000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-oblique-entry": {
+      "puzzle_id": "f831",
+      "tile_ids": [
+        "7f58f000",
+        "7f58f100",
+        "7f58f200",
+        "7f58f300",
+        "7f58f210",
+        "7f58f310",
+        "7f58f410",
+        "7f58f320",
+        "7f58f420",
+        "7f58f430",
+        "7f58f440",
+        "7f58f450"
+      ],
+      "preview_id": "7f58fff5",
+      "menu_id": "6a47f831",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "tile_base": "7f58f000",
+      "resource_blocks": [
+        "7f58f000"
+      ]
+    },
+    "hsr-l2-single-track-oneway-curve-oblique-exit": {
+      "puzzle_id": "f832",
+      "tile_ids": [
+        "7f590100",
+        "7f590200",
+        "7f590300",
+        "7f590400",
+        "7f590010",
+        "7f590110",
+        "7f590210",
+        "7f590020",
+        "7f590120",
+        "7f590030",
+        "7f590040",
+        "7f590050"
+      ],
+      "preview_id": "7f590ff5",
+      "menu_id": "6a47f832",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "tile_base": "7f590000",
+      "resource_blocks": [
+        "7f590000"
+      ]
+    },
+    "hsr-l2-over-road-l0-mixed-parallel-stack": {
+      "puzzle_id": "f828",
+      "tile_ids": [
+        "7f591000"
+      ],
+      "preview_id": "7f591ff5",
+      "menu_id": "6a47f828",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tile_base": "7f591000",
+      "resource_blocks": [
+        "7f591000"
+      ]
+    },
+    "hsr-l2-and-l4-two-track-curve-ramp-90deg-right": {
+      "puzzle_id": "f82a",
+      "tile_ids": [
+        "7f5a1100",
+        "7f5a1200",
+        "7f5a1300",
+        "7f5a1400",
+        "7f5a1500",
+        "7f5a1600",
+        "7f5a1010",
+        "7f5a1110",
+        "7f5a1210",
+        "7f5a1310",
+        "7f5a1410",
+        "7f5a1020",
+        "7f5a1120",
+        "7f5a1220",
+        "7f5a1030",
+        "7f5a1130",
+        "7f5a1040",
+        "7f5a1140",
+        "7f5a1050",
+        "7f5a1060"
+      ],
+      "preview_id": "7f5a1ff5",
+      "menu_id": "6a47f82a",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "tile_base": "7f5a1000",
+      "resource_blocks": [
+        "7f5a1000"
+      ]
+    },
+    "hsr-l2-mixed-fan-compact-recessed-web": {
+      "puzzle_id": "f7a8",
+      "tile_ids": [
+        "7f505200",
+        "7f505110",
+        "7f505210",
+        "7f505310",
+        "7f505020",
+        "7f505120",
+        "7f505220",
+        "7f505320",
+        "7f505420"
+      ],
+      "preview_id": "7f505ff5",
+      "menu_id": "6a47f7a8",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "tile_base": "7f505000",
+      "resource_blocks": [
+        "7f505000"
+      ]
+    },
+    "hsr-l2-two-track-straight-recessed-web": {
+      "puzzle_id": "f829",
+      "tile_ids": [
+        "7f586000"
+      ],
+      "preview_id": "7f586ff5",
+      "menu_id": "6a47f829",
+      "state": "reserved-locally",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tile_base": "7f586000",
+      "resource_blocks": [
+        "7f586000"
+      ]
+    }
+  }
+}

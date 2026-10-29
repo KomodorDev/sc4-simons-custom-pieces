@@ -21,11 +21,12 @@ import tempfile
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path[:0] = [str(ROOT/'framework'), str(ROOT/'domains/high-speed-rail/implementation')]
 
 from scp.dbpf import require, entries
 from scp.verification_fixtures import resource_descriptor, verification_resources
+from scp.subject_sources import piece_id_for_recipe
 from scp_hsr.directional_t_verify import _journeys, audit_visible_rails, _TURN_LIMITS
 from scp_hsr.hsr_components_verify import CONTRACTS, verify_component
 from scp_hsr.hsr_mesh_verify import audit_crossings, measure_journey_quality
@@ -46,7 +47,7 @@ from scp_hsr.hsr_trumpet_border_verify import (
 from scp_hsr.hsr_trumpet_rework_verify import (CURRENT_LAYOUT, ALLOWED_CELLS, REWORKED_SOURCES,
     read_rework_record, audit_redesign_scope, audit_target_joins, audit_preserved_journeys, audit_redesign_supports, audit_removed_cell_evidence, prove_removed_structural_cells, audit_route_movement, audit_matching_route_movement)
 
-ASSEMBLY = ROOT/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet'
+ASSEMBLY = ROOT/'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem'
 SCENE = ASSEMBLY/'assembly.json'
 QUALITY_PATH = ASSEMBLY/'checks/contract.json'
 RESOURCES_PATH = ASSEMBLY/'checks/resources.json'
@@ -54,19 +55,22 @@ REWORK_PATH = ASSEMBLY/'checks/junction-rework.json'
 INTEGRATION_PATH = ASSEMBLY/'checks/border-piece-integration.json'
 HISTORICAL_RESOURCES_PATH = ASSEMBLY/SNAPSHOT_RELATIVE/'checks/resources.json'
 FROZEN_REWORK_SHA256 = 'fd260acf137b4d690ec111aef4edf747cc0eb0b7f75155bf61c81fd4843d85dc'
+CURRENT_ASSEMBLY_ID = 'hsr-trumpet-straight-stem'
+
+# These literal IDs belong to the immutable atomization proof only.
 STRAIGHT_ID = 'hsr-component-lower-paired-straight'
 ONEWAY_ID = 'hsr-component-lower-oneway-straight'
-NEW_IDS = frozenset({
-    'hsr-component-l2-short-mainline-diverge-core', 'hsr-component-l2-short-opposed-merge-core',
-    'hsr-component-l2-shortened-departure-curve', 'hsr-component-l2-shortened-return-curve',
-})
-CURRENT_IDS = NEW_IDS | frozenset({
-    CORE_ID, RECESSED_STRAIGHT_ID,
-    'hsr-component-lower-paired-straight', 'hsr-component-lower-oneway-straight',
-    'hsr-component-modular-south-junction', 'hsr-component-modular-paired-climb',
-    'hsr-component-modular-crossing-core', 'hsr-component-upper-paired-straight',
-    'hsr-component-tight-paired-curve90-l4-to-mid', 'hsr-component-tight-paired-curve90-mid-to-l2',
-})
+NEW_IDS = frozenset(piece_id_for_recipe(recipe, ROOT) for recipe in (
+    'hsr_component_l2_short_mainline_diverge_core', 'hsr_component_l2_short_opposed_merge_core',
+    'hsr_component_l2_shortened_departure_curve', 'hsr_component_l2_shortened_return_curve',
+))
+CURRENT_IDS = NEW_IDS | frozenset(piece_id_for_recipe(recipe, ROOT) for recipe in (
+    'hsr_component_l2_paired_fan_compact_core', 'hsr_component_l2_paired_straight_recessed_web',
+    'hsr_component_lower_paired_straight', 'hsr_component_lower_oneway_straight',
+    'hsr_component_modular_south_junction', 'hsr_component_modular_paired_climb',
+    'hsr_component_modular_crossing_core', 'hsr_component_upper_paired_straight',
+    'hsr_component_tight_paired_curve90_l4_to_mid', 'hsr_component_tight_paired_curve90_mid_to_l2',
+))
 REPLACEMENTS = {
     (-112., 0.): (STRAIGHT_ID, 3), (112., 0.): (STRAIGHT_ID, 3),
     (-16., -112.): (ONEWAY_ID, 2), (16., -112.): (ONEWAY_ID, 0),
@@ -439,7 +443,7 @@ def audit_quality_contract(path=QUALITY_PATH):
     literal = json.loads(Path(path).read_text())
     integrated = 'border_piece_integration_sha256' in resource_descriptor(RESOURCES_PATH)
     expected = {
-        'schema_version': 2, 'id': 'straight-stem-trumpet', 'occupied_cells': expected_occupied_cells(),
+        'schema_version': 2, 'id': CURRENT_ASSEMBLY_ID, 'occupied_cells': expected_occupied_cells(),
         'encoded_fragments': resource_descriptor(RESOURCES_PATH).get('encoded_fragments', 167),
         'unique_piers': 74, 'placements': 28 if integrated else 26,
         'unique_piece_types': 14 if integrated else 13,
@@ -477,7 +481,7 @@ def audit_approved_layout(scene, *, current_border_integration=True):
             ASSEMBLY/SNAPSHOT_RELATIVE/'checks/layout.json')
     frozen = json.loads(path.read_text())
     normalized = canonical_sha256(frozen['layout'])
-    require(frozen['schema_version'] == 1 and frozen['assembly_id'] == 'straight-stem-trumpet'
+    require(frozen['schema_version'] == 1 and frozen['assembly_id'] == CURRENT_ASSEMBLY_ID
             and normalized == frozen['layout_sha256']
             == (CURRENT_INTEGRATION_LAYOUT if current_border_integration else CURRENT_LAYOUT),
             'Trumpet independently reviewed layout record changed')
@@ -753,7 +757,7 @@ def verify(build_path, scene_path=SCENE):
     quality = audit_quality_contract()
     descriptor = resource_descriptor(RESOURCES_PATH)
     verification_resources(RESOURCES_PATH, build_path, selected_piece_ids=CURRENT_IDS,
-                           assembly_id='straight-stem-trumpet')
+                           assembly_id=CURRENT_ASSEMBLY_ID)
     integration = read_border_integration_record(descriptor=descriptor)
     audited = audit_candidate_without_current_pins(build_path, scene, completed_rework=False,
                                                     current_border_integration=True)
@@ -839,7 +843,7 @@ def capture_current_resources(build_path, scene_path=SCENE):
                          'resource_sha256': {'-'.join(f'{v:08x}' for v in key): sha256(value)
                                              for key, value in saved.items()}})
     descriptor = {'purpose': 'Current border-repair and three-piece fan integration pins, captured after independent standalone archive identity and complete physical assembly audits.',
-        'schema_version': 3, 'id': 'straight-stem-trumpet-current-resources', 'assembly_id': 'straight-stem-trumpet',
+        'schema_version': 3, 'id': 'straight-stem-trumpet-current-resources', 'assembly_id': CURRENT_ASSEMBLY_ID,
         'pieces': archives, 'layout_sha256': audited['layout']['layout_sha256'],
         'junction_rework_sha256': sha256(REWORK_PATH.read_bytes()),
         'atomization_history_sha256': canonical_sha256(history),
@@ -850,7 +854,7 @@ def capture_current_resources(build_path, scene_path=SCENE):
         'journeys': [{'movement': list(movement), 'encoded_points': len(points), 'points_sha256': canonical_sha256(points)}
                      for movement, points in sorted(journeys.items())],
         'encoded_fragments': audited['paths']['encoded_fragments'], 'actual_tile_triangles': audited['triangles']}
-    integration = {'schema_version': 1, 'assembly_id': 'straight-stem-trumpet', 'status': 'passed',
+    integration = {'schema_version': 1, 'assembly_id': CURRENT_ASSEMBLY_ID, 'status': 'passed',
         'purpose': 'Integrate the approved border repairs and atomized three-piece fan into the complete trumpet; preserve all seven earlier source-only decisions and historical redesign proofs.',
         'baseline_snapshot': {'directory': SNAPSHOT_RELATIVE.as_posix(), 'index_sha256': SNAPSHOT_INDEX_SHA256},
         'layout_sha256': audited['layout']['layout_sha256'], 'scene_sha256': sha256(Path(scene_path).read_bytes()),

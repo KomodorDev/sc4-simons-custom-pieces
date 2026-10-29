@@ -59,6 +59,8 @@ class DocumentationHandoffTests(unittest.TestCase):
             (output/'plugin').mkdir(parents=True)
             (output/'docs').mkdir()
             (source/'README.md').write_text('# Final documentation\n')
+            commented = b'// title: "Shared source fixture"\n// summary: "Explain this packaged configuration."\n{"value": 7}\n'
+            (source/'project.jsonc').write_bytes(commented)
             (source/'previews').mkdir()
             (source/'previews/connection-overview.png').write_bytes(b'final cards')
             (source/'local').mkdir()
@@ -87,6 +89,7 @@ class DocumentationHandoffTests(unittest.TestCase):
                 packaged = json.loads(archive.read('manifest.json'))
                 self.assertEqual(compiled_manifest_sha256(packaged), compiled_manifest_sha256(manifest))
                 self.assertEqual(archive.read('docs/README.md'), b'# Final documentation\n')
+                self.assertEqual(archive.read('docs/project.jsonc'), commented)
                 self.assertEqual(archive.read('docs/previews/connection-overview.png'), b'final cards')
                 self.assertNotIn('docs/removed.md', archive.namelist())
                 self.assertNotIn('docs/local/private.json', archive.namelist())
@@ -97,6 +100,7 @@ class DocumentationHandoffTests(unittest.TestCase):
                     raw = archive.read(item['path'])
                     self.assertEqual((len(raw), hashlib.sha256(raw).hexdigest()), (item['bytes'], item['sha256']))
             self.assertEqual(documentation_members(source), {'docs/README.md': b'# Final documentation\n',
+                                                            'docs/project.jsonc': commented,
                                                             'docs/previews/connection-overview.png': b'final cards'})
 
     def test_handoff_rejects_missing_source_or_failed_build_verification(self):

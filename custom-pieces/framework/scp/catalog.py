@@ -1,6 +1,7 @@
 """Current piece registry and identifier collision checks."""
 from copy import deepcopy
 import json
+from . import jsonc
 from pathlib import Path
 import re
 
@@ -45,7 +46,7 @@ def auto_tile_base(piece):
 
 def load_catalog(root):
     root = Path(root).resolve()
-    project = json.loads((root / 'project.json').read_text())
+    project = jsonc.load(root / 'project.jsonc')
     domains = project.get('domains', {})
     require(isinstance(domains, dict) and domains, 'Domains must be a nonempty JSON object')
     paths, collections, assemblies, records = [], {}, [], {}
@@ -57,8 +58,8 @@ def load_catalog(root):
         require(all((directory / name).is_file() for name in ('AGENTS.md', 'README.md')),
                 f'{slug}: domain requires agent and human guides')
         registry_path = safe_relative(root, domain.get('registry'))
-        require(registry_path == directory / 'domain.json', f'{slug}: registry must be domain.json')
-        registry = json.loads(registry_path.read_text())
+        require(registry_path == directory / 'domain.jsonc', f'{slug}: registry must be domain.jsonc')
+        registry = jsonc.load(registry_path)
         require(registry.get('schema_version') == 1 and registry.get('id') == slug,
                 f'{slug}: invalid domain registry')
         records[slug] = registry
@@ -74,7 +75,7 @@ def load_catalog(root):
                     f'{piece.get("id")}: manifest must be 00_pieces/<id>/piece.json in its domain')
             paths.append((file, piece))
         collection_path = safe_relative(directory, registry['collections'])
-        selection = json.loads(collection_path.read_text())
+        selection = jsonc.load(collection_path)
         require(selection.get('schema_version') == 1, f'{slug}: unsupported collection schema')
         for name, members in selection.get('collections', {}).items():
             require(name not in collections, f'Duplicate collection: {name}')
@@ -91,10 +92,10 @@ def load_catalog(root):
     project['piece_sets'] = collections
     project['_domain_records'] = records
     project['_assemblies'] = assemblies
-    project['_profile'] = json.loads(safe_relative(root, project['profile']).read_text())
+    project['_profile'] = jsonc.load(safe_relative(root, project['profile']))
     project['_root'] = root
     if project.get('allocations'):
-        project['_allocations'] = json.loads(safe_relative(root, project['allocations']).read_text())
+        project['_allocations'] = jsonc.load(safe_relative(root, project['allocations']))
     validate_catalog(project)
     return project
 
@@ -250,10 +251,10 @@ def select_pieces(catalog, include=None):
 
 
 def release_status(root, pieces):
-    gates = json.loads((Path(root) / 'config/release.json').read_text())
+    gates = jsonc.load(Path(root) / 'config/release.jsonc')
     blocked = []
     current_reviews = {}
-    if (Path(root) / 'project.json').is_file():
+    if (Path(root) / 'project.jsonc').is_file():
         try:
             current_reviews = {piece['id']:piece.get('design_review')
                                for piece in load_catalog(root)['pieces']}

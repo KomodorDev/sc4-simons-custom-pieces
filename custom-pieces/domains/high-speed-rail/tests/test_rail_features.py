@@ -9,11 +9,13 @@ import re
 import sys
 import unittest
 
-FRAMEWORK=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+FRAMEWORK=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(FRAMEWORK / 'framework'))
 
 from scp_hsr.rail_features import (INFO, RECIPES, PATH, S3D, feature_layout, build_feature,
                                build_rules, native_paths, native_model)
+from scp import jsonc
+from scp.paths import local_settings
 from scp.track_paths import encode_paths,_parse_paths
 
 
@@ -150,11 +152,11 @@ class RailTopologyTests(unittest.TestCase):
 class NativeRailBuildTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        settings=json.loads((FRAMEWORK/'local/settings.json').read_text()) if (FRAMEWORK/'local/settings.json').is_file() else {}
+        settings=jsonc.load(local_settings(FRAMEWORK)) if local_settings(FRAMEWORK).is_file() else {}
         plugins=os.environ.get('SCP_TEST_NAM_PLUGINS',settings.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited NAM donors unavailable')
-        profile=json.loads((FRAMEWORK/'config/profiles/nam50-rhd.json').read_text())['files']['hsr']
+        profile=jsonc.load(FRAMEWORK/'config/profiles/nam50-rhd.jsonc')['files']['hsr']
         candidates=list(Path(plugins).rglob(profile['filename']))
         if len(candidates)!=1:
             raise RuntimeError('Expected one audited HSR donor')

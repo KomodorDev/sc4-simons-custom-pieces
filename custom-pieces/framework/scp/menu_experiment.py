@@ -11,6 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 import json
+from . import jsonc
 import os
 from pathlib import Path
 import re
@@ -87,7 +88,7 @@ def _baseline_cache_key(output, proof, validator):
 
 
 def _read_json(path):
-    return json.loads(Path(path).read_text())
+    return jsonc.load(path)
 
 
 def _members(scene):
@@ -560,7 +561,7 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
             'Menu experiment output must stay outside Plugins')
     catalog = load_catalog(root)
     require(domain_id in catalog['domains'], 'Unknown menu experiment domain')
-    config_path = safe_relative(root, catalog['domains'][domain_id]['path'] + '/menu-layout.json')
+    config_path = safe_relative(root, catalog['domains'][domain_id]['path'] + '/menu-layout.jsonc')
     config = _read_json(config_path)
     require(config.get('schema_version') == 1 and isinstance(config.get('layouts'), dict), 'Unsupported menu layout registry')
     if layout_id == 'trumpet-menu-test' and layout_id not in config['layouts'] and 'trumpet' in config['layouts']:

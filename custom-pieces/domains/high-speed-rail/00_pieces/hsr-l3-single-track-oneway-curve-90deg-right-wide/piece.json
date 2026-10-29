@@ -1,0 +1,184 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide.",
+  "schema_version": 1,
+  "id": "hsr-l3-single-track-oneway-curve-90deg-right-wide",
+  "name": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide",
+  "description": "HSR Level 3 (23 m) \u2014 Single-Track One-Way Curve 90\u00b0 Right \u2014 Wide. Fixed click-to-place piece in a 6 by 6 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_oneway_l3_turn90_right_wide",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f819",
+  "tile_ids": [
+    "7f577300",
+    "7f577400",
+    "7f577500",
+    "7f577210",
+    "7f577310",
+    "7f577120",
+    "7f577220",
+    "7f577030",
+    "7f577130",
+    "7f577040",
+    "7f577050"
+  ],
+  "preview_id": "7f577ff5",
+  "effect_name": "preview_scp_interchg_f819_0",
+  "footprint": [
+    6,
+    6
+  ],
+  "cells": [
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f819",
+    "order": "7011f819",
+    "style": "interchange-oneway-l3-turn90-right-wide"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f577300",
+      "source": "7f577300",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577400",
+      "source": "7f577400",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577500",
+      "source": "7f577500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577210",
+      "source": "7f577210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577310",
+      "source": "7f577310",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577120",
+      "source": "7f577120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577220",
+      "source": "7f577220",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577030",
+      "source": "7f577030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577130",
+      "source": "7f577130",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577040",
+      "source": "7f577040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f577050",
+      "source": "7f577050",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-levels",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        0.0,
+        -88,
+        23.0
+      ]
+    ],
+    "out": [
+      [
+        88,
+        0.0,
+        23.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "oneway_turn",
+    "level": "l3",
+    "height": 23.0,
+    "angle": 90,
+    "radius": "wide"
+  }
+}

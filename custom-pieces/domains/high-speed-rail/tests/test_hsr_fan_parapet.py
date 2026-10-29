@@ -11,7 +11,7 @@ from scp_hsr.hsr_atomic_components_verify import _section_intervals
 from scp_hsr.directional_t_verify import _area, _intersection_polygon
 from scp_hsr.hsr_fan_parapet_verify import audit_central_parapet, SECTIONS
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 NATIVE_DONOR = ROOT/'local/validation-inputs/Plugins/High Speed Rail.dat'
 
 

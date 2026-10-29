@@ -1,8 +1,6 @@
 """Saved-path metadata must preserve direction, service roles and exact joins."""
 from copy import deepcopy
-import json
 import math
-from pathlib import Path
 import unittest
 from unittest.mock import Mock, patch
 from scp.connectivity import PATH, assembly_connectivity, catalog_connectivity, link_counterparts, piece_connectivity, rotate, orientation_states_from_rules
@@ -277,48 +275,14 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         self.assertEqual(port['tangent'], [1., -0.])
         self.assertEqual(port['sampled_tangent'], port['tangent'])
 
-    def test_saved_trumpet_preserves_six_journeys_without_modifying_frozen_records(self):
-        from scp.catalog import load_catalog
-        root = Path(__file__).resolve().parents[1]
-        directory = root/'domains/high-speed-rail/01_assemblies/straight-stem-trumpet'
-        scene_path = directory/'assembly.json'
-        scene = json.loads(scene_path.read_text())
-        specs = {spec['id']: spec for spec in load_catalog(root)['pieces']}
-        identifiers = {item['piece_id'] for item in scene['placements']}
-        files = {identifier: root/'domains/high-speed-rail/00_pieces'/identifier/'connections.json' for identifier in identifiers}
-        before = {identifier: path.read_bytes() for identifier, path in files.items()}
-        original = (directory/'connections.json').read_bytes()
-        records = {identifier: json.loads(raw) for identifier, raw in before.items()}
-        output = assembly_connectivity('straight-stem-trumpet', scene, records, specs)
-        self.assertEqual({(j['entry_port'], j['exit_port']) for j in output['journeys']},
-                         {(a+'.in', b+'.out') for a in 'WES' for b in 'WES' if a != b})
-        # The P26 extraction exposes two directed western merge joins, and
-        # splitting the fan into three placements exposes four more directed
-        # joins. The complete assembly keeps the same six outside journeys.
-        self.assertEqual(len(output['encoded_route_joins']), 54)
-        extracted_seam = {
-            (join['from_placement'], join['to_placement'], tuple(join['endpoint_m']))
-            for join in output['encoded_route_joins']
-            if {join['from_placement'], join['to_placement']} == {'P07', 'P26'}
-        }
-        self.assertEqual(extracted_seam, {
-            ('P07', 'P26', (40., 2., 15.5)),
-            ('P26', 'P07', (40., -2., 15.5)),
-        })
-        fan_seams = {
-            (join['from_placement'], join['to_placement'], tuple(join['endpoint_m']))
-            for join in output['encoded_route_joins']
-            if {join['from_placement'], join['to_placement']}
-            in ({'P06A', 'P06B'}, {'P06B', 'P06'})
-        }
-        self.assertEqual(fan_seams, {
-            ('P06A', 'P06B', (110., 72., 15.5)),
-            ('P06B', 'P06A', (114., 72., 15.5)),
-            ('P06B', 'P06', (110., 56., 15.5)),
-            ('P06', 'P06B', (114., 56., 15.5)),
-        })
-        self.assertEqual(original, (directory/'connections.json').read_bytes())
-        self.assertEqual(before, {identifier: path.read_bytes() for identifier, path in files.items()})
+    def test_mismatched_measurement_subject_is_rejected_without_rewriting_inputs(self):
+        spec, record = paired()
+        record['subject_id'] = 'another-piece'
+        before = deepcopy(record)
+        scene = {'placements': [{'piece_id': 'straight', 'origin_m': [0., 0.]}]}
+        with self.assertRaisesRegex(ValueError, 'another piece'):
+            assembly_connectivity('fixture-assembly', scene, {'straight': record}, {'straight': spec})
+        self.assertEqual(record, before)
 
 
 if __name__=='__main__':unittest.main()

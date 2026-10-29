@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scp.autotile import validate_auto_tile_addresses
+from scp.subject_sources import piece_directory
 from scp.track_paths import PATH, encode_paths
 from scp_hsr.hsr_compact_fan import build_models, compact_info, compact_layout, model_inputs
 from scp_hsr.hsr_compact_fan_verify import check_paths
@@ -14,7 +15,7 @@ from scp_hsr.hsr_recessed_straight_verify import (
     MODEL_SHA256, PATH_SHA256, SHADOW_SHA256, audit_retained_straight_paths,
 )
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 RECIPE = 'hsr_component_l2_paired_straight_recessed_web'
 CORE = 'hsr_component_l2_paired_fan_compact_core'
@@ -23,7 +24,7 @@ CORE = 'hsr_component_l2_paired_fan_compact_core'
 class RecessedStraightTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.directory = PIECES/RECIPE.replace('_', '-')
+        cls.directory = piece_directory(RECIPE, ROOT)
         cls.spec = json.loads((cls.directory/'piece.json').read_text())
         cls.source = json.loads((cls.directory/'geometry.json').read_text())
         cls.tile = int(cls.spec['tile_ids'][0], 16)

@@ -15,11 +15,13 @@ if sys.version_info < (3, 11):
 from scp.catalog import load_catalog, select_pieces, inspect_pieces, release_status, number, piece_cells, tile_base
 from scp.build import build_project, doctor, verify_build, package_build
 from scp.dbpf import require
+from scp import jsonc
+from scp.paths import local_settings
 
 
 def configured_plugins():
-    local = ROOT / 'local/settings.json'
-    settings = json.loads(local.read_text()) if local.exists() else {}
+    local = local_settings(ROOT)
+    settings = jsonc.load(local) if local.is_file() else {}
     value = os.environ.get('SCP_PLUGINS') or settings.get('plugins')
     if value:
         return Path(value).expanduser()
@@ -44,11 +46,11 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
     name = name.strip()
     catalog = load_catalog(ROOT)
     domains = catalog.get('domains', {})
-    require(domain in domains, 'Unknown transport domain; register it with agent and human guides in project.json first')
+    require(domain in domains, 'Unknown transport domain; register it with agent and human guides in project.jsonc first')
     require(type(width) is int and type(depth) is int and 1 <= width <= 16 and 1 <= depth <= 16
             and width * depth <= 16, 'Footprint must have 1–16 cells and width/depth 1–16')
-    ledger_path = ROOT / 'config/allocations.json'
-    ledger = json.loads(ledger_path.read_text())
+    ledger_path = ROOT / 'config/allocations.jsonc'
+    ledger = jsonc.load(ledger_path)
     require(slug not in ledger['pieces'], 'This id is already allocated to a current piece. Choose a different id.')
     used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
     puzzle = next((n for n in range(0xF7A0, 0xF900) if n not in used_puzzles), None)
@@ -83,7 +85,7 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
     ledger['pieces'][slug] = allocation
     from scp.registration import apply_registration
     apply_registration(ROOT, [piece], ledger, {}, domain=domain)
-    return {'manifest': str(target), 'status': 'draft', 'next': 'Implement recipe and independent verifier, then mark experimental. Identifiers are recorded in config/allocations.json.'}
+    return {'manifest': str(target), 'status': 'draft', 'next': 'Implement recipe and independent verifier, then mark experimental. Identifiers are recorded in config/allocations.jsonc.'}
 
 
 def source_package(destination):
@@ -137,7 +139,7 @@ def main():
         if name == 'scaffold':
             cmd.add_argument('--id', required=True); cmd.add_argument('--name', required=True)
             cmd.add_argument('--width', type=int, default=1); cmd.add_argument('--depth', type=int, default=1)
-            cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.json')
+            cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.jsonc')
     connector_cmd = sub.add_parser('connectors', help='Refresh or check source-owned connection data and overviews')
     connector_cmd.add_argument('action', choices=('refresh', 'check'))
     connector_cmd.add_argument('--piece', action='append', required=True, dest='connector_pieces', help='Exact registered piece ID; repeat for multiple pieces')
@@ -154,13 +156,13 @@ def main():
     observations_cmd.add_argument('--assembly', action='append', dest='observation_assemblies', help='Exact registered assembly ID; repeat to select more')
     observations_cmd.add_argument('--all', action='store_true', help='Apply this observation maintenance operation to every registered subject')
     icons_cmd = sub.add_parser('assembly-icons', help='Refresh canonical assembly icons without building or installing game resources')
-    icons_cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.json')
+    icons_cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.jsonc')
     for command in ('assembly-menu', 'menu-test'):
         menu_cmd = sub.add_parser(command, help=('Prepare one assembly button with Tab/Shift+Tab component cycling'
             if command == 'assembly-menu' else 'Compatibility command for assembly menu preparation'))
         menu_cmd.add_argument('--source', type=Path, default=ROOT / 'dist/current', help='Existing normal verified build; all selected piece assets are preserved')
         menu_cmd.add_argument('--output', type=Path, default=ROOT / ('dist/trumpet-assembly-menu' if command == 'assembly-menu' else 'dist/trumpet-menu-test'))
-        menu_cmd.add_argument('--layout', default='trumpet', help='Exact entry in the owning domain menu-layout.json')
+        menu_cmd.add_argument('--layout', default='trumpet', help='Exact entry in the owning domain menu-layout.jsonc')
         menu_cmd.add_argument('--domain', default='high-speed-rail')
         menu_cmd.add_argument('--plugins', type=Path)
         menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
@@ -203,7 +205,7 @@ def main():
         return 0
     if args.command == 'uninstall':
         from scp.install import uninstall
-        local = json.loads((ROOT / 'local/settings.json').read_text()) if (ROOT / 'local/settings.json').exists() else {}
+        local = jsonc.load(local_settings(ROOT)) if local_settings(ROOT).is_file() else {}
         result = uninstall(args.plugins or configured_plugins(), args.backup_root,
                            extra_roots=args.extra_plugins if args.extra_plugins is not None else local.get('extra_plugins', []))
         print(json.dumps(result, indent=2))
@@ -256,12 +258,12 @@ def main():
         result = scaffold(args.id, args.name, args.width, args.depth, args.domain)
     elif args.command == 'install':
         from scp.install import install_build
-        local = json.loads((ROOT / 'local/settings.json').read_text()) if (ROOT / 'local/settings.json').exists() else {}
+        local = jsonc.load(local_settings(ROOT)) if local_settings(ROOT).is_file() else {}
         result = install_build(args.output, args.plugins or configured_plugins(), args.backup_root,
                                extra_roots=args.extra_plugins if args.extra_plugins is not None else local.get('extra_plugins', []))
     else:
         from scp.install import rollback_install
-        local = json.loads((ROOT / 'local/settings.json').read_text()) if (ROOT / 'local/settings.json').exists() else {}
+        local = jsonc.load(local_settings(ROOT)) if local_settings(ROOT).is_file() else {}
         result = rollback_install(args.plugins or configured_plugins(), args.backup_root, args.backup_id,
                                   extra_roots=args.extra_plugins if args.extra_plugins is not None else local.get('extra_plugins', []))
     print(json.dumps(result, indent=2))

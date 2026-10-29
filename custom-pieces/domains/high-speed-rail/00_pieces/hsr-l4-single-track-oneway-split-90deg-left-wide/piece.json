@@ -1,0 +1,233 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Left from Single-Track One-Way Mainline \u2014 Wide.",
+  "schema_version": 1,
+  "id": "hsr-l4-single-track-oneway-split-90deg-left-wide",
+  "name": "HSR Level 4 (30.5 m) \u2014 Split 90\u00b0 Left from Single-Track One-Way Mainline \u2014 Wide",
+  "description": "A left-hand split or merge on the centered one-way 30.5 m track. No opposing mainline track is crossed. Use matching one-way L4 fillers and level adapters. The L4 mainline and branch are both one-way single tracks.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_split_90_wide_left",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f85a",
+  "tile_ids": [
+    "7f5e8000",
+    "7f5e8100",
+    "7f5e8200",
+    "7f5e8500",
+    "7f5e8210",
+    "7f5e8310",
+    "7f5e8410",
+    "7f5e8510",
+    "7f5e8420",
+    "7f5e8520",
+    "7f5e8430",
+    "7f5e8530",
+    "7f5e8540",
+    "7f5e8550"
+  ],
+  "preview_id": "7f5e8ff5",
+  "effect_name": "preview_scp_interchg_f85a_0",
+  "footprint": [
+    6,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f85a",
+    "order": "7011f85a",
+    "style": "interchange-l4-split-90-wide-left"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f5e8000",
+      "source": "7f5e8000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8100",
+      "source": "7f5e8100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8200",
+      "source": "7f5e8200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8500",
+      "source": "7f5e8500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8210",
+      "source": "7f5e8210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8310",
+      "source": "7f5e8310",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8410",
+      "source": "7f5e8410",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8510",
+      "source": "7f5e8510",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8420",
+      "source": "7f5e8420",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8520",
+      "source": "7f5e8520",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8430",
+      "source": "7f5e8430",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8530",
+      "source": "7f5e8530",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8540",
+      "source": "7f5e8540",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e8550",
+      "source": "7f5e8550",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        80.0,
+        -88,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        -8,
+        0.0,
+        30.5
+      ],
+      [
+        80.0,
+        8,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "l4",
+    "height": 30.5,
+    "angle": 90,
+    "radius": "wide",
+    "mode": "split",
+    "hand": "left"
+  },
+  "design_review": {
+    "status": "review-needed",
+    "summary": "Closely spaced pillars need a support-consolidation review.",
+    "reasons": [
+      "Separate 1.3 m-square pillar foundations have centres less than 2.6 m apart near shared rail geometry. The foundations do not overlap, but the close pair should be reviewed and consolidated to address the reported duplicate-pillar appearance. The 2.6 m review cutoff is an authoring convention, not a structural or game collision threshold."
+    ],
+    "reason_codes": [
+      "clustered-supports"
+    ],
+    "reviewed_build": "0.4.1.dev1",
+    "evidence": "domains/high-speed-rail/junction-design-review.json"
+  }
+}

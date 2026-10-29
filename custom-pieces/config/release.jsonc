@@ -1,0 +1,34 @@
+// title: "Compiled-plugin release requirements"
+// summary: "Define the identity, dependency, verification, permission, and game-test gates for public compiled-plugin distribution."
+//
+// Used when: release-check reports compiled-plugin readiness, a build records release status, or package --release assesses whether a compiled candidate satisfies publication requirements.
+// Read by: scp.catalog.release_status(), also called by scp.build.build_project() and scp.release.assess_build(); these combine the shared gates with selected-piece and build-specific evidence.
+// Updated by: A maintainer after the corresponding identity checks, permissions, platform tests, and publication materials have real evidence; software checks do not mark human gates passed.
+// Affects: public_release_ready and reported release blockers, plus rejection of an unready public compiled-plugin package; this file neither publishes a package nor approves experimental installer distribution.
+// Reference: custom-pieces/docs/RELEASE.md defines the evidence requirements and the separate installer policy.
+{
+  "purpose": "Human evidence and release-readiness requirements; software checks do not constitute game testing.",
+  "schema_version": 1,
+  "public_name_checked": {
+    "status": "pending",
+    "evidence": null
+  },
+  "ids_allocated": {
+    "status": "pending",
+    "evidence": null
+  },
+  "nam_derivatives_permission": {
+    "status": "pending",
+    "evidence": null
+  },
+  "supported_platform_tests": {
+    "status": "pending",
+    "evidence": null
+  },
+  "simtropolis_description_and_game_images": {
+    "status": "pending",
+    "evidence": null
+  },
+  "distribution_plan": "Build locally from user-installed NAM; public binary redistribution not cleared.",
+  "published": false
+}

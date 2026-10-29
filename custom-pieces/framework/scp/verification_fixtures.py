@@ -119,12 +119,15 @@ def verification_resources(descriptor_path, build_root, *, selected_piece_ids=No
     The actual manifest must select exactly the descriptor's identities, recipes
     and asset paths. Callers may independently supply the expected selected IDs
     and assembly ID so a valid descriptor for a different selection cannot pass.
-    Documentation, controller and menu files are outside this focused contract.
+    Subject identities, recipes, asset paths, archive bytes, resource identities,
+    and hashes must match exactly. The descriptor itself remains unchanged.
+    Documentation, controller, and menu files are outside this focused contract.
     """
     descriptor = resource_descriptor(descriptor_path)
     identities = _piece_identities(descriptor['pieces'], 'Current resource descriptor')
     if assembly_id is not None:
-        _require(_identifier(assembly_id) and descriptor['assembly_id'] == assembly_id,
+        _require(_identifier(assembly_id)
+                 and descriptor['assembly_id'] == assembly_id,
                  'Current resource descriptor assembly identity differs')
     if selected_piece_ids is not None:
         _require(not isinstance(selected_piece_ids, (str, bytes)),

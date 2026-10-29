@@ -118,7 +118,7 @@ def make_exemplar(donor: bytes, tile: int, number: int) -> bytes:
     for p in record['properties']:
         pid, kind, key = int(p['id'], 16), int(p['type'], 16), int(p['key_type'], 16)
         values = p['values']
-        if pid == 0x20: values = f'Custom HSR over Diagonal GHSR - tile {number + 1}'
+        if pid == 0x20: values = f'Custom HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal - tile {number + 1}'
         if pid == 0x27812823: values = [*S3D, *range(tile, tile + 5)]
         output.extend(struct.pack('<IHHB', pid, kind, key, 0))
         if kind == 0xC00:

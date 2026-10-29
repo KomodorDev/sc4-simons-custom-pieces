@@ -1,0 +1,88 @@
+// title: "Shared connector profile schema"
+// summary: "Validate reusable domain profiles that supply source-backed defaults for connector declarations."
+//
+// Used when: A domain's optional connector-profiles.jsonc defaults are resolved before individual piece connector declarations are validated.
+// Read by: scp.connector_metadata.resolve_profiles() through _schema() and validate_structure(), reached from load_library(); packaged Python resources preserve these rules outside a source checkout.
+// Updated by: A maintainer alongside an intentional shared-profile contract change and its inheritance resolver and regression checks; domain authors edit their profile records instead of this schema.
+// Affects: Allowed profile fields and their structural constraints before inheritance and piece-level checks; profile labels or declared widths alone do not establish boundary compatibility.
+// Reference: custom-pieces/docs/CONNECTOR_METADATA.md distinguishes optional inherited defaults from measured physical boundaries.
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SCP optional connector defaults, version 2",
+  "description": "Optional inherited authoring defaults. Profile names, declared section widths, and mnemonic tokens do not decide compatibility.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coordinate_convention": {
+      "type": "object"
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "abstract": {
+            "type": "boolean"
+          },
+          "extends": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "network": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "engine_transport": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "role": {
+            "type": "string"
+          },
+          "alignment": {
+            "type": "string"
+          },
+          "endpoint_grade": {
+            "type": "number"
+          },
+          "path_height_m": {
+            "type": "number"
+          },
+          "nominal_level": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "scope_note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "abstract"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "profiles"
+  ],
+  "additionalProperties": false
+}

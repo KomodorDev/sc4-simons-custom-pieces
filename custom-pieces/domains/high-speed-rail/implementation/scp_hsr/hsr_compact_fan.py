@@ -9,7 +9,7 @@ from __future__ import annotations
 from copy import deepcopy
 from functools import lru_cache
 import json
-from pathlib import Path
+from scp.subject_sources import piece_name_for_recipe, piece_directory
 
 from scp.dbpf import require
 
@@ -23,7 +23,7 @@ RECIPES = (
 def _source(recipe):
     """Read only this module's own maintained geometry source."""
     require(recipe in RECIPES, 'Unknown compact HSR fan recipe')
-    path = Path(__file__).resolve().parents[2]/'00_pieces'/recipe.replace('_', '-')/'geometry.json'
+    path = piece_directory(recipe)/'geometry.json'
     data = json.loads(path.read_text())
     require(data.get('schema_version') == 1 and data['metadata']['recipe'] == recipe,
             'Compact HSR fan source identity or schema is invalid')
@@ -33,6 +33,7 @@ def _source(recipe):
 def compact_info(recipe):
     """Return the native construction, connection and support contract."""
     info = deepcopy(_source(recipe)['metadata'])
+    info['name'] = piece_name_for_recipe(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): flag for cell, flag in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]
