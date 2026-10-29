@@ -1,0 +1,26 @@
+// title: "Development branch protection template"
+// summary: "Require the Tests check and resolved conversations for dev while preserving human control of merges."
+//
+// Used when: A repository administrator reviews or deliberately changes protection for the dev integration branch; cloning this repository, committing this file, or running CI does not apply these settings.
+//
+// Read by: The conversion command in docs/GITHUB.md runs custom-pieces/framework/scp/jsonc.py to create local/github-api/dev-protection.json under custom-pieces; an administrator then supplies that strict-JSON file to the separate gh api --method PUT branches/dev/protection operation.
+//
+// Updated by: Human maintainers edit this template when the development-branch policy or required Tests check changes, regenerate the disposable API payload, and inspect it before applying it to their intended repository.
+//
+// Affects: Only a deliberately applied API payload changes GitHub protection: the branch must be up to date, Tests must pass, conversations must be resolved, administrator enforcement applies, and force pushes and deletion are blocked; zero approving reviews are required.
+//
+// Reference: docs/GITHUB.md
+{
+  "required_status_checks": {
+    "strict": true,
+    "contexts": ["Tests"]
+  },
+  "enforce_admins": true,
+  "required_pull_request_reviews": {
+    "required_approving_review_count": 0
+  },
+  "restrictions": null,
+  "required_conversation_resolution": true,
+  "allow_force_pushes": false,
+  "allow_deletions": false
+}

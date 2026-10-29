@@ -4,30 +4,37 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog, number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 
 def main():
     from scp_hsr.rail_repairs import INFO, RECIPES
     catalog = load_catalog(ROOT)
-    project = json.loads((ROOT/'project.json').read_text())
-    ledger = json.loads((ROOT/'config/allocations.json').read_text())
+    project = jsonc.load(ROOT/'project.jsonc')
+    ledger = jsonc.load(ROOT/'config/allocations.jsonc')
     current = {piece['id']:piece for piece in catalog['pieces']}
     used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
     used_blocks = {number(value)&0xfffff000 for p in ledger['pieces'].values()
                    for value in [p['preview_id'], *p['tile_ids'], *p.get('resource_blocks', [])]}
     additions, identifiers = [], []
     for recipe in RECIPES:
-        info, slug = INFO[recipe], recipe.replace('_','-')
+        info = INFO[recipe]
+        owners = [piece for piece in catalog['pieces'] if piece['recipe'] == recipe]
+        require(len(owners) <= 1, f'Ambiguous scissors recipe owner: {recipe}')
+        require(not owners or owners[0]['domain'] == 'high-speed-rail',
+                'A rail scissors recipe must belong to the high-speed-rail domain')
+        slug = owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
         identifiers.append(slug)
         cells = [list(cell) for cell in info['cells']]
         if slug in current:
-            require(current[slug]['cells']==cells and current[slug]['footprint']==list(info['footprint']),
+            require(current[slug]['recipe']==recipe and current[slug]['cells']==cells and current[slug]['footprint']==list(info['footprint']),
                     f'{slug}: reserved geometry grid cannot be changed')
             continue
         require(slug not in ledger['pieces'], 'Existing allocation cannot be reused for a new piece')
@@ -38,7 +45,7 @@ def main():
         level = 'ghsr' if recipe.startswith('rail_ghsr_') else 'hsr'
         style = f'rail-{level}-scissors-revised'
         tiles = [f'{block+x*0x100+row*0x10:08x}' for x,row in cells]
-        name = f'{level.upper()} Adjacent Scissors Revised'
+        name = piece_name_for_recipe(recipe, f'{level.upper()} Adjacent Scissors Revised', ROOT)
         description = (f'{name}. Corrected rail deck union and branch openings; '
                        'one shared support per occupied elevated tile, no ground-track pillars. '
                        'Authored 5 m wide by 5 m high route clearance check. '

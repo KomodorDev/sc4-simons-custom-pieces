@@ -1,0 +1,59 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal.",
+  "schema_version": 1,
+  "id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+  "name": "HSR Level 2 (15.5 m) over GHSR Ground (1 m) \u2014 Two-Track Crossing 45\u00b0 \u2014 Lower Diagonal",
+  "description": "Straight elevated High Speed Rail crosses diagonal ground High Speed Rail. Two tiles; no interchange.",
+  "recipe": "hsr_diagonal_ghsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7a1",
+  "tile_ids": [
+    "5dd0f200",
+    "5dd0f210"
+  ],
+  "preview_id": "5dd0f225",
+  "effect_name": "preview_hsr_diag_ghsr___001",
+  "footprint": [
+    1,
+    2
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr",
+    "urail"
+  ],
+  "menu": {
+    "id": "6a47f7a1",
+    "order": "7011f7a1",
+    "style": "diagonal-hsr"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "5dd0f200",
+      "source": "5dd31500",
+      "rotation": 0
+    },
+    {
+      "tile": "5dd0f210",
+      "source": "5dd31500",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team: straight HSR and C219 diagonal GHSR",
+    "construction": "NAM AAC1 same-network two-height layout",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "domain": "high-speed-rail"
+}

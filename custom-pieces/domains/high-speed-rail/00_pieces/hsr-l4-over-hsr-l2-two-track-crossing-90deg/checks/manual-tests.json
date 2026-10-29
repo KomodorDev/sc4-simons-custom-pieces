@@ -1,0 +1,1977 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "hsr-component-modular-crossing-core",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f830",
+        "0004f830"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f830",
+        "0007f830"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f830",
+        "0006f830"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f830",
+        "0005f830"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+    "effect:hsr-component-modular-crossing-core:ea5118b0-ea5118b1-7f58eff5": "bbcc955e956f2f2f37bb0d980d4c5fd7ec8de4b79c69783a7450d4b4d4831e21",
+    "exemplar:hsr-component-modular-crossing-core:6534284a-a8434037-7f58e000": "56edb3fb65cbb33359e599cc8f919a7f9eaac2fcb620f8668d3c6d6d11ffe06d",
+    "graph:hsr-component-modular-crossing-core": "d283241c5786fb2f833eefea05d5d1319f1afc994082f782e04c471cc5a7c8a7",
+    "image:hsr-component-modular-crossing-core:canonical-southeast": "400537ca5419c208b2ba09c950f040227030ee8d6cd8e2697581cc1a035bdb0e",
+    "image:hsr-component-modular-crossing-core:canonical-top": "0520bc2e40989ac483424bf2ff9b0648b02afda71688a6379f1b42f61d2c57eb",
+    "image:hsr-component-modular-crossing-core:connection-overview": "8f8468791f4506deffe20c02a8350becb5c61c024c080356a3afd9f21659f157",
+    "interface:hsr-component-modular-crossing-core:Ein": "9308965b91fb768f61be39fbcb443f47c124e2dbe18d53788d3423d6a0887061",
+    "interface:hsr-component-modular-crossing-core:Eout": "12463c019ffb1ae16e1ddc0dd813116218ddabec33959b2b8414fed0d38df77f",
+    "interface:hsr-component-modular-crossing-core:Nin": "11775cc414108b711cb000cff710ffdc4cb88326cd7741689460418e8c8c7a87",
+    "interface:hsr-component-modular-crossing-core:Nout": "a28da5d15b35863708fcc6a36016c031ea52bb26a7fa33739c5e655388d667b2",
+    "interface:hsr-component-modular-crossing-core:Sin": "a0294c053bd6f8bd7bb60147f12800fb368736d71886609578a75f07fb2a25a5",
+    "interface:hsr-component-modular-crossing-core:Sout": "14a9d2003073cb1de03bf764b27608e938d0c01ec71c44adf34b2bfcf398c690",
+    "interface:hsr-component-modular-crossing-core:Win": "62495701f4ca4b2e92fae54dbc4804e54f4fa8d99205f4c4a3d766e252134866",
+    "interface:hsr-component-modular-crossing-core:Wout": "a0cb827c7c166f276a2f187064ee23ad99cb4cde6a9af1757ee01ecbf69927b6",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58eff5": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+    "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+    "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e000": "32ad5b2425c5c1363fa3a4d3d16678bc5c97fa7beef88981925d65bf732797d1",
+    "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e001": "20d6aa67aa629372eb775f5a1fd47fe6bb861eb8c644cb1ad213b659ce8760f5",
+    "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e002": "fc998cf56057f5431a4096996a0641e02bc6f3f4f0b30e1c929b8bf07597932e",
+    "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e003": "b8d77c631e53e4e1d38b2472dbe8c3d4a83aa7f6739a54d1c4594d328d944d19",
+    "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e004": "3b7a12302dbb3dc52aec1ea4ad879c3486c080c3a1d31ca2e8126f933bd05d3d",
+    "text:hsr-component-modular-crossing-core:2026960b-2a592fd1-7f58e000": "0187714926dd76dee5192bdbde71d90a4b271727c7d64c4e71d1b89b850feda3"
+  },
+  "cases": [
+    {
+      "id": "software_resources-0ce2c7625a107ac300a9",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "473f81ad5f99e00428d830b04c4980305fea48f9c3d15f3e42bdc113da999358"
+        }
+      ],
+      "dependency_snapshot": "473f81ad5f99e00428d830b04c4980305fea48f9c3d15f3e42bdc113da999358",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "software_connectivity-0ce2c7625a107ac300a9",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "2216316837a80286fe93a20fe76d70f5d222c7fea06acaf4867073ac20c6cf47"
+        }
+      ],
+      "dependency_snapshot": "2216316837a80286fe93a20fe76d70f5d222c7fea06acaf4867073ac20c6cf47",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_render-60bb45d1c468daf9127a",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d329833005d26e8dcc7e5425958994c2d32ccae08bfa447fe083316932b0deed",
+      "dependency_ref": "8f401ca36847ba34b6fcce729c3729ff1f7e707023911b0b5b929e940b77e07e"
+    },
+    {
+      "id": "in_game_placement-60bb45d1c468daf9127a",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2517813b2d3ed74ef5cd9ad35dee62eedca3d4c3dc42f23be9aeba138a62406a",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_demolition-60bb45d1c468daf9127a",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2517813b2d3ed74ef5cd9ad35dee62eedca3d4c3dc42f23be9aeba138a62406a",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_save_reload-60bb45d1c468daf9127a",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2517813b2d3ed74ef5cd9ad35dee62eedca3d4c3dc42f23be9aeba138a62406a",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_render-5dd9163ea7feb4d233d9",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "101e826d1ef85f0935595773256e7343d0a585386654b49c50b926b03a6859c8",
+      "dependency_ref": "8f401ca36847ba34b6fcce729c3729ff1f7e707023911b0b5b929e940b77e07e"
+    },
+    {
+      "id": "in_game_placement-5dd9163ea7feb4d233d9",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "35e383c46509b9a427238a89629d322f0e853343eaa7a33d9ad5b98a2cfc8254",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_demolition-5dd9163ea7feb4d233d9",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "35e383c46509b9a427238a89629d322f0e853343eaa7a33d9ad5b98a2cfc8254",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_save_reload-5dd9163ea7feb4d233d9",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "35e383c46509b9a427238a89629d322f0e853343eaa7a33d9ad5b98a2cfc8254",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_render-aac75d58babe92d0df66",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "76099926503bf5a7088bd55df8d984d2c37ac57eccf5bba0a8d3a0d120da5391",
+      "dependency_ref": "8f401ca36847ba34b6fcce729c3729ff1f7e707023911b0b5b929e940b77e07e"
+    },
+    {
+      "id": "in_game_placement-aac75d58babe92d0df66",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "376d750d4bd7e517e48251deb484723eb4f6fb6bbaf8582be2c22ecf6eaf4413",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_demolition-aac75d58babe92d0df66",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "376d750d4bd7e517e48251deb484723eb4f6fb6bbaf8582be2c22ecf6eaf4413",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_save_reload-aac75d58babe92d0df66",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "376d750d4bd7e517e48251deb484723eb4f6fb6bbaf8582be2c22ecf6eaf4413",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_render-8c67ccb3f983d252d251",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aca00d1431e80ce45f53c26b06f45feaf0a3a52a5d0b1cd6f2ec19b45b66bdf1",
+      "dependency_ref": "8f401ca36847ba34b6fcce729c3729ff1f7e707023911b0b5b929e940b77e07e"
+    },
+    {
+      "id": "in_game_placement-8c67ccb3f983d252d251",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0e8bd1961b1397dae615c7346da254d779a358fd98db35caa476f42b0ec636e3",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_demolition-8c67ccb3f983d252d251",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0e8bd1961b1397dae615c7346da254d779a358fd98db35caa476f42b0ec636e3",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_save_reload-8c67ccb3f983d252d251",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0e8bd1961b1397dae615c7346da254d779a358fd98db35caa476f42b0ec636e3",
+      "dependency_ref": "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b"
+    },
+    {
+      "id": "in_game_route_query-f4d9cf8f9cd43b3ed436",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e936bf9759437db76c5b16344e7f2742a2e3f5d2f9aa55ee9812bed9270e9104",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-f4d9cf8f9cd43b3ed436",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e936bf9759437db76c5b16344e7f2742a2e3f5d2f9aa55ee9812bed9270e9104",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-5ea57b050a0a108944d2",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7ed151c8600e8214bf2da1e0fa106d561b100629739959a9dee8efc27bb848b9",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-5ea57b050a0a108944d2",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7ed151c8600e8214bf2da1e0fa106d561b100629739959a9dee8efc27bb848b9",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-389d267436dcf471fba4",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2d8717d6c93febbf722edb95767ff7fdc16807d2f74a1dd23bb432f2aabe45a8",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-389d267436dcf471fba4",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2d8717d6c93febbf722edb95767ff7fdc16807d2f74a1dd23bb432f2aabe45a8",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-9e0ac6b5dbf02c9f3695",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2bd822da4cd8176106228fb3c9e8ac4c96a938a63709a9b52b62332cba9b11dc",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-9e0ac6b5dbf02c9f3695",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Win>Eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Win",
+        "exit_port": "Eout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2bd822da4cd8176106228fb3c9e8ac4c96a938a63709a9b52b62332cba9b11dc",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-c784d630dc08288b2fdf",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6fd539cac231e9c64a45a3695c3d5689e1ed1d53885d8ef833625ea78ce5b196",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-c784d630dc08288b2fdf",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6fd539cac231e9c64a45a3695c3d5689e1ed1d53885d8ef833625ea78ce5b196",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-481ea42c7e9a990d906d",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1002af6178dc40c4c3a9df1de19f1515eacf2206c16b647eb28eb247a04ff4ee",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-481ea42c7e9a990d906d",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1002af6178dc40c4c3a9df1de19f1515eacf2206c16b647eb28eb247a04ff4ee",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-fed4803926213bf8e9a9",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e232a9c04ed961745360dafb5d18b1861662f29f46eb775af9382bbfed08f8e6",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-fed4803926213bf8e9a9",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e232a9c04ed961745360dafb5d18b1861662f29f46eb775af9382bbfed08f8e6",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-73116eb4a175a83f4b9f",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0389805914d647e668327c419394e14464ae58738349bad8922a410b16f4b773",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-73116eb4a175a83f4b9f",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0389805914d647e668327c419394e14464ae58738349bad8922a410b16f4b773",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-f5ef54272d07300cac9a",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e03f5c08a7cf00ddbeb9086bf7513154593219411489b06b20adc49744b093b",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-f5ef54272d07300cac9a",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e03f5c08a7cf00ddbeb9086bf7513154593219411489b06b20adc49744b093b",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-5b79e6464c43e4f6948a",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e96a27dd9f5414b2a644b94b763fd16edfa64a5ca12a66a03fab5fede156bc5",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-5b79e6464c43e4f6948a",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1e96a27dd9f5414b2a644b94b763fd16edfa64a5ca12a66a03fab5fede156bc5",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-d95471d14adcbf720bc7",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "78ab6c114b43d637dae9bbd5165d1ac9a517e26ccf2029ec9da06142beb56e9a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-d95471d14adcbf720bc7",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "78ab6c114b43d637dae9bbd5165d1ac9a517e26ccf2029ec9da06142beb56e9a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-cfc5120864436a36cad0",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7299a64305393ead2b01b4db0822f3ddf9ef5a111c3b72c8e9bdfd9a3b09305a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-cfc5120864436a36cad0",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7299a64305393ead2b01b4db0822f3ddf9ef5a111c3b72c8e9bdfd9a3b09305a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-4fe45956037912e0b05c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7126b64484d8f51890616ed8439168758fade99f65b859430a1ea8d9c37ab938",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-4fe45956037912e0b05c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7126b64484d8f51890616ed8439168758fade99f65b859430a1ea8d9c37ab938",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-6d8268095588e8c01445",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "659551bc6093b40f35445b33066611e6f07ee0aadb9cf2ea1a51179edb1de689",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-6d8268095588e8c01445",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "659551bc6093b40f35445b33066611e6f07ee0aadb9cf2ea1a51179edb1de689",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-3296eead8f9757864acb",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "87df5d966e13f11f59a3658673b9dd12ea5fbb7126d54a1de5c1ef93f8788e69",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-3296eead8f9757864acb",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "87df5d966e13f11f59a3658673b9dd12ea5fbb7126d54a1de5c1ef93f8788e69",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_route_query-ad335f8c4d250bee4c7d",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "93c648b9189b8d5d6d02deca0c3983e9172bf0996201e6f398f1f516ce5cca7d",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_visible_travel-ad335f8c4d250bee4c7d",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "journey_id": "7:Ein>Wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Ein",
+        "exit_port": "Wout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "93c648b9189b8d5d6d02deca0c3983e9172bf0996201e6f398f1f516ce5cca7d",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a21b5e58377bc7e9477c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2dc26a8d82e3eb0815bda8428a59172bffdbcc1b363f13817ce191b988ae3e6",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f0ea1e21f7e35e149c7e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "55c3b400bbcf8168dc163289f51ec258d63d887d0777f6d49f5742fbce351264",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-257e260a5e0e3b46a9e0",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9fc50290d8cf38e46aadf733e794499803b7de8e8766fad42c652ca7fcbe2d85",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3fce588ed8dcd146cf3a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ade925d0bedce5bb31089ed200b70354b5a956cfc29a5a6b7e043567964b932b",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4bd98de4f164984e9fc4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9eadb34f26c4f45df624076480c185f13821e00b5df8acbc99478e74c54344f8",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-04bd9840b8539a8f8669",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "98cfd89165787802d7b4ae7cf54e4623181ceb1dfc152eb9eb57079b3f8cb5c3",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b83c83d81ecdbec41c03",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b4c4db9836374b64a836761d5e8a9857a52f28b502df36a6b01f00416024ae48",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-da2dbf17021ee893ab1e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3d2f345f4cdede3c14064e6cdd9e0c68b95795677e4d12b6d7dc016e59643118",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-898e76225b3e7c1300bc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "19531a8e254ca0d731c407556de6f65d65428a28ade282ce15813f3d8c0733e1",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e7e9e410a4f607066a8b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ce207d394470ea211a51f14797fc509cca613b03f077bf2ebc879f81343fc50f",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b4d436a9d0258fac92d8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0a9a04a6c9c75f0e1f1858e27552084e618d6c07ae8ff757d5308022fa30858b",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-7efe47c4aaa7818decc3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Win",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df3680bb2674fa6943184773e18c1fb15d64565cd4673231c6df454b381b465e",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-d5e030b5e7d39415eb3d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4d470467b161c5a3cca7d5a467f1591e538bf6ba60b8acba66e6a497d257c9f2",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cba7df633e5c115d8642",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "91eea654b9dadfb7ae94b58bf31bc0be2d3807df6747e9079335ece03149bb9e",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-aa78c871f4b77f24f7c4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7aee2e19ae33ed8211ad95435cb45c2d2e7f2f1297c0b595b5288111be993e45",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-48157237cfd256c6c89c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dce48ff037c637a2a65b3689fcfb792a03405e2744c4bbad8694d80c9c864a93",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a95f8121f4d8cc51c61f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d3c1aad865cb26b9892eac247944d400369ea76c9b26ea000f804eccb1a33abb",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-41eab0006cd4606d5a6c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "07699eac0d28b26a9f74e65cac9dae6039da72cbadd2e88aeacee476d9a63f85",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-63f875e919b33922cf5e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "733e66c745f2d84a532e21f6edd8f9f47622bb4ff9e0753efc21ebec73b6c69f",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-dea39cc8508b7e50759c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df89e70605a8da659ee41ff524b0445758487e935063026f69c817ac873cff4c",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6c46dbac8020aa6f92ea",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "973334abf3a003bdb034341132de1a5504be89e835a9136f5b2bab9dc3bdb754",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4392e3b07173e215988d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6fc79684cdf8af1ab305705bb0915bfc289b0b7f6ce51ee624fe4a46d44659d0",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c40d120ea97eb620863e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d8e24908a8a57fb8c07a8edaa9c9713d4965d0a4d59be4776462750e6c1950b5",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f25975adc643b7822604",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9e914db605334e28f03ba83da659a26b1fe8b5d5375d8914a125e80ef33db75e",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6bfa6d9a37f3aca18752",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c892db9e733b2d6a5c8332ff1b9ef0d3230e6b782a3b0badc52c2cec312c1f81",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8107929d9878d5a0959b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b14f569dee4e36d69b69c9bf7a8558abcb49b77302e7a41ed0dbd44799fa6e51",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-86114342dcaea8ef890a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "680a2f6fb4f6ae460ae99bd7d3e49788f8f63ca9000357a715b95473f50332f1",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2d4512ef952b7702bd6a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f6d666c6607c1ea597b2f40af0a383c095aabb909e9d068b9551f298ffc0a06a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ab64d46ede8871adbd9a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5de058fd0601ff76ee3cafc738b4002ae9ca914ac873e6e3c3dad084efdcadd1",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-571462c9653682c72a53",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6e9c5cb17085346a43586a7cfdd2764c88f2cae771bef7bddf2bb6403cd7c325",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c6c9ee6a90c983908971",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c0e1f1e49705c7b85d9c290384b3dd5c8aa0f4e6da801600677bcea0a2b912e3",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-88224e287710de4e97f4",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bb9b89e4b545dddeca45144acdd16261b2998c72e356ee1175e551d10f855409",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cf09a5bd45e2e7752d29",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c905fe21a0338b5fc07aa7deac1a7dc3416f40d5fbd8b52bdd4da93a13658ab7",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a10f3750f8b93a66835e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5eac529b8793bb4fcc34eff0de4f3a203596f4f1782fa4844f670247dd7b78aa",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c98dfe0574ea9fcec70f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "377e7bc9801629c869bd1bde46b7fe2ac5323345c6faf95d6bb171caaf897d99",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-43f984a6b23af0f0537f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "efee2334f178baa3ad65e53740a46b6152020ffb5f816eebdae9d1a75d928a12",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2eb11d5412e3c60c6e77",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e27770725c29d4f9a9e9643d6e408e5e97d37ca5e1f5a723fc6973921be4d509",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6b5dbaad2c39a779f15d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8854f74572bff9eeb848c65e36e77896bbfaa0787101c6cf363dbc1e2fac9aad",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8d2182f2123024b2c4e2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "934c584d172619c3bd82a7271ab862a9a93129679e00c42afde541bdcb117ce7",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-68688ab62c7015e5d104",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "06526ab6e86789bb191bf48ccfe1ee4764f1d4106badb8b5044ae8affd67a5ed",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9bd1568734121623c4fe",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3220327eea206c24ba3b30dc55cac352bd2df4f8d35d4233cc50213882cc397a",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a3b58e424ac234cab0a0",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fa39f0f54999000a325f32cb8cf2ff0c8793243f8a685070042c8d271de9ae2e",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-851548d1526b194b0c9a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d8afb4d1e947ce4bd8f1f485ce72d2d355e99e99bcd6dd93d48bbf74c9c84bec",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-772ed9de71e4631fbc0d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b3812ff60f47b56c7092f63bc30b3d1d1ad8b5e957c720127ad612424df081a0",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4e4a8eca7572428aaafc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b5802bc34656d16b0605eb2a3d17e2fc121ca66160a165179900680216293ff6",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-49ba649326bcc2ae7336",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3df548780722126ad73299de1e510e39ab492d95b501d5f170b7112d461719f6",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-089f52e1911ce6fbb622",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d9de6bf8ee2c8885f3f16d431853e6508f34f846d22b6e27d97484b5f104be81",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9d0fc335efa31bfb639c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "forbidden_transfer": {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "23301da5a3c26d67efb65752a566f07216f9229c9a4c77e375994412e1f56953",
+      "dependency_ref": "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706"
+    },
+    {
+      "id": "preview_review-d05a525f61d0bcb557b7",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "image_key": "image:hsr-component-modular-crossing-core:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d01e2c3568ba4d1e8eb281c72534df0f6dd0d70141ab131835f46c1851ee1da4",
+      "dependency_ref": "6bab331b17533faad14fd9ae2f1bb47380daf2adbc992481f26640f7cb738360"
+    },
+    {
+      "id": "preview_review-f5e92b1e244c8ca1bd7e",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "image_key": "image:hsr-component-modular-crossing-core:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "13faeee427bc5bd586c5d50bf302ae3723266dc43f843e360737e213c159365e",
+      "dependency_ref": "873b0b962ddef2b6f10b605c9b359229e9723b52c579404871cfc5671856a70e"
+    },
+    {
+      "id": "preview_review-11ea34ddb70834f03b05",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-modular-crossing-core",
+        "image_key": "image:hsr-component-modular-crossing-core:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c19a73c6e5d5c836689b4deff4ed88210361ac7802b3be199d4752c0b46143c1",
+      "dependency_ref": "a51a6c1cad2d6593b1be8f3a3f16cde4191e3a28926f83ea5c5eb6e193ae7dd7"
+    }
+  ],
+  "dependency_sets": {
+    "920270ccd69b2850da22f884d4107a4491e5eabfe6d3d9fd6bc0eedc3ae5ee2b": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "effect:hsr-component-modular-crossing-core:ea5118b0-ea5118b1-7f58eff5": "bbcc955e956f2f2f37bb0d980d4c5fd7ec8de4b79c69783a7450d4b4d4831e21",
+      "exemplar:hsr-component-modular-crossing-core:6534284a-a8434037-7f58e000": "56edb3fb65cbb33359e599cc8f919a7f9eaac2fcb620f8668d3c6d6d11ffe06d",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58eff5": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e000": "32ad5b2425c5c1363fa3a4d3d16678bc5c97fa7beef88981925d65bf732797d1",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e001": "20d6aa67aa629372eb775f5a1fd47fe6bb861eb8c644cb1ad213b659ce8760f5",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e002": "fc998cf56057f5431a4096996a0641e02bc6f3f4f0b30e1c929b8bf07597932e",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e003": "b8d77c631e53e4e1d38b2472dbe8c3d4a83aa7f6739a54d1c4594d328d944d19",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e004": "3b7a12302dbb3dc52aec1ea4ad879c3486c080c3a1d31ca2e8126f933bd05d3d"
+    },
+    "d5b11a6ad8d12dba88e391df8916c404774114776c78e7a3e0f9f7b97426b706": {
+      "construction:hsr-component-modular-crossing-core": "82272910217a4f3505814cf9bfb47e371958cc9e771ad9200b77448075403e69",
+      "graph:hsr-component-modular-crossing-core": "d283241c5786fb2f833eefea05d5d1319f1afc994082f782e04c471cc5a7c8a7",
+      "interface:hsr-component-modular-crossing-core:Ein": "9308965b91fb768f61be39fbcb443f47c124e2dbe18d53788d3423d6a0887061",
+      "interface:hsr-component-modular-crossing-core:Eout": "12463c019ffb1ae16e1ddc0dd813116218ddabec33959b2b8414fed0d38df77f",
+      "interface:hsr-component-modular-crossing-core:Nin": "11775cc414108b711cb000cff710ffdc4cb88326cd7741689460418e8c8c7a87",
+      "interface:hsr-component-modular-crossing-core:Nout": "a28da5d15b35863708fcc6a36016c031ea52bb26a7fa33739c5e655388d667b2",
+      "interface:hsr-component-modular-crossing-core:Sin": "a0294c053bd6f8bd7bb60147f12800fb368736d71886609578a75f07fb2a25a5",
+      "interface:hsr-component-modular-crossing-core:Sout": "14a9d2003073cb1de03bf764b27608e938d0c01ec71c44adf34b2bfcf398c690",
+      "interface:hsr-component-modular-crossing-core:Win": "62495701f4ca4b2e92fae54dbc4804e54f4fa8d99205f4c4a3d766e252134866",
+      "interface:hsr-component-modular-crossing-core:Wout": "a0cb827c7c166f276a2f187064ee23ad99cb4cde6a9af1757ee01ecbf69927b6",
+      "path:hsr-component-modular-crossing-core:296678f7-a966883f-7f58e000": "7ef7b86a409932a67aafd7d6dec0a41a52c411b40a22ed129ff26ec52ece23c3"
+    },
+    "cbfc0d22c0307208a9babf70d82ed694900c3e619ca10eab9f0cde6b3cea7d09": {
+      "image:hsr-component-modular-crossing-core:canonical-southeast": "bde49a8485b493f83d78718b25ad10b1616c4e1b480bffda70a89acfc237aee8"
+    },
+    "ba47444b02d3d2ce8ba193c5443ddca8ce1d94e1789fccd0f2e6ae90cf25db39": {
+      "image:hsr-component-modular-crossing-core:canonical-top": "78bef9185c57f364641e1161d3ce619655c58eeaaf0411f7a3e5c72b1d9e5355"
+    },
+    "d8ff227146e38365173a3bdb99f8e7cadd6740e4d95f2171b21b72a550402980": {
+      "image:hsr-component-modular-crossing-core:connection-overview": "0768e6ed76fac1e32f2b8fcebe592d85ca3e6531679f22d243eb8ef1f88ee4eb"
+    },
+    "8f401ca36847ba34b6fcce729c3729ff1f7e707023911b0b5b929e940b77e07e": {
+      "effect:hsr-component-modular-crossing-core:ea5118b0-ea5118b1-7f58eff5": "bbcc955e956f2f2f37bb0d980d4c5fd7ec8de4b79c69783a7450d4b4d4831e21",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e000": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e001": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e002": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e003": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58e004": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "model:hsr-component-modular-crossing-core:5ad0e817-badb57f1-7f58eff5": "0dbb4b8e8e9f94956f9aa55369dda1d12b283a02e0126027066e87e56da61478",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e000": "32ad5b2425c5c1363fa3a4d3d16678bc5c97fa7beef88981925d65bf732797d1",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e001": "20d6aa67aa629372eb775f5a1fd47fe6bb861eb8c644cb1ad213b659ce8760f5",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e002": "fc998cf56057f5431a4096996a0641e02bc6f3f4f0b30e1c929b8bf07597932e",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e003": "b8d77c631e53e4e1d38b2472dbe8c3d4a83aa7f6739a54d1c4594d328d944d19",
+      "shadow:hsr-component-modular-crossing-core:7ab50e44-2bc2759a-7f58e004": "3b7a12302dbb3dc52aec1ea4ad879c3486c080c3a1d31ca2e8126f933bd05d3d"
+    },
+    "6bab331b17533faad14fd9ae2f1bb47380daf2adbc992481f26640f7cb738360": {
+      "image:hsr-component-modular-crossing-core:canonical-southeast": "400537ca5419c208b2ba09c950f040227030ee8d6cd8e2697581cc1a035bdb0e"
+    },
+    "873b0b962ddef2b6f10b605c9b359229e9723b52c579404871cfc5671856a70e": {
+      "image:hsr-component-modular-crossing-core:canonical-top": "0520bc2e40989ac483424bf2ff9b0648b02afda71688a6379f1b42f61d2c57eb"
+    },
+    "a51a6c1cad2d6593b1be8f3a3f16cde4191e3a28926f83ea5c5eb6e193ae7dd7": {
+      "image:hsr-component-modular-crossing-core:connection-overview": "8f8468791f4506deffe20c02a8350becb5c61c024c080356a3afd9f21659f157"
+    }
+  }
+}

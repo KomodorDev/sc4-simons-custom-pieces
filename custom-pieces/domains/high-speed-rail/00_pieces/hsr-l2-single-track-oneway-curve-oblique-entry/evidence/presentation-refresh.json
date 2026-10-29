@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-shortened-departure-curve",
+  "purpose": "Record the current standalone picture presentation and source-bound connector refresh while preserving approved game resources and earlier executed verification evidence.",
+  "scope": "Canonical angled and top software pictures, connection overview, connector export, guide presentation, and image-review bindings; no assembly rendering or new native geometry compilation.",
+  "source_build": "dist/trumpet-fan-core-parts-final-01",
+  "source_manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "source_verification_sha256": "cc66cbf3c3bb8549c9a4365f5b4e00d8af1ff7c6bf9c462e4c7bac1914b42d91",
+  "normal_native_verification_scope": "Reference to the earlier executed verified native build. Its report and all fourteen DAT archives remain unchanged; the native verifier was not rerun as part of this picture refresh.",
+  "compiled_resource_checks_executed": {
+    "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-shortened-departure-curve.dat",
+    "dat_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+    "model_sha256": "15e4e991bd0d67ee733706ba9ab5c2d2af55da1339fbcba64fa69c95f37a4801",
+    "resource_fingerprints_checked": 158,
+    "directional_ports_reextracted": 2,
+    "directed_journeys_reextracted": 1,
+    "compiled_definition": "passed",
+    "manifest_payload": "passed",
+    "saved_resource_fingerprints": "passed",
+    "actual_path_facts": "passed",
+    "preview_model_structure": "passed",
+    "construction_rules_reextracted": false
+  },
+  "connector_check": {
+    "status": "passed",
+    "compiled_paths": "passed",
+    "export_freshness": "passed",
+    "overview": {
+      "status": "passed",
+      "boundary_cards": 2,
+      "output_sha256": "67e318cf95ad1ed0662901a17f92246335c42ad32c4fb6b0fec67d1f643e86ee"
+    }
+  },
+  "connector_export": {
+    "file": "connector-data.json",
+    "sha256": "96ff9f4e1eac91ab7e08322ff58c1b664ebeb39699c97c2ab00c78af708ca19b"
+  },
+  "artwork": [
+    {
+      "evidence": "evidence/preview.json",
+      "evidence_sha256": "56baef5745057338cf7209e39289bfbce98dc2c699b3549f85817614a1e8a5cd",
+      "file": "previews/preview.png",
+      "sha256": "a203b273180d23314e882e1d792a32cc26cfa98de04374a57796e75a18d61b3d",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/preview-top.json",
+      "evidence_sha256": "11cf963c9fde6c19bb34c6e95dfccc5c415baa076ac221967e381bd9f52c655f",
+      "file": "previews/preview-top.png",
+      "sha256": "47d3830ec9a430a6c0d412b95d0630743b95f3829627f1f32a92087de963cda7",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/connection-overview.json",
+      "evidence_sha256": "7aa3123d357f0de42efdb9dd82b6d26e813ab306278c43a05af36805d8891d9d",
+      "file": "previews/connection-overview.png",
+      "sha256": "67e318cf95ad1ed0662901a17f92246335c42ad32c4fb6b0fec67d1f643e86ee",
+      "size": [
+        2000,
+        3636
+      ],
+      "title": "Piece - HSR Level 2 (15.5 m) Shortened One-Way Departure Curve",
+      "png_changed": true
+    }
+  ],
+  "angled_thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "b3b50de69c01d093245411db3d92cfa0522d7b60f8f013f95fa955e95bb082da"
+  },
+  "presentation": {
+    "authored_rotation_ccw_degrees": 0,
+    "coordinate_scope": "Independent local X/Y tile-centre grid",
+    "tile_metres": 16,
+    "top_grid": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
+    "captions": "Shared Piece title with measured heights, view purpose, camera direction, and fixed software/source identification. Changing game-test status remains in the generated matrix and linked test cases."
+  },
+  "earlier_software_reports_preserved": {
+    "evidence/saved-resource-checks.json": "310ea3e2a3c49b056494b071e091749d9ae760d0a2ce763258827e2e139436bb",
+    "evidence/documentation-refresh.json": "6ab3b362fd90eb4bc37aca0f03ae916018ed0f45ea7a54b2023d34b45396c687"
+  },
+  "geometry_changed": false,
+  "game_identities_changed": false,
+  "route_measurements_changed": false,
+  "icon_changed": false,
+  "non_image_cases_preserved": true,
+  "original_observation_dictionaries_preserved": true,
+  "original_observations_sha256": "f378704581ed6416d245d9d29786b5b39b33b55a4e5f90f4595a4b6ff2f44d69",
+  "manual_observations_added": 0,
+  "native_geometry_recompiled": false,
+  "assembly_rendered": false,
+  "installed": false,
+  "software_visual_review": {
+    "reviewer": "Coding agent inspecting the actual generated PNGs through standalone-view and overview-scene/caption contact sheets",
+    "result": "passed",
+    "scope": "Complete model, local coordinates, title and view wording, readable green top boundaries, fixed footer, and overview marker placement. This is not an added human observation.",
+    "connection_card_bitmaps_unchanged_from_verified_build_docs": 2
+  }
+}

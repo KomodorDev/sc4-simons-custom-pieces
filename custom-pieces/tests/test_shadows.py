@@ -13,9 +13,11 @@ from unittest.mock import patch
 
 from PIL import Image
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.models import pack_s3d
 from scp.dbpf import entries, decompress
 from scp.shadows import (SHADOW, S3D, ZOOM_SIZES, build_shadows,
@@ -185,12 +187,12 @@ class ShadowTests(unittest.TestCase):
 class NativeShadowContainerTests(unittest.TestCase):
     def test_all_five_installed_native_shadow_containers_decode(self):
         """Optional primary-data check; only one profile-pinned file is read."""
-        local = ROOT / 'local/settings.json'
-        config = json.loads(local.read_text()) if local.is_file() else {}
+        local = local_settings(ROOT)
+        config = jsonc.loads(local.read_text()) if local.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             self.skipTest('Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS')
-        donor = json.loads((ROOT / 'config/profiles/nam50-rhd.json').read_text())['files']['hsr']
+        donor = jsonc.loads((ROOT / 'config/profiles/nam50-rhd.jsonc').read_text())['files']['hsr']
         filename = donor['filename']
         candidates = list(Path(plugins).rglob(filename))
         self.assertEqual(len(candidates), 1)

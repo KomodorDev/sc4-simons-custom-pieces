@@ -4,32 +4,40 @@ import json
 from pathlib import Path
 import sys
 
-ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog,number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
 from scp.autotile import validate_auto_tile_addresses
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 
 def register_examples(info_by_recipe,recipes,selection_name):
     catalog=load_catalog(ROOT)
-    project=json.loads((ROOT/'project.json').read_text())
-    ledger=json.loads((ROOT/'config/allocations.json').read_text())
+    project=jsonc.load(ROOT/'project.jsonc')
+    ledger=jsonc.load(ROOT/'config/allocations.jsonc')
     current={p['id']:p for p in catalog['pieces']}
     used_puzzles={number(p['puzzle_id']) for p in ledger['pieces'].values()}
     used_blocks={number(value)&0xfffff000 for p in ledger['pieces'].values()
                  for value in [p['preview_id'],*p['tile_ids'],*p.get('resource_blocks',[])]}
     selected=[];added=[]
     for recipe in recipes:
-        info=info_by_recipe[recipe];slug=recipe.replace('_','-');selected.append(slug)
+        info=info_by_recipe[recipe]
+        owners=[piece for piece in catalog['pieces'] if piece['recipe']==recipe]
+        require(len(owners)<=1, f'Ambiguous example recipe owner: {recipe}')
+        require(not owners or owners[0]['domain']=='high-speed-rail',
+                'An HSR example recipe must belong to the high-speed-rail domain')
+        slug=owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
+        selected.append(slug)
         cells=[list(cell) for cell in info['cells']]
         footprint=list(info['footprint'])
         validate_auto_tile_addresses({'id':slug,'footprint':footprint,'cells':cells,
             'tile_ids':[f'{0x100*x+0x10*y:08x}' for x,y in cells]})
         if slug in current:
-            require(current[slug]['cells']==cells and current[slug]['footprint']==footprint,
+            require(current[slug]['recipe']==recipe and current[slug]['cells']==cells and current[slug]['footprint']==footprint,
                     'Existing example coordinates are frozen; add a new recipe for a redesign')
             continue
         require(slug not in ledger['pieces'],'An existing allocation must not be reused')
@@ -41,7 +49,7 @@ def register_examples(info_by_recipe,recipes,selection_name):
         blocks=[block+part*0x1000 for part in range(span)]
         used_puzzles.add(puzzle);used_blocks.update(blocks)
         tiles=[f'{block+0x100*x+0x10*row:08x}' for x,row in cells]
-        name=info.get('name','HSR Smooth T-Junction — At Grade')
+        name=piece_name_for_recipe(recipe, info.get('name','HSR Smooth T-Junction — At Grade'), ROOT)
         orientation='Diagonal' if 'diagonal' in recipe else 'Straight'
         description=info.get('description') or (f'{name}. {orientation} HSR mainline with four direct smooth turning connections. '
             'All routes stay at the native HSR path height of 15.5 m. '

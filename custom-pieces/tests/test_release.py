@@ -7,9 +7,10 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(FRAMEWORK / 'framework'))
 
+from scp import jsonc
 from scp.release import _portable_error, assess_build
 
 
@@ -18,11 +19,11 @@ class ReleaseEvidenceTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory(prefix='scp-release-test-')
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        gates = json.loads((FRAMEWORK / 'config/release.json').read_text())
+        gates = jsonc.loads((FRAMEWORK / 'config/release.jsonc').read_text())
         for record in gates.values():
             if isinstance(record, dict) and 'status' in record:
                 record['status'], record['evidence'] = 'passed', 'fixture-human-record'
-        self._write_json('config/release.json', gates)
+        self._write_json('config/release.jsonc', gates)
         cases = dict.fromkeys(('placement', 'traffic_both_directions', 'no_unwanted_transfers',
                                'rotations_and_mirrors', 'shadows', 'demolition', 'save_reload'), 'passed')
         self.manifest = {
@@ -81,7 +82,7 @@ class ReleaseEvidenceTests(unittest.TestCase):
         current=deepcopy(self.manifest['pieces'][0])
         current['design_review']={'status':'needs-redesign','summary':'Current review rejected this layout.',
                                   'reasons':['The historical build did not include the new flag.']}
-        self._write_json('project.json',{'fixture':'catalog access is mocked below'})
+        self._write_json('project.jsonc',{'fixture':'catalog access is mocked below'})
         with patch('scp.catalog.load_catalog',return_value={'pieces':[current]}):
             result=self._assert_blocked()
         self.assertTrue(any('NEEDS REDESIGN' in reason for reason in result['blocked']))
@@ -96,7 +97,7 @@ class ReleaseEvidenceTests(unittest.TestCase):
     def test_missing_manual_coverage_keeps_relative_filename_without_private_root(self):
         source = {**deepcopy(self.manifest['pieces'][0]), 'domain': 'fixture-network'}
         catalog = {'pieces': [source], 'domains': {'fixture-network': {'path': 'domains/fixture-network'}}}
-        self._write_json('project.json', {'fixture': 'catalog access is mocked below'})
+        self._write_json('project.jsonc', {'fixture': 'catalog access is mocked below'})
         with patch('scp.catalog.load_catalog', return_value=catalog):
             result = self._assert_blocked()
         reason = next(reason for reason in result['blocked'] if 'authoritative manual coverage' in reason)
@@ -200,8 +201,8 @@ class ReleaseEvidenceTests(unittest.TestCase):
                 self._assert_blocked()
 
     def test_game_evidence_does_not_override_pending_human_permission_gates(self):
-        path = self.root / 'config/release.json'
-        gates = json.loads(path.read_text())
+        path = self.root / 'config/release.jsonc'
+        gates = jsonc.loads(path.read_text())
         gates['nam_derivatives_permission']['status'] = 'pending'
         path.write_text(json.dumps(gates))
         self._assert_blocked()

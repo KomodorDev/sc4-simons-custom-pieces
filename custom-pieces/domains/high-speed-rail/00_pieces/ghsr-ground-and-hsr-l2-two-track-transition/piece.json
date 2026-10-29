@@ -1,0 +1,130 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Ground (1 m) \u2194 HSR Level 2 (15.5 m) \u2014 Two-Track Transition.",
+  "schema_version": 1,
+  "id": "ghsr-ground-and-hsr-l2-two-track-transition",
+  "name": "GHSR Ground (1 m) \u2194 HSR Level 2 (15.5 m) \u2014 Two-Track Transition",
+  "description": "An eight-tile two-way height transition using the audited native HSR-to-GHSR model and train paths. Elevated end 15.5 m; ground end 1 m.",
+  "recipe": "rail_hsr_ghsr_transition",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7bb",
+  "tile_ids": [
+    "7f519000",
+    "7f519010",
+    "7f519020",
+    "7f519030",
+    "7f519040",
+    "7f519050",
+    "7f519060",
+    "7f519070"
+  ],
+  "preview_id": "7f519ff5",
+  "effect_name": "preview_scp_rail_feat_00013",
+  "footprint": [
+    1,
+    8
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7bb",
+    "order": "7011f7bb",
+    "style": "rail-transition"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f519000",
+      "source": "7f519000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519010",
+      "source": "7f519010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519020",
+      "source": "7f519020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519030",
+      "source": "7f519030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519040",
+      "source": "7f519040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519050",
+      "source": "7f519050",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519060",
+      "source": "7f519060",
+      "rotation": 0
+    },
+    {
+      "tile": "7f519070",
+      "source": "7f519070",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team HSR/GHSR texture and deck profiles; SCP procedural junctions and diagonal curves. Height adapters preserve the eight audited native ramp tile models.",
+    "construction": "SCP right-hand-running fixed-piece rules and explicit directed Monorail paths; native ramp coordinates retained.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "orientation_policy": "rotate-only-preserve-direction",
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      0,
+      7
+    ]
+  ],
+  "category": "mixed-level",
+  "domain": "high-speed-rail"
+}

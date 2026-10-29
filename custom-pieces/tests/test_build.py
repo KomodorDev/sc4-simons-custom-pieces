@@ -2,7 +2,7 @@
 
 The integration cases use only temporary output folders. They never install
 anything or modify donor archives. Set SCP_TEST_NAM_PLUGINS, or supply the
-private local/settings.json used by the CLI, to enable them on an audited workstation.
+private local/settings.jsonc (or existing settings.json) used by the CLI, to enable them on an audited workstation.
 """
 from __future__ import annotations
 
@@ -18,9 +18,11 @@ import tempfile
 import unittest
 import zipfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.catalog import load_catalog
 from scp.build import build_project, package_build, preflight_allocations
 from scp.dbpf import entries, decompress, exemplar, encode_exemplar, pack_dbpf
@@ -85,8 +87,8 @@ class AllocationPreflightTests(unittest.TestCase):
 class RealNAMBuildTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        config_path = ROOT / 'local/settings.json'
-        config = json.loads(config_path.read_text()) if config_path.is_file() else {}
+        config_path = local_settings(ROOT)
+        config = jsonc.loads(config_path.read_text()) if config_path.is_file() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests')
@@ -98,7 +100,7 @@ class RealNAMBuildTests(unittest.TestCase):
             crossings = load_catalog(ROOT)['piece_sets']['hsr-crossings']
             build_project(ROOT, plugins, cls.default_output, include=crossings, extra_roots=extra)
             build_project(ROOT, plugins, cls.combined_output,
-                          include=['hsr-diagonal-ghsr', 'tram-under-hsr'], extra_roots=extra)
+                          include=['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'], extra_roots=extra)
         except BaseException:
             cls.sandbox.cleanup()
             raise
@@ -138,10 +140,10 @@ class RealNAMBuildTests(unittest.TestCase):
     def test_default_and_explicit_piece_selection(self):
         default, combined = self.manifest(self.default_output), self.manifest(self.combined_output)
         self.assertEqual(len(default['pieces']), 4)
-        self.assertNotIn('tram-under-hsr', [p['id'] for p in default['pieces']])
+        self.assertNotIn('hsr-l2-over-tram-ground-mixed-crossing-90deg', [p['id'] for p in default['pieces']])
         default_report = verify_build(self.default_output, write_report=False)
         self.assertEqual(default_report['construction']['separate_piece_menu_roots'], 4)
-        self.assertEqual({p['id'] for p in combined['pieces']}, {'hsr-diagonal-ghsr', 'tram-under-hsr'})
+        self.assertEqual({p['id'] for p in combined['pieces']}, {'hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg', 'hsr-l2-over-tram-ground-mixed-crossing-90deg'})
         report = verify_build(self.combined_output, write_report=False)
         self.assertEqual(report['construction']['separate_piece_menu_roots'], 2)
         self.assertEqual(report['construction']['states_per_root'], 8)
@@ -181,7 +183,7 @@ class RealNAMBuildTests(unittest.TestCase):
         self.assertFalse(report['local_donor_comparison'])
         self.assertEqual(report['documentation_files_checked'], len(self.manifest(extracted)['documentation']))
         self.assertTrue((extracted/'docs/STRUCTURE.md').is_file())
-        subject = extracted/'docs/domains/high-speed-rail/00_pieces/tram-under-hsr'
+        subject = extracted/'docs/domains/high-speed-rail/00_pieces/hsr-l2-over-tram-ground-mixed-crossing-90deg'
         self.assertTrue((subject/'README.md').is_file())
         self.assertIn('## Connections and journeys', (subject/'README.md').read_text())
         self.assertFalse((subject/'CONNECTIONS.md').exists())
@@ -192,7 +194,8 @@ class RealNAMBuildTests(unittest.TestCase):
         source = self.case_dir/'current-source'
         source.mkdir()
         (source/'README.md').write_text('# Current final views\n')
-        (source/'preview-top.png').write_bytes(b'exact final image fixture')
+        (source/'previews').mkdir()
+        (source/'previews/preview-top.png').write_bytes(b'exact final image fixture')
         output = self.copy_fixture(combined=True, portable=True)
         before = {path: path.read_bytes() for path in output.rglob('*') if path.is_file()}
         destination = self.case_dir/'current.zip'
@@ -206,7 +209,7 @@ class RealNAMBuildTests(unittest.TestCase):
         report = verify_build(extracted, write_report=False)
         self.assertTrue(report['static_checks_passed'])
         self.assertEqual(report['documentation_files_checked'], 3)
-        self.assertEqual((extracted/'docs/preview-top.png').read_bytes(), b'exact final image fixture')
+        self.assertEqual((extracted/'docs/previews/preview-top.png').read_bytes(), b'exact final image fixture')
         self.assertEqual(compiled_manifest_sha256(self.manifest(extracted)),
                          compiled_manifest_sha256(self.manifest(output)))
         for item in self.manifest(output)['files']:

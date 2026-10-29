@@ -1,0 +1,7008 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+  "domain_id": "high-speed-rail",
+  "source_binding": {
+    "compiled_build": "dist/trumpet-fan-core-parts-final-01",
+    "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
+    "files": {
+      "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connections.json": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0",
+      "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/connector-groups.jsonc": "14d7fa22953ced5472e8e838b55abf23d5ab2bb6ca550f263c1777ca54b004b6",
+      "domains/high-speed-rail/00_pieces/hsr-component-tight-paired-curve90-l4-to-mid/piece.json": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
+      "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4",
+      "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+      "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "9bb0b030178285097528e5ca23c85b5a8a8a1ea79d2322b888934980c08c41eb",
+      "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
+      "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d66f970865f76f6b02fb5ae1caafffd7630957783a19246e3dc791df9c985fa3",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "ecb4874121a0135cc1371ca37d0d305dd9d4d33c9025fd1a38b5d9a277ec09c1",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "a90fc3f1f8f2b53dba5ea6abf619d0cbec2cf4b9996475f4de709ccc8146103b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "5a7629ccdcf60cff289fa928f09ab1d8ca16ce82b365a80cd0501dbbfa42a4b2",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_core_verify.py": "5d6fbcc842bb588dcc9ac35b0624859fe9ea22e37b52f53835566de09e06313f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "6f457c3d73c3b1b0859eee3ebc42d3c0af2789b67ceafec3ec4712b3462ba211",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "8c27ed386fbca11abb9b711219e44fb7686e42dfa089ef39913f3e23d32b0b4f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "b893fe75e683e4ec2c793c1b7f97a5bc29c68d800b1a4299af58f5d3fe3eadbd",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_recessed_straight_verify.py": "04b09b27ddd1af4bc71a207b056dd581917b03d46a5a7e91b92ce725f5faee43",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem.py": "73c4c71e758aa37f21b3036f77c2c710b4b8b9190e6323054a6c32ba9aee8d38",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem_verify.py": "406d22ba293fe0f15c38bc34adec2644b54201c9058049470bd1309e07c0ee1f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_border_verify.py": "629dc983bb3c28eebda5bfd943b43bc0a5d8c6950e517f15ad7007bd44cba165",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "52a40ec5f06f714e23ac0ddac2cef33d9adc276e84c1cad9996acce3b3d4502b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "eb6fb9568489f524f8200e26d30902eb207542dd51f27f03b77b552a455adc00",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
+      "domains/high-speed-rail/implementation/scp_hsr/menu.py": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_features.py": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
+      "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866",
+      "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+      "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
+      "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+      "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+      "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+      "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+      "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+      "framework/scp/connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
+      "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+      "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+      "framework/scp/jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+      "framework/scp/menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+      "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
+      "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+      "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+      "framework/scp/verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd",
+      "schemas/connector-data.schema.json": "78a77d6c231f59d06605ff15dfac87df07bf89804680fc731fd9ca513efb20c9",
+      "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+      "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for HSR Tight Two-Track Corner 30.5 to 23 Metres.",
+      "schema_version": 1,
+      "id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
+      "description": "A 56 m right-angle paired corner descends from 30.5 m to the custom 23 m matching connection. The reverse-direction track climbs; both ends have 8 m flat native collars.",
+      "domain": "high-speed-rail",
+      "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f824",
+      "tile_ids": [
+        "7f582000",
+        "7f582100",
+        "7f582200",
+        "7f582300",
+        "7f582010",
+        "7f582110",
+        "7f582210",
+        "7f582020",
+        "7f582120",
+        "7f582030"
+      ],
+      "preview_id": "7f582ff5",
+      "effect_name": "preview_scp_hsrcomp_f824_00",
+      "footprint": [
+        4,
+        4
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "orientation_count": 8,
+      "structural_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f824",
+        "order": "7012f824",
+        "style": "hsr-component-tight-paired-curve90-l4-to-mid"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f582000",
+          "source": "7f582000",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582100",
+          "source": "7f582100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582200",
+          "source": "7f582200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582300",
+          "source": "7f582300",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582010",
+          "source": "7f582010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582110",
+          "source": "7f582110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582210",
+          "source": "7f582210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582020",
+          "source": "7f582020",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582120",
+          "source": "7f582120",
+          "rotation": 0
+        },
+        {
+          "tile": "7f582030",
+          "source": "7f582030",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Authored modular HSR geometry using the audited NAM HSR profile and texture.",
+        "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "category": "hsr-components",
+      "component": {
+        "kind": "tight_paired_curved_grade",
+        "support_centers": [
+          [
+            16.0,
+            -0.0
+          ],
+          [
+            32.0,
+            -0.0
+          ],
+          [
+            48.0,
+            -0.0
+          ],
+          [
+            0.0,
+            -16.0
+          ],
+          [
+            0.0,
+            -32.0
+          ],
+          [
+            0.0,
+            -48.0
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0
+      },
+      "ports": {
+        "S": {
+          "in": [
+            2.0,
+            -56.0,
+            30.5
+          ],
+          "out": [
+            -2.0,
+            -56.0,
+            30.5
+          ]
+        },
+        "E": {
+          "out": [
+            56.0,
+            -2.0,
+            23.0
+          ],
+          "in": [
+            56.0,
+            2.0,
+            23.0
+          ]
+        }
+      },
+      "movements": [
+        [
+          "S",
+          "E"
+        ],
+        [
+          "E",
+          "S"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Individual component; assembly and game operation unverified"
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:hsr-component-tight-paired-curve90-l4-to-mid:ea5118b0-ea5118b1-7f582ff5": "d026c7d0330bfdeb4125227843671e0c96efaf8cee097af62ccb222a571f6c65",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582000": "76d6a093d6f5b1edfdbec6622c9cb6dd8a0f15f648dec80cb039706ff56fd44e",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582010": "72635c1eed74e9e04716f0b431063ee1dd60785f126c8410d3d39678fede5b4f",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582020": "60e121c284a7f4b9339c672e8b9e1551e3440d94ce2674c24799a4c5708a34f6",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582030": "03eaca4c25daaad9986a70c5c6d779bafadeb7fa887b6630aaef5bd49df9c41a",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582100": "da50299ac6047cb4129c4ce4d0287e8a6de41ea98875209829a80375755bf7bb",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582110": "522853b1d75fe633334b48f2471dc8f843af92be73a8b66376dc4b747e1b1770",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582120": "9bc7222769fdeee34b54e8f1dfe8889b3878257b29167b0597275fc579291754",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582200": "63facb8ae03a67048bd12dde37e04c6fb008fe99ffecc3ca637f40678881f45f",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582210": "8317175925cc6da4f23b8b565d7e2652769000801d4bab2f2a4ff95737cd2886",
+          "exemplar:hsr-component-tight-paired-curve90-l4-to-mid:6534284a-a8434037-7f582300": "07239f43c5c630d3331e517e898e2efa8dcbd7f085cfa455caee9b13b16235c8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582000": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582001": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582002": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582003": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582004": "9c705241c856efb2276e2a8d6f25d1be5798538b249940930ae5b78dece712b0",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582010": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582011": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582012": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582013": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582014": "c42b428bc4561e6e28a07b6bcf0ccee975b58d26924f21d8e33379f7e9ab4253",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582020": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582021": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582022": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582023": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582024": "fa17bee762c180590904a692d7f617aff447acd01beb830e735a6d03712255bc",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582030": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582031": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582032": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582033": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582034": "5564d84924aebd6f342c55c2687c652ae8fdc1076d2f3fcb8427a547b54c628c",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582100": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582101": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582102": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582103": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582104": "1ebdad62841c34b898b9dee6a6352a6f2c965820143113fb475efb7072f1fd6d",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582110": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582111": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582112": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582113": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582114": "5a7ca70d725ec8626dae409e6193d5229574b09099860ad8857a0d6513bc226f",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582120": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582121": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582122": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582123": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582124": "2302b6b2af5a3cc99c96103897801c6f285db87868706768fd6467e0034d13d8",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582200": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582201": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582202": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582203": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582204": "ef100c707622ad441036085cfa1b3b2f38e47456a883fb97b15092a1b8b8f68b",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582210": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582211": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582212": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582213": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582214": "041661357809bd03b82124db69c1f479b953456a017b0455b82f30885e94a1f2",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582300": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582301": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582302": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582303": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582304": "7e4377c22d34e1964aff985f07b02f4c214e28c7655521667bc64c360e9ed47a",
+          "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582ff5": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582000": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582010": "9d724a5dbdb4a11b6057ba473d885a69963c0e4f7a56002389b03f3c1ae1643a",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582020": "da0de1a8cf1c84c47088ff8cdbf7cafb30cf698ed4c357d3f94cfbe305e1fee1",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582030": "47eb17b42a6a9c49cdb16bcd8f15956d0494afff23f26b69a8dcfc488c57b6af",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582100": "89bc9221f16b5a89dc6266d62bd6b9146179588a6ec39923fc945666789d01ff",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582110": "fcb302ec20939c5e9944a997b40e0aadb18fe3e7e33396e06f608944a72fc484",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582120": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582200": "132b00c0e7776bbadf72547f2f99c14e6d1d25966ca2303d58d39f2ae27ff18d",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582210": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582300": "db8ce6f72d26ef54d1c5bc73fd399ff44ef10b464c82eb97f59805b2d00b83ea",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582000": "120aed8a3fc2071f4326aa2b61c84243d023d4334eb1338fefa1204f814424b3",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582001": "cea11c8e0834c0ed492c19a0402ecaef7b0be2234f1ba412b88d345f2dd42f87",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582002": "0b94b38b9755fb379411772e3543dc7bd40728a33e0060d1db5f7717e3240218",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582003": "36f69e4a620e9f6e2dd16dc284821436c0aaf5864864ee2fb95313728b0c302b",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582004": "daf2fe8c1f564454e712bbce55a0bd678e3cee17bb8966dc24d924d0b7de9743",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582010": "01fc6e56933b505ad405beb51a2378ed63cbc747529f29a8bf2cbc8bb794dd67",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582011": "3f03fe5aeebda2a6213b2d718641d4922ac27e227bf26d8293d429328f5c3c77",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582012": "596a80cb8fb4c6756838f415816a6db73fdccdee90777683264b8f245454d3a3",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582013": "385c0275b094d1de4ef187af3b271fc0338e5687235924c07ba9b5e4306d212b",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582014": "733be7e60df95782c72ae2cd08cea7da55c6411a7a4eff6654578ac5176ff90f",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582020": "4ad8e5299be44627ba5c3743f7a9bd41a64c687f6810917e9eebdd6b88e3eed8",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582021": "e88a42704b6377def3c45aed1ee4c39ea499172628cdbe338b0c3b0e8d85af3a",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582022": "c2b9c3f8d6a3a46e76a143d144aeef60be86185a55b4e4d23bd84bd5a03d5f25",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582023": "da38b5c21dceb34b836b476021b76f7ea515339b9ec91de7ca1d6e118fe85b3d",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582024": "665510b124540c884c9f269a6f04b604aed7467d341107af5cba1860347e4edb",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582030": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582031": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582032": "2585ef38ff008e7abc9febecb0f140f8b5630e4767f608759c0bfa958e85e90c",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582033": "df8bb8edda5bfe5c96dda6eb0879fc6466d2a8273019222326878cabbb2e7f4a",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582034": "82b84252085d9a9e1b5a0842350b9617e3166c334c3a50277c501796dfd15715",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582100": "840b9cbfdbcdd5242efc7d95ba4df92d3c34b08d268980ad92afd0fa42db5fae",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582101": "c350530692e0924cc4761a427309c9e173dcbd6dce2394e22800eb5c6fdbc1dd",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582102": "a8f8b95abe5d84957bef15552344e91f5de922d9cd697f55a4b61edcc1d70c76",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582103": "d282694ee9f00d5ec875aeb8446ca7d80a673d028888b9708ca43c6fc442323b",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582104": "481f349715010a05bf5547ac15432a73bf57f3d4638d07df4929dbb2d52abd13",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582110": "3f6fdaf785ad3e4ee885cb9cfe3c607baa193547420ac1fb03f416175ef0c8c6",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582111": "63e4771a5d3d7cf5a0f2330a6aacbb7431fa5a651d2028cd99bd6c01e571f924",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582112": "9f18ac6e9f03072ad4a6a8dfba62c09892341aac493272f3c8c012135f45a558",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582113": "9a8663bc7415f8c188707254a2fca244465657b1d1f05494ae42a9a86f164165",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582114": "4c94739d5b59e37d8f068e2f131b7d4193946ddff6fefe6f11131da6cf8f800d",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582120": "0c86f19ebcee5dba8df5f02d537356b8c42210adc841961f8f15cf72e282bcda",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582121": "19f4c621c49afe82eabb935f5e3a99c3863cab8cfa10c59ac5416fdb2853b866",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582122": "74114d9619cc731c009174e68f11cf7ebe3fa5a78144d250a8965581a4360804",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582123": "c7cbfe17faf00e9eeb84c0012034bb60415d1ec54ea0f6b8b7320ece9ff8aa66",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582124": "862620b03a5b2b3ac0883b858139d3ce8c0886bd095201b21df5de72993dd754",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582200": "b634877c65c8f7a97bf467df9ed0924658005f0ec00bb81688a24cd22a292bb0",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582201": "e25b6b67a6e88b49b46c876830e446e248c396ec4710ded21545a513913a5679",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582202": "416d2e1d28e3ea9f718cf0c3a95860ac6395e01ed52ca65e1cadc5153fbe0f29",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582203": "5f8a6354ebffbb2afb8228dbdaf657d3abfc02f8731f10ca2c0dc323a1c77a81",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582204": "dd1632e1ebbaad1ab21c4997788d262b674e477cd40b053b7b465c3bf70cf50c",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582210": "300ea76f0d3d29649204aa92fa93561011db8ecc06c99e5e05841b53cc0ade21",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582211": "b79e524463a685709c231c59d7a7b161057e1b6d9994fd602077bc41e15905a1",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582212": "c1ef03423adea81541fd0f8c9a781a1e2760b96b616bca02a58f04608264277b",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582213": "85c75f9fd47bb38393c5130ecd80d71ff36f20d582e4c290c1fbaac37c6e7476",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582214": "05ac9b9d363d62430470dc077ce4be0835a7690574f1e1e3cb400230480d7285",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582300": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582301": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582302": "3ffa9afd5b91bd700d730c71a3929b1fe6ae65d730a940ba9d80907e8fb194ab",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582303": "d84a1456fe65aafd73ef471fa6ed2b9a031badc5982f942a46a35afb84b32388",
+          "shadow:hsr-component-tight-paired-curve90-l4-to-mid:7ab50e44-2bc2759a-7f582304": "11798c7fb9ca5ec18efb5a49b31b41f37c96bf05b8c597407785ab5e9c6f0536",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582000": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582010": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582020": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582030": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582100": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582110": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582120": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582200": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582210": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "text:hsr-component-tight-paired-curve90-l4-to-mid:2026960b-2a592fd1-7f582300": "fe66412c970d61394861230bc871b9290ae3f9132aeac58cfe9b1901d2b637b2",
+          "construction:hsr-component-tight-paired-curve90-l4-to-mid": "0cda909b2ae15d345e75f16b818260320a011a8dde30bc35a4b1c878706e80a8"
+        },
+        "reviewed_contract_available": true,
+        "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "Sout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            -2.0,
+            -56.0,
+            30.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582030",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582031",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582032",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582033",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582034",
+            "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582030",
+            "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+          ],
+          "connection_class": "path-interface-ce3ccdc10e5e243d11ae"
+        },
+        {
+          "id": "Sin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            2.0,
+            -56.0,
+            30.5
+          ],
+          "tangent": [
+            0.0,
+            1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582030",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582031",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582032",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582033",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582034",
+            "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582030",
+            "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+          ],
+          "connection_class": "path-interface-9b897a8bacb659f807fe"
+        },
+        {
+          "id": "Eout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            56.0,
+            -2.0,
+            23.0
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582300",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582301",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582302",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582303",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582304",
+            "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582300",
+            "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+          ],
+          "connection_class": "path-interface-f17a87c40e2280c52126"
+        },
+        {
+          "id": "Ein",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            56.0,
+            2.0,
+            23.0
+          ],
+          "tangent": [
+            -1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            -1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582300",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582301",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582302",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582303",
+            "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582304",
+            "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582300",
+            "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+          ],
+          "connection_class": "path-interface-c22acb858d4777168a58"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "7:Sin>Eout",
+          "entry_port": "Sin",
+          "exit_port": "Eout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Ein>Sout",
+          "entry_port": "Ein",
+          "exit_port": "Sout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f824",
+            "0004f824"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f824",
+            "0007f824"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f824",
+            "0006f824"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f824",
+            "0005f824"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Authored physical channel identities and complete boundary bundles. Exact geometry and journeys remain measured from compiled game resources.",
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "source_binding": {
+        "piece_sha256": "7967dbcd0bb8d434b5d7370774ab335a2c57616acf7014df2bd7dc6753147b01",
+        "connections_sha256": "1975fdf7d53084a001f95f58a444155dd78aa72b5da32c7eabba2899a29dd8d0"
+      },
+      "components": [
+        {
+          "id": "graded-corner",
+          "network": "hsr"
+        }
+      ],
+      "channels": [
+        {
+          "id": "curve-channel-01",
+          "component_id": "graded-corner",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "curve-channel-02",
+          "component_id": "graded-corner",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "curve-end-a",
+          "component_id": "graded-corner",
+          "profile_id": "hsr-l4-orth-scp-paired15-t2-opposed-rhd-v1",
+          "members": [
+            {
+              "id": "curve-end-a-track-01",
+              "source_port_id": "Sin",
+              "direction": "in",
+              "channel_id": "curve-channel-01",
+              "cut_id": "curve-end-a-cut-01"
+            },
+            {
+              "id": "curve-end-a-track-02",
+              "source_port_id": "Sout",
+              "direction": "out",
+              "channel_id": "curve-channel-02",
+              "cut_id": "curve-end-a-cut-02"
+            }
+          ],
+          "section_offset_m": 0.0
+        },
+        {
+          "id": "curve-end-b",
+          "component_id": "graded-corner",
+          "profile_id": "hsr-h23000mm-orth-scp-paired15-t2-opposed-rhd-v1",
+          "members": [
+            {
+              "id": "curve-end-b-track-01",
+              "source_port_id": "Ein",
+              "direction": "in",
+              "channel_id": "curve-channel-02",
+              "cut_id": "curve-end-b-cut-01"
+            },
+            {
+              "id": "curve-end-b-track-02",
+              "source_port_id": "Eout",
+              "direction": "out",
+              "channel_id": "curve-channel-01",
+              "cut_id": "curve-end-b-cut-02"
+            }
+          ],
+          "section_offset_m": 0.0
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "cell-0-3-south",
+          "source_cell": [
+            0,
+            3
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "curve-end-a"
+          ]
+        },
+        {
+          "id": "cell-3-0-east",
+          "source_cell": [
+            3,
+            0
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "curve-end-b"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "groups": [
+      {
+        "id": "curve-end-a",
+        "component_id": "graded-corner",
+        "profile_id": "hsr-l4-orth-scp-paired15-t2-opposed-rhd-v1",
+        "members": [
+          {
+            "id": "curve-end-a-track-01",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              2.0,
+              -56.0,
+              30.5
+            ],
+            "tangent": [
+              0.0,
+              1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582030",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582031",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582032",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582033",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582034",
+              "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582030",
+              "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+            ],
+            "connection_class": "path-interface-9b897a8bacb659f807fe",
+            "source_port_id": "Sin",
+            "channel_id": "curve-channel-01",
+            "cut_id": "curve-end-a-cut-01",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.0,
+              -1.0
+            ],
+            "heading_outward_degrees": 180.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "curve-end-a-track-02",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              -2.0,
+              -56.0,
+              30.5
+            ],
+            "tangent": [
+              0.0,
+              -1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              -1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582030",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582031",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582032",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582033",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582034",
+              "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582030",
+              "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+            ],
+            "connection_class": "path-interface-ce3ccdc10e5e243d11ae",
+            "source_port_id": "Sout",
+            "channel_id": "curve-channel-02",
+            "cut_id": "curve-end-a-cut-02",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.0,
+              -1.0
+            ],
+            "heading_outward_degrees": 180.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "section_offset_m": 0.0,
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 30.5,
+          "nominal_level": "l4",
+          "label": "HSR L4 paired straight interface"
+        },
+        "source_cell": [
+          0,
+          3
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          0.0,
+          -56.0,
+          30.5
+        ],
+        "anchor_m": [
+          0.0,
+          -56.0,
+          30.5
+        ],
+        "channels": [
+          {
+            "id": "curve-channel-01",
+            "component_id": "graded-corner",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "curve-end-a-cut-01",
+                "member_ids": [
+                  "curve-end-a-track-01"
+                ],
+                "endpoint_m": [
+                  2.0,
+                  -56.0,
+                  30.5
+                ],
+                "outward_tangent": [
+                  -0.0,
+                  -1.0
+                ],
+                "heading_outward_degrees": 180.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "curve-channel-02",
+            "component_id": "graded-corner",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "curve-end-a-cut-02",
+                "member_ids": [
+                  "curve-end-a-track-02"
+                ],
+                "endpoint_m": [
+                  -2.0,
+                  -56.0,
+                  30.5
+                ],
+                "outward_tangent": [
+                  0.0,
+                  -1.0
+                ],
+                "heading_outward_degrees": 180.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": null,
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-0-3-south"
+      },
+      {
+        "id": "curve-end-b",
+        "component_id": "graded-corner",
+        "profile_id": "hsr-h23000mm-orth-scp-paired15-t2-opposed-rhd-v1",
+        "members": [
+          {
+            "id": "curve-end-b-track-01",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              56.0,
+              2.0,
+              23.0
+            ],
+            "tangent": [
+              -1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              -1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582300",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582301",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582302",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582303",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582304",
+              "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582300",
+              "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+            ],
+            "connection_class": "path-interface-c22acb858d4777168a58",
+            "source_port_id": "Ein",
+            "channel_id": "curve-channel-02",
+            "cut_id": "curve-end-b-cut-01",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              1.0,
+              -0.0
+            ],
+            "heading_outward_degrees": 90.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "curve-end-b-track-02",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              56.0,
+              -2.0,
+              23.0
+            ],
+            "tangent": [
+              1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582300",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582301",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582302",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582303",
+              "model:hsr-component-tight-paired-curve90-l4-to-mid:5ad0e817-badb57f1-7f582304",
+              "path:hsr-component-tight-paired-curve90-l4-to-mid:296678f7-a966883f-7f582300",
+              "construction:hsr-component-tight-paired-curve90-l4-to-mid"
+            ],
+            "connection_class": "path-interface-f17a87c40e2280c52126",
+            "source_port_id": "Eout",
+            "channel_id": "curve-channel-01",
+            "cut_id": "curve-end-b-cut-02",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              1.0,
+              0.0
+            ],
+            "heading_outward_degrees": 90.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "section_offset_m": 0.0,
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 23.0,
+          "nominal_level": null,
+          "label": "HSR custom 23-metre paired interface",
+          "scope_note": "Custom paired intermediate joint of the tight graded corner; not an alias for narrow L3 track."
+        },
+        "source_cell": [
+          3,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          56.0,
+          0.0,
+          23.0
+        ],
+        "anchor_m": [
+          56.0,
+          0.0,
+          23.0
+        ],
+        "channels": [
+          {
+            "id": "curve-channel-02",
+            "component_id": "graded-corner",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "curve-end-b-cut-01",
+                "member_ids": [
+                  "curve-end-b-track-01"
+                ],
+                "endpoint_m": [
+                  56.0,
+                  2.0,
+                  23.0
+                ],
+                "outward_tangent": [
+                  1.0,
+                  -0.0
+                ],
+                "heading_outward_degrees": 90.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "curve-channel-01",
+            "component_id": "graded-corner",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "curve-end-b-cut-02",
+                "member_ids": [
+                  "curve-end-b-track-02"
+                ],
+                "endpoint_m": [
+                  56.0,
+                  -2.0,
+                  23.0
+                ],
+                "outward_tangent": [
+                  1.0,
+                  0.0
+                ],
+                "heading_outward_degrees": 90.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": null,
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "cell-3-0-east"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "cell-0-3-south",
+        "source_cell": [
+          0,
+          3
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "curve-end-a"
+        ]
+      },
+      {
+        "id": "cell-3-0-east",
+        "source_cell": [
+          3,
+          0
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "curve-end-b"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "curve-channel-01",
+        "component_id": "graded-corner",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "curve-channel-02",
+        "component_id": "graded-corner",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "curve-end-a-track-01>curve-end-b-track-02",
+        "entry_port": "curve-end-a-track-01",
+        "exit_port": "curve-end-b-track-02",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Sin>Eout",
+        "source_entry_port": "Sin",
+        "source_exit_port": "Eout"
+      },
+      {
+        "id": "curve-end-b-track-01>curve-end-a-track-02",
+        "entry_port": "curve-end-b-track-01",
+        "exit_port": "curve-end-a-track-02",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Ein>Sout",
+        "source_entry_port": "Ein",
+        "source_exit_port": "Sout"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "curve-end-a-track-01",
+        "to_port": "curve-end-a-track-02",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Sin",
+        "source_to_port": "Sout"
+      },
+      {
+        "from_port": "curve-end-b-track-01",
+        "to_port": "curve-end-b-track-02",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Ein",
+        "source_to_port": "Eout"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f824",
+          "0004f824"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f824",
+          "0007f824"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f824",
+          "0006f824"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f824",
+          "0005f824"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f582100-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f582100",
+      "points": [
+        [
+          15.591924417,
+          -8.0,
+          26.081653175
+        ],
+        [
+          15.639995486,
+          -7.967599561,
+          26.07449096
+        ],
+        [
+          15.76297114,
+          -7.885632487,
+          26.056233956
+        ],
+        [
+          15.886382327,
+          -7.804290391,
+          26.037976952
+        ],
+        [
+          16.010225537,
+          -7.723574214,
+          26.019719948
+        ],
+        [
+          16.134497253,
+          -7.64348485,
+          26.001462943
+        ],
+        [
+          16.259193948,
+          -7.564023139,
+          25.983205939
+        ],
+        [
+          16.384312086,
+          -7.485189869,
+          25.964948934
+        ],
+        [
+          16.509848122,
+          -7.406985779,
+          25.946691929
+        ],
+        [
+          16.635798506,
+          -7.329411554,
+          25.928434924
+        ],
+        [
+          16.762159679,
+          -7.252467828,
+          25.910177918
+        ],
+        [
+          16.888928077,
+          -7.176155181,
+          25.891920912
+        ],
+        [
+          17.01610013,
+          -7.100474144,
+          25.873663906
+        ],
+        [
+          17.143672266,
+          -7.025425191,
+          25.8554069
+        ],
+        [
+          17.271640904999998,
+          -6.951008746,
+          25.837149893
+        ],
+        [
+          17.400002468,
+          -6.877225179,
+          25.818892887
+        ],
+        [
+          17.528753369,
+          -6.804074806,
+          25.800635879
+        ],
+        [
+          17.657890024,
+          -6.731557891,
+          25.782378872
+        ],
+        [
+          17.787408845,
+          -6.659674644,
+          25.764121864
+        ],
+        [
+          17.917306245,
+          -6.588425219,
+          25.745864856
+        ],
+        [
+          18.047578636,
+          -6.51780972,
+          25.727607848
+        ],
+        [
+          18.178222433000002,
+          -6.447828194,
+          25.70935084
+        ],
+        [
+          18.309234049,
+          -6.378480635,
+          25.691093831
+        ],
+        [
+          18.440609902,
+          -6.309766982,
+          25.672836822
+        ],
+        [
+          18.572346410999998,
+          -6.241687121,
+          25.654579812
+        ],
+        [
+          18.704439999,
+          -6.174240883,
+          25.636322802
+        ],
+        [
+          18.836887093,
+          -6.107428044,
+          25.618065792
+        ],
+        [
+          18.969684126,
+          -6.041248325,
+          25.599808782
+        ],
+        [
+          19.102827534,
+          -5.975701393,
+          25.581551771
+        ],
+        [
+          19.23631376,
+          -5.910786861,
+          25.56329476
+        ],
+        [
+          19.370139254999998,
+          -5.846504286,
+          25.545037749
+        ],
+        [
+          19.504300476,
+          -5.78285317,
+          25.526780737
+        ],
+        [
+          19.638793887,
+          -5.719832961,
+          25.508523725
+        ],
+        [
+          19.773615962,
+          -5.657443052,
+          25.490266712
+        ],
+        [
+          19.908763184,
+          -5.595682781,
+          25.4720097
+        ],
+        [
+          20.044232045,
+          -5.53455143,
+          25.453752686
+        ],
+        [
+          20.180019049000002,
+          -5.474048227,
+          25.435495673
+        ],
+        [
+          20.316120708,
+          -5.414172346,
+          25.417238659
+        ],
+        [
+          20.45253355,
+          -5.354922905,
+          25.398981645
+        ],
+        [
+          20.589254111,
+          -5.296298966,
+          25.38072463
+        ],
+        [
+          20.726278943,
+          -5.238299538,
+          25.362467615
+        ],
+        [
+          20.863604608,
+          -5.180923576,
+          25.3442106
+        ],
+        [
+          21.001227686,
+          -5.124169977,
+          25.325953584
+        ],
+        [
+          21.139144768,
+          -5.068037585,
+          25.307696568
+        ],
+        [
+          21.277352462,
+          -5.012525191,
+          25.289439551
+        ],
+        [
+          21.415847392,
+          -4.957631529,
+          25.271182535
+        ],
+        [
+          21.554626197,
+          -4.90335528,
+          25.252925517
+        ],
+        [
+          21.693685533,
+          -4.849695069,
+          25.2346685
+        ],
+        [
+          21.833022074,
+          -4.796649469,
+          25.216411481
+        ],
+        [
+          21.972632511,
+          -4.744216998,
+          25.198154463
+        ],
+        [
+          22.112513554,
+          -4.692396118,
+          25.179897444
+        ],
+        [
+          22.252661933,
+          -4.641185239,
+          25.161640425
+        ],
+        [
+          22.393074395,
+          -4.590582718,
+          25.143383405
+        ],
+        [
+          22.533747708,
+          -4.540586857,
+          25.125126385
+        ],
+        [
+          22.674678661,
+          -4.491195904,
+          25.106869364
+        ],
+        [
+          22.815864063,
+          -4.442408055,
+          25.088612343
+        ],
+        [
+          22.957300745,
+          -4.394221452,
+          25.070355322
+        ],
+        [
+          23.09898556,
+          -4.346634184,
+          25.0520983
+        ],
+        [
+          23.240915383,
+          -4.299644288,
+          25.033841278
+        ],
+        [
+          23.383087111000002,
+          -4.253249747,
+          25.015584255
+        ],
+        [
+          23.525497666,
+          -4.207448494,
+          24.997327232
+        ],
+        [
+          23.668143991,
+          -4.162238407,
+          24.979070208
+        ],
+        [
+          23.811023055,
+          -4.117617312,
+          24.960813184
+        ],
+        [
+          23.954131853,
+          -4.073582987,
+          24.94255616
+        ],
+        [
+          24.0,
+          -4.059678806,
+          24.936713814
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f582100-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f582100",
+      "points": [
+        [
+          24.0,
+          0.102077662,
+          24.80379581
+        ],
+        [
+          23.903780465,
+          0.07588634,
+          24.814756977
+        ],
+        [
+          23.743645,
+          0.031606678,
+          24.833014004
+        ],
+        [
+          23.583642472,
+          -0.013331593,
+          24.851271031
+        ],
+        [
+          23.423777111,
+          -0.058931879,
+          24.869528058
+        ],
+        [
+          23.264053188,
+          -0.10519753,
+          24.887785084
+        ],
+        [
+          23.104475006,
+          -0.15213183,
+          24.90604211
+        ],
+        [
+          22.945046911,
+          -0.199738002,
+          24.924299135
+        ],
+        [
+          22.785773281,
+          -0.248019205,
+          24.94255616
+        ],
+        [
+          22.62665853,
+          -0.296978535,
+          24.960813184
+        ],
+        [
+          22.467707109,
+          -0.346619021,
+          24.979070208
+        ],
+        [
+          22.308923501,
+          -0.396943632,
+          24.997327232
+        ],
+        [
+          22.150312224,
+          -0.447955268,
+          25.015584255
+        ],
+        [
+          21.991877829,
+          -0.499656763,
+          25.033841278
+        ],
+        [
+          21.833624898,
+          -0.552050887,
+          25.0520983
+        ],
+        [
+          21.675558047,
+          -0.605140342,
+          25.070355322
+        ],
+        [
+          21.517681919,
+          -0.658927763,
+          25.088612343
+        ],
+        [
+          21.360001192,
+          -0.713415715,
+          25.106869364
+        ],
+        [
+          21.202520569,
+          -0.7686067,
+          25.125126385
+        ],
+        [
+          21.045244784,
+          -0.824503147,
+          25.143383405
+        ],
+        [
+          20.888178599,
+          -0.881107417,
+          25.161640425
+        ],
+        [
+          20.731326803,
+          -0.938421803,
+          25.179897444
+        ],
+        [
+          20.574694211,
+          -0.996448527,
+          25.198154463
+        ],
+        [
+          20.418285664,
+          -1.055189742,
+          25.216411481
+        ],
+        [
+          20.262106027999998,
+          -1.11464753,
+          25.2346685
+        ],
+        [
+          20.106160192,
+          -1.174823902,
+          25.252925517
+        ],
+        [
+          19.950453070000002,
+          -1.235720799,
+          25.271182535
+        ],
+        [
+          19.794989598,
+          -1.29734009,
+          25.289439551
+        ],
+        [
+          19.639774732,
+          -1.359683571,
+          25.307696568
+        ],
+        [
+          19.484813452,
+          -1.422752968,
+          25.325953584
+        ],
+        [
+          19.330110754,
+          -1.486549935,
+          25.3442106
+        ],
+        [
+          19.175671658,
+          -1.551076051,
+          25.362467615
+        ],
+        [
+          19.021501197,
+          -1.616332825,
+          25.38072463
+        ],
+        [
+          18.867604426,
+          -1.682321691,
+          25.398981645
+        ],
+        [
+          18.713986414,
+          -1.749044012,
+          25.417238659
+        ],
+        [
+          18.560652246,
+          -1.816501076,
+          25.435495673
+        ],
+        [
+          18.407607024,
+          -1.884694098,
+          25.453752686
+        ],
+        [
+          18.25485586,
+          -1.953624219,
+          25.4720097
+        ],
+        [
+          18.102403883,
+          -2.023292506,
+          25.490266712
+        ],
+        [
+          17.950256232,
+          -2.093699953,
+          25.508523725
+        ],
+        [
+          17.798418058,
+          -2.164847479,
+          25.526780737
+        ],
+        [
+          17.646894523,
+          -2.236735929,
+          25.545037749
+        ],
+        [
+          17.495690795,
+          -2.309366073,
+          25.56329476
+        ],
+        [
+          17.344812056,
+          -2.382738607,
+          25.581551771
+        ],
+        [
+          17.194263492,
+          -2.456854154,
+          25.599808782
+        ],
+        [
+          17.044050297,
+          -2.531713259,
+          25.618065792
+        ],
+        [
+          16.894177669,
+          -2.607316396,
+          25.636322802
+        ],
+        [
+          16.744650814,
+          -2.683663961,
+          25.654579812
+        ],
+        [
+          16.595474939,
+          -2.760756279,
+          25.672836822
+        ],
+        [
+          16.446655256,
+          -2.838593597,
+          25.691093831
+        ],
+        [
+          16.298196977,
+          -2.917176089,
+          25.70935084
+        ],
+        [
+          16.150105318,
+          -2.996503853,
+          25.727607848
+        ],
+        [
+          16.002385492,
+          -3.076576915,
+          25.745864856
+        ],
+        [
+          15.855042713,
+          -3.157395224,
+          25.764121864
+        ],
+        [
+          15.708082193,
+          -3.238958655,
+          25.782378872
+        ],
+        [
+          15.561509142,
+          -3.321267009,
+          25.800635879
+        ],
+        [
+          15.415328764,
+          -3.404320013,
+          25.818892887
+        ],
+        [
+          15.269546262,
+          -3.488117319,
+          25.837149893
+        ],
+        [
+          15.124166829,
+          -3.572658505,
+          25.8554069
+        ],
+        [
+          14.979195655,
+          -3.657943075,
+          25.873663906
+        ],
+        [
+          14.834637921,
+          -3.74397046,
+          25.891920912
+        ],
+        [
+          14.690498801,
+          -3.830740017,
+          25.910177918
+        ],
+        [
+          14.546783457,
+          -3.918251029,
+          25.928434924
+        ],
+        [
+          14.403497042,
+          -4.006502706,
+          25.946691929
+        ],
+        [
+          14.260644699,
+          -4.095494185,
+          25.964948934
+        ],
+        [
+          14.118231557,
+          -4.18522453,
+          25.983205939
+        ],
+        [
+          13.976262732,
+          -4.275692732,
+          26.001462943
+        ],
+        [
+          13.834743325,
+          -4.366897711,
+          26.019719948
+        ],
+        [
+          13.693678424,
+          -4.458838314,
+          26.037976952
+        ],
+        [
+          13.5530731,
+          -4.551513315,
+          26.056233956
+        ],
+        [
+          13.412932406,
+          -4.644921419,
+          26.07449096
+        ],
+        [
+          13.273261377,
+          -4.739061257,
+          26.092747963
+        ],
+        [
+          13.13406503,
+          -4.83393139,
+          26.111004966
+        ],
+        [
+          12.995348362,
+          -4.92953031,
+          26.12926197
+        ],
+        [
+          12.857116348,
+          -5.025856437,
+          26.147518973
+        ],
+        [
+          12.719373942,
+          -5.122908121,
+          26.165775975
+        ],
+        [
+          12.582126076,
+          -5.220683643,
+          26.184032978
+        ],
+        [
+          12.445377657,
+          -5.319181215,
+          26.20228998
+        ],
+        [
+          12.309133567,
+          -5.418398979,
+          26.220546983
+        ],
+        [
+          12.173398664,
+          -5.518335009,
+          26.238803985
+        ],
+        [
+          12.038177779,
+          -5.618987313,
+          26.257060987
+        ],
+        [
+          11.903475713999999,
+          -5.720353829,
+          26.275317988
+        ],
+        [
+          11.769297245,
+          -5.822432428,
+          26.29357499
+        ],
+        [
+          11.635647117000001,
+          -5.925220916,
+          26.311831992
+        ],
+        [
+          11.502530046,
+          -6.028717032,
+          26.330088993
+        ],
+        [
+          11.369950716,
+          -6.132918447,
+          26.348345994
+        ],
+        [
+          11.237913779,
+          -6.237822771,
+          26.366602995
+        ],
+        [
+          11.106423855,
+          -6.343427546,
+          26.384859996
+        ],
+        [
+          10.97548553,
+          -6.449730251,
+          26.403116997
+        ],
+        [
+          10.845103355,
+          -6.5567283,
+          26.421373998
+        ],
+        [
+          10.715281845,
+          -6.664419046,
+          26.439630999
+        ],
+        [
+          10.586025479,
+          -6.772799778,
+          26.457887999
+        ],
+        [
+          10.457338699000001,
+          -6.881867723,
+          26.476145
+        ],
+        [
+          10.32922591,
+          -6.991620047,
+          26.494402
+        ],
+        [
+          10.201691474,
+          -7.102053854,
+          26.512659
+        ],
+        [
+          10.074739718,
+          -7.213166188,
+          26.530916001
+        ],
+        [
+          9.948374926,
+          -7.324954034,
+          26.549173001
+        ],
+        [
+          9.822601339,
+          -7.437414318,
+          26.567430001
+        ],
+        [
+          9.697423158,
+          -7.550543906,
+          26.585687001
+        ],
+        [
+          9.572844541,
+          -7.664339608,
+          26.603944001
+        ],
+        [
+          9.448869599,
+          -7.778798175,
+          26.622201001
+        ],
+        [
+          9.325502402,
+          -7.893916303,
+          26.640458001
+        ],
+        [
+          9.21302194,
+          -8.0,
+          26.65718684
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f582200-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f582200",
+      "points": [
+        [
+          24.0,
+          -4.059678806,
+          24.936713814
+        ],
+        [
+          24.0974674,
+          -4.030133154,
+          24.924299135
+        ],
+        [
+          24.241026741,
+          -3.987265486,
+          24.90604211
+        ],
+        [
+          24.384806944,
+          -3.944977604,
+          24.887785084
+        ],
+        [
+          24.528805105,
+          -3.90326708,
+          24.869528058
+        ],
+        [
+          24.673018344,
+          -3.862131433,
+          24.851271031
+        ],
+        [
+          24.817443809,
+          -3.821568133,
+          24.833014004
+        ],
+        [
+          24.962078676,
+          -3.781574599,
+          24.814756977
+        ],
+        [
+          25.106920146,
+          -3.742148203,
+          24.796499949
+        ],
+        [
+          25.25196545,
+          -3.703286264,
+          24.77824292
+        ],
+        [
+          25.397211847,
+          -3.664986054,
+          24.759985891
+        ],
+        [
+          25.542656621,
+          -3.627244796,
+          24.741728862
+        ],
+        [
+          25.688297089,
+          -3.590059665,
+          24.723471832
+        ],
+        [
+          25.834130593,
+          -3.553427785,
+          24.705214802
+        ],
+        [
+          25.980154508,
+          -3.517346236,
+          24.686957771
+        ],
+        [
+          26.126366236,
+          -3.481812048,
+          24.66870074
+        ],
+        [
+          26.272763207,
+          -3.446822204,
+          24.650443708
+        ],
+        [
+          26.419342884,
+          -3.412373642,
+          24.632186676
+        ],
+        [
+          26.56610276,
+          -3.378463252,
+          24.613929644
+        ],
+        [
+          26.713040354,
+          -3.345087877,
+          24.595672611
+        ],
+        [
+          26.860153221,
+          -3.312244317,
+          24.577415577
+        ],
+        [
+          27.007438942,
+          -3.279929325,
+          24.559158544
+        ],
+        [
+          27.154895131,
+          -3.248139609,
+          24.540901509
+        ],
+        [
+          27.302519433,
+          -3.216871832,
+          24.522644474
+        ],
+        [
+          27.450309523,
+          -3.186122615,
+          24.504387439
+        ],
+        [
+          27.598263108,
+          -3.155888534,
+          24.486130403
+        ],
+        [
+          27.746377925,
+          -3.126166121,
+          24.467873367
+        ],
+        [
+          27.894651742,
+          -3.096951866,
+          24.449616331
+        ],
+        [
+          28.043082362,
+          -3.068242217,
+          24.431359293
+        ],
+        [
+          28.191667614,
+          -3.040033579,
+          24.413102256
+        ],
+        [
+          28.340405362,
+          -3.012322317,
+          24.394845218
+        ],
+        [
+          28.489293502,
+          -2.985104754,
+          24.376588179
+        ],
+        [
+          28.638329958,
+          -2.958377171,
+          24.358331141
+        ],
+        [
+          28.787512689,
+          -2.932135812,
+          24.340074101
+        ],
+        [
+          28.936839684,
+          -2.90637688,
+          24.321817061
+        ],
+        [
+          29.086308963,
+          -2.881096538,
+          24.303560021
+        ],
+        [
+          29.235918578,
+          -2.856290912,
+          24.285302981
+        ],
+        [
+          29.385666613,
+          -2.831956088,
+          24.267045939
+        ],
+        [
+          29.535551182,
+          -2.808088117,
+          24.248788898
+        ],
+        [
+          29.685570431,
+          -2.784683012,
+          24.230531856
+        ],
+        [
+          29.835722537,
+          -2.761736747,
+          24.212274813
+        ],
+        [
+          29.986005708,
+          -2.739245264,
+          24.194017771
+        ],
+        [
+          30.136418182,
+          -2.717204468,
+          24.175760727
+        ],
+        [
+          30.286958229,
+          -2.695610229,
+          24.157503684
+        ],
+        [
+          30.437624149,
+          -2.674458383,
+          24.139246639
+        ],
+        [
+          30.588414272,
+          -2.653744731,
+          24.120989595
+        ],
+        [
+          30.739326959,
+          -2.633465044,
+          24.10273255
+        ],
+        [
+          30.8903606,
+          -2.613615059,
+          24.084475504
+        ],
+        [
+          31.041513614,
+          -2.59419048,
+          24.066218459
+        ],
+        [
+          31.192784453,
+          -2.575186981,
+          24.047961412
+        ],
+        [
+          31.344171594,
+          -2.556600207,
+          24.029704366
+        ],
+        [
+          31.495673546,
+          -2.538425769,
+          24.011447319
+        ],
+        [
+          31.647288845,
+          -2.520659253,
+          23.993190271
+        ],
+        [
+          31.799016055,
+          -2.503296215,
+          23.974933223
+        ],
+        [
+          31.950853771,
+          -2.486332181,
+          23.956676175
+        ],
+        [
+          32.102800612,
+          -2.469762654,
+          23.938419126
+        ],
+        [
+          32.254855227,
+          -2.453583106,
+          23.920165661
+        ],
+        [
+          32.407016291,
+          -2.437788986,
+          23.902034773
+        ],
+        [
+          32.559282506,
+          -2.422375717,
+          23.884084292
+        ],
+        [
+          32.7116526,
+          -2.407338699,
+          23.866314216
+        ],
+        [
+          32.864125326999996,
+          -2.392673306,
+          23.848724548
+        ],
+        [
+          33.016699466,
+          -2.378374892,
+          23.831315286
+        ],
+        [
+          33.169373822,
+          -2.364438786,
+          23.81408643
+        ],
+        [
+          33.322147225,
+          -2.350860298,
+          23.79703798
+        ],
+        [
+          33.475018527,
+          -2.337634716,
+          23.780169937
+        ],
+        [
+          33.627986604,
+          -2.324757309,
+          23.763482301
+        ],
+        [
+          33.781050358,
+          -2.312223328,
+          23.746975071
+        ],
+        [
+          33.934208711,
+          -2.300028006,
+          23.730648247
+        ],
+        [
+          34.087460607,
+          -2.288166556,
+          23.71450183
+        ],
+        [
+          34.240805013,
+          -2.276634178,
+          23.69853582
+        ],
+        [
+          34.394240917,
+          -2.265426055,
+          23.682750216
+        ],
+        [
+          34.547767326,
+          -2.254537356,
+          23.667145018
+        ],
+        [
+          34.701383269,
+          -2.243963236,
+          23.651720228
+        ],
+        [
+          34.855087792,
+          -2.233698839,
+          23.636475843
+        ],
+        [
+          35.008879962,
+          -2.223739294,
+          23.621411866
+        ],
+        [
+          35.162758862,
+          -2.214079723,
+          23.606528295
+        ],
+        [
+          35.316723595,
+          -2.204715235,
+          23.59182513
+        ],
+        [
+          35.470773279,
+          -2.195640932,
+          23.577302372
+        ],
+        [
+          35.624907049,
+          -2.186851909,
+          23.562960021
+        ],
+        [
+          35.779124056,
+          -2.178343251,
+          23.548798077
+        ],
+        [
+          35.933423464,
+          -2.170110041,
+          23.534816539
+        ],
+        [
+          36.087804454,
+          -2.162147356,
+          23.521015408
+        ],
+        [
+          36.242266218,
+          -2.154450268,
+          23.507394683
+        ],
+        [
+          36.396807963,
+          -2.147013848,
+          23.493954365
+        ],
+        [
+          36.551428907,
+          -2.139833166,
+          23.480694454
+        ],
+        [
+          36.706128279,
+          -2.13290329,
+          23.46761495
+        ],
+        [
+          36.86090532,
+          -2.126219292,
+          23.454715852
+        ],
+        [
+          37.015759281,
+          -2.119776244,
+          23.441997161
+        ],
+        [
+          37.17068942,
+          -2.113569221,
+          23.429458877
+        ],
+        [
+          37.325695006000004,
+          -2.107593303,
+          23.417101
+        ],
+        [
+          37.480775314,
+          -2.101843577,
+          23.40492353
+        ],
+        [
+          37.635929628,
+          -2.096315137,
+          23.392926466
+        ],
+        [
+          37.791157236000004,
+          -2.091003082,
+          23.381109809
+        ],
+        [
+          37.946457432,
+          -2.085902526,
+          23.369473559
+        ],
+        [
+          38.101829515,
+          -2.081008591,
+          23.358017715
+        ],
+        [
+          38.257272788,
+          -2.07631641,
+          23.346742279
+        ],
+        [
+          38.412786556,
+          -2.071821134,
+          23.335647249
+        ],
+        [
+          38.568370127,
+          -2.067517925,
+          23.324732627
+        ],
+        [
+          38.72402281,
+          -2.063401964,
+          23.313998411
+        ],
+        [
+          38.879743915,
+          -2.059468449,
+          23.303444602
+        ],
+        [
+          39.035532751,
+          -2.0557126,
+          23.293071199
+        ],
+        [
+          39.191388627,
+          -2.052129653,
+          23.282878204
+        ],
+        [
+          39.347310848,
+          -2.048714873,
+          23.272865616
+        ],
+        [
+          39.503298719,
+          -2.045463544,
+          23.263033434
+        ],
+        [
+          39.659351539,
+          -2.042370978,
+          23.25338166
+        ],
+        [
+          39.815468604,
+          -2.039432515,
+          23.243910292
+        ],
+        [
+          39.971649205,
+          -2.036643522,
+          23.234619331
+        ],
+        [
+          40.0,
+          -2.036163739,
+          23.232966196
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f582200-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f582200",
+      "points": [
+        [
+          40.0,
+          1.96440858,
+          23.229043623
+        ],
+        [
+          39.902128708,
+          1.962752295,
+          23.234619331
+        ],
+        [
+          39.742152016,
+          1.959895513,
+          23.243910292
+        ],
+        [
+          39.582117382999996,
+          1.956883313,
+          23.25338166
+        ],
+        [
+          39.422024584,
+          1.953710685,
+          23.263033434
+        ],
+        [
+          39.26187343,
+          1.950372579,
+          23.272865616
+        ],
+        [
+          39.101663768,
+          1.946863901,
+          23.282878204
+        ],
+        [
+          38.94139548,
+          1.943179519,
+          23.293071199
+        ],
+        [
+          38.781068488,
+          1.93931426,
+          23.303444602
+        ],
+        [
+          38.620682744999996,
+          1.935262917,
+          23.313998411
+        ],
+        [
+          38.460238247,
+          1.931020245,
+          23.324732627
+        ],
+        [
+          38.299735023,
+          1.926580966,
+          23.335647249
+        ],
+        [
+          38.139173143,
+          1.921939769,
+          23.346742279
+        ],
+        [
+          37.978552711,
+          1.917091312,
+          23.358017715
+        ],
+        [
+          37.817873874,
+          1.912030223,
+          23.369473559
+        ],
+        [
+          37.657136815,
+          1.906751103,
+          23.381109809
+        ],
+        [
+          37.496341756,
+          1.901248525,
+          23.392926466
+        ],
+        [
+          37.335488959,
+          1.895517036,
+          23.40492353
+        ],
+        [
+          37.174578726,
+          1.889551161,
+          23.417101
+        ],
+        [
+          37.013611399,
+          1.883345401,
+          23.429458877
+        ],
+        [
+          36.852587359,
+          1.876894236,
+          23.441997161
+        ],
+        [
+          36.691507031,
+          1.870192125,
+          23.454715852
+        ],
+        [
+          36.530370877,
+          1.863233511,
+          23.46761495
+        ],
+        [
+          36.369179404,
+          1.856012817,
+          23.480694454
+        ],
+        [
+          36.207933159,
+          1.848524452,
+          23.493954365
+        ],
+        [
+          36.046632731,
+          1.84076281,
+          23.507394683
+        ],
+        [
+          35.885278752,
+          1.832722272,
+          23.521015408
+        ],
+        [
+          35.723871898,
+          1.824397205,
+          23.534816539
+        ],
+        [
+          35.562412885,
+          1.815781968,
+          23.548798077
+        ],
+        [
+          35.400902476,
+          1.80687091,
+          23.562960021
+        ],
+        [
+          35.239341476,
+          1.79765837,
+          23.577302372
+        ],
+        [
+          35.077730734,
+          1.788138683,
+          23.59182513
+        ],
+        [
+          34.916071144,
+          1.778306177,
+          23.606528295
+        ],
+        [
+          34.754363644,
+          1.768155174,
+          23.621411866
+        ],
+        [
+          34.592609218999996,
+          1.757679996,
+          23.636475843
+        ],
+        [
+          34.430808898,
+          1.74687496,
+          23.651720228
+        ],
+        [
+          34.268963755,
+          1.735734385,
+          23.667145018
+        ],
+        [
+          34.107074911,
+          1.72425259,
+          23.682750216
+        ],
+        [
+          33.945143533,
+          1.712423893,
+          23.69853582
+        ],
+        [
+          33.783170835,
+          1.700242618,
+          23.71450183
+        ],
+        [
+          33.621158076,
+          1.687703091,
+          23.730648247
+        ],
+        [
+          33.459106565,
+          1.674799645,
+          23.746975071
+        ],
+        [
+          33.297017656,
+          1.661526619,
+          23.763482301
+        ],
+        [
+          33.134892751,
+          1.647878358,
+          23.780169937
+        ],
+        [
+          32.9727333,
+          1.633849216,
+          23.79703798
+        ],
+        [
+          32.810540801,
+          1.619433559,
+          23.81408643
+        ],
+        [
+          32.648316801,
+          1.604625762,
+          23.831315286
+        ],
+        [
+          32.486062893,
+          1.589420213,
+          23.848724548
+        ],
+        [
+          32.323780721,
+          1.573811311,
+          23.866314216
+        ],
+        [
+          32.161471978,
+          1.557793473,
+          23.884084292
+        ],
+        [
+          31.999138403,
+          1.541361128,
+          23.902034773
+        ],
+        [
+          31.836781787,
+          1.524508723,
+          23.920165661
+        ],
+        [
+          31.674403969,
+          1.507230723,
+          23.938419126
+        ],
+        [
+          31.512006838,
+          1.48952161,
+          23.956676175
+        ],
+        [
+          31.349592332,
+          1.471375887,
+          23.974933223
+        ],
+        [
+          31.187162438,
+          1.452788077,
+          23.993190271
+        ],
+        [
+          31.024719195,
+          1.433752726,
+          24.011447319
+        ],
+        [
+          30.86226469,
+          1.414264401,
+          24.029704366
+        ],
+        [
+          30.699801059,
+          1.394317695,
+          24.047961412
+        ],
+        [
+          30.53733049,
+          1.373907223,
+          24.066218459
+        ],
+        [
+          30.374855221,
+          1.353027628,
+          24.084475504
+        ],
+        [
+          30.212377537000002,
+          1.331673579,
+          24.10273255
+        ],
+        [
+          30.049899778,
+          1.309839775,
+          24.120989595
+        ],
+        [
+          29.887424328999998,
+          1.287520941,
+          24.139246639
+        ],
+        [
+          29.724953628,
+          1.264711832,
+          24.157503684
+        ],
+        [
+          29.562490163,
+          1.241407236,
+          24.175760727
+        ],
+        [
+          29.40003647,
+          1.217601972,
+          24.194017771
+        ],
+        [
+          29.237595138,
+          1.193290891,
+          24.212274813
+        ],
+        [
+          29.075168804,
+          1.168468877,
+          24.230531856
+        ],
+        [
+          28.912760154,
+          1.143130851,
+          24.248788898
+        ],
+        [
+          28.750371925,
+          1.117271768,
+          24.267045939
+        ],
+        [
+          28.588006903,
+          1.090886619,
+          24.285302981
+        ],
+        [
+          28.425667925,
+          1.063970435,
+          24.303560021
+        ],
+        [
+          28.263357875,
+          1.036518281,
+          24.321817061
+        ],
+        [
+          28.101079689,
+          1.008525266,
+          24.340074101
+        ],
+        [
+          27.938836349,
+          0.979986536,
+          24.358331141
+        ],
+        [
+          27.776630887,
+          0.950897278,
+          24.376588179
+        ],
+        [
+          27.614466385,
+          0.921252723,
+          24.394845218
+        ],
+        [
+          27.452345972,
+          0.891048143,
+          24.413102256
+        ],
+        [
+          27.290272826,
+          0.860278854,
+          24.431359293
+        ],
+        [
+          27.128250172999998,
+          0.828940215,
+          24.449616331
+        ],
+        [
+          26.966281285,
+          0.797027633,
+          24.467873367
+        ],
+        [
+          26.804369485,
+          0.76453656,
+          24.486130403
+        ],
+        [
+          26.642518139,
+          0.731462493,
+          24.504387439
+        ],
+        [
+          26.480730663,
+          0.697800979,
+          24.522644474
+        ],
+        [
+          26.31901052,
+          0.663547612,
+          24.540901509
+        ],
+        [
+          26.157361215,
+          0.628698037,
+          24.559158544
+        ],
+        [
+          25.995786304,
+          0.593247948,
+          24.577415577
+        ],
+        [
+          25.834289386000002,
+          0.557193088,
+          24.595672611
+        ],
+        [
+          25.672874105,
+          0.520529255,
+          24.613929644
+        ],
+        [
+          25.511544151,
+          0.483252297,
+          24.632186676
+        ],
+        [
+          25.350303257,
+          0.445358115,
+          24.650443708
+        ],
+        [
+          25.189155203,
+          0.406842666,
+          24.66870074
+        ],
+        [
+          25.028103808,
+          0.367701957,
+          24.686957771
+        ],
+        [
+          24.867152937,
+          0.327932056,
+          24.705214802
+        ],
+        [
+          24.706306499,
+          0.287529081,
+          24.723471832
+        ],
+        [
+          24.545568441,
+          0.246489211,
+          24.741728862
+        ],
+        [
+          24.384942757,
+          0.204808681,
+          24.759985891
+        ],
+        [
+          24.224433476999998,
+          0.162483781,
+          24.77824292
+        ],
+        [
+          24.064044674999998,
+          0.119510865,
+          24.796499949
+        ],
+        [
+          24.0,
+          0.102077662,
+          24.80379581
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f582300-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f582300",
+      "points": [
+        [
+          40.0,
+          -2.036163739,
+          23.232966196
+        ],
+        [
+          40.127892625,
+          -2.033999399,
+          23.225508777
+        ],
+        [
+          40.284198141,
+          -2.031495577,
+          23.21657863
+        ],
+        [
+          40.440565025,
+          -2.029127522,
+          23.20782889
+        ],
+        [
+          40.596992535,
+          -2.026890734,
+          23.199259557
+        ],
+        [
+          40.753479924,
+          -2.024780753,
+          23.190870631
+        ],
+        [
+          40.910026433,
+          -2.022793159,
+          23.182662112
+        ],
+        [
+          41.066631292,
+          -2.020923569,
+          23.174634
+        ],
+        [
+          41.223293719,
+          -2.01916765,
+          23.166786295
+        ],
+        [
+          41.38001292,
+          -2.017521107,
+          23.159118997
+        ],
+        [
+          41.536788087,
+          -2.015979699,
+          23.151632105
+        ],
+        [
+          41.693618396,
+          -2.014539228,
+          23.144325621
+        ],
+        [
+          41.85050301,
+          -2.013195551,
+          23.137199544
+        ],
+        [
+          42.007441076,
+          -2.011944578,
+          23.130253873
+        ],
+        [
+          42.164431723,
+          -2.010782272,
+          23.12348861
+        ],
+        [
+          42.321474063,
+          -2.009704654,
+          23.116903754
+        ],
+        [
+          42.478567188,
+          -2.008707807,
+          23.110499305
+        ],
+        [
+          42.635710173999996,
+          -2.007787873,
+          23.104275262
+        ],
+        [
+          42.792902075,
+          -2.006941057,
+          23.098231627
+        ],
+        [
+          42.950141925,
+          -2.006163634,
+          23.092368399
+        ],
+        [
+          43.107428735,
+          -2.005451943,
+          23.086685577
+        ],
+        [
+          43.264761495,
+          -2.004802397,
+          23.081183163
+        ],
+        [
+          43.422139173,
+          -2.00421148,
+          23.075861156
+        ],
+        [
+          43.579560712,
+          -2.003675752,
+          23.070719555
+        ],
+        [
+          43.737025031,
+          -2.00319185,
+          23.065758362
+        ],
+        [
+          43.894531023,
+          -2.002756494,
+          23.060977576
+        ],
+        [
+          44.052077557,
+          -2.002366482,
+          23.056377197
+        ],
+        [
+          44.209663474,
+          -2.002018701,
+          23.051957225
+        ],
+        [
+          44.367287587,
+          -2.001710125,
+          23.047717659
+        ],
+        [
+          44.524948685,
+          -2.001437816,
+          23.043658501
+        ],
+        [
+          44.682645524,
+          -2.001198932,
+          23.03977975
+        ],
+        [
+          44.840376833,
+          -2.000990725,
+          23.036081406
+        ],
+        [
+          44.998141311,
+          -2.000810544,
+          23.032563469
+        ],
+        [
+          45.155937626,
+          -2.00065584,
+          23.029225939
+        ],
+        [
+          45.313764417,
+          -2.00052417,
+          23.026068816
+        ],
+        [
+          45.471620288,
+          -2.000413192,
+          23.0230921
+        ],
+        [
+          45.629503814,
+          -2.000320679,
+          23.020295791
+        ],
+        [
+          45.787413534,
+          -2.000244511,
+          23.017679889
+        ],
+        [
+          45.945347957,
+          -2.000182686,
+          23.015244394
+        ],
+        [
+          46.103305555,
+          -2.000133318,
+          23.012989306
+        ],
+        [
+          46.261284768,
+          -2.000094643,
+          23.010914625
+        ],
+        [
+          46.419283998,
+          -2.00006502,
+          23.009020352
+        ],
+        [
+          46.577301615,
+          -2.000042933,
+          23.007306485
+        ],
+        [
+          46.73533595,
+          -2.000027,
+          23.005773025
+        ],
+        [
+          46.893385299,
+          -2.000015966,
+          23.004419972
+        ],
+        [
+          47.051447919,
+          -2.000008715,
+          23.003247327
+        ],
+        [
+          47.209522032,
+          -2.00000427,
+          23.002255088
+        ],
+        [
+          47.36760582,
+          -2.000001794,
+          23.001443256
+        ],
+        [
+          47.525697425,
+          -2.000000596,
+          23.000811832
+        ],
+        [
+          47.683794954,
+          -2.000000133,
+          23.000360814
+        ],
+        [
+          47.841896471,
+          -2.000000013,
+          23.000090204
+        ],
+        [
+          48.0,
+          -2.0,
+          23.0
+        ],
+        [
+          56.0,
+          -2.0,
+          23.0
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f582300-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f582300",
+      "points": [
+        [
+          56.0,
+          2.0,
+          23.0
+        ],
+        [
+          48.0,
+          2.0,
+          23.0
+        ],
+        [
+          47.841895796,
+          1.999999987,
+          23.000090204
+        ],
+        [
+          47.683789579,
+          1.999999867,
+          23.000360814
+        ],
+        [
+          47.525679374,
+          1.999999404,
+          23.000811832
+        ],
+        [
+          47.367563246,
+          1.999998206,
+          23.001443256
+        ],
+        [
+          47.2094393,
+          1.999995729,
+          23.002255088
+        ],
+        [
+          47.051305679,
+          1.999991282,
+          23.003247327
+        ],
+        [
+          46.893160567,
+          1.999984028,
+          23.004419972
+        ],
+        [
+          46.735002182,
+          1.999972986,
+          23.005773025
+        ],
+        [
+          46.576828786,
+          1.999957039,
+          23.007306485
+        ],
+        [
+          46.418638672,
+          1.999934928,
+          23.009020352
+        ],
+        [
+          46.260430175,
+          1.999905266,
+          23.010914625
+        ],
+        [
+          46.102201663,
+          1.99986653,
+          23.012989306
+        ],
+        [
+          45.943951544,
+          1.999817071,
+          23.015244394
+        ],
+        [
+          45.785678257,
+          1.999755113,
+          23.017679889
+        ],
+        [
+          45.627380281,
+          1.999678758,
+          23.020295791
+        ],
+        [
+          45.469056128,
+          1.999585986,
+          23.0230921
+        ],
+        [
+          45.310704344,
+          1.99947466,
+          23.026068816
+        ],
+        [
+          45.152323512,
+          1.999342527,
+          23.029225939
+        ],
+        [
+          44.993912247,
+          1.999187221,
+          23.032563469
+        ],
+        [
+          44.835469199,
+          1.999006265,
+          23.036081406
+        ],
+        [
+          44.676993051,
+          1.998797074,
+          23.03977975
+        ],
+        [
+          44.518482521,
+          1.998556957,
+          23.043658501
+        ],
+        [
+          44.359936359,
+          1.99828312,
+          23.047717659
+        ],
+        [
+          44.201353347,
+          1.997972666,
+          23.051957225
+        ],
+        [
+          44.042732303,
+          1.997622601,
+          23.056377197
+        ],
+        [
+          43.884072075,
+          1.997229833,
+          23.060977576
+        ],
+        [
+          43.725371545,
+          1.996791174,
+          23.065758362
+        ],
+        [
+          43.566629627,
+          1.996303346,
+          23.070719555
+        ],
+        [
+          43.407845268,
+          1.995762981,
+          23.075861156
+        ],
+        [
+          43.249017447,
+          1.995166618,
+          23.081183163
+        ],
+        [
+          43.090145174,
+          1.994510716,
+          23.086685577
+        ],
+        [
+          42.931227494,
+          1.993791646,
+          23.092368399
+        ],
+        [
+          42.772263482,
+          1.993005698,
+          23.098231627
+        ],
+        [
+          42.613252246,
+          1.992149082,
+          23.104275262
+        ],
+        [
+          42.454192926,
+          1.991217929,
+          23.110499305
+        ],
+        [
+          42.295084693999996,
+          1.990208295,
+          23.116903754
+        ],
+        [
+          42.135926755,
+          1.98911616,
+          23.12348861
+        ],
+        [
+          41.976718347,
+          1.987937435,
+          23.130253873
+        ],
+        [
+          41.817458738,
+          1.986667956,
+          23.137199544
+        ],
+        [
+          41.65814723,
+          1.985303493,
+          23.144325621
+        ],
+        [
+          41.498783159,
+          1.98383975,
+          23.151632105
+        ],
+        [
+          41.339365891,
+          1.982272365,
+          23.159118997
+        ],
+        [
+          41.179894828,
+          1.98059691,
+          23.166786295
+        ],
+        [
+          41.020369402,
+          1.978808901,
+          23.174634
+        ],
+        [
+          40.86078908,
+          1.97690379,
+          23.182662112
+        ],
+        [
+          40.701153363,
+          1.974876973,
+          23.190870631
+        ],
+        [
+          40.541461783,
+          1.972723789,
+          23.199259557
+        ],
+        [
+          40.381713909,
+          1.970439523,
+          23.20782889
+        ],
+        [
+          40.221909342000004,
+          1.968019407,
+          23.21657863
+        ],
+        [
+          40.062047719,
+          1.96545862,
+          23.225508777
+        ],
+        [
+          40.0,
+          1.96440858,
+          23.229043623
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f582010-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f582010",
+      "points": [
+        [
+          4.059678806,
+          -24.0,
+          28.563286186
+        ],
+        [
+          4.073582987,
+          -23.954131853,
+          28.55744384
+        ],
+        [
+          4.117617312,
+          -23.811023055,
+          28.539186816
+        ],
+        [
+          4.162238407,
+          -23.668143991,
+          28.520929792
+        ],
+        [
+          4.207448494,
+          -23.525497666,
+          28.502672768
+        ],
+        [
+          4.253249747,
+          -23.383087111000002,
+          28.484415745
+        ],
+        [
+          4.299644288,
+          -23.240915383,
+          28.466158722
+        ],
+        [
+          4.346634184,
+          -23.09898556,
+          28.4479017
+        ],
+        [
+          4.394221452,
+          -22.957300745,
+          28.429644678
+        ],
+        [
+          4.442408055,
+          -22.815864063,
+          28.411387657
+        ],
+        [
+          4.491195904,
+          -22.674678661,
+          28.393130636
+        ],
+        [
+          4.540586857,
+          -22.533747708,
+          28.374873615
+        ],
+        [
+          4.590582718,
+          -22.393074395,
+          28.356616595
+        ],
+        [
+          4.641185239,
+          -22.252661933,
+          28.338359575
+        ],
+        [
+          4.692396118,
+          -22.112513554,
+          28.320102556
+        ],
+        [
+          4.744216998,
+          -21.972632511,
+          28.301845537
+        ],
+        [
+          4.796649469,
+          -21.833022074,
+          28.283588519
+        ],
+        [
+          4.849695069,
+          -21.693685533,
+          28.2653315
+        ],
+        [
+          4.90335528,
+          -21.554626197,
+          28.247074483
+        ],
+        [
+          4.957631529,
+          -21.415847392,
+          28.228817465
+        ],
+        [
+          5.012525191,
+          -21.277352462,
+          28.210560449
+        ],
+        [
+          5.068037585,
+          -21.139144768,
+          28.192303432
+        ],
+        [
+          5.124169977,
+          -21.001227686,
+          28.174046416
+        ],
+        [
+          5.180923576,
+          -20.863604608,
+          28.1557894
+        ],
+        [
+          5.238299538,
+          -20.726278943,
+          28.137532385
+        ],
+        [
+          5.296298966,
+          -20.589254111,
+          28.11927537
+        ],
+        [
+          5.354922905,
+          -20.45253355,
+          28.101018355
+        ],
+        [
+          5.414172346,
+          -20.316120708,
+          28.082761341
+        ],
+        [
+          5.474048227,
+          -20.180019049000002,
+          28.064504327
+        ],
+        [
+          5.53455143,
+          -20.044232045,
+          28.046247314
+        ],
+        [
+          5.595682781,
+          -19.908763184,
+          28.0279903
+        ],
+        [
+          5.657443052,
+          -19.773615962,
+          28.009733288
+        ],
+        [
+          5.719832961,
+          -19.638793887,
+          27.991476275
+        ],
+        [
+          5.78285317,
+          -19.504300476,
+          27.973219263
+        ],
+        [
+          5.846504286,
+          -19.370139254999998,
+          27.954962251
+        ],
+        [
+          5.910786861,
+          -19.23631376,
+          27.93670524
+        ],
+        [
+          5.975701393,
+          -19.102827534,
+          27.918448229
+        ],
+        [
+          6.041248325,
+          -18.969684126,
+          27.900191218
+        ],
+        [
+          6.107428044,
+          -18.836887093,
+          27.881934208
+        ],
+        [
+          6.174240883,
+          -18.704439999,
+          27.863677198
+        ],
+        [
+          6.241687121,
+          -18.572346410999998,
+          27.845420188
+        ],
+        [
+          6.309766982,
+          -18.440609902,
+          27.827163178
+        ],
+        [
+          6.378480635,
+          -18.309234049,
+          27.808906169
+        ],
+        [
+          6.447828194,
+          -18.178222433000002,
+          27.79064916
+        ],
+        [
+          6.51780972,
+          -18.047578636,
+          27.772392152
+        ],
+        [
+          6.588425219,
+          -17.917306245,
+          27.754135144
+        ],
+        [
+          6.659674644,
+          -17.787408845,
+          27.735878136
+        ],
+        [
+          6.731557891,
+          -17.657890024,
+          27.717621128
+        ],
+        [
+          6.804074806,
+          -17.528753369,
+          27.699364121
+        ],
+        [
+          6.877225179,
+          -17.400002468,
+          27.681107113
+        ],
+        [
+          6.951008746,
+          -17.271640904999998,
+          27.662850107
+        ],
+        [
+          7.025425191,
+          -17.143672266,
+          27.6445931
+        ],
+        [
+          7.100474144,
+          -17.01610013,
+          27.626336094
+        ],
+        [
+          7.176155181,
+          -16.888928077,
+          27.608079088
+        ],
+        [
+          7.252467828,
+          -16.762159679,
+          27.589822082
+        ],
+        [
+          7.329411554,
+          -16.635798506,
+          27.571565076
+        ],
+        [
+          7.406985779,
+          -16.509848122,
+          27.553308071
+        ],
+        [
+          7.485189869,
+          -16.384312086,
+          27.535051066
+        ],
+        [
+          7.564023139,
+          -16.259193948,
+          27.516794061
+        ],
+        [
+          7.64348485,
+          -16.134497253,
+          27.498537057
+        ],
+        [
+          7.723574214,
+          -16.010225537,
+          27.480280052
+        ],
+        [
+          7.804290391,
+          -15.886382327,
+          27.462023048
+        ],
+        [
+          7.885632487,
+          -15.76297114,
+          27.443766044
+        ],
+        [
+          7.967599561,
+          -15.639995486,
+          27.42550904
+        ],
+        [
+          8.0,
+          -15.591924417,
+          27.418346825
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f582010-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f582010",
+      "points": [
+        [
+          8.0,
+          -9.21302194,
+          26.84281316
+        ],
+        [
+          7.893916303,
+          -9.325502402,
+          26.859541999
+        ],
+        [
+          7.778798175,
+          -9.448869599,
+          26.877798999
+        ],
+        [
+          7.664339608,
+          -9.572844541,
+          26.896055999
+        ],
+        [
+          7.550543906,
+          -9.697423158,
+          26.914312999
+        ],
+        [
+          7.437414318,
+          -9.822601339,
+          26.932569999
+        ],
+        [
+          7.324954034,
+          -9.948374926,
+          26.950826999
+        ],
+        [
+          7.213166188,
+          -10.074739718,
+          26.969083999
+        ],
+        [
+          7.102053854,
+          -10.201691474,
+          26.987341
+        ],
+        [
+          6.991620047,
+          -10.32922591,
+          27.005598
+        ],
+        [
+          6.881867723,
+          -10.457338699000001,
+          27.023855
+        ],
+        [
+          6.772799778,
+          -10.586025479,
+          27.042112001
+        ],
+        [
+          6.664419046,
+          -10.715281845,
+          27.060369001
+        ],
+        [
+          6.5567283,
+          -10.845103355,
+          27.078626002
+        ],
+        [
+          6.449730251,
+          -10.97548553,
+          27.096883003
+        ],
+        [
+          6.343427546,
+          -11.106423855,
+          27.115140004
+        ],
+        [
+          6.237822771,
+          -11.237913779,
+          27.133397005
+        ],
+        [
+          6.132918447,
+          -11.369950716,
+          27.151654006
+        ],
+        [
+          6.028717032,
+          -11.502530046,
+          27.169911007
+        ],
+        [
+          5.925220916,
+          -11.635647117000001,
+          27.188168008
+        ],
+        [
+          5.822432428,
+          -11.769297245,
+          27.20642501
+        ],
+        [
+          5.720353829,
+          -11.903475713999999,
+          27.224682012
+        ],
+        [
+          5.618987313,
+          -12.038177779,
+          27.242939013
+        ],
+        [
+          5.518335009,
+          -12.173398664,
+          27.261196015
+        ],
+        [
+          5.418398979,
+          -12.309133567,
+          27.279453017
+        ],
+        [
+          5.319181215,
+          -12.445377657,
+          27.29771002
+        ],
+        [
+          5.220683643,
+          -12.582126076,
+          27.315967022
+        ],
+        [
+          5.122908121,
+          -12.719373942,
+          27.334224025
+        ],
+        [
+          5.025856437,
+          -12.857116348,
+          27.352481027
+        ],
+        [
+          4.92953031,
+          -12.995348362,
+          27.37073803
+        ],
+        [
+          4.83393139,
+          -13.13406503,
+          27.388995034
+        ],
+        [
+          4.739061257,
+          -13.273261377,
+          27.407252037
+        ],
+        [
+          4.644921419,
+          -13.412932406,
+          27.42550904
+        ],
+        [
+          4.551513315,
+          -13.5530731,
+          27.443766044
+        ],
+        [
+          4.458838314,
+          -13.693678424,
+          27.462023048
+        ],
+        [
+          4.366897711,
+          -13.834743325,
+          27.480280052
+        ],
+        [
+          4.275692732,
+          -13.976262732,
+          27.498537057
+        ],
+        [
+          4.18522453,
+          -14.118231557,
+          27.516794061
+        ],
+        [
+          4.095494185,
+          -14.260644699,
+          27.535051066
+        ],
+        [
+          4.006502706,
+          -14.403497042,
+          27.553308071
+        ],
+        [
+          3.918251029,
+          -14.546783457,
+          27.571565076
+        ],
+        [
+          3.830740017,
+          -14.690498801,
+          27.589822082
+        ],
+        [
+          3.74397046,
+          -14.834637921,
+          27.608079088
+        ],
+        [
+          3.657943075,
+          -14.979195655,
+          27.626336094
+        ],
+        [
+          3.572658505,
+          -15.124166829,
+          27.6445931
+        ],
+        [
+          3.488117319,
+          -15.269546262,
+          27.662850107
+        ],
+        [
+          3.404320013,
+          -15.415328764,
+          27.681107113
+        ],
+        [
+          3.321267009,
+          -15.561509142,
+          27.699364121
+        ],
+        [
+          3.238958655,
+          -15.708082193,
+          27.717621128
+        ],
+        [
+          3.157395224,
+          -15.855042713,
+          27.735878136
+        ],
+        [
+          3.076576915,
+          -16.002385492,
+          27.754135144
+        ],
+        [
+          2.996503853,
+          -16.150105318,
+          27.772392152
+        ],
+        [
+          2.917176089,
+          -16.298196977,
+          27.79064916
+        ],
+        [
+          2.838593597,
+          -16.446655256,
+          27.808906169
+        ],
+        [
+          2.760756279,
+          -16.595474939,
+          27.827163178
+        ],
+        [
+          2.683663961,
+          -16.744650814,
+          27.845420188
+        ],
+        [
+          2.607316396,
+          -16.894177669,
+          27.863677198
+        ],
+        [
+          2.531713259,
+          -17.044050297,
+          27.881934208
+        ],
+        [
+          2.456854154,
+          -17.194263492,
+          27.900191218
+        ],
+        [
+          2.382738607,
+          -17.344812056,
+          27.918448229
+        ],
+        [
+          2.309366073,
+          -17.495690795,
+          27.93670524
+        ],
+        [
+          2.236735929,
+          -17.646894523,
+          27.954962251
+        ],
+        [
+          2.164847479,
+          -17.798418058,
+          27.973219263
+        ],
+        [
+          2.093699953,
+          -17.950256232,
+          27.991476275
+        ],
+        [
+          2.023292506,
+          -18.102403883,
+          28.009733288
+        ],
+        [
+          1.953624219,
+          -18.25485586,
+          28.0279903
+        ],
+        [
+          1.884694098,
+          -18.407607024,
+          28.046247314
+        ],
+        [
+          1.816501076,
+          -18.560652246,
+          28.064504327
+        ],
+        [
+          1.749044012,
+          -18.713986414,
+          28.082761341
+        ],
+        [
+          1.682321691,
+          -18.867604426,
+          28.101018355
+        ],
+        [
+          1.616332825,
+          -19.021501197,
+          28.11927537
+        ],
+        [
+          1.551076051,
+          -19.175671658,
+          28.137532385
+        ],
+        [
+          1.486549935,
+          -19.330110754,
+          28.1557894
+        ],
+        [
+          1.422752968,
+          -19.484813452,
+          28.174046416
+        ],
+        [
+          1.359683571,
+          -19.639774732,
+          28.192303432
+        ],
+        [
+          1.29734009,
+          -19.794989598,
+          28.210560449
+        ],
+        [
+          1.235720799,
+          -19.950453070000002,
+          28.228817465
+        ],
+        [
+          1.174823902,
+          -20.106160192,
+          28.247074483
+        ],
+        [
+          1.11464753,
+          -20.262106027999998,
+          28.2653315
+        ],
+        [
+          1.055189742,
+          -20.418285664,
+          28.283588519
+        ],
+        [
+          0.996448527,
+          -20.574694211,
+          28.301845537
+        ],
+        [
+          0.938421803,
+          -20.731326803,
+          28.320102556
+        ],
+        [
+          0.881107417,
+          -20.888178599,
+          28.338359575
+        ],
+        [
+          0.824503147,
+          -21.045244784,
+          28.356616595
+        ],
+        [
+          0.7686067,
+          -21.202520569,
+          28.374873615
+        ],
+        [
+          0.713415715,
+          -21.360001192,
+          28.393130636
+        ],
+        [
+          0.658927763,
+          -21.517681919,
+          28.411387657
+        ],
+        [
+          0.605140342,
+          -21.675558047,
+          28.429644678
+        ],
+        [
+          0.552050887,
+          -21.833624898,
+          28.4479017
+        ],
+        [
+          0.499656763,
+          -21.991877829,
+          28.466158722
+        ],
+        [
+          0.447955268,
+          -22.150312224,
+          28.484415745
+        ],
+        [
+          0.396943632,
+          -22.308923501,
+          28.502672768
+        ],
+        [
+          0.346619021,
+          -22.467707109,
+          28.520929792
+        ],
+        [
+          0.296978535,
+          -22.62665853,
+          28.539186816
+        ],
+        [
+          0.248019205,
+          -22.785773281,
+          28.55744384
+        ],
+        [
+          0.199738002,
+          -22.945046911,
+          28.575700865
+        ],
+        [
+          0.15213183,
+          -23.104475006,
+          28.59395789
+        ],
+        [
+          0.10519753,
+          -23.264053188,
+          28.612214916
+        ],
+        [
+          0.058931879,
+          -23.423777111,
+          28.630471942
+        ],
+        [
+          0.013331593,
+          -23.583642472,
+          28.648728969
+        ],
+        [
+          -0.031606678,
+          -23.743645,
+          28.666985996
+        ],
+        [
+          -0.07588634,
+          -23.903780465,
+          28.685243023
+        ],
+        [
+          -0.102077662,
+          -24.0,
+          28.69620419
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f582110-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        1
+      ],
+      "tile_id": "7f582110",
+      "points": [
+        [
+          8.0,
+          -15.591924417,
+          27.418346825
+        ],
+        [
+          8.050190619,
+          -15.51745886,
+          27.407252037
+        ],
+        [
+          8.133404618,
+          -15.395364749,
+          27.388995034
+        ],
+        [
+          8.217240464,
+          -15.273716626,
+          27.37073803
+        ],
+        [
+          8.301697012,
+          -15.152517953,
+          27.352481027
+        ],
+        [
+          8.386773071,
+          -15.031772175,
+          27.334224025
+        ],
+        [
+          8.472467398,
+          -14.911482728,
+          27.315967022
+        ],
+        [
+          8.558778702,
+          -14.791653028,
+          27.29771002
+        ],
+        [
+          8.645705644,
+          -14.67228648,
+          27.279453017
+        ],
+        [
+          8.733246835,
+          -14.553386469,
+          27.261196015
+        ],
+        [
+          8.821400840999999,
+          -14.434956366,
+          27.242939013
+        ],
+        [
+          8.910166177,
+          -14.316999524,
+          27.224682012
+        ],
+        [
+          8.999541315,
+          -14.199519277,
+          27.20642501
+        ],
+        [
+          9.089524676,
+          -14.08251894,
+          27.188168008
+        ],
+        [
+          9.180114638,
+          -13.966001809,
+          27.169911007
+        ],
+        [
+          9.27130953,
+          -13.849971161,
+          27.151654006
+        ],
+        [
+          9.363107638999999,
+          -13.734430251,
+          27.133397005
+        ],
+        [
+          9.455507203,
+          -13.619382311999999,
+          27.115140004
+        ],
+        [
+          9.548506417999999,
+          -13.504830556,
+          27.096883003
+        ],
+        [
+          9.642103434,
+          -13.390778173000001,
+          27.078626002
+        ],
+        [
+          9.736296358,
+          -13.277228328,
+          27.060369001
+        ],
+        [
+          9.831083250999999,
+          -13.164184163,
+          27.042112001
+        ],
+        [
+          9.926462135000001,
+          -13.051648794,
+          27.023855
+        ],
+        [
+          10.022430986,
+          -12.939625315,
+          27.005598
+        ],
+        [
+          10.118987738000001,
+          -12.828116789,
+          26.987341
+        ],
+        [
+          10.216130286,
+          -12.717126258,
+          26.969083999
+        ],
+        [
+          10.31385648,
+          -12.606656733,
+          26.950826999
+        ],
+        [
+          10.412164132000001,
+          -12.496711199,
+          26.932569999
+        ],
+        [
+          10.511051011,
+          -12.387292613,
+          26.914312999
+        ],
+        [
+          10.610514849000001,
+          -12.278403901,
+          26.896055999
+        ],
+        [
+          10.710553337,
+          -12.170047961,
+          26.877798999
+        ],
+        [
+          10.811164126000001,
+          -12.062227661,
+          26.859541999
+        ],
+        [
+          10.91234483,
+          -11.954945838,
+          26.841284999
+        ],
+        [
+          11.014093026000001,
+          -11.848205297,
+          26.823027999
+        ],
+        [
+          11.116406252,
+          -11.742008813,
+          26.804770999
+        ],
+        [
+          11.219282009,
+          -11.636359126,
+          26.786514
+        ],
+        [
+          11.322717763,
+          -11.531258945000001,
+          26.768257
+        ],
+        [
+          11.426710944,
+          -11.426710944,
+          26.75
+        ],
+        [
+          11.531258945000001,
+          -11.322717763,
+          26.731743
+        ],
+        [
+          11.636359126,
+          -11.219282009,
+          26.713486
+        ],
+        [
+          11.742008813,
+          -11.116406252,
+          26.695229001
+        ],
+        [
+          11.848205297,
+          -11.014093026000001,
+          26.676972001
+        ],
+        [
+          11.954945838,
+          -10.91234483,
+          26.658715001
+        ],
+        [
+          12.062227661,
+          -10.811164126000001,
+          26.640458001
+        ],
+        [
+          12.170047961,
+          -10.710553337,
+          26.622201001
+        ],
+        [
+          12.278403901,
+          -10.610514849000001,
+          26.603944001
+        ],
+        [
+          12.387292613,
+          -10.511051011,
+          26.585687001
+        ],
+        [
+          12.496711199,
+          -10.412164132000001,
+          26.567430001
+        ],
+        [
+          12.606656733,
+          -10.31385648,
+          26.549173001
+        ],
+        [
+          12.717126258,
+          -10.216130286,
+          26.530916001
+        ],
+        [
+          12.828116789,
+          -10.118987738000001,
+          26.512659
+        ],
+        [
+          12.939625315,
+          -10.022430986,
+          26.494402
+        ],
+        [
+          13.051648794,
+          -9.926462135000001,
+          26.476145
+        ],
+        [
+          13.164184163,
+          -9.831083250999999,
+          26.457887999
+        ],
+        [
+          13.277228328,
+          -9.736296358,
+          26.439630999
+        ],
+        [
+          13.390778173000001,
+          -9.642103434,
+          26.421373998
+        ],
+        [
+          13.504830556,
+          -9.548506417999999,
+          26.403116997
+        ],
+        [
+          13.619382311999999,
+          -9.455507203,
+          26.384859996
+        ],
+        [
+          13.734430251,
+          -9.363107638999999,
+          26.366602995
+        ],
+        [
+          13.849971161,
+          -9.27130953,
+          26.348345994
+        ],
+        [
+          13.966001809,
+          -9.180114638,
+          26.330088993
+        ],
+        [
+          14.08251894,
+          -9.089524676,
+          26.311831992
+        ],
+        [
+          14.199519277,
+          -8.999541315,
+          26.29357499
+        ],
+        [
+          14.316999524,
+          -8.910166177,
+          26.275317988
+        ],
+        [
+          14.434956366,
+          -8.821400840999999,
+          26.257060987
+        ],
+        [
+          14.553386469,
+          -8.733246835,
+          26.238803985
+        ],
+        [
+          14.67228648,
+          -8.645705644,
+          26.220546983
+        ],
+        [
+          14.791653028,
+          -8.558778702,
+          26.20228998
+        ],
+        [
+          14.911482728,
+          -8.472467398,
+          26.184032978
+        ],
+        [
+          15.031772175,
+          -8.386773071,
+          26.165775975
+        ],
+        [
+          15.152517953,
+          -8.301697012,
+          26.147518973
+        ],
+        [
+          15.273716626,
+          -8.217240464,
+          26.12926197
+        ],
+        [
+          15.395364749,
+          -8.133404618,
+          26.111004966
+        ],
+        [
+          15.51745886,
+          -8.050190619,
+          26.092747963
+        ],
+        [
+          15.591924417,
+          -8.0,
+          26.081653175
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f582110-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        1
+      ],
+      "tile_id": "7f582110",
+      "points": [
+        [
+          9.21302194,
+          -8.0,
+          26.65718684
+        ],
+        [
+          9.202746972,
+          -8.009690631,
+          26.658715001
+        ],
+        [
+          9.080607284,
+          -8.126117743,
+          26.676972001
+        ],
+        [
+          8.959087268000001,
+          -8.243194167999999,
+          26.695229001
+        ],
+        [
+          8.838190806,
+          -8.360916383,
+          26.713486
+        ],
+        [
+          8.717921728,
+          -8.479280809999999,
+          26.731743
+        ],
+        [
+          8.598283818999999,
+          -8.598283818999999,
+          26.75
+        ],
+        [
+          8.479280809999999,
+          -8.717921728,
+          26.768257
+        ],
+        [
+          8.360916383,
+          -8.838190806,
+          26.786514
+        ],
+        [
+          8.243194167999999,
+          -8.959087268000001,
+          26.804770999
+        ],
+        [
+          8.126117743,
+          -9.080607284,
+          26.823027999
+        ],
+        [
+          8.009690631,
+          -9.202746972,
+          26.841284999
+        ],
+        [
+          8.0,
+          -9.21302194,
+          26.84281316
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f582020-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        2
+      ],
+      "tile_id": "7f582020",
+      "points": [
+        [
+          2.036163739,
+          -40.0,
+          30.267033804
+        ],
+        [
+          2.036643522,
+          -39.971649205,
+          30.265380669
+        ],
+        [
+          2.039432515,
+          -39.815468604,
+          30.256089708
+        ],
+        [
+          2.042370978,
+          -39.659351539,
+          30.24661834
+        ],
+        [
+          2.045463544,
+          -39.503298719,
+          30.236966566
+        ],
+        [
+          2.048714873,
+          -39.347310848,
+          30.227134384
+        ],
+        [
+          2.052129653,
+          -39.191388627,
+          30.217121796
+        ],
+        [
+          2.0557126,
+          -39.035532751,
+          30.206928801
+        ],
+        [
+          2.059468449,
+          -38.879743915,
+          30.196555398
+        ],
+        [
+          2.063401964,
+          -38.72402281,
+          30.186001589
+        ],
+        [
+          2.067517925,
+          -38.568370127,
+          30.175267373
+        ],
+        [
+          2.071821134,
+          -38.412786556,
+          30.164352751
+        ],
+        [
+          2.07631641,
+          -38.257272788,
+          30.153257721
+        ],
+        [
+          2.081008591,
+          -38.101829515,
+          30.141982285
+        ],
+        [
+          2.085902526,
+          -37.946457432,
+          30.130526441
+        ],
+        [
+          2.091003082,
+          -37.791157236000004,
+          30.118890191
+        ],
+        [
+          2.096315137,
+          -37.635929628,
+          30.107073534
+        ],
+        [
+          2.101843577,
+          -37.480775314,
+          30.09507647
+        ],
+        [
+          2.107593303,
+          -37.325695006000004,
+          30.082899
+        ],
+        [
+          2.113569221,
+          -37.17068942,
+          30.070541123
+        ],
+        [
+          2.119776244,
+          -37.015759281,
+          30.058002839
+        ],
+        [
+          2.126219292,
+          -36.86090532,
+          30.045284148
+        ],
+        [
+          2.13290329,
+          -36.706128279,
+          30.03238505
+        ],
+        [
+          2.139833166,
+          -36.551428907,
+          30.019305546
+        ],
+        [
+          2.147013848,
+          -36.396807963,
+          30.006045635
+        ],
+        [
+          2.154450268,
+          -36.242266218,
+          29.992605317
+        ],
+        [
+          2.162147356,
+          -36.087804454,
+          29.978984592
+        ],
+        [
+          2.170110041,
+          -35.933423464,
+          29.965183461
+        ],
+        [
+          2.178343251,
+          -35.779124056,
+          29.951201923
+        ],
+        [
+          2.186851909,
+          -35.624907049,
+          29.937039979
+        ],
+        [
+          2.195640932,
+          -35.470773279,
+          29.922697628
+        ],
+        [
+          2.204715235,
+          -35.316723595,
+          29.90817487
+        ],
+        [
+          2.214079723,
+          -35.162758862,
+          29.893471705
+        ],
+        [
+          2.223739294,
+          -35.008879962,
+          29.878588134
+        ],
+        [
+          2.233698839,
+          -34.855087792,
+          29.863524157
+        ],
+        [
+          2.243963236,
+          -34.701383269,
+          29.848279772
+        ],
+        [
+          2.254537356,
+          -34.547767326,
+          29.832854982
+        ],
+        [
+          2.265426055,
+          -34.394240917,
+          29.817249784
+        ],
+        [
+          2.276634178,
+          -34.240805013,
+          29.80146418
+        ],
+        [
+          2.288166556,
+          -34.087460607,
+          29.78549817
+        ],
+        [
+          2.300028006,
+          -33.934208711,
+          29.769351753
+        ],
+        [
+          2.312223328,
+          -33.781050358,
+          29.753024929
+        ],
+        [
+          2.324757309,
+          -33.627986604,
+          29.736517699
+        ],
+        [
+          2.337634716,
+          -33.475018527,
+          29.719830063
+        ],
+        [
+          2.350860298,
+          -33.322147225,
+          29.70296202
+        ],
+        [
+          2.364438786,
+          -33.169373822,
+          29.68591357
+        ],
+        [
+          2.378374892,
+          -33.016699466,
+          29.668684714
+        ],
+        [
+          2.392673306,
+          -32.864125326999996,
+          29.651275452
+        ],
+        [
+          2.407338699,
+          -32.7116526,
+          29.633685784
+        ],
+        [
+          2.422375717,
+          -32.559282506,
+          29.615915708
+        ],
+        [
+          2.437788986,
+          -32.407016291,
+          29.597965227
+        ],
+        [
+          2.453583106,
+          -32.254855227,
+          29.579834339
+        ],
+        [
+          2.469762654,
+          -32.102800612,
+          29.561580874
+        ],
+        [
+          2.486332181,
+          -31.950853771,
+          29.543323825
+        ],
+        [
+          2.503296215,
+          -31.799016055,
+          29.525066777
+        ],
+        [
+          2.520659253,
+          -31.647288845,
+          29.506809729
+        ],
+        [
+          2.538425769,
+          -31.495673546,
+          29.488552681
+        ],
+        [
+          2.556600207,
+          -31.344171594,
+          29.470295634
+        ],
+        [
+          2.575186981,
+          -31.192784453,
+          29.452038588
+        ],
+        [
+          2.59419048,
+          -31.041513614,
+          29.433781541
+        ],
+        [
+          2.613615059,
+          -30.8903606,
+          29.415524496
+        ],
+        [
+          2.633465044,
+          -30.739326959,
+          29.39726745
+        ],
+        [
+          2.653744731,
+          -30.588414272,
+          29.379010405
+        ],
+        [
+          2.674458383,
+          -30.437624149,
+          29.360753361
+        ],
+        [
+          2.695610229,
+          -30.286958229,
+          29.342496316
+        ],
+        [
+          2.717204468,
+          -30.136418182,
+          29.324239273
+        ],
+        [
+          2.739245264,
+          -29.986005708,
+          29.305982229
+        ],
+        [
+          2.761736747,
+          -29.835722537,
+          29.287725187
+        ],
+        [
+          2.784683012,
+          -29.685570431,
+          29.269468144
+        ],
+        [
+          2.808088117,
+          -29.535551182,
+          29.251211102
+        ],
+        [
+          2.831956088,
+          -29.385666613,
+          29.232954061
+        ],
+        [
+          2.856290912,
+          -29.235918578,
+          29.214697019
+        ],
+        [
+          2.881096538,
+          -29.086308963,
+          29.196439979
+        ],
+        [
+          2.90637688,
+          -28.936839684,
+          29.178182939
+        ],
+        [
+          2.932135812,
+          -28.787512689,
+          29.159925899
+        ],
+        [
+          2.958377171,
+          -28.638329958,
+          29.141668859
+        ],
+        [
+          2.985104754,
+          -28.489293502,
+          29.123411821
+        ],
+        [
+          3.012322317,
+          -28.340405362,
+          29.105154782
+        ],
+        [
+          3.040033579,
+          -28.191667614,
+          29.086897744
+        ],
+        [
+          3.068242217,
+          -28.043082362,
+          29.068640707
+        ],
+        [
+          3.096951866,
+          -27.894651742,
+          29.050383669
+        ],
+        [
+          3.126166121,
+          -27.746377925,
+          29.032126633
+        ],
+        [
+          3.155888534,
+          -27.598263108,
+          29.013869597
+        ],
+        [
+          3.186122615,
+          -27.450309523,
+          28.995612561
+        ],
+        [
+          3.216871832,
+          -27.302519433,
+          28.977355526
+        ],
+        [
+          3.248139609,
+          -27.154895131,
+          28.959098491
+        ],
+        [
+          3.279929325,
+          -27.007438942,
+          28.940841456
+        ],
+        [
+          3.312244317,
+          -26.860153221,
+          28.922584423
+        ],
+        [
+          3.345087877,
+          -26.713040354,
+          28.904327389
+        ],
+        [
+          3.378463252,
+          -26.56610276,
+          28.886070356
+        ],
+        [
+          3.412373642,
+          -26.419342884,
+          28.867813324
+        ],
+        [
+          3.446822204,
+          -26.272763207,
+          28.849556292
+        ],
+        [
+          3.481812048,
+          -26.126366236,
+          28.83129926
+        ],
+        [
+          3.517346236,
+          -25.980154508,
+          28.813042229
+        ],
+        [
+          3.553427785,
+          -25.834130593,
+          28.794785198
+        ],
+        [
+          3.590059665,
+          -25.688297089,
+          28.776528168
+        ],
+        [
+          3.627244796,
+          -25.542656621,
+          28.758271138
+        ],
+        [
+          3.664986054,
+          -25.397211847,
+          28.740014109
+        ],
+        [
+          3.703286264,
+          -25.25196545,
+          28.72175708
+        ],
+        [
+          3.742148203,
+          -25.106920146,
+          28.703500051
+        ],
+        [
+          3.781574599,
+          -24.962078676,
+          28.685243023
+        ],
+        [
+          3.821568133,
+          -24.817443809,
+          28.666985996
+        ],
+        [
+          3.862131433,
+          -24.673018344,
+          28.648728969
+        ],
+        [
+          3.90326708,
+          -24.528805105,
+          28.630471942
+        ],
+        [
+          3.944977604,
+          -24.384806944,
+          28.612214916
+        ],
+        [
+          3.987265486,
+          -24.241026741,
+          28.59395789
+        ],
+        [
+          4.030133154,
+          -24.0974674,
+          28.575700865
+        ],
+        [
+          4.059678806,
+          -24.0,
+          28.563286186
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f582020-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        2
+      ],
+      "tile_id": "7f582020",
+      "points": [
+        [
+          -0.102077662,
+          -24.0,
+          28.69620419
+        ],
+        [
+          -0.119510865,
+          -24.064044674999998,
+          28.703500051
+        ],
+        [
+          -0.162483781,
+          -24.224433476999998,
+          28.72175708
+        ],
+        [
+          -0.204808681,
+          -24.384942757,
+          28.740014109
+        ],
+        [
+          -0.246489211,
+          -24.545568441,
+          28.758271138
+        ],
+        [
+          -0.287529081,
+          -24.706306499,
+          28.776528168
+        ],
+        [
+          -0.327932056,
+          -24.867152937,
+          28.794785198
+        ],
+        [
+          -0.367701957,
+          -25.028103808,
+          28.813042229
+        ],
+        [
+          -0.406842666,
+          -25.189155203,
+          28.83129926
+        ],
+        [
+          -0.445358115,
+          -25.350303257,
+          28.849556292
+        ],
+        [
+          -0.483252297,
+          -25.511544151,
+          28.867813324
+        ],
+        [
+          -0.520529255,
+          -25.672874105,
+          28.886070356
+        ],
+        [
+          -0.557193088,
+          -25.834289386000002,
+          28.904327389
+        ],
+        [
+          -0.593247948,
+          -25.995786304,
+          28.922584423
+        ],
+        [
+          -0.628698037,
+          -26.157361215,
+          28.940841456
+        ],
+        [
+          -0.663547612,
+          -26.31901052,
+          28.959098491
+        ],
+        [
+          -0.697800979,
+          -26.480730663,
+          28.977355526
+        ],
+        [
+          -0.731462493,
+          -26.642518139,
+          28.995612561
+        ],
+        [
+          -0.76453656,
+          -26.804369485,
+          29.013869597
+        ],
+        [
+          -0.797027633,
+          -26.966281285,
+          29.032126633
+        ],
+        [
+          -0.828940215,
+          -27.128250172999998,
+          29.050383669
+        ],
+        [
+          -0.860278854,
+          -27.290272826,
+          29.068640707
+        ],
+        [
+          -0.891048143,
+          -27.452345972,
+          29.086897744
+        ],
+        [
+          -0.921252723,
+          -27.614466385,
+          29.105154782
+        ],
+        [
+          -0.950897278,
+          -27.776630887,
+          29.123411821
+        ],
+        [
+          -0.979986536,
+          -27.938836349,
+          29.141668859
+        ],
+        [
+          -1.008525266,
+          -28.101079689,
+          29.159925899
+        ],
+        [
+          -1.036518281,
+          -28.263357875,
+          29.178182939
+        ],
+        [
+          -1.063970435,
+          -28.425667925,
+          29.196439979
+        ],
+        [
+          -1.090886619,
+          -28.588006903,
+          29.214697019
+        ],
+        [
+          -1.117271768,
+          -28.750371925,
+          29.232954061
+        ],
+        [
+          -1.143130851,
+          -28.912760154,
+          29.251211102
+        ],
+        [
+          -1.168468877,
+          -29.075168804,
+          29.269468144
+        ],
+        [
+          -1.193290891,
+          -29.237595138,
+          29.287725187
+        ],
+        [
+          -1.217601972,
+          -29.40003647,
+          29.305982229
+        ],
+        [
+          -1.241407236,
+          -29.562490163,
+          29.324239273
+        ],
+        [
+          -1.264711832,
+          -29.724953628,
+          29.342496316
+        ],
+        [
+          -1.287520941,
+          -29.887424328999998,
+          29.360753361
+        ],
+        [
+          -1.309839775,
+          -30.049899778,
+          29.379010405
+        ],
+        [
+          -1.331673579,
+          -30.212377537000002,
+          29.39726745
+        ],
+        [
+          -1.353027628,
+          -30.374855221,
+          29.415524496
+        ],
+        [
+          -1.373907223,
+          -30.53733049,
+          29.433781541
+        ],
+        [
+          -1.394317695,
+          -30.699801059,
+          29.452038588
+        ],
+        [
+          -1.414264401,
+          -30.86226469,
+          29.470295634
+        ],
+        [
+          -1.433752726,
+          -31.024719195,
+          29.488552681
+        ],
+        [
+          -1.452788077,
+          -31.187162438,
+          29.506809729
+        ],
+        [
+          -1.471375887,
+          -31.349592332,
+          29.525066777
+        ],
+        [
+          -1.48952161,
+          -31.512006838,
+          29.543323825
+        ],
+        [
+          -1.507230723,
+          -31.674403969,
+          29.561580874
+        ],
+        [
+          -1.524508723,
+          -31.836781787,
+          29.579834339
+        ],
+        [
+          -1.541361128,
+          -31.999138403,
+          29.597965227
+        ],
+        [
+          -1.557793473,
+          -32.161471978,
+          29.615915708
+        ],
+        [
+          -1.573811311,
+          -32.323780721,
+          29.633685784
+        ],
+        [
+          -1.589420213,
+          -32.486062893,
+          29.651275452
+        ],
+        [
+          -1.604625762,
+          -32.648316801,
+          29.668684714
+        ],
+        [
+          -1.619433559,
+          -32.810540801,
+          29.68591357
+        ],
+        [
+          -1.633849216,
+          -32.9727333,
+          29.70296202
+        ],
+        [
+          -1.647878358,
+          -33.134892751,
+          29.719830063
+        ],
+        [
+          -1.661526619,
+          -33.297017656,
+          29.736517699
+        ],
+        [
+          -1.674799645,
+          -33.459106565,
+          29.753024929
+        ],
+        [
+          -1.687703091,
+          -33.621158076,
+          29.769351753
+        ],
+        [
+          -1.700242618,
+          -33.783170835,
+          29.78549817
+        ],
+        [
+          -1.712423893,
+          -33.945143533,
+          29.80146418
+        ],
+        [
+          -1.72425259,
+          -34.107074911,
+          29.817249784
+        ],
+        [
+          -1.735734385,
+          -34.268963755,
+          29.832854982
+        ],
+        [
+          -1.74687496,
+          -34.430808898,
+          29.848279772
+        ],
+        [
+          -1.757679996,
+          -34.592609218999996,
+          29.863524157
+        ],
+        [
+          -1.768155174,
+          -34.754363644,
+          29.878588134
+        ],
+        [
+          -1.778306177,
+          -34.916071144,
+          29.893471705
+        ],
+        [
+          -1.788138683,
+          -35.077730734,
+          29.90817487
+        ],
+        [
+          -1.79765837,
+          -35.239341476,
+          29.922697628
+        ],
+        [
+          -1.80687091,
+          -35.400902476,
+          29.937039979
+        ],
+        [
+          -1.815781968,
+          -35.562412885,
+          29.951201923
+        ],
+        [
+          -1.824397205,
+          -35.723871898,
+          29.965183461
+        ],
+        [
+          -1.832722272,
+          -35.885278752,
+          29.978984592
+        ],
+        [
+          -1.84076281,
+          -36.046632731,
+          29.992605317
+        ],
+        [
+          -1.848524452,
+          -36.207933159,
+          30.006045635
+        ],
+        [
+          -1.856012817,
+          -36.369179404,
+          30.019305546
+        ],
+        [
+          -1.863233511,
+          -36.530370877,
+          30.03238505
+        ],
+        [
+          -1.870192125,
+          -36.691507031,
+          30.045284148
+        ],
+        [
+          -1.876894236,
+          -36.852587359,
+          30.058002839
+        ],
+        [
+          -1.883345401,
+          -37.013611399,
+          30.070541123
+        ],
+        [
+          -1.889551161,
+          -37.174578726,
+          30.082899
+        ],
+        [
+          -1.895517036,
+          -37.335488959,
+          30.09507647
+        ],
+        [
+          -1.901248525,
+          -37.496341756,
+          30.107073534
+        ],
+        [
+          -1.906751103,
+          -37.657136815,
+          30.118890191
+        ],
+        [
+          -1.912030223,
+          -37.817873874,
+          30.130526441
+        ],
+        [
+          -1.917091312,
+          -37.978552711,
+          30.141982285
+        ],
+        [
+          -1.921939769,
+          -38.139173143,
+          30.153257721
+        ],
+        [
+          -1.926580966,
+          -38.299735023,
+          30.164352751
+        ],
+        [
+          -1.931020245,
+          -38.460238247,
+          30.175267373
+        ],
+        [
+          -1.935262917,
+          -38.620682744999996,
+          30.186001589
+        ],
+        [
+          -1.93931426,
+          -38.781068488,
+          30.196555398
+        ],
+        [
+          -1.943179519,
+          -38.94139548,
+          30.206928801
+        ],
+        [
+          -1.946863901,
+          -39.101663768,
+          30.217121796
+        ],
+        [
+          -1.950372579,
+          -39.26187343,
+          30.227134384
+        ],
+        [
+          -1.953710685,
+          -39.422024584,
+          30.236966566
+        ],
+        [
+          -1.956883313,
+          -39.582117382999996,
+          30.24661834
+        ],
+        [
+          -1.959895513,
+          -39.742152016,
+          30.256089708
+        ],
+        [
+          -1.962752295,
+          -39.902128708,
+          30.265380669
+        ],
+        [
+          -1.96440858,
+          -40.0,
+          30.270956377
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f582030-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        3
+      ],
+      "tile_id": "7f582030",
+      "points": [
+        [
+          2.0,
+          -56.0,
+          30.5
+        ],
+        [
+          2.0,
+          -48.0,
+          30.5
+        ],
+        [
+          2.000000013,
+          -47.841896471,
+          30.499909796
+        ],
+        [
+          2.000000133,
+          -47.683794954,
+          30.499639186
+        ],
+        [
+          2.000000596,
+          -47.525697425,
+          30.499188168
+        ],
+        [
+          2.000001794,
+          -47.36760582,
+          30.498556744
+        ],
+        [
+          2.00000427,
+          -47.209522032,
+          30.497744912
+        ],
+        [
+          2.000008715,
+          -47.051447919,
+          30.496752673
+        ],
+        [
+          2.000015966,
+          -46.893385299,
+          30.495580028
+        ],
+        [
+          2.000027,
+          -46.73533595,
+          30.494226975
+        ],
+        [
+          2.000042933,
+          -46.577301615,
+          30.492693515
+        ],
+        [
+          2.00006502,
+          -46.419283998,
+          30.490979648
+        ],
+        [
+          2.000094643,
+          -46.261284768,
+          30.489085375
+        ],
+        [
+          2.000133318,
+          -46.103305555,
+          30.487010694
+        ],
+        [
+          2.000182686,
+          -45.945347957,
+          30.484755606
+        ],
+        [
+          2.000244511,
+          -45.787413534,
+          30.482320111
+        ],
+        [
+          2.000320679,
+          -45.629503814,
+          30.479704209
+        ],
+        [
+          2.000413192,
+          -45.471620288,
+          30.4769079
+        ],
+        [
+          2.00052417,
+          -45.313764417,
+          30.473931184
+        ],
+        [
+          2.00065584,
+          -45.155937626,
+          30.470774061
+        ],
+        [
+          2.000810544,
+          -44.998141311,
+          30.467436531
+        ],
+        [
+          2.000990725,
+          -44.840376833,
+          30.463918594
+        ],
+        [
+          2.001198932,
+          -44.682645524,
+          30.46022025
+        ],
+        [
+          2.001437816,
+          -44.524948685,
+          30.456341499
+        ],
+        [
+          2.001710125,
+          -44.367287587,
+          30.452282341
+        ],
+        [
+          2.002018701,
+          -44.209663474,
+          30.448042775
+        ],
+        [
+          2.002366482,
+          -44.052077557,
+          30.443622803
+        ],
+        [
+          2.002756494,
+          -43.894531023,
+          30.439022424
+        ],
+        [
+          2.00319185,
+          -43.737025031,
+          30.434241638
+        ],
+        [
+          2.003675752,
+          -43.579560712,
+          30.429280445
+        ],
+        [
+          2.00421148,
+          -43.422139173,
+          30.424138844
+        ],
+        [
+          2.004802397,
+          -43.264761495,
+          30.418816837
+        ],
+        [
+          2.005451943,
+          -43.107428735,
+          30.413314423
+        ],
+        [
+          2.006163634,
+          -42.950141925,
+          30.407631601
+        ],
+        [
+          2.006941057,
+          -42.792902075,
+          30.401768373
+        ],
+        [
+          2.007787873,
+          -42.635710173999996,
+          30.395724738
+        ],
+        [
+          2.008707807,
+          -42.478567188,
+          30.389500695
+        ],
+        [
+          2.009704654,
+          -42.321474063,
+          30.383096246
+        ],
+        [
+          2.010782272,
+          -42.164431723,
+          30.37651139
+        ],
+        [
+          2.011944578,
+          -42.007441076,
+          30.369746127
+        ],
+        [
+          2.013195551,
+          -41.85050301,
+          30.362800456
+        ],
+        [
+          2.014539228,
+          -41.693618396,
+          30.355674379
+        ],
+        [
+          2.015979699,
+          -41.536788087,
+          30.348367895
+        ],
+        [
+          2.017521107,
+          -41.38001292,
+          30.340881003
+        ],
+        [
+          2.01916765,
+          -41.223293719,
+          30.333213705
+        ],
+        [
+          2.020923569,
+          -41.066631292,
+          30.325366
+        ],
+        [
+          2.022793159,
+          -40.910026433,
+          30.317337888
+        ],
+        [
+          2.024780753,
+          -40.753479924,
+          30.309129369
+        ],
+        [
+          2.026890734,
+          -40.596992535,
+          30.300740443
+        ],
+        [
+          2.029127522,
+          -40.440565025,
+          30.29217111
+        ],
+        [
+          2.031495577,
+          -40.284198141,
+          30.28342137
+        ],
+        [
+          2.033999399,
+          -40.127892625,
+          30.274491223
+        ],
+        [
+          2.036163739,
+          -40.0,
+          30.267033804
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f582030-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        3
+      ],
+      "tile_id": "7f582030",
+      "points": [
+        [
+          -1.96440858,
+          -40.0,
+          30.270956377
+        ],
+        [
+          -1.96545862,
+          -40.062047719,
+          30.274491223
+        ],
+        [
+          -1.968019407,
+          -40.221909342000004,
+          30.28342137
+        ],
+        [
+          -1.970439523,
+          -40.381713909,
+          30.29217111
+        ],
+        [
+          -1.972723789,
+          -40.541461783,
+          30.300740443
+        ],
+        [
+          -1.974876973,
+          -40.701153363,
+          30.309129369
+        ],
+        [
+          -1.97690379,
+          -40.86078908,
+          30.317337888
+        ],
+        [
+          -1.978808901,
+          -41.020369402,
+          30.325366
+        ],
+        [
+          -1.98059691,
+          -41.179894828,
+          30.333213705
+        ],
+        [
+          -1.982272365,
+          -41.339365891,
+          30.340881003
+        ],
+        [
+          -1.98383975,
+          -41.498783159,
+          30.348367895
+        ],
+        [
+          -1.985303493,
+          -41.65814723,
+          30.355674379
+        ],
+        [
+          -1.986667956,
+          -41.817458738,
+          30.362800456
+        ],
+        [
+          -1.987937435,
+          -41.976718347,
+          30.369746127
+        ],
+        [
+          -1.98911616,
+          -42.135926755,
+          30.37651139
+        ],
+        [
+          -1.990208295,
+          -42.295084693999996,
+          30.383096246
+        ],
+        [
+          -1.991217929,
+          -42.454192926,
+          30.389500695
+        ],
+        [
+          -1.992149082,
+          -42.613252246,
+          30.395724738
+        ],
+        [
+          -1.993005698,
+          -42.772263482,
+          30.401768373
+        ],
+        [
+          -1.993791646,
+          -42.931227494,
+          30.407631601
+        ],
+        [
+          -1.994510716,
+          -43.090145174,
+          30.413314423
+        ],
+        [
+          -1.995166618,
+          -43.249017447,
+          30.418816837
+        ],
+        [
+          -1.995762981,
+          -43.407845268,
+          30.424138844
+        ],
+        [
+          -1.996303346,
+          -43.566629627,
+          30.429280445
+        ],
+        [
+          -1.996791174,
+          -43.725371545,
+          30.434241638
+        ],
+        [
+          -1.997229833,
+          -43.884072075,
+          30.439022424
+        ],
+        [
+          -1.997622601,
+          -44.042732303,
+          30.443622803
+        ],
+        [
+          -1.997972666,
+          -44.201353347,
+          30.448042775
+        ],
+        [
+          -1.99828312,
+          -44.359936359,
+          30.452282341
+        ],
+        [
+          -1.998556957,
+          -44.518482521,
+          30.456341499
+        ],
+        [
+          -1.998797074,
+          -44.676993051,
+          30.46022025
+        ],
+        [
+          -1.999006265,
+          -44.835469199,
+          30.463918594
+        ],
+        [
+          -1.999187221,
+          -44.993912247,
+          30.467436531
+        ],
+        [
+          -1.999342527,
+          -45.152323512,
+          30.470774061
+        ],
+        [
+          -1.99947466,
+          -45.310704344,
+          30.473931184
+        ],
+        [
+          -1.999585986,
+          -45.469056128,
+          30.4769079
+        ],
+        [
+          -1.999678758,
+          -45.627380281,
+          30.479704209
+        ],
+        [
+          -1.999755113,
+          -45.785678257,
+          30.482320111
+        ],
+        [
+          -1.999817071,
+          -45.943951544,
+          30.484755606
+        ],
+        [
+          -1.99986653,
+          -46.102201663,
+          30.487010694
+        ],
+        [
+          -1.999905266,
+          -46.260430175,
+          30.489085375
+        ],
+        [
+          -1.999934928,
+          -46.418638672,
+          30.490979648
+        ],
+        [
+          -1.999957039,
+          -46.576828786,
+          30.492693515
+        ],
+        [
+          -1.999972986,
+          -46.735002182,
+          30.494226975
+        ],
+        [
+          -1.999984028,
+          -46.893160567,
+          30.495580028
+        ],
+        [
+          -1.999991282,
+          -47.051305679,
+          30.496752673
+        ],
+        [
+          -1.999995729,
+          -47.2094393,
+          30.497744912
+        ],
+        [
+          -1.999998206,
+          -47.367563246,
+          30.498556744
+        ],
+        [
+          -1.999999404,
+          -47.525679374,
+          30.499188168
+        ],
+        [
+          -1.999999867,
+          -47.683789579,
+          30.499639186
+        ],
+        [
+          -1.999999987,
+          -47.841895796,
+          30.499909796
+        ],
+        [
+          -2.0,
+          -48.0,
+          30.5
+        ],
+        [
+          -2.0,
+          -56.0,
+          30.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    }
+  ],
+  "endpoint_route_refs": {
+    "curve-end-a-track-01": [
+      "path-7f582030-route-000"
+    ],
+    "curve-end-a-track-02": [
+      "path-7f582030-route-001"
+    ],
+    "curve-end-b-track-01": [
+      "path-7f582300-route-001"
+    ],
+    "curve-end-b-track-02": [
+      "path-7f582300-route-000"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-tight-paired-curve90-l4-to-mid.dat",
+      "dat_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+      "model_sha256": "0f9a42d94df2f1e475d9e113d75e37ff73752ebbdf00b375e313f0595abda8dc",
+      "resource_fingerprints_checked": 132,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "d2c708ccc3599d124ff73a730432e672c63eb6a889a6b7d5a8811d2819d3d578"
+}

@@ -12,18 +12,20 @@ import json
 from pathlib import Path
 import sys
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.catalog import load_catalog, number
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp_hsr.interchange_layouts import RECIPES, INFO
 from scp.inventory import write_inventories
+from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe
 
 LEVEL_NAMES = {'ground': 'GHSR', 'hsr': 'HSR L2', 'l3': 'Rail L3', 'l4': 'Rail L4'}
 
 
-def presentation(recipe, info):
+def presentation(recipe, info, root=None):
     level = LEVEL_NAMES.get(info.get('level'), info.get('level', 'Rail'))
     kind = info['kind']
     if kind == 'oneway_filler':
@@ -38,7 +40,7 @@ def presentation(recipe, info):
         name = f'One-Way L4 over {LEVEL_NAMES[info["lower_level"]]} Crossing'
     else:
         name = info.get('name', recipe.removeprefix('interchange_').replace('_', ' ').title())
-    name = info.get('name', name)
+    name = piece_name_for_recipe(recipe, info.get('name', name), ROOT if root is None else root)
     width, depth = info['footprint']
     description = info.get('description') or (
         f'{name}. Fixed click-to-place piece in a {width} by {depth} tile area. '
@@ -56,8 +58,8 @@ def presentation(recipe, info):
 
 def main():
     catalog = load_catalog(ROOT)
-    project_path, ledger_path = ROOT/'project.json', ROOT/'config/allocations.json'
-    project, ledger = json.loads(project_path.read_text()), json.loads(ledger_path.read_text())
+    project_path, ledger_path = ROOT/'project.jsonc', ROOT/'config/allocations.jsonc'
+    project, ledger = jsonc.load(project_path), jsonc.load(ledger_path)
     current = {piece['id']: piece for piece in catalog['pieces']}
     used_names = {piece['name'].casefold() for piece in catalog['pieces']}
     used_puzzles = {number(record['puzzle_id']) for record in ledger['pieces'].values()}
@@ -68,14 +70,18 @@ def main():
     groups = {}
     for recipe in RECIPES:
         info = INFO[recipe]
-        slug = recipe.replace('_', '-')
+        owners = [piece for piece in catalog['pieces'] if piece['recipe'] == recipe]
+        require(len(owners) <= 1, f'Ambiguous interchange recipe owner: {recipe}')
+        require(not owners or owners[0]['domain'] == 'high-speed-rail',
+                'An interchange recipe must belong to the high-speed-rail domain')
+        slug = owners[0]['id'] if owners else piece_id_for_recipe(recipe, ROOT)
         require(len(slug) <= 64, 'Recipe identifier exceeds the catalog limit')
         cells = [list(cell) for cell in info['cells']]
         footprint = list(info['footprint'])
         registered.append(slug)
         groups.setdefault(info['category'], []).append(slug)
         if slug in current:
-            require(current[slug].get('cells') == cells and current[slug]['footprint'] == footprint,
+            require(current[slug]['recipe'] == recipe and current[slug].get('cells') == cells and current[slug]['footprint'] == footprint,
                     f'{slug}: layout changed after reservation; create a new recipe ID')
             continue
         require(slug not in ledger['pieces'], f'{slug}: identifier already reserved')
@@ -89,7 +95,7 @@ def main():
         used_puzzles.add(puzzle); used_blocks.update(blocks)
         tiles = [f'{block+0x100*x+0x10*y:08x}' for x,y in cells]
         preview = f'{block+span*0x1000-11:08x}'
-        name, description = presentation(recipe, info)
+        name, description = presentation(recipe, info, ROOT)
         require(name.casefold() not in used_names, f'Duplicate menu name before reservation: {name}')
         used_names.add(name.casefold())
         piece = {'schema_version':1,'id':slug,'name':name,'description':description,

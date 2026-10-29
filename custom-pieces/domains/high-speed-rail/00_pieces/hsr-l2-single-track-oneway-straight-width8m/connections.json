@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "purpose": "Intrinsic ports, service roles, and directed journeys measured from this piece\u2019s saved resources.",
+  "subject_id": "hsr-component-lower-oneway-straight",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:hsr-component-lower-oneway-straight:ea5118b0-ea5118b1-7f509ff5": "682e7e1f947fc15bcea778f1bc88dc5be31676af459388e441db5b605adf7c58",
+      "exemplar:hsr-component-lower-oneway-straight:6534284a-a8434037-7f509000": "6cf3d680b85f78accbef4430fe4bf6adc4bd9264af1817426a7bbd31a2782d0f",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509ff5": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000": "92e9e645601981aedd02a8dbe41779be59df1680011cdd6471a6bc001721979b",
+      "shadow:hsr-component-lower-oneway-straight:7ab50e44-2bc2759a-7f509000": "1d3348bf364bbdce7e0f1ac8da3e73473d1de3fed8ee9871bb6ae81ab7b41074",
+      "shadow:hsr-component-lower-oneway-straight:7ab50e44-2bc2759a-7f509001": "34876aacc271c9799452a37ebd64d75d926be1c2a99e1a6a23e9ec45eb0ebf9c",
+      "shadow:hsr-component-lower-oneway-straight:7ab50e44-2bc2759a-7f509002": "36e6cd42f814f34b57783d8b190f82da91771d3b58f78198dab34ae75a9366c0",
+      "shadow:hsr-component-lower-oneway-straight:7ab50e44-2bc2759a-7f509003": "4cb8a40eecd6f95e84d0bfeec729f755d9e6088d5f27f815adfbe5230b5bb390",
+      "shadow:hsr-component-lower-oneway-straight:7ab50e44-2bc2759a-7f509004": "b2cef7b6383a83cd1986c05096c6e891447b9acbf0ee6c9d3df7593da9e088a2",
+      "text:hsr-component-lower-oneway-straight:2026960b-2a592fd1-7f509000": "8cee4d58b460a71185224f7607ec0a38cde2904a0265f8d18f9b61acac314f62",
+      "construction:hsr-component-lower-oneway-straight": "50d70e8248208443b1c0cc1d2467396588614a24573c06903433c74ee04e02fb"
+    },
+    "reviewed_contract_available": true,
+    "scope": "one piece only; no counterpart catalogue is consulted",
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "Sin",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        0.0,
+        -8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004",
+        "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000",
+        "construction:hsr-component-lower-oneway-straight"
+      ],
+      "source_route_ids": [
+        "path-7f509000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f509000"
+        }
+      ],
+      "connection_class": "path-interface-ac60d237d23f01143255"
+    },
+    {
+      "id": "Nout",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        0.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509000",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509001",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509002",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509003",
+        "model:hsr-component-lower-oneway-straight:5ad0e817-badb57f1-7f509004",
+        "path:hsr-component-lower-oneway-straight:296678f7-a966883f-7f509000",
+        "construction:hsr-component-lower-oneway-straight"
+      ],
+      "source_route_ids": [
+        "path-7f509000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f509000"
+        }
+      ],
+      "connection_class": "path-interface-ac60d237d23f01143255"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "7:Sin>Nout",
+      "entry_port": "Sin",
+      "exit_port": "Nout",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [],
+  "compatibility_policy": "Intrinsic encoded-route facts only; complete shared-boundary agreement, physical seams, and game operation are not evaluated.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7b0",
+        "0004f7b0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7b0",
+        "0007f7b0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7b0",
+        "0006f7b0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7b0",
+        "0005f7b0"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

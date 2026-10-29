@@ -1,0 +1,282 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Wide.",
+  "schema_version": 1,
+  "id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+  "name": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Wide",
+  "description": "HSR Level 2 (15.5 m) \u2014 Split 45\u00b0 Right from Two-Track Mainline \u2014 Wide. Fixed click-to-place piece in a 6 by 9 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_hsr_split_45_wide",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7ea",
+  "tile_ids": [
+    "7f548500",
+    "7f548410",
+    "7f548510",
+    "7f548020",
+    "7f548320",
+    "7f548420",
+    "7f548030",
+    "7f548230",
+    "7f548330",
+    "7f548040",
+    "7f548140",
+    "7f548240",
+    "7f548050",
+    "7f548150",
+    "7f548060",
+    "7f548160",
+    "7f548070",
+    "7f548080"
+  ],
+  "preview_id": "7f548ff5",
+  "effect_name": "preview_scp_interchg_f7ea_0",
+  "footprint": [
+    6,
+    9
+  ],
+  "cells": [
+    [
+      5,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7ea",
+    "order": "7011f7ea",
+    "style": "interchange-hsr-split-45-wide"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f548500",
+      "source": "7f548500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548410",
+      "source": "7f548410",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548510",
+      "source": "7f548510",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548020",
+      "source": "7f548020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548320",
+      "source": "7f548320",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548420",
+      "source": "7f548420",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548030",
+      "source": "7f548030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548230",
+      "source": "7f548230",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548330",
+      "source": "7f548330",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548040",
+      "source": "7f548040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548140",
+      "source": "7f548140",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548240",
+      "source": "7f548240",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548050",
+      "source": "7f548050",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548150",
+      "source": "7f548150",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548060",
+      "source": "7f548060",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548160",
+      "source": "7f548160",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548070",
+      "source": "7f548070",
+      "rotation": 0
+    },
+    {
+      "tile": "7f548080",
+      "source": "7f548080",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        -24,
+        15.5
+      ],
+      [
+        2.0,
+        -136,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -136,
+        15.5
+      ],
+      [
+        2.0,
+        -24,
+        15.5
+      ],
+      [
+        88,
+        0.0,
+        15.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "hsr",
+    "height": 15.5,
+    "angle": 45,
+    "radius": "wide",
+    "mode": "split"
+  },
+  "design_review": {
+    "status": "review-needed",
+    "summary": "Closely spaced pillars need a support-consolidation review.",
+    "reasons": [
+      "Separate 1.3 m-square pillar foundations have centres less than 2.6 m apart near shared rail geometry. The foundations do not overlap, but the close pair should be reviewed and consolidated to address the reported duplicate-pillar appearance. The 2.6 m review cutoff is an authoring convention, not a structural or game collision threshold."
+    ],
+    "reason_codes": [
+      "clustered-supports"
+    ],
+    "reviewed_build": "0.4.1.dev1",
+    "evidence": "domains/high-speed-rail/junction-design-review.json"
+  }
+}

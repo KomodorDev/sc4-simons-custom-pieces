@@ -17,6 +17,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from . import jsonc
 from .render_headers import draw_header, grid_caption, header_settings, level_and_height, piece_title, view_caption
 
 EDGE_NAMES = {0: "West", 1: "North", 2: "East", 3: "South"}
@@ -147,11 +148,12 @@ def arrangement_text(record):
     incoming = [member for member in record["members"] if member["direction"] == "in"]
     outgoing = [member for member in record["members"] if member["direction"] == "out"]
     arrangement = f"{len(incoming)} incoming; {len(outgoing)} outgoing"
-    if (incoming and outgoing
+    declared_offsets = all(member["section_frame_offset_m"] is not None for member in record["members"])
+    if (incoming and outgoing and declared_offsets
             and all(member["section_frame_offset_m"] > 0 for member in incoming)
             and all(member["section_frame_offset_m"] < 0 for member in outgoing)):
         running = "Right-hand running"
-    elif (incoming and outgoing
+    elif (incoming and outgoing and declared_offsets
           and all(member["section_frame_offset_m"] < 0 for member in incoming)
           and all(member["section_frame_offset_m"] > 0 for member in outgoing)):
         running = "Left-hand running"
@@ -163,6 +165,25 @@ def arrangement_text(record):
 def spacing_label(record):
     spacing = record["channel_spacing_m"]
     return f"{spacing:g} m" if spacing is not None else "See individual measured intersections"
+
+
+def section_origin_label(record):
+    anchor = record["anchor_enh_m"]
+    return coordinate_text(anchor[:2]) if anchor is not None else "Not declared; see member endpoints"
+
+
+def section_offset_label(record, *, signed=True):
+    offset = record["section_offset_m"]
+    if offset is None:
+        return "Not declared"
+    if record["centred_on_tile_boundary"]:
+        return "Centred; 0 m"
+    return f"Off-centre; {offset:+g} m" if signed else f"Off-centre; {offset:g} m"
+
+
+def member_offset_label(member):
+    offset = member["section_frame_offset_m"]
+    return f"{offset:+g}" if offset is not None else "Not declared"
 
 
 def build_records(piece):
@@ -185,8 +206,9 @@ def build_records(piece):
         channels = deepcopy(group.get("channels", []))
         if not channels:
             raise ValueError("Overview requires explicit resolved physical-channel and cut associations")
-        anchor = list(group["anchor_m"])
-        anchor[2] = next(iter(heights))
+        anchor = list(group["anchor_m"]) if group["anchor_m"] is not None else None
+        if anchor is not None:
+            anchor[2] = next(iter(heights))
         normal = group["outward_normal"]
         left = [-normal[1], normal[0]]
         measured = []
@@ -195,11 +217,12 @@ def build_records(piece):
                 "id", "source_port_id", "direction", "endpoint_m", "tangent", "grade", "edge",
                 "engine_transport", "role", "service_network", "channel_id", "cut_id", "traffic_modes")}
             member.update(outward_measurement(source))
-            member["section_frame_offset_m"] = sum(
+            member["section_frame_offset_m"] = (sum(
                 (source["endpoint_m"][axis] - anchor[axis]) * left[axis] for axis in (0, 1))
+                if anchor is not None else None)
             measured.append(member)
         profile = group.get("profile") or {}
-        height = anchor[2]
+        height = next(iter(heights))
         common = common_heading(measured)
         spacing = None
         cut_records = [cut for channel in channels for cut in channel["cuts"]]
@@ -217,7 +240,8 @@ def build_records(piece):
             "nominal_level": profile.get("nominal_level"), "path_height_m": height,
             "boundary_bundle_id": bundle["id"], "source_cell": deepcopy(bundle["source_cell"]),
             "boundary": edge, "anchor_enh_m": anchor, "section_offset_m": group["section_offset_m"],
-            "centred_on_tile_boundary": group["section_offset_m"] == 0,
+            "centred_on_tile_boundary": (group["section_offset_m"] == 0
+                                         if group["section_offset_m"] is not None else None),
             "physical_channel_count": len(channels), "edge_cut_count": len(cut_records),
             "channel_spacing_m": spacing, "channels": channels,
             "traffic_modes": sorted({mode for member in measured for mode in member["traffic_modes"]}),
@@ -226,6 +250,10 @@ def build_records(piece):
             "colour": "#007b84" if height >= 30 else "#9a4e17" if height < 20 else "#7750a4",
             "members": measured,
         })
+        if anchor is None:
+            # The figure needs a marker position, but a drawn marker does not
+            # invent a physical section origin. Use one actual endpoint.
+            records[-1]["marker_enh_m"] = list(measured[0]["endpoint_m"])
     return records
 
 
@@ -353,9 +381,8 @@ def render_boundary_card(card, width, font_factory):
         section("Boundary and alignment")
         rows([
             ("Source cell / edge", f"{coordinate_text(record['source_cell'])} / {record['boundary']}", False),
-            ("Section origin [E,N] (m)", coordinate_text(record["anchor_enh_m"][:2]), True),
-            ("Centring / section offset", "Centred; 0 m" if record["centred_on_tile_boundary"] else
-             f"Off-centre; {record['section_offset_m']:+g} m", False),
+            ("Section origin [E,N] (m)", section_origin_label(record), True),
+            ("Centring / section offset", section_offset_label(record), False),
             ("Level (path height)", nominal, False),
             ("Outward heading", heading_label(common_direction) if common_direction is not None
              else "Different; see members", False),
@@ -390,7 +417,7 @@ def render_boundary_card(card, width, font_factory):
                 x += col_width
             y += row_height
             values = ["Incoming" if member["direction"] == "in" else "Outgoing",
-                      coordinate_text(member["endpoint_m"]), f"{member['section_frame_offset_m']:+g}",
+                      coordinate_text(member["endpoint_m"]), member_offset_label(member),
                       f"{member['outward_heading_degrees']:g}°", f"{member['outward_slope_at_edge_percent']:g}%"]
             x = padding
             row_height = line_height
@@ -446,7 +473,8 @@ def compose_figure(piece, records, scene, camera, local, font_factory):
     """Paint geometry markers and complete cards; every wrapped line contributes height."""
     records = deepcopy(records)
     for record in records:
-        record["viewport_pixel"] = camera.project_world(*record["anchor_enh_m"]).tolist()
+        marker = record.get("marker_enh_m", record["anchor_enh_m"])
+        record["viewport_pixel"] = camera.project_world(*marker).tolist()
     cards = make_boundary_cards(records)
     card_width = (PAGE_WIDTH - 2 * PAGE_MARGIN - CARD_GAP) // 2
     card_images = [render_boundary_card(card, card_width, font_factory) for card in cards]
@@ -466,10 +494,11 @@ def compose_figure(piece, records, scene, camera, local, font_factory):
         "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
         "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
     ]
+    if any(record["anchor_enh_m"] is None for record in records):
+        conventions.append("Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.")
     evidence_text = [
-        "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
-        "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
-        "Unverified: physical seams, construction clearance, model collisions, and game operation.",
+        "Software model preview with source-defined connection cards.",
+        "Sources: current compiled model, declared boundary metadata, and saved route-resource identities.",
     ]
     def lines(sentences):
         return [line for value in sentences for line in
@@ -526,7 +555,7 @@ def markdown_overview(evidence):
     """Selectable text uses the exact resolved records drawn in the figure."""
     lines = ["## Connection overview", "",
              "Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.", "",
-             "![Complete connection overview](connection-overview.png)", "",
+             "![Complete connection overview](previews/connection-overview.png)", "",
              "[Rendering sources and verification scope](evidence/connection-overview.json).", ""]
     for convention in evidence["conventions"]:
         lines.extend([convention, ""])
@@ -547,8 +576,8 @@ def markdown_overview(evidence):
                 ("End / component", f"`{identifier}` / `{record['component_id']}`"),
                 ("Network / game class / role", f"{record['network']} / {classification_text(record['members'])}"),
                 ("Source cell / edge", f"`{coordinate_text(record['source_cell'])}` / {record['boundary']}"),
-                ("Section origin [E,N] (m)", f"`{coordinate_text(record['anchor_enh_m'][:2])}`"),
-                ("Centring / section offset", f"{'Centred' if record['centred_on_tile_boundary'] else 'Off-centre'}; {record['section_offset_m']:g} m"),
+                ("Section origin [E,N] (m)", f"`{section_origin_label(record)}`" if record["anchor_enh_m"] is not None else section_origin_label(record)),
+                ("Centring / section offset", section_offset_label(record, signed=False)),
                 ("Level (path height)", nominal),
                 ("Outward heading", heading_label(direction) if direction is not None else "Different; see members"),
                 ("Slope at joining edge", f"{100 * grade:g}% outward" if grade is not None else "Different; see members"),
@@ -566,15 +595,28 @@ def markdown_overview(evidence):
             for member in record["members"]:
                 lines.append(f"| `{member['id']}` / `{member['source_port_id']}` | `{member['channel_id']}` / `{member['cut_id']}` / {', '.join(member['traffic_modes'])} | "
                              f"{'Incoming' if member['direction'] == 'in' else 'Outgoing'} | `{coordinate_text(member['endpoint_m'])}` | "
-                             f"{member['section_frame_offset_m']:+g} | {member['outward_heading_degrees']:g}° | {member['outward_slope_at_edge_percent']:g} |")
+                             f"{member_offset_label(member)} | {member['outward_heading_degrees']:g}° | {member['outward_slope_at_edge_percent']:g} |")
             lines.append("")
-    lines.extend(["Rendering checks source metadata, current compiled resource identities, and model structure. It does not re-extract PATHs or evaluate placement; physical seams, construction clearance, collisions, and game operation remain unverified.", ""])
+    lines.extend(["The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.", ""])
     return "\n".join(lines)
 
 
+def readme_overview(original, content):
+    """Use the same selectable text and fingerprint in a numbered or legacy guide."""
+    from .piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
+    if any(marker in original for marker in (LAYOUT_MARKER, SPLIT_LAYOUT_MARKER)) and content.startswith("## Connection overview\n"):
+        import re
+        return re.sub(r"(?m)^(#{2,5}) ", r"\1# ", content)
+    return content
+
+
 def _update_readme(path, content):
+    from .document_validation import validate_subject_documents
+    path = Path(path)
+    validate_subject_documents(path.parent, {'id': path.parent.name, 'kind': 'piece'})
     begin, end = "<!-- BEGIN CONNECTOR OVERVIEW -->", "<!-- END CONNECTOR OVERVIEW -->"
     original = path.read_text(encoding="utf-8")
+    content = readme_overview(original, content)
     block = begin + "\n\n" + content.rstrip() + "\n\n" + end
     if begin in original or end in original:
         if original.count(begin) != 1 or original.count(end) != 1:
@@ -623,6 +665,9 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     if not piece_ids or len(set(piece_ids)) != len(piece_ids) or not set(piece_ids) <= resolved["pieces"].keys():
         raise ValueError("Overview selection must name unique pieces present in the resolved library report")
     domain = root / "domains" / domain_id
+    from .document_validation import validate_subject_documents
+    for identifier in piece_ids:
+        validate_subject_documents(domain / "00_pieces" / identifier, {'id': identifier, 'kind': 'piece'})
     build = Path(build or root / "dist/current")
     if not build.is_absolute():
         build = root / build
@@ -633,8 +678,9 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     manifest_files = {item["path"]: item for item in manifest["files"]}
     if plugins is None:
         fixture = root / "local/validation-inputs/Plugins"
-        settings = root / "local/settings.json"
-        plugins = fixture if fixture.is_dir() else json_read(settings).get("plugins") if settings.is_file() else None
+        from .paths import local_settings
+        settings = local_settings(root)
+        plugins = fixture if fixture.is_dir() else jsonc.load(settings).get("plugins") if settings.is_file() else None
     if plugins is None:
         raise ValueError("Overview rendering needs an existing texture directory; pass plugins explicitly")
     library = TextureLibrary(Path(plugins).expanduser().resolve())
@@ -684,15 +730,15 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
                                 and old_source.get("source_dat_sha256") == sha256(raw_dat)
                                 and old_evidence.get("textures") == texture_sources)
         source_files = [directory / filename for filename in ("piece.json", "connections.json", "connector-groups.jsonc")]
-        source_files.append(domain / "domain.json")
+        source_files.append(domain / "domain.jsonc")
         source_files.extend(root / "schemas" / name for name in
-                            ("connector-groups.schema.json", "connector-profiles.schema.json"))
-        profile_path = domain / json_read(domain / "domain.json").get("connector_profiles", "connector-profiles.json")
+                            ("connector-groups.schema.jsonc", "connector-profiles.schema.jsonc"))
+        profile_path = domain / jsonc.load(domain / "domain.jsonc").get("connector_profiles", "connector-profiles.jsonc")
         if profile_path.is_file():
             source_files.append(profile_path)
         evidence.update({
             "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
-            "schema_version": 1, "piece_id": identifier, "file": "connection-overview.png",
+            "schema_version": 1, "piece_id": identifier, "file": "previews/connection-overview.png",
             "output_sha256": sha256(image_bytes), "source_inputs": {
                 path.relative_to(root).as_posix(): sha256(path.read_bytes()) for path in source_files},
             "generator_sha256": sha256(Path(__file__).read_bytes()),
@@ -735,12 +781,12 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
                 "channels_and_cuts": "Explicit source-backed associations; counts do not come from modes or directed-member counts",
                 "heading": "degrees(atan2(outward_east,outward_north)) modulo 360; incoming travel tangent reversed",
                 "edge_slope_percent": "100 * travel grade for outgoing; -100 * travel grade for incoming; never an interior average",
-                "section_offset": "Declared resolved offset from source tile-edge midpoint",
-                "member_offset": "Measured endpoint minus section origin, dotted with tile-edge outward-left direction",
-                "display_anchor": "Measured-height section origin projected with the actual model camera",
+                "section_offset": "Declared resolved offset from source tile-edge midpoint; null when no section offset was authored",
+                "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
+                "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin",
             },
         })
-        text = markdown_overview(evidence)
+        text = readme_overview((directory / "README.md").read_text(encoding="utf-8"), markdown_overview(evidence))
         evidence["selectable_markdown_sha256"] = sha256(text.encode("utf-8"))
         destination = directory if output_root is None else Path(output_root).resolve() / identifier
         staged.append((destination, directory, image_bytes, evidence, text))
@@ -748,7 +794,8 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     # Every selected source/resource/layout was checked before canonical files are written.
     for destination, directory, image_bytes, evidence, text in staged:
         (destination / "evidence").mkdir(parents=True, exist_ok=True)
-        image_path, evidence_path = destination / "connection-overview.png", destination / "evidence/connection-overview.json"
+        (destination / "previews").mkdir(parents=True, exist_ok=True)
+        image_path, evidence_path = destination / "previews/connection-overview.png", destination / "evidence/connection-overview.json"
         image_path.write_bytes(image_bytes)
         evidence_path.write_text(json.dumps(evidence, indent=2, allow_nan=False) + "\n", encoding="utf-8")
         if output_root is None:

@@ -13,7 +13,11 @@ from .catalog import piece_cells
 from .city_grid import make_camera, make_city_grid
 from .models import pack_s3d, parse_s3d, positions, validate_s3d
 from .preview import font, render_fast_view, renderer_settings as raster_settings
-from .render_headers import draw_header, grid_caption, header_settings, view_caption
+from .render_headers import draw_header, grid_caption, header_settings, piece_heading, view_caption
+
+
+TOP_GRID_OVERLAY = {'colour': '#00ff00', 'line_width_pixels': 2,
+                    'major_line_width_pixels': 3, 'drawn_above_model': True}
 
 
 def sha256(raw):
@@ -26,6 +30,20 @@ def _caption(draw, text, y, size, width, *, bold=False, color='#172b42'):
         size -= 1
         chosen = font(size, bold)
     draw.text((30, y), text, font=chosen, fill=color)
+
+
+def _overlay_top_grid(image, grid):
+    """Keep true tile edges visible across opaque surfaces in a piece plan.
+
+    Reuse the ground grid's projected boundary endpoints, so this overlay
+    changes only documentation pixels, never the camera or model geometry.
+    """
+    draw = ImageDraw.Draw(image)
+    for line in grid['grid_lines']:
+        width = TOP_GRID_OVERLAY['major_line_width_pixels' if line['major'] else 'line_width_pixels']
+        draw.line([tuple(point) for point in line['pixels']],
+                  fill=TOP_GRID_OVERLAY['colour'], width=width)
+    grid['line_overlay'] = dict(TOP_GRID_OVERLAY)
 
 
 def local_piece_grid(piece):
@@ -100,7 +118,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     bounds, origin = local['bounds_world_m'], local['origin_world_m']
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
-    captions = [title or piece['name'], view_caption(view_role, azimuth, elevation), grid_caption(local)]
+    captions = [piece_heading(title or piece['name']), view_caption(view_role, azimuth, elevation), grid_caption(local)]
     header = draw_header(draw, captions, width, font, margin=30, top=20)
     view_height, top = height-230, max(145, header['bottom'])
     if top + view_height > height - 80:
@@ -112,21 +130,24 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     textures, texture_sources = library.for_model(model)
     view = render_fast_view(model, textures, azimuth, elevation, width, view_height,
                            camera=camera, background_image=background)
+    if view_role == 'top':
+        _overlay_top_grid(view, grid)
     canvas.paste(view, (0, top))
     footer = ['Complete reusable piece shown at its authored orientation.',
-              'Software model preview; in-game placement and traffic remain unverified.']
+              'Software model preview.']
     for caption, y_position, size in zip(footer, (height-68, height-35), (22, 21)):
         _caption(draw, caption, y_position, size, width, color='#586a7e')
     captions.extend(footer)
     filename = 'preview-top.png' if view_role == 'top' else 'preview.png'
-    target = destination/filename
+    target = destination/'previews'/filename
+    target.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(target)
     thumbnail = None
     if view_role == 'angled':
         bitmap = canvas.resize((thumbnail_width, round(height*thumbnail_width/width)), Image.Resampling.LANCZOS)
-        thumb = destination/'preview-thumb.png'
+        thumb = target.with_name('preview-thumb.png')
         bitmap.save(thumb)
-        thumbnail = {'file': thumb.name, 'sha256': sha256(thumb.read_bytes()), 'size': list(bitmap.size)}
+        thumbnail = {'file': thumb.relative_to(destination).as_posix(), 'sha256': sha256(thumb.read_bytes()), 'size': list(bitmap.size)}
     if sha256(pack_s3d(model)) != before_model:
         raise ValueError('Canonical preview rendering modified the parsed source model')
     image = {
@@ -135,7 +156,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
         'view_role': 'top-down' if view_role == 'top' else 'angled', 'canonical_filename': filename,
         'source': {'asset_file': piece.get('asset_file', piece['id']+'.dat'), 'preview_id': piece['preview_id'],
                    'source_dat_sha256': dat_hash, 'model_sha256': sha256(raw)},
-        'file': filename, 'sha256': sha256(target.read_bytes()), 'size': [width, height],
+        'file': target.relative_to(destination).as_posix(), 'sha256': sha256(target.read_bytes()), 'size': [width, height],
         'azimuth_degrees': azimuth, 'elevation_degrees': elevation,
         'displayed_rotation_ccw_degrees': 0., 'coordinate_system': local,
         'camera': camera.metadata(), 'grid': grid, 'header': header, 'viewport_offset_xy': [0, top],
@@ -154,7 +175,7 @@ def render_piece(piece, raw, library, destination, *, dat_hash, width=1600, heig
     return image
 
 
-_LAYOUT_HELPERS=(local_piece_grid,_caption,render_piece,make_camera,make_city_grid)
+_LAYOUT_HELPERS=(local_piece_grid,_caption,_overlay_top_grid,render_piece,make_camera,make_city_grid)
 
 
 def preview_settings(*, width=1600, height=1200, view_role='angled'):
@@ -170,6 +191,7 @@ def preview_settings(*, width=1600, height=1200, view_role='angled'):
             'image_size':[width,height], 'view_size':[width,height-230],
             'views':[{'azimuth':azimuth,'elevation':elevation}], 'view_role':view_role,
             'tile_metres':16., 'origin_marker_visible':False, 'geometry_simplified':False,
+            'top_grid_overlay':dict(TOP_GRID_OVERLAY) if view_role == 'top' else None,
             'duplicate_grid_footer_visible':False}
 
 
@@ -184,9 +206,9 @@ def normalize_preview_evidence(directory):
     """
     directory=Path(directory);path=directory/'evidence/preview.json'
     entry=json.loads(path.read_text())
-    if sha256((directory/'preview.png').read_bytes())!=entry['sha256']:
+    if sha256((directory/'previews/preview.png').read_bytes())!=entry['sha256']:
         raise ValueError('Actual preview PNG differs from its saved evidence')
-    if sha256((directory/'preview-thumb.png').read_bytes())!=entry['thumbnail']['sha256']:
+    if sha256((directory/'previews/preview-thumb.png').read_bytes())!=entry['thumbnail']['sha256']:
         raise ValueError('Actual thumbnail differs from its saved evidence')
     actual={**raster_settings(),'layout':'one canonical view with independent local city grid',
             'image_size':entry['size'],'view_size':entry['camera']['image_size'],

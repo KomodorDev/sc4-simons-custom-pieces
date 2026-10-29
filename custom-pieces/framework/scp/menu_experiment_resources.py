@@ -1,8 +1,8 @@
-"""Build an opt-in parts-cycle alias and Submenus DLL test catalogue.
+"""Build one assembly cycle entry, or verify the retained legacy submenu form.
 
 This changes presentation resources only. The caller supplies an independently
 verified build, allocates IDs, composes the construction cycle, checks installed
-resource collisions, and keeps this experiment separate from normal builds.
+resource collisions, and keeps assembly menu preparation after piece compilation.
 An alias sharing Item Button ID with a piece is a testable hypothesis, not an
 in-game result. Source: https://github.com/memo33/submenus-dll#information-for-modders
 """
@@ -11,6 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 from io import BytesIO
+import math
 import struct
 
 from .dbpf import encode_exemplar, exemplar, require, tgi_string
@@ -105,7 +106,153 @@ def _icon(kind):
     return output.getvalue()
 
 
-def _new_button(template, definition, *, kind):
+# Tiny native-size lettering overlays the full route drawing without text bands.
+_ASSEMBLY_MARK = {
+    'A': ('010', '101', '111', '101', '101'),
+    'B': ('110', '101', '110', '101', '110'),
+    'C': ('111', '100', '100', '100', '111'),
+    'D': ('110', '101', '101', '101', '110'),
+    'E': ('111', '100', '111', '100', '111'),
+    'F': ('111', '100', '111', '100', '100'),
+    'G': ('111', '100', '101', '101', '111'),
+    'H': ('101', '101', '111', '101', '101'),
+    'I': ('111', '010', '010', '010', '111'),
+    'J': ('001', '001', '001', '101', '111'),
+    'K': ('101', '101', '110', '101', '101'),
+    'L': ('100', '100', '100', '100', '111'),
+    'M': ('101', '111', '101', '101', '101'),
+    'N': ('101', '111', '111', '101', '101'),
+    'O': ('111', '101', '101', '101', '111'),
+    'P': ('110', '101', '110', '100', '100'),
+    'Q': ('111', '101', '101', '111', '001'),
+    'R': ('110', '101', '110', '101', '101'),
+    'S': ('111', '100', '111', '001', '111'),
+    'T': ('111', '010', '010', '010', '010'),
+    'U': ('101', '101', '101', '101', '111'),
+    'V': ('101', '101', '101', '101', '010'),
+    'W': ('101', '101', '101', '111', '101'),
+    'X': ('101', '101', '010', '101', '101'),
+    'Y': ('101', '101', '010', '010', '010'),
+    'Z': ('111', '001', '010', '100', '111'),
+}
+
+
+def _assembly_label(draw, value, x, y, colour):
+    for letter in value:
+        if letter == ' ':
+            x += 3
+            continue
+        for row, pixels in enumerate(_ASSEMBLY_MARK[letter]):
+            for column, on in enumerate(pixels):
+                if on == '1':
+                    draw.point((x + column, y + row), fill=colour)
+        x += 4
+
+
+def make_assembly_icon(routes=None, *, network_label=None):
+    """Draw the complete north-up assembly; retain the historical icon on demand.
+
+    ``routes`` contains placed east/north/height polylines. No game resources,
+    build outputs, placements, or observations are changed by this illustration.
+    The owning domain supplies the compact network label. Omitting routes
+    reproduces frozen historical menu candidates exactly.
+    """
+    if routes is None:
+        require(network_label is None, 'Historical assembly icon has no network label')
+        return _icon('cycle')
+    from PIL import Image, ImageDraw, ImageOps
+
+    require(isinstance(network_label, str) and 1 <= len(network_label) <= 4
+            and all(letter in _ASSEMBLY_MARK for letter in network_label),
+            'Assembly icon needs an explicit network label of one to four uppercase letters')
+    require(isinstance(routes, (list, tuple)) and routes, 'Assembly icon needs actual routes')
+    require(all(isinstance(route, (list, tuple)) and len(route) >= 2 for route in routes),
+            'Assembly icon routes need at least two points')
+    require(all(isinstance(point, (list, tuple)) and len(point) == 3
+                and all(isinstance(value, (int, float)) and not isinstance(value, bool)
+                        and math.isfinite(value) for value in point)
+                for route in routes for point in route), 'Assembly icon needs finite XYZ points')
+    points = [point for route in routes for point in route]
+    xmin, xmax = min(p[0] for p in points), max(p[0] for p in points)
+    ymin, ymax = min(p[1] for p in points), max(p[1] for p in points)
+    require(xmax > xmin or ymax > ymin, 'Assembly icon routes have no planar extent')
+    factor = min(34 / max(xmax - xmin, 1), 34 / max(ymax - ymin, 1))
+    scale = 6
+    strip = Image.new('RGBA', (176, 44))
+
+    def screen(point):
+        return ((22 + (point[0] - (xmin + xmax) / 2) * factor) * scale,
+                (22 - (point[1] - (ymin + ymax) / 2) * factor) * scale)
+
+    for number in range(4):
+        image = Image.new('RGBA', (44 * scale, 44 * scale))
+        draw = ImageDraw.Draw(image)
+        border = ((68, 183, 182), (68, 183, 182), (248, 197, 82), (113, 222, 218))[number]
+        draw.rounded_rectangle((scale, scale, 42 * scale, 42 * scale), radius=5 * scale,
+                               fill=(14, 32, 42), outline=border, width=round(1.5 * scale))
+        # Higher tracks cover lower tracks at genuine crossings. Thin dark
+        # halos separate the loop from the nearby approach at the native size.
+        for route in sorted(routes, key=lambda row: sum(p[2] for p in row) / len(row)):
+            planar = [screen(point) for point in route]
+            draw.line(planar, fill=(5, 15, 23), width=round(3.0 * scale), joint='curve')
+            for first, last, a, b in zip(route, route[1:], planar, planar[1:]):
+                upper = min(1., max(0., ((first[2] + last[2]) / 2 - 15.5) / 15.))
+                colour = tuple(round(low + (high - low) * upper)
+                               for low, high in zip((240, 225, 178), (83, 222, 208)))
+                draw.line((a, b), fill=colour, width=round(1.35 * scale))
+        image = image.resize((44, 44), Image.Resampling.LANCZOS)
+        # Overlay crisp 3 by 5 letters on the full-size diagram. The footer's
+        # last ink row is 37, leaving clearance above the bottom border.
+        draw = ImageDraw.Draw(image)
+        _assembly_label(draw, 'SCP', 5, 5, (190, 210, 216))
+        footer = 'ASM ' + network_label
+        _assembly_label(draw, footer, (44 - (4 * len(footer) - 2)) // 2, 33,
+                        (225, 235, 238))
+        if number == 0:
+            alpha = image.getchannel('A')
+            image = ImageOps.grayscale(image).convert('RGBA')
+            image.putalpha(alpha)
+        strip.paste(image, (44 * number, 0))
+    output = BytesIO()
+    strip.save(output, format='PNG', optimize=False)
+    return output.getvalue()
+
+
+def _validate_icon(raw, kind, expected_icon=None):
+    """Check native image bytes while allowing equivalent PNG compression."""
+    from PIL import Image
+
+    require(isinstance(raw, bytes), 'Menu icon must be PNG bytes')
+    require(len(raw) >= 33 and raw[:16] == b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR',
+            'Menu icon must be a valid 176 by 44 RGBA PNG')
+    require(struct.unpack('>IIBBBBB', raw[16:29]) == (176, 44, 8, 6, 0, 0, 0),
+            'Menu icon must be a 176 by 44 noninterlaced 8-bit RGBA PNG')
+    try:
+        with Image.open(BytesIO(raw)) as image:
+            require(image.format == 'PNG' and image.mode == 'RGBA' and image.size == (176, 44),
+                    'Menu icon must be a 176 by 44 RGBA PNG')
+            require(image.get_format_mimetype() == 'image/png' and image.n_frames == 1,
+                    'Menu icon must be a single static PNG; APNG animation is not supported')
+            image.verify()
+        with Image.open(BytesIO(raw)) as image:
+            actual_pixels = image.tobytes()
+    except (OSError, SyntaxError) as error:
+        raise ValueError('Menu icon must be a valid 176 by 44 RGBA PNG') from error
+    with Image.open(BytesIO(expected_icon if expected_icon is not None else _icon(kind))) as expected:
+        require(actual_pixels == expected.tobytes(),
+                'Assembly icon differs from the canonical cycle artwork; regenerate it with assembly-icons'
+                if kind == 'cycle' else 'Wrong experiment icon')
+
+
+def validate_assembly_icon(raw, *, routes=None, network_label=None, expected_icon=None):
+    """Require exact source-derived artwork pixels and the native PNG format."""
+    require(expected_icon is None or (routes is None and network_label is None),
+            'Specify routes and network label, or frozen icon proof, not both')
+    _validate_icon(raw, 'cycle', expected_icon if expected_icon is not None else
+                   make_assembly_icon(routes, network_label=network_label))
+
+
+def _new_button(template, definition, *, kind, icon=None):
     record = deepcopy(template)
     button_id = definition['id']
     for prop_id, values in {
@@ -119,34 +266,43 @@ def _new_button(template, definition, *, kind):
         _set(record, ITEM_SUBMENU_PARENT_ID, [RAIL_PARENT_ID])
         _set(record, ITEM_BUTTON_CLASS, [1])
     return {(*MENU_EXEMPLAR, button_id): encode_exemplar(record),
-            (*ICON, button_id): _icon(kind),
+            (*ICON, button_id): icon if icon is not None else _icon(kind),
             (*TITLE, button_id): _ltext(definition['title']),
             (*DESCRIPTION, button_id): _ltext(definition['description'])}
 
 
-def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu):
+def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
+                                    cycle_icon=None, expected_cycle_icon=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
-    buttons move into ``submenu`` and keep all original IDs, text, icons, costs,
-    and construction targets. Each new button definition supplies ``id``,
+    member menu presentations are removed when ``submenu`` is absent: the
+    assembly gets one cycle button, while unrelated standalone pieces remain.
+    A supplied ``submenu`` retains the historical two-entry test format.
+    Each new button definition supplies ``id``,
     ``order``, ``title``, and ``description``. ``cycle_button`` also requires
     ``target_id`` equal to the first piece's existing menu/root button ID.
     Its distinct presentation ID changes no construction definition itself.
     Nothing is written to disk, and caller-owned mappings are never mutated.
+    A supplied ``cycle_icon`` must match every canonical assembly artwork pixel;
+    its original PNG encoding is retained exactly in the compiled resource.
     """
+    if cycle_icon is not None:
+        validate_assembly_icon(cycle_icon, expected_icon=expected_cycle_icon)
     require(isinstance(source_resources, dict) and source_resources,
             'Source resources must be a nonempty mapping from a verified build')
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
     pieces = list(pieces)
     require(pieces, 'At least one piece is required')
     cycle = _definition(cycle_button, 'cycle_button')
-    group = _definition(submenu, 'submenu')
+    group = _definition(submenu, 'submenu') if submenu is not None else None
     require('target_id' in cycle, 'cycle_button requires target_id')
     cycle['target_id'] = _uint(cycle['target_id'], 'cycle_button.target_id')
-    require('target_id' not in group, 'Submenu button cannot have a construction target')
-    require(cycle['id'] != group['id'], 'Cycle and submenu presentation IDs must be distinct')
-    for button in (cycle, group):
+    if group is not None:
+        require('target_id' not in group, 'Submenu button cannot have a construction target')
+        require(cycle['id'] != group['id'], 'Cycle and submenu presentation IDs must be distinct')
+    buttons = (cycle, group) if group is not None else (cycle,)
+    for button in buttons:
         require(all((*prefix, button['id']) not in source_resources
                     for prefix in _PRESENTATION_PREFIXES),
                 f'New menu resource ID collides with source resources: {button["id"]:08x}')
@@ -158,7 +314,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         button_id = _uint(piece['menu']['id'], f'{piece["id"]}.menu.id')
         require(piece['id'] not in seen_pieces and button_id not in seen_ids,
                 'Duplicate piece identity or original menu button ID')
-        require(button_id not in (cycle['id'], group['id']),
+        require(button_id not in {button['id'] for button in buttons},
                 'New presentation ID collides with an original menu button')
         seen_pieces.add(piece['id'])
         seen_ids.add(button_id)
@@ -184,35 +340,53 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     require(cycle['target_id'] == records[0][1],
             'Cycle alias must target the first selected piece\'s existing root button')
     result = dict(source_resources)
-    for _, button_id, original in records:
-        record = deepcopy(original)
-        _set(record, ITEM_SUBMENU_PARENT_ID, [group['id']])
-        _set(record, ITEM_BUTTON_CLASS, [2])
-        result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
-    for button, kind in ((cycle, 'cycle'), (group, 'submenu')):
-        result.update(_new_button(records[0][2], button, kind=kind))
+    if group is not None:
+        for _, button_id, original in records:
+            record = deepcopy(original)
+            _set(record, ITEM_SUBMENU_PARENT_ID, [group['id']])
+            _set(record, ITEM_BUTTON_CLASS, [2])
+            result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
+    else:
+        for _, button_id, _ in records:
+            for prefix in _PRESENTATION_PREFIXES:
+                del result[*prefix, button_id]
+    presentations = ((cycle, 'cycle'), (group, 'submenu')) if group is not None else ((cycle, 'cycle'),)
+    for button, kind in presentations:
+        result.update(_new_button(records[0][2], button, kind=kind,
+                                  icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
-        result, source_resources, pieces, cycle_button=cycle, submenu=group)
+        result, source_resources, pieces, cycle_button=cycle, submenu=group,
+        expected_cycle_icon=expected_cycle_icon)
     return result, report
 
 
-def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu):
+def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None,
+                                       expected_cycle_icon=None):
     """Inspect the encoded result and reject any change outside presentation."""
     cycle, group = cycle_button, submenu
-    cycle_id, group_id = _uint(cycle['id'], 'cycle id'), _uint(group['id'], 'submenu id')
+    cycle_id = _uint(cycle['id'], 'cycle id')
+    group_id = _uint(group['id'], 'submenu id') if group is not None else None
     target_id = _uint(cycle['target_id'], 'cycle target')
-    changed = {(*MENU_EXEMPLAR, _uint(p['menu']['id'], 'original id')) for p in pieces}
+    changed = ({(*MENU_EXEMPLAR, _uint(p['menu']['id'], 'original id')) for p in pieces}
+               if group is not None else set())
     added = {(*prefix, button_id) for prefix in _PRESENTATION_PREFIXES
-             for button_id in (cycle_id, group_id)}
-    require(set(resources) == set(source_resources) | added,
+             for button_id in ((cycle_id, group_id) if group is not None else (cycle_id,))}
+    removed = ({(*prefix, _uint(piece['menu']['id'], 'member id'))
+                for piece in pieces for prefix in _PRESENTATION_PREFIXES}
+               if group is None else set())
+    require(set(resources) == (set(source_resources) - removed) | added,
             'Experiment added or removed an unexpected resource')
-    for key in set(source_resources) - changed:
+    for key in set(source_resources) - changed - removed:
         require(resources[key] == source_resources[key],
                 f'Changed non-target source resource {tgi_string(key)}')
     individual = []
     for piece in pieces:
         button_id = _uint(piece['menu']['id'], 'original id')
         key = (*MENU_EXEMPLAR, button_id)
+        if group is None:
+            require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
+                    'Assembly member still has an individual menu presentation')
+            continue
         before, after = exemplar(source_resources[key]), exemplar(resources[key])
         original, actual = _props(before), _props(after)
         require(after['parent'] == before['parent'] and
@@ -227,7 +401,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
     template = exemplar(source_resources[*MENU_EXEMPLAR, _uint(pieces[0]['menu']['id'], 'template id')])
     template_props = _props(template)
     edited = {0x20, 0x8A2602B8, 0x8A2602B9, 0x8A2602BB, 0x8A416A99, 0xCA416AB5}
-    for button, button_id, kind in ((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu')):
+    presentations = (((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu'))
+                     if group is not None else ((cycle, cycle_id, 'cycle'),))
+    for button, button_id, kind in presentations:
         actual = exemplar(resources[*MENU_EXEMPLAR, button_id])
         props = _props(actual)
         expected_ids = [*template_props]
@@ -254,11 +430,13 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         require(resources[*TITLE, button_id] == _ltext(button['title']) and
                 resources[*DESCRIPTION, button_id] == _ltext(button['description']),
                 'Wrong new menu localized text')
-        require(resources[*ICON, button_id] == _icon(kind), 'Wrong experiment icon')
-    return {'schema_version': 1, 'individual_buttons': individual,
+        _validate_icon(resources[*ICON, button_id], kind,
+                       expected_cycle_icon if kind == 'cycle' else None)
+    report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
                              'menu': 'Rail', 'construction_alias_verified_in_game': False},
-            'submenu': {'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'},
+            'submenu': ({'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'}
+                        if group is not None else None),
             'modified_existing_exemplar_tgis': [tgi_string(key) for key in sorted(changed)],
             'added_resource_tgis': [tgi_string(key) for key in sorted(added)],
             'unchanged_source_resource_count': len(source_resources) - len(changed),
@@ -266,3 +444,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                                        'sha256': hashlib.sha256(source_resources[key]).hexdigest()}
                                       for key in sorted(changed)],
             'in_game_menu_tested': False}
+    if group is None:
+        report['assembly_menu_buttons'] = 1
+        report['member_buttons_hidden'] = len(pieces)
+        report['removed_resource_tgis'] = [tgi_string(key) for key in sorted(removed)]
+        report['unchanged_source_resource_count'] = len(source_resources) - len(removed)
+    return report

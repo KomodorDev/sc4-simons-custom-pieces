@@ -1,0 +1,829 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "interchange-l4-merge-45-compact",
+  "menu_name": "Rail L4 Merge 45 Degree Compact",
+  "source": {
+    "asset_file": "interchange-l4-merge-45-compact.dat",
+    "preview_id": "7f553ff5",
+    "source_dat_sha256": "d198662cdd80db46cf7363b6b92098fad6a75fec09df430eea4a6b5a99f32a0b",
+    "model_sha256": "44348e828409683e346cbad892d1891789777ddbfcd419c0039e7dce2baf9347"
+  },
+  "file": "previews/preview.png",
+  "sha256": "385906636ee9a7e56c97cd59c2f90d9c060db7ea611cc336ba4cefeab0528739",
+  "size": [
+    1600,
+    1200
+  ],
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "32087eb4711c18fa8e8ed8d63c748990e5204d8f7fb1d189d84d7971279258a4",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -48.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -56.0,
+      40.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        2
+      ],
+      "Y": [
+        0,
+        3
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        3
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      -5.656854249492376,
+      -1.6781182549040388
+    ],
+    "pixels_per_metre": 11.867626171902774,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -56.0,
+      40.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -56.0,
+      40.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -48.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        2
+      ],
+      "north_index_range": [
+        0,
+        3
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      464.332842290424,
+      672.5423599392765
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0,
+      40.0
+    ],
+    "north_boundaries_m": [
+      -56.0,
+      -40.0,
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            330.0659792065936,
+            672.5423599392766
+          ],
+          [
+            867.1334315419151,
+            395.9321731916452
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            464.332842290424,
+            741.6949066261843
+          ],
+          [
+            1001.4002946257456,
+            465.084719878553
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            598.5997053742544,
+            810.8474533130922
+          ],
+          [
+            1135.667157709576,
+            534.2372665654608
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            732.8665684580848,
+            880.0
+          ],
+          [
+            1269.9340207934065,
+            603.3898132523686
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -56.0,
+        "pixels": [
+          [
+            330.0659792065936,
+            672.5423599392766
+          ],
+          [
+            732.8665684580848,
+            880.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -40.0,
+        "pixels": [
+          [
+            464.332842290424,
+            603.3898132523686
+          ],
+          [
+            867.1334315419152,
+            810.8474533130922
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            598.5997053742544,
+            534.2372665654608
+          ],
+          [
+            1001.4002946257456,
+            741.6949066261843
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            732.8665684580848,
+            465.084719878553
+          ],
+          [
+            1135.667157709576,
+            672.5423599392765
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            867.1334315419151,
+            395.9321731916452
+          ],
+          [
+            1269.9340207934065,
+            603.3898132523686
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -56.0
+        ],
+        "pixel": [
+          382.0861453762345,
+          714.9025403856714
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -56.0
+        ],
+        "pixel": [
+          516.353008460065,
+          784.0550870725792
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -56.0
+        ],
+        "pixel": [
+          650.6198715438953,
+          853.207633759487
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -48.0
+        ],
+        "pixel": [
+          382.08614537623447,
+          630.1821794928817
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          -32.0
+        ],
+        "pixel": [
+          516.3530084600649,
+          561.0296328059738
+        ]
+      },
+      {
+        "text": "Y2",
+        "axis": "Y",
+        "tile_index": 2,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          650.6198715438952,
+          491.877086119066
+        ]
+      },
+      {
+        "text": "Y3",
+        "axis": "Y",
+        "tile_index": 3,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          784.8867346277257,
+          422.72453943215817
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.02190935640205
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 151.02869010773094,
+      "north_pixels": 151.02869010773094,
+      "caption": "1 tile = 16 m"
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        -5.656854249492376,
+        -1.6781182549040388
+      ],
+      "pixels_per_metre": 11.867626171902774,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -56.0,
+        40.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 5636,
+    "mesh_count": 17,
+    "bounds_xyz_m": [
+      [
+        [
+          -3.75,
+          0.8740612864494324
+        ],
+        [
+          29.010669708251953,
+          31.98932456970215
+        ],
+        [
+          -7.748131275177002,
+          8.0
+        ]
+      ],
+      [
+        [
+          -3.75,
+          5.835628986358643
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          -7.742992877960205,
+          8.0
+        ]
+      ],
+      [
+        [
+          -3.75,
+          3.9500443935394287
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          -8.0,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          -3.75,
+          8.0
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          0.20392438769340515,
+          8.0
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          10.327521324157715,
+          22.737960815429688
+        ]
+      ],
+      [
+        [
+          -1.9778389930725098,
+          7.033868789672852
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          8.0,
+          16.649999618530273
+        ]
+      ],
+      [
+        [
+          8.0,
+          17.651687622070312
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          17.264379501342773,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.237899780273438
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          13.022144317626953,
+          24.0
+        ]
+      ],
+      [
+        [
+          -3.75,
+          8.0
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          24.0,
+          40.0
+        ]
+      ],
+      [
+        [
+          16.06026840209961,
+          24.0
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          27.21823501586914,
+          38.73226547241211
+        ]
+      ],
+      [
+        [
+          11.274803161621094,
+          21.58159828186035
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          24.0,
+          33.07894515991211
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          24.0,
+          34.35969924926758
+        ]
+      ],
+      [
+        [
+          24.069808959960938,
+          37.04481887817383
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          32.964107513427734,
+          40.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          29.772920608520508
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          29.137365341186523,
+          39.56299591064453
+        ]
+      ],
+      [
+        [
+          -3.75,
+          3.75
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          40.0,
+          56.0
+        ]
+      ],
+      [
+        [
+          32.93720626831055,
+          40.0
+        ],
+        [
+          29.010669708251953,
+          31.98932647705078
+        ],
+        [
+          40.859901428222656,
+          53.30329895019531
+        ]
+      ],
+      [
+        [
+          25.55069351196289,
+          38.65350341796875
+        ],
+        [
+          0.0,
+          31.98932647705078
+        ],
+        [
+          40.0,
+          46.9586181640625
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b"
+    ]
+  },
+  "render_model_sha256": "44348e828409683e346cbad892d1891789777ddbfcd419c0039e7dce2baf9347",
+  "textures": [
+    {
+      "instance": "0bf6e09b",
+      "fsh_sha256": "5231481a061ebfd0387dd7f58a925ec6f705b147fb396407039348b19f4323b4",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "captions": [
+    "Rail L4 Merge 45 Degree Compact",
+    "Reusable piece | southeast view | default orientation: 0 degrees",
+    "Independent local X/Y grid | piece reference: X0, Y3 | 1 tile = 16 m",
+    "Complete reusable piece shown at its default orientation.",
+    "Software model preview; in-game placement and traffic remain unverified."
+  ],
+  "annotation_mode": "Exact reusable menu name in header; independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "tile_metres": 16.0,
+    "origin_marker_visible": false
+  },
+  "renderer_metadata_note": "View settings normalized from saved camera/grid facts; original image bytes retained. No new render or manual review is claimed.",
+  "artwork_relocation": {
+    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
+    "image_directory": "previews",
+    "image_bytes_changed": false,
+    "original_renderer_and_input_fingerprints_preserved": true
+  }
+}

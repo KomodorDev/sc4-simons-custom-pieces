@@ -16,7 +16,7 @@ import re
 import sys
 import tempfile
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 sys.dont_write_bytecode = True
 
@@ -121,7 +121,8 @@ def render_parts(scene, build, plugins, destination, *, prefix,
         'assembly_coordinate_system': provenance['coordinate_system'],
         'compiled_source_verification': provenance['compiled_source_verification'],
         'renderer': renderer_settings(),
-        'canonical_view_settings': {'angled': preview_settings(), 'top': preview_settings(view_role='top')},
+        'canonical_view_settings': {role: preview_settings(width=width, height=height, view_role=role)
+                                    for role in ('angled', 'top')},
         'images': images,
         'placement_images': placement_images,
         'in_game_evidence': False,

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-modular-south-junction",
+  "purpose": "Record the current standalone picture presentation and source-bound connector refresh while preserving approved game resources and earlier executed verification evidence.",
+  "scope": "Canonical angled and top software pictures, connection overview, connector export, guide presentation, and image-review bindings; no assembly rendering or new native geometry compilation.",
+  "source_build": "dist/trumpet-fan-core-parts-final-01",
+  "source_manifest_sha256": "4c4747d07757fe1ebebb1fd8f07a90a058e91bd1cf4806a240c9a4104bfc0711",
+  "source_verification_sha256": "cc66cbf3c3bb8549c9a4365f5b4e00d8af1ff7c6bf9c462e4c7bac1914b42d91",
+  "normal_native_verification_scope": "Reference to the earlier executed verified native build. Its report and all fourteen DAT archives remain unchanged; the native verifier was not rerun as part of this picture refresh.",
+  "compiled_resource_checks_executed": {
+    "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-south-junction.dat",
+    "dat_sha256": "b650626efc9c0fb40b68d726348def8dffe8db22dadd748f191b9ed15b6882bb",
+    "model_sha256": "98087d2e71617e4a1e8ff9570ca72fd09d64c83f4ed592b674dda6056ecadaf7",
+    "resource_fingerprints_checked": 184,
+    "directional_ports_reextracted": 6,
+    "directed_journeys_reextracted": 4,
+    "compiled_definition": "passed",
+    "manifest_payload": "passed",
+    "saved_resource_fingerprints": "passed",
+    "actual_path_facts": "passed",
+    "preview_model_structure": "passed",
+    "construction_rules_reextracted": false
+  },
+  "connector_check": {
+    "status": "passed",
+    "compiled_paths": "passed",
+    "export_freshness": "passed",
+    "overview": {
+      "status": "passed",
+      "boundary_cards": 4,
+      "output_sha256": "ef54512bbb4baad8e928c2b092063d8923c47103941802e0b8c10dd1712077e1"
+    }
+  },
+  "connector_export": {
+    "file": "connector-data.json",
+    "sha256": "bbf21c35191197299620fffd443ea432b7ce20bdca1e6c0df2486b2f5f2b0574"
+  },
+  "artwork": [
+    {
+      "evidence": "evidence/preview.json",
+      "evidence_sha256": "09e759ca83bb806a6fc130309e5600a676b40839c837268baa5a84a2d4d61c88",
+      "file": "previews/preview.png",
+      "sha256": "6df426cec38373bce269b966fdaa49e8db651e04dafd26f2d95a7b1f8bba24b3",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Modular Symmetric Split and Return \u2014 Level 2 (15.5 m)",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/preview-top.json",
+      "evidence_sha256": "347cec9c1d5ef09a03420bc6e45d84c55834a5d2ebd9aa891a9cb213a1d8b9a3",
+      "file": "previews/preview-top.png",
+      "sha256": "cf17ef5dbc73c19ee6f1edbb99055f4c74181bfecffb05751cf7a5a30b2325c8",
+      "size": [
+        1600,
+        1200
+      ],
+      "title": "Piece - HSR Modular Symmetric Split and Return \u2014 Level 2 (15.5 m)",
+      "png_changed": true
+    },
+    {
+      "evidence": "evidence/connection-overview.json",
+      "evidence_sha256": "9756e83390d81f2fe7742c45123ea08378fbd218fc6cb9eaf686da9807737628",
+      "file": "previews/connection-overview.png",
+      "sha256": "ef54512bbb4baad8e928c2b092063d8923c47103941802e0b8c10dd1712077e1",
+      "size": [
+        2000,
+        5916
+      ],
+      "title": "Piece - HSR Modular Symmetric Split and Return \u2014 Level 2 (15.5 m)",
+      "png_changed": true
+    }
+  ],
+  "angled_thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "04f928203eac7e4bcfc29888c62f71f5a1f72d313fef0cdd1f185cf937a8e777"
+  },
+  "presentation": {
+    "authored_rotation_ccw_degrees": 0,
+    "coordinate_scope": "Independent local X/Y tile-centre grid",
+    "tile_metres": 16,
+    "top_grid": {
+      "colour": "#00ff00",
+      "line_width_pixels": 2,
+      "major_line_width_pixels": 3,
+      "drawn_above_model": true
+    },
+    "captions": "Shared Piece title with measured heights, view purpose, camera direction, and fixed software/source identification. Changing game-test status remains in the generated matrix and linked test cases."
+  },
+  "earlier_software_reports_preserved": {
+    "evidence/saved-resource-checks.json": "2540c36e65f98f10f876a266abf3c8ba85e5f21c8e081bd8a560b7ea335e989f"
+  },
+  "geometry_changed": false,
+  "game_identities_changed": false,
+  "route_measurements_changed": false,
+  "icon_changed": false,
+  "non_image_cases_preserved": true,
+  "original_observation_dictionaries_preserved": true,
+  "original_observations_sha256": "2f12448b0414e63e5caa11961e16797c48997e25c68fd11c25e4a9178f2abcdd",
+  "manual_observations_added": 0,
+  "native_geometry_recompiled": false,
+  "assembly_rendered": false,
+  "installed": false,
+  "software_visual_review": {
+    "reviewer": "Coding agent inspecting the actual generated PNGs through standalone-view and overview-scene/caption contact sheets",
+    "result": "passed",
+    "scope": "Complete model, local coordinates, title and view wording, readable green top boundaries, fixed footer, and overview marker placement. This is not an added human observation.",
+    "connection_card_bitmaps_unchanged_from_verified_build_docs": 4
+  }
+}

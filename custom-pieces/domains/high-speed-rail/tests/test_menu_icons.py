@@ -8,7 +8,7 @@ import unittest
 
 from PIL import Image
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp.dbpf import encode_exemplar, exemplar
@@ -45,8 +45,8 @@ class MenuIconCategoryTests(unittest.TestCase):
         for spec in load_catalog(ROOT)['pieces']:
             result[spec['id']] = icon_identity(spec['menu']['style'])['badge']
         self.assertEqual({slug for slug, badge in result.items() if badge == 'PNP'}, {
-            'directional-hsr-t-smooth-at-grade',
-            'directional-hsr-t-smooth-diagonal-at-grade'})
+            'hsr-l2-two-track-t-junction-at-grade-smooth',
+            'hsr-l2-two-track-t-junction-diagonal-at-grade-smooth'})
 
     def test_network_and_type_codes_distinguish_ground_mixed_and_upper_parts(self):
         expected = {
@@ -71,7 +71,8 @@ class MenuIconCategoryTests(unittest.TestCase):
         expected = {
             'modular-south-junction': 'JCT', 'modular-paired-climb': 'RMP',
             'modular-crossing-core': 'XNG',
-            'l2-compact-fan-diverge': 'SPL', 'l2-paired-fan-compact-join': 'JCT',
+            'l2-paired-fan-compact-core': 'JCT',
+            'l2-paired-straight-recessed-web': 'STR',
             'l2-short-mainline-diverge-core': 'SPL', 'l2-short-opposed-merge-core': 'MRG',
             'l2-shortened-departure-curve': 'CRV', 'l2-shortened-return-curve': 'CRV',
         }

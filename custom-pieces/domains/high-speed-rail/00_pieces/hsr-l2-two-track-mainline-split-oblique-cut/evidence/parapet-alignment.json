@@ -1,0 +1,278 @@
+{
+  "schema_version": 3,
+  "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+  "purpose": "Saved native proof of the X3 curved right-border continuation, retaining the accepted continuous left border and all unchanged track, floor, support, and wing geometry.",
+  "checked_at_utc": "2026-10-28T16:04:59.532173+00:00",
+  "source_comparison": {
+    "baseline_geometry_sha256": "4ab1cb1c939a896800373840832be4dd02dc6b199a41f7831e18ee65cb3f1ca4",
+    "current_geometry_sha256": "cba97aca000381fee6d99dce0e63cf35d6be467b57b4e4b0b2db82ef4001cd9c",
+    "only_changed_geometry_property": "south_parapet_alignment",
+    "all_preexisting_geometry_outside_alignment_unchanged": true,
+    "original_geometry_without_alignment_semantic_sha256": "871c42775ee4315b47cfb7f97059a8fd3c35623f1b7525f1e0c0c5d338bed5b5",
+    "accepted_left_alignment_values_unchanged": true
+  },
+  "baseline": {
+    "directory_relative_to_library": "dist/diverge-border-follow-curve",
+    "dat_sha256": "8ec7e84b0e01f57412948eebd51173d87d3436704ebb021c477e3be3ed123b81",
+    "actual_existing_verified_build_reused": true,
+    "snapshot": "evidence/design-history/before-right-border-extension/index.json",
+    "snapshot_sha256": "c00d46028afafa7ba2cc5f4b1a1a0042f729aee6ddaf8a7c6708ed1bae1607f7"
+  },
+  "candidate": {
+    "directory_relative_to_library": "dist/diverge-right-border-joined",
+    "dat_sha256": "d2666cde677ef29a179e4fc30e6cd1cbd1d4d617f931b4939bdeebea1704a300"
+  },
+  "saved_resources": {
+    "identities_unchanged": true,
+    "resource_count": 54,
+    "changed_resources": [
+      "5ad0e817-badb57f1-7f584300",
+      "5ad0e817-badb57f1-7f584301",
+      "5ad0e817-badb57f1-7f584302",
+      "5ad0e817-badb57f1-7f584303",
+      "5ad0e817-badb57f1-7f584304",
+      "5ad0e817-badb57f1-7f584ff5"
+    ],
+    "all_non_model_non_shadow_resources_unchanged": true,
+    "all_shadow_resources_unchanged": true,
+    "unchanged_encoded_subsets": [
+      {
+        "tile_id": "7f584000",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 4896,
+          "sha256": "1f33234f342f401a778335770341afdbb7c968b1899c82a7f6a5e7255ba67dcd"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "accepted_left_raised_concrete": {
+          "unchanged_encoded_triangles": 25,
+          "sha256": "04bc96b6c3f6829c709bc48a7cfc3d51551d8f18d7c14c2f95dab7177d16c5b9"
+        }
+      },
+      {
+        "tile_id": "7f584100",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 5660,
+          "sha256": "f196e5bb6f0f015a2521b02ed03e8a658f6b7ddd200a766d07f198403e21895d"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 22,
+          "sha256": "f763ed8b8568a5c30946fc30451e0c46957cbf884f06b8680fd4db20628785e7"
+        },
+        "accepted_left_raised_concrete": {
+          "unchanged_encoded_triangles": 135,
+          "sha256": "049c9f510b5c6a76d6a415f9935a73d61bcdd6c8d27ab8927b37c18664f0d993"
+        }
+      },
+      {
+        "tile_id": "7f584200",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 7294,
+          "sha256": "e83e5400bfd537697667ce9b8b1718d9c5c78bb0736a7554a90534d0ca9d9c81"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 603,
+          "sha256": "3ea112f48cd062dcf4db062aba208485e47efb1576fa33fa8bd083e87fad2563"
+        },
+        "accepted_left_raised_concrete": {
+          "unchanged_encoded_triangles": 200,
+          "sha256": "ad3a75550062f6efbb82f896db3c33facdf77880c384fc569d6720f6524fd0df"
+        }
+      },
+      {
+        "tile_id": "7f584300",
+        "floor_and_rail": {
+          "unchanged_encoded_triangles": 660,
+          "sha256": "79306ffa9236382f5a3d2a333cd6e7b30c0226e283887df156c71c03fab9192b"
+        },
+        "support": {
+          "unchanged_encoded_triangles": 26,
+          "sha256": "80526cb1341afd87ef5e73b2df9096725410e8e7391a75d9d9a22c60d4e3a501"
+        },
+        "retained_wing": {
+          "unchanged_encoded_triangles": 135,
+          "sha256": "b8efaacd6ee98e1f92c4199b620ef9b42f312c9bc885ddb0721ff7d9e573ed95"
+        },
+        "accepted_left_raised_concrete": {
+          "unchanged_encoded_triangles": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "accepted_left_subset_scope": "Each complete triangle entirely west of local east32m, at or above the ballast, entirely in the southern parapet band, and with some area above the ballast. Crossing triangles and floor-only faces are excluded from this particular subset; full floors, supports, and wings are compared separately."
+  },
+  "alignment": {
+    "shape": "Both raised borders follow their existing branch inside ballast boundaries into the original curved wings; the old perpendicular right cap is absent.",
+    "old_right_perpendicular_cap_east_m": 43.776078282276934,
+    "right_inner_join_east_south_m": [
+      40.361872522872716,
+      5.996547698974609
+    ],
+    "right_outer_join_east_south_m": [
+      43.669002829692054,
+      7.5
+    ],
+    "westward_extension_at_inner_edge_m": 3.4142057594042186,
+    "westward_extension_at_outer_edge_m": 0.10707545258487983,
+    "branch_inside_half_width_m": 2.6,
+    "required_train_half_width_m": 2.5,
+    "saved_face_audit": {
+      "south_parapet_top_sections_checked": 23,
+      "south_parapet_inside_wall_sections_checked": 27,
+      "south_parapet_closed_end_faces_checked": 0,
+      "south_parapet_right_inner_join_east_m": 40.361872522872716,
+      "south_parapet_right_outer_join_east_m": 43.669002829692054,
+      "south_parapet_native_thickness_m": 1.5034523000000002,
+      "south_parapet_right_top_union_area_m2": 20.962600206914082,
+      "south_parapet_right_expected_top_union_area_m2": 20.96260800125806,
+      "south_parapet_right_top_overlap_area_m2": 2.3002606042155094e-08,
+      "south_parapet_left_perpendicular_cap_absent": true,
+      "south_parapet_right_perpendicular_cap_absent": true
+    },
+    "right_curved_wall_full_facet_audit": [
+      {
+        "start_east_south_m": [
+          40.361872522872716,
+          5.996547698974609
+        ],
+        "end_east_south_m": [
+          40.50181658234007,
+          6.055294665339927
+        ],
+        "saved_vertical_union_area_m2": 0.12141978676035908,
+        "expected_bed_to_top_area_m2": 0.12141990596344725,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          40.50181658234007,
+          6.055294665339927
+        ],
+        "end_east_south_m": [
+          40.91635935607245,
+          6.232687350697354
+        ],
+        "saved_vertical_union_area_m2": 0.3607231606927198,
+        "expected_bed_to_top_area_m2": 0.36072326103129115,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          40.91635935607245,
+          6.232687350697354
+        ],
+        "end_east_south_m": [
+          41.33000604477013,
+          6.413101531669849
+        ],
+        "saved_vertical_union_area_m2": 0.36102373683708666,
+        "expected_bed_to_top_area_m2": 0.36102385137877707,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          41.33000604477013,
+          6.413101531669849
+        ],
+        "end_east_south_m": [
+          41.74273022684391,
+          6.596551049678716
+        ],
+        "saved_vertical_union_area_m2": 0.36132673993757286,
+        "expected_bed_to_top_area_m2": 0.36132696604514397,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          41.74273022684391,
+          6.596551049678716
+        ],
+        "end_east_south_m": [
+          42.154505258903015,
+          6.783049131744317
+        ],
+        "saved_vertical_union_area_m2": 0.3616325488798484,
+        "expected_bed_to_top_area_m2": 0.3616325867285913,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          42.154505258903015,
+          6.783049131744317
+        ],
+        "end_east_south_m": [
+          42.56530428579969,
+          6.972608383111493
+        ],
+        "saved_vertical_union_area_m2": 0.361940667753994,
+        "expected_bed_to_top_area_m2": 0.3619406929046817,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          42.56530428579969,
+          6.972608383111493
+        ],
+        "end_east_south_m": [
+          42.975100250921244,
+          7.165240780177557
+        ],
+        "saved_vertical_union_area_m2": 0.36225102128205755,
+        "expected_bed_to_top_area_m2": 0.3622512617946433,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          42.975100250921244,
+          7.165240780177557
+        ],
+        "end_east_south_m": [
+          43.38386590672171,
+          7.360957663730825
+        ],
+        "saved_vertical_union_area_m2": 0.36256417591702483,
+        "expected_bed_to_top_area_m2": 0.3625642683364194,
+        "duplicate_area_m2": 0.0
+      },
+      {
+        "start_east_south_m": [
+          43.38386590672171,
+          7.360957663730825
+        ],
+        "end_east_south_m": [
+          43.669002829692054,
+          7.5
+        ],
+        "saved_vertical_union_area_m2": 0.2537855775732947,
+        "expected_bed_to_top_area_m2": 0.25378559520845534,
+        "duplicate_area_m2": 0.0
+      }
+    ],
+    "previous_short_right_saved_shape_rejected": true,
+    "previous_short_right_saved_shape_rejection": "Trumpet south parapet does not follow its continuous ballast outline: east=40.50181658234007, actual=[], expected=[(-6.055294665339927, -5.9965477)]",
+    "earlier_square_left_saved_shape_rejected": true,
+    "earlier_square_left_saved_shape_rejection": "Trumpet south parapet does not follow its continuous ballast outline: east=21.0, actual=[(-7.503467578666358, -7.5)], expected=[(-7.50346916, -6.08737256)]"
+  },
+  "scope": {
+    "piece_only": true,
+    "assembly_integration": "deferred",
+    "trumpet_rendered": false,
+    "game_observations_added": false,
+    "human_preview_approval_inferred": false,
+    "installed": false
+  }
+}

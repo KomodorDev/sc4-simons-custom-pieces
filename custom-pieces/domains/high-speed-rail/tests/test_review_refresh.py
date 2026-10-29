@@ -8,8 +8,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
 from scp.content import new_manual_record
 
 SPEC = importlib.util.spec_from_file_location(
@@ -41,9 +42,9 @@ class ReviewRefreshTests(unittest.TestCase):
                       for identifier in ('flagged', 'cleared', 'later')}
 
     def test_saved_current_review_counts_and_flags_validate_without_mutation(self):
-        path = ROOT / 'domains/high-speed-rail/junction-design-review.json'
+        path = ROOT / 'domains/high-speed-rail/junction-design-review.jsonc'
         raw = path.read_bytes()
-        review = json.loads(raw)
+        review = jsonc.loads(raw.decode())
         known = {piece['id']: piece for piece in REVIEW.load_catalog(ROOT)['pieces']}
         result = REVIEW.validate_saved_review(review, known)
         self.assertEqual(result['counts'], {'no-objection-recorded': 98, 'review-needed': 32})
@@ -77,15 +78,17 @@ class ReviewRefreshTests(unittest.TestCase):
     def test_refresh_uses_piece_readmes_preserves_records_and_never_recreates_guide(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            (root / 'project.json').write_text('{}\n')
+            jsonc.dump(root / 'project.jsonc', {}, title='Fixture project', summary='Temporary root marker for saved-review tests.')
             domain = root / 'domains/high-speed-rail'
             domain.mkdir(parents=True)
-            review_path = domain / 'junction-design-review.json'
-            review_path.write_text(json.dumps(evidence(), indent=2)+'\n')
+            review_path = domain / 'junction-design-review.jsonc'
+            jsonc.dump(review_path, evidence(), title='Fixture saved review', summary='Temporary measured-review records used to exercise refresh behavior.')
             review_bytes = review_path.read_bytes()
-            collections_path = domain / 'collections.json'
-            collections_path.write_text(json.dumps({'collections': {
-                'ordinary': ['cleared'], 'junctions-needing-redesign': ['cleared']}})+'\n')
+            collections_path = domain / 'collections.jsonc'
+            jsonc.dump(collections_path, {'collections': {
+                'ordinary': ['cleared'], 'junctions-needing-redesign': ['cleared']}},
+                title='Fixture HSR collections', summary='Temporary selections used to exercise saved-review refresh behavior.')
+            collection_header = collections_path.read_text().splitlines()[:2]
             observations = {}
             connections = {}
             for identifier in self.known:
@@ -113,7 +116,7 @@ class ReviewRefreshTests(unittest.TestCase):
                     'path': 'domains/high-speed-rail', 'name': 'High-speed rail'}},
                     'pieces': [json.loads((domain / '00_pieces' / identifier / 'piece.json').read_text())
                                for identifier in self.known],
-                    'piece_sets': json.loads(collections_path.read_text())['collections'],
+                    'piece_sets': jsonc.load(collections_path)['collections'],
                     '_assemblies': []}
 
             with patch.object(REVIEW, 'load_catalog', side_effect=catalog), patch(
@@ -128,9 +131,10 @@ class ReviewRefreshTests(unittest.TestCase):
             self.assertFalse(result['game_models_changed'])
             self.assertFalse(result['installed'])
             self.assertEqual(review_path.read_bytes(), review_bytes)
+            self.assertEqual(collections_path.read_text().splitlines()[:2], collection_header)
             for file, raw in {**connections, **observations}.items():
                 self.assertEqual(file.read_bytes(), raw)
-            selected = json.loads(collections_path.read_text())['collections']
+            selected = jsonc.load(collections_path)['collections']
             self.assertEqual(selected['ordinary'], ['cleared'])
             self.assertEqual(selected['flagged-junctions'], ['flagged'])
             self.assertEqual(selected['junctions-needing-review'], ['flagged'])

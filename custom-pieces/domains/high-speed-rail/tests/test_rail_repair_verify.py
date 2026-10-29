@@ -9,9 +9,11 @@ import struct
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp.catalog import load_catalog
 from scp.models import parse_s3d, pack_s3d
@@ -64,9 +66,9 @@ class RailRepairVerifierTests(unittest.TestCase):
             cls.paths[recipe] = {(*PATH, int(tile, 16)): encode_paths(layout[tuple(cell)]['routes'])
                                  for cell, tile in zip(piece['cells'], piece['tile_ids'])}
         cls.donors = None
-        local = ROOT/'local/settings.json'
+        local = local_settings(ROOT)
         if local.exists():
-            candidates = list(Path(json.loads(local.read_text())['plugins']).rglob('High Speed Rail.dat'))
+            candidates = list(Path(jsonc.load(local)['plugins']).rglob('High Speed Rail.dat'))
             if len(candidates) == 1:
                 cls.donors = {k: decompress(v) for k, v in entries(candidates[0].read_bytes()).items()}
 

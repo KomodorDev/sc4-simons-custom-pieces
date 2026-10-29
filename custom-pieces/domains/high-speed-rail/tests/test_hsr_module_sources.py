@@ -6,6 +6,7 @@ whole-assembly audits remain separate geometry checks.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 import hashlib
 import json
 import math
@@ -14,25 +15,67 @@ import unittest
 from unittest.mock import patch
 
 from scp.track_paths import encode_paths
+from scp.subject_sources import piece_directory
 from scp_hsr.hsr_partition_components import (
     RECIPES, build_models, model_inputs, partition_info, partition_layout,
 )
 from scp_hsr.hsr_partition_components_verify import CONTRACTS, MODULE_TILE_FINGERPRINTS
+from scp_hsr.hsr_components_verify import CONTRACTS as COMPONENT_CONTRACTS, _contract, check_paths
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
+
+
+class LiteralComponentSupportMetadataTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        domain = ROOT/'domains/high-speed-rail'
+        assembly = json.loads((domain/'01_assemblies/hsr-trumpet-straight-stem/assembly.json').read_text())
+        cls.sources = {}
+        for identifier in {row['piece_id'] for row in assembly['placements']}:
+            directory = domain/'00_pieces'/identifier
+            if (directory/'geometry.json').is_file():
+                cls.sources[identifier] = (
+                    json.loads((directory/'piece.json').read_text()),
+                    json.loads((directory/'geometry.json').read_text())['metadata'])
+
+    def test_all_nine_literal_trumpet_definitions_match_geometry_and_independent_supports(self):
+        self.assertEqual(len(self.sources), 9)
+        for identifier, (piece, geometry) in self.sources.items():
+            with self.subTest(piece=identifier):
+                self.assertEqual(piece['component']['support_centers'], geometry['support_centers'])
+                contract = _contract(piece)
+                self.assertIs(contract, COMPONENT_CONTRACTS[piece['recipe']])
+
+    def test_changed_support_coordinates_are_rejected_for_every_literal_type(self):
+        for identifier, (piece, _) in self.sources.items():
+            with self.subTest(piece=identifier):
+                changed = deepcopy(piece)
+                changed['component']['support_centers'][0][0] += 1.
+                with self.assertRaisesRegex(ValueError, 'declared supports differ'):
+                    check_paths({}, changed)
+
+    def test_obsolete_seven_support_fan_declaration_is_rejected_for_the_core(self):
+        piece = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/
+                            'hsr-l2-mixed-fan-compact-recessed-web/piece.json').read_text())
+        changed = deepcopy(piece)
+        changed['component']['support_centers'] = [
+            [48., 0.], [48., -16.], [48., -32.], [40., -46.],
+            [56., -46.], [32., -64.], [64., -64.]]
+        with self.assertRaisesRegex(ValueError, 'declared supports differ'):
+            check_paths({}, changed)
 
 
 class ReusableModuleSourceTests(unittest.TestCase):
     def test_current_partition_geometry_keeps_its_frozen_source_bytes(self):
         expected = {
-            'hsr-component-modular-crossing-core': '8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940',
-            'hsr-component-modular-paired-climb': '0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601',
-            'hsr-component-modular-south-junction': '72005262cfa843a3c380da08e5cab2f03106e3dce7b350b126b70ca5df595fdd',
+            'hsr_component_modular_crossing_core': '8a5cfc5a7b58063453447b47d525527dd58a3a46446173ae6c87d6f7e5fd2940',
+            'hsr_component_modular_paired_climb': '0ffa98fb47a7040d8cd3ca7d6b1666aaa9e1c56e41515e8ec058569a36236601',
+            'hsr_component_modular_south_junction': 'fda2275ea4013c2e9333e3904fc8e5f96de483ce12982c7d45e2fc4d3485ef5e',
         }
-        self.assertEqual(set(RECIPES), {slug.replace('-', '_') for slug in expected})
-        for slug, digest in expected.items():
-            path = ROOT/'domains/high-speed-rail/00_pieces'/slug/'geometry.json'
+        self.assertEqual(set(RECIPES), set(expected))
+        for recipe, digest in expected.items():
+            path = piece_directory(recipe, ROOT)/'geometry.json'
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
 
     def test_every_local_path_matches_its_direct_current_module_fingerprint(self):
@@ -52,8 +95,7 @@ class ReusableModuleSourceTests(unittest.TestCase):
         for recipe in RECIPES:
             with self.subTest(recipe=recipe):
                 info = partition_info(recipe)
-                piece = json.loads((ROOT/'domains/high-speed-rail/00_pieces'/
-                                    recipe.replace('_', '-')/'piece.json').read_text())
+                piece = json.loads((piece_directory(recipe, ROOT)/'piece.json').read_text())
                 self.assertEqual(piece['name'], info['name'])
                 self.assertEqual(piece['description'], info['description'])
                 self.assertEqual(piece['cells'], [list(cell) for cell in info['cells']])
@@ -88,10 +130,21 @@ class ReusableModuleSourceTests(unittest.TestCase):
         for recipe in RECIPES:
             mapping, config = model_inputs(recipe)
             encoded = tuple((source, repr(source).encode()) for source in mapping.values())
-            with patch('scp_hsr.hsr_components._cached_models', return_value=encoded) as compiler:
+            expected = {local: repr(source).encode() for local, source in mapping.items()}
+            with patch('scp_hsr.hsr_components._cached_models', return_value=encoded) as compiler, \
+                 patch('scp_hsr.hsr_symmetric_parapet.repair_models', return_value=expected) as repair, \
+                 patch('scp_hsr.hsr_symmetric_stem.repair_stem_models', return_value=expected) as stem_repair:
                 result = build_models(b'native donor', recipe)
-            self.assertEqual(result, {local: repr(source).encode() for local, source in mapping.items()})
+            self.assertEqual(result, expected)
             self.assertEqual(json.loads(compiler.call_args.args[1]), config)
+            if recipe == 'hsr_component_modular_south_junction':
+                rule = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())['junction_wedge_alignment']
+                repair.assert_called_once_with(b'native donor', expected, mapping, rule)
+                stem_rule = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())['stem_parapet_alignment']
+                stem_repair.assert_called_once_with(b'native donor', expected, mapping, stem_rule)
+            else:
+                repair.assert_not_called()
+                stem_repair.assert_not_called()
 
 
 if __name__ == '__main__':

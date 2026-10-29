@@ -1,0 +1,503 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "diagonal-hsr-diagonal-ghsr",
+  "menu_name": "Diagonal HSR over Diagonal GHSR",
+  "source": {
+    "asset_file": "diagonal-hsr-diagonal-ghsr.dat",
+    "preview_id": "7f502ff5",
+    "source_dat_sha256": "a99055a86549fc1a7823691c6b32728d35292d0fc00837b39905c1a4870b61b0",
+    "model_sha256": "502d950af6ec3e3e0d60256d61c38f1bba6df5edf1a415245a2eda8b549f8b4a"
+  },
+  "file": "previews/preview.png",
+  "sha256": "1b2f522d9ce8b7ef03a3a26af3a9b994026dba13ecc866b121ef9a943f39d81a",
+  "size": [
+    1600,
+    1200
+  ],
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "b73c6d28a2d7fed4f1a0bfff5bb8b788801e7cbbe26b6be32c9df43cfe1ddde8",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      8.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        0
+      ],
+      "Y": [
+        0,
+        1
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        1
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      -5.65685424949238,
+      0.9425610132393265
+    ],
+    "pixels_per_metre": 27.110574267589573,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      8.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      8.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        0
+      ],
+      "north_index_range": [
+        0,
+        1
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      646.6394327482071,
+      668.5264330001138
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0
+    ],
+    "north_boundaries_m": [
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            339.9182982446215,
+            668.5264330001138
+          ],
+          [
+            953.3605672517929,
+            352.58030770220466
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            646.6394327482071,
+            826.4994956490684
+          ],
+          [
+            1260.0817017553786,
+            510.55337035115923
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            339.9182982446215,
+            668.5264330001138
+          ],
+          [
+            646.6394327482071,
+            826.4994956490684
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            646.6394327482071,
+            510.55337035115923
+          ],
+          [
+            953.3605672517929,
+            668.5264330001138
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            953.3605672517929,
+            352.58030770220466
+          ],
+          [
+            1260.0817017553786,
+            510.55337035115923
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -24.0
+        ],
+        "pixel": [
+          478.16560012414,
+          755.2968714275321
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          478.16560012414,
+          581.7559945726956
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          784.8867346277257,
+          423.78293192374105
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.02190935640206
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 345.0120909096626,
+      "north_pixels": 345.01209090966256,
+      "caption": "1 tile = 16 m"
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        -5.65685424949238,
+        0.9425610132393265
+      ],
+      "pixels_per_metre": 27.110574267589573,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -24.0,
+        8.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 180,
+    "mesh_count": 4,
+    "bounds_xyz_m": [
+      [
+        [
+          -8.262723922729492,
+          10.869477272033691
+        ],
+        [
+          -0.9893320202827454,
+          1.9893319606781006
+        ],
+        [
+          -10.827436447143555,
+          8.261429786682129
+        ]
+      ],
+      [
+        [
+          -10.827436447143555,
+          8.261429786682129
+        ],
+        [
+          14.01066780090332,
+          16.98933219909668
+        ],
+        [
+          -10.869477272033691,
+          8.262723922729492
+        ]
+      ],
+      [
+        [
+          -10.869477272033691,
+          8.262723922729492
+        ],
+        [
+          -0.9893320202827454,
+          1.9893319606781006
+        ],
+        [
+          7.738570213317871,
+          26.827436447143555
+        ]
+      ],
+      [
+        [
+          -8.261429786682129,
+          10.827436447143555
+        ],
+        [
+          14.01066780090332,
+          16.98933219909668
+        ],
+        [
+          7.737276077270508,
+          26.869476318359375
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf31a3f",
+      "0bf31a3f",
+      "0bf31a3f",
+      "0bf31a3f"
+    ]
+  },
+  "render_model_sha256": "502d950af6ec3e3e0d60256d61c38f1bba6df5edf1a415245a2eda8b549f8b4a",
+  "textures": [
+    {
+      "instance": "0bf31a3f",
+      "fsh_sha256": "32350fbb541196b5f80ab8a65f89034601d2880885097c6dc4bdf217de2b8d38",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "captions": [
+    "Diagonal HSR over Diagonal GHSR",
+    "Reusable piece | southeast view | default orientation: 0 degrees",
+    "Independent local X/Y grid | piece reference: X0, Y1 | 1 tile = 16 m",
+    "Complete reusable piece shown at its default orientation.",
+    "Software model preview; in-game placement and traffic remain unverified."
+  ],
+  "annotation_mode": "Exact reusable menu name in header; independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "tile_metres": 16.0,
+    "origin_marker_visible": false
+  },
+  "renderer_metadata_note": "View settings normalized from saved camera/grid facts; original image bytes retained. No new render or manual review is claimed.",
+  "artwork_relocation": {
+    "purpose": "Path-only reorganization of existing artwork; no rendering or verification was rerun.",
+    "image_directory": "previews",
+    "image_bytes_changed": false,
+    "original_renderer_and_input_fingerprints_preserved": true
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "purpose": "Current integrated import verification; original prototype measurements remain historical evidence.",
+  "checked_at": "2026-10-27",
+  "piece_id": "blind-hsr-road-stack",
+  "build": "dist/piece-authoring-examples",
+  "integrated_static_checks_passed": true,
+  "model_and_path_resources_byte_identical_to_preserved_prototype": 7,
+  "measured_ports_journeys_forbidden_transfers_and_orientations_unchanged": true,
+  "current_dat_sha256": "ba3f30a509a604e4f4cad13eae1b8eb3af3eac5e2b2b517badf02781e49e996f",
+  "prototype_dat_sha256": "ba3f30a509a604e4f4cad13eae1b8eb3af3eac5e2b2b517badf02781e49e996f",
+  "independent_piece_checks": {
+    "id": "blind-hsr-road-stack",
+    "menu": {
+      "piece_id": "blind-hsr-road-stack",
+      "title": "SCP | [PART] HSR Level 2 above Parallel Road Level 0 \u2014 Native Paired Straight",
+      "menu": "Rail",
+      "menu_id": "6a47f828",
+      "puzzle_id": "f828",
+      "order": "7011f828",
+      "icon_style": "rail-hsr-road-stack",
+      "icon": {
+        "width": 176,
+        "height": 44,
+        "pixel_format": "RGBA8",
+        "interlaced": false,
+        "states": [
+          "locked",
+          "normal",
+          "selected",
+          "highlighted"
+        ],
+        "state_dimensions": [
+          44,
+          44
+        ],
+        "transparent_corners": true,
+        "crc_valid": true,
+        "sha256": "032833f39bc323c7f4d8f644af0cf3990b8b201b77e1be52c8872546e5a0c949"
+      },
+      "icon_identity": {
+        "category": "part",
+        "badge": "PART",
+        "network": "HSR",
+        "palette": "teal",
+        "kind": "STR",
+        "meaning": "Individual building piece"
+      },
+      "retained_native_properties_verified": true,
+      "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+      "resources": [
+        {
+          "tgi": "2026960b-123006aa-6a47f828",
+          "bytes": 850,
+          "sha256": "fa8d2fb45326e4672a6e01fdfd905a83be491312040c177061fd4733178a67a6"
+        },
+        {
+          "tgi": "2026960b-123007bb-6a47f828",
+          "bytes": 158,
+          "sha256": "c77789393ffabdec417b812dfd0e4d155156cf237654c80602db3d23ee4896a2"
+        },
+        {
+          "tgi": "6534284a-2a3858e4-6a47f828",
+          "bytes": 265,
+          "sha256": "0b9dff440600b228361697d6893fe1ddefeeae361094fc6762c2c8ed15ed85ed"
+        },
+        {
+          "tgi": "856ddbac-6a386d26-6a47f828",
+          "bytes": 6550,
+          "sha256": "032833f39bc323c7f4d8f644af0cf3990b8b201b77e1be52c8872546e5a0c949"
+        }
+      ],
+      "in_game_menu_tested": false
+    },
+    "paths": {
+      "route_count": 10,
+      "hsr_routes": 2,
+      "road_vehicle_routes": 2,
+      "native_pedestrian_routes": 6,
+      "proper_rotations_checked": 4,
+      "native_offsets_and_directions_preserved": true,
+      "no_hsr_road_transfers": true
+    },
+    "models": {
+      "models_checked": 6,
+      "exact_native_visible_hsr_mesh": true,
+      "native_road_material_and_uv_range": true,
+      "ground_route_pier_clearance": true,
+      "proper_rotations_geometry_checked": 4,
+      "preview_matches_tiles": true,
+      "support_closed_solid_faces_checked": 24,
+      "clearance_margins_m": {
+        "minimum_vehicle_horizontal": 0.3500000238418579,
+        "minimum_pedestrian_horizontal": 4.840000023841857,
+        "minimum_cap_vertical": 9.0
+      },
+      "audit_envelopes_m": {
+        "pedestrian_width": 1.8,
+        "pedestrian_height": 2.2,
+        "vehicle_width": 3.0,
+        "vehicle_height": 4.5
+      },
+      "game_collision_envelopes_known": false,
+      "render_groups": {
+        "all_authored_groups_within_budget": true,
+        "model_resources_checked": 6,
+        "distinct_model_payloads_checked": 1,
+        "details": [
+          {
+            "authored_frames_checked": 3,
+            "max_authored_vertices": 8,
+            "max_authored_triangles": 12,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          }
+        ]
+      }
+    },
+    "shadows": {
+      "artwork": "new code-authored vertical triangle silhouettes",
+      "projection": "vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset",
+      "tile_metres": 16.0,
+      "supersample_per_axis": 8,
+      "all_five_zoom_resources_valid": true,
+      "silhouettes_match_actual_s3d_geometry": true,
+      "native_projection_calibrated": false,
+      "texture_alpha_cutouts_sampled": false,
+      "in_game_shadow_selection_tested": false,
+      "subpixel_structural_zooms": [],
+      "images": [
+        {
+          "instance": "7f591000",
+          "width": 8,
+          "height": 8,
+          "alpha_bbox": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "coverage_pixels": 64.0,
+          "sha256": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2"
+        },
+        {
+          "instance": "7f591001",
+          "width": 16,
+          "height": 16,
+          "alpha_bbox": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "coverage_pixels": 256.0,
+          "sha256": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409"
+        },
+        {
+          "instance": "7f591002",
+          "width": 32,
+          "height": 32,
+          "alpha_bbox": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "coverage_pixels": 1024.0,
+          "sha256": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd"
+        },
+        {
+          "instance": "7f591003",
+          "width": 64,
+          "height": 64,
+          "alpha_bbox": [
+            0,
+            0,
+            64,
+            64
+          ],
+          "coverage_pixels": 4096.0,
+          "sha256": "f22537853e4049367871bedd85d3a62cd1112cb0d960241d915dc61fbddf08ab"
+        },
+        {
+          "instance": "7f591004",
+          "width": 128,
+          "height": 128,
+          "alpha_bbox": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "coverage_pixels": 16384.0,
+          "sha256": "a69fb0276cf8d1284cf6594ecbed6dec30c83926e95b22dcd78647a943862b73"
+        }
+      ]
+    }
+  },
+  "game_observations_added": 0,
+  "installed": false,
+  "published": false
+}

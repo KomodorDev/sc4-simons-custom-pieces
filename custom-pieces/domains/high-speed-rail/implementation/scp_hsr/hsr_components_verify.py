@@ -43,17 +43,7 @@ CONTRACTS = {
         'min_height': 30.5, 'max_height': 30.5, 'max_grade': 0.,
         'support_centres_xz': [(0., 0.)],
     },
-    'hsr_component_paired_ramp_l2_to_l4': {
-        **_COMMON, 'kind': 'paired_ramp', 'cells': [(0, row) for row in range(8)],
-        'footprint': (1, 8), 'cost': 800,
-        'ports': {'Sin': (2., -120., 15.5), 'Nout': (2., 8., 30.5),
-                  'Nin': (-2., 8., 30.5), 'Sout': (-2., -120., 15.5)},
-        'port_vectors': {'Sin': (0., 1.), 'Nout': (0., 1.),
-                         'Nin': (0., -1.), 'Sout': (0., -1.)},
-        'movements': [('Sin', 'Nout'), ('Nin', 'Sout')],
-        'min_height': 15.5, 'max_height': 30.5, 'max_grade': .156251,
-        'flat_collar_m': 8., 'support_centres_xz': [(0., 16.*row) for row in range(8)],
-    },
+
 }
 
 
@@ -166,6 +156,12 @@ from .hsr_atomic_components_verify import (
 CONTRACTS.update(_ATOMIC_COMPONENT_CONTRACTS)
 
 
+from .hsr_blind_rise_verify import (
+    CONTRACTS as _BLIND_RISE_CONTRACTS, audit_shared_sheet, audit_native_collars,
+)
+CONTRACTS.update(_BLIND_RISE_CONTRACTS)
+
+
 def _contract(spec):
     require(spec['recipe'] in CONTRACTS, 'Unknown HSR component requires an independent literal contract')
     contract = CONTRACTS[spec['recipe']]
@@ -180,6 +176,19 @@ def _contract(spec):
     base = tiles[0]-0x100*cells[0][0]-0x10*cells[0][1]
     require(tiles == [base+0x100*x+0x10*row for x, row in cells],
             'HSR component tile allocation differs from its AutoTileBase grid')
+    if contract['kind'] == 'partition_component' and 'component' in spec:
+        # Complete manifests duplicate the literal geometry's local support
+        # declaration. Resource-only fixtures may omit source metadata, but
+        # a supplied declaration must match the independent measured plan.
+        declared = spec['component'].get('support_centers')
+        expected = [(east, -south) for east, south in contract['support_centres_xz']]
+        require(isinstance(declared, list) and len(declared) == len(expected)
+                and all(isinstance(point, (list, tuple)) and len(point) == 2
+                        and all(type(value) in (int, float) and math.isfinite(value) for value in point)
+                        for point in declared)
+                and all(math.dist(actual, target) <= EPS
+                        for actual, target in zip(sorted(map(tuple, declared)), sorted(expected))),
+                'HSR component declared supports differ from the independent support plan')
     return contract
 
 
@@ -231,23 +240,12 @@ def check_paths(resources, spec, donors=None):
     quality, maximum_grade = {}, 0.
     for movement, points in journeys.items():
         maximum_grade = max(maximum_grade, audit_height_profile(points, contract))
-        if contract['kind'] in ('paired_straight', 'paired_ramp'):
+        if contract['kind'] == 'paired_straight':
             axis = 0 if abs(points[-1][0]-points[0][0]) < EPS else 1
             require(all(abs(point[axis]-points[0][axis]) <= EPS for point in points),
                     'HSR component straight track departs from its literal native offset')
         limits = contract.get('quality_limits', {}).get(movement, _STRAIGHT)
         quality['>'.join(movement)] = measure_journey_quality(points, limits)
-    if contract['kind'] == 'paired_ramp':
-        north, south = journeys['Sin', 'Nout'], list(reversed(journeys['Nin', 'Sout']))
-        for first, second in ((north, south), (south, north)):
-            index = 0
-            for point in first:
-                while index < len(second)-2 and second[index+1][1] < point[1]-EPS:
-                    index += 1
-                a, b = second[index:index+2]
-                t = (point[1]-a[1])/(b[1]-a[1])
-                require(-EPS <= t <= 1.+EPS and abs(point[2]-(a[2]+t*(b[2]-a[2]))) <= EPS,
-                        'HSR component paired ramp tracks do not share the same height profile')
     report = {'tile_count': len(contract['cells']), 'encoded_routes_checked': len(records),
               'external_ports_checked': ports, 'permitted_movements_checked': movements,
               'native_facing_port_tangents_checked': len(native),
@@ -258,6 +256,8 @@ def check_paths(resources, spec, donors=None):
               'native_port_heights_m': sorted(set(point[2] for point in contract['ports'].values())),
               'collision_free_operation_claimed': False}
     report.update(audit_crossings(journeys, contract))
+    if spec['recipe'] in _BLIND_RISE_CONTRACTS:
+        report.update(audit_shared_sheet(journeys))
     if spec['recipe'] in _REFINED_COMPONENT_CONTRACTS:
         report.update(audit_refined_journeys(journeys, spec['recipe']))
     if spec['recipe'] in _TIGHT_LOOP_CONTRACTS:
@@ -376,6 +376,8 @@ def _cached_models(spec_json, immutable):
     report.update(audit_bed_union(triangles, records))
     report.update(audit_visible_rails(triangles, records))
     report.update(audit_supports(triangles, contract))
+    if spec['recipe'] in _BLIND_RISE_CONTRACTS:
+        report.update(audit_native_collars(triangles))
     if contract['kind'] == 'paired_to_single_adapter':
         report.update(audit_adapter_native_profiles(triangles,
             paired_south_north_m=contract.get('native_paired_south_north_m', -120.)))

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "Record the scoped, executed documentation migration checks against unchanged saved game resources, without claiming a new geometry build or game approval.",
+  "piece_id": "hsr-component-upper-paired-straight",
+  "checked_on": "2026-10-27",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "original_source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "executed_checks": {
+    "scoped_actual_resource_extraction": "passed",
+    "independent_compiled_PATH_reextraction": "passed",
+    "authored_connector_metadata": "passed",
+    "connector_export_freshness": "passed",
+    "connector_overview_freshness": {
+      "status": "passed",
+      "boundary_cards": 2,
+      "output_sha256": "eb64de1e784e775ef128c166a31b6940f745a1ca480febdd3817a38c492b6f3b"
+    },
+    "saved_resource_check": {
+      "dat_path": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-upper-paired-straight.dat",
+      "dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+      "model_sha256": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "resource_fingerprints_checked": 15,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    }
+  },
+  "preservation": {
+    "piece_definition_byte_identical": true,
+    "game_icon_byte_identical": true,
+    "geometry_byte_identical": true,
+    "saved_resource_fingerprints_equal_before_documentation_refresh": true,
+    "directed_journeys_equal_before_documentation_refresh": true,
+    "original_observations_preserved": true,
+    "original_preview_and_measurement_evidence_frozen_under": "evidence/design-history/",
+    "historical_files": [
+      {
+        "original_file": "evidence/preview.json",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.json",
+        "sha256": "c6f33c5086e1694e9c3086878390d1d69806a1ac6d651e054ae6de6e3c967501"
+      },
+      {
+        "original_file": "previews/preview.png",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.png",
+        "sha256": "ca1928f38952dd2ae38b6d604b875cf12b68db1ea181f523a50c90ab6ae732b8"
+      },
+      {
+        "original_file": "previews/preview-thumb.png",
+        "preserved_file": "evidence/design-history/preview-thumb-before-documentation-refresh.png",
+        "sha256": "0de47d460202044fcf0e92cc312a4de04c781aa39d9f84ae7a079d1992d27212"
+      },
+      {
+        "original_file": "connections.json",
+        "preserved_file": "evidence/design-history/connections-before-documentation-refresh.json",
+        "sha256": "9601c9de2d4b2cf22fc57fbc2d040f4e3e3595513dcea6c947ac8a5dce7b7268"
+      }
+    ]
+  },
+  "artwork": [
+    {
+      "evidence_file": "evidence/preview.json",
+      "evidence_sha256": "83b9d77a084dd3e5de9378068222fa8df8db6b7d637e8ed3f4a84b5a4dab201e",
+      "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0"
+    },
+    {
+      "evidence_file": "evidence/preview-top.json",
+      "evidence_sha256": "7748041e8c9ca6d96cabfbb96618b7d7ebd159bdf807560a270303248ef4801a",
+      "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0"
+    },
+    {
+      "evidence_file": "evidence/connection-overview.json",
+      "evidence_sha256": "a90a66eb831dc44a58f54c0b487b20545f8668eed8ba9253f703cf0e94d85181",
+      "source_dat_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0"
+    }
+  ],
+  "limits": {
+    "new_geometry_build": false,
+    "construction_rules_reextracted": false,
+    "neighbour_compatibility": "unverified",
+    "physical_seams": "unverified",
+    "game_observations_created": 0,
+    "human_preview_approvals_created": 0,
+    "installed": false
+  }
+}

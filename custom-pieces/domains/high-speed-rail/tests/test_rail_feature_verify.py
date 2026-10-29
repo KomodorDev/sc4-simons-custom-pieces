@@ -8,9 +8,11 @@ import struct
 import sys
 import unittest
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
+from scp import jsonc
+from scp.paths import local_settings
 from scp.dbpf import entries, decompress
 from scp.models import parse_s3d, pack_s3d
 from scp_hsr.rail_features import INFO, build_feature, feature_layout, native_model, native_paths
@@ -34,10 +36,10 @@ def encode_inspected(routes):
 class RailFeatureVerifierTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
+        local = local_settings(ROOT)
         if not local.is_file():
             raise unittest.SkipTest('Audited local NAM donor is unavailable')
-        plugins = Path(json.loads(local.read_text())['plugins'])
+        plugins = Path(jsonc.load(local)['plugins'])
         candidates = list(plugins.rglob('High Speed Rail.dat'))
         if len(candidates) != 1:
             raise unittest.SkipTest('One audited native HSR donor is required')
@@ -45,7 +47,8 @@ class RailFeatureVerifierTests(unittest.TestCase):
         cls.models = {}
         cls.paths = {}
         cls.specs = {}
-        for n, (recipe, info) in enumerate(INFO.items()):
+        for n, recipe in enumerate(sorted(RECIPES)):
+            info = INFO[recipe]
             base = 0x7F550000 + n*0x1000
             spec = {'recipe': recipe, 'name': recipe, 'footprint': list(info['footprint']),
                     'cells': [list(cell) for cell in info['cells']],
@@ -75,8 +78,8 @@ class RailFeatureVerifierTests(unittest.TestCase):
         return resources
 
     def test_all_nine_encoded_port_graphs_have_only_intended_movements(self):
-        self.assertEqual(set(INFO), RECIPES)
-        for recipe in INFO:
+        self.assertEqual(set(self.paths), RECIPES)
+        for recipe in sorted(RECIPES):
             with self.subTest(recipe=recipe):
                 report = check_paths(self.paths[recipe], self.specs[recipe])
                 self.assertTrue(report['cell_seams_match_exactly'])
@@ -146,7 +149,7 @@ class RailFeatureVerifierTests(unittest.TestCase):
                     self.assertEqual(_native_fingerprint(model, -turns % 4), RAMP_GEOMETRY[row])
 
     def test_all_authored_model_families_cover_their_paths_and_match_the_preview(self):
-        recipes = list(INFO)
+        recipes = sorted(RECIPES)
         for recipe in recipes:
             with self.subTest(recipe=recipe):
                 report = check_models(self.fixture(recipe), self.specs[recipe])
@@ -211,7 +214,7 @@ class RailFeatureVerifierTests(unittest.TestCase):
     def test_construction_has_one_literal_table_per_recipe(self):
         from scp_hsr.rail_features import build_rules
         self.assertEqual(set(CONSTRUCTION), RECIPES)
-        for recipe in INFO:
+        for recipe in sorted(RECIPES):
             with self.subTest(recipe=recipe):
                 _, parsed = parse_rules(build_rules(self.specs[recipe]))
                 root = int(self.specs[recipe]['puzzle_id'], 16)

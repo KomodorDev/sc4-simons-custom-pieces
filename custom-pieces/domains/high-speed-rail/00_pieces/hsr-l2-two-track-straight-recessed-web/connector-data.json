@@ -1,0 +1,1402 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+  "domain_id": "high-speed-rail",
+  "source_binding": {
+    "compiled_build": "dist/trumpet-fan-core-parts-final-01",
+    "compiled_manifest_sha256": "f8adf0075f08c77212c4a2f03990b30961108352b12b630604207fa7a7f681f7",
+    "files": {
+      "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-straight-recessed-web.dat": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connections.json": "3a4d9ed95fead5e1b45fbf430d50c68971806bd255275d7fc72efb53ab8c1d80",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/connector-groups.jsonc": "8ce54ecdd123d059c8824c072b258fca96ccd75b9f3528a64b9ef90fc19d97fb",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-paired-straight-recessed-web/piece.json": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
+      "domains/high-speed-rail/connector-profiles.json": "664b6a394a231b79ed706b4945c67dc5684effb1e2cdb8b2ddd9a65e22f237e4",
+      "domains/high-speed-rail/domain.json": "09f6d0c89d51c53f71ba67617532f1924eba6cdaa97926580b451b88781848e1",
+      "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "9bb0b030178285097528e5ca23c85b5a8a8a1ea79d2322b888934980c08c41eb",
+      "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
+      "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "d66f970865f76f6b02fb5ae1caafffd7630957783a19246e3dc791df9c985fa3",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "ecb4874121a0135cc1371ca37d0d305dd9d4d33c9025fd1a38b5d9a277ec09c1",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "a90fc3f1f8f2b53dba5ea6abf619d0cbec2cf4b9996475f4de709ccc8146103b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "5a7629ccdcf60cff289fa928f09ab1d8ca16ce82b365a80cd0501dbbfa42a4b2",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_core_verify.py": "5d6fbcc842bb588dcc9ac35b0624859fe9ea22e37b52f53835566de09e06313f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "202b2c8a7497da4c79f70c2696bb6cba0bc75fa24d0daf72d394997c5864fb5f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "6f457c3d73c3b1b0859eee3ebc42d3c0af2789b67ceafec3ec4712b3462ba211",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "8c27ed386fbca11abb9b711219e44fb7686e42dfa089ef39913f3e23d32b0b4f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "b893fe75e683e4ec2c793c1b7f97a5bc29c68d800b1a4299af58f5d3fe3eadbd",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_recessed_straight_verify.py": "04b09b27ddd1af4bc71a207b056dd581917b03d46a5a7e91b92ce725f5faee43",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem.py": "73c4c71e758aa37f21b3036f77c2c710b4b8b9190e6323054a6c32ba9aee8d38",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_stem_verify.py": "406d22ba293fe0f15c38bc34adec2644b54201c9058049470bd1309e07c0ee1f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_border_verify.py": "629dc983bb3c28eebda5bfd943b43bc0a5d8c6950e517f15ad7007bd44cba165",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "52a40ec5f06f714e23ac0ddac2cef33d9adc276e84c1cad9996acce3b3d4502b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "eb6fb9568489f524f8200e26d30902eb207542dd51f27f03b77b552a455adc00",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
+      "domains/high-speed-rail/implementation/scp_hsr/menu.py": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_features.py": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
+      "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866",
+      "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+      "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
+      "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+      "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+      "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+      "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+      "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+      "framework/scp/connector_overview.py": "c0ea6de9965d85729030a6d78da3ffe2a09d78de829d3b5f28eeba157a568735",
+      "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+      "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+      "framework/scp/jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+      "framework/scp/menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+      "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
+      "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+      "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+      "framework/scp/verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd",
+      "schemas/connector-data.schema.json": "78a77d6c231f59d06605ff15dfac87df07bf89804680fc731fd9ca513efb20c9",
+      "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+      "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "hsr-component-l2-paired-straight-recessed-web",
+    "piece": {
+      "purpose": "Authoritative independent identity for the one-cell paired straight with the measured fan recessed-web profile.",
+      "schema_version": 1,
+      "orientation_count": 8,
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "id": "hsr-component-l2-paired-straight-recessed-web",
+      "name": "HSR Level 2 Paired Straight with Recessed Web",
+      "description": "One-tile opposite-direction Level 2 paired straight retaining the fan family's recessed structural web, complete slab, rails, and support; connect matching physical profiles.",
+      "recipe": "hsr_component_l2_paired_straight_recessed_web",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f829",
+      "tile_ids": [
+        "7f586000"
+      ],
+      "preview_id": "7f586ff5",
+      "effect_name": "preview_scp_f829________001",
+      "footprint": [
+        1,
+        1
+      ],
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f829",
+        "order": "7012f829",
+        "style": "hsr-component-l2-paired-straight-recessed-web"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f586000",
+          "source": "7f586000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Exact independently reusable interior approach cell from the approved paired fan, retaining its measured recessed web, rail and ballast material, and complete support. Its distinct profile does not replace the ordinary paired straight.",
+        "construction": "Separately allocated one-cell native grid and four proper rotations, repeated across eight menu states.",
+        "redistribution": "permission-pending"
+      },
+      "domain": "high-speed-rail",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "structural_cells": [],
+      "ports": {
+        "N": {
+          "in": [
+            -2.0,
+            8.0,
+            15.5
+          ],
+          "out": [
+            2.0,
+            8.0,
+            15.5
+          ]
+        },
+        "S": {
+          "in": [
+            2.0,
+            -8.0,
+            15.5
+          ],
+          "out": [
+            -2.0,
+            -8.0,
+            15.5
+          ]
+        }
+      },
+      "movements": [
+        [
+          "N",
+          "S"
+        ],
+        [
+          "S",
+          "N"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "category": "hsr-components",
+      "component": {
+        "kind": "partition_component",
+        "support_centers": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0,
+        "custom_curved_interfaces": false
+      },
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Distinct fan-family recessed-web physical profile; intrinsic software and assembly seam evidence recorded separately."
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "hsr-component-l2-paired-straight-recessed-web",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:hsr-component-l2-paired-straight-recessed-web:ea5118b0-ea5118b1-7f586ff5": "c7bef3f1b3e113ba30f9ee5c1a32528ed15fb290282477e91bace26681350dec",
+          "exemplar:hsr-component-l2-paired-straight-recessed-web:6534284a-a8434037-7f586000": "88800bce2b379500929bbc2dc4c1e6893731be3c0dac915d3509aece7ad49580",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586ff5": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+          "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000": "41dfafc4ef2c1cf41cf838382b088cafe3bbe704b88dc4ee3e220d6cd7c748ef",
+          "shadow:hsr-component-l2-paired-straight-recessed-web:7ab50e44-2bc2759a-7f586000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+          "shadow:hsr-component-l2-paired-straight-recessed-web:7ab50e44-2bc2759a-7f586001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+          "shadow:hsr-component-l2-paired-straight-recessed-web:7ab50e44-2bc2759a-7f586002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+          "shadow:hsr-component-l2-paired-straight-recessed-web:7ab50e44-2bc2759a-7f586003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+          "shadow:hsr-component-l2-paired-straight-recessed-web:7ab50e44-2bc2759a-7f586004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+          "text:hsr-component-l2-paired-straight-recessed-web:2026960b-2a592fd1-7f586000": "3bd6a2957db04800d3462e3a58ab7e74b673cf3848e03b92a65c1f8e1e736ba6",
+          "construction:hsr-component-l2-paired-straight-recessed-web": "5f5837b2913135826358c532e36d7d931ab33a31ca557da3a246178e827285c1"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "Sout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            -2.0,
+            -8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+            "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+            "construction:hsr-component-l2-paired-straight-recessed-web"
+          ],
+          "source_route_ids": [
+            "path-7f586000-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 3,
+              "tile_id": "7f586000"
+            }
+          ],
+          "connection_class": "path-interface-12d12be31d2057c5763d"
+        },
+        {
+          "id": "Nin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            -2.0,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            -1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            -1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+            "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+            "construction:hsr-component-l2-paired-straight-recessed-web"
+          ],
+          "source_route_ids": [
+            "path-7f586000-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f586000"
+            }
+          ],
+          "connection_class": "path-interface-12d12be31d2057c5763d"
+        },
+        {
+          "id": "Sin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            2.0,
+            -8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+            "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+            "construction:hsr-component-l2-paired-straight-recessed-web"
+          ],
+          "source_route_ids": [
+            "path-7f586000-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 3,
+              "tile_id": "7f586000"
+            }
+          ],
+          "connection_class": "path-interface-fba09fbeb87ad95c667a"
+        },
+        {
+          "id": "Nout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            2.0,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            0.0,
+            1.0
+          ],
+          "sampled_tangent": [
+            0.0,
+            1.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+            "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+            "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+            "construction:hsr-component-l2-paired-straight-recessed-web"
+          ],
+          "source_route_ids": [
+            "path-7f586000-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f586000"
+            }
+          ],
+          "connection_class": "path-interface-fba09fbeb87ad95c667a"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "7:Nin>Sout",
+          "entry_port": "Nin",
+          "exit_port": "Sout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Sin>Nout",
+          "entry_port": "Sin",
+          "exit_port": "Nout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f829",
+            "0004f829"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f829",
+            "0007f829"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f829",
+            "0006f829"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f829",
+            "0005f829"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Declare the complete saved-resource joining boundaries and physical tracks of this recessed-web HSR type. Profile labels preserve the measured concrete distinction; route positions and movement permissions remain actual saved-PATH facts.",
+      "piece_id": "hsr-component-l2-paired-straight-recessed-web",
+      "source_binding": {
+        "piece_sha256": "7a2437293a85c2a0b5fd8153d9bdaab196c66b23721927f02b21aae650656096",
+        "connections_sha256": "3a4d9ed95fead5e1b45fbf430d50c68971806bd255275d7fc72efb53ab8c1d80"
+      },
+      "components": [
+        {
+          "id": "paired-route",
+          "network": "hsr",
+          "construction_network": "monorail"
+        }
+      ],
+      "channels": [
+        {
+          "id": "northbound-track",
+          "component_id": "paired-route",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "southbound-track",
+          "component_id": "paired-route",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "south-end",
+          "component_id": "paired-route",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "south-sout",
+              "source_port_id": "Sout",
+              "direction": "out",
+              "channel_id": "southbound-track",
+              "cut_id": "south-southbound-track-cut"
+            },
+            {
+              "id": "south-sin",
+              "source_port_id": "Sin",
+              "direction": "in",
+              "channel_id": "northbound-track",
+              "cut_id": "south-northbound-track-cut"
+            }
+          ],
+          "section_offset_m": 0.0,
+          "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
+        },
+        {
+          "id": "north-end",
+          "component_id": "paired-route",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "north-nin",
+              "source_port_id": "Nin",
+              "direction": "in",
+              "channel_id": "southbound-track",
+              "cut_id": "north-southbound-track-cut"
+            },
+            {
+              "id": "north-nout",
+              "source_port_id": "Nout",
+              "direction": "out",
+              "channel_id": "northbound-track",
+              "cut_id": "north-northbound-track-cut"
+            }
+          ],
+          "section_offset_m": 0.0,
+          "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1"
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "cell-0-0-south",
+          "source_cell": [
+            0,
+            0
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "south-end"
+          ]
+        },
+        {
+          "id": "cell-0-0-north",
+          "source_cell": [
+            0,
+            0
+          ],
+          "edge": "north",
+          "connector_ids": [
+            "north-end"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ]
+    ],
+    "groups": [
+      {
+        "id": "south-end",
+        "component_id": "paired-route",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "south-sout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              -2.0,
+              -8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              -1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              -1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+              "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+              "construction:hsr-component-l2-paired-straight-recessed-web"
+            ],
+            "source_route_ids": [
+              "path-7f586000-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 3,
+                "tile_id": "7f586000"
+              }
+            ],
+            "connection_class": "path-interface-12d12be31d2057c5763d",
+            "source_port_id": "Sout",
+            "channel_id": "southbound-track",
+            "cut_id": "south-southbound-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.0,
+              -1.0
+            ],
+            "heading_outward_degrees": 180.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          },
+          {
+            "id": "south-sin",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              2.0,
+              -8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+              "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+              "construction:hsr-component-l2-paired-straight-recessed-web"
+            ],
+            "source_route_ids": [
+              "path-7f586000-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 3,
+                "tile_id": "7f586000"
+              }
+            ],
+            "connection_class": "path-interface-fba09fbeb87ad95c667a",
+            "source_port_id": "Sin",
+            "channel_id": "northbound-track",
+            "cut_id": "south-northbound-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.0,
+              -1.0
+            ],
+            "heading_outward_degrees": 180.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          }
+        ],
+        "section_offset_m": 0.0,
+        "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1",
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 15.5,
+          "nominal_level": "l2",
+          "label": "HSR L2 paired interface with recessed structural web",
+          "scope_note": "Measured fan-family concrete profile: 15 m outer slab and border envelope, with the exposed structural web approximately 6.963052 m from the centre at heights 14.590025\u201316.358057 m. The ordinary paired straight has its corresponding web approximately 7 m from the centre and is not a full physical-profile equivalent. Route height, two opposed channels, 4 m track spacing, and right-hand running remain unchanged. Complete saved-face evidence belongs to 01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json; an inherited native-neighbour transition is recorded separately rather than declared universally compatible."
+        },
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          0.0,
+          -8.0,
+          15.5
+        ],
+        "anchor_m": [
+          0.0,
+          -8.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "southbound-track",
+            "component_id": "paired-route",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "south-southbound-track-cut",
+                "member_ids": [
+                  "south-sout"
+                ],
+                "endpoint_m": [
+                  -2.0,
+                  -8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.0,
+                  -1.0
+                ],
+                "heading_outward_degrees": 180.0,
+                "grade_outward": 0.0
+              }
+            ]
+          },
+          {
+            "id": "northbound-track",
+            "component_id": "paired-route",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "south-northbound-track-cut",
+                "member_ids": [
+                  "south-sin"
+                ],
+                "endpoint_m": [
+                  2.0,
+                  -8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.0,
+                  -1.0
+                ],
+                "heading_outward_degrees": 180.0,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-0-0-south"
+      },
+      {
+        "id": "north-end",
+        "component_id": "paired-route",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "north-nin",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              -2.0,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              -1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              -1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+              "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+              "construction:hsr-component-l2-paired-straight-recessed-web"
+            ],
+            "source_route_ids": [
+              "path-7f586000-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f586000"
+              }
+            ],
+            "connection_class": "path-interface-12d12be31d2057c5763d",
+            "source_port_id": "Nin",
+            "channel_id": "southbound-track",
+            "cut_id": "north-southbound-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.0,
+              1.0
+            ],
+            "heading_outward_degrees": 0.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "north-nout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              2.0,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              0.0,
+              1.0
+            ],
+            "sampled_tangent": [
+              0.0,
+              1.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586000",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586001",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586002",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586003",
+              "model:hsr-component-l2-paired-straight-recessed-web:5ad0e817-badb57f1-7f586004",
+              "path:hsr-component-l2-paired-straight-recessed-web:296678f7-a966883f-7f586000",
+              "construction:hsr-component-l2-paired-straight-recessed-web"
+            ],
+            "source_route_ids": [
+              "path-7f586000-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f586000"
+              }
+            ],
+            "connection_class": "path-interface-fba09fbeb87ad95c667a",
+            "source_port_id": "Nout",
+            "channel_id": "northbound-track",
+            "cut_id": "north-northbound-track-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.0,
+              1.0
+            ],
+            "heading_outward_degrees": 0.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "section_offset_m": 0.0,
+        "profile_id": "hsr-l2-paired-recessed-web15-t2-opposed-rhd-v1",
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 15.5,
+          "nominal_level": "l2",
+          "label": "HSR L2 paired interface with recessed structural web",
+          "scope_note": "Measured fan-family concrete profile: 15 m outer slab and border envelope, with the exposed structural web approximately 6.963052 m from the centre at heights 14.590025\u201316.358057 m. The ordinary paired straight has its corresponding web approximately 7 m from the centre and is not a full physical-profile equivalent. Route height, two opposed channels, 4 m track spacing, and right-hand running remain unchanged. Complete saved-face evidence belongs to 01_assemblies/straight-stem-trumpet/evidence/fan-atomization-review.json; an inherited native-neighbour transition is recorded separately rather than declared universally compatible."
+        },
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "north",
+        "tile_seam_center_m": [
+          0.0,
+          8.0,
+          15.5
+        ],
+        "anchor_m": [
+          0.0,
+          8.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "southbound-track",
+            "component_id": "paired-route",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "north-southbound-track-cut",
+                "member_ids": [
+                  "north-nin"
+                ],
+                "endpoint_m": [
+                  -2.0,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.0,
+                  1.0
+                ],
+                "heading_outward_degrees": 0.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "northbound-track",
+            "component_id": "paired-route",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "north-northbound-track-cut",
+                "member_ids": [
+                  "north-nout"
+                ],
+                "endpoint_m": [
+                  2.0,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.0,
+                  1.0
+                ],
+                "heading_outward_degrees": 0.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          1.0
+        ],
+        "boundary_bundle_id": "cell-0-0-north"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "cell-0-0-south",
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "south-end"
+        ]
+      },
+      {
+        "id": "cell-0-0-north",
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "north",
+        "connector_ids": [
+          "north-end"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "northbound-track",
+        "component_id": "paired-route",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "southbound-track",
+        "component_id": "paired-route",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "north-nin>south-sout",
+        "entry_port": "north-nin",
+        "exit_port": "south-sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Nin>Sout",
+        "source_entry_port": "Nin",
+        "source_exit_port": "Sout"
+      },
+      {
+        "id": "south-sin>north-nout",
+        "entry_port": "south-sin",
+        "exit_port": "north-nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Sin>Nout",
+        "source_entry_port": "Sin",
+        "source_exit_port": "Nout"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "north-nin",
+        "to_port": "north-nout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Nin",
+        "source_to_port": "Nout"
+      },
+      {
+        "from_port": "south-sin",
+        "to_port": "south-sout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Sin",
+        "source_to_port": "Sout"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f829",
+          "0004f829"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f829",
+          "0007f829"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f829",
+          "0006f829"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f829",
+          "0005f829"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f586000-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f586000",
+      "points": [
+        [
+          -2.0,
+          8.0,
+          15.5
+        ],
+        [
+          -2.0,
+          -8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f586000-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f586000",
+      "points": [
+        [
+          2.0,
+          -8.0,
+          15.5
+        ],
+        [
+          2.0,
+          8.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 1
+    }
+  ],
+  "endpoint_route_refs": {
+    "south-sout": [
+      "path-7f586000-route-000"
+    ],
+    "south-sin": [
+      "path-7f586000-route-001"
+    ],
+    "north-nin": [
+      "path-7f586000-route-000"
+    ],
+    "north-nout": [
+      "path-7f586000-route-001"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/trumpet-fan-core-parts-final-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-paired-straight-recessed-web.dat",
+      "dat_sha256": "7330c6abb5ee5f5c36897530c252e971d9943843d0ddc03cd22a3fd3ecb92375",
+      "model_sha256": "c1cf559567913402dc89899514427af3a8af7db6c3ef1e4db6c1103f7d8abff0",
+      "resource_fingerprints_checked": 15,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "e60986c14691336b24bf5f07889ae2b1cb0ae1772bf1237d3c3359e39cc67cc4"
+}

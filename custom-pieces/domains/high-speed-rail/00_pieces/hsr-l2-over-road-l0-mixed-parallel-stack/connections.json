@@ -1,0 +1,1462 @@
+{
+  "schema_version": 1,
+  "purpose": "Intrinsic ports, service roles, and directed journeys measured from this piece\u2019s saved resources.",
+  "subject_id": "blind-hsr-road-stack",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:blind-hsr-road-stack:ea5118b0-ea5118b1-7f591ff5": "3da37f118b037581b98eaf564341027e31aa52c3868393ed0643fe2951fbf81c",
+      "exemplar:blind-hsr-road-stack:6534284a-a8434037-7f591000": "c8f382e9480c4decbb21d0cd73446640acc52c021a82d587907cfc2125c38f37",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591ff5": "f4200b027a949c7fd7b054c074bb2643a36b7246bf21a787ddf27c3edd2a3ac3",
+      "path:blind-hsr-road-stack:296678f7-a966883f-7f591000": "96a7a430623b7994b63fcecca73e58c62aa54fd49756507a5552fc0ecc70e518",
+      "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591000": "f90b3523f771466c684395d4349aa42ab129a3d103dd01b5d8cc1045f2c10ac2",
+      "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591001": "bc179cf4daab39338259ce310c79eb635211b7ba2d85532acd8a0bfb32eb1409",
+      "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591002": "0e292d77b191303bbbb5b2a8f6b38db2fbaf2d1cee0e433c470829355d1893dd",
+      "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591003": "f22537853e4049367871bedd85d3a62cd1112cb0d960241d915dc61fbddf08ab",
+      "shadow:blind-hsr-road-stack:7ab50e44-2bc2759a-7f591004": "a69fb0276cf8d1284cf6594ecbed6dec30c83926e95b22dcd78647a943862b73",
+      "text:blind-hsr-road-stack:2026960b-2a592fd1-7f591000": "1f3552a7f83003ddd1db70868b848819eaac4f6512495496c712a438046aeaee",
+      "construction:blind-hsr-road-stack": "d9f112f27f2db21f83e6faf9ec45ef018adffa66b0ed528408d076673f18ca5b"
+    },
+    "reviewed_contract_available": false,
+    "scope": "one piece only; no counterpart catalogue is consulted",
+    "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "1-S-out-1",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "ordinary-road",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 1,
+      "edge": 3,
+      "endpoint_m": [
+        -2.5,
+        -8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2c0fa1b7975324446149"
+    },
+    {
+      "id": "1-N-in-2",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "ordinary-road",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        -2.5,
+        8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2c0fa1b7975324446149"
+    },
+    {
+      "id": "1-S-in-3",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "ordinary-road",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 1,
+      "edge": 3,
+      "endpoint_m": [
+        2.5,
+        -8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-07ea7506553ac5546a40"
+    },
+    {
+      "id": "1-N-out-4",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "ordinary-road",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        2.5,
+        8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-07ea7506553ac5546a40"
+    },
+    {
+      "id": "2-W-in-1",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 0,
+      "endpoint_m": [
+        -8.0,
+        -2.5,
+        0.0
+      ],
+      "tangent": [
+        1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-007"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2c39dfb4b856da5aea08"
+    },
+    {
+      "id": "2-W-out-2",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 0,
+      "endpoint_m": [
+        -8.0,
+        2.5,
+        0.0
+      ],
+      "tangent": [
+        -1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-006"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-161421aed635ea1db13a"
+    },
+    {
+      "id": "2-S-out-3",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 3,
+      "endpoint_m": [
+        -6.39,
+        -8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-005",
+        "path-7f591000-route-007"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-6e8f939c06339e91dc5c"
+    },
+    {
+      "id": "2-N-in-4",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 1,
+      "endpoint_m": [
+        -6.39,
+        8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-005",
+        "path-7f591000-route-006"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-6e8f939c06339e91dc5c"
+    },
+    {
+      "id": "2-S-in-5",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 3,
+      "endpoint_m": [
+        6.39,
+        -8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-004",
+        "path-7f591000-route-009"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2fb4e4782aa828cc00b8"
+    },
+    {
+      "id": "2-N-out-6",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 1,
+      "endpoint_m": [
+        6.39,
+        8.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-004",
+        "path-7f591000-route-008"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2fb4e4782aa828cc00b8"
+    },
+    {
+      "id": "2-E-out-7",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 2,
+      "endpoint_m": [
+        8.0,
+        -2.5,
+        0.0
+      ],
+      "tangent": [
+        1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-009"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-2c39dfb4b856da5aea08"
+    },
+    {
+      "id": "2-E-in-8",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "native-road-sidewalk",
+      "role": "primary",
+      "classification_status": "explicit native ordinary Road PATH audit 00004b00",
+      "engine_transport": 2,
+      "edge": 2,
+      "endpoint_m": [
+        8.0,
+        2.5,
+        0.0
+      ],
+      "tangent": [
+        -1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 5.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-008"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-161421aed635ea1db13a"
+    },
+    {
+      "id": "7-S-out-1",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        -2.0,
+        -8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-12d12be31d2057c5763d"
+    },
+    {
+      "id": "7-N-in-2",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        -2.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        -1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        -1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-12d12be31d2057c5763d"
+    },
+    {
+      "id": "7-S-in-3",
+      "direction": "in",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 3,
+      "endpoint_m": [
+        2.0,
+        -8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-fba09fbeb87ad95c667a"
+    },
+    {
+      "id": "7-N-out-4",
+      "direction": "out",
+      "service_network": "hsr",
+      "service_family": "high-speed-rail",
+      "variant": "hsr",
+      "role": "primary",
+      "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+      "engine_transport": 7,
+      "edge": 1,
+      "endpoint_m": [
+        2.0,
+        8.0,
+        15.5
+      ],
+      "tangent": [
+        0.0,
+        1.0
+      ],
+      "sampled_tangent": [
+        0.0,
+        1.0
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": 4.0,
+      "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "actual_saved_PATH_sample",
+      "resource_keys": [
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591000",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591001",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591002",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591003",
+        "model:blind-hsr-road-stack:5ad0e817-badb57f1-7f591004",
+        "path:blind-hsr-road-stack:296678f7-a966883f-7f591000",
+        "construction:blind-hsr-road-stack"
+      ],
+      "source_route_ids": [
+        "path-7f591000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f591000"
+        }
+      ],
+      "connection_class": "path-interface-fba09fbeb87ad95c667a"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "1:1-N-in-2>1-S-out-1",
+      "entry_port": "1-N-in-2",
+      "exit_port": "1-S-out-1",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "endpoint_variants": [
+        "ordinary-road",
+        "ordinary-road"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "1:1-S-in-3>1-N-out-4",
+      "entry_port": "1-S-in-3",
+      "exit_port": "1-N-out-4",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "endpoint_variants": [
+        "ordinary-road",
+        "ordinary-road"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-W-in-1>2-S-out-3",
+      "entry_port": "2-W-in-1",
+      "exit_port": "2-S-out-3",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-N-in-4>2-W-out-2",
+      "entry_port": "2-N-in-4",
+      "exit_port": "2-W-out-2",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-N-in-4>2-S-out-3",
+      "entry_port": "2-N-in-4",
+      "exit_port": "2-S-out-3",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-S-in-5>2-E-out-7",
+      "entry_port": "2-S-in-5",
+      "exit_port": "2-E-out-7",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-S-in-5>2-N-out-6",
+      "entry_port": "2-S-in-5",
+      "exit_port": "2-N-out-6",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "2:2-E-in-8>2-N-out-6",
+      "entry_port": "2-E-in-8",
+      "exit_port": "2-N-out-6",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "endpoint_variants": [
+        "native-road-sidewalk",
+        "native-road-sidewalk"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:7-N-in-2>7-S-out-1",
+      "entry_port": "7-N-in-2",
+      "exit_port": "7-S-out-1",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    },
+    {
+      "id": "7:7-S-in-3>7-N-out-4",
+      "entry_port": "7-S-in-3",
+      "exit_port": "7-N-out-4",
+      "service_network": "hsr",
+      "role": "primary",
+      "engine_transport_classes": [
+        7
+      ],
+      "endpoint_variants": [
+        "hsr",
+        "hsr"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "1-N-out-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "2-W-out-2",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "2-S-out-3",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "2-N-out-6",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "2-E-out-7",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "7-S-out-1",
+      "from_service": "road",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-N-in-2",
+      "to_port": "7-N-out-4",
+      "from_service": "road",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "1-S-out-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "2-W-out-2",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "2-S-out-3",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "2-N-out-6",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "2-E-out-7",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "7-S-out-1",
+      "from_service": "road",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "1-S-in-3",
+      "to_port": "7-N-out-4",
+      "from_service": "road",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "1-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "1-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "2-W-out-2",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "2-N-out-6",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "2-E-out-7",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "7-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-W-in-1",
+      "to_port": "7-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "1-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "1-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "2-N-out-6",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "2-E-out-7",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "7-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-N-in-4",
+      "to_port": "7-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "1-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "1-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "2-W-out-2",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "2-S-out-3",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "7-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-S-in-5",
+      "to_port": "7-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "1-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "1-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "2-W-out-2",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "2-S-out-3",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "2-E-out-7",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "7-S-out-1",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "2-E-in-8",
+      "to_port": "7-N-out-4",
+      "from_service": "pedestrian",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "1-S-out-1",
+      "from_service": "hsr",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "1-N-out-4",
+      "from_service": "hsr",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "2-W-out-2",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "2-S-out-3",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "2-N-out-6",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "2-E-out-7",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-N-in-2",
+      "to_port": "7-N-out-4",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "1-S-out-1",
+      "from_service": "hsr",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "1-N-out-4",
+      "from_service": "hsr",
+      "to_service": "road",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "2-W-out-2",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "2-S-out-3",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "2-N-out-6",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "2-E-out-7",
+      "from_service": "hsr",
+      "to_service": "pedestrian",
+      "basis": "not reachable in actual saved PATH graph"
+    },
+    {
+      "from_port": "7-S-in-3",
+      "to_port": "7-S-out-1",
+      "from_service": "hsr",
+      "to_service": "hsr",
+      "basis": "not reachable in actual saved PATH graph"
+    }
+  ],
+  "compatibility_policy": "Intrinsic encoded-route facts only; complete shared-boundary agreement, physical seams, and game operation are not evaluated.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "unverified",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f828",
+        "0004f828"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f828",
+        "0007f828"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f828",
+        "0006f828"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f828",
+        "0005f828"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

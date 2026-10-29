@@ -5,6 +5,7 @@ constants remain invalid; quoted text and escaped characters remain unchanged.
 """
 import json
 from pathlib import Path
+import re
 
 
 def strip_comments(source):
@@ -71,3 +72,109 @@ def loads(source):
 def load(path):
     """Read one UTF-8 JSONC file; never write or change its comments."""
     return loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _metadata(value, name):
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"JSONC {name} must be nonempty text")
+    return value
+
+
+def _leading_header(source):
+    """Return an existing complete metadata prefix, without changing its bytes."""
+    stripped = strip_comments(source)
+    length = len(stripped) - len(stripped.lstrip())
+    prefix = source[:length]
+    fields = {}
+    comments = re.finditer(r'//[^\r\n]*|/\*.*?\*/', prefix, re.DOTALL)
+    for comment in comments:
+        field = re.fullmatch(r'//\s*(title|summary):\s*(.*?)\s*', comment.group())
+        if field is None:
+            continue
+        name, encoded = field.groups()
+        if name in fields:
+            raise ValueError(f"Duplicate JSONC {name} metadata")
+        fields[name] = _metadata(json.loads(encoded), name)
+    if fields and set(fields) != {'title', 'summary'}:
+        raise ValueError("JSONC metadata requires both title and summary")
+    return prefix if fields else None
+
+
+def document(value, *, source=None, title=None, summary=None):
+    """Serialize a document, retaining an existing valid leading comment header.
+
+    Supplied metadata is used for new or headerless documents. Only the leading
+    comment prefix is retained; generators own and rewrite their JSON payload.
+    """
+    header = _leading_header(source) if source is not None else None
+    if header is None:
+        title, summary = _metadata(title, 'title'), _metadata(summary, 'summary')
+        header = (f'// title: {json.dumps(title, ensure_ascii=False)}\n'
+                  f'// summary: {json.dumps(summary, ensure_ascii=False)}\n')
+    return header + json.dumps(value, indent=2, allow_nan=False) + '\n'
+
+
+def dumps(value, *, title, summary):
+    """Serialize commented JSON with mandatory human-readable metadata."""
+    return document(value, title=title, summary=summary)
+
+
+def dump(path, value, *, title=None, summary=None):
+    """Write UTF-8 JSONC, preserving an existing valid metadata prefix."""
+    path = Path(path)
+    source = path.read_text(encoding='utf-8') if path.is_file() else None
+    text = document(value, source=source, title=title, summary=summary)
+    if source != text:
+        path.write_text(text, encoding='utf-8')
+
+
+def export(source, destination):
+    """Emit deterministic strict JSON for a consumer that cannot read comments."""
+    source, destination = Path(source), Path(destination)
+    if source.resolve() == destination.resolve():
+        raise ValueError("JSONC export must not replace its authoritative source")
+    raw = (json.dumps(load(source), indent=2, allow_nan=False) + '\n').encode('utf-8')
+    if not destination.is_file() or destination.read_bytes() != raw:
+        destination.write_bytes(raw)
+    return destination
+
+
+LEGACY_EXPORTS = (
+    'domains/high-speed-rail/connection-classes',
+    'domains/highway/connection-classes',
+    'domains/high-speed-rail/junction-design-review',
+    'domains/high-speed-rail/native-diagonal-port-cap-audit',
+)
+
+
+def sync_legacy_exports(root):
+    """Refresh the four explicit strict-JSON compatibility views only."""
+    root = Path(root)
+    return [str(export(root / (relative + '.jsonc'), root / (relative + '.json')))
+            for relative in LEGACY_EXPORTS]
+
+
+def main(argv=None):
+    """Convert a source to strict JSON without sending it to an external API."""
+    import argparse
+    import sys
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('source', nargs='?', type=Path)
+    parser.add_argument('--output', type=Path)
+    parser.add_argument('--sync-legacy-exports', type=Path, metavar='ROOT')
+    args = parser.parse_args(argv)
+    if args.sync_legacy_exports is not None:
+        if args.source is not None or args.output is not None:
+            parser.error('--sync-legacy-exports cannot be combined with a source or --output')
+        sync_legacy_exports(args.sync_legacy_exports)
+    elif args.source is None:
+        parser.error('provide a source JSONC file or --sync-legacy-exports ROOT')
+    elif args.output is not None:
+        export(args.source, args.output)
+    else:
+        sys.stdout.write(json.dumps(load(args.source), indent=2, allow_nan=False) + '\n')
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

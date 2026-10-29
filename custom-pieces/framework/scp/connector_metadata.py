@@ -156,7 +156,7 @@ def validate_structure(value, schema, location="$", document=None):
 @_validated
 def resolve_profiles(registry):
     """Resolve optional version-2 defaults, never a physical mesh contract."""
-    validate_structure(registry, _schema("connector-profiles.schema.json"))
+    validate_structure(registry, _schema("connector-profiles.schema.jsonc"))
     raw, resolved, pending = registry["profiles"], {}, set()
     def visit(identifier):
         _need(identifier in raw, f"Unknown profile parent: {identifier}")
@@ -194,7 +194,7 @@ def validate_piece(piece, connections, groups, profiles):
     output. Coordinates remain in the piece's canonical east/north/height frame.
     File hashes are checked separately by load_pilot, which has the raw bytes.
     """
-    validate_structure(groups, _schema("connector-groups.schema.json"))
+    validate_structure(groups, _schema("connector-groups.schema.jsonc"))
     # Old measured records retain their exact bytes and historical endpoint
     # shortlists. Current resolved data contains this piece's intrinsic facts;
     # neighbour discovery belongs to the separate complete-boundary consumer.
@@ -274,9 +274,10 @@ def validate_piece(piece, connections, groups, profiles):
         normal = NORMALS[edge]
         left = (-normal[1], normal[0])
         centre = [16. * cell[0] + 8. * normal[0], -16. * cell[1] + 8. * normal[1]]
-        section_offset = raw.get("section_offset_m", 0.)
-        _need(_number(section_offset), "Section offset must be finite metres")
-        section_centre = [centre[i] + left[i]*section_offset for i in (0, 1)]
+        section_offset = raw.get("section_offset_m")
+        _need(section_offset is None or _number(section_offset), "Section offset must be finite metres when declared")
+        section_centre = ([centre[i] + left[i]*section_offset for i in (0, 1)]
+                          if section_offset is not None else None)
         member_ports, group_cuts, group_channels = [], {}, {}
         for member in members:
             port_id, planner_id = member["source_port_id"], member.get("id")
@@ -330,7 +331,8 @@ def validate_piece(piece, connections, groups, profiles):
                 group_channels[channel_id]["cuts"].append(cut)
             member_ports.append({**deepcopy(port), **deepcopy(member), "traffic_modes": list(modes),
                                  "outward_tangent": outward, "heading_outward_degrees": heading,
-                                 "grade_outward": grade, "section_offset_m": offset-section_offset})
+                                 "grade_outward": grade, "section_offset_m": (
+                                     offset-section_offset if section_offset is not None else None)})
             port_components[port_id] = raw["component_id"]
             source_to_planner[port_id] = planner_id
         heights = [p["endpoint_m"][2] for p in member_ports]
@@ -341,7 +343,8 @@ def validate_piece(piece, connections, groups, profiles):
         profile.setdefault("alignment", "orth" if all(_close(p["outward_tangent"], normal) for p in member_ports) else "angled")
         resolved.append({**deepcopy(raw), "profile": deepcopy(profile), "members": member_ports,
                          "section_offset_m": section_offset, "source_cell": deepcopy(cell), "edge": edge,
-                         "tile_seam_center_m": centre+[height], "anchor_m": section_centre+[height],
+                         "tile_seam_center_m": centre+[height], "anchor_m": (
+                             section_centre+[height] if section_centre is not None else None),
                          "channels": list(group_channels.values()), "construction_network": component.get("construction_network"),
                          "outward_normal": list(normal), "boundary_bundle_id": bundle["id"]})
     _need(covered == ports.keys(), "Connector groups do not cover all measured ports")
@@ -394,10 +397,10 @@ def load_library(custom_root, piece_ids, domain_id="high-speed-rail"):
     root = Path(custom_root).resolve()
     _need(isinstance(domain_id, str) and re.fullmatch(r"[a-z][a-z0-9-]*", domain_id), "Invalid domain ID")
     domain = _safe_relative(root, "domains/" + domain_id)
-    registry = json.loads(_safe_relative(domain, "domain.json").read_text())
+    registry = jsonc.load(_safe_relative(domain, "domain.jsonc"))
     _need(registry.get("schema_version") == 1 and registry.get("id") == domain_id, "Invalid HSR domain registry schema or ID")
-    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.json"))
-    profiles = resolve_profiles(jsonc.loads(profile_path.read_text())) if profile_path.is_file() else {}
+    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
+    profiles = resolve_profiles(jsonc.load(profile_path)) if profile_path.is_file() else {}
     registered = {Path(p).parent.name: p for p in registry["pieces"]}
     _need(isinstance(piece_ids, (list, tuple)) and piece_ids and len(set(piece_ids)) == len(piece_ids), "Pilot needs unique selected piece IDs")
     result = {}
@@ -440,7 +443,7 @@ def _registered_adapter(root, domain_id):
     import importlib
     import sys
     domain = root / "domains" / domain_id
-    registry = jsonc.load(domain / "domain.json")
+    registry = jsonc.load(domain / "domain.jsonc")
     name = registry.get("connector_adapter")
     _need(isinstance(name, str) and all(p.isidentifier() for p in name.split(".")), "Domain needs an explicit connector_adapter registration")
     location = domain / "implementation"
@@ -541,16 +544,16 @@ def _source_files(root, domain_id, piece_id, compiled):
     files = [directory/name for name in ("piece.json", "connections.json", "connector-groups.jsonc")]
     # The manifest's compiled facts have their own semantic fingerprint. Its
     # documentation snapshot must be allowed to change after final rendering.
-    files += [domain/"domain.json", root/compiled["pieces"][piece_id]["dat_path"]]
-    registry = jsonc.load(domain/"domain.json")
-    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.json"))
+    files += [domain/"domain.jsonc", root/compiled["pieces"][piece_id]["dat_path"]]
+    registry = jsonc.load(domain/"domain.jsonc")
+    profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
     if profile_path.is_file():
         files.append(profile_path)
     # Contract providers can import reviewed tangent/geometry helpers. Bind the
     # complete owning implementation, rather than only its thin adapter module.
     files += list((domain/"implementation").rglob("*.py"))
     files += list((root/"framework/scp").glob("*.py"))
-    files += list((root/"schemas").glob("*.schema.json"))
+    files += list((root/"schemas").glob("*.schema.jsonc"))
     for path in files:
         _need(path.resolve().is_relative_to(root), "Source fingerprint file escapes library")
     return {path.relative_to(root).as_posix(): _sha(path.read_bytes()) for path in sorted(set(files))}
@@ -595,7 +598,7 @@ def build_exports(custom_root, piece_ids, build, domain_id="high-speed-rail"):
                              "occupied_cells": "unverified", **{key: "unverified" for key in LIMITATIONS}},
         }
         value["content_sha256"] = _sha(_canonical(value))
-        validate_structure(value, _schema("connector-data.schema.json"))
+        validate_structure(value, _schema("connector-data.schema.jsonc"))
         result[piece_id] = value
     return result
 
@@ -603,6 +606,10 @@ def build_exports(custom_root, piece_ids, build, domain_id="high-speed-rail"):
 def write_exports(custom_root, exports, domain_id="high-speed-rail"):
     """Publish only complete validated results; authored JSONC is never rewritten."""
     root = Path(custom_root).resolve()
+    from .document_validation import validate_subject_documents
+    for piece_id in exports:
+        directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}")
+        validate_subject_documents(directory, {'id': piece_id, 'kind': 'piece'})
     paths = {}
     for piece_id, value in exports.items():
         path = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}/connector-data.json")
@@ -621,7 +628,7 @@ def load_exports(custom_root, piece_ids, domain_id="high-speed-rail"):
         path = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}/connector-data.json")
         _export_need(path.is_file(), f"{piece_id}: missing connector-data.json; run connectors refresh", "missing_export")
         value = jsonc.load(path)
-        validate_structure(value, _schema("connector-data.schema.json"))
+        validate_structure(value, _schema("connector-data.schema.jsonc"))
         _need(value["piece_id"] == piece_id and value["domain_id"] == domain_id, "Export identity mismatch")
         unhashed = {k:v for k,v in value.items() if k != "content_sha256"}
         _need(_sha(_canonical(unhashed)) == value["content_sha256"], f"{piece_id}: export content fingerprint mismatch")
@@ -651,14 +658,15 @@ def load_exports(custom_root, piece_ids, domain_id="high-speed-rail"):
 
 def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=None):
     """Check current artwork, selectable text, and recorded source/render fingerprints."""
-    from .connector_overview import markdown_overview
+    from .connector_overview import markdown_overview, readme_overview
     root = Path(custom_root).resolve()
     directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{piece_id}")
     evidence_path = directory / "evidence/connection-overview.json"
     _need(evidence_path.is_file(), f"{piece_id}: missing overview evidence; run connectors refresh")
     evidence = jsonc.load(evidence_path)
-    image = directory / "connection-overview.png"
+    image = directory / "previews/connection-overview.png"
     _need(evidence.get("schema_version") == 1 and evidence.get("piece_id") == piece_id, "Wrong overview evidence identity")
+    _need(evidence.get("file") == "previews/connection-overview.png", f"{piece_id}: overview evidence uses a noncanonical image path")
     _need(image.is_file() and _sha(image.read_bytes()) == evidence["output_sha256"], f"{piece_id}: overview image differs from provenance")
     for name, digest in evidence["source_inputs"].items():
         path = _safe_relative(root, name)
@@ -682,7 +690,8 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     from .models import parse_s3d
     from .dbpf import decompress, entries
     if plugins is None:
-        fixture, settings = root/"local/validation-inputs/Plugins", root/"local/settings.json"
+        from .paths import local_settings
+        fixture, settings = root/"local/validation-inputs/Plugins", local_settings(root)
         plugins = fixture if fixture.is_dir() else jsonc.load(settings).get("plugins") if settings.is_file() else None
     _need(plugins is not None, "Overview texture freshness needs --plugins or configured texture inputs; use --no-render for data-only checks")
     payload = entries(_safe_relative(root,evidence["source_dat"]).read_bytes())
@@ -693,9 +702,9 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
                      for face in (font(BODY_SIZE),font(BODY_SIZE,True),mono_font(BODY_SIZE,font))]
     _need(current_fonts == evidence["figure_typography"]["fonts"], "Stale overview font inputs")
     _need(renderer_settings() == evidence["renderer"], "Stale overview runtime renderer settings")
-    text = markdown_overview(evidence)
-    _need(_sha(text.encode()) == evidence["selectable_markdown_sha256"], "Overview selectable-text fingerprint mismatch")
     readme = (directory/"README.md").read_text()
+    text = readme_overview(readme, markdown_overview(evidence))
+    _need(_sha(text.encode()) == evidence["selectable_markdown_sha256"], "Overview selectable-text fingerprint mismatch")
     _need(text in readme, f"{piece_id}: README overview differs from card facts")
     return {"status": "passed", "boundary_cards": len(evidence["boundary_cards"]), "output_sha256": evidence["output_sha256"]}
 
@@ -703,6 +712,11 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
 def refresh_connections(custom_root, piece_ids, build, *, domain_id="high-speed-rail", plugins=None, render=True):
     """Re-extract and validate before publishing generated data and documentation."""
     exports = build_exports(custom_root, piece_ids, build, domain_id)
+    from .document_validation import validate_subject_documents
+    root = Path(custom_root).resolve()
+    for identifier in exports:
+        directory = _safe_relative(root, f"domains/{domain_id}/00_pieces/{identifier}")
+        validate_subject_documents(directory, {'id': identifier, 'kind': 'piece'})
     figures = None
     if render:
         from .connector_overview import render_overviews

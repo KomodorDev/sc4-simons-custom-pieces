@@ -1,0 +1,2818 @@
+// title: "High-speed rail connection-class index"
+// summary: "Index measured traffic interfaces by class; class membership alone does not establish physical fit or game compatibility."
+//
+// Used when: A contributor browses which measured piece ports share a route-interface class after a full connection-data extraction and catalogue refresh.
+// Read by: Contributors following the class-index link in generated piece documentation; scp.jsonc exports the declared strict-JSON compatibility view. Builds and connector validation read the registered piece records instead of treating this index as a matching rule.
+// Updated by: scp.content.refresh_catalog_content derives memberships from supplied extracted connection records during a full metadata refresh and exports connection-classes.json automatically. A view-only refresh does not regenerate classes, and a scoped refresh defers the global index; do not edit memberships by hand.
+// Affects: The browseable class-to-port index and its legacy .json view. Equal route-interface classes do not establish complete boundary agreement, physical fit, neighbour compatibility, or game operation.
+// Reference: custom-pieces/docs/WORKFLOW_DOCUMENTATION_GENERATION.md and custom-pieces/docs/CONNECTOR_METADATA.md.
+{
+  "schema_version": 1,
+  "purpose": "Shared classes derived from actual encoded route interfaces; membership does not establish physical fit or game compatibility.",
+  "classes": {
+    "path-interface-6ed8ad7d9e460ea9e26e": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-E-in-8"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_b_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_b_in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-ea9aec3cf7f13a65eeea": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-E-out-7"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-12d12be31d2057c5763d": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-S-out-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-N-in-4"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "7-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "7-E-out-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-E-out-7"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "BNin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "BNin"
+        },
+        {
+          "piece_id": "ghsr-ground-and-hsr-l2-two-track-transition",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "BNin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-straight",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-straight",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-ramp",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-component-l2-paired-fan-compact-join",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "7-S-out-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "7-N-in-2"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-fba09fbeb87ad95c667a": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-S-in-5"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg",
+          "port_id": "7-N-out-6"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "7-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "7-E-in-4"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-E-in-8"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-right",
+          "port_id": "BNout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-crossover-adjacent-left",
+          "port_id": "BNout"
+        },
+        {
+          "piece_id": "ghsr-ground-and-hsr-l2-two-track-transition",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_b_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_a_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_a_out"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-scissors-adjacent",
+          "port_id": "BNout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-at-grade-smooth",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-straight",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-straight",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-ramp",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-component-l2-paired-fan-compact-join",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "7-S-in-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "7-N-out-4"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-d959025f3a5761d5e1c2": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "3-S-out-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "3-N-in-2"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-fe76ecf95961c35924b9": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "3-S-in-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "3-N-out-4"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-24634d6e5bf400b21233": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "6-S-out-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "6-N-in-2"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-3e608bdf4ab61431be91": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "6-S-in-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+          "port_id": "6-N-out-4"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-c78c5ac4b558d84b46f2": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-S-out-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-N-in-4"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-S-out-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-N-in-4"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "BNin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "BNin"
+        },
+        {
+          "piece_id": "ghsr-ground-and-hsr-l2-two-track-transition",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "BSout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "BNin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-fab587419de6b5848d74": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-S-in-5"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-90deg",
+          "port_id": "7-N-out-6"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-S-in-5"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-N-out-6"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-right",
+          "port_id": "BNout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-crossover-adjacent-left",
+          "port_id": "BNout"
+        },
+        {
+          "piece_id": "ghsr-ground-and-hsr-l2-two-track-transition",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_b_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_a_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "lower_a_out"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "BSin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-scissors-adjacent",
+          "port_id": "BNout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-9f8c3dd2cd3e736ce4f1": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-E-in-8"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-E-in-8"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_b_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_b_in"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-df84be787839515335e9": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-upper-diagonal-45deg",
+          "port_id": "7-E-out-7"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-E-out-7"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-d13580a5f8b596919466": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-W-in-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-W-out-4"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-E-out-5"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-two-track-crossing-both-diagonal-90deg",
+          "port_id": "7-E-in-6"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_a_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_a_in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-41ca57fd348f78610e6e": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-left",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-right",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-6d225b8f2247ccfd31a3": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-left",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-a12d73f59cac722c57ae": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-left",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-81a020999d3346a1c961": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-left",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-right",
+          "port_id": "Ein"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-3e71824ead491f228198": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-right",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-b6e2464d210d16ed833a": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-s-curve-diagonal-right",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-2fb13cb0f06be67da5ca": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-left",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-right",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-f5abdc4d8e21bba0ef88": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-left",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-a366002602b3783f5094": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-left",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-493b20c718656c56d5d7": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-left",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-right",
+          "port_id": "Ein"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-58b56c96ed533e6fe24c": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-right",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-51af382a22884cd23974": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-two-track-s-curve-diagonal-right",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-459a3d38a8ff1501aa51": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-to-hsr-l2-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-to-ghsr-ground-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-f99fce9a9cdaf09202fb": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Bin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-6c94c39b4abd67a7479e": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Bout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-ab4e40517da7fa0dbd34": {
+      "ports": [
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "ghsr-ground-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-lower-oneway",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-dbebe2187cdfdae6d966": {
+      "ports": [
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-to-l3-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-to-l2-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-to-l4-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-to-l3-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-423dab398a2f82349688": {
+      "ports": [
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-0a2d705d994378f399fc": {
+      "ports": [
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-0d1f2a24e26e0d36bf04": {
+      "ports": [
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l3-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "out"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-90a5bcd3e5d324374d48": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-left-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l3-to-l4-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-to-l3-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-left-wide",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-compact",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-wide",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-right",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-left",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-left",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated-compact",
+          "port_id": "Nout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-13a0d20884fd73110dea": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-left-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-left-wide",
+          "port_id": "Bout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-a70e777e6354823bc5c5": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-45deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-135deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-upper-diagonal-45deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-45deg-left-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-135deg-left-wide",
+          "port_id": "Bin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-a11c9f8debd0ee1c3a94": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-right-compact",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-split-90deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-90deg",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-curve-90deg-right-wide",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "upper_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "upper_out"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l4-single-track-oneway-merge-90deg-left-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-right",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated-compact",
+          "port_id": "Nin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-e765ac771bb89f95414d": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-45deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-135deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-e52e55553f098fa8572d": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-45deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-135deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal-north-half",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-diagonal-east-half",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "in"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-365752af76285c80cd0b": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-90deg-right-wide",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-compact-width7500mm",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width7500mm",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-oneway",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-right",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Lin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width8m",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Lin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-standard-width8m",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Lin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-oblique-entry",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-ac60d237d23f01143255": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-90deg-right-wide",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "ghsr-ground-to-hsr-l2-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-to-ghsr-ground-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-to-l3-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l3-to-l2-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-ramp",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-ramp",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-width7500mm",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-width7500mm",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-right",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-to-diagonal-45deg-left",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-left",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-from-diagonal-45deg-right",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-left-compact-width7500mm",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-left-compact-width7500mm",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-compact-width7500mm",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-left-wide-width7500mm",
+          "port_id": "out"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-left-wide-width7500mm",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width7500mm",
+          "port_id": "in"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-right",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-to-l4-single-track-oneway-curve-ramp-90deg-left",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-to-l2-single-track-oneway-curve-ramp-90deg-left",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-width8m",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-straight-width8m",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-parallel",
+          "port_id": "Rin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-wide-width8m",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-parallel-compact",
+          "port_id": "Bout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-merge-parallel-compact",
+          "port_id": "Bin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel",
+          "port_id": "Rout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-mixed-y-junction-graded",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-mixed-y-junction-graded",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-90deg-right-standard-width8m",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+          "port_id": "Rout"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-oblique-exit",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-08442c19645c28282b17": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_a_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_a_out"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-88adae773e3ea9f487d2": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_a_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_a_out"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-50cc847d03cb7f174ed0": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-lower-diagonal-45deg",
+          "port_id": "lower_a_in"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_b_out"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-mixed-crossing-diagonal-90deg",
+          "port_id": "lower_a_in"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-t-junction-diagonal-at-grade-smooth",
+          "port_id": "Ein"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-ce3ccdc10e5e243d11ae": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-two-track-straight",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-straight",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-left",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right-wide",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right-wide",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated-compact",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-mixed-y-junction-graded",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-ramp",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-9b897a8bacb659f807fe": {
+      "ports": [
+        {
+          "piece_id": "hsr-l4-two-track-straight",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-straight",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-left",
+          "port_id": "Win"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-left",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-left",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right-wide",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-curve-90deg-right-wide",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l4-two-track-adapter-separated-compact",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-mixed-y-junction-graded",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-ramp",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l4-over-hsr-l2-two-track-crossing-90deg",
+          "port_id": "Nout"
+        },
+        {
+          "piece_id": "hsr-l2-and-l4-two-track-curve-ramp-90deg-right",
+          "port_id": "Ein"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-f17a87c40e2280c52126": {
+      "ports": [
+        {
+          "piece_id": "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight",
+          "port_id": "Eout"
+        },
+        {
+          "piece_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight",
+          "port_id": "Sout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-c22acb858d4777168a58": {
+      "ports": [
+        {
+          "piece_id": "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight",
+          "port_id": "Sin"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-0f4b8204e68941486c48": {
+      "ports": [
+        {
+          "piece_id": "hsr-component-l2-paired-fan-compact-join",
+          "port_id": "Wout"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Sin"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts",
+          "port_id": "Nin"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-oblique-exit",
+          "port_id": "Eout"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-d819a6d05c5e43d11db7": {
+      "ports": [
+        {
+          "piece_id": "hsr-component-l2-paired-fan-compact-join",
+          "port_id": "Ein"
+        },
+        {
+          "piece_id": "hsr-l2-two-track-mainline-split-oblique-cut",
+          "port_id": "Sout"
+        },
+        {
+          "piece_id": "hsr-l2-single-track-oneway-curve-oblique-entry",
+          "port_id": "Win"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-2c0fa1b7975324446149": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "1-S-out-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "1-N-in-2"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-07ea7506553ac5546a40": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "1-S-in-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "1-N-out-4"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-2c39dfb4b856da5aea08": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-W-in-1"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-E-out-7"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-161421aed635ea1db13a": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-W-out-2"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-E-in-8"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-6e8f939c06339e91dc5c": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-S-out-3"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-N-in-4"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    },
+    "path-interface-2fb4e4782aa828cc00b8": {
+      "ports": [
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-S-in-5"
+        },
+        {
+          "piece_id": "hsr-l2-over-road-l0-mixed-parallel-stack",
+          "port_id": "2-N-out-6"
+        }
+      ],
+      "physical_profile_status": "unreviewed; membership alone establishes no game result"
+    }
+  }
+}

@@ -16,6 +16,7 @@ import shutil
 import tempfile
 import uuid
 
+
 FOLDER = 'zzz_Simons_Custom_Pieces'
 RECEIPT = '.scp-install.json'
 OPERATION_LOCK = '.scp-operation.lock'
@@ -259,7 +260,7 @@ def _exclusive_operation(function):
 
 @_exclusive_operation
 def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
-    """Verify, snapshot and install the manifest's one managed plugin folder."""
+    """Verify, snapshot, and install the manifest's one managed plugin folder."""
     output, plugins, backup_root = _locations(output, plugins, backup_root, extra_roots=extra_roots)
     from .build import verify_build  # Delay the import to avoid a CLI/build cycle.
     verify_build(output)
@@ -288,13 +289,12 @@ def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots
     previous = _owned(managed)
     piece_ids = sorted({piece['id'] for piece in manifest.get('pieces', [])})
     if previous is not None:
-        previous_ids = set(previous.get('piece_ids', []))
-        omitted_ids = previous_ids - set(piece_ids)
-        # Check declared per-piece DAT paths independently of the ID list.
-        def piece_files(owned):
-            return {name for name in owned
-                    if name.startswith('20_Pieces/SCP_') and name.endswith('.dat')}
-        omitted_files = piece_files(previous['files']) - piece_files(files)
+        omitted_ids = set(previous.get('piece_ids', [])) - set(piece_ids)
+        previous_files = {name for name in previous['files']
+                          if name.startswith('20_Pieces/SCP_') and name.endswith('.dat')}
+        current_files = {name for name in files
+                         if name.startswith('20_Pieces/SCP_') and name.endswith('.dat')}
+        omitted_files = previous_files - current_files
         if omitted_ids or omitted_files:
             omitted = ', '.join(sorted(omitted_ids | omitted_files))
             raise ValueError(f'New build omits installed pieces: {omitted}. '

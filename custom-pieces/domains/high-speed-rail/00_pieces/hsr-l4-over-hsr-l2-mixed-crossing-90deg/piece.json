@@ -1,0 +1,122 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0.",
+  "schema_version": 1,
+  "id": "hsr-l4-over-hsr-l2-mixed-crossing-90deg",
+  "name": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0",
+  "description": "HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) \u2014 Single-Track One-Way over Two-Track Crossing 90\u00b0. Fixed click-to-place piece in a 3 by 1 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The upper route crosses without transferring to the lower two-way route.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_oneway_over_hsr",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f809",
+  "tile_ids": [
+    "7f567000",
+    "7f567100",
+    "7f567200"
+  ],
+  "preview_id": "7f567ff5",
+  "effect_name": "preview_scp_interchg_f809_0",
+  "footprint": [
+    3,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f809",
+    "order": "7011f809",
+    "style": "interchange-l4-oneway-over-hsr"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f567000",
+      "source": "7f567000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f567100",
+      "source": "7f567100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f567200",
+      "source": "7f567200",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "true-flyovers",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8,
+        0.0,
+        30.5
+      ],
+      [
+        14.0,
+        8,
+        15.5
+      ],
+      [
+        18.0,
+        -8,
+        15.5
+      ]
+    ],
+    "out": [
+      [
+        14.0,
+        -8,
+        15.5
+      ],
+      [
+        18.0,
+        8,
+        15.5
+      ],
+      [
+        40,
+        0.0,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "flyover_crossing",
+    "height": 30.5,
+    "lower_level": "hsr"
+  }
+}

@@ -22,6 +22,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from . import dbpf as read_dbpf
+from . import jsonc
 from .models import parse_s3d
 
 S3D = (0x5ad0e817, 0xbadb57f1)
@@ -336,28 +337,44 @@ def textures_for_models(models: list[dict], plugins: Path) -> dict:
 def render_contact_sheet(items: list[tuple[str, dict]], textures: dict,
                          destination: Path, *, title='One-way HSR branch kit') -> dict:
     """Render real indexed geometry; labels are the only graphical overlays."""
+    from .render_headers import _fit_font, piece_heading, view_caption
     columns = 2 if len(items) == 4 else min(3, len(items))
     if not columns:
         raise ValueError('No models selected for preview')
     rows = math.ceil(len(items) / columns)
-    panel_width, panel_height = 640, 565
+    panel_width, panel_height = 640, 600
     canvas = Image.new('RGB', (columns * panel_width, 150 + rows * panel_height + 78), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
     dark, muted, blue = '#172b42', '#586a7e', '#176eaf'
     draw.text((42, 32), title, fill=dark, font=font(37, True))
     draw.text((44, 88), 'Actual S3D geometry and installed NAM texture · experimental fixed pieces',
               fill=muted, font=font(21))
+    headers = []
     for number, (label, model) in enumerate(items):
         x, y = (number % columns) * panel_width, 150 + (number // columns) * panel_height
-        draw.text((x + 32, y + 8), label, fill=blue, font=font(23, True))
+        captions = [piece_heading(label), view_caption('angled', 45, 36)]
+        header = {'source_name': label, 'captions': captions, 'rows': [],
+                  'viewport_box': [x + 20, y + 80, x + 620, y + 580]}
+        for caption, offset, size, bold, colour in zip(captions, (8, 44), (23, 18),
+                                                      (True, False), (dark, blue)):
+            face, pixels = _fit_font(draw, caption, font, size, panel_width - 64, bold)
+            position = (x + 32, y + offset)
+            bounds = draw.textbbox(position, caption, font=face)
+            if bounds[3] >= header['viewport_box'][1]:
+                raise ValueError('A contact-sheet caption overlaps its model viewport')
+            draw.text(position, caption, fill=colour, font=face)
+            header['rows'].append({'text': caption, 'position': list(position),
+                                   'bounds': list(bounds), 'font_pixels': pixels})
+        headers.append(header)
         view = render_view(model, textures, 45, 36, 1200, 1000)
-        canvas.paste(view.resize((600, 500), Image.Resampling.LANCZOS), (x + 20, y + 47))
+        canvas.paste(view.resize((600, 500), Image.Resampling.LANCZOS), (x + 20, y + 80))
     draw.text((44, canvas.height - 50), 'Software model preview, not a game screenshot. Placement, routing and shadows need game tests.',
               fill=muted, font=font(20))
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(destination)
-    return {'output': str(destination.resolve()), 'models': len(items), 'size': list(canvas.size)}
+    return {'output': str(destination.resolve()), 'models': len(items), 'size': list(canvas.size),
+            'panel_headers': headers}
 
 
 def render_package(output: Path, plugins: Path, destination: Path, *, piece_ids=None) -> dict:
@@ -417,23 +434,27 @@ def _selected_views(view_roles):
 
 
 def _view_files(role):
-    return ('preview-top.png', 'evidence/preview-top.json') if role == 'top' else ('preview.png', 'evidence/preview.json')
+    return ('previews/preview-top.png', 'evidence/preview-top.json') if role == 'top' else ('previews/preview.png', 'evidence/preview.json')
 
 
 def _valid_view_record(record, role, base):
     relative = Path(record.get('image', ''))
     image = (base/relative).resolve()
     safe = (not relative.is_absolute() and '..' not in relative.parts and image.is_relative_to(base)
-            and image.name == _view_files(role)[0] and image.parent.parent.name == '00_pieces')
+            and image.name == Path(_view_files(role)[0]).name and image.parent.name == 'previews'
+            and image.parent.parent.parent.name == '00_pieces')
     if not safe or not image.is_file() or record.get('image_sha256') != _sha(image.read_bytes()):
         return False
     if role == 'angled':
-        thumb = (base/record.get('thumbnail', '')).resolve()
-        if (thumb != image.with_name('preview-thumb.png') or not thumb.is_file()
+        thumb_relative = Path(record.get('thumbnail', ''))
+        thumb = (base/thumb_relative).resolve()
+        if (thumb_relative.is_absolute() or '..' in thumb_relative.parts
+                or thumb != image.with_name('preview-thumb.png') or not thumb.is_file()
                 or record.get('thumbnail_sha256') != _sha(thumb.read_bytes())):
             return False
-    evidence = image.parent/_view_files(role)[1]
-    if not evidence.is_file():
+    piece_directory = image.parent.parent
+    evidence = (piece_directory/_view_files(role)[1]).resolve()
+    if not evidence.is_relative_to(piece_directory) or not evidence.is_file():
         return False
     if record.get('evidence_sha256') and record['evidence_sha256'] != _sha(evidence.read_bytes()):
         return False
@@ -442,6 +463,8 @@ def _valid_view_record(record, role, base):
     except (ValueError, OSError):
         return False
     return (saved.get('sha256') == record['image_sha256']
+            and saved.get('file') == _view_files(role)[0]
+            and (role != 'angled' or saved.get('thumbnail', {}).get('file') == 'previews/preview-thumb.png')
             and saved.get('source', {}).get('model_sha256') == record.get('preview_sha256')
             and saved.get('view_role', 'angled') == ('top-down' if role == 'top' else 'angled'))
 
@@ -467,7 +490,7 @@ def validate_preview_coverage(index, pieces, destination, *, settings=None, view
                 per_view[role]['missing'].append(piece['id']); invalid = True; continue
             expected = settings.get(role) if settings and ('angled' in settings or 'top' in settings) else settings
             valid = (_valid_view_record(record, role, base)
-                     and Path(record.get('image', '')).parent.name == piece['id']
+                     and Path(record.get('image', '')).parent.parent.name == piece['id']
                      and entry.get('catalog_spec_sha256') == _json_hash(piece_spec(piece))
                      and entry.get('built_spec_sha256') == _json_hash(entry.get('built_spec'))
                      and entry.get('catalog_spec_sha256') == _json_hash(entry.get('catalog_spec'))
@@ -490,22 +513,22 @@ def validate_preview_coverage(index, pieces, destination, *, settings=None, view
 
 
 def _canonical_title(root, catalog, piece):
-    from .render_headers import piece_title, title_records
+    from .render_headers import piece_heading, piece_title, title_records
     domain = catalog.get('domains', {}).get(piece.get('domain'), {})
     relative = domain.get('path')
     if relative is None:
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     directory = root/relative/'00_pieces'/piece['id']
     declaration = directory/'connector-groups.jsonc'
     if not declaration.is_file():
-        return piece['name'], {}
+        return piece_heading(piece['name']), {}
     from .connector_metadata import load_library
     resolved = load_library(root, [piece['id']], domain_id=piece['domain'])['pieces'][piece['id']]
     title = piece_title(piece['id'], title_records(resolved), piece['name'])
     paths = [directory/name for name in ('piece.json', 'connections.json', 'connector-groups.jsonc')]
-    registry = root/relative/'domain.json'; paths.append(registry)
-    domain_data = json.loads(registry.read_text())
-    profiles = root/relative/domain_data.get('connector_profiles', 'connector-profiles.json')
+    registry = root/relative/'domain.jsonc'; paths.append(registry)
+    domain_data = jsonc.load(registry)
+    profiles = root/relative/domain_data.get('connector_profiles', 'connector-profiles.jsonc')
     if profiles.is_file(): paths.append(profiles)
     return title, {path.relative_to(root).as_posix(): _sha(path.read_bytes()) for path in paths}
 
@@ -577,7 +600,7 @@ def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
                           image_sha256=_sha(image.read_bytes()), image_size=evidence['size'],
                           evidence_sha256=_sha(evidence_path.read_bytes()))
             if role == 'angled':
-                thumb = target/'preview-thumb.png'
+                thumb = target/'previews/preview-thumb.png'
                 record.update(thumbnail=thumb.relative_to(base).as_posix(), thumbnail_sha256=_sha(thumb.read_bytes()))
             views[role] = record
         rendered += int(any_rendered); skipped += int(not any_rendered)
@@ -624,8 +647,8 @@ def main():
     parser.add_argument('--include', action='append')
     parser.add_argument('--catalog',action='store_true',help='Write selected canonical reusable-piece views in their piece folders (default: angled view and thumbnail)')
     parser.add_argument('--views', nargs='+', choices=('angled', 'top'), default=['angled'],
-                        help='Canonical --catalog views: angled, top, or both; top writes preview-top.png without changing an existing angle')
-    parser.add_argument('--root',type=Path,default=next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()))
+                        help='Canonical --catalog views: angled, top, or both; top writes previews/preview-top.png without changing an existing angle')
+    parser.add_argument('--root',type=Path,default=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()))
     parser.add_argument('--index',type=Path,help='Portable JSON coverage index for --catalog')
     parser.add_argument('--force',action='store_true',help='Render even when all input and image hashes match')
     parser.add_argument('--progress',action='store_true')

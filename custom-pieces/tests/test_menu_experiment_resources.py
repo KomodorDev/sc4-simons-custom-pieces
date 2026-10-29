@@ -7,15 +7,18 @@ from pathlib import Path
 import struct
 import sys
 import unittest
+import zlib
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp.dbpf import encode_exemplar, exemplar
 from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
 from scp.menu_experiment_resources import (
     ITEM_BUTTON_CLASS, ITEM_SUBMENU_PARENT_ID, build_menu_experiment_resources,
-    validate_menu_experiment_resources)
+    make_assembly_icon, validate_assembly_icon, validate_menu_experiment_resources)
+from scp.catalog import load_catalog
+from scp_hsr.icons import assembly_icon_network, assembly_icon_routes
 
 
 def property_record(prop_id, values, *, kind=0x300, array=False):
@@ -64,6 +67,43 @@ class MenuExperimentResourceTests(unittest.TestCase):
         return build_menu_experiment_resources(self.source, self.pieces,
                                                cycle_button=self.cycle, submenu=self.submenu)
 
+    def test_single_assembly_button_hides_members_and_preserves_unrelated_resources_exactly(self):
+        before = deepcopy(self.source)
+        output, report = build_menu_experiment_resources(self.source, self.pieces,
+                                                        cycle_button=self.cycle)
+        self.assertEqual(self.source, before)
+        removed = {(*prefix, int(piece['menu']['id'], 16))
+                   for piece in self.pieces for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
+        self.assertEqual(len(output), len(self.source) - len(removed) + 4)
+        self.assertFalse(removed & output.keys())
+        self.assertEqual({key: output[key] for key in self.source.keys() - removed},
+                         {key: self.source[key] for key in self.source.keys() - removed})
+        self.assertEqual(report['assembly_menu_buttons'], 1)
+        self.assertEqual(report['member_buttons_hidden'], 14)
+        self.assertEqual(len(report['removed_resource_tgis']), 56)
+        self.assertEqual(report['individual_buttons'], [])
+        self.assertIsNone(report['submenu'])
+        self.assertEqual(report['modified_existing_exemplar_tgis'], [])
+        self.assertNotIn((*MENU_EXEMPLAR, int(self.submenu['id'], 16)), output)
+        props = properties(output[*MENU_EXEMPLAR, int(self.cycle['id'], 16)])
+        self.assertEqual(props[0x8A2602BB]['values'], [0x6A47F000])
+        self.assertNotIn(ITEM_SUBMENU_PARENT_ID, props)
+        self.assertNotIn(ITEM_BUTTON_CLASS, props)
+        self.assertFalse(report['in_game_menu_tested'])
+
+    def test_single_button_verifier_rejects_restored_member_or_added_submenu(self):
+        output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                   cycle_button=self.cycle)
+        changed = dict(output)
+        key = (*MENU_EXEMPLAR, int(self.pieces[1]['menu']['id'], 16))
+        changed[key] = self.source[key]
+        extra = dict(output)
+        extra[*MENU_EXEMPLAR, int(self.submenu['id'], 16)] = b'Unexpected second assembly entry'
+        for damaged in (changed, extra):
+            with self.subTest(damaged=damaged is changed), self.assertRaisesRegex(ValueError, 'non-target|unexpected resource'):
+                validate_menu_experiment_resources(damaged, self.source, self.pieces,
+                                                  cycle_button=self.cycle)
+
     def test_moves_fourteen_original_buttons_without_changing_identity_or_assets(self):
         before = deepcopy(self.source)
         output, report = self.build()
@@ -111,6 +151,82 @@ class MenuExperimentResourceTests(unittest.TestCase):
                 self.assertEqual(icon.mode, 'RGBA')
                 frames = {icon.crop((44*n, 0, 44*(n+1), 44)).tobytes() for n in range(4)}
                 self.assertEqual(len(frames), 4)
+
+    def test_registered_assembly_icon_matches_existing_native_resource_bytes(self):
+        catalog = load_catalog(ROOT)
+        assembly = next(row for row in catalog['_assemblies'] if row['id'] == 'hsr-trumpet-straight-stem')
+        expected = make_assembly_icon(assembly_icon_routes(assembly['scene'], catalog['pieces']),
+                                      network_label=assembly_icon_network(assembly['id']))
+        raw = (ROOT / 'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/icon.png').read_bytes()
+        output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                   cycle_button=self.cycle, cycle_icon=raw,
+                                                   expected_cycle_icon=expected)
+        validate_assembly_icon(raw, expected_icon=expected)
+        self.assertEqual(output[*ICON, int(self.cycle['id'], 16)], raw)
+        with self.assertRaisesRegex(ValueError, 'RGBA PNG'):
+            build_menu_experiment_resources(self.source, self.pieces,
+                                             cycle_button=self.cycle, cycle_icon=b'Altered icon')
+
+    def test_reencoded_cycle_png_preserves_bytes_but_changed_pixels_mode_and_size_reject(self):
+        from PIL import Image
+
+        with Image.open(BytesIO(make_assembly_icon())) as icon:
+            alternate = BytesIO()
+            icon.save(alternate, format='PNG', compress_level=0)
+            raw = alternate.getvalue()
+            self.assertNotEqual(raw, make_assembly_icon())
+            output, _ = build_menu_experiment_resources(self.source, self.pieces,
+                                                       cycle_button=self.cycle, cycle_icon=raw)
+            self.assertEqual(output[*ICON, int(self.cycle['id'], 16)], raw)
+            modified = icon.copy()
+            modified.putpixel((6, 19), (255, 0, 0, 255))
+            for damaged in (modified, icon.convert('RGB'), icon.resize((44, 44))):
+                encoded = BytesIO()
+                damaged.save(encoded, format='PNG')
+                with self.assertRaisesRegex(ValueError, 'canonical cycle artwork|RGBA PNG'):
+                    validate_assembly_icon(encoded.getvalue())
+
+    def test_native_png_encoding_rejects_same_pixel_16bit_interlaced_and_animated_variants(self):
+        from PIL import Image
+
+        def chunk(kind, payload):
+            return (struct.pack('>I', len(payload)) + kind + payload +
+                    struct.pack('>I', zlib.crc32(kind + payload)))
+
+        def png(depth, interlace, content):
+            header = struct.pack('>IIBBBBB', 176, 44, depth, 6, 0, 0, interlace)
+            return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', header) +
+                    chunk(b'IDAT', zlib.compress(content)) + chunk(b'IEND', b''))
+
+        with Image.open(BytesIO(make_assembly_icon())) as icon:
+            pixels = icon.tobytes()
+            sixteen_bit = b''.join(b'\0' + b''.join(bytes((value, value))
+                for value in pixels[row * 704:(row + 1) * 704]) for row in range(44))
+            interlaced = bytearray()
+            for sx, sy, dx, dy in ((0, 0, 8, 8), (4, 0, 8, 8), (0, 4, 4, 8),
+                                   (2, 0, 4, 4), (0, 2, 2, 4), (1, 0, 2, 2), (0, 1, 1, 2)):
+                for y in range(sy, 44, dy):
+                    interlaced.append(0)
+                    for x in range(sx, 176, dx):
+                        offset = 4 * (y * 176 + x)
+                        interlaced.extend(pixels[offset:offset + 4])
+            changed = icon.copy()
+            changed.putpixel((6, 19), (255, 0, 0, 255))
+            animation = BytesIO()
+            icon.save(animation, format='PNG', save_all=True, append_images=[changed], duration=100, loop=0)
+        for name, raw, message in (
+                ('16-bit', png(16, 0, sixteen_bit), 'noninterlaced 8-bit RGBA PNG'),
+                ('interlaced', png(8, 1, interlaced), 'noninterlaced 8-bit RGBA PNG'),
+                ('animated', animation.getvalue(), 'single static PNG')):
+            with self.subTest(name=name):
+                with Image.open(BytesIO(raw)) as candidate:
+                    self.assertEqual(candidate.tobytes(), pixels)
+                with self.assertRaisesRegex(ValueError, message):
+                    validate_assembly_icon(raw)
+        damaged_crc = bytearray(make_assembly_icon())
+        damaged_crc[-13] ^= 1
+        with self.assertRaisesRegex(ValueError, 'valid 176 by 44 RGBA PNG'):
+            validate_assembly_icon(bytes(damaged_crc))
 
     def test_empty_and_duplicate_piece_inputs_reject_without_mutation(self):
         for pieces in ([], [self.pieces[0], self.pieces[0]], 'piece-0'):

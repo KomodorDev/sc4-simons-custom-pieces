@@ -1,0 +1,816 @@
+{
+  "purpose": "Reconstruct the straight-stem HSR trumpet from reusable registered pieces at the recorded positions and rotations.",
+  "title": "Straight-stem HSR trumpet",
+  "geometry_status": "Actual compiled model resources assembled at the recorded placements; game observations remain unverified.",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "construction_rectangle_tiles": [
+    20,
+    23
+  ],
+  "occupied_tiles": 109,
+  "module_placements": 26,
+  "component_types_used": 14,
+  "separately_available_component_types": 39,
+  "external_ports": {
+    "W": {
+      "in": [
+        -120.0,
+        -2.0,
+        15.5
+      ],
+      "out": [
+        -120.0,
+        2.0,
+        15.5
+      ]
+    },
+    "E": {
+      "in": [
+        200.0,
+        2.0,
+        15.5
+      ],
+      "out": [
+        200.0,
+        -2.0,
+        15.5
+      ]
+    },
+    "S": {
+      "in": [
+        2.0,
+        -216.0,
+        15.5
+      ],
+      "out": [
+        -2.0,
+        -216.0,
+        15.5
+      ]
+    }
+  },
+  "placements": [
+    {
+      "name": "HSR L2 Short Mainline Diverge Core at P01A",
+      "instance_id": "HSR L2 Short Mainline Diverge Core at P01A",
+      "label": "P01A",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "origin_m": [
+        -96.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Short Mainline Diverge Core",
+      "display_origin_m": [
+        16.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        1.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P01S",
+      "instance_id": "HSR L2 Two-Track Straight at P01S",
+      "label": "P01S",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        -32.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        80.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        5.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Shortened One-Way Departure Curve at P01B",
+      "instance_id": "HSR L2 Shortened One-Way Departure Curve at P01B",
+      "label": "P01B",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "origin_m": [
+        -80.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Shortened One-Way Departure Curve",
+      "display_origin_m": [
+        32.0,
+        192.0
+      ],
+      "display_origin_tiles_en": [
+        2.0,
+        12.0
+      ]
+    },
+    {
+      "name": "HSR Modular Symmetric Split and Return at P02A",
+      "instance_id": "HSR Modular Symmetric Split and Return at P02A",
+      "label": "P02A",
+      "piece_id": "hsr-component-modular-south-junction",
+      "recipe": "hsr_component_modular_south_junction",
+      "origin_m": [
+        -16.0,
+        -128.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR Modular Symmetric Split and Return",
+      "display_origin_m": [
+        96.0,
+        80.0
+      ],
+      "display_origin_tiles_en": [
+        6.0,
+        5.0
+      ]
+    },
+    {
+      "name": "HSR Modular Two-Track L2 to L4 Climb at P02B",
+      "instance_id": "HSR Modular Two-Track L2 to L4 Climb at P02B",
+      "label": "P02B",
+      "piece_id": "hsr-component-modular-paired-climb",
+      "recipe": "hsr_component_modular_paired_climb",
+      "origin_m": [
+        0.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
+      "display_origin_m": [
+        112.0,
+        176.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        11.0
+      ]
+    },
+    {
+      "name": "HSR L2 Compact Paired Fan Join at P03A",
+      "instance_id": "HSR L2 Compact Paired Fan Join at P03A",
+      "label": "P03A",
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "recipe": "hsr_component_l2_paired_fan_compact_join",
+      "origin_m": [
+        64.0,
+        80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Compact Paired Fan Join",
+      "display_origin_m": [
+        176.0,
+        288.0
+      ],
+      "display_origin_tiles_en": [
+        11.0,
+        18.0
+      ]
+    },
+    {
+      "name": "HSR L2 Short Opposed Merge Core at P03B",
+      "instance_id": "HSR L2 Short Opposed Merge Core at P03B",
+      "label": "P03B",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "origin_m": [
+        32.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Short Opposed Merge Core",
+      "display_origin_m": [
+        144.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        9.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P03CW",
+      "instance_id": "HSR L2 Two-Track Straight at P03CW",
+      "label": "P03CW",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        128.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        240.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        15.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Compact Fan Diverge at P03C",
+      "instance_id": "HSR L2 Compact Fan Diverge at P03C",
+      "label": "P03C",
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "recipe": "hsr_component_l2_compact_fan_diverge",
+      "origin_m": [
+        144.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Compact Fan Diverge",
+      "display_origin_m": [
+        256.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        16.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P03CE",
+      "instance_id": "HSR L2 Two-Track Straight at P03CE",
+      "label": "P03CE",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        192.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        304.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        19.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Shortened One-Way Return Curve at P03D",
+      "instance_id": "HSR L2 Shortened One-Way Return Curve at P03D",
+      "label": "P03D",
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "origin_m": [
+        16.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L2 Shortened One-Way Return Curve",
+      "display_origin_m": [
+        128.0,
+        192.0
+      ],
+      "display_origin_tiles_en": [
+        8.0,
+        12.0
+      ]
+    },
+    {
+      "name": "HSR Modular One-Tile Two-Level Crossing at P04A",
+      "instance_id": "HSR Modular One-Tile Two-Level Crossing at P04A",
+      "label": "P04A",
+      "piece_id": "hsr-component-modular-crossing-core",
+      "recipe": "hsr_component_modular_crossing_core",
+      "origin_m": [
+        0.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR Modular One-Tile Two-Level Crossing",
+      "display_origin_m": [
+        112.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P04N",
+      "instance_id": "HSR L4 Two-Track Straight at P04N",
+      "label": "P04N",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        224.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        14.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P04S",
+      "instance_id": "HSR L4 Two-Track Straight at P04S",
+      "label": "P04S",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        192.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        12.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P04W",
+      "instance_id": "HSR L2 Two-Track Straight at P04W",
+      "label": "P04W",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        -16.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        96.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        6.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P04E",
+      "instance_id": "HSR L2 Two-Track Straight at P04E",
+      "label": "P04E",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        16.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        128.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        8.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P05",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "canonical_origin_m": [
+        0.0,
+        32.0
+      ],
+      "instance_id": "HSR L4 Two-Track Straight at P05",
+      "rotation_degrees": 0,
+      "label": "P05",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        240.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        15.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P06",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "canonical_origin_m": [
+        0.0,
+        48.0
+      ],
+      "instance_id": "HSR L4 Two-Track Straight at P06",
+      "rotation_degrees": 0,
+      "label": "P06",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        256.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        16.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P07",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        64.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "canonical_origin_m": [
+        0.0,
+        64.0
+      ],
+      "instance_id": "HSR L4 Two-Track Straight at P07",
+      "rotation_degrees": 0,
+      "label": "P07",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        272.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        17.0
+      ]
+    },
+    {
+      "name": "HSR L4 Two-Track Straight at P08",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "recipe": "hsr_component_upper_paired_straight",
+      "origin_m": [
+        0.0,
+        80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "canonical_origin_m": [
+        0.0,
+        80.0
+      ],
+      "instance_id": "HSR L4 Two-Track Straight at P08",
+      "rotation_degrees": 0,
+      "label": "P08",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "display_origin_m": [
+        112.0,
+        288.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        18.0
+      ]
+    },
+    {
+      "name": "HSR Tight Two-Track Corner 30.5 to 23 Metres at P09",
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+      "origin_m": [
+        0.0,
+        144.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "canonical_origin_m": [
+        0.0,
+        144.0
+      ],
+      "instance_id": "HSR Tight Two-Track Corner 30.5 to 23 Metres at P09",
+      "rotation_degrees": 0,
+      "label": "P09",
+      "menu_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
+      "display_origin_m": [
+        112.0,
+        352.0
+      ],
+      "display_origin_tiles_en": [
+        7.0,
+        22.0
+      ]
+    },
+    {
+      "name": "HSR Tight Two-Track Corner 23 to 15.5 Metres at P10",
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+      "origin_m": [
+        112.0,
+        144.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "canonical_origin_m": [
+        112.0,
+        144.0
+      ],
+      "instance_id": "HSR Tight Two-Track Corner 23 to 15.5 Metres at P10",
+      "rotation_degrees": 270,
+      "label": "P10",
+      "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "display_origin_m": [
+        224.0,
+        352.0
+      ],
+      "display_origin_tiles_en": [
+        14.0,
+        22.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P01AW",
+      "instance_id": "HSR L2 Two-Track Straight at P01AW",
+      "label": "P01AW",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        -112.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        0.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        0.0,
+        13.0
+      ]
+    },
+    {
+      "name": "HSR L2 Two-Track Straight at P03BE",
+      "instance_id": "HSR L2 Two-Track Straight at P03BE",
+      "label": "P03BE",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "recipe": "hsr_component_lower_paired_straight",
+      "origin_m": [
+        112.0,
+        0.0
+      ],
+      "rotation_degrees_ccw": 270,
+      "rotation_degrees": 270,
+      "menu_name": "HSR L2 Two-Track Straight",
+      "display_origin_m": [
+        224.0,
+        208.0
+      ],
+      "display_origin_tiles_en": [
+        14.0,
+        13.0
+      ]
+    },
+    {
+      "name": "One-Way HSR L2 Eight-Metre Straight at P01BS",
+      "instance_id": "One-Way HSR L2 Eight-Metre Straight at P01BS",
+      "label": "P01BS",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "recipe": "hsr_component_lower_oneway_straight",
+      "origin_m": [
+        -16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 180,
+      "rotation_degrees": 180,
+      "menu_name": "One-Way HSR L2 Eight-Metre Straight",
+      "display_origin_m": [
+        96.0,
+        96.0
+      ],
+      "display_origin_tiles_en": [
+        6.0,
+        6.0
+      ]
+    },
+    {
+      "name": "One-Way HSR L2 Eight-Metre Straight at P03DS",
+      "instance_id": "One-Way HSR L2 Eight-Metre Straight at P03DS",
+      "label": "P03DS",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "recipe": "hsr_component_lower_oneway_straight",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "menu_name": "One-Way HSR L2 Eight-Metre Straight",
+      "display_origin_m": [
+        128.0,
+        96.0
+      ],
+      "display_origin_tiles_en": [
+        8.0,
+        6.0
+      ]
+    }
+  ],
+  "component_list": [
+    {
+      "recipe": "hsr_component_l2_short_mainline_diverge_core",
+      "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+      "menu_name": "HSR L2 Short Mainline Diverge Core",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_lower_paired_straight",
+      "piece_id": "hsr-component-lower-paired-straight",
+      "menu_name": "HSR L2 Two-Track Straight",
+      "placements": 7
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_departure_curve",
+      "piece_id": "hsr-component-l2-shortened-departure-curve",
+      "menu_name": "HSR L2 Shortened One-Way Departure Curve",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_south_junction",
+      "piece_id": "hsr-component-modular-south-junction",
+      "menu_name": "HSR Modular Symmetric Split and Return",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_paired_climb",
+      "piece_id": "hsr-component-modular-paired-climb",
+      "menu_name": "HSR Modular Two-Track L2 to L4 Climb",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_paired_fan_compact_join",
+      "piece_id": "hsr-component-l2-paired-fan-compact-join",
+      "menu_name": "HSR L2 Compact Paired Fan Join",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "menu_name": "HSR L2 Short Opposed Merge Core",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_compact_fan_diverge",
+      "piece_id": "hsr-component-l2-compact-fan-diverge",
+      "menu_name": "HSR L2 Compact Fan Diverge",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_l2_shortened_return_curve",
+      "piece_id": "hsr-component-l2-shortened-return-curve",
+      "menu_name": "HSR L2 Shortened One-Way Return Curve",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_modular_crossing_core",
+      "piece_id": "hsr-component-modular-crossing-core",
+      "menu_name": "HSR Modular One-Tile Two-Level Crossing",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_upper_paired_straight",
+      "piece_id": "hsr-component-upper-paired-straight",
+      "menu_name": "HSR L4 Two-Track Straight",
+      "placements": 6
+    },
+    {
+      "recipe": "hsr_component_tight_paired_curve90_l4_to_mid",
+      "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+      "menu_name": "HSR Tight Two-Track Corner 30.5 to 23 Metres",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_tight_paired_curve90_mid_to_l2",
+      "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+      "menu_name": "HSR Tight Two-Track Corner 23 to 15.5 Metres",
+      "placements": 1
+    },
+    {
+      "recipe": "hsr_component_lower_oneway_straight",
+      "piece_id": "hsr-component-lower-oneway-straight",
+      "menu_name": "One-Way HSR L2 Eight-Metre Straight",
+      "placements": 2
+    }
+  ],
+  "source_builds": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "used_component_types": 14,
+    "new_component_types": 4,
+    "reused_component_types": 10,
+    "controller_policy": "One coordinated staged build; do not stack controllers from separate builds"
+  },
+  "compiled_assembly_validation": "evidence/validation.json",
+  "render_evidence": "evidence/render.json",
+  "coordinate_system": {
+    "layout": "straight-stem-trumpet-v4",
+    "origin_name": "southwest tile centre of complete construction rectangle",
+    "origin_world_m": [
+      -112.0,
+      -208.0
+    ],
+    "tile_size_m": 16.0,
+    "axes": "east,north,height; S3D east,height,-north",
+    "tile_boundaries_offset_m": 8.0,
+    "display_tile_centres_bounds_en": [
+      0,
+      0,
+      19,
+      22
+    ],
+    "authoring_tile_centres_bounds_en": [
+      -7,
+      -13,
+      12,
+      9
+    ],
+    "construction_bounds_world_m": [
+      -120.0,
+      -216.0,
+      200.0,
+      152.0
+    ],
+    "bounds_order": "west,south,east,north",
+    "authoring_origin_name": "central HSR-over-HSR crossing tile centre",
+    "authoring_origin_world_m": [
+      0.0,
+      0.0
+    ],
+    "crossing_display_tiles_en": [
+      7,
+      13
+    ],
+    "authoring_to_display_tile_offset_en": [
+      7,
+      13
+    ],
+    "conversion": "display X = authoring east metres / 16 + 7; display Y = authoring north metres / 16 + 13",
+    "origin_note": "The southwest tile centre is implicit (X0,Y0) in every view. It is retained here for projection only; no global origin marker or caption is drawn. origin_m remains the unchanged authoring/model reference, not a verified mouse-click anchor.",
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_axes": "X increases east/right; Y increases north/up on the north-up plan",
+    "origin_marker_visible": false,
+    "origin_caption_visible": false
+  },
+  "render_source_build": {
+    "selection": "hsr-straight-stem-trumpet-v4",
+    "policy": "Supply an explicitly verified staged build containing these 14 required types; exact input fingerprints are retained in evidence/render.json."
+  },
+  "placement_plan_image": "previews/tile-ownership.png",
+  "placement_plan_title": "Straight-stem HSR trumpet | tile ownership and placement positions",
+  "baseline": {
+    "layout_contract": "checks/layout.json",
+    "quality_contract": "checks/contract.json",
+    "decision_record": "checks/atomization.json",
+    "policy": "Preserve the approved current outside ports, grid, footprint, all75 support positions and all109 actual world-cell resources exactly; prior atomization measurements are historical decisions in checks/atomization.json.",
+    "resource_contract": "checks/resources.json"
+  },
+  "standalone_piece_preview_policy": "One canonical 0-degree angled image per type; new types also have a top view, all on their own southwest-zero local X/Y grid. P labels belong only to the assembly plan and guide.",
+  "redesign_scope": {
+    "decision_record": "checks/atomization.json",
+    "policy": "An original tail deviation strictly below 5 mm selects a candidate. Actual adjoining-collar movement is independently bounded at 24.5 mm for paired junctions and 8.2 mm for one-way curves. Preserve the outside layout and supports.",
+    "in_game_status": "unverified"
+  }
+}

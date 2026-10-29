@@ -13,6 +13,7 @@ from pathlib import Path
 import unittest
 
 from scp.track_paths import PATH, encode_paths, _parse_paths
+from scp.subject_sources import piece_directory
 from scp_hsr.hsr_atomic_curves import (
     RECIPES, atomic_info, atomic_layout, atomic_routes, model_inputs,
 )
@@ -22,7 +23,7 @@ from scp_hsr.track_shapes import _construction_flags
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.hsr_atomic_components_verify import check_paths
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.json').is_file())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 PIECES = ROOT/'domains/high-speed-rail/00_pieces'
 DEPARTURE = 'hsr_component_l2_shortened_departure_curve'
 RETURN = 'hsr_component_l2_shortened_return_curve'
@@ -35,7 +36,7 @@ CURRENT_GEOMETRY = {
 class AtomicCurveSourceTests(unittest.TestCase):
     def test_current_curve_geometry_keeps_its_frozen_source_bytes(self):
         for recipe, digest in CURRENT_GEOMETRY.items():
-            self.assertEqual(hashlib.sha256((PIECES/recipe.replace('_', '-')/'geometry.json')
+            self.assertEqual(hashlib.sha256((piece_directory(recipe, ROOT)/'geometry.json')
                                            .read_bytes()).hexdigest(), digest)
 
     def test_literal_footprints_keep_all_required_curve_and_structural_cells(self):
@@ -145,13 +146,13 @@ class AtomicCurveSourceTests(unittest.TestCase):
 
     def test_current_sources_keep_their_complete_rejection_decisions(self):
         for recipe in RECIPES:
-            new = json.loads((PIECES/recipe.replace('_', '-')/'geometry.json').read_text())
+            new = json.loads((piece_directory(recipe, ROOT)/'geometry.json').read_text())
             decisions = new['atomization']['decision_rejections']
             self.assertEqual(len(decisions), 4)
             self.assertTrue(all(item['decision'] in ('reject', 'retain') for item in decisions))
 
     def test_return_texture_phase_is_anchored_to_its_unchanged_curve(self):
-        new = json.loads((PIECES/'hsr-component-l2-shortened-return-curve/geometry.json').read_text())
+        new = json.loads((PIECES/'hsr-l2-single-track-oneway-curve-oblique-exit/geometry.json').read_text())
         after = new['surface_context']['surface_decks'][-1]
         anchor = [0.03534376208327217, -175.44817131476105, 15.5]
 

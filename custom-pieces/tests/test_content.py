@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.content import (case_state, fingerprint, new_manual_record, record_software_result,
     record_user_result, refresh_manual_record, render_manual_checklist,
     resource_fingerprints, summarize_manual_record, validate_manual_record, write_subject_content,
@@ -116,6 +116,53 @@ class ManualContentTests(unittest.TestCase):
             for index in range(18)]
         return new_manual_record('fixture','piece',connections,self.hashes,
             {name:fingerprint(name.encode()) for name in ('southeast','top','connection-overview')})
+    def test_refresh_requires_the_same_subject(self):
+        other = new_manual_record('different-subject', 'piece',
+            {**self.connections, 'subject_id': 'different-subject'}, self.hashes, self.images)
+        before = deepcopy(self.record), deepcopy(other)
+        with self.assertRaisesRegex(ValueError, 'different subjects'):
+            refresh_manual_record(self.record, other)
+        self.assertEqual((self.record, other), before)
+
+    def test_writer_rejects_another_subject_before_writing_any_views(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            (directory/'checks').mkdir()
+            record = directory/'checks/manual-tests.json'
+            record.write_text(json.dumps(compact_manual_record(self.record))+'\n')
+            original = record.read_bytes()
+            for refresh_metadata in (False, True):
+                with self.subTest(refresh_metadata=refresh_metadata), self.assertRaisesRegex(ValueError, 'different subjects'):
+                    write_subject_content(directory, {'id': 'different-subject', 'kind': 'piece'},
+                        {**self.connections, 'subject_id': 'different-subject'}, self.hashes,
+                        refresh_metadata=refresh_metadata)
+            self.assertEqual(record.read_bytes(), original)
+            self.assertFalse((directory/'README.md').exists())
+            self.assertFalse((directory/'TESTING.md').exists())
+            self.assertFalse((directory/'connections.json').exists())
+
+    def test_observation_cannot_change_a_record_belonging_to_another_subject(self):
+        from scp.content import record_observation_file
+        for kind in ('piece', 'assembly'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temporary:
+                directory = Path(temporary)/'current-subject'
+                (directory/'checks').mkdir(parents=True)
+                definition = {'id': 'current-subject'} if kind == 'piece' else {'title': 'Current subject'}
+                (directory/(kind+'.json')).write_text(json.dumps(definition)+'\n')
+                record = new_manual_record('different-subject', kind,
+                    {**self.connections, 'subject_id': 'different-subject', 'subject_kind': kind},
+                    self.hashes, self.images)
+                path = directory/'checks/manual-tests.json'
+                path.write_text(json.dumps(compact_manual_record(record))+'\n')
+                request = directory/'checks/observation.json'
+                request.write_text('{}\n')
+                before = {file.relative_to(directory): file.read_bytes()
+                          for file in directory.rglob('*') if file.is_file()}
+                with self.assertRaisesRegex(ValueError, 'does not match current subject current-subject'):
+                    record_observation_file(path, request)
+                self.assertEqual({file.relative_to(directory): file.read_bytes()
+                                  for file in directory.rglob('*') if file.is_file()}, before)
+
     def test_defaults_never_infer_manual_or_software_pass(self):
         self.assertTrue(validate_manual_record(self.record))
         summary=summarize_manual_record(self.record)
@@ -176,7 +223,8 @@ class ManualContentTests(unittest.TestCase):
                 write_subject_content(directory, {**piece, 'kind': 'piece'}, connections, self.hashes)
             directory = directories['fixture']
             before = (directory/'connections.json').read_bytes()
-            for name in ('preview.png', 'preview-top.png', 'connection-overview.png', 'preview-thumb.png'):
+            (directory/'previews').mkdir(exist_ok=True)
+            for name in ('previews/preview.png', 'previews/preview-top.png', 'previews/connection-overview.png', 'previews/preview-thumb.png'):
                 (directory/name).write_bytes(name.encode())
             self.assertEqual(set(piece_preview_hashes(directory)),
                              {'canonical-southeast', 'canonical-top', 'connection-overview'})
@@ -425,8 +473,8 @@ class ManualContentTests(unittest.TestCase):
             saved=json.loads(record_path.read_text())
             self.assertIn('dependency_sets',saved)
             self.assertEqual(summarize_manual_record(saved)['states']['passed'],1)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
-            self.assertIn(request['case_id'],(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
+            self.assertIn(request['case_id'],(root/'TESTING.md').read_text())
 
     def test_written_views_preserve_authoritative_observations(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -436,7 +484,7 @@ class ManualContentTests(unittest.TestCase):
             record=self.user_result(record,case);path.write_text(json.dumps(record))
             result=write_subject_content(root,subject,self.connections,self.hashes,preview_hashes=self.images,write_readme=True)
             self.assertEqual(result['summary']['states']['passed'],1)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
             self.assertIn('Exact reusable identifier: `fixture`',(root/'README.md').read_text())
             self.assertTrue((root/'connections.json').is_file())
 
@@ -464,7 +512,7 @@ class ManualContentTests(unittest.TestCase):
                     patch('scp.connectivity.assembly_connectivity',return_value=assembly), \
                     patch('scp.inventory.write_inventories',return_value={}):
                 refresh_catalog_content(root,records=records)
-            text=(root/'domains/hsr/00_pieces/fixture/README.md').read_text()
+            text=(root/'domains/hsr/00_pieces/fixture/TESTING.md').read_text()
             self.assertNotIn('Concrete compatible counterparts',text)
             self.assertNotIn('[neighbour]',text)
             self.assertIn('| `Sin` | hsr / 7 / primary | in |',text)
@@ -526,15 +574,16 @@ class ManualContentTests(unittest.TestCase):
         from scp.content import piece_preview_hashes
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory)
-            (root/'preview.png').write_bytes(b'unchanged angled image')
-            (root/'preview-top.png').write_bytes(b'first top image')
+            (root/'previews').mkdir()
+            (root/'previews/preview.png').write_bytes(b'unchanged angled image')
+            (root/'previews/preview-top.png').write_bytes(b'first top image')
             images=piece_preview_hashes(root)
             record=new_manual_record('fixture','piece',self.connections,self.hashes,images)
             cases=[case for case in record['cases'] if case['kind']=='preview_review']
             self.assertEqual(len(cases),2)
             for case in cases:
                 record=self.user_result(record,case)
-            (root/'preview-top.png').write_bytes(b'revised top image')
+            (root/'previews/preview-top.png').write_bytes(b'revised top image')
             fresh=new_manual_record('fixture','piece',self.connections,self.hashes,piece_preview_hashes(root))
             refreshed=refresh_manual_record(record,fresh)
             summary=summarize_manual_record(refreshed)
@@ -542,7 +591,7 @@ class ManualContentTests(unittest.TestCase):
             self.assertEqual(summary['by_kind']['preview_review']['stale'],1)
             write_subject_content(root,{'id':'fixture','kind':'piece','name':'Fixture'},
                                   self.connections,self.hashes,preview_hashes=piece_preview_hashes(root))
-            self.assertIn('](preview-top.png)',(root/'README.md').read_text())
+            self.assertIn('](previews/preview-top.png)',(root/'README.md').read_text())
 
     def test_forbidden_transfer_view_uses_readable_known_and_unknown_rows(self):
         from scp.content import render_connections
@@ -559,10 +608,10 @@ class ManualContentTests(unittest.TestCase):
 
     def test_manual_workflow_uses_exact_portable_subject_command(self):
         with tempfile.TemporaryDirectory() as directory:
-            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.json').write_text('{}')
+            root=Path(directory)/'custom-pieces';root.mkdir();(root/'project.jsonc').write_text('{}')
             subject=root/'domains/hsr/00_pieces/fixture'
             write_subject_content(subject,{'id':'fixture','kind':'piece'},self.connections,self.hashes)
-            text=(subject/'README.md').read_text()
+            text=(subject/'TESTING.md').read_text()
             relative='custom-pieces/domains/hsr/00_pieces/fixture/checks/'
             self.assertIn('python3 -m scp.content record --record '+relative+'manual-tests.json --observation '+relative+'observation.json',text)
             self.assertIn('../../../../docs/TESTING.md',text)
@@ -768,12 +817,14 @@ class ManualContentTests(unittest.TestCase):
             result=write_subject_content(root,subject,self.connections,{},refresh_metadata=False)
             self.assertEqual(result['summary']['states']['passed'],1)
             self.assertEqual({file:file.read_bytes() for file in original},original)
-            self.assertIn('[x] passed</a>',(root/'README.md').read_text())
+            self.assertIn('[x] passed</a>',(root/'TESTING.md').read_text())
 
     def test_refresh_manual_unverified_flag_ignores_supported_software_passes(self):
         from scp.content import compact_manual_record,refresh_catalog_content
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);subject=root/'domains/fixture/00_pieces/fixture';subject.mkdir(parents=True)
+            # This regression retains a legacy combined journey observation.
+            (subject/'README.md').write_text('# Legacy fixture\n\nKeep combined journey coverage.\n')
             connections=deepcopy(self.connections)
             for port in connections['ports']:port['compatible_counterparts']=[]
             connections['source']={'resource_fingerprints':self.hashes}

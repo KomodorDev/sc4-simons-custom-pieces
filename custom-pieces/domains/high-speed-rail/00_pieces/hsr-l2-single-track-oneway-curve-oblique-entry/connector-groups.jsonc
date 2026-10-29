@@ -1,0 +1,85 @@
+// One physical track retains its channel ID through the complete one-way curve.
+// Members identify directed local endpoints; cuts identify physical crossings of source tile edges.
+// The ordinary centred south end declares section_offset_m = 0; the oblique custom cut deliberately omits it.
+// No paired or perpendicular profile defaults apply to the custom cut. Actual saved positions and headings remain authoritative.
+{
+  "schema_version": 3,
+  "purpose": "Declare the single physical track and complete exposed boundaries; measured saved PATHs retain the exact geometry and directed journey.",
+  "piece_id": "hsr-l2-single-track-oneway-curve-oblique-entry",
+  "source_binding": {
+    "piece_sha256": "cec83605e98877457b2bde84976689e113b95ed1f783d0cb6ad7a84e36e429e8",
+    "connections_sha256": "ce075fbd1ac8513202110b7131033dfc3bf262071a8b163b9c413ae5601bef04"
+  },
+  "components": [
+    {
+      "id": "one-way-curve",
+      "network": "hsr",
+      "construction_network": "monorail"
+    }
+  ],
+  "channels": [
+    {
+      "id": "curve-track",
+      "component_id": "one-way-curve",
+      "kind": "rail",
+      "traffic_modes": [
+        "monorail"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "custom-curved-end",
+      "component_id": "one-way-curve",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "custom-curved-end-track",
+          "source_port_id": "Win",
+          "direction": "in",
+          "channel_id": "curve-track",
+          "cut_id": "custom-curved-end-cut"
+        }
+      ]
+    },
+    {
+      "id": "ordinary-south-end",
+      "component_id": "one-way-curve",
+      "nominal_level": "l2",
+      "members": [
+        {
+          "id": "ordinary-south-end-track",
+          "source_port_id": "Sout",
+          "direction": "out",
+          "channel_id": "curve-track",
+          "cut_id": "ordinary-south-end-cut"
+        }
+      ],
+      "section_offset_m": 0.0
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "cell-1-0-north",
+      "source_cell": [
+        1,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "custom-curved-end"
+      ]
+    },
+    {
+      "id": "cell-4-5-south",
+      "source_cell": [
+        4,
+        5
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "ordinary-south-end"
+      ]
+    }
+  ]
+}

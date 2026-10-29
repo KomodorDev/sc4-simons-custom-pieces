@@ -1,0 +1,161 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Left to Single-Track One-Way Mainline \u2014 Compact.",
+  "schema_version": 1,
+  "id": "hsr-l4-single-track-oneway-merge-45deg-left-compact",
+  "name": "HSR Level 4 (30.5 m) \u2014 Merge 45\u00b0 Left to Single-Track One-Way Mainline \u2014 Compact",
+  "description": "A left-hand split or merge on the centered one-way 30.5 m track. No opposing mainline track is crossed. Use matching one-way L4 fillers and level adapters. The L4 mainline and branch are both one-way single tracks.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_l4_merge_45_compact_left",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f855",
+  "tile_ids": [
+    "7f5e3200",
+    "7f5e3110",
+    "7f5e3210",
+    "7f5e3020",
+    "7f5e3120",
+    "7f5e3220",
+    "7f5e3030",
+    "7f5e3230"
+  ],
+  "preview_id": "7f5e3ff5",
+  "effect_name": "preview_scp_interchg_f855_0",
+  "footprint": [
+    3,
+    4
+  ],
+  "cells": [
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f855",
+    "order": "7011f855",
+    "style": "interchange-l4-merge-45-compact-left"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f5e3200",
+      "source": "7f5e3200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3110",
+      "source": "7f5e3110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3210",
+      "source": "7f5e3210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3020",
+      "source": "7f5e3020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3120",
+      "source": "7f5e3120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3220",
+      "source": "7f5e3220",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3030",
+      "source": "7f5e3030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5e3230",
+      "source": "7f5e3230",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -8,
+        -48.0,
+        30.5
+      ],
+      [
+        32.0,
+        -56,
+        30.5
+      ]
+    ],
+    "out": [
+      [
+        32.0,
+        8,
+        30.5
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "l4",
+    "height": 30.5,
+    "angle": 45,
+    "radius": "compact",
+    "mode": "merge",
+    "hand": "left"
+  }
+}

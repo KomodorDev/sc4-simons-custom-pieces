@@ -8,27 +8,46 @@ import unittest
 from unittest.mock import patch
 
 from scp import jsonc
+from scp import connector_metadata
 from scp.connector_metadata import (ConnectorDataError, build_exports, load_exports, load_library,
     resolve_profiles, validate_piece, validate_structure, _schema, write_exports)
 from scp.export import public_files
+from connector_source_fixture import write_connector_source_fixture, synthetic_export_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = ROOT/'domains/high-speed-rail'
-IDS = ['hsr-component-modular-crossing-core', 'hsr-component-tight-paired-curve90-l4-to-mid']
-BUILD = ROOT/'dist/straight-stem-trumpet-v4'
+IDS = ['hsr-l4-over-hsr-l2-two-track-crossing-90deg', 'hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight']
+BUILD = ROOT/'dist/hsr-trumpet-straight-stem'
 
 
 def bound_source_names(values):
     names = set().union(*(set(value['source_binding']['files']) for value in values.values()))
     names.update(value['source_binding']['compiled_build']+'/manifest.json' for value in values.values())
+    # Export publication also validates the owning piece's document pair.
+    # Include those real inputs in each temporary fixture before writing.
+    names.update(f'domains/{value["domain_id"]}/00_pieces/{identifier}/{document}'
+                 for identifier, value in values.items() for document in ('README.md', 'TESTING.md'))
     return names
 
 
 class ConnectorSourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.report = load_library(ROOT, IDS)
-        cls.profiles = resolve_profiles(jsonc.load(DOMAIN/'connector-profiles.json'))
+        temporary = tempfile.TemporaryDirectory(prefix='scp-synthetic-connectors-')
+        cls.addClassCleanup(temporary.cleanup)
+        cls.fixture_root = write_connector_source_fixture(temporary.name, IDS, source_root=ROOT)
+        cls.report = load_library(cls.fixture_root, IDS)
+        cls.profiles = resolve_profiles(jsonc.load(DOMAIN/'connector-profiles.jsonc'))
+
+    def test_actual_renamed_sources_keep_historical_connector_bindings_stale(self):
+        paths = [DOMAIN/'00_pieces'/identifier/name for identifier in IDS
+                 for name in ('piece.json', 'connections.json', 'connector-groups.jsonc', 'connector-data.json')]
+        before = {path: path.read_bytes() for path in paths}
+        for identifier in IDS:
+            with self.subTest(identifier=identifier), self.assertRaises(ConnectorDataError) as error:
+                load_library(ROOT, [identifier])
+            self.assertEqual(error.exception.code, 'stale_source')
+        self.assertEqual(before, {path: path.read_bytes() for path in paths})
 
     def validate(self, mutate):
         piece = deepcopy(self.report['pieces'][IDS[0]])
@@ -46,6 +65,59 @@ class ConnectorSourceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Duplicate JSON key'):
             jsonc.loads('{"direction":"in", // hidden override\n "direction":"out"}')
         self.assertEqual(jsonc.loads('{"url":"https://example.test/a/*b*/"}'), {'url':'https://example.test/a/*b*/'})
+
+    def test_packaged_schema_fallback_reads_commented_jsonc_resources(self):
+        name = 'connector-groups.schema.jsonc'
+        expected = jsonc.load(ROOT/'schemas'/name)
+        with tempfile.TemporaryDirectory() as temporary:
+            missing_source = Path(temporary)/'framework/scp/connector_metadata.py'
+            with patch.object(connector_metadata, '__file__', str(missing_source)):
+                actual = _schema(name)
+        self.assertEqual(actual, expected)
+        self.assertTrue((ROOT/'schemas'/name).read_text().startswith('//'))
+
+    def test_comment_only_shared_source_change_invalidates_raw_export_binding(self):
+        identifier = IDS[0]
+        relative = 'domains/high-speed-rail/connector-profiles.jsonc'
+        saved = synthetic_export_identity(
+            json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text()), identifier)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root/relative
+            source.parent.mkdir(parents=True)
+            original = (ROOT/relative).read_bytes()
+            source.write_bytes(original+b'\n// Comment-only change must invalidate exact source evidence.\n')
+            self.assertEqual(jsonc.load(source), jsonc.loads(original.decode()))
+            saved['source_binding']['files'] = {relative: hashlib.sha256(original).hexdigest()}
+            saved['content_sha256'] = connector_metadata._sha(connector_metadata._canonical(
+                {key: value for key, value in saved.items() if key != 'content_sha256'}))
+            export = root/'domains/high-speed-rail/00_pieces'/identifier/'connector-data.json'
+            export.parent.mkdir(parents=True)
+            export.write_text(json.dumps(saved))
+            before = {path: path.read_bytes() for path in (source, export)}
+            report = {'pieces': {identifier: saved['resolved_piece']}}
+            with patch.object(connector_metadata, 'load_library', return_value=report):
+                with self.assertRaises(ConnectorDataError) as error:
+                    load_exports(root, [identifier])
+            self.assertEqual(error.exception.code, 'stale_export')
+            self.assertIn(relative, str(error.exception))
+            self.assertEqual(before, {path: path.read_bytes() for path in before})
+
+    def test_connector_export_writer_keeps_strict_json_and_preserves_authored_comments(self):
+        identifier = IDS[0]
+        value = synthetic_export_identity(
+            json.loads((DOMAIN/'00_pieces'/identifier/'connector-data.json').read_text()), identifier)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            directory = root/'domains/high-speed-rail/00_pieces'/identifier
+            directory.mkdir(parents=True)
+            for name in ('README.md', 'TESTING.md', 'connector-groups.jsonc'):
+                (directory/name).write_bytes((DOMAIN/'00_pieces'/identifier/name).read_bytes())
+            authored = directory/'connector-groups.jsonc'
+            before = authored.read_bytes()
+            written = write_exports(root, {identifier: value})
+            self.assertEqual(json.loads((root/written[identifier]).read_text()), value)
+            self.assertEqual(authored.read_bytes(), before)
 
     def test_forbidden_and_permitted_journeys_cannot_conflict(self):
         def mutate(p):
@@ -80,7 +152,7 @@ class ConnectorSourceTests(unittest.TestCase):
         value = {**route, 'id': 'native-11', 'cell': [0, 0], 'tile_id': '12340000',
                  'engine_transport': route['transport'], 'entry_edge': route['entry'], 'exit_edge': route['exit']}
         value = json.loads(json.dumps(value))
-        schema = _schema('connector-data.schema.json')['properties']['routes']['items']
+        schema = _schema('connector-data.schema.jsonc')['properties']['routes']['items']
         validate_structure(value, schema)
         for compatibility in (0, 1):
             validate_structure({**value, 'compatibility': compatibility}, schema)
@@ -117,8 +189,8 @@ class ConnectorSourceTests(unittest.TestCase):
     def test_source_exports_include_contract_reader_schemas_and_jsoncs(self):
         names={relative.as_posix() for relative,_ in public_files(ROOT)}
         for name in ['docs/CONNECTOR_METADATA.md','docs/WORKFLOW_DOCUMENTATION_GENERATION.md','framework/scp/jsonc.py',
-                     'framework/scp/connector_metadata.py','schemas/connector-groups.schema.json',
-                     'schemas/connector-data.schema.json','schemas/connector-profiles.schema.json']:
+                     'framework/scp/connector_metadata.py','schemas/connector-groups.schema.jsonc',
+                     'schemas/connector-data.schema.jsonc','schemas/connector-profiles.schema.jsonc']:
             self.assertIn(name,names)
         from scp.catalog import load_catalog
         expected = {
@@ -126,7 +198,15 @@ class ConnectorSourceTests(unittest.TestCase):
             for piece in load_catalog(ROOT)['pieces']
             if (ROOT/f'domains/{piece["domain"]}/00_pieces/{piece["id"]}/connector-groups.jsonc').is_file()
         }
-        self.assertEqual({name for name in names if name.endswith('/connector-groups.jsonc')}, expected)
+        declarations = {name for name in names if name.endswith('/connector-groups.jsonc')}
+        current = {name for name in declarations if len(Path(name).parts) == 5}
+        self.assertEqual(current, expected)
+        # Original declarations remain in preserved evidence snapshots. They
+        # are source-package history, rather than additional active pieces.
+        for name in declarations-current:
+            parts = Path(name).parts
+            self.assertEqual(parts[4:6], ('evidence', 'design-history'), name)
+            self.assertIn('/'.join(parts[:4])+'/connector-groups.jsonc', expected)
         self.assertTrue({f'domains/high-speed-rail/00_pieces/{identifier}/connector-groups.jsonc' for identifier in IDS} <= expected)
 
 
@@ -169,7 +249,7 @@ class ConnectorExportTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'content fingerprint'):
                 load_exports(root,IDS)
             write_exports(root,self.values)
-            source=root/'domains/high-speed-rail/connector-profiles.json'
+            source=root/'domains/high-speed-rail/connector-profiles.jsonc'
             source.write_text(source.read_text()+'\n')
             with self.assertRaisesRegex(ValueError,'stale exported source'):
                 load_exports(root,IDS)
@@ -205,7 +285,7 @@ class ConnectorExportTests(unittest.TestCase):
 
     def test_published_schemas_check_actual_exports(self):
         for value in self.values.values():
-            validate_structure(value,_schema('connector-data.schema.json'))
+            validate_structure(value,_schema('connector-data.schema.jsonc'))
 
     def test_documentation_handoff_keeps_export_fresh_but_compiled_manifest_mutations_fail(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -257,7 +337,7 @@ class ConnectorExportTests(unittest.TestCase):
                         source = root/'domains/high-speed-rail/00_pieces'/IDS[0]/'piece.json'
                         source.write_text(source.read_text()+'\n')
                     elif defect == 'stale_export':
-                        source = root/'domains/high-speed-rail/connector-profiles.json'
+                        source = root/'domains/high-speed-rail/connector-profiles.jsonc'
                         source.write_text(source.read_text()+'\n')
                     else:
                         export.write_text('{ invalid json')

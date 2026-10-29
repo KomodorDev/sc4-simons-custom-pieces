@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 from PIL import Image
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT/'framework'))
 
 from scp_hsr.test_support import donor
@@ -70,6 +70,9 @@ class CanonicalTypeTopPreviewTests(unittest.TestCase):
 
     def test_top_view_is_north_up_and_reuses_exact_saved_geometry_and_local_coordinates(self):
         report = self.render(self.root/'views', top_piece_ids=['generic-diverge', 'generic-fan'])
+        for role in ('angled', 'top'):
+            self.assertEqual(report['canonical_view_settings'][role]['image_size'], [800, 800])
+            self.assertEqual(report['canonical_view_settings'][role]['view_size'], [800, 570])
         angles = {item['piece_id']: item for item in report['images']}
         self.assertEqual(len(report['top_images']), 2)
         for image in report['top_images']:
@@ -92,10 +95,13 @@ class CanonicalTypeTopPreviewTests(unittest.TestCase):
             self.assertFalse(image['assembly_labels_visible'])
             self.assertFalse(image['coordinate_system']['model_coordinates_changed'])
             self.assertFalse(image['grid']['origin_marker_visible'])
+            self.assertEqual(image['renderer'], report['canonical_view_settings']['top'])
+            self.assertEqual(angle['renderer'], report['canonical_view_settings']['angled'])
             self.assertTrue(all(label['tile_index'] >= 0 for label in image['grid']['tile_labels']))
             self.assertFalse(any('P00' in caption or 'P01' in caption or 'trumpet' in caption.lower()
                                  for caption in image['captions']))
-            self.assertIn('in-game placement and traffic remain unverified', image['captions'][-1])
+            self.assertEqual(image['captions'][-1], 'Software model preview.')
+            self.assertNotRegex(' '.join(image['captions']).lower(), r'\bunverified\b|\bpassed\b|\bfailed\b')
             with Image.open(self.root/'views'/image['file']) as bitmap:
                 self.assertEqual(bitmap.size, (800, 800))
 

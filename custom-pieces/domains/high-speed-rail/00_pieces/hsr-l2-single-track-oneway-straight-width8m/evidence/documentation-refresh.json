@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "Record the scoped, executed documentation migration checks against unchanged saved game resources, without claiming a new geometry build or game approval.",
+  "piece_id": "hsr-component-lower-oneway-straight",
+  "checked_on": "2026-10-27",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "original_source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "executed_checks": {
+    "scoped_actual_resource_extraction": "passed",
+    "independent_compiled_PATH_reextraction": "passed",
+    "authored_connector_metadata": "passed",
+    "connector_export_freshness": "passed",
+    "connector_overview_freshness": {
+      "status": "passed",
+      "boundary_cards": 2,
+      "output_sha256": "73a83c3895109627fd6e067b9218c93054bbcb4893735ec060d0b8466231878e"
+    },
+    "saved_resource_check": {
+      "dat_path": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-lower-oneway-straight.dat",
+      "dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+      "model_sha256": "1478e87a5d4df53c8d63a93208effb327bb60a04ee42b49ea8aa13881bfbacd5",
+      "resource_fingerprints_checked": 15,
+      "directional_ports_reextracted": 2,
+      "directed_journeys_reextracted": 1,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    }
+  },
+  "preservation": {
+    "piece_definition_byte_identical": true,
+    "game_icon_byte_identical": true,
+    "geometry_byte_identical": true,
+    "saved_resource_fingerprints_equal_before_documentation_refresh": true,
+    "directed_journeys_equal_before_documentation_refresh": true,
+    "original_observations_preserved": true,
+    "original_preview_and_measurement_evidence_frozen_under": "evidence/design-history/",
+    "historical_files": [
+      {
+        "original_file": "evidence/preview.json",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.json",
+        "sha256": "efac3a27f21f5f0641571e4d77ad4dd9af2ade492b554d88ec1b5aa822f42c7a"
+      },
+      {
+        "original_file": "previews/preview.png",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.png",
+        "sha256": "0df619108c2154b9a50b1af7d861fbc6fafdb403bc686953e6017bdf0b6ac2a4"
+      },
+      {
+        "original_file": "previews/preview-thumb.png",
+        "preserved_file": "evidence/design-history/preview-thumb-before-documentation-refresh.png",
+        "sha256": "705d63a9bdaa71a39592611f2dec131b1a8aeec6971ac3dc0d06ca85160f595a"
+      },
+      {
+        "original_file": "connections.json",
+        "preserved_file": "evidence/design-history/connections-before-documentation-refresh.json",
+        "sha256": "0709f9b1a0278b4ec48a7ff22842796de5666f6c45f65bf332fa24ab196a7295"
+      }
+    ]
+  },
+  "artwork": [
+    {
+      "evidence_file": "evidence/preview.json",
+      "evidence_sha256": "c660422240c0dce2e9e4486909972017515ecfaadf3264101a60f8888ad31fb5",
+      "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd"
+    },
+    {
+      "evidence_file": "evidence/preview-top.json",
+      "evidence_sha256": "182431ec0de0583bd2226ca8ae8782d419ff6420cb18208e49abb0cab7628a72",
+      "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd"
+    },
+    {
+      "evidence_file": "evidence/connection-overview.json",
+      "evidence_sha256": "767d3fca352f231d1fd70f2b24cb5da972f65dc4bf47a3ae96b59b25f1dea790",
+      "source_dat_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd"
+    }
+  ],
+  "limits": {
+    "new_geometry_build": false,
+    "construction_rules_reextracted": false,
+    "neighbour_compatibility": "unverified",
+    "physical_seams": "unverified",
+    "game_observations_created": 0,
+    "human_preview_approvals_created": 0,
+    "installed": false
+  }
+}

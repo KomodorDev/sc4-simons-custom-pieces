@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "purpose": "Road stack sidewalk visual diagnosis from exact native texture resources; no in-game observation is inferred.",
+  "road": {
+    "tgi": "7ab50e44-1abe787d-00004b0e",
+    "source": "<NAM Plugins>/US_Common_Road.dat",
+    "decompressed_bytes": 16432,
+    "decompressed_sha256": "c6190c0d3003da45a0c776aabe73b6a4e02307e96117a29af9b216c31732c196",
+    "size_px": [
+      128,
+      128
+    ],
+    "alpha_histogram": {
+      "0": 6144,
+      "136": 256,
+      "255": 9984
+    },
+    "nonzero_alpha_bbox_px": [
+      24,
+      0,
+      104,
+      128
+    ]
+  },
+  "paving": {
+    "tgi": "7ab50e44-1abe787d-08200004",
+    "source": "<SimCity 4 installation>/SimCity_3.dat",
+    "capture": "<local>/road-revision/sidewalk-capture/7ab50e44-1abe787d-08200004.dat",
+    "decompressed_bytes": 8256,
+    "decompressed_sha256": "f38c5c04ef63430a3730844973b9334c28e219cd5644df71a381bc8ef6008baa",
+    "size_px": [
+      128,
+      128
+    ],
+    "alpha_histogram": {
+      "255": 16384
+    },
+    "nonzero_alpha_bbox_px": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "capture_dat_sha256": "19e47af9e8a5fb90ca069bb297574146fe5567fb5474a0f22602a3ab284c7a53"
+  },
+  "measurements": {
+    "road_full_tile_uv_mapping": "u=(east+8)/16; v=(S3D_z+8)/16",
+    "road_nonzero_alpha_east_band_m": [
+      -5.0,
+      5.0
+    ],
+    "road_native_pedestrian_east_positions_m": [
+      -6.39,
+      6.39
+    ],
+    "road_alpha_at_through_pedestrian_positions": 0,
+    "native_sidewalk_atlas_alpha_every_pixel": 255
+  },
+  "minimal_fix": {
+    "ground_plane_height_m": 0,
+    "road_band_east_m": [
+      -5,
+      5
+    ],
+    "road_uv_u": [
+      0.1875,
+      0.8125
+    ],
+    "west_paving_band_east_m": [
+      -8,
+      -5
+    ],
+    "east_paving_band_east_m": [
+      5,
+      8
+    ],
+    "all_bands_S3D_z_m": [
+      -8,
+      8
+    ],
+    "all_bands_uv_mapping": "Same full-tile scale; no lane-width rescaling, overlaps, or height change.",
+    "paving_policy": "Explicit fixed 08200004 appearance. No dynamic wealth selection is established.",
+    "native_traffic_paths_change": false
+  },
+  "renderer_limit": {
+    "texture_alpha_rule": "Both existing renderers hard-code sampled texture alpha > 0.5; parsed material flags do not change this rule.",
+    "game_appearance_established": false
+  },
+  "primary_texture_identity_reference": "https://community.simtropolis.com/forums/topic/73260-texture-automation/",
+  "path_redaction": {
+    "purpose": "Keep diagnostic inputs portable without publishing private game or workstation locations.",
+    "method": "Source report already uses explicit <NAM Plugins>, <SimCity 4 installation>, and <local> placeholders; no private paths were copied.",
+    "measured_results_changed": false,
+    "new_diagnostic_run": false
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "purpose": "Disclose path-only redactions in retained historical evidence for public source distribution.",
+  "redacted_on": "2026-10-26",
+  "reason": "Personal workstation paths are not required to interpret the archived audit, build warning, or test results.",
+  "path_base": "Repository root, containing custom-pieces/ and scp-planner/.",
+  "files": [
+    {
+      "path": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/evidence/audited-build-manifest.json",
+      "original_sha256": "a02735b7f47ca3f14dfe6507ed247986b2188d2bab8a22060706e98fb4b6f877",
+      "public_sha256": "193d93cd78ff7a7f5659c881c8de34fce0179a9c9e0e1b3c1f7e4479df820b2d",
+      "change": "Removed only the absolute workstation prefix; the path is now relative to the repository root."
+    },
+    {
+      "path": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/evidence/markdown-audit.json",
+      "original_sha256": "2c7af11a47e117fe43edfca45aa4f2848e80b6de42d40e9dbc4cad0cdcc6ba99",
+      "public_sha256": "cb4ad0a6ce3a314e68ed5455d352c4737a464f0cfbd2d96ae973ca397a05b146",
+      "change": "Removed only the absolute workstation prefix; the path is now relative to the repository root."
+    },
+    {
+      "path": "custom-pieces/domains/high-speed-rail/01_assemblies/straight-stem-trumpet-v4/evidence/test-logs/v4-actual.txt",
+      "original_sha256": "5249299658d43551a0883520b6cc0401d562158eec71b579e5f64339b761bce3",
+      "public_sha256": "2520362e5ea91079ddd22a7ca69952cf41e11484ac90ebb3d29374a0b799f656",
+      "change": "Removed only the absolute workstation prefix; the path is now relative to the repository root."
+    }
+  ],
+  "original_bytes_preserved_locally": {
+    "retained": true,
+    "tracked": false,
+    "note": "Unredacted originals are retained outside version control; their fingerprints are listed above."
+  },
+  "historical_hashes": {
+    "policy": "Existing audit-start, validation, resource, and test-result hashes are deliberately unchanged; they identify their original historical inputs rather than a new audit of the redacted public copies.",
+    "manifest_hash_record": "validation.json: manifest_sha256",
+    "validation_hash_record": "test-results.json: actual_v4.validation_sha256"
+  },
+  "measurement_or_resource_changes": false,
+  "manual_observation_changes": false,
+  "tests_or_measurements_rerun_for_this_record": false,
+  "claim": "Only the three recorded path strings changed. Existing measured results, test counts, warnings, resource fingerprints, and observations are retained."
+}

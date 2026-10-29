@@ -1,0 +1,3518 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "hsr-component-l2-short-opposed-merge-core",
+  "domain_id": "high-speed-rail",
+  "source_binding": {
+    "compiled_build": "dist/opposed-parapet-follow-ballast",
+    "compiled_manifest_sha256": "eed97daaee46cc2dd27bcf69128288ce90be3ce4703d570e7f168a3850b83d51",
+    "files": {
+      "dist/opposed-parapet-follow-ballast/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat": "34026c4a0047da20b6e83fb9f9b675de8d5fe123342988dd3620d83106d8808e",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "97b3c3f296c8cb302b45eda81ebc1bc5613a83d84ddc81cc7d625dc22ef7ff78",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connector-groups.jsonc": "4667e37a0084e1411ae44ecb94e481905a97f4a49c541f286b5ca1d7abff74ce",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
+      "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd",
+      "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+      "domains/high-speed-rail/implementation/scp_hsr/__init__.py": "c71ede4fc58b564d18711bc36bd618d54994a3eff1b25ea8d094bb523a37f0a3",
+      "domains/high-speed-rail/implementation/scp_hsr/assembly_inspection.py": "4af85a79d8e4b5fb0c8d8000a91afaa1d4482db0b544391dac0903e675bb7ed2",
+      "domains/high-speed-rail/implementation/scp_hsr/crossing_models.py": "6bd8ce7e1cc6e5705189dfe480bc5935274a451f9ef49d1f9a50cba33446cdcd",
+      "domains/high-speed-rail/implementation/scp_hsr/crossings.py": "76ffd236057486c2052fc2a54847ba789775c8b2d69e52ce7f702c9ccb834318",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t.py": "32a9f2b871a1eb25b02b1446f4db51447a29dd646be54005e38d11e43055607b",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_diagonal_t_verify.py": "36839c1f5c3c09582a5dfc3110b54dad08e427d96b113ae5282c4a2282e7c72e",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t.py": "3709d5ba819bf1c3549ba20a856b18c6176c7b8426605c01770ecf967e7bef43",
+      "domains/high-speed-rail/implementation/scp_hsr/directional_t_verify.py": "ec430e54e960e7d5b005bd10d27535ea14a769680778c74388b59dc36a86df67",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_assembly_components_verify.py": "9674b4e9ccf0c286390158e56b8950da846bcf2523ea5078a041d5e3d8a6c62b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "3c9be5b3637e999d972ed60b588638a98edc42b026d516d584036e378e9f5502",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_curves.py": "2a992a598bc18470af280690e0c64bb07f1f3a09946ca0f7483c85514bedd9e0",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_junctions.py": "480129a14b988e6d16009b91fdd1bae89ab093a70496d64db821f6326b01e53f",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise.py": "214c42d6441cad07d67a2ce3a7f353015505a01b427c7506bd560493cfa8515e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_blind_rise_verify.py": "32fd064bd9c4baa0aa1871efd8e441d144ecb3ed744f89fb58a30714370dd32d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_components_verify.py": "6adae14046072e3f6edf60032c01406edda4954a06cb811bb4275525027409a4",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan.py": "19294e94ce360db2f243dcd8fe4573cbf0c2e7a44c11ec197be0d32631347406",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "e8e305e17c7ed5bc71d5e776fbe61a43d091034de5236c9733bcbc0be822a45b",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components.py": "538a1c0b2e9c7e04ca8ed279ea9d795e6969c72c5959c6978845b6e5f661e37a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_layout.py": "ba4562a630a4748d9a4e9dfedead2421afdbce02e5e15323b0f837fcf0edc583",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_components_verify.py": "da04ede05f82041056c512107a1a29bf570349b226e3ed3a7a20859fe15ce816",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_connections.py": "43abea0bc932edb1f2785e8fe27087666a44ace5cb639181b58f992c77241d41",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet.py": "24b7ede1ca04cec5edf6c2c8659ad243afa22a31ae2824f85b5fd573139b6936",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_fan_parapet_verify.py": "c70caa6616a4cff4243a678307cffd17fb8aa6ef66b3eec050b477d37c41d4d5",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_merge_extraction_verify.py": "88b75443272e55f723eaa440422a9a3940f181f020aa962592a9664692b4b362",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh.py": "146243d6134318ad396f4df12f40f2e047519df8673c4a951428b0d614308bac",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_mesh_verify.py": "5c4b1187fab76dac941e6a07edcabf4bb77845c9c8923a2d12cd16f02b6f15f9",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet.py": "7691078d19bfdd43a41002ae8f6769e17bc7eb07bf03fcb9fa0092336b14c678",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_opposed_parapet_verify.py": "7b98fa779671a94560bd0f9e812e32b091e19839aa1ab2d5eb3ee917032e100a",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components.py": "9f551be8ac2cfa8a6e819f2334376a2f28d2ae35d84ecac141f668fff5366478",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_partition_components_verify.py": "0a3455ed0ba9efa9867fcda304b253f4ec19f3e9b23e44e514b1233da96628b7",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components.py": "2d83886d0789994dd93c3bac273820ba49567131a49b6b5be690a77d368d091c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_refined_components_verify.py": "2a07ba21da8d924cbc8173a077da2765e3e651c0abe14161013503dda75b0c26",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_reusable_components.py": "3521fff8d9ce6bd3fc8cee0651d3f58c5639b7f500d9b7fd1769153bf7e21505",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_surface_equivalence.py": "04c3106c881b13c75c391c18f0220b4fd36353de78f07d5135e19c43a28b559d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet.py": "e2557f001c5c560f6d71abc6f07a0b2ff2bfd1fea9186e059ff223d3271a284e",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_symmetric_parapet_verify.py": "415c12dd013f28abdcd0dc0328955035517554404ac8eaea573cdbde099d230d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components.py": "a047aeba448fc6a00e90d63c08dadd8ba03714dbb268f331b369355ee51e8b0c",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_tight_loop_components_verify.py": "c4a2f9d03b239d6723bd9c9b9622302791aa27e7fe393c73dda8431473387480",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_rework_verify.py": "910eafa974eabe70f94bf95a3610e529ea9a4e7f8142340c44c9f7ae73fc327d",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_trumpet_verify.py": "6eb575fc57d7bb7a3f6cce2b1e98ea2da0bad9029a55c871c9b9352e812b6d3c",
+      "domains/high-speed-rail/implementation/scp_hsr/icons.py": "6a449968af8993cb96ea540ea1791aac1849c8843882a74ca1356bf8e3d5c928",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_layouts.py": "d9e794d2b9e2642ddae83d02870f97650dcf2c8c918b61429cac20216e43ae87",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_models.py": "529a0e27ea82c3d16555a6ef17c30ffb137ccbb76ae5765ba71d90d3fa486049",
+      "domains/high-speed-rail/implementation/scp_hsr/interchange_verify.py": "80c3ebb75d53eef12afc4eb126bbdfe643f4f4269cf75242b74efed56dff61af",
+      "domains/high-speed-rail/implementation/scp_hsr/menu.py": "83fa76deeac07c797959c2a47ef9b84f1cb55ae1d511d8abce97fe6495bc095c",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_feature_verify.py": "ae38f5fed3d1df2a8d208ca930478a57080ca67f36f3a27fe2b355aacabfcfaf",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_features.py": "d485d2222655eafa73feb6903bc38dddf815088371f844b244b8c27d136c3cea",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_geometry.py": "83d125645bc4317c77ccc9906a3ec47a519182f3f9adc5f44dbdb61065ab4285",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repair_verify.py": "144ef517c1990fa20b84cbbca61418327f35a540a4a08c7f5b7d92a7156d7757",
+      "domains/high-speed-rail/implementation/scp_hsr/rail_repairs.py": "6847129459b7fcb752fcf30ef100e23f95de56728e5112c6fe7f623f2500433a",
+      "domains/high-speed-rail/implementation/scp_hsr/recipes.py": "2a3318ffc37e2b85153584ace8744d159a8c04fa93c3327303547d84c69ce945",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack.py": "dd1a4468e8ed1228a57a67491da655c5c08d106d511fa29af4adfa68a0d0f8f3",
+      "domains/high-speed-rail/implementation/scp_hsr/road_stack_verify.py": "23dc734a55964d28f13e40e33fa24cd55968b27c7af375f9b5918d6541db9866",
+      "domains/high-speed-rail/implementation/scp_hsr/single_track_models.py": "1147aeb46f5931e24913fc0f4f05b7589470ec3c2947f796667129461c9395af",
+      "domains/high-speed-rail/implementation/scp_hsr/test_support.py": "63661a507a6fb9c537c883b85fccba228a175d685411e0e2b2c3f25fea84a39d",
+      "domains/high-speed-rail/implementation/scp_hsr/track_shapes.py": "7dfd56990ed4e29acb98f29e466ac358cfba863607a5c231327d14a4d0308a13",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+      "framework/scp/build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+      "framework/scp/catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+      "framework/scp/connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+      "framework/scp/connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+      "framework/scp/connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+      "framework/scp/content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+      "framework/scp/inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+      "framework/scp/jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+      "framework/scp/menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "f0d410a7ddf913d9d48567fa16a510fc3fdc662cab832f08439954c042523452",
+      "framework/scp/preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+      "framework/scp/providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
+      "framework/scp/release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+      "framework/scp/render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+      "framework/scp/verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd",
+      "schemas/connector-data.schema.json": "78a77d6c231f59d06605ff15dfac87df07bf89804680fc731fd9ca513efb20c9",
+      "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+      "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "hsr-component-l2-short-opposed-merge-core",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for HSR L2 Short Opposed Merge Core.",
+      "schema_version": 1,
+      "id": "hsr-component-l2-short-opposed-merge-core",
+      "name": "HSR L2 Short Opposed Merge Core",
+      "description": "Four-tile flat native L2 mainline with opposed one-way merges; both mainline ends accept the native paired straight, the northern branch retains the Short Mainline Diverge Core angle, and all retained track paths remain unchanged.",
+      "domain": "high-speed-rail",
+      "recipe": "hsr_component_l2_short_opposed_merge_core",
+      "status": "experimental",
+      "enabled_by_default": false,
+      "puzzle_id": "f827",
+      "tile_ids": [
+        "7f585100",
+        "7f585200",
+        "7f585300",
+        "7f585400"
+      ],
+      "preview_id": "7f585ff5",
+      "effect_name": "preview_scp_hsrcomp_f827_00",
+      "footprint": [
+        4,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "structural_cells": [],
+      "orientation_policy": "rotate-only-preserve-direction",
+      "dependencies": [
+        "controller",
+        "hsr"
+      ],
+      "menu": {
+        "id": "6a47f827",
+        "order": "7012f827",
+        "style": "hsr-component-l2-short-opposed-merge-core"
+      },
+      "shadow_mappings": [
+        {
+          "tile": "7f585100",
+          "source": "7f585100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f585200",
+          "source": "7f585200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f585300",
+          "source": "7f585300",
+          "rotation": 0
+        },
+        {
+          "tile": "7f585400",
+          "source": "7f585400",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Retains the approved opposed-merge track paths in four tiles; the western straight tile is replaced by the existing paired straight, with only the declared native parapet seam normalized by at most 3.4524 mm.",
+        "construction": "Separate component port contract; additive auto-tile addresses checked before allocation.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "category": "hsr-components",
+      "component": {
+        "kind": "partition_component",
+        "support_centers": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            32.0,
+            0.0
+          ],
+          [
+            48.0,
+            0.0
+          ]
+        ],
+        "support_foundation_width": 1.3,
+        "support_min_spacing": 16.0,
+        "custom_curved_interfaces": true
+      },
+      "ports": {
+        "W": {
+          "in": [
+            -8.0,
+            -2.0,
+            15.5
+          ],
+          "out": [
+            -8.0,
+            2.0,
+            15.5
+          ]
+        },
+        "E": {
+          "out": [
+            56.0,
+            -2.0,
+            15.5
+          ],
+          "in": [
+            56.0,
+            2.0,
+            15.5
+          ]
+        },
+        "N": {
+          "in": [
+            38.39851855221686,
+            8.0,
+            15.5
+          ]
+        },
+        "S": {
+          "in": [
+            9.601481447783137,
+            -8.0,
+            15.5
+          ]
+        }
+      },
+      "movements": [
+        [
+          "W",
+          "E"
+        ],
+        [
+          "E",
+          "W"
+        ],
+        [
+          "N",
+          "W"
+        ],
+        [
+          "S",
+          "E"
+        ]
+      ],
+      "at_grade_conflicts": false,
+      "design_assessment": {
+        "stage": "reusable component prototype",
+        "scope": "Individual component; assembly and game operation unverified"
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "hsr-component-l2-short-opposed-merge-core",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:hsr-component-l2-short-opposed-merge-core:ea5118b0-ea5118b1-7f585ff5": "61a19c47abcb24195bb8967963e3d5a260bb05dcaf1139d4de7e97f6b2fd42e0",
+          "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585100": "7313fc768119b7acab986078d949137e71e111fab55f58dda1937b7b735905db",
+          "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585200": "9d618f36246f0350ad26cd07189f2b139dc34b1480c0735c14e7451920a836c8",
+          "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585300": "5e9c47233ba7d6c19d16864fc0cb7df6bea85f93b03647e5cc107ee17e884f6e",
+          "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585400": "6c2fc8f84583de0e1f681e32ff498b124b3b6263160c3a81673b7eb145c8b5b1",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "0fbff4513e963159a3965c19f8874cfa8541ced4f85056affee64bdfaa0c0e57",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "0fbff4513e963159a3965c19f8874cfa8541ced4f85056affee64bdfaa0c0e57",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "0fbff4513e963159a3965c19f8874cfa8541ced4f85056affee64bdfaa0c0e57",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "0fbff4513e963159a3965c19f8874cfa8541ced4f85056affee64bdfaa0c0e57",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "0fbff4513e963159a3965c19f8874cfa8541ced4f85056affee64bdfaa0c0e57",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204": "338c315cb8d387f7fe7e71180358b810f6a8604affaa5a3245f0534be475e85b",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304": "7672de03a0c8f9137790057b65e8699e05708fd06cb937611d82db4326d39541",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400": "fa414d5baa497ce3e17ef72bbfd9c1634c8522d46569b7bc72dd47c3dbae323a",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401": "fa414d5baa497ce3e17ef72bbfd9c1634c8522d46569b7bc72dd47c3dbae323a",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402": "fa414d5baa497ce3e17ef72bbfd9c1634c8522d46569b7bc72dd47c3dbae323a",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403": "fa414d5baa497ce3e17ef72bbfd9c1634c8522d46569b7bc72dd47c3dbae323a",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404": "fa414d5baa497ce3e17ef72bbfd9c1634c8522d46569b7bc72dd47c3dbae323a",
+          "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "fc8dbd55d75a24e8c5e239c4c991907c8bad5bca674d16f6c27624059d51ab74",
+          "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100": "c99af55fa96361055e7959d95513f61406ddb66fa17e6f514af77c044c9bf91c",
+          "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200": "000ae8858cdb0deace3e13d5b687c175b01e5a8633f3fe6661c47b61a16ff2dc",
+          "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300": "8ccc3c065b6a147e72a13f18657f2d3f2ea6ffba26f252409e4413769b927357",
+          "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400": "b34a20f60ddd73567022a93cc64b61408933d16281df9e3d0324ed8a8c8d4a9e",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585100": "0fcb0d9fb961297a50a371170ada3046eec61e30dd4147a7a259ec3fb1cf77ec",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585101": "a4ab5d4d9aaa96171184dec909099e56e0be0025ba4ac6cc2277fcaf9f39e6f6",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585102": "ac76c42fcde88ba3641516401bdf56f0f3df700c78f09da953e8cfd194b72033",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585103": "5e7df2e9af15472007f7ec5ae0820d29b10d8e49d2c3ff4605d2c7f28422573c",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585104": "6049511938d2a5b2cd4311971989a9c5733925371d340c51d65683a267b2bedc",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585200": "faabfbb39c022a79369adffbc30a6d662868e0c1aa768e5f1847929576ce42a4",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585201": "7059f2de22818a03b948c568b0bf8ca65d2292f1cbe7631092ece54017d73fea",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585202": "b96dd780f43b6207eba7dcff1aa6e88a842e1578f5a3d17717aff7b10080abf5",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585203": "70a76cdef75ed9066bcdbd3671e8d83bd81988c5c8e259eabe5f53513bd81a1c",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585204": "4248fa3d14ba4e798a53cc10e69d17e0c568ae703d2c1605fd54422c2c20858f",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585300": "b5fabda3cdece9e79273a95c7147e859fe4ec25fa21f9f91da4f3a74abd3b452",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585301": "4ba9ebb1c2bcf60fcc37a72b0fb2f0eca6825cc96d80d6ee5ed61c77ea0ed009",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585302": "2bdcf4937157fa5bbfac441938aa3f00665017945d2e47355ac285c85b45db76",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585303": "8f90952113bd39d8848a8c6b77f9a784410065025d29d641c014c53fce62bfbe",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585304": "86af4019f9bf26fb3a4bba5a095d34bd0c0f27d4e04c908a41184c113b3469c0",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585400": "e3ff403b815285690b4ac1b2ad651e3af8b3e83ac4f9a7730b26df025f42f212",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585401": "4a883a87cd683253774165e739b3e45ff75183884c8b4bc4a4c2177979e064f7",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585402": "2ab8e6fd430ab8b729674639d2e6ab5fe5e46e80d41e9d6a328789421becbb67",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585403": "13791935ae7a6ce60ab97469b8f83afd8b8a7c4a2361f74cf874edb6f22e30e9",
+          "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585404": "7bfe36b30328803a1a0dcbdec0d3d5e186190f903e121fdeaa7b3cae61b85e0b",
+          "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585100": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+          "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585200": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+          "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585300": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+          "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585400": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+          "construction:hsr-component-l2-short-opposed-merge-core": "b7a2d7804d5a3dea51fd47398c0cfad733a8e252e09dd53c8f8e92d85c83a923"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the verified source build record"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "Win",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -2.0,
+            15.5
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585100-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f585100"
+            }
+          ],
+          "connection_class": "path-interface-12d12be31d2057c5763d"
+        },
+        {
+          "id": "Wout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            2.0,
+            15.5
+          ],
+          "tangent": [
+            -1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            -1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585100-route-001",
+            "path-7f585100-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f585100"
+            }
+          ],
+          "connection_class": "path-interface-fba09fbeb87ad95c667a"
+        },
+        {
+          "id": "Sin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 3,
+          "endpoint_m": [
+            9.601481,
+            -8.0,
+            15.5
+          ],
+          "tangent": [
+            0.9272548089646255,
+            0.3744309272108488
+          ],
+          "sampled_tangent": [
+            0.9272557495225853,
+            0.3744285979693708
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585200-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                0
+              ],
+              "edge": 3,
+              "tile_id": "7f585200"
+            }
+          ],
+          "connection_class": "path-interface-0f4b8204e68941486c48"
+        },
+        {
+          "id": "Nin",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 1,
+          "endpoint_m": [
+            38.398519,
+            8.0,
+            15.5
+          ],
+          "tangent": [
+            -0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "sampled_tangent": [
+            -0.9272557495225895,
+            -0.3744285979693605
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585300-route-003"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                2,
+                0
+              ],
+              "edge": 1,
+              "tile_id": "7f585300"
+            }
+          ],
+          "connection_class": "path-interface-0f4b8204e68941486c48"
+        },
+        {
+          "id": "Eout",
+          "direction": "out",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            56.0,
+            -2.0,
+            15.5
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585400-route-000",
+            "path-7f585400-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f585400"
+            }
+          ],
+          "connection_class": "path-interface-12d12be31d2057c5763d"
+        },
+        {
+          "id": "Ein",
+          "direction": "in",
+          "service_network": "hsr",
+          "service_family": "high-speed-rail",
+          "variant": "hsr",
+          "role": "primary",
+          "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            56.0,
+            2.0,
+            15.5
+          ],
+          "tangent": [
+            -1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            -1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.0,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403",
+            "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404",
+            "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400",
+            "construction:hsr-component-l2-short-opposed-merge-core"
+          ],
+          "source_route_ids": [
+            "path-7f585400-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                3,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f585400"
+            }
+          ],
+          "connection_class": "path-interface-fba09fbeb87ad95c667a"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "7:Win>Eout",
+          "entry_port": "Win",
+          "exit_port": "Eout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Sin>Eout",
+          "entry_port": "Sin",
+          "exit_port": "Eout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Nin>Wout",
+          "entry_port": "Nin",
+          "exit_port": "Wout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:Ein>Wout",
+          "entry_port": "Ein",
+          "exit_port": "Wout",
+          "service_network": "hsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "hsr",
+            "hsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "Win",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Sin",
+          "to_port": "Wout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Nin",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "Ein",
+          "to_port": "Eout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f827",
+            "0004f827"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f827",
+            "0007f827"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f827",
+            "0006f827"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f827",
+            "0005f827"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Declare the complete measured boundaries and physical tracks of the redesigned reusable HSR component. Internal movements remain measured saved-resource journeys.",
+      "piece_id": "hsr-component-l2-short-opposed-merge-core",
+      "source_binding": {
+        "piece_sha256": "931d14cfe38efaf3aa0dd8aeebdcb5444b5e2b9386ab65d39a752bf58dd439f5",
+        "connections_sha256": "97b3c3f296c8cb302b45eda81ebc1bc5613a83d84ddc81cc7d625dc22ef7ff78"
+      },
+      "components": [
+        {
+          "id": "opposed-merge",
+          "network": "hsr",
+          "construction_network": "monorail"
+        }
+      ],
+      "channels": [
+        {
+          "id": "eastbound-mainline",
+          "component_id": "opposed-merge",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "westbound-mainline",
+          "component_id": "opposed-merge",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "north-branch",
+          "component_id": "opposed-merge",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "south-branch",
+          "component_id": "opposed-merge",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "west-paired-end",
+          "component_id": "opposed-merge",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "west-paired-end-win",
+              "source_port_id": "Win",
+              "direction": "in",
+              "channel_id": "eastbound-mainline",
+              "cut_id": "west-paired-end-eastbound-mainline-cut"
+            },
+            {
+              "id": "west-paired-end-wout",
+              "source_port_id": "Wout",
+              "direction": "out",
+              "channel_id": "westbound-mainline",
+              "cut_id": "west-paired-end-westbound-mainline-cut"
+            }
+          ],
+          "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+          "section_offset_m": 0.0
+        },
+        {
+          "id": "east-paired-end",
+          "component_id": "opposed-merge",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "east-paired-end-ein",
+              "source_port_id": "Ein",
+              "direction": "in",
+              "channel_id": "westbound-mainline",
+              "cut_id": "east-paired-end-westbound-mainline-cut"
+            },
+            {
+              "id": "east-paired-end-eout",
+              "source_port_id": "Eout",
+              "direction": "out",
+              "channel_id": "eastbound-mainline",
+              "cut_id": "east-paired-end-eastbound-mainline-cut"
+            }
+          ],
+          "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+          "section_offset_m": 0.0
+        },
+        {
+          "id": "north-curved-cut",
+          "component_id": "opposed-merge",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "north-curved-cut-nin",
+              "source_port_id": "Nin",
+              "direction": "in",
+              "channel_id": "north-branch",
+              "cut_id": "north-curved-cut-north-branch-cut"
+            }
+          ]
+        },
+        {
+          "id": "south-curved-cut",
+          "component_id": "opposed-merge",
+          "nominal_level": "l2",
+          "members": [
+            {
+              "id": "south-curved-cut-sin",
+              "source_port_id": "Sin",
+              "direction": "in",
+              "channel_id": "south-branch",
+              "cut_id": "south-curved-cut-south-branch-cut"
+            }
+          ]
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "cell-0-0-west",
+          "source_cell": [
+            0,
+            0
+          ],
+          "edge": "west",
+          "connector_ids": [
+            "west-paired-end"
+          ]
+        },
+        {
+          "id": "cell-3-0-east",
+          "source_cell": [
+            3,
+            0
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "east-paired-end"
+          ]
+        },
+        {
+          "id": "cell-2-0-north",
+          "source_cell": [
+            2,
+            0
+          ],
+          "edge": "north",
+          "connector_ids": [
+            "north-curved-cut"
+          ]
+        },
+        {
+          "id": "cell-1-0-south",
+          "source_cell": [
+            1,
+            0
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "south-curved-cut"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "groups": [
+      {
+        "id": "west-paired-end",
+        "component_id": "opposed-merge",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "west-paired-end-win",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -2.0,
+              15.5
+            ],
+            "tangent": [
+              1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585100-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f585100"
+              }
+            ],
+            "connection_class": "path-interface-12d12be31d2057c5763d",
+            "source_port_id": "Win",
+            "channel_id": "eastbound-mainline",
+            "cut_id": "west-paired-end-eastbound-mainline-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -1.0,
+              -0.0
+            ],
+            "heading_outward_degrees": 270.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "west-paired-end-wout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              2.0,
+              15.5
+            ],
+            "tangent": [
+              -1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              -1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585100-route-001",
+              "path-7f585100-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f585100"
+              }
+            ],
+            "connection_class": "path-interface-fba09fbeb87ad95c667a",
+            "source_port_id": "Wout",
+            "channel_id": "westbound-mainline",
+            "cut_id": "west-paired-end-westbound-mainline-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -1.0,
+              0.0
+            ],
+            "heading_outward_degrees": 270.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+        "section_offset_m": 0.0,
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 15.5,
+          "nominal_level": "l2",
+          "label": "HSR L2 paired straight interface"
+        },
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          -8.0,
+          0.0,
+          15.5
+        ],
+        "anchor_m": [
+          -8.0,
+          0.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "eastbound-mainline",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "west-paired-end-eastbound-mainline-cut",
+                "member_ids": [
+                  "west-paired-end-win"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -2.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -1.0,
+                  -0.0
+                ],
+                "heading_outward_degrees": 270.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "westbound-mainline",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "west-paired-end-westbound-mainline-cut",
+                "member_ids": [
+                  "west-paired-end-wout"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  2.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -1.0,
+                  0.0
+                ],
+                "heading_outward_degrees": 270.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "cell-0-0-west"
+      },
+      {
+        "id": "east-paired-end",
+        "component_id": "opposed-merge",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "east-paired-end-ein",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              56.0,
+              2.0,
+              15.5
+            ],
+            "tangent": [
+              -1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              -1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585400-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  3,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f585400"
+              }
+            ],
+            "connection_class": "path-interface-fba09fbeb87ad95c667a",
+            "source_port_id": "Ein",
+            "channel_id": "westbound-mainline",
+            "cut_id": "east-paired-end-westbound-mainline-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              1.0,
+              -0.0
+            ],
+            "heading_outward_degrees": 90.0,
+            "grade_outward": -0.0,
+            "section_offset_m": 2.0
+          },
+          {
+            "id": "east-paired-end-eout",
+            "direction": "out",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              56.0,
+              -2.0,
+              15.5
+            ],
+            "tangent": [
+              1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.0,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585400-route-000",
+              "path-7f585400-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  3,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f585400"
+              }
+            ],
+            "connection_class": "path-interface-12d12be31d2057c5763d",
+            "source_port_id": "Eout",
+            "channel_id": "eastbound-mainline",
+            "cut_id": "east-paired-end-eastbound-mainline-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              1.0,
+              0.0
+            ],
+            "heading_outward_degrees": 90.0,
+            "grade_outward": 0.0,
+            "section_offset_m": -2.0
+          }
+        ],
+        "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+        "section_offset_m": 0.0,
+        "profile": {
+          "abstract": false,
+          "network": "hsr",
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "orth",
+          "endpoint_grade": 0.0,
+          "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+          "path_height_m": 15.5,
+          "nominal_level": "l2",
+          "label": "HSR L2 paired straight interface"
+        },
+        "source_cell": [
+          3,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          56.0,
+          0.0,
+          15.5
+        ],
+        "anchor_m": [
+          56.0,
+          0.0,
+          15.5
+        ],
+        "channels": [
+          {
+            "id": "westbound-mainline",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "east-paired-end-westbound-mainline-cut",
+                "member_ids": [
+                  "east-paired-end-ein"
+                ],
+                "endpoint_m": [
+                  56.0,
+                  2.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  1.0,
+                  -0.0
+                ],
+                "heading_outward_degrees": 90.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "eastbound-mainline",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "east-paired-end-eastbound-mainline-cut",
+                "member_ids": [
+                  "east-paired-end-eout"
+                ],
+                "endpoint_m": [
+                  56.0,
+                  -2.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  1.0,
+                  0.0
+                ],
+                "heading_outward_degrees": 90.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "cell-3-0-east"
+      },
+      {
+        "id": "north-curved-cut",
+        "component_id": "opposed-merge",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "north-curved-cut-nin",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 1,
+            "endpoint_m": [
+              38.398519,
+              8.0,
+              15.5
+            ],
+            "tangent": [
+              -0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "sampled_tangent": [
+              -0.9272557495225895,
+              -0.3744285979693605
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585300-route-003"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  2,
+                  0
+                ],
+                "edge": 1,
+                "tile_id": "7f585300"
+              }
+            ],
+            "connection_class": "path-interface-0f4b8204e68941486c48",
+            "source_port_id": "Nin",
+            "channel_id": "north-branch",
+            "cut_id": "north-curved-cut-north-branch-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              0.9272548089646255,
+              0.3744309272108488
+            ],
+            "heading_outward_degrees": 68.01085496362974,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          2,
+          0
+        ],
+        "edge": "north",
+        "tile_seam_center_m": [
+          32.0,
+          8.0,
+          15.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "north-branch",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "north-curved-cut-north-branch-cut",
+                "member_ids": [
+                  "north-curved-cut-nin"
+                ],
+                "endpoint_m": [
+                  38.398519,
+                  8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  0.9272548089646255,
+                  0.3744309272108488
+                ],
+                "heading_outward_degrees": 68.01085496362974,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          1.0
+        ],
+        "boundary_bundle_id": "cell-2-0-north"
+      },
+      {
+        "id": "south-curved-cut",
+        "component_id": "opposed-merge",
+        "nominal_level": "l2",
+        "members": [
+          {
+            "id": "south-curved-cut-sin",
+            "direction": "in",
+            "service_network": "hsr",
+            "service_family": "high-speed-rail",
+            "variant": "hsr",
+            "role": "primary",
+            "classification_status": "explicit_registered_HSR_family_engine7; variant from actual path elevation",
+            "engine_transport": 7,
+            "edge": 3,
+            "endpoint_m": [
+              9.601481,
+              -8.0,
+              15.5
+            ],
+            "tangent": [
+              0.9272548089646255,
+              0.3744309272108488
+            ],
+            "sampled_tangent": [
+              0.9272557495225853,
+              0.3744285979693708
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203",
+              "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204",
+              "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200",
+              "construction:hsr-component-l2-short-opposed-merge-core"
+            ],
+            "source_route_ids": [
+              "path-7f585200-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  0
+                ],
+                "edge": 3,
+                "tile_id": "7f585200"
+              }
+            ],
+            "connection_class": "path-interface-0f4b8204e68941486c48",
+            "source_port_id": "Sin",
+            "channel_id": "south-branch",
+            "cut_id": "south-curved-cut-south-branch-cut",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "outward_tangent": [
+              -0.9272548089646255,
+              -0.3744309272108488
+            ],
+            "heading_outward_degrees": 248.01085496362973,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "hsr",
+          "nominal_level": "l2",
+          "path_height_m": 15.5,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          16.0,
+          -8.0,
+          15.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "south-branch",
+            "component_id": "opposed-merge",
+            "kind": "rail",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "south-curved-cut-south-branch-cut",
+                "member_ids": [
+                  "south-curved-cut-sin"
+                ],
+                "endpoint_m": [
+                  9.601481,
+                  -8.0,
+                  15.5
+                ],
+                "outward_tangent": [
+                  -0.9272548089646255,
+                  -0.3744309272108488
+                ],
+                "heading_outward_degrees": 248.01085496362973,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "cell-1-0-south"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "cell-0-0-west",
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "west",
+        "connector_ids": [
+          "west-paired-end"
+        ]
+      },
+      {
+        "id": "cell-3-0-east",
+        "source_cell": [
+          3,
+          0
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "east-paired-end"
+        ]
+      },
+      {
+        "id": "cell-2-0-north",
+        "source_cell": [
+          2,
+          0
+        ],
+        "edge": "north",
+        "connector_ids": [
+          "north-curved-cut"
+        ]
+      },
+      {
+        "id": "cell-1-0-south",
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "south-curved-cut"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "eastbound-mainline",
+        "component_id": "opposed-merge",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "westbound-mainline",
+        "component_id": "opposed-merge",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "north-branch",
+        "component_id": "opposed-merge",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "south-branch",
+        "component_id": "opposed-merge",
+        "kind": "rail",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "west-paired-end-win>east-paired-end-eout",
+        "entry_port": "west-paired-end-win",
+        "exit_port": "east-paired-end-eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Win>Eout",
+        "source_entry_port": "Win",
+        "source_exit_port": "Eout"
+      },
+      {
+        "id": "south-curved-cut-sin>east-paired-end-eout",
+        "entry_port": "south-curved-cut-sin",
+        "exit_port": "east-paired-end-eout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Sin>Eout",
+        "source_entry_port": "Sin",
+        "source_exit_port": "Eout"
+      },
+      {
+        "id": "north-curved-cut-nin>west-paired-end-wout",
+        "entry_port": "north-curved-cut-nin",
+        "exit_port": "west-paired-end-wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Nin>Wout",
+        "source_entry_port": "Nin",
+        "source_exit_port": "Wout"
+      },
+      {
+        "id": "east-paired-end-ein>west-paired-end-wout",
+        "entry_port": "east-paired-end-ein",
+        "exit_port": "west-paired-end-wout",
+        "service_network": "hsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "hsr",
+          "hsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:Ein>Wout",
+        "source_entry_port": "Ein",
+        "source_exit_port": "Wout"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "west-paired-end-win",
+        "to_port": "west-paired-end-wout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Win",
+        "source_to_port": "Wout"
+      },
+      {
+        "from_port": "south-curved-cut-sin",
+        "to_port": "west-paired-end-wout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Sin",
+        "source_to_port": "Wout"
+      },
+      {
+        "from_port": "north-curved-cut-nin",
+        "to_port": "east-paired-end-eout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Nin",
+        "source_to_port": "Eout"
+      },
+      {
+        "from_port": "east-paired-end-ein",
+        "to_port": "east-paired-end-eout",
+        "from_service": "hsr",
+        "to_service": "hsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "Ein",
+        "source_to_port": "Eout"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f827",
+          "0004f827"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f827",
+          "0007f827"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f827",
+          "0006f827"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f827",
+          "0005f827"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f585100-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f585100",
+      "points": [
+        [
+          -8.0,
+          -2.0,
+          15.5
+        ],
+        [
+          8.0,
+          -2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585100-route-001",
+      "source_route_index": 1,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f585100",
+      "points": [
+        [
+          8.0,
+          2.0,
+          15.5
+        ],
+        [
+          -8.0,
+          2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585100-route-002",
+      "source_route_index": 2,
+      "source_class": 2,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f585100",
+      "points": [
+        [
+          8.0,
+          2.286369051,
+          15.5
+        ],
+        [
+          7.789600198,
+          2.276805359,
+          15.5
+        ],
+        [
+          7.365040367,
+          2.258420836,
+          15.5
+        ],
+        [
+          6.940451621,
+          2.240857813,
+          15.5
+        ],
+        [
+          6.515836218,
+          2.224028371,
+          15.5
+        ],
+        [
+          6.09119628,
+          2.207861779,
+          15.5
+        ],
+        [
+          5.666533804,
+          2.19230313,
+          15.5
+        ],
+        [
+          5.241850662,
+          2.177311959,
+          15.5
+        ],
+        [
+          4.817148606,
+          2.162860866,
+          15.5
+        ],
+        [
+          4.392429277,
+          2.14893414,
+          15.5
+        ],
+        [
+          3.967694205,
+          2.135526372,
+          15.5
+        ],
+        [
+          3.542944817,
+          2.122641074,
+          15.5
+        ],
+        [
+          3.118182439,
+          2.110289293,
+          15.5
+        ],
+        [
+          2.693408304,
+          2.098488222,
+          15.5
+        ],
+        [
+          2.268623553,
+          2.087259817,
+          15.5
+        ],
+        [
+          1.843829242,
+          2.076629405,
+          15.5
+        ],
+        [
+          1.419026346,
+          2.066624296,
+          15.5
+        ],
+        [
+          0.994215761,
+          2.057272393,
+          15.5
+        ],
+        [
+          0.569398311,
+          2.048600804,
+          15.5
+        ],
+        [
+          0.144574751,
+          2.040634448,
+          15.5
+        ],
+        [
+          -0.28025423,
+          2.033394669,
+          15.5
+        ],
+        [
+          -0.705088003,
+          2.026897842,
+          15.5
+        ],
+        [
+          -1.129925996,
+          2.021153981,
+          15.5
+        ],
+        [
+          -1.554767693,
+          2.016165352,
+          15.5
+        ],
+        [
+          -1.979612625,
+          2.011925082,
+          15.5
+        ],
+        [
+          -2.404460373,
+          2.008415761,
+          15.5
+        ],
+        [
+          -2.829310559,
+          2.005608062,
+          15.5
+        ],
+        [
+          -3.254162846,
+          2.00345934,
+          15.5
+        ],
+        [
+          -3.679016934,
+          2.001912248,
+          15.5
+        ],
+        [
+          -4.103872559,
+          2.000893341,
+          15.5
+        ],
+        [
+          -4.528729485,
+          2.00031169,
+          15.5
+        ],
+        [
+          -4.953587507,
+          2.000057486,
+          15.5
+        ],
+        [
+          -5.378446446,
+          2.000000655,
+          15.5
+        ],
+        [
+          -5.5,
+          2.0,
+          15.5
+        ],
+        [
+          -5.803306146,
+          2.0,
+          15.5
+        ],
+        [
+          -6.228166473,
+          2.0,
+          15.5
+        ],
+        [
+          -6.653027312,
+          2.0,
+          15.5
+        ],
+        [
+          -7.077888565,
+          2.0,
+          15.5
+        ],
+        [
+          -7.502750149,
+          2.0,
+          15.5
+        ],
+        [
+          -7.927611996,
+          2.0,
+          15.5
+        ],
+        [
+          -8.0,
+          2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585200-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f585200",
+      "points": [
+        [
+          8.0,
+          -2.0,
+          15.5
+        ],
+        [
+          24.0,
+          -2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585200-route-001",
+      "source_route_index": 1,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f585200",
+      "points": [
+        [
+          24.0,
+          2.0,
+          15.5
+        ],
+        [
+          8.0,
+          2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585200-route-002",
+      "source_route_index": 2,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f585200",
+      "points": [
+        [
+          9.601481448000001,
+          -8.0,
+          15.5
+        ],
+        [
+          9.712289788,
+          -7.955254943,
+          15.5
+        ],
+        [
+          10.113850672,
+          -7.796254579,
+          15.5
+        ],
+        [
+          10.516245127000001,
+          -7.640045481,
+          15.5
+        ],
+        [
+          10.919451999,
+          -7.486611385,
+          15.5
+        ],
+        [
+          11.32345038,
+          -7.335935541,
+          15.5
+        ],
+        [
+          11.72821961,
+          -7.188000722,
+          15.5
+        ],
+        [
+          12.133739287000001,
+          -7.042789228,
+          15.5
+        ],
+        [
+          12.539989268,
+          -6.900282899,
+          15.5
+        ],
+        [
+          12.946949677,
+          -6.760463119,
+          15.5
+        ],
+        [
+          13.354600907,
+          -6.623310829,
+          15.5
+        ],
+        [
+          13.762923624999999,
+          -6.48880653,
+          15.5
+        ],
+        [
+          14.171898777,
+          -6.356930294,
+          15.5
+        ],
+        [
+          14.581507592,
+          -6.227661776,
+          15.5
+        ],
+        [
+          14.991731582,
+          -6.100980218,
+          15.5
+        ],
+        [
+          15.402552551,
+          -5.976864458,
+          15.5
+        ],
+        [
+          15.813952594,
+          -5.855292945,
+          15.5
+        ],
+        [
+          16.225914101,
+          -5.736243739,
+          15.5
+        ],
+        [
+          16.638419761,
+          -5.619694529,
+          15.5
+        ],
+        [
+          17.051452562,
+          -5.505622636,
+          15.5
+        ],
+        [
+          17.464995794,
+          -5.394005026,
+          15.5
+        ],
+        [
+          17.87903305,
+          -5.284818318,
+          15.5
+        ],
+        [
+          18.293548233,
+          -5.178038794,
+          15.5
+        ],
+        [
+          18.708525548,
+          -5.073642407,
+          15.5
+        ],
+        [
+          19.123949513,
+          -4.971604792,
+          15.5
+        ],
+        [
+          19.539804951,
+          -4.871901277,
+          15.5
+        ],
+        [
+          19.956076999,
+          -4.774506892,
+          15.5
+        ],
+        [
+          20.372751101,
+          -4.679396374,
+          15.5
+        ],
+        [
+          20.789813016,
+          -4.586544185,
+          15.5
+        ],
+        [
+          21.207248809,
+          -4.495924516,
+          15.5
+        ],
+        [
+          21.625044859,
+          -4.407511299,
+          15.5
+        ],
+        [
+          22.043187855,
+          -4.321278216,
+          15.5
+        ],
+        [
+          22.461664794,
+          -4.23719871,
+          15.5
+        ],
+        [
+          22.880462985,
+          -4.155245994,
+          15.5
+        ],
+        [
+          23.299570041,
+          -4.075393062,
+          15.5
+        ],
+        [
+          23.718973885,
+          -3.997612698,
+          15.5
+        ],
+        [
+          24.0,
+          -3.946899957,
+          15.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585200-route-003",
+      "source_route_index": 3,
+      "source_class": 2,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f585200",
+      "points": [
+        [
+          24.0,
+          3.946899957,
+          15.5
+        ],
+        [
+          23.861337256,
+          3.921877485,
+          15.5
+        ],
+        [
+          23.441374852,
+          3.84815982,
+          15.5
+        ],
+        [
+          23.02115007,
+          3.776431916,
+          15.5
+        ],
+        [
+          22.600673779,
+          3.706665819,
+          15.5
+        ],
+        [
+          22.179956546,
+          3.638833416,
+          15.5
+        ],
+        [
+          21.759008648,
+          3.572906441,
+          15.5
+        ],
+        [
+          21.337840066,
+          3.508856492,
+          15.5
+        ],
+        [
+          20.91646049,
+          3.446655036,
+          15.5
+        ],
+        [
+          20.494879326,
+          3.38627342,
+          15.5
+        ],
+        [
+          20.073105692,
+          3.327682882,
+          15.5
+        ],
+        [
+          19.651148427,
+          3.27085456,
+          15.5
+        ],
+        [
+          19.229016092000002,
+          3.215759503,
+          15.5
+        ],
+        [
+          18.806716973,
+          3.16236868,
+          15.5
+        ],
+        [
+          18.384259084,
+          3.11065299,
+          15.5
+        ],
+        [
+          17.961650174,
+          3.060583272,
+          15.5
+        ],
+        [
+          17.538897727,
+          3.012130316,
+          15.5
+        ],
+        [
+          17.116008968,
+          2.965264872,
+          15.5
+        ],
+        [
+          16.692990868,
+          2.91995766,
+          15.5
+        ],
+        [
+          16.269850144,
+          2.876179377,
+          15.5
+        ],
+        [
+          15.846593269,
+          2.833900715,
+          15.5
+        ],
+        [
+          15.423226471,
+          2.79309236,
+          15.5
+        ],
+        [
+          14.999755742,
+          2.753725012,
+          15.5
+        ],
+        [
+          14.576186839,
+          2.715769387,
+          15.5
+        ],
+        [
+          14.152525291,
+          2.679196233,
+          15.5
+        ],
+        [
+          13.728776403,
+          2.643976332,
+          15.5
+        ],
+        [
+          13.304945259,
+          2.610080521,
+          15.5
+        ],
+        [
+          12.881036732,
+          2.57747969,
+          15.5
+        ],
+        [
+          12.457055480000001,
+          2.5461448,
+          15.5
+        ],
+        [
+          12.033005962,
+          2.516046889,
+          15.5
+        ],
+        [
+          11.608892433000001,
+          2.487157084,
+          15.5
+        ],
+        [
+          11.184718956000001,
+          2.459446608,
+          15.5
+        ],
+        [
+          10.760489402000001,
+          2.432886792,
+          15.5
+        ],
+        [
+          10.336207459,
+          2.407449083,
+          15.5
+        ],
+        [
+          9.911876636999999,
+          2.383105056,
+          15.5
+        ],
+        [
+          9.487500268,
+          2.359826422,
+          15.5
+        ],
+        [
+          9.063081518,
+          2.337585038,
+          15.5
+        ],
+        [
+          8.638623386999999,
+          2.316352918,
+          15.5
+        ],
+        [
+          8.214128718000001,
+          2.29610224,
+          15.5
+        ],
+        [
+          8.0,
+          2.286369051,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585300-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f585300",
+      "points": [
+        [
+          24.0,
+          -2.0,
+          15.5
+        ],
+        [
+          40.0,
+          -2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585300-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f585300",
+      "points": [
+        [
+          40.0,
+          2.0,
+          15.5
+        ],
+        [
+          24.0,
+          2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585300-route-002",
+      "source_route_index": 2,
+      "source_class": 2,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f585300",
+      "points": [
+        [
+          24.0,
+          -3.946899957,
+          15.5
+        ],
+        [
+          24.138662744,
+          -3.921877485,
+          15.5
+        ],
+        [
+          24.558625148,
+          -3.84815982,
+          15.5
+        ],
+        [
+          24.97884993,
+          -3.776431916,
+          15.5
+        ],
+        [
+          25.399326221,
+          -3.706665819,
+          15.5
+        ],
+        [
+          25.820043454,
+          -3.638833416,
+          15.5
+        ],
+        [
+          26.240991352,
+          -3.572906441,
+          15.5
+        ],
+        [
+          26.662159934,
+          -3.508856492,
+          15.5
+        ],
+        [
+          27.08353951,
+          -3.446655036,
+          15.5
+        ],
+        [
+          27.505120674,
+          -3.38627342,
+          15.5
+        ],
+        [
+          27.926894308,
+          -3.327682882,
+          15.5
+        ],
+        [
+          28.348851573,
+          -3.27085456,
+          15.5
+        ],
+        [
+          28.770983907999998,
+          -3.215759503,
+          15.5
+        ],
+        [
+          29.193283027,
+          -3.16236868,
+          15.5
+        ],
+        [
+          29.615740916,
+          -3.11065299,
+          15.5
+        ],
+        [
+          30.038349826,
+          -3.060583272,
+          15.5
+        ],
+        [
+          30.461102273,
+          -3.012130316,
+          15.5
+        ],
+        [
+          30.883991032,
+          -2.965264872,
+          15.5
+        ],
+        [
+          31.307009132,
+          -2.91995766,
+          15.5
+        ],
+        [
+          31.730149856,
+          -2.876179377,
+          15.5
+        ],
+        [
+          32.153406731,
+          -2.833900715,
+          15.5
+        ],
+        [
+          32.576773529,
+          -2.79309236,
+          15.5
+        ],
+        [
+          33.000244258,
+          -2.753725012,
+          15.5
+        ],
+        [
+          33.423813161,
+          -2.715769387,
+          15.5
+        ],
+        [
+          33.847474709,
+          -2.679196233,
+          15.5
+        ],
+        [
+          34.271223597,
+          -2.643976332,
+          15.5
+        ],
+        [
+          34.695054741,
+          -2.610080521,
+          15.5
+        ],
+        [
+          35.118963268,
+          -2.57747969,
+          15.5
+        ],
+        [
+          35.54294452,
+          -2.5461448,
+          15.5
+        ],
+        [
+          35.966994038,
+          -2.516046889,
+          15.5
+        ],
+        [
+          36.391107567,
+          -2.487157084,
+          15.5
+        ],
+        [
+          36.815281044,
+          -2.459446608,
+          15.5
+        ],
+        [
+          37.239510598,
+          -2.432886792,
+          15.5
+        ],
+        [
+          37.663792541,
+          -2.407449083,
+          15.5
+        ],
+        [
+          38.088123363,
+          -2.383105056,
+          15.5
+        ],
+        [
+          38.512499732,
+          -2.359826422,
+          15.5
+        ],
+        [
+          38.936918482,
+          -2.337585038,
+          15.5
+        ],
+        [
+          39.361376613,
+          -2.316352918,
+          15.5
+        ],
+        [
+          39.785871282,
+          -2.29610224,
+          15.5
+        ],
+        [
+          40.0,
+          -2.286369051,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585300-route-003",
+      "source_route_index": 3,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f585300",
+      "points": [
+        [
+          38.398518552,
+          8.0,
+          15.5
+        ],
+        [
+          38.287710212,
+          7.955254943,
+          15.5
+        ],
+        [
+          37.886149328,
+          7.796254579,
+          15.5
+        ],
+        [
+          37.483754873,
+          7.640045481,
+          15.5
+        ],
+        [
+          37.080548001,
+          7.486611385,
+          15.5
+        ],
+        [
+          36.67654962,
+          7.335935541,
+          15.5
+        ],
+        [
+          36.27178039,
+          7.188000722,
+          15.5
+        ],
+        [
+          35.866260713,
+          7.042789228,
+          15.5
+        ],
+        [
+          35.460010732,
+          6.900282899,
+          15.5
+        ],
+        [
+          35.053050323,
+          6.760463119,
+          15.5
+        ],
+        [
+          34.645399093,
+          6.623310829,
+          15.5
+        ],
+        [
+          34.237076375,
+          6.48880653,
+          15.5
+        ],
+        [
+          33.828101223,
+          6.356930294,
+          15.5
+        ],
+        [
+          33.418492408,
+          6.227661776,
+          15.5
+        ],
+        [
+          33.008268418,
+          6.100980218,
+          15.5
+        ],
+        [
+          32.597447449,
+          5.976864458,
+          15.5
+        ],
+        [
+          32.186047406,
+          5.855292945,
+          15.5
+        ],
+        [
+          31.774085899,
+          5.736243739,
+          15.5
+        ],
+        [
+          31.361580239,
+          5.619694529,
+          15.5
+        ],
+        [
+          30.948547438,
+          5.505622636,
+          15.5
+        ],
+        [
+          30.535004206,
+          5.394005026,
+          15.5
+        ],
+        [
+          30.12096695,
+          5.284818318,
+          15.5
+        ],
+        [
+          29.706451767,
+          5.178038794,
+          15.5
+        ],
+        [
+          29.291474452,
+          5.073642407,
+          15.5
+        ],
+        [
+          28.876050487,
+          4.971604792,
+          15.5
+        ],
+        [
+          28.460195049,
+          4.871901277,
+          15.5
+        ],
+        [
+          28.043923001,
+          4.774506892,
+          15.5
+        ],
+        [
+          27.627248899,
+          4.679396374,
+          15.5
+        ],
+        [
+          27.210186984,
+          4.586544185,
+          15.5
+        ],
+        [
+          26.792751191,
+          4.495924516,
+          15.5
+        ],
+        [
+          26.374955141,
+          4.407511299,
+          15.5
+        ],
+        [
+          25.956812145,
+          4.321278216,
+          15.5
+        ],
+        [
+          25.538335206,
+          4.23719871,
+          15.5
+        ],
+        [
+          25.119537015,
+          4.155245994,
+          15.5
+        ],
+        [
+          24.700429959,
+          4.075393062,
+          15.5
+        ],
+        [
+          24.281026115,
+          3.997612698,
+          15.5
+        ],
+        [
+          24.0,
+          3.946899957,
+          15.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585400-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f585400",
+      "points": [
+        [
+          40.0,
+          -2.0,
+          15.5
+        ],
+        [
+          56.0,
+          -2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f585400-route-001",
+      "source_route_index": 1,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f585400",
+      "points": [
+        [
+          56.0,
+          2.0,
+          15.5
+        ],
+        [
+          40.0,
+          2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f585400-route-002",
+      "source_route_index": 2,
+      "source_class": 2,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f585400",
+      "points": [
+        [
+          40.0,
+          -2.286369051,
+          15.5
+        ],
+        [
+          40.210399802,
+          -2.276805359,
+          15.5
+        ],
+        [
+          40.634959633,
+          -2.258420836,
+          15.5
+        ],
+        [
+          41.059548379,
+          -2.240857813,
+          15.5
+        ],
+        [
+          41.484163782,
+          -2.224028371,
+          15.5
+        ],
+        [
+          41.90880372,
+          -2.207861779,
+          15.5
+        ],
+        [
+          42.333466196,
+          -2.19230313,
+          15.5
+        ],
+        [
+          42.758149338,
+          -2.177311959,
+          15.5
+        ],
+        [
+          43.182851394,
+          -2.162860866,
+          15.5
+        ],
+        [
+          43.607570723,
+          -2.14893414,
+          15.5
+        ],
+        [
+          44.032305795,
+          -2.135526372,
+          15.5
+        ],
+        [
+          44.457055183,
+          -2.122641074,
+          15.5
+        ],
+        [
+          44.881817561,
+          -2.110289293,
+          15.5
+        ],
+        [
+          45.306591696,
+          -2.098488222,
+          15.5
+        ],
+        [
+          45.731376447,
+          -2.087259817,
+          15.5
+        ],
+        [
+          46.156170758,
+          -2.076629405,
+          15.5
+        ],
+        [
+          46.580973654,
+          -2.066624296,
+          15.5
+        ],
+        [
+          47.005784239,
+          -2.057272393,
+          15.5
+        ],
+        [
+          47.430601689,
+          -2.048600804,
+          15.5
+        ],
+        [
+          47.855425249,
+          -2.040634448,
+          15.5
+        ],
+        [
+          48.28025423,
+          -2.033394669,
+          15.5
+        ],
+        [
+          48.705088003,
+          -2.026897842,
+          15.5
+        ],
+        [
+          49.129925996,
+          -2.021153981,
+          15.5
+        ],
+        [
+          49.554767693,
+          -2.016165352,
+          15.5
+        ],
+        [
+          49.979612625,
+          -2.011925082,
+          15.5
+        ],
+        [
+          50.404460373,
+          -2.008415761,
+          15.5
+        ],
+        [
+          50.829310559,
+          -2.005608062,
+          15.5
+        ],
+        [
+          51.254162846,
+          -2.00345934,
+          15.5
+        ],
+        [
+          51.679016934,
+          -2.001912248,
+          15.5
+        ],
+        [
+          52.103872559,
+          -2.000893341,
+          15.5
+        ],
+        [
+          52.528729485,
+          -2.00031169,
+          15.5
+        ],
+        [
+          52.953587507,
+          -2.000057486,
+          15.5
+        ],
+        [
+          53.378446446,
+          -2.000000655,
+          15.5
+        ],
+        [
+          53.5,
+          -2.0,
+          15.5
+        ],
+        [
+          53.803306146,
+          -2.0,
+          15.5
+        ],
+        [
+          54.228166473,
+          -2.0,
+          15.5
+        ],
+        [
+          54.653027312,
+          -2.0,
+          15.5
+        ],
+        [
+          55.077888565,
+          -2.0,
+          15.5
+        ],
+        [
+          55.502750149,
+          -2.0,
+          15.5
+        ],
+        [
+          55.927611996,
+          -2.0,
+          15.5
+        ],
+        [
+          56.0,
+          -2.0,
+          15.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    }
+  ],
+  "endpoint_route_refs": {
+    "west-paired-end-win": [
+      "path-7f585100-route-000"
+    ],
+    "west-paired-end-wout": [
+      "path-7f585100-route-001",
+      "path-7f585100-route-002"
+    ],
+    "east-paired-end-ein": [
+      "path-7f585400-route-001"
+    ],
+    "east-paired-end-eout": [
+      "path-7f585400-route-000",
+      "path-7f585400-route-002"
+    ],
+    "north-curved-cut-nin": [
+      "path-7f585300-route-003"
+    ],
+    "south-curved-cut-sin": [
+      "path-7f585200-route-002"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/opposed-parapet-follow-ballast/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+      "dat_sha256": "34026c4a0047da20b6e83fb9f9b675de8d5fe123342988dd3620d83106d8808e",
+      "model_sha256": "fc8dbd55d75a24e8c5e239c4c991907c8bad5bca674d16f6c27624059d51ab74",
+      "resource_fingerprints_checked": 54,
+      "directional_ports_reextracted": 6,
+      "directed_journeys_reextracted": 4,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "77ef9142c9f19c40a6bcb48d8fe9ece0f1f13bade47ffc5c6c43741861ae9c5c"
+}

@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "purpose": "Portable verification subset from the completed canonical single-button assembly candidate; raw local input paths are excluded.",
+  "subject": {
+    "id": "straight-stem-trumpet",
+    "kind": "assembly"
+  },
+  "checked_at": "2026-10-27T19:39:53.156721+00:00",
+  "candidate": {
+    "path_relative_to_library": "dist/trumpet-rework-menu",
+    "manifest_sha256": "203c53332e855b4877414e4082bd44868ee34e1f6554c1de476cf44ca303d99d",
+    "verification_sha256": "00950cec655d63ea11b480a768a2cfb8eb36f9df18f7f4bee63ff90df329de12",
+    "assembly_id": "straight-stem-trumpet",
+    "static_checks_passed": true
+  },
+  "source_provenance": {
+    "kind": "frozen-verified-piece-build",
+    "source_build_relative_to_library": "dist/trumpet-icon-no-tab-parts",
+    "source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+    "original_source_documents": "Retained unchanged as frozen source proof; the candidate\u2019s own guide describes the final 13-type cycle."
+  },
+  "menu": {
+    "button_title": "SCP | ASSEMBLY | HSR Trumpet",
+    "button_presentation_id": "6a47fef0",
+    "visible_assembly_buttons": 1,
+    "component_types_in_cycle": 13,
+    "member_buttons_hidden": 13,
+    "removed_member_presentation_resources": 52,
+    "added_assembly_presentation_resources": 4,
+    "individual_submenu_buttons": 0,
+    "submenus_dll_required": false,
+    "component_order": [
+      {
+        "position": 1,
+        "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+        "name": "HSR L2 Short Mainline Diverge Core"
+      },
+      {
+        "position": 2,
+        "piece_id": "hsr-component-lower-paired-straight",
+        "name": "HSR L2 Two-Track Straight"
+      },
+      {
+        "position": 3,
+        "piece_id": "hsr-component-l2-shortened-departure-curve",
+        "name": "HSR L2 Shortened One-Way Departure Curve"
+      },
+      {
+        "position": 4,
+        "piece_id": "hsr-component-modular-south-junction",
+        "name": "HSR Modular Symmetric Split and Return"
+      },
+      {
+        "position": 5,
+        "piece_id": "hsr-component-modular-paired-climb",
+        "name": "HSR Modular Two-Track L2 to L4 Climb"
+      },
+      {
+        "position": 6,
+        "piece_id": "hsr-component-l2-paired-fan-compact-join",
+        "name": "HSR L2 Compact Paired Fan Join"
+      },
+      {
+        "position": 7,
+        "piece_id": "hsr-component-l2-short-opposed-merge-core",
+        "name": "HSR L2 Short Opposed Merge Core"
+      },
+      {
+        "position": 8,
+        "piece_id": "hsr-component-l2-shortened-return-curve",
+        "name": "HSR L2 Shortened One-Way Return Curve"
+      },
+      {
+        "position": 9,
+        "piece_id": "hsr-component-modular-crossing-core",
+        "name": "HSR Modular One-Tile Two-Level Crossing"
+      },
+      {
+        "position": 10,
+        "piece_id": "hsr-component-upper-paired-straight",
+        "name": "HSR L4 Two-Track Straight"
+      },
+      {
+        "position": 11,
+        "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+        "name": "HSR Tight Two-Track Corner 30.5 to 23 Metres"
+      },
+      {
+        "position": 12,
+        "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+        "name": "HSR Tight Two-Track Corner 23 to 15.5 Metres"
+      },
+      {
+        "position": 13,
+        "piece_id": "hsr-component-lower-oneway-straight",
+        "name": "One-Way HSR L2 Eight-Metre Straight"
+      }
+    ],
+    "rotation_ring_rows": 1,
+    "add_types_rows": 12,
+    "activation_and_visibility": "unverified"
+  },
+  "canonical_icon": {
+    "file": "icon.png",
+    "sha256": "959d63fd63ba854650f63f96ad64f8e3fae2512b7d0478b4d6e7c769492c78bc",
+    "validation": {
+      "native_png_format": "passed",
+      "canonical_source_pixels": "matched",
+      "dimensions_px": [
+        176,
+        44
+      ],
+      "frame_size_px": [
+        44,
+        44
+      ],
+      "frame_order": [
+        "locked",
+        "normal",
+        "selected",
+        "highlighted"
+      ]
+    },
+    "source_provenance_file": "evidence/icon.json",
+    "source_provenance_sha256": "d08a39c9f87cf214b2b40d64aa25595a1389c47baa87b68e2388f523b45d169a",
+    "basis": "Authored complete routes transformed by assembly.json placements; no compiled model rendering.",
+    "frozen_icon_matches_canonical_bytes": true,
+    "compiled_menu_icon_matches_canonical_bytes": true,
+    "game_appearance": "unverified"
+  },
+  "preservation": {
+    "piece_DAT_count": 13,
+    "piece_DAT_sha256_matches": 13,
+    "piece_archives": [
+      {
+        "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+        "source_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+        "candidate_sha256": "936e0f31e1193166b5b30542bb520010acdbd8f84eb3b55561f1efc788a425e4",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-lower-paired-straight",
+        "source_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+        "candidate_sha256": "573fecc5372cb7af294dc3c7af4df7b96ae667fbba3603c7b320edc42c97068d",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-l2-shortened-departure-curve",
+        "source_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+        "candidate_sha256": "752b67719ee742b71ae3f3ab69c3f89987c8019c07b37c7428c5873ab2c0b68d",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-modular-south-junction",
+        "source_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+        "candidate_sha256": "6865dc3ae6351373381342721a6ca42daa00e753905245f700733e1f7d4b79ca",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-modular-paired-climb",
+        "source_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "candidate_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-l2-paired-fan-compact-join",
+        "source_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+        "candidate_sha256": "85b3a73125ccc162a2f1d0d0c59e538dfea73e2ed92236af8ec18f456ac6ca3a",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-l2-short-opposed-merge-core",
+        "source_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "candidate_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-l2-shortened-return-curve",
+        "source_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+        "candidate_sha256": "a987f1124006aebab6dd012e958db81dc80375005d4616907529238be4c3c7c1",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-modular-crossing-core",
+        "source_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+        "candidate_sha256": "2f160319a2fa5d299b9e1957d7f41cfa355e943134b345aae9e8abacdfa4b3da",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-upper-paired-straight",
+        "source_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+        "candidate_sha256": "07158c9245203f4ec18ccca9e7f03272d97b310a8bb8165cafcd8958dd3fbba0",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-tight-paired-curve90-l4-to-mid",
+        "source_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+        "candidate_sha256": "f4b4e0c2fc8306628643b9cfbeede28bba274b8af2b53956b86aed192077bdeb",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-tight-paired-curve90-mid-to-l2",
+        "source_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+        "candidate_sha256": "1cefec08c2f370f4d3a4b95e46cb8f1a27286dc8354c45c21e0a6e9d4668e383",
+        "preserved": true
+      },
+      {
+        "piece_id": "hsr-component-lower-oneway-straight",
+        "source_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+        "candidate_sha256": "000a22a8e0cf4383ddc9fa58e9f3f4f83759338cfcfb9f277114aecb46029cfd",
+        "preserved": true
+      }
+    ],
+    "network_ini_preserved": true,
+    "construction_definitions_preserved": true,
+    "controller_bytes_outside_generated_ordering_preserved": true,
+    "unchanged_menu_resources_preserved": true
+  },
+  "package": {
+    "path_relative_to_library": "dist/trumpet-rework-menu.zip",
+    "sha256": "cef368959ae53e3f3e635dafd2199dfe6b8680a95d846da71d25c34229df4844",
+    "bytes": 152701077,
+    "exact_candidate_file_closure_checked": true,
+    "all_member_bytes_match_candidate": true,
+    "public_release": false,
+    "documentation_refreshed": false,
+    "compiled_payloads_changed": false
+  },
+  "previous_evidence": {
+    "file": "evidence/design-history/assembly-menu-before-tab-removal.json",
+    "sha256": "99dd4b90dcb6c0a811223a876e255845708a8f761131e517783d6574a3e9d5e3",
+    "preserved_byte_for_byte": true
+  },
+  "pending_game_cases": 20,
+  "in_game_tested": false,
+  "installed": false,
+  "coverage_limit": "Checks saved menu resources, native construction-family ordering, complete source-build verification, canonical icon identity, all 13 unchanged component DAT archives, and ZIP contents. Actual menu activation, Tab cycling, keyboard controls, visible train travel, and game operation remain unverified."
+}

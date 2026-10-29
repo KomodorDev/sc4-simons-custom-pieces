@@ -1,0 +1,230 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Wide.",
+  "schema_version": 1,
+  "id": "ghsr-ground-two-track-mainline-split-90deg-right-wide",
+  "name": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Wide",
+  "description": "GHSR Ground (1 m) \u2014 Split 90\u00b0 Right from Two-Track Mainline \u2014 Wide. Fixed click-to-place piece in a 6 by 6 tile area. Follow the arrows and join only matching track widths, directions, and height labels. Four proper rotations; the second four states repeat them. Experimental; game testing pending. The mainline retains both directions; only the branch is one-way.",
+  "domain": "high-speed-rail",
+  "recipe": "interchange_ground_split_90_wide",
+  "enabled_by_default": true,
+  "status": "experimental",
+  "puzzle_id": "f7e2",
+  "tile_ids": [
+    "7f540000",
+    "7f540300",
+    "7f540400",
+    "7f540500",
+    "7f540010",
+    "7f540110",
+    "7f540210",
+    "7f540310",
+    "7f540020",
+    "7f540120",
+    "7f540030",
+    "7f540130",
+    "7f540040",
+    "7f540050"
+  ],
+  "preview_id": "7f540ff5",
+  "effect_name": "preview_scp_interchg_f7e2_0",
+  "footprint": [
+    6,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "orientation_policy": "rotate-only-preserve-direction",
+  "dependencies": [
+    "controller",
+    "hsr"
+  ],
+  "menu": {
+    "id": "6a47f7e2",
+    "order": "7011f7e2",
+    "style": "interchange-ground-split-90-wide"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "7f540000",
+      "source": "7f540000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540300",
+      "source": "7f540300",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540400",
+      "source": "7f540400",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540500",
+      "source": "7f540500",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540010",
+      "source": "7f540010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540110",
+      "source": "7f540110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540210",
+      "source": "7f540210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540310",
+      "source": "7f540310",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540020",
+      "source": "7f540020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540120",
+      "source": "7f540120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540030",
+      "source": "7f540030",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540130",
+      "source": "7f540130",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540040",
+      "source": "7f540040",
+      "rotation": 0
+    },
+    {
+      "tile": "7f540050",
+      "source": "7f540050",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM HSR/GHSR native texture and profile with SCP authored geometry.",
+    "construction": "SCP directed Monorail PATHs and independent fixed-piece rules.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "category": "oneway-branches",
+  "structural_cells": [],
+  "ports": {
+    "in": [
+      [
+        -2.0,
+        8,
+        1.0
+      ],
+      [
+        2.0,
+        -88,
+        1.0
+      ]
+    ],
+    "out": [
+      [
+        -2.0,
+        -88,
+        1.0
+      ],
+      [
+        2.0,
+        8,
+        1.0
+      ],
+      [
+        88,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "interchange": {
+    "kind": "directed_branch",
+    "level": "ground",
+    "height": 1.0,
+    "angle": 90,
+    "radius": "wide",
+    "mode": "split"
+  }
+}

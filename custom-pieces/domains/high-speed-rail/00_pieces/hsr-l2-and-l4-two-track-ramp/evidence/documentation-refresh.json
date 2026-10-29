@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "Record the scoped, executed documentation migration checks against unchanged saved game resources, without claiming a new geometry build or game approval.",
+  "piece_id": "hsr-component-modular-paired-climb",
+  "checked_on": "2026-10-27",
+  "source_build": "dist/trumpet-icon-no-tab-parts",
+  "original_source_manifest_sha256": "c0f7d84774b026f7f23ef407fb7d15168114b3edd7a551403ed5419607448456",
+  "executed_checks": {
+    "scoped_actual_resource_extraction": "passed",
+    "independent_compiled_PATH_reextraction": "passed",
+    "authored_connector_metadata": "passed",
+    "connector_export_freshness": "passed",
+    "connector_overview_freshness": {
+      "status": "passed",
+      "boundary_cards": 2,
+      "output_sha256": "aa3ebf8de19bb4715fb05226f50045e409f8461ea614aead48a1e595f0f2172a"
+    },
+    "saved_resource_check": {
+      "dat_path": "dist/trumpet-icon-no-tab-parts/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-modular-paired-climb.dat",
+      "dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c",
+      "model_sha256": "1e209a1b1bc0c9be3c776225a926d76e406086370f3a77a7672102518be46b50",
+      "resource_fingerprints_checked": 106,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    }
+  },
+  "preservation": {
+    "piece_definition_byte_identical": true,
+    "game_icon_byte_identical": true,
+    "geometry_byte_identical": true,
+    "saved_resource_fingerprints_equal_before_documentation_refresh": true,
+    "directed_journeys_equal_before_documentation_refresh": true,
+    "original_observations_preserved": true,
+    "original_preview_and_measurement_evidence_frozen_under": "evidence/design-history/",
+    "historical_files": [
+      {
+        "original_file": "evidence/preview.json",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.json",
+        "sha256": "0659bbf696ad6535a87e034ad9b17ffc8c3373d702b7059f43b0d683336f8f20"
+      },
+      {
+        "original_file": "previews/preview.png",
+        "preserved_file": "evidence/design-history/preview-before-documentation-refresh.png",
+        "sha256": "a91ff90e9d44e9eab9f90cd5acf4ee41ab8e53cbdee0709847e4e3e2bed4072a"
+      },
+      {
+        "original_file": "previews/preview-thumb.png",
+        "preserved_file": "evidence/design-history/preview-thumb-before-documentation-refresh.png",
+        "sha256": "301480a602664b3add7d70f1134bfc9945658f148faeb52db87d2555b52ce828"
+      },
+      {
+        "original_file": "connections.json",
+        "preserved_file": "evidence/design-history/connections-before-documentation-refresh.json",
+        "sha256": "1c053d9c38b467732825ba16617473b3dc9ebb01f3cbf03275c4be5cc0b8a48d"
+      }
+    ]
+  },
+  "artwork": [
+    {
+      "evidence_file": "evidence/preview.json",
+      "evidence_sha256": "1c67152994bcdc4d09ec9a56e610ed8342a6cd4ab06173898f0c65a9cb5b99df",
+      "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c"
+    },
+    {
+      "evidence_file": "evidence/preview-top.json",
+      "evidence_sha256": "b4cf0ad3fc5bc5ffe21b3beda6e3e783367c33a655feb5d8e1193daa7b8682a8",
+      "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c"
+    },
+    {
+      "evidence_file": "evidence/connection-overview.json",
+      "evidence_sha256": "e0b6e648f233cc7c36cfc2da1609d865cdd3f0c9f1f041494cce7bf0595b8f3d",
+      "source_dat_sha256": "8d8ea57041c48c32a45331d7ec67f61a80ad03783cc69bc1e13074bb69ecab5c"
+    }
+  ],
+  "limits": {
+    "new_geometry_build": false,
+    "construction_rules_reextracted": false,
+    "neighbour_compatibility": "unverified",
+    "physical_seams": "unverified",
+    "game_observations_created": 0,
+    "human_preview_approvals_created": 0,
+    "installed": false
+  }
+}

@@ -19,8 +19,10 @@ import unittest
 import zipfile
 from urllib.parse import unquote
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
+from scp.paths import local_settings
 from scp.build import build_project, package_build
 from scp.catalog import load_catalog
 from scp.dbpf import entries, decompress, pack_dbpf
@@ -30,20 +32,20 @@ from scp.verify import PATH, verify_build
 class InterchangePackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        local = ROOT / 'local/settings.json'
-        config = json.loads(local.read_text()) if local.exists() else {}
+        local = local_settings(ROOT)
+        config = jsonc.load(local) if local.exists() else {}
         plugins = os.environ.get('SCP_TEST_NAM_PLUGINS', config.get('plugins'))
         if not plugins or not Path(plugins).is_dir():
             raise unittest.SkipTest('Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS')
         catalog = load_catalog(ROOT)
-        selected = ['hsr-diagonal-ghsr',
-            'interchange-hsr-split-90-compact',
-            'interchange-ground-merge-45-wide',
-            'interchange-l4-split-135-wide',
-            'interchange-oneway-grade-ground-to-hsr',
-            'interchange-oneway-grade-hsr-to-l4',
-            'interchange-l4-oneway-over-hsr',
-            'interchange-l4-oneway-over-ground']
+        selected = ['hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg',
+            'hsr-l2-two-track-mainline-split-90deg-right-compact',
+            'ghsr-ground-two-track-mainline-merge-45deg-right-wide',
+            'hsr-l4-single-track-oneway-split-135deg-right-wide',
+            'ghsr-ground-to-hsr-l2-single-track-oneway-ramp',
+            'hsr-l2-to-l4-single-track-oneway-ramp',
+            'hsr-l4-over-hsr-l2-mixed-crossing-90deg',
+            'hsr-l4-over-ghsr-ground-mixed-crossing-90deg']
         known = {piece['id'] for piece in catalog['pieces']}
         if not set(selected) <= known:
             raise unittest.SkipTest('New interchange catalog has not been registered yet')
@@ -85,8 +87,8 @@ class InterchangePackageTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as zipped:
             self.assertIsNone(zipped.testzip())
             domain = 'docs/domains/high-speed-rail/'
-            guides = [domain+'README.md', domain+'INVENTORY.md',
-                      domain+'00_pieces/INVENTORY.md', domain+'01_assemblies/INVENTORY.md']
+            guides = [domain+'README.md', domain+'00_pieces/INVENTORY.md',
+                      domain+'01_assemblies/INVENTORY.md']
             for name in guides:
                 self.assertIn(name, zipped.namelist())
             self.assertNotIn('input-audit.json', zipped.namelist())
@@ -110,7 +112,7 @@ class InterchangePackageTests(unittest.TestCase):
                             (name, target, resolved))
 
     def test_rehashed_height_collapse_cannot_pass_the_portable_verifier(self):
-        piece = self.pieces['interchange-l4-oneway-over-hsr']
+        piece = self.pieces['hsr-l4-over-hsr-l2-mixed-crossing-90deg']
         path = self.output/piece['asset_file']
         resources = {key:decompress(value) for key,value in entries(path.read_bytes()).items()}
         changed = False

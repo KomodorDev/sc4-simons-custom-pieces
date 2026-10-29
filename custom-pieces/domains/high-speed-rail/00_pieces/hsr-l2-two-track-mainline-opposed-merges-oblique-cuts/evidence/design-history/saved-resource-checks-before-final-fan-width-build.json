@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-short-opposed-merge-core",
+  "purpose": "Actual saved-resource software checks for the redesigned reusable opposed merge; no human or in-game approval.",
+  "provenance": {
+    "model_compilation": "The normal builder generated resources for the current source definitions, reusing verified matching native geometry caches when available; no new cold-meshing run is claimed.",
+    "build_method": "Current-source full build through the normal pipeline, with normal input audit, resource/path/model checks, controller checks, archive checks, and packaging retained.",
+    "build_path_relative_to_library": "dist/trumpet-rework-parts-01",
+    "build_manifest_sha256": "dec7db54bfb34f60b25e2c49e21a54284cbcfc100c6193e2d7de0153cbd6e4de",
+    "build_verification_sha256": "2f308220f04b07fcb15adb2c3db3a6947480de2858aaed69b6439d6e5587d371",
+    "source_dat": "dist/trumpet-rework-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-opposed-merge-core.dat",
+    "source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+    "source_inputs": {
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/piece.json": "3ea3869a23ae31a1c3b31de16023ce921e603536f11e168bc3912dd9d3100e78",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/geometry.json": "9472847d07e61949721b0dbdeb6c98f538126627f62e104e39d0dd759b61480c",
+      "domains/high-speed-rail/00_pieces/hsr-component-l2-short-opposed-merge-core/connections.json": "d1796059d6162739011ceebabbd317fe4c77a50b60f8fe66640ec7c1f5350837",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_compact_fan_verify.py": "29cb6144226533a933c1223904dced64e9a5c9d9b612f38d4bf4e04b7f5a8ea6",
+      "domains/high-speed-rail/implementation/scp_hsr/hsr_atomic_components_verify.py": "7ecd872fcd31dcede7b89ec6335feb69ff94de17c7005027d6529f49308e5b6c"
+    },
+    "native_input_archives": [
+      {
+        "filename": "NetworkAddonMod_Controller.dat",
+        "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+      },
+      {
+        "filename": "High Speed Rail.dat",
+        "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a"
+      }
+    ],
+    "private_cache_path_published": false,
+    "private_input_paths_published": false
+  },
+  "normal_saved_build_verification": {
+    "static_checks_passed": true,
+    "files_checked": 15,
+    "resources_checked": 1250,
+    "construction": {
+      "original_rul0_restored": true,
+      "original_network_ini_restored": true,
+      "separate_piece_menu_roots": 13,
+      "states_per_root": 8,
+      "runtime_tile_addresses_checked": 90,
+      "ordering_sections_checked": 1,
+      "custom_rotation_rings_in_ordering": 13,
+      "native_rotation_rings_preserved": 132
+    },
+    "dependency_records_cover_all_references": true
+  },
+  "menu": {
+    "piece_id": "hsr-component-l2-short-opposed-merge-core",
+    "title": "SCP | [PART] HSR L2 Short Opposed Merge Core",
+    "menu": "Rail",
+    "menu_id": "6a47f827",
+    "puzzle_id": "f827",
+    "order": "7012f827",
+    "icon_style": "hsr-component-l2-short-opposed-merge-core",
+    "icon": {
+      "width": 176,
+      "height": 44,
+      "pixel_format": "RGBA8",
+      "interlaced": false,
+      "states": [
+        "locked",
+        "normal",
+        "selected",
+        "highlighted"
+      ],
+      "state_dimensions": [
+        44,
+        44
+      ],
+      "transparent_corners": true,
+      "crc_valid": true,
+      "sha256": "b3949458405a4a3ea27a5bc4142c0f5a59ef08a996c357d99a5be2859b38fb48"
+    },
+    "icon_identity": {
+      "category": "part",
+      "badge": "PART",
+      "network": "HSR",
+      "palette": "teal",
+      "kind": "MRG",
+      "meaning": "Individual building piece"
+    },
+    "retained_native_properties_verified": true,
+    "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a47c200",
+    "resources": [
+      {
+        "tgi": "2026960b-123006aa-6a47f827",
+        "bytes": 670,
+        "sha256": "5f1e9c388d8f7532b53f0a110f3928ce2ebd7ed344054a7f1758569e11747df4"
+      },
+      {
+        "tgi": "2026960b-123007bb-6a47f827",
+        "bytes": 92,
+        "sha256": "c2111ef630363380554e8205f6f87cf121bd5a4ddccd42dbd5193aa2c595d9ea"
+      },
+      {
+        "tgi": "6534284a-2a3858e4-6a47f827",
+        "bytes": 230,
+        "sha256": "12eb6807f91deb0458c042bedbddf633f82fc1ef8c17c9a54292a9ef949bf09d"
+      },
+      {
+        "tgi": "856ddbac-6a386d26-6a47f827",
+        "bytes": 6307,
+        "sha256": "b3949458405a4a3ea27a5bc4142c0f5a59ef08a996c357d99a5be2859b38fb48"
+      }
+    ],
+    "in_game_menu_tested": false
+  },
+  "paths": {
+    "tile_count": 5,
+    "encoded_routes_checked": 16,
+    "external_ports_checked": 6,
+    "permitted_movements_checked": 4,
+    "unique_complete_journeys_checked": 4,
+    "literal_port_tangents_checked": 6,
+    "journey_quality": {
+      "Win>Eout": {
+        "length_m": 80.0,
+        "direct_distance_m": 80.0,
+        "length_ratio": 1.0,
+        "total_turn_degrees": 0.0,
+        "minimum_sampled_radius_m": null,
+        "maximum_sample_turn_degrees": 0.0,
+        "maximum_raw_encoded_turn_degrees": 0.0,
+        "minimum_resolved_raw_radius_m": null,
+        "maximum_endpoint_curvature_per_m": 0.0,
+        "maximum_curvature_change_per_m2": 0.0,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 2.0,
+        "signed_turn_degrees": 0.0,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Win": 0.0,
+          "Eout": 0.0
+        }
+      },
+      "Ein>Wout": {
+        "length_m": 80.0,
+        "direct_distance_m": 80.0,
+        "length_ratio": 1.0,
+        "total_turn_degrees": 0.0,
+        "minimum_sampled_radius_m": null,
+        "maximum_sample_turn_degrees": 0.0,
+        "maximum_raw_encoded_turn_degrees": 0.0,
+        "minimum_resolved_raw_radius_m": null,
+        "maximum_endpoint_curvature_per_m": 0.0,
+        "maximum_curvature_change_per_m2": 0.0,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 2.0,
+        "signed_turn_degrees": 0.0,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Ein": 0.0,
+          "Wout": 0.0
+        }
+      },
+      "Nin>Wout": {
+        "length_m": 63.08652733666486,
+        "direct_distance_m": 62.68632365511126,
+        "length_ratio": 1.0063842263865312,
+        "total_turn_degrees": 21.024133291248795,
+        "minimum_sampled_radius_m": 65.76698992844622,
+        "maximum_sample_turn_degrees": 1.7175140579649109,
+        "maximum_raw_encoded_turn_degrees": 0.38575697438252654,
+        "minimum_resolved_raw_radius_m": 41.8025697688068,
+        "maximum_endpoint_curvature_per_m": 0.01520519642282533,
+        "maximum_curvature_change_per_m2": 0.0009437024426951491,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.9714539792707768,
+        "signed_turn_degrees": -21.02413329124879,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Wout": 0.0
+        }
+      },
+      "Sin>Eout": {
+        "length_m": 47.08652733666502,
+        "direct_distance_m": 46.78485401701453,
+        "length_ratio": 1.0064480979152095,
+        "total_turn_degrees": 21.0287114457895,
+        "minimum_sampled_radius_m": 65.68040939653555,
+        "maximum_sample_turn_degrees": 1.7114775604833388,
+        "maximum_raw_encoded_turn_degrees": 0.38575697438350964,
+        "minimum_resolved_raw_radius_m": 41.802569768698326,
+        "maximum_endpoint_curvature_per_m": 0.015225240055412126,
+        "maximum_curvature_change_per_m2": 0.0010509823887540942,
+        "maximum_grade_change_per_m": 0.0,
+        "quality_sample_spacing_m": 1.9619386390277092,
+        "signed_turn_degrees": -21.028711445789504,
+        "maximum_raw_grade_change_per_m": 0.0,
+        "native_endpoint_curvature_per_m": {
+          "Eout": 0.000248898284082034
+        }
+      }
+    },
+    "maximum_encoded_grade": 0.0,
+    "custom_curve_cuts_exempt_only_from_zero_endpoint_curvature": true,
+    "game_operation": "unverified",
+    "grade_separated_crossings_checked": 0,
+    "grade_separated_projected_contacts_checked": 0,
+    "grade_separated_crossings": [],
+    "same_direction_shared_tail_contacts_checked": 32,
+    "independent_at_grade_conflicts_checked": 0
+  },
+  "models": {
+    "authored_clearance_height_m": 5.0,
+    "authored_clearance_width_m": 5.0,
+    "bed_union_width_m": 5.0,
+    "complete_native_join_sections_checked": 3,
+    "coplanar_overlap_meshing_tolerance_m": 0.0001,
+    "corridor_clipped_to_literal_ownership": true,
+    "custom_cap_extensions_require_strict_actual_assembled_path_audit": true,
+    "custom_port_boundary_wedges": [
+      {
+        "edge": "north",
+        "half_width_m": 1.1,
+        "label": "Nin",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          3,
+          0
+        ]
+      },
+      {
+        "edge": "south",
+        "half_width_m": 1.1,
+        "label": "Sin",
+        "maximum_depth_m": 2.7240813077567143,
+        "source_cell": [
+          2,
+          0
+        ]
+      }
+    ],
+    "custom_port_cap_labels": [
+      "Nin",
+      "Sin"
+    ],
+    "custom_port_caps_clipped_to_literal_owned_cells": true,
+    "external_custom_collar_requires_unclipped_actual_assembly_check": true,
+    "full_width_bed_union_segments_checked": 240,
+    "global_support_spacing_checked": true,
+    "height_aware_bed_union_checked": true,
+    "maximum_coplanar_bed_overlap_area_m2": 4.4229786055893783e-07,
+    "maximum_coplanar_bed_overlap_thickness_m": 4.7410215131549194e-07,
+    "maximum_uncovered_bed_area_m2": 1.4606180968712579e-05,
+    "minimum_support_centre_distance_m": 16.0,
+    "model_polygons_cut_at_custom_caps": 773,
+    "models_checked": 26,
+    "native_join_profile_tolerance_m": 5e-05,
+    "native_join_widths_m": [
+      15.0
+    ],
+    "native_material_preserved": true,
+    "owner_clipped_corridor_fragments_checked": 252,
+    "path_nodes_covered_by_visible_bed": 256,
+    "positive_area_coplanar_bed_pairs": 4401,
+    "preview_matches_tiles": true,
+    "rail_crossing_ribbon_nodes": 4,
+    "render_budget_models_checked": 26,
+    "render_group_budget_checked": true,
+    "sloped_support_heads_checked": 0,
+    "support_centres_sc4path_xy": [
+      [
+        0.0,
+        -0.0
+      ],
+      [
+        16.0,
+        -0.0
+      ],
+      [
+        32.0,
+        -0.0
+      ],
+      [
+        48.0,
+        -0.0
+      ],
+      [
+        64.0,
+        -0.0
+      ]
+    ],
+    "support_columns_checked": 5,
+    "support_contact_points_checked": 45,
+    "support_foundations_within_reserved_cells": true,
+    "support_tops_touch_deck": true,
+    "train_clearance_segments_checked": 240,
+    "unused_visible_rails_outside_declared_custom_caps": false,
+    "visible_native_rail_centre_segments_matched_to_paths": 3014,
+    "visible_native_rail_triangles_matched_to_paths": 10059,
+    "render_groups": {
+      "all_authored_groups_within_budget": true,
+      "model_resources_checked": 26,
+      "distinct_model_payloads_checked": 6,
+      "details": [
+        {
+          "authored_frames_checked": 2,
+          "max_authored_vertices": 330,
+          "max_authored_triangles": 366,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 15,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 26,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 27,
+          "max_authored_vertices": 511,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 19,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        },
+        {
+          "authored_frames_checked": 89,
+          "max_authored_vertices": 512,
+          "max_authored_triangles": 512,
+          "vertex_budget": 512,
+          "triangle_budget": 512
+        }
+      ]
+    }
+  },
+  "actual_saved_resource_fingerprints": {
+    "effect:hsr-component-l2-short-opposed-merge-core:ea5118b0-ea5118b1-7f585ff5": "61a19c47abcb24195bb8967963e3d5a260bb05dcaf1139d4de7e97f6b2fd42e0",
+    "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585000": "1dc31bf36c0446f654de3bae90d0b2cd8fcf0ab94d434018b1c2d544b0fbb096",
+    "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585100": "7313fc768119b7acab986078d949137e71e111fab55f58dda1937b7b735905db",
+    "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585200": "9d618f36246f0350ad26cd07189f2b139dc34b1480c0735c14e7451920a836c8",
+    "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585300": "5e9c47233ba7d6c19d16864fc0cb7df6bea85f93b03647e5cc107ee17e884f6e",
+    "exemplar:hsr-component-l2-short-opposed-merge-core:6534284a-a8434037-7f585400": "6c2fc8f84583de0e1f681e32ff498b124b3b6263160c3a81673b7eb145c8b5b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585000": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585001": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585002": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585003": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585004": "b3daa99ad607e337a2876eb9dae672d3cfd3f97d886bc1dcfa0c83beb8942b0f",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585100": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585101": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585102": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585103": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585104": "1d14bd4d282a182cf785961a16f51483c9293933b95f2f6d63abcc780723d3b8",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585200": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585201": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585202": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585203": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585204": "397fdd24eb655fe89346154968da18ba19ddef3ca98d1c0452ea6ea6a943324b",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585300": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585301": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585302": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585303": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585304": "a0eee97074627c22846dace7ab5a7e38e458f168965221addbfb2c079f33e7b1",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585400": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585401": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585402": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585403": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585404": "2c151afbb4d86a3ebdbe26492ae79b9e12694d7e4aea91b7107f815e0f6c51b7",
+    "model:hsr-component-l2-short-opposed-merge-core:5ad0e817-badb57f1-7f585ff5": "88a31aac012286e0facaacd1687f8e558fdba2320579bc07c8d9ed076575aab5",
+    "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585000": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+    "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585100": "c99af55fa96361055e7959d95513f61406ddb66fa17e6f514af77c044c9bf91c",
+    "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585200": "000ae8858cdb0deace3e13d5b687c175b01e5a8633f3fe6661c47b61a16ff2dc",
+    "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585300": "8ccc3c065b6a147e72a13f18657f2d3f2ea6ffba26f252409e4413769b927357",
+    "path:hsr-component-l2-short-opposed-merge-core:296678f7-a966883f-7f585400": "b34a20f60ddd73567022a93cc64b61408933d16281df9e3d0324ed8a8c8d4a9e",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585100": "0fcb0d9fb961297a50a371170ada3046eec61e30dd4147a7a259ec3fb1cf77ec",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585101": "a4ab5d4d9aaa96171184dec909099e56e0be0025ba4ac6cc2277fcaf9f39e6f6",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585102": "ac76c42fcde88ba3641516401bdf56f0f3df700c78f09da953e8cfd194b72033",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585103": "5e7df2e9af15472007f7ec5ae0820d29b10d8e49d2c3ff4605d2c7f28422573c",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585104": "6049511938d2a5b2cd4311971989a9c5733925371d340c51d65683a267b2bedc",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585200": "faabfbb39c022a79369adffbc30a6d662868e0c1aa768e5f1847929576ce42a4",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585201": "7059f2de22818a03b948c568b0bf8ca65d2292f1cbe7631092ece54017d73fea",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585202": "b96dd780f43b6207eba7dcff1aa6e88a842e1578f5a3d17717aff7b10080abf5",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585203": "70a76cdef75ed9066bcdbd3671e8d83bd81988c5c8e259eabe5f53513bd81a1c",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585204": "4248fa3d14ba4e798a53cc10e69d17e0c568ae703d2c1605fd54422c2c20858f",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585300": "b5fabda3cdece9e79273a95c7147e859fe4ec25fa21f9f91da4f3a74abd3b452",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585301": "4ba9ebb1c2bcf60fcc37a72b0fb2f0eca6825cc96d80d6ee5ed61c77ea0ed009",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585302": "2bdcf4937157fa5bbfac441938aa3f00665017945d2e47355ac285c85b45db76",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585303": "8f90952113bd39d8848a8c6b77f9a784410065025d29d641c014c53fce62bfbe",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585304": "86af4019f9bf26fb3a4bba5a095d34bd0c0f27d4e04c908a41184c113b3469c0",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585400": "e3ff403b815285690b4ac1b2ad651e3af8b3e83ac4f9a7730b26df025f42f212",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585401": "4a883a87cd683253774165e739b3e45ff75183884c8b4bc4a4c2177979e064f7",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585402": "2ab8e6fd430ab8b729674639d2e6ab5fe5e46e80d41e9d6a328789421becbb67",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585403": "13791935ae7a6ce60ab97469b8f83afd8b8a7c4a2361f74cf874edb6f22e30e9",
+    "shadow:hsr-component-l2-short-opposed-merge-core:7ab50e44-2bc2759a-7f585404": "7bfe36b30328803a1a0dcbdec0d3d5e186190f903e121fdeaa7b3cae61b85e0b",
+    "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585000": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+    "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585100": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+    "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585200": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+    "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585300": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+    "text:hsr-component-l2-short-opposed-merge-core:2026960b-2a592fd1-7f585400": "01661281d98a8ad6513e46a58483cbdd379be782fd1fd139ed00060cc125855e",
+    "construction:hsr-component-l2-short-opposed-merge-core": "d19f481ebe6af2dfd471458ba735ca7464cfefc0528e59bcda43a3f0f196c849"
+  },
+  "geometry_scope": "This is the reusable type alone. Visible native rail checks at each custom oblique cut exclude only the boundary wedge derived from that literal city edge, the endpoint tangent, and the unchanged rail-stripe envelope. Interior rail, bed, clearance, support, and budget checks remain strict. A separate assembled check must match all rails across the complete neighbouring joins without clipping those wedges.",
+  "installed": false,
+  "human_preview_approved": false,
+  "in_game_appearance_verified": false,
+  "in_game_train_operation_verified": false,
+  "compatibility_discovery_performed": false,
+  "canonical_artwork_identity_comparison": {
+    "compared_to_final_source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+    "original_clean_view_evidence_preserved_byte_for_byte": true,
+    "connection_overview_source_build_context_preserved": true,
+    "connection_overview_actually_rerendered_with_current_framework": true,
+    "connection_overview_pixels_unchanged": true,
+    "reason_for_connection_overview_refresh": "Current shared framework source fingerprints changed after the original card render. A real card rerender reused the same actual saved DAT and retained its original verified source-build context.",
+    "artwork": [
+      {
+        "evidence_file": "evidence/preview.json",
+        "evidence_sha256": "1525779e399a411f92e55ee4a34bb7f8f46558706b75553bec4c58d661c081cb",
+        "render_source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "final_source_dat_exact_match": true
+      },
+      {
+        "evidence_file": "evidence/preview-top.json",
+        "evidence_sha256": "d79931001f9df5f87a0907d3eceb02e031842a21b79c6392b8f1aa0487ab0cfe",
+        "render_source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "final_source_dat_exact_match": true
+      },
+      {
+        "evidence_file": "evidence/connection-overview.json",
+        "evidence_sha256": "59f056f5a6d7f82db812d13df0ee650ed30354111060894dc4843d33428ea1c0",
+        "render_source_dat_sha256": "53747996e23843ca3cbce414c60df8a738e069d48176dc1030457e4fefd163f7",
+        "final_source_dat_exact_match": true
+      }
+    ]
+  }
+}

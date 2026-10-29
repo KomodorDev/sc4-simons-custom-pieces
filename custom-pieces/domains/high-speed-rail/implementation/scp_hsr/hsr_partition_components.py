@@ -10,7 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from functools import lru_cache
 import json
-from pathlib import Path
+from scp.subject_sources import piece_name_for_recipe, piece_directory
 
 RECIPES = (
     'hsr_component_modular_south_junction',
@@ -23,7 +23,7 @@ RECIPES = (
 def _source(recipe):
     if recipe not in RECIPES:
         raise ValueError('Unknown reusable HSR module: '+recipe)
-    directory = Path(__file__).resolve().parents[2]/'00_pieces'/recipe.replace('_', '-')
+    directory = piece_directory(recipe)
     data = json.loads((directory/'geometry.json').read_text())
     if data.get('schema_version') != 1 or data['metadata']['recipe'] != recipe:
         raise ValueError('Reusable HSR module geometry has an invalid identity or schema')
@@ -33,6 +33,7 @@ def _source(recipe):
 def partition_info(recipe):
     """Return local module metadata, independent of any other piece recipe."""
     info = deepcopy(_source(recipe)['metadata'])
+    info['name'] = piece_name_for_recipe(recipe, info['name'])
     info['construction_flags'] = {tuple(cell): flag for cell, flag in info['construction_flags']}
     for key in ('cells', 'structural_cells', 'support_centers', 'authored_support_centers'):
         info[key] = [tuple(value) for value in info[key]]
@@ -129,4 +130,17 @@ def build_models(native_hsr, recipe):
     mapping, config = model_inputs(recipe)
     signature = json.dumps(config, sort_keys=True, separators=(',', ':'), allow_nan=False)
     models = dict(_cached_models(native_hsr, signature))
-    return {local: models[source] for local, source in mapping.items()}
+    result = {local: models[source] for local, source in mapping.items()}
+    alignment = _source(recipe).get('junction_wedge_alignment')
+    if alignment is not None:
+        if recipe != 'hsr_component_modular_south_junction':
+            raise ValueError('Junction wedge repair belongs only to the symmetric split and return')
+        from .hsr_symmetric_parapet import repair_models
+        result = repair_models(native_hsr, result, mapping, alignment)
+    stem_alignment = _source(recipe).get('stem_parapet_alignment')
+    if stem_alignment is not None:
+        if recipe != 'hsr_component_modular_south_junction':
+            raise ValueError('Stem parapet repair belongs only to the symmetric split and return')
+        from .hsr_symmetric_stem import repair_stem_models
+        result = repair_stem_models(native_hsr, result, mapping, stem_alignment)
+    return result

@@ -26,7 +26,11 @@ def run_checks(root, scope='all', verbose=False):
     paths = [root/'framework']
     paths.extend(root/domain['path']/'implementation' for domain in catalog['domains'].values())
     environment['PYTHONPATH'] = os.pathsep.join(str(path) for path in paths)
-    results = []
+    from .documentation_check import check_documentation
+    documentation = check_documentation(root)
+    results = [{'scope': 'documentation', 'passed': documentation['all_passed']}]
+    for error in documentation['errors']:
+        print('Documentation: '+str(error), file=sys.stderr, flush=True)
     for name, directory in directories:
         print(f'Checking {name}: {directory.relative_to(root)}', file=sys.stderr, flush=True)
         result = subprocess.run([sys.executable, '-B', str(root/'framework/scp/check_bootstrap.py'),
@@ -36,4 +40,5 @@ def run_checks(root, scope='all', verbose=False):
         results.append({'scope': name, 'passed': result.returncode == 0,
                         'directory': directory.relative_to(root).as_posix()})
     return {'all_passed': all(item['passed'] for item in results), 'scopes': results,
+            'documentation': documentation,
             'manual_game_results_changed': False, 'installed': False}

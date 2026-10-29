@@ -1,0 +1,5847 @@
+{
+  "display_title": "Piece - HSR Level 2 (15.5 m) Short Mainline Diverge Core",
+  "size": [
+    2000,
+    6024
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1904,
+      1000
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      16.97056274847714,
+      -1.550185138410212
+    ],
+    "pixels_per_metre": 18.843836465821067,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -8.0,
+      56.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -0.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -8.0,
+      56.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        3
+      ],
+      "Y": [
+        0,
+        0
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        0
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "viewport_offset_xy": [
+    48,
+    182
+  ],
+  "viewport_size": [
+    1904,
+    1000
+  ],
+  "title_occurrences": 1,
+  "card_columns": 2,
+  "body_font_pixels": 28,
+  "header": {
+    "captions": [
+      "Piece - HSR Level 2 (15.5 m) Short Mainline Diverge Core",
+      "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - HSR Level 2 (15.5 m) Short Mainline Diverge Core",
+        "colour": "#172b42",
+        "font_pixels": 44,
+        "bold": true,
+        "position": [
+          48,
+          24
+        ],
+        "bounds": [
+          48,
+          32,
+          1236,
+          73
+        ]
+      },
+      {
+        "text": "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 28,
+        "bold": false,
+        "position": [
+          48,
+          78
+        ],
+        "bounds": [
+          48,
+          83,
+          837,
+          110
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 27,
+        "bold": false,
+        "position": [
+          48,
+          122
+        ],
+        "bounds": [
+          48,
+          127,
+          1149,
+          152
+        ]
+      }
+    ],
+    "bottom": 182,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "header_settings": {
+    "source_sha256": "0af6bf3750734a67ea008774b8140a3e6b7b3fe5d9d6d4a5e136230470f9a5dc",
+    "row_colours": [
+      "#172b42",
+      "#176eaf",
+      "#586a7e"
+    ],
+    "rows": [
+      "Piece - source-backed piece title",
+      "view purpose, camera, and authored orientation",
+      "local grid and scale"
+    ],
+    "duplicate_grid_footer_visible": false
+  },
+  "conventions": [
+    "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
+    "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
+    "Display grid: X = source column \u2212 (0); Y = 0 \u2212 source row.",
+    "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
+    "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
+    "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
+    "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative."
+  ],
+  "figure_text": [
+    "Piece - HSR Level 2 (15.5 m) Short Mainline Diverge Core",
+    "Connection overview | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+    "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
+    "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
+    "Display grid: X = source column \u2212 (0); Y = 0 \u2212 source row.",
+    "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
+    "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
+    "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
+    "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.",
+    "Checked: source-bound metadata, current manifest/DAT identity, saved route-resource identities, and compiled model structure.",
+    "This render does not re-extract compiled PATHs or evaluate a candidate placement's occupied-tile fit.",
+    "Unverified: physical seams, construction clearance, model collisions, and game operation."
+  ],
+  "boundary_cards": [
+    {
+      "id": "cell-0-0-west",
+      "marker": "A",
+      "source_cell": [
+        0,
+        0
+      ],
+      "boundary": "West",
+      "text_runs": [
+        {
+          "text": "West edge \u00b7 cell [0,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            445,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            421,
+            200
+          ]
+        },
+        {
+          "text": "west-paired-end",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            285,
+            242
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "HSR",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            441,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "diverge-mainline",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            395,
+            652,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Monorail (7); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            640,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[0,0] / West",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            523,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "[-8,0]",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            599,
+            483,
+            627
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            638
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            643,
+            326,
+            670
+          ]
+        },
+        {
+          "text": "Centred; 0 m",
+          "position": [
+            382,
+            638
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            643,
+            544,
+            669
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            685,
+            264,
+            712
+          ]
+        },
+        {
+          "text": "Level 2 (15.5 m)",
+          "position": [
+            382,
+            680
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            686,
+            584,
+            712
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            722
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            727,
+            245,
+            754
+          ]
+        },
+        {
+          "text": "270\u00b0 (West)",
+          "position": [
+            382,
+            722
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            727,
+            530,
+            754
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            764
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            769,
+            294,
+            796
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            764
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            769,
+            549,
+            796
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            838
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            844,
+            301,
+            864
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            886
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            891,
+            241,
+            912
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            928,
+            149,
+            948
+          ]
+        },
+        {
+          "text": "2 / 2 / 2",
+          "position": [
+            382,
+            886
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            892,
+            475,
+            912
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            964
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            969,
+            275,
+            996
+          ]
+        },
+        {
+          "text": "1 incoming; 1 outgoing",
+          "position": [
+            382,
+            964
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            969,
+            664,
+            996
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1006
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1011,
+            280,
+            1038
+          ]
+        },
+        {
+          "text": "Right-hand running",
+          "position": [
+            382,
+            1006
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1011,
+            620,
+            1038
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1048
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1054,
+            241,
+            1080
+          ]
+        },
+        {
+          "text": "4 m",
+          "position": [
+            382,
+            1048
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1054,
+            429,
+            1074
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1090
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1096,
+            209,
+            1116
+          ]
+        },
+        {
+          "text": "rail",
+          "position": [
+            382,
+            1090
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1096,
+            419,
+            1116
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1132
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1138,
+            200,
+            1158
+          ]
+        },
+        {
+          "text": "monorail",
+          "position": [
+            382,
+            1132
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1138,
+            489,
+            1158
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1206
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1212,
+            276,
+            1232
+          ]
+        },
+        {
+          "text": "west-paired-end-win   source: Win",
+          "position": [
+            32,
+            1254
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1259,
+            588,
+            1286
+          ]
+        },
+        {
+          "text": "Channel: eastbound-mainline | Cut: west-paired-end-",
+          "position": [
+            32,
+            1302
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1307,
+            892,
+            1335
+          ]
+        },
+        {
+          "text": "eastbound-mainline-cut",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            403,
+            1364
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1382
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1388,
+            239,
+            1408
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1432,
+            91,
+            1452
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1432,
+            302,
+            1458
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1431,
+            566,
+            1458
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1432,
+            691,
+            1458
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1432,
+            867,
+            1458
+          ]
+        },
+        {
+          "text": "Incoming",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1468,
+            146,
+            1494
+          ]
+        },
+        {
+          "text": "[-8,-2,15.5]",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1465,
+            364,
+            1493
+          ]
+        },
+        {
+          "text": "+2",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1468,
+            476,
+            1488
+          ]
+        },
+        {
+          "text": "270\u00b0",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1467,
+            654,
+            1488
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1467,
+            761,
+            1488
+          ]
+        },
+        {
+          "text": "west-paired-end-wout   source: Wout",
+          "position": [
+            32,
+            1522
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1527,
+            622,
+            1554
+          ]
+        },
+        {
+          "text": "Channel: westbound-mainline | Cut: west-paired-end-",
+          "position": [
+            32,
+            1570
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1575,
+            892,
+            1603
+          ]
+        },
+        {
+          "text": "westbound-mainline-cut",
+          "position": [
+            32,
+            1606
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1611,
+            403,
+            1632
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1650
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1656,
+            239,
+            1676
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1700,
+            91,
+            1720
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1700,
+            302,
+            1726
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1699,
+            566,
+            1726
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1700,
+            691,
+            1726
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1700,
+            867,
+            1726
+          ]
+        },
+        {
+          "text": "Outgoing",
+          "position": [
+            32,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1735,
+            146,
+            1762
+          ]
+        },
+        {
+          "text": "[-8,2,15.5]",
+          "position": [
+            162,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1733,
+            347,
+            1761
+          ]
+        },
+        {
+          "text": "-2",
+          "position": [
+            442,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1736,
+            476,
+            1756
+          ]
+        },
+        {
+          "text": "270\u00b0",
+          "position": [
+            587,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1735,
+            654,
+            1756
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1735,
+            761,
+            1756
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1808
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1814,
+            276,
+            1834
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1856
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1862,
+            188,
+            1888
+          ]
+        },
+        {
+          "text": "cell-0-0-west",
+          "position": [
+            382,
+            1856
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1861,
+            601,
+            1882
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1912
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1918,
+            111,
+            1938
+          ]
+        },
+        {
+          "text": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+          "position": [
+            32,
+            1952
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1957,
+            740,
+            1984
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "HSR",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "diverge-mainline",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Monorail (7); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[0,0] / West",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "[-8,0]",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Centred; 0 m",
+          "top": 638
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Level 2 (15.5 m)",
+          "top": 680
+        },
+        {
+          "label": "Outward heading",
+          "value": "270\u00b0 (West)",
+          "top": 722
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 764
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "2 / 2 / 2",
+          "top": 886
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "1 incoming; 1 outgoing",
+          "top": 964
+        },
+        {
+          "label": "Running convention",
+          "value": "Right-hand running",
+          "top": 1006
+        },
+        {
+          "label": "Channel spacing",
+          "value": "4 m",
+          "top": 1048
+        },
+        {
+          "label": "Channel kinds",
+          "value": "rail",
+          "top": 1090
+        },
+        {
+          "label": "Traffic modes",
+          "value": "monorail",
+          "top": 1132
+        },
+        {
+          "label": "Boundary ID",
+          "value": "cell-0-0-west",
+          "top": 1856
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "west-paired-end",
+          "network": "hsr",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "colour": "#007b84",
+          "bounds": [
+            16,
+            152,
+            915,
+            2016
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        2080
+      ],
+      "output_box": [
+        48,
+        1584,
+        980,
+        3664
+      ],
+      "group_ids": [
+        "west-paired-end"
+      ]
+    },
+    {
+      "id": "cell-2-0-south",
+      "marker": "B",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "South",
+      "text_runs": [
+        {
+          "text": "South edge \u00b7 cell [2,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            462,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            421,
+            200
+          ]
+        },
+        {
+          "text": "south-curved-cut",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            302,
+            236
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "HSR",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            441,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "diverge-mainline",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            395,
+            652,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Monorail (7); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            640,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[2,0] / South",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            533,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "Not declared; see member",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            601,
+            787,
+            626
+          ]
+        },
+        {
+          "text": "endpoints",
+          "position": [
+            382,
+            632
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            637,
+            534,
+            664
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            674
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            679,
+            326,
+            706
+          ]
+        },
+        {
+          "text": "Not declared",
+          "position": [
+            382,
+            674
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            679,
+            541,
+            700
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            716
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            721,
+            264,
+            748
+          ]
+        },
+        {
+          "text": "Level 2 (15.5 m)",
+          "position": [
+            382,
+            716
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            722,
+            584,
+            748
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            758
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            763,
+            245,
+            790
+          ]
+        },
+        {
+          "text": "111.989\u00b0",
+          "position": [
+            382,
+            758
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            764,
+            490,
+            784
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            800
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            805,
+            294,
+            832
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            800
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            805,
+            549,
+            832
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            874
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            880,
+            301,
+            900
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            927,
+            241,
+            948
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            958
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            964,
+            149,
+            984
+          ]
+        },
+        {
+          "text": "1 / 1 / 1",
+          "position": [
+            382,
+            922
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            928,
+            475,
+            948
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            1000
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1005,
+            275,
+            1032
+          ]
+        },
+        {
+          "text": "0 incoming; 1 outgoing",
+          "position": [
+            382,
+            1000
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1005,
+            664,
+            1032
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1042
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1047,
+            280,
+            1074
+          ]
+        },
+        {
+          "text": "See member directions",
+          "position": [
+            382,
+            1042
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1047,
+            670,
+            1068
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1084
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1090,
+            241,
+            1116
+          ]
+        },
+        {
+          "text": "See individual measured intersections",
+          "position": [
+            382,
+            1084
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1089,
+            854,
+            1110
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1126
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1132,
+            209,
+            1152
+          ]
+        },
+        {
+          "text": "rail",
+          "position": [
+            382,
+            1126
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1132,
+            419,
+            1152
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1168
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1174,
+            200,
+            1194
+          ]
+        },
+        {
+          "text": "monorail",
+          "position": [
+            382,
+            1168
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1174,
+            489,
+            1194
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1242
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1248,
+            276,
+            1268
+          ]
+        },
+        {
+          "text": "south-curved-cut-sout   source: Sout",
+          "position": [
+            32,
+            1290
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1295,
+            639,
+            1316
+          ]
+        },
+        {
+          "text": "Channel: departure-branch | Cut: south-curved-cut-",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            875,
+            1371
+          ]
+        },
+        {
+          "text": "departure-branch-cut",
+          "position": [
+            32,
+            1374
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1379,
+            369,
+            1406
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1418
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1424,
+            239,
+            1444
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1468,
+            91,
+            1488
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1468,
+            302,
+            1494
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1467,
+            566,
+            1494
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1468,
+            691,
+            1494
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1468,
+            867,
+            1494
+          ]
+        },
+        {
+          "text": "Outgoing",
+          "position": [
+            32,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1503,
+            146,
+            1530
+          ]
+        },
+        {
+          "text": "[38.3985,-",
+          "position": [
+            162,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1501,
+            331,
+            1529
+          ]
+        },
+        {
+          "text": "8,15.5]",
+          "position": [
+            162,
+            1534
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1537,
+            280,
+            1565
+          ]
+        },
+        {
+          "text": "Not decl",
+          "position": [
+            442,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1503,
+            577,
+            1524
+          ]
+        },
+        {
+          "text": "ared",
+          "position": [
+            442,
+            1534
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1539,
+            509,
+            1560
+          ]
+        },
+        {
+          "text": "111.989\u00b0",
+          "position": [
+            587,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1504,
+            722,
+            1524
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1503,
+            761,
+            1524
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1612
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1618,
+            276,
+            1638
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1660
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1666,
+            188,
+            1692
+          ]
+        },
+        {
+          "text": "cell-2-0-south",
+          "position": [
+            382,
+            1660
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1665,
+            618,
+            1686
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1716
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1722,
+            111,
+            1742
+          ]
+        },
+        {
+          "text": "No profile reference",
+          "position": [
+            32,
+            1756
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1761,
+            369,
+            1788
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "HSR",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "diverge-mainline",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Monorail (7); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[2,0] / South",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "Not declared; see member endpoints",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Not declared",
+          "top": 674
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Level 2 (15.5 m)",
+          "top": 716
+        },
+        {
+          "label": "Outward heading",
+          "value": "111.989\u00b0",
+          "top": 758
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 800
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "1 / 1 / 1",
+          "top": 922
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "0 incoming; 1 outgoing",
+          "top": 1000
+        },
+        {
+          "label": "Running convention",
+          "value": "See member directions",
+          "top": 1042
+        },
+        {
+          "label": "Channel spacing",
+          "value": "See individual measured intersections",
+          "top": 1084
+        },
+        {
+          "label": "Channel kinds",
+          "value": "rail",
+          "top": 1126
+        },
+        {
+          "label": "Traffic modes",
+          "value": "monorail",
+          "top": 1168
+        },
+        {
+          "label": "Boundary ID",
+          "value": "cell-2-0-south",
+          "top": 1660
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "south-curved-cut",
+          "network": "hsr",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "colour": "#007b84",
+          "bounds": [
+            16,
+            152,
+            915,
+            1820
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        1884
+      ],
+      "output_box": [
+        1020,
+        1584,
+        1952,
+        3468
+      ],
+      "group_ids": [
+        "south-curved-cut"
+      ]
+    },
+    {
+      "id": "cell-3-0-east",
+      "marker": "C",
+      "source_cell": [
+        3,
+        0
+      ],
+      "boundary": "East",
+      "text_runs": [
+        {
+          "text": "East edge \u00b7 cell [3,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            436,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            421,
+            200
+          ]
+        },
+        {
+          "text": "east-paired-end",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            285,
+            242
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "HSR",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            441,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "diverge-mainline",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            395,
+            652,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Monorail (7); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            640,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[3,0] / East",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            516,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "[56,0]",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            599,
+            483,
+            627
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            638
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            643,
+            326,
+            670
+          ]
+        },
+        {
+          "text": "Centred; 0 m",
+          "position": [
+            382,
+            638
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            643,
+            544,
+            669
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            685,
+            264,
+            712
+          ]
+        },
+        {
+          "text": "Level 2 (15.5 m)",
+          "position": [
+            382,
+            680
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            686,
+            584,
+            712
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            722
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            727,
+            245,
+            754
+          ]
+        },
+        {
+          "text": "90\u00b0 (East)",
+          "position": [
+            382,
+            722
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            727,
+            507,
+            754
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            764
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            769,
+            294,
+            796
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            764
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            769,
+            549,
+            796
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            838
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            844,
+            301,
+            864
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            886
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            891,
+            241,
+            912
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            928,
+            149,
+            948
+          ]
+        },
+        {
+          "text": "2 / 2 / 2",
+          "position": [
+            382,
+            886
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            892,
+            475,
+            912
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            964
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            969,
+            275,
+            996
+          ]
+        },
+        {
+          "text": "1 incoming; 1 outgoing",
+          "position": [
+            382,
+            964
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            969,
+            664,
+            996
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1006
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1011,
+            280,
+            1038
+          ]
+        },
+        {
+          "text": "Right-hand running",
+          "position": [
+            382,
+            1006
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1011,
+            620,
+            1038
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1048
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1054,
+            241,
+            1080
+          ]
+        },
+        {
+          "text": "4 m",
+          "position": [
+            382,
+            1048
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1054,
+            429,
+            1074
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1090
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1096,
+            209,
+            1116
+          ]
+        },
+        {
+          "text": "rail",
+          "position": [
+            382,
+            1090
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1096,
+            419,
+            1116
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1132
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1138,
+            200,
+            1158
+          ]
+        },
+        {
+          "text": "monorail",
+          "position": [
+            382,
+            1132
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1138,
+            489,
+            1158
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1206
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1212,
+            276,
+            1232
+          ]
+        },
+        {
+          "text": "east-paired-end-ein   source: Ein",
+          "position": [
+            32,
+            1254
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1259,
+            588,
+            1286
+          ]
+        },
+        {
+          "text": "Channel: westbound-mainline | Cut: east-paired-end-",
+          "position": [
+            32,
+            1302
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1307,
+            892,
+            1335
+          ]
+        },
+        {
+          "text": "westbound-mainline-cut",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            403,
+            1364
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1382
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1388,
+            239,
+            1408
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1432,
+            91,
+            1452
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1432,
+            302,
+            1458
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1431,
+            566,
+            1458
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1432,
+            691,
+            1458
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1432,
+            867,
+            1458
+          ]
+        },
+        {
+          "text": "Incoming",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1468,
+            146,
+            1494
+          ]
+        },
+        {
+          "text": "[56,2,15.5]",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1465,
+            347,
+            1493
+          ]
+        },
+        {
+          "text": "+2",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1468,
+            476,
+            1488
+          ]
+        },
+        {
+          "text": "90\u00b0",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1467,
+            638,
+            1488
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1467,
+            761,
+            1488
+          ]
+        },
+        {
+          "text": "east-paired-end-eout   source: Eout",
+          "position": [
+            32,
+            1522
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1527,
+            622,
+            1554
+          ]
+        },
+        {
+          "text": "Channel: eastbound-mainline | Cut: east-paired-end-",
+          "position": [
+            32,
+            1570
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1575,
+            892,
+            1603
+          ]
+        },
+        {
+          "text": "eastbound-mainline-cut",
+          "position": [
+            32,
+            1606
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1611,
+            403,
+            1632
+          ]
+        },
+        {
+          "text": "Modes: monorail",
+          "position": [
+            32,
+            1650
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1656,
+            239,
+            1676
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1700,
+            91,
+            1720
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1700,
+            302,
+            1726
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1699,
+            566,
+            1726
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1700,
+            691,
+            1726
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1694
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1700,
+            867,
+            1726
+          ]
+        },
+        {
+          "text": "Outgoing",
+          "position": [
+            32,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1735,
+            146,
+            1762
+          ]
+        },
+        {
+          "text": "[56,-2,15.5]",
+          "position": [
+            162,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1733,
+            364,
+            1761
+          ]
+        },
+        {
+          "text": "-2",
+          "position": [
+            442,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1736,
+            476,
+            1756
+          ]
+        },
+        {
+          "text": "90\u00b0",
+          "position": [
+            587,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1735,
+            638,
+            1756
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1730
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1735,
+            761,
+            1756
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1808
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1814,
+            276,
+            1834
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1856
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1862,
+            188,
+            1888
+          ]
+        },
+        {
+          "text": "cell-3-0-east",
+          "position": [
+            382,
+            1856
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1861,
+            601,
+            1882
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1912
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1918,
+            111,
+            1938
+          ]
+        },
+        {
+          "text": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+          "position": [
+            32,
+            1952
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1957,
+            740,
+            1984
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "HSR",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "diverge-mainline",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Monorail (7); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[3,0] / East",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "[56,0]",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Centred; 0 m",
+          "top": 638
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Level 2 (15.5 m)",
+          "top": 680
+        },
+        {
+          "label": "Outward heading",
+          "value": "90\u00b0 (East)",
+          "top": 722
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 764
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "2 / 2 / 2",
+          "top": 886
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "1 incoming; 1 outgoing",
+          "top": 964
+        },
+        {
+          "label": "Running convention",
+          "value": "Right-hand running",
+          "top": 1006
+        },
+        {
+          "label": "Channel spacing",
+          "value": "4 m",
+          "top": 1048
+        },
+        {
+          "label": "Channel kinds",
+          "value": "rail",
+          "top": 1090
+        },
+        {
+          "label": "Traffic modes",
+          "value": "monorail",
+          "top": 1132
+        },
+        {
+          "label": "Boundary ID",
+          "value": "cell-3-0-east",
+          "top": 1856
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "east-paired-end",
+          "network": "hsr",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   HSR \u2014 Level 2 (15.5 m)",
+          "colour": "#007b84",
+          "bounds": [
+            16,
+            152,
+            915,
+            2016
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        2080
+      ],
+      "output_box": [
+        48,
+        3704,
+        980,
+        5784
+      ],
+      "group_ids": [
+        "east-paired-end"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "west-paired-end",
+      "component_id": "diverge-mainline",
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+      "resolved_profile": {
+        "abstract": false,
+        "network": "hsr",
+        "engine_transport": 7,
+        "role": "primary",
+        "alignment": "orth",
+        "endpoint_grade": 0.0,
+        "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+        "path_height_m": 15.5,
+        "nominal_level": "l2",
+        "label": "HSR L2 paired straight interface"
+      },
+      "network": "hsr",
+      "nominal_level": "l2",
+      "path_height_m": 15.5,
+      "boundary_bundle_id": "cell-0-0-west",
+      "source_cell": [
+        0,
+        0
+      ],
+      "boundary": "West",
+      "anchor_enh_m": [
+        -8.0,
+        0.0,
+        15.5
+      ],
+      "section_offset_m": 0.0,
+      "centred_on_tile_boundary": true,
+      "physical_channel_count": 2,
+      "edge_cut_count": 2,
+      "channel_spacing_m": 4.0,
+      "channels": [
+        {
+          "id": "eastbound-mainline",
+          "component_id": "diverge-mainline",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "west-paired-end-eastbound-mainline-cut",
+              "member_ids": [
+                "west-paired-end-win"
+              ],
+              "endpoint_m": [
+                -8.0,
+                -2.0,
+                15.5
+              ],
+              "outward_tangent": [
+                -1.0,
+                -0.0
+              ],
+              "heading_outward_degrees": 270.0,
+              "grade_outward": -0.0
+            }
+          ]
+        },
+        {
+          "id": "westbound-mainline",
+          "component_id": "diverge-mainline",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "west-paired-end-westbound-mainline-cut",
+              "member_ids": [
+                "west-paired-end-wout"
+              ],
+              "endpoint_m": [
+                -8.0,
+                2.0,
+                15.5
+              ],
+              "outward_tangent": [
+                -1.0,
+                0.0
+              ],
+              "heading_outward_degrees": 270.0,
+              "grade_outward": 0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "monorail"
+      ],
+      "common_outward_heading_degrees": 270.0,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "west-paired-end-win",
+          "source_port_id": "Win",
+          "direction": "in",
+          "endpoint_m": [
+            -8.0,
+            -2.0,
+            15.5
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "edge": 0,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "eastbound-mainline",
+          "cut_id": "west-paired-end-eastbound-mainline-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            -1.0,
+            -0.0
+          ],
+          "outward_heading_degrees": 270.0,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": 2.0
+        },
+        {
+          "id": "west-paired-end-wout",
+          "source_port_id": "Wout",
+          "direction": "out",
+          "endpoint_m": [
+            -8.0,
+            2.0,
+            15.5
+          ],
+          "tangent": [
+            -1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "edge": 0,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "westbound-mainline",
+          "cut_id": "west-paired-end-westbound-mainline-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            -1.0,
+            0.0
+          ],
+          "outward_heading_degrees": 270.0,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": -2.0
+        }
+      ],
+      "viewport_pixel": [
+        525.6126544463225,
+        165.52616856172023
+      ],
+      "marker": "A",
+      "output_pixel": [
+        573.6126544463225,
+        347.5261685617202
+      ],
+      "marker_output_pixel": [
+        511.6126544463225,
+        309.5261685617202
+      ],
+      "marker_leader_output_pixels": [
+        [
+          573.6126544463225,
+          347.5261685617202
+        ],
+        [
+          511.6126544463225,
+          309.5261685617202
+        ]
+      ]
+    },
+    {
+      "id": "east-paired-end",
+      "component_id": "diverge-mainline",
+      "profile_id": "hsr-l2-orth-scp-paired15-t2-opposed-rhd-v1",
+      "resolved_profile": {
+        "abstract": false,
+        "network": "hsr",
+        "engine_transport": 7,
+        "role": "primary",
+        "alignment": "orth",
+        "endpoint_grade": 0.0,
+        "extends": "hsr-orth-scp-paired15-t2-opposed-rhd-v1",
+        "path_height_m": 15.5,
+        "nominal_level": "l2",
+        "label": "HSR L2 paired straight interface"
+      },
+      "network": "hsr",
+      "nominal_level": "l2",
+      "path_height_m": 15.5,
+      "boundary_bundle_id": "cell-3-0-east",
+      "source_cell": [
+        3,
+        0
+      ],
+      "boundary": "East",
+      "anchor_enh_m": [
+        56.0,
+        0.0,
+        15.5
+      ],
+      "section_offset_m": 0.0,
+      "centred_on_tile_boundary": true,
+      "physical_channel_count": 2,
+      "edge_cut_count": 2,
+      "channel_spacing_m": 4.0,
+      "channels": [
+        {
+          "id": "westbound-mainline",
+          "component_id": "diverge-mainline",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "east-paired-end-westbound-mainline-cut",
+              "member_ids": [
+                "east-paired-end-ein"
+              ],
+              "endpoint_m": [
+                56.0,
+                2.0,
+                15.5
+              ],
+              "outward_tangent": [
+                1.0,
+                -0.0
+              ],
+              "heading_outward_degrees": 90.0,
+              "grade_outward": -0.0
+            }
+          ]
+        },
+        {
+          "id": "eastbound-mainline",
+          "component_id": "diverge-mainline",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "east-paired-end-eastbound-mainline-cut",
+              "member_ids": [
+                "east-paired-end-eout"
+              ],
+              "endpoint_m": [
+                56.0,
+                -2.0,
+                15.5
+              ],
+              "outward_tangent": [
+                1.0,
+                0.0
+              ],
+              "heading_outward_degrees": 90.0,
+              "grade_outward": 0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "monorail"
+      ],
+      "common_outward_heading_degrees": 90.0,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "east-paired-end-ein",
+          "source_port_id": "Ein",
+          "direction": "in",
+          "endpoint_m": [
+            56.0,
+            2.0,
+            15.5
+          ],
+          "tangent": [
+            -1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "edge": 2,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "westbound-mainline",
+          "cut_id": "east-paired-end-westbound-mainline-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            1.0,
+            -0.0
+          ],
+          "outward_heading_degrees": 90.0,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": 2.0
+        },
+        {
+          "id": "east-paired-end-eout",
+          "source_port_id": "Eout",
+          "direction": "out",
+          "endpoint_m": [
+            56.0,
+            -2.0,
+            15.5
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "edge": 2,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "eastbound-mainline",
+          "cut_id": "east-paired-end-eastbound-mainline-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            1.0,
+            0.0
+          ],
+          "outward_heading_degrees": 90.0,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": -2.0
+        }
+      ],
+      "viewport_pixel": [
+        1378.3873455536775,
+        604.7376038016683
+      ],
+      "marker": "C",
+      "output_pixel": [
+        1426.3873455536775,
+        786.7376038016683
+      ],
+      "marker_output_pixel": [
+        1488.3873455536775,
+        748.7376038016683
+      ],
+      "marker_leader_output_pixels": [
+        [
+          1426.3873455536775,
+          786.7376038016683
+        ],
+        [
+          1488.3873455536775,
+          748.7376038016683
+        ]
+      ]
+    },
+    {
+      "id": "south-curved-cut",
+      "component_id": "diverge-mainline",
+      "profile_id": null,
+      "resolved_profile": {
+        "network": "hsr",
+        "nominal_level": "l2",
+        "path_height_m": 15.5,
+        "engine_transport": 7,
+        "role": "primary",
+        "alignment": "angled"
+      },
+      "network": "hsr",
+      "nominal_level": "l2",
+      "path_height_m": 15.5,
+      "boundary_bundle_id": "cell-2-0-south",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "South",
+      "anchor_enh_m": null,
+      "section_offset_m": null,
+      "centred_on_tile_boundary": null,
+      "physical_channel_count": 1,
+      "edge_cut_count": 1,
+      "channel_spacing_m": null,
+      "channels": [
+        {
+          "id": "departure-branch",
+          "component_id": "diverge-mainline",
+          "kind": "rail",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "cuts": [
+            {
+              "id": "south-curved-cut-departure-branch-cut",
+              "member_ids": [
+                "south-curved-cut-sout"
+              ],
+              "endpoint_m": [
+                38.398519,
+                -8.0,
+                15.5
+              ],
+              "outward_tangent": [
+                0.9272548089646255,
+                -0.3744309272108488
+              ],
+              "heading_outward_degrees": 111.98914503637027,
+              "grade_outward": 0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "monorail"
+      ],
+      "common_outward_heading_degrees": 111.98914503637027,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "south-curved-cut-sout",
+          "source_port_id": "Sout",
+          "direction": "out",
+          "endpoint_m": [
+            38.398519,
+            -8.0,
+            15.5
+          ],
+          "tangent": [
+            0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "grade": 0.0,
+          "edge": 3,
+          "engine_transport": 7,
+          "role": "primary",
+          "service_network": "hsr",
+          "channel_id": "departure-branch",
+          "cut_id": "south-curved-cut-departure-branch-cut",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "outward_horizontal_unit_en": [
+            0.9272548089646255,
+            -0.3744309272108488
+          ],
+          "outward_heading_degrees": 111.98914503637027,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": null
+        }
+      ],
+      "marker_enh_m": [
+        38.398519,
+        -8.0,
+        15.5
+      ],
+      "viewport_pixel": [
+        1037.2577353713991,
+        538.8457248885576
+      ],
+      "marker": "B",
+      "output_pixel": [
+        1085.2577353713991,
+        720.8457248885576
+      ],
+      "marker_output_pixel": [
+        1147.2577353713991,
+        682.8457248885576
+      ],
+      "marker_leader_output_pixels": [
+        [
+          1085.2577353713991,
+          720.8457248885576
+        ],
+        [
+          1147.2577353713991,
+          682.8457248885576
+        ]
+      ]
+    }
+  ],
+  "purpose": "Source-owned connection overview; software source checks do not establish physical or game behavior.",
+  "schema_version": 1,
+  "piece_id": "hsr-component-l2-short-mainline-diverge-core",
+  "file": "previews/connection-overview.png",
+  "output_sha256": "91777c357c0a4ccec413fe0c7c34586398dd7bb72aa97fa90d8b5c60b6987141",
+  "source_inputs": {
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/piece.json": "95aa45f59da86eb6c547526f3796a7c91f2a21bd7d0e27724448dd192924290a",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connections.json": "bb60300f339e434ccf9b677647a1c690f0a09f766f83a6d84184f03afba168c0",
+    "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/connector-groups.jsonc": "01826b29976c796df9c9a154efdd2de5ec196db798ebf58ae846ba3b8bb4eac2",
+    "domains/high-speed-rail/domain.json": "084270ef6cc43c432382b7a4399ad98e9adb14e35a22d5a6f7c85fd936ff8479",
+    "schemas/connector-groups.schema.json": "497556506c2db2f2f9942844020699519679555ca0ae0211d4814f58efdb44f8",
+    "schemas/connector-profiles.schema.json": "8d5492f4606e3a5cfa56e4a3e7ee163f4155b8f1da6d24c28b2a85350c3f8dd3",
+    "domains/high-speed-rail/connector-profiles.json": "36c5ccf1230de2ef82dbb18b2e19d8c9d6c4aa968fb272983f339e016ad4b1fd"
+  },
+  "generator_sha256": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+  "metadata_resolver_sha256": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+  "manifest_sha256": "1473504784823e7cba56475172eefc62438179fe8bba678df333939aa6f72bb6",
+  "compiled_manifest_sha256": "fcf534ce55243e717ee3b1984150b75c7d1947f211f05cc45b6eee7164847567",
+  "source_manifest": "dist/diverge-border-follow-curve/manifest.json",
+  "source_dat": "dist/diverge-border-follow-curve/zzz_Simons_Custom_Pieces/20_Pieces/SCP_hsr-component-l2-short-mainline-diverge-core.dat",
+  "source_preview_id": "7f584ff5",
+  "source_dat_sha256": "8ec7e84b0e01f57412948eebd51173d87d3436704ebb021c477e3be3ed123b81",
+  "source_model_sha256": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+  "render_model_sha256": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+  "model_validation": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 22594,
+    "mesh_count": 51,
+    "bounds_xyz_m": [
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.010671615600586,
+          16.98932647705078
+        ],
+        [
+          -7.500000476837158,
+          7.5
+        ]
+      ],
+      [
+        [
+          -5.3783769607543945,
+          8.0
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          1.0,
+          3.2874016761779785
+        ]
+      ],
+      [
+        [
+          0.9780604839324951,
+          8.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          1.0,
+          1.2853364944458008
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          16.1893253326416,
+          16.189327239990234
+        ],
+        [
+          -3.0,
+          5.996857643127441
+        ]
+      ],
+      [
+        [
+          -4.954215049743652,
+          -2.3917160034179688
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.004854202270508
+        ]
+      ],
+      [
+        [
+          -2.8193111419677734,
+          0.5358350276947021
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.0443949699401855
+        ]
+      ],
+      [
+        [
+          0.11389929056167603,
+          2.6663105487823486
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.094309329986572
+        ]
+      ],
+      [
+        [
+          2.224531412124634,
+          5.182464122772217
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.17412805557251
+        ]
+      ],
+      [
+        [
+          4.759909152984619,
+          7.437547206878662
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.254828453063965
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -7.5,
+          7.5
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -7.5,
+          6.290499210357666
+        ]
+      ],
+      [
+        [
+          -8.0,
+          8.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -4.0,
+          7.5
+        ]
+      ],
+      [
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -7.500000476837158,
+          8.0
+        ]
+      ],
+      [
+        [
+          12.8058443069458,
+          23.574726104736328
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          1.580309510231018,
+          4.830847263336182
+        ]
+      ],
+      [
+        [
+          11.922080993652344,
+          24.0
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          1.0,
+          4.963051795959473
+        ]
+      ],
+      [
+        [
+          15.480085372924805,
+          24.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          1.0008833408355713,
+          2.863583564758301
+        ]
+      ],
+      [
+        [
+          10.363851547241211,
+          24.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          1.0,
+          2.9309282302856445
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -3.0,
+          6.332352638244629
+        ]
+      ],
+      [
+        [
+          8.7222900390625,
+          12.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.506412029266357
+        ]
+      ],
+      [
+        [
+          11.723020553588867,
+          14.90884780883789
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          6.737167835235596
+        ]
+      ],
+      [
+        [
+          14.425965309143066,
+          18.86258888244629
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -1.0,
+          7.081957817077637
+        ]
+      ],
+      [
+        [
+          17.905929565429688,
+          21.053627014160156
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -0.8606517314910889,
+          7.347064971923828
+        ]
+      ],
+      [
+        [
+          19.93613052368164,
+          24.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -0.5745183229446411,
+          7.932314872741699
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -4.0,
+          7.5
+        ]
+      ],
+      [
+        [
+          15.350000381469727,
+          16.649999618530273
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.010671615600586,
+          16.98932647705078
+        ],
+        [
+          -7.500000476837158,
+          8.0
+        ]
+      ],
+      [
+        [
+          26.583166122436523,
+          33.26390075683594
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          3.518131732940674,
+          7.052773475646973
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          16.18932342529297,
+          16.189327239990234
+        ],
+        [
+          -3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          26.754737854003906
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          -0.01623709313571453,
+          8.0
+        ]
+      ],
+      [
+        [
+          25.614845275878906,
+          27.631113052368164
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          0.4016582667827606,
+          8.0
+        ]
+      ],
+      [
+        [
+          26.45970916748047,
+          28.94463539123535
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          0.5847536325454712,
+          8.0
+        ]
+      ],
+      [
+        [
+          27.719274520874023,
+          30.716514587402344
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          0.8772214651107788,
+          8.0
+        ]
+      ],
+      [
+        [
+          29.688575744628906,
+          31.82282257080078
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          30.696622848510742,
+          33.486961364746094
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          32.10664367675781,
+          34.899024963378906
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          33.338356018066406,
+          35.851680755615234
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          34.187068939208984,
+          37.202545166015625
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          36.20033264160156,
+          38.918853759765625
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.2725753784179688,
+          6.728029727935791
+        ]
+      ],
+      [
+        [
+          37.842529296875,
+          40.0
+        ],
+        [
+          16.1893253326416,
+          16.1893253326416
+        ],
+        [
+          3.906325101852417,
+          7.422824859619141
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          33.30808639526367,
+          40.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          0.0,
+          4.332878589630127
+        ]
+      ],
+      [
+        [
+          31.350000381469727,
+          32.650001525878906
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ],
+      [
+        [
+          40.0,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -7.500000953674316,
+          7.499999523162842
+        ]
+      ],
+      [
+        [
+          40.0,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.98932647705078
+        ],
+        [
+          -3.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          40.0,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          16.1893253326416
+        ],
+        [
+          -7.5,
+          8.0
+        ]
+      ],
+      [
+        [
+          41.89418029785156,
+          56.0
+        ],
+        [
+          14.01067066192627,
+          14.01067066192627
+        ],
+        [
+          4.0,
+          7.5
+        ]
+      ],
+      [
+        [
+          47.349998474121094,
+          48.650001525878906
+        ],
+        [
+          0.0,
+          14.01067066192627
+        ],
+        [
+          -0.6499999761581421,
+          0.6499999761581421
+        ]
+      ]
+    ],
+    "textures": [
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b",
+      "0bf6e09b"
+    ]
+  },
+  "saved_resource_fingerprints_checked": {
+    "effect:hsr-component-l2-short-mainline-diverge-core:ea5118b0-ea5118b1-7f584ff5": "abbcf16f648f0cd0f32814b3c6313cc7c1efe8716280d8733192a0887161d6c4",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584000": "52b481ec4e5eef3d8940ce64495a302d097e775ba5d585ec4e4c69ac83434016",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584100": "c9cf2654259e0b523cd56d539f9ad18b6c75df6b73827c27550e156d28015127",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584200": "e216dadccdd2f46e6a79ac8c0a31a581323353e928414b86d8fac6ae239aa66b",
+    "exemplar:hsr-component-l2-short-mainline-diverge-core:6534284a-a8434037-7f584300": "b4f7008047961f4ba5c5543465955c99b284a78eb9c5f4ec718ec3040cf5fa5c",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584000": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584001": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584002": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584003": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584004": "e6e0a1dec643dde06f91c628ce9b99bfd2b1ec3896d043973fe2a84f8a39427b",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584100": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584101": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584102": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584103": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584104": "1cc7d9eb283b45c10d8d85ae0bc7c07558be40e5beed35727e2d959f64e37ea8",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584200": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584201": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584202": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584203": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584204": "0c23ff16ae8bfcb8cb42de5b97e8c85e7d79863eebb1c7f219ea779280481f94",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584300": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584301": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584302": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584303": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584304": "26b7dd373965bc2f1637c4de372005db7ba61b4d660341983032c926e359e0d2",
+    "model:hsr-component-l2-short-mainline-diverge-core:5ad0e817-badb57f1-7f584ff5": "f236e2426f3d2bfb864d4b5c1575e02033904f81c9a2a5f0b970f8f80907ef09",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584000": "75926011370ec7ddce8846b45248596daf2c804c54df3a5664e69dc0d27f9d81",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584100": "db9f4617cb785e8d80c1a9d690c4c36663854d68c52b14e1d252f3833cf7af72",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584200": "8a8caff5796aaa8588c672a3252ef9c7783ce77eb886651d62427e28b111141b",
+    "path:hsr-component-l2-short-mainline-diverge-core:296678f7-a966883f-7f584300": "7ceb98e2d43f59b5a7a486cbeb62ffa055a5ed2ff36707f7440877433bb28c59",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584000": "a2f51cc468257b202d2008a21df3291a75d1b456afe1ee11fbe6852408ca5fc3",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584001": "ab3576b55acad19353223c7b2ae24e53a52bab344f153327e32a50c7411e2d4d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584002": "8edf18dda98b7d5fe6df96702036e5721530b64011387cc649d8b5ea1b93ef4e",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584003": "80a2a924174a80457722df61f0d25c19be7a7f442123df9e28bdd251aaf9ab8b",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584004": "5ae0677e19c5c24f0ca4d3602420dffccbf308f1f4f47056281b116e31f9baa6",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584100": "3bb1721dd705bc68463982dd19404faa936a87a7e38b1c61ca7879aac797e6ca",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584101": "41efe6ce481c8cb07fbce3ba12f65e66bf7688972dbe8714b6010cb38edf770c",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584102": "c9d6abd23ea89ac15453a857452941f56529b5c5095a71fd7b76437defe0da6b",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584103": "08121f8d5b7147e87b9a10166d659fbb0984e0229315231f5828f3b50a037d85",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584104": "edd38205df01c21ffd6199ef88b1836095c2d4c811aa2de23173356c17053e88",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584200": "fd1697df4d0901a6f1c9a26e9e7e840787e2da897f5061535b6eb806dbab4b3d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584201": "e1a1eff48d95b3ee463e49d17c744628a5b22443eafcd507102744ff020c59d0",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584202": "891475d14afb682f5448d1978100aba3e8b7c26e3e6f84027ce7d9f66d236948",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584203": "bfe22d5b624a835feb90ebeda5008748f90bc899cd29d00630107c680d7438ca",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584204": "e78608a96d7727520ff0c2c6e49e67c42417c0469c6ecb38d23296573da4b119",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584300": "43cfc9d6b1b6a56926d75c1851b8d85266a053fd557eec6a1e89b92fc5665d94",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584301": "c406ff75843b52bfebb9e21d09ffe123e969f1a0e60017b98e65a62a5ad1309c",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584302": "1c9eb0c6527cefe1402b3036dcc0133153d5ed20b56e2afab29832833d2d204d",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584303": "4746a8aaf0abfdb45686bbac69cb680084913dc65c912f6ae2bf987c23da6403",
+    "shadow:hsr-component-l2-short-mainline-diverge-core:7ab50e44-2bc2759a-7f584304": "b5784429d61cce454135042454865c540f2aa6e01e597a06e8f8ac12c99edb18",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584000": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584100": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584200": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e",
+    "text:hsr-component-l2-short-mainline-diverge-core:2026960b-2a592fd1-7f584300": "35f5899ce5ced2eacb648a4935695a97bcf31cfbb9423097bbe9decee671088e"
+  },
+  "textures": [
+    {
+      "instance": "0bf6e09b",
+      "fsh_sha256": "5231481a061ebfd0387dd7f58a925ec6f705b147fb396407039348b19f4323b4",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -8.0,
+      56.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -0.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        3
+      ],
+      "north_index_range": [
+        0,
+        0
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      632.2094908347419,
+      470.78856476005177
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0,
+      40.0,
+      56.0
+    ],
+    "north_boundaries_m": [
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            419.0158180579032,
+            470.78856476005177
+          ],
+          [
+            632.2094908347419,
+            360.9857059500647
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            632.2094908347419,
+            580.5914235700388
+          ],
+          [
+            845.4031636115807,
+            470.78856476005177
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            845.4031636115807,
+            690.3942823800259
+          ],
+          [
+            1058.5968363884194,
+            580.5914235700388
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            1058.5968363884194,
+            800.1971411900129
+          ],
+          [
+            1271.7905091652583,
+            690.3942823800259
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 56.0,
+        "pixels": [
+          [
+            1271.7905091652583,
+            910.0
+          ],
+          [
+            1484.9841819420967,
+            800.1971411900129
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            419.0158180579032,
+            470.78856476005177
+          ],
+          [
+            1271.7905091652583,
+            910.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            632.2094908347419,
+            360.9857059500647
+          ],
+          [
+            1484.9841819420967,
+            800.1971411900129
+          ]
+        ],
+        "major": true
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -8.0
+        ],
+        "pixel": [
+          510.49938907404817,
+          533.4739012679862
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -8.0
+        ],
+        "pixel": [
+          723.693061850887,
+          643.2767600779732
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -8.0
+        ],
+        "pixel": [
+          936.8867346277258,
+          753.0796188879604
+        ]
+      },
+      {
+        "text": "X3",
+        "axis": "X",
+        "tile_index": 3,
+        "world_m": [
+          48.0,
+          -8.0
+        ],
+        "pixel": [
+          1150.0804074045645,
+          862.8824776979474
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          510.49938907404817,
+          408.10322825211733
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1804.0,
+          100.0
+        ],
+        "end_pixel": [
+          1846.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1804.0,
+          100.0
+        ],
+        "end_pixel": [
+          1846.6727492864215,
+          78.02190935640205
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 239.80869441061506,
+      "north_pixels": 239.80869441061506,
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1904,
+        1000
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        16.97056274847714,
+        -1.550185138410212
+      ],
+      "pixels_per_metre": 18.843836465821067,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -8.0,
+        56.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "figure_typography": {
+    "body_pixels": 28,
+    "card_title_pixels": 36,
+    "piece_title_pixels": 44,
+    "bold_usage": "Piece and card titles, and section headings only",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      },
+      {
+        "name": [
+          "Menlo",
+          "Regular"
+        ],
+        "file_sha256": "dc256e0b39c2a6fec947129d421fef41b8b429f58f9b6e5d1b148c87f775c1f6"
+      }
+    ]
+  },
+  "shared_framework_sources": {
+    "__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+    "assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+    "autotile.py": "db4d6ad885a201bd9055b395c3627ea83bbdeff0741fab1abbc501554f36e53a",
+    "build.py": "cdb2bec045b80d13f1394b58902204d1367e15208240bdfbc06c231ee9e47f29",
+    "catalog.py": "fb3f330f69edb5009b750757357ada56203db23ceb7d9cacc6738da43c58c905",
+    "check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+    "checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+    "city_grid.py": "2265616eae934702d869a013ba6ab2f76d3a02f635ed6cb7bc60bde4b3c05c45",
+    "connectivity.py": "b0fae001d3c50f2ac2851f7b99484c24aac6806344d3a6595a85a033c7a231aa",
+    "connector_metadata.py": "fadd7fe0a0d371d1b8cd3260072176474c01b160f15b7859e47585dc9bfb4e86",
+    "connector_overview.py": "04ff67a42f15e9b770743ef5e971cd1967b5c3d127462590139c7279eb2f009d",
+    "content.py": "8fbd041878b53490abe49ee93e238a8953cf243bf088dfd041b987b76d58c077",
+    "dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+    "design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+    "document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+    "documentation_check.py": "6a4ba7f8157b5b5c7a8ac4f72488f412b7346e2ad612ed5c743b5dfac09f15cb",
+    "export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+    "install.py": "6c167dd5e6b2e8f1c7d96cdbfebdfe742aa8913fa27c82cf04a5dea387d7e625",
+    "inventory.py": "8b44b943cedd83fd18026b39f670cbb2cbe6476b6b0453ae378fe5e861838338",
+    "jsonc.py": "a44e0c2e9e2ed0524a70b12ea3c8d14d8763a8606650fbce5da294e16dda7422",
+    "menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+    "menu_experiment.py": "767dc07700e00c046dc586df9a0dc4fb2b3b2c0d9b3efb6bcf58fcf75332f930",
+    "menu_experiment_resources.py": "7967e2a71e4c6e574352da7902aabcf72ec18a676aaba28de53601181304a3cb",
+    "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+    "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+    "paths.py": "f4ccdf0b3e21f9f5598757c421ba83a2fef5687dd71aeb091e4cae7521be1717",
+    "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+    "piece_previews.py": "f0d410a7ddf913d9d48567fa16a510fc3fdc662cab832f08439954c042523452",
+    "preview.py": "e7c9eb0a8b4225cca7156fe3578c1f56e9928b1c2b7c950757fa096b1da9ee69",
+    "providers.py": "5823a4584309b2f3bfa5e9563a807555b0d9a4b18294de13cffc01ee9dbe248b",
+    "recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+    "registration.py": "0ceb260d2563c80f153c12960e0be7b142847009a123de4f8fa1421e35af5fa6",
+    "release.py": "70d6b7ae80a14b7bca0144da2e81784aaaed7ce433e1f25a908369fc293e2f99",
+    "render_headers.py": "1b3500dd3f9cb4670e94bc60e730ef80ec939dd7c48900bf5b218687d2df9d61",
+    "render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+    "resource_audit.py": "66bd42453fc0851b533032c00f2368950148f83775e4e991f64f29874ce3fa84",
+    "rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+    "shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+    "test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+    "track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+    "verification_fixtures.py": "ce00af693bdf50cb6592e98dbaee7789bb3eaa3f7b8bfdd57661d0af8cf933b4",
+    "verify.py": "017c4be48668f7d94e7be055297dcf6dead2bded62e9784010a95a3cba0ca3fd"
+  },
+  "previous_preview_evidence": {
+    "file": "domains/high-speed-rail/00_pieces/hsr-component-l2-short-mainline-diverge-core/evidence/preview.json",
+    "sha256": "f165670b424a24e6932260b2ca3adc85e7654856cdfc1a5f0c100b12bf025786",
+    "mandatory_current_build_truth": false
+  },
+  "source_preview_png_used_as_input": false,
+  "source_geometry_altered": false,
+  "geometry_simplified": false,
+  "marker_order": "source column, source row, edge rank South/North/West/East, boundary ID; groups by stable ID",
+  "supported_inputs": "Registered canonical flat-reference pieces; one measured height per service group; explicit channel/cut associations; no free vertical placement or reflection",
+  "evidence_states": {
+    "boundary_metadata": "validated",
+    "source_bindings": "validated",
+    "manifest_payload": "matched",
+    "saved_resource_identity": "matched",
+    "compiled_path_reextraction": "not_run_by_renderer",
+    "previous_preview_review": "matched",
+    "occupied_tile_fit": "not_evaluated_no_candidate_placement",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "model_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "derivations": {
+    "channels_and_cuts": "Explicit source-backed associations; counts do not come from modes or directed-member counts",
+    "heading": "degrees(atan2(outward_east,outward_north)) modulo 360; incoming travel tangent reversed",
+    "edge_slope_percent": "100 * travel grade for outgoing; -100 * travel grade for incoming; never an interior average",
+    "section_offset": "Declared resolved offset from source tile-edge midpoint; null when no section offset was authored",
+    "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
+    "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
+  },
+  "selectable_markdown_sha256": "1db72d155aebc8f20cf37872796c190b54d6b7540fcd9387ff87ce52f73a72cb"
+}

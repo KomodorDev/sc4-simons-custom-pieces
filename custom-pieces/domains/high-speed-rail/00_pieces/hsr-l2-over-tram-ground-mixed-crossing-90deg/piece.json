@@ -1,0 +1,53 @@
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for HSR Level 2 (15.5 m) over Tram Ground (0 m) \u2014 Two-Track HSR over Tram Crossing 90\u00b0.",
+  "schema_version": 1,
+  "id": "hsr-l2-over-tram-ground-mixed-crossing-90deg",
+  "name": "HSR Level 2 (15.5 m) over Tram Ground (0 m) \u2014 Two-Track HSR over Tram Crossing 90\u00b0",
+  "description": "Visible ground tram crosses under straight elevated HSR at a right angle. One tile.",
+  "recipe": "tram_under_hsr",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f7a0",
+  "tile_ids": [
+    "5dd0f100"
+  ],
+  "preview_id": "5dd0f105",
+  "effect_name": "preview_hsr_tram_cross00001",
+  "footprint": [
+    1,
+    1
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "hsr",
+    "glr"
+  ],
+  "menu": {
+    "id": "6a47f7a0",
+    "order": "7011f7a0",
+    "style": "tram-hsr"
+  },
+  "shadow_mappings": [
+    {
+      "tile": "5dd0f100",
+      "source": "5dd31500",
+      "rotation": 1
+    }
+  ],
+  "provenance": {
+    "geometry": "NAM Team: HSR and Ground Light Rail crossing",
+    "construction": "NAM B12F Ground Light Rail x Monorail",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "domain": "high-speed-rail"
+}

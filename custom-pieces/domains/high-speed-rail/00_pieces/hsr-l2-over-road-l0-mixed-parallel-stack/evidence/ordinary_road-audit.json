@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "purpose": "Exact resource discovery; no game load-order selection or installation",
+  "status": "complete",
+  "tgi": "296678f7-69668828-00004b00",
+  "scope": {
+    "archive": "<NAM Plugins>/NetworkAddonMod_BaseContent.dat"
+  },
+  "archives_inspected": 1,
+  "matching_archives": 1,
+  "matching_index_entries": 1,
+  "matches": [
+    {
+      "archive": "<NAM Plugins>/NetworkAddonMod_BaseContent.dat",
+      "archive_sha256": "31ab1b06651054458881422b88869e0a5a45589b6aef5b5c7913c5e1ec605d3d",
+      "archive_bytes": 3224923,
+      "tgi": "296678f7-69668828-00004b00",
+      "index_entry_1based": 3225,
+      "tgi_occurrence_1based": 1,
+      "stored_offset_bytes": 3048802,
+      "stored_bytes": 196,
+      "stored_resource_sha256": "03d34dea44356e5f35ec7e7dab658cb06f524b21783bc300a203a6df88f5d05c",
+      "compression": "qfs",
+      "decompression_status": "passed",
+      "decompressed_bytes": 484,
+      "decompressed_resource_sha256": "378676a65dc1d8d955c07580c4b4af29bc89085ed505d85727fc9ad25fb8cbbe"
+    }
+  ],
+  "errors": [],
+  "stored_variant_count": 1,
+  "decompressed_variant_count": 1,
+  "selection": {
+    "winner_selected": false,
+    "load_order_evaluated": false,
+    "priority_inferred": false,
+    "sort_order": "Archive path, then original index entry"
+  },
+  "read_scope": {
+    "index": "dbpf.read_index",
+    "resource": "Seek to exact matching index entries only",
+    "archive_hash": "Entire matching archive streamed in bounded chunks",
+    "hash_chunk_bytes": 1048576,
+    "maximum_stored_resource_bytes": 134217728
+  },
+  "next_step": "Review every occurrence; capture requires one explicitly selected archive with one occurrence",
+  "source_files_modified": false,
+  "capture": {
+    "directory": "<local resource-captures>/ordinary-road-path",
+    "file": "296678f7-69668828-00004b00.dat",
+    "sha256": "0d9a2a851f9807bbccd738459e379c9d9cbd98e171405fada2d2d2de3b938c9c",
+    "bytes": 312,
+    "resource_count": 1,
+    "stored_bytes_preserved": true,
+    "resource_tgi_unchanged": true,
+    "installed": false,
+    "source_archive": "<NAM Plugins>/NetworkAddonMod_BaseContent.dat",
+    "source_archive_sha256": "31ab1b06651054458881422b88869e0a5a45589b6aef5b5c7913c5e1ec605d3d",
+    "source_index_entry_1based": 3225,
+    "audit_file": "resource-audit.json"
+  },
+  "path_redaction": {
+    "purpose": "Make imported historical evidence portable without exposing private local paths.",
+    "method": "Absolute source paths replaced with explicit placeholders; original archive and capture filenames retained.",
+    "measured_results_changed": false,
+    "new_audit_run": false
+  }
+}

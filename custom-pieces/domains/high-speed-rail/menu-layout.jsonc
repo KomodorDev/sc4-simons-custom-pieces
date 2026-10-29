@@ -1,0 +1,24 @@
+// title: "High-speed rail assembly menu layout"
+// summary: "Define assembly membership, component-cycle order, and locally reserved presentation identities for the shared menu buttons."
+//
+// Used when: custom-pieces/scp.py assembly-menu, or its menu-test compatibility command, prepares the named rail assembly button from an existing verified normal build.
+// Read by: scp.menu_experiment.build_menu_experiment, also called by build_assembly_menu, resolves the layout, registered assembly, component order, presentation IDs, title, and description.
+// Updated by: Maintainers author a layout when registering an assembly and deliberately change its presentation or cycling policy; the assembly-creation starter shows the header-preserving edit. Menu preparation reads this source and writes a separate build.
+// Affects: The one assembly button, Tab/Shift+Tab component cycle, and visibility of member buttons in that prepared build. It neither changes component geometry nor places the complete assembly with one click; presentation IDs must pass collision checks.
+// Reference: custom-pieces/docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu.
+{
+  "schema_version": 1,
+  "purpose": "Final assembly menus use one button and Tab/Shift+Tab component selection. Compile ordinary pieces first, then apply assembly-menu. Presentation IDs 6a47fef0 and d3c7a001 are reserved locally, not publicly registered; this layout emits only its cycle-button presentation.",
+  "layouts": {
+    "trumpet": {
+      "assembly_id": "hsr-trumpet-straight-stem",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fef0",
+        "order": "7010fef0",
+        "title": "SCP | ASSEMBLY | HSR — Trumpet — Straight Stem",
+        "description": "Select one reusable trumpet component. Tab and Shift+Tab change component types; Home and End rotate the current component. This button does not place the complete assembly."
+      }
+    }
+  }
+}

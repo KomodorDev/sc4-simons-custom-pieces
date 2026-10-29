@@ -1,0 +1,894 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "hsr-component-upper-paired-straight",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f7a6",
+        "0004f7a6"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f7a6",
+        "0007f7a6"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f7a6",
+        "0006f7a6"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f7a6",
+        "0005f7a6"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:hsr-component-upper-paired-straight": "278714dfdfb65cd3362a7e78f2e887b15cd99acab3196feca88649dc5dd84e60",
+    "effect:hsr-component-upper-paired-straight:ea5118b0-ea5118b1-7f503ff5": "ebd36cb6db5bf87ecc9adb46bc75291bae056b112d2fcb8a3cc92c5010c688e9",
+    "exemplar:hsr-component-upper-paired-straight:6534284a-a8434037-7f503000": "890f05a72133ff0ca4d2ddedf329193b840ca2f262c9101851cf103093717268",
+    "graph:hsr-component-upper-paired-straight": "aef07cafbb11641f21aa09d2f6feb0741faa11762f0de6c804cbb87cbf8324ac",
+    "image:hsr-component-upper-paired-straight:canonical-southeast": "55c438bccb44741cb3ab37c8b31c93325e376c741a83778ed36d5a3ef54b2042",
+    "image:hsr-component-upper-paired-straight:canonical-top": "aa11aedc9ab722e04aa5a0a64b74c4e3e0a414509354528066755ce86223bd2c",
+    "image:hsr-component-upper-paired-straight:connection-overview": "c35ad06c6798e211e378eeddac8efe0dcd6c4eba4a8781f4b4b9d963ee4c4b70",
+    "interface:hsr-component-upper-paired-straight:Nin": "11775cc414108b711cb000cff710ffdc4cb88326cd7741689460418e8c8c7a87",
+    "interface:hsr-component-upper-paired-straight:Nout": "a28da5d15b35863708fcc6a36016c031ea52bb26a7fa33739c5e655388d667b2",
+    "interface:hsr-component-upper-paired-straight:Sin": "a0294c053bd6f8bd7bb60147f12800fb368736d71886609578a75f07fb2a25a5",
+    "interface:hsr-component-upper-paired-straight:Sout": "14a9d2003073cb1de03bf764b27608e938d0c01ec71c44adf34b2bfcf398c690",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503000": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503001": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503002": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503003": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503004": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503ff5": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+    "path:hsr-component-upper-paired-straight:296678f7-a966883f-7f503000": "d4f94ad7d0c6e1170f1082be232a2acb5f1737500ce450417286779c400e4ce0",
+    "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+    "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+    "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+    "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+    "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d",
+    "text:hsr-component-upper-paired-straight:2026960b-2a592fd1-7f503000": "f094d72fe9a5834b8cf1206e19e3b6e262e52d0fb78e31227d037c11104453a4"
+  },
+  "cases": [
+    {
+      "id": "software_resources-a760ff47689f4c16687b",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "7b9f4d4154709b9e20c72b91d88119a2e9783d7f05b60b9df249bdd23c841c56"
+        }
+      ],
+      "dependency_snapshot": "7b9f4d4154709b9e20c72b91d88119a2e9783d7f05b60b9df249bdd23c841c56",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "software_connectivity-a760ff47689f4c16687b",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight"
+      },
+      "applicability": "applicable",
+      "observations": [
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Scoped actual-PATH extraction and independent connector verifier",
+          "confirmed_at": "2026-10-27",
+          "evidence": [
+            "evidence/documentation-refresh.json",
+            "connector-data.json",
+            "connections.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "ec9370fd05c617cd4457f73afa154e564f1991a5743b554eb36c2791031ea298"
+        },
+        {
+          "result": "passed",
+          "authority": "software",
+          "reviewer": "Actual final normal 13-piece saved-build verification; registered independent PATH, model, construction, menu, and shadow checks",
+          "confirmed_at": "2026-10-27T21:57:25.376326+00:00",
+          "evidence": [
+            "evidence/saved-resource-checks.json"
+          ],
+          "environment": {},
+          "dependency_fingerprint": "ec9370fd05c617cd4457f73afa154e564f1991a5743b554eb36c2791031ea298"
+        }
+      ],
+      "dependency_snapshot": "ec9370fd05c617cd4457f73afa154e564f1991a5743b554eb36c2791031ea298",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_render-a6c98bb7f68d5aeca687",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "128a797faeaa0b1ccd6cfe62fe0fdc99f548903481168da586a84d312d761a7d",
+      "dependency_ref": "c6365fc7a3b85dc8cba5eca65dd5c087b60bb2e898d176a54463cd0456a16a31"
+    },
+    {
+      "id": "in_game_placement-a6c98bb7f68d5aeca687",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "73e2caf2e6c1f9ffafb66fbb21fcc23a7539cc60d7891ffafe95929de24965f2",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_demolition-a6c98bb7f68d5aeca687",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "73e2caf2e6c1f9ffafb66fbb21fcc23a7539cc60d7891ffafe95929de24965f2",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_save_reload-a6c98bb7f68d5aeca687",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "73e2caf2e6c1f9ffafb66fbb21fcc23a7539cc60d7891ffafe95929de24965f2",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_render-f09a005a2bbfa18d2624",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b929d1e507d23d2af05ed13f933345fc3e379a9e3999069cbb19340bb51ebc69",
+      "dependency_ref": "c6365fc7a3b85dc8cba5eca65dd5c087b60bb2e898d176a54463cd0456a16a31"
+    },
+    {
+      "id": "in_game_placement-f09a005a2bbfa18d2624",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2c06a2f00c0b75cdba4e0d7418f6e959c0a9e4a9756475524a21e1704e8fa2a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_demolition-f09a005a2bbfa18d2624",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2c06a2f00c0b75cdba4e0d7418f6e959c0a9e4a9756475524a21e1704e8fa2a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_save_reload-f09a005a2bbfa18d2624",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2c06a2f00c0b75cdba4e0d7418f6e959c0a9e4a9756475524a21e1704e8fa2a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_render-2bcc33b6e94dc2a83163",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ae9f47fea66430b11468fbc6a9716d057942bec4b01d535cfdbd648aac2c5ab0",
+      "dependency_ref": "c6365fc7a3b85dc8cba5eca65dd5c087b60bb2e898d176a54463cd0456a16a31"
+    },
+    {
+      "id": "in_game_placement-2bcc33b6e94dc2a83163",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "77120f9d7d633ea43019bd6aaf94f3a29abcdabd14a93080235080e29a91edd8",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_demolition-2bcc33b6e94dc2a83163",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "77120f9d7d633ea43019bd6aaf94f3a29abcdabd14a93080235080e29a91edd8",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_save_reload-2bcc33b6e94dc2a83163",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "77120f9d7d633ea43019bd6aaf94f3a29abcdabd14a93080235080e29a91edd8",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_render-9177a3fddb4fca34cc5a",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a4f702b87d8014030340a9ee5f01c5706270caf3d48610e444a5d97dd308b8ce",
+      "dependency_ref": "c6365fc7a3b85dc8cba5eca65dd5c087b60bb2e898d176a54463cd0456a16a31"
+    },
+    {
+      "id": "in_game_placement-9177a3fddb4fca34cc5a",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2093ba43971476d7411692a9a8c3d643612e895f5f407601644d080c45af1e0a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_demolition-9177a3fddb4fca34cc5a",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2093ba43971476d7411692a9a8c3d643612e895f5f407601644d080c45af1e0a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_save_reload-9177a3fddb4fca34cc5a",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2093ba43971476d7411692a9a8c3d643612e895f5f407601644d080c45af1e0a",
+      "dependency_ref": "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07"
+    },
+    {
+      "id": "in_game_route_query-2ef9f1b58a20251989b6",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f46337c47a9df8671953fa3cddba3e8eea5939cc2e1ae66c9a4171bff172c4be",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-2ef9f1b58a20251989b6",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f46337c47a9df8671953fa3cddba3e8eea5939cc2e1ae66c9a4171bff172c4be",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-681bd758a60b545db09d",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bcce5dc4a56187d3e078a9627754f96d7c8104c0bcbb5c50b0451ee6ab97f927",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-681bd758a60b545db09d",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bcce5dc4a56187d3e078a9627754f96d7c8104c0bcbb5c50b0451ee6ab97f927",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-bb4c8c377f05bb23d917",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8b273eb0a6d6c2384067384d73d6c6c3fce970948ee4a2de90bfcfca02104db0",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-bb4c8c377f05bb23d917",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8b273eb0a6d6c2384067384d73d6c6c3fce970948ee4a2de90bfcfca02104db0",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-5c41919a077d40f7fefc",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "754be473eb8c3fb4b87455e2b326e475b6299aec2c643e4f8c88635497275549",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-5c41919a077d40f7fefc",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Nin>Sout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Nin",
+        "exit_port": "Sout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "754be473eb8c3fb4b87455e2b326e475b6299aec2c643e4f8c88635497275549",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-9bcbdf0e59e7dc00c5a4",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5246c2beca8476e61ec2408cbee95aa1c373e50acacedca9b509c0199c1bd4a5",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-9bcbdf0e59e7dc00c5a4",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5246c2beca8476e61ec2408cbee95aa1c373e50acacedca9b509c0199c1bd4a5",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-a16960e4184e951bad9a",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1a294a6c417624b84b8b64dd7a820f4797f9bcefd1db41cfa6e8c819f942efaf",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-a16960e4184e951bad9a",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1a294a6c417624b84b8b64dd7a820f4797f9bcefd1db41cfa6e8c819f942efaf",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-ea360cbd4f293357380d",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7ce2d2b2a238e2b6ca42b48b73659336dc4e48cd3805d8e39a202c82e4db1f9d",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-ea360cbd4f293357380d",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7ce2d2b2a238e2b6ca42b48b73659336dc4e48cd3805d8e39a202c82e4db1f9d",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_route_query-31820ce574695121b48b",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "22d60a8e09977afed036838ca8995fa9cbface8ca4910357422c5d0e577a63db",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_visible_travel-31820ce574695121b48b",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "journey_id": "7:Sin>Nout",
+        "service_network": "hsr",
+        "role": "primary",
+        "entry_port": "Sin",
+        "exit_port": "Nout",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "22d60a8e09977afed036838ca8995fa9cbface8ca4910357422c5d0e577a63db",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-bde4cb51165863cc495b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8f55790560fde5e9d627dc010c18bcce2c6ba1f5120a2d7e8239467bd7a7c6ab",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f24d6d3d4de75748095b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b3712672bf4de2aa9771b40f4c4dc22aede68b8d8744fd073081a91c219a03e7",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e0e9271da21eae28884f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3ca7c8fabd5ec0e0593dc3e7c3f638c5532242d2538f1cf57314643d705d5727",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1819908cb47791409030",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Nin",
+          "to_port": "Nout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "092a6c582da3e965419b0f3a0f6beea699a7ca9ff37f367125b9dafc55b43abb",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c0fe29eb3240570fc556",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1a12f4c8cf65cfa6b8052a2ab6f13aa4d2d75ec083bbf5ce9049c9faeab8c745",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-62a407dc9cde3208358a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "460f3847a131ef984568efa75360821cb41c84d34b203e93a4f59e12b11ef1d8",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-afefaf4be09355feb229",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "276950b6ee8c130f61764ba273c866ecb5dfbd54bc30aa73d081a13ce682fcf3",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c3ece4dd03e75f1181c1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "forbidden_transfer": {
+          "from_port": "Sin",
+          "to_port": "Sout",
+          "from_service": "hsr",
+          "to_service": "hsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bb4f9c229827e85c91c5b0a5d630bf6310438d5797bd294152d155f796f498e8",
+      "dependency_ref": "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3"
+    },
+    {
+      "id": "preview_review-96baa7ac25ea75421ae9",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "image_key": "image:hsr-component-upper-paired-straight:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c9ebc49e1b2dd80962111210e4e606cc81476541883c49e8d7962b4aebb5a72a",
+      "dependency_ref": "8cfd5463f0fbefd884e4cd1dd4a035a7d130a7ab3fa1535c10b5c0b02d3f0c7e"
+    },
+    {
+      "id": "preview_review-64e3e24b5b7458c66a3e",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "image_key": "image:hsr-component-upper-paired-straight:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "87d5e99b62581b91a42377583664d54c933ee707ceda7deea005ad754419f306",
+      "dependency_ref": "bef652d52d26b026d8d86bf77facefe7c66a0f2c3327e84ed7ffb37d2a5d3f91"
+    },
+    {
+      "id": "preview_review-0fb68b03c3d7b2973d7e",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "hsr-component-upper-paired-straight",
+        "image_key": "image:hsr-component-upper-paired-straight:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "854607b14e175dbec8d101a534e7d58b33df062537e2577ce650bc9094bad8a3",
+      "dependency_ref": "94a633d5113a3dbce2ea1560830a6c3e9c07b49a7b117d7bccc9d64e75d5dd7e"
+    }
+  ],
+  "dependency_sets": {
+    "43299c19612b806ac659832e052d1ef006a0e13630a6af72bf18f8de68848a07": {
+      "construction:hsr-component-upper-paired-straight": "278714dfdfb65cd3362a7e78f2e887b15cd99acab3196feca88649dc5dd84e60",
+      "effect:hsr-component-upper-paired-straight:ea5118b0-ea5118b1-7f503ff5": "ebd36cb6db5bf87ecc9adb46bc75291bae056b112d2fcb8a3cc92c5010c688e9",
+      "exemplar:hsr-component-upper-paired-straight:6534284a-a8434037-7f503000": "890f05a72133ff0ca4d2ddedf329193b840ca2f262c9101851cf103093717268",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503000": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503001": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503002": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503003": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503004": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503ff5": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "path:hsr-component-upper-paired-straight:296678f7-a966883f-7f503000": "d4f94ad7d0c6e1170f1082be232a2acb5f1737500ce450417286779c400e4ce0",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+    },
+    "4673cc5bd6d9def143ccb5c5b86f2d5a6c5d040bce728b773d681d0a5a30a4d3": {
+      "construction:hsr-component-upper-paired-straight": "278714dfdfb65cd3362a7e78f2e887b15cd99acab3196feca88649dc5dd84e60",
+      "graph:hsr-component-upper-paired-straight": "aef07cafbb11641f21aa09d2f6feb0741faa11762f0de6c804cbb87cbf8324ac",
+      "interface:hsr-component-upper-paired-straight:Nin": "11775cc414108b711cb000cff710ffdc4cb88326cd7741689460418e8c8c7a87",
+      "interface:hsr-component-upper-paired-straight:Nout": "a28da5d15b35863708fcc6a36016c031ea52bb26a7fa33739c5e655388d667b2",
+      "interface:hsr-component-upper-paired-straight:Sin": "a0294c053bd6f8bd7bb60147f12800fb368736d71886609578a75f07fb2a25a5",
+      "interface:hsr-component-upper-paired-straight:Sout": "14a9d2003073cb1de03bf764b27608e938d0c01ec71c44adf34b2bfcf398c690",
+      "path:hsr-component-upper-paired-straight:296678f7-a966883f-7f503000": "d4f94ad7d0c6e1170f1082be232a2acb5f1737500ce450417286779c400e4ce0"
+    },
+    "a287490ff65dfdb7384b1285bd8d0143873b78a7b66c80e088d65c85fed0a601": {
+      "image:hsr-component-upper-paired-straight:canonical-southeast": "a41556c084130d8ce0e0f20638ade50297f34bf0babe75d1749f28e232b9900d"
+    },
+    "106efe22e474b06f9acaafbe4ce06d33d2116400ef559d9285d008d476f40c45": {
+      "image:hsr-component-upper-paired-straight:canonical-top": "b57df2bd62370af7e3a53db5d1a8769a6de7e8fb3b1dca264e5be069880508a7"
+    },
+    "dba95442416139a51a20d18e9bc3b3d486d39cf734cfd308df88ac88c42a94f5": {
+      "image:hsr-component-upper-paired-straight:connection-overview": "eb64de1e784e775ef128c166a31b6940f745a1ca480febdd3817a38c492b6f3b"
+    },
+    "c6365fc7a3b85dc8cba5eca65dd5c087b60bb2e898d176a54463cd0456a16a31": {
+      "effect:hsr-component-upper-paired-straight:ea5118b0-ea5118b1-7f503ff5": "ebd36cb6db5bf87ecc9adb46bc75291bae056b112d2fcb8a3cc92c5010c688e9",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503000": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503001": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503002": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503003": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503004": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "model:hsr-component-upper-paired-straight:5ad0e817-badb57f1-7f503ff5": "aa0adc64153dfb8552ef8daf93abf16cdba965418757e6cbe488d2d286be8788",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503000": "e2ace4d7f48bd1046e7c619a20550d4da2f5f949fd8d9c9b69332aec2243869a",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503001": "f334b53c5daf3e0a5ca0900ea72a3defb3cde7843fa255d87741348fd14b6a40",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503002": "f7fb212677ad7841a6dbbf3022b136e11b497ae86f94fa7d83b9c51763b48b0c",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503003": "2024b2b7a9f2a100f9beaf66672ed4cc8a74bf1128ffe4dcf82d4f6eddc90b15",
+      "shadow:hsr-component-upper-paired-straight:7ab50e44-2bc2759a-7f503004": "c9af156b08417a82dd5a66617b9019582df277598760186a044d6df4f0f6ef6d"
+    },
+    "8cfd5463f0fbefd884e4cd1dd4a035a7d130a7ab3fa1535c10b5c0b02d3f0c7e": {
+      "image:hsr-component-upper-paired-straight:canonical-southeast": "55c438bccb44741cb3ab37c8b31c93325e376c741a83778ed36d5a3ef54b2042"
+    },
+    "bef652d52d26b026d8d86bf77facefe7c66a0f2c3327e84ed7ffb37d2a5d3f91": {
+      "image:hsr-component-upper-paired-straight:canonical-top": "aa11aedc9ab722e04aa5a0a64b74c4e3e0a414509354528066755ce86223bd2c"
+    },
+    "94a633d5113a3dbce2ea1560830a6c3e9c07b49a7b117d7bccc9d64e75d5dd7e": {
+      "image:hsr-component-upper-paired-straight:connection-overview": "c35ad06c6798e211e378eeddac8efe0dcd6c4eba4a8781f4b4b9d963ee4c4b70"
+    }
+  }
+}

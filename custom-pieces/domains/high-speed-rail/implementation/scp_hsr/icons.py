@@ -18,7 +18,7 @@ STATES = ('locked', 'normal', 'selected', 'highlighted')
 STYLES = ('diagonal-hsr', 'tram-hsr', 'cross-oo', 'cross-do', 'cross-dd',
           'rail-hsr-s-left', 'rail-hsr-s-right', 'rail-ghsr-s-left', 'rail-ghsr-s-right',
           'rail-hsr-crossover-right', 'rail-hsr-crossover-left',
-          'rail-ghsr-crossover-right', 'rail-ghsr-crossover-left', 'rail-transition')
+          'rail-ghsr-crossover-right', 'rail-ghsr-crossover-left', 'rail-transition', 'rail-hsr-road-stack')
 PNG_SIGNATURE = b'\x89PNG\r\n\x1a\n'
 REVISED_STYLES = {
     'rail-hsr-scissors-revised': 'rail-hsr-scissors',
@@ -33,13 +33,16 @@ PNP_STYLES = frozenset({
 })
 # These exact new styles need explicit kinds because their names describe
 # extracted modules rather than the historical recipe naming conventions.
-# Keep this scoped to new IDs so every existing icon remains byte-identical.
+# Keep this scoped to these original styles so existing pixels remain stable.
 _MODULAR_KIND = {
+    'hsr-component-blind-rise-quarter-turn': 'RMP',
     'hsr-component-modular-south-junction': 'JCT',
     'hsr-component-modular-paired-climb': 'RMP',
     'hsr-component-modular-crossing-core': 'XNG',
-    'hsr-component-l2-paired-fan-compact-join': 'JCT',
+    'hsr-component-l2-paired-fan-compact-core': 'JCT',
 }
+# Each piece declares one of these stable procedural keys in menu.style.
+# Selection IDs and folder names do not select or rename artwork styles.
 _FOOTER_LETTER = {
     'A': ('010', '101', '101', '111', '101', '101', '101'),
     'C': ('111', '100', '100', '100', '100', '100', '111'),
@@ -116,6 +119,42 @@ _LETTER = {
     'C': ('11111', '10000', '10000', '10000', '10000', '10000', '11111'),
     'P': ('11110', '10001', '10001', '11110', '10000', '10000', '10000'),
 }
+
+
+def assembly_icon_network(assembly_id):
+    """Declare an assembly's network explicitly, including future mixed layouts."""
+    networks = {'hsr-trumpet-straight-stem': 'HSR'}
+    _require(assembly_id in networks, f'No declared assembly icon network: {assembly_id}')
+    return networks[assembly_id]
+
+
+def assembly_icon_routes(scene, pieces):
+    """Place the authored reusable HSR routes for the complete menu silhouette.
+
+    This is a source-derived menu illustration, rather than compiled-resource
+    verification or an observed game result. The same complete routes feed the
+    piece builder; the assembly supplies their actual translations and turns.
+    """
+    from .hsr_components_layout import component_routes
+
+    by_id = {piece['id']: piece for piece in pieces}
+    placements = scene.get('placements', scene.get('instances'))
+    _require(isinstance(placements, list) and placements, 'Assembly icon needs placements')
+    routes = []
+    for instance in placements:
+        piece = by_id[instance['piece_id']]
+        degrees = instance.get('rotation_ccw_degrees', instance.get(
+            'rotation_degrees_ccw', instance.get('rotation_degrees', 0)))
+        _require(degrees in (0, 90, 180, 270), 'Assembly icon requires cardinal rotations')
+        east, north = instance['origin_m']
+        for points in component_routes(piece['recipe']).values():
+            placed = []
+            for x, y, height in points:
+                for _ in range(degrees // 90):
+                    x, y = -y, x
+                placed.append((x + east, y + north, height))
+            routes.append(placed)
+    return routes
 
 
 def _require(condition: bool, message: str):
@@ -236,7 +275,14 @@ def _frame(style: str, state: str):
     box((.5, .5, 43.5, 43.5), background, radius=5.5)
     for y in range(16, 43, 4):
         line([(3, y), (41, y)], (31, 55, 64, 255), .5)
-    if style == 'diagonal-hsr':
+    if style == 'rail-hsr-road-stack':
+        # Side elevation communicates that the two straight services are stacked.
+        line([(6, 39), (38, 39)], (139, 112, 86, 255), 5)
+        line([(8, 38.5), (36, 38.5)], (245, 207, 103, 255), .65)
+        line([(11, 27), (11, 36)], (151, 169, 174, 255), 2)
+        line([(33, 27), (33, 36)], (151, 169, 174, 255), 2)
+        track((6, 26), (38, 26), (151, 169, 174, 255))
+    elif style == 'diagonal-hsr':
         track((5, 38), (37, 17), (236, 181, 76, 255))
         # An elevated deck runs vertically in front of the diagonal ground line.
         box((20, 16, 29, 42), (4, 14, 20, 170))
@@ -356,6 +402,14 @@ def _frame(style: str, state: str):
                                       Image.Resampling.LANCZOS)
     box((1, 14, 43, 43), background)
     image.alpha_composite(illustration, (round(22 * scale - illustration.width / 2), 14 * scale))
+    if style == 'hsr-component-l2-paired-straight-recessed-web':
+        # A schematic inset structural web distinguishes this profile while
+        # retaining the exact paired track silhouette and STR classification.
+        profile = [(31.5, 17.5), (39., 17.5), (39., 19.5), (37., 19.5),
+                   (37., 25.5), (39., 25.5), (39., 27.5), (31.5, 27.5),
+                   (31.5, 25.5), (33.5, 25.5), (33.5, 19.5), (31.5, 19.5),
+                   (31.5, 17.5)]
+        line(profile, (147, 178, 190, 255), .8)
     box((4, 3, 40, 13), badge_colour, radius=2)
     for number, letter in enumerate('SCP'):
         for y, row in enumerate(_LETTER[letter]):

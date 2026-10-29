@@ -4,10 +4,12 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
+from connector_source_fixture import write_connector_source_fixture
 
 try:
     from scp import connector_overview as overview
@@ -41,6 +43,17 @@ def resolved_piece():
 
 @unittest.skipIf(overview is None, "Pillow/NumPy overview dependencies unavailable")
 class ConnectorOverviewTests(unittest.TestCase):
+    def test_connection_cards_stay_within_both_numbered_readme_layouts(self):
+        from scp.piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
+        content = "## Connection overview\n\n### Boundary A\n\nMeasured facts.\n"
+        for marker in (LAYOUT_MARKER, SPLIT_LAYOUT_MARKER):
+            with self.subTest(layout=marker):
+                original = "# Piece\n\n" + marker + "\n\n## 3. Connection matrix\n"
+                nested = overview.readme_overview(original, content)
+                self.assertEqual(nested, "### Connection overview\n\n#### Boundary A\n\nMeasured facts.\n")
+                self.assertEqual(overview.readme_overview(original, nested), nested)
+        self.assertEqual(overview.readme_overview("# Legacy piece\n", content), content)
+
     def test_explicit_channels_and_cuts_are_distinct_from_directed_members(self):
         piece = resolved_piece()
         group = piece["groups"][0]
@@ -77,11 +90,47 @@ class ConnectorOverviewTests(unittest.TestCase):
         self.assertEqual([member["outward_heading_degrees"] for member in record["members"]], [180., 135.])
         self.assertIsNone(record["channel_spacing_m"])
 
-    def test_actual_pieces_keep_six_groups_twelve_members_and_custom_height(self):
+    def test_undeclared_section_origin_never_becomes_a_centred_single_curved_cut(self):
+        piece = resolved_piece()
+        group = piece['groups'][0]
+        group.update(anchor_m=None, section_offset_m=None)
+        group['members'] = group['members'][:1]
+        group['channels'] = group['channels'][:1]
+        group['members'][0]['tangent'] = [2**-.5, 2**-.5]
+        record = overview.build_records(piece)[0]
+        self.assertIsNone(record['anchor_enh_m'])
+        self.assertIsNone(record['centred_on_tile_boundary'])
+        self.assertIsNone(record['members'][0]['section_frame_offset_m'])
+        self.assertEqual(record['marker_enh_m'], group['members'][0]['endpoint_m'])
+        self.assertEqual(overview.section_origin_label(record), 'Not declared; see member endpoints')
+        self.assertEqual(overview.section_offset_label(record), 'Not declared')
+        self.assertEqual(overview.member_offset_label(record['members'][0]), 'Not declared')
+        card = overview.make_boundary_cards([record])[0]
+        overview.render_boundary_card(card, 932, font)
+        rows = {row['label']: row['value'] for row in card['field_rows']}
+        self.assertEqual(rows['Centring / section offset'], 'Not declared')
+        evidence = {'groups': [record], 'boundary_cards': [{**card, 'group_ids': [record['id']]}],
+                    'conventions': []}
+        text = overview.markdown_overview(evidence)
+        self.assertIn('| Centring / section offset | Not declared |', text)
+        self.assertNotIn('Centred; 0', text)
+        self.assertIn('Not declared; see member endpoints', text)
+
+    def test_undeclared_paired_section_does_not_infer_a_running_convention(self):
+        piece = resolved_piece()
+        piece['groups'][0].update(anchor_m=None, section_offset_m=None)
+        record = overview.build_records(piece)[0]
+        self.assertEqual(overview.arrangement_text(record),
+                         ('1 incoming; 1 outgoing', 'See member directions'))
+        self.assertEqual(record['channel_spacing_m'], 4.)
+
+    def test_source_geometry_fixture_keeps_six_groups_twelve_members_and_custom_height(self):
         from scp.connector_metadata import load_library
         root = Path(__file__).resolve().parents[1]
-        identifiers = ["hsr-component-modular-crossing-core", "hsr-component-tight-paired-curve90-l4-to-mid"]
-        library = load_library(root, identifiers)
+        identifiers = ["hsr-l4-over-hsr-l2-two-track-crossing-90deg", "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight"]
+        with tempfile.TemporaryDirectory(prefix='scp-synthetic-overview-') as temporary:
+            fixture = write_connector_source_fixture(temporary, identifiers, source_root=root)
+            library = load_library(fixture, identifiers)
         records = [record for piece in library["pieces"].values() for record in overview.build_records(piece)]
         self.assertEqual(len(records), 6)
         self.assertEqual(sum(len(record["members"]) for record in records), 12)
@@ -174,6 +223,8 @@ class ConnectorOverviewTests(unittest.TestCase):
             {"marker": card["marker"], "id": card["id"], "group_ids": [item["id"] for item in card["groups"]]}
             for card in cards], "conventions": [overview.grid_convention({"origin_world_m": [0., -48.]})]}
         text = overview.markdown_overview(evidence)
+        self.assertIn("![Complete connection overview](previews/connection-overview.png)", text)
+        self.assertIn("[Rendering sources and verification scope](evidence/connection-overview.json).", text)
         self.assertIn("Level 4 (30.5 m)", text)
         self.assertIn("end-a-member-1", text)
         self.assertIn("`[3,-8,30.5]`", text)
@@ -215,9 +266,15 @@ class ConnectorOverviewTests(unittest.TestCase):
         rows = evidence["header"]["rows"]
         self.assertEqual(len(rows), 3)
         self.assertEqual([row["colour"] for row in rows], [TITLE_INK, SUBTITLE_INK, FACTS_INK])
-        self.assertIn("Reusable piece / Southeast view / Connection overview", rows[1]["text"])
+        self.assertEqual(rows[0]["text"], "Piece - Synthetic test only — Level 4 (30.5 m)")
+        self.assertEqual(evidence["display_title"], rows[0]["text"])
+        self.assertEqual(piece["id"], "synthetic")
+        self.assertEqual(piece["piece"]["name"], "Synthetic test only")
+        self.assertEqual(rows[1]["text"], "Connection overview | Southeast view | Authored orientation: 0°")
         self.assertIn("1 tile = 16 m", rows[2]["text"])
         self.assertEqual(sum(value.count("1 tile = 16 m") for value in evidence["figure_text"]), 1)
+        self.assertIn("Software model preview with source-defined connection cards.", evidence["figure_text"])
+        self.assertNotRegex(" ".join(evidence["figure_text"]).lower(), r"\bunverified\b|\bpassed\b|\bfailed\b")
         self.assertGreaterEqual(evidence["viewport_offset_xy"][1], max(row["bounds"][3] for row in rows))
 
 

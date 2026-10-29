@@ -9,7 +9,7 @@ import sys
 import unittest
 
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.json').is_file()) / 'framework'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 
 from scp_hsr.hsr_components_layout import (INFO, RECIPES, component_layout, component_routes,
                                        physical_decks, deck_half_widths)
@@ -19,11 +19,15 @@ from scp_hsr.rail_geometry import _global_decks
 
 
 STRAIGHT = 'hsr_component_upper_paired_straight'
-RAMP = 'hsr_component_paired_ramp_l2_to_l4'
+RAMP = 'hsr_component_modular_paired_climb'
 CROSSING = 'hsr_component_modular_crossing_core'
 ADAPTER = 'hsr_component_upper_paired_to_single_adapter'
 PAIRED = 'hsr_component_upper_paired_curve90_'
 SINGLE = 'hsr_component_oneway_curve90_'
+
+# The shortened opposed merge's north branch now joins the mainline at its
+# western external boundary; the separate straight owns their continuation.
+INTERIOR_JUNCTION_DEGREES = {}
 
 
 def _point(point):
@@ -38,6 +42,15 @@ def _fragments(recipe):
 
 
 class HsrComponentsLayoutTests(unittest.TestCase):
+    def test_deleted_analytic_ramp_has_no_registered_recipe_or_geometry_producer(self):
+        deleted = 'hsr_component_paired_ramp_l2_to_l4'
+        self.assertNotIn(deleted, RECIPES)
+        self.assertNotIn(deleted, INFO)
+        self.assertNotIn(deleted, CONTRACTS)
+        for function in (component_layout, component_routes, physical_decks):
+            with self.subTest(function=function.__name__), self.assertRaisesRegex(ValueError, 'Unknown HSR component'):
+                function(deleted)
+
     def test_core_literal_native_ports(self):
         expected = {
             STRAIGHT: {'S>N': ((2., -8., 30.5), (2., 8., 30.5)),
@@ -105,7 +118,7 @@ class HsrComponentsLayoutTests(unittest.TestCase):
                 incoming[last] += 1
             # The independent contract permits intentional splits and merges.
             # Ports with more than one movement can legitimately have degree2;
-            # A new coordinated merge also has one literal interior join;
+            # the opposed merge has one literal two-in/one-out interior join;
             # every other interior seam retains exactly one continuation.
             contract = CONTRACTS[recipe]
             starts = {_point(point): label for label, point in contract['ports'].items()
@@ -127,7 +140,14 @@ class HsrComponentsLayoutTests(unittest.TestCase):
                 self.assertEqual({ends[p] for p in visited if p in ends}, expected, recipe)
             target_counts = Counter(target for source, target in contract['movements'])
             source_counts = Counter(source for source, target in contract['movements'])
-            internal = contract.get('interior_junction_degrees', {})
+            internal = INTERIOR_JUNCTION_DEGREES.get(recipe, {})
+            actual_internal = {
+                point: {'incoming': incoming[point], 'outgoing': outgoing[point]}
+                for point in set(incoming) | set(outgoing)
+                if point not in starts and point not in ends
+                and (incoming[point] > 1 or outgoing[point] > 1)
+            }
+            self.assertEqual(actual_internal, internal, recipe)
             for point, count in incoming.items():
                 limit = target_counts[ends[point]] if point in ends else internal.get(point, {}).get('incoming', 1)
                 self.assertLessEqual(count, limit, recipe)
@@ -169,7 +189,9 @@ class HsrComponentsLayoutTests(unittest.TestCase):
             self.assertEqual(len({((row << 4)+column+1) & 255 for column, row in info['cells']}),
                              len(info['cells']))
             self.assertEqual(info['cells'], sorted(info['cells'], key=lambda cell: (cell[1], cell[0])))
-            self.assertEqual(info['cost'], 100*len(info['cells']))
+            # Prices are independently pinned; the sparse fan keeps its price
+            # after four empty cells were removed from its ownership mask.
+            self.assertEqual(info['cost'], CONTRACTS[recipe]['cost'])
 
     def test_paired_curves_have_one_full_deck_and_constant_four_metre_track_spacing(self):
         for hand in ('right', 'left'):

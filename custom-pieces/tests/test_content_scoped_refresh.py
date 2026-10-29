@@ -28,7 +28,7 @@ class ExactPieceRefreshTests(unittest.TestCase):
                                    'scene': {'placements': [{'id': piece_id, 'piece_id': piece_id} for piece_id in members]}})
             catalog = {'pieces': [selected, sibling], 'domains': {'hsr': {'path': 'domains/hsr', 'name': 'HSR'}},
                        '_assemblies': assemblies}
-            protected = [domain/'connection-classes.json', domain/'00_pieces/INVENTORY.md',
+            protected = [domain/'connection-classes.jsonc', domain/'00_pieces/INVENTORY.md',
                          domain/'01_assemblies/INVENTORY.md', domain/'README.md']
             for directory in (domain/'00_pieces/sibling', domain/'01_assemblies/affected', domain/'01_assemblies/unrelated'):
                 protected.extend(directory/name for name in ('connections.json', 'checks/manual-tests.json', 'README.md', 'TESTING.md'))
