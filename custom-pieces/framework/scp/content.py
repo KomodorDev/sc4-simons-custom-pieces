@@ -1656,7 +1656,6 @@ def refresh_catalog_content(root, *, records=None, changed_piece_ids=None, scope
             'purpose':'Shared classes derived from actual encoded route interfaces; membership does not establish physical fit or game compatibility.',
             'classes':classes}, title=domain.get('name', slug)+' connection classes',
             summary='Generated route-interface memberships; membership alone does not establish physical fit or game compatibility.')
-        jsonc.export(file, file.with_suffix('.json'))
     deferred=({'inventory_refresh_required':bool(subjects or assembly_results),
                'connection_classes_refresh_required':bool(metadata_refresh and subjects),
                'deferred_assembly_ids':deferred_assembly_ids} if scope_to_changed else {})

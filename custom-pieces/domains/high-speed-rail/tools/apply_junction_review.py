@@ -76,7 +76,7 @@ def apply_saved_review(root):
                 'status': record['verdict'], 'summary': summary,
                 'reasons': record['reasons'], 'reason_codes': record['reason_codes'],
                 'reviewed_build': review['source_build_version'],
-                'evidence': 'domains/high-speed-rail/junction-design-review.json',
+                'evidence': 'domains/high-speed-rail/junction-design-review.jsonc',
             }
         elif piece.get('design_review', {}).get('reviewed_build') == review['source_build_version']:
             # A newer independent review must survive an older saved observation.

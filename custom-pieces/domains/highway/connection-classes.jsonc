@@ -1,13 +1,13 @@
 // title: "Highway connection-class index"
 // summary: "Index measured traffic interfaces by class; class membership alone does not establish physical fit or game compatibility."
 //
-// Used when: Contributors inspect shared route-interface class membership or regenerate declared strict-JSON compatibility views; highway has no implemented pieces or extracted route interfaces, so this index is currently empty.
+// Used when: Contributors inspect shared route-interface class membership; highway has no implemented pieces or extracted route interfaces, so this index is currently empty.
 //
-// Read by: custom-pieces/framework/scp/jsonc.py sync_legacy_exports() reads this source to emit connection-classes.json beside it, and shared-source tests compare those payloads; catalogue loading and build selection do not use this index as an authority.
+// Read by: Contributors browsing this index, and shared-source tests validating its documented JSONC format; catalogue loading and build selection do not use this index as an authority.
 //
-// Updated by: custom-pieces/framework/scp/content.py refresh_catalog_content() derives classes from supplied extracted port records only when a full metadata refresh includes pieces in the owning domain; the current empty highway domain supplies no such records, and the declared legacy-export command only copies the existing payload into strict JSON.
+// Updated by: custom-pieces/framework/scp/content.py refresh_catalog_content() derives classes from supplied extracted port records only when a full metadata refresh includes pieces in the owning domain; the current empty highway domain supplies no such records.
 //
-// Affects: The generated route-class membership view and its compatibility export; membership alone establishes neither physical boundary fit nor game compatibility, and the empty file supplies no highway measurement or traffic result.
+// Affects: The generated route-class membership view; membership alone establishes neither physical boundary fit nor game compatibility, and the empty file supplies no highway measurement or traffic result.
 //
 // Reference: custom-pieces/docs/CONNECTOR_METADATA.md
 {
