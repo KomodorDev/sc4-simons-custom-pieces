@@ -70,7 +70,14 @@
     "sha256": "b449ccf99106fc4a009a829cc15e4f5200896a2bee675d66a44a79f2f0e91133",
     "canonical_assembly_views": 6,
     "piece_types_with_complete_angled_and_top_coverage": 13,
-    "visual_review": "Coding-agent visual inspection; not a human game observation."
+    "visual_review": "Coding-agent visual inspection; not a human game observation.",
+    "assembly_menu_icon": {
+      "file": "icon.png",
+      "sha256": "f408d8bd9df2def0496d67f52d17e642b1ab840dc2fcfb18a4627503bc2cd6df",
+      "report": "evidence/icon.json",
+      "report_sha256": "2905bdcbaff88eea0a52cc939eb7edd57013632e8d7bf27d97ce45217f8da7b5",
+      "visual_review": "All four native-size menu states inspected after regeneration from the current routes and placements."
+    }
   },
   "portable_tests": {
     "command": "python3 -B tools/run_tests.py",
@@ -126,5 +133,19 @@
     "documents_checked": 88,
     "local_links_checked": 8471,
     "errors": []
+  },
+  "post_suite_checks": {
+    "scope": "After the full suite, refreshed the assembly menu icon and corrected the highway overview paragraph; implementation and DAT payloads are unchanged.",
+    "assembly_icon_tests": {
+      "tests": 8,
+      "skipped": 0,
+      "passed": true
+    },
+    "highway_assembly_menu_tests": {
+      "tests": 7,
+      "skipped": 0,
+      "passed": true
+    },
+    "complete_documentation_check_passed": true
   }
 }
