@@ -1,0 +1,453 @@
+{
+  "bounded_repair_contract": {
+    "common_dyadic_step_m": 9.5367431640625e-07,
+    "generated_point_distance_to_actual_original_edge_limit_m": 1e-09,
+    "implemented_endpoint_residual_limit_m": 4.76838158203125e-07,
+    "implemented_limit_note": "The implemented endpoint predicate uses the measured 2^-21 m residual plus 1 pm arithmetic slack, which is stricter than the authorized 0.5 micrometre ceiling.",
+    "maximum_position_adjustment_m": 1e-06,
+    "original_edge_endpoint_constant_residual_limit_m": 5e-07,
+    "scope": "Only newly subdivided DD pavement faces whose wheeltrack UV field changed, and only points on an actual eligible original donor edge segment. Use the common nominal 16 m x-minus-z line, orthogonal projection, and dyadic rounding; preserve the existing deck-edge repair.",
+    "support_checker_tolerances_changed": false,
+    "unchanged_attributes": [
+      "height",
+      "U",
+      "V",
+      "material identity"
+    ]
+  },
+  "coverage_limit": "Numeric source-family and failed saved-model evidence explains eligibility and a maximum encoding displacement. It does not establish a successful final candidate, continuous final-field colour, installation, or game rendering.",
+  "evidence_kind": "Audited native source coordinates and a reopened failed candidate; no game observation.",
+  "failed_saved_support_case": {
+    "encoded_shared_vertices_m": [
+      [
+        6.769756317138672,
+        -6.769755840301514,
+        7.5
+      ],
+      [
+        6.769755840301514,
+        -6.769756317138672,
+        7.5
+      ]
+    ],
+    "encoded_vertex_separation_m": 6.743495761743046e-07,
+    "path_first_m": [
+      6.798609651,
+      -6.76597993,
+      7.5
+    ],
+    "path_last_m": [
+      6.644203695,
+      -6.786187562,
+      7.5
+    ],
+    "path_segment_length_m": 0.15572266257459536,
+    "piece_id": "ddrhw-diagonal-lower-exit-branch",
+    "result": "Rejected by unchanged continuous-support check; these numbers are retained as failure evidence.",
+    "source_cells": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "uncovered_fraction_interval": [
+      0.18686545145470124,
+      0.18687085645338344
+    ],
+    "uncovered_path_length_m": 8.416807860054371e-07
+  },
+  "in_game_tested": false,
+  "inputs": {
+    "audited_native_archive_sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+    "dd_material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+    "failed_candidate": "ddrhw-wheeltrack-transition-parts-03; build rejected before output staging",
+    "failed_support_diagnostic_sha256": "f3a06d56d8490d3849bf0e450ad71788da047956a688a3513bdc439a6512f711",
+    "frozen_native_surface_source": "domains/highway/implementation/scp_highway/native_overhangs.py",
+    "frozen_native_surface_source_sha256": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824"
+  },
+  "installed": false,
+  "measured_native_edges": {
+    "edges": [
+      {
+        "endpoint_xz_m": [
+          [
+            -9.656854629516602,
+            6.34314489364624
+          ],
+          [
+            -8.0,
+            8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -9.656854629516602,
+            6.34314489364624
+          ],
+          [
+            -8.0,
+            8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            8.0
+          ],
+          [
+            -6.34314489364624,
+            9.656854629516602
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            8.0
+          ],
+          [
+            -6.34314489364624,
+            9.656854629516602
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            -8.0
+          ],
+          [
+            8.0,
+            8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            -8.0
+          ],
+          [
+            8.0,
+            8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            8.0
+          ],
+          [
+            -8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            8.0
+          ],
+          [
+            -8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            -8.0
+          ],
+          [
+            6.34314489364624,
+            -9.656854629516602
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            -8.0
+          ],
+          [
+            6.34314489364624,
+            -9.656854629516602
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            9.656854629516602,
+            -6.34314489364624
+          ],
+          [
+            8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            9.656854629516602,
+            -6.34314489364624
+          ],
+          [
+            8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 7.5,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -9.656854629516602,
+            6.34314489364624
+          ],
+          [
+            -8.0,
+            8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -9.656854629516602,
+            6.34314489364624
+          ],
+          [
+            -8.0,
+            8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            8.0
+          ],
+          [
+            -6.34314489364624,
+            9.656854629516602
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            8.0
+          ],
+          [
+            -6.34314489364624,
+            9.656854629516602
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": -16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            -8.0
+          ],
+          [
+            8.0,
+            8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            -8.0,
+            -8.0
+          ],
+          [
+            8.0,
+            8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            8.0
+          ],
+          [
+            -8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            8.0
+          ],
+          [
+            -8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 0.0,
+        "nominal_x_minus_z_m": 0.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            -8.0
+          ],
+          [
+            6.34314489364624,
+            -9.656854629516602
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            8.0,
+            -8.0
+          ],
+          [
+            6.34314489364624,
+            -9.656854629516602
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            9.656854629516602,
+            -6.34314489364624
+          ],
+          [
+            8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      },
+      {
+        "endpoint_xz_m": [
+          [
+            9.656854629516602,
+            -6.34314489364624
+          ],
+          [
+            8.0,
+            -8.0
+          ]
+        ],
+        "height_m": 15.0,
+        "maximum_endpoint_constant_residual_m": 4.76837158203125e-07,
+        "nominal_x_minus_z_m": 16.0
+      }
+    ],
+    "exact_constant_occurrences": 8,
+    "maximum_constant_residual_m": 4.76837158203125e-07,
+    "maximum_perpendicular_endpoint_distance_m": 3.371747880871522e-07,
+    "nonzero_constant_occurrences": 16,
+    "nonzero_residual_m": 4.76837158203125e-07,
+    "occurrences": 24
+  },
+  "method": {
+    "candidate_edge_selection": "Positive-length original edge with both endpoint x-minus-z values within 20 micrometres of the same 16 m multiple; this broad measurement filter is not the repair eligibility threshold.",
+    "constant_residual_definition": "For C=16*round((x_first-z_first)/16), max(abs(x-z-C)) at both original endpoints. This is an x-minus-z residual, not perpendicular distance; perpendicular distance is residual/sqrt(2).",
+    "count_scope": "24 audited edge occurrences across frozen donor faces and proper rotations, not 24 distinct game junctions.",
+    "surface_selection": "Pinned DD material and native top datum 7.5 m or 15 m. Each consecutive original triangle edge is measured separately, including the frozen proper rotations."
+  },
+  "native_model_buffers_included": false,
+  "native_pixels_included": false,
+  "purpose": "Frozen numeric measurements explaining the bounded native DD shared-edge encoding repair.",
+  "schema_version": 1
+}

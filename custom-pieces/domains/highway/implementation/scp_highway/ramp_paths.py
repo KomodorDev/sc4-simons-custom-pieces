@@ -474,6 +474,7 @@ def compile_module(spec, context):
     from .native import material_template, channels
     from .ramp_geometry import pack_road_model, cut_native_branch_openings, support_triangles, ATLAS_UV
     from .ramp_materials import NativeRoadPainter
+    from .wheeltracks import NativeWheeltrackField
     key = spec.get("geometry_key") or spec["recipe"].removeprefix("highway_ddrhw_compact_").replace("_", "-")
     records = {record["key"]: record for record in module_catalog()["types"]}
     _require(key in records, f"Unknown compact highway module {key}")
@@ -488,6 +489,7 @@ def compile_module(spec, context):
     surface_roads = [{"points": movement["surface_points"]}
                      for movement in compact_access_routes(ramps)]
     painter = NativeRoadPainter(context, list(ramps)+surface_roads)
+    wheeltracks = NativeWheeltrackField(ramps, painter)
     compiled = []
     for local in map(tuple, spec["cells"]):
         cell = local[0] + origin[0], local[1] + origin[1]
@@ -498,7 +500,8 @@ def compile_module(spec, context):
             ground = [tuple((p[0] + 16.0 * cell[0], p[1], p[2] + 16.0 * cell[1], *p[3:]) for p in tri)
                       for tri in procedural_tiles.get(cell, ())
                       if all(abs(p[1]) < 1e-8 and abs(p[3] - ATLAS_UV["asphalt"][0]) < 1e-8 for p in tri)]
-            opened, _report = cut_native_branch_openings(native_raw, cell, ramps, ground_pavement=ground)
+            opened, _report = cut_native_branch_openings(
+                native_raw, cell, ramps, ground_pavement=ground, wheeltracks=wheeltracks)
             native = parse_s3d(opened)
             parts.append((native, native["meshes"], (0.0, 0.0, 0.0)))
         faces = list(procedural_tiles.get(cell, ()))

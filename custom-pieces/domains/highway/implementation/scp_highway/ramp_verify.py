@@ -8,8 +8,13 @@ volume, a closed-solid containment proof, or an in-game observation.
 """
 from __future__ import annotations
 
+from collections import OrderedDict
+from copy import deepcopy
+import importlib
+import json
 import math
 import hashlib
+from pathlib import Path
 import re
 import struct
 
@@ -21,6 +26,8 @@ TEXTURE = (0x7AB50E44, 0x1ABE787D)
 POSITION_TOLERANCE = 2e-4
 UV_TOLERANCE = 1e-6
 MARKING_TOLERANCE = 0.03
+DD_MATERIAL_SHA256 = '307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca'
+SUPPORT_ENCODING_DISTANCE_M = 2e-6
 _SIDES = ((0, -8.0), (1, 8.0), (0, 8.0), (1, -8.0))
 _NEIGHBOURS = ((-1, 0), (0, -1), (1, 0), (0, 1))
 
@@ -139,7 +146,7 @@ def native_overhang_contract(donors,*,include_surfaces=False):
     return (result,surfaces) if include_surfaces else result
 
 
-def _native_fragment(points,material):
+def _native_fragment(points,material,*,preserve_uv=True):
     from .native_overhangs import NATIVE_OVERHANG_SURFACES
     digest = hashlib.sha256(material['raw']).hexdigest()
     for expected,triangle in NATIVE_OVERHANG_SURFACES:
@@ -167,7 +174,8 @@ def _native_fragment(points,material):
                     fraction = max(0.0,min(1.0,sum((point[i]-begin[i])*edge[i] for i in range(3))/square)) if square else 0.0
                     distances.append(math.dist(point[:3],[begin[i]+fraction*edge[i] for i in range(3)]))
                 bounded_distance = min(distances)
-            if bounded_distance > 2e-5 or math.dist(point[:3],reconstructed[:3]) > 2e-5 or max(abs(point[i]-reconstructed[i]) for i in (3,4)) > 2e-6:
+            if (bounded_distance > 2e-5 or math.dist(point[:3],reconstructed[:3]) > 2e-5
+                    or (preserve_uv and max(abs(point[i]-reconstructed[i]) for i in (3,4)) > 2e-6)):
                 matched = False
                 break
         if matched:
@@ -175,7 +183,7 @@ def _native_fragment(points,material):
     return False
 
 
-def _triangles(raw, cell, native_overhangs=()):
+def _triangles(raw, cell, native_overhangs=(),*,pending_native_uv=False):
     """Read actual indexed faces, mapping S3D south=-PATH north explicitly."""
     model = parse_s3d(decompress(raw))
     validate_s3d(model)
@@ -195,9 +203,16 @@ def _triangles(raw, cell, native_overhangs=()):
             _need(kind == 0 and size % 3 == 0, 'Highway S3D needs indexed triangle lists')
             for offset in range(first, first+size, 3):
                 source = [vertices[index] for index in indices[offset:offset+3]]
+                deferred=False
                 if any(abs(p[0]) > 8.0+POSITION_TOLERANCE or abs(p[2]) > 8.0+POSITION_TOLERANCE for p in source):
-                    _need(_native_signature(source,model['materials'][mi]) in native_overhangs
-                          or _native_fragment(source,model['materials'][mi]),
+                    strict=(_native_signature(source,model['materials'][mi]) in native_overhangs
+                            or _native_fragment(source,model['materials'][mi]))
+                    if not strict:
+                        deferred=(pending_native_uv and textures==[0x5713000E]
+                                  and min(abs(source[0][1]-7.5),abs(source[0][1]-15.))<=1e-5
+                                  and all(abs(p[1]-source[0][1])<=1e-6 for p in source)
+                                  and _native_fragment(source,model['materials'][mi],preserve_uv=False))
+                    _need(strict or deferred,
                           'Highway model leaves its owned source tile without an exact audited native overhang triangle/material match')
                 # World (east, north, height), keeping the actual winding.
                 points = tuple((p[0]+16.0*cell[0], -p[2]-16.0*cell[1], p[1]) for p in source)
@@ -205,7 +220,8 @@ def _triangles(raw, cell, native_overhangs=()):
                         -(points[1][1]-points[0][1])*(points[2][0]-points[0][0]))
                 result.append({'points':points, 'upward':area > 1e-12,
                                'texture':textures[0], 'uv':tuple((p[3],p[4]) for p in source),
-                               'material_sha256':hashlib.sha256(model['materials'][mi]['raw']).hexdigest()})
+                               'material_sha256':hashlib.sha256(model['materials'][mi]['raw']).hexdigest(),
+                               'pending_native_uv_fragment':deferred})
     _need(result, 'Highway model contains no indexed triangles')
     return result
 
@@ -215,7 +231,9 @@ def _atlas(resources, piece, engineering, triangles):
     ids = piece.get('authored_texture_ids', [])
     if not ids:
         if piece.get('recipe', '').startswith('highway_ddrhw_compact_') or piece.get('geometry_key'):
-            return _native_appearance(triangles)
+            from .wheeltrack_verify import check_piece_controls
+            controls=check_piece_controls(triangles,piece)
+            return _native_appearance(triangles,neutral_field_controls=controls)
         return {'checked':False, 'reason':'No authored atlas declared; support uses actual upward saved faces.'}
     _need(ids == [piece['tile_ids'][0]], 'Authored highway atlas must use the first reserved tile ID')
     iid = int(ids[0], 16)
@@ -249,7 +267,7 @@ def _atlas(resources, piece, engineering, triangles):
             'solid_uv_u':solid_u, 'owned_triangles':len(owned)}
 
 
-def _native_appearance(triangles):
+def _native_appearance(triangles, *, neutral_field_controls=None):
     """Pin actual native flags and require spatial UVs, independently of names.
 
     These measured fingerprints come from the retained DD crossing and the
@@ -257,20 +275,30 @@ def _native_appearance(triangles):
     custom resource must reference their existing identities directly.
     """
     allowed = {
-        0x5713000E: '307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca',
+        0x5713000E: DD_MATERIAL_SHA256,
         0x5712000E: 'ed1b4a35ab986ff74a56ac79a1a33f579c31bf9630e7bb2b79ad4a4d9b6739ca',
         0x5EB4BEE9: 'd81e8d70e3ab9182adb393f2bc6a61608c70f8129cdb06631409a4b19c73e306',
         0x5EB4BEEE: 'cf4e393b8ca3a2b3d0edba0f86bb197ddf82b65e85cf73cfa13ebd4d2a8c6f6e',
         0x0400020E: 'b9e662590684786bfeca084538ef53fcd70c9c6beb489c2ea94f3d001ea2a6e5',
         0x0400380E: 'e481f8838ddc4e494a5fc2854007dbc319541a70d11ea3cbfd01f03c7a57bda1',
     }
-    counts = {}
+    counts = {};neutral_fragments=0
     for face in triangles:
         iid = face['texture']
         _need(iid in allowed and face['material_sha256'] == allowed[iid],
               'Saved highway material differs from the measured native NAM surface')
-        _need(any(max(uv[axis] for uv in face['uv'])-min(uv[axis] for uv in face['uv']) > 1e-8
-                  for axis in (0,1)), 'Native highway UVs collapse to a flat colour sample')
+        spatial=any(max(uv[axis] for uv in face['uv'])-min(uv[axis] for uv in face['uv'])>1e-8 for axis in (0,1))
+        if not spatial:
+            points=face['points']
+            neutral=(neutral_field_controls is not None and neutral_field_controls.get('passed') is True
+                     and iid==0x5713000E and face.get('upward',False)
+                     and all(abs(p[2]-points[0][2])<=1e-6 for p in points)
+                     and min(abs(points[0][2]-7.5),abs(points[0][2]-15.))<=1e-5
+                     and face['uv'][0][0] in (65.5/128.,95.5/128.)
+                     and all(uv==face['uv'][0] for uv in face['uv'])
+                     and max(math.dist(a,b) for a,b in zip(points,points[1:]+points[:1]))<=.125+2e-5)
+            _need(neutral,'Native highway UVs collapse to a flat colour sample')
+            neutral_fragments+=1
         if iid == 0x5712000E:
             _need(all(0.125-UV_TOLERANCE <= u <= 0.875+UV_TOLERANCE for u,_v in face['uv']),
                   'MIS ramp UVs leave the measured one-lane pavement strip')
@@ -278,7 +306,9 @@ def _native_appearance(triangles):
     _need(counts, 'Native highway appearance has no actual saved faces')
     return {'checked':True, 'style':'native NAM DD RHW-4 and MIS slope',
             'native_slope_s3d_instance':'57722000', 'native_texture_triangles':counts,
-            'owned_texture_resources':0, 'spatial_uvs_checked':True}
+            'owned_texture_resources':0, 'spatial_uvs_checked':True,
+            'neutral_one_texel_fragments_checked':neutral_fragments,
+            'neutral_field_controls':neutral_field_controls}
 
 
 def _barycentric(point, triangle):
@@ -318,17 +348,129 @@ def _interval(first, last, triangle):
     return low,high
 
 
-def _covered(first,last,triangles):
-    intervals = sorted(interval for face in triangles if face['upward']
-                       if (interval := _interval(first,last,face['points'])) is not None)
-    end = 0.0
-    for low,high in intervals:
-        if low > end+1e-7:
+def _edge_capsule_intervals(first,last,a,b,radius):
+    """Exact line intervals within a finite edge's rectangle or endpoint discs."""
+    dx,dy=last[0]-first[0],last[1]-first[1]
+    length_squared=dx*dx+dy*dy
+    if length_squared<=1e-24:
+        return []
+    ex,ey=b[0]-a[0],b[1]-a[1];edge=math.hypot(ex,ey)
+    result=[]
+    if edge>1e-15:
+        ex,ey=ex/edge,ey/edge
+        low,high=0.,1.
+        for value,delta,minimum,maximum in (
+                ((first[0]-a[0])*ex+(first[1]-a[1])*ey,dx*ex+dy*ey,0.,edge),
+                (ex*(first[1]-a[1])-ey*(first[0]-a[0]),ex*dy-ey*dx,-radius,radius)):
+            if abs(delta)<=1e-18:
+                if not minimum<=value<=maximum:
+                    low,high=1.,0.;break
+            else:
+                begin,end=(minimum-value)/delta,(maximum-value)/delta
+                low,high=max(low,min(begin,end)),min(high,max(begin,end))
+        if low<=high:
+            result.append((low,high))
+    for vertex in (a,b):
+        vx,vy=vertex[0]-first[0],vertex[1]-first[1]
+        centre=(vx*dx+vy*dy)/length_squared
+        perpendicular_squared=(dx*vy-dy*vx)**2/length_squared
+        remaining=radius*radius-perpendicular_squared
+        if remaining<0.:
+            continue
+        half=math.sqrt(remaining/length_squared)
+        low,high=max(0.,centre-half),min(1.,centre+half)
+        if low<=high:
+            result.append((low,high))
+    return result
+
+
+def _point_triangle_distance(point,triangle):
+    """Euclidean distance to one horizontal, closed triangle footprint."""
+    weights=_barycentric(point,triangle)
+    if weights is not None and min(weights)>=0.:
+        return abs(point[2]-triangle[0][2])
+    distances=[]
+    for a,b in zip(triangle,triangle[1:]+triangle[:1]):
+        edge=[y-x for x,y in zip(a,b)];square=sum(x*x for x in edge)
+        fraction=max(0.,min(1.,sum((p-x)*d for p,x,d in zip(point,a,edge))/square)) if square else 0.
+        distances.append(math.dist(point,[x+fraction*d for x,d in zip(a,edge)]))
+    return min(distances)
+
+
+def _covered(first,last,triangles,*,encoding=None,precision_report=None):
+    """Keep strict support, with a separate bounded native-footprint distance proof.
+
+    Only strict uncovered spans on affirmative flat served-deck branches may
+    use the union of pinned DD triangle-edge capsules. Finite edge rectangles
+    plus endpoint discs prove distance at most two micrometres without acute
+    corner/miter extrapolation. Barycentric and height tests stay unchanged.
+    """
+    from .wheeltrack_verify import _BRANCH_ORIGINS
+    enabled=(encoding is not None and encoding.get('geometry_key') in _BRANCH_ORIGINS
+             and encoding.get('field_controls') is not None
+             and encoding['field_controls'].get('passed') is True)
+    deck=(7.5 if encoding['geometry_key'].startswith('lower') else 15.) if enabled else None
+    enabled=(enabled and abs(first[2]-deck)<=1e-5 and abs(last[2]-deck)<=1e-5
+             and first[2]==last[2])
+    def native_top(face):
+        return (face is not None and face.get('upward',False)
+                and face['texture']==0x5713000E
+                and face.get('material_sha256')==DD_MATERIAL_SHA256
+                and all(abs(p[2]-deck)<=1e-5 for p in face['points'])
+                and all(p[2]==face['points'][0][2]for p in face['points']))
+    triangles=list(triangles)
+    intervals=sorted(((*interval,face) for face in triangles if face['upward']
+                      if (interval:=_interval(first,last,face['points'])) is not None),
+                     key=lambda row:row[:2])
+    gaps=[];end=0.
+    for low,high,_face in intervals:
+        if low>end+1e-7:
+            gaps.append((end,low))
+        end=max(end,high)
+    if end<1.-1e-7:
+        gaps.append((end,1.))
+    if not gaps:
+        return True
+    if not enabled:
+        return False
+    qualified=[face for face in triangles if native_top(face)]
+    admitted=[];sampled=[]
+    def at(fraction):
+        return tuple(a+fraction*(b-a)for a,b in zip(first,last))
+    for low,high in gaps:
+        begin,end=at(low),at(high);near=[];capsules=[]
+        for face in qualified:
+            points=face['points'];height=abs(first[2]-points[0][2])
+            if height>SUPPORT_ENCODING_DISTANCE_M or any(
+                    max(p[axis]for p in points)<min(begin[axis],end[axis])-SUPPORT_ENCODING_DISTANCE_M
+                    or min(p[axis]for p in points)>max(begin[axis],end[axis])+SUPPORT_ENCODING_DISTANCE_M
+                    for axis in (0,1)):
+                continue
+            near.append(face)
+            radius=math.sqrt(max(0.,SUPPORT_ENCODING_DISTANCE_M**2-height**2))
+            for a,b in zip(points,points[1:]+points[:1]):
+                capsules.extend((max(low,x),min(high,y)) for x,y in
+                                _edge_capsule_intervals(first,last,a,b,radius)
+                                if y>=low and x<=high)
+        reached=low
+        for x,y in sorted(capsules):
+            if x>reached+1e-12:
+                break
+            reached=max(reached,y)
+            if reached>=high-1e-12:
+                break
+        if reached<high-1e-12:
             return False
-        end = max(end,high)
-        if end >= 1.0-1e-7:
-            return True
-    return False
+        admitted.append((high-low)*math.dist(first,last))
+        for fraction in (low,(low+high)/2.,high):
+            sampled.append(min(_point_triangle_distance(at(fraction),f['points'])for f in near))
+    if precision_report is not None:
+        precision_report['admitted_spans']+=len(gaps)
+        precision_report['admitted_endpoint_spans']+=sum(low==0. or high==1. for low,high in gaps)
+        precision_report['maximum_admitted_along_path_span_m']=max(precision_report['maximum_admitted_along_path_span_m'],max(admitted))
+        precision_report['distance_samples_checked']+=len(sampled)
+        precision_report['maximum_sampled_distance_m']=max(precision_report['maximum_sampled_distance_m'],max(sampled))
+    return True
 
 
 def _clip(polygon, axis, bound, sign):
@@ -470,6 +612,7 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
     empty = {tuple(cell) for cell in (engineering.get('model_only_cells',[]) if empty_path_cells is None else empty_path_cells)}
     _need(empty <= set(cells), 'Declared model-only highway cells are outside the piece')
     routes,faces = {},{}
+    from .wheeltrack_verify import _BRANCH_ORIGINS, check_piece_overhangs
     for cell,identifier in zip(cells,piece['tile_ids']):
         iid = int(identifier,16)
         _need((*S3D,iid) in resources and (*PATH,iid) in resources, 'Missing saved highway S3D or PATH resource')
@@ -477,12 +620,23 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
             if (*S3D,iid+zoom) in resources:
                 _need(decompress(resources[*S3D,iid+zoom]) == decompress(resources[*S3D,iid]),
                       'Saved highway zoom model differs from its independently checked base model')
-        faces[cell] = _triangles(resources[*S3D,iid],cell,native_overhangs)
+        faces[cell] = _triangles(resources[*S3D,iid],cell,native_overhangs,
+                                 pending_native_uv=piece.get('geometry_key') in _BRANCH_ORIGINS)
         local = _paths(resources[*PATH,iid])
         _need(bool(local) == (cell not in empty), 'Empty highway PATH differs from the declared model-only cell contract')
         routes[cell] = [{**route,'points':[(p[0]+16*cell[0],p[1]-16*cell[1],p[2]) for p in route['points']]}
                         for route in local]
-    atlas = _atlas(resources,piece,engineering,[face for group in faces.values() for face in group])
+    triangles=[face for group in faces.values() for face in group]
+    atlas = _atlas(resources,piece,engineering,triangles)
+    atlas['native_overhang_uv_field']=check_piece_overhangs(triangles,piece,routes,atlas.get('neutral_field_controls'))
+    support_encoding={'geometry_key':piece.get('geometry_key'),'field_controls':atlas.get('neutral_field_controls')}
+    precision_report={'euclidean_distance_limit_m':SUPPORT_ENCODING_DISTANCE_M,'admitted_spans':0,
+                      'admitted_endpoint_spans':0,'maximum_admitted_along_path_span_m':0.,
+                      'distance_samples_checked':0,'maximum_sampled_distance_m':0.,
+                      'enabled_for_piece':piece.get('geometry_key') in _BRANCH_ORIGINS
+                          and atlas.get('neutral_field_controls',{}).get('passed') is True,
+                      'capsule_union_fraction_guard':1e-12,
+                      'scope':'Only strict uncovered spans on affirmative flat served-deck branches receive a separate distance-to-pinned-DD-footprints proof using finite edge rectangles plus endpoint discs. The two-micrometre Euclidean bound is proved by interval union; reported endpoint/midpoint distances are samples, and along-PATH span lengths are disclosed separately. Barycentric and height checks remain unchanged.'}
     if ports is None:
         ports = engineering.get('external_ports')
     opened,seams = _continuity(routes,ports)
@@ -530,7 +684,7 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
                     candidates = [face for face in nearby if all(
                         max(point[axis] for point in face['points']) >= low[axis]-POSITION_TOLERANCE
                         and min(point[axis] for point in face['points']) <= high[axis]+POSITION_TOLERANCE for axis in (0,1))]
-                    _need(_covered(first,last,candidates),
+                    _need(_covered(first,last,candidates,encoding=support_encoding,precision_report=precision_report),
                           f'Saved highway pavement does not continuously support an encoded car PATH segment at zero datum offset; cell={cell}, route={route_index}, rotation={quarter}, points={first}->{last}')
                     for face in candidates:
                         _need(not _intrudes(first,last,face['points'],half_width,corridor_height),
@@ -539,13 +693,14 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
         counts.append({'quarter_turns_clockwise':quarter,'car_segments_checked':checked})
     return {'passed':True,'car_paths':car_count,'car_segments':segments,'maximum_grade_percent':maximum_actual,
             'grade_bound_percent':maximum,'pavement_path_offset_m':0.0,'continuous_segment_support':True,
+            'support_encoding_precision':precision_report,
             'car_corridor_half_width_m':half_width,'car_corridor_height_m':corridor_height,
             'marking_tolerance_m':MARKING_TOLERANCE,'atlas':atlas,'internal_seams':seams,
             'native_external_ports_checked':ports is not None,
             'open_endpoints':[{key:value for key,value in endpoint.items() if key not in {'route'}} for endpoint in opened],
             'model_only_cells':[list(cell) for cell in sorted(empty)],'rotations':counts,
             'audited_native_overhang_signatures_available':len(native_overhangs),
-            'coverage_limit':'Actual indexed face intersections and continuous car PATH spine support; no closed-solid containment, complete vehicle swept-body safety, native placement, or in-game observation is established.'}
+            'coverage_limit':'Actual indexed face intersections and car PATH spine support, with only the explicitly reported two-micrometre encoding allowance on affirmative flat served-deck DD branches; no closed-solid containment, complete vehicle swept-body safety, native placement, or in-game observation is established.'}
 
 
 def check_paths(resources,piece):
@@ -573,8 +728,63 @@ def check_paths(resources,piece):
             'model_only_cells_checked':len(empty),'game_operation_tested':False}
 
 
+_MODEL_AUDIT_CACHE = OrderedDict()
+_MODEL_AUDIT_CACHE_LIMIT = 32
+_MODEL_AUDIT_MODULES = (
+    'scp_highway.ramp_verify', 'scp_highway.native_overhangs',
+    'scp_highway.wheeltrack_verify', 'scp_highway.shoulder_uv_verify',
+    'scp.dbpf', 'scp.models', 'scp.track_paths', 'scp.verify',
+)
+
+
+def _model_audit_context():
+    """Pin loaded validator identities, source bytes, and live audit constants.
+
+    These modules own the complete check_models call graph and its frozen
+    native-overhang evidence. This process-local cache never survives an
+    import/process restart. Source/constant changes and replaced validators
+    invalidate it, including test patches. No donor argument is read by this
+    audit: the independently pinned native contract lives in these modules.
+    """
+    result = []
+    for name in _MODEL_AUDIT_MODULES:
+        module = importlib.import_module(name)
+        constants = [(key,value) for key,value in vars(module).items()
+                     if key.isupper() and not key.startswith('_MODEL_AUDIT_')]
+        functions = tuple((key,id(value)) for key,value in sorted(vars(module).items())
+                          if callable(value))
+        result.append((name,hashlib.sha256(Path(module.__file__).read_bytes()).digest(),
+                       hashlib.sha256(repr(sorted(constants)).encode()).digest(),functions))
+    return tuple(result)
+
+
 def check_models(resources,piece,donors=None):
-    """Provider entry point using the portable frozen native overhang audit."""
+    """Audit exact immutable inputs; reuse successful reports only in memory.
+
+    Hash every supplied resource, including unreferenced exemplars, textures,
+    PATHs, zooms, and previews. Cache only small reports, never native/model
+    byte buffers. Snapshots prevent caller mutation from changing an audit's
+    specification or resource bytes, and every caller receives a fresh report.
+    Direct check_pavement calls always execute their complete checks.
+    """
+    specification = json.dumps(piece,sort_keys=True,separators=(',',':'),allow_nan=False)
+    immutable = {key:bytes(raw) for key,raw in resources.items()}
+    context = _model_audit_context()
+    key = (specification,tuple((identifier,len(raw),hashlib.sha256(raw).digest())
+                              for identifier,raw in sorted(immutable.items())),context)
+    if key in _MODEL_AUDIT_CACHE:
+        _MODEL_AUDIT_CACHE.move_to_end(key)
+        return deepcopy(_MODEL_AUDIT_CACHE[key])
+    report = _check_models_uncached(immutable,json.loads(specification))
+    if report.get('passed') is True and _model_audit_context() == context:
+        _MODEL_AUDIT_CACHE[key] = deepcopy(report)
+        while len(_MODEL_AUDIT_CACHE) > _MODEL_AUDIT_CACHE_LIMIT:
+            _MODEL_AUDIT_CACHE.popitem(last=False)
+    return deepcopy(report)
+
+
+def _check_models_uncached(resources,piece):
+    """Execute the unchanged full saved-resource and preview audit."""
     from scp.verify import mesh_data,translated
     report = check_pavement(resources,piece)
     textures,expected = set(),[]

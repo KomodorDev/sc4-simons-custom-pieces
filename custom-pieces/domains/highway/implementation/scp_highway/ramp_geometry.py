@@ -713,7 +713,42 @@ def union_ground_pavement(triangles):
     return accepted
 
 
-def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
+def _canonical_native_diagonal_vertex(point, cell, original):
+    """Keep a subdivided original DD tile boundary on one binary line.
+
+    The audited native donor's shared x-z=16*n edges have original float32
+    endpoint residuals of at most 2**-21 metres. Newly subdivided vertices on
+    those exact original segments must encode one common binary line from
+    both source-local frames. The change is at most one micrometre; height
+    and UVs remain unchanged.
+    """
+    step = 2.0 ** -20
+    for first, last in zip(original, original[1:] + original[:1]):
+        constant = 16.0 * round((first[0] - first[2]) / 16.0)
+        if max(abs(p[0] - p[2] - constant) for p in (first, last)) > 2.0 ** -21 + 1e-12:
+            continue
+        dx, dz = last[0] - first[0], last[2] - first[2]
+        length_squared = dx * dx + dz * dz
+        if length_squared <= 1e-16:
+            continue
+        distance = (dx * (point[2] - first[2]) - dz * (point[0] - first[0])) / math.sqrt(length_squared)
+        if abs(distance) > 1e-9:
+            continue
+        fraction = ((point[0] - first[0]) * dx + (point[2] - first[2]) * dz) / length_squared
+        if not -1e-8 <= fraction <= 1.0 + 1e-8:
+            continue
+        projected_x = (point[0] + point[2] + constant) / 2.0
+        shared_x = round(projected_x / step) * step
+        local_x = shared_x - 16.0 * cell[0]
+        local_z = shared_x - constant - 16.0 * cell[1]
+        revised = (local_x + 16.0 * cell[0], point[1], local_z + 16.0 * cell[1], *point[3:])
+        _require(math.dist(point[:3], revised[:3]) <= 1e-6,
+                 'A native diagonal encoding repair exceeded one micrometre')
+        return revised
+    return point
+
+
+def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=(), wheeltracks=None):
     """Cut real native barrier/outer-wall openings and retain every material.
 
     ``raw`` is the native tile S3D in local model coordinates. ``cell`` and
@@ -780,6 +815,11 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
                         break
             pieces = [fragment for polygon in pieces
                       for fragment in repaint_native_shoulder(polygon, shoulder_cuts)]
+            wheeltrack_processed = False
+            if wheeltracks is not None and source['materials'][mi]['textures'] == [0x5713000E]:
+                revised = [part for polygon in pieces for part in wheeltracks.remap_polygon(polygon)]
+                wheeltrack_processed = revised != pieces
+                pieces = revised
             fragments = [triangle for polygon in pieces for triangle in _triangulate(polygon)]
             fragments = [tuple((local[0]+16.*cell[0],local[1],local[2]+16.*cell[1],*local[3:])
                                for point in triangle
@@ -787,6 +827,18 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
                                    (point[0]-16.*cell[0],point[1],point[2]-16.*cell[1],*point[3:]),
                                    cell,seam_services),))
                          for triangle in fragments]
+            if wheeltrack_processed:
+                fragments = [tuple(_canonical_native_diagonal_vertex(point, cell, world)
+                                   for point in triangle) for triangle in fragments]
+                # Clipped slivers can collapse only after local float32
+                # encoding. Omit those exact zero-area top fragments while
+                # preserving every untouched native and non-top face.
+                def encoded_area(triangle):
+                    encoded = [struct.unpack('<5f', struct.pack('<5f',
+                               p[0] - 16.0 * cell[0], p[1], p[2] - 16.0 * cell[1], *p[3:]))
+                               for p in triangle]
+                    return any(value != 0.0 for value in _normal(encoded))
+                fragments = [triangle for triangle in fragments if encoded_area(triangle)]
             before_bytes = b"".join(struct.pack("<5f", *p) for p in world)
             after_bytes = b"".join(struct.pack("<5f", *p) for part in fragments for p in part)
             if before_bytes != after_bytes:

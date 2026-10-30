@@ -800,7 +800,8 @@ def verify_build(output, write_report=True):
         menu_report = validate_menu_resources(resources, piece_menu_donor, piece)
         try:
             paths_report = check_piece_paths(resources, piece)
-            models_report = check_piece_models(resources, piece, donors)
+            model_resources = by_file[piece['asset_file']] if piece.get('domain') == 'highway' else resources
+            models_report = check_piece_models(model_resources, piece, donors)
         except ValueError as error:
             raise ValueError(f'{piece["id"]}: {error}') from error
         piece_texture_ids = set(models_report.pop('texture_ids'))

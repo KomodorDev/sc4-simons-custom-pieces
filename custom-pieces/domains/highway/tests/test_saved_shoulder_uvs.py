@@ -83,6 +83,23 @@ class SavedShoulderUVTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'not erased'):
                     check.check_saved_shoulder_uvs(owners, resources)
 
+    def test_a_route_exception_keeps_the_remaining_native_uv_proof(self):
+        owners,resources=fixtures()
+        name,station,side,height=check.MOUTHS[0]
+        boundary=[]
+        for along,q in ((station-.5,5.),(station+.5,5.),(station+.5,6.),(station-.5,6.)):
+            v=side*q
+            boundary.append((68.+(along-v)/math.sqrt(2.),-68.+(along+v)/math.sqrt(2.)))
+        if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(boundary,boundary[1:]+boundary[:1]))<0:boundary.reverse()
+        corridor={'height':height,'boundary':boundary}
+        report=check.check_saved_shoulder_uvs(owners,resources,permitted_corridors=[corridor])
+        self.assertGreater(report['surrounding_native_uv_polygons_checked'],0)
+        self.assertEqual(report['authorized_route_corridor_regions'],1)
+        key=next(iter(resources[name]))
+        resources[name][key]=mutate(resources[name][key],lambda p:(*p[:3],.36,p[4]))
+        with self.assertRaisesRegex(ValueError,'outside.*corridor'):
+            check.check_saved_shoulder_uvs(owners,resources,permitted_corridors=[corridor])
+
     def test_missing_saved_shoulder_faces_cannot_pass(self):
         with self.assertRaisesRegex(ValueError, 'no surrounding native pavement'):
             check.check_faces([])
