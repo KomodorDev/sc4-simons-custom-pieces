@@ -644,13 +644,15 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     barrier_report = check_saved_barrier_mouths(owners, piece_resources) if inspect_models else {'passed': False, 'status': 'not-run'}
     from .shoulder_uv_verify import check_saved_shoulder_uvs
     shoulder_report = check_saved_shoulder_uvs(owners, piece_resources) if inspect_models else {'passed': False, 'status': 'not-run'}
+    from .marking_verify import check_saved_markings
+    marking_report = check_saved_markings(owners, piece_resources) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT, 'saved_resource_checks_passed': bool(inspect_models),
             'saved_path_and_construction_checks_passed': True, 'assembly_orientation_checked_ccw_degrees': 0,
             'construction': {'unique_owned_cells': len(owners), 'bounding_rectangle_tiles': rectangle,
                              'placements': len(poses), 'distinct_component_types': len({p['piece_id'] for p in poses}),
                              'physical_projection_is_separate': True},
             'paths': graph, 'model_seams': model_report, 'supports': support_report,
-            'barrier_mouths': barrier_report, 'shoulder_uvs': shoulder_report, 'game_operation': 'unverified',
+            'barrier_mouths': barrier_report, 'shoulder_uvs': shoulder_report, 'markings': marking_report, 'game_operation': 'unverified',
             'limits': ['Arm reachability does not establish every possible lane-to-lane transfer or game lane choice.',
                        'Pavement seam samples do not certify complete barrier profiles, complete collision envelopes, or texture-alpha coverage.',
                        'Ground junction priority and traffic conflicts, construction overrides, shadows, bulldozing, and save/reload require separate game observations.']}

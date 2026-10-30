@@ -16,6 +16,25 @@ SHOULDER_OUTER_V = 8.0 - .828125
 NATIVE_EDGE_ERASE_V = (4.3125, 4.8125)
 NATIVE_EDGE_ASPHALT_U = 29.5 / 128.0
 PAINT_HEIGHT = .01
+# Two native bright-core texels at 16 m per 128-pixel atlas repeat.
+WHITE_CORE_WIDTH = .25
+PAINT_MAINLINE_Q = 4.5
+HATCH_PITCH = 1.5
+HATCH_CLEAR_GAP = .125
+# Actual indexed MIS paint contours at the native q=8 m surface seam.
+# (station, outward tangent s, outward tangent q), measured on the accepted
+# saved 6768fe9 models. The on/off differences are native UV tessellation.
+MIS_PAINT_HANDOFFS = {
+    'lower-off': ((16.128963600783806, .5389999017764195, .8423058268141153),
+                  (24.29740420344813, .8603655737237406, .5096774269584821)),
+    'lower-on': ((16.129513418533207, .5332236751940871, .8459742976075045),
+                 (24.297403614522153, .8603624975410479, .5096826197006629)),
+    'upper-off': ((24.8458384371377, .8884659062130033, .45894262549594045),
+                  (36.74171433369486, .9322432486024348, .36183217855129884)),
+    'upper-on': ((24.847385462731395, .895888834868669, .4442782861649427),
+                 (36.74171383674094, .9322444307660044, .36182913274882744)),
+}
+INNER_PAINT_CLEARANCE = .03125
 SEAM_STEP = 2.**-20
 
 
@@ -216,57 +235,169 @@ def repaint_native_shoulder(polygon, cuts):
     return pieces
 
 
-def _stripe(ramp, a, b, width=.12):
-    dx,dy = b[0]-a[0],b[1]-a[1]
-    length = math.hypot(dx,dy)
-    if length < 1e-8:
-        return []
-    nx,ny = -dy/length*width/2.,dx/length*width/2.
-    return _polygon(ramp, ((a[0]+nx,a[1]+ny,0.),(b[0]+nx,b[1]+ny,0.),
-                           (b[0]-nx,b[1]-ny,1.),(a[0]-nx,a[1]-ny,1.)), WHITE, PAINT_HEIGHT)
+def _paint_frames(points):
+    """Return shared planar miter normals, including the acute gore nose."""
+    tangents = []
+    for a,b in zip(points,points[1:]):
+        length = math.dist(a,b)
+        if length <= 1e-9:
+            raise ValueError('Paint centreline contains a stationary segment')
+        tangents.append(((b[0]-a[0])/length,(b[1]-a[1])/length))
+    normals = []
+    for index in range(len(points)):
+        a,b = tangents[max(0,index-1)],tangents[min(len(tangents)-1,index)]
+        denominator = 1.+a[0]*b[0]+a[1]*b[1]
+        if denominator <= 1e-8:
+            raise ValueError('Paint centreline reverses at an undefined miter')
+        normals.append(((-a[1]-b[1])/denominator,(a[0]+b[0])/denominator))
+    return normals
+
+
+def _offset_paint_curve(points, distance):
+    return [(p[0]+distance*n[0],p[1]+distance*n[1])
+            for p,n in zip(points,_paint_frames(points))]
+
+
+def _paint_intersection(points, target):
+    for index,(a,b) in enumerate(zip(points,points[1:])):
+        if a[1] <= target < b[1]:
+            fraction = (target-a[1])/(b[1]-a[1])
+            length = math.dist(a,b)
+            return ((a[0]+fraction*(b[0]-a[0]),target),index,
+                    ((b[0]-a[0])/length,(b[1]-a[1])/length))
+    raise ValueError('Paint curve does not reach its native transverse boundary')
+
+
+def _trim_paint_curve(points, low, high):
+    a,first,_normal = _paint_intersection(points,low)
+    b,last,_normal = _paint_intersection(points,high)
+    result = []
+    for point in [a,*points[first+1:last+1],b]:
+        if not result or math.dist(result[-1],point)>1e-9:
+            result.append(point)
+    return result
+
+
+def _bezier_paint(controls):
+    """Sample a bounded connector and retain exact endpoint-tangent collars."""
+    a,b,c,d = controls
+    start = tuple((b[i]-a[i])/math.dist(a,b) for i in (0,1))
+    end = tuple((d[i]-c[i])/math.dist(c,d) for i in (0,1))
+    points = [a,tuple(a[i]+.005*start[i] for i in (0,1))]
+    for index in range(1,128):
+        t = index/128.
+        points.append(tuple((1.-t)**3*a[i]+3.*(1.-t)**2*t*b[i]
+                            +3.*(1.-t)*t*t*c[i]+t**3*d[i] for i in (0,1)))
+    points.extend((tuple(d[i]-.005*end[i] for i in (0,1)),d,
+                   tuple(d[i]+.25*end[i] for i in (0,1))))
+    return points
+
+
+def _stripe_path(ramp, points, width=WHITE_CORE_WIDTH, *, maximum_q=None):
+    """Stroke one joined centreline; clip the full core at the native seam."""
+    from .ramp_geometry import _clip
+    normals = _paint_frames(points)
+    edges = [((p[0]+n[0]*width/2.,p[1]+n[1]*width/2.,0.),
+              (p[0]-n[0]*width/2.,p[1]-n[1]*width/2.,1.))
+             for p,n in zip(points,normals)]
+    result = []
+    for first,last in zip(edges,edges[1:]):
+        polygon = [first[0],last[0],last[1],first[1]]
+        if maximum_q is not None:
+            polygon = _clip(polygon,lambda p:maximum_q-p[1])
+        result.extend(_polygon(ramp,polygon,WHITE,PAINT_HEIGHT))
+    return result
+
+
+def _stripe(ramp, a, b, width=WHITE_CORE_WIDTH):
+    return [] if math.dist(a,b)<1e-8 else _stripe_path(ramp,[a,b],width)
+
+
+def marking_layout(ramp):
+    """Derive native-width paint from accepted traffic and saved MIS contours."""
+    from .ramp_geometry import highway_coordinates
+    data = profile(ramp)
+    taper = data['taper_m']
+    outward = ramp['points'] if ramp['direction']=='off' else list(reversed(ramp['points']))
+    centre = []
+    for point in outward:
+        u,v = highway_coordinates(point)
+        centre.append(((u-data['u0'])*data['direction'],v*data['side']))
+    inside = _offset_paint_curve(centre,-2.0625)
+    nose,_,_tangent = _paint_intersection(inside,4.5)
+    ease_start,_,ease_tangent = _paint_intersection(inside,7.)
+    outer_handoff,inner_handoff = MIS_PAINT_HANDOFFS[ramp['id']]
+    outer_s,outer_x,outer_y = outer_handoff
+    outer_start = outer_s-4.
+    if outer_start < taper:
+        raise ValueError('Native paint handoff has no room beyond the accepted outer taper')
+    handle = min(4./3.,.5/outer_y)
+    outer_controls = ((outer_start,7.),(outer_start+4./3.,7.),
+                      (outer_s-handle*outer_x,8.-handle*outer_y),(outer_s,8.))
+    outer = []
+    for index in range(int(taper*2)+1):
+        s = index/2.; t = s/taper
+        smooth = t*t*t*(10.+t*(-15.+6.*t))
+        outer.append((s,4.5+2.5*smooth))
+    outer.append((outer_start,7.))
+    outer.extend(_bezier_paint(outer_controls)[1:])
+    # The native yellow core is close to the unchanged barrier foot. Move
+    # the new, wider WHITE core toward the ramp centre by 1/32 m at handoff;
+    # its parallel endpoint still overlaps the retained native paint.
+    inner_s,inner_x,inner_y = inner_handoff
+    inner_end = (inner_s-INNER_PAINT_CLEARANCE/inner_y,8.)
+    span = inner_end[0]-ease_start[0]
+    inner_controls = (ease_start,
+                      (ease_start[0]+span/3.,7.+span/3.*ease_tangent[1]/ease_tangent[0]),
+                      (inner_end[0]-span/3.,8.-span/3.*inner_y/inner_x),inner_end)
+    inner = _trim_paint_curve(inside,4.5,7.)[:-1]+_bezier_paint(inner_controls)
+    # A single V-shaped stroke shares its two miter vertices at the nose.
+    outline = [(data['join_s'],4.5),*inner]
+    # Centreline inset includes BOTH half-widths and the clear asphalt gap.
+    # This bounds every hatch vertex, rather than only its endpoints.
+    margin = WHITE_CORE_WIDTH+HATCH_CLEAR_GAP
+    hatch_limit = _offset_paint_curve(_trim_paint_curve(inner,4.5,8.),-margin)
+    hatches = []
+    for index in range(1,math.ceil((inner_end[0]-nose[0])/HATCH_PITCH)):
+        start = (nose[0]+index*HATCH_PITCH,4.5+margin)
+        constant = sum(start)
+        for a,b in zip(hatch_limit,hatch_limit[1:]):
+            da,db = sum(a)-constant,sum(b)-constant
+            if da <= 0. < db:
+                fraction = -da/(db-da)
+                end = tuple(a[i]+fraction*(b[i]-a[i]) for i in (0,1))
+                if math.dist(start,end)>=2.*WHITE_CORE_WIDTH:
+                    hatches.append((start,end))
+                break
+    dashes = []
+    nose_normal = _paint_frames(outline)[1]
+    dash_end = nose[0]-abs(nose_normal[0])*WHITE_CORE_WIDTH/2.
+    for start in range(0,math.ceil(dash_end),4):
+        finish = min(start+2.,dash_end)
+        high = .65*taper
+        # The initial taper already carries the native-edge continuation.
+        # Begin dashes after the accepted lane-change exclusion, avoiding
+        # a coincident first dash and a short pre-exclusion paint stub.
+        intervals = ([(max(float(start),high),finish)] if finish>high else [])
+        dashes.extend(((a,PAINT_MAINLINE_Q),(b,PAINT_MAINLINE_Q))
+                      for a,b in intervals if b-a>.05)
+    return {'dashes':dashes,'outer_edge':outer,'gore_outline':outline,'gore_inner':inner,
+            'hatches':hatches,'gore_nose':nose,'outer_controls':outer_controls,
+            'inner_controls':inner_controls,'core_width_m':WHITE_CORE_WIDTH,
+            'inner_handoff_clearance_m':INNER_PAINT_CLEARANCE}
 
 
 def surfaces(ramps):
-    """Replace shoulder asphalt and paint a dashed separator and compact gore."""
+    """Keep pavement fixed and paint joined, native-width slip-lane markings."""
     result = []
     for ramp in ramps:
         data = profile(ramp)
-        end, departure, taper = data['join_s'],data['departure_s'],data['taper_m']
+        end = data['join_s']
         result += _polygon(ramp, ((0.,SEPARATOR_V),(end,SEPARATOR_V),
                                   (end,SHOULDER_OUTER_V),(0.,SHOULDER_OUTER_V)))
-        # Leave the actual lane-change crossing clear inside the dashed run.
-        for start in range(0,math.ceil(departure),4):
-            finish = min(start+2.,departure)
-            intervals = [(float(start),finish)]
-            low,high = .35*taper,.65*taper
-            intervals = [(a,min(b,low)) for a,b in intervals if a < low]+[(max(a,high),b) for a,b in intervals if b > high]
-            for a,b in intervals:
-                if b-a > .05:
-                    result += _stripe(ramp,(a,SEPARATOR_V),(b,SEPARATOR_V))
-        # The measured native white edge is |v|=4.5 m. Open that edge
-        # smoothly to the auxiliary lane's outer edge, rather than jumping
-        # sideways at the external native seam.
-        previous = (0.,4.5)
-        for index in range(1,int(taper*2)+1):
-            s = index/2.
-            t = s/taper
-            smooth = t*t*t*(10.+t*(-15.+6.*t))
-            current = (s,4.5+2.5*smooth)
-            result += _stripe(ramp,previous,current,.10)
-            previous = current
-        result += _stripe(ramp,(taper,7.),(departure,7.),.10)
-        base_end = 4.5
-        far = max(base_end+.2,data['join_v']-1.5)
-        result += _stripe(ramp,(departure,SEPARATOR_V),(end,base_end),.10)
-        result += _stripe(ramp,(departure,SEPARATOR_V),(end,far),.10)
-        # Keep hatch ends inside the two gore boundaries.
-        for offset in (1.5,3.,4.5):
-            s = departure+offset
-            if s >= end-.25:
-                continue
-            fraction = (s-departure)/(end-departure)
-            low = SEPARATOR_V+(base_end-SEPARATOR_V)*fraction
-            high = SEPARATOR_V+(far-SEPARATOR_V)*fraction
-            if high-low > .25:
-                result += _stripe(ramp,(s-.15,low+.1),(s+.15,high-.1),.10)
+        layout = marking_layout(ramp)
+        for first,last in layout['dashes']+layout['hatches']:
+            result += _stripe(ramp,first,last)
+        result += _stripe_path(ramp,layout['outer_edge'],maximum_q=8.)
+        result += _stripe_path(ramp,layout['gore_outline'],maximum_q=8.)
     return result

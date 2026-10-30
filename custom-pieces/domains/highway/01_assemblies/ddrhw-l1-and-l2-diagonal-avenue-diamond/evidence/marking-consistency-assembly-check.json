@@ -1,0 +1,2196 @@
+{
+  "schema_version": 1,
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "saved_resource_checks_passed": true,
+  "saved_path_and_construction_checks_passed": true,
+  "assembly_orientation_checked_ccw_degrees": 0,
+  "construction": {
+    "unique_owned_cells": 53,
+    "bounding_rectangle_tiles": [
+      10,
+      10
+    ],
+    "placements": 15,
+    "distinct_component_types": 13,
+    "physical_projection_is_separate": true
+  },
+  "paths": {
+    "passed": true,
+    "route_fragments": 172,
+    "matched_directed_lane_seams": 164,
+    "inter_component_directed_lane_seams": 70,
+    "external_native_channels": 20,
+    "pedestrian_external_channels": 4,
+    "native_through_lane_and_sidewalk_journeys": 10,
+    "required_arm_movements": 8,
+    "highway_avenue_transfers": 4,
+    "through_arm_movements": 4,
+    "forbidden_avenue_crossing_movements": 4,
+    "no_avenue_crossing_transfers": true,
+    "grade_ceiling_percent": 30.0,
+    "maximum_saved_car_grade_percent": 29.609599494824746,
+    "reachable_arm_pairs": [
+      [
+        "AVE_NW",
+        "AVE_SE"
+      ],
+      [
+        "AVE_NW",
+        "HW_SW"
+      ],
+      [
+        "AVE_SE",
+        "AVE_NW"
+      ],
+      [
+        "AVE_SE",
+        "HW_NE"
+      ],
+      [
+        "HW_NE",
+        "AVE_NW"
+      ],
+      [
+        "HW_NE",
+        "HW_SW"
+      ],
+      [
+        "HW_SW",
+        "AVE_SE"
+      ],
+      [
+        "HW_SW",
+        "HW_NE"
+      ]
+    ],
+    "movement_witnesses": [
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          24,
+          27,
+          52,
+          57,
+          81,
+          88,
+          108,
+          111,
+          133,
+          136
+        ]
+      },
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          25,
+          30,
+          56,
+          31,
+          32,
+          33,
+          38,
+          10,
+          15,
+          19,
+          2,
+          8
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          151,
+          132,
+          126,
+          107,
+          102,
+          80,
+          71,
+          51,
+          44,
+          23
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          152,
+          131,
+          129,
+          125,
+          150,
+          149,
+          166,
+          165,
+          164,
+          159,
+          171
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          170,
+          157,
+          163,
+          144,
+          115,
+          120,
+          93,
+          70,
+          47,
+          55,
+          48,
+          22
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          169,
+          158,
+          162,
+          143,
+          147,
+          119,
+          123,
+          97,
+          100,
+          77,
+          86,
+          63,
+          66,
+          37,
+          41,
+          14,
+          18,
+          3,
+          7
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          9,
+          4,
+          20,
+          43,
+          69,
+          68,
+          92,
+          91,
+          114,
+          134,
+          137
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          5,
+          0,
+          16,
+          11,
+          39,
+          34,
+          64,
+          60,
+          84,
+          74,
+          98,
+          94,
+          121,
+          116,
+          145,
+          140,
+          160,
+          155,
+          167
+        ]
+      }
+    ],
+    "all_cross_deck_journeys_require_intentional_ground_junctions": true,
+    "auxiliary_lanes": {
+      "passed": true,
+      "verified_ramps": 4,
+      "ramps": [
+        {
+          "ramp_id": "lower-off",
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            170,
+            157,
+            163,
+            144,
+            115,
+            120,
+            93,
+            70,
+            47,
+            55,
+            48,
+            22
+          ],
+          "deck_height_m": 7.5,
+          "native_lane_abs_v_m": 2.262741699796952,
+          "auxiliary_lane_abs_v_m": 5.5,
+          "flat_taper_axis_length_m": 12.0,
+          "contiguous_parallel_axis_length_m": 3.9999999996302833,
+          "maximum_saved_lateral_taper_slope": 0.5056752701479948,
+          "retained_native_through_lanes_beside_auxiliary": 2
+        },
+        {
+          "ramp_id": "lower-on",
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            25,
+            30,
+            56,
+            31,
+            32,
+            33,
+            38,
+            10,
+            15,
+            19,
+            2,
+            8
+          ],
+          "deck_height_m": 7.5,
+          "native_lane_abs_v_m": 2.262741699796952,
+          "auxiliary_lane_abs_v_m": 5.5,
+          "flat_taper_axis_length_m": 12.0,
+          "contiguous_parallel_axis_length_m": 3.9999999996302833,
+          "maximum_saved_lateral_taper_slope": 0.5056752701479948,
+          "retained_native_through_lanes_beside_auxiliary": 2
+        },
+        {
+          "ramp_id": "upper-off",
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            9,
+            4,
+            20,
+            43,
+            69,
+            68,
+            92,
+            91,
+            114,
+            134,
+            137
+          ],
+          "deck_height_m": 15.0,
+          "native_lane_abs_v_m": 2.262741699796952,
+          "auxiliary_lane_abs_v_m": 5.5,
+          "flat_taper_axis_length_m": 16.0,
+          "contiguous_parallel_axis_length_m": 7.999999999978456,
+          "maximum_saved_lateral_taper_slope": 0.37930447223269714,
+          "retained_native_through_lanes_beside_auxiliary": 2
+        },
+        {
+          "ramp_id": "upper-on",
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            152,
+            131,
+            129,
+            125,
+            150,
+            149,
+            166,
+            165,
+            164,
+            159,
+            171
+          ],
+          "deck_height_m": 15.0,
+          "native_lane_abs_v_m": 2.262741699796952,
+          "auxiliary_lane_abs_v_m": 5.5,
+          "flat_taper_axis_length_m": 16.0,
+          "contiguous_parallel_axis_length_m": 7.999999999978456,
+          "maximum_saved_lateral_taper_slope": 0.37930447223269714,
+          "retained_native_through_lanes_beside_auxiliary": 2
+        }
+      ],
+      "scope": "Decoded saved PATH transfer witnesses, flat progressive lane changes, contiguous parallel auxiliary lanes, and both unchanged native through spines beside each parallel section."
+    },
+    "external_ports": [
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          -8.0,
+          -147.2,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          -8.0,
+          -140.8,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          -8.0,
+          -147.2,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          -8.0,
+          -140.8,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 2,
+        "direction": "out",
+        "point": [
+          39.3,
+          -24.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          35.2,
+          -24.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          28.8,
+          -24.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          24.0,
+          -28.8,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          24.0,
+          -35.2,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 2,
+        "direction": "in",
+        "point": [
+          24.0,
+          -39.3,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          104.0,
+          -108.8,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          104.0,
+          -115.2,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 2,
+        "direction": "out",
+        "point": [
+          104.0,
+          -119.3,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          108.8,
+          -104.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          115.2,
+          -104.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 2,
+        "direction": "in",
+        "point": [
+          119.3,
+          -104.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          147.2,
+          8.0,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          140.8,
+          8.0,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          147.2,
+          8.0,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          140.8,
+          8.0,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      }
+    ]
+  },
+  "model_seams": {
+    "passed": true,
+    "car_lane_collar_samples": 320,
+    "collar_half_width_m": 1.25,
+    "surface_height_tolerance_m": 0.04,
+    "longitudinal_grade_difference_tolerance": 0.015,
+    "maximum_sampled_height_difference_m": 0.001229031872274522,
+    "maximum_sampled_longitudinal_grade_difference": 5.316471242966525e-06,
+    "physical_projection_cells": [
+      [
+        -1,
+        8
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        -1
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "native_overhang_cells_beyond_construction": [
+      [
+        -1,
+        8
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        -1
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "actual_saved_model_bounds_east_north_height_m": [
+      [
+        -9.656854629516602,
+        153.6568546295166
+      ],
+      [
+        -153.6568546295166,
+        9.656854629516602
+      ],
+      [
+        0.0,
+        16.390625
+      ]
+    ],
+    "scope": "Car-lane pavement collars at inter-component joins; full barriers, supports, texture alpha, and game rendering remain separate."
+  },
+  "supports": {
+    "passed": true,
+    "actual_columns": 6,
+    "actual_vertical_triangles": 48,
+    "column_width_m": 0.8,
+    "height_interval_m": [
+      0.0,
+      15.0
+    ],
+    "actual_deck_contact_corner_samples": 48,
+    "deck_contact_samples": [
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -128.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -127.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -128.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -127.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -128.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -127.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -128.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -127.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      }
+    ],
+    "car_segments_checked_against_columns": 10560,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "minimum_conservative_planar_clearance_m": 1.578427124746185,
+    "column_cells": [
+      [
+        0,
+        8
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "saved_model_instances": [
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "piece_id": "ddrhw-diagonal-upper-exit-branch",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f593014"
+        ]
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-b",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f598004"
+        ]
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-b",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f598004"
+        ]
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "piece_id": "ddrhw-diagonal-upper-entry-branch",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f594104"
+        ]
+      }
+    ],
+    "scope": "Saved vertical faces, indexed road-plane contacts, and conservative saved-PATH car corridors; structural load capacity and in-game collision behaviour are unverified."
+  },
+  "barrier_mouths": {
+    "passed": true,
+    "ramp_mouths_checked": 4,
+    "barriers_per_mouth": 2,
+    "profile_bands_per_barrier": 5,
+    "sections_per_profile_band": 4,
+    "continuous_profile_sections_checked": 640,
+    "proper_rotations_checked": 4,
+    "rotations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "continuous_profile_sections_checked": 160
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "continuous_profile_sections_checked": 160
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "continuous_profile_sections_checked": 160
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "continuous_profile_sections_checked": 160
+      }
+    ],
+    "reference_sampling_guard_m": 0.003,
+    "plane_tolerance_m": 0.001,
+    "outward_winding_checked": true,
+    "game_rendering_tested": false,
+    "coverage_limit": "Continuous indexed-triangle coverage of 160 independent barrier-joint cross-sections in each proper rotation; this is not all-model manifold closure, every possible intervening surface point, or an in-game observation."
+  },
+  "shoulder_uvs": {
+    "passed": true,
+    "surrounding_native_uv_polygons_checked": 150,
+    "maximum_native_u_error": 3.9348099956093563e-07,
+    "erased_edge_samples_checked": 12,
+    "ramp_mouths_checked": 4,
+    "erase_band_m": [
+      4.3125,
+      4.8125
+    ],
+    "shoulder_window_m": [
+      3.9,
+      7.15
+    ],
+    "game_rendering_tested": false,
+    "coverage_limit": "Affine native U in the 3.9\u20137.15 m shoulder window outside the half-metre band, plus three erased-line samples per mouth; V preservation is a separate before/after audit, and game appearance is unverified."
+  },
+  "markings": {
+    "passed": true,
+    "ramp_mouths_checked": 4,
+    "perpendicular_width_sections_checked": 76,
+    "native_white_core_width_m": 0.25,
+    "width_tolerance_m": 0.001,
+    "reviewed_centre_tolerance_m": 0.003,
+    "hatches_checked": 12,
+    "hatch_angle_tolerance_degrees": 0.5,
+    "nose_and_handoff_points_checked": 44,
+    "point_position_tolerance_m": 2e-05,
+    "sections": [
+      {
+        "mouth": "lower-off",
+        "kind": "dash",
+        "width_m": 0.2500000800151291
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "taper",
+        "width_m": 0.25000034753495504
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "parallel",
+        "width_m": 0.25000001693321783
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "gore-mainline",
+        "width_m": 0.2499999325011597
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "gore-rail",
+        "width_m": 0.24999991074961397
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "gore-rail",
+        "width_m": 0.2500014272880565
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "gore-rail",
+        "width_m": 0.2499996381030915
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "outer-connector",
+        "width_m": 0.2500007237074352
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "outer-connector",
+        "width_m": 0.25000031081908447
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "outer-connector",
+        "width_m": 0.25000177843526417
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "inner-connector",
+        "width_m": 0.25000016242319184
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "inner-connector",
+        "width_m": 0.2499997285285429
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "inner-connector",
+        "width_m": 0.2500001754162622
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "hatch",
+        "width_m": 0.25000000000000094
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "hatch",
+        "width_m": 0.2500000000000012
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "hatch",
+        "width_m": 0.25000000000000105
+      },
+      {
+        "mouth": "lower-off",
+        "kind": "hatch",
+        "width_m": 0.25000000000000117
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "dash",
+        "width_m": 0.2500000800151291
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "taper",
+        "width_m": 0.25000034753495504
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "parallel",
+        "width_m": 0.24999997471694044
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "gore-mainline",
+        "width_m": 0.2499999325011597
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "gore-rail",
+        "width_m": 0.24999991074961395
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "gore-rail",
+        "width_m": 0.2500014272880564
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "gore-rail",
+        "width_m": 0.24999963810309148
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "outer-connector",
+        "width_m": 0.25000054691662676
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "outer-connector",
+        "width_m": 0.25000024320432995
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "outer-connector",
+        "width_m": 0.2500019415487986
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "inner-connector",
+        "width_m": 0.25000016240351
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "inner-connector",
+        "width_m": 0.25000030420903163
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "inner-connector",
+        "width_m": 0.25000011915429865
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "hatch",
+        "width_m": 0.2500000000000009
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "hatch",
+        "width_m": 0.25000000000000117
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "hatch",
+        "width_m": 0.2500000000000009
+      },
+      {
+        "mouth": "lower-on",
+        "kind": "hatch",
+        "width_m": 0.2500000000000011
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "dash",
+        "width_m": 0.2499998482074554
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "taper",
+        "width_m": 0.2500000634035272
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "parallel",
+        "width_m": 0.2499999325011597
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "gore-mainline",
+        "width_m": 0.25000000959466084
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "gore-rail",
+        "width_m": 0.2499999851401885
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "gore-rail",
+        "width_m": 0.25000000571399655
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "gore-rail",
+        "width_m": 0.250000002934095
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "outer-connector",
+        "width_m": 0.25000044188004766
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "outer-connector",
+        "width_m": 0.2500005609466265
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "outer-connector",
+        "width_m": 0.2500005366921875
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "inner-connector",
+        "width_m": 0.24999994022709607
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "inner-connector",
+        "width_m": 0.25000004408464044
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "inner-connector",
+        "width_m": 0.2500000076111725
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.2499999962747083
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.24999999627470837
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.24999994039535406
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.24999994039535428
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.24999999999999767
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.2499999999999944
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.2500000000000006
+      },
+      {
+        "mouth": "upper-off",
+        "kind": "hatch",
+        "width_m": 0.2500000000000008
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "dash",
+        "width_m": 0.2499998482074554
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "taper",
+        "width_m": 0.2500000634035272
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "parallel",
+        "width_m": 0.2499999325011597
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "gore-mainline",
+        "width_m": 0.25000000959466084
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "gore-rail",
+        "width_m": 0.2499999851401885
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "gore-rail",
+        "width_m": 0.2500000057139966
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "gore-rail",
+        "width_m": 0.2500000029340951
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "outer-connector",
+        "width_m": 0.2500005046378145
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "outer-connector",
+        "width_m": 0.2500004877101344
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "outer-connector",
+        "width_m": 0.2499999746110326
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "inner-connector",
+        "width_m": 0.2499999670160304
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "inner-connector",
+        "width_m": 0.25000007506598626
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "inner-connector",
+        "width_m": 0.2500001959515634
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.24999999627470837
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.24999999627470837
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.24999994039535406
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.2499999403953543
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.24999999999999767
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.24999999999999442
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.2500000000000008
+      },
+      {
+        "mouth": "upper-on",
+        "kind": "hatch",
+        "width_m": 0.2500000000000008
+      }
+    ],
+    "hatches": [
+      {
+        "mouth": "lower-off",
+        "hatch": 0,
+        "angle_degrees": -45.000000000000114
+      },
+      {
+        "mouth": "lower-off",
+        "hatch": 1,
+        "angle_degrees": -44.999999999999915
+      },
+      {
+        "mouth": "lower-on",
+        "hatch": 0,
+        "angle_degrees": -45.000000000000114
+      },
+      {
+        "mouth": "lower-on",
+        "hatch": 1,
+        "angle_degrees": -45.0
+      },
+      {
+        "mouth": "upper-off",
+        "hatch": 0,
+        "angle_degrees": -45.00000000000017
+      },
+      {
+        "mouth": "upper-off",
+        "hatch": 1,
+        "angle_degrees": -45.00000000000048
+      },
+      {
+        "mouth": "upper-off",
+        "hatch": 2,
+        "angle_degrees": -45.000000000000256
+      },
+      {
+        "mouth": "upper-off",
+        "hatch": 3,
+        "angle_degrees": -45.00000000000037
+      },
+      {
+        "mouth": "upper-on",
+        "hatch": 0,
+        "angle_degrees": -45.00000000000017
+      },
+      {
+        "mouth": "upper-on",
+        "hatch": 1,
+        "angle_degrees": -45.00000000000048
+      },
+      {
+        "mouth": "upper-on",
+        "hatch": 2,
+        "angle_degrees": -45.0000000000002
+      },
+      {
+        "mouth": "upper-on",
+        "hatch": 3,
+        "angle_degrees": -44.9999999999998
+      }
+    ],
+    "game_rendering_tested": false,
+    "coverage_limit": "Bounded saved triangle-union widths, reviewed gore/mainline centres, hatch angles, acute noses, and near-seam point continuity at four mouths; this does not certify every stroke point, full polygon/barrier clearance, native filtered fringes, or game appearance."
+  },
+  "game_operation": "unverified",
+  "limits": [
+    "Arm reachability does not establish every possible lane-to-lane transfer or game lane choice.",
+    "Pavement seam samples do not certify complete barrier profiles, complete collision envelopes, or texture-alpha coverage.",
+    "Ground junction priority and traffic conflicts, construction overrides, shadows, bulldozing, and save/reload require separate game observations."
+  ],
+  "source": {
+    "manifest_sha256": "1b1a0da2800ce5498162b2b8470933cd719e2e104522ccb9565a66f29739311d",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat": "1f101a3f39c5055f4c0bc698b759d7b3cc0198a6b26b5a9795954f45480d9d96",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "8f58561a709a6a1c9cafed83b3ad73183161847895bf0333610edcdcb5db4c82",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "fa982499b932ac6c0afb3f84510e4b7f311e6b20178e9f548787951f53ebc785",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat": "671bd61a6d75884222b19ac5be690a521d3438e35c2630dcec86bdcb2af58e0f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat": "7aca76f04a8f285e1cb7998241f60ec30e1b8aac4af2884af09cb9694884461a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "3c14374e37f04d667c521fd921682d2fa74dd7c593c06b8f5b6bf665186fbf2f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "3a7dc123cae4674f80de8e5ae2b44b135708234787c4486b54f9e7980246fd21",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat": "bf50ddce1df270e1929027c691523176af6ccd384c2cc0f898813703dae91dd1",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat": "83cff09523460b2da8862a01c010b11d2e8500d143112efd50b8263666665e67",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "fff121a7e3fce0365e1f2a86342e655bdccc9274291026034e48cf35eb2fd46e",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "8072f3f0755552d50fcaeb252f4e837f2a8f3d6d4ac27202a409566acdb626c1",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-a.dat": "164579baa793962e738a500550dae7dc98580bef9be7dc2afbc5ff1c046aec6e",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-b.dat": "05bdb5392335337c2ca88044f6af237b3106d8fa73ea0664d1a6c6a251c5e174"
+    },
+    "actual_saved_dat_resources": true,
+    "scene_sha256": "2005b131256e1711f66b4b02ea7c51391163e2fa925d5768cb770b04c7d9af24"
+  }
+}
