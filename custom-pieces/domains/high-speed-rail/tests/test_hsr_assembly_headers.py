@@ -92,7 +92,8 @@ class AssemblyImageHeaderTests(unittest.TestCase):
             {'id': 'fixture', 'piece_id': 'fixture', 'label': 'P01',
              'menu_name': 'Highway fixture component', 'origin_m': [0., 0.],
              'rotation_ccw_degrees': 0., 'display_origin_tiles_en': [0., 0.],
-             'label_anchor_world_m': [0., 0., 15.5], 'occupied_world_cells': [[0., 0.]]}]}
+             'label_anchor_world_m': [0., 0., 15.5],
+             'occupied_world_cells': [[-16., -16.], [0., 0.], [16., 16.]]}]}
         with tempfile.TemporaryDirectory() as temporary, \
                 patch.object(renderer, 'TextureLibrary') as library, \
                 patch.object(renderer, '_caption', wraps=renderer._caption) as caption, \
@@ -102,7 +103,7 @@ class AssemblyImageHeaderTests(unittest.TestCase):
             report = renderer.render_assembly(model, Path(temporary), Path(temporary)/'images',
                 provenance=provenance, width=2000, height=1400, prefix='fixture',
                 owned_texture_resources=owned, source_caption=source,
-                height_caption=heights, footer_caption=footer)
+                height_caption=heights, footer_caption=footer, minimum_display_index=0)
         library.return_value.for_model.assert_called_once_with(model, owned_resources=owned)
         rows = [call.args[1] for call in caption.call_args_list]
         self.assertEqual(rows.count(source), 5)
@@ -112,6 +113,12 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertEqual(report['renderer']['presentation_captions'], {
             'source': source, 'height': heights, 'model_footer': footer})
         self.assertEqual(len(report['images']), 6)
+        for image in report['images']:
+            labels = image['grid']['tile_labels']
+            self.assertTrue(labels)
+            self.assertTrue(all(label['tile_index'] >= 0 for label in labels))
+            self.assertEqual(image['grid']['display_coordinate_basis']['minimum_display_index'], 0)
+            self.assertEqual(image['grid']['bounds_world_m'], [-24., -24., 24., 24.])
         palettes = [image['piece_labels']['palette'] for image in report['images']
                     if image.get('piece_labels')]
         self.assertTrue(all(palette == report['colour_assignment']['palette'] for palette in palettes))

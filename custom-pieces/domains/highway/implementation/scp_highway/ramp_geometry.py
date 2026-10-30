@@ -286,7 +286,9 @@ def pack_road_model(triangles, texture_id, *, material_template=None, model_temp
     if native_painter is None:
         groups["legacy"] = list(triangles)
     else:
+        from .slip_lanes import canonical_seam_vertex
         for triangle in native_painter.texture_triangles(triangles):
+            triangle = tuple(canonical_seam_vertex(point,cell) for point in triangle)
             painted = native_painter.paint(triangle, cell)
             if painted is not None:
                 role, face = painted
@@ -453,7 +455,8 @@ def compact_ramps(count=401):
                                                   highway_coordinates((*point, 0.0))[1])[:2])
                           for point in reversed(ramp["controls"])]
         result.append(on)
-    return result
+    from .slip_lanes import apply
+    return [apply(ramp) for ramp in result]
 
 
 def outside_highway_corridor(triangles, side, half_width=8.0):
@@ -473,7 +476,7 @@ def outside_highway_corridor(triangles, side, half_width=8.0):
 
 def compact_ramp_triangles(ramp):
     """Return native-thickness physical ramp faces outside the mainline."""
-    faces = road_triangles(ramp["points"], width=6.0, thickness=1.0, barrier_width=0.828125,
+    faces = road_triangles(ramp.get("mesh_points", ramp["points"]), width=6.0, thickness=1.0, barrier_width=0.828125,
                            barrier_profile=NATIVE_BARRIER_PROFILE, barrier_height=1.390625)
     return outside_highway_corridor(faces, ramp["side"])
 
@@ -533,7 +536,7 @@ def _subtract_convex(polygon, footprint):
 
 
 def _branch_footprints(ramp):
-    points = ramp["points"]
+    points = ramp.get("mesh_points", ramp["points"])
     _lengths, normals = route_frames(points)
     half = ramp.get("width_m", 6.0) / 2.0
     output = []
@@ -625,12 +628,18 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
     """Cut real native barrier/outer-wall openings and retain every material.
 
     ``raw`` is the native tile S3D in local model coordinates. ``cell`` and
-    ramp points use the same world construction grid. Native roadway tops,
-    the opposing barrier, the other deck, supports, UVs, and texture IDs are
-    retained. Only faces inside the actual branch service footprint and at
-    the target deck's right-side barrier/outer wall are subtracted.
+    ramp points use the same world construction grid. Native shoulder tops
+    receive unmarked native UVs, and the served deck-edge seam receives a
+    micrometre-scale binary encoding repair. The opposing barrier, the other
+    deck, supports, materials, and texture IDs are retained. Only faces inside
+    the actual branch service footprint and at the target deck's right-side
+    barrier/outer wall are subtracted.
     """
+    from .slip_lanes import (repaint_native_shoulder, native_shoulder_cuts,
+                             native_seam_services, canonical_native_seam_vertex)
     source = parse_s3d(raw)
+    shoulder_cuts = native_shoulder_cuts(cell,ramps)
+    seam_services = native_seam_services(ramps)
     _require(struct.unpack_from("<H", source["anim_header"])[0] == 1,
              "Native branch opening requires a static native S3D")
     candidates = [(ramp, _branch_footprints(ramp)) for ramp in ramps]
@@ -680,7 +689,15 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
                     pieces = remaining
                     if not pieces:
                         break
+            pieces = [fragment for polygon in pieces
+                      for fragment in repaint_native_shoulder(polygon, shoulder_cuts)]
             fragments = [triangle for polygon in pieces for triangle in _triangulate(polygon)]
+            fragments = [tuple((local[0]+16.*cell[0],local[1],local[2]+16.*cell[1],*local[3:])
+                               for point in triangle
+                               for local in (canonical_native_seam_vertex(
+                                   (point[0]-16.*cell[0],point[1],point[2]-16.*cell[1],*point[3:]),
+                                   cell,seam_services),))
+                         for triangle in fragments]
             before_bytes = b"".join(struct.pack("<5f", *p) for p in world)
             after_bytes = b"".join(struct.pack("<5f", *p) for part in fragments for p in part)
             if before_bytes != after_bytes:

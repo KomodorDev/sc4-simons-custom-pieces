@@ -14,14 +14,14 @@ from scp import jsonc
 from scp.connectivity import piece_connectivity, assembly_connectivity
 from scp.models import pack_s3d
 from scp.test_support import plane
-from scp.verify import PATH, S3D
+from scp.verify import PATH, S3D, parse_paths
 from scp_highway import assembly_verify as audit, ramp_paths, ramp_geometry
 from scp_highway.connections import service_classifier
 
 ASSEMBLY = ROOT / 'domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc'
 
 
-def saved_path_fixture(include_transfers=True, *, include_forbidden_transfer=False):
+def saved_path_fixture(include_transfers=True, *, include_forbidden_transfer=False, transfer_transform=None):
     scene = jsonc.load(ASSEMBLY)
     pieces = {placement['piece_id']: jsonc.load(ROOT / 'domains/highway/00_pieces' / placement['piece_id'] / 'piece.jsonc')
               for placement in scene['placements']}
@@ -37,7 +37,11 @@ def saved_path_fixture(include_transfers=True, *, include_forbidden_transfer=Fal
         lines.append({'id': 'avenue-nw', 'transport': transport, 'points': [ramp_geometry.world_coordinates(u, -200.), ramp_geometry.world_coordinates(u, 200.)]})
         lines.append({'id': 'avenue-se', 'transport': transport, 'points': [ramp_geometry.world_coordinates(-u, 200.), ramp_geometry.world_coordinates(-u, -200.)]})
     if include_transfers:
-        lines.extend(ramp_paths.compact_access_routes())
+        transfers = ramp_paths.compact_access_routes()
+        if transfer_transform is not None:
+            transfers = deepcopy(transfers)
+            transfer_transform(transfers)
+        lines.extend(transfers)
     if include_forbidden_transfer:
         # Deliberately restore one former left turn across both Avenue
         # carriageways, using actual native endpoint lanes.
@@ -75,6 +79,16 @@ def saved_path_fixture(include_transfers=True, *, include_forbidden_transfer=Fal
     return pieces, scene, owners, resources
 
 
+def encoded_fixture_paths(routes):
+    """Write mutated test PATHs without borrowing a traffic generator."""
+    lines = ['SC4PATHS', '1.2', str(len(routes)), '0', '0']
+    for route in routes:
+        lines.extend(str(route[key]) for key in ('transport', 'lane', 'entry', 'exit', 'compatibility'))
+        lines.append(str(len(route['points'])))
+        lines.extend(','.join(format(value, '.12g') for value in point) for point in route['points'])
+    return ('\r\n'.join(lines) + '\r\n').encode('ascii')
+
+
 class CompactAssemblyVerifierTests(unittest.TestCase):
     def test_evidence_output_cannot_mutate_verified_build_file_closure(self):
         with TemporaryDirectory() as directory:
@@ -105,6 +119,16 @@ class CompactAssemblyVerifierTests(unittest.TestCase):
         self.assertEqual(report['grade_ceiling_percent'], 30.0)
         self.assertLess(report['maximum_saved_car_grade_percent'], 30.0)
         self.assertTrue(report['all_cross_deck_journeys_require_intentional_ground_junctions'])
+        auxiliary = report['auxiliary_lanes']
+        self.assertTrue(auxiliary['passed'])
+        self.assertEqual(auxiliary['verified_ramps'], 4)
+        for ramp in auxiliary['ramps']:
+            expected_parallel = 4. if ramp['ramp_id'].startswith('lower') else 8.
+            expected_taper = 12. if ramp['ramp_id'].startswith('lower') else 16.
+            self.assertEqual(ramp['auxiliary_lane_abs_v_m'], 5.5)
+            self.assertAlmostEqual(ramp['contiguous_parallel_axis_length_m'], expected_parallel, places=6)
+            self.assertEqual(ramp['flat_taper_axis_length_m'], expected_taper)
+            self.assertEqual(ramp['retained_native_through_lanes_beside_auxiliary'], 2)
         self.assertTrue(seams)
         assembly_report = audit.verify_assembly_resources({'pieces': list(pieces.values())}, scene, resources, inspect_models=False)
         self.assertEqual(assembly_report['construction']['bounding_rectangle_tiles'], [10, 10])
@@ -189,6 +213,114 @@ class CompactAssemblyVerifierTests(unittest.TestCase):
                                   (71., -68.2, 11.), (70.2, -69., 7.5), (67.2, -72., 7.5)]})
         with self.assertRaisesRegex(ValueError, 'deck transfer that bypasses'):
             audit.check_saved_routes(routes, owners)
+
+    def test_saved_auxiliary_lane_displacement_fails_with_native_ports_and_tangents_retained(self):
+        # Change actual saved interior samples only. Tile-edge endpoints and
+        # their finite joining chords stay unchanged, so this targets the
+        # independent auxiliary-lane measurement rather than seam detection.
+        for ramp_id in ('lower-off', 'lower-on', 'upper-off', 'upper-on'):
+            with self.subTest(ramp_id=ramp_id):
+                pieces, scene, owners, resources = saved_path_fixture()
+                upper, on = ramp_id.startswith('upper'), ramp_id.endswith('-on')
+                side, direction = (-1, 1) if upper else (1, -1)
+                height = 15. if upper else 7.5
+                root = math.sqrt(2.)
+                original_u = (-72. - 83.2) / root if upper else (56. + 51.2) / root
+                start, finish = (16., 24.) if upper else (12., 16.)
+                changed = 0
+                for cell, owner in owners.items():
+                    key = (*PATH, owner['tile'])
+                    parsed = parse_paths(resources[owner['piece_id']][key])
+                    for route in parsed['routes']:
+                        if route['transport'] != 1:
+                            continue
+                        for index in range(2, len(route['points']) - 2):
+                            point = route['points'][index]
+                            x, y, z = audit._pose((point[0] + 16 * owner['local_cell'][0],
+                                                  point[1] - 16 * owner['local_cell'][1], point[2]),
+                                                 owner['angle'], owner['origin'])
+                            u, lateral = (x + y) / root, side * (y - x + 136.) / root
+                            progress = direction * ((-u if on else u) - original_u)
+                            if (abs(z - height) < 1e-6 and abs(lateral - 5.5) < 1e-6
+                                    and start - 1e-6 <= progress <= finish + 1e-6
+                                    and max(abs(point[0]), abs(point[1])) < 7.5):
+                                # The assembly uses proper zero-degree poses;
+                                # shifting v by 0.25 m preserves height and u.
+                                self.assertEqual(owner['angle'], 0)
+                                route['points'][index] = (point[0] - side * .25 / root,
+                                                          point[1] + side * .25 / root, point[2])
+                                changed += 1
+                    if changed:
+                        resources[owner['piece_id']][key] = encoded_fixture_paths(parsed['routes'])
+                self.assertGreater(changed, 0, 'Fixture did not contain the intended saved auxiliary lane')
+                with self.assertRaisesRegex(ValueError, 'auxiliary'):
+                    audit.check_saved_routes(audit.decode_placed_routes(owners, resources), owners)
+
+    def test_shortcut_skipping_parallel_lane_fails_after_real_path_encoding(self):
+        # Retain the exact native port and its 1 cm joining chord, but replace
+        # the taper-plus-parallel prefix with one direct sloping-in-plan line.
+        # Valid native through lanes, flat heights, and ground turns remain.
+        for ramp_id in ('lower-off', 'lower-on', 'upper-off', 'upper-on'):
+            with self.subTest(ramp_id=ramp_id):
+                def skip_auxiliary(transfers):
+                    transfer = next(route for route in transfers if route['ramp_id'] == ramp_id)
+                    on, upper = ramp_id.endswith('-on'), ramp_id.startswith('upper')
+                    points = list(reversed(transfer['points'])) if on else transfer['points']
+                    direction = 1 if upper else -1
+                    root = math.sqrt(2.)
+                    original_u = (-72. - 83.2) / root if upper else (56. + 51.2) / root
+                    end = 24. if upper else 16.
+                    candidates = []
+                    for index, point in enumerate(points):
+                        u = sum(point[:2]) / root
+                        progress = direction * ((-u if on else u) - original_u)
+                        if progress <= end + 1e-6:
+                            candidates.append(index)
+                    stop = max(candidates)
+                    self.assertGreater(stop, 3)
+                    points = points[:2] + points[stop:]
+                    transfer['points'] = list(reversed(points)) if on else points
+
+                pieces, scene, owners, resources = saved_path_fixture(transfer_transform=skip_auxiliary)
+                with self.assertRaisesRegex(ValueError, 'auxiliary'):
+                    audit.check_saved_routes(audit.decode_placed_routes(owners, resources), owners)
+
+    def test_auxiliary_lane_cannot_replace_an_interior_native_through_spine(self):
+        pieces, scene, owners, resources = saved_path_fixture()
+        root = math.sqrt(2.)
+        changed = False
+        for cell, owner in owners.items():
+            key = (*PATH, owner['tile'])
+            parsed = parse_paths(resources[owner['piece_id']][key])
+            for route in parsed['routes']:
+                if route['transport'] != 1 or len(route['points']) != 2:
+                    continue
+                first, last = route['points']
+                endpoints = [audit._pose((point[0] + 16 * owner['local_cell'][0],
+                                          point[1] - 16 * owner['local_cell'][1], point[2]),
+                                         owner['angle'], owner['origin']) for point in (first, last)]
+                x, y, z = endpoints[0]
+                progression = [(56. + 51.2 - point[0] - point[1]) / root for point in endpoints]
+                lateral = (y - x + 136.) / root
+                if (abs(z - 7.5) < 1e-6 and abs(lateral + 3.2 / root) < 1e-6
+                        and min(progression) < 14 < max(progression)):
+                    # Preserve both real tile-edge samples and their original
+                    # first/last chords while introducing a small interior
+                    # detour. Port and arm reachability remain complete.
+                    fraction = (14. - progression[0]) / (progression[1] - progression[0])
+                    interior = [tuple(a + step * (b - a) for a, b in zip(first, last))
+                                for step in (fraction / 2., fraction, (1. + fraction) / 2.)]
+                    interior[1] = (interior[1][0] - .1 / root,
+                                   interior[1][1] + .1 / root, interior[1][2])
+                    route['points'] = [first, *interior, last]
+                    resources[owner['piece_id']][key] = encoded_fixture_paths(parsed['routes'])
+                    changed = True
+                    break
+            if changed:
+                break
+        self.assertTrue(changed, 'Fixture did not contain a native lane beside the lower auxiliary lane')
+        with self.assertRaisesRegex(ValueError, 'displaced an original native through lane'):
+            audit.check_saved_routes(audit.decode_placed_routes(owners, resources), owners)
 
     def test_surface_seam_support_uses_actual_triangles_and_rejects_missing_pavement(self):
         def pavement(height):

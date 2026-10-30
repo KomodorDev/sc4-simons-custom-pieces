@@ -125,7 +125,7 @@ def _arrow(draw, start, end, fill, width=2):
 
 
 def make_city_grid(camera, bounds_world_m, *, origin_world_m=(0., 0.), font=None, bold_font=None,
-                   scale_caption_visible=True):
+                   scale_caption_visible=True, minimum_display_index=None):
     """Return (RGB background, metadata) for this camera's true ground grid.
 
     Draw the compiled model onto this background with the same camera. All
@@ -136,11 +136,15 @@ def make_city_grid(camera, bounds_world_m, *, origin_world_m=(0., 0.), font=None
     An origin at the southwest tile centre makes the enclosed indices start
     at X0 and Y0 without displaying unnecessary plus signs. X increases east;
     Y increases north. The origin stays internal and has no extra artwork.
+    An optional minimum index omits lower labels while retaining the full
+    padded ground rectangle, its grid lines, and the unchanged projection.
     """
     west, south, east, north = bounds = _bounds(bounds_world_m)
     origin_e, origin_n = map(float, origin_world_m)
     if not all(math.isfinite(number) for number in (origin_e, origin_n)):
         raise ValueError('Grid origin must contain finite east and north metres')
+    if minimum_display_index is not None and type(minimum_display_index) is not int:
+        raise ValueError('Minimum displayed tile index must be an integer or None')
     font = font or ImageFont.load_default()
     bold_font = bold_font or font
     image = Image.new('RGB', (camera.width, camera.height), BACKGROUND)
@@ -168,6 +172,9 @@ def make_city_grid(camera, bounds_world_m, *, origin_world_m=(0., 0.), font=None
     mid_e, mid_n = (west + east) / 2, (south + north) / 2
     e_centres = _tile_centres(west, east, origin_e)
     n_centres = _tile_centres(south, north, origin_n)
+    if minimum_display_index is not None:
+        e_centres = [(index, coordinate) for index, coordinate in e_centres if index >= minimum_display_index]
+        n_centres = [(index, coordinate) for index, coordinate in n_centres if index >= minimum_display_index]
     for axis, centres in (('X', e_centres), ('Y', n_centres)):
         for index, coordinate in centres:
             world = (coordinate, south) if axis == 'X' else (west, coordinate)
@@ -218,4 +225,6 @@ def make_city_grid(camera, bounds_world_m, *, origin_world_m=(0., 0.), font=None
                     camera.project_world(origin_e, origin_n + 16) - projected_origin)),
                     'caption': '1 tile = 16 m', 'caption_visible': bool(scale_caption_visible)},
                 'camera': camera.metadata()}
+    if minimum_display_index is not None:
+        metadata['display_coordinate_basis']['minimum_display_index'] = minimum_display_index
     return image, metadata

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "purpose": "Saved-resource, material, support, artwork, and test evidence for longer ramps, deck-specific barrier openings, native NAM pavement, and right-turn-only avenue access. Historical results remain frozen under design-history/before-right-turn-extension/.",
+  "purpose": "Saved-resource, material, support, artwork, and test evidence for four functional shoulder slip lanes on the accepted compact right-turn assembly. Historical reports remain frozen under design-history/before-shoulder-slip-lanes/ and before-right-turn-extension/.",
   "branch": "codex/double-decker-diagonal-highway",
   "date": "2026-10-30",
   "actual_native_build": {
-    "command": "python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-right-turn-extended-v4",
-    "manifest_sha256": "f2ed76eabeda8a1c2f07530fac39dc3a7f306a0a3a1e9eff1163ec592d6aa2c6",
+    "command": "python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-shoulder-slip-lanes-v3",
+    "manifest_sha256": "aa35d7025d31caacc72701430ced873441df8a44a505eca08d8f6fb5f63c7321",
     "static_checks_passed": true,
     "piece_types": 13,
     "dat_files": 15,
@@ -37,80 +37,73 @@
     "asset_sha256": {
       "zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat": "e0450a31c68c081d26e7b6f843d5a8ba6933a23556f7b548a0b7a15dc58390d5",
       "zzz_Simons_Custom_Pieces/10_SCP_Menu.dat": "9df2869024b87e3762e91e00923eecc2377de03b1297401ca8beefbe8873425f",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat": "f38f027b1fe86c21e114a01e783837f8c48f81ce947b82e4d31f170a4db6c935",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat": "eb52334baa5a8689a148494133ed844cb2e28d6da4a62731dc57c6960fba028f",
       "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-a.dat": "164579baa793962e738a500550dae7dc98580bef9be7dc2afbc5ff1c046aec6e",
       "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-b.dat": "05bdb5392335337c2ca88044f6af237b3106d8fa73ea0664d1a6c6a251c5e174",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat": "0a229c7c7a0912a0a98eb4fc6b160cbabdbca87e229f096ff2318f02729e74ba",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat": "a828168f17bf49a6d95e1f2b3e139b379fbf966c8644ca64560675545941b6da",
       "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "c6e4807ce371a96a39c691421949eb40c0d1e202d419d5755351d28d77b9b2a9",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat": "2085c949c67189448148e5f8a6707df91abdcd995823970c6f3f6c9ce14f7e8a",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "19a983080417c87d8a6516b99ce9f35a26841fb9e720673647ef995f7a6040cf",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "bdd7f150739d4eb51685199992f8350d4475d5a4887d0381e59942a7fa33774b",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "5f74917809b0e5047d77c70596c8d8a0d024859b3d17741009fc378db18e6b7d",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat": "d9ff8e3fff55b9af810455ecda1bdebc272cc08147f370b540b357f98f4749e9",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat": "aad491cd0f4ce014b806aa41ff469f77a4e3b5ed075faff263338eedf50a9ef1",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "dd58581a512b4530e8d52fc0cc685dffad123a02afc322027ffb1868552457c4",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "0b094c48b8cde1c14536d4646f4085e9c1bed6e4c509633201c42b814ec799e0",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "ae90e87cbb97b8a10d197ae4d52ac9d15cf4ddd72f7bb52c6126c8bedddb2e75",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat": "3d0e9da032e6d1b890c0234a2a73c587e350c370116b8e8f21ac92cbfa360913",
       "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "215d1776be70bd62bb3bcf422ec6307f631875de127138eb5c143033b462efc9",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat": "8a7d8435d367a7c0d62d814d22f81d1dea51d43c21fd9cf527f0f63aba1f91eb",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "8a0b3b7b34f1a5c5c05c57206708ff71514a6bf7a21cf3e9c54d6d0435e638a6"
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat": "a73295117a8a1fa5415ca57c0d7d50ba589f5de0581200de817978cb0ebf0a0a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "2cd95f5b1fe3d24533f9248329b593bc18c5d4aa8409d58097ed946dc63c4957"
     }
   },
   "independent_assembly": {
     "report": "compiled-assembly-check.json",
-    "sha256": "6c8b913b68222fbe3faa2f324260f8c455ff8cf896069ae7a6b78890fc86d867",
+    "sha256": "26eb1e055c9e57d37ff61315b4e0cecce09ce1f4770d2f33cad21d540a98e784",
     "pier_report": "pier-contact-proof.json",
-    "pier_sha256": "ff92ca5c1e1108fe239822d41191ecbec8b3dff8a1748ec72568bf6e6879f276"
+    "pier_sha256": "9cdd48a72009d66be9d153428a8ea3e826c6f3757d8ec14097327c4af6f693cb"
   },
   "actual_native_highway_tests": {
     "command": "python3 -B custom-pieces/framework/scp/check_bootstrap.py custom-pieces discover -s custom-pieces/domains/highway/tests -v",
-    "tests": 97,
+    "tests": 105,
     "skipped": 0,
     "passed": true,
-    "scope": "Complete highway suite with the actual supported local NAM inputs."
+    "scope": "Complete highway suite with the actual supported local NAM inputs, including saved auxiliary-lane mutation checks and accepted outer-curve preservation."
   },
   "artwork": {
     "report": "compiled-render.json",
-    "sha256": "b449ccf99106fc4a009a829cc15e4f5200896a2bee675d66a44a79f2f0e91133",
+    "sha256": "b3962aec6942da1ebda94adca5820b0df39e486e247436b8107f1d2b1e09ec57",
     "canonical_assembly_views": 6,
     "piece_types_with_complete_angled_and_top_coverage": 13,
-    "visual_review": "Coding-agent visual inspection; not a human game observation.",
-    "assembly_menu_icon": {
-      "file": "icon.png",
-      "sha256": "f408d8bd9df2def0496d67f52d17e642b1ab840dc2fcfb18a4627503bc2cd6df",
-      "report": "evidence/icon.json",
-      "report_sha256": "2905bdcbaff88eea0a52cc939eb7edd57013632e8d7bf27d97ce45217f8da7b5",
-      "visual_review": "All four native-size menu states inspected after regeneration from the current routes and placements."
-    }
+    "visual_review": "Coding-agent visual inspection; not a human game observation."
   },
   "portable_tests": {
     "command": "python3 -B tools/run_tests.py",
     "source_scope": "Managed public-source checkout with private NAM settings removed; unavailable native-input tests report explicit skips.",
-    "tests": 1453,
+    "tests": 1462,
     "skipped": 82,
     "passed": true,
     "suites": [
       {
         "name": "framework",
-        "tests": 817,
-        "seconds": 128.356,
+        "tests": 818,
+        "seconds": 138.669,
         "skipped": 10,
         "passed": true
       },
       {
         "name": "high-speed-rail",
         "tests": 428,
-        "seconds": 97.967,
+        "seconds": 101.797,
         "skipped": 65,
         "passed": true
       },
       {
         "name": "highway",
-        "tests": 92,
-        "seconds": 14.335,
+        "tests": 100,
+        "seconds": 15.439,
         "skipped": 2,
         "passed": true
       },
       {
         "name": "trumpet assembly",
         "tests": 116,
-        "seconds": 24.227,
+        "seconds": 25.589,
         "skipped": 5,
         "passed": true
       }
@@ -131,21 +124,7 @@
     "current_layouts": 30,
     "retained_legacy_subjects": 152,
     "documents_checked": 88,
-    "local_links_checked": 8471,
+    "local_links_checked": 8472,
     "errors": []
-  },
-  "post_suite_checks": {
-    "scope": "After the full suite, refreshed the assembly menu icon and corrected the highway overview paragraph; implementation and DAT payloads are unchanged.",
-    "assembly_icon_tests": {
-      "tests": 8,
-      "skipped": 0,
-      "passed": true
-    },
-    "highway_assembly_menu_tests": {
-      "tests": 7,
-      "skipped": 0,
-      "passed": true
-    },
-    "complete_documentation_check_passed": true
   }
 }

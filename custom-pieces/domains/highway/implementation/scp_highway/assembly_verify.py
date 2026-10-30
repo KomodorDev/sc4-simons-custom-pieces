@@ -171,6 +171,152 @@ def _search(start, exits, graph, routes, *, avoid_junctions=False):
     return None
 
 
+def _witness_points(witness, routes):
+    """Join decoded saved PATH fragments, retaining their actual sample order."""
+    points = []
+    for identifier in witness:
+        incoming = routes[identifier]['points']
+        if points:
+            require(math.dist(points[-1], incoming[0]) < POSITION_TOLERANCE,
+                    'Saved auxiliary-lane witness has a disconnected route seam')
+            points.extend(incoming[1:])
+        else:
+            points.extend(incoming)
+    return points
+
+
+def _axis_window(points, low, high):
+    """Clip actual (longitudinal distance, lateral offset, height) segments."""
+    result = []
+    cursor = low
+    for first, last in zip(points, points[1:]):
+        start, finish = first[0], last[0]
+        if max(start, finish) <= low + 1e-9 or min(start, finish) >= high - 1e-9:
+            continue
+        require(finish > start + 1e-9,
+                'Saved auxiliary-lane PATH reverses within its flat joining section')
+        a, b = max(low, start), min(high, finish)
+        if b <= a + 1e-9:
+            continue
+        require(abs(a - cursor) < POSITION_TOLERANCE,
+                'Saved auxiliary-lane PATH skips part of its required joining section')
+        pair = [tuple(first[axis] + (distance - start) / (finish - start)
+                      * (last[axis] - first[axis]) for axis in range(3))
+                for distance in (a, b)]
+        result.append(pair)
+        cursor = b
+    require(result and abs(cursor - high) < POSITION_TOLERANCE,
+            'Saved auxiliary-lane PATH misses its complete required joining section')
+    return result
+
+
+def _covers_interval(intervals, low, high):
+    cursor = low
+    for first, last in sorted(intervals):
+        if last < cursor - POSITION_TOLERANCE:
+            continue
+        if first > cursor + POSITION_TOLERANCE:
+            return False
+        cursor = max(cursor, last)
+        if cursor >= high - POSITION_TOLERANCE:
+            return True
+    return False
+
+
+def check_saved_auxiliary_lanes(routes, witnesses):
+    """Prove four real flat slip lanes using saved PATHs and literal contracts.
+
+    The high ports, 5.5 m auxiliary offset, taper lengths, and parallel runs
+    are independently reviewed expectations. No ramp, mesh, or slip-lane
+    authoring helper supplies the expected geometry to this check.
+    """
+    root = math.sqrt(2.)
+    native_offset = 3.2 / root
+    contracts = (
+        ('lower-off', ('HW_NE', 'AVE_NW'), 1, -1, (56., 51.2), 7.5, 12., 4.),
+        ('lower-on', ('AVE_NW', 'HW_SW'), 1, -1, (56., 51.2), 7.5, 12., 4.),
+        ('upper-off', ('HW_SW', 'AVE_SE'), -1, 1, (-72., -83.2), 15., 16., 8.),
+        ('upper-on', ('AVE_SE', 'HW_NE'), -1, 1, (-72., -83.2), 15., 16., 8.),
+    )
+    reports = []
+    for name, pair, side, direction, native_port, height, taper_length, parallel_length in contracts:
+        require(pair in witnesses, 'Saved assembly is missing its required auxiliary-lane transfer')
+        witness = witnesses[pair]
+        saved = _witness_points(witness, routes)
+        on = name.endswith('-on')
+        if on:
+            saved = list(reversed(saved))
+        original_u = sum(native_port) / root
+
+        def coordinates(point):
+            # Registered placements translate the native (4,-4) centre to
+            # (68,-68). This is a literal saved-layout frame, not generator data.
+            x, y, z = point
+            u, v = (x + y) / root, (y - x + 136.) / root
+            if on:
+                u = -u
+            return direction * (u - original_u), side * v, z
+
+        local = [coordinates(point) for point in saved]
+        end = taper_length + parallel_length
+        taper = _axis_window(local, 0., taper_length)
+        auxiliary = _axis_window(local, taper_length, end)
+        require(all(abs(point[2] - height) < POSITION_TOLERANCE
+                    for segment in taper + auxiliary for point in segment),
+                'Saved auxiliary lane or lateral taper changes height before the graded ramp')
+        require(abs(taper[0][0][1] - native_offset) < POSITION_TOLERANCE
+                and abs(taper[-1][-1][1] - 5.5) < POSITION_TOLERANCE,
+                'Saved auxiliary taper does not connect the actual native lane to its slip lane')
+        maximum_lateral_slope = 0.
+        for first, last in taper:
+            require(native_offset - POSITION_TOLERANCE <= first[1] <= last[1] + POSITION_TOLERANCE
+                    and last[1] <= 5.5 + POSITION_TOLERANCE,
+                    'Saved auxiliary taper changes side, reverses, or leaves its lane-change envelope')
+            slope = abs(last[1] - first[1]) / (last[0] - first[0])
+            require(slope <= .55,
+                    'Saved auxiliary taper makes an abrupt lateral jump instead of a progressive lane change')
+            maximum_lateral_slope = max(maximum_lateral_slope, slope)
+        for fraction, low, high in ((.25, .05, .30), (.5, .35, .65), (.75, .70, .95)):
+            sample = _axis_window(local, fraction * taper_length, fraction * taper_length + .001)[0][0]
+            progress = (sample[1] - native_offset) / (5.5 - native_offset)
+            require(low <= progress <= high,
+                    'Saved auxiliary taper skips the independently required progressive lateral movement')
+        require(all(abs(point[1] - 5.5) < POSITION_TOLERANCE
+                    for segment in auxiliary for point in segment),
+                'Saved auxiliary PATH lacks its full contiguous parallel lane at 5.5 metres')
+
+        # The auxiliary lane supplements the two actual native through lanes.
+        # Check both saved spines beside the complete parallel interval.
+        # Native diagonal half-tile boundaries start the two through lanes at
+        # different u positions, so the outermost taper collar cannot require
+        # a lane outside its own measured external port.
+        for lateral in (-native_offset, native_offset):
+            intervals = []
+            for route in routes:
+                if route['transport'] != 1:
+                    continue
+                for first, last in zip(route['points'], route['points'][1:]):
+                    first_v, last_v = ((point[1] - point[0] + 136.) / root for point in (first, last))
+                    first_u, last_u = (sum(point[:2]) / root for point in (first, last))
+                    if (abs(first[2] - height) < POSITION_TOLERANCE
+                            and abs(last[2] - height) < POSITION_TOLERANCE
+                            and abs(first_v - lateral) < POSITION_TOLERANCE
+                            and abs(last_v - lateral) < POSITION_TOLERANCE
+                            and direction * (last_u - first_u) > 1e-9):
+                        intervals.append(tuple(sorted((coordinates(first)[0], coordinates(last)[0]))))
+            require(_covers_interval(intervals, taper_length, end),
+                    'Saved auxiliary lane replaced or displaced an original native through lane')
+        reports.append({'ramp_id': name, 'from_arm': pair[0], 'to_arm': pair[1],
+                        'saved_route_ids': witness, 'deck_height_m': height,
+                        'native_lane_abs_v_m': native_offset, 'auxiliary_lane_abs_v_m': 5.5,
+                        'flat_taper_axis_length_m': taper_length,
+                        'contiguous_parallel_axis_length_m': sum(b[0] - a[0] for a, b in auxiliary),
+                        'maximum_saved_lateral_taper_slope': maximum_lateral_slope,
+                        'retained_native_through_lanes_beside_auxiliary': 2})
+    return {'passed': True, 'verified_ramps': len(reports), 'ramps': reports,
+            'scope': 'Decoded saved PATH transfer witnesses, flat progressive lane changes, contiguous parallel auxiliary lanes, and both unchanged native through spines beside each parallel section.'}
+
+
 def check_saved_routes(routes, owners):
     expected = native_external_contract(); expected_by_key = {
         (port['transport'], port['direction'], port['point']): port for port in expected}
@@ -261,6 +407,7 @@ def check_saved_routes(routes, owners):
             require(grade <= .3 + 1e-5, 'Saved assembly exceeds the gentler 30 percent grade ceiling')
             maximum_grade = max(maximum_grade, grade)
     intercomponent = [pair for pair in seam_pairs if routes[pair[0]]['placement'] != routes[pair[1]]['placement']]
+    auxiliary_lanes = check_saved_auxiliary_lanes(routes, witnesses)
     return {'passed': True, 'route_fragments': len(routes), 'matched_directed_lane_seams': len(seam_pairs),
             'inter_component_directed_lane_seams': len(intercomponent), 'external_native_channels': len(observed),
             'pedestrian_external_channels': sum(port['transport'] == 2 for port in observed.values()),
@@ -272,6 +419,7 @@ def check_saved_routes(routes, owners):
             'movement_witnesses': [{'from_arm': pair[0], 'to_arm': pair[1], 'saved_route_ids': witnesses[pair]}
                                    for pair in sorted(required)],
             'all_cross_deck_journeys_require_intentional_ground_junctions': True,
+            'auxiliary_lanes': auxiliary_lanes,
             'external_ports': list(observed.values())}, intercomponent
 
 

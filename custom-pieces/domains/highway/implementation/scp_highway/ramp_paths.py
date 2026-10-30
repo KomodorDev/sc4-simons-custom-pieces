@@ -413,7 +413,9 @@ def _procedural_geometry():
                                 union_ground_pavement, partition_triangles)
     ramps = compact_ramps()
     routes = compact_access_routes(ramps)
+    from .slip_lanes import surfaces, WHITE
     faces = [triangle for ramp in ramps for triangle in compact_ramp_triangles(ramp)]
+    faces.extend(face for face in surfaces(ramps) if abs(face[0][3]-WHITE) < 1e-8)
     for route in routes:
         faces.extend(road_triangles(route["surface_points"], width=3.5, thickness=0.1,
                                     barriers=False, edge_markings=False))

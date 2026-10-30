@@ -20,7 +20,7 @@ These angled and north-up views render the actual saved game models and their re
 
 ## 2. Piece and placement
 
-Carries part of the lower on-ramp between its northwest surface junction and highway branch. The complete authored ramp curve is about 69.99 m long, including its level joins; its active height transition is about 35.08 m. Several components share this curve.
+Carries part of the lower on-ramp between its northwest surface junction and highway branch. The complete authored ramp curve is about 70.33 m long, including its shoulder lane and level joins; its active height transition is about 35.08 m. Several components share this curve.
 
 A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 2 tiles inside a 2 × 1-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
 

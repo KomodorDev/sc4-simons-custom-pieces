@@ -13,7 +13,7 @@ document_type: "reference"
 
 ## 1. Test scope
 
-Carries part of the lower off-ramp between its highway branch and northwest surface junction. The complete authored ramp curve is about 69.99 m long, including its level joins; its active height transition is about 35.08 m. Several components share this curve. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
+Carries part of the lower off-ramp between its highway branch and northwest surface junction. The complete authored ramp curve is about 70.33 m long, including its shoulder lane and level joins; its active height transition is about 35.08 m. Several components share this curve. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
 
 <!-- BEGIN CONNECTIONS -->
 

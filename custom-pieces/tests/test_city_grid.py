@@ -132,6 +132,32 @@ class CityGridTests(unittest.TestCase):
         east = [label['text'] for label in metadata['tile_labels'] if label['axis'] == 'X']
         self.assertEqual(east, ['X-2', 'X-1', 'X0', 'X1', 'X2'])
 
+    def test_minimum_display_index_omits_negative_drawn_labels_without_changing_physical_grid(self):
+        from PIL import Image, ImageDraw
+
+        original = pack_s3d(self.model)
+        for azimuth, elevation in ((0, 90), (45, 31), (225, 31)):
+            with self.subTest(azimuth=azimuth):
+                camera = self.camera(azimuth, elevation)
+                _background, baseline = make_city_grid(camera, self.bounds)
+                draw = ImageDraw.Draw(Image.new('RGB', (camera.width, camera.height)))
+                with patch('scp.city_grid.ImageDraw.Draw', return_value=draw), \
+                        patch.object(draw, 'text', wraps=draw.text) as texts:
+                    _background, filtered = make_city_grid(camera, self.bounds, minimum_display_index=0)
+                expected = ['X0', 'X1', 'X2', 'Y0', 'Y1', 'Y2']
+                written = [call.args[1] for call in texts.call_args_list]
+                self.assertEqual(written, expected + ['E', 'N', '1 tile = 16 m | labels mark tile centres'])
+                self.assertEqual([label['text'] for label in filtered['tile_labels']], expected)
+                for key in ('bounds_world_m', 'grid_lines', 'camera', 'origin_pixel',
+                            'east_boundaries_m', 'north_boundaries_m', 'direction_arrows'):
+                    self.assertEqual(filtered[key], baseline[key])
+                self.assertEqual(filtered['display_coordinate_basis']['east_index_range'], [0, 2])
+                self.assertEqual(filtered['display_coordinate_basis']['north_index_range'], [0, 2])
+                self.assertEqual(pack_s3d(self.model), original)
+        for invalid in (True, .5, '0'):
+            with self.subTest(invalid=invalid), self.assertRaisesRegex(ValueError, 'must be an integer or None'):
+                make_city_grid(self.camera(), self.bounds, minimum_display_index=invalid)
+
     def test_grid_retains_origin_metadata_without_drawing_origin_artwork(self):
         from PIL import Image, ImageDraw
 

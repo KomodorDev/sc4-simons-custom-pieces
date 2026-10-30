@@ -36,9 +36,23 @@ These pictures render the actual saved module models at their registered positio
 
 ![Tile ownership plan showing which placement owns each construction tile](previews/tile-ownership.png)
 
-Each highway ramp connection has moved one diagonal city-grid step farther from the avenue: 16 m along each city axis, or about 22.63 m along the diagonal highway. The complete authored lower curve is about 69.99 m long, including about 35.08 m of active height transition. The upper curve is about 101.94 m long, including about 52.66 m of active transition. These are horizontal distances along the curved source design, including the level highway joins and 4 m ground landings. Source peak grades are about 22.68% lower and 29.61% upper. A **grade** is height change divided by horizontal travel distance; 20% means 2 m of height change over 10 m horizontally. Saved-resource measurements and game observations are recorded separately in [TESTING.md](TESTING.md).
+Each highway ramp connection retains its extended position one diagonal city-grid step farther from the avenue: 16 m along each city axis, or about 22.63 m along the diagonal highway. Including the new shoulder-lane approaches, the complete authored driving curve is about 70.33 m lower and 102.21 m upper. The active height transitions remain about 35.08 m lower and 52.66 m upper, with 4 m ground landings. Source peak grades remain about 22.68% lower and 29.61% upper. A **grade** is height change divided by horizontal travel distance; 20% means 2 m of height change over 10 m horizontally. Saved-resource measurements and game observations are recorded separately in [TESTING.md](TESTING.md).
+
+Each highway join now uses an **auxiliary lane**: a lane beside the two through lanes that serves the ramp. An exit route changes gradually from the outer through lane into this shoulder lane, runs parallel to the highway, then follows the off-ramp. An entrance route follows the reverse sequence. The lower joins use a 12 m taper and a 4 m parallel section; the upper joins use a 16 m taper and an 8 m parallel section. These taper and parallel lengths are distances along the straight highway axis. White dashed separators, continuous outer edges, and compact painted split areas identify these lanes. The saved driving paths follow these lane changes. The 53-tile construction footprint, outer ramps, right-turn-only Avenue access, and two through lanes on each deck are retained.
 
 Barrier openings follow each ramp’s actual deck and side. A lower-ramp opening leaves the upper barrier intact, and the opposite side of an upper-deck branch stays closed. Ramp pavement, barriers, and concrete use the measured native NAM materials described in the [ramp-material audit](evidence/native-ramp-materials-audit.json). All authored ramp pavement, including the highway joins and ground turns, uses pavement from NAM’s single-lane ramp network, MIS. Its texture direction continues through each ramp mouth. The retained native DD RHW-4 mainline faces keep their original pavement material. Retained native model overhangs remain visible beyond the construction tiles.
+
+### 1.1 Avenue connections and sidewalks
+
+The components already include the ground Avenue section, its car routes, and its pedestrian routes. The intended experiment is to connect an ordinary diagonal ground Avenue to the assembly’s northwest and southeast Avenue ends:
+
+1. Place the assembly on a clear, flat area, using the numbered component placements in chapter 3.
+2. Open **Transportation → Roads**, and select the ordinary **Avenue** tool.
+3. Drag a diagonal Avenue up to the assembly’s northwest Avenue end, stopping at the component boundary. Repeat at the southeast Avenue end.
+
+The saved lane boundaries match measured native Avenue channels, but these in-game joins remain unverified. Dragging an Avenue through the occupied assembly, and placing the components over a complete prebuilt Avenue, are separate untested operations. A prebuilt Avenue is not a documented prerequisite for this experimental placement sequence.
+
+Pedestrian routes and visible sidewalks are separate: a **pedestrian route** is a saved path that permits walking, while a **sidewalk** is the visible paved artwork. The current components retain fixed native Avenue models and texture references; automatic matching to an adjoining Avenue’s sidewalk style is not an implemented feature. Connecting an Avenue with sidewalks therefore does not establish that matching walkways will appear inside the assembly. Installed texture replacements can change the referenced images globally, but that is separate from adaptation to a particular neighbour. Actual sidewalk appearance and pedestrian travel still need in-game observations.
 
 ## 2. Pieces
 

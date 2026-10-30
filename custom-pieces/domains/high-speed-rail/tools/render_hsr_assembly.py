@@ -243,7 +243,7 @@ def _grid_bounds(vertices, sources):
 
 
 def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top, *, title=None,
-                    colour_assignment=None):
+                    colour_assignment=None, minimum_display_index=None):
     """Draw exact occupied city cells. This is explicitly a plan, not model geometry."""
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
@@ -257,7 +257,8 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     camera = make_camera(vertices, 0., 90., view_width, view_height,
                          bounds_world_m=bounds, padding=85)
     view, grid = make_city_grid(camera, bounds, origin_world_m=origin,
-                                font=font(18), bold_font=font(19, True))
+                                font=font(18), bold_font=font(19, True),
+                                minimum_display_index=minimum_display_index)
     vd = ImageDraw.Draw(view)
     colours = colour_assignment or colour_assignment_for_sources(sources)
     owners = {}
@@ -332,6 +333,7 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
 def render_assembly(model, plugins, destination, *, provenance=None,
                     width=2800, height=2100, prefix='hsr-trumpet',
                     owned_texture_resources=None,
+                    minimum_display_index=None,
                     source_caption='Actual compiled S3D track, decks, and supports | software preview',
                     height_caption=None,
                     footer_caption='All model geometry shown; no simulated trains, terrain, or game lighting.'):
@@ -399,7 +401,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                              padding=85 if labelled else 35)
         background, grid = make_city_grid(camera, grid_bounds, origin_world_m=origin,
                                           font=font(18 if labelled else 11),
-                                          bold_font=font(19 if labelled else 12, True))
+                                          bold_font=font(19 if labelled else 12, True),
+                                          minimum_display_index=minimum_display_index)
         view = render_fast_view(model, textures, azimuth, elevation,
                                 view_width, view_height, camera=camera,
                                 background_image=background)
@@ -436,7 +439,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_camera = make_camera(vertices, azimuth, elevation, width, view_height,
                                        bounds_world_m=grid_bounds, padding=100)
             clean_background, clean_grid = make_city_grid(clean_camera, grid_bounds,
-                origin_world_m=origin, font=font(20), bold_font=font(21, True))
+                origin_world_m=origin, font=font(20), bold_font=font(21, True),
+                minimum_display_index=minimum_display_index)
             clean_view = render_fast_view(model, textures, azimuth, elevation,
                 width, view_height, camera=clean_camera, background_image=clean_background)
             clean.paste(clean_view, (0, top))
@@ -455,7 +459,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         plan, metadata = _placement_plan(vertices, sources, grid_bounds, origin,
                                          width, height, panel, top,
                                          title=title,
-                                         colour_assignment=colours)
+                                         colour_assignment=colours,
+                                         minimum_display_index=minimum_display_index)
         target = destination/f'{prefix}-placement-plan-xy.png'
         plan.save(target)
         images.append({'file': target.name, 'sha256': sha256(target.read_bytes()),

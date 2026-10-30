@@ -123,7 +123,8 @@
     "installed_texture_pack_overrides_preserved": true,
     "pavement_owner": "Join each directed ramp and ground-turn pair at its exact mouth, then select one connected road for each triangle and project all three vertices onto that same road.",
     "native_dd_crop_in_authored_faces": false,
-    "ground_apron": "Use the unmarked wheel-track and grey asphalt strip of the same native MIS texture, U=0.375..0.59375 across the 3.5 m turn width; smoothly end raised-ramp edge paint over pavement heights 1.5..0 m."
+    "ground_apron": "Use the unmarked wheel-track and grey asphalt strip of the same native MIS texture, U=0.375..0.59375 across the 3.5 m turn width; smoothly end raised-ramp edge paint over pavement heights 1.5..0 m.",
+    "converted_shoulders": "Retain native DD material bytes; spatially remap original in-plane shoulder fragments to native unmarked asphalt, and paint auxiliary separators and split areas using the native continuous white-edge strip."
   },
   "game_observation": false,
   "apron_uv_regression": {
@@ -159,5 +160,36 @@
     "absolute_area_difference_m2": 0.0,
     "maximum_edge_m": 1.0,
     "subdivision": "Exact edge midpoints on the existing plane, retaining the original winding and binary coordinates."
+  },
+  "shoulder_texture_measurement": {
+    "scope": "Decoded audited native RHW-4 texture5713000E; this measures source image strips, not in-game appearance or the final custom model.",
+    "texture_instance": "5713000E",
+    "continuous_white_edge_u_range": [
+      0.21484375,
+      0.22265625
+    ],
+    "unmarked_asphalt_u_range": [
+      0.26953125,
+      0.46484375
+    ],
+    "longitudinal_mapping": "Spatial V=plan distance/16 m, retaining the native texture repeat.",
+    "reason": "The continuous edge strip avoids the baked centre-lane dash; the asphalt range avoids native solid edge paint.",
+    "image_payload_copied_into_piece": false,
+    "game_observation": false
+  },
+  "shoulder_encoded_seam_audit": {
+    "scope": "Unscoped encoding-helper upper-bound audit against one prior verified v4 saved zoom per unique component; this is not a measurement of the new build. Native model calls additionally restrict repair to the requested ramp deck, traffic side, and longitudinal service interval.",
+    "baseline_build": "ddrhw-right-turn-extended-v4",
+    "unique_component_types": 13,
+    "examined_vertices": 82240,
+    "changed_vertices": 2586,
+    "maximum_vertex_displacement_m": 2.1981106894714563e-06,
+    "shared_diagonal_constant_grid_m": 1.9073486328125e-06,
+    "coordinate_grid_m": 9.5367431640625e-07,
+    "affected_height_minimum_m": 6.4,
+    "seam_selection_distance_tolerance_m": 2e-05,
+    "scope_limit": "Vertices within tolerance of the native/authored eight-metre half-deck seam only; model UVs, traffic paths, and grades are not changed by this encoding helper.",
+    "strict_pavement_checks_relaxed": false,
+    "regression": "Exact reproduced failing saved segment checked after float32 encoding in all four proper rotations."
   }
 }

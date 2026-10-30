@@ -174,6 +174,16 @@ class NativeRoadPainter:
             # The native MIS texture already paints its yellow and white edges.
             return None
         world = [(p[0]+16*cell[0], -p[2]-16*cell[1], p[1]) for p in triangle]
+        from .slip_lanes import WHITE
+        if abs(semantic-WHITE) < 1e-7:
+            # The measured continuous white DD edge is safely inside texel
+            # centres 27..28; preserve a spatial longitudinal coordinate.
+            painted = []
+            for point,global_point in zip(triangle,world):
+                u = .21484375+.0078125*min(1.,max(0.,point[4]))
+                v = (global_point[0]+global_point[1])/(16.*math.sqrt(2.))
+                painted.append((*point[:3],u,v))
+            return 'highway',tuple(painted)
         centroid = tuple(sum(p[axis] for p in world)/3 for axis in range(3))
         owner = self._frame(centroid)[3]
         frames = [self._frame(p,owner)[:3] for p in world]

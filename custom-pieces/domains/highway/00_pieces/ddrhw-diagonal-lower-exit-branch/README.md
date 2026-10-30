@@ -22,6 +22,8 @@ These angled and north-up views render the actual saved game models and their re
 
 Divides an outer lower-deck lane into a continuing highway lane and an off-ramp towards the northwest avenue access. The branch is one diagonal city-grid step farther from the avenue than in the original layout. Its barrier opening belongs to the lower deck; the upper-deck edge remains closed here.
 
+This branch uses a real flat auxiliary lane in the former highway shoulder, with a 12 m taper and a 4 m parallel section. Its saved driving path changes between the native outer through lane and that auxiliary lane. Native-material dashed separators and a painted split area identify the join; both highway through lanes remain available.
+
 A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 3 tiles inside a 2 × 2-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
 
 1. Prepare the exact NAM 50 right-hand-traffic profile using the [build and installation guide](../../../../docs/BUILD_AND_INSTALL.md).

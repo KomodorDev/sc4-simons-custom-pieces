@@ -174,8 +174,11 @@ class RampResourceCompilerTests(unittest.TestCase):
         self.assertEqual(ramps["lower-off"]["points"][0], (56.0, 51.2, 7.5))
         self.assertEqual(ramps["upper-off"]["points"][0], (-72.0, -83.2, 15.0))
         for ramp in ramps.values():
-            expected = 69.98798604746474 if ramp["deck"] == "lower" else 101.9401344063455
+            expected = 70.3286839507 if ramp["deck"] == "lower" else 102.2084079533
             self.assertAlmostEqual(ramp["length_plan_m"], expected, places=7)
+            retained = 69.98798604746474 if ramp["deck"] == "lower" else 101.9401344063455
+            self.assertAlmostEqual(sum(math.dist(a[:2], b[:2]) for a, b in
+                                       zip(ramp["mesh_points"], ramp["mesh_points"][1:])), retained, places=7)
             self.assertLess(ramp["grade_max_percent"], 23.0 if ramp["deck"] == "lower" else 30.0)
             for point in ramp["points"]:
                 if point[2] < ramp["height_m"] - 1e-7:

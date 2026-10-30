@@ -15,6 +15,8 @@ document_type: "reference"
 
 Divides an outer upper-deck lane into a continuing highway lane and an off-ramp towards the southeast avenue access. The ramp stays level until it clears the lower deck. The opposite upper-deck edge remains closed, and the branch owns the outer native cell crossed by its ramp faces. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
 
+This branch uses a real flat auxiliary lane in the former highway shoulder, with a 16 m taper and a 8 m parallel section. Its saved driving path changes between the native outer through lane and that auxiliary lane. Native-material dashed separators and a painted split area identify the join; both highway through lanes remain available.
+
 <!-- BEGIN CONNECTIONS -->
 
 ### Connections and journeys
