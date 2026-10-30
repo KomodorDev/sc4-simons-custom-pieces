@@ -1,5 +1,5 @@
 // title: "Existing-city cleanup after removed-piece upgrade"
-// summary: "Preserve the player's successful cleanup report, visual artifacts, exact installed build, and limited coverage of one removed-resource experiment."
+// summary: "Preserve the player's successful cleanup report, confirmation that bulldozing removed the visual artifacts, exact installed build, and limited coverage of one removed-resource experiment."
 //
 // Used when: Reviewing whether an existing saved city can be cleared after installed SCP resources disappear, or interpreting the 30 October 2026 cleanup report.
 // Read by: Contributors and players following custom-pieces/docs/TESTING.md chapter 6; reference evidence with no runtime reader or per-piece checklist update.
@@ -12,13 +12,19 @@
   "confirmed_at": "2026-10-30",
   "reporter": "human user",
   "explicit_user_confirmation": true,
-  "result": "cleanup_confirmed_with_visual_artifacts",
+  "result": "cleanup_confirmed_artifacts_cleared_by_bulldozing",
   "human_observation": {
     "statement": "so this worked without a flaw. there were some artifacts but i could successfully empty the plots that previously had pieces that no longer exist.",
+    "clarification": {
+      "confirmed_at": "2026-10-30",
+      "explicit_user_confirmation": true,
+      "statement": "to clarify: the artifacts were gone after bulldozing"
+    },
     "affected_area_could_be_cleared": true,
     "visual_artifacts_present": true,
     "artifact_description": null,
-    "artifact_persistence_after_cleanup": null,
+    "artifact_persistence_after_cleanup": false,
+    "artifacts_gone_after_bulldozing": true,
     "separate_control_city_outcome": null,
     "traffic_operation": null,
     "save_and_reload_after_cleanup": null,
@@ -64,9 +70,8 @@
     "scope": "Software audits describe the prepared and installed states before the player's game test; they do not supply the human cleanup result."
   },
   "interpretation": {
-    "established": "The affected saved-city area remained accessible and could be cleared after the old resources were removed, with visual artifacts present.",
+    "established": "The affected saved-city area remained accessible and could be cleared after the old resources were removed. Visual artifacts were present before bulldozing the affected plots and were gone afterward.",
     "not_established": [
-      "Artifact-free rendering before or after cleanup.",
       "Traffic operation or route-query behavior.",
       "A save-and-reload cycle after cleanup or long-term save stability.",
       "A separately described control-city game result.",
@@ -76,7 +81,7 @@
     "manual_case_updates": "None. This shared cross-version experiment does not pass or fail an individual piece's or assembly's generated cases."
   },
   "public_provenance": {
-    "kind": "Public summary of the existing private preparation audits, installation transaction, final file comparison, and explicit human report.",
+    "kind": "Public summary of the existing private preparation audits, installation transaction, final file comparison, explicit human report, and follow-up clarification that bulldozing removed the artifacts.",
     "redactions": "Private filesystem paths, backup locations, and region and city names are omitted. Measured fingerprints, counts, and reported outcomes are preserved. This publication is not a new test run.",
     "original_private_evidence_preserved": true
   }

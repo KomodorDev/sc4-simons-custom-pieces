@@ -124,15 +124,15 @@ Report actual scoped coverage, such as 7 of 12 applicable journey cases passed, 
 
 Removing a piece type from the installed plugin can leave previously placed tiles referring to resources that are no longer available. A **saved tile reference** is one tile's stored resource identifier; several tile references can belong to one placed piece. This experiment concerns clearing those affected tiles after the old resources have been removed.
 
-On **30 October 2026**, the player reported successful clearance of the affected area after installing **`installer-a2c842ca62ae`**. **Visual artifacts were present**, but the player could empty the plots previously occupied by pieces absent from the new mod. The [authoritative observation record](evidence/missing-piece-upgrade-20261030.jsonc) preserves the exact report, installed-build fingerprint, preparation audits, and coverage limits. It is a public summary of existing private evidence and this human report, rather than a new game test.
+On **30 October 2026**, the player reported successful clearance of the affected area after installing **`installer-a2c842ca62ae`**. **Visual artifacts were present before bulldozing the affected plots and were gone afterward.** The player could empty the plots previously occupied by pieces absent from the new mod. The [authoritative observation record](evidence/missing-piece-upgrade-20261030.jsonc) preserves the exact report and follow-up clarification, installed-build fingerprint, preparation audits, and coverage limits. It is a public summary of existing private evidence and these human statements, rather than a new game test.
 
 | Check | Recorded result |
 | --- | --- |
 | Existing affected area reachable and clearable after the upgrade | Confirmed by the player's successful cleanup report. |
-| Visual appearance during the reported test | Visual artifacts reported; their exact appearance and persistence were not specified. |
+| Visual appearance during the reported test | The reported artifacts disappeared after bulldozing; their exact appearance was not described. |
 | Test preparation | The retained-piece city copy contained 18 saved tile references to removed resources; the separately cleaned control contained none. |
 | Separate control-city game result | Not individually described in the report. |
 | Traffic operation and save/reload after cleanup | Not separately confirmed. |
 | Other cities, removed resources, and construction orientations | Outside this observation's scope. |
 
-This result establishes successful cleanup in the reported experiment. It does not establish artifact-free rendering or general safety when removing piece resources. Keep the existing [installation and rollback precautions](BUILD_AND_INSTALL.md#7-install-remove-or-roll-back-a-test-build): preserve an untouched region backup and the matching old plugin, use disposable city copies, and close the game before changing installed files. Removing placed pieces while their old resources are still installed remains the precaution for ordinary updates or reversals.
+This result establishes successful clearance of the affected plots and disappearance of the reported visual artifacts after bulldozing. It does not establish general safety when removing piece resources. Keep the existing [installation and rollback precautions](BUILD_AND_INSTALL.md#7-install-remove-or-roll-back-a-test-build): preserve an untouched region backup and the matching old plugin, use disposable city copies, and close the game before changing installed files. Removing placed pieces while their old resources are still installed remains the precaution for ordinary updates or reversals.

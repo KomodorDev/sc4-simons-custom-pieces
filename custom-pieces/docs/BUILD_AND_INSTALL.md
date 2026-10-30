@@ -291,7 +291,7 @@ python custom-pieces/scp.py uninstall --backup-root '/absolute/path/to/SCP Backu
 
 Removal checks its ownership receipt and saves a snapshot first. The tools do not edit city files or NAM's original archives.
 
-For ordinary removal or reversal, clear placed pieces while their old resources are still installed, and save the affected cities first. A [30 October 2026 experiment](TESTING.md#6-existing-saves-after-piece-removal) found that affected tiles could also be cleared after their resources had been removed, with visual artifacts present. That result covers one reported cleanup and does not replace region backups, restore the missing pieces, or establish traffic and save/reload behavior.
+For ordinary removal or reversal, clear placed pieces while their old resources are still installed, and save the affected cities first. A [30 October 2026 experiment](TESTING.md#6-existing-saves-after-piece-removal) found that affected tiles could also be cleared after their resources had been removed, and the reported visual artifacts disappeared after bulldozing. That result covers one reported cleanup and does not replace region backups, restore the missing pieces, or establish traffic and save/reload behavior.
 
 <a id="prepare-the-assembly-menu"></a>
 
