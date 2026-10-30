@@ -104,7 +104,7 @@ For a justified not-applicable declaration, use `result: "not_applicable"` and p
 
 Each subject's `checks/manual-tests.json` is the sole observation record. It preserves exact case identities, dependencies, and evidence. `connections.json` records interfaces extracted from actual saved resources. The README, TESTING page, and inventories are generated views of those records. They are not separate result authorities.
 
-An experiment involving a saved city and several removed types can have a separate shared record under `docs/evidence/`, as in [chapter 6](#6-existing-saves-after-piece-removal). Such a record preserves its particular human report and build identities; it does not update individual piece or assembly cases.
+An experiment involving a saved city and several removed types can have a separate shared record under `docs/evidence/`, as in [chapter 6](#6-existing-saves-after-piece-removal). Such a record preserves its particular test observations and build identities; it does not update individual piece or assembly cases.
 
 Older records can contain `in_game_connection` cases generated from an arbitrary endpoint/counterpart shortlist. Current generation does not create those cases. To retire them from active coverage without extracting resources, recomputing compatibility, or recording a result, run from the parent project directory:
 
@@ -124,11 +124,11 @@ Report actual scoped coverage, such as 7 of 12 applicable journey cases passed, 
 
 Removing a piece type from the installed plugin can leave previously placed tiles referring to resources that are no longer available. A **saved tile reference** is one tile's stored resource identifier; several tile references can belong to one placed piece. This experiment concerns clearing those affected tiles after the old resources have been removed.
 
-On **30 October 2026**, the player reported successful clearance of the affected area after installing **`installer-a2c842ca62ae`**. **Visual artifacts were present before bulldozing the affected plots and were gone afterward.** The player could empty the plots previously occupied by pieces absent from the new mod. The [authoritative observation record](evidence/missing-piece-upgrade-20261030.jsonc) preserves the exact report and follow-up clarification, installed-build fingerprint, preparation audits, and coverage limits. It is a public summary of existing private evidence and these human statements, rather than a new game test.
+The **30 October 2026** test of **`installer-a2c842ca62ae`** confirmed that plots containing pieces absent from the updated mod could be cleared successfully. **Visual artifacts were present before bulldozing the affected plots and were gone afterward.** The [authoritative observation record](evidence/missing-piece-upgrade-20261030.jsonc) preserves the exact test observations and follow-up clarification, installed-build fingerprint, preparation audits, and coverage limits. It summarizes the existing experiment; publication of the record does not represent a new game test.
 
 | Check | Recorded result |
 | --- | --- |
-| Existing affected area reachable and clearable after the upgrade | Confirmed by the player's successful cleanup report. |
+| Existing affected area reachable and clearable after the upgrade | Successful clearance confirmed in the recorded test. |
 | Visual appearance during the reported test | The reported artifacts disappeared after bulldozing; their exact appearance was not described. |
 | Test preparation | The retained-piece city copy contained 18 saved tile references to removed resources; the separately cleaned control contained none. |
 | Separate control-city game result | Not individually described in the report. |

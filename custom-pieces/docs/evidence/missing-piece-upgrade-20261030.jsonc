@@ -1,8 +1,8 @@
 // title: "Existing-city cleanup after removed-piece upgrade"
-// summary: "Preserve the player's successful cleanup report, confirmation that bulldozing removed the visual artifacts, exact installed build, and limited coverage of one removed-resource experiment."
+// summary: "Record successful cleanup, disappearance of the visual artifacts after bulldozing, exact installed build, and limited coverage of one removed-resource experiment."
 //
 // Used when: Reviewing whether an existing saved city can be cleared after installed SCP resources disappear, or interpreting the 30 October 2026 cleanup report.
-// Read by: Contributors and players following custom-pieces/docs/TESTING.md chapter 6; reference evidence with no runtime reader or per-piece checklist update.
+// Read by: Readers of custom-pieces/docs/TESTING.md chapter 6; reference evidence with no runtime reader or per-piece checklist update.
 // Updated by: A maintainer recording explicit human observations and their separate software preparation evidence; later observations must retain this original report.
 // Affects: The documented scope of one upgrade cleanup result; no game resources, installer guards, or individual piece and assembly check states.
 // Reference: custom-pieces/docs/TESTING.md#6-existing-saves-after-piece-removal
@@ -39,7 +39,7 @@
     "expected_audited_game_version": "1.1.641",
     "game_executable_version_reconfirmed_in_report": null,
     "dll_versions_reconfirmed_in_report": null,
-    "basis": "Configured installation and audited game/NAM inputs used during preparation; the player did not separately restate version details in the cleanup report."
+    "basis": "Configured installation and audited game/NAM inputs used during preparation; version details were not separately reconfirmed in the cleanup observation."
   },
   "build_identity": {
     "release_tag": "installer-a2c842ca62ae",
@@ -67,7 +67,7 @@
     "verified_build_and_assembly_menu_installed": true,
     "installed_files_match_verified_manifest": true,
     "comparison_city_saves_unchanged_during_installation": true,
-    "scope": "Software audits describe the prepared and installed states before the player's game test; they do not supply the human cleanup result."
+    "scope": "Software audits describe the prepared and installed states before the game test; they do not establish its cleanup result."
   },
   "interpretation": {
     "established": "The affected saved-city area remained accessible and could be cleared after the old resources were removed. Visual artifacts were present before bulldozing the affected plots and were gone afterward.",
@@ -81,7 +81,7 @@
     "manual_case_updates": "None. This shared cross-version experiment does not pass or fail an individual piece's or assembly's generated cases."
   },
   "public_provenance": {
-    "kind": "Public summary of the existing private preparation audits, installation transaction, final file comparison, explicit human report, and follow-up clarification that bulldozing removed the artifacts.",
+    "kind": "Public summary of the existing private preparation audits, installation transaction, final file comparison, explicitly confirmed test observations, and follow-up clarification that bulldozing removed the artifacts.",
     "redactions": "Private filesystem paths, backup locations, and region and city names are omitted. Measured fingerprints, counts, and reported outcomes are preserved. This publication is not a new test run.",
     "original_private_evidence_preserved": true
   }
