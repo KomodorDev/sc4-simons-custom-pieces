@@ -8,7 +8,7 @@ document_type: "procedure"
 # Record and interpret test results
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Piece validation and compatibility discovery](#1-piece-validation-and-compatibility-discovery) · [2. Investigate single-tile demolition and connected survivors](#2-investigate-single-tile-demolition-and-connected-survivors) · [3. Understand the displayed results](#3-understand-the-displayed-results) · [4. Record one observation](#4-record-one-observation) · [5. Data ownership and stale evidence](#5-data-ownership-and-stale-evidence)
+[1. Piece validation and compatibility discovery](#1-piece-validation-and-compatibility-discovery) · [2. Investigate single-tile demolition and connected survivors](#2-investigate-single-tile-demolition-and-connected-survivors) · [3. Understand the displayed results](#3-understand-the-displayed-results) · [4. Record one observation](#4-record-one-observation) · [5. Data ownership and stale evidence](#5-data-ownership-and-stale-evidence) · [6. Existing saves after piece removal](#6-existing-saves-after-piece-removal)
 <!-- END DOCUMENT NAVIGATION -->
 
 A **piece** is one reusable menu type. An **assembly** is a layout made from placed copies. Read the subject’s TESTING document to find its exact checks; a legacy combined piece guide keeps those checks in its README until deliberately migrated. A **case** is one specific observation, such as a directed journey at a stated rotation and game environment. A pass for one case does not cover a different direction, transport, rotation, or platform.
@@ -104,6 +104,8 @@ For a justified not-applicable declaration, use `result: "not_applicable"` and p
 
 Each subject's `checks/manual-tests.json` is the sole observation record. It preserves exact case identities, dependencies, and evidence. `connections.json` records interfaces extracted from actual saved resources. The README, TESTING page, and inventories are generated views of those records. They are not separate result authorities.
 
+An experiment involving a saved city and several removed types can have a separate shared record under `docs/evidence/`, as in [chapter 6](#6-existing-saves-after-piece-removal). Such a record preserves its particular test observations and build identities; it does not update individual piece or assembly cases.
+
 Older records can contain `in_game_connection` cases generated from an arbitrary endpoint/counterpart shortlist. Current generation does not create those cases. To retire them from active coverage without extracting resources, recomputing compatibility, or recording a result, run from the parent project directory:
 
 ```sh
@@ -117,3 +119,20 @@ Only relevant changes invalidate a result: a preview review follows that image's
 To regenerate prose from existing metadata without changing observations or rechecking DAT resources, follow [the generated-Markdown refresh procedure](WORKFLOW_DOCUMENTATION_GENERATION.md#124-refresh-generated-markdown-and-inventories). It owns that command, README generation, and inventory refresh; the observation-recording command above remains the way to record an explicitly confirmed test result.
 
 Report actual scoped coverage, such as 7 of 12 applicable journey cases passed, rather than calling the whole subject verified. After actual resource changes, use the owning domain's extraction and verification tools before updating cases. The software/resource report and human observations must identify their real input fingerprints; neither can inherit an unrelated passing result. See [framework engineering](FRAMEWORK_ENGINEERING.md#11-documentation-generation-and-observations) for generator ownership and [release requirements](RELEASE.md) for publication evidence.
+
+## 6. Existing saves after piece removal
+
+Removing a piece type from the installed plugin can leave previously placed tiles referring to resources that are no longer available. A **saved tile reference** is one tile's stored resource identifier; several tile references can belong to one placed piece. This experiment concerns clearing those affected tiles after the old resources have been removed.
+
+The **30 October 2026** test of **`installer-a2c842ca62ae`** confirmed that plots containing pieces absent from the updated mod could be cleared successfully. **Visual artifacts were present before bulldozing the affected plots and were gone afterward.** The [authoritative observation record](evidence/missing-piece-upgrade-20261030.jsonc) preserves the exact test observations and follow-up clarification, installed-build fingerprint, preparation audits, and coverage limits. It summarizes the existing experiment; publication of the record does not represent a new game test.
+
+| Check | Recorded result |
+| --- | --- |
+| Existing affected area reachable and clearable after the upgrade | Successful clearance confirmed in the recorded test. |
+| Visual appearance during the reported test | The reported artifacts disappeared after bulldozing; their exact appearance was not described. |
+| Test preparation | The retained-piece city copy contained 18 saved tile references to removed resources; the separately cleaned control contained none. |
+| Separate control-city game result | Not individually described in the report. |
+| Traffic operation and save/reload after cleanup | Not separately confirmed. |
+| Other cities, removed resources, and construction orientations | Outside this observation's scope. |
+
+This result establishes successful clearance of the affected plots and disappearance of the reported visual artifacts after bulldozing. It does not establish general safety when removing piece resources. Keep the existing [installation and rollback precautions](BUILD_AND_INSTALL.md#7-install-remove-or-roll-back-a-test-build): preserve an untouched region backup and the matching old plugin, use disposable city copies, and close the game before changing installed files. Removing placed pieces while their old resources are still installed remains the precaution for ordinary updates or reversals.
