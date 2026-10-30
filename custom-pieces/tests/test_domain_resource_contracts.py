@@ -172,7 +172,7 @@ class SavedNonRailPackageContractTests(unittest.TestCase):
         self.assertEqual(report['external_textures'], 0)
         self.assertEqual(report['external_shadows'], 0)
         self.assertFalse(report['local_donor_comparison'])
-        self.assertEqual(report['pieces'][0]['menu']['menu'], 'Roads')
+        self.assertEqual(report['pieces'][0]['menu']['menu'], 'Highways')
 
     def test_owned_atlas_missing_from_own_asset_dat_is_rejected(self):
         del self.assets[TEXTURE]; self.write_package()

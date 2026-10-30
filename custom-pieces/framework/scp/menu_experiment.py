@@ -162,7 +162,9 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
     from .verify import strict_dbpf
     pieces = _selected(base, scene)
     resources = strict_dbpf(controller)
-    require(set(resources) == {RUL0, NETWORK_INI}, 'Original controller has unexpected resources')
+    from .adaptive_network import RUL1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if 'rul1' in base['overlay'] else set())
+    require(set(resources) == expected_controller, 'Original controller has unexpected resources')
     if len(pieces) > 1:
         changed, composition = with_feature_sequence(resources[RUL0], base['overlay']['rul0'],
                                                      [number(piece['puzzle_id']) for piece in pieces])
@@ -179,7 +181,7 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
 
 def _game_checks(pieces, *, single_button=False):
     from .menu_experiment_resources import member_domain
-    menu_name = 'Roads' if member_domain(pieces) == 'highway' else 'Rail'
+    menu_name = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
     if single_button:
         rows = [
             {'id': 'single-assembly-entry', 'description': f'Transportation > {menu_name} has exactly one entry for this assembly, no individual member buttons, and no assembly submenu; unrelated standalone pieces may remain.'},
@@ -221,7 +223,7 @@ def _guide(layout, pieces):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
     highway = member_domain(pieces) == 'highway'
-    menu_name = 'Roads' if highway else 'Rail'
+    menu_name = 'Highways' if highway else 'Rail'
     if 'submenu' not in layout:
         rows = [markdown_metadata('Assembly component menu',
                 'Place reusable assembly components from one button, using Tab and Shift+Tab to change type.',
@@ -300,8 +302,12 @@ def _check_actual_resources(base_controller, base_menu, controller, menu, base, 
     from .rul0 import ordering_span, _ring
     from .verify import strict_dbpf
     old_controller, current_controller = strict_dbpf(base_controller), strict_dbpf(controller)
-    require(set(current_controller) == set(old_controller) == {RUL0, NETWORK_INI}, 'Controller resource closure changed')
+    from .adaptive_network import RUL1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if 'rul1' in base['overlay'] else set())
+    require(set(current_controller) == set(old_controller) == expected_controller, 'Controller resource closure changed')
     require(current_controller[NETWORK_INI] == old_controller[NETWORK_INI], 'Menu experiment changed NetworkINI')
+    if RUL1 in expected_controller:
+        require(current_controller[RUL1] == old_controller[RUL1], 'Menu experiment changed adaptive RUL1')
     old = strict_dbpf(base_menu); current = strict_dbpf(menu)
     selected = {number(piece['menu']['id']) for piece in pieces}
     cycle_id = number(layout['cycle_button']['id'])

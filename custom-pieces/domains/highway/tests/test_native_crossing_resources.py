@@ -80,9 +80,9 @@ class NativeCrossingPortableTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'measured native highway/Avenue construction flags'):
             verify.check_construction_fields(fields, self.spec, self.assets)
 
-    def test_highway_menu_keeps_native_road_menu_property_and_rejects_changed_icon(self):
+    def test_highway_menu_keeps_native_highways_menu_property_and_rejects_changed_icon(self):
         resources, report = menu.build_menu_resources(menu.portable_baseline(), self.spec)
-        self.assertEqual(report['menu'], 'Roads')
+        self.assertEqual(report['menu'], 'Highways')
         self.assertFalse(report['in_game_menu_tested'])
         resources[*menu.ICON, int(self.spec['menu']['id'], 16)] += b'changed'
         with self.assertRaisesRegex(ValueError, 'Wrong highway menu icon'):

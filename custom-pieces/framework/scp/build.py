@@ -16,6 +16,7 @@ from .dbpf import entries, decompress, index_plugins, pack_dbpf, require, tgi_st
 from .menu import build_menu_resources
 from .recipes import build_piece
 from .rul0 import MARKER, compose_rul0
+from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -69,7 +70,8 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
         context[label] = {key: decompress(value) for key, value in entries(raw).items()}
         audit.append({'filename': path.name, 'path': str(path), 'sha256': sha(raw)})
     native = next(Path(x['path']) for x in audit if x['filename'] == 'NetworkAddonMod_Controller.dat')
-    for key in (RUL0, NETWORK_INI):
+    shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) for piece in pieces) else (RUL0, NETWORK_INI)
+    for key in shared:
         require(installed.get(key) == [native],
                 f'Conflicting shared NAM overlay {tgi_string(key)} in '
                 + ', '.join(str(path) for path in installed.get(key, []))
@@ -101,6 +103,7 @@ def preflight_allocations(context, installed, selected):
                 planned.update({(0x7AB50E44,0x2BC2759A,tile+zoom) for zoom in range(5)})
         planned.update({(0x7AB50E44, 0x1ABE787D, int(value, 16))
                         for value in piece.get('authored_texture_ids', [])})
+        planned.update(adaptive_resource_keys(piece))
     conflicts = planned & set(installed)
     require(not conflicts, 'Allocated resource identifiers collide with installed content: '
             + ', '.join(tgi_string(key) for key in sorted(conflicts)[:8]))
@@ -148,6 +151,7 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     output = _prepare_output(output, project_root, roots)
     baseline = context['controller']
     assets_by_piece, menu_resources, all_resources, rules, menu_audit = {}, {}, {}, [], []
+    rul1_rules = []
     records = []
     for index, piece in enumerate(selected):
         if progress:
@@ -177,7 +181,16 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
             raise ValueError(f'{piece["id"]}: {error}') from error
         merge_resources(all_resources, resources, piece['id']); merge_resources(all_resources, menus, piece['id'])
         merge_resources(menu_resources, menus, piece['id'])
-        assets_by_piece[piece['id']] = resources; rules.append(delta); menu_audit.append(metadata)
+        if isinstance(delta, dict):
+            require(set(delta) == {'rul0', 'rul1'} and adaptive_bindings(piece)
+                    and all(isinstance(value, str) and value for value in delta.values()),
+                    'Only explicitly adaptive pieces may emit RUL0/RUL1 delta objects')
+            rules.append(delta['rul0']); rul1_rules.append(delta['rul1'])
+        else:
+            require(isinstance(delta, str) and not adaptive_bindings(piece),
+                    'Adaptive pieces must declare their RUL1 construction delta')
+            rules.append(delta)
+        assets_by_piece[piece['id']] = resources; menu_audit.append(metadata)
         records.append(record)
     require(not (set(all_resources) & set(installed)), 'Allocated resource identifiers collide with installed content')
     rul0, rul0_delta = compose_rul0(baseline[RUL0], rules)
@@ -191,6 +204,9 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     network_ini = baseline[NETWORK_INI].replace(anchor, anchor + insertion.encode('ascii'), 1)
     require(network_ini.replace(insertion.encode('ascii'), b'', 1) == baseline[NETWORK_INI], 'Shadow patch is not reversible')
     controller = {RUL0: rul0, NETWORK_INI: network_ini}
+    rul1_delta = None
+    if rul1_rules:
+        controller[RUL1], rul1_delta = compose_rul1(baseline[RUL1], rul1_rules, selected)
     texture_ids = set()
     from .models import parse_s3d
     for resources in assets_by_piece.values():
@@ -227,7 +243,7 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                      "Their eight button states are four rotations repeated; there are no directional reflections.\n"
                      "Custom shadow projection and wheel/rail fit still need in-game inspection.\n"
                      if domains == {'high-speed-rail'} else
-                     "Highway components are in Transportation > Roads. Rail components, if selected, are in Transportation > Rail.\n"
+                     "Highway components are in Transportation > Highways. Rail components, if selected, are in Transportation > Rail.\n"
                      "Place the reusable components in the order and orientation shown in their assembly guide.\n"
                      "Eight highway button states repeat four proper rotations; they do not reflect traffic directions.\n"
                      "Placement, vehicle travel, custom shadows, and save/reload still need in-game inspection.\n")
@@ -249,6 +265,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                     'dependency_audit': {'textures': textures, 'shadows': [tgi_string(k) for k in shadows]},
                     'release': release_status(project_root, selected),
                     'installed': False, 'in_game_tested': False}
+        if rul1_delta is not None:
+            manifest['overlay']['rul1'] = rul1_delta
         from .release import assess_build
         manifest['release'] = assess_build(Path(project_root), manifest)
         write_json(stage / 'manifest.json', manifest)

@@ -19,6 +19,8 @@ from .catalog import validate_catalog, auto_tile_base
 from .dbpf import entries, decompress, exemplar, encode_exemplar, tgi_string, require
 from .menu import validate_menu_resources, MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from .models import parse_s3d, validate_s3d, valid_frame, positions
+from .adaptive_network import (RUL1, bindings as adaptive_bindings,
+    resource_keys as adaptive_resource_keys, validate_active_resources, verify_rul1, CURSOR_BASE)
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -256,7 +258,13 @@ def rotated_mesh(source, angle):
 
 def check_piece_models(resources, piece, donors):
     render_report = check_piece_render_budget(resources, piece)
+    if adaptive_bindings(piece):
+        validate_active_resources(resources, piece)
     result = _check_piece_geometry(resources, piece, donors)
+    if adaptive_bindings(piece):
+        require(isinstance(result.get('adaptive_ground'), dict) and
+                result['adaptive_ground'].get('active_layer_verified') is True,
+                'Adaptive rendering requires an independent domain proof of its active geometry and PATH layers')
     result['render_groups'] = render_report
     return result
 
@@ -271,6 +279,7 @@ def check_piece_render_budget(resources, piece):
     keys = {(*S3D, number(piece['preview_id']))}
     keys.update((*S3D, number(tile) + zoom)
                 for tile in piece['tile_ids'] for zoom in range(5))
+    keys.update(key for key in adaptive_resource_keys(piece) if key[:2] == S3D)
     payloads = dict.fromkeys(resources[key] for key in sorted(keys))
     reports = [assert_render_budget(parse_s3d(raw)) for raw in payloads]
     return {'all_authored_groups_within_budget': True,
@@ -452,7 +461,7 @@ def check_emitted_runtime_addresses(fields, piece):
     row_anchors = [y for y, line in enumerate(rows) for symbol in line if symbol == '<']
     require(len(column_anchors) == len(row_anchors) == 1,
             'Emitted CellLayout requires one column anchor and one row anchor')
-    built = []
+    built, optional_cells = [], []
     for y, line in enumerate(rows):
         for x, symbol in enumerate(line):
             if symbol in '.^<':
@@ -461,6 +470,8 @@ def check_emitted_runtime_addresses(fields, piece):
                     'Emitted CellLayout uses an undefined construction symbol')
             if symbol == '+' or palette[symbol]:
                 built.append((x, y))
+            else:
+                optional_cells.append((x-column_anchors[0], y-row_anchors[0]))
     require(built, 'Emitted CellLayout contains no modeled cells')
     width, depth = piece['footprint']
     declared_cells = [tuple(cell) for cell in piece.get('cells',
@@ -471,7 +482,19 @@ def check_emitted_runtime_addresses(fields, piece):
             'Declared modeled cells do not uniquely identify the allocated models')
     intended = dict(zip(declared_cells, intended_ids))
     actual_cells = [(x-column_anchors[0], y-row_anchors[0]) for x, y in built]
-    require(set(actual_cells) == set(declared_cells),
+    adaptive = adaptive_bindings(piece)
+    if adaptive:
+        adaptive_cells = {tuple(row['cell']) for row in adaptive}
+        require(set(optional_cells) == adaptive_cells,
+                'Adaptive optional construction cells differ from their declared real-network bindings')
+        intended = {cell: tile for cell, tile in intended.items() if cell not in adaptive_cells}
+        if not intended:
+            require(actual_cells == [(3, 0)] and
+                    any(compact(value) == 'z-road:0x02000200' for value in fields['CheckType']) and
+                    rows[row_anchors[0]][column_anchors[0]+3] == 'Z',
+                    'Fully adaptive construction requires its single native removable Road handle')
+            intended = {(3, 0): CURSOR_BASE}
+    require(set(actual_cells) == set(intended),
             f'{piece["id"]}: emitted modeled cells differ from the allocated physical cells')
     origin_x, origin_y = min(x for x, _ in built), min(y for _, y in built)
     relative = [(x-origin_x, y-origin_y) for x, y in built]
@@ -637,7 +660,7 @@ def check_construction(resources, pieces, manifest, donors):
     return {'original_rul0_restored': True, 'original_network_ini_restored': True,
             'separate_piece_menu_roots': len(rings), 'states_per_root': 8,
             'runtime_tile_addresses_checked': sum(len(piece['tile_ids']) for piece in pieces),
-            **ordering_report}
+            **ordering_report, **verify_rul1(resources, pieces, overlay, donors)}
 
 
 def _tgi(value):
@@ -726,21 +749,35 @@ def verify_build(output, write_report=True):
     donors, donor_report = load_local_donors(output, manifest)
     construction = check_construction(resources, pieces, manifest, donors)
     base_menu = donors.get((*MENU_EXEMPLAR, 0x6A47C200), menu_baseline())
-    expected_resources = {RUL0, NETWORK_INI}
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if any(adaptive_bindings(piece) for piece in pieces) else set())
+    expected_resources = set(expected_controller)
     model_textures, piece_reports = set(), []
     for piece in pieces:
         tiles, preview = list(map(number, piece['tile_ids'])), number(piece['preview_id'])
         shadow_report = {'artwork': 'native NAM shadow remapping', 'in_game_shadow_selection_tested': False}
         asset_keys = {(*S3D, preview)}
+        adaptive_rows = adaptive_bindings(piece)
+        adaptive_tiles = {number(row['canonical_tile_id']) for row in adaptive_rows}
         for tile in tiles:
             asset_keys.update({(*S3D, tile + zoom) for zoom in range(5)})
-            asset_keys.update({(*PATH, tile), (*EXEMPLAR, tile), (*LTEXT, tile)})
-            props = {number(prop['id']): prop['values']
-                     for prop in exemplar(resources[*EXEMPLAR, tile])['properties']}
-            require(props.get(0x10) == [11] and
-                    props.get(0x27812823) == [*S3D, *range(tile, tile + 5)],
-                    'Network exemplar points to wrong zoom models')
+            asset_keys.update({(*PATH, tile), (*LTEXT, tile)})
+            if tile not in adaptive_tiles:
+                asset_keys.add((*EXEMPLAR, tile))
+                props = {number(prop['id']): prop['values']
+                         for prop in exemplar(resources[*EXEMPLAR, tile])['properties']}
+                require(props.get(0x10) == [11] and
+                        props.get(0x27812823) == [*S3D, *range(tile, tile + 5)],
+                        'Network exemplar points to wrong zoom models')
             require(piece['name'] in read_ltext(resources[*LTEXT, tile]), 'Piece query description mismatch')
+        adaptive_keys = adaptive_resource_keys(piece)
+        asset_keys.update(adaptive_keys)
+        if adaptive_rows:
+            validate_active_resources(resources, piece)
+            from .preview import decode_fsh
+            for key in adaptive_keys:
+                if key[:2] == TEXTURE:
+                    image = decode_fsh(resources[key])
+                    require(image.width > 0 and image.height > 0, 'Invalid adaptive ground texture dimensions')
         if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
             asset_keys.update({(*SHADOW, tile + zoom) for tile in tiles for zoom in range(5)})
             from .shadows import validate_piece_shadows
@@ -826,8 +863,9 @@ def verify_build(output, write_report=True):
         piece_reports.append({'id': piece['id'], 'menu': menu_report, 'paths': paths_report,
                               'models': models_report, 'shadows': shadow_report})
     require(set(resources) == expected_resources, 'Unexpected or missing package resource')
-    require(owners[RUL0] == owners[NETWORK_INI] and set(by_file[owners[RUL0]]) == {RUL0, NETWORK_INI},
-            'Shared controller DAT must contain exactly one RUL0 and NetworkINI overlay')
+    require(all(owners[key] == owners[RUL0] for key in expected_controller)
+            and set(by_file[owners[RUL0]]) == expected_controller,
+            'Shared controller DAT must contain exactly its declared RUL0, NetworkINI, and optional adaptive RUL1 overlays')
     menu_keys = {(*prefix, number(piece['menu']['id'])) for piece in pieces
                  for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
     require(set(by_file[f'{folder}/10_SCP_Menu.dat']) == menu_keys and

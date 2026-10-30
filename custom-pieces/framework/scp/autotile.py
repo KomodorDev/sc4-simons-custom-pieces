@@ -265,4 +265,16 @@ def validate_auto_tile_addresses(piece):
         fail('allocated tile IDs collide')
     if report['zoom_collisions']:
         fail('allocated zoom resources collide')
-    return finish()
+    result = finish()
+    if 'adaptive_ground' in piece:
+        from .adaptive_network import fixed_cells, CURSOR_BASE
+        static_cells = fixed_cells(piece)
+        if static_cells:
+            selected = {tuple(cell) for cell in static_cells}
+            static_piece = {key: value for key, value in piece.items() if key != 'adaptive_ground'}
+            static_piece['cells'] = static_cells
+            static_piece['tile_ids'] = [tile for cell, tile in zip(placements, tiles) if tuple(cell) in selected]
+            result['fixed_model_cells'] = validate_auto_tile_addresses(static_piece)
+        else:
+            result['fixed_model_cells'] = {'cell_count': 0, 'removable_road_handle_base': f'{CURSOR_BASE:08x}'}
+    return result

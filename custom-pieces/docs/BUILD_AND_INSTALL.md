@@ -102,7 +102,7 @@ All later Python commands in this guide assume that the environment remains acti
 
 The Python tools can run on macOS, Linux, and Windows. The audited game profile is **SimCity 4 Deluxe version 1.1.641 for Windows, with NAM 50 and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The profile does not establish support for the native macOS game port. See the [NAM Team's official installation instructions](https://www.sc4nam.com/docs/getting-started/installation/) for obtaining NAM and its installer, DLL, and game requirements.
 
-A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, and `ordinary_sidewalk_texture`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
+A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, `ordinary_sidewalk_texture`, and `adaptive_avenue`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
 
 | Item | Provided in Git | Local use |
 | --- | --- | --- |
@@ -113,6 +113,18 @@ A NAM version label alone does not prove that its files match this project's aud
 | Compiled builds, packages, and caches | No generated build templates | Generate them from source and matching NAM inputs. Existing `dist/` directories are convenient retained outputs, rather than prerequisites for starting source development. |
 
 For native builds, use the settings-copy command in the next section. Keep real filesystem paths in that ignored settings file. An empty `extra_plugins` list is correct only when there are no additional active Plugins directories. Builds and native tests need writable output and operating-system temporary directories; their storage and runtime depend on the selected pieces.
+
+### 3.3 Prepare adaptive Avenue inputs for source builds
+
+The compact highway diamond's three adaptive components require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
+
+```sh
+python -B custom-pieces/domains/highway/tools/prepare_adaptive_avenue_inputs.py --plugins "<user Plugins folder>" --extra-plugins "<additional Plugins folder>" --game-dir "<folder containing SimCity_4.dat>" --output custom-pieces/local/captures/adaptive-avenue
+```
+
+Replace each angle-bracket placeholder with an existing directory. Omit `--extra-plugins` when there is no additional active Plugins directory, or repeat it for each additional directory. `--game-dir` selects the directory containing the original `SimCity_4.dat`, not its `Apps` or `Plugins` subfolder. Choose a new output directory below `custom-pieces/local/`; the command reads the game and NAM files without changing them. Its profile and [portable source audit](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/adaptive-avenue-capture-audit.json) require exactly forty ground textures and one native prop donor, with their recorded hashes.
+
+Add the resulting capture directory to `extra_plugins` in your ignored settings, or pass `--extra-plugins custom-pieces/local/captures/adaptive-avenue` alongside every actual Plugins root when running `doctor` and `build`. The capture remains outside the game's Plugins folder. A limited source scan of only the NAM subtree can build an isolated candidate while another experimental controller is installed, but it does not establish collision freedom across the omitted active Plugins roots. Installation still requires a complete active-root check and one coordinated controller.
 
 <a id="build-a-selected-collection"></a>
 

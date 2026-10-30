@@ -69,6 +69,8 @@ def reviewed_extension(catalog, modules):
         piece.update(cells=deepcopy(module['cells']), footprint=deepcopy(module['footprint']), tile_ids=tiles)
         piece['engineering'].update(deepcopy(module['engineering']))
         piece['dependencies'] = ['controller', 'dd_rhw', 'rhw_core', 'mis']
+        if piece.get('adaptive_ground'):
+            piece['dependencies'].append('adaptive_avenue')
         piece.pop('authored_texture_ids', None)
         piece['shadow_mappings'] = [{'tile': tile, 'source': tile, 'rotation': 0} for tile in tiles]
         piece['provenance']['partition_review'] = (
@@ -218,14 +220,14 @@ def register_compact_modules(root=ROOT, *, review_partition=False, review_ramp_e
     if relative not in registry['assemblies']:
         registry['assemblies'].append(relative)
         registry_path.write_text(jsonc.document(registry, source=registry_path.read_text()), encoding='utf-8')
-    layout = {'schema_version': 1, 'purpose': 'One Roads button cycles through the compact diamond component types.',
+    layout = {'schema_version': 1, 'purpose': 'One Highways button cycles through the compact diamond component types.',
               'layouts': {'compact-diagonal-diamond': {'assembly_id': ASSEMBLY_ID,
               'member_order': 'first-use-in-assembly',
               'cycle_button': {'id': '6a47fee0', 'order': 'fffffee0',
               'title': 'SCP | ASSEMBLY | ' + scene['title'],
               'description': 'Tab and Shift+Tab select one reusable component; Home and End rotate it. Each click places one component. Follow the assembly placement table.'}}}}
     header = ('// title: "Highway assembly menu layouts"\n'
-              '// summary: "Define the compact diamond component cycle and its locally reserved Roads button."\n//\n'
+              '// summary: "Define the compact diamond component cycle and its locally reserved Highways button."\n//\n'
               '// Used when: scp.py assembly-menu prepares this assembly from a verified normal build.\n'
               '// Read by: scp.menu_experiment.build_assembly_menu().\n'
               '// Updated by: domains/highway/tools/register_highway_pieces.py after reviewing module membership.\n'
@@ -241,7 +243,8 @@ def _allocation(ledger, cells):
     if puzzle is None:
         raise ValueError('Reviewed local puzzle namespace is exhausted')
     blocks = {number(iid) & 0xFFFFF000 for record in ledger['pieces'].values()
-              for iid in [record['preview_id'], *record['tile_ids'], *record.get('resource_blocks', [])]}
+              for iid in [record['preview_id'], *record['tile_ids'], *record.get('resource_blocks', []),
+                          *record.get('adaptive_tile_ids', []), *record.get('extra_model_ids', [])]}
     block = next((value for value in range(0x7F500000, 0x7F600000, 0x1000) if value not in blocks), None)
     if block is None:
         raise ValueError('Reviewed local model namespace is exhausted')

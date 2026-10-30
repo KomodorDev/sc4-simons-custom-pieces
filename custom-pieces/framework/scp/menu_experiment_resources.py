@@ -316,7 +316,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     require(pieces, 'At least one piece is required')
     domain = member_domain(pieces)
     require(domain == 'high-speed-rail' or submenu is None,
-            'Highway assemblies support one Roads button; no highway submenu contract is implemented')
+            'Highway assemblies support one Highways button; no highway submenu contract is implemented')
     require(valid_menu_order(_uint(cycle_button['order'], 'cycle order'), domain),
             'Cycle order differs from its owning domain menu range')
     cycle = _definition(cycle_button, 'cycle_button', domain)
@@ -353,7 +353,7 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         require(props[0x10]['values'] == [40], 'Expected type-40 network catalogue exemplar')
         if domain == 'highway':
             require(0x4005 in props and props[0x4005]['values'] == [0] and 0x4001 not in props,
-                    'Native highway cycle requires its Roads menu property 4005')
+                    'Native highway cycle requires its Highways menu property 4005')
         require(props[0x8A2602BB]['values'] == [button_id] and
                 props[0x8A2602B8]['values'] == [button_id] and
                 props[0x8A416A99]['values'] == [*TITLE, button_id] and
@@ -393,7 +393,7 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
     """Inspect the encoded result and reject any change outside presentation."""
     domain = member_domain(pieces)
     require(domain == 'high-speed-rail' or submenu is None,
-            'Highway assemblies support one Roads button; no highway submenu contract is implemented')
+            'Highway assemblies support one Highways button; no highway submenu contract is implemented')
     require(valid_menu_order(_uint(cycle_button['order'], 'cycle order'), domain),
             'Cycle order differs from its owning domain menu range')
     cycle, group = cycle_button, submenu
@@ -435,7 +435,7 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
     template_props = _props(template)
     if domain == 'highway':
         require(0x4005 in template_props and template_props[0x4005]['values'] == [0]
-                and 0x4001 not in template_props, 'Highway assembly lost its native Roads menu property')
+                and 0x4001 not in template_props, 'Highway assembly lost its native Highways menu property')
     edited = {0x20, 0x8A2602B8, 0x8A2602B9, 0x8A2602BB, 0x8A416A99, 0xCA416AB5}
     presentations = (((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu'))
                      if group is not None else ((cycle, cycle_id, 'cycle'),))
@@ -470,7 +470,7 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                        expected_cycle_icon if kind == 'cycle' else None)
     report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
-                             'menu': 'Roads' if domain == 'highway' else 'Rail', 'construction_alias_verified_in_game': False},
+                             'menu': 'Highways' if domain == 'highway' else 'Rail', 'construction_alias_verified_in_game': False},
             'submenu': ({'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'}
                         if group is not None else None),
             'modified_existing_exemplar_tgis': [tgi_string(key) for key in sorted(changed)],

@@ -291,8 +291,50 @@ def _cancelled(cancel):
         raise InstallationCancelled("Installation cancelled before the plugin-folder transaction; installed files are unchanged.")
 
 
+def _prepare_bundle_capture(record, evidence, installation, roots, target, work_root):
+    """Resolve only declared originals and keep a multi-source capture outside Plugins."""
+    from scp.resource_audit import capture_resource_bundle, inspect_resource_bundle
+    captured = evidence.get("capture", {})
+    if (evidence.get("capture_kind") != "resource-bundle"
+            or captured.get("file") != record["filename"] or captured.get("sha256") != record["sha256"]):
+        raise ValueError("Resource-bundle evidence differs from the supported capture profile")
+    sources = []
+    for descriptor in evidence.get("sources", []):
+        name = descriptor.get("filename")
+        if (not isinstance(name, str) or Path(name).name != name or "\\" in name or ":" in name):
+            raise ValueError("Bundle source filename must be one plain filename")
+        location = descriptor.get("location")
+        if location == "game":
+            source = _child(installation.game_folder, name)
+            matches = [source] if source is not None and source.is_file() else []
+        elif location == "plugins":
+            matches = [path for folder in roots for path in folder.rglob("*")
+                       if path.is_file() and path.name.casefold() == name.casefold()
+                       and not (installation.plugins / FOLDER) in path.parents]
+        else:
+            raise ValueError("Bundle source location must be game or plugins")
+        if len(matches) != 1:
+            raise ValueError(f"Expected one original {name} for the resource bundle; found {len(matches)}")
+        sources.append({**descriptor, "archive": matches[0]})
+    existing = [path for folder in roots for path in folder.rglob("*")
+                if path.is_file() and path.name.casefold() == record["filename"].casefold()
+                and not (installation.plugins / FOLDER) in path.parents]
+    if existing:
+        if (len(existing) != 1 or existing[0].is_symlink()
+                or hashlib.sha256(existing[0].read_bytes()).hexdigest() != record["sha256"]):
+            raise ValueError(f"Existing {record['filename']} is duplicated or differs from the supported source. Keep it unchanged.")
+        # An old capture cannot bypass the current original-game/NAM checks.
+        resources, _audit = inspect_resource_bundle(sources)
+        if hashlib.sha256(pack_dbpf(resources)).hexdigest() != record["sha256"]:
+            raise ValueError("Generated bundle capture fingerprint differs from the supported profile")
+        return False
+    capture_resource_bundle(sources, target, filename=record["filename"],
+                            expected_sha256=record["sha256"], root=work_root, plugins=installation.plugins)
+    return True
+
+
 def prepare_captures(root, installation, work_root, piece_ids, *, progress=None, cancel=None):
-    """Create required one-resource inputs from this user's installed originals."""
+    """Create declared single-resource or bundle inputs from the user's originals."""
     from scp.resource_audit import audit_archive, capture_resource
     catalog = load_catalog(root)
     pieces = select_pieces(catalog, piece_ids)
@@ -304,9 +346,20 @@ def prepare_captures(root, installation, work_root, piece_ids, *, progress=None,
         record = catalog["_profile"]["files"][label]
         if not record.get("audit"):
             continue
+        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
+        capture_kind = record.get("capture_kind")
+        # Native archive audits also describe measurements; only actual
+        # single-resource evidence or an explicit bundle declares a capture.
+        if capture_kind is None and "tgi" not in evidence:
+            continue
         _cancelled(cancel)
         _notify(progress, "capture", dependency=label)
-        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
+        if capture_kind == "resource-bundle":
+            if _prepare_bundle_capture(record, evidence, installation, roots, donors / label, work_root):
+                prepared.append({"label": label, "filename": record["filename"], "sha256": record["sha256"]})
+            continue
+        if capture_kind is not None:
+            raise ValueError(f"Unsupported capture kind: {capture_kind}")
         key = evidence["tgi"]
         source_name = evidence["scope"]["archive"].replace("\\", "/").rsplit("/", 1)[-1]
         existing = [path for folder in roots for path in folder.rglob("*")

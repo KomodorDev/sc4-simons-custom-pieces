@@ -57,7 +57,8 @@
     "controller",
     "dd_rhw",
     "rhw_core",
-    "mis"
+    "mis",
+    "adaptive_avenue"
   ],
   "menu": {
     "id": "6a47f822",
@@ -103,7 +104,8 @@
     "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
     "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
     "redistribution": "permission-pending",
-    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas."
+    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas.",
+    "adaptive_ground": "Texture-backed real Avenue cells retain native appearance families; filtered rotating props preserve all other roadway geometry, and posed merged PATH aliases retain highway, ramp, car, and pedestrian routes. Fresh assembly game observations remain unverified."
   },
   "game_tests": {
     "placement": "unverified",
@@ -113,5 +115,70 @@
     "shadows": "unverified",
     "demolition": "unverified",
     "save_reload": "unverified"
+  },
+  "adaptive_ground": {
+    "schema_version": 1,
+    "cells": [
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020404",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f59a000"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020404",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f59a100"
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "04020404",
+        "avenue_flags": "01030103",
+        "prop": true,
+        "resolved_tile_id": "7f59a200"
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "02020204",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f59a300"
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "02020204",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f59a400"
+      }
+    ]
   }
 }

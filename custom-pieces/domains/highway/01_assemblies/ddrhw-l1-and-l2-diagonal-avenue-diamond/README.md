@@ -24,6 +24,8 @@ Each ramp carries traffic in one direction and connects only to its adjacent ave
 
 These pictures render the actual saved module models at their registered positions. P01–P15 identify individual placements, and every picture uses the same X/Y city coordinates, with north up in the top views. Their presentation follows the HSR trumpet: clean top, clean southeast, named top, named southeast, named northwest, and tile ownership.
 
+The approved roadway geometry is retained. The pictures show its fixed native Avenue ground reference; they do not simulate the sidewalks selected by surrounding development in the adaptive version.
+
 ![Clean north-up top view showing the overall footprint on the fixed X/Y city grid](previews/overview-top.png)
 
 ![Clean southeast view showing both highway decks and the ramp arrangement](previews/preview.png)
@@ -52,7 +54,9 @@ The components already include the ground Avenue section, its car routes, and it
 
 The saved lane boundaries match measured native Avenue channels, but these in-game joins remain unverified. Dragging an Avenue through the occupied assembly, and placing the components over a complete prebuilt Avenue, are separate untested operations. A prebuilt Avenue is not a documented prerequisite for this experimental placement sequence.
 
-Pedestrian routes and visible sidewalks are separate: a **pedestrian route** is a saved path that permits walking, while a **sidewalk** is the visible paved artwork. The current components retain fixed native Avenue models and texture references; automatic matching to an adjoining Avenue’s sidewalk style is not an implemented feature. Connecting an Avenue with sidewalks therefore does not establish that matching walkways will appear inside the assembly. Installed texture replacements can change the referenced images globally, but that is separate from adaptation to a particular neighbour. Actual sidewalk appearance and pedestrian travel still need in-game observations.
+The access core and both ramp junctions now use adaptive Avenue ground artwork on all 15 Avenue tiles. **Adaptive** means the game can select ground pavement according to surrounding development. Their highway decks, ramps, and ramp-mouth surfaces are separate rotating objects, while their saved traffic routes retain both highway decks, Avenue traffic, pedestrians, and the four permitted ramp turns. The isolated experiment confirmed this rendering approach; the complete diamond still needs its own game observations.
+
+Pedestrian routes and visible sidewalks remain separate: a **pedestrian route** is a saved path that permits walking, while a **sidewalk** is the visible paved artwork. Test visible pavement and actual pedestrian travel separately. The copied native texture families do not automatically adopt a sidewalk mod that replaces only the original texture IDs. Avenue redraw, every density and wealth appearance, and save/reload are separate unverified cases described in [TESTING.md](TESTING.md#4-game-checks).
 
 ## 2. Pieces
 
@@ -82,7 +86,7 @@ The upper branch modules own their outer native continuation cells because the e
 2. Install only an explicitly selected, verified experimental build through the [shared installation procedure](../../../../docs/BUILD_AND_INSTALL.md). The source and build commands do not install it automatically.
 3. Open **Transportation → Roads**, then select **SCP | ASSEMBLY | DD RHW-4 — Compact Diagonal Avenue Diamond**.
 4. Press **Tab** to advance through the component types or **Shift+Tab** to go back. Press **Home** or **End** to rotate the current component. Use rotation 0° for every placement below.
-5. Place P01 first, then follow the numbered rows. The listed position is the component’s local (column 0, row 0) reference, which can be an empty tile for a sparse component. Match all occupied cells to the ownership picture. Each click places only the current component.
+5. Place a fresh P01 first, then follow the numbered rows. The listed position is the component’s local (column 0, row 0) reference, which can be an empty tile for a sparse component. Match all occupied cells to the ownership picture. Each click places only the current component. P01 uses a temporary Road construction handle at local (column 3, row 0), immediately east of its three-column footprint. In this unrotated layout, that is X6, Y6, the later P15 position. NAM 50 is expected to remove the handle. Check that no extra Road tile remains there before placing P15. The two junctions retain their real static cells and need no extra handle.
 6. Use the measured outer native lane boundaries for DD RHW-4 and Avenue approaches. Do not substitute a standard Maxis highway or claim compatibility from a single matching lane. Complete native boundary and game-placement checks remain separate.
 
 | Placement | Component | Reference tile | Rotation |

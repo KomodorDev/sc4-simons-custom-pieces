@@ -56,8 +56,8 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
     used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
     puzzle = next((n for n in range(0xF7A0, 0xF900) if n not in used_puzzles), None)
     require(puzzle is not None, 'Local puzzle namespace exhausted; allocate another reviewed namespace')
-    used_blocks = {number(iid) & 0xfffff000 for p in ledger['pieces'].values()
-                   for iid in [p['preview_id'], *p['tile_ids'], *p.get('resource_blocks', [])]}
+    from scp.adaptive_network import allocation_blocks
+    used_blocks = {block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     # New drafts receive a whole 0x1000 family. Native two-dimensional
     # AutoTileBase indexing advances 0x100 across and 0x10 down the footprint.
     block = next((n for n in range(0x7F500000, 0x7F600000, 0x1000) if n not in used_blocks), None)

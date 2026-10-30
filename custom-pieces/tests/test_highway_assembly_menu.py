@@ -1,4 +1,4 @@
-"""A highway assembly keeps Roads selection and exact one-button ownership."""
+"""A highway assembly keeps Highways selection and exact one-button ownership."""
 from copy import deepcopy
 from pathlib import Path
 import sys
@@ -22,7 +22,7 @@ class HighwayAssemblyMenuTests(unittest.TestCase):
         for index in range(2):
             puzzle = 0xF610 + index
             piece = {'id': f'fixture-highway-{index}', 'domain': 'highway',
-                     'name': f'Highway component {index}', 'description': 'Synthetic Roads menu test.',
+                     'name': f'Highway component {index}', 'description': 'Synthetic Highways menu test.',
                      'puzzle_id': f'{puzzle:04x}', 'menu': {'id': f'{0x6A470000 | puzzle:08x}',
                      'order': f'{0xFFFFFF10 + index:08x}', 'style': 'ddrhw-crossing'}}
             resources, _report = menu.build_menu_resources(menu.portable_baseline(), piece)
@@ -38,13 +38,13 @@ class HighwayAssemblyMenuTests(unittest.TestCase):
         return build_menu_experiment_resources(self.resources, pieces or self.pieces,
             cycle_button=cycle or self.cycle, cycle_icon=self.icon, expected_cycle_icon=self.icon)
 
-    def test_single_cycle_keeps_roads_property_and_hides_every_member_presentation(self):
+    def test_single_cycle_keeps_highways_property_and_hides_every_member_presentation(self):
         before = deepcopy(self.resources)
         output, report = self.build()
         props = {int(prop['id'], 16): prop['values'] for prop in exemplar(output[*MENU_EXEMPLAR, 0x6A47FEE0])['properties']}
         self.assertEqual(props[0x4005], [0]); self.assertNotIn(0x4001, props)
         self.assertEqual(props[0x8A2602BB], [int(self.pieces[0]['menu']['id'], 16)])
-        self.assertEqual(report['cycle_button']['menu'], 'Roads')
+        self.assertEqual(report['cycle_button']['menu'], 'Highways')
         self.assertEqual(report['assembly_menu_buttons'], 1)
         self.assertEqual(report['member_buttons_hidden'], 2)
         self.assertEqual(output[1, 2, 3], before[1, 2, 3]); self.assertEqual(self.resources, before)
@@ -68,7 +68,7 @@ class HighwayAssemblyMenuTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'no highway submenu contract'):
             build_menu_experiment_resources(self.resources, self.pieces, cycle_button=self.cycle, submenu=submenu)
 
-    def test_changed_roads_selector_is_rejected_by_saved_cycle_validation(self):
+    def test_changed_highways_selector_is_rejected_by_saved_cycle_validation(self):
         output, _report = self.build()
         key = (*MENU_EXEMPLAR, 0x6A47FEE0); record = exemplar(output[key])
         for prop in record['properties']:
@@ -79,14 +79,14 @@ class HighwayAssemblyMenuTests(unittest.TestCase):
             validate_menu_experiment_resources(output, self.resources, self.pieces,
                 cycle_button=self.cycle, expected_cycle_icon=self.icon)
 
-    def test_layout_uses_explicit_domain_and_guide_checks_name_roads(self):
+    def test_layout_uses_explicit_domain_and_guide_checks_name_highways(self):
         self.assertEqual(_layout(self.layout, 'highway'), self.layout)
         with self.assertRaisesRegex(ValueError, 'domain menu'):
             _layout(self.layout, 'high-speed-rail')
         guide = _guide(self.layout, self.pieces).decode()
-        self.assertIn('Transportation → Roads', guide); self.assertNotIn('Transportation → Rail', guide)
+        self.assertIn('Transportation → Highways', guide); self.assertNotIn('Transportation → Rail', guide)
         self.assertIn('visible vehicle operation', guide)
-        self.assertIn('Transportation > Roads', _game_checks(self.pieces, single_button=True)['cases'][0]['description'])
+        self.assertIn('Transportation > Highways', _game_checks(self.pieces, single_button=True)['cases'][0]['description'])
 
     def test_highway_icon_adapter_poses_component_routes_without_native_inputs(self):
         pieces = [{'id': 'first', 'domain': 'highway', 'geometry_key': 'one'}]

@@ -566,6 +566,15 @@ def build_piece(spec, context):
     record = next(item for item in module_catalog()["types"] if item["key"] == spec["geometry_key"])
     _require(not record["authors_surface_atlas"] and not declarations,
              "Native-textured highway modules must not reserve an unused authored atlas")
+    if spec.get('adaptive_ground'):
+        from .adaptive_ground import build_resources, build_construction
+        from scp.adaptive_network import RUL1
+        from scp.build import RUL0
+        extra = build_resources(spec, context, compiled)
+        _require(not assets.keys() & extra.keys(), 'Adaptive runtime resources overlap canonical assets')
+        assets.update(extra)
+        return assets, build_construction(spec, compiled, context['controller'][RUL0],
+                                          context['controller'][RUL1])
     rows, fields, cons = construction_fields(spec, compiled)
     return assets, construction(spec, rows, fields, cons)
 
@@ -584,5 +593,8 @@ def check_models(resources, piece, donors=None):
 
 def check_construction_fields(fields, piece, resources):
     """Delegate emitted construction inspection without regenerating models."""
+    if piece.get('adaptive_ground'):
+        from .adaptive_verify import check_construction_fields as inspect
+        return inspect(fields, piece, resources)
     from .ramp_verify import check_construction_fields as inspect
     return inspect(fields, piece, resources)

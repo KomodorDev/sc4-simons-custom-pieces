@@ -41,6 +41,11 @@ def auto_tile_base(piece):
     do not contribute to the engine's automatically generated tile offsets.
     """
     cells = piece_cells(piece)
+    if 'adaptive_ground' in piece:
+        from .adaptive_network import fixed_cells, CURSOR_BASE
+        cells = fixed_cells(piece)
+        if not cells:
+            return CURSOR_BASE
     return tile_base(piece) + min(x for x, _ in cells) * 0x100 + min(y for _, y in cells) * 0x10
 
 
@@ -134,6 +139,11 @@ def validate_catalog(catalog):
                 allocated_resources.append((iid, slug))
                 require(not blocks or iid & 0xfffff000 in blocks,
                         'Resource lies outside its reserved families')
+            from .adaptive_network import reservation_ids
+            for iid in reservation_ids(allocation):
+                require(iid not in reserved, 'Adaptive or extra-model resource reservation overlap')
+                reserved.add(iid)
+                allocated_resources.append((iid, slug))
         require(all(reserved_blocks.get(iid & 0xfffff000, slug) == slug for iid, slug in allocated_resources),
                 'Resource occupies another piece\'s reserved family')
         require(set(ledger['pieces']) == {piece['id'] for piece in catalog['pieces']},
@@ -192,6 +202,9 @@ def validate_catalog(catalog):
             require(tile_iid & 0xf == 0, 'Tile base must end in hexadecimal 0')
             allocated += list(range(tile_iid, tile_iid + 5))
         allocated.append(number(piece['preview_id']))
+        from .adaptive_network import allocation_fields, reservation_ids
+        adaptive_allocations = allocation_fields(piece)
+        allocated.extend(reservation_ids(adaptive_allocations))
         for iid in allocated:
             require(iid not in resources, f'Resource identifier overlap: {iid:08x} ({slug})')
             resources[iid] = slug
@@ -219,6 +232,8 @@ def validate_catalog(catalog):
             if 'cells' in allocation or 'tile_base' in allocation:
                 require(allocation.get('cells') == cells and number(allocation['tile_base']) == base,
                         f'{slug}: saved-city construction coordinates changed')
+            require(all(allocation.get(key, []) == values for key, values in adaptive_allocations.items()),
+                    f'{slug}: adaptive or extra-model IDs differ from the permanent resource reservation')
     sets = catalog.get('piece_sets', {})
     require(isinstance(sets, dict), 'Piece sets must be a JSON object')
     for name, members in sets.items():

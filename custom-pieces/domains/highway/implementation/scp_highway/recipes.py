@@ -79,11 +79,14 @@ def finish_piece(spec, context, compiled):
     tiles = [int(value, 16) for value in spec['tile_ids']]
     require(cells == [cell for cell, _, _ in compiled], 'Compiled cell order differs from allocated cells')
     title = 'SCP | ' + spec['name'] + ' (Experimental)'
+    from scp.adaptive_network import bindings
+    adaptive_tiles = {int(row['canonical_tile_id'], 16) for row in bindings(spec)}
     for (cell, model_raw, path_raw), tile in zip(compiled, tiles):
         for zoom in range(5):
             assets[*S3D, tile + zoom] = model_raw
         assets[*PATH, tile] = path_raw
-        assets[*EXEMPLAR, tile] = tile_exemplar(context, tile, title)
+        if tile not in adaptive_tiles:
+            assets[*EXEMPLAR, tile] = tile_exemplar(context, tile, title)
         assets[*LTEXT, tile] = label(title)
         assets.update(build_shadows(model_raw, tile))
         model = parse_s3d(model_raw)

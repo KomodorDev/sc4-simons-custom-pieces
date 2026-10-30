@@ -109,7 +109,7 @@ def validate_menu_resources(resources, donor_exemplar, spec):
             'Wrong highway menu text')
     require(resources[*ICON, menu] == make_icon(spec['menu']['style']), 'Wrong highway menu icon')
     expected = {(*prefix, menu) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
-    return {'piece_id': spec['id'], 'title': title, 'menu': 'Roads', 'menu_id': f'{menu:08x}',
+    return {'piece_id': spec['id'], 'title': title, 'menu': 'Highways', 'menu_id': f'{menu:08x}',
             'puzzle_id': spec['puzzle_id'], 'order': spec['menu']['order'], 'icon_style': spec['menu']['style'],
             'retained_native_properties_verified': True, 'donor_menu_exemplar_tgi': tgi_string(DONOR_MENU_TGI),
             'resources': [{'tgi': tgi_string(key), 'bytes': len(resources[key]),

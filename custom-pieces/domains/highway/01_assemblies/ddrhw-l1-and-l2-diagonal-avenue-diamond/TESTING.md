@@ -15,6 +15,8 @@ document_type: "reference"
 
 This assembly contains two opposing elevated highway decks, two avenue directions, four one-way ramps, and two ground-level ramp junctions. Its current source places 13 reusable types in 15 positions, owning 53 tiles inside a 10 × 10-tile rectangle. The required car movements are four through journeys and four adjacent-carriageway right turns; the four cross-avenue left turns are excluded. Inspect the [placement guide](README.md). Saved-resource checks concern encoded traffic paths, actual indexed model triangles, exclusive construction-tile ownership, proper rotations, and menu resources. Human game observations are separate.
 
+The adaptive-ground revision changes the runtime rendering and construction of the access core and the two ramp junctions. Their 15 Avenue tiles select native ground appearance families, and 14 attached props retain the existing decks, ramps, supports, and flat ramp aprons. The remaining ten component types keep their existing construction and artwork. Every canonical model, traffic PATH, and preview remains the geometric reference; the separate active-layer checks establish that the actual resolved Avenue PATHs and prop models preserve it.
+
 <!-- BEGIN CONNECTIONS -->
 
 ### Connections and journeys
@@ -166,22 +168,28 @@ Review the test checklist for the exact tested cases and environments.
 
 ## 2. Test setup
 
-Use the exact native NAM 50 right-hand-traffic archives recorded in `config/profiles/nam50-rhd.jsonc`. Prepare Python with the [repository setup guide](../../../../docs/BUILD_AND_INSTALL.md#31-python-setup-for-a-checkout-or-source-zip). Build into `custom-pieces/dist/`; keep personal Plugins settings under ignored `custom-pieces/local/`. For a later human game test, use a disposable flat city and install through the [shared installation guide](../../../../docs/BUILD_AND_INSTALL.md). This work has not installed the candidate.
+Use the exact native NAM 50 right-hand-traffic archives recorded in `config/profiles/nam50-rhd.jsonc`. Prepare Python with the [repository setup guide](../../../../docs/BUILD_AND_INSTALL.md#31-python-setup-for-a-checkout-or-source-zip). Build into `custom-pieces/dist/`; keep personal Plugins settings under ignored `custom-pieces/local/`. For a human game test, use a disposable flat city and install through the [shared installation guide](../../../../docs/BUILD_AND_INSTALL.md). Building and verification do not install the candidate; an actual installation is recorded separately by its private receipt.
+
+The three adaptive components also require the `adaptive_avenue` capture recorded in the profile and [capture audit](evidence/adaptive-avenue-capture-audit.json). It contains 40 unchanged native texture resources and the native rotating-prop donor. Follow [Prepare adaptive Avenue inputs](../../../../docs/BUILD_AND_INSTALL.md#33-prepare-adaptive-avenue-inputs-for-source-builds) for the exact source command, or let the installer prepare this capture from the pinned NAM texture archive, original `SimCity_4.dat`, and NAM prop archive. Keep the generated capture under ignored local inputs and include that directory as an additional input root for source builds. Do not point a Plugins scan at the entire original game archive directory merely to obtain these resources.
+
+Use Windows SimCity 4 with NAM 50, its NAM DLL and FLEX patch, and right-hand traffic, including a compatible Wine or CrossOver environment. Place fresh components in a disposable city; existing fixed pieces in a saved city do not automatically become the new resolved Avenue tiles. Close the game before changing installed files. Keep the isolated rendering probe's controller outside every active Plugins root when installing this assembly, because both replace shared controller resources.
 
 ## 3. Software checks
 
 Run the following commands from the repository root. Building reads your own supported native inputs and creates game archives (DAT files). Verification reopens their saved resources. The menu command creates a separate candidate with one component-cycle button.
 
 ```sh
-python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-compact-diagonal-diamond
-python3 -B custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-compact-diagonal-diamond
-python3 -B custom-pieces/domains/highway/tools/verify_compact_assembly.py --build custom-pieces/dist/ddrhw-compact-diagonal-diamond --output custom-pieces/local/highway-assembly-check.json
-python3 -B custom-pieces/scp.py assembly-menu --source custom-pieces/dist/ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-compact-diagonal-diamond-menu --domain highway --layout compact-diagonal-diamond
+python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-adaptive-diamond-parts-01
+python3 -B custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-adaptive-diamond-parts-01
+python3 -B custom-pieces/domains/highway/tools/verify_compact_assembly.py --build custom-pieces/dist/ddrhw-adaptive-diamond-parts-01 --output custom-pieces/local/highway-assembly-check.json
+python3 -B custom-pieces/scp.py assembly-menu --source custom-pieces/dist/ddrhw-adaptive-diamond-parts-01 --output custom-pieces/dist/ddrhw-adaptive-diamond-menu-01 --domain highway --layout compact-diagonal-diamond
 python3 -B custom-pieces/scp.py docs-check --assembly ddrhw-l1-and-l2-diagonal-avenue-diamond
 python3 -B tools/run_tests.py
 ```
 
-After the matching native build and verification pass, stage the six actual-model assembly views with `python3 -B custom-pieces/domains/highway/tools/render_compact_assembly.py --build custom-pieces/dist/ddrhw-compact-diagonal-diamond --output-dir custom-pieces/local/highway-assembly-views --prefix reviewed-compact-assembly`. It reads the private Plugins setting for native textures and derives names, positions, rotations, and ownership from the saved models and registered placement plan. Compare every image with the corresponding [trumpet presentation reference](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including full-name cards, badges, leaders, colours, filled ownership tiles, and reference diamonds. The staging report records reference hashes, actual cameras, annotations, and the exact six-file canonical order. Review the PNGs before copying their unchanged bytes into `previews/` and retaining their report in [compiled render evidence](evidence/compiled-render.json); preserve [the original schematic render evidence](evidence/render.json) unchanged.
+If an artwork refresh is requested after the matching native build and verification pass, stage the six actual-model assembly views with `python3 -B custom-pieces/domains/highway/tools/render_compact_assembly.py --build custom-pieces/dist/ddrhw-adaptive-diamond-parts-01 --output-dir custom-pieces/local/highway-assembly-views --prefix reviewed-compact-assembly`. It reads the private Plugins setting for native textures and derives names, positions, rotations, and ownership from the saved models and registered placement plan. Compare every image with the corresponding [trumpet presentation reference](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including full-name cards, badges, leaders, colours, filled ownership tiles, and reference diamonds. The staging report records reference hashes, actual cameras, annotations, and the exact six-file canonical order. Review the PNGs before copying their unchanged bytes into `previews/` and retaining their report in [compiled render evidence](evidence/compiled-render.json); preserve [the original schematic render evidence](evidence/render.json) unchanged. This adaptive revision retains the unchanged canonical geometry and existing images; those images do not simulate the selected sidewalk variants.
+
+When the previous fixed-model build is available locally, run `python3 -B custom-pieces/domains/highway/tools/verify_adaptive_diamond.py --build custom-pieces/dist/ddrhw-adaptive-diamond-parts-01 --reference "<previous verified fixed-model build folder>" --output custom-pieces/local/adaptive-ground-preservation.json`. Replace the placeholder with that retained build's directory. This optional baseline comparison checks exact saved resource bytes; a fresh clone can build and independently verify the adaptive source without possessing the earlier private build.
 
 The independent pavement verifier reads saved PATH segments and indexed S3D triangles. It checks continuous pavement support, encoded slopes, declared empty shoulder cells, measured native material references and texture coordinates, and intersections with a 2.5 m-wide, 3.8 m-high car corridor through all four rotations. The [native ramp-material audit](evidence/native-ramp-materials-audit.json) records the actual NAM ramp, highway, barrier, and concrete sources; material checks remain separate from game appearance. This is a triangle-face test, rather than a complete solid or swept-vehicle proof. The earlier [schematic source](design.jsonc), [geometry check](evidence/geometry-check.json), and [schematic render report](evidence/render.json) retain their original source-only scope.
 
@@ -189,19 +197,29 @@ The independent pavement verifier reads saved PATH segments and indexed S3D tria
 
 Test these construction and sidewalk questions separately in a disposable city. First place P01–P15 on empty, flat land, then use the normal Avenue tool to extend the two exposed diagonal Avenue ends. In a second empty area, build the complete diagonal Avenue first, then try placing the same components over it. In a third copy, try dragging Avenue through the already placed components. Record placement acceptance, model retention, Route Query, and visible traffic for each sequence; success in one sequence does not establish the others. These cases have not been executed.
 
-Connect an Avenue with visible sidewalks, inspect the join, then inspect both pedestrian routes beneath the highway. A **pedestrian route** is invisible traffic data; a **sidewalk** is visible artwork. The current assembly retains fixed native Avenue models and textures, with no neighbour-dependent sidewalk selection. Record actual sidewalk appearance and pedestrian travel separately. Also observe all four highway joins: vehicles should change into or out of the shoulder lane, travel along its parallel section, and use the correct ramp without crossing a barrier. These game observations remain unverified.
+On each fresh copy, inspect all 15 Avenue tiles through the core and the two ramp junctions. Compare their pavement with an ordinary Avenue beside the same development, and record the actual density, wealth, and texture mods. A **pedestrian route** is invisible traffic data; a **sidewalk** is visible artwork. The new runtime tiles allow native ground appearance selection beneath separately attached highway and ramp artwork. The isolated rendering experiment's pavement and rotation passes do not pass these complete-assembly cases. Record visible pavement and actual pedestrian travel separately.
+
+Place fresh copies of the access core and both junction components in each of the four Home/End orientations, and compare every placed model with its preview. Rotate the city camera separately. Inspect P01's temporary construction-handle location for an unwanted remaining Road tile. Check the flat ramp aprons for flickering, disappearing pavement, or sidewalks drawn across the turning lane. The software retains those apron surfaces at their original ground height; it does not establish the game's coplanar draw order.
+
+Supply car demand through each elevated deck and all four ramps. Inspect the transitions between the new resolved Avenue tiles and the neighbouring fixed highway tiles, because matching saved routes do not establish that the game accepts those construction-network transitions. Also observe all four highway joins: vehicles should change into or out of the shoulder lane, travel along its parallel section, and use the correct ramp without crossing a barrier. Repeat the appearance and route checks after saving, quitting, and reloading. These game observations remain unverified.
 
 No game observations have been supplied. In a disposable city, place every component in each supported rotation, then supply real traffic demand on all four arms. Observe every generated journey separately with Route Query and visible vehicles. Confirm each of the four permitted right turns with both Route Query and visible vehicles. Confirm that the four cross-avenue left turns stay unavailable, while both avenue through directions and both highway through directions remain usable. Check pedestrians through both surface junctions, vehicles on the grades, and native-texture continuity at the joins. Inspect each ramp opening and the closed opposite upper-deck barrier, then check stopping, junction behaviour, shadows, demolition, replacement, and save/reload. Record exact observations through the [shared testing procedure](../../../../docs/TESTING.md); software checks cannot tick those cases.
 
 ## 5. Results and known issues
 
-The verified `ddrhw-shoulder-slip-lanes-v3` native build passes static checks for 743 resources in 15 DAT files, covering all 13 reusable component types. The four audited native input archives remain unchanged. The models reference six external NAM textures without embedding their image payloads. Saved grades remain approximately 22.6756% lower and 29.6096% upper, within the 30% bound. Complete source driving curves are approximately 70.3287 m lower and 102.2084 m upper, including the auxiliary-lane approaches. The accepted outer ramp paths, all graded samples, and ground turns are retained.
+The current adaptive revision passed saved verification for 1,086 resources in the normal 15-DAT build and 1,038 resources in the prepared 15-DAT assembly-menu build. The latter has one Highways button cycling through all 13 component types and preserves the same RUL1 additions. The [adaptive validation record](evidence/adaptive-ground-validation.json) binds the exact manifests and software results. All 1,453 executed repository tests passed; 82 explicitly skipped cases require unavailable native inputs or retained builds. A separate build and saved verification used the five supported native dependencies, including the exact Avenue capture.
+
+The [direct preservation check](evidence/adaptive-ground-preservation.json) compares the new saved DATs against the previous fixed-model candidate. All 255 canonical zoom models, 51 unique canonical PATHs, 255 shadow resources, 13 complete previews, and their preview effects remain byte-identical. All ten unconverted component DATs and the original separate-menu DAT remain identical. The three changed components add 300 native texture copies, 15 inverse-posed merged PATH aliases, 14 filtered models, 14 props, and 14 T21s, and omit fifteen fixed network-model exemplars. The source slot count is 51 unique component tiles; repeated continuation types bring the placed assembly to 53 tiles.
+
+The [new complete-assembly check](evidence/adaptive-ground-assembly-check.json) independently passes the 53-tile, 15-placement plan, all 172 route fragments and 164 directed lane seams, all eight required arm movements, and the absence of all four cross-Avenue left turns. It rechecks the saved pavement joins and all six columns, and records a maximum car grade of approximately 29.609599%. The separate active-layer verifier confirms that the real Avenue PATH aliases recover every canonical route after rotation and that the prop models retain every non-Avenue mesh. These saved-resource results do not establish game construction, network transitions, pavement selection, or traffic.
+
+The retained pre-adaptive `ddrhw-shoulder-slip-lanes-v3` native build passed static checks for 743 resources in 15 DAT files, covering all 13 reusable component types. Its four audited native input archives remain unchanged. Its models reference six external NAM textures without embedding their image payloads. Saved grades remain approximately 22.6756% lower and 29.6096% upper, within the 30% bound. Complete source driving curves are approximately 70.3287 m lower and 102.2084 m upper, including the auxiliary-lane approaches. The adaptive revision retains the accepted outer ramp paths, all graded samples, and ground turns; the earlier reports below keep their original candidate scope.
 
 The [independent assembly check](evidence/compiled-assembly-check.json) verifies 15 placements, 53 construction tiles, 172 saved PATH fragments, 164 directed lane joins, and 20 native external channels. Of those joins, 70 cross component boundaries. All four saved ramp routes contain a progressive flat lane change and a contiguous auxiliary lane at 5.5 m from the highway axis: lower tapers are 12 m with 4 m parallel runs, and upper tapers are 16 m with 8 m runs. Both native through spines remain beside each parallel run. All eight required arm movements are present, and all four excluded cross-avenue left turns remain absent. Route Query and visible travel require game observations.
 
 The same report checks 320 car-lane pavement samples across component joins, with maximum sampled height difference approximately 1.229 mm. It verifies 6 columns, 48 vertical triangles, 48 pavement contacts, and 10,560 car-segment-to-column comparisons. Minimum conservative planar corridor clearance is approximately 1.578 m. Native overhangs retain the approximately 163.314 × 163.314 m physical envelope, while the construction rectangle remains 160 × 160 m. These checks establish sampled model contacts and conservative corridor clearance; structural engineering and complete vehicle swept volumes remain unverified.
 
-The [current validation record](evidence/compiled-validation.json) records 105 passing highway tests with the supported native inputs and no skips. Negative controls reject displaced auxiliary lanes, omitted parallel sections, and displaced native through lanes. An exact saved-edge regression covers the reproduced float32 shoulder-cut crack in all four rotations. All six assembly pictures were reviewed against the corresponding trumpet presentation, and all 13 types have angled and top views. This is a coding-agent artwork review; game appearance remains unverified.
+The retained [pre-adaptive validation record](evidence/compiled-validation.json) records 105 passing highway tests with the supported native inputs and no skips. Negative controls reject displaced auxiliary lanes, omitted parallel sections, and displaced native through lanes. An exact saved-edge regression covers the reproduced float32 shoulder-cut crack in all four rotations. All six assembly pictures were reviewed against the corresponding trumpet presentation, and all 13 types have angled and top views. This is a coding-agent artwork review; game appearance remains unverified.
 
 The converted shoulder bands use an unmarked asphalt area of the native DD texture. Their ends show a visible pavement-shade transition in the software previews. The saved car-path support checks pass separately; game lighting and the installed texture pack remain unverified.
 
@@ -282,6 +300,184 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 10 cases; unverified: 10</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast | <a href="#case-preview_review-1078b138a2c094aa07cc">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top | <a href="#case-preview_review-b02e7ddb83975dfa69a4">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest | <a href="#case-preview_review-c4c07979aec5da50d199">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast | <a href="#case-preview_review-bc702f29fdf636f1adbb">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top | <a href="#case-preview_review-2f13a8f3bd777cd10246">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest | <a href="#case-preview_review-41945dab4d14218575f2">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles | <a href="#case-preview_review-ca10fd6f9f960a69288e">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast | <a href="#case-preview_review-a27eb7d003ae1a9abb69">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top | <a href="#case-preview_review-3fc1532c9931e2deb4e3">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership | <a href="#case-preview_review-a7286a3bc6d0b50ac5e7">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast</summary>
+
+<a id="case-preview_review-1078b138a2c094aa07cc"></a>
+
+**General: unverified** — `preview_review-1078b138a2c094aa07cc`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top</summary>
+
+<a id="case-preview_review-b02e7ddb83975dfa69a4"></a>
+
+**General: unverified** — `preview_review-b02e7ddb83975dfa69a4`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest</summary>
+
+<a id="case-preview_review-c4c07979aec5da50d199"></a>
+
+**General: unverified** — `preview_review-c4c07979aec5da50d199`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast</summary>
+
+<a id="case-preview_review-bc702f29fdf636f1adbb"></a>
+
+**General: unverified** — `preview_review-bc702f29fdf636f1adbb`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top</summary>
+
+<a id="case-preview_review-2f13a8f3bd777cd10246"></a>
+
+**General: unverified** — `preview_review-2f13a8f3bd777cd10246`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest</summary>
+
+<a id="case-preview_review-41945dab4d14218575f2"></a>
+
+**General: unverified** — `preview_review-41945dab4d14218575f2`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles</summary>
+
+<a id="case-preview_review-ca10fd6f9f960a69288e"></a>
+
+**General: unverified** — `preview_review-ca10fd6f9f960a69288e`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast</summary>
+
+<a id="case-preview_review-a27eb7d003ae1a9abb69"></a>
+
+**General: unverified** — `preview_review-a27eb7d003ae1a9abb69`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top</summary>
+
+<a id="case-preview_review-3fc1532c9931e2deb4e3"></a>
+
+**General: unverified** — `preview_review-3fc1532c9931e2deb4e3`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership</summary>
+
+<a id="case-preview_review-a7286a3bc6d0b50ac5e7"></a>
+
+**General: unverified** — `preview_review-a7286a3bc6d0b50ac5e7`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership.
 
 No observation recorded.
 
@@ -2384,184 +2580,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: external-20; to port: external-19; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 10 cases; unverified: 10</summary>
-
-| Check / exact scope | General | 0° |
-| --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast | <a href="#case-preview_review-1078b138a2c094aa07cc">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top | <a href="#case-preview_review-b02e7ddb83975dfa69a4">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest | <a href="#case-preview_review-c4c07979aec5da50d199">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast | <a href="#case-preview_review-bc702f29fdf636f1adbb">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top | <a href="#case-preview_review-2f13a8f3bd777cd10246">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest | <a href="#case-preview_review-41945dab4d14218575f2">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles | <a href="#case-preview_review-ca10fd6f9f960a69288e">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast | <a href="#case-preview_review-a27eb7d003ae1a9abb69">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top | <a href="#case-preview_review-3fc1532c9931e2deb4e3">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership | <a href="#case-preview_review-a7286a3bc6d0b50ac5e7">[ ] unverified</a> | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast</summary>
-
-<a id="case-preview_review-1078b138a2c094aa07cc"></a>
-
-**General: unverified** — `preview_review-1078b138a2c094aa07cc`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top</summary>
-
-<a id="case-preview_review-b02e7ddb83975dfa69a4"></a>
-
-**General: unverified** — `preview_review-b02e7ddb83975dfa69a4`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest</summary>
-
-<a id="case-preview_review-c4c07979aec5da50d199"></a>
-
-**General: unverified** — `preview_review-c4c07979aec5da50d199`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast</summary>
-
-<a id="case-preview_review-bc702f29fdf636f1adbb"></a>
-
-**General: unverified** — `preview_review-bc702f29fdf636f1adbb`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top</summary>
-
-<a id="case-preview_review-2f13a8f3bd777cd10246"></a>
-
-**General: unverified** — `preview_review-2f13a8f3bd777cd10246`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest</summary>
-
-<a id="case-preview_review-41945dab4d14218575f2"></a>
-
-**General: unverified** — `preview_review-41945dab4d14218575f2`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles</summary>
-
-<a id="case-preview_review-ca10fd6f9f960a69288e"></a>
-
-**General: unverified** — `preview_review-ca10fd6f9f960a69288e`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast</summary>
-
-<a id="case-preview_review-a27eb7d003ae1a9abb69"></a>
-
-**General: unverified** — `preview_review-a27eb7d003ae1a9abb69`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top</summary>
-
-<a id="case-preview_review-3fc1532c9931e2deb4e3"></a>
-
-**General: unverified** — `preview_review-3fc1532c9931e2deb4e3`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership</summary>
-
-<a id="case-preview_review-a7286a3bc6d0b50ac5e7"></a>
-
-**General: unverified** — `preview_review-a7286a3bc6d0b50ac5e7`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership.
 
 No observation recorded.
 

@@ -145,12 +145,26 @@ def materialize(root,*,build,piece_ids=None,include_assemblies=False):
                         'rotation_ring_section':'Ordering',
                         'sections':{f'{key:08x}':sections[key] for key in
                             (puzzle+slot*0x10000 for slot in range(8)) if key in sections}}
+        runtime_keys = []
+        if piece.get('adaptive_ground'):
+            from scp.adaptive_network import bindings, resource_keys, solution_rows, BEGIN, END
+            from scp.content import resource_fingerprints
+            targets = {int(row['resolved_tile_id'],16) for row in bindings(piece)}
+            insertion = manifest['overlay']['rul1']['insertion']
+            active = '\n'.join(line for line in insertion.splitlines()
+                               if line.strip() not in {BEGIN,END} and line.strip())
+            construction['adaptive_rul1_solutions'] = [list(row) for row in solution_rows(active.encode('ascii'))
+                                                      if row[2] in targets]
+            construction['adaptive_bindings'] = piece['adaptive_ground']
+            runtime_keys = list(resource_fingerprints(identifier,{
+                key:resources[key] for key in resource_keys(piece) if key[0] != 0x7AB50E44}))
         record['supported_orientations'] = orientation_states_from_rules(construction,piece['puzzle_id'])
         key = 'construction:'+identifier
         record['source']['resource_fingerprints'][key] = fingerprint(construction)
         record['source']['construction_basis'] = 'Actual emitted per-piece rule sections from the independently verified saved build'
         for port in record['ports']:
             port['resource_keys'].append(key)
+            port['resource_keys'].extend(name for name in runtime_keys if name not in port['resource_keys'])
         records[identifier] = record
     result = refresh_catalog_content(root,records=records,changed_piece_ids=frozenset(records),
                                      scope_to_changed=not include_assemblies)

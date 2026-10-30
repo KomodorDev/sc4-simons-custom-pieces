@@ -153,7 +153,11 @@ def check_paths(resources, piece):
 def check_models(resources, piece, donors):
     if piece['recipe'] != CORE:
         from .ramp_paths import check_models as check_ramp
-        return check_ramp(resources, piece, donors)
+        report = check_ramp(resources, piece, donors)
+        if piece.get('adaptive_ground'):
+            from .adaptive_verify import check_resources
+            report['adaptive_ground'] = check_resources(resources, piece)
+        return report
     tiles = _core_spec(piece); textures = set(); deck_sections = defaultdict(list)
     for cell, tile, fingerprint in zip(CELLS, tiles, MODEL_SHA):
         for zoom in range(5):

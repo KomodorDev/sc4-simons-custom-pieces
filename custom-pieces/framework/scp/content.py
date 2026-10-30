@@ -234,7 +234,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     resource_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in
                      ('model', 'path', 'construction', 'exemplar', 'effect', 'shadow', 'texture', 'resource', 'assembly_pose')]
     traffic_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('path', 'construction', 'graph', 'interface', 'assembly_pose')]
-    visual_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('model', 'shadow', 'texture', 'effect', 'assembly_pose')]
+    visual_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('model', 'shadow', 'texture', 'effect', 'exemplar', 'assembly_pose')]
     cases = [
         _new_case('software_resources', 'Verify the actual compiled resources and construction rules.',
                   {'subject_id': subject_id}, _dependencies(resource_keys, values)),
