@@ -15,36 +15,41 @@ A compact diagonal NAM DD RHW-4 crosses a diagonal ground avenue. The lower deck
 
 These pictures render the actual saved module models at their registered positions. P01–P17 identify individual placements, and every picture uses the same north-up X/Y city coordinates.
 
-| View | Purpose |
-| --- | --- |
-| [Clean top](previews/overview-top.png) | Overall footprint. |
-| [Clean angled](previews/preview.png) | Both decks and the ramp arrangement. |
-| [Named top](previews/named-top.png) | Locate every placement. |
-| [Named southeast](previews/named-southeast.png) | Follow the component joins. |
-| [Named northwest](previews/named-northwest.png) | Inspect the opposite side. |
-| [Tile ownership](previews/tile-ownership.png) | Exactly which component owns each construction tile. |
+![Clean north-up top view showing the overall footprint on the fixed X/Y city grid](previews/overview-top.png)
+
+![Clean angled view showing both highway decks and the ramp arrangement](previews/preview.png)
+
+![Named north-up top view identifying all 17 placements](previews/named-top.png)
+
+![Named southeast view showing the component joins](previews/named-southeast.png)
+
+![Named northwest view showing the opposite side](previews/named-northwest.png)
+
+![Tile ownership plan showing which placement owns each construction tile](previews/tile-ownership.png)
 
 The lower ramps have about 24.16 m of active descent or ascent (1.51 tile lengths). Each complete lower curve is about 50.04 m once the flat high join and 4 m ground landing are included. The upper ramps have about 40.83 m of active height transition and an 80.47 m complete curve. These lengths follow the curves, rather than a rectangular footprint edge. The 8 × 8 rectangle describes construction tiles; retained native model overhangs extend the physical envelope to approximately 131.31 × 131.31 m. The steep experiment requires game testing.
 
 ## 2. Pieces
 
-Use the exact menu names below. A **type** is a reusable component design; a **placement** is one instance of that design in the city. Continuation A is placed four times, and continuation B is placed twice. Two unchanged native cells were detached from the upper branch modules after their complete model and PATH bytes were proved identical to continuation A. The reused continuation halves now also carry six concrete column surfaces beneath the stacked decks.
+Use the exact menu names below. A **type** is a reusable component design; a **placement** is one instance of that design in the city. Continuation A is placed four times, and continuation B is placed twice. Click a thumbnail to open the full standalone angled picture, or click **Top view** to see the component from above. Each standalone picture shows the component at 0°.
 
-| Component type | Quantity | Occupied tiles per click |
-| --- | ---: | ---: |
-| [DD RHW-4 — and Avenue Access Core](../../00_pieces/ddrhw-diagonal-access-core/README.md) | 1 | 5 |
-| [DD RHW-4 — Avenue Northwest Ramp Junction](../../00_pieces/ddrhw-diagonal-northwest-junction/README.md) | 1 | 6 |
-| [DD RHW-4 — Avenue Southeast Ramp Junction](../../00_pieces/ddrhw-diagonal-southeast-junction/README.md) | 1 | 8 |
-| [DD RHW-4 — Lower Diagonal Exit Branch](../../00_pieces/ddrhw-diagonal-lower-exit-branch/README.md) | 1 | 1 |
-| [DD RHW-4 — Lower Diagonal Entry Branch](../../00_pieces/ddrhw-diagonal-lower-entry-branch/README.md) | 1 | 1 |
-| [DD RHW-4 — Compact Lower Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-lower-exit-grade/README.md) | 1 | 1 |
-| [DD RHW-4 — Compact Lower Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-lower-entry-grade/README.md) | 1 | 1 |
-| [DD RHW-4 — Upper Diagonal Exit Branch](../../00_pieces/ddrhw-diagonal-upper-exit-branch/README.md) | 1 | 3 |
-| [DD RHW-4 — Upper Diagonal Entry Branch](../../00_pieces/ddrhw-diagonal-upper-entry-branch/README.md) | 1 | 3 |
-| [DD RHW-4 — Compact Upper Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-upper-exit-grade/README.md) | 1 | 3 |
-| [DD RHW-4 — Compact Upper Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-upper-entry-grade/README.md) | 1 | 3 |
-| [DD RHW-4 — Diagonal Continuation A](../../00_pieces/ddrhw-diagonal-diagonal-half-a/README.md) | 4 | 1 |
-| [DD RHW-4 — Diagonal Continuation B](../../00_pieces/ddrhw-diagonal-diagonal-half-b/README.md) | 2 | 1 |
+Two unchanged native cells were detached from the upper branch modules after their complete model and PATH bytes were proved identical to continuation A. The reused continuation halves now also carry six concrete column surfaces beneath the stacked decks.
+
+| Standalone angled picture | Component name and permanent piece ID | Placements | Quantity | Occupied tiles per click |
+| --- | --- | --- | ---: | ---: |
+| [![DD RHW-4 — and Avenue Access Core: canonical angled view](../../00_pieces/ddrhw-diagonal-access-core/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-access-core/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-access-core/previews/preview-top.png) | **[DD RHW-4 — and Avenue Access Core](../../00_pieces/ddrhw-diagonal-access-core/README.md)**<br>`ddrhw-diagonal-access-core` | P01 | 1 | 5 |
+| [![DD RHW-4 — Avenue Northwest Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Northwest Ramp Junction](../../00_pieces/ddrhw-diagonal-northwest-junction/README.md)**<br>`ddrhw-diagonal-northwest-junction` | P02 | 1 | 6 |
+| [![DD RHW-4 — Avenue Southeast Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Southeast Ramp Junction](../../00_pieces/ddrhw-diagonal-southeast-junction/README.md)**<br>`ddrhw-diagonal-southeast-junction` | P03 | 1 | 8 |
+| [![DD RHW-4 — Lower Diagonal Exit Branch: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-top.png) | **[DD RHW-4 — Lower Diagonal Exit Branch](../../00_pieces/ddrhw-diagonal-lower-exit-branch/README.md)**<br>`ddrhw-diagonal-lower-exit-branch` | P04 | 1 | 1 |
+| [![DD RHW-4 — Lower Diagonal Entry Branch: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-top.png) | **[DD RHW-4 — Lower Diagonal Entry Branch](../../00_pieces/ddrhw-diagonal-lower-entry-branch/README.md)**<br>`ddrhw-diagonal-lower-entry-branch` | P05 | 1 | 1 |
+| [![DD RHW-4 — Compact Lower Diagonal Exit Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Lower Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-lower-exit-grade/README.md)**<br>`ddrhw-diagonal-lower-exit-grade` | P06 | 1 | 1 |
+| [![DD RHW-4 — Compact Lower Diagonal Entry Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Lower Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-lower-entry-grade/README.md)**<br>`ddrhw-diagonal-lower-entry-grade` | P07 | 1 | 1 |
+| [![DD RHW-4 — Upper Diagonal Exit Branch: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-top.png) | **[DD RHW-4 — Upper Diagonal Exit Branch](../../00_pieces/ddrhw-diagonal-upper-exit-branch/README.md)**<br>`ddrhw-diagonal-upper-exit-branch` | P08 | 1 | 3 |
+| [![DD RHW-4 — Upper Diagonal Entry Branch: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-top.png) | **[DD RHW-4 — Upper Diagonal Entry Branch](../../00_pieces/ddrhw-diagonal-upper-entry-branch/README.md)**<br>`ddrhw-diagonal-upper-entry-branch` | P09 | 1 | 3 |
+| [![DD RHW-4 — Compact Upper Diagonal Exit Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Upper Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-upper-exit-grade/README.md)**<br>`ddrhw-diagonal-upper-exit-grade` | P10 | 1 | 3 |
+| [![DD RHW-4 — Compact Upper Diagonal Entry Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Upper Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-upper-entry-grade/README.md)**<br>`ddrhw-diagonal-upper-entry-grade` | P11 | 1 | 3 |
+| [![DD RHW-4 — Diagonal Continuation A: canonical angled view](../../00_pieces/ddrhw-diagonal-diagonal-half-a/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-diagonal-half-a/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-diagonal-half-a/previews/preview-top.png) | **[DD RHW-4 — Diagonal Continuation A](../../00_pieces/ddrhw-diagonal-diagonal-half-a/README.md)**<br>`ddrhw-diagonal-diagonal-half-a` | P12, P14, P16, P17 | 4 | 1 |
+| [![DD RHW-4 — Diagonal Continuation B: canonical angled view](../../00_pieces/ddrhw-diagonal-diagonal-half-b/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-diagonal-half-b/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-diagonal-half-b/previews/preview-top.png) | **[DD RHW-4 — Diagonal Continuation B](../../00_pieces/ddrhw-diagonal-diagonal-half-b/README.md)**<br>`ddrhw-diagonal-diagonal-half-b` | P13, P15 | 2 | 1 |
 
 ## 3. Placements
 
