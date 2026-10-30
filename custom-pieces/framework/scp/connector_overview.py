@@ -18,6 +18,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 from . import jsonc
+from .subject_sources import source_path
 from .render_headers import draw_header, grid_caption, header_settings, level_and_height, piece_title, view_caption
 
 EDGE_NAMES = {0: "West", 1: "North", 2: "East", 3: "South"}
@@ -729,7 +730,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
         reviewed_matches = bool(old_evidence and old_source.get("model_sha256") == sha256(raw_model)
                                 and old_source.get("source_dat_sha256") == sha256(raw_dat)
                                 and old_evidence.get("textures") == texture_sources)
-        source_files = [directory / filename for filename in ("piece.json", "connections.json", "connector-groups.jsonc")]
+        source_files = [source_path(directory, "piece"), directory/"connections.json", directory/"connector-groups.jsonc"]
         source_files.append(domain / "domain.jsonc")
         source_files.extend(root / "schemas" / name for name in
                             ("connector-groups.schema.jsonc", "connector-profiles.schema.jsonc"))

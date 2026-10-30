@@ -14,8 +14,8 @@ dependencies = ["Pillow>=10,<13"]
 preview = ["NumPy>=1.26,<3"]
 
 [tool.setuptools]
-packages = ["scp", "scp.schemas", "scp_hsr", "scp_hsr_tools"]
-package-dir = {"scp" = "framework/scp", "scp.schemas" = "schemas", "scp_hsr" = "domains/high-speed-rail/implementation/scp_hsr", "scp_hsr_tools" = "domains/high-speed-rail/tools"}
+packages = ["scp", "scp.schemas", "scp_hsr", "scp_hsr_tools", "scp_highway"]
+package-dir = {"scp" = "framework/scp", "scp.schemas" = "schemas", "scp_hsr" = "domains/high-speed-rail/implementation/scp_hsr", "scp_hsr_tools" = "domains/high-speed-rail/tools", "scp_highway" = "domains/highway/implementation/scp_highway"}
 
 [tool.setuptools.package-data]
 "scp.schemas" = ["*.jsonc"]

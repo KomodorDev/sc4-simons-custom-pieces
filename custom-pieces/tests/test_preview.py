@@ -27,6 +27,35 @@ except ModuleNotFoundError:
 
 @unittest.skipIf(preview is None, 'NumPy preview dependency is unavailable')
 class PreviewTitleBindingTests(unittest.TestCase):
+    def test_jsonc_subject_title_and_connector_binding_track_the_actual_source_filename(self):
+        from scp import jsonc
+        from scp.catalog import load_catalog
+        from scp.subject_sources import new_subject_document
+        catalog = load_catalog(ROOT)
+        identifier = 'hsr-l4-over-hsr-l2-two-track-crossing-90deg'
+        piece = next(piece for piece in catalog['pieces'] if piece['id'] == identifier)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = write_connector_source_fixture(temporary, [identifier], source_root=ROOT)
+            directory = root/'domains/high-speed-rail/00_pieces'/identifier
+            old = directory/'piece.json'
+            current = old.with_suffix('.jsonc')
+            current.write_text(new_subject_document(jsonc.load(old), 'piece'), encoding='utf-8')
+            old.unlink()
+            registry_path = root/'domains/high-speed-rail/domain.jsonc'
+            registry = jsonc.load(registry_path)
+            registry['pieces'] = [relative[:-5]+'.jsonc' if relative == f'00_pieces/{identifier}/piece.json'
+                                  else relative for relative in registry['pieces']]
+            jsonc.dump(registry_path, registry)
+            sidecar = directory/'connector-groups.jsonc'
+            groups = jsonc.load(sidecar)
+            groups['source_binding']['piece_sha256'] = hashlib.sha256(current.read_bytes()).hexdigest()
+            sidecar.write_text(json.dumps(groups), encoding='utf-8')
+            title, inputs = preview._canonical_title(root, catalog, piece)
+            self.assertTrue(title.startswith('Piece - '))
+            self.assertIn(current.relative_to(root).as_posix(), inputs)
+            self.assertNotIn(old.relative_to(root).as_posix(), inputs)
+            self.assertEqual(inputs[current.relative_to(root).as_posix()], hashlib.sha256(current.read_bytes()).hexdigest())
+
     def test_commented_shared_sources_keep_titles_and_invalidate_exact_title_fingerprints(self):
         from scp.catalog import load_catalog
         catalog = load_catalog(ROOT)
@@ -49,6 +78,34 @@ class PreviewTitleBindingTests(unittest.TestCase):
             self.assertEqual(set(first_inputs), {name.as_posix() for name in names})
             for name in names[1:]:
                 self.assertEqual(first_inputs[name.as_posix()], second_inputs[name.as_posix()])
+
+
+@unittest.skipIf(preview is None,'NumPy preview dependency is unavailable')
+class OwnedTextureTests(unittest.TestCase):
+    def test_saved_owned_texture_renders_without_indexing_installed_plugins(self):
+        library = preview.TextureLibrary(Path('unused-plugins'))
+        model = parse_s3d(donor())
+        iid, = preview.model_texture_ids(model)
+        raw = encode_shadow_fsh(Image.new('L', (8,8), 255))
+        with patch.object(preview.read_dbpf, 'index_plugins', side_effect=AssertionError('Installed fallback must not run')):
+            textures, provenance = library.for_model(model, {iid:raw})
+            again, repeated = library.for_model(model)
+        self.assertEqual(set(textures), {iid})
+        self.assertIs(again[iid], textures[iid])
+        self.assertEqual(provenance, repeated)
+        self.assertEqual(provenance, [{'instance':f'{iid:08x}',
+            'fsh_sha256':hashlib.sha256(raw).hexdigest(), 'size':[8,8], 'source':'piece-dat'}])
+
+    def test_changed_owned_bytes_cannot_reuse_a_cached_texture_identifier(self):
+        library = preview.TextureLibrary(Path('unused-plugins'))
+        model = parse_s3d(donor())
+        iid, = preview.model_texture_ids(model)
+        first = encode_shadow_fsh(Image.new('L', (8,8), 255))
+        second = encode_shadow_fsh(Image.new('L', (8,8), 0))
+        library.for_model(model, {iid:first})
+        with self.assertRaisesRegex(ValueError, 'Cached texture.*differs'):
+            library.for_model(model, {iid:second})
+        self.assertEqual(library.provenance[iid]['fsh_sha256'], hashlib.sha256(first).hexdigest())
 
 
 @unittest.skipIf(preview is None,'NumPy preview dependency is unavailable')

@@ -8,7 +8,8 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
-sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/high-speed-rail/implementation')]
+sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/high-speed-rail/implementation'),
+                str(ROOT / 'domains/highway/implementation')]
 sys.dont_write_bytecode = True
 if sys.version_info < (3, 11):
     raise SystemExit('SCP requires Python 3.11 or newer. Check with: python3 --version')
@@ -75,7 +76,7 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
                                                       'redistribution': 'permission-pending'},
                   'game_tests': {key: 'unverified' for key in piece['game_tests']}})
     piece['domain'] = domain
-    relative = Path(domains[domain]['path']) / '00_pieces' / slug / 'piece.json'
+    relative = Path(domains[domain]['path']) / '00_pieces' / slug / 'piece.jsonc'
     target = ROOT / relative
     require(not target.exists(), 'Piece manifest already exists')
     allocation = {key: piece[key] for key in ('puzzle_id', 'tile_ids', 'preview_id')}

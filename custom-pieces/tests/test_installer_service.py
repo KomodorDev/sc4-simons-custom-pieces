@@ -179,8 +179,22 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertIn("hsr-l2-over-road-l0-mixed-parallel-stack", actual)
         self.assertIn("hsr-l2-and-l4-two-track-curve-ramp-90deg-right", actual)
+        highway = [piece for piece in catalog["pieces"] if piece["domain"] == "highway"
+                   and piece["status"] != "draft"]
+        self.assertTrue(highway)
+        self.assertTrue(all(piece["id"] in actual for piece in highway))
+        self.assertTrue(any(not piece["enabled_by_default"] for piece in highway))
         self.assertEqual(len(actual), len(expected))
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
+
+    def test_capabilities_use_finite_provider_recipes_for_both_domains(self):
+        from scp_highway import native, ramp_paths
+        capabilities = service.implemented_recipes_by_domain()
+        self.assertEqual(set(capabilities), {"high-speed-rail", "highway"})
+        self.assertIsInstance(capabilities["highway"], frozenset)
+        self.assertEqual(capabilities["highway"], {native.RECIPE} | {
+            item["recipe"] for item in ramp_paths.module_catalog()["types"]})
+        self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
 
     def test_non_draft_record_with_no_implementation_blocks_complete_selection(self):
         catalog = deepcopy(load_catalog(ROOT))
@@ -189,12 +203,41 @@ class InstallerSelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
 
-    def test_failed_placement_guard_is_not_overridden(self):
+    def test_highway_prefix_or_another_domains_recipe_does_not_prove_implementation(self):
+        catalog = load_catalog(ROOT)
+        highway = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        hsr_recipe = next(piece["recipe"] for piece in catalog["pieces"]
+                          if piece["domain"] == "high-speed-rail")
+        for recipe in ("highway_ddrhw_compact_unimplemented", hsr_recipe):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                next(piece for piece in changed["pieces"] if piece["id"] == highway["id"])["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*" + highway["id"]):
+                        service.all_implemented_ids(ROOT)
+
+    def test_unknown_domain_is_rejected_even_with_a_known_recipe(self):
         catalog = deepcopy(load_catalog(ROOT))
-        catalog["pieces"][0]["game_tests"]["placement"] = "failed"
+        catalog["pieces"][0]["domain"] = "unimplemented-domain"
         with patch.object(service, "load_catalog", return_value=catalog):
-            with self.assertRaisesRegex(ValueError, "failed placement"):
+            with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
+
+    def test_unknown_draft_recipe_stays_out_of_complete_selection(self):
+        catalog = deepcopy(load_catalog(ROOT))
+        draft = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        draft.update(status="draft", recipe="highway_ddrhw_compact_unimplemented")
+        with patch.object(service, "load_catalog", return_value=catalog):
+            self.assertNotIn(draft["id"], service.all_implemented_ids(ROOT))
+
+    def test_failed_placement_guard_is_not_overridden(self):
+        for domain in ("high-speed-rail", "highway"):
+            with self.subTest(domain=domain):
+                catalog = deepcopy(load_catalog(ROOT))
+                next(piece for piece in catalog["pieces"] if piece["domain"] == domain)["game_tests"]["placement"] = "failed"
+                with patch.object(service, "load_catalog", return_value=catalog):
+                    with self.assertRaisesRegex(ValueError, "failed placement"):
+                        service.all_implemented_ids(ROOT)
 
     def test_update_cannot_drop_an_installed_type_missing_from_new_source(self):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")

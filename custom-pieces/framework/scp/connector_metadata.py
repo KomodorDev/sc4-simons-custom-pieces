@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 
 from . import jsonc
+from .subject_sources import registered_source_path, source_path
 from importlib import resources
 
 EPS = 2e-5
@@ -401,17 +402,20 @@ def load_library(custom_root, piece_ids, domain_id="high-speed-rail"):
     _need(registry.get("schema_version") == 1 and registry.get("id") == domain_id, "Invalid HSR domain registry schema or ID")
     profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
     profiles = resolve_profiles(jsonc.load(profile_path)) if profile_path.is_file() else {}
-    registered = {Path(p).parent.name: p for p in registry["pieces"]}
+    paths = registry["pieces"]
+    _need(isinstance(paths, list) and all(isinstance(path, str) for path in paths)
+          and len(paths) == len(set(paths)), "Duplicate or invalid registered piece source path")
+    registered = {Path(p).parent.name: p for p in paths}
+    _need(len(registered) == len(paths), "Piece registry contains parallel sources for one identity")
     _need(isinstance(piece_ids, (list, tuple)) and piece_ids and len(set(piece_ids)) == len(piece_ids), "Pilot needs unique selected piece IDs")
     result = {}
     for identifier in piece_ids:
         _need(identifier in registered and re.fullmatch(r"[a-z][a-z0-9-]{1,63}", identifier), "Unknown pilot piece ID")
-        _need(Path(registered[identifier]) == Path("00_pieces") / identifier / "piece.json", "Piece registry path differs from canonical source path")
-        piece_path = _safe_relative(domain, registered[identifier])
+        piece_path = registered_source_path(domain, registered[identifier], "piece", identifier=identifier)
         directory = piece_path.parent
         piece_bytes, connection_bytes = piece_path.read_bytes(), _safe_relative(directory, "connections.json").read_bytes()
         sidecar = jsonc.load(_safe_relative(directory, "connector-groups.jsonc"))
-        piece_data = json.loads(piece_bytes)
+        piece_data = jsonc.loads(piece_bytes.decode("utf-8"))
         _need(piece_data.get("domain") == domain_id and piece_data.get("id") == identifier, "Piece identity differs from its domain registration")
         expected = sidecar.get("source_binding", {})
         _export_need(expected.get("piece_sha256") == hashlib.sha256(piece_bytes).hexdigest() and
@@ -541,7 +545,7 @@ def _route_matches_member(route, member):
 def _source_files(root, domain_id, piece_id, compiled):
     domain = root / "domains" / domain_id
     directory = domain / "00_pieces" / piece_id
-    files = [directory/name for name in ("piece.json", "connections.json", "connector-groups.jsonc")]
+    files = [source_path(directory, "piece"), directory/"connections.json", directory/"connector-groups.jsonc"]
     # The manifest's compiled facts have their own semantic fingerprint. Its
     # documentation snapshot must be allowed to change after final rendering.
     files += [domain/"domain.jsonc", root/compiled["pieces"][piece_id]["dat_path"]]

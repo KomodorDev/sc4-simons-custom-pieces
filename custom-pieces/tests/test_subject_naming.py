@@ -6,7 +6,7 @@ import unittest
 
 from scp import jsonc
 from scp.catalog import load_catalog
-from scp.subject_sources import piece_id_for_recipe, piece_directory
+from scp.subject_sources import piece_id_for_recipe, piece_directory, source_path
 from scp_hsr.menu import _spec_fields
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +24,7 @@ class SubjectNamingIntegrationTests(unittest.TestCase):
                 self.assertEqual(piece_id_for_recipe(piece['recipe'], ROOT), identifier)
                 directory = piece_directory(piece['recipe'], ROOT)
                 self.assertEqual(directory.name, identifier)
-                self.assertTrue((directory/'piece.json').is_file())
+                self.assertTrue(source_path(directory, 'piece').is_file())
                 self.assertRegex(identifier, r'^[a-z](?:[a-z0-9]|-[a-z0-9])+$')
                 self.assertLessEqual(len(identifier), 64)
 
@@ -39,11 +39,18 @@ class SubjectNamingIntegrationTests(unittest.TestCase):
                 measurements = json.loads((directory/'connections.json').read_text())
                 heights = [port['endpoint_m'][2] for port in measurements['ports']]
                 declared = re.findall(r'\(([+-]?[\d.]+) m\)', name)
-                self.assertTrue(declared)
+                if piece['domain'] == 'high-speed-rail':
+                    self.assertTrue(declared)
                 for height in declared:
                     self.assertTrue(any(abs(float(height)-value) < 1e-6 for value in heights),
                                     f'{height} m is not a measured interface of {name}')
-                actual = _spec_fields(piece)['title']
+                if piece['domain'] == 'high-speed-rail':
+                    actual = _spec_fields(piece)['title']
+                else:
+                    from scp.providers import domain_module
+                    menu = domain_module(piece, 'menu')
+                    resources, audit = menu.build_menu_resources(menu.verification_donor({}), piece)
+                    actual = audit['title']
                 self.assertTrue(actual.endswith(name))
                 self.assertEqual(actual.count(name), 1)
 

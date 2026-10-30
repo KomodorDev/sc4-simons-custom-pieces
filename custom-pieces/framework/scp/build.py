@@ -97,8 +97,10 @@ def preflight_allocations(context, installed, selected):
             tile = int(raw_tile,16)
             planned.update({(*S3D,tile+zoom) for zoom in range(5)})
             planned.update({(*prefix,tile) for prefix in (PATH, EXEMPLAR, LTEXT)})
-            if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+            if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
                 planned.update({(0x7AB50E44,0x2BC2759A,tile+zoom) for zoom in range(5)})
+        planned.update({(0x7AB50E44, 0x1ABE787D, int(value, 16))
+                        for value in piece.get('authored_texture_ids', [])})
     conflicts = planned & set(installed)
     require(not conflicts, 'Allocated resource identifiers collide with installed content: '
             + ', '.join(tgi_string(key) for key in sorted(conflicts)[:8]))
@@ -158,7 +160,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         try:
             resources, delta = build_piece(piece, context)
             record = {**deepcopy(piece), 'asset_file': f"{catalog['plugin_folder']}/20_Pieces/SCP_{piece['id']}.dat"}
-            if (piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
+            if (piece.get('domain', 'high-speed-rail') != 'high-speed-rail' or
+                    piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
                     piece['recipe'].startswith('rail_') and piece['recipe'].endswith('_revised')):
                 # Complex pieces must fail while their own assets are in hand,
                 # before the rest of a long matrix is compiled. The final
@@ -197,6 +200,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     textures = []
     for iid in sorted(texture_ids):
         key = (0x7AB50E44, 0x1ABE787D, iid)
+        if key in all_resources:
+            continue
         require(key in installed, f'Missing model texture {iid:08x}')
         textures.append(tgi_string(key))
     shadows = sorted({(0x7AB50E44, 0x2BC2759A, int(m['source'], 16) + zoom)
@@ -216,13 +221,20 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
             (stage / relative).write_bytes(raw)
             file_records.append({'path': relative, 'sha256': sha(raw), 'bytes': len(raw)})
         profile = {'id': catalog['_profile']['id'], 'donors': [{k: x[k] for k in ('filename', 'sha256')} for x in donor_audit]}
+        domains = {piece.get('domain', 'high-speed-rail') for piece in selected}
+        placement = ("In Transportation > Rail, find the separate SCP icons.\n"
+                     "One-way tracks are fixed click-to-place pieces. Join them to the mainline through SCP Split/Merge.\n"
+                     "Their eight button states are four rotations repeated; there are no directional reflections.\n"
+                     "Custom shadow projection and wheel/rail fit still need in-game inspection.\n"
+                     if domains == {'high-speed-rail'} else
+                     "Highway components are in Transportation > Roads. Rail components, if selected, are in Transportation > Rail.\n"
+                     "Place the reusable components in the order and orientation shown in their assembly guide.\n"
+                     "Eight highway button states repeat four proper rotations; they do not reflect traffic directions.\n"
+                     "Placement, vehicle travel, custom shadows, and save/reload still need in-game inspection.\n")
         readme = ("Simon's Custom Pieces\nDEVELOPMENT BUILD — NOT GAME-TESTED\n"
                   "Requires the exact NAM profile recorded in manifest.json.\n"
                   "Use scp.py install with an external backup folder; test in a disposable city.\n"
-                  "In Transportation > Rail, find the separate SCP icons.\n"
-                  "One-way tracks are fixed click-to-place pieces. Join them to the mainline through SCP Split/Merge.\n"
-                  "Their eight button states are four rotations repeated; there are no directional reflections.\n"
-                  "Custom shadow projection and wheel/rail fit still need in-game inspection.\n"
+                  + placement +
                   "Use only the single coordinated controller overlay included in this build.\n"
                   "Public binary redistribution is not cleared. See framework docs/RELEASE.md.\n").encode('utf8')
         (stage / 'README.txt').write_bytes(readme)

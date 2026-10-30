@@ -33,6 +33,7 @@ sys.dont_write_bytecode = True
 
 from PIL import Image, ImageDraw
 
+from scp import jsonc
 from scp.models import pack_s3d, parse_s3d, validate_s3d, positions
 from scp.preview import (TextureLibrary, font, read_piece_preview,
                          render_fast_view, renderer_settings)
@@ -92,7 +93,7 @@ def transform_model(model, origin_m=(0., 0.), rotation_ccw_degrees=0.):
 def load_scene(path, *, default_build=None):
     path = Path(path).resolve()
     raw_scene = path.read_bytes()
-    scene = json.loads(raw_scene)
+    scene = jsonc.loads(raw_scene.decode('utf-8'))
     instances = scene.get('instances', scene.get('placements'))
     if not isinstance(instances, list) or not instances:
         raise ValueError('Scene needs a nonempty instances list')

@@ -1,10 +1,10 @@
 """Register new domain pieces and collections without editing global routing."""
 from copy import deepcopy
-import json
 from . import jsonc
 from pathlib import Path
 from .catalog import load_catalog, safe_relative, validate_catalog
 from .dbpf import require
+from .subject_sources import new_subject_document, source_path
 
 
 def apply_registration(root, additions, ledger, collections, icons=None, *, domain):
@@ -25,10 +25,11 @@ def apply_registration(root, additions, ledger, collections, icons=None, *, doma
     pending = {}
     for piece in additions:
         require(piece['domain'] == domain, 'New piece is assigned to the wrong domain')
-        target = safe_relative(directory, f'00_pieces/{piece["id"]}/piece.json')
-        require(not target.exists(), 'An unregistered piece manifest already exists')
+        target = safe_relative(directory, f'00_pieces/{piece["id"]}/piece.jsonc')
+        require(source_path(target.parent, 'piece', required=False) is None,
+                'An unregistered piece manifest already exists')
         record = {'purpose': 'Authoritative build definition and permanent game-resource identity for '+piece['name']+'.', **piece}
-        pending[target] = (json.dumps(record, indent=2)+'\n').encode()
+        pending[target] = new_subject_document(record, 'piece').encode('utf-8')
         overview = target.parent/'README.md'
         for name in ('README.md', 'TESTING.md'):
             document = safe_relative(root, (target.parent/name).relative_to(root).as_posix())

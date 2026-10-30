@@ -1,7 +1,7 @@
 ---
 title: "Highway"
-summary: "Find the diagonal double-decker highway design prototype and distinguish it from implemented highway game pieces."
-audience: "Future highway authors and players"
+summary: "Find the experimental DD RHW-4 and Avenue pieces, their compact assembly, and the separate game-testing requirements."
+audience: "Highway authors and players"
 document_type: "guide"
 ---
 
@@ -11,7 +11,7 @@ document_type: "guide"
 [1. Inventories and collections](#1-inventories-and-collections) · [2. Design prototypes](#2-design-prototypes)
 <!-- END DOCUMENT NAVIGATION -->
 
-No highway piece is implemented in Simon's Custom Pieces. The existing ramp-like pieces carry trains; open the [high-speed rail player guide](../high-speed-rail/README.md) for those.
+The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground diagonal avenue, including a compact four-ramp assembly. DD RHW-4 has two opposing stacked decks: the lower deck is 7.5 m high, and the upper deck is 15 m high. This implementation uses the exact NAM 50 right-hand-traffic profile. Its game placement and traffic behaviour remain unverified.
 
 <!-- BEGIN COLLECTIONS -->
 
@@ -19,24 +19,25 @@ No highway piece is implemented in Simon's Custom Pieces. The existing ramp-like
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 0 menu types](00_pieces/INVENTORY.md).
-- [Assembly blueprints: 0 designs](01_assemblies/INVENTORY.md).
+- [Individual pieces: 14 menu types](00_pieces/INVENTORY.md).
+- [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
 
 <details>
 <summary>Named build collections</summary>
 
 A collection selects existing piece types; it is not an additional piece or a one-click assembly.
 
-No named piece collections are registered in this domain.
+- `ddrhw-diagonal-avenue-crossing`: 1 piece types.
+- `ddrhw-compact-diagonal-diamond`: 13 piece types.
 
 </details>
 
 <!-- END COLLECTIONS -->
 
-A future highway piece belongs in `00_pieces/<piece-id>/` with one README, its definition and its artwork. A documented combination belongs in `01_assemblies/<assembly-id>/` with a README and TESTING reference. Creating an empty domain or a blueprint does not create a game button; a button requires an implemented, selected piece.
+Each highway type belongs in `00_pieces/<piece-id>/` with its JSONC definition, README, TESTING document, and artwork. A documented combination belongs in `01_assemblies/<assembly-id>/` with a README and TESTING reference. Creating an empty domain or a blueprint does not create a game button; a button requires an implemented, selected piece.
 
 Use the [piece and assembly design skill](../../skills/network-piece-and-assembly-design/SKILL.md) and [build/install guide](../../docs/BUILD_AND_INSTALL.md) for development. Define the actual highway network, width, traffic side, level, and compatible native connections before authoring a piece. Rail heights and train paths are not highway contracts.
 
 ## 2. Design prototypes
 
-The [DD RHW-4 — Diagonal Avenue Diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) explores a diagonal stacked highway over a ground diagonal avenue, with four ramps. It contains a reproducible geometric model, top and opposite angled schematics, native-donor measurements, and numerical checks. It is unregistered and has no game menu button, compiled DAT, or recorded game tests. The [network specification](NETWORK_SPEC.md) separates measured native facts from the design assumptions and missing implementation stages.
+The [compact diagonal avenue diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) uses 13 reusable component types and 17 placements. Its active lower-deck slope is approximately 24.16 m long, while its complete lower curve is approximately 50.04 m including the flat joins. The upper transition is longer to clear the lower deck. The 40% software grade limit is a deliberate experiment for this compact layout, rather than a native NAM standard. The assembly guide retains the earlier schematic as design history. The [network specification](NETWORK_SPEC.md) separates measured native facts, authored geometry, and verification limits.

@@ -28,6 +28,7 @@ EXEMPLAR = (0x6534284A, 0xA8434037)
 EFFECT = (0xEA5118B0, 0xEA5118B1)
 LTEXT = (0x2026960B, 0x2A592FD1)
 SHADOW = (0x7AB50E44, 0x2BC2759A)
+TEXTURE = (0x7AB50E44, 0x1ABE787D)
 EPS = 2e-6
 
 
@@ -80,7 +81,9 @@ def parse_paths(raw):
     require(len(lines) >= 5 and lines[0] == 'SC4PATHS' and lines[1] in {'1.1', '1.2'},
             'Unsupported SC4PATH format')
     count, stops, terrain = map(int, lines[2:5])
-    require(count > 0 and stops == 0 and terrain in {0, 1}, 'Invalid SC4PATH header')
+    # Audited NAM shoulder/barrier tiles use a real zero-route 1.2 PATH.
+    # Owning domain verifiers must still reject unexpected route-free cells.
+    require(count >= 0 and stops == 0 and terrain in {0, 1}, 'Invalid SC4PATH header')
     cursor, routes = 5, []
     for _ in range(count):
         fields = 5 if lines[1] == '1.1' else 6
@@ -141,6 +144,9 @@ GHSR_ROUTES = [
 
 
 def check_piece_paths(resources, piece):
+    if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+        from .providers import domain_module
+        return domain_module(piece, 'verify').check_paths(resources, piece)
     if piece['recipe'].startswith('hsr_component_'):
         from scp_hsr.hsr_components_verify import check_paths
         return check_paths(resources, piece)
@@ -274,6 +280,9 @@ def check_piece_render_budget(resources, piece):
 
 
 def _check_piece_geometry(resources, piece, donors):
+    if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+        from .providers import domain_module
+        return domain_module(piece, 'verify').check_models(resources, piece, donors)
     if piece['recipe'].startswith('hsr_component_'):
         from scp_hsr.hsr_components_verify import check_models
         return check_models(resources, piece, donors)
@@ -523,7 +532,11 @@ def check_construction(resources, pieces, manifest, donors):
         require(len(placement) == 5 and all(float(n) == 0 for n in placement[:4]) and
                 int(placement[4], 0) == preview, 'Wrong placement preview')
         require(compact(fields['ReplacementIntersection'][0]) == '0,0', 'Unexpected intersection replacement')
-        if piece['recipe'] == 'hsr_diagonal_ghsr':
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            domain_module(piece, 'verify').check_construction_fields(fields, piece, resources)
+            independently_verified_construction = True
+        elif piece['recipe'] == 'hsr_diagonal_ghsr':
             cells, cons = ['.....', '..ys.<', '.rz..', '..^..'], ['...', '.+.<', '.+.', '.^.']
             checks = {'r-monorail:0x00010000,0x00ff0000optional', 's-monorail:0x00000001,0x000000ffoptional',
                       'y-monorail:0x02010200', 'z-monorail:0x02000201'}
@@ -603,7 +616,7 @@ def check_construction(resources, pieces, manifest, donors):
     required = set()
     for piece in pieces:
         for index, tile in enumerate(map(number, piece['tile_ids'])):
-            if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+            if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
                 source, rotation = tile, 0
             elif piece['recipe'].startswith('diagonal_hsr_'):
                 source, rotation = 0x5DD01A00, index * 2
@@ -722,11 +735,18 @@ def verify_build(output, write_report=True):
         for tile in tiles:
             asset_keys.update({(*S3D, tile + zoom) for zoom in range(5)})
             asset_keys.update({(*PATH, tile), (*EXEMPLAR, tile), (*LTEXT, tile)})
+            props = {number(prop['id']): prop['values']
+                     for prop in exemplar(resources[*EXEMPLAR, tile])['properties']}
+            require(props.get(0x10) == [11] and
+                    props.get(0x27812823) == [*S3D, *range(tile, tile + 5)],
+                    'Network exemplar points to wrong zoom models')
             require(piece['name'] in read_ltext(resources[*LTEXT, tile]), 'Piece query description mismatch')
-        if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+        if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
             asset_keys.update({(*SHADOW, tile + zoom) for tile in tiles for zoom in range(5)})
             from .shadows import validate_piece_shadows
             shadow_report = validate_piece_shadows({key: resources[key] for key in asset_keys}, piece)
+        authored_textures = {(*TEXTURE, number(value)) for value in piece.get('authored_texture_ids', [])}
+        asset_keys.update(authored_textures)
         effect_keys = {key for key in resources if key[:2] == EFFECT and key[2] in {tiles[0], preview}}
         require(len(effect_keys) == 1, 'Missing or repeated per-piece preview effect')
         asset_keys.update(effect_keys)
@@ -735,20 +755,41 @@ def verify_build(output, write_report=True):
         expected_resources.update(asset_keys)
         menu_id = number(piece['menu']['id'])
         expected_resources.update({(*prefix, menu_id) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)})
-        menu_report = validate_menu_resources(resources, base_menu, piece)
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            piece_menu_donor = domain_module(piece, 'menu').verification_donor(donors)
+        else:
+            piece_menu_donor = base_menu
+        menu_report = validate_menu_resources(resources, piece_menu_donor, piece)
         try:
             paths_report = check_piece_paths(resources, piece)
             models_report = check_piece_models(resources, piece, donors)
         except ValueError as error:
             raise ValueError(f'{piece["id"]}: {error}') from error
-        model_textures.update(models_report.pop('texture_ids'))
+        piece_texture_ids = set(models_report.pop('texture_ids'))
+        require({key[2] for key in authored_textures} <= piece_texture_ids,
+                'An owned texture is not referenced by its piece models')
+        if authored_textures:
+            from .preview import decode_fsh
+            for key in authored_textures:
+                atlas = decode_fsh(resources[key])
+                require(atlas.width > 0 and atlas.height > 0, 'Invalid owned texture dimensions')
+        model_textures.update(piece_texture_ids)
         effect = resources[next(iter(effect_keys))]
         effect_name = piece['effect_name'].encode('ascii')
         require(effect.count(effect_name) == 4 and effect.count(struct.pack('<I', preview)) == 2,
                 'Preview effect name/model references do not match the piece')
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            domain_module(piece, 'recipes').validate_effect(piece, effect)
         if donors:
             from scp_hsr.crossings import INFO as CROSSINGS
-            if piece['recipe'] in CROSSINGS:
+            if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+                from .providers import domain_module
+                key, name, native_model = domain_module(piece, 'recipes').effect_donor(piece)
+                require(key[:2] == EFFECT, 'Domain preview donor has the wrong resource type')
+                native_id, native_name = key[2], name.encode('ascii')
+            elif piece['recipe'] in CROSSINGS:
                 info = CROSSINGS[piece['recipe']]
                 native_id, native_name, native_model = info['effect'], info['effect_name'].encode('ascii'), info['effect']
             elif piece['recipe'].startswith('hsr_component_'):
@@ -794,8 +835,9 @@ def verify_build(output, write_report=True):
             'Shared controller and menu resources are not separated into their own DATs')
     deps = manifest['dependency_audit']
     textures, shadows = {_tgi(v) for v in deps['textures']}, {_tgi(v) for v in deps['shadows']}
-    require(all(key[:2] == (0x7AB50E44, 0x1ABE787D) for key in textures) and
-            {key[2] for key in textures} == model_textures,
+    owned_texture_ids = {key[2] for key in resources if key[:2] == TEXTURE}
+    require(all(key[:2] == TEXTURE for key in textures) and
+            {key[2] for key in textures} == model_textures - owned_texture_ids,
             'Declared texture dependencies do not exactly cover model material references')
     expected_shadows = {(*SHADOW, number(s['source']) + zoom) for piece in pieces
                         for s in piece['shadow_mappings'] for zoom in range(5)

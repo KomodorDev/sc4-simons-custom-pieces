@@ -1,11 +1,11 @@
 ---
-title: "Highway (reserved; no pieces implemented) \u2014 assembly blueprints"
+title: "Highway \u2014 assembly blueprints"
 summary: "Find each documented multi-placement assembly, a clean preview, and its per-service test coverage."
 audience: "players"
 document_type: "catalogue"
 ---
 
-# Highway (reserved; no pieces implemented) — assembly blueprints
+# Highway — assembly blueprints
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
 [1. Legend](#1-legend) · [2. Assembly blueprints](#2-assembly-blueprints)
@@ -57,5 +57,4 @@ The **connection matrix summary** counts displayed matrix entries for each check
 
 | Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |
 | --- | --- | --- | --- | --- | --- |
-
-No assembly blueprints are registered in this domain.
+| [![DD RHW-4 — Compact Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/preview.png)](ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/preview.png) | [DD RHW-4 — Compact Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) | 17 / 13 | [ ] 0/10 passed; 10 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [Open matrix](ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md#4-connection-matrix)<br>Saved PATH: 0/196 confirmed; 196 not established<br>Route Query: 0/24 confirmed; 24 not established<br>Visible travel: 0/24 confirmed; 24 not established<br>Forbidden in game: 0/172 confirmed; 172 not established |

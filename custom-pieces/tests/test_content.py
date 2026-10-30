@@ -1,6 +1,7 @@
 """Manual observations remain distinct, scoped, and invalidated by resources."""
 from copy import deepcopy
 from html.parser import HTMLParser
+from itertools import product
 import json
 from pathlib import Path
 import sys
@@ -143,12 +144,14 @@ class ManualContentTests(unittest.TestCase):
 
     def test_observation_cannot_change_a_record_belonging_to_another_subject(self):
         from scp.content import record_observation_file
-        for kind in ('piece', 'assembly'):
-            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temporary:
+        from scp.subject_sources import new_subject_document
+        for kind, suffix in product(('piece', 'assembly'), ('.json', '.jsonc')):
+            with self.subTest(kind=kind, suffix=suffix), tempfile.TemporaryDirectory() as temporary:
                 directory = Path(temporary)/'current-subject'
                 (directory/'checks').mkdir(parents=True)
                 definition = {'id': 'current-subject'} if kind == 'piece' else {'title': 'Current subject'}
-                (directory/(kind+'.json')).write_text(json.dumps(definition)+'\n')
+                text = new_subject_document(definition, kind) if suffix == '.jsonc' else json.dumps(definition)+'\n'
+                (directory/(kind+suffix)).write_text(text, encoding='utf-8')
                 record = new_manual_record('different-subject', kind,
                     {**self.connections, 'subject_id': 'different-subject', 'subject_kind': kind},
                     self.hashes, self.images)

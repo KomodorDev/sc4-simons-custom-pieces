@@ -221,19 +221,31 @@ def discover_installation(selected, *, platform=None, home=None, documents=None,
     return Installation(game, plugins, extras, host, game_kind)
 
 
+def implemented_recipes_by_domain():
+    """Report exact provider declarations without accepting recipe prefixes."""
+    from scp_hsr import crossings, directional_t, directional_diagonal_t
+    from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
+    from scp_highway import native, ramp_paths
+    hsr_recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
+    for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
+                   interchange_layouts, rail_features, rail_repairs):
+        hsr_recipes.update(getattr(module, "RECIPES", ()))
+        hsr_recipes.update(getattr(module, "INFO", {}))
+    # The module catalogue declares a finite recipe for each MODULES entry;
+    # its provider remains responsible for the recipe naming convention.
+    highway_recipes = {native.RECIPE}
+    highway_recipes.update(item["recipe"] for item in ramp_paths.module_catalog()["types"])
+    return {"high-speed-rail": frozenset(hsr_recipes),
+            "highway": frozenset(highway_recipes)}
+
+
 def all_implemented_ids(root):
     """Include every implemented non-draft type and reject unrecognized recipes."""
     catalog = load_catalog(root)
-    from scp_hsr import crossings, directional_t, directional_diagonal_t
-    from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
-    recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
-    for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
-                   interchange_layouts, rail_features, rail_repairs):
-        recipes.update(getattr(module, "RECIPES", ()))
-        recipes.update(getattr(module, "INFO", {}))
+    recipes = implemented_recipes_by_domain()
     selected = [piece for piece in catalog["pieces"] if piece["status"] != "draft"]
     unknown = [piece["id"] for piece in selected
-               if piece["domain"] != "high-speed-rail" or piece["recipe"] not in recipes]
+               if piece["recipe"] not in recipes.get(piece["domain"], ())]
     if unknown:
         raise ValueError("The installer cannot prove an implementation for these registered pieces: " + ", ".join(unknown))
     ids = [piece["id"] for piece in selected]

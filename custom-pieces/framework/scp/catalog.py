@@ -1,12 +1,12 @@
 """Current piece registry and identifier collision checks."""
 from copy import deepcopy
-import json
 from . import jsonc
 from pathlib import Path
 import re
 
 from .dbpf import require
 from .autotile import AutoTileAddressError, validate_auto_tile_addresses
+from .subject_sources import registered_source_path
 
 
 def safe_relative(root, name):
@@ -68,11 +68,10 @@ def load_catalog(root):
                 f'{slug}: duplicate piece manifest path')
         for relative in listed:
             file = safe_relative(directory, relative)
-            piece = json.loads(file.read_text())
+            piece = jsonc.load(file)
             require(isinstance(piece, dict), 'Piece must be a JSON object')
             require(piece.get('domain') == slug, f'{piece.get("id")}: unknown transport domain')
-            require(file == directory / '00_pieces' / piece['id'] / 'piece.json',
-                    f'{piece.get("id")}: manifest must be 00_pieces/<id>/piece.json in its domain')
+            registered_source_path(directory, relative, 'piece', identifier=piece.get('id'))
             paths.append((file, piece))
         collection_path = safe_relative(directory, registry['collections'])
         selection = jsonc.load(collection_path)
@@ -80,11 +79,16 @@ def load_catalog(root):
         for name, members in selection.get('collections', {}).items():
             require(name not in collections, f'Duplicate collection: {name}')
             collections[name] = members
-        for relative in registry.get('assemblies', []):
+        assembly_paths = registry.get('assemblies', [])
+        require(isinstance(assembly_paths, list) and len(assembly_paths) == len(set(assembly_paths)),
+                f'{slug}: duplicate assembly manifest path')
+        for relative in assembly_paths:
             file = safe_relative(directory, relative)
-            require(file.name == 'assembly.json' and file.parent.parent == directory / '01_assemblies',
-                    f'{slug}: assembly must be 01_assemblies/<id>/assembly.json')
-            scene = json.loads(file.read_text())
+            registered_source_path(directory, relative, 'assembly')
+            scene = jsonc.load(file)
+            require(isinstance(scene, dict), 'Assembly must be a JSON object')
+            require('id' not in scene or scene['id'] == file.parent.name,
+                    'Registered assembly identity disagrees with its source folder')
             assemblies.append({'id': file.parent.name, 'domain': slug,
                                'path': file.parent.relative_to(root).as_posix(), 'scene': scene})
     require(len(paths) == len({p for p, _ in paths}), 'Duplicate piece manifest path')
@@ -168,6 +172,9 @@ def validate_catalog(catalog):
         require(len({tuple(cell) for cell in cells}) == len(cells),
                 f'{slug}: occupied cells must be unique')
         require(len(tiles) == len(cells), f'{slug}: tile count does not match footprint cells')
+        authored_textures = piece.get('authored_texture_ids', [])
+        require(authored_textures == [] or authored_textures == tiles[:1],
+                f'{slug}: authored_texture_ids must be empty or contain exactly the first tile ID')
         base = tile_base(piece)
         require(0 <= base <= 0xffffffff and all(number(tile) == base + x * 0x100 + y * 0x10
                     for tile, (x, y) in zip(tiles, cells)), f'{slug}: tile IDs do not match AutoTileBase cell offsets')

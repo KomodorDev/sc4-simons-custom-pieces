@@ -15,7 +15,2671 @@
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
   "version": "0.6.0.dev1",
   "domain": "highway",
-  "count": 0,
-  "pieces": [],
-  "status": {}
+  "count": 14,
+  "pieces": [
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) \u2014 Diagonal Crossing 90\u00b0.",
+      "schema_version": 1,
+      "id": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg",
+      "domain": "highway",
+      "name": "DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) \u2014 Diagonal Crossing 90\u00b0",
+      "description": "Five coordinated construction tiles preserve the native stacked DD RHW-4 lanes above both directions of a diagonal avenue, including avenue pedestrians. This crossing supplies through routes; connecting access ramps are separate components.",
+      "recipe": "highway_ddrhw_diagonal_avenue_crossing",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f7a7",
+      "tile_ids": [
+        "7f504100",
+        "7f504010",
+        "7f504110",
+        "7f504210",
+        "7f504120"
+      ],
+      "preview_id": "7f504ff5",
+      "effect_name": "preview_scp_hw_f7a7_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f7a7",
+        "order": "ffffffa7",
+        "style": "ddrhw-crossing"
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f504100",
+          "source": "7f504100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f504010",
+          "source": "7f504010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f504110",
+          "source": "7f504110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f504210",
+          "source": "7f504210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f504120",
+          "source": "7f504120",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Independently measured native NAM DD RHW-4 and Avenue channels.",
+        "construction": "Explicit five-cell RUL0 construction; measured native network flags; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 and Avenue Access Core.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-access-core",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 and Avenue Access Core",
+      "description": "Reusable access core component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_access_core",
+      "geometry_key": "access-core",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f822",
+      "tile_ids": [
+        "7f580100",
+        "7f580010",
+        "7f580110",
+        "7f580210",
+        "7f580120"
+      ],
+      "preview_id": "7f580ff5",
+      "effect_name": "preview_scp_hw_f822_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f822",
+        "order": "ffffff22",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f580100",
+          "source": "7f580100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f580010",
+          "source": "7f580010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f580110",
+          "source": "7f580110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f580210",
+          "source": "7f580210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f580120",
+          "source": "7f580120",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f580100"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Avenue Northwest Ramp Junction.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-northwest-junction",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Avenue Northwest Ramp Junction",
+      "description": "Reusable northwest junction component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_northwest_junction",
+      "geometry_key": "northwest-junction",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f82b",
+      "tile_ids": [
+        "7f587000",
+        "7f587100",
+        "7f587200",
+        "7f587010",
+        "7f587110",
+        "7f587020"
+      ],
+      "preview_id": "7f587ff5",
+      "effect_name": "preview_scp_hw_f82b_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f82b",
+        "order": "ffffff2b",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f587000",
+          "source": "7f587000",
+          "rotation": 0
+        },
+        {
+          "tile": "7f587100",
+          "source": "7f587100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f587200",
+          "source": "7f587200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f587010",
+          "source": "7f587010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f587110",
+          "source": "7f587110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f587020",
+          "source": "7f587020",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f587000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Avenue Southeast Ramp Junction.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-southeast-junction",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction",
+      "description": "Reusable southeast junction component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_southeast_junction",
+      "geometry_key": "southeast-junction",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f82c",
+      "tile_ids": [
+        "7f588000",
+        "7f588100",
+        "7f588200",
+        "7f588010",
+        "7f588110",
+        "7f588210",
+        "7f588020",
+        "7f588120"
+      ],
+      "preview_id": "7f588ff5",
+      "effect_name": "preview_scp_hw_f82c_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f82c",
+        "order": "ffffff2c",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f588000",
+          "source": "7f588000",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588100",
+          "source": "7f588100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588200",
+          "source": "7f588200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588010",
+          "source": "7f588010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588110",
+          "source": "7f588110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588210",
+          "source": "7f588210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588020",
+          "source": "7f588020",
+          "rotation": 0
+        },
+        {
+          "tile": "7f588120",
+          "source": "7f588120",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f588000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Lower Diagonal Exit Branch.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-lower-exit-branch",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Lower Diagonal Exit Branch",
+      "description": "Reusable lower exit branch component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_lower_exit_branch",
+      "geometry_key": "lower-exit-branch",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f82d",
+      "tile_ids": [
+        "7f589000"
+      ],
+      "preview_id": "7f589ff5",
+      "effect_name": "preview_scp_hw_f82d_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f82d",
+        "order": "ffffff2d",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f589000",
+          "source": "7f589000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f589000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Lower Diagonal Entry Branch.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-lower-entry-branch",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Lower Diagonal Entry Branch",
+      "description": "Reusable lower entry branch component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_lower_entry_branch",
+      "geometry_key": "lower-entry-branch",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f833",
+      "tile_ids": [
+        "7f58a000"
+      ],
+      "preview_id": "7f58aff5",
+      "effect_name": "preview_scp_hw_f833_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f833",
+        "order": "ffffff33",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f58a000",
+          "source": "7f58a000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f58a000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-lower-exit-grade",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade",
+      "description": "Reusable lower exit grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_lower_exit_grade",
+      "geometry_key": "lower-exit-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f834",
+      "tile_ids": [
+        "7f58b000"
+      ],
+      "preview_id": "7f58bff5",
+      "effect_name": "preview_scp_hw_f834_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f834",
+        "order": "ffffff34",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f58b000",
+          "source": "7f58b000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f58b000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Lower Diagonal Entry Grade.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-lower-entry-grade",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Compact Lower Diagonal Entry Grade",
+      "description": "Reusable lower entry grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_lower_entry_grade",
+      "geometry_key": "lower-entry-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f835",
+      "tile_ids": [
+        "7f592000"
+      ],
+      "preview_id": "7f592ff5",
+      "effect_name": "preview_scp_hw_f835_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f835",
+        "order": "ffffff35",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f592000",
+          "source": "7f592000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f592000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Upper Diagonal Exit Branch.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-upper-exit-branch",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Upper Diagonal Exit Branch",
+      "description": "Reusable upper exit branch component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_upper_exit_branch",
+      "geometry_key": "upper-exit-branch",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f836",
+      "tile_ids": [
+        "7f593100",
+        "7f593010",
+        "7f593110"
+      ],
+      "preview_id": "7f593ff5",
+      "effect_name": "preview_scp_hw_f836_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f836",
+        "order": "ffffff36",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f593100",
+          "source": "7f593100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f593010",
+          "source": "7f593010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f593110",
+          "source": "7f593110",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending",
+        "partition_review": "Detached unchanged native continuation A; all remaining tile IDs, puzzle, preview, menu, and reserved resource-block identities are preserved. No candidate was installed."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f593100"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Upper Diagonal Entry Branch.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-upper-entry-branch",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Upper Diagonal Entry Branch",
+      "description": "Reusable upper entry branch component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_upper_entry_branch",
+      "geometry_key": "upper-entry-branch",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f837",
+      "tile_ids": [
+        "7f594100",
+        "7f594010",
+        "7f594110"
+      ],
+      "preview_id": "7f594ff5",
+      "effect_name": "preview_scp_hw_f837_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f837",
+        "order": "ffffff37",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f594100",
+          "source": "7f594100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f594010",
+          "source": "7f594010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f594110",
+          "source": "7f594110",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending",
+        "partition_review": "Detached unchanged native continuation A; all remaining tile IDs, puzzle, preview, menu, and reserved resource-block identities are preserved. No candidate was installed."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f594100"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-upper-exit-grade",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade",
+      "description": "Reusable upper exit grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_upper_exit_grade",
+      "geometry_key": "upper-exit-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f838",
+      "tile_ids": [
+        "7f595100",
+        "7f595010",
+        "7f595110"
+      ],
+      "preview_id": "7f595ff5",
+      "effect_name": "preview_scp_hw_f838_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f838",
+        "order": "ffffff38",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f595100",
+          "source": "7f595100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f595010",
+          "source": "7f595010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f595110",
+          "source": "7f595110",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f595100"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-upper-entry-grade",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade",
+      "description": "Reusable upper entry grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+      "recipe": "highway_ddrhw_compact_upper_entry_grade",
+      "geometry_key": "upper-entry-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f839",
+      "tile_ids": [
+        "7f596100",
+        "7f596010",
+        "7f596110"
+      ],
+      "preview_id": "7f596ff5",
+      "effect_name": "preview_scp_hw_f839_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f839",
+        "order": "ffffff39",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f596100",
+          "source": "7f596100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f596010",
+          "source": "7f596010",
+          "rotation": 0
+        },
+        {
+          "tile": "7f596110",
+          "source": "7f596110",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f596100"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Continuation A.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-diagonal-half-a",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation A",
+      "description": "Reusable native diagonal DD RHW-4 continuation half with an authored concrete centre pier meeting both deck pavement planes. Use the complementary half and the assembly placement guide; traffic follows measured native car lanes.",
+      "recipe": "highway_ddrhw_compact_diagonal_half_a",
+      "geometry_key": "diagonal-half-a",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f83a",
+      "tile_ids": [
+        "7f597000"
+      ],
+      "preview_id": "7f597ff5",
+      "effect_name": "preview_scp_hw_f83a_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f83a",
+        "order": "ffffff3a",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f597000",
+          "source": "7f597000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending",
+        "supports": "One 0.8 m square open-sided concrete column at the native tile centre, from ground 0 m to upper pavement 15 m; six repeated placements in the complete assembly."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f597000"
+      ]
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Continuation B.",
+      "schema_version": 1,
+      "id": "ddrhw-diagonal-diagonal-half-b",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation B",
+      "description": "Reusable native diagonal DD RHW-4 continuation half with an authored concrete centre pier meeting both deck pavement planes. Use the complementary half and the assembly placement guide; traffic follows measured native car lanes.",
+      "recipe": "highway_ddrhw_compact_diagonal_half_b",
+      "geometry_key": "diagonal-half-b",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f83b",
+      "tile_ids": [
+        "7f598000"
+      ],
+      "preview_id": "7f598ff5",
+      "effect_name": "preview_scp_hw_f83b_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core"
+      ],
+      "menu": {
+        "id": "6a47f83b",
+        "order": "ffffff3b",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 40.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": []
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f598000",
+          "source": "7f598000",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+        "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+        "redistribution": "permission-pending",
+        "supports": "One 0.8 m square open-sided concrete column at the native tile centre, from ground 0 m to upper pavement 15 m; six repeated placements in the complete assembly."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "authored_texture_ids": [
+        "7f598000"
+      ]
+    }
+  ],
+  "status": {
+    "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg": {
+      "record_present": true,
+      "summary": {
+        "total": 461,
+        "states": {
+          "unverified": 461,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 360,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 80,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 20,
+      "journeys": 10,
+      "path": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/README.md",
+      "preview": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/previews/preview.png",
+      "thumbnail": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/previews/preview-thumb.png",
+      "manual_record": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-access-core": {
+      "record_present": true,
+      "summary": {
+        "total": 876,
+        "states": {
+          "unverified": 876,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 712,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 72,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 72,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 144,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 28,
+      "journeys": 18,
+      "path": "ddrhw-diagonal-access-core/README.md",
+      "preview": "ddrhw-diagonal-access-core/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-access-core/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-access-core/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-northwest-junction": {
+      "record_present": true,
+      "summary": {
+        "total": 468,
+        "states": {
+          "unverified": 468,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 352,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 96,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 20,
+      "journeys": 12,
+      "path": "ddrhw-diagonal-northwest-junction/README.md",
+      "preview": "ddrhw-diagonal-northwest-junction/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-northwest-junction/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-northwest-junction/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-southeast-junction": {
+      "record_present": true,
+      "summary": {
+        "total": 316,
+        "states": {
+          "unverified": 316,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 216,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 80,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 16,
+      "journeys": 10,
+      "path": "ddrhw-diagonal-southeast-junction/README.md",
+      "preview": "ddrhw-diagonal-southeast-junction/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-southeast-junction/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-southeast-junction/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-lower-exit-branch": {
+      "record_present": true,
+      "summary": {
+        "total": 120,
+        "states": {
+          "unverified": 120,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 40,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 9,
+      "journeys": 5,
+      "path": "ddrhw-diagonal-lower-exit-branch/README.md",
+      "preview": "ddrhw-diagonal-lower-exit-branch/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-lower-exit-branch/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-lower-exit-branch/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-lower-entry-branch": {
+      "record_present": true,
+      "summary": {
+        "total": 120,
+        "states": {
+          "unverified": 120,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 40,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 9,
+      "journeys": 5,
+      "path": "ddrhw-diagonal-lower-entry-branch/README.md",
+      "preview": "ddrhw-diagonal-lower-entry-branch/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-lower-entry-branch/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-lower-entry-branch/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-lower-exit-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 28,
+        "states": {
+          "unverified": 28,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-diagonal-lower-exit-grade/README.md",
+      "preview": "ddrhw-diagonal-lower-exit-grade/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-lower-exit-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-lower-exit-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-lower-entry-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 28,
+        "states": {
+          "unverified": 28,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-diagonal-lower-entry-grade/README.md",
+      "preview": "ddrhw-diagonal-lower-entry-grade/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-lower-entry-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-lower-entry-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-upper-exit-branch": {
+      "record_present": true,
+      "summary": {
+        "total": 344,
+        "states": {
+          "unverified": 344,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 252,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 36,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 36,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 72,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 17,
+      "journeys": 9,
+      "path": "ddrhw-diagonal-upper-exit-branch/README.md",
+      "preview": "ddrhw-diagonal-upper-exit-branch/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-upper-exit-branch/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-upper-exit-branch/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-upper-entry-branch": {
+      "record_present": true,
+      "summary": {
+        "total": 344,
+        "states": {
+          "unverified": 344,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 252,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 36,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 36,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 72,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 17,
+      "journeys": 9,
+      "path": "ddrhw-diagonal-upper-entry-branch/README.md",
+      "preview": "ddrhw-diagonal-upper-entry-branch/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-upper-entry-branch/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-upper-entry-branch/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-upper-exit-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 28,
+        "states": {
+          "unverified": 28,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-diagonal-upper-exit-grade/README.md",
+      "preview": "ddrhw-diagonal-upper-exit-grade/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-upper-exit-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-upper-exit-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-upper-entry-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 28,
+        "states": {
+          "unverified": 28,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-diagonal-upper-entry-grade/README.md",
+      "preview": "ddrhw-diagonal-upper-entry-grade/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-upper-entry-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-upper-entry-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-diagonal-half-a": {
+      "record_present": true,
+      "summary": {
+        "total": 100,
+        "states": {
+          "unverified": 100,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 32,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 8,
+      "journeys": 4,
+      "path": "ddrhw-diagonal-diagonal-half-a/README.md",
+      "preview": "ddrhw-diagonal-diagonal-half-a/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-diagonal-half-a/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-diagonal-half-a/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-diagonal-diagonal-half-b": {
+      "record_present": true,
+      "summary": {
+        "total": 100,
+        "states": {
+          "unverified": 100,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 16,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 2,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 32,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 8,
+      "journeys": 4,
+      "path": "ddrhw-diagonal-diagonal-half-b/README.md",
+      "preview": "ddrhw-diagonal-diagonal-half-b/previews/preview.png",
+      "thumbnail": "ddrhw-diagonal-diagonal-half-b/previews/preview-thumb.png",
+      "manual_record": "ddrhw-diagonal-diagonal-half-b/checks/manual-tests.json",
+      "design_review": null
+    }
+  }
 }

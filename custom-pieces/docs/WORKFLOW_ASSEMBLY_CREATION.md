@@ -132,7 +132,7 @@ Useful wider variants remain separate current pieces. Add a clearly named compac
 
 ## 6. Assemble actual compiled pieces and check the whole interchange
 
-Choose the new assembly's folder identifier and readable name through the shared [naming conventions](NAMING_CONVENTIONS.md). Its identifier is the folder basename under `01_assemblies/`; store its readable name in `assembly.json` as `title`, without adding an `id` field. Keep this layout identity separate from the reusable piece IDs and placement labels. Preserve existing assembly identifiers when revising a retained layout.
+Choose the new assembly's folder identifier and readable name through the shared [naming conventions](NAMING_CONVENTIONS.md). Its identifier is the folder basename under `01_assemblies/`; store its readable name in the new `assembly.jsonc` as `title`, without adding an `id` field. Keep this layout identity separate from the reusable piece IDs and placement labels. Preserve existing assembly identifiers when revising a retained layout.
 
 Make a machine-readable placement plan. Record a stable module label such as `P01`, its exact piece ID and descriptive SCP menu name, translation, rotation, occupied cells, and source DAT fingerprint. Give repeated copies separate instance labels: four copies of one straight are `P05`, `P06`, `P07`, and `P08`, even though their menu name and piece ID match. Preserve those labels through all views and revisions. A fingerprint is a hash identifying the exact file bytes.
 
@@ -215,24 +215,24 @@ Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-
 
 ### 12.1 Copy the unregistered placement template
 
-The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the commented template and writes a strict-JSON assembly plan because individual assembly files have not migrated yet. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
+The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the template and writes a new `assembly.jsonc` plan with the complete introductory comment header. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
 
-Future maintained assembly sources must follow the [JSONC source convention](../STRUCTURE.md#51-shared-jsonc-sources-and-strict-json-exports), including its complete introductory comment header. The example below documents the current `assembly.json` tooling. Before creating a JSONC replacement, update the readers, writers, registry paths, tests, and this example together. Retain existing subjects and frozen evidence in their current formats until deliberately migrated.
+New maintained assembly sources follow the [JSONC source convention](../STRUCTURE.md#51-shared-jsonc-sources-and-strict-json-exports). Existing subjects and frozen evidence retain their current formats. The registry names the actual `.jsonc` or retained `.json` file; keeping both maintained copies in one assembly folder is rejected.
 
 ```sh
 python3 - <<'PY'
-import json
 from pathlib import Path
 from scp import jsonc
+from scp.subject_sources import new_subject_document
 target = Path('custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter')
 plan = jsonc.load('custom-pieces/docs/templates/assembly-two-hsr-straights.jsonc')
 target.mkdir()
-with (target / 'assembly.json').open('x', encoding='utf-8') as stream:
-    stream.write(json.dumps(plan, indent=2, allow_nan=False) + '\n')
+with (target / 'assembly.jsonc').open('x', encoding='utf-8') as stream:
+    stream.write(new_subject_document(plan, 'assembly'))
 PY
 ```
 
-Open the copied `assembly.json`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
+Open the copied `assembly.jsonc`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
 
 The template's external-port positions are authored expectations from that exact type: south at northing −8 m and north at northing 24 m, with opposing track centres at easting ±2 m and height 15.5 m. Its count fields describe the intended placement plan. Leave `geometry_status` explicitly unverified until real checks justify a more specific statement. Do not paste the trumpet's dimensions, source hashes, or observations into this new subject.
 
@@ -247,9 +247,9 @@ python3 - <<'PY'
 from pathlib import Path
 from scp import jsonc
 domain = Path('custom-pieces/domains/high-speed-rail')
-relative = '01_assemblies/two-tile-hsr-starter/assembly.json'
+relative = '01_assemblies/two-tile-hsr-starter/assembly.jsonc'
 if not (domain / relative).is_file():
-    raise SystemExit('Create the assembly.json plan first.')
+    raise SystemExit('Create the assembly.jsonc plan first.')
 path = domain / 'domain.jsonc'
 registry = jsonc.load(path)
 assemblies = registry.setdefault('assemblies', [])
@@ -261,7 +261,7 @@ print('Registered ' + relative)
 PY
 ```
 
-The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry entry is relative to the domain directory; it must have the form `01_assemblies/<assembly-id>/assembly.json`. Do not run the piece scaffold for this assembly: its member type already owns the piece's game-resource identities.
+The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry entry is relative to the domain directory; it must have the form `01_assemblies/<assembly-id>/assembly.jsonc` for a new assembly. Do not run the piece scaffold for this assembly: its member type already owns the piece's game-resource identities.
 
 <a id="3-add-its-separate-menu-layout"></a>
 
@@ -325,7 +325,7 @@ networks = {
 }
 ```
 
-This is a deliberate domain-adapter edit: the current API receives an assembly ID and does not read an arbitrary network field from `assembly.json`. It selects the truthful network code for the button; it changes no track geometry or piece identities. The HSR route artwork helper currently supports its authored component recipes, including this straight. Another family or network needs its owning adapter implemented and checked before this artwork/menu path applies.
+This is a deliberate domain-adapter edit: the current API receives an assembly ID and does not read an arbitrary network field from the registered assembly definition. It selects the truthful network code for the button; it changes no track geometry or piece identities. The HSR route artwork helper currently supports its authored component recipes, including this straight. Another family or network needs its owning adapter implemented and checked before this artwork/menu path applies.
 
 Generate the canonical assembly icon from the source placements:
 
@@ -358,7 +358,7 @@ Open the new assembly's generated `README.md` and `TESTING.md`, plus `connection
 Stage the actual-model review pictures from that verified build:
 
 ```sh
-python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.json --build custom-pieces/dist/two-tile-hsr-parts-review-01 --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/two-tile-hsr-review --prefix reviewed-two-tile
+python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.jsonc --build custom-pieces/dist/two-tile-hsr-parts-review-01 --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/two-tile-hsr-review --prefix reviewed-two-tile
 ```
 
 Follow the shared [six-image review and canonical filename mapping](WORKFLOW_DOCUMENTATION_GENERATION.md#81-promote-the-staged-assembly-pictures). The renderer stages images and their real report under `local/`; it does not install canonical source images automatically. Inspect the pictures, retain their actual source and output fingerprints, and deliberately integrate the accepted images under the assembly's `previews/` and the render report under `evidence/`. Complete README chapters 1–3 with links, the one-type/two-placement quantities, P01/P02 positions, 0° rotations, 15.5 m connections, and the Tab/component instructions. Complete TESTING with real preparation, the checks actually performed, the remaining physical/game limitations, and design history. Add a link to this assembly from the owning domain's human README. Keep authored text outside generated blocks, and record no game pass without a matching human observation.

@@ -1,0 +1,98 @@
+// title: "Piece definition: DD RHW-4 — Compact Upper Diagonal Entry Grade"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade.",
+  "schema_version": 1,
+  "id": "ddrhw-diagonal-upper-entry-grade",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade",
+  "description": "Reusable upper entry grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+  "recipe": "highway_ddrhw_compact_upper_entry_grade",
+  "geometry_key": "upper-entry-grade",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f839",
+  "tile_ids": [
+    "7f596100",
+    "7f596010",
+    "7f596110"
+  ],
+  "preview_id": "7f596ff5",
+  "effect_name": "preview_scp_hw_f839_____001",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core"
+  ],
+  "menu": {
+    "id": "6a47f839",
+    "order": "ffffff39",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 40.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": []
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f596100",
+      "source": "7f596100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f596010",
+      "source": "7f596010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f596110",
+      "source": "7f596110",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+    "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "authored_texture_ids": [
+    "7f596100"
+  ]
+}

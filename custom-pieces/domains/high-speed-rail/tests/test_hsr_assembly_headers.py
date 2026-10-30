@@ -9,11 +9,28 @@ from unittest.mock import patch
 import numpy as np
 
 from scp.models import pack_s3d, parse_s3d
+from scp.subject_sources import new_subject_document
 from scp_hsr.test_support import donor
 from scp_hsr_tools import render_hsr_assembly as renderer
 
 
 class AssemblyImageHeaderTests(unittest.TestCase):
+    def test_jsonc_scene_loads_actual_models_and_preserves_the_exact_source_fingerprint(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            raw = donor()
+            (directory/'fixture.s3d').write_bytes(raw)
+            plan = {'title':'Commented assembly fixture', 'placements':[
+                {'instance_id':'P01', 'model_file':'fixture.s3d', 'origin_m':[0.,0.]}]}
+            source = new_subject_document(plan, 'assembly').encode('utf-8')
+            path = directory/'assembly.jsonc'
+            path.write_bytes(source)
+            model, provenance = renderer.load_scene(path)
+        self.assertTrue(model['meshes'])
+        self.assertEqual(provenance['title'], plan['title'])
+        self.assertEqual(provenance['scene_sha256'], hashlib.sha256(source).hexdigest())
+        self.assertEqual(provenance['sources'][0]['model_sha256'], hashlib.sha256(raw).hexdigest())
+
     def test_existing_prefix_is_idempotent_and_invalid_headers_are_rejected(self):
         rows = renderer.assembly_caption_rows('HSR \u2014 Trumpet \u2014 Straight Stem', 'Clean view', 'Top view | north up')
         self.assertEqual(rows, ('Assembly - HSR \u2014 Trumpet \u2014 Straight Stem', 'Clean view | Top view | north up'))

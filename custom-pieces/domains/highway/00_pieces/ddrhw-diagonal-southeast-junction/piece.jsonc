@@ -1,0 +1,157 @@
+// title: "Piece definition: DD RHW-4 — Avenue Southeast Ramp Junction"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Avenue Southeast Ramp Junction.",
+  "schema_version": 1,
+  "id": "ddrhw-diagonal-southeast-junction",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction",
+  "description": "Reusable southeast junction component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+  "recipe": "highway_ddrhw_compact_southeast_junction",
+  "geometry_key": "southeast-junction",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f82c",
+  "tile_ids": [
+    "7f588000",
+    "7f588100",
+    "7f588200",
+    "7f588010",
+    "7f588110",
+    "7f588210",
+    "7f588020",
+    "7f588120"
+  ],
+  "preview_id": "7f588ff5",
+  "effect_name": "preview_scp_hw_f82c_____001",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core"
+  ],
+  "menu": {
+    "id": "6a47f82c",
+    "order": "ffffff2c",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 40.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f588000",
+      "source": "7f588000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588100",
+      "source": "7f588100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588200",
+      "source": "7f588200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588010",
+      "source": "7f588010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588110",
+      "source": "7f588110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588210",
+      "source": "7f588210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588020",
+      "source": "7f588020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f588120",
+      "source": "7f588120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+    "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "authored_texture_ids": [
+    "7f588000"
+  ]
+}

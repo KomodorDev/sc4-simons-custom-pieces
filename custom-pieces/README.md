@@ -39,6 +39,7 @@ A **piece** is one reusable component type. An **assembly** places copies of typ
 | Generate README and TESTING documents, renders, connector exports, and cards | [WORKFLOW: Documentation Generation](docs/WORKFLOW_DOCUMENTATION_GENERATION.md) |
 | Check which source files and outputs a new subject needs | [Creation checklist and producing commands](docs/WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-checklist-and-output-files) |
 | Look up measured HSR/GHSR values and their implementation | [High-speed rail network specification](domains/high-speed-rail/NETWORK_SPEC.md) |
+| Look up measured DD RHW-4/Avenue values and compact ramps | [Highway network specification](domains/highway/NETWORK_SPEC.md) |
 | Maintain shared code or classify a crossing | [Framework engineering](docs/FRAMEWORK_ENGINEERING.md) |
 | Understand installer releases and compiled-plugin requirements | [Release requirements](docs/RELEASE.md) |
 

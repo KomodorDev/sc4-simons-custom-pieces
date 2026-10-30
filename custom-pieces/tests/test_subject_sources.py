@@ -10,7 +10,9 @@ ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc')
 sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp import jsonc
-from scp.subject_sources import piece_directory, piece_id_for_recipe, piece_name_for_recipe
+from scp.subject_sources import (load_subject, new_subject_document, piece_directory,
+                                piece_id_for_recipe, piece_name_for_recipe,
+                                registered_source_path, source_path, write_subject)
 
 
 class SubjectSourceTests(unittest.TestCase):
@@ -137,6 +139,61 @@ class SubjectSourceTests(unittest.TestCase):
         path.write_text(json.dumps(data), encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'Piece identifier'):
             piece_id_for_recipe(self.recipe, self.root)
+
+    def test_registered_jsonc_owner_uses_explicit_path_and_complete_header(self):
+        old = self._register()
+        data = jsonc.load(old)
+        path = old.with_suffix('.jsonc')
+        old.rename(path)
+        path.write_text(new_subject_document(data, 'piece'), encoding='utf-8')
+        relative = path.relative_to(self.root / f'domains/{self.domain}').as_posix()
+        self._write(f'domains/{self.domain}/domain.jsonc', {'pieces': [relative]})
+        self.assertEqual(piece_id_for_recipe(self.recipe, self.root), self.identifier)
+        self.assertEqual(piece_directory(self.recipe, self.root), path.parent)
+        self.assertEqual(load_subject(path.parent, 'piece'), data)
+        for label in ('title', 'summary', 'Used when', 'Read by', 'Updated by', 'Affects'):
+            self.assertIn('// '+label+': ', path.read_text())
+        self._write(f'domains/{self.domain}/domain.jsonc', {'pieces': [relative[:-1]]})
+        with self.assertRaises(FileNotFoundError):
+            piece_directory(self.recipe, self.root)
+
+    def test_parallel_subject_sources_are_rejected_for_both_extensions_and_kinds(self):
+        for kind in ('piece', 'assembly'):
+            directory = self.root / kind
+            directory.mkdir()
+            for suffix in ('.json', '.jsonc'):
+                (directory/(kind+suffix)).write_text('{}\n')
+            with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, 'Only one maintained'):
+                source_path(directory, kind)
+
+    def test_writers_keep_the_original_extension_and_jsonc_header(self):
+        for kind in ('piece', 'assembly'):
+            for suffix in ('.json', '.jsonc'):
+                directory = self.root/(kind+suffix)
+                directory.mkdir()
+                path = directory/(kind+suffix)
+                header = new_subject_document({'name': 'Fixture'}, kind).split('{', 1)[0]
+                prefix = header+'/* Keep this deliberate explanation. */\n' if suffix == '.jsonc' else ''
+                path.write_text(prefix+'{}\n', encoding='utf-8')
+                value = {'id': 'fixture', 'name': 'Updated fixture'}
+                self.assertEqual(write_subject(directory, kind, value), path)
+                self.assertEqual(load_subject(directory, kind), value)
+                self.assertTrue(path.read_text().startswith(prefix))
+                other = path.with_suffix('.jsonc' if suffix == '.json' else '.json')
+                self.assertFalse(other.exists())
+
+    def test_registered_paths_keep_the_folder_kind_extension_and_identity_contract(self):
+        path = self._register()
+        domain = self.root / f'domains/{self.domain}'
+        relative = path.relative_to(domain).as_posix()
+        self.assertEqual(registered_source_path(domain, relative, 'piece', identifier=self.identifier), path)
+        for candidate in ('00_pieces/'+self.identifier+'/other.jsonc',
+                          '01_assemblies/'+self.identifier+'/piece.json',
+                          '../'+relative, '/'+relative):
+            with self.subTest(candidate=candidate), self.assertRaises(ValueError):
+                registered_source_path(domain, candidate, 'piece')
+        with self.assertRaisesRegex(ValueError, 'identity disagrees'):
+            registered_source_path(domain, relative, 'piece', identifier='another-owner')
 
 
 if __name__ == '__main__':

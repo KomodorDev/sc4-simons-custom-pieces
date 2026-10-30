@@ -20,6 +20,7 @@ from pathlib import Path
 import re
 import shlex
 
+from .subject_sources import load_subject, source_path
 from .document_validation import (
     ASSEMBLY_README_CHAPTERS, ASSEMBLY_TESTING_LAYOUT_MARKER, PIECE_README_CHAPTERS,
     PIECE_TESTING_LAYOUT_MARKER, TESTING_CHAPTERS, validate_subject_documents,
@@ -1054,8 +1055,8 @@ def _ensure_piece_document(directory, subject):
         else:
             readme.write_text(assembly_document_scaffold(subject)['README.md'])
         return readme
-    if (Path(directory)/'piece.json').is_file():
-        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    if source_path(directory, 'piece', required=False) is not None:
+        subject = {**load_subject(directory, 'piece'), **subject}
     readme.write_text(piece_document_scaffold(subject)['README.md'])
     return readme
 
@@ -1116,8 +1117,8 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
     readme = Path(directory)/'README.md'
     # Observation-file updates carry only stable identity; resolve display facts
     # from the owning definition instead of erasing them from the overview.
-    if (Path(directory)/'piece.json').is_file():
-        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    if source_path(directory, 'piece', required=False) is not None:
+        subject = {**load_subject(directory, 'piece'), **subject}
     title = subject.get('name', subject['id'])
     views = []
     for name, label in (('previews/preview.png', 'Clean angled view'), ('previews/preview-top.png', 'Clean top view')):
@@ -1184,8 +1185,8 @@ def _ensure_testing_document(directory, subject):
         return directory/'README.md'
     testing = directory/'TESTING.md'
     if not testing.is_file():
-        if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
-            subject = {**json.loads((directory/'piece.json').read_text()), **subject}
+        if subject['kind'] == 'piece' and source_path(directory, 'piece', required=False) is not None:
+            subject = {**load_subject(directory, 'piece'), **subject}
         text = _testing_document_scaffold(subject)
         readme = directory/'README.md'
         if subject['kind'] == 'assembly' and readme.is_file() and re.findall(r'^## (.+)$', readme.read_text(), re.M) != list(ASSEMBLY_README_CHAPTERS):
@@ -1329,9 +1330,9 @@ def _require_current_observation_identity(directory, subject):
     """Require an observation record to belong to its authoritative subject."""
     directory = Path(directory)
     current_id = subject['id']
-    if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
-        current_id = json.loads((directory/'piece.json').read_text())['id']
-    elif subject['kind'] == 'assembly' and (directory/'assembly.json').is_file():
+    if subject['kind'] == 'piece' and source_path(directory, 'piece', required=False) is not None:
+        current_id = load_subject(directory, 'piece')['id']
+    elif subject['kind'] == 'assembly' and source_path(directory, 'assembly', required=False) is not None:
         current_id = directory.name
     _require(current_id == subject['id'],
              'Manual record subject '+subject['id']+' does not match current subject '+current_id)

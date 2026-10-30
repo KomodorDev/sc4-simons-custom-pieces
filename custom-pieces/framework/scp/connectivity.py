@@ -126,6 +126,16 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
     ports, journeys, forbidden = [], [], []
     hashes = resource_fingerprints(piece['id'], resources)
     declared = (contract or {}).get('ports', {})
+    port_transports = (contract or {}).get('port_transports')
+    port_directions = (contract or {}).get('port_directions', {})
+    if port_transports is not None:
+        require(set(port_transports) == set(declared)
+                and all(type(value) is int and value > 0 for value in port_transports.values()),
+                'Reviewed contract must declare one engine transport for every port')
+        require(set(port_directions) == set(declared)
+                and set(port_directions.values()) <= {'in','out'},
+                'Reviewed multi-transport contract must declare every port direction')
+    contract_engines = set(port_transports.values()) if port_transports is not None else {7}
     used_declared = set()
     for engine, records in sorted(by_engine.items()):
         incoming, outgoing = defaultdict(list), defaultdict(list)
@@ -163,12 +173,16 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
             segment = (route['points'][0], route['points'][1]) if direction == 'in' else (route['points'][-2], route['points'][-1])
             delta = [b-a for a, b in zip(*segment)]
             sampled = _unit(delta)
-            matches = [name for name, wanted in declared.items() if engine == 7 and math.dist(point, wanted) <= EPS]
+            matches = [name for name, wanted in declared.items()
+                       if engine == (port_transports[name] if port_transports is not None else 7)
+                       and port_directions.get(name,direction) == direction and math.dist(point,wanted) <= EPS]
             if len(matches) > 1:
                 vectors = (contract or {}).get('port_vectors', {})
                 matches = [name for name in matches if name in vectors and
                            sum(a*b for a, b in zip(_unit(vectors[name]), sampled)) > .998]
             require(len(matches) <= 1, 'Reviewed contract gives ambiguous external port labels')
+            require(port_transports is None or engine not in contract_engines or matches,
+                    'Actual PATH endpoint differs from the reviewed transport and direction contract')
             if matches:
                 identifier = matches[0]
                 require(identifier not in used_declared, 'Reviewed port label merges distinct directional endpoint geometries')
@@ -177,6 +191,9 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
                 edge = route['entry_edge'] if direction == 'in' else route['exit_edge']
                 identifier = f'{engine}-'+('W', 'N', 'E', 'S')[edge]+'-'+direction+'-'+str(index)
             tangent = list((contract or {}).get('port_vectors', {}).get(identifier, sampled))
+            if port_transports is not None:
+                require(sum(a*b for a,b in zip(_unit(tangent),sampled)) > .998,
+                        'Actual PATH travel tangent differs from the reviewed port vector')
             service = classify(piece, engine, point[2])
             relevant = []
             for item in incident:
@@ -253,8 +270,10 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
                     following = [item for item in following if tuple(item['cell']) == neighbour
                                  and item['entry_edge'] == (route['exit_edge']+2) % 4]
                 pending.extend(following)
-        if engine == 7 and contract and contract.get('movements'):
-            require(actual_movements == set(map(tuple, contract['movements'])),
+        if engine in contract_engines and contract and contract.get('movements'):
+            expected_movements = {tuple(pair) for pair in contract['movements']
+                                  if port_transports is None or port_transports[pair[0]] == engine}
+            require(actual_movements == expected_movements,
                     f'{piece["id"]}: actual movements differ from reviewed contract')
     if declared:
         require(used_declared == set(declared), f'{piece["id"]}: actual PATH does not expose every reviewed port')
