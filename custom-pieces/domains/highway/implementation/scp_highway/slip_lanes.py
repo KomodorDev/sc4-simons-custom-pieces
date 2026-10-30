@@ -11,6 +11,10 @@ WHITE = 1.375
 AUXILIARY_V = 5.5
 SEPARATOR_V = (3.2 / math.sqrt(2.0) + AUXILIARY_V) / 2.0
 SHOULDER_OUTER_V = 8.0 - .828125
+# Native DD pavement uses U=0.5-q/16 on the served shoulder. Columns 26–28
+# contain the old white edge; centres 25 and 29 bound its filtered footprint.
+NATIVE_EDGE_ERASE_V = (4.3125, 4.8125)
+NATIVE_EDGE_ASPHALT_U = 29.5 / 128.0
 PAINT_HEIGHT = .01
 SEAM_STEP = 2.**-20
 
@@ -149,9 +153,10 @@ def _polygon(ramp, coordinates, semantic=ASPHALT, height_offset=0.):
 
 
 def shoulder_footprint(ramp):
-    """Return the exact top-face cut, in global model X/Z coordinates."""
-    faces = _polygon(ramp, ((0.,SEPARATOR_V),(profile(ramp)['join_s'],SEPARATOR_V),
-                           (profile(ramp)['join_s'],SHOULDER_OUTER_V),(0.,SHOULDER_OUTER_V)))
+    """Return only the old white edge's half-metre top-face footprint."""
+    inner, outer = NATIVE_EDGE_ERASE_V
+    faces = _polygon(ramp, ((0.,inner),(profile(ramp)['join_s'],inner),
+                           (profile(ramp)['join_s'],outer),(0.,outer)))
     return [[(p[0],p[2]) for p in triangle] for triangle in faces]
 
 
@@ -173,7 +178,7 @@ def native_shoulder_cuts(cell, ramps):
 
 
 def repaint_native_shoulder(polygon, cuts):
-    """Remap only planar native shoulder fragments, retaining original V."""
+    """Erase old edge paint; preserve surrounding native UVs and original V."""
     from .ramp_geometry import _clip, _normal, _subtract_convex
     if len(polygon)<3 or _normal(polygon[:3])[1] <= 1e-9:
         return [polygon]
@@ -202,10 +207,10 @@ def repaint_native_shoulder(polygon, cuts):
             revised.extend(_subtract_convex(part,footprint))
             painted = []
             for p in inside:
-                v = side*(-p[2]-p[0]+8.)/math.sqrt(2.)
-                across = min(1.,max(0.,(v-SEPARATOR_V)/(SHOULDER_OUTER_V-SEPARATOR_V)))
-                u = .26953125+(.46484375-.26953125)*across
-                painted.append((*p[:3],u,p[4]))
+                # Adjacent inner asphalt keeps its native longitudinal phase.
+                # The outer border is the same grey shoulder tone; no wheel
+                # track is stretched across the surrounding auxiliary lane.
+                painted.append((*p[:3],NATIVE_EDGE_ASPHALT_U,p[4]))
             revised.append(painted)
         pieces = revised
     return pieces

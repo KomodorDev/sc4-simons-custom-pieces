@@ -179,23 +179,27 @@ Use Windows SimCity 4 with NAM 50, its NAM DLL and FLEX patch, and right-hand tr
 Run the following commands from the repository root. Building reads your own supported native inputs and creates game archives (DAT files). Verification reopens their saved resources. The menu command creates a separate candidate with one component-cycle button.
 
 ```sh
-python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-barrier-joins-parts-01
-python3 -B custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-barrier-joins-parts-01
-python3 -B custom-pieces/domains/highway/tools/verify_compact_assembly.py --build custom-pieces/dist/ddrhw-barrier-joins-parts-01 --output custom-pieces/local/highway-assembly-check.json
-python3 -B custom-pieces/scp.py assembly-menu --source custom-pieces/dist/ddrhw-barrier-joins-parts-01 --output custom-pieces/dist/ddrhw-barrier-joins-menu-01 --domain highway --layout compact-diagonal-diamond
+python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-pavement-tone-parts-01
+python3 -B custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-pavement-tone-parts-01
+python3 -B custom-pieces/domains/highway/tools/verify_compact_assembly.py --build custom-pieces/dist/ddrhw-pavement-tone-parts-01 --output custom-pieces/local/highway-assembly-check.json
+python3 -B custom-pieces/scp.py assembly-menu --source custom-pieces/dist/ddrhw-pavement-tone-parts-01 --output custom-pieces/dist/ddrhw-pavement-tone-menu-01 --domain highway --layout compact-diagonal-diamond
 python3 -B custom-pieces/scp.py docs-check --assembly ddrhw-l1-and-l2-diagonal-avenue-diamond
 python3 -B tools/run_tests.py
 ```
 
-If an artwork refresh is requested after the matching native build and verification pass, stage the six actual-model assembly views with `python3 -B custom-pieces/domains/highway/tools/render_compact_assembly.py --build custom-pieces/dist/ddrhw-barrier-joins-parts-01 --output-dir custom-pieces/local/highway-assembly-views --prefix reviewed-compact-assembly`. It reads the private Plugins setting for native textures and derives names, positions, rotations, and ownership from the saved models and registered placement plan. Compare every image with the corresponding [trumpet presentation reference](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including full-name cards, badges, leaders, colours, filled ownership tiles, and reference diamonds. The staging report records reference hashes, actual cameras, annotations, and the exact six-file canonical order. Review the PNGs before copying their unchanged bytes into `previews/` and retaining their report in [compiled render evidence](evidence/compiled-render.json); preserve [the original schematic render evidence](evidence/render.json) unchanged. The later barrier-joint revision refreshes the affected actual-model views after saved-resource verification; those images show a fixed native Avenue reference and do not simulate the selected sidewalk variants.
+If an artwork refresh is requested after the matching native build and verification pass, stage the six actual-model assembly views with `python3 -B custom-pieces/domains/highway/tools/render_compact_assembly.py --build custom-pieces/dist/ddrhw-pavement-tone-parts-01 --output-dir custom-pieces/local/highway-assembly-views --prefix reviewed-compact-assembly`. It reads the private Plugins setting for native textures and derives names, positions, rotations, and ownership from the saved models and registered placement plan. Compare every image with the corresponding [trumpet presentation reference](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including full-name cards, badges, leaders, colours, filled ownership tiles, and reference diamonds. The staging report records reference hashes, actual cameras, annotations, and the exact six-file canonical order. Review the PNGs before copying their unchanged bytes into `previews/` and retaining their report in [compiled render evidence](evidence/compiled-render.json); preserve [the original schematic render evidence](evidence/render.json) unchanged. The later barrier-joint revision refreshes the affected actual-model views after saved-resource verification; those images show a fixed native Avenue reference and do not simulate the selected sidewalk variants.
 
 The [initial adaptive-ground preservation report](evidence/adaptive-ground-preservation.json) belongs to the pre-repair migration. Its auditor requires every retained canonical model byte to match the fixed-model baseline; that requirement deliberately does not apply to the later barrier geometry correction. Current barrier validation uses the complete saved-assembly check and a separate before/after audit of unchanged routes, construction, controller rules, native artwork, and adaptive bindings.
 
 The independent pavement verifier reads saved PATH segments and indexed S3D triangles. It checks continuous pavement support, encoded slopes, declared empty shoulder cells, measured native material references and texture coordinates, and intersections with a 2.5 m-wide, 3.8 m-high car corridor through all four rotations. The [native ramp-material audit](evidence/native-ramp-materials-audit.json) records the actual NAM ramp, highway, barrier, and concrete sources; material checks remain separate from game appearance. This is a triangle-face test, rather than a complete solid or swept-vehicle proof. The earlier [schematic source](design.jsonc), [geometry check](evidence/geometry-check.json), and [schematic render report](evidence/render.json) retain their original source-only scope.
 
-The [current saved assembly check](evidence/barrier-join-assembly-check.json) also inspects both barrier profiles at all four highway/ramp mouths. It checks continuous triangle coverage across 160 independently derived sections in each of four rotations, for 640 checks, and requires outward-facing surfaces. Mutation tests remove inner strips, outer crowns, and outer sides, or reverse their triangle order; each defect is rejected. These checks target the repaired joints and do not establish closed solids throughout every native model.
+The [barrier-repair saved assembly check](evidence/barrier-join-assembly-check.json) also inspects both barrier profiles at all four highway/ramp mouths. It checks continuous triangle coverage across 160 independently derived sections in each of four rotations, for 640 checks, and requires outward-facing surfaces. Mutation tests remove inner strips, outer crowns, and outer sides, or reverse their triangle order; each defect is rejected. These checks target the repaired joints and do not establish closed solids throughout every native model.
 
-The [barrier preservation audit](evidence/barrier-join-preservation.json) passes 399 checks against the retained pre-repair adaptive build. All 66 saved PATH resources, 300 ground textures, 14 prop exemplars, 14 T21 exemplars, construction identifiers, controller rules, normal menu, and placements remain exact. Only barrier/concrete mesh content and generated shadows change. [Current assembly render evidence](evidence/barrier-join-render.json) records the six reviewed trumpet-style views; the [piece render ledger](evidence/barrier-join-piece-renders.json) records angled and top views for all ten changed types. The three unchanged types retain their existing pictures.
+The [barrier preservation audit](evidence/barrier-join-preservation.json) passes 399 checks against the retained pre-repair adaptive build. All 66 saved PATH resources, 300 ground textures, 14 prop exemplars, 14 T21 exemplars, construction identifiers, controller rules, normal menu, and placements remain exact. Only barrier/concrete mesh content and generated shadows change. [Barrier-repair assembly render evidence](evidence/barrier-join-render.json) records the six reviewed trumpet-style views; the [piece render ledger](evidence/barrier-join-piece-renders.json) records angled and top views for all ten changed types. The three unchanged types retain their existing pictures.
+
+The [current saved assembly check](evidence/pavement-tone-assembly-check.json) adds 150 surrounding native-U polygon checks, with maximum U error approximately 3.94 × 10⁻⁷, and twelve old-edge erasure samples across the four mouths. The [pavement preservation audit](evidence/pavement-tone-preservation.json) passes 194 checks against the barrier-repair build: all 1,086 resource identities, 66 PATH payloads, 300 ground textures, 255 shadows, materials, adaptive bindings, controller/menu bytes, placements, and occupied cells are retained. Only sixty canonical S3Ds and four branch previews change. The audit checks all 792 indexed triangles in the 72 changed native mesh instances, including repeated zoom/preview instances, against the original donor UV field or the bounded old-edge erasure, preserving longitudinal V within 3 × 10⁻⁶. Mutual projected coverage bounds the maximum changed native-pavement symmetric-difference area at approximately 1.06 × 10⁻⁵ m²; this small difference comes from saved float32 subdivision and does not establish game appearance.
+
+The [current render report](evidence/pavement-tone-render.json) records the six assembly views in the required trumpet order. The [current piece ledger](evidence/pavement-tone-piece-renders.json) records refreshed angled and top views for the four changed branch types; the other nine types retain their existing pictures. The [native shoulder-tone audit](evidence/native-shoulder-tone-audit.json) pins the actual donor texture and base-image colour measurements, with separate limits for mipmaps, filtering, lighting, and the unchanged MIS ramp boundary.
 
 ## 4. Game checks
 
@@ -207,11 +211,15 @@ Place fresh copies of the access core and both junction components in each of th
 
 Supply car demand through each elevated deck and all four ramps. Inspect the transitions between the new resolved Avenue tiles and the neighbouring fixed highway tiles, because matching saved routes do not establish that the game accepts those construction-network transitions. Also observe all four highway joins: vehicles should change into or out of the shoulder lane, travel along its parallel section, and use the correct ramp without crossing a barrier. Repeat the appearance and route checks after saving, quitting, and reloading. These game observations remain unverified.
 
-No game observations have been supplied. In a disposable city, place every component in each supported rotation, then supply real traffic demand on all four arms. Observe every generated journey separately with Route Query and visible vehicles. Confirm each of the four permitted right turns with both Route Query and visible vehicles. Confirm that the four cross-avenue left turns stay unavailable, while both avenue through directions and both highway through directions remain usable. Check pedestrians through both surface junctions, vehicles on the grades, and native-texture continuity at the joins. Inspect each ramp opening and the closed opposite upper-deck barrier, then check stopping, junction behaviour, shadows, demolition, replacement, and save/reload. Record exact observations through the [shared testing procedure](../../../../docs/TESTING.md); software checks cannot tick those cases.
+The generated complete-assembly game cases remain unverified. In a disposable city, place every component in each supported rotation, then supply real traffic demand on all four arms. Observe every generated journey separately with Route Query and visible vehicles. Confirm each of the four permitted right turns with both Route Query and visible vehicles. Confirm that the four cross-avenue left turns stay unavailable, while both avenue through directions and both highway through directions remain usable. Check pedestrians through both surface junctions, vehicles on the grades, and native-texture continuity at the joins. Inspect each ramp opening and the closed opposite upper-deck barrier, then check stopping, junction behaviour, shadows, demolition, replacement, and save/reload. Record exact observations through the [shared testing procedure](../../../../docs/TESTING.md); software checks cannot tick those cases.
+
+Inspect the shoulder around each dashed separator and hatched split area. Look for rectangular dark patches, a reappearing old white edge, a change of texture phase at tile boundaries, or flickering pavement. Compare the off-ramps with the corresponding on-ramps, turn the camera to both sides, and keep this visual check separate from Route Query and moving traffic.
 
 Inspect the inner triangular join and outer barrier top on all four ramp mouths. Compare fresh placed models with the updated branch pictures, change the city camera, and check the opposite barrier side. The corrected triangle order and compiled coverage checks do not supply a human game observation.
 
 ## 5. Results and known issues
+
+The shoulder-tone revision passes eight targeted repaint and saved-model mutation tests, plus the sixteen existing complete-assembly verifier tests. Its native build, current saved assembly inspection, 194-check preservation audit, and reviewed artwork are linked in chapter 3. These results establish the bounded texture-coordinate correction and preserved geometry; game lighting, filtering, and appearance remain separate checks.
 
 The [barrier-joint validation record](evidence/barrier-join-validation.json) records 1,464 executed repository tests passed and 82 explicit skips, together with the native build, complete assembly checks, invariant comparison, and final artwork. These results are software evidence; fresh game inspection of the repaired barriers remains unverified.
 
@@ -229,7 +237,7 @@ The same report checks 320 car-lane pavement samples across component joins, wit
 
 The retained [pre-adaptive validation record](evidence/compiled-validation.json) records 105 passing highway tests with the supported native inputs and no skips. Negative controls reject displaced auxiliary lanes, omitted parallel sections, and displaced native through lanes. An exact saved-edge regression covers the reproduced float32 shoulder-cut crack in all four rotations. All six assembly pictures were reviewed against the corresponding trumpet presentation, and all 13 types have angled and top views. This is a coding-agent artwork review; game appearance remains unverified.
 
-The converted shoulder bands use an unmarked asphalt area of the native DD texture. Their ends show a visible pavement-shade transition in the software previews. The saved car-path support checks pass separately; game lighting and the installed texture pack remain unverified.
+The shoulder-tone correction removes the former broad dark crop around the authored markings. Only the old native white edge, in a 0.5 m-wide band, is erased with adjacent asphalt at the original longitudinal texture phase; the surrounding shoulder retains its native texture coordinates. The external ramp keeps its existing MIS pavement material. Inspect the four joins under actual game lighting and after save/reload; software appearance and saved route support remain separate evidence.
 
 The accepted pre-shoulder candidate is retained under [before-shoulder-slip-lanes](evidence/design-history/before-shoulder-slip-lanes/retention.json), including its original saved-resource, material, render, and validation reports. Those reports retain their original results and do not test the new shoulder lanes.
 
@@ -308,6 +316,184 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 10 cases; unverified: 10</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast | <a href="#case-preview_review-1078b138a2c094aa07cc">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top | <a href="#case-preview_review-b02e7ddb83975dfa69a4">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest | <a href="#case-preview_review-c4c07979aec5da50d199">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast | <a href="#case-preview_review-bc702f29fdf636f1adbb">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top | <a href="#case-preview_review-2f13a8f3bd777cd10246">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest | <a href="#case-preview_review-41945dab4d14218575f2">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles | <a href="#case-preview_review-ca10fd6f9f960a69288e">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast | <a href="#case-preview_review-a27eb7d003ae1a9abb69">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top | <a href="#case-preview_review-3fc1532c9931e2deb4e3">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership | <a href="#case-preview_review-a7286a3bc6d0b50ac5e7">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast</summary>
+
+<a id="case-preview_review-1078b138a2c094aa07cc"></a>
+
+**General: unverified** — `preview_review-1078b138a2c094aa07cc`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top</summary>
+
+<a id="case-preview_review-b02e7ddb83975dfa69a4"></a>
+
+**General: unverified** — `preview_review-b02e7ddb83975dfa69a4`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest</summary>
+
+<a id="case-preview_review-c4c07979aec5da50d199"></a>
+
+**General: unverified** — `preview_review-c4c07979aec5da50d199`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast</summary>
+
+<a id="case-preview_review-bc702f29fdf636f1adbb"></a>
+
+**General: unverified** — `preview_review-bc702f29fdf636f1adbb`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top</summary>
+
+<a id="case-preview_review-2f13a8f3bd777cd10246"></a>
+
+**General: unverified** — `preview_review-2f13a8f3bd777cd10246`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest</summary>
+
+<a id="case-preview_review-41945dab4d14218575f2"></a>
+
+**General: unverified** — `preview_review-41945dab4d14218575f2`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles</summary>
+
+<a id="case-preview_review-ca10fd6f9f960a69288e"></a>
+
+**General: unverified** — `preview_review-ca10fd6f9f960a69288e`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast</summary>
+
+<a id="case-preview_review-a27eb7d003ae1a9abb69"></a>
+
+**General: unverified** — `preview_review-a27eb7d003ae1a9abb69`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top</summary>
+
+<a id="case-preview_review-3fc1532c9931e2deb4e3"></a>
+
+**General: unverified** — `preview_review-3fc1532c9931e2deb4e3`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership</summary>
+
+<a id="case-preview_review-a7286a3bc6d0b50ac5e7"></a>
+
+**General: unverified** — `preview_review-a7286a3bc6d0b50ac5e7`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership.
 
 No observation recorded.
 
@@ -2417,187 +2603,11 @@ No observation recorded.
 
 </details>
 
-<details>
-<summary>Preview review — Images — 10 cases; unverified: 10</summary>
-
-| Check / exact scope | General | 0° |
-| --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast | <a href="#case-preview_review-1078b138a2c094aa07cc">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top | <a href="#case-preview_review-b02e7ddb83975dfa69a4">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest | <a href="#case-preview_review-c4c07979aec5da50d199">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast | <a href="#case-preview_review-bc702f29fdf636f1adbb">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top | <a href="#case-preview_review-2f13a8f3bd777cd10246">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest | <a href="#case-preview_review-41945dab4d14218575f2">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles | <a href="#case-preview_review-ca10fd6f9f960a69288e">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast | <a href="#case-preview_review-a27eb7d003ae1a9abb69">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top | <a href="#case-preview_review-3fc1532c9931e2deb4e3">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership | <a href="#case-preview_review-a7286a3bc6d0b50ac5e7">[ ] unverified</a> | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast</summary>
-
-<a id="case-preview_review-1078b138a2c094aa07cc"></a>
-
-**General: unverified** — `preview_review-1078b138a2c094aa07cc`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top</summary>
-
-<a id="case-preview_review-b02e7ddb83975dfa69a4"></a>
-
-**General: unverified** — `preview_review-b02e7ddb83975dfa69a4`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:clean-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest</summary>
-
-<a id="case-preview_review-c4c07979aec5da50d199"></a>
-
-**General: unverified** — `preview_review-c4c07979aec5da50d199`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast</summary>
-
-<a id="case-preview_review-bc702f29fdf636f1adbb"></a>
-
-**General: unverified** — `preview_review-bc702f29fdf636f1adbb`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top</summary>
-
-<a id="case-preview_review-2f13a8f3bd777cd10246"></a>
-
-**General: unverified** — `preview_review-2f13a8f3bd777cd10246`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:named-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest</summary>
-
-<a id="case-preview_review-41945dab4d14218575f2"></a>
-
-**General: unverified** — `preview_review-41945dab4d14218575f2`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles</summary>
-
-<a id="case-preview_review-ca10fd6f9f960a69288e"></a>
-
-**General: unverified** — `preview_review-ca10fd6f9f960a69288e`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-profiles.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast</summary>
-
-<a id="case-preview_review-a27eb7d003ae1a9abb69"></a>
-
-**General: unverified** — `preview_review-a27eb7d003ae1a9abb69`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top</summary>
-
-<a id="case-preview_review-3fc1532c9931e2deb4e3"></a>
-
-**General: unverified** — `preview_review-3fc1532c9931e2deb4e3`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:schematic-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership</summary>
-
-<a id="case-preview_review-a7286a3bc6d0b50ac5e7"></a>
-
-**General: unverified** — `preview_review-a7286a3bc6d0b50ac5e7`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-diamond:tile-ownership.
-
-No observation recorded.
-
-</details>
-
-</details>
-
 <!-- END MANUAL CHECKS -->
 
 ## 6. Design history
+
+The later shoulder-tone repair removes the broad wheel-track texture crop around the auxiliary-lane markings. It narrows white-edge erasure to the measured 0.5 m band and restores the surrounding native asphalt UV field, while retaining the preceding barrier repair. Earlier barrier renders and their exact PNG hashes remain preserved in the design-history record; they describe the appearance before this texture-coordinate correction.
 
 The barrier-joint repair replaces the former deck-edge-only clipping of the profiled barriers with matching inset intersections and native-profile bridge strips. It closes the reported inner triangles and outer notches, and corrects inward-facing triangles on one swept side. Pavement, skirts, traffic routes, tile ownership, and adaptive-ground bindings retain their existing contract. The initial adaptive-ground migration reports below retain their measured pre-repair scope; historical piece render reports and PNG hashes are preserved under [before-barrier-join-repair](evidence/design-history/before-barrier-join-repair/piece-render-preservation.json).
 

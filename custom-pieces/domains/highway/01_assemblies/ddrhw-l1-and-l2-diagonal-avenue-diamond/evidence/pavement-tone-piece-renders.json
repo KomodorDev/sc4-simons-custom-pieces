@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "purpose": "Record eight refreshed canonical views of the four saved branch types changed by the bounded native shoulder repaint; this is software artwork evidence.",
+  "source_build": "dist/ddrhw-pavement-tone-parts-01",
+  "source_manifest_sha256": "a7332064e2c0aeda4f38d8ff54bff5d4ced68493ab08ba4c78e686a743396328",
+  "historical_render_preservation": "evidence/design-history/before-pavement-tone-repair/render-preservation.json",
+  "rendered_piece_count": 4,
+  "rendered_view_count": 8,
+  "selected_view_coverage_complete": true,
+  "changed_piece_selection_basis": "Actual before/after DAT and indexed resource comparison; the other nine piece DATs are byte-identical.",
+  "unchanged_piece_views_compared_with_source_snapshot": [
+    "ddrhw-diagonal-access-core",
+    "ddrhw-diagonal-diagonal-half-a",
+    "ddrhw-diagonal-diagonal-half-b",
+    "ddrhw-diagonal-lower-entry-grade",
+    "ddrhw-diagonal-lower-exit-grade",
+    "ddrhw-diagonal-northwest-junction",
+    "ddrhw-diagonal-southeast-junction",
+    "ddrhw-diagonal-upper-entry-grade",
+    "ddrhw-diagonal-upper-exit-grade"
+  ],
+  "source_snapshot_commit": "7840a6c673f8cc869325e81d2dc5293c9ea7c972",
+  "visual_review": {
+    "reviewer": "coding-agent",
+    "all_eight_canonical_views_inspected": true,
+    "method": "Each angled and top view was inspected individually at its full 1600 x 1200 image size.",
+    "scope": "Consistent titles, camera roles, grids, and complete owned geometry; retained native shoulder field around existing markings, removal of the broad arbitrary-crop rectangle, and preserved barrier joins.",
+    "limit": "The lower deck is partly occluded in canonical top views; the independent saved-resource check and before/after audit provide the lower-deck UV evidence. Native-DD-to-MIS tone, game filtering, mipmaps, and lighting still need human game inspection."
+  },
+  "baseline_saved_regression": {
+    "baseline": "ddrhw-barrier-joins-parts-final-01",
+    "baseline_manifest_sha256": "dad1bd913e02ba75cafb605cc8e72e1a1f777c597e0a045905db74f0350663cd",
+    "expected_saved_resource_rejection": "Saved shoulder asphalt differs from the native UV field outside the erased edge",
+    "expected_rejection_observed": true
+  },
+  "in_game_evidence": false,
+  "manual_game_result_changed": false,
+  "source_files": [
+    {
+      "path": "framework/scp/preview.py",
+      "sha256": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112"
+    },
+    {
+      "path": "framework/scp/piece_previews.py",
+      "sha256": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe"
+    },
+    {
+      "path": "framework/scp/render_headers.py",
+      "sha256": "9f514a58400ed38c12d804ba407039824344ec097f3d1c34c398951b0c0af44e"
+    },
+    {
+      "path": "domains/highway/implementation/scp_highway/slip_lanes.py",
+      "sha256": "4f5970fcf4c3b0e95d076f072c87d9b619a27a75a34a18b9289109cd18121815"
+    }
+  ],
+  "pieces": [
+    {
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat",
+      "source_dat_sha256": "7cbb761841ad402ed9a88668c84f11d73e34af7ca544db9bc0f5b359a0460aa5",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview.png",
+          "png_sha256": "45816bb1d8330e5ab73f162d486adf433e42e65b981c46655aae79771c0a1de7",
+          "png_bytes": 220656,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview.json",
+          "report_sha256": "295e4e4af7f24bc6f83f9e27733ae5fca93c563252f9f90fcce9b86498dc9be5",
+          "saved_preview_model_sha256": "06bce8048885c38fa3b54ce797b0467f5f85d7ca01fce8b461f72fb8041823a9",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-top.png",
+          "png_sha256": "3a6fd8b52241acaa387b1d5e0a04a2128c7209c78e0070031fc069adc4a8250c",
+          "png_bytes": 187567,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview-top.json",
+          "report_sha256": "8580997cf5adeaeaa5f6e9e4164509b5c6c697589136212668dac253cd027dbc",
+          "saved_preview_model_sha256": "06bce8048885c38fa3b54ce797b0467f5f85d7ca01fce8b461f72fb8041823a9",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-thumb.png",
+        "sha256": "9597f488ea6c4787e13b242235d15f811ee8ffd095fe23f4184a06ddb5ad4264"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat",
+      "source_dat_sha256": "130da49b0685b2a17f91627fe7ee4a96e0011f5c6cf045d5f879084d0a75a9a2",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview.png",
+          "png_sha256": "901a8642cffcfe76b719b2e4e70a819ced022afd01c71aade2a72f1b82d734f1",
+          "png_bytes": 221154,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview.json",
+          "report_sha256": "727aa6891a6b668affd4c41cea9035e671c66adf313512f62099d145cb9f9c85",
+          "saved_preview_model_sha256": "a1a87ab4aacd08048f3ba22be0bbfd768591a6206d82cb88a423f53903464a00",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-top.png",
+          "png_sha256": "b3d5531b9f2a6610edbc1ffeae2150a207c9e5a958e8e505dcd1a5a67f9171d3",
+          "png_bytes": 189975,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview-top.json",
+          "report_sha256": "9662b850224d9289c543daad6e6ee2015af21b10bd372ef12d852f8d844dad83",
+          "saved_preview_model_sha256": "a1a87ab4aacd08048f3ba22be0bbfd768591a6206d82cb88a423f53903464a00",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-thumb.png",
+        "sha256": "48210c2f5f7612050875250f2f193eccc40506d50bd24914f8d6ca715a9e34a1"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat",
+      "source_dat_sha256": "947dab8d7e876f22d984aeaba5613d53741dfa603612a38888273e601cc9435f",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview.png",
+          "png_sha256": "9667c3c12312b84916d9d6076fd8124f94c76553485309f47575d266d58cf41d",
+          "png_bytes": 310736,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview.json",
+          "report_sha256": "f573a2a8f345e8f0ae27f56740443bbccf16fca84a68328d0bd015e3a2bc01e5",
+          "saved_preview_model_sha256": "a39a1eca3cf2088d9b1d30649c971ca2d142f2dddea5bdd53df8e0ab5261f36b",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-top.png",
+          "png_sha256": "6be00c0ec94d2ef14e49c0f9c4589dcdc9afc891a89b5ed841febc067570a134",
+          "png_bytes": 205049,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview-top.json",
+          "report_sha256": "f7080c578e8a5903774d73a84d95599e7ad75e6bdf157c14fe04ad9a336eb2f2",
+          "saved_preview_model_sha256": "a39a1eca3cf2088d9b1d30649c971ca2d142f2dddea5bdd53df8e0ab5261f36b",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-thumb.png",
+        "sha256": "f77dcc6331087853c4f9ff09a78c374b3002d9abfb39744435af6f8832736f1e"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat",
+      "source_dat_sha256": "7df682a59b4e8e12de4a45870c718ecfb49b3484055dfee8f7700ec73556a1f6",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview.png",
+          "png_sha256": "67117ddd576f709e70954a83b281afadfd3fa98803bf02c43f6667c9ff50f077",
+          "png_bytes": 312324,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview.json",
+          "report_sha256": "85c82373699efade669f50b4b29e29bb81223f6a95b4d7386479c7814bb7cc0e",
+          "saved_preview_model_sha256": "9495978b21585f3bbbe82125c93a12c4d42a6e2b34eb21edf1d9b355c084ae72",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-top.png",
+          "png_sha256": "19c00b8477b9f818111f8ebb267916af5409a5d67bdf78a5598599a19ea48c43",
+          "png_bytes": 200114,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview-top.json",
+          "report_sha256": "c4e170fdc3c5febe9572ca4670b086942a7f0d7f9ee1a969d3712f326835f7be",
+          "saved_preview_model_sha256": "9495978b21585f3bbbe82125c93a12c4d42a6e2b34eb21edf1d9b355c084ae72",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-thumb.png",
+        "sha256": "36883c3b20e78e1f6e80cdc8a993d6af2517c760b50b42b2f0c8264a5421b201"
+      }
+    }
+  ]
+}
