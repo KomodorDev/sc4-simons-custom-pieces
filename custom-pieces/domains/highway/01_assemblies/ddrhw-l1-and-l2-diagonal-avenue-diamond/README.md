@@ -36,7 +36,9 @@ The approved roadway geometry is retained. The pictures show its fixed native Av
 
 ![Named northwest view showing the opposite side](previews/named-northwest.png)
 
-![Tile ownership plan showing which placement owns each construction tile](previews/tile-ownership.png)
+The construction view overlays the actual top-view model with construction-tile colours at 30% opacity: the colour contributes approximately 30% of the result, and the road image beneath contributes 70%. Boundaries, placement labels, reference diamonds, and the full-name legend remain opaque. The same coordinates and framing align each coloured tile with its road geometry.
+
+![Translucent construction-tile colours over the aligned top-view highway and Avenue model](previews/tile-ownership.png)
 
 Each highway ramp connection retains its extended position one diagonal city-grid step farther from the avenue: 16 m along each city axis, or about 22.63 m along the diagonal highway. Including the new shoulder-lane approaches, the complete authored driving curve is about 70.33 m lower and 102.21 m upper. The active height transitions remain about 35.08 m lower and 52.66 m upper, with 4 m ground landings. Source peak grades remain about 22.68% lower and 29.61% upper. A **grade** is height change divided by horizontal travel distance; 20% means 2 m of height change over 10 m horizontally. Saved-resource measurements and game observations are recorded separately in [TESTING.md](TESTING.md).
 

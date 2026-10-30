@@ -31,7 +31,7 @@ ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc')
 sys.path.insert(0, str(ROOT / 'framework'))
 sys.dont_write_bytecode = True
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageColor
 
 from scp import jsonc
 from scp.models import pack_s3d, parse_s3d, validate_s3d, positions
@@ -243,8 +243,14 @@ def _grid_bounds(vertices, sources):
 
 
 def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top, *, title=None,
-                    colour_assignment=None, minimum_display_index=None):
-    """Draw exact occupied city cells. This is explicitly a plan, not model geometry."""
+                    colour_assignment=None, minimum_display_index=None,
+                    model=None, textures=None, fill_opacity=1.0):
+    """Draw exact occupied city cells, optionally over the aligned compiled model."""
+    fill_opacity = _finite(fill_opacity, 'Construction fill opacity')
+    if not 0. <= fill_opacity <= 1.:
+        raise ValueError('Construction fill opacity must be between 0 and 1')
+    if (model is None) != (textures is None):
+        raise ValueError('Construction model and textures must be supplied together')
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
     header_rows = assembly_caption_rows(title or 'HSR interchange', 'Construction view', 'Top view | north up')
@@ -259,7 +265,11 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     view, grid = make_city_grid(camera, bounds, origin_world_m=origin,
                                 font=font(18), bold_font=font(19, True),
                                 minimum_display_index=minimum_display_index)
-    vd = ImageDraw.Draw(view)
+    if model is not None:
+        view = render_fast_view(model, textures, 0., 90., view_width, view_height,
+                                camera=camera, background_image=view)
+    fills = Image.new('RGBA', view.size, (0, 0, 0, 0))
+    fd = ImageDraw.Draw(fills)
     colours = colour_assignment or colour_assignment_for_sources(sources)
     owners = {}
     plan_sources = []
@@ -274,7 +284,8 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
             owners[key] = label
             polygon = camera.project_world([east-8, east+8, east+8, east-8],
                                             [north-8, north-8, north+8, north+8])
-            vd.polygon([tuple(p) for p in polygon], fill=fill)
+            fd.polygon([tuple(p) for p in polygon],
+                       fill=(*ImageColor.getrgb(fill), round(255 * fill_opacity)))
         copy = deepcopy(source)
         cells = source.get('occupied_world_cells', [])
         if cells:
@@ -282,6 +293,8 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
             centre = min(cells, key=lambda cell: sum((cell[i]-average[i])**2 for i in range(2)))
             copy['label_anchor_world_m'] = [*centre, 0.]
         plan_sources.append(copy)
+    view = Image.alpha_composite(view.convert('RGBA'), fills).convert('RGB')
+    vd = ImageDraw.Draw(view)
     boundaries = ownership_boundary_segments(sources)
     # Paint all halos before all dark boundaries: later strokes must not
     # erase a previous edge at a three-way junction or shared tile corner.
@@ -301,7 +314,9 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
         for east, north in source.get('occupied_world_cells', []):
             centre = camera.project_world(east, north)
             vd.text(tuple(centre), label, font=font(17, True),
-                    fill=colours['ownership_text_colour'], anchor='mm')
+                    fill=colours['ownership_text_colour'], anchor='mm',
+                    stroke_width=2 if model is not None else 0,
+                    stroke_fill='white')
         east, north = source['origin_m']
         x, y = camera.project_world(east, north)
         vd.polygon([(x,y-8),(x+8,y),(x,y+8),(x-8,y)], fill='white',
@@ -312,7 +327,9 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                                  header_y=top+30, footer_y=height-140,
                                  colour_assignment=colours)
     draw = ImageDraw.Draw(canvas)
-    _caption(draw, f'{len(owners)} occupied tiles | blank squares remain empty | same P-labels in every view',
+    ownership_caption = ('unfilled squares have no construction owner' if model is not None
+                         else 'blank squares remain empty')
+    _caption(draw, f'{len(owners)} occupied tiles | {ownership_caption} | same P-labels in every view',
              height-77, 21, width, color='#586a7e')
     _caption(draw, 'Match the shown positions and rotations; reference diamonds mark model origins.',
              height-42, 20, width, color='#586a7e')
@@ -320,6 +337,16 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                     'header_rows': list(header_rows), 'label': header_rows[1],
                     'grid': grid, 'piece_labels': labels,
                     'colour_assignment': colours,
+                    'construction_layers': {
+                        'model_underlay': model is not None,
+                        'model_underlay_uses_ownership_camera': model is not None,
+                        'ownership_fill_opacity': fill_opacity,
+                        'ownership_fill_alpha_8bit': round(255 * fill_opacity),
+                        'unowned_cells_have_no_fill': True,
+                        'boundaries_labels_and_callouts_opaque': True,
+                        'cell_label_white_stroke_pixels': 2 if model is not None else 0,
+                        'palette_contrast_scope': 'Original opaque palette; composite readability reviewed separately.',
+                    },
                     'ownership_boundaries': {
                         'internal_grid_width_pixels': INTERNAL_GRID_WIDTH,
                         'outer_and_inter_owner_width_pixels': OWNER_BOUNDARY_WIDTH,
@@ -334,6 +361,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                     width=2800, height=2100, prefix='hsr-trumpet',
                     owned_texture_resources=None,
                     minimum_display_index=None,
+                    construction_model_background=False,
+                    construction_fill_opacity=1.0,
                     source_caption='Actual compiled S3D track, decks, and supports | software preview',
                     height_caption=None,
                     footer_caption='All model geometry shown; no simulated trains, terrain, or game lighting.'):
@@ -460,7 +489,10 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                                          width, height, panel, top,
                                          title=title,
                                          colour_assignment=colours,
-                                         minimum_display_index=minimum_display_index)
+                                         minimum_display_index=minimum_display_index,
+                                         model=model if construction_model_background else None,
+                                         textures=textures if construction_model_background else None,
+                                         fill_opacity=construction_fill_opacity)
         target = destination/f'{prefix}-placement-plan-xy.png'
         plan.save(target)
         images.append({'file': target.name, 'sha256': sha256(target.read_bytes()),

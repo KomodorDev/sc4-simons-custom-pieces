@@ -80,6 +80,10 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertFalse(report['geometry_hidden'])
         self.assertFalse(report['geometry_simplified'])
         self.assertFalse(report['in_game_evidence'])
+        construction = next(image for image in report['images']
+                            if image['variant']=='construction-plan')
+        self.assertFalse(construction['construction_layers']['model_underlay'])
+        self.assertEqual(construction['construction_layers']['ownership_fill_opacity'],1.)
         self.assertEqual(provenance, original)
 
     def test_other_domain_can_supply_its_saved_textures_and_measured_caption_rows(self):
@@ -122,6 +126,59 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         palettes = [image['piece_labels']['palette'] for image in report['images']
                     if image.get('piece_labels')]
         self.assertTrue(all(palette == report['colour_assignment']['palette'] for palette in palettes))
+
+    def test_construction_underlay_shares_camera_and_only_blends_owned_fills(self):
+        from PIL import Image, ImageColor
+        from scp.models import positions
+
+        model = parse_s3d(donor())
+        model_before = pack_s3d(model)
+        vertices = [point for block in model['vertices'] for point in positions(block)]
+        sources = [{'id':'fixture', 'piece_id':'fixture', 'label':'P01',
+                    'menu_name':'Fixture component', 'origin_m':[0.,0.],
+                    'rotation_ccw_degrees':0., 'display_origin_tiles_en':[0.,0.],
+                    'label_anchor_world_m':[0.,0.,15.5], 'occupied_world_cells':[[0.,0.]]}]
+        sources_before = deepcopy(sources)
+        colours = renderer.colour_assignment_for_sources(sources)
+        fill = ImageColor.getrgb(colours['ownership_fill_palette']['P01'])
+        base = (20,40,60)
+        textures = {0x0bf6e09b:np.ones((8,8,4))}
+
+        def actual_view(*args, **kwargs):
+            return Image.new('RGB', (args[4],args[5]), base)
+
+        for opacity in (0.,.30,1.):
+            with self.subTest(opacity=opacity), \
+                    patch.object(renderer,'render_fast_view',side_effect=actual_view) as render, \
+                    patch.object(renderer,'draw_piece_callouts',return_value={}):
+                image, evidence = renderer._placement_plan(
+                    vertices,sources,(-24.,-24.,24.,24.),(0.,0.),2000,1400,400,190,
+                    title='Fixture junction',colour_assignment=colours,
+                    model=model,textures=textures,fill_opacity=opacity)
+            render.assert_called_once()
+            self.assertIs(render.call_args.args[0],model)
+            self.assertIs(render.call_args.args[1],textures)
+            self.assertEqual(render.call_args.args[2:4],(0.,90.))
+            camera = render.call_args.kwargs['camera']
+            self.assertEqual(camera.metadata(),evidence['camera'])
+
+            def pixel(east,north):
+                x,y = camera.project_world(east,north)
+                return image.getpixel((400+round(x),190+round(y)))
+
+            alpha = round(255*opacity)/255.
+            expected = tuple(round(alpha*colour+(1.-alpha)*background)
+                             for colour,background in zip(fill,base))
+            self.assertTrue(all(abs(a-b)<=1 for a,b in zip(pixel(3.,2.),expected)))
+            self.assertEqual(pixel(16.,2.),base)  # Unowned cells retain the model underneath.
+            self.assertEqual(pixel(8.,2.),(16,33,45))  # Ownership boundaries stay opaque.
+            layers = evidence['construction_layers']
+            self.assertTrue(layers['model_underlay_uses_ownership_camera'])
+            self.assertEqual(layers['ownership_fill_opacity'],opacity)
+            self.assertTrue(layers['unowned_cells_have_no_fill'])
+            self.assertTrue(layers['boundaries_labels_and_callouts_opaque'])
+        self.assertEqual(pack_s3d(model),model_before)
+        self.assertEqual(sources,sources_before)
 
 
 if __name__ == '__main__':
