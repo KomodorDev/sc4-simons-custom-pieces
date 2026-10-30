@@ -11,15 +11,17 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/highway/implementation')]
 
 from scp import jsonc
+from scp.connectivity import piece_connectivity, assembly_connectivity
 from scp.models import pack_s3d
 from scp.test_support import plane
 from scp.verify import PATH, S3D
 from scp_highway import assembly_verify as audit, ramp_paths, ramp_geometry
+from scp_highway.connections import service_classifier
 
 ASSEMBLY = ROOT / 'domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc'
 
 
-def saved_path_fixture(include_transfers=True):
+def saved_path_fixture(include_transfers=True, *, include_forbidden_transfer=False):
     scene = jsonc.load(ASSEMBLY)
     pieces = {placement['piece_id']: jsonc.load(ROOT / 'domains/highway/00_pieces' / placement['piece_id'] / 'piece.jsonc')
               for placement in scene['placements']}
@@ -36,6 +38,26 @@ def saved_path_fixture(include_transfers=True):
         lines.append({'id': 'avenue-se', 'transport': transport, 'points': [ramp_geometry.world_coordinates(-u, 200.), ramp_geometry.world_coordinates(-u, -200.)]})
     if include_transfers:
         lines.extend(ramp_paths.compact_access_routes())
+    if include_forbidden_transfer:
+        # Deliberately restore one former left turn across both Avenue
+        # carriageways, using actual native endpoint lanes.
+        ramp_id = include_forbidden_transfer if isinstance(include_forbidden_transfer, str) else 'lower-off'
+        ramp = next(item for item in ramp_geometry.compact_ramps() if item['id'] == ramp_id)
+        on = ramp['direction'] == 'on'
+        mouth = ramp_geometry.highway_coordinates(ramp['points'][0 if on else -1])
+        avenue_direction = -ramp['side']
+        travel = -avenue_direction if on else avenue_direction
+        highway_direction = -1 if ramp['deck'] == 'lower' else 1
+        target = (travel * 11.2 / root, mouth[1] + avenue_direction * 18.)
+        port_v = ramp_paths._avenue_boundary(*target, travel, beyond=not on)
+        port = ramp_geometry.world_coordinates(target[0], port_v)
+        if on:
+            turn = ramp_paths._surface_turn(target, mouth, (0, travel), (highway_direction, 0))
+            points = [port] + [ramp_geometry.world_coordinates(*point) for point in turn] + ramp['points'][1:]
+        else:
+            turn = ramp_paths._surface_turn(mouth, target, (highway_direction, 0), (0, travel))
+            points = ramp['points'][:-1] + [ramp_geometry.world_coordinates(*point) for point in turn] + [port]
+        lines.append({'id': 'forbidden-' + ramp_id + '-left-turn', 'transport': 1, 'points': points})
     for line in lines:
         # The fixture's analytic native lines deliberately start far beyond
         # the selected city footprint. Their terminal cells are discarded.
@@ -43,7 +65,7 @@ def saved_path_fixture(include_transfers=True):
     sliced = ramp_paths.deduplicate_routes(ramp_paths.slice_routes(lines))
     resources = {piece_id: {} for piece_id in pieces}
     for cell, owner in owners.items():
-        routes = sliced.get((cell[0] - 3, cell[1] - 3), [])
+        routes = sliced.get((cell[0] - 4, cell[1] - 4), [])
         raw = ramp_paths.encode_paths(routes, allow_empty=True)
         key = (*PATH, owner['tile'])
         previous = resources[owner['piece_id']].get(key)
@@ -66,36 +88,84 @@ class CompactAssemblyVerifierTests(unittest.TestCase):
         ports = audit.native_external_contract()
         self.assertEqual(len(ports), 20)
         self.assertEqual(sum(p['transport'] == 2 for p in ports), 4)
-        self.assertIn({'transport': 1, 'direction': 'in', 'point': (-8., -115.2, 15.),
+        self.assertIn({'transport': 1, 'direction': 'in', 'point': (-8., -147.2, 15.),
             'tangent': (math.sqrt(.5), math.sqrt(.5)), 'grade': 0., 'arm': 'HW_SW'}, ports)
-        self.assertTrue(any(p['point'] == (115.2, 8., 7.5) and p['direction'] == 'in' for p in ports))
-        self.assertTrue(any(p['point'] == (8., -23.3, 0.) and p['transport'] == 2 for p in ports))
+        self.assertTrue(any(p['point'] == (147.2, 8., 7.5) and p['direction'] == 'in' for p in ports))
+        self.assertTrue(any(p['point'] == (24., -39.3, 0.) and p['transport'] == 2 for p in ports))
 
-    def test_current_saved_path_fixture_proves_twelve_distinct_arm_movements(self):
+    def test_current_saved_path_fixture_proves_eight_distinct_arm_movements_and_no_crossing_turns(self):
         pieces, scene, owners, resources = saved_path_fixture()
         routes = audit.decode_placed_routes(owners, resources)
         report, seams = audit.check_saved_routes(routes, owners)
-        self.assertEqual(report['required_arm_movements'], 12)
-        self.assertEqual(report['highway_avenue_transfers'], 8)
+        self.assertEqual(report['required_arm_movements'], 8)
+        self.assertEqual(report['highway_avenue_transfers'], 4)
         self.assertEqual(report['through_arm_movements'], 4)
+        self.assertEqual(report['forbidden_avenue_crossing_movements'], 4)
+        self.assertTrue(report['no_avenue_crossing_transfers'])
+        self.assertEqual(report['grade_ceiling_percent'], 30.0)
+        self.assertLess(report['maximum_saved_car_grade_percent'], 30.0)
         self.assertTrue(report['all_cross_deck_journeys_require_intentional_ground_junctions'])
         self.assertTrue(seams)
+        assembly_report = audit.verify_assembly_resources({'pieces': list(pieces.values())}, scene, resources, inspect_models=False)
+        self.assertEqual(assembly_report['construction']['bounding_rectangle_tiles'], [10, 10])
+        self.assertEqual(assembly_report['construction']['unique_owned_cells'], 53)
+        stale_scene = deepcopy(scene)
+        stale_scene['construction_rectangle_tiles'] = [8, 8]
+        with self.assertRaisesRegex(ValueError, 'rectangle differs'):
+            audit.verify_assembly_resources({'pieces': list(pieces.values())}, stale_scene, resources, inspect_models=False)
+
+    def test_shared_extraction_keeps_only_twenty_native_external_ports_and_eight_car_arm_pairs(self):
+        pieces, scene, owners, resources = saved_path_fixture()
+        records = {identifier: piece_connectivity(piece, resources[identifier], service_classifier=service_classifier)
+                   for identifier, piece in pieces.items()}
+        result = assembly_connectivity(audit.SUBJECT, scene, records, pieces)
+        ports = {port['id']: port for port in result['ports']}
+        self.assertEqual(len(ports), 20)
+        self.assertEqual(len(result['journeys']), 14)
+        measured = {(port['engine_transport'], port['direction'], tuple(port['endpoint_m'])) for port in ports.values()}
+        expected = {(port['transport'], port['direction'], port['point']) for port in audit.native_external_contract()}
+        self.assertEqual(measured, expected)
+        car_pairs = {(audit._arm(ports[journey['entry_port']]['endpoint_m']),
+                      audit._arm(ports[journey['exit_port']]['endpoint_m']))
+                     for journey in result['journeys'] if ports[journey['entry_port']]['engine_transport'] == 1}
+        self.assertEqual(car_pairs, {('HW_NE', 'HW_SW'), ('HW_SW', 'HW_NE'),
+            ('AVE_NW', 'AVE_SE'), ('AVE_SE', 'AVE_NW'), ('HW_NE', 'AVE_NW'),
+            ('AVE_NW', 'HW_SW'), ('HW_SW', 'AVE_SE'), ('AVE_SE', 'HW_NE')})
+
+    def test_saved_interior_grade_spike_cannot_hide_behind_valid_lane_endpoints(self):
+        pieces, scene, owners, resources = saved_path_fixture()
+        routes = audit.decode_placed_routes(owners, resources)
+        target = next(route for route in routes if route['transport'] == 1
+                      and len(route['points']) == 2 and route['points'][0][2] == 15.)
+        first, last = target['points']
+        inner = [tuple(a + fraction * (b - a) for a, b in zip(first, last)) for fraction in (.1, .5, .9)]
+        inner[1] = (*inner[1][:2], inner[1][2] + 10.)
+        target['points'] = [first, *inner, last]
+        with self.assertRaisesRegex(ValueError, 'gentler 30 percent grade ceiling'):
+            audit.check_saved_routes(routes, owners)
 
     def test_missing_ramps_cannot_pass_from_native_through_routes_alone(self):
         pieces, scene, owners, resources = saved_path_fixture(include_transfers=False)
         with self.assertRaisesRegex(ValueError, 'missing required highway/Avenue transfer'):
             audit.check_saved_routes(audit.decode_placed_routes(owners, resources), owners)
 
+    def test_restored_left_turn_fails_even_when_all_right_turns_and_through_routes_remain(self):
+        for ramp in ('lower-off', 'lower-on', 'upper-off', 'upper-on'):
+            with self.subTest(ramp=ramp):
+                pieces, scene, owners, resources = saved_path_fixture(include_forbidden_transfer=ramp)
+                with self.assertRaisesRegex(ValueError, 'forbidden Avenue-crossing transfer'):
+                    audit.check_saved_routes(audit.decode_placed_routes(owners, resources), owners)
+
     def test_changed_placement_is_rejected_by_the_independent_construction_contract(self):
         pieces, scene, owners, resources = saved_path_fixture(False)
         scene['placements'][0]['origin_m'][0] += 16.
-        with self.assertRaisesRegex(ValueError, 'more than one owner|41-cell'):
+        with self.assertRaisesRegex(ValueError, 'more than one owner|53-cell'):
             audit.check_owned_cells(pieces, scene)
 
     def test_displaced_external_lane_fails_even_when_arm_names_are_unchanged(self):
         pieces, scene, owners, resources = saved_path_fixture()
         routes = audit.decode_placed_routes(owners, resources)
-        target = next(route for route in routes if route['points'][0] == (-8., -115.2, 15.))
+        target = next(route for route in routes if route['points'][0] == (-8., -147.2, 15.))
         x, y, h = target['points'][0]; target['points'][0] = (x, y + .1, h)
         with self.assertRaisesRegex(ValueError, 'native boundary channel'):
             audit.check_saved_routes(routes, owners)
@@ -103,7 +173,7 @@ class CompactAssemblyVerifierTests(unittest.TestCase):
     def test_missing_pedestrian_route_cannot_be_hidden_by_complete_car_routes(self):
         pieces, scene, owners, resources = saved_path_fixture()
         routes = audit.decode_placed_routes(owners, resources)
-        target = next(route for route in routes if route['transport'] == 2 and route['points'][0] == (8., -23.3, 0.))
+        target = next(route for route in routes if route['transport'] == 2 and route['points'][0] == (24., -39.3, 0.))
         target['transport'] = 3
         with self.assertRaisesRegex(ValueError, 'native boundary channel'):
             audit.check_saved_routes(routes, owners)
@@ -113,10 +183,10 @@ class CompactAssemblyVerifierTests(unittest.TestCase):
         routes = audit.decode_placed_routes(owners, resources)
         # This extra saved route shares real directed native endpoints but
         # changes decks above ground. Existing valid ground routes remain.
-        routes.append({'id': len(routes), 'transport': 1, 'cell': (3, 3), 'placement': 0,
+        routes.append({'id': len(routes), 'transport': 1, 'cell': (4, 4), 'placement': 0,
                        'entry': 3, 'exit': 3, 'compatibility': 1,
-                       'points': [(51.2, -56., 15.), (54.2, -53., 15.),
-                                  (55., -52.2, 11.), (54.2, -53., 7.5), (51.2, -56., 7.5)]})
+                       'points': [(67.2, -72., 15.), (70.2, -69., 15.),
+                                  (71., -68.2, 11.), (70.2, -69., 7.5), (67.2, -72., 7.5)]})
         with self.assertRaisesRegex(ValueError, 'deck transfer that bypasses'):
             audit.check_saved_routes(routes, owners)
 

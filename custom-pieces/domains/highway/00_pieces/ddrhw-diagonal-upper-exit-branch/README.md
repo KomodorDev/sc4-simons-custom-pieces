@@ -20,16 +20,16 @@ These angled and north-up views render the actual saved game models and their re
 
 ## 2. Piece and placement
 
-Divides an outer upper-deck lane into a continuing highway lane and an off-ramp. The ramp stays level until it clears the lower deck.
+Divides an outer upper-deck lane into a continuing highway lane and an off-ramp towards the southeast avenue access. The ramp stays level until it clears the lower deck. The opposite upper-deck edge remains closed, and the branch owns the outer native cell crossed by its ramp faces.
 
-A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 3 tiles inside a 2 × 2-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
+A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 6 tiles inside a 3 × 3-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
 
 1. Prepare the exact NAM 50 right-hand-traffic profile using the [build and installation guide](../../../../docs/BUILD_AND_INSTALL.md).
 2. Open a disposable city and flatten the complete placement area. These fixed components have no terrain-following implementation.
 3. Open **Transportation → Roads**. For the complete layout, select the compact diamond assembly button, then press **Tab** or **Shift+Tab** until this exact component name appears. **Home** and **End** rotate the current component.
 4. Follow the [assembly placement table](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md#3-placements), including its reference tile and rotation. Click once for this component, then select the next one.
 
-The eight selection states repeat four proper rotations. They do not mirror the traffic directions. Game placement, vehicle travel, lighting, demolition, and save/reload are unverified. The ramp slopes are a deliberately steep experiment, with a 40% software limit, rather than an established NAM design standard.
+The eight selection states repeat four proper rotations. They do not mirror the traffic directions. The complete assembly’s source design allows four right turns between the highway and avenue; ramp traffic stays on the adjacent avenue carriageway. The graded ramps remain experimental, with a 30% authoring bound. Current saved-resource results and separate game observations belong in [TESTING.md](TESTING.md).
 
 <!-- BEGIN PIECE OVERVIEW -->
 
@@ -37,7 +37,7 @@ Reusable upper exit branch component of the compact diagonal double-decker highw
 
 Exact reusable identifier: `ddrhw-diagonal-upper-exit-branch`.
 
-Footprint: **2 × 2 tiles**. Exact menu name: **DD RHW-4 — Upper Diagonal Exit Branch**.
+Footprint: **3 × 3 tiles**. Exact menu name: **DD RHW-4 — Upper Diagonal Exit Branch**.
 
 <!-- END PIECE OVERVIEW -->
 

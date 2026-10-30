@@ -13,7 +13,7 @@ document_type: "reference"
 
 ## 1. Test scope
 
-Divides an outer upper-deck lane into a continuing highway lane and an off-ramp. The ramp stays level until it clears the lower deck. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
+Divides an outer upper-deck lane into a continuing highway lane and an off-ramp towards the southeast avenue access. The ramp stays level until it clears the lower deck. The opposite upper-deck edge remains closed, and the branch owns the outer native cell crossed by its ramp faces. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
 
 <!-- BEGIN CONNECTIONS -->
 
@@ -29,23 +29,23 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
 | --- | --- | --- | --- | --- |
-| `1-W-out-1` | road / 1 / primary | out | [-8.0, -19.2, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-f9c18bdf77622a5e27b2` |
-| `1-W-in-2` | road / 1 / primary | in | [-8.0, -19.2, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-3ed34d9a11bb64d98604` |
-| `1-W-out-3` | road / 1 / primary | out | [-8.0, -12.8, 7.5]; [-0.7071067811865475, -0.7071067811865476]; 0.0 | `path-interface-207fc37bf71ddd9e9cc7` |
-| `1-W-in-4` | road / 1 / primary | in | [-8.0, -12.8, 15.0]; [0.7071067811865475, 0.7071067811865476]; 0.0 | `path-interface-3e8c9380dd7fc6c63cb8` |
-| `1-N-in-5` | road / 1 / primary | in | [-3.2, -8.0, 7.5]; [-0.7071067811865475, -0.7071067811865476]; 0.0 | `path-interface-aad60a85e4675eaba5de` |
-| `1-N-out-6` | road / 1 / primary | out | [-3.2, -8.0, 15.0]; [0.7071067811865475, 0.7071067811865476]; 0.0 | `path-interface-50bfaaffb0d43ee83a9b` |
-| `1-N-in-7` | road / 1 / primary | in | [3.2, -8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-3ecbd7f665c425929ca6` |
-| `1-N-out-8` | road / 1 / primary | out | [3.2, -8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-55ad67244a3a7bbd6c4b` |
-| `1-W-out-9` | road / 1 / primary | out | [8.0, -3.2, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-f9c18bdf77622a5e27b2` |
-| `1-W-in-10` | road / 1 / primary | in | [8.0, -3.2, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-3ed34d9a11bb64d98604` |
-| `1-W-out-11` | road / 1 / primary | out | [8.0, 3.2, 7.5]; [-0.7071067811865476, -0.7071067811865475]; 0.0 | `path-interface-207fc37bf71ddd9e9cc7` |
-| `1-W-in-12` | road / 1 / primary | in | [8.0, 3.2, 15.0]; [0.7071067811865476, 0.7071067811865475]; 0.0 | `path-interface-3e8c9380dd7fc6c63cb8` |
-| `1-N-in-13` | road / 1 / primary | in | [12.8, 8.0, 7.5]; [-0.7071067811865476, -0.7071067811865475]; 0.0 | `path-interface-aad60a85e4675eaba5de` |
-| `1-N-out-14` | road / 1 / primary | out | [12.8, 8.0, 15.0]; [0.7071067811865476, 0.7071067811865475]; 0.0 | `path-interface-50bfaaffb0d43ee83a9b` |
-| `1-N-in-15` | road / 1 / primary | in | [19.2, 8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-3ecbd7f665c425929ca6` |
-| `1-N-out-16` | road / 1 / primary | out | [19.2, 8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-55ad67244a3a7bbd6c4b` |
-| `1-E-out-17` | road / 1 / primary | out | [24.0, -2.91305, 14.952648]; [0.960825894226796, 0.27715266728515847]; -0.135128522 | `path-interface-29acf971bd1f4ccbd87e` |
+| `1-W-out-1` | road / 1 / primary | out | [-8.0, -35.2, 7.5]; [-0.7071067811865475, -0.7071067811865477]; 0.0 | `path-interface-f9c18bdf77622a5e27b2` |
+| `1-W-in-2` | road / 1 / primary | in | [-8.0, -35.2, 15.0]; [0.7071067811865475, 0.7071067811865477]; 0.0 | `path-interface-3ed34d9a11bb64d98604` |
+| `1-W-out-3` | road / 1 / primary | out | [-8.0, -28.8, 7.5]; [-0.7071067811865475, -0.7071067811865476]; 0.0 | `path-interface-207fc37bf71ddd9e9cc7` |
+| `1-W-in-4` | road / 1 / primary | in | [-8.0, -28.8, 15.0]; [0.7071067811865475, 0.7071067811865476]; 0.0 | `path-interface-3e8c9380dd7fc6c63cb8` |
+| `1-N-in-5` | road / 1 / primary | in | [12.8, -8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-aad60a85e4675eaba5de` |
+| `1-N-out-6` | road / 1 / primary | out | [12.8, -8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-50bfaaffb0d43ee83a9b` |
+| `1-N-in-7` | road / 1 / primary | in | [19.2, -8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-3ecbd7f665c425929ca6` |
+| `1-N-out-8` | road / 1 / primary | out | [19.2, -8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-55ad67244a3a7bbd6c4b` |
+| `1-W-out-9` | road / 1 / primary | out | [24.0, -3.2, 7.5]; [-0.7071067811865477, -0.7071067811865475]; 0.0 | `path-interface-f9c18bdf77622a5e27b2` |
+| `1-W-in-10` | road / 1 / primary | in | [24.0, -3.2, 15.0]; [0.7071067811865477, 0.7071067811865475]; 0.0 | `path-interface-3ed34d9a11bb64d98604` |
+| `1-W-out-11` | road / 1 / primary | out | [24.0, 3.2, 7.5]; [-0.7071067811865476, -0.7071067811865475]; 0.0 | `path-interface-207fc37bf71ddd9e9cc7` |
+| `1-W-in-12` | road / 1 / primary | in | [24.0, 3.2, 15.0]; [0.7071067811865476, 0.7071067811865475]; 0.0 | `path-interface-3e8c9380dd7fc6c63cb8` |
+| `1-N-in-13` | road / 1 / primary | in | [28.8, 8.0, 7.5]; [-0.7071067811865476, -0.7071067811865475]; 0.0 | `path-interface-aad60a85e4675eaba5de` |
+| `1-N-out-14` | road / 1 / primary | out | [28.8, 8.0, 15.0]; [0.7071067811865476, 0.7071067811865475]; 0.0 | `path-interface-50bfaaffb0d43ee83a9b` |
+| `1-N-in-15` | road / 1 / primary | in | [35.2, 8.0, 7.5]; [-0.7071067811865477, -0.7071067811865475]; 0.0 | `path-interface-3ecbd7f665c425929ca6` |
+| `1-N-out-16` | road / 1 / primary | out | [35.2, 8.0, 15.0]; [0.7071067811865477, 0.7071067811865475]; 0.0 | `path-interface-55ad67244a3a7bbd6c4b` |
+| `1-E-out-17` | road / 1 / primary | out | [40.0, -8.142765, 12.25824]; [0.9273187516299957, 0.3742725382330187]; -0.296094955 | `path-interface-92b7bb8a032d6d3b22a6` |
 
 #### Directed journeys
 
@@ -143,11 +143,11 @@ From the repository root, build the selected component with `python3 -B custom-p
 
 ## 4. Game checks
 
-Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
+Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. For ramp or junction components, confirm that each permitted right turn works, each cross-avenue left turn stays unavailable, and the opposite upper-deck barrier remains closed. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
 
 ## 5. Results and known issues
 
-The current assembly’s executed checks and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
+The assembly’s executed checks, their source version, and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
 
 <!-- BEGIN MANUAL SUMMARY -->
 

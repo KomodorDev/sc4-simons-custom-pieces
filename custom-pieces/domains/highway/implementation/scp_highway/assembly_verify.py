@@ -20,15 +20,16 @@ from scp.verify import parse_paths, strict_dbpf, S3D, PATH
 SUBJECT = 'ddrhw-l1-and-l2-diagonal-avenue-diamond'
 POSITION_TOLERANCE = 4e-5
 MESH_TOLERANCE = 0.04
-ROWS = ((6, 7), (1, 2, 3, 4, 5, 6, 7), (1, 2, 3, 4, 5, 6),
-        (1, 2, 3, 4, 5, 6), (1, 2, 3, 4, 5, 6),
-        (1, 2, 3, 4, 5, 6), (0, 1, 2, 3, 4, 5), (0, 1))
+ROWS = ((8, 9), (5, 6, 7, 8, 9), (2, 3, 4, 5, 6, 7, 8),
+        (2, 3, 4, 5, 6, 7, 8), (2, 3, 4, 5, 6, 7),
+        (1, 2, 3, 4, 5, 6, 7), (1, 2, 3, 4, 5, 6, 7),
+        (1, 2, 3, 4, 5, 6), (0, 1, 2, 3), (0, 1))
 CONSTRUCTION_CELLS = frozenset((column, row) for row, columns in enumerate(ROWS) for column in columns)
-GROUND_JUNCTION_CELLS = frozenset({(1, 1), (2, 1), (3, 1), (1, 2), (2, 2), (1, 3),
-    (4, 4), (5, 4), (6, 4), (4, 5), (5, 5), (6, 5), (4, 6), (5, 6),
-    (3, 2), (2, 3), (3, 3), (4, 3), (3, 4)})
-NATIVE_OVERHANG_CELLS = frozenset({(-1, 6), (0, 5), (0, 8), (5, 0), (6, -1), (8, 0)})
-SUPPORT_CELLS = frozenset({(2, 4), (4, 2), (0, 6), (6, 0), (2, 5), (5, 2)})
+GROUND_JUNCTION_CELLS = frozenset({(2, 2), (3, 2), (4, 2), (2, 3), (3, 3), (2, 4),
+    (5, 5), (6, 5), (7, 5), (5, 6), (6, 6), (7, 6), (5, 7), (6, 7),
+    (4, 3), (3, 4), (4, 4), (5, 4), (4, 5)})
+NATIVE_OVERHANG_CELLS = frozenset({(-1, 8), (0, 7), (0, 10), (7, 0), (8, -1), (10, 0)})
+SUPPORT_CELLS = frozenset({(3, 5), (5, 3), (0, 8), (8, 0), (3, 6), (6, 3)})
 NEIGHBOURS = ((-1, 0), (0, -1), (1, 0), (0, 1))
 
 
@@ -52,8 +53,8 @@ def _direction(points, start):
 
 def check_owned_cells(pieces, scene):
     placements = scene.get('placements', scene.get('instances'))
-    require(isinstance(placements, list) and len(placements) == 17,
-            'Compact diamond must retain its seventeen registered placements')
+    require(isinstance(placements, list) and len(placements) == 15,
+            'Gentler compact diamond requires fifteen registered placements')
     owners, poses = {}, []
     used = set()
     for index, placement in enumerate(placements):
@@ -73,7 +74,7 @@ def check_owned_cells(pieces, scene):
             owners[cell] = {'placement': index, 'piece_id': identifier, 'tile': int(raw_tile, 16),
                             'local_cell': tuple(local_cell), 'angle': angle, 'origin': tuple(origin)}
         poses.append({'piece_id': identifier, 'angle': angle, 'origin': tuple(origin)})
-    require(set(owners) == CONSTRUCTION_CELLS, 'Assembly differs from the independent 41-cell construction contract')
+    require(set(owners) == CONSTRUCTION_CELLS, 'Assembly differs from the independent 53-cell construction contract')
     require(len(used) == 13, 'Compact diamond must use thirteen distinct reusable types')
     return owners, poses
 
@@ -115,14 +116,14 @@ def _native_routes(column, row):
 def _arm(point):
     if point[2] > 1.:
         return 'HW_NE' if point[0] + point[1] > 0 else 'HW_SW'
-    return 'AVE_NW' if point[0] - point[1] < 104. else 'AVE_SE'
+    return 'AVE_NW' if point[0] - point[1] < 136. else 'AVE_SE'
 
 
 def native_external_contract():
     """Twenty independently measured channels, including both native sidewalks."""
     result = []
     for column, row in sorted(CONSTRUCTION_CELLS):
-        for route in _native_routes(column - 3, row - 3):
+        for route in _native_routes(column - 4, row - 4):
             for direction, point, edge in (('in', route['points'][0], route['entry']),
                                             ('out', route['points'][-1], route['exit'])):
                 step = NEIGHBOURS[edge]
@@ -228,8 +229,10 @@ def check_saved_routes(routes, owners):
                 require(not any(_search(start, finishes, graph, routes, avoid_junctions=True) for start in starts),
                         'Saved assembly permits a deck transfer that bypasses the intentional ground junctions')
     required = {('HW_NE', 'HW_SW'), ('HW_SW', 'HW_NE'), ('AVE_NW', 'AVE_SE'), ('AVE_SE', 'AVE_NW')}
-    transfers = {(highway, avenue) for highway in ('HW_NE', 'HW_SW') for avenue in ('AVE_NW', 'AVE_SE')}
-    transfers |= {(avenue, highway) for avenue in ('AVE_NW', 'AVE_SE') for highway in ('HW_NE', 'HW_SW')}
+    transfers = {('HW_NE', 'AVE_NW'), ('AVE_NW', 'HW_SW'),
+                 ('HW_SW', 'AVE_SE'), ('AVE_SE', 'HW_NE')}
+    forbidden = {('HW_NE', 'AVE_SE'), ('AVE_SE', 'HW_SW'),
+                 ('HW_SW', 'AVE_NW'), ('AVE_NW', 'HW_NE')}
     required |= transfers
     witnesses, reachable = {}, set()
     for first, starts in external_routes['in'].items():
@@ -245,12 +248,26 @@ def check_saved_routes(routes, owners):
                     break
     require(required <= reachable, 'Saved assembly is missing required highway/Avenue transfer or through movements: ' +
             repr(sorted(required - reachable)))
+    require(not forbidden & reachable, 'Saved assembly permits a forbidden Avenue-crossing transfer: ' +
+            repr(sorted(forbidden & reachable)))
+    maximum_grade = 0.0
+    for route in routes:
+        if route['transport'] != 1:
+            continue
+        for first, last in zip(route['points'], route['points'][1:]):
+            horizontal = math.dist(first[:2], last[:2])
+            require(horizontal > 1e-9, 'Saved assembly car PATH has a vertical or stationary segment')
+            grade = abs(last[2] - first[2]) / horizontal
+            require(grade <= .3 + 1e-5, 'Saved assembly exceeds the gentler 30 percent grade ceiling')
+            maximum_grade = max(maximum_grade, grade)
     intercomponent = [pair for pair in seam_pairs if routes[pair[0]]['placement'] != routes[pair[1]]['placement']]
     return {'passed': True, 'route_fragments': len(routes), 'matched_directed_lane_seams': len(seam_pairs),
             'inter_component_directed_lane_seams': len(intercomponent), 'external_native_channels': len(observed),
             'pedestrian_external_channels': sum(port['transport'] == 2 for port in observed.values()),
             'native_through_lane_and_sidewalk_journeys': through_channels,
             'required_arm_movements': len(required), 'highway_avenue_transfers': len(transfers), 'through_arm_movements': 4,
+            'forbidden_avenue_crossing_movements': len(forbidden), 'no_avenue_crossing_transfers': True,
+            'grade_ceiling_percent': 30.0, 'maximum_saved_car_grade_percent': 100.0 * maximum_grade,
             'reachable_arm_pairs': [list(pair) for pair in sorted(reachable)],
             'movement_witnesses': [{'from_arm': pair[0], 'to_arm': pair[1], 'saved_route_ids': witnesses[pair]}
                                    for pair in sorted(required)],
@@ -468,13 +485,16 @@ def check_saved_supports(owners, piece_resources, routes):
 def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_models=True):
     pieces = {piece['id']: piece for piece in manifest['pieces']}
     owners, poses = check_owned_cells(pieces, scene)
+    rectangle = [max(cell[axis] for cell in owners) - min(cell[axis] for cell in owners) + 1 for axis in (0, 1)]
+    require(scene.get('construction_rectangle_tiles', rectangle) == rectangle,
+            'Declared assembly rectangle differs from its actual owned construction cells')
     routes = decode_placed_routes(owners, piece_resources)
     graph, seams = check_saved_routes(routes, owners)
     model_report = check_model_seams(owners, piece_resources, routes, seams) if inspect_models else {'passed': False, 'status': 'not-run'}
     support_report = check_saved_supports(owners, piece_resources, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT, 'saved_resource_checks_passed': bool(inspect_models),
             'saved_path_and_construction_checks_passed': True, 'assembly_orientation_checked_ccw_degrees': 0,
-            'construction': {'unique_owned_cells': len(owners), 'bounding_rectangle_tiles': [8, 8],
+            'construction': {'unique_owned_cells': len(owners), 'bounding_rectangle_tiles': rectangle,
                              'placements': len(poses), 'distinct_component_types': len({p['piece_id'] for p in poses}),
                              'physical_projection_is_separate': True},
             'paths': graph, 'model_seams': model_report, 'supports': support_report, 'game_operation': 'unverified',

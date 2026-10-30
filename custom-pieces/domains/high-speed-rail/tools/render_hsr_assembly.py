@@ -330,7 +330,17 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
 
 
 def render_assembly(model, plugins, destination, *, provenance=None,
-                    width=2800, height=2100, prefix='hsr-trumpet'):
+                    width=2800, height=2100, prefix='hsr-trumpet',
+                    owned_texture_resources=None,
+                    source_caption='Actual compiled S3D track, decks, and supports | software preview',
+                    height_caption=None,
+                    footer_caption='All model geometry shown; no simulated trains, terrain, or game lighting.'):
+    """Reuse the assembly presentation with optional owning-domain facts/textures.
+
+    Defaults retain the HSR presentation. Other domains supply their own
+    measured facts and DAT-owned FSH resources without replacing any geometry,
+    annotation, camera, city-grid, or tile-ownership behaviour.
+    """
     if width < 640 or height < 480:
         raise ValueError('Assembly previews require at least 640 x 480 pixels')
     if not prefix or Path(prefix).name != prefix:
@@ -338,10 +348,18 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=True)
     provenance = deepcopy(provenance or {})
+    for label, text in (('source_caption', source_caption),
+                        ('height_caption', height_caption),
+                        ('footer_caption', footer_caption)):
+        if text is not None and (not isinstance(text, str) or not text.strip() or '\n' in text or '\r' in text):
+            raise ValueError(f'{label} must be one nonempty caption row')
     check = validate_s3d(model)
     budget = assert_render_budget(model)
     library = TextureLibrary(plugins)
-    textures, texture_provenance = library.for_model(model)
+    if owned_texture_resources is None:
+        textures, texture_provenance = library.for_model(model)
+    else:
+        textures, texture_provenance = library.for_model(model, owned_resources=owned_texture_resources)
     vertices = [point for block in model['vertices'] for point in positions(block)]
     bounds = [[min(point[axis] for point in vertices),
                max(point[axis] for point in vertices)] for axis in range(3)]
@@ -364,13 +382,16 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         header_rows = assembly_caption_rows(title, 'Component guide' if labelled else 'Clean view', label)
         _caption(draw, header_rows[0], 22, 34, width, bold=True)
         _caption(draw, header_rows[1], 72, 23, width, color='#176eaf')
-        _caption(draw, 'Actual compiled S3D track, decks, and supports | software preview',
+        _caption(draw, source_caption,
                  108, 21, width, color='#586a7e')
         if labelled:
             labels_caption = f'{len(sources)} named placements | positions in side panels'
             _caption(draw, f'X/Y tile coordinates | 1 tile = 16 m | {labels_caption}',
                      143, 20, width, color='#586a7e')
-            if provenance.get('coordinate_system', {}).get('layout') == 'hsr-trumpet-straight-stem':
+            if height_caption is not None:
+                _caption(draw, height_caption,
+                         170, 18, width, color='#586a7e')
+            elif provenance.get('coordinate_system', {}).get('layout') == 'hsr-trumpet-straight-stem':
                 _caption(draw, 'Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m',
                          170, 18, width, color='#586a7e')
         camera = make_camera(vertices, azimuth, elevation, view_width, view_height,
@@ -387,8 +408,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                                     view_offset=(panel, top), panel_width=panel,
                                     header_y=top+30, footer_y=height-140,
                                     colour_assignment=colours) if labelled else None
-        _caption(draw,
-                 'All model geometry shown; no simulated trains, terrain, or game lighting.',
+        _caption(draw, footer_caption,
                  height-65, 20, width, color='#586a7e')
         target = destination/f'{prefix}-{name}-xy.png'
         canvas.save(target)
@@ -409,7 +429,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_header_rows = assembly_caption_rows(title, 'Clean view', label)
             _caption(cd, clean_header_rows[0], 22, 34, width, bold=True)
             _caption(cd, clean_header_rows[1], 72, 23, width, color='#176eaf')
-            _caption(cd, 'Actual compiled S3D track, decks, and supports | software preview',
+            _caption(cd, source_caption,
                      108, 21, width, color='#586a7e')
             _caption(cd, 'X/Y tile coordinates | 1 tile = 16 m',
                      143, 20, width, color='#586a7e')
@@ -420,7 +440,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_view = render_fast_view(model, textures, azimuth, elevation,
                 width, view_height, camera=clean_camera, background_image=clean_background)
             clean.paste(clean_view, (0, top))
-            _caption(cd, 'All model geometry shown; no simulated trains, terrain, or game lighting.',
+            _caption(cd, footer_caption,
                      height-65, 20, width, color='#586a7e')
             clean_target = destination/f'{prefix}-{name}-clean-xy.png'
             clean.save(clean_target)
@@ -452,6 +472,10 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     settings['assembly_renderer_sha256'] = sha256(Path(__file__).read_bytes())
     settings['city_grid_renderer_sha256'] = sha256((ROOT/'framework/scp/city_grid.py').read_bytes())
     settings['piece_annotations_renderer_sha256'] = sha256((ROOT/'domains/high-speed-rail/tools/assembly_annotations.py').read_bytes())
+    settings['presentation_captions'] = {
+        'source': source_caption, 'height': height_caption,
+        'model_footer': footer_caption,
+    }
     report = {
         'schema_version': 1, **provenance,
         'source_kind': 'actual compiled S3D geometry',

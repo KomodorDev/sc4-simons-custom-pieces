@@ -18,25 +18,36 @@
   "status": "experimental",
   "puzzle_id": "f833",
   "tile_ids": [
-    "7f58a000"
+    "7f58a000",
+    "7f58a100",
+    "7f58a010"
   ],
   "preview_id": "7f58aff5",
   "effect_name": "preview_scp_hw_f833_____001",
   "footprint": [
-    1,
-    1
+    2,
+    2
   ],
   "cells": [
     [
       0,
       0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
     ]
   ],
   "orientation_count": 8,
   "dependencies": [
     "controller",
     "dd_rhw",
-    "rhw_core"
+    "rhw_core",
+    "mis"
   ],
   "menu": {
     "id": "6a47f833",
@@ -44,7 +55,7 @@
     "style": "ddrhw-ramp"
   },
   "engineering": {
-    "max_grade_percent": 40.0,
+    "max_grade_percent": 30.0,
     "car_corridor_half_width_m": 1.25,
     "car_corridor_height_m": 3.8,
     "pavement_path_offset_m": 0.0,
@@ -56,12 +67,23 @@
       "tile": "7f58a000",
       "source": "7f58a000",
       "rotation": 0
+    },
+    {
+      "tile": "7f58a100",
+      "source": "7f58a100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f58a010",
+      "source": "7f58a010",
+      "rotation": 0
     }
   ],
   "provenance": {
     "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
     "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
-    "redistribution": "permission-pending"
+    "redistribution": "permission-pending",
+    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas."
   },
   "game_tests": {
     "placement": "unverified",
@@ -71,8 +93,5 @@
     "shadows": "unverified",
     "demolition": "unverified",
     "save_reload": "unverified"
-  },
-  "authored_texture_ids": [
-    "7f58a000"
-  ]
+  }
 }

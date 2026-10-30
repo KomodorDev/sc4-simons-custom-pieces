@@ -8,11 +8,11 @@
   "source": {
     "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat",
     "preview_id": "7f58bff5",
-    "source_dat_sha256": "999aa5a34a72e2eeab1fc85934b24eb05ff8ce320ab4d99bc2610e41cb5651ff",
-    "model_sha256": "e4b8b3ce6bdd3ec92bf320b22b6b0b00bda59c7ff1ccfecbbe7dbd2afd3bf888"
+    "source_dat_sha256": "19a983080417c87d8a6516b99ce9f35a26841fb9e720673647ef995f7a6040cf",
+    "model_sha256": "112835dede80a955f5d99d4d2a888175b574c4f8aff99efd850667b53ed6e1bf"
   },
   "file": "previews/preview.png",
-  "sha256": "7d90c9f1d733edac8f6271c2b86189f0b900a2ae626340fbb40d59bb6e916c5c",
+  "sha256": "8f08a269b9a4f0dfc185c91d3fca0128ceeeadb2a445e261ac2d893a48da2779",
   "size": [
     1600,
     1200
@@ -26,11 +26,11 @@
     "displayed_rotation_ccw_degrees": 0.0,
     "origin_world_m": [
       0.0,
-      -0.0
+      -16.0
     ],
     "bounds_world_m": [
       -8.0,
-      -8.0,
+      -24.0,
       8.0,
       8.0
     ],
@@ -45,7 +45,7 @@
       ],
       "Y": [
         0,
-        0
+        1
       ]
     },
     "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
@@ -54,6 +54,10 @@
       [
         0,
         0
+      ],
+      [
+        0,
+        1
       ]
     ],
     "construction_reference": {
@@ -63,7 +67,7 @@
       ],
       "local_tiles_en": [
         0,
-        0
+        1
       ],
       "inside_displayed_grid": true,
       "caption_visible": true,
@@ -97,14 +101,14 @@
       0.6061088109378322
     ],
     "projected_center_m": [
-      0.0,
-      0.9574892555880705
+      -5.65685424949238,
+      -2.913495322705315
     ],
-    "pixels_per_metre": 58.22111728002238,
+    "pixels_per_metre": 41.83715122020406,
     "padding_pixels": 90.0,
     "bounds_world_m": [
       -8.0,
-      -8.0,
+      -24.0,
       8.0,
       8.0
     ],
@@ -116,13 +120,13 @@
     "ground_height_m": 0,
     "bounds_world_m": [
       -8.0,
-      -8.0,
+      -24.0,
       8.0,
       8.0
     ],
     "origin_world_m": [
       0.0,
-      -0.0
+      -16.0
     ],
     "display_axis_labels": {
       "east": "X",
@@ -142,14 +146,14 @@
       ],
       "north_index_range": [
         0,
-        0
+        1
       ],
       "nonnegative_labels_omit_plus_sign": true,
       "authoring_world_coordinates_changed": false
     },
     "origin_pixel": [
-      800.0,
-      540.7460942439544
+      563.3333333333334,
+      606.8923443953795
     ],
     "boundary_offset_from_centre_m": 8,
     "east_boundaries_m": [
@@ -157,6 +161,7 @@
       8.0
     ],
     "north_boundaries_m": [
+      -24.0,
       -8.0,
       8.0
     ],
@@ -166,12 +171,12 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            141.3032506086223,
-            540.7460942439544
+            90.0,
+            606.8923443953795
           ],
           [
-            800.0,
-            201.49218848790878
+            1036.6666666666665,
+            119.32296681386151
           ]
         ],
         "major": false
@@ -181,45 +186,60 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            800.0,
-            880.0
+            563.3333333333334,
+            850.6770331861385
           ],
           [
-            1458.6967493913776,
-            540.7460942439543
+            1510.0,
+            363.1076556046205
           ]
         ],
         "major": true
       },
       {
         "axis": "north",
-        "coordinate_m": -8.0,
+        "coordinate_m": -24.0,
         "pixels": [
           [
-            141.3032506086223,
-            540.7460942439544
+            90.0,
+            606.8923443953795
           ],
           [
-            800.0,
-            880.0
+            563.3333333333334,
+            850.6770331861385
           ]
         ],
         "major": false
       },
       {
         "axis": "north",
-        "coordinate_m": 8.0,
+        "coordinate_m": -8.0,
         "pixels": [
           [
-            800.0,
-            201.49218848790878
+            563.3333333333334,
+            363.1076556046205
           ],
           [
-            1458.6967493913776,
-            540.7460942439543
+            1036.6666666666667,
+            606.8923443953795
           ]
         ],
         "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            1036.6666666666665,
+            119.32296681386151
+          ],
+          [
+            1510.0,
+            363.1076556046205
+          ]
+        ],
+        "major": false
       }
     ],
     "tile_labels": [
@@ -229,11 +249,11 @@
         "tile_index": 0,
         "world_m": [
           0.0,
-          -8.0
+          -24.0
         ],
         "pixel": [
-          455.5383599320368,
-          718.1569542249181
+          311.55340129439236,
+          736.5685958936999
         ]
       },
       {
@@ -242,11 +262,24 @@
         "tile_index": 0,
         "world_m": [
           -8.0,
+          -16.0
+        ],
+        "pixel": [
+          311.55340129439236,
+          477.21609289705907
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
           0.0
         ],
         "pixel": [
-          455.53835993203677,
-          363.33523426299064
+          784.8867346277257,
+          233.43140410630005
         ]
       }
     ],
@@ -270,14 +303,14 @@
         ],
         "end_pixel": [
           1542.6727492864215,
-          78.02190935640203
+          78.02190935640205
         ]
       }
     ],
     "tile_scale": {
       "metres": 16,
-      "east_pixels": 740.9282153012526,
-      "north_pixels": 740.9282153012525,
+      "east_pixels": 532.4240968750867,
+      "north_pixels": 532.4240968750867,
       "caption": "1 tile = 16 m",
       "caption_visible": false
     },
@@ -305,14 +338,14 @@
         0.6061088109378322
       ],
       "projected_center_m": [
-        0.0,
-        0.9574892555880705
+        -5.65685424949238,
+        -2.913495322705315
       ],
-      "pixels_per_metre": 58.22111728002238,
+      "pixels_per_metre": 41.83715122020406,
       "padding_pixels": 90.0,
       "bounds_world_m": [
         -8.0,
-        -8.0,
+        -24.0,
         8.0,
         8.0
       ],
@@ -324,7 +357,7 @@
     "captions": [
       "Piece - DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade",
       "Clean view | Southeast view | Authored orientation: 0\u00b0",
-      "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres"
+      "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
@@ -360,7 +393,7 @@
         ]
       },
       {
-        "text": "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+        "text": "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
         "colour": "#586a7e",
         "font_pixels": 22,
         "bold": false,
@@ -390,105 +423,49 @@
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 4117,
-    "mesh_count": 9,
+    "triangles": 3258,
+    "mesh_count": 10,
     "bounds_xyz_m": [
       [
         [
-          -8.0,
+          3.894670248031616,
           8.0
         ],
         [
-          3.93276047706604,
-          8.890625
+          5.939028263092041,
+          6.885587215423584
         ],
         [
-          -0.9030686020851135,
-          5.241186618804932
+          7.144196033477783,
+          8.0
         ]
       ],
       [
         [
-          5.373737335205078,
+          3.894670248031616,
           8.0
         ],
         [
-          6.5,
-          8.890625
+          4.939028263092041,
+          6.885587215423584
         ],
         [
-          -0.9009387493133545,
-          5.168284893035889
+          7.144196033477783,
+          8.0
         ]
       ],
       [
         [
-          2.686723470687866,
-          5.58052921295166
+          3.961479425430298,
+          8.0
         ],
         [
-          6.4608001708984375,
-          8.890625
+          5.956252574920654,
+          8.263766288757324
         ],
         [
-          -0.8312187790870667,
-          5.179091930389404
-        ]
-      ],
-      [
-        [
-          -0.05925175920128822,
-          2.8279926776885986
-        ],
-        [
-          5.683622360229492,
-          8.865547180175781
-        ],
-        [
-          -0.845116138458252,
-          5.177374839782715
-        ]
-      ],
-      [
-        [
-          -2.76615571975708,
-          0.1320631206035614
-        ],
-        [
-          4.759880065917969,
-          8.120514869689941
-        ],
-        [
-          -0.8635984063148499,
-          5.155914783477783
-        ]
-      ],
-      [
-        [
-          -5.380727767944336,
-          -2.615400791168213
-        ],
-        [
-          3.889615297317505,
-          7.196561813354492
-        ],
-        [
-          -0.8643732666969299,
-          5.15171480178833
-        ]
-      ],
-      [
-        [
-          -8.0,
-          -5.153721332550049
-        ],
-        [
-          2.987733840942383,
-          6.3257670402526855
-        ],
-        [
-          -0.8474578857421875,
-          5.233297348022461
+          7.144196033477783,
+          8.0
         ]
       ],
       [
@@ -497,49 +474,139 @@
           8.0
         ],
         [
-          2.93276047706604,
-          7.51200008392334
+          2.7503018379211426,
+          6.8463263511657715
         ],
         [
-          -0.500706136226654,
-          5.241186618804932
+          8.0,
+          17.43219566345215
+        ]
+      ],
+      [
+        [
+          -7.732451438903809,
+          8.0
+        ],
+        [
+          2.286983013153076,
+          6.604485034942627
+        ],
+        [
+          8.0,
+          16.694408416748047
         ]
       ],
       [
         [
           -8.0,
-          -6.741981506347656
+          -5.714653968811035
         ],
         [
-          3.9659719467163086,
-          4.403390407562256
+          1.750301718711853,
+          3.326371669769287
         ],
         [
-          3.899033308029175,
-          4.071506500244141
+          10.989958763122559,
+          17.43219566345215
+        ]
+      ],
+      [
+        [
+          2.3923704624176025,
+          8.0
+        ],
+        [
+          5.5947370529174805,
+          8.021528244018555
+        ],
+        [
+          8.0,
+          14.185090065002441
+        ]
+      ],
+      [
+        [
+          -2.165811538696289,
+          3.8034982681274414
+        ],
+        [
+          4.55470085144043,
+          7.025500774383545
+        ],
+        [
+          8.324840545654297,
+          15.169185638427734
+        ]
+      ],
+      [
+        [
+          -6.5222296714782715,
+          -0.5263810157775879
+        ],
+        [
+          3.563009023666382,
+          5.985177993774414
+        ],
+        [
+          9.394830703735352,
+          16.342994689941406
+        ]
+      ],
+      [
+        [
+          -8.0,
+          -4.7615790367126465
+        ],
+        [
+          2.7503018379211426,
+          4.993124961853027
+        ],
+        [
+          10.607128143310547,
+          17.43219566345215
         ]
       ]
     ],
     "textures": [
-      "7f58b000"
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9"
     ]
   },
-  "render_model_sha256": "e4b8b3ce6bdd3ec92bf320b22b6b0b00bda59c7ff1ccfecbbe7dbd2afd3bf888",
+  "render_model_sha256": "112835dede80a955f5d99d4d2a888175b574c4f8aff99efd850667b53ed6e1bf",
   "textures": [
     {
-      "instance": "7f58b000",
-      "fsh_sha256": "2ff2be126b6285021f56959d338311ce2da14e716d9bff9676f5dc85d0aa9c3c",
+      "instance": "5712000e",
+      "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
       "size": [
         128,
         128
-      ],
-      "source": "piece-dat"
+      ]
+    },
+    {
+      "instance": "5eb4bee9",
+      "fsh_sha256": "d612c36b704a88126a075b851e26f9f14f2b784cee11a1f043fd97aa36d95a82",
+      "size": [
+        256,
+        64
+      ]
+    },
+    {
+      "instance": "5eb4beee",
+      "fsh_sha256": "5ca0f599eb5424118f521d47ad8fd41708ab25165b59b902cbd2ae1c9068dcc8",
+      "size": [
+        256,
+        256
+      ]
     }
   ],
   "captions": [
     "Piece - DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade",
     "Clean view | Southeast view | Authored orientation: 0\u00b0",
-    "Independent local X/Y grid / Piece reference: X0, Y0 / 1 tile = 16 m / Labels mark tile centres",
+    "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
     "Software model preview."
   ],
@@ -610,12 +677,12 @@
   },
   "thumbnail": {
     "file": "previews/preview-thumb.png",
-    "sha256": "746d3a5a355c5d3f46d123097a4a206f6cf43447351a4501c06d4b3950a473e9",
+    "sha256": "755b0c1877fc991a4f723929d727621d2f6520d5fdb2f90b77a240d916f076ed",
     "size": [
       360,
       270
     ]
   },
   "title_source_inputs": {},
-  "input_fingerprint": "40e156762fe514e7be1cc205070a9ad6e21c84af54e4a1feb18cdcda621bcd14"
+  "input_fingerprint": "c695c9b22ad50049e62c3a7d87bdf1b3511d5cb89d15f572c6f32fd9e4a6925c"
 }

@@ -13,7 +13,7 @@ document_type: "reference"
 
 ## 1. Test scope
 
-Carries the ascending part of the upper on-ramp before its level highway join. The complete ascent is about 40.83 m long. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
+Carries part of the upper on-ramp before its level highway join. The complete authored ramp curve is about 101.94 m long, including its level joins; its active height transition is about 52.66 m. Several components share this curve. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
 
 <!-- BEGIN CONNECTIONS -->
 
@@ -29,8 +29,8 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
 | --- | --- | --- | --- | --- |
-| `1-S-in-1` | road / 1 / primary | in | [6.601434, -24.0, 1.817631]; [0.5525922583570921, 0.8334517358574574]; 0.386288559 | `path-interface-ddaedacaddd065c037d8` |
-| `1-N-out-2` | road / 1 / primary | out | [18.91305, 8.0, 14.952648]; [0.2771611512087133, 0.9608234469769463]; 0.135140582 | `path-interface-0907edbc45911b4f1d90` |
+| `1-S-in-1` | road / 1 / primary | in | [7.109934, -24.0, 1.487699]; [0.6123875749328735, 0.7905576880075446]; 0.296093548 | `path-interface-085ec70dd9403a42b8c3` |
+| `1-N-out-2` | road / 1 / primary | out | [24.142765, 8.0, 12.25824]; [0.37427694900935327, 0.927316971396647]; 0.296096203 | `path-interface-6724cf294af8c13dace3` |
 
 #### Directed journeys
 
@@ -56,11 +56,11 @@ From the repository root, build the selected component with `python3 -B custom-p
 
 ## 4. Game checks
 
-Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
+Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. For ramp or junction components, confirm that each permitted right turn works, each cross-avenue left turn stays unavailable, and the opposite upper-deck barrier remains closed. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
 
 ## 5. Results and known issues
 
-The current assembly’s executed checks and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
+The assembly’s executed checks, their source version, and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
 
 <!-- BEGIN MANUAL SUMMARY -->
 

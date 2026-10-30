@@ -14,7 +14,7 @@ from scp.track_paths import PATH,S3D,_parse_paths
 from scp.verify import strict_dbpf
 from scp_highway import ramp_geometry as geometry
 from scp_highway import ramp_paths as paths
-from scp_highway.ramp_verify import check_pavement
+from scp_highway.ramp_verify import check_pavement, check_paths, check_models
 
 TEXTURE = (0x7AB50E44,0x1ABE787D)
 EMPTY_PATH = b'SC4PATHS\r\n1.2\r\n0\r\n0\r\n0\r\n'
@@ -74,6 +74,16 @@ def remove_faces(raw,predicate):
 
 
 class SavedRampVerifierTests(unittest.TestCase):
+    def test_registered_compact_grade_contract_rejects_the_old_40_percent_ceiling(self):
+        resources,piece = fixture([(0.,-8.,1.),(0.,8.,0.)])
+        for identity in ({'recipe':'highway_ddrhw_compact_lower_exit_grade'},
+                         {'geometry_key':'lower-exit-grade'}):
+            compact = {**deepcopy(piece),**identity}
+            for checker in (check_pavement,check_paths,check_models):
+                with self.subTest(identity=identity,checker=checker.__name__):
+                    with self.assertRaisesRegex(ValueError,'no greater than 30 percent'):
+                        checker(resources,compact)
+
     @classmethod
     def setUpClass(cls):
         cls.profile = geometry.sample_grade_curve(

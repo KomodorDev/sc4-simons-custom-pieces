@@ -82,6 +82,40 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertFalse(report['in_game_evidence'])
         self.assertEqual(provenance, original)
 
+    def test_other_domain_can_supply_its_saved_textures_and_measured_caption_rows(self):
+        model = parse_s3d(donor())
+        source = 'Actual compiled S3D pavement, decks, barriers, and supports | software preview'
+        heights = 'Car-path pavement heights: avenue 0 m | lower deck 7.5 m | upper deck 15 m'
+        footer = 'All model geometry shown; no simulated traffic, terrain, or game lighting.'
+        owned = {0x0bf6e09b: b'exact fixture FSH bytes'}
+        provenance = {'title': 'Highway fixture', 'sources': [
+            {'id': 'fixture', 'piece_id': 'fixture', 'label': 'P01',
+             'menu_name': 'Highway fixture component', 'origin_m': [0., 0.],
+             'rotation_ccw_degrees': 0., 'display_origin_tiles_en': [0., 0.],
+             'label_anchor_world_m': [0., 0., 15.5], 'occupied_world_cells': [[0., 0.]]}]}
+        with tempfile.TemporaryDirectory() as temporary, \
+                patch.object(renderer, 'TextureLibrary') as library, \
+                patch.object(renderer, '_caption', wraps=renderer._caption) as caption, \
+                patch.object(renderer, 'render_fast_view',
+                             side_effect=lambda *args, **kwargs: kwargs['background_image']):
+            library.return_value.for_model.return_value = ({}, [])
+            report = renderer.render_assembly(model, Path(temporary), Path(temporary)/'images',
+                provenance=provenance, width=2000, height=1400, prefix='fixture',
+                owned_texture_resources=owned, source_caption=source,
+                height_caption=heights, footer_caption=footer)
+        library.return_value.for_model.assert_called_once_with(model, owned_resources=owned)
+        rows = [call.args[1] for call in caption.call_args_list]
+        self.assertEqual(rows.count(source), 5)
+        self.assertEqual(rows.count(heights), 3)
+        self.assertEqual(rows.count(footer), 5)
+        self.assertNotIn('Actual compiled S3D track, decks, and supports | software preview', rows)
+        self.assertEqual(report['renderer']['presentation_captions'], {
+            'source': source, 'height': heights, 'model_footer': footer})
+        self.assertEqual(len(report['images']), 6)
+        palettes = [image['piece_labels']['palette'] for image in report['images']
+                    if image.get('piece_labels')]
+        self.assertTrue(all(palette == report['colour_assignment']['palette'] for palette in palettes))
+
 
 if __name__ == '__main__':
     unittest.main()

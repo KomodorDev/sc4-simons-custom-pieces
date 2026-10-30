@@ -8,11 +8,11 @@
   "source": {
     "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat",
     "preview_id": "7f580ff5",
-    "source_dat_sha256": "970a84692c7c288edfb175369d6d54da4999a5f77ee9345aa7f231552a95bd45",
-    "model_sha256": "d4c80439205a905f4a394ef299475fefd896d3abe6aeee0ef704af4b7212f7f9"
+    "source_dat_sha256": "f38f027b1fe86c21e114a01e783837f8c48f81ce947b82e4d31f170a4db6c935",
+    "model_sha256": "90614350f6ca09f97349899d6fbb934fba27ca27dab966c45161dc909d716f7b"
   },
   "file": "previews/preview.png",
-  "sha256": "740d8abfb2e70080a4c66db0d72608e874e856645565d5d4217c159c7e5c7789",
+  "sha256": "f3fda7369063a24917c5e1ea3da7ebb7dd278af863c36593818d85c34c9cfbed",
   "size": [
     1600,
     1200
@@ -522,27 +522,13 @@
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 3872,
-    "mesh_count": 32,
+    "triangles": 1184,
+    "mesh_count": 26,
     "bounds_xyz_m": [
       [
         [
-          13.8125,
-          24.0
-        ],
-        [
-          0.0,
-          0.0
-        ],
-        [
-          1.9375,
-          8.0
-        ]
-      ],
-      [
-        [
           8.0,
-          17.9375
+          24.0
         ],
         [
           0.0,
@@ -556,43 +542,29 @@
       [
         [
           8.0,
-          19.5625
+          12.4375
         ],
         [
           0.0,
-          0.012000000104308128
+          0.0
         ],
         [
           -8.0,
-          6.125
+          -7.0
         ]
       ],
       [
         [
-          14.0625,
-          19.375
+          8.0,
+          11.375
         ],
         [
           0.0,
           0.0
         ],
         [
-          6.0625,
-          8.0
-        ]
-      ],
-      [
-        [
-          4.3125,
-          8.0
-        ],
-        [
-          0.0,
-          0.0
-        ],
-        [
-          9.125,
-          24.0
+          -7.03125,
+          -6.0
         ]
       ],
       [
@@ -606,35 +578,21 @@
         ],
         [
           8.0,
-          20.3125
+          24.0
         ]
       ],
       [
         [
           -8.0,
-          7.8125
-        ],
-        [
-          0.0,
-          0.012000000104308128
-        ],
-        [
-          8.0,
-          16.5
-        ]
-      ],
-      [
-        [
-          3.375,
-          8.0
+          -6.0
         ],
         [
           0.0,
           0.0
         ],
         [
-          16.5,
-          19.5625
+          8.0,
+          12.4375
         ]
       ],
       [
@@ -733,20 +691,6 @@
         [
           8.0,
           24.0
-        ]
-      ],
-      [
-        [
-          8.0,
-          17.5
-        ],
-        [
-          0.0,
-          0.0
-        ],
-        [
-          8.0,
-          17.5
         ]
       ],
       [
@@ -849,20 +793,6 @@
       ],
       [
         [
-          31.5625,
-          36.9375
-        ],
-        [
-          0.0,
-          0.0
-        ],
-        [
-          20.4375,
-          24.0
-        ]
-      ],
-      [
-        [
           8.0,
           25.6568546295166
         ],
@@ -957,46 +887,29 @@
         [
           24.0,
           40.0
-        ]
-      ],
-      [
-        [
-          20.4375,
-          24.0
-        ],
-        [
-          0.0,
-          0.0
-        ],
-        [
-          31.5625,
-          36.9375
         ]
       ]
     ],
     "textures": [
       "0400020e",
-      "7f580100",
+      "5712000e",
       "0400020e",
-      "7f580100",
+      "5712000e",
       "5713000e",
       "5eb4beee",
       "5eb4bee9",
       "0400380e",
-      "7f580100",
       "5713000e",
       "5eb4beee",
       "5eb4bee9",
       "0400020e",
-      "7f580100",
       "5713000e",
       "5eb4beee",
       "5eb4bee9",
-      "0400020e",
-      "7f580100"
+      "0400020e"
     ]
   },
-  "render_model_sha256": "d4c80439205a905f4a394ef299475fefd896d3abe6aeee0ef704af4b7212f7f9",
+  "render_model_sha256": "90614350f6ca09f97349899d6fbb934fba27ca27dab966c45161dc909d716f7b",
   "textures": [
     {
       "instance": "0400020e",
@@ -1009,6 +922,14 @@
     {
       "instance": "0400380e",
       "fsh_sha256": "99af72e7ede6a99a9761746c63fea6676a5b2a3f50f4a4bfdee0c93dd1354d92",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "instance": "5712000e",
+      "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
       "size": [
         128,
         128
@@ -1037,15 +958,6 @@
         256,
         256
       ]
-    },
-    {
-      "instance": "7f580100",
-      "fsh_sha256": "2ff2be126b6285021f56959d338311ce2da14e716d9bff9676f5dc85d0aa9c3c",
-      "size": [
-        128,
-        128
-      ],
-      "source": "piece-dat"
     }
   ],
   "captions": [
@@ -1122,12 +1034,12 @@
   },
   "thumbnail": {
     "file": "previews/preview-thumb.png",
-    "sha256": "85dfac5de01a27af59941d210f01f7a1500d251d987dcb65b2e61dc1b057ec58",
+    "sha256": "843164c2d456eeede8546be9f9ceeaaba1c8102485d71871099f7ff771b57522",
     "size": [
       360,
       270
     ]
   },
   "title_source_inputs": {},
-  "input_fingerprint": "b87d84664fd6b0dba312e925adc3e06f902a3536d2399e58dc1ee140395e8be7"
+  "input_fingerprint": "64f9d0551bafb39617fc0c119cfcc3a8b58590397cbac9e9b2ddcb6ba590b414"
 }

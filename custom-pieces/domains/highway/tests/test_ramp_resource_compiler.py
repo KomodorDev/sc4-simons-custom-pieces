@@ -171,36 +171,78 @@ class RampResourceCompilerTests(unittest.TestCase):
 
     def test_compact_ramps_keep_native_high_ports_and_full_width_clearance(self):
         ramps = {ramp["id"]: ramp for ramp in geometry.compact_ramps()}
-        self.assertEqual(ramps["lower-off"]["points"][0], (40.0, 35.2, 7.5))
-        self.assertEqual(ramps["upper-off"]["points"][0], (-56.0, -67.2, 15.0))
+        self.assertEqual(ramps["lower-off"]["points"][0], (56.0, 51.2, 7.5))
+        self.assertEqual(ramps["upper-off"]["points"][0], (-72.0, -83.2, 15.0))
         for ramp in ramps.values():
-            expected = 50.03951872110333 if ramp["deck"] == "lower" else 80.46618897289993
+            expected = 69.98798604746474 if ramp["deck"] == "lower" else 101.9401344063455
             self.assertAlmostEqual(ramp["length_plan_m"], expected, places=7)
-            self.assertLess(ramp["grade_max_percent"], 40.0)
+            self.assertLess(ramp["grade_max_percent"], 23.0 if ramp["deck"] == "lower" else 30.0)
             for point in ramp["points"]:
                 if point[2] < ramp["height_m"] - 1e-7:
                     self.assertGreaterEqual(abs(geometry.highway_coordinates(point)[1]), 13.0 - 1e-7)
 
     def test_compact_surface_movements_join_real_lanes_without_interior_ends(self):
         movements = paths.compact_access_routes()
-        self.assertEqual(len(movements), 8)
+        self.assertEqual({movement["id"] for movement in movements}, {
+            "lower-highway->NW", "NW->lower-highway", "upper-highway->SE", "SE->upper-highway"})
         lanes = (11.2, -11.2)
         for movement in movements:
             port = movement["avenue_port"]
             self.assertTrue(any(abs(port[0] + port[1] - lane) < 1e-7 for lane in lanes))
             self.assertEqual(port[2], 0.0)
+            points = movement["surface_points"]
+            # A geometric right turn has a negative planar cross product.
+            incoming = (points[1][0] - points[0][0], points[1][1] - points[0][1])
+            outgoing = (points[-1][0] - points[-2][0], points[-1][1] - points[-2][1])
+            self.assertLess(incoming[0] * outgoing[1] - incoming[1] * outgoing[0], 0.0)
+            lateral = [geometry.highway_coordinates(point)[0] for point in points]
+            self.assertTrue(all(value > 0. for value in lateral) or all(value < 0. for value in lateral))
         for routes in paths.slice_routes(movements).values():
             self.assertTrue(all(route["entry"] != 255 and route["exit"] != 255 for route in routes))
 
     def test_module_ownership_is_sparse_unique_and_reuses_native_continuations(self):
         catalog = paths.module_catalog()
         self.assertEqual(len(catalog["types"]), 13)
-        self.assertEqual(len(catalog["placements"]), 17)
-        self.assertEqual(len(catalog["occupied_cells"]), 41)
-        self.assertEqual(len({tuple(item["cell"]) for item in catalog["cell_owners"]}), 41)
+        self.assertEqual(len(catalog["placements"]), 15)
+        self.assertEqual(len(catalog["occupied_cells"]), 53)
+        self.assertEqual(catalog["footprint"], [10, 10])
+        self.assertEqual(catalog["world_grid_origin"], [-4, -4])
+        self.assertEqual(len({tuple(item["cell"]) for item in catalog["cell_owners"]}), 53)
         self.assertEqual(len({item["recipe"] for item in catalog["types"]}), 13)
-        self.assertEqual(sum(len(item["cells"]) for item in catalog["types"]), 37)
+        self.assertEqual(sum(len(item["cells"]) for item in catalog["types"]), 51)
         self.assertLess(max(len(item["cells"]) for item in catalog["types"]), 9)
+        self.assertEqual(sum(len(item["engineering"]["model_only_cells"]) for item in catalog["types"]), 6)
+        self.assertEqual({item["engineering"]["max_grade_percent"] for item in catalog["types"]}, {30.0})
+        paths._procedural_geometry()
+
+    def test_lower_branch_opening_preserves_the_upper_deck_and_opposing_barrier(self):
+        ramp = next(item for item in geometry.compact_ramps() if item["id"] == "lower-off")
+        nearest = min(ramp["points"], key=lambda point: abs(geometry.highway_coordinates(point)[1] - 8.0))
+        station = geometry.highway_coordinates(nearest)[0]
+        changed = []
+        for height in (7.5, 15.0):
+            road = {"points": [geometry.world_coordinates(station - 4., 0., height),
+                               geometry.world_coordinates(station + 4., 0., height)],
+                    "width": 16.0, "thickness": 1.0, "barrier_profile": geometry.NATIVE_BARRIER_PROFILE,
+                    "edge_markings": False}
+            for cell, raw in geometry.compile_road_tiles([road], 0x5F900000).items():
+                opened, report = geometry.cut_native_branch_openings(raw, cell, [ramp])
+                if height == 15.0:
+                    self.assertEqual(opened, raw)
+                    self.assertFalse(report["changed"])
+                else:
+                    changed.append(report["changed"])
+                    # The branch owns only its right-side barrier: every
+                    # opposite-side upper-height barrier vertex remains.
+                    def opposite_faces(payload):
+                        return {tuple(tuple(round(value, 5) for value in vertex) for vertex in face)
+                                for face in triangles(payload)
+                                if min(vertex[1] for vertex in face) >= height - 1e-5
+                                and max(vertex[1] for vertex in face) > height + 1e-5
+                                and all(geometry.highway_coordinates((vertex[0] + 16 * cell[0],
+                                          -vertex[2] - 16 * cell[1]))[1] < -6.8 for vertex in face)}
+                    self.assertEqual(opposite_faces(opened), opposite_faces(raw))
+        self.assertTrue(any(changed))
 
     def test_explicit_model_only_cells_encode_native_zero_route_header(self):
         self.assertEqual(paths.encode_paths([], allow_empty=True), b"SC4PATHS\r\n1.2\r\n0\r\n0\r\n0\r\n")
@@ -209,10 +251,14 @@ class RampResourceCompilerTests(unittest.TestCase):
 
     def test_intersecting_ground_aprons_remain_closed_after_float32_encoding(self):
         from scp_highway import ramp_verify
-        routes = [route for route in paths.compact_access_routes()
-                  if route["id"] in ("lower-highway->SE", "SE->lower-highway")]
-        source = [triangle for route in routes for triangle in geometry.road_triangles(
-            route["surface_points"], width=3.5, barriers=False, edge_markings=False)]
+        # Preserve the historical intersecting-apron regression as a generic
+        # geometry fixture. These opposing turns are no longer permitted
+        # movements in the actual right-turn-only assembly.
+        junction, outer = 20. * math.sqrt(2.), 11.2 / math.sqrt(2.)
+        turns = (paths._surface_turn((12., junction), (-outer, junction - 18.), (-1, 0), (0, -1)),
+                 paths._surface_turn((outer, junction - 18.), (-12., junction), (0, 1), (-1, 0)))
+        source = [triangle for turn in turns for triangle in geometry.road_triangles(
+            [geometry.world_coordinates(u, v) for u, v in turn], width=3.5, barriers=False, edge_markings=False)]
         united = geometry.union_ground_pavement(source)
         faces = []
         for cell, local in geometry.partition_triangles(united).items():

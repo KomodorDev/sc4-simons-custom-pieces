@@ -20,16 +20,16 @@ These angled and north-up views render the actual saved game models and their re
 
 ## 2. Piece and placement
 
-Carries the steep ascending part of the lower on-ramp. The complete ascent is about 24.16 m long, split at construction-tile boundaries.
+Carries part of the lower on-ramp between its northwest surface junction and highway branch. The complete authored ramp curve is about 69.99 m long, including its level joins; its active height transition is about 35.08 m. Several components share this curve.
 
-A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 1 tiles inside a 1 × 1-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
+A **construction tile** is one 16 × 16 m city square owned by this component. This component owns 2 tiles inside a 2 × 1-tile bounding rectangle. Empty cells in that rectangle belong to neighbouring components or remain open.
 
 1. Prepare the exact NAM 50 right-hand-traffic profile using the [build and installation guide](../../../../docs/BUILD_AND_INSTALL.md).
 2. Open a disposable city and flatten the complete placement area. These fixed components have no terrain-following implementation.
 3. Open **Transportation → Roads**. For the complete layout, select the compact diamond assembly button, then press **Tab** or **Shift+Tab** until this exact component name appears. **Home** and **End** rotate the current component.
 4. Follow the [assembly placement table](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md#3-placements), including its reference tile and rotation. Click once for this component, then select the next one.
 
-The eight selection states repeat four proper rotations. They do not mirror the traffic directions. Game placement, vehicle travel, lighting, demolition, and save/reload are unverified. The ramp slopes are a deliberately steep experiment, with a 40% software limit, rather than an established NAM design standard.
+The eight selection states repeat four proper rotations. They do not mirror the traffic directions. The complete assembly’s source design allows four right turns between the highway and avenue; ramp traffic stays on the adjacent avenue carriageway. The graded ramps remain experimental, with a 30% authoring bound. Current saved-resource results and separate game observations belong in [TESTING.md](TESTING.md).
 
 <!-- BEGIN PIECE OVERVIEW -->
 
@@ -37,7 +37,7 @@ Reusable lower entry grade component of the compact diagonal double-decker highw
 
 Exact reusable identifier: `ddrhw-diagonal-lower-entry-grade`.
 
-Footprint: **1 × 1 tiles**. Exact menu name: **DD RHW-4 — Compact Lower Diagonal Entry Grade**.
+Footprint: **2 × 1 tiles**. Exact menu name: **DD RHW-4 — Compact Lower Diagonal Entry Grade**.
 
 <!-- END PIECE OVERVIEW -->
 
@@ -55,7 +55,7 @@ Read **from an entrance row to an exit column**. **Saved PATH** checks the saved
 
 **Legend:** ✅ confirmed; ❌ failed; ? not established. **Forbidden** means the movement is unavailable; its in-game check confirms that it stays unavailable. Click a result for its exact test case. Scope, evidence, and limitations remain in [the test checklist](TESTING.md#test-checklist).
 
-| Entrance ↓ / Exit → | **Road · South exit**<br>`1-S-out-1`<br>Variant: dd-rhw-l1 |
+| Entrance ↓ / Exit → | **Road · South exit**<br>`1-S-out-1`<br>Variant: access-ramp |
 | --- | --- |
 | **Road · North entrance**<br>`1-N-in-2`<br>Variant: access-ramp | **Saved PATH:** [?](TESTING.md#case-software_connectivity-9b9104079d3b8dc15361)<br>**Route Query:** [?](TESTING.md#case-in_game_route_query-e28a88dee6566c00386c)<br>**Visible travel:** [?](TESTING.md#case-in_game_visible_travel-e28a88dee6566c00386c) |
 

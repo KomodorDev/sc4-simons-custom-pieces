@@ -267,7 +267,8 @@ def partition_triangles(triangles):
     return {cell: faces for cell, faces in output.items() if faces}
 
 
-def pack_road_model(triangles, texture_id, *, material_template=None, model_template=None):
+def pack_road_model(triangles, texture_id, *, material_template=None, model_template=None,
+                    native_painter=None, cell=(0, 0)):
     """Pack actual XYZ/UV triangles into conservative 512-vertex groups."""
     _require(triangles, "A road model needs actual triangles")
     material = road_material(texture_id, material_template)
@@ -281,27 +282,41 @@ def pack_road_model(triangles, texture_id, *, material_template=None, model_temp
         model["version"] = model_template["version"]
         model["anim_header"] = model_template["anim_header"]
         model["trailing"] = deepcopy(model_template["trailing"])
-    data, lookup, indices = bytearray(), {}, []
+    groups = defaultdict(list)
+    if native_painter is None:
+        groups["legacy"] = list(triangles)
+    else:
+        for triangle in native_painter.texture_triangles(triangles):
+            painted = native_painter.paint(triangle, cell)
+            if painted is not None:
+                role, face = painted
+                groups[role].append(face)
+        model["materials"] = [deepcopy(native_painter.materials[role]) for role in groups]
 
-    def finish():
-        group = len(model["meshes"])
-        model["vertices"].append({"flags": 0, "format": 2, "stride": 20, "data": bytes(data)})
-        model["indices"].append({"flags": 0, "stride": 2, "values": tuple(indices)})
-        model["primitives"].append([(0, 0, len(indices))])
-        model["meshes"].append({"name": b"SCP highway road\0", "flags": 0, "frames": [(group, group, group, 0)]})
+    for material_index, (role, faces) in enumerate(groups.items()):
+        data, lookup, indices = bytearray(), {}, []
 
-    for triangle in triangles:
-        encoded = [struct.pack("<5f", *p) for p in triangle]
-        if indices and (len(lookup) + len(set(encoded).difference(lookup)) > 512 or len(indices) >= 1536):
+        def finish():
+            group = len(model["meshes"])
+            model["vertices"].append({"flags": 0, "format": 2, "stride": 20, "data": bytes(data)})
+            model["indices"].append({"flags": 0, "stride": 2, "values": tuple(indices)})
+            model["primitives"].append([(0, 0, len(indices))])
+            name = b"SCP highway road\0" if role == "legacy" else ("SCP NAM "+role+"\0").encode("ascii")
+            model["meshes"].append({"name": name, "flags": 0,
+                                     "frames": [(group, group, group, material_index)]})
+
+        for triangle in faces:
+            encoded = [struct.pack("<5f", *p) for p in triangle]
+            if indices and (len(lookup) + len(set(encoded).difference(lookup)) > 512 or len(indices) >= 1536):
+                finish()
+                data, lookup, indices = bytearray(), {}, []
+            for vertex in encoded:
+                if vertex not in lookup:
+                    lookup[vertex] = len(lookup)
+                    data.extend(vertex)
+                indices.append(lookup[vertex])
+        if indices:
             finish()
-            data, lookup, indices = bytearray(), {}, []
-        for vertex in encoded:
-            if vertex not in lookup:
-                lookup[vertex] = len(lookup)
-                data.extend(vertex)
-            indices.append(lookup[vertex])
-    if indices:
-        finish()
     validate_s3d(model)
     raw = pack_s3d(model)
     validate_s3d(parse_s3d(raw))
@@ -385,8 +400,10 @@ def world_coordinates(u, v, height=0.0):
 def compact_ramps(count=401):
     """Return four native-anchored compact curves, rather than schematic ends.
 
-    The lower E-edge port is (40,35.2,7.5); the upper W-edge port is
-    (-56,-67.2,15). The other ports follow the deliberate same-side on-ramp
+    The lower E-edge port is (56,51.2,7.5); the upper W-edge port is
+    (-72,-83.2,15). Each is one diagonal construction step (16 m on both
+    city axes, or 16*sqrt(2) m along the highway) beyond the original join.
+    The other ports follow the deliberate same-side on-ramp
     transform. Ground junction centres are (-16,16) and (24,-24), with
     v=+/-20*sqrt(2); the latter is an authored internal grid-corner junction,
     rather than a native tile-centre anchor. Ground mouths remain internal
@@ -396,8 +413,8 @@ def compact_ramps(count=401):
     result = []
     lane = 3.2 / math.sqrt(2.0)
     junction = 20.0 * math.sqrt(2.0)
-    for deck, side, start, height in (("lower", 1, (40.0, 35.2), 7.5),
-                                      ("upper", -1, (-56.0, -67.2), 15.0)):
+    for deck, side, start, height in (("lower", 1, (56.0, 51.2), 7.5),
+                                      ("upper", -1, (-72.0, -83.2), 15.0)):
         first_u = sum(start) / math.sqrt(2.0)
         last_u = 12.0 if deck == "lower" else -12.0
         direction = -1.0 if deck == "lower" else 1.0
@@ -412,7 +429,7 @@ def compact_ramps(count=401):
         clear_index = next(index for index, point in enumerate(level["points"])
                            if abs(highway_coordinates(point)[1]) >= clearance)
         ramp = sample_grade_curve(controls, start_height=height, flat_start=lengths[clear_index],
-                                  flat_end=4.0, taper=2.0, count=count, max_grade=0.4)
+                                  flat_end=4.0, taper=2.0, count=count, max_grade=0.3)
         # A sampled cubic has an exact analytic endpoint tangent, but its
         # first finite chord is slightly oblique. Give the saved PATH an
         # explicit 1 cm native-direction joining chord inside the already
@@ -648,7 +665,8 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=()):
                 height, side = ramp["height_m"], ramp["side"]
                 lateral = [side * (-p[2] - p[0] + 8.0) / math.sqrt(2.0) for p in world]
                 heights = [p[1] for p in world]
-                barrier = min(heights) >= height - 1e-5 and max(heights) > height + 1e-5
+                barrier = (min(heights) >= height - 1e-5
+                           and height + 1e-5 < max(heights) <= height + 1.390625 + 1e-5)
                 outer_wall = (min(heights) >= height - 1.0001 and max(heights) <= height + 1e-5
                               and max(heights) - min(heights) > 0.01
                               and max(abs(v - 8.0) for v in lateral) < 0.001)

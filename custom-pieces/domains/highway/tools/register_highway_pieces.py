@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/highway/implementation')]
 
 from scp import jsonc
-from scp.catalog import load_catalog, number, validate_catalog
+from scp.catalog import load_catalog, number, tile_base, validate_catalog
 from scp.registration import apply_registration
 from scp.subject_sources import new_subject_document, write_subject
 from scp_highway.menu import make_icon
@@ -25,12 +25,75 @@ GAME_KEYS = ('placement', 'traffic_both_directions', 'no_unwanted_transfers',
 ASSEMBLY_ID = 'ddrhw-l1-and-l2-diagonal-avenue-diamond'
 
 
-def register_compact_modules(root=ROOT, *, review_partition=False):
+EXTENSION_REVIEW = {
+    'lower-exit-branch': ([1, 1], [[0, 0]], [2, 2], [[0, 0], [1, 0], [0, 1]]),
+    'lower-entry-branch': ([1, 1], [[0, 0]], [2, 2], [[0, 0], [1, 0], [0, 1]]),
+    'lower-exit-grade': ([1, 1], [[0, 0]], [1, 2], [[0, 0], [0, 1]]),
+    'lower-entry-grade': ([1, 1], [[0, 0]], [2, 1], [[0, 0], [1, 0]]),
+    'upper-exit-branch': ([2, 2], [[1, 0], [0, 1], [1, 1]], [3, 3], [[2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2]]),
+    'upper-entry-branch': ([2, 2], [[1, 0], [0, 1], [1, 1]], [3, 3], [[1, 0], [2, 0], [1, 1], [2, 1], [0, 2], [1, 2]]),
+    'upper-exit-grade': ([2, 2], [[1, 0], [0, 1], [1, 1]], [2, 3], [[1, 0], [0, 1], [1, 1], [0, 2]]),
+    'upper-entry-grade': ([2, 2], [[1, 0], [0, 1], [1, 1]], [3, 2], [[1, 0], [2, 0], [0, 1], [1, 1]]),
+}
+
+
+def reviewed_extension(catalog, modules):
+    """Prepare the exact unpublished extension, preserving reserved identity blocks.
+
+    A changed local origin changes its AutoTileBase offsets. Retain each
+    existing local resource slot rather than attaching IDs to world cells;
+    new cells may use only the same piece's already reserved resource block.
+    No installed or published allocation is eligible for this review.
+    """
+    candidate = deepcopy(catalog)
+    pieces = {piece['id']: piece for piece in candidate['pieces']}
+    ledger = candidate['_allocations']
+    for module in modules['types']:
+        identifier = 'ddrhw-diagonal-' + module['key']
+        if identifier not in pieces or ledger['pieces'][identifier]['state'] != 'reserved-locally':
+            raise ValueError('Ramp extension review requires an existing locally reserved component')
+        piece = pieces[identifier]
+        if module['key'] in EXTENSION_REVIEW:
+            before_size, before_cells, after_size, after_cells = EXTENSION_REVIEW[module['key']]
+            if (module['footprint'], module['cells']) != (after_size, after_cells):
+                raise ValueError('Ramp extension differs from its independently reviewed partition')
+            if (piece['footprint'], piece['cells']) not in ((before_size, before_cells), (after_size, after_cells)):
+                raise ValueError('Ramp extension source is neither the reviewed original nor its current revision')
+        elif (piece['footprint'], piece['cells']) != (module['footprint'], module['cells']):
+            raise ValueError('Ramp extension cannot change an unreviewed component footprint')
+        base = tile_base(piece)
+        tiles = [f'{base + x * 0x100 + y * 0x10:08x}' for x, y in module['cells']]
+        blocks = {number(value) for value in ledger['pieces'][identifier]['resource_blocks']}
+        if any(number(tile) & 0xfffff000 not in blocks for tile in tiles):
+            raise ValueError('Ramp extension exceeds the component reserved resource blocks')
+        piece.update(cells=deepcopy(module['cells']), footprint=deepcopy(module['footprint']), tile_ids=tiles)
+        piece['engineering'].update(deepcopy(module['engineering']))
+        piece['dependencies'] = ['controller', 'dd_rhw', 'rhw_core', 'mis']
+        piece.pop('authored_texture_ids', None)
+        piece['shadow_mappings'] = [{'tile': tile, 'source': tile, 'rotation': 0} for tile in tiles]
+        piece['provenance']['partition_review'] = (
+            'Reviewed one-diagonal-tile ramp extension and right-turn-only access. '
+            'Retains piece, puzzle, menu, preview, and reserved resource-block identities; '
+            'local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas.')
+        ledger['pieces'][identifier].update(cells=deepcopy(piece['cells']), tile_ids=tiles)
+    validate_catalog(candidate)
+    return candidate
+
+
+def register_compact_modules(root=ROOT, *, review_partition=False, review_ramp_extension=False):
     """Reserve the reviewed disjoint modules, then register their placement plan."""
     from scp_highway.ramp_paths import module_catalog
     root = Path(root).resolve()
     catalog = load_catalog(root)
     modules = module_catalog()
+    if review_ramp_extension:
+        candidate = reviewed_extension(catalog, modules)
+        for piece in candidate['pieces']:
+            if piece['id'].startswith('ddrhw-diagonal-'):
+                write_subject(root / 'domains/highway/00_pieces' / piece['id'], 'piece', piece)
+        allocation_path = root / catalog['allocations']
+        allocation_path.write_text(jsonc.document(candidate['_allocations'], source=allocation_path.read_text()), encoding='utf-8')
+        catalog = load_catalog(root)
     existing = {piece['id']: piece for piece in catalog['pieces']}
     ledger = deepcopy(catalog['_allocations'])
     reviewed = {}
@@ -90,10 +153,10 @@ def register_compact_modules(root=ROOT, *, review_partition=False):
             'preview_id': f'{block + 0xFF5:08x}',
             'effect_name': f'preview_scp_hw_{puzzle:04x}'.ljust(24, '_') + '001',
             'footprint': module['footprint'], 'cells': module['cells'], 'orientation_count': 8,
-            'dependencies': ['controller', 'dd_rhw', 'rhw_core'],
+            'dependencies': ['controller', 'dd_rhw', 'rhw_core', 'mis'],
             'menu': {'id': f'{0x6A470000 | puzzle:08x}',
                      'order': f'{0xFFFFFF00 | (puzzle & 0xFF):08x}', 'style': 'ddrhw-ramp'},
-            'engineering': {'max_grade_percent': 40.0, 'car_corridor_half_width_m': 1.25,
+            'engineering': {'max_grade_percent': module['engineering']['max_grade_percent'], 'car_corridor_half_width_m': 1.25,
                             'car_corridor_height_m': 3.8, 'pavement_path_offset_m': 0.0,
                             'model_only_cells': module['engineering']['model_only_cells']},
             'shadow_mode': 'generated',
@@ -128,6 +191,14 @@ def register_compact_modules(root=ROOT, *, review_partition=False):
              'id': ASSEMBLY_ID, 'title': 'DD RHW-4 — Compact Diagonal Avenue Diamond',
              'geometry_status': 'Experimental compiled modules; see TESTING.md for current software and game evidence.',
              'coordinate_units': 'metres east,north,height; rotations counterclockwise',
+             'coordinate_system': {'origin_world_m': [0.0, -16.0 * (modules['footprint'][1] - 1)],
+                                   'origin_name': 'southwest tile-centre reference', 'tile_size_m': 16,
+                                   'tile_boundaries_offset_m': 8, 'axes': ['east', 'north', 'height']},
+             'traffic_policy': {'ramp_access': 'adjacent-carriageway right turns only',
+                                'required_movements': ['SW->NE', 'NE->SW', 'NW->SE', 'SE->NW',
+                                                       'NE->NW', 'NW->SW', 'SW->SE', 'SE->NE'],
+                                'forbidden_cross_avenue_turns': ['NE->SE', 'SE->SW', 'SW->NW', 'NW->NE'],
+                                'ramp_extension': 'One diagonal city-grid step: 16 m east/north components and 22.627416998 m along the highway.'},
              'construction_rectangle_tiles': modules['footprint'], 'occupied_tiles': len(modules['occupied_cells']),
              'module_placements': len(placements), 'component_types_used': len(members),
              'separately_available_component_types': len(members), 'placements': placements,
@@ -224,10 +295,13 @@ def main():
     parser.add_argument('--compact-modules', action='store_true')
     parser.add_argument('--review-partition', action='store_true',
                         help='Apply the independently reviewed subset cut while preserving remaining resource identities')
+    parser.add_argument('--review-ramp-extension', action='store_true',
+                        help='Apply the reviewed locally reserved 53-cell ramp extension and native MIS materials')
     args = parser.parse_args()
     print(register_native_crossing(args.root))
     if args.compact_modules:
-        print(register_compact_modules(args.root, review_partition=args.review_partition))
+        print(register_compact_modules(args.root, review_partition=args.review_partition,
+                                       review_ramp_extension=args.review_ramp_extension))
 
 
 if __name__ == '__main__':

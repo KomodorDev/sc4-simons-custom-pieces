@@ -13,7 +13,7 @@ document_type: "reference"
 
 ## 1. Test scope
 
-Contains the southeast surface junction and the upper-deck ramp landings. Both avenue directions can enter the upper deck or receive traffic leaving that deck. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
+Contains the southeast surface junction and the upper-deck ramp landings. The upper off-ramp feeds only the avenue heading southeast, and the upper on-ramp receives only traffic arriving from the southeast. These right turns stay on their adjacent carriageway. The generated records below describe movements measured from saved PATH resources, meaning the game’s directed traffic routes. A measured route does not establish game operation or a complete native joining boundary.
 
 <!-- BEGIN CONNECTIONS -->
 
@@ -29,18 +29,16 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
 | --- | --- | --- | --- | --- |
-| `1-W-in-1` | road / 1 / primary | in | [-8.0, -22.601434, 1.817631]; [0.8334622813545903, 0.5525763526963506]; -0.386266857 | `path-interface-95072b0547417ef03720` |
+| `1-W-in-1` | road / 1 / primary | in | [-8.0, -23.109934, 1.487699]; [0.7905593165701673, 0.6123854725449568]; -0.296123295 | `path-interface-a732cf9caf8dce8cfeaa` |
 | `1-W-in-2` | road / 1 / primary | in | [-8.0, -3.2, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-7c732cbad30c1a957476` |
-| `1-W-in-3` | road / 1 / primary | in | [-8.0, -2.805841, 0.0]; [0.8277168386819117, -0.5611460014670177]; 0.0 | `path-interface-76afa9fcb157c192156c` |
-| `1-W-in-4` | road / 1 / primary | in | [-8.0, 3.2, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
-| `1-N-out-5` | road / 1 / primary | out | [-3.2, 8.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
-| `1-N-out-6` | road / 1 / primary | out | [2.805841, 8.0, 0.0]; [-0.5611460014670177, 0.8277168386819117]; 0.0 | `path-interface-24061b69de696e6c8ae8` |
-| `1-N-out-7` | road / 1 / primary | out | [3.2, 8.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-668896c488171c19873d` |
-| `1-N-out-8` | road / 1 / primary | out | [22.601434, 8.0, 1.817631]; [0.5525763526963506, 0.8334622813545903]; 0.386266857 | `path-interface-5015313eb0038d7c0221` |
-| `1-E-out-9` | road / 1 / primary | out | [24.0, -35.2, 0.0]; [0.7071067811865475, -0.7071067811865477]; 0.0 | `path-interface-7c732cbad30c1a957476` |
-| `1-E-out-10` | road / 1 / primary | out | [24.0, -28.8, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
-| `1-S-in-11` | road / 1 / primary | in | [28.8, -24.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
-| `1-S-in-12` | road / 1 / primary | in | [35.2, -24.0, 0.0]; [-0.7071067811865477, 0.7071067811865475]; 0.0 | `path-interface-668896c488171c19873d` |
+| `1-W-in-3` | road / 1 / primary | in | [-8.0, 3.2, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
+| `1-N-out-4` | road / 1 / primary | out | [-3.2, 8.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
+| `1-N-out-5` | road / 1 / primary | out | [3.2, 8.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-668896c488171c19873d` |
+| `1-N-out-6` | road / 1 / primary | out | [23.109934, 8.0, 1.487699]; [0.6123854725449568, 0.7905593165701673]; 0.296123295 | `path-interface-085ec70dd9403a42b8c3` |
+| `1-E-out-7` | road / 1 / primary | out | [24.0, -35.2, 0.0]; [0.7071067811865475, -0.7071067811865477]; 0.0 | `path-interface-7c732cbad30c1a957476` |
+| `1-E-out-8` | road / 1 / primary | out | [24.0, -28.8, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
+| `1-S-in-9` | road / 1 / primary | in | [28.8, -24.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
+| `1-S-in-10` | road / 1 / primary | in | [35.2, -24.0, 0.0]; [-0.7071067811865477, 0.7071067811865475]; 0.0 | `path-interface-668896c488171c19873d` |
 | `2-W-in-1` | pedestrian / 2 / primary | in | [-8.0, -7.3, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-ef45fb4474012bf121a0` |
 | `2-N-out-2` | pedestrian / 2 / primary | out | [7.3, 8.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-2ec6b824afff9b450810` |
 | `2-E-out-3` | pedestrian / 2 / primary | out | [24.0, -39.3, 0.0]; [0.7071067811865477, -0.7071067811865475]; 0.0 | `path-interface-ef45fb4474012bf121a0` |
@@ -50,14 +48,12 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | Service | Entry → exit | Role |
 | --- | --- | --- |
-| road | `1-W-in-1` → `1-E-out-9` | primary |
-| road | `1-W-in-1` → `1-N-out-6` | primary |
-| road | `1-W-in-2` → `1-E-out-9` | primary |
-| road | `1-W-in-3` → `1-N-out-8` | primary |
-| road | `1-W-in-4` → `1-E-out-10` | primary |
-| road | `1-S-in-11` → `1-N-out-5` | primary |
-| road | `1-S-in-12` → `1-N-out-8` | primary |
-| road | `1-S-in-12` → `1-N-out-7` | primary |
+| road | `1-W-in-1` → `1-E-out-7` | primary |
+| road | `1-W-in-2` → `1-E-out-7` | primary |
+| road | `1-W-in-3` → `1-E-out-8` | primary |
+| road | `1-S-in-9` → `1-N-out-4` | primary |
+| road | `1-S-in-10` → `1-N-out-6` | primary |
+| road | `1-S-in-10` → `1-N-out-5` | primary |
 | pedestrian | `2-W-in-1` → `2-E-out-3` | primary |
 | pedestrian | `2-S-in-4` → `2-N-out-2` | primary |
 
@@ -65,59 +61,46 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | From service / port | To service / port | Reason |
 | --- | --- | --- |
+| road / `1-W-in-1` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-1` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-1` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-1` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-1` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-1` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-1` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-1` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-1` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-2` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-2` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-2` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-2` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-2` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-2` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-2` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-2` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-2` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-3` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-3` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-3` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-3` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-3` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-3` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-W-in-3` | road / `1-E-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-3` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | road / `1-W-in-3` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-W-in-4` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-12` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | road / `1-E-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-9` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-10` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-10` | road / `1-E-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-10` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-10` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-10` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-W-in-1` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-W-in-1` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-W-in-1` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-W-in-1` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-W-in-1` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-W-in-1` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-W-in-1` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-W-in-1` | road / `1-E-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-W-in-1` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-W-in-1` | pedestrian / `2-N-out-2` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-S-in-4` | road / `1-N-out-4` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-S-in-4` | road / `1-N-out-5` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-S-in-4` | road / `1-N-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-S-in-4` | road / `1-N-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-S-in-4` | road / `1-N-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-S-in-4` | road / `1-E-out-9` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `2-S-in-4` | road / `1-E-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-S-in-4` | road / `1-E-out-7` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| pedestrian / `2-S-in-4` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 | pedestrian / `2-S-in-4` | pedestrian / `2-E-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
 
 Review the test checklist for the exact tested cases and environments.
@@ -134,11 +117,11 @@ From the repository root, build the selected component with `python3 -B custom-p
 
 ## 4. Game checks
 
-Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
+Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. For ramp or junction components, confirm that each permitted right turn works, each cross-avenue left turn stays unavailable, and the opposite upper-deck barrier remains closed. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
 
 ## 5. Results and known issues
 
-The current assembly’s executed checks and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
+The assembly’s executed checks, their source version, and remaining limitations are recorded in [Results and known issues](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues). This component is experimental and has no human game pass. Native DD models have local overhangs; pavement coverage and corridor face-intersection checks are not a complete vehicle swept-volume or structural proof.
 
 <!-- BEGIN MANUAL SUMMARY -->
 
@@ -148,8 +131,8 @@ Generated from [the exact test cases](#test-checklist) and [authoritative observ
 
 - [ ] Preview review: 0/2 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
-- [ ] Route Query: 0/40 applicable cases passed; 0 failed, 0 stale.
-- [ ] Visible travel: 0/40 applicable cases passed; 0 failed, 0 stale.
+- [ ] Route Query: 0/32 applicable cases passed; 0 failed, 0 stale.
+- [ ] Visible travel: 0/32 applicable cases passed; 0 failed, 0 stale.
 
 These observations cover only the named services, directions, poses, rotations, and recorded platforms.
 
@@ -165,7 +148,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 316, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 248, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -452,60 +435,58 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Route Query — road — 32 cases; unverified: 32</summary>
+<summary>Route Query — road — 24 cases; unverified: 24</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9 | — | <a href="#case-in_game_route_query-0f26f974903a2663c027">[ ] unverified</a> | <a href="#case-in_game_route_query-bd499b3c6d74d3d5f374">[ ] unverified</a> | <a href="#case-in_game_route_query-94f692ae62e7133ec29e">[ ] unverified</a> | <a href="#case-in_game_route_query-0a4d721d001a2fbbee0f">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6 | — | <a href="#case-in_game_route_query-6ab022615b8662b962b7">[ ] unverified</a> | <a href="#case-in_game_route_query-d3fa491eea5a3ce13707">[ ] unverified</a> | <a href="#case-in_game_route_query-4bc26fe75ae59ffd059e">[ ] unverified</a> | <a href="#case-in_game_route_query-b57da487635eef630462">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9 | — | <a href="#case-in_game_route_query-b0f0c945f03ada56d39d">[ ] unverified</a> | <a href="#case-in_game_route_query-3cf83503175c6daca3b6">[ ] unverified</a> | <a href="#case-in_game_route_query-1b4e554475e89a50dbec">[ ] unverified</a> | <a href="#case-in_game_route_query-fe13f45ba5f82998bf1b">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8 | — | <a href="#case-in_game_route_query-bef81d5bc9b7a41abec7">[ ] unverified</a> | <a href="#case-in_game_route_query-41dea6009f84923e6d4f">[ ] unverified</a> | <a href="#case-in_game_route_query-e837143fffb4962649a6">[ ] unverified</a> | <a href="#case-in_game_route_query-b0acbb599d6e99256ea8">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10 | — | <a href="#case-in_game_route_query-dd3f9ab6b17a8501c878">[ ] unverified</a> | <a href="#case-in_game_route_query-188e1610e4f70d7715bf">[ ] unverified</a> | <a href="#case-in_game_route_query-4234a460944a6cfe5735">[ ] unverified</a> | <a href="#case-in_game_route_query-7ff60bbdf29691c6db09">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5 | — | <a href="#case-in_game_route_query-e9c3697624c6b1b05214">[ ] unverified</a> | <a href="#case-in_game_route_query-edc3a973fea91f77e8e5">[ ] unverified</a> | <a href="#case-in_game_route_query-242c82698e95cf784750">[ ] unverified</a> | <a href="#case-in_game_route_query-2dd0d0e1a4d032e096cc">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8 | — | <a href="#case-in_game_route_query-a6042f0b64cc7fd6daa1">[ ] unverified</a> | <a href="#case-in_game_route_query-fbdffec8ae50dd526525">[ ] unverified</a> | <a href="#case-in_game_route_query-3b33f5896f7bb9ca731d">[ ] unverified</a> | <a href="#case-in_game_route_query-792cca12298d2a8a6f28">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7 | — | <a href="#case-in_game_route_query-12f861f5288cbf2681e5">[ ] unverified</a> | <a href="#case-in_game_route_query-9ddfb751d2f2698cecd9">[ ] unverified</a> | <a href="#case-in_game_route_query-82046242f3f8853a26dd">[ ] unverified</a> | <a href="#case-in_game_route_query-7b99b5b9948e82c1d959">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7 | — | <a href="#case-in_game_route_query-92c6542c04cd22216865">[ ] unverified</a> | <a href="#case-in_game_route_query-e9a51ddedac7bd2e7687">[ ] unverified</a> | <a href="#case-in_game_route_query-b0c72c52cea47ea4ba69">[ ] unverified</a> | <a href="#case-in_game_route_query-edfd987a6bc82377fe2b">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7 | — | <a href="#case-in_game_route_query-84491b6ab4ed516f8dab">[ ] unverified</a> | <a href="#case-in_game_route_query-b5edf5312c31e21fa1f7">[ ] unverified</a> | <a href="#case-in_game_route_query-efed06ee0c8bfe59b739">[ ] unverified</a> | <a href="#case-in_game_route_query-ce9dcf2358858d48d641">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8 | — | <a href="#case-in_game_route_query-5f701686f72e21ece8fa">[ ] unverified</a> | <a href="#case-in_game_route_query-502799817be17fb8f4ad">[ ] unverified</a> | <a href="#case-in_game_route_query-e3e38ff3ed3ea839c45e">[ ] unverified</a> | <a href="#case-in_game_route_query-6ccd3a7433ebd55e46ce">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4 | — | <a href="#case-in_game_route_query-16d1a08e46e8e6d39156">[ ] unverified</a> | <a href="#case-in_game_route_query-b9ebed210c7250c06e2c">[ ] unverified</a> | <a href="#case-in_game_route_query-4524bab1f04caf50796a">[ ] unverified</a> | <a href="#case-in_game_route_query-6a70fe7f1d3734f22bbc">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6 | — | <a href="#case-in_game_route_query-1e93d879560af096ea11">[ ] unverified</a> | <a href="#case-in_game_route_query-ba7a6f5d086bb4935659">[ ] unverified</a> | <a href="#case-in_game_route_query-993d6e3b0c23501d1bdd">[ ] unverified</a> | <a href="#case-in_game_route_query-ea65e26ccf48296f8a6f">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5 | — | <a href="#case-in_game_route_query-7fec7dfbeef703a9eb13">[ ] unverified</a> | <a href="#case-in_game_route_query-aaa796a3f369b557ef9d">[ ] unverified</a> | <a href="#case-in_game_route_query-469d06d2150660902b3e">[ ] unverified</a> | <a href="#case-in_game_route_query-7602525727c471b8913c">[ ] unverified</a> |
 
 
 <details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9</summary>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7</summary>
 
-<a id="case-in_game_route_query-0f26f974903a2663c027"></a>
+<a id="case-in_game_route_query-92c6542c04cd22216865"></a>
 
-**0° CCW: unverified** — `in_game_route_query-0f26f974903a2663c027`.
+**0° CCW: unverified** — `in_game_route_query-92c6542c04cd22216865`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-bd499b3c6d74d3d5f374"></a>
+<a id="case-in_game_route_query-e9a51ddedac7bd2e7687"></a>
 
-**90° CCW: unverified** — `in_game_route_query-bd499b3c6d74d3d5f374`.
+**90° CCW: unverified** — `in_game_route_query-e9a51ddedac7bd2e7687`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-94f692ae62e7133ec29e"></a>
+<a id="case-in_game_route_query-b0c72c52cea47ea4ba69"></a>
 
-**180° CCW: unverified** — `in_game_route_query-94f692ae62e7133ec29e`.
+**180° CCW: unverified** — `in_game_route_query-b0c72c52cea47ea4ba69`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-0a4d721d001a2fbbee0f"></a>
+<a id="case-in_game_route_query-edfd987a6bc82377fe2b"></a>
 
-**270° CCW: unverified** — `in_game_route_query-0a4d721d001a2fbbee0f`.
+**270° CCW: unverified** — `in_game_route_query-edfd987a6bc82377fe2b`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
@@ -513,91 +494,45 @@ No observation recorded.
 
 
 <details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6</summary>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7</summary>
 
-<a id="case-in_game_route_query-6ab022615b8662b962b7"></a>
+<a id="case-in_game_route_query-84491b6ab4ed516f8dab"></a>
 
-**0° CCW: unverified** — `in_game_route_query-6ab022615b8662b962b7`.
+**0° CCW: unverified** — `in_game_route_query-84491b6ab4ed516f8dab`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-d3fa491eea5a3ce13707"></a>
+<a id="case-in_game_route_query-b5edf5312c31e21fa1f7"></a>
 
-**90° CCW: unverified** — `in_game_route_query-d3fa491eea5a3ce13707`.
+**90° CCW: unverified** — `in_game_route_query-b5edf5312c31e21fa1f7`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-4bc26fe75ae59ffd059e"></a>
+<a id="case-in_game_route_query-efed06ee0c8bfe59b739"></a>
 
-**180° CCW: unverified** — `in_game_route_query-4bc26fe75ae59ffd059e`.
+**180° CCW: unverified** — `in_game_route_query-efed06ee0c8bfe59b739`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-b57da487635eef630462"></a>
+<a id="case-in_game_route_query-ce9dcf2358858d48d641"></a>
 
-**270° CCW: unverified** — `in_game_route_query-b57da487635eef630462`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9</summary>
-
-<a id="case-in_game_route_query-b0f0c945f03ada56d39d"></a>
-
-**0° CCW: unverified** — `in_game_route_query-b0f0c945f03ada56d39d`.
+**270° CCW: unverified** — `in_game_route_query-ce9dcf2358858d48d641`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-3cf83503175c6daca3b6"></a>
-
-**90° CCW: unverified** — `in_game_route_query-3cf83503175c6daca3b6`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-1b4e554475e89a50dbec"></a>
-
-**180° CCW: unverified** — `in_game_route_query-1b4e554475e89a50dbec`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-fe13f45ba5f82998bf1b"></a>
-
-**270° CCW: unverified** — `in_game_route_query-fe13f45ba5f82998bf1b`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
@@ -605,91 +540,45 @@ No observation recorded.
 
 
 <details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8</summary>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8</summary>
 
-<a id="case-in_game_route_query-bef81d5bc9b7a41abec7"></a>
+<a id="case-in_game_route_query-5f701686f72e21ece8fa"></a>
 
-**0° CCW: unverified** — `in_game_route_query-bef81d5bc9b7a41abec7`.
+**0° CCW: unverified** — `in_game_route_query-5f701686f72e21ece8fa`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-41dea6009f84923e6d4f"></a>
+<a id="case-in_game_route_query-502799817be17fb8f4ad"></a>
 
-**90° CCW: unverified** — `in_game_route_query-41dea6009f84923e6d4f`.
+**90° CCW: unverified** — `in_game_route_query-502799817be17fb8f4ad`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-e837143fffb4962649a6"></a>
+<a id="case-in_game_route_query-e3e38ff3ed3ea839c45e"></a>
 
-**180° CCW: unverified** — `in_game_route_query-e837143fffb4962649a6`.
+**180° CCW: unverified** — `in_game_route_query-e3e38ff3ed3ea839c45e`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-b0acbb599d6e99256ea8"></a>
+<a id="case-in_game_route_query-6ccd3a7433ebd55e46ce"></a>
 
-**270° CCW: unverified** — `in_game_route_query-b0acbb599d6e99256ea8`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10</summary>
-
-<a id="case-in_game_route_query-dd3f9ab6b17a8501c878"></a>
-
-**0° CCW: unverified** — `in_game_route_query-dd3f9ab6b17a8501c878`.
+**270° CCW: unverified** — `in_game_route_query-6ccd3a7433ebd55e46ce`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-188e1610e4f70d7715bf"></a>
-
-**90° CCW: unverified** — `in_game_route_query-188e1610e4f70d7715bf`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-4234a460944a6cfe5735"></a>
-
-**180° CCW: unverified** — `in_game_route_query-4234a460944a6cfe5735`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-7ff60bbdf29691c6db09"></a>
-
-**270° CCW: unverified** — `in_game_route_query-7ff60bbdf29691c6db09`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
@@ -697,91 +586,45 @@ No observation recorded.
 
 
 <details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5</summary>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4</summary>
 
-<a id="case-in_game_route_query-e9c3697624c6b1b05214"></a>
+<a id="case-in_game_route_query-16d1a08e46e8e6d39156"></a>
 
-**0° CCW: unverified** — `in_game_route_query-e9c3697624c6b1b05214`.
+**0° CCW: unverified** — `in_game_route_query-16d1a08e46e8e6d39156`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-edc3a973fea91f77e8e5"></a>
+<a id="case-in_game_route_query-b9ebed210c7250c06e2c"></a>
 
-**90° CCW: unverified** — `in_game_route_query-edc3a973fea91f77e8e5`.
+**90° CCW: unverified** — `in_game_route_query-b9ebed210c7250c06e2c`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-242c82698e95cf784750"></a>
+<a id="case-in_game_route_query-4524bab1f04caf50796a"></a>
 
-**180° CCW: unverified** — `in_game_route_query-242c82698e95cf784750`.
+**180° CCW: unverified** — `in_game_route_query-4524bab1f04caf50796a`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-2dd0d0e1a4d032e096cc"></a>
+<a id="case-in_game_route_query-6a70fe7f1d3734f22bbc"></a>
 
-**270° CCW: unverified** — `in_game_route_query-2dd0d0e1a4d032e096cc`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8</summary>
-
-<a id="case-in_game_route_query-a6042f0b64cc7fd6daa1"></a>
-
-**0° CCW: unverified** — `in_game_route_query-a6042f0b64cc7fd6daa1`.
+**270° CCW: unverified** — `in_game_route_query-6a70fe7f1d3734f22bbc`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-fbdffec8ae50dd526525"></a>
-
-**90° CCW: unverified** — `in_game_route_query-fbdffec8ae50dd526525`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-3b33f5896f7bb9ca731d"></a>
-
-**180° CCW: unverified** — `in_game_route_query-3b33f5896f7bb9ca731d`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_route_query-792cca12298d2a8a6f28"></a>
-
-**270° CCW: unverified** — `in_game_route_query-792cca12298d2a8a6f28`.
-
-Use Route Query in SimCity 4 to confirm this directed journey for its service network.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
@@ -789,45 +632,91 @@ No observation recorded.
 
 
 <details>
-<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7</summary>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6</summary>
 
-<a id="case-in_game_route_query-12f861f5288cbf2681e5"></a>
+<a id="case-in_game_route_query-1e93d879560af096ea11"></a>
 
-**0° CCW: unverified** — `in_game_route_query-12f861f5288cbf2681e5`.
+**0° CCW: unverified** — `in_game_route_query-1e93d879560af096ea11`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-9ddfb751d2f2698cecd9"></a>
+<a id="case-in_game_route_query-ba7a6f5d086bb4935659"></a>
 
-**90° CCW: unverified** — `in_game_route_query-9ddfb751d2f2698cecd9`.
+**90° CCW: unverified** — `in_game_route_query-ba7a6f5d086bb4935659`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-82046242f3f8853a26dd"></a>
+<a id="case-in_game_route_query-993d6e3b0c23501d1bdd"></a>
 
-**180° CCW: unverified** — `in_game_route_query-82046242f3f8853a26dd`.
+**180° CCW: unverified** — `in_game_route_query-993d6e3b0c23501d1bdd`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_route_query-7b99b5b9948e82c1d959"></a>
+<a id="case-in_game_route_query-ea65e26ccf48296f8a6f"></a>
 
-**270° CCW: unverified** — `in_game_route_query-7b99b5b9948e82c1d959`.
+**270° CCW: unverified** — `in_game_route_query-ea65e26ccf48296f8a6f`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5</summary>
+
+<a id="case-in_game_route_query-7fec7dfbeef703a9eb13"></a>
+
+**0° CCW: unverified** — `in_game_route_query-7fec7dfbeef703a9eb13`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-aaa796a3f369b557ef9d"></a>
+
+**90° CCW: unverified** — `in_game_route_query-aaa796a3f369b557ef9d`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-469d06d2150660902b3e"></a>
+
+**180° CCW: unverified** — `in_game_route_query-469d06d2150660902b3e`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_route_query-7602525727c471b8913c"></a>
+
+**270° CCW: unverified** — `in_game_route_query-7602525727c471b8913c`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
 
 No observation recorded.
 
@@ -836,60 +725,58 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Visible travel — road — 32 cases; unverified: 32</summary>
+<summary>Visible travel — road — 24 cases; unverified: 24</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9 | — | <a href="#case-in_game_visible_travel-0f26f974903a2663c027">[ ] unverified</a> | <a href="#case-in_game_visible_travel-bd499b3c6d74d3d5f374">[ ] unverified</a> | <a href="#case-in_game_visible_travel-94f692ae62e7133ec29e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-0a4d721d001a2fbbee0f">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6 | — | <a href="#case-in_game_visible_travel-6ab022615b8662b962b7">[ ] unverified</a> | <a href="#case-in_game_visible_travel-d3fa491eea5a3ce13707">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4bc26fe75ae59ffd059e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b57da487635eef630462">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9 | — | <a href="#case-in_game_visible_travel-b0f0c945f03ada56d39d">[ ] unverified</a> | <a href="#case-in_game_visible_travel-3cf83503175c6daca3b6">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1b4e554475e89a50dbec">[ ] unverified</a> | <a href="#case-in_game_visible_travel-fe13f45ba5f82998bf1b">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8 | — | <a href="#case-in_game_visible_travel-bef81d5bc9b7a41abec7">[ ] unverified</a> | <a href="#case-in_game_visible_travel-41dea6009f84923e6d4f">[ ] unverified</a> | <a href="#case-in_game_visible_travel-e837143fffb4962649a6">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b0acbb599d6e99256ea8">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10 | — | <a href="#case-in_game_visible_travel-dd3f9ab6b17a8501c878">[ ] unverified</a> | <a href="#case-in_game_visible_travel-188e1610e4f70d7715bf">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4234a460944a6cfe5735">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7ff60bbdf29691c6db09">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5 | — | <a href="#case-in_game_visible_travel-e9c3697624c6b1b05214">[ ] unverified</a> | <a href="#case-in_game_visible_travel-edc3a973fea91f77e8e5">[ ] unverified</a> | <a href="#case-in_game_visible_travel-242c82698e95cf784750">[ ] unverified</a> | <a href="#case-in_game_visible_travel-2dd0d0e1a4d032e096cc">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8 | — | <a href="#case-in_game_visible_travel-a6042f0b64cc7fd6daa1">[ ] unverified</a> | <a href="#case-in_game_visible_travel-fbdffec8ae50dd526525">[ ] unverified</a> | <a href="#case-in_game_visible_travel-3b33f5896f7bb9ca731d">[ ] unverified</a> | <a href="#case-in_game_visible_travel-792cca12298d2a8a6f28">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7 | — | <a href="#case-in_game_visible_travel-12f861f5288cbf2681e5">[ ] unverified</a> | <a href="#case-in_game_visible_travel-9ddfb751d2f2698cecd9">[ ] unverified</a> | <a href="#case-in_game_visible_travel-82046242f3f8853a26dd">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7b99b5b9948e82c1d959">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7 | — | <a href="#case-in_game_visible_travel-92c6542c04cd22216865">[ ] unverified</a> | <a href="#case-in_game_visible_travel-e9a51ddedac7bd2e7687">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b0c72c52cea47ea4ba69">[ ] unverified</a> | <a href="#case-in_game_visible_travel-edfd987a6bc82377fe2b">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7 | — | <a href="#case-in_game_visible_travel-84491b6ab4ed516f8dab">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b5edf5312c31e21fa1f7">[ ] unverified</a> | <a href="#case-in_game_visible_travel-efed06ee0c8bfe59b739">[ ] unverified</a> | <a href="#case-in_game_visible_travel-ce9dcf2358858d48d641">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8 | — | <a href="#case-in_game_visible_travel-5f701686f72e21ece8fa">[ ] unverified</a> | <a href="#case-in_game_visible_travel-502799817be17fb8f4ad">[ ] unverified</a> | <a href="#case-in_game_visible_travel-e3e38ff3ed3ea839c45e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-6ccd3a7433ebd55e46ce">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4 | — | <a href="#case-in_game_visible_travel-16d1a08e46e8e6d39156">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b9ebed210c7250c06e2c">[ ] unverified</a> | <a href="#case-in_game_visible_travel-4524bab1f04caf50796a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-6a70fe7f1d3734f22bbc">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6 | — | <a href="#case-in_game_visible_travel-1e93d879560af096ea11">[ ] unverified</a> | <a href="#case-in_game_visible_travel-ba7a6f5d086bb4935659">[ ] unverified</a> | <a href="#case-in_game_visible_travel-993d6e3b0c23501d1bdd">[ ] unverified</a> | <a href="#case-in_game_visible_travel-ea65e26ccf48296f8a6f">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5 | — | <a href="#case-in_game_visible_travel-7fec7dfbeef703a9eb13">[ ] unverified</a> | <a href="#case-in_game_visible_travel-aaa796a3f369b557ef9d">[ ] unverified</a> | <a href="#case-in_game_visible_travel-469d06d2150660902b3e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7602525727c471b8913c">[ ] unverified</a> |
 
 
 <details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9</summary>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7</summary>
 
-<a id="case-in_game_visible_travel-0f26f974903a2663c027"></a>
+<a id="case-in_game_visible_travel-92c6542c04cd22216865"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-0f26f974903a2663c027`.
+**0° CCW: unverified** — `in_game_visible_travel-92c6542c04cd22216865`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-bd499b3c6d74d3d5f374"></a>
+<a id="case-in_game_visible_travel-e9a51ddedac7bd2e7687"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-bd499b3c6d74d3d5f374`.
+**90° CCW: unverified** — `in_game_visible_travel-e9a51ddedac7bd2e7687`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-94f692ae62e7133ec29e"></a>
+<a id="case-in_game_visible_travel-b0c72c52cea47ea4ba69"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-94f692ae62e7133ec29e`.
+**180° CCW: unverified** — `in_game_visible_travel-b0c72c52cea47ea4ba69`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-0a4d721d001a2fbbee0f"></a>
+<a id="case-in_game_visible_travel-edfd987a6bc82377fe2b"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-0a4d721d001a2fbbee0f`.
+**270° CCW: unverified** — `in_game_visible_travel-edfd987a6bc82377fe2b`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-9; entry: 1-W-in-1; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-7; entry: 1-W-in-1; exit: 1-E-out-7.
 
 No observation recorded.
 
@@ -897,91 +784,45 @@ No observation recorded.
 
 
 <details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6</summary>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7</summary>
 
-<a id="case-in_game_visible_travel-6ab022615b8662b962b7"></a>
+<a id="case-in_game_visible_travel-84491b6ab4ed516f8dab"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-6ab022615b8662b962b7`.
+**0° CCW: unverified** — `in_game_visible_travel-84491b6ab4ed516f8dab`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-d3fa491eea5a3ce13707"></a>
+<a id="case-in_game_visible_travel-b5edf5312c31e21fa1f7"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-d3fa491eea5a3ce13707`.
+**90° CCW: unverified** — `in_game_visible_travel-b5edf5312c31e21fa1f7`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-4bc26fe75ae59ffd059e"></a>
+<a id="case-in_game_visible_travel-efed06ee0c8bfe59b739"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-4bc26fe75ae59ffd059e`.
+**180° CCW: unverified** — `in_game_visible_travel-efed06ee0c8bfe59b739`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-b57da487635eef630462"></a>
+<a id="case-in_game_visible_travel-ce9dcf2358858d48d641"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-b57da487635eef630462`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-N-out-6; entry: 1-W-in-1; exit: 1-N-out-6.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9</summary>
-
-<a id="case-in_game_visible_travel-b0f0c945f03ada56d39d"></a>
-
-**0° CCW: unverified** — `in_game_visible_travel-b0f0c945f03ada56d39d`.
+**270° CCW: unverified** — `in_game_visible_travel-ce9dcf2358858d48d641`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-3cf83503175c6daca3b6"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-3cf83503175c6daca3b6`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-1b4e554475e89a50dbec"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-1b4e554475e89a50dbec`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-fe13f45ba5f82998bf1b"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-fe13f45ba5f82998bf1b`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-9; entry: 1-W-in-2; exit: 1-E-out-9.
+Scope: Service: road; role: primary; journey: 1:1-W-in-2>1-E-out-7; entry: 1-W-in-2; exit: 1-E-out-7.
 
 No observation recorded.
 
@@ -989,91 +830,45 @@ No observation recorded.
 
 
 <details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8</summary>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8</summary>
 
-<a id="case-in_game_visible_travel-bef81d5bc9b7a41abec7"></a>
+<a id="case-in_game_visible_travel-5f701686f72e21ece8fa"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-bef81d5bc9b7a41abec7`.
+**0° CCW: unverified** — `in_game_visible_travel-5f701686f72e21ece8fa`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-41dea6009f84923e6d4f"></a>
+<a id="case-in_game_visible_travel-502799817be17fb8f4ad"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-41dea6009f84923e6d4f`.
+**90° CCW: unverified** — `in_game_visible_travel-502799817be17fb8f4ad`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-e837143fffb4962649a6"></a>
+<a id="case-in_game_visible_travel-e3e38ff3ed3ea839c45e"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-e837143fffb4962649a6`.
+**180° CCW: unverified** — `in_game_visible_travel-e3e38ff3ed3ea839c45e`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-b0acbb599d6e99256ea8"></a>
+<a id="case-in_game_visible_travel-6ccd3a7433ebd55e46ce"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-b0acbb599d6e99256ea8`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-N-out-8; entry: 1-W-in-3; exit: 1-N-out-8.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10</summary>
-
-<a id="case-in_game_visible_travel-dd3f9ab6b17a8501c878"></a>
-
-**0° CCW: unverified** — `in_game_visible_travel-dd3f9ab6b17a8501c878`.
+**270° CCW: unverified** — `in_game_visible_travel-6ccd3a7433ebd55e46ce`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-188e1610e4f70d7715bf"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-188e1610e4f70d7715bf`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-4234a460944a6cfe5735"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-4234a460944a6cfe5735`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-7ff60bbdf29691c6db09"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-7ff60bbdf29691c6db09`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-W-in-4>1-E-out-10; entry: 1-W-in-4; exit: 1-E-out-10.
+Scope: Service: road; role: primary; journey: 1:1-W-in-3>1-E-out-8; entry: 1-W-in-3; exit: 1-E-out-8.
 
 No observation recorded.
 
@@ -1081,91 +876,45 @@ No observation recorded.
 
 
 <details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5</summary>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4</summary>
 
-<a id="case-in_game_visible_travel-e9c3697624c6b1b05214"></a>
+<a id="case-in_game_visible_travel-16d1a08e46e8e6d39156"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-e9c3697624c6b1b05214`.
+**0° CCW: unverified** — `in_game_visible_travel-16d1a08e46e8e6d39156`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-edc3a973fea91f77e8e5"></a>
+<a id="case-in_game_visible_travel-b9ebed210c7250c06e2c"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-edc3a973fea91f77e8e5`.
+**90° CCW: unverified** — `in_game_visible_travel-b9ebed210c7250c06e2c`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-242c82698e95cf784750"></a>
+<a id="case-in_game_visible_travel-4524bab1f04caf50796a"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-242c82698e95cf784750`.
+**180° CCW: unverified** — `in_game_visible_travel-4524bab1f04caf50796a`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-2dd0d0e1a4d032e096cc"></a>
+<a id="case-in_game_visible_travel-6a70fe7f1d3734f22bbc"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-2dd0d0e1a4d032e096cc`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-11>1-N-out-5; entry: 1-S-in-11; exit: 1-N-out-5.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8</summary>
-
-<a id="case-in_game_visible_travel-a6042f0b64cc7fd6daa1"></a>
-
-**0° CCW: unverified** — `in_game_visible_travel-a6042f0b64cc7fd6daa1`.
+**270° CCW: unverified** — `in_game_visible_travel-6a70fe7f1d3734f22bbc`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-fbdffec8ae50dd526525"></a>
-
-**90° CCW: unverified** — `in_game_visible_travel-fbdffec8ae50dd526525`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-3b33f5896f7bb9ca731d"></a>
-
-**180° CCW: unverified** — `in_game_visible_travel-3b33f5896f7bb9ca731d`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
-
-No observation recorded.
-
-<a id="case-in_game_visible_travel-792cca12298d2a8a6f28"></a>
-
-**270° CCW: unverified** — `in_game_visible_travel-792cca12298d2a8a6f28`.
-
-Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
-
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-8; entry: 1-S-in-12; exit: 1-N-out-8.
+Scope: Service: road; role: primary; journey: 1:1-S-in-9>1-N-out-4; entry: 1-S-in-9; exit: 1-N-out-4.
 
 No observation recorded.
 
@@ -1173,45 +922,91 @@ No observation recorded.
 
 
 <details>
-<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7</summary>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6</summary>
 
-<a id="case-in_game_visible_travel-12f861f5288cbf2681e5"></a>
+<a id="case-in_game_visible_travel-1e93d879560af096ea11"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-12f861f5288cbf2681e5`.
+**0° CCW: unverified** — `in_game_visible_travel-1e93d879560af096ea11`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-9ddfb751d2f2698cecd9"></a>
+<a id="case-in_game_visible_travel-ba7a6f5d086bb4935659"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-9ddfb751d2f2698cecd9`.
+**90° CCW: unverified** — `in_game_visible_travel-ba7a6f5d086bb4935659`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-82046242f3f8853a26dd"></a>
+<a id="case-in_game_visible_travel-993d6e3b0c23501d1bdd"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-82046242f3f8853a26dd`.
+**180° CCW: unverified** — `in_game_visible_travel-993d6e3b0c23501d1bdd`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
 
 No observation recorded.
 
-<a id="case-in_game_visible_travel-7b99b5b9948e82c1d959"></a>
+<a id="case-in_game_visible_travel-ea65e26ccf48296f8a6f"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-7b99b5b9948e82c1d959`.
+**270° CCW: unverified** — `in_game_visible_travel-ea65e26ccf48296f8a6f`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
-Scope: Service: road; role: primary; journey: 1:1-S-in-12>1-N-out-7; entry: 1-S-in-12; exit: 1-N-out-7.
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-6; entry: 1-S-in-10; exit: 1-N-out-6.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5</summary>
+
+<a id="case-in_game_visible_travel-7fec7dfbeef703a9eb13"></a>
+
+**0° CCW: unverified** — `in_game_visible_travel-7fec7dfbeef703a9eb13`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-aaa796a3f369b557ef9d"></a>
+
+**90° CCW: unverified** — `in_game_visible_travel-aaa796a3f369b557ef9d`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-469d06d2150660902b3e"></a>
+
+**180° CCW: unverified** — `in_game_visible_travel-469d06d2150660902b3e`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
+
+No observation recorded.
+
+<a id="case-in_game_visible_travel-7602525727c471b8913c"></a>
+
+**270° CCW: unverified** — `in_game_visible_travel-7602525727c471b8913c`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: 1:1-S-in-10>1-N-out-5; entry: 1-S-in-10; exit: 1-N-out-5.
 
 No observation recorded.
 
@@ -1424,38 +1219,75 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Forbidden transfer — road → road — 112 cases; unverified: 112</summary>
+<summary>Forbidden transfer — road → road — 76 cases; unverified: 76</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
+| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-6b11d9311e2e4530524c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4cafb8b11fdd53d90431">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-45a5504937301507099f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5d88f787ff091e22c17d">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-7ae2fb8febef2838146b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7fb33ab9fe8ba81df126">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-764699f4c34db939086d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-86118fe777bba026e49d">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-9620e61c65a823817c62">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-93ea25f1846e5492cb95">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1a0fde682a23638df039">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-79a0be7e31f8f0f96459">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-4e77337e3b6cc9046ac5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-46880c460db8f3bdb291">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fe58104826c00a815ea4">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-39ff2a23d88b9ffe55ca">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-5d0aba7069b81484a38e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1914b0411e206e1c8913">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7109bf14f7e61f3b309a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1b8b4c70bdda7a3f742a">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-3468fd7edd0d4243f176">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b4b8089ad33df57cf687">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c8c4a8ee7be376534dfe">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-92b4f2249658f4b9bb76">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-76881a6e343f18123360">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cca5eeaec56fe1198e76">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d7e4efea41156f520691">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-de9cf133c7288af87b2a">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-8ae7e9c28c831c7dfcfe">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f7f28a81b3c39e41c548">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2b983092ead29116c994">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cccd3e38bd84d04b0111">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-7f56abd1febc1e4b0b09">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e36d30601e92967b18dc">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a8ddaf832d6b832611c3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ee8b68fd9bafc9d33375">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-6b8830eb2b0af28e59f2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d826ab7a242ac0628836">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0aa1f868360e21771f46">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-22e699959c703a1affda">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-d9772d345cd01666f506">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d283bc07b45f4e4ee0ac">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f2a216fcc55902557306">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-bde76f95a2ba2394ee16">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a40e16235165b08b1463">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8bd60aa02fee2e780686">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e08a13e4bf93fb714f0c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cd0ac5379c5e95c71e30">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e2d59e2b6ea9cf9d6481">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-416d33c1e82fdb3718fb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a17a38a29f7b3c3c8a24">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3f2866f662adc75cd906">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c339fd55b392edf20877">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ce2418ad487a3e50a443">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-341fea643f3fa95b8e44">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1477ff2bd6fa26bce0d4">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-1f50099a159518157c79">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-329f0b761def8f1beef3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c9e0ab0e3472a4bfaa55">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5795e8de6cf15c84065a">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c1cf79ea02ba06044880">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-78f7e742bb17ac90bf13">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-49b58a11584daeb25f9a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-68af5a27847f1375ee37">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-9de4c4b4c87672ea43e6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4356ffc76ca40c658464">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0c24d9d91b376ed5cc95">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4e031cd462a6f95dd0cb">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-1a1ec57a437ab7ef6643">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c0c1df98502efe6b0fd9">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7ee8433d475d0062347d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3e834c2a64684649d313">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-67c240f02ea07a4cbee3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3b0d069e5f089be3a747">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3862106294eabbe8802d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5cec8d75510cada29c25">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-8172e55a5f90f995dcd5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-dc2e4d17dcdbf0bfe0ba">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d0f02da706f7c85083fd">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-80294b630c84e1a64a56">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-827a8785572c24205b18">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1907fde5979ae3500077">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8b166f625dda32e2d920">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-818237df41f1b7c263b5">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-337af1bf2fbd8e99d092">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-55dcfecb5c0193aa75c3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1ac378194b6bdc9bc0f6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-11adcb7a6429141fcbde">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-44bf51f844e221495389">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-84982f49704b9c01be82">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-348149792b12f087d3cd">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f22ae68875c176eb1158">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-b178317cd682e6942300">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b64102b55684970253cf">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4ecf60bf97ff42095928">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-aa8ff6fd3bbfe19bb466">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-11be1114f85029a242d2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-11657d528bcb86d022ff">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b872ab79373195e09e8d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-656ebc93a8774368d332">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a3661c7739a1b0e7a1ff">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-03d36a7dafd8f06aad8b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2b0ee12c50a6f4765a7b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cffc89788579653e93ed">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-b9736d439a78bdded155">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0da336e9c11be6880eed">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cefa9f6ef07d65dda66d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2ff9b5cf1c95fbe3be6f">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a210aa97783330e6ba2f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7d948482a817f076d7cf">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6831e11b63f165e18b38">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-68f7cae8ff6260f04d3f">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-2886d09d43b2212a7b1f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0a723d329c71ca69ecbf">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-493a6454cdde69015563">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6f43a6fd421948894b52">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-d101ae717c3cdfdddffe">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-904dcf6ac009c629c07d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c8353465c4bddf92b7d2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-695767eea9753d55d694">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-68efcda87b5384a7d82d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b5edd48071be95fc4387">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-42b3d05ec7c777a3dd71">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fc93b9a7fe730d9ec640">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-d02b44a492bff43fe451">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-42a5d1960969c85eb7f2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ed887f53053eca10940d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-74f686ef7fc32d522345">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-83669fd31c518371eb7c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f14d25b33f4c8883fb21">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-747dc0363c2a6d92ea1c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-bbf6874fbdc82340b1ab">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f82b9e55a0f70569218e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-61a522367fed7f094ceb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-76c340cca39ac5ab7558">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ef4c154be90511a3014e">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f4f8e5f132b22832dacb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0d2f01b5c49ac98e0dc0">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7685d76d2188619227db">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f4e3db35195f24058ef2">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-b3ef51245e001a9fe744">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a06f4406d229278f60a9">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b632add39767f90fe800">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b9b673f0c8a17dd6b5b6">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-2e831f32e1711fadbb9d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6fd417bb4716c856edbe">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-67d9ff18360346269751">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-37e00494e4d3122cd4ca">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c7ac1d8364fd59a43d9b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ef87085df65d089d3ec0">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4c1c3cfb54f5dbcaf8a5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-994f92152b5e7c174516">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c0b6a2405d33dee300ef">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-89d3bdb3a0fa177b4bdb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1db5bb6116efb4b720e3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7b66c80a6c74c320282c">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-eb8cc8d1aa5da7419be6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2ebb87d5b7d2c9d04dd7">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e67d51bb08cf04748c1c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f08c2979e9b9d256012f">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-ac519a03fc87b00a5fb9">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2c5d6ff8285fd0b8903d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d13c9fa4c6bdb6ef16fa">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8b29e2fa05ef8062662f">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-9c2dcb66835063eaeaaf">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-52f69f952d016cd4d81a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9f070b5e2faa770ba02a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-837b694ea8379db3a5af">[ ] unverified</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+
+<a id="case-in_game_forbidden_transfer-6b11d9311e2e4530524c"></a>
+
+**0° CCW: unverified** — `in_game_forbidden_transfer-6b11d9311e2e4530524c`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-4cafb8b11fdd53d90431"></a>
+
+**90° CCW: unverified** — `in_game_forbidden_transfer-4cafb8b11fdd53d90431`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-45a5504937301507099f"></a>
+
+**180° CCW: unverified** — `in_game_forbidden_transfer-45a5504937301507099f`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-5d88f787ff091e22c17d"></a>
+
+**270° CCW: unverified** — `in_game_forbidden_transfer-5d88f787ff091e22c17d`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-1; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
 
 
 <details>
@@ -1505,91 +1337,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-9620e61c65a823817c62"></a>
+<a id="case-in_game_forbidden_transfer-3468fd7edd0d4243f176"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-9620e61c65a823817c62`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-3468fd7edd0d4243f176`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-93ea25f1846e5492cb95"></a>
+<a id="case-in_game_forbidden_transfer-b4b8089ad33df57cf687"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-93ea25f1846e5492cb95`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-b4b8089ad33df57cf687`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1a0fde682a23638df039"></a>
+<a id="case-in_game_forbidden_transfer-c8c4a8ee7be376534dfe"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-1a0fde682a23638df039`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-c8c4a8ee7be376534dfe`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-79a0be7e31f8f0f96459"></a>
+<a id="case-in_game_forbidden_transfer-92b4f2249658f4b9bb76"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-79a0be7e31f8f0f96459`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-1; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-4e77337e3b6cc9046ac5"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-4e77337e3b6cc9046ac5`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-92b4f2249658f4b9bb76`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-46880c460db8f3bdb291"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-46880c460db8f3bdb291`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-fe58104826c00a815ea4"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-fe58104826c00a815ea4`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-39ff2a23d88b9ffe55ca"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-39ff2a23d88b9ffe55ca`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-1; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -1597,45 +1383,91 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-5d0aba7069b81484a38e"></a>
+<a id="case-in_game_forbidden_transfer-76881a6e343f18123360"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-5d0aba7069b81484a38e`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-76881a6e343f18123360`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1914b0411e206e1c8913"></a>
+<a id="case-in_game_forbidden_transfer-cca5eeaec56fe1198e76"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-1914b0411e206e1c8913`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-cca5eeaec56fe1198e76`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-7109bf14f7e61f3b309a"></a>
+<a id="case-in_game_forbidden_transfer-d7e4efea41156f520691"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-7109bf14f7e61f3b309a`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-d7e4efea41156f520691`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1b8b4c70bdda7a3f742a"></a>
+<a id="case-in_game_forbidden_transfer-de9cf133c7288af87b2a"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-1b8b4c70bdda7a3f742a`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-de9cf133c7288af87b2a`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-1; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-1; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8ae7e9c28c831c7dfcfe"></a>
+
+**0° CCW: unverified** — `in_game_forbidden_transfer-8ae7e9c28c831c7dfcfe`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-f7f28a81b3c39e41c548"></a>
+
+**90° CCW: unverified** — `in_game_forbidden_transfer-f7f28a81b3c39e41c548`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-2b983092ead29116c994"></a>
+
+**180° CCW: unverified** — `in_game_forbidden_transfer-2b983092ead29116c994`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-cccd3e38bd84d04b0111"></a>
+
+**270° CCW: unverified** — `in_game_forbidden_transfer-cccd3e38bd84d04b0111`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 1-W-in-2; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -1735,91 +1567,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-d9772d345cd01666f506"></a>
+<a id="case-in_game_forbidden_transfer-c339fd55b392edf20877"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-d9772d345cd01666f506`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-c339fd55b392edf20877`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-d283bc07b45f4e4ee0ac"></a>
+<a id="case-in_game_forbidden_transfer-ce2418ad487a3e50a443"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-d283bc07b45f4e4ee0ac`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-ce2418ad487a3e50a443`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-f2a216fcc55902557306"></a>
+<a id="case-in_game_forbidden_transfer-341fea643f3fa95b8e44"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-f2a216fcc55902557306`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-341fea643f3fa95b8e44`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-bde76f95a2ba2394ee16"></a>
+<a id="case-in_game_forbidden_transfer-1477ff2bd6fa26bce0d4"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-bde76f95a2ba2394ee16`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-2; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-a40e16235165b08b1463"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-a40e16235165b08b1463`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-1477ff2bd6fa26bce0d4`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-8bd60aa02fee2e780686"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-8bd60aa02fee2e780686`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-e08a13e4bf93fb714f0c"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-e08a13e4bf93fb714f0c`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-cd0ac5379c5e95c71e30"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-cd0ac5379c5e95c71e30`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-2; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-2; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -1827,45 +1613,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-e2d59e2b6ea9cf9d6481"></a>
+<a id="case-in_game_forbidden_transfer-1f50099a159518157c79"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-e2d59e2b6ea9cf9d6481`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-1f50099a159518157c79`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-416d33c1e82fdb3718fb"></a>
+<a id="case-in_game_forbidden_transfer-329f0b761def8f1beef3"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-416d33c1e82fdb3718fb`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-329f0b761def8f1beef3`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-a17a38a29f7b3c3c8a24"></a>
+<a id="case-in_game_forbidden_transfer-c9e0ab0e3472a4bfaa55"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-a17a38a29f7b3c3c8a24`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-c9e0ab0e3472a4bfaa55`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-3f2866f662adc75cd906"></a>
+<a id="case-in_game_forbidden_transfer-5795e8de6cf15c84065a"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-3f2866f662adc75cd906`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-5795e8de6cf15c84065a`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-2; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -1965,91 +1751,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-1a1ec57a437ab7ef6643"></a>
+<a id="case-in_game_forbidden_transfer-f4f8e5f132b22832dacb"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-1a1ec57a437ab7ef6643`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-f4f8e5f132b22832dacb`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-c0c1df98502efe6b0fd9"></a>
+<a id="case-in_game_forbidden_transfer-0d2f01b5c49ac98e0dc0"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-c0c1df98502efe6b0fd9`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-0d2f01b5c49ac98e0dc0`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-7ee8433d475d0062347d"></a>
+<a id="case-in_game_forbidden_transfer-7685d76d2188619227db"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-7ee8433d475d0062347d`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-7685d76d2188619227db`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-3e834c2a64684649d313"></a>
+<a id="case-in_game_forbidden_transfer-f4e3db35195f24058ef2"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-3e834c2a64684649d313`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-3; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-67c240f02ea07a4cbee3"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-67c240f02ea07a4cbee3`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-f4e3db35195f24058ef2`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-3b0d069e5f089be3a747"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-3b0d069e5f089be3a747`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-3862106294eabbe8802d"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-3862106294eabbe8802d`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-5cec8d75510cada29c25"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-5cec8d75510cada29c25`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-3; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-W-in-3; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2057,91 +1797,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-8172e55a5f90f995dcd5"></a>
+<a id="case-in_game_forbidden_transfer-b3ef51245e001a9fe744"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-8172e55a5f90f995dcd5`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-b3ef51245e001a9fe744`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-dc2e4d17dcdbf0bfe0ba"></a>
+<a id="case-in_game_forbidden_transfer-a06f4406d229278f60a9"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-dc2e4d17dcdbf0bfe0ba`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-a06f4406d229278f60a9`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-d0f02da706f7c85083fd"></a>
+<a id="case-in_game_forbidden_transfer-b632add39767f90fe800"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-d0f02da706f7c85083fd`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-b632add39767f90fe800`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-80294b630c84e1a64a56"></a>
+<a id="case-in_game_forbidden_transfer-b9b673f0c8a17dd6b5b6"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-80294b630c84e1a64a56`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-3; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-827a8785572c24205b18"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-827a8785572c24205b18`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-b9b673f0c8a17dd6b5b6`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-1907fde5979ae3500077"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-1907fde5979ae3500077`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-8b166f625dda32e2d920"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-8b166f625dda32e2d920`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-818237df41f1b7c263b5"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-818237df41f1b7c263b5`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2149,91 +1843,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-337af1bf2fbd8e99d092"></a>
+<a id="case-in_game_forbidden_transfer-2e831f32e1711fadbb9d"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-337af1bf2fbd8e99d092`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-2e831f32e1711fadbb9d`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-55dcfecb5c0193aa75c3"></a>
+<a id="case-in_game_forbidden_transfer-6fd417bb4716c856edbe"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-55dcfecb5c0193aa75c3`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-6fd417bb4716c856edbe`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1ac378194b6bdc9bc0f6"></a>
+<a id="case-in_game_forbidden_transfer-67d9ff18360346269751"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-1ac378194b6bdc9bc0f6`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-67d9ff18360346269751`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-11adcb7a6429141fcbde"></a>
+<a id="case-in_game_forbidden_transfer-37e00494e4d3122cd4ca"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-11adcb7a6429141fcbde`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-44bf51f844e221495389"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-44bf51f844e221495389`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-37e00494e4d3122cd4ca`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-84982f49704b9c01be82"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-84982f49704b9c01be82`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-348149792b12f087d3cd"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-348149792b12f087d3cd`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-f22ae68875c176eb1158"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-f22ae68875c176eb1158`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2241,91 +1889,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-b178317cd682e6942300"></a>
+<a id="case-in_game_forbidden_transfer-c7ac1d8364fd59a43d9b"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-b178317cd682e6942300`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-c7ac1d8364fd59a43d9b`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-b64102b55684970253cf"></a>
+<a id="case-in_game_forbidden_transfer-ef87085df65d089d3ec0"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-b64102b55684970253cf`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-ef87085df65d089d3ec0`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-4ecf60bf97ff42095928"></a>
+<a id="case-in_game_forbidden_transfer-4c1c3cfb54f5dbcaf8a5"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-4ecf60bf97ff42095928`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-4c1c3cfb54f5dbcaf8a5`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-aa8ff6fd3bbfe19bb466"></a>
+<a id="case-in_game_forbidden_transfer-994f92152b5e7c174516"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-aa8ff6fd3bbfe19bb466`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-11be1114f85029a242d2"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-11be1114f85029a242d2`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-994f92152b5e7c174516`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-11657d528bcb86d022ff"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-11657d528bcb86d022ff`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-b872ab79373195e09e8d"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-b872ab79373195e09e8d`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-656ebc93a8774368d332"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-656ebc93a8774368d332`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2333,91 +1935,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-a3661c7739a1b0e7a1ff"></a>
+<a id="case-in_game_forbidden_transfer-c0b6a2405d33dee300ef"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-a3661c7739a1b0e7a1ff`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-c0b6a2405d33dee300ef`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-03d36a7dafd8f06aad8b"></a>
+<a id="case-in_game_forbidden_transfer-89d3bdb3a0fa177b4bdb"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-03d36a7dafd8f06aad8b`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-89d3bdb3a0fa177b4bdb`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-2b0ee12c50a6f4765a7b"></a>
+<a id="case-in_game_forbidden_transfer-1db5bb6116efb4b720e3"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-2b0ee12c50a6f4765a7b`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-1db5bb6116efb4b720e3`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-cffc89788579653e93ed"></a>
+<a id="case-in_game_forbidden_transfer-7b66c80a6c74c320282c"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-cffc89788579653e93ed`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-b9736d439a78bdded155"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-b9736d439a78bdded155`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-7b66c80a6c74c320282c`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-0da336e9c11be6880eed"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-0da336e9c11be6880eed`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-cefa9f6ef07d65dda66d"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-cefa9f6ef07d65dda66d`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-2ff9b5cf1c95fbe3be6f"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-2ff9b5cf1c95fbe3be6f`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-N-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2425,91 +1981,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-a210aa97783330e6ba2f"></a>
+<a id="case-in_game_forbidden_transfer-eb8cc8d1aa5da7419be6"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-a210aa97783330e6ba2f`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-eb8cc8d1aa5da7419be6`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-7d948482a817f076d7cf"></a>
+<a id="case-in_game_forbidden_transfer-2ebb87d5b7d2c9d04dd7"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-7d948482a817f076d7cf`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-2ebb87d5b7d2c9d04dd7`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-6831e11b63f165e18b38"></a>
+<a id="case-in_game_forbidden_transfer-e67d51bb08cf04748c1c"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-6831e11b63f165e18b38`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-e67d51bb08cf04748c1c`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-68f7cae8ff6260f04d3f"></a>
+<a id="case-in_game_forbidden_transfer-f08c2979e9b9d256012f"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-68f7cae8ff6260f04d3f`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-N-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-2886d09d43b2212a7b1f"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-2886d09d43b2212a7b1f`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-f08c2979e9b9d256012f`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-0a723d329c71ca69ecbf"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-0a723d329c71ca69ecbf`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-493a6454cdde69015563"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-493a6454cdde69015563`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-6f43a6fd421948894b52"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-6f43a6fd421948894b52`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-N-out-4; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2517,91 +2027,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-d101ae717c3cdfdddffe"></a>
+<a id="case-in_game_forbidden_transfer-ac519a03fc87b00a5fb9"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-d101ae717c3cdfdddffe`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-ac519a03fc87b00a5fb9`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-904dcf6ac009c629c07d"></a>
+<a id="case-in_game_forbidden_transfer-2c5d6ff8285fd0b8903d"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-904dcf6ac009c629c07d`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-2c5d6ff8285fd0b8903d`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-c8353465c4bddf92b7d2"></a>
+<a id="case-in_game_forbidden_transfer-d13c9fa4c6bdb6ef16fa"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-c8353465c4bddf92b7d2`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-d13c9fa4c6bdb6ef16fa`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-695767eea9753d55d694"></a>
+<a id="case-in_game_forbidden_transfer-8b29e2fa05ef8062662f"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-695767eea9753d55d694`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-68efcda87b5384a7d82d"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-68efcda87b5384a7d82d`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-8b29e2fa05ef8062662f`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-b5edd48071be95fc4387"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-b5edd48071be95fc4387`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-42b3d05ec7c777a3dd71"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-42b3d05ec7c777a3dd71`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-fc93b9a7fe730d9ec640"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-fc93b9a7fe730d9ec640`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-N-out-5; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-7; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2609,137 +2073,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-d02b44a492bff43fe451"></a>
+<a id="case-in_game_forbidden_transfer-9c2dcb66835063eaeaaf"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-d02b44a492bff43fe451`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-9c2dcb66835063eaeaaf`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-42a5d1960969c85eb7f2"></a>
+<a id="case-in_game_forbidden_transfer-52f69f952d016cd4d81a"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-42a5d1960969c85eb7f2`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-52f69f952d016cd4d81a`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-ed887f53053eca10940d"></a>
+<a id="case-in_game_forbidden_transfer-9f070b5e2faa770ba02a"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-ed887f53053eca10940d`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-9f070b5e2faa770ba02a`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-74f686ef7fc32d522345"></a>
+<a id="case-in_game_forbidden_transfer-837b694ea8379db3a5af"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-74f686ef7fc32d522345`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-N-out-6; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-83669fd31c518371eb7c"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-83669fd31c518371eb7c`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-837b694ea8379db3a5af`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-f14d25b33f4c8883fb21"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-f14d25b33f4c8883fb21`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-747dc0363c2a6d92ea1c"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-747dc0363c2a6d92ea1c`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-bbf6874fbdc82340b1ab"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-bbf6874fbdc82340b1ab`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-9; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-f82b9e55a0f70569218e"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-f82b9e55a0f70569218e`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-61a522367fed7f094ceb"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-61a522367fed7f094ceb`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-76c340cca39ac5ab7558"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-76c340cca39ac5ab7558`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-ef4c154be90511a3014e"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-ef4c154be90511a3014e`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-12; to port: 1-E-out-10; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -2748,7 +2120,7 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Forbidden transfer — road → pedestrian — 48 cases; unverified: 48</summary>
+<summary>Forbidden transfer — road → pedestrian — 40 cases; unverified: 40</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
@@ -2758,12 +2130,10 @@ No observation recorded.
 | **Forbidden transfer**<br>from port: 1-W-in-2; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-d1ababafdf7e6ab2e5fc">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-98dd04a0d22ca706eac3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f0343ccf7f4b7c5d5edd">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7ce2ef992793897858b4">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-3; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-4cb67f645ec0f091a488">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a565b1fcf44b861dbd81">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ee54a63a5f52ad78218b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1ff89353fdd43d449917">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 1-W-in-3; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e7e9b5bddcfd70784a10">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f7a16678feea1f082283">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3c80fa5034eda32830d7">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d8aa2ac45bb8a8b05ea6">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-facf2d9d5fd9e19d2ce6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6170852d79c93d3d6e69">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c5d21838b6a11b600e6f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-29a9bc624ae881e744f1">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f8dd6be3b83e6d4e30d5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2c3f313da8835a19984a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cc5f7f3a5e8df73e126f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1d0f00228196e4fbb99b">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-94d662e7c0f576414b57">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-adc77f43de7349d9ab6b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b77da0109a502f2abdb3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d633106a3afe8d57ced3">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-41031d23dde7a4af0d61">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7baeb89cab551894fa6b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a578d1c423fde8876de5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8c8c10e3441e3a0805b6">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-41e8e72072c332c9e928">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-dbbdfcaf8757d17c44a2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-847093bfcb61cf80cc89">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8844c098fc9eb7b39942">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c0b8c3c86aad0260f08a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-052b1be17b003dc8f268">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c691c90c237505b68256">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b61ad4eafcdaade58114">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-1ecd54479047efec73df">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f9b7d6f5803152a699e5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-122645e1d88f71e32e41">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8a782d89d4a4bb47b0f7">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-79c30e5e414236dd2edb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b15914139383a7bf8426">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-948dcd4a7c484228bec1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1b7c44db5d2e6319f967">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-eff71bd27542440c34af">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-55a65e944c092add4858">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-65c9617a509302411db3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3dd9e71f63a620a0e2f6">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c0a3350e31c0cb217ca6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-cb507ea698c7da127013">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d19d62102eb453329417">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ec61419ba9d53c03a683">[ ] unverified</a> |
 
 
 <details>
@@ -3043,91 +2413,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-facf2d9d5fd9e19d2ce6"></a>
+<a id="case-in_game_forbidden_transfer-1ecd54479047efec73df"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-facf2d9d5fd9e19d2ce6`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-1ecd54479047efec73df`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-6170852d79c93d3d6e69"></a>
+<a id="case-in_game_forbidden_transfer-f9b7d6f5803152a699e5"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-6170852d79c93d3d6e69`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-f9b7d6f5803152a699e5`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-c5d21838b6a11b600e6f"></a>
+<a id="case-in_game_forbidden_transfer-122645e1d88f71e32e41"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-c5d21838b6a11b600e6f`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-122645e1d88f71e32e41`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-29a9bc624ae881e744f1"></a>
+<a id="case-in_game_forbidden_transfer-8a782d89d4a4bb47b0f7"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-29a9bc624ae881e744f1`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-f8dd6be3b83e6d4e30d5"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-f8dd6be3b83e6d4e30d5`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-8a782d89d4a4bb47b0f7`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-2c3f313da8835a19984a"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-2c3f313da8835a19984a`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-cc5f7f3a5e8df73e126f"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-cc5f7f3a5e8df73e126f`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-1d0f00228196e4fbb99b"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-1d0f00228196e4fbb99b`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-W-in-4; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3135,91 +2459,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-94d662e7c0f576414b57"></a>
+<a id="case-in_game_forbidden_transfer-79c30e5e414236dd2edb"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-94d662e7c0f576414b57`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-79c30e5e414236dd2edb`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-adc77f43de7349d9ab6b"></a>
+<a id="case-in_game_forbidden_transfer-b15914139383a7bf8426"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-adc77f43de7349d9ab6b`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-b15914139383a7bf8426`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-b77da0109a502f2abdb3"></a>
+<a id="case-in_game_forbidden_transfer-948dcd4a7c484228bec1"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-b77da0109a502f2abdb3`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-948dcd4a7c484228bec1`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-d633106a3afe8d57ced3"></a>
+<a id="case-in_game_forbidden_transfer-1b7c44db5d2e6319f967"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-d633106a3afe8d57ced3`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-41031d23dde7a4af0d61"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-41031d23dde7a4af0d61`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-1b7c44db5d2e6319f967`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-7baeb89cab551894fa6b"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-7baeb89cab551894fa6b`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-a578d1c423fde8876de5"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-a578d1c423fde8876de5`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-8c8c10e3441e3a0805b6"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-8c8c10e3441e3a0805b6`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 1-S-in-11; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-9; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3227,45 +2505,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-41e8e72072c332c9e928"></a>
+<a id="case-in_game_forbidden_transfer-eff71bd27542440c34af"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-41e8e72072c332c9e928`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-eff71bd27542440c34af`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-dbbdfcaf8757d17c44a2"></a>
+<a id="case-in_game_forbidden_transfer-55a65e944c092add4858"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-dbbdfcaf8757d17c44a2`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-55a65e944c092add4858`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-847093bfcb61cf80cc89"></a>
+<a id="case-in_game_forbidden_transfer-65c9617a509302411db3"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-847093bfcb61cf80cc89`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-65c9617a509302411db3`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-8844c098fc9eb7b39942"></a>
+<a id="case-in_game_forbidden_transfer-3dd9e71f63a620a0e2f6"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-8844c098fc9eb7b39942`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-3dd9e71f63a620a0e2f6`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-N-out-2; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3273,45 +2551,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-c0b8c3c86aad0260f08a"></a>
+<a id="case-in_game_forbidden_transfer-c0a3350e31c0cb217ca6"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-c0b8c3c86aad0260f08a`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-c0a3350e31c0cb217ca6`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-052b1be17b003dc8f268"></a>
+<a id="case-in_game_forbidden_transfer-cb507ea698c7da127013"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-052b1be17b003dc8f268`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-cb507ea698c7da127013`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-c691c90c237505b68256"></a>
+<a id="case-in_game_forbidden_transfer-d19d62102eb453329417"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-c691c90c237505b68256`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-d19d62102eb453329417`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-b61ad4eafcdaade58114"></a>
+<a id="case-in_game_forbidden_transfer-ec61419ba9d53c03a683"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-b61ad4eafcdaade58114`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-ec61419ba9d53c03a683`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 1-S-in-12; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+Scope: from port: 1-S-in-10; to port: 2-E-out-3; from service: road; to service: pedestrian; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3320,22 +2598,66 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Forbidden transfer — pedestrian → road — 48 cases; unverified: 48</summary>
+<summary>Forbidden transfer — pedestrian → road — 40 cases; unverified: 40</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
+| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-28d82d3a8b633426f119">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-383345c0388405b7f8c8">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fe558992dfa8aa40be74">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b4843d376dc6058ce5ea">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-N-out-5; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-95350ea8c3e93b331283">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-8c687947a48e82915f7b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3efc3aaa50e2a4c845b6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-bd16c0afc0df005e6bf1">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-N-out-6; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-bf2f53fb48bf6cb4fad8">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f44e760964222302c77b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-405dcdb332e656dfbb5f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d435db8b755fc6bb8f32">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c342c7fd33678c1b688e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6c29ce334825696c9e2b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-eeea16b4eb4500388a78">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5c221349efbb5db5b0fb">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-3419b59ea23eb049f1b5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1053b4229fb7a8315bd8">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e62ab6755cab1005ef83">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3edad4cbff72f0cebf71">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-de61840dc69ecf973133">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-13ca979f3fb596177bde">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0e071462f37779c3c74a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6ff5859b338c68435b50">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-024d22d339d3024a6449">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a4c19120bc073084a7c0">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-2133fa3c8d9ec4b7e8ce">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-713c53ac51681f26be4f">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-6ee06479e2c36e49e6cb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-211bd803b6c97ff7c844">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4f0d51fb33b52d888f83">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ab02934b95161f964cfa">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-89a41348bd864f29661d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e4ac500851c984b7261f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0b9ddf9e38b30358038f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e4b27155e9af5306f253">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-733c805b158b47992b53">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ad55e9488f068386e290">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-16fc46ee004bcf10b712">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9088e799ada7f61b1cad">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-N-out-5; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-8a86f5a199144923509f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b52c5bcdda07ba93ab53">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-303509a0bdfb1d8e716f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d88fc4bea534308360a1">[ ] unverified</a> |
 | **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-N-out-6; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-564d618c32354a0d379b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-86421fca5c8ac717e663">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f3753b0da4d7b0faa171">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-722e4cd270876540efa8">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-5a951826da54fa974ab4">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ec777b05bebaf98ba05f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f0e5eddb99509439117e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-76df056660bcd17a198e">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-328c41e392763a8f7994">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c6d4ed091984a313d4f1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0eec8ec99faccf486fe2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-af1d45d1ae2c7d624753">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-98b56de365c6ca76c657">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d53d7f87f883b98dcff2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-91a3c6cdbc529f93d830">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1d63e0c224a3eeef8ff6">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a1e1e292e5b36952f765">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-17d2e71bb68efe26ab50">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0baf7afb2c545efa25db">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-edc1cf245b0e3641da74">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f890e9e1591f059036ee">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f9fc2a010bf55db958ff">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1a66f39b97fa4be1c65b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6c940cd6b7b7806131d8">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-dd5afafa471290fc4809">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-62379c041971dde0e6ad">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5bbdc18d8d35a8e11c0e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c084db36417b779a8e09">[ ] unverified</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+
+<a id="case-in_game_forbidden_transfer-28d82d3a8b633426f119"></a>
+
+**0° CCW: unverified** — `in_game_forbidden_transfer-28d82d3a8b633426f119`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-383345c0388405b7f8c8"></a>
+
+**90° CCW: unverified** — `in_game_forbidden_transfer-383345c0388405b7f8c8`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-fe558992dfa8aa40be74"></a>
+
+**180° CCW: unverified** — `in_game_forbidden_transfer-fe558992dfa8aa40be74`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+<a id="case-in_game_forbidden_transfer-b4843d376dc6058ce5ea"></a>
+
+**270° CCW: unverified** — `in_game_forbidden_transfer-b4843d376dc6058ce5ea`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: 2-W-in-1; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
 
 
 <details>
@@ -3431,91 +2753,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-c342c7fd33678c1b688e"></a>
+<a id="case-in_game_forbidden_transfer-6ee06479e2c36e49e6cb"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-c342c7fd33678c1b688e`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-6ee06479e2c36e49e6cb`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-6c29ce334825696c9e2b"></a>
+<a id="case-in_game_forbidden_transfer-211bd803b6c97ff7c844"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-6c29ce334825696c9e2b`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-211bd803b6c97ff7c844`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-eeea16b4eb4500388a78"></a>
+<a id="case-in_game_forbidden_transfer-4f0d51fb33b52d888f83"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-eeea16b4eb4500388a78`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-4f0d51fb33b52d888f83`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-5c221349efbb5db5b0fb"></a>
+<a id="case-in_game_forbidden_transfer-ab02934b95161f964cfa"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-5c221349efbb5db5b0fb`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-W-in-1; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-3419b59ea23eb049f1b5"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-3419b59ea23eb049f1b5`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-ab02934b95161f964cfa`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-1053b4229fb7a8315bd8"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-1053b4229fb7a8315bd8`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-e62ab6755cab1005ef83"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-e62ab6755cab1005ef83`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-3edad4cbff72f0cebf71"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-3edad4cbff72f0cebf71`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-W-in-1; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3523,45 +2799,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-de61840dc69ecf973133"></a>
+<a id="case-in_game_forbidden_transfer-89a41348bd864f29661d"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-de61840dc69ecf973133`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-89a41348bd864f29661d`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-13ca979f3fb596177bde"></a>
+<a id="case-in_game_forbidden_transfer-e4ac500851c984b7261f"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-13ca979f3fb596177bde`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-e4ac500851c984b7261f`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-0e071462f37779c3c74a"></a>
+<a id="case-in_game_forbidden_transfer-0b9ddf9e38b30358038f"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-0e071462f37779c3c74a`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-0b9ddf9e38b30358038f`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-6ff5859b338c68435b50"></a>
+<a id="case-in_game_forbidden_transfer-e4b27155e9af5306f253"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-6ff5859b338c68435b50`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-e4b27155e9af5306f253`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-W-in-1; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3569,45 +2845,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-024d22d339d3024a6449"></a>
+<a id="case-in_game_forbidden_transfer-733c805b158b47992b53"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-024d22d339d3024a6449`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-733c805b158b47992b53`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-a4c19120bc073084a7c0"></a>
+<a id="case-in_game_forbidden_transfer-ad55e9488f068386e290"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-a4c19120bc073084a7c0`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-ad55e9488f068386e290`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-2133fa3c8d9ec4b7e8ce"></a>
+<a id="case-in_game_forbidden_transfer-16fc46ee004bcf10b712"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-2133fa3c8d9ec4b7e8ce`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-16fc46ee004bcf10b712`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-713c53ac51681f26be4f"></a>
+<a id="case-in_game_forbidden_transfer-9088e799ada7f61b1cad"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-713c53ac51681f26be4f`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-9088e799ada7f61b1cad`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-W-in-1; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-N-out-4; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3707,91 +2983,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-5a951826da54fa974ab4"></a>
+<a id="case-in_game_forbidden_transfer-f890e9e1591f059036ee"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-5a951826da54fa974ab4`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-f890e9e1591f059036ee`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-ec777b05bebaf98ba05f"></a>
+<a id="case-in_game_forbidden_transfer-f9fc2a010bf55db958ff"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-ec777b05bebaf98ba05f`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-f9fc2a010bf55db958ff`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-f0e5eddb99509439117e"></a>
+<a id="case-in_game_forbidden_transfer-1a66f39b97fa4be1c65b"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-f0e5eddb99509439117e`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-1a66f39b97fa4be1c65b`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-76df056660bcd17a198e"></a>
+<a id="case-in_game_forbidden_transfer-6c940cd6b7b7806131d8"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-76df056660bcd17a198e`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-N-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-328c41e392763a8f7994"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-328c41e392763a8f7994`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-6c940cd6b7b7806131d8`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-c6d4ed091984a313d4f1"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-c6d4ed091984a313d4f1`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-0eec8ec99faccf486fe2"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-0eec8ec99faccf486fe2`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-af1d45d1ae2c7d624753"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-af1d45d1ae2c7d624753`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-N-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-7; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
@@ -3799,91 +3029,45 @@ No observation recorded.
 
 
 <details>
-<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
+<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
 
-<a id="case-in_game_forbidden_transfer-98b56de365c6ca76c657"></a>
+<a id="case-in_game_forbidden_transfer-dd5afafa471290fc4809"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-98b56de365c6ca76c657`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-dd5afafa471290fc4809`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-d53d7f87f883b98dcff2"></a>
+<a id="case-in_game_forbidden_transfer-62379c041971dde0e6ad"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-d53d7f87f883b98dcff2`.
+**90° CCW: unverified** — `in_game_forbidden_transfer-62379c041971dde0e6ad`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-91a3c6cdbc529f93d830"></a>
+<a id="case-in_game_forbidden_transfer-5bbdc18d8d35a8e11c0e"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-91a3c6cdbc529f93d830`.
+**180° CCW: unverified** — `in_game_forbidden_transfer-5bbdc18d8d35a8e11c0e`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 
-<a id="case-in_game_forbidden_transfer-1d63e0c224a3eeef8ff6"></a>
+<a id="case-in_game_forbidden_transfer-c084db36417b779a8e09"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-1d63e0c224a3eeef8ff6`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-E-out-9; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Forbidden transfer — from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph</summary>
-
-<a id="case-in_game_forbidden_transfer-a1e1e292e5b36952f765"></a>
-
-**0° CCW: unverified** — `in_game_forbidden_transfer-a1e1e292e5b36952f765`.
+**270° CCW: unverified** — `in_game_forbidden_transfer-c084db36417b779a8e09`.
 
 Confirm this undeclared transfer is unavailable.
 
-Scope: from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-17d2e71bb68efe26ab50"></a>
-
-**90° CCW: unverified** — `in_game_forbidden_transfer-17d2e71bb68efe26ab50`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-0baf7afb2c545efa25db"></a>
-
-**180° CCW: unverified** — `in_game_forbidden_transfer-0baf7afb2c545efa25db`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-<a id="case-in_game_forbidden_transfer-edc1cf245b0e3641da74"></a>
-
-**270° CCW: unverified** — `in_game_forbidden_transfer-edc1cf245b0e3641da74`.
-
-Confirm this undeclared transfer is unavailable.
-
-Scope: from port: 2-S-in-4; to port: 1-E-out-10; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
+Scope: from port: 2-S-in-4; to port: 1-E-out-8; from service: pedestrian; to service: road; basis: not reachable in actual saved PATH graph.
 
 No observation recorded.
 

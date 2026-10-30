@@ -17,6 +17,10 @@ from .verify import parse_paths
 PATH = (0x296678f7, 0xa966883f)
 S3D = (0x5ad0e817, 0xbadb57f1)
 EPS = 2e-5
+# Separately rounded saved PATH samples can give the two finite chords at
+# an exact tile cut slightly different slopes. This dimensionless bound is
+# 0.01 percentage point; positions and travel tangents retain strict EPS.
+PLACED_ROUTE_GRADE_TOLERANCE = 1e-4
 ROTATIONS = (0, 90, 180, 270)
 
 
@@ -459,7 +463,8 @@ def _placed_route_join(first, second):
         return False
     if _point(a['endpoint_m']) != _point(b['endpoint_m']):
         return False
-    if math.dist(_unit(a['tangent']), _unit(b['tangent'])) > EPS or abs(a['grade']-b['grade']) > EPS:
+    if (math.dist(_unit(a['tangent']), _unit(b['tangent'])) > EPS
+            or abs(a['grade']-b['grade']) > PLACED_ROUTE_GRADE_TOLERANCE):
         return False
     for centre_a, edge_a in first['boundaries']:
         normal = _EDGE_NORMALS[edge_a]

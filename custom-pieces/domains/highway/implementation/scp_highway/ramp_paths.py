@@ -271,7 +271,7 @@ def _avenue_boundary(u, v, travel_direction, *, beyond):
 
 
 def compact_access_routes(ramps=None):
-    """Compile eight real highway/Avenue transfer movements at ground level.
+    """Compile four right-turn highway/Avenue transfers at ground level.
 
     Each complete route begins and ends on an actual native tile-side lane:
     an outer DD lane at one end and a measured outer Avenue lane at the
@@ -289,30 +289,33 @@ def compact_access_routes(ramps=None):
         mouth = ramp["points"][0 if on else -1]
         mouth_u, mouth_v = highway_coordinates(mouth)
         highway_direction = -1 if ramp["deck"] == "lower" else 1
-        for arm, avenue_direction in (("NW", 1), ("SE", -1)):
-            # Off-ramp direction names the destination. On-ramp direction
-            # names its source, whose traffic heads towards the junction.
-            travel = -avenue_direction if on else avenue_direction
-            avenue_u = travel * outer
-            avenue_v = mouth_v + avenue_direction * 18.0
-            port_v = _avenue_boundary(avenue_u, avenue_v, travel, beyond=not on)
-            port = world_coordinates(avenue_u, port_v)
-            avenue_point = avenue_u, avenue_v
-            mouth_point = mouth_u, mouth_v
-            if on:
-                turn = _surface_turn(avenue_point, mouth_point, (0, travel), (highway_direction, 0))
-                world_turn = [world_coordinates(u, v) for u, v in turn]
-                points = [port] + world_turn + ramp["points"][1:]
-                movement = f"{arm}->{ramp['deck']}-highway"
-            else:
-                turn = _surface_turn(mouth_point, avenue_point, (highway_direction, 0), (0, travel))
-                world_turn = [world_coordinates(u, v) for u, v in turn]
-                points = ramp["points"][:-1] + world_turn + [port]
-                movement = f"{ramp['deck']}-highway->{arm}"
-            result.append({"id": movement, "ramp_id": ramp["id"], "points": points,
-                           "transport": CAR, "lane": 1, "junction": True,
-                           "surface_points": world_turn, "avenue_port": port,
-                           "native_high_port": ramp["native_high_port"]})
+        # A right turn reaches only the adjacent Avenue carriageway. The
+        # opposing carriageway has no crossing PATH or asphalt turn apron.
+        avenue_direction = ramp["side"]
+        arm = "NW" if avenue_direction == 1 else "SE"
+        # Off-ramp direction names the destination. On-ramp direction
+        # names its source, whose traffic heads towards the junction.
+        travel = -avenue_direction if on else avenue_direction
+        avenue_u = travel * outer
+        avenue_v = mouth_v + avenue_direction * 18.0
+        port_v = _avenue_boundary(avenue_u, avenue_v, travel, beyond=not on)
+        port = world_coordinates(avenue_u, port_v)
+        avenue_point = avenue_u, avenue_v
+        mouth_point = mouth_u, mouth_v
+        if on:
+            turn = _surface_turn(avenue_point, mouth_point, (0, travel), (highway_direction, 0))
+            world_turn = [world_coordinates(u, v) for u, v in turn]
+            points = [port] + world_turn + ramp["points"][1:]
+            movement = f"{arm}->{ramp['deck']}-highway"
+        else:
+            turn = _surface_turn(mouth_point, avenue_point, (highway_direction, 0), (0, travel))
+            world_turn = [world_coordinates(u, v) for u, v in turn]
+            points = ramp["points"][:-1] + world_turn + [port]
+            movement = f"{ramp['deck']}-highway->{arm}"
+        result.append({"id": movement, "ramp_id": ramp["id"], "points": points,
+                       "transport": CAR, "lane": 1, "junction": True,
+                       "surface_points": world_turn, "avenue_port": port,
+                       "native_high_port": ramp["native_high_port"]})
     return result
 
 
@@ -320,28 +323,29 @@ MODULES = {
     "access-core": ("DD RHW-4 and Avenue Access Core", ((0, -1), (-1, 0), (0, 0), (1, 0), (0, 1))),
     "northwest-junction": ("Avenue Northwest Ramp Junction", ((-2, -2), (-1, -2), (0, -2), (-2, -1), (-1, -1), (-2, 0))),
     "southeast-junction": ("Avenue Southeast Ramp Junction", ((1, 1), (2, 1), (3, 1), (1, 2), (2, 2), (3, 2), (1, 3), (2, 3))),
-    "lower-exit-branch": ("DD RHW-4 Lower Diagonal Exit Branch", ((2, -2),)),
-    "lower-entry-branch": ("DD RHW-4 Lower Diagonal Entry Branch", ((-2, 2),)),
-    "lower-exit-grade": ("Compact Lower Diagonal Exit Grade", ((1, -2),)),
-    "lower-entry-grade": ("Compact Lower Diagonal Entry Grade", ((-2, 1),)),
-    "upper-exit-branch": ("DD RHW-4 Upper Diagonal Exit Branch", ((-2, 3), (-3, 4), (-2, 4))),
-    "upper-entry-branch": ("DD RHW-4 Upper Diagonal Entry Branch", ((4, -3), (3, -2), (4, -2))),
-    "upper-exit-grade": ("Compact Upper Diagonal Exit Grade", ((0, 2), (-1, 3), (0, 3))),
-    "upper-entry-grade": ("Compact Upper Diagonal Entry Grade", ((3, -1), (2, 0), (3, 0))),
+    "lower-exit-branch": ("DD RHW-4 Lower Diagonal Exit Branch", ((2, -3), (3, -3), (2, -2))),
+    "lower-entry-branch": ("DD RHW-4 Lower Diagonal Entry Branch", ((-3, 2), (-2, 2), (-3, 3))),
+    "lower-exit-grade": ("Compact Lower Diagonal Exit Grade", ((1, -3), (1, -2))),
+    "lower-entry-grade": ("Compact Lower Diagonal Entry Grade", ((-3, 1), (-2, 1))),
+    "upper-exit-branch": ("DD RHW-4 Upper Diagonal Exit Branch", ((-2, 3), (-4, 4), (-3, 4), (-2, 4), (-4, 5), (-3, 5))),
+    "upper-entry-branch": ("DD RHW-4 Upper Diagonal Entry Branch", ((4, -4), (5, -4), (4, -3), (5, -3), (3, -2), (4, -2))),
+    "upper-exit-grade": ("Compact Upper Diagonal Exit Grade", ((0, 2), (-1, 3), (0, 3), (-1, 4))),
+    "upper-entry-grade": ("Compact Upper Diagonal Entry Grade", ((4, -1), (3, -1), (2, 0), (3, 0))),
     "diagonal-half-a": ("DD RHW-4 Diagonal Continuation A", ((-1, 1),)),
     "diagonal-half-b": ("DD RHW-4 Diagonal Continuation B", ((-1, 2),)),
 }
-EXTRA_PLACEMENTS = (("diagonal-half-a", (1, -1)), ("diagonal-half-b", (2, -1)),
-                    ("diagonal-half-a", (-3, 3)), ("diagonal-half-a", (3, -3)))
+EXTRA_PLACEMENTS = (("diagonal-half-a", (1, -1)), ("diagonal-half-b", (2, -1)))
+MODEL_ONLY_CELLS = frozenset(((1, 3), (3, 1), (1, -3), (-3, 1), (-3, 5), (5, -3)))
+WORLD_GRID_ORIGIN = (-4, -4)
 
 
 def module_catalog():
-    """Return thirteen reusable types and seventeen non-overlapping placements.
+    """Return thirteen reusable types and fifteen non-overlapping placements.
 
     ``world_origin_cell`` is the component's minimum column/row in the native
     construction grid. ``cells`` are normalized local sparse construction
-    cells. Assembly placements use a common positive eight-by-eight grid,
-    whose cell (0,0) corresponds to world (-3,-3). All highway/avenue services
+    cells. Assembly placements use a common positive ten-by-ten grid,
+    whose cell (0,0) corresponds to world (-4,-4). All highway/avenue services
     sharing a city tile belong to its single declared component.
     """
     types, placements, owners = [], [], {}
@@ -349,16 +353,17 @@ def module_catalog():
         origin = min(c[0] for c in cells), min(c[1] for c in cells)
         normalized = [(c[0] - origin[0], c[1] - origin[1]) for c in cells]
         normalized.sort(key=lambda c: (c[1], c[0]))
-        model_only = [(c[0] - origin[0], c[1] - origin[1]) for c in cells if c in ((1, 3), (3, 1))]
+        model_only = [(c[0] - origin[0], c[1] - origin[1]) for c in cells if c in MODEL_ONLY_CELLS]
         types.append({"key": key, "name": name, "recipe": "highway_ddrhw_compact_" + key.replace("-", "_"), "geometry_key": key,
                       "cells": [list(c) for c in normalized],
                       "footprint": [max(c[0] for c in normalized) + 1, max(c[1] for c in normalized) + 1],
                       "world_origin_cell": list(origin), "world_cells": [list(c) for c in cells],
-                      "authors_surface_atlas": True,
-                      "engineering": {"max_grade_percent": 40.0, "pavement_path_offset_m": 0.0,
+                      "authors_surface_atlas": False,
+                      "engineering": {"max_grade_percent": 30.0, "pavement_path_offset_m": 0.0,
                                       "car_corridor_half_width_m": 1.25, "car_corridor_height_m": 3.8,
                                       "model_only_cells": [list(c) for c in model_only]}})
-        placements.append({"key": key, "geometry_key": key, "origin": [origin[0] + 3, origin[1] + 3], "rotation": 0})
+        placements.append({"key": key, "geometry_key": key,
+                           "origin": [origin[axis] - WORLD_GRID_ORIGIN[axis] for axis in (0, 1)], "rotation": 0})
         for cell in cells:
             _require(cell not in owners, f"Module ownership overlaps at {cell}")
             owners[cell] = key
@@ -367,10 +372,11 @@ def module_catalog():
         owners[origin] = f"{key}-{index}"
         repeat = f"{key}-repeat" if index <= 2 else f"{key}-repeat-{index}"
         placements.append({"key": repeat, "geometry_key": key,
-                           "origin": [origin[0] + 3, origin[1] + 3], "rotation": 0})
-    _require(len(owners) == 41, "The compact assembly's exact cell partition changed")
-    return {"types": types, "placements": placements, "world_grid_origin": [-3, -3],
-            "footprint": [8, 8], "occupied_cells": [list(c) for c in sorted(owners, key=lambda c: (c[1], c[0]))],
+                           "origin": [origin[axis] - WORLD_GRID_ORIGIN[axis] for axis in (0, 1)], "rotation": 0})
+    _require(len(owners) == 53, "The gentler assembly's exact cell partition changed")
+    footprint = [max(cell[axis] for cell in owners) - WORLD_GRID_ORIGIN[axis] + 1 for axis in (0, 1)]
+    return {"types": types, "placements": placements, "world_grid_origin": list(WORLD_GRID_ORIGIN),
+            "footprint": footprint, "occupied_cells": [list(c) for c in sorted(owners, key=lambda c: (c[1], c[0]))],
             "cell_owners": [{"cell": list(c), "key": owners[c]} for c in sorted(owners, key=lambda c: (c[1], c[0]))]}
 
 
@@ -416,6 +422,15 @@ def _procedural_geometry():
     owners = {tuple(record["cell"]) for record in module_catalog()["cell_owners"]}
     _require(set(tiles) <= owners, f"Actual road envelope exceeds declared component ownership: {set(tiles) - owners}")
     paths = deduplicate_routes(slice_routes(routes))
+    model_only = {cell for cell in owners if cell not in paths and sum(cell) not in (0, 1)
+                  and cell[0] - cell[1] not in (-1, 0, 1)}
+    _require(model_only == MODEL_ONLY_CELLS,
+             "The actual road and native channels differ from the declared model-only tile contract")
+    continuation_cells = {tuple(cell) for key, (_name, cells) in MODULES.items()
+                          if key.startswith("diagonal-half-") for cell in cells}
+    continuation_cells.update(cell for _key, cell in EXTRA_PLACEMENTS)
+    _require(not continuation_cells & (set(paths) | set(tiles)),
+             "A reused native continuation cell contains unique ramp traffic or authored road faces")
     return ramps, tiles, paths
 
 
@@ -456,6 +471,7 @@ def compile_module(spec, context):
     from scp.recipes import combine_meshes
     from .native import material_template, channels
     from .ramp_geometry import pack_road_model, cut_native_branch_openings, support_triangles, ATLAS_UV
+    from .ramp_materials import NativeRoadPainter
     key = spec.get("geometry_key") or spec["recipe"].removeprefix("highway_ddrhw_compact_").replace("_", "-")
     records = {record["key"]: record for record in module_catalog()["types"]}
     _require(key in records, f"Unknown compact highway module {key}")
@@ -467,6 +483,9 @@ def compile_module(spec, context):
     ramps, procedural_tiles, additional_paths = _procedural_geometry()
     base, _routes = channels(context["dd_rhw"], 0x5753A380, False, 0)
     material = material_template(context)
+    surface_roads = [{"points": movement["surface_points"]}
+                     for movement in compact_access_routes(ramps)]
+    painter = NativeRoadPainter(context, list(ramps)+surface_roads)
     compiled = []
     for local in map(tuple, spec["cells"]):
         cell = local[0] + origin[0], local[1] + origin[1]
@@ -481,10 +500,11 @@ def compile_module(spec, context):
             native = parse_s3d(opened)
             parts.append((native, native["meshes"], (0.0, 0.0, 0.0)))
         faces = list(procedural_tiles.get(cell, ()))
-        if key.startswith("diagonal-half-"):
+        if cell in {(-1,1), (-1,2), (1,-1), (2,-1), (-4,4), (4,-4)}:
             faces.extend(support_triangles())
         if faces:
-            authored = parse_s3d(pack_road_model(faces, texture, material_template=material, model_template=base))
+            authored = parse_s3d(pack_road_model(faces, texture, material_template=material, model_template=base,
+                                               native_painter=painter, cell=cell))
             parts.append((authored, authored["meshes"], (0.0, 0.0, 0.0)))
         _require(parts, f"Declared module cell {cell} has no actual visible model")
         model = pack_s3d(combine_meshes(parts))
@@ -538,16 +558,12 @@ def construction_fields(spec, compiled):
 
 def build_piece(spec, context):
     from .recipes import finish_piece, construction
-    from .ramp_geometry import create_surface_atlas
     compiled = compile_module(spec, context)
     assets = finish_piece(spec, context, compiled)
     declarations = spec.get("authored_texture_ids", [])
     record = next(item for item in module_catalog()["types"] if item["key"] == spec["geometry_key"])
-    if record["authors_surface_atlas"]:
-        _require(declarations == [spec["tile_ids"][0]], "A procedural highway module must own exactly its first-tile atlas IID")
-        assets[0x7AB50E44, 0x1ABE787D, int(declarations[0], 16)] = create_surface_atlas()
-    else:
-        _require(not declarations, "A native-only continuation must not reserve an unused authored atlas")
+    _require(not record["authors_surface_atlas"] and not declarations,
+             "Native-textured highway modules must not reserve an unused authored atlas")
     rows, fields, cons = construction_fields(spec, compiled)
     return assets, construction(spec, rows, fields, cons)
 

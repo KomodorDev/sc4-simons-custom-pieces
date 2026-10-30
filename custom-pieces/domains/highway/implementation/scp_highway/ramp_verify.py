@@ -30,6 +30,16 @@ def _need(condition, message):
         raise ValueError(message)
 
 
+def _grade_bound(piece):
+    """Keep the compact subject's 30% contract separate from generic probes."""
+    compact = piece.get('recipe','').startswith('highway_ddrhw_compact_') or bool(piece.get('geometry_key'))
+    ceiling = 30.0 if compact else 40.0
+    bound = piece.get('engineering',{}).get('max_grade_percent')
+    _need(type(bound) in (int,float) and math.isfinite(bound) and 0.0 < bound <= ceiling,
+          f'Highway engineering max_grade_percent must declare a bound no greater than {ceiling:g} percent')
+    return bound
+
+
 def _rotate(point, turns):
     east, north, height = point
     for _ in range(turns % 4):
@@ -194,7 +204,8 @@ def _triangles(raw, cell, native_overhangs=()):
                 area = ((points[1][0]-points[0][0])*(points[2][1]-points[0][1])
                         -(points[1][1]-points[0][1])*(points[2][0]-points[0][0]))
                 result.append({'points':points, 'upward':area > 1e-12,
-                               'texture':textures[0], 'uv':tuple((p[3],p[4]) for p in source)})
+                               'texture':textures[0], 'uv':tuple((p[3],p[4]) for p in source),
+                               'material_sha256':hashlib.sha256(model['materials'][mi]['raw']).hexdigest()})
     _need(result, 'Highway model contains no indexed triangles')
     return result
 
@@ -203,6 +214,8 @@ def _atlas(resources, piece, engineering, triangles):
     """Check authored atlas bytes independently of a mesh name or UV label."""
     ids = piece.get('authored_texture_ids', [])
     if not ids:
+        if piece.get('recipe', '').startswith('highway_ddrhw_compact_') or piece.get('geometry_key'):
+            return _native_appearance(triangles)
         return {'checked':False, 'reason':'No authored atlas declared; support uses actual upward saved faces.'}
     _need(ids == [piece['tile_ids'][0]], 'Authored highway atlas must use the first reserved tile ID')
     iid = int(ids[0], 16)
@@ -234,6 +247,38 @@ def _atlas(resources, piece, engineering, triangles):
                   for u,v in face['uv']), 'Authored road triangle uses an unexpected atlas sample')
     return {'checked':True, 'texture_id':ids[0], 'pavement_uv_u':pavement_u,
             'solid_uv_u':solid_u, 'owned_triangles':len(owned)}
+
+
+def _native_appearance(triangles):
+    """Pin actual native flags and require spatial UVs, independently of names.
+
+    These measured fingerprints come from the retained DD crossing and the
+    genuine NAM MIS slope 57722000. Native FSH images stay in NAM; the saved
+    custom resource must reference their existing identities directly.
+    """
+    allowed = {
+        0x5713000E: '307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca',
+        0x5712000E: 'ed1b4a35ab986ff74a56ac79a1a33f579c31bf9630e7bb2b79ad4a4d9b6739ca',
+        0x5EB4BEE9: 'd81e8d70e3ab9182adb393f2bc6a61608c70f8129cdb06631409a4b19c73e306',
+        0x5EB4BEEE: 'cf4e393b8ca3a2b3d0edba0f86bb197ddf82b65e85cf73cfa13ebd4d2a8c6f6e',
+        0x0400020E: 'b9e662590684786bfeca084538ef53fcd70c9c6beb489c2ea94f3d001ea2a6e5',
+        0x0400380E: 'e481f8838ddc4e494a5fc2854007dbc319541a70d11ea3cbfd01f03c7a57bda1',
+    }
+    counts = {}
+    for face in triangles:
+        iid = face['texture']
+        _need(iid in allowed and face['material_sha256'] == allowed[iid],
+              'Saved highway material differs from the measured native NAM surface')
+        _need(any(max(uv[axis] for uv in face['uv'])-min(uv[axis] for uv in face['uv']) > 1e-8
+                  for axis in (0,1)), 'Native highway UVs collapse to a flat colour sample')
+        if iid == 0x5712000E:
+            _need(all(0.125-UV_TOLERANCE <= u <= 0.875+UV_TOLERANCE for u,_v in face['uv']),
+                  'MIS ramp UVs leave the measured one-lane pavement strip')
+        counts[f'{iid:08X}'] = counts.get(f'{iid:08X}',0)+1
+    _need(counts, 'Native highway appearance has no actual saved faces')
+    return {'checked':True, 'style':'native NAM DD RHW-4 and MIS slope',
+            'native_slope_s3d_instance':'57722000', 'native_texture_triangles':counts,
+            'owned_texture_resources':0, 'spatial_uvs_checked':True}
 
 
 def _barycentric(point, triangle):
@@ -412,9 +457,7 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
     if not native_overhangs:
         from .native_overhangs import NATIVE_OVERHANG_TRIANGLES
         native_overhangs = NATIVE_OVERHANG_TRIANGLES
-    maximum = engineering.get('max_grade_percent')
-    _need(type(maximum) in (int,float) and 0.0 < maximum <= 40.0,
-          'Highway engineering max_grade_percent must declare a bound no greater than 40 percent')
+    maximum = _grade_bound(piece)
     _need(engineering.get('pavement_path_offset_m') == 0.0, 'Highway pavement/PATH datum offset must be exactly zero')
     half_width = engineering.get('car_corridor_half_width_m')
     corridor_height = engineering.get('car_corridor_height_m')
@@ -508,8 +551,7 @@ def check_pavement(resources,piece,*,ports=None,empty_path_cells=None,rotations=
 def check_paths(resources,piece):
     """Provider entry point for actual road metadata, grades, and tile seams."""
     engineering = piece.get('engineering',{})
-    bound = engineering.get('max_grade_percent')
-    _need(type(bound) in (int,float) and 0.0 < bound <= 40.0,'Highway grade contract exceeds 40 percent or is missing')
+    bound = _grade_bound(piece)
     empty = {tuple(cell) for cell in engineering.get('model_only_cells',[])}
     routes,maximum = {},0.0
     for cell,identifier in zip(map(tuple,piece['cells']),piece['tile_ids']):
