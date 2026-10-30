@@ -176,48 +176,6 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Preview review — Images — 2 cases; unverified: 2</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast | <a href="#case-preview_review-b94b06fc714aafb04d90">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top | <a href="#case-preview_review-69d8b8d6ab5d3c879367">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast</summary>
-
-<a id="case-preview_review-b94b06fc714aafb04d90"></a>
-
-**General: unverified** — `preview_review-b94b06fc714aafb04d90`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top</summary>
-
-<a id="case-preview_review-69d8b8d6ab5d3c879367"></a>
-
-**General: unverified** — `preview_review-69d8b8d6ab5d3c879367`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -1394,6 +1352,48 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 1-E-in-7; to port: 1-E-out-8; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 2 cases; unverified: 2</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast | <a href="#case-preview_review-b94b06fc714aafb04d90">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top | <a href="#case-preview_review-69d8b8d6ab5d3c879367">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast</summary>
+
+<a id="case-preview_review-b94b06fc714aafb04d90"></a>
+
+**General: unverified** — `preview_review-b94b06fc714aafb04d90`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-diagonal-half-a:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top</summary>
+
+<a id="case-preview_review-69d8b8d6ab5d3c879367"></a>
+
+**General: unverified** — `preview_review-69d8b8d6ab5d3c879367`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-diagonal-half-a:canonical-top.
 
 No observation recorded.
 
