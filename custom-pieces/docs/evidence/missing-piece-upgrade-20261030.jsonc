@@ -1,0 +1,83 @@
+// title: "Existing-city cleanup after removed-piece upgrade"
+// summary: "Preserve the player's successful cleanup report, visual artifacts, exact installed build, and limited coverage of one removed-resource experiment."
+//
+// Used when: Reviewing whether an existing saved city can be cleared after installed SCP resources disappear, or interpreting the 30 October 2026 cleanup report.
+// Read by: Contributors and players following custom-pieces/docs/TESTING.md chapter 6; reference evidence with no runtime reader or per-piece checklist update.
+// Updated by: A maintainer recording explicit human observations and their separate software preparation evidence; later observations must retain this original report.
+// Affects: The documented scope of one upgrade cleanup result; no game resources, installer guards, or individual piece and assembly check states.
+// Reference: custom-pieces/docs/TESTING.md#6-existing-saves-after-piece-removal
+{
+  "schema_version": 1,
+  "case_id": "existing-save-removed-piece-cleanup-20261030",
+  "confirmed_at": "2026-10-30",
+  "reporter": "human user",
+  "explicit_user_confirmation": true,
+  "result": "cleanup_confirmed_with_visual_artifacts",
+  "human_observation": {
+    "statement": "so this worked without a flaw. there were some artifacts but i could successfully empty the plots that previously had pieces that no longer exist.",
+    "affected_area_could_be_cleared": true,
+    "visual_artifacts_present": true,
+    "artifact_description": null,
+    "artifact_persistence_after_cleanup": null,
+    "separate_control_city_outcome": null,
+    "traffic_operation": null,
+    "save_and_reload_after_cleanup": null,
+    "long_term_city_stability": null,
+    "screenshots": null
+  },
+  "environment": {
+    "host": "macOS",
+    "game_edition": "SimCity 4 Deluxe for Windows",
+    "runtime": "Windows game under Wine",
+    "nam_profile": "nam50-rhd",
+    "expected_audited_game_version": "1.1.641",
+    "game_executable_version_reconfirmed_in_report": null,
+    "dll_versions_reconfirmed_in_report": null,
+    "basis": "Configured installation and audited game/NAM inputs used during preparation; the player did not separately restate version details in the cleanup report."
+  },
+  "build_identity": {
+    "release_tag": "installer-a2c842ca62ae",
+    "source_commit": "a2c842ca62aedb4f4a1ac6b25453be6fd420c38e",
+    "release_url": "https://github.com/KomodorDev/sc4-simons-custom-pieces/releases/tag/installer-a2c842ca62ae",
+    "previous_manifest_sha256": "b72cc72f2713a370cfb8e77d09c784d594ecbae058957e03f0d7ea93e44de0c0",
+    "installed_manifest_sha256": "d5d5fd007614e01769fca71e35298943f2a5443f505e0d5006a58d75c3b00a89",
+    "previous_piece_types": 165,
+    "installed_piece_types": 166,
+    "installed_payload_files_verified": 168
+  },
+  "preparation_evidence": {
+    "untouched_region_and_matching_old_plugin_backed_up": true,
+    "separate_retained_piece_and_cleaned_control_regions_created": true,
+    "retained_piece_save_sha256": "a84e5d1ee80071ed0f30e0370139165924d29682bae17c066f8d66ef57427a99",
+    "cleaned_control_save_sha256": "d3b1e8dfa04cf10669c0c89ddecdef9a6639f2ef37ba8a48ed37d98890297a70",
+    "retained_piece_save_removed_tile_references": 18,
+    "cleaned_control_save_removed_tile_references": 0,
+    "reference_counts_by_old_construction": [
+      {"description": "Compact Fan Diverge", "saved_tile_references": 2},
+      {"description": "Compact Paired Fan Join", "saved_tile_references": 15},
+      {"description": "Removed end tile of the shortened Opposed Merge Core", "saved_tile_references": 1}
+    ],
+    "save_audit_method": "Read-only decoding of prebuilt-network record prefixes: each matched removed identifier appears in both the exemplar reference and model identifier. Record lengths traverse the complete resource. Record tails and checksums were not independently validated.",
+    "verified_build_and_assembly_menu_installed": true,
+    "installed_files_match_verified_manifest": true,
+    "comparison_city_saves_unchanged_during_installation": true,
+    "scope": "Software audits describe the prepared and installed states before the player's game test; they do not supply the human cleanup result."
+  },
+  "interpretation": {
+    "established": "The affected saved-city area remained accessible and could be cleared after the old resources were removed, with visual artifacts present.",
+    "not_established": [
+      "Artifact-free rendering before or after cleanup.",
+      "Traffic operation or route-query behavior.",
+      "A save-and-reload cycle after cleanup or long-term save stability.",
+      "A separately described control-city game result.",
+      "Other removed resource identifiers, cities, construction orientations, or game environments.",
+      "A general guarantee that removing installed piece resources is safe."
+    ],
+    "manual_case_updates": "None. This shared cross-version experiment does not pass or fail an individual piece's or assembly's generated cases."
+  },
+  "public_provenance": {
+    "kind": "Public summary of the existing private preparation audits, installation transaction, final file comparison, and explicit human report.",
+    "redactions": "Private filesystem paths, backup locations, and region and city names are omitted. Measured fingerprints, counts, and reported outcomes are preserved. This publication is not a new test run.",
+    "original_private_evidence_preserved": true
+  }
+}
