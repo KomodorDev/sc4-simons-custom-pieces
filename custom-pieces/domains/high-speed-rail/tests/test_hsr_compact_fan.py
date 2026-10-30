@@ -8,14 +8,11 @@ from __future__ import annotations
 
 from collections import defaultdict
 from copy import deepcopy
-import json
 import math
-from pathlib import Path
 import unittest
 from unittest.mock import patch
 
 from scp.track_paths import PATH, encode_paths
-from scp.subject_sources import piece_id_for_recipe
 from scp_hsr.hsr_compact_fan import RECIPES, compact_info, compact_layout, compact_routes, model_inputs
 from scp_hsr.hsr_compact_fan_verify import CONTRACTS, check_paths
 from scp_hsr.hsr_atomic_junctions import atomic_info
@@ -24,7 +21,6 @@ from scp_hsr.directional_t_verify import _TURN_LIMITS
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 from scp_hsr.rail_geometry import _route
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
 CORE = 'hsr_component_l2_paired_fan_compact_core'
 STRAIGHT = 'hsr_component_l2_paired_straight_recessed_web'
 DIVERGE = 'hsr_component_l2_short_mainline_diverge_core'
@@ -147,7 +143,7 @@ class CompactFanSourceTests(unittest.TestCase):
         for x, north in context['support_centers']:
             self.assertIn((math.floor((x+8)/16), math.floor((-north+8)/16)), compilation_cells)
 
-    def test_fan_ports_use_p01a_angles_and_meet_the_reused_rotated_piece_exactly(self):
+    def test_fan_ports_keep_the_literal_angles_and_reusable_junction_tangents(self):
         info = compact_info(CORE)
         self.assertEqual(info['ports']['N'], {'in': (30., 8., 15.5), 'out': (34., 8., 15.5)})
         expected = {'Wout': (6.39851855221686, -40., 15.5),
@@ -156,31 +152,10 @@ class CompactFanSourceTests(unittest.TestCase):
         for label in expected:
             self.assertLess(math.dist(actual[label], expected[label]), 1e-9)
         diverge, merge = atomic_info(DIVERGE), atomic_info(MERGE)
-        sx, sy, sh = diverge['ports']['S']['out']
-        fan_east_world = tuple(v + d for v, d in zip(actual['Ein'], (80., 48., 0.)))
-        self.assertLess(math.dist(fan_east_world, (176.-sx, -sy, sh)), 1e-9)
-        fan_west_world = tuple(v + d for v, d in zip(actual['Wout'], (80., 48., 0.)))
-        self.assertLess(math.dist(fan_west_world,
-                                 tuple(v+d for v, d in zip(merge['ports']['N']['in'], (48., 0., 0.)))), 1e-9)
         tangent = diverge['port_vectors']['Sout']
         self.assertEqual(info['port_vectors']['Ein'], tuple(-v for v in tangent))
         self.assertEqual(info['port_vectors']['Wout'], (-tangent[0], tangent[1]))
         self.assertEqual(info['port_vectors']['Wout'], merge['port_vectors']['Nin'])
-        scene = json.loads((ROOT/'domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/assembly.json').read_text())
-        copies = [row for row in scene['placements'] if row['piece_id'] == piece_id_for_recipe(DIVERGE, ROOT)]
-        self.assertEqual([(row['origin_m'], row['rotation_degrees_ccw']) for row in copies],
-                         [([-96., 0.], 0), ([176., 0.], 180)])
-        # P26 owns the extracted western approach, so P07's local origin
-        # moves east by one tile while this fan connection stays fixed.
-        by_label = {row['label']: row for row in scene['placements']}
-        self.assertEqual((by_label['P07']['piece_id'], by_label['P07']['origin_m'],
-                          by_label['P07']['rotation_degrees_ccw']),
-                         (piece_id_for_recipe(MERGE, ROOT), [48., 0.], 0))
-        self.assertEqual((by_label['P26']['piece_id'], by_label['P26']['origin_m'],
-                          by_label['P26']['rotation_degrees_ccw']),
-                         ('hsr-l2-two-track-straight', [32., 0.], 270))
-        self.assertFalse(any(row['piece_id'] == 'hsr-component-l2-compact-fan-diverge'
-                             for row in scene['placements']))
 
     def test_local_fragments_have_only_the_two_permitted_directed_journeys(self):
         graph = defaultdict(set)

@@ -82,19 +82,17 @@ class JsoncTests(unittest.TestCase):
             self.assertEqual(jsonc.main([str(source), '--output', str(target)]), 0)
             self.assertEqual(target.read_text(), output.getvalue())
 
-    def test_legacy_sync_owns_only_the_four_declared_compatibility_views(self):
+    def test_module_cli_printing_json_does_not_create_a_source_sibling(self):
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            for relative in jsonc.LEGACY_EXPORTS:
-                source = root/(relative+'.jsonc')
-                source.parent.mkdir(parents=True, exist_ok=True)
-                jsonc.dump(source, {'record': relative}, title='Shared source', summary='Compatibility fixture.')
-            untouched = root/'domains/high-speed-rail/other.json'
-            untouched.write_text('retain these bytes')
-            self.assertEqual(len(jsonc.sync_legacy_exports(root)), 4)
-            for relative in jsonc.LEGACY_EXPORTS:
-                self.assertEqual(json.loads((root/(relative+'.json')).read_text()), {'record': relative})
-            self.assertEqual(untouched.read_text(), 'retain these bytes')
+            source = Path(directory)/'source.jsonc'
+            jsonc.dump(source, {'record': 'source'}, title='Shared source', summary='Explicit conversion fixture.')
+            before = source.read_bytes()
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                self.assertEqual(jsonc.main([str(source)]), 0)
+            self.assertEqual(json.loads(output.getvalue()), {'record': 'source'})
+            self.assertEqual(source.read_bytes(), before)
+            self.assertEqual(list(Path(directory).iterdir()), [source])
 
     def test_line_and_block_comments_are_supported(self):
         source = '// heading\n{"a": /* value */ 1, "b": [2, 3]} // final'

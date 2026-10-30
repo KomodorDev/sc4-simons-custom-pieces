@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
+from scp import jsonc
 from scp.content import (case_state, fingerprint, new_manual_record, record_software_result,
     record_user_result, refresh_manual_record, render_manual_checklist,
     resource_fingerprints, summarize_manual_record, validate_manual_record, write_subject_content,
@@ -512,6 +513,10 @@ class ManualContentTests(unittest.TestCase):
                     patch('scp.connectivity.assembly_connectivity',return_value=assembly), \
                     patch('scp.inventory.write_inventories',return_value={}):
                 refresh_catalog_content(root,records=records)
+            for domain in domains.values():
+                index=root/domain['path']/'connection-classes.jsonc'
+                self.assertTrue(jsonc.load(index)['classes'])
+                self.assertFalse(index.with_suffix('.json').exists())
             text=(root/'domains/hsr/00_pieces/fixture/TESTING.md').read_text()
             self.assertNotIn('Concrete compatible counterparts',text)
             self.assertNotIn('[neighbour]',text)

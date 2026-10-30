@@ -139,37 +139,15 @@ def export(source, destination):
     return destination
 
 
-LEGACY_EXPORTS = (
-    'domains/high-speed-rail/connection-classes',
-    'domains/highway/connection-classes',
-    'domains/high-speed-rail/junction-design-review',
-    'domains/high-speed-rail/native-diagonal-port-cap-audit',
-)
-
-
-def sync_legacy_exports(root):
-    """Refresh the four explicit strict-JSON compatibility views only."""
-    root = Path(root)
-    return [str(export(root / (relative + '.jsonc'), root / (relative + '.json')))
-            for relative in LEGACY_EXPORTS]
-
-
 def main(argv=None):
     """Convert a source to strict JSON without sending it to an external API."""
     import argparse
     import sys
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('source', nargs='?', type=Path)
+    parser.add_argument('source', type=Path)
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--sync-legacy-exports', type=Path, metavar='ROOT')
     args = parser.parse_args(argv)
-    if args.sync_legacy_exports is not None:
-        if args.source is not None or args.output is not None:
-            parser.error('--sync-legacy-exports cannot be combined with a source or --output')
-        sync_legacy_exports(args.sync_legacy_exports)
-    elif args.source is None:
-        parser.error('provide a source JSONC file or --sync-legacy-exports ROOT')
-    elif args.output is not None:
+    if args.output is not None:
         export(args.source, args.output)
     else:
         sys.stdout.write(json.dumps(load(args.source), indent=2, allow_nan=False) + '\n')

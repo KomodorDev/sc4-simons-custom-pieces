@@ -37,12 +37,6 @@ LIBRARY_SOURCES = {
     'domains/highway/00_pieces/inventory.jsonc',
     'domains/highway/01_assemblies/inventory.jsonc',
 }
-LEGACY_VIEWS = {
-    'domains/high-speed-rail/connection-classes.json',
-    'domains/highway/connection-classes.json',
-    'domains/high-speed-rail/junction-design-review.json',
-    'domains/high-speed-rail/native-diagonal-port-cap-audit.json',
-}
 GITHUB_SOURCES = {'branch-protection.jsonc', 'branch-protection-main.jsonc'}
 
 
@@ -89,13 +83,9 @@ class SharedJsoncSourceTests(unittest.TestCase):
             with self.subTest(source=relative):
                 self.assert_document(path)
 
-    def test_only_declared_legacy_views_remain_strict_json_and_match_their_sources(self):
+    def test_shared_sources_have_no_strict_json_duplicates(self):
         views = {relative: path for relative, path in shared_files() if path.suffix == '.json'}
-        self.assertEqual(set(views), LEGACY_VIEWS)
-        for relative, path in views.items():
-            with self.subTest(view=relative):
-                self.assertEqual(json.loads(path.read_text(encoding='utf-8')),
-                                 jsonc.load(path.with_suffix('.jsonc')))
+        self.assertEqual(views, {})
 
     def test_actual_github_templates_export_locally_without_changing_sources(self):
         directory = ROOT.parent / '.github'
