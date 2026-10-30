@@ -1,0 +1,415 @@
+{
+  "schema_version": 1,
+  "generated": true,
+  "schematic": true,
+  "compiled_model": false,
+  "source_design": {
+    "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/design.jsonc",
+    "sha256": "ad8d1177fe46edb79ffcd87dbb99169bd0ca4cc1a9e4f66a2e9cc5c50d754cfe"
+  },
+  "renderer": {
+    "path": "custom-pieces/domains/highway/tools/render_diagonal_diamond.py",
+    "sha256": "79739448e6ff88d44c2329078a9f41a46d2bd0ed2ffceb3563f8aae36bb56f57"
+  },
+  "geometry_module": {
+    "path": "custom-pieces/domains/highway/tools/diagonal_diamond_geometry.py",
+    "sha256": "303178479ed36738fa7db703b7dc2c68bb998cc975aeb8a018130e379d3457bc"
+  },
+  "sampled_geometry_sha256": "3cdde708f8a2e4d615341a00481c1a88049445c0d762819f6d7167da178d0ee2",
+  "method": "Pillow and NumPy; orthographic projection with triangle depth buffer",
+  "surface_source": "Exact road points and widths returned by build_geometry(design)",
+  "route_arrow_source": "Directed sampled routes returned by build_geometry(design)",
+  "decorative_only": [
+    "road-edge strokes",
+    "lane markings",
+    "route arrow glyphs",
+    "sunlight shadows"
+  ],
+  "not_modelled": [
+    "support columns",
+    "structural decks",
+    "native tiles",
+    "native joining seams",
+    "traffic signals"
+  ],
+  "supersampling_factor": 2,
+  "images": [
+    {
+      "camera": {
+        "projection": "orthographic",
+        "azimuth_degrees_from_east_ccw": -90.0,
+        "elevation_degrees": 90.0,
+        "towards_camera_unit_enh": [
+          3.749399456654644e-33,
+          -6.123233995736766e-17,
+          1.0
+        ],
+        "screen_right_unit_enh": [
+          1.0,
+          6.123233995736766e-17,
+          0.0
+        ],
+        "screen_up_unit_enh": [
+          -6.123233995736766e-17,
+          1.0,
+          6.123233995736766e-17
+        ],
+        "pixels_per_metre_in_projection": 5.721153846153846,
+        "look_at_world_enh_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "display_grid": {
+        "unit": "tile centre",
+        "tile_size_m": 16,
+        "southwest_tile_centre_world_en_m": [
+          -96.0,
+          -96.0
+        ],
+        "northeast_tile_centre_world_en_m": [
+          96.0,
+          96.0
+        ],
+        "axis_x": "east",
+        "axis_y": "north",
+        "construction_anchor": false
+      },
+      "ramp_labels": [
+        {
+          "label": "R1",
+          "road_id": "ramp-upper-off",
+          "text": "Upper off-ramp"
+        },
+        {
+          "label": "R2",
+          "road_id": "ramp-upper-on",
+          "text": "Upper on-ramp"
+        },
+        {
+          "label": "R3",
+          "road_id": "ramp-lower-off",
+          "text": "Lower off-ramp"
+        },
+        {
+          "label": "R4",
+          "road_id": "ramp-lower-on",
+          "text": "Lower on-ramp"
+        }
+      ],
+      "crossing_detail": null,
+      "caption": "Clean view | Top view, north up | Schematic",
+      "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/schematic-top.png",
+      "sha256": "25311480fa7300ce66bcf4275466fc97e49c09d5940dcb643fbf8d290832ebda",
+      "view": "top",
+      "size_pixels": [
+        2400,
+        1900
+      ]
+    },
+    {
+      "camera": {
+        "projection": "orthographic",
+        "azimuth_degrees_from_east_ccw": -45.0,
+        "elevation_degrees": 22.0,
+        "towards_camera_unit_enh": [
+          0.6556179909708572,
+          -0.655617990970857,
+          0.374606593415912
+        ],
+        "screen_right_unit_enh": [
+          0.7071067811865475,
+          0.7071067811865476,
+          0.0
+        ],
+        "screen_up_unit_enh": [
+          -0.2648868624815833,
+          0.2648868624815833,
+          0.9271838545667874
+        ],
+        "pixels_per_metre_in_projection": 5.575265005509317,
+        "look_at_world_enh_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "display_grid": {
+        "unit": "tile centre",
+        "tile_size_m": 16,
+        "southwest_tile_centre_world_en_m": [
+          -96.0,
+          -96.0
+        ],
+        "northeast_tile_centre_world_en_m": [
+          96.0,
+          96.0
+        ],
+        "axis_x": "east",
+        "axis_y": "north",
+        "construction_anchor": false
+      },
+      "ramp_labels": [
+        {
+          "label": "R1",
+          "road_id": "ramp-upper-off",
+          "text": "Upper off-ramp"
+        },
+        {
+          "label": "R2",
+          "road_id": "ramp-upper-on",
+          "text": "Upper on-ramp"
+        },
+        {
+          "label": "R3",
+          "road_id": "ramp-lower-off",
+          "text": "Lower off-ramp"
+        },
+        {
+          "label": "R4",
+          "road_id": "ramp-lower-on",
+          "text": "Lower on-ramp"
+        }
+      ],
+      "crossing_detail": {
+        "screen_bounds_pixels": [
+          128,
+          292,
+          868,
+          652
+        ],
+        "enlargement_factor": 1.4,
+        "camera": {
+          "projection": "orthographic",
+          "azimuth_degrees_from_east_ccw": -45.0,
+          "elevation_degrees": 22.0,
+          "towards_camera_unit_enh": [
+            0.6556179909708572,
+            -0.655617990970857,
+            0.374606593415912
+          ],
+          "screen_right_unit_enh": [
+            0.7071067811865475,
+            0.7071067811865476,
+            0.0
+          ],
+          "screen_up_unit_enh": [
+            -0.2648868624815833,
+            0.2648868624815833,
+            0.9271838545667874
+          ],
+          "pixels_per_metre_in_projection": 7.805371007713044,
+          "look_at_world_enh_m": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "source": "Same unmodified sampled road points and widths as main view"
+      },
+      "caption": "Clean view | Southeast view, looking northwest | Schematic",
+      "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/schematic-southeast.png",
+      "sha256": "9fb76bdb6ccce71ab1f6e7fded48d7b5e40fdf0821b4a7780d57912e291b7762",
+      "view": "southeast",
+      "size_pixels": [
+        2400,
+        1900
+      ]
+    },
+    {
+      "camera": {
+        "projection": "orthographic",
+        "azimuth_degrees_from_east_ccw": 135.0,
+        "elevation_degrees": 22.0,
+        "towards_camera_unit_enh": [
+          -0.655617990970857,
+          0.6556179909708572,
+          0.374606593415912
+        ],
+        "screen_right_unit_enh": [
+          -0.7071067811865476,
+          -0.7071067811865475,
+          0.0
+        ],
+        "screen_up_unit_enh": [
+          0.2648868624815833,
+          -0.2648868624815833,
+          0.9271838545667874
+        ],
+        "pixels_per_metre_in_projection": 5.575265005509317,
+        "look_at_world_enh_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "display_grid": {
+        "unit": "tile centre",
+        "tile_size_m": 16,
+        "southwest_tile_centre_world_en_m": [
+          -96.0,
+          -96.0
+        ],
+        "northeast_tile_centre_world_en_m": [
+          96.0,
+          96.0
+        ],
+        "axis_x": "east",
+        "axis_y": "north",
+        "construction_anchor": false
+      },
+      "ramp_labels": [
+        {
+          "label": "R1",
+          "road_id": "ramp-upper-off",
+          "text": "Upper off-ramp"
+        },
+        {
+          "label": "R2",
+          "road_id": "ramp-upper-on",
+          "text": "Upper on-ramp"
+        },
+        {
+          "label": "R3",
+          "road_id": "ramp-lower-off",
+          "text": "Lower off-ramp"
+        },
+        {
+          "label": "R4",
+          "road_id": "ramp-lower-on",
+          "text": "Lower on-ramp"
+        }
+      ],
+      "crossing_detail": {
+        "screen_bounds_pixels": [
+          128,
+          292,
+          868,
+          652
+        ],
+        "enlargement_factor": 1.4,
+        "camera": {
+          "projection": "orthographic",
+          "azimuth_degrees_from_east_ccw": 135.0,
+          "elevation_degrees": 22.0,
+          "towards_camera_unit_enh": [
+            -0.655617990970857,
+            0.6556179909708572,
+            0.374606593415912
+          ],
+          "screen_right_unit_enh": [
+            -0.7071067811865476,
+            -0.7071067811865475,
+            0.0
+          ],
+          "screen_up_unit_enh": [
+            0.2648868624815833,
+            -0.2648868624815833,
+            0.9271838545667874
+          ],
+          "pixels_per_metre_in_projection": 7.805371007713044,
+          "look_at_world_enh_m": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "source": "Same unmodified sampled road points and widths as main view"
+      },
+      "caption": "Clean view | Northwest view, looking southeast | Schematic",
+      "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/schematic-northwest.png",
+      "sha256": "a929cafd9e08d6ad568c59b5b1bec2ac4aaf87508b7709167b284dae45fce65f",
+      "view": "northwest",
+      "size_pixels": [
+        2400,
+        1900
+      ]
+    },
+    {
+      "view": "profiles",
+      "caption": "Clean view | Ramp elevation profiles | Schematic",
+      "panels": [
+        {
+          "road_id": "ramp-upper-off",
+          "label": "R1",
+          "source": "roads.points_uvz",
+          "horizontal_axis": "u, metres along highway towards northeast",
+          "u_range_m": [
+            -87.11830092828814,
+            -12.0
+          ],
+          "vertical_axis": "height above flat ground, metres",
+          "vertical_exaggeration": 1.5,
+          "common_horizontal_pixels_per_metre": 12.753217101043818,
+          "full_horizontal_curved_length_m": 79.99999999999997,
+          "full_horizontal_curved_length_in_16m_tiles": 4.999999999999998,
+          "start_height_m": 15.0,
+          "end_height_m": 0.0,
+          "maximum_grade_percent": 35.96024507667022
+        },
+        {
+          "road_id": "ramp-upper-on",
+          "label": "R2",
+          "source": "roads.points_uvz",
+          "horizontal_axis": "u, metres along highway towards northeast",
+          "u_range_m": [
+            12.0,
+            87.11830092828814
+          ],
+          "vertical_axis": "height above flat ground, metres",
+          "vertical_exaggeration": 1.5,
+          "common_horizontal_pixels_per_metre": 12.753217101043818,
+          "full_horizontal_curved_length_m": 79.99999999999997,
+          "full_horizontal_curved_length_in_16m_tiles": 4.999999999999998,
+          "start_height_m": 0.0,
+          "end_height_m": 15.0,
+          "maximum_grade_percent": 35.96024507667022
+        },
+        {
+          "road_id": "ramp-lower-off",
+          "label": "R3",
+          "source": "roads.points_uvz",
+          "horizontal_axis": "u, metres along highway towards northeast",
+          "u_range_m": [
+            12.0,
+            51.61134880454402
+          ],
+          "vertical_axis": "height above flat ground, metres",
+          "vertical_exaggeration": 1.5,
+          "common_horizontal_pixels_per_metre": 12.753217101043818,
+          "full_horizontal_curved_length_m": 48.000000000000014,
+          "full_horizontal_curved_length_in_16m_tiles": 3.000000000000001,
+          "start_height_m": 7.5,
+          "end_height_m": 0.0,
+          "maximum_grade_percent": 32.49659331597954
+        },
+        {
+          "road_id": "ramp-lower-on",
+          "label": "R4",
+          "source": "roads.points_uvz",
+          "horizontal_axis": "u, metres along highway towards northeast",
+          "u_range_m": [
+            -51.61134880454402,
+            -12.0
+          ],
+          "vertical_axis": "height above flat ground, metres",
+          "vertical_exaggeration": 1.5,
+          "common_horizontal_pixels_per_metre": 12.753217101043818,
+          "full_horizontal_curved_length_m": 48.000000000000014,
+          "full_horizontal_curved_length_in_16m_tiles": 3.000000000000001,
+          "start_height_m": 0.0,
+          "end_height_m": 7.5,
+          "maximum_grade_percent": 32.49659331597954
+        }
+      ],
+      "compiled_model": false,
+      "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/schematic-profiles.png",
+      "sha256": "f65ee1ae3919b46d7a36129b4974070afb08159d6ed8a3e53d3577616d47755d",
+      "size_pixels": [
+        2400,
+        1900
+      ]
+    }
+  ]
+}

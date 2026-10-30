@@ -1,0 +1,129 @@
+// title: "Double-decker diagonal highway and avenue design"
+// summary: "Describe an unregistered, reproducible geometric prototype with four ramps and two surface intersections."
+//
+// Used when: Reviewing the requested diagonal highway crossing before implementing independently placeable game components.
+// Read by: domains/highway/tools/diagonal_diamond_geometry.py, render_diagonal_diamond.py, and verify_diagonal_diamond.py.
+// Updated by: Contributors revising this layout; native measurements remain separately recorded in evidence/native-audit.json.
+// Affects: This prototype's sampled geometry, route graph, schematic images, and numerical checks; no game resources, allocation, menu, or installation.
+{
+  "schema_version": 1,
+  "title": "DD RHW-4 \u2014 Compact Diagonal Avenue Diamond",
+  "status": "geometry-prototype",
+  "registered": false,
+  "compiled": false,
+  "domain": "highway",
+  "brief": {
+    "request": "A diagonal double-decker highway crossing a diagonal avenue, with on-ramps and off-ramps to that avenue.",
+    "interpretation": "NAM DD RHW-4 with one two-lane direction per deck; a perpendicular, ground-level, two-way avenue; four one-way ramps; two at-grade diamond intersections.",
+    "traffic_side": "right",
+    "highway_axis": "southwest-northeast",
+    "avenue_axis": "northwest-southeast",
+    "upper_direction": "SW-to-NE",
+    "lower_direction": "NE-to-SW",
+    "terrain": "flat",
+    "delivery": "assembly-of-reusable-components",
+    "excluded_movements": [
+      "immediate highway U-turn edges",
+      "direct highway transfers between decks",
+      "left-side highway ramps"
+    ],
+    "assumptions": [
+      "The user confirmed NAM RealHighway, specifically its double-decker variant; each deck needs its own slip lanes down to and up from the avenue.",
+      "Deck heights come from native traffic paths; widths and curve geometry are provisional. The former 8% grade assumption has been replaced, at the user's request, by a steep-ramp prototype limit of 40%.",
+      "Eight avenue-to-highway and highway-to-avenue turning movements use two surface intersections; those intersections need separately engineered game PATHs and signals or priorities.",
+      "The prototype represents corridor centre lines, rather than individual native traffic lanes or complete tile boundaries.",
+      "Indirect returns through the avenue to the original highway arm remain possible, as in a conventional diamond.",
+      "Three-tile lower ramps use 48 m of horizontal curved length; upper ramps remain longer at 80 m because their deck is twice as high. The 40% prototype grade bound is not a native NAM standard or proof of game operation."
+    ],
+    "urban_form": "Very tight, Tokyo-inspired city corridor. The user accepts steep slopes and requests two or three tile lengths for the lower ramps; this candidate uses 48 m lower ramps and 80 m upper ramps, measured along the full curved horizontal route including flat joins."
+  },
+  "coordinates": {
+    "unit": "metre",
+    "tile_size_m": 16,
+    "origin": "crossing centre",
+    "x": "east",
+    "y": "north",
+    "z": "height above flat ground",
+    "u": "along highway towards northeast",
+    "v": "across highway towards northwest",
+    "transform": "x=(u-v)/sqrt(2); y=(u+v)/sqrt(2)",
+    "display_grid": "X0,Y0 is the southwest tile-centre reference of the enclosing schematic grid; this is not a game construction anchor."
+  },
+  "geometry": {
+    "highway_half_length_m": 87.11830092828814,
+    "junction_offset_m": 28,
+    "highway_width_m": 12,
+    "ramp_width_m": 6,
+    "avenue_width_m": 24,
+    "highway_lane_offset_m": 3.2,
+    "avenue_lane_offset_m": 6,
+    "upper_height_m": 15,
+    "lower_height_m": 7.5,
+    "max_grade_percent": 40,
+    "samples_per_route": 401,
+    "lateral_clearance_m": 2,
+    "descent_clear_v_m": 12,
+    "ground_landing_m": 4,
+    "grade_taper_m": 2,
+    "lower_highway_join_m": 51.61134880454402,
+    "upper_ramp_plan_length_m": 80,
+    "lower_ramp_plan_length_m": 48,
+    "avenue_approach_length_m": 32
+  },
+  "candidate_modules": [
+    {
+      "label": "M01",
+      "function": "Coordinated stacked diagonal highway over diagonal avenue core",
+      "reason": "All three corridors share city tiles and must have one construction owner.",
+      "state": "native-donor-measured; game-module-missing"
+    },
+    {
+      "label": "M02",
+      "function": "Upper-deck right exit and entry branches",
+      "reason": "Branching floor, lower deck, and support envelopes must be coordinated where they overlap.",
+      "state": "geometry-only"
+    },
+    {
+      "label": "M03",
+      "function": "Lower-deck right exit and entry branches",
+      "reason": "Keep the opposing lower-deck travel direction and native diagonal joining boundary.",
+      "state": "geometry-only"
+    },
+    {
+      "label": "M04",
+      "function": "Curved ramp height transitions",
+      "reason": "Potentially reusable where the whole road envelope clears the stacked mainline; an on-ramp is not assumed to be a rotated off-ramp.",
+      "state": "geometry-only"
+    },
+    {
+      "label": "M05",
+      "function": "Avenue surface intersection with paired one-way ramp legs",
+      "reason": "Avenue through lanes, pedestrian paths, and turning lanes need one coordinated tile owner.",
+      "state": "geometry-only"
+    }
+  ],
+  "required_movements": [
+    "SW->NE",
+    "NE->SW",
+    "NW->SE",
+    "SE->NW",
+    "SW->NW",
+    "SW->SE",
+    "NE->NW",
+    "NE->SE",
+    "NW->NE",
+    "SE->NE",
+    "NW->SW",
+    "SE->SW"
+  ],
+  "implementation_gates": [
+    "Implement a highway domain build adapter and an independent saved-resource verifier.",
+    "Measure complete native diagonal highway and avenue boundaries, including every lane, pedestrian channel, visible profile, and construction tile.",
+    "Prove the smallest reusable module cuts, assign each occupied city tile exactly once, and verify all four proper rotations and runtime tile addresses.",
+    "Engineer ramp split/merge and surface intersection traffic paths, junction flags, road markings, supports, deck thicknesses, and collision-free swept traffic envelopes.",
+    "Add JSONC piece and assembly source support to their actual readers and writers before registering new definitions; do not create strict-JSON authoring copies.",
+    "Allocate resources, build, independently verify the saved DATs and assembly, and render the actual compiled models.",
+    "Package the reusable components under one assembly button with Tab and Shift+Tab cycling.",
+    "Install only when requested, and record human placement, Route Query, visible traffic, shadow, demolition, and save/reload observations."
+  ]
+}
