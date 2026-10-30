@@ -120,6 +120,16 @@ A **float32** is a 32-bit floating-point number. Vertex reuse compares identical
 
 The package verifier checks every zoom and the complete placement preview. The preview loader applies the same render budget and checks runtime tile addressing before drawing. Geometry tests inspect all groups; reading only the first mesh silently omits surfaces. Software rasterizers can draw oversized groups that the game fails to display, so a successful model render does not establish game rendering. Regression coverage lives in [test_render_mesh_packing.py](../tests/test_render_mesh_packing.py), [test_render_meshes.py](../tests/test_render_meshes.py), and [test_render_budget_verification.py](../tests/test_render_budget_verification.py).
 
+### 5.1 Rotate full-geometry network props
+
+A **T21** is a network-lot resource that attaches an object, called a **prop**, to a network tile. An **RKT0** resource key, property `0x27812820`, points directly to one **S3D** model, the game's stored model resource. Construction-preview rotation, T21 tile-selection rotations, the prop's base rotation, and the prop's ability to rotate are separate settings. A correct preview and a T21 permitting all four tile rotations do not establish that the placed model follows the network.
+
+When adapting an RKT0 prop that uses full three-dimensional geometry, preserve the native full-geometry rotation property `0xE83A081D` (`kSC4BuildingModelRotationProperty`). The audited NAM donor encodes it as Bool (`0x0B00`), scalar, with value true. Its presence enables full-geometry rotation; preserve the donor's exact encoding rather than rebuilding its exemplar from an incomplete property whitelist. Independently decode the saved prop to check this property and its model reference. Missing or mistyped properties must fail verification even if package hashes have been updated. The [measured highway example](../domains/highway/NETWORK_SPEC.md#5-adaptive-sidewalk-rendering-experiment) records the actual donor and the scoped game result.
+
+Measure the model's base pose separately. For RKT0 models, [Jondor's README](https://github.com/memo33/jondor-t21-editor/blob/c119676e829d0479d8b0badc533f645ba3615c1f/README.md) identifies prop rotation 0 as the raw pose displayed by Reader, a SimCity 4 resource editor. The editor renderer combines a global half-turn with its local `(prop rotation - 2)` quarter-turn; interpreting only the local expression gives the wrong base pose. A fixed quarter-turn cannot replace the missing rotation property. The [original NAM highway-prop report](https://community.simtropolis.com/forums/topic/642-nam-development/?comment=93724&do=findComment) also identifies that property as necessary for RKT0 highway props to rotate.
+
+Use one T21 permitting all required proper rotations when the same model serves those rotations. Add mirrored states only when their geometry and routes are explicitly supported. Compare fresh placed instances with the preview in all four construction orientations, and test city-camera rotation separately. An existing saved prop is not reliable evidence of newly installed T21 behavior. These checks establish appearance only; the prop supplies no traffic routes.
+
 <a id="geometry-and-routing-verification"></a>
 
 ## 6. Geometry and routing verification

@@ -8,7 +8,7 @@ document_type: "reference"
 # Highway network specification
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Implementation status](#1-implementation-status) · [2. Measured native inputs](#2-measured-native-inputs) · [3. Prototype geometry](#3-prototype-geometry) · [4. Compiled geometry and verification](#4-compiled-geometry-and-verification)
+[1. Implementation status](#1-implementation-status) · [2. Measured native inputs](#2-measured-native-inputs) · [3. Prototype geometry](#3-prototype-geometry) · [4. Compiled geometry and verification](#4-compiled-geometry-and-verification) · [5. Adaptive-sidewalk rendering experiment](#5-adaptive-sidewalk-rendering-experiment)
 <!-- END DOCUMENT NAVIGATION -->
 
 ## 1. Implementation status
@@ -74,3 +74,21 @@ The independent saved-resource verifier reads actual indexed triangles and every
 The native donors have no horizontal underside face under the tile centre. The assembly’s authored 0.8 m-square concrete column surfaces run from ground 0 m through the lower pavement at 7.5 m to the upper pavement at 15 m; no top cap is placed coplanar with the road. The [assembly testing record](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/TESTING.md#5-results-and-known-issues) owns the current saved column count, pavement contacts, physical envelope, seam measurements, and executed checks. Their saved-face corridor and visual contact checks are separate from structural engineering.
 
 Junction control and game traffic behaviour, steep-grade vehicle animation, terrain behaviour, shadows, placement, demolition, and save/reload require their respective evidence. Human observations stay unverified until explicitly confirmed. Building, installing, publishing, and merging are separate actions; only the human maintainer merges a pull request.
+
+## 5. Adaptive-sidewalk rendering experiment
+
+The isolated `codex/ddrhw-adaptive-sidewalks` branch tests five texture-backed diagonal Avenue cells with one decorative DD RHW-4 segment attached through T21. It leaves the compact interchange's registered pieces unchanged. The [shared adaptive-ground procedure](../../docs/WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models) owns the reusable authoring sequence, and the [prop-rotation contract](../../docs/FRAMEWORK_ENGINEERING.md#51-rotate-full-geometry-network-props) owns the shared format rules. This chapter records measured NAM inputs and the scoped result so the lesson is available on the original development branch without importing the unfinished prototype.
+
+| Audited input or setting | Measured value and scope |
+| --- | --- |
+| Ground Avenue families | PATH donors `296678F7-69668828-04000200` and `296678F7-69668828-04003800`, copied unchanged and used with resolved tile rotations 2 and 0, respectively. Their texture-backed appearance families supply four appearance offsets (`0x00`, `0x10`, `0x20`, and `0x30`) at five zooms each, for forty copied textures. The effective half-tile textures come from NAM 50; the full-tile textures come from the original game. |
+| Elevated appearance | Native crossing model `5753A380`, with its ground Avenue mesh removed; its retained decks remain at 7.5 m and 15 m. The short prop is decorative and carries no highway routes or ramps. |
+| Prop donor | `RealHighway_Props.dat`, SHA-256 `43faa43dc39bde9e3ba2d6f6b994c7183eb480f0e6a9fc1df83a31303c8d2d90`; exemplar `6534284A-C977C536-5EB4BEE9`. It contains full-geometry rotation property `0xE83A081D`, Bool, scalar, true. |
+| Corrected placement | One T21, all four proper tile rotations permitted (mask 15), no mirrored states, and base prop rotation 0. The missing rotation property was restored; a prior fixed-angle adjustment had failed. |
+| Tested environment | Windows SimCity 4 1.1.641.0 through Wineskin, NAM 50, right-hand traffic, and NAM DLL 1.3.1 with its FLEX construction patch active. Other game versions and the native macOS game are outside this observation. |
+
+On 2026-10-30, the tester explicitly confirmed: “okay now it works in all orientations and also the pedestrain walkway pops up.” This confirms all four placement orientations and visible pedestrian pavement coexisting with the elevated deck for revision `rotatable-prop-base-0`, built from commit `1802bf5f4b2d22b58bb0adf4097922f18c909a5c`. The installed controller SHA-256 is `b117fe0f4e32fe467b31c79113a4ff755826aec39aae4aecb05650143f823f5b`, and the installed asset DAT SHA-256 is `0463af35b50ccb7b9c7d2c484ccaeaed6eb7db60391b3b1f0f284bd876ed0c1b`. The experiment's `experiment.jsonc` retains the exact original and corrected-package observations; this paragraph summarizes that evidence rather than changing any registered piece's test record.
+
+The original preview was correct while the placed deck stayed parallel to the Avenue. The following angle-only revision still left the highway fixed while the Avenue rotated. Both failures remain historical results for their exact packages. Restoring the native rotation property and the measured base pose produced the subsequent confirmed rendering result; that result does not retroactively pass either failed package.
+
+Separate camera rotation, the exact construction sequence, every density and wealth variant, automatic matching of replacement sidewalk mods, ordinary Avenue redraw, car or pedestrian travel, shadows, demolition, and save/reload remain unverified. Pedestrian pavement is visible artwork, not evidence of pedestrian travel. The complete interchange still uses its existing fixed ground models until deliberately migrated. The next integration stage should retain the current geometry and identifiers, add real elevated routes and one ramp landing, and verify their complete interfaces before applying the method to every module.
