@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "purpose": "Preserve exact historical piece-render reports and canonical PNG hashes before the barrier-join repair.",
+  "source_snapshot_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3",
+  "source_snapshot_meaning": "Every copied report and hashed PNG was compared byte-for-byte with this existing Git snapshot. This preservation did not rerun rendering or tests.",
+  "copied_report_count": 20,
+  "hashed_png_count": 30,
+  "canonical_png_recovery": "The PNG bytes remain recoverable from the named Git commit; this folder preserves the original report bytes and records their matching image hashes.",
+  "new_render_run": false,
+  "new_test_run": false,
+  "game_observation_recorded": false,
+  "pieces": [
+    {
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-entry-branch/preview.json",
+          "bytes": 19648,
+          "sha256": "b84e86ce39bcf85776ee5cf8be88df5eee3290fbab49733ccaf9f18d3d920748"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-entry-branch/preview-top.json",
+          "bytes": 19467,
+          "sha256": "b6874db32c0b8cd51edb8c1ee3fa24a748b8901d90f24b3a725cb058b83bed85"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview.png",
+          "bytes": 224331,
+          "sha256": "6862406b7276a93831a4a70ae6a41878649c7dbdf3875b50348be89918132f9a",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-top.png",
+          "bytes": 189985,
+          "sha256": "05f7d6a947ded8b9f6a854e574566231f46272cacf0bff22e05bd68fedf4cef0",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-thumb.png",
+          "bytes": 45987,
+          "sha256": "bdfbe169919b9c5ee9369d8df3d7887f3d809b8c053d134e0e7b83e0b4535acb",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-lower-entry-grade",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-grade/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-entry-grade/preview.json",
+          "bytes": 15141,
+          "sha256": "c244bfa6d71a005ba5b3e57bc9d829bf771b62f51356932d0d9b80b135414d94"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-grade/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-entry-grade/preview-top.json",
+          "bytes": 14628,
+          "sha256": "2953da79cc159b28fcf9c00ec3e20d0e6e877214ee5f5403facf570da1e15bd5"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview.png",
+          "bytes": 170530,
+          "sha256": "6cfcf7abca061767a3e15ae28c6b233b5474264078700e0f672fb427441e63ef",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-top.png",
+          "bytes": 174631,
+          "sha256": "f9de0b537a7908b213eff2b952825470c14afa4934e8f9277397d1083a22f21d",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-thumb.png",
+          "bytes": 32794,
+          "sha256": "12383f43c9455d5b2513657b7289c570d569ff0a95157106a7efbebb8b8f944b",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-exit-branch/preview.json",
+          "bytes": 20391,
+          "sha256": "35ec46e9e913d413899268f04a7a745ed0fdaa03005b06774efb11bdf2d83569"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-exit-branch/preview-top.json",
+          "bytes": 20210,
+          "sha256": "840a3234f3e33f6576e699029f4a9887e00faae94ac81b7853229d5176391792"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview.png",
+          "bytes": 224066,
+          "sha256": "eac3891144871862cd6125e05e34d2c85dd0a640b9bd2a47248b8c785f95c56f",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-top.png",
+          "bytes": 187611,
+          "sha256": "75b905b341a47cb60e786a6ea95df6b7e1f7409f74c87807137998ef1bf83f1a",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-thumb.png",
+          "bytes": 45890,
+          "sha256": "16394f020ee3efcc9fb6a74166f3e20a02fd24ae714a3b66267e1f5e420b4a0a",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-lower-exit-grade",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-grade/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-exit-grade/preview.json",
+          "bytes": 15178,
+          "sha256": "c41ff62ad814af83d70476668af1544cc88813e8309815d517c755fe08e1bc06"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-grade/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-lower-exit-grade/preview-top.json",
+          "bytes": 14667,
+          "sha256": "e6b7a775c76d0d771e546a88ce2b18dab0deff19a3aaf9e761048f284c8350b3"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview.png",
+          "bytes": 172398,
+          "sha256": "5a6941e11f343bf5202fd933c9e9f306335c23b9f9862d95c19e76fda199cfcb",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-top.png",
+          "bytes": 97964,
+          "sha256": "8afcbd5eb37a783b7ffcea71aca69908076467c25647755da691aa4f9572c30c",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-thumb.png",
+          "bytes": 33176,
+          "sha256": "e736fee354ceebcfa040a7d6fe897d6b85ddaeaaa04a8bdb828e0db2304a6931",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-northwest-junction",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-northwest-junction/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-northwest-junction/preview.json",
+          "bytes": 29465,
+          "sha256": "7029db397d2ff27c98e052489c464e2ace6e819ed630f6bf0a680b37b58f3b54"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-northwest-junction/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-northwest-junction/preview-top.json",
+          "bytes": 29012,
+          "sha256": "3157942a5b3e30ee561560e3e719ed49a8ae941303d3eab49b72db7fca5ce5d1"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-northwest-junction/previews/preview.png",
+          "bytes": 266417,
+          "sha256": "d9882b32cb6a554a7d82212bbe62dea319fc1e32de0cc6bdc96f25d50ff2ec2b",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-top.png",
+          "bytes": 286073,
+          "sha256": "a2ceee465d2fc788634c157d0a1dee2bdd00144068f84bcf2f958e552304df75",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-thumb.png",
+          "bytes": 43084,
+          "sha256": "44e67835183df5bcd187c71d27bdfd7c269a399e01ac167a4941d3d303c2546d",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-southeast-junction",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-southeast-junction/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-southeast-junction/preview.json",
+          "bytes": 29557,
+          "sha256": "285a71faf08c88367f7b9853a1ef2741528089bd5e0fb797638c9a2c4a25eda9"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-southeast-junction/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-southeast-junction/preview-top.json",
+          "bytes": 29104,
+          "sha256": "c68963fea2172833f67260b3e3b11981fc0ba134fa3e7bac8021b5cb20fd2f60"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-southeast-junction/previews/preview.png",
+          "bytes": 280322,
+          "sha256": "c35497e5ad557b112a34790b5e86f923ebda47e38e2113c409cdcb35db1e25ca",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-top.png",
+          "bytes": 308205,
+          "sha256": "ba4586e5dc14e40486d19834d4f6753aae3d6b3ddb3aa4ab657f340038b16540",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-thumb.png",
+          "bytes": 43710,
+          "sha256": "4f23ea0365f091950742ca8fe8c93cdecbcb766c4893053cba415810495ec3b7",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-entry-branch/preview.json",
+          "bytes": 25313,
+          "sha256": "a09d8befd38341c0af19d11335d116399aff21ff807817123eba9fb69f738483"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-entry-branch/preview-top.json",
+          "bytes": 25248,
+          "sha256": "f8b438dd39cd357b6f0e5b3d2ac86178fa2c647e528709650f655df8ad4d7622"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview.png",
+          "bytes": 311883,
+          "sha256": "7a2d758cdab11a23ec15fddd939820ad73da2831d871230a2976b9f055c296e2",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-top.png",
+          "bytes": 204696,
+          "sha256": "f53adffe9a9d571b70081247daf82ef39a61e77f14d0f80363b2e4e1673c8f44",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-thumb.png",
+          "bytes": 48143,
+          "sha256": "4522b2eb2befdaee30ec615c9faca93e541b4891bd1ae4fc82e60adfa386bc4d",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-entry-grade",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-grade/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-entry-grade/preview.json",
+          "bytes": 17711,
+          "sha256": "98940041613dd75b3756cf65a9a2bdfed054400d59680d341a3d1329ba4452f2"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-grade/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-entry-grade/preview-top.json",
+          "bytes": 17113,
+          "sha256": "5b986facd96409949fdcd90565df326da3809fd244e77817d2019585eb046e1d"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview.png",
+          "bytes": 196235,
+          "sha256": "947dd2c2111bcbd6ce4a3b6c8ae6d1beaba7ab320dde95e002064c36bd3aa4fb",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-top.png",
+          "bytes": 178089,
+          "sha256": "f433d9db0f319deaf679b148babf658b24af1df88ee43c08fc219607fb3ce832",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-thumb.png",
+          "bytes": 36973,
+          "sha256": "c49164f9ce7966f0975bba848c1bf2e75cc7a9dc6a35a08efb5c35daf2359344",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-exit-branch/preview.json",
+          "bytes": 26012,
+          "sha256": "9f3ac8055827134f27e8821e5f858131a56b3cd7fd73ad3a76ea61ad81fd2574"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-exit-branch/preview-top.json",
+          "bytes": 25865,
+          "sha256": "7344a9a7b23ad5e16639b584e5f7af4006a03d9a78f0e295baec8431194da2dd"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview.png",
+          "bytes": 310125,
+          "sha256": "6fe6964782bea5e6133e1ed5a51168304fbf074424c3f36fc690592b4e4bf25b",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-top.png",
+          "bytes": 210362,
+          "sha256": "b2633985b0de8b4928b83fd1a5ae4d25f378fd26cfa0f6bb05c45b4442fb972e",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-thumb.png",
+          "bytes": 48053,
+          "sha256": "97ecac4550e31ec83661cafa4aa2c6ec93ce6ebe224c40984f5a0db2cf420c86",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-exit-grade",
+      "reports": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-grade/evidence/preview.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-exit-grade/preview.json",
+          "bytes": 17679,
+          "sha256": "924f0ae4ad770e15c5829d504d4af7ff6f38cb0dda905fa28c521195a5b1db4a"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-grade/evidence/preview-top.json",
+          "preserved": "piece-renders/ddrhw-diagonal-upper-exit-grade/preview-top.json",
+          "bytes": 17448,
+          "sha256": "1df2f0424934515a6d2fc034bf385fe66e4d3a76b23e36e8e067dfd1036eb99a"
+        }
+      ],
+      "canonical_pngs": [
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview.png",
+          "bytes": 193693,
+          "sha256": "9ef42add77235561331c94aaad9daf33ebac9ea8ffd56497c61f523230994d70",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-top.png",
+          "bytes": 114949,
+          "sha256": "3dfc1bfe4ac1b35a8172d6f4778b2b613e1c6e1d734a07022655458eff44a86f",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        },
+        {
+          "source": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-thumb.png",
+          "bytes": 36879,
+          "sha256": "f468c88ef9f5c6bed7593c6627f8b4a37e93352b89d6159db24705624f93aa11",
+          "recoverable_from_git_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3"
+        }
+      ]
+    }
+  ]
+}

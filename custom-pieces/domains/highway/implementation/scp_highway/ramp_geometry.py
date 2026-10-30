@@ -155,6 +155,41 @@ def _box(center, half_width, bottom, top):
     return output
 
 
+def _profile_barrier_faces(ends, side, half, profile, *, native_side=None, seams=None):
+    """Sweep outward-facing profile strips, optionally meeting a native miter.
+
+    The temporary sixth coordinate is the profile's inward inset. Its
+    interpolation gives each clipped triangle the same native iso-inset
+    boundary, including the horizontal crown where height alone is ambiguous.
+    It is removed before any model vertex is packed.
+    """
+    output = []
+    for (inset_one, height_one), (inset_two, height_two) in zip(profile, profile[1:]):
+        polygon = []
+        for point, normal, inset, height in ((ends[0][0], ends[0][1], inset_one, height_one),
+                                             (ends[0][0], ends[0][1], inset_two, height_two),
+                                             (ends[1][0], ends[1][1], inset_two, height_two),
+                                             (ends[1][0], ends[1][1], inset_one, height_one)):
+            taper = min(1.0, max(0.0, point[2]) / 1.5)
+            polygon.append((*_vertex(point, side * (half - inset), normal, "concrete", height * taper), inset))
+        if side == -1:
+            polygon.reverse()
+        for triangle in _triangulate(polygon):
+            if native_side is None:
+                output.append(tuple(point[:5] for point in triangle))
+                continue
+            def distance(point):
+                return native_side * (-point[2] - point[0] + 8.0) / math.sqrt(2.0) - 8.0 + point[5]
+            clipped = _clip(list(triangle), distance)
+            if seams is not None:
+                for first, last in zip(clipped, clipped[1:] + clipped[:1]):
+                    if (abs(distance(first)) < 1e-7 and abs(distance(last)) < 1e-7
+                            and math.dist(first[:3], last[:3]) > 1e-8):
+                        seams.append((side, first, last))
+            output.extend(tuple(point[:5] for point in face) for face in _triangulate(clipped))
+    return output
+
+
 def road_triangles(points, *, width=6.0, thickness=0.6, barrier_width=0.25,
                    barrier_height=0.9, barriers=True, edge_markings=True,
                    divider=False, supports=(), barrier_ranges=None, barrier_profile=None):
@@ -198,15 +233,7 @@ def road_triangles(points, *, width=6.0, thickness=0.6, barrier_width=0.25,
                 _require(len(barrier_profile) >= 2 and all(0.0 <= inset < half and height >= 0.0
                                                            for inset, height in barrier_profile),
                          "Barrier profile must remain inside its actual road half-width")
-                for (inset_one, height_one), (inset_two, height_two) in zip(barrier_profile, barrier_profile[1:]):
-                    polygon = []
-                    for point, normal, inset, height in ((first, normals[index], inset_one, height_one),
-                                                         (first, normals[index], inset_two, height_two),
-                                                         (last, normals[index + 1], inset_two, height_two),
-                                                         (last, normals[index + 1], inset_one, height_one)):
-                        taper = min(1.0, max(0.0, point[2]) / 1.5)
-                        polygon.append(_vertex(point, side * (half - inset), normal, "concrete", height * taper))
-                    output.extend(_triangulate(polygon))
+                output.extend(_profile_barrier_faces(ends, side, half, barrier_profile))
                 continue
             if enabled:
                 low, high = sorted((side * (half - barrier_width), side * half))
@@ -475,10 +502,72 @@ def outside_highway_corridor(triangles, side, half_width=8.0):
 
 
 def compact_ramp_triangles(ramp):
-    """Return native-thickness physical ramp faces outside the mainline."""
-    faces = road_triangles(ramp.get("mesh_points", ramp["points"]), width=6.0, thickness=1.0, barrier_width=0.828125,
-                           barrier_profile=NATIVE_BARRIER_PROFILE, barrier_height=1.390625)
-    return outside_highway_corridor(faces, ramp["side"])
+    """Retain the road opening and join both barrier shells profile by profile."""
+    points = ramp.get("mesh_points", ramp["points"])
+    faces = road_triangles(points, width=6.0, thickness=1.0, barrier_width=0.828125,
+                           barriers=False, barrier_height=1.390625)
+    output = outside_highway_corridor(faces, ramp["side"])
+    _lengths, normals = route_frames(points)
+    seams = []
+    for index, (first, last) in enumerate(zip(points, points[1:])):
+        if max(first[2], last[2]) <= EPSILON:
+            continue
+        ends = [(first, normals[index]), (last, normals[index + 1])]
+        for side in (-1, 1):
+            output.extend(_profile_barrier_faces(ends, side, 3.0, NATIVE_BARRIER_PROFILE,
+                                                 native_side=ramp["side"], seams=seams))
+    output.extend(_native_barrier_bridges(ramp, points, normals, seams))
+    return output
+
+
+def _native_barrier_bridges(ramp, points, normals, seams):
+    """Fill only the native-profile strip between its old cut and the miter.
+
+    The native cut follows the full six-metre ramp footprint. The ramp's
+    inset crown and inner face meet farther inside that opening, so a cap at
+    the outer deck edge would still leave a notch. Each exact clipped seam
+    segment receives its matching native-profile bridge instead. These are
+    convex individual profile strips, not a fan across the concave profile.
+    """
+    native_side, height = ramp["side"], ramp["height_m"]
+    intersections = {}
+
+    def native_vertex(road_side, point):
+        inset = point[5]
+        key = road_side, inset
+        if key not in intersections:
+            curve = [_vertex(center, road_side * 3.0, normal, "concrete")
+                     for center, normal in zip(points, normals)]
+            hits = []
+            for first, last in zip(curve, curve[1:]):
+                if abs(first[1] - height) > 1e-7 or abs(last[1] - height) > 1e-7:
+                    continue
+                distances = [native_side * (-p[2] - p[0] + 8.0) / math.sqrt(2.0) - 8.0 + inset
+                             for p in (first, last)]
+                if abs(distances[0]) < 1e-10:
+                    hits.append(first)
+                if distances[0] * distances[1] < 0.0:
+                    fraction = distances[0] / (distances[0] - distances[1])
+                    hits.append(tuple(a + fraction * (b - a) for a, b in zip(first, last)))
+            unique = []
+            for hit in hits:
+                if not any(math.dist(hit[:3], other[:3]) < 1e-7 for other in unique):
+                    unique.append(hit)
+            _require(len(unique) == 1, "A barrier miter needs one level native-footprint intersection")
+            intersections[key] = unique[0]
+        base = intersections[key]
+        return base[0], point[1], base[2], *base[3:]
+
+    output = []
+    for road_side, first, last in seams:
+        if first[5] > last[5]:
+            first, last = last, first
+        delta_inset, delta_height = last[5] - first[5], last[1] - first[1]
+        desired = (-native_side * delta_height / math.sqrt(2.0), delta_inset,
+                   -native_side * delta_height / math.sqrt(2.0))
+        polygon = [native_vertex(road_side, first), native_vertex(road_side, last), last[:5], first[:5]]
+        output.extend(_triangulate(polygon, desired))
+    return output
 
 
 def support_triangles(centers=((0.0, 0.0),), *, half_width=0.4,

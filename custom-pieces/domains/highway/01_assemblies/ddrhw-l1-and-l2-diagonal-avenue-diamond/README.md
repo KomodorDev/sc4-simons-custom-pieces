@@ -44,6 +44,8 @@ Each highway join now uses an **auxiliary lane**: a lane beside the two through 
 
 Barrier openings follow each ramp’s actual deck and side. A lower-ramp opening leaves the upper barrier intact, and the opposite side of an upper-deck branch stays closed. Ramp pavement, barriers, and concrete use the measured native NAM materials described in the [ramp-material audit](evidence/native-ramp-materials-audit.json). All authored ramp pavement, including the highway joins and ground turns, uses pavement from NAM’s single-lane ramp network, MIS. Its texture direction continues through each ramp mouth. The retained native DD RHW-4 mainline faces keep their original pavement material. Retained native model overhangs remain visible beyond the construction tiles.
 
+At all four highway/ramp joins, the barrier sides and top now meet through matching concrete profiles. This fills the inner triangular gaps and outer notches while keeping the slip-lane openings clear. The road layout, driving paths, and adaptive Avenue ground remain unchanged.
+
 ### 1.1 Avenue connections and sidewalks
 
 The components already include the ground Avenue section, its car routes, and its pedestrian routes. The intended experiment is to connect an ordinary diagonal ground Avenue to the assembly’s northwest and southeast Avenue ends:

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen software validation of the compact diamond barrier-joint repair; this record is not a game observation or an installation receipt.",
+  "pre_repair_source_commit": "ac30bc5d341f2179bf4974c3d81717cb6cefdab3",
+  "compiled_candidate": {
+    "build": "ddrhw-barrier-joins-parts-01",
+    "manifest_sha256": "06bff795a0d6956efa8fe4f01565408e87f172d9357978018f49849b478f0019",
+    "dat_files": 15,
+    "resources": 1086,
+    "native_saved_verification_passed": true
+  },
+  "repository_tests": {
+    "command": "python3 -B tools/run_tests.py",
+    "all_suites_passed": true,
+    "reported_cases": 1546,
+    "executed_cases_passed": 1464,
+    "explicit_skips": 82,
+    "suites": [
+      {
+        "name": "framework",
+        "reported_cases": 859,
+        "executed_cases_passed": 849,
+        "explicit_skips": 10
+      },
+      {
+        "name": "high-speed-rail",
+        "reported_cases": 428,
+        "executed_cases_passed": 363,
+        "explicit_skips": 65
+      },
+      {
+        "name": "highway",
+        "reported_cases": 143,
+        "executed_cases_passed": 141,
+        "explicit_skips": 2
+      },
+      {
+        "name": "trumpet",
+        "reported_cases": 116,
+        "executed_cases_passed": 111,
+        "explicit_skips": 5
+      }
+    ],
+    "full_private_log_sha256": "666af19ef0ff7d03e609f958ac9b237e907cb24646284a0a093c0be22103b492",
+    "skip_scope": "Unavailable supported native inputs or retained native builds in the portable suite; a separate build and saved verification used the pinned native dependencies."
+  },
+  "barrier_acceptance": {
+    "ramp_mouths": 4,
+    "barriers_per_mouth": 2,
+    "rotations": 4,
+    "continuous_profile_sections": 640,
+    "outward_triangle_order_checked": true,
+    "negative_controls": [
+      "Removed inner profile strips",
+      "Removed outer crowns",
+      "Removed outer sides",
+      "Reversed crown winding"
+    ],
+    "whole_model_manifold_closure_claimed": false
+  },
+  "preservation": {
+    "checks_passed": 399,
+    "failures": 0,
+    "canonical_and_resolved_paths_unchanged": 66,
+    "ground_textures_unchanged": 300,
+    "prop_exemplars_unchanged": 14,
+    "t21_exemplars_unchanged": 14,
+    "resource_identities_unchanged": 1086,
+    "resource_payloads_byte_identical": 909,
+    "changed_mesh_names": [
+      "SCP NAM barrier",
+      "SCP NAM concrete"
+    ],
+    "layout": {
+      "component_types": 13,
+      "placements": 15,
+      "owned_tiles": 53
+    },
+    "normal_controller_and_menu_unchanged": true
+  },
+  "artwork": {
+    "assembly_views": 6,
+    "changed_piece_types_rendered": 10,
+    "piece_views": 20,
+    "thumbnails": 10,
+    "review_scope": "Coding-agent visual review of actual saved models and corresponding trumpet presentation references; no human game approval."
+  },
+  "evidence": [
+    {
+      "file": "evidence/barrier-join-assembly-check.json",
+      "sha256": "0c832948dd5ecf51ee4bcfa7d20e1b852a6673e4a6bba9c094246241ebb78a0b"
+    },
+    {
+      "file": "evidence/barrier-join-preservation.json",
+      "sha256": "8ce718e955cab3fac949667b0273d664bb8b4e1f696bcc5adfa2a11a451e8b23"
+    },
+    {
+      "file": "evidence/barrier-join-render.json",
+      "sha256": "480dacb77e4d2e2d74885cb80dc886d612932a8fd3e2cd0a33cd2f61e20beed9"
+    },
+    {
+      "file": "evidence/barrier-join-piece-renders.json",
+      "sha256": "e1e5718094f62f05062a82829cd120284fbacc7fb8562b2d39edeaaef75e328f"
+    }
+  ],
+  "manual_game_results_changed": false,
+  "game_operation": "unverified",
+  "installed": false
+}
