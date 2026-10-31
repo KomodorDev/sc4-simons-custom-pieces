@@ -28,6 +28,8 @@ One Highways-menu assembly button cycles through the components: **Tab** moves f
 
 Ramp traffic uses only the adjacent Avenue carriageway, meaning the lanes carrying traffic in one direction. There is no turn across the opposing carriageway. The Avenue remains two-way, with its native pedestrian routes retained. Each ramp driveway still crosses the pedestrian route beside its own carriageway; the narrower mouth exposes more native ground artwork beside that crossing, rather than drawing a fixed sidewalk over the ramp asphalt.
 
+The [native highway approach experiment](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) requests one ordinary NAM DD tile immediately outside each highway end when the L2 exit slip and L2 entry slip are freshly placed. Reserve one extra 16 × 16 m approach plot at each end beyond the fixed construction plan. In the pictured 0° layout, these plots are (X0, Y1) beyond P06 and (X8, Y9) beyond P07. Existing placed components do not gain those tiles automatically. Follow the [connection test](TESTING.md#41-native-highway-connection-test) before replacing a saved-city assembly; joining behavior remains unverified in the game.
+
 ## 1. Views
 
 These six canonical pictures follow the HSR trumpet's exact order: clean top, clean southeast, named top, named southeast, named northwest, and construction overview. P01–P15 identify the same placements in every named picture; full menu names, colours, badges, and leaders retain that mapping. X increases east/right, Y increases north/up, and one tile is 16 × 16 m.

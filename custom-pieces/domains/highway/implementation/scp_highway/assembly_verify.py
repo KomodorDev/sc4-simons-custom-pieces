@@ -632,6 +632,8 @@ def check_saved_supports(owners, piece_resources, routes):
 
 def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_models=True):
     pieces = {piece['id']: piece for piece in manifest['pieces']}
+    from .ddrhw_connections import check_selected_helper_collisions
+    helper_report = check_selected_helper_collisions(pieces, scene)
     owners, poses = check_owned_cells(pieces, scene)
     rectangle = [max(cell[axis] for cell in owners) - min(cell[axis] for cell in owners) + 1 for axis in (0, 1)]
     require(scene.get('construction_rectangle_tiles', rectangle) == rectangle,
@@ -649,6 +651,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     from .marking_verify import check_saved_markings
     marking_report = check_saved_markings(owners, piece_resources) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT, 'saved_resource_checks_passed': bool(inspect_models),
+            **({'native_dd_outside_approaches': helper_report} if helper_report else {}),
             'saved_path_and_construction_checks_passed': True, 'assembly_orientation_checked_ccw_degrees': 0,
             'construction': {'unique_owned_cells': len(owners), 'bounding_rectangle_tiles': rectangle,
                              'placements': len(poses), 'distinct_component_types': len({p['piece_id'] for p in poses}),

@@ -20,6 +20,8 @@ The angled and north-up pictures show the actual saved model in its authored 0°
 
 ## 2. Piece and placement
 
+Fresh placement also requests two native NAM DD approach tiles, one beyond each highway end. Reserve one extra 16 × 16 m native plot at both ends outside the fixed footprint shown in the pictures. The retained models and traffic paths are unchanged. This [native highway connection experiment](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) needs a game test, and existing city placements must be replaced to run the new construction request.
+
 One click places two completely straight highway decks, at 7.5 m and 15 m above the ground pavement, their six centre piers, and four barrier openings. The slip lanes and their paint stay inside the straight highway envelope. Every curved ramp surface, underside, barrier, and joining bridge belongs to a separately placed ramp. The stamp also carries the ground Avenue through the crossing.
 
 The visible ramp openings lie at the native highway edge and are flat, at 7.5 m on the lower deck and 15 m on the upper deck. Traffic-route connections follow city-tile edges instead. A physical opening and a connection-card boundary therefore describe different cuts; neither may replace the other.

@@ -20,6 +20,8 @@ These angled and north-up views render the actual saved game models and their re
 
 ## 2. Piece and placement
 
+Fresh placement also requests one native NAM DD approach tile beyond its exposed highway end. Reserve that extra 16 × 16 m native plot outside the fixed footprint shown in the pictures. The retained models and traffic paths are unchanged. This [native highway connection experiment](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) needs a game test, and existing city placements must be replaced to run the new construction request.
+
 Merges the on-ramp from the southeast avenue access into an outer upper-deck lane. Its final section stays level above the lower deck. The opposite upper-deck edge remains closed, and the branch owns the outer native cell crossed by its ramp faces.
 
 This branch uses a real flat auxiliary lane in the former highway shoulder, with a 16 m taper and a 8 m parallel section. Its saved driving path changes between the native outer through lane and that auxiliary lane. Native-material dashed separators and a painted split area identify the join; both highway through lanes remain available.

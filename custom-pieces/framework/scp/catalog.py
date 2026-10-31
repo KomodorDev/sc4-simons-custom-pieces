@@ -219,6 +219,8 @@ def validate_catalog(catalog):
         require(set(piece.get('game_tests', {})) == game_keys, f'{slug}: incomplete game test matrix')
         require(all(v in {'unverified', 'passed', 'failed'} for v in piece['game_tests'].values()), 'Invalid game test status')
         require(isinstance(piece.get('dependencies'), list) and 'controller' in piece['dependencies'], 'Missing dependencies')
+        from .native_approaches import approaches as native_approaches
+        native_approaches(piece)
         for shadow in piece.get('shadow_mappings', []):
             require(shadow.get('tile') in tiles and shadow.get('rotation') in range(4), 'Invalid shadow mapping')
             number(shadow['source'])

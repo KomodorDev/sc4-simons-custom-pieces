@@ -67,7 +67,8 @@ def _transform(base, controller, menu, bundle, icons):
     from .menu_experiment_resources import build_menu_experiment_resources
     groups = _groups(base, bundle)
     original = strict_dbpf(controller)
-    require(set(original) == {RUL0, NETWORK_INI} | ({RUL1} if 'rul1' in base['overlay'] else set()),
+    from .native_approaches import needs_rul1
+    require(set(original) == {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set()),
             'Original multi-assembly controller resource closure differs')
     roots = [[number(piece['puzzle_id']) for piece in pieces] for _, _, pieces in groups]
     changed, composition = with_feature_sequence(original[RUL0], base['overlay']['rul0'],

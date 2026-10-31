@@ -226,6 +226,23 @@ The [construction-view presentation refresh](evidence/construction-model-overlay
 
 ## 4. Game checks
 
+### 4.1 Native highway connection test
+
+This test covers the experimental outside native approaches described in [the network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment). A **construction request** runs when a component is placed; it does not run again just because a city is loaded. Preserve the existing city, and use a disposable test city for these steps. The software checks do not establish the following game results.
+
+1. Open **Transportation → Highways**, choose **SCP | ASSEMBLY | DD RHW-4 — Compact Diagonal Avenue Diamond**, and press **Tab** until you reach **P08 — Upper Diagonal Exit Branch**. Place a fresh copy on empty, flat land with one clear city square immediately beyond its exposed highway end. Repeat with **P09 — Upper Diagonal Entry Branch**. In the pictured 0° layout, the outside squares are (X−1, Y0) beyond P08 and (X9, Y10) beyond P09. Inspect whether a native double-decker continuation appears in each outside square. Record a missing tile, a wrong angle, or an incorrect upper/lower direction separately.
+2. Use an already working NAM DDRHW-4 highway, as in the reported failing case. Extend its existing diagonal end towards the newly created outside tile with the ordinary RealHighway drawing tool. Release the mouse at the native approach tile; the fixed custom junction is not the drag target. Record whether the native DD appearance reaches the seam and remains after releasing the mouse. Repeat at the other end.
+3. In a separate empty area, reverse the order: extend an existing diagonal DD highway first, then place the fresh custom end beside it. Keep its declared outside approach square available to the native highway. Record placement acceptance and any change to the existing highway separately from step 2.
+4. Repeat fresh placement at all four orientations using **Home** or **End** before clicking. Check the upper and lower deck directions against the native highway, rather than checking the road angle alone. Turning the city camera does not count as placing another orientation. An opposite-flow native highway is a separate unsupported case until tested.
+5. Supply car origins and destinations beyond both highway ends. Use **Route Query** to inspect each deck, and observe an actual moving car through each seam. A road that looks joined does not establish traffic continuity. Repeat the assembly's four ramp journeys and the adaptive-sidewalk checks below.
+6. Save the test city, quit the game completely, reopen the city, and repeat the seam and representative traffic checks. In a separate saved copy, demolish and replace the end component, inspect the outside native tile, and repeat joining. Record whether the native continuation survives or needs reconstruction.
+7. In another disposable copy, occupy the helper square with a protected custom piece before attempting placement. Record whether placement is rejected without changing that neighbour. Do not treat the word `optional` in the source as an overwrite guarantee. Keep this collision case separate from joining to an ordinary draggable native DD tile.
+
+Record the exact build, component, orientation, placement order, deck direction, and observed outcome using [the shared observation procedure](../../../../docs/TESTING.md#4-record-one-observation). These cases remain unverified until a matching human observation is recorded.
+
+### 4.2 Retained assembly checks
+
+
 Test these construction and sidewalk questions separately in a disposable city. First place P01–P15 on empty, flat land, then use the normal Avenue tool to extend the two exposed diagonal Avenue ends. In a second empty area, build the complete diagonal Avenue first, then try placing the same components over it. In a third copy, try dragging Avenue through the already placed components. Record placement acceptance, model retention, Route Query, and visible traffic for each sequence; success in one sequence does not establish the others. These cases have not been executed.
 
 On each fresh copy, inspect all 15 Avenue tiles through the core and the two ramp junctions. Compare their pavement with an ordinary Avenue beside the same development, and record the actual density, wealth, and texture mods. A **pedestrian route** is invisible traffic data; a **sidewalk** is visible artwork. The new runtime tiles allow native ground appearance selection beneath separately attached highway and ramp artwork. The isolated rendering experiment's pavement and rotation passes do not pass these complete-assembly cases. Record visible pavement and actual pedestrian travel separately.

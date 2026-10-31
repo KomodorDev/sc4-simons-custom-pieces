@@ -56,6 +56,8 @@ def construction(spec, cells=None, checks=None, cons=None):
                          'c - dirtroad: 0x03010000 avenue: 0x01030103',
                          'd - dirtroad: 0x00000301 avenue: 0x01000003',
                          'e - dirtroad: 0x00000301 avenue: 0x00030100']
+    from .ddrhw_connections import add_approaches
+    cell_rows, palette, cons_rows = add_approaches(spec, cell_rows, palette, cons_rows)
     lines = ['RotationRing = ' + ', '.join(f'{puzzle + n * 0x10000:X}' for n in range(8)) + f' ;SCP {spec["id"]}',
              '', f'[HighwayIntersectionInfo_0x{puzzle:08X}]', f'Piece = 0.0, 0.0, 0, 0, 0x{preview:08X}',
              f'PreviewEffect = {spec["effect_name"]}']

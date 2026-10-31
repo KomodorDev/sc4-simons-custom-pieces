@@ -163,7 +163,8 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
     pieces = _selected(base, scene)
     resources = strict_dbpf(controller)
     from .adaptive_network import RUL1
-    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if 'rul1' in base['overlay'] else set())
+    from .native_approaches import needs_rul1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set())
     require(set(resources) == expected_controller, 'Original controller has unexpected resources')
     if len(pieces) > 1:
         changed, composition = with_feature_sequence(resources[RUL0], base['overlay']['rul0'],
@@ -303,7 +304,8 @@ def _check_actual_resources(base_controller, base_menu, controller, menu, base, 
     from .verify import strict_dbpf
     old_controller, current_controller = strict_dbpf(base_controller), strict_dbpf(controller)
     from .adaptive_network import RUL1
-    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if 'rul1' in base['overlay'] else set())
+    from .native_approaches import needs_rul1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set())
     require(set(current_controller) == set(old_controller) == expected_controller, 'Controller resource closure changed')
     require(current_controller[NETWORK_INI] == old_controller[NETWORK_INI], 'Menu experiment changed NetworkINI')
     if RUL1 in expected_controller:

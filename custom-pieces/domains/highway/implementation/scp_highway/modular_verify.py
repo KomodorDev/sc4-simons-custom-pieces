@@ -317,10 +317,17 @@ def check_models(resources, piece, donors=None):
 
 
 def check_construction_fields(fields, piece, resources):
+    from .ddrhw_connections import approaches, check_construction_approaches
+    native_approaches = approaches(piece)
+    if native_approaches:
+        fields = check_construction_approaches(fields, piece)
+        piece = {key: value for key, value in piece.items() if key != 'native_dd_approaches'}
     key = validate_specification(piece)
     if piece.get('adaptive_ground'):
         from .adaptive_verify import check_construction_fields as inspect
-        return inspect(fields, piece, resources)
+        result = inspect(fields, piece, resources)
+        return ({**result, 'native_dd_outside_approaches_checked': len(native_approaches)}
+                if native_approaches else result)
     from .ramp_verify import _paths, _road_word
     width, depth = piece['footprint']
     rows = [['.']*(width+2) for _ in range(depth+1)]
@@ -337,8 +344,10 @@ def check_construction_fields(fields, piece, resources):
             list(map(normalize, fields.get('CheckType', []))) == list(map(normalize, palette)) and
             fields.get('Costs') == ['1000'],
             'Modular construction changes cell ownership, anchors, or actual saved-route flags')
-    return {'independent_modular_partition_checked': True, 'occupied_cells_checked': len(piece['cells']),
-            'actual_saved_route_flags_checked': True, 'game_behavior_tested': False}
+    result = {'independent_modular_partition_checked': True, 'occupied_cells_checked': len(piece['cells']),
+              'actual_saved_route_flags_checked': True, 'game_behavior_tested': False}
+    return ({**result, 'native_dd_outside_approaches_checked': len(native_approaches)}
+            if native_approaches else result)
 
 
 def saved_path_evidence(output):

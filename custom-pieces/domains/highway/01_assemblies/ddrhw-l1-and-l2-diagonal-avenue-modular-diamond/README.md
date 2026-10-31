@@ -22,6 +22,8 @@ Each ramp connects only to the adjacent Avenue **carriageway**, meaning the part
 | Upper off-ramp | Southwest highway approach, on the upper deck | Southeast Avenue arm |
 | Upper on-ramp | Southeast Avenue approach | Northeast highway arm, on the upper deck |
 
+The [native highway approach experiment](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) requests one ordinary NAM DD tile immediately outside each highway end when the straight highway stamp is freshly placed. Reserve one extra 16 × 16 m approach plot at each end beyond the fixed construction plan. In the pictured 0° layout, these plots are (X−1, Y0) and (X9, Y10) beyond the two ends of P01. Existing placed components do not gain those tiles automatically. Follow the [connection test](TESTING.md#41-native-highway-connection-test) before replacing a saved-city assembly; joining behavior remains unverified in the game.
+
 ## 1. Views
 
 These pictures show the saved models in the default seven-placement layout, in the HSR trumpet's exact order: clean top, clean southeast, named top, named southeast, named northwest, and construction overview. P01–P07 mean the same placements in every named picture. X increases eastward, Y increases northward, and one tile is 16 × 16 m.

@@ -17,6 +17,7 @@ from .menu import build_menu_resources
 from .recipes import build_piece
 from .rul0 import MARKER, compose_rul0
 from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
+from . import native_approaches
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -58,7 +59,7 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
     for index in indexes:
         for key, paths in index.items():
             installed.setdefault(key, []).extend(paths)
-    context, audit = {}, []
+    context, audit, dependency_paths = {}, [], {}
     needed = sorted({label for piece in pieces for label in piece['dependencies']})
     for label in needed:
         require(label in catalog['_profile']['files'], f'Unknown dependency: {label}')
@@ -68,14 +69,17 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
         path = matches[0]; raw = path.read_bytes()
         require(sha(raw) == record['sha256'], f'{path.name} changed. Re-audit this NAM version; do not just change the fingerprint.')
         context[label] = {key: decompress(value) for key, value in entries(raw).items()}
+        dependency_paths[label] = path
         audit.append({'filename': path.name, 'path': str(path), 'sha256': sha(raw)})
     native = next(Path(x['path']) for x in audit if x['filename'] == 'NetworkAddonMod_Controller.dat')
-    shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) for piece in pieces) else (RUL0, NETWORK_INI)
+    shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) or native_approaches.approaches(piece)
+                                              for piece in pieces) else (RUL0, NETWORK_INI)
     for key in shared:
         require(installed.get(key) == [native],
                 f'Conflicting shared NAM overlay {tgi_string(key)} in '
                 + ', '.join(str(path) for path in installed.get(key, []))
                 + '. Move the old standalone prototype out of Plugins, or merge the other custom controller first.')
+    native_approaches.audit_dependencies(pieces, context, installed, dependency_paths)
     return context, installed, audit, roots
 
 
@@ -207,6 +211,12 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     rul1_delta = None
     if rul1_rules:
         controller[RUL1], rul1_delta = compose_rul1(baseline[RUL1], rul1_rules, selected)
+    native_approach_delta = None
+    if native_approaches.declarations(selected):
+        labels = sorted({label for piece in selected for label in piece['dependencies']})
+        donors = {key: raw for label in labels for key, raw in context[label].items()}
+        controller[RUL1], native_approach_delta = native_approaches.compose_rul1(
+            controller.get(RUL1, baseline[RUL1]), selected, donors)
     texture_ids = set()
     from .models import parse_s3d
     for resources in assets_by_piece.values():
@@ -267,6 +277,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                     'installed': False, 'in_game_tested': False}
         if rul1_delta is not None:
             manifest['overlay']['rul1'] = rul1_delta
+        if native_approach_delta is not None:
+            manifest['overlay'][native_approaches.OVERLAY] = native_approach_delta
         from .release import assess_build
         manifest['release'] = assess_build(Path(project_root), manifest)
         write_json(stage / 'manifest.json', manifest)

@@ -275,6 +275,23 @@ The independent [source tests](../../tests/test_parallel_ramp_review.py) check a
 
 ## 4. Game checks
 
+### 4.1 Native highway connection test
+
+This test covers the experimental outside native approaches described in [the network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment). A **construction request** runs when a component is placed; it does not run again just because a city is loaded. Preserve the existing city, and use a disposable test city for these steps. The software checks do not establish the following game results.
+
+1. Open **Transportation → Highways**, choose **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**, and press **Tab** until you reach **P01 — Straight Diagonal Highway Stamp**. Place a fresh copy on empty, flat land with one clear city square immediately beyond each exposed highway end. In the pictured 0° layout, the outside squares are (X−1, Y0) and (X9, Y10) beyond the two ends of P01. Inspect whether a native double-decker continuation appears in each outside square. Record a missing tile, a wrong angle, or an incorrect upper/lower direction separately.
+2. Use an already working NAM DDRHW-4 highway, as in the reported failing case. Extend its existing diagonal end towards the newly created outside tile with the ordinary RealHighway drawing tool. Release the mouse at the native approach tile; the fixed custom junction is not the drag target. Record whether the native DD appearance reaches the seam and remains after releasing the mouse. Repeat at the other end.
+3. In a separate empty area, reverse the order: extend an existing diagonal DD highway first, then place the fresh custom end beside it. Keep its declared outside approach square available to the native highway. Record placement acceptance and any change to the existing highway separately from step 2.
+4. Repeat fresh placement at all four orientations using **Home** or **End** before clicking. Check the upper and lower deck directions against the native highway, rather than checking the road angle alone. Turning the city camera does not count as placing another orientation. An opposite-flow native highway is a separate unsupported case until tested.
+5. Supply car origins and destinations beyond both highway ends. Use **Route Query** to inspect each deck, and observe an actual moving car through each seam. A road that looks joined does not establish traffic continuity. Repeat the assembly's four ramp journeys and the adaptive-sidewalk checks below.
+6. Save the test city, quit the game completely, reopen the city, and repeat the seam and representative traffic checks. In a separate saved copy, demolish and replace the end component, inspect the outside native tile, and repeat joining. Record whether the native continuation survives or needs reconstruction.
+7. In another disposable copy, occupy the helper square with a protected custom piece before attempting placement. Record whether placement is rejected without changing that neighbour. Do not treat the word `optional` in the source as an overwrite guarantee. Keep this collision case separate from joining to an ordinary draggable native DD tile.
+
+Record the exact build, component, orientation, placement order, deck direction, and observed outcome using [the shared observation procedure](../../../../docs/TESTING.md#4-record-one-observation). These cases remain unverified until a matching human observation is recorded.
+
+### 4.2 Retained assembly checks
+
+
 1. Open **Transportation → Highways**, find **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**, and cycle all seven default types with **Tab**, then backward with **Shift+Tab**. Check the six compact-alternative buttons separately.
 2. Place P01 once. Both decks must be completely straight, with inside-highway slip lanes and barrier cutouts. No curved ramp slab, underside, or barrier may appear before an attachment is placed. Confirm that the ground Avenue appears under the crossing.
 3. Place P02–P07 one at a time. Each click must add only its full ramp or terminal. Inspect the four flat native-edge physical mouths from both oblique views and above: pavement, underside, Jersey profiles, and bridge strips must fit without cracks or duplicate faces. Inspect the separate traffic tile boundaries, flat R40 terminal joins, and outside Avenue joins too.

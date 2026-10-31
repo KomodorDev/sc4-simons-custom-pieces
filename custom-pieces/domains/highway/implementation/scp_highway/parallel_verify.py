@@ -638,6 +638,11 @@ def check_highway_slip_lanes(faces, *, profile):
 def check_construction_fields(fields, piece, resources):
     from scp.verify import check_emitted_runtime_addresses
     from .ramp_verify import _paths, _road_word
+    from .ddrhw_connections import approaches, check_construction_approaches
+    native_approaches = approaches(piece)
+    if native_approaches:
+        fields = check_construction_approaches(fields, piece)
+        piece = {key: value for key, value in piece.items() if key != 'native_dd_approaches'}
     _source_origin(piece)
     if piece.get('adaptive_ground'):
         from .adaptive_verify import check_construction_fields as inspect
@@ -659,7 +664,9 @@ def check_construction_fields(fields, piece, resources):
                 'Parallel construction changes sparse ownership or saved-route flags')
         result = {'passed': True, 'occupied_cells_checked': len(piece['cells'])}
     check_emitted_runtime_addresses(fields, piece)
-    return {**result, 'emitted_runtime_addresses_checked': True, 'game_behavior_tested': False}
+    result = {**result, 'emitted_runtime_addresses_checked': True, 'game_behavior_tested': False}
+    return ({**result, 'native_dd_outside_approaches_checked': len(native_approaches)}
+            if native_approaches else result)
 
 
 def check_owned_cells(pieces, scene):
@@ -1532,6 +1539,8 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     from .assembly_verify import decode_placed_routes
     require(scene.get('id', SUBJECT) == SUBJECT, 'Parallel verification received another assembly identity')
     pieces = {piece['id']: piece for piece in manifest['pieces']}
+    from .ddrhw_connections import check_selected_helper_collisions
+    helper_report = check_selected_helper_collisions(pieces, scene)
     owners, shift = check_owned_cells(pieces, scene)
     ground_profile = _assembly_ground_mouth_profile(pieces, scene)
     slip_profile = _assembly_highway_slip_profile(pieces, scene)
@@ -1573,6 +1582,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     else:
         models = supports = cuts = native = projection = uv_seams = ground_mouths = slip_lanes = {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT,
+            **({'native_dd_outside_approaches': helper_report} if helper_report else {}),
             'saved_resource_checks_passed': bool(inspect_models),
             'saved_path_checks_passed': True,
             'saved_ownership_checks_passed': True,

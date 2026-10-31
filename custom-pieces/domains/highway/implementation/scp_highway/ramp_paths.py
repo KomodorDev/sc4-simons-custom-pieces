@@ -614,8 +614,15 @@ def check_models(resources, piece, donors=None):
 
 def check_construction_fields(fields, piece, resources):
     """Delegate emitted construction inspection without regenerating models."""
+    from .ddrhw_connections import approaches, check_construction_approaches
+    native_approaches = approaches(piece)
+    if native_approaches:
+        fields = check_construction_approaches(fields, piece)
+        piece = {key: value for key, value in piece.items() if key != 'native_dd_approaches'}
     if piece.get('adaptive_ground'):
         from .adaptive_verify import check_construction_fields as inspect
-        return inspect(fields, piece, resources)
-    from .ramp_verify import check_construction_fields as inspect
-    return inspect(fields, piece, resources)
+    else:
+        from .ramp_verify import check_construction_fields as inspect
+    result = inspect(fields, piece, resources)
+    return ({**result, 'native_dd_outside_approaches_checked': len(native_approaches)}
+            if native_approaches else result)

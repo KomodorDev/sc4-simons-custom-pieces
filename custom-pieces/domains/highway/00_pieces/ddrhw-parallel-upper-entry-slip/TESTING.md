@@ -188,6 +188,8 @@ The earlier narrow ground mouths are retained: each terminal keeps its 6 m grade
 
 ## 4. Game checks
 
+Test the new outside native approach separately from the fixed piece: place a fresh copy with clear space beyond its highway end, inspect the native DD tile, and extend an already working NAM DD highway to that outside tile with the RealHighway drawing tool. Repeat all four placement orientations, compare both deck directions, and check Route Query, actual travel, occupied neighbours, demolition, and save/reload separately. The [network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) defines the exact helper coordinates and limits. These native-joining observations remain unverified.
+
 1. Select this exact component through the assembly button, match P07 at **X7, Y8**, and confirm that the occupied preview squares match **(X8, Y8), (X7, Y7)** before clicking.
 2. Place the full assembly using the order in its guide. Inspect this component's saved model from both opposing oblique views, and compare its real join with the neighbouring models; look for gaps, blocked barrier openings, misplaced supports, or a sudden pavement-colour patch.
 3. Repeat fresh placement in the four distinct proper rotations. Rotate the camera separately after placement, because camera movement and a newly rotated piece test different things.
@@ -289,6 +291,65 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast | <a href="#case-preview_review-5f5e809102acebe219e2">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:canonical-top | <a href="#case-preview_review-36adab1c9e0adcd7db93">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:connection-overview | <a href="#case-preview_review-1e4c041af0e59716c2cf">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast</summary>
+
+<a id="case-preview_review-5f5e809102acebe219e2"></a>
+
+**General: unverified** — `preview_review-5f5e809102acebe219e2`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:canonical-top</summary>
+
+<a id="case-preview_review-36adab1c9e0adcd7db93"></a>
+
+**General: unverified** — `preview_review-36adab1c9e0adcd7db93`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-entry-slip:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:connection-overview</summary>
+
+<a id="case-preview_review-1e4c041af0e59716c2cf"></a>
+
+**General: unverified** — `preview_review-1e4c041af0e59716c2cf`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-entry-slip:connection-overview.
 
 No observation recorded.
 
@@ -5750,65 +5811,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: channel-10-in; to port: channel-20-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast | <a href="#case-preview_review-5f5e809102acebe219e2">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:canonical-top | <a href="#case-preview_review-36adab1c9e0adcd7db93">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-entry-slip:connection-overview | <a href="#case-preview_review-1e4c041af0e59716c2cf">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast</summary>
-
-<a id="case-preview_review-5f5e809102acebe219e2"></a>
-
-**General: unverified** — `preview_review-5f5e809102acebe219e2`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-entry-slip:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:canonical-top</summary>
-
-<a id="case-preview_review-36adab1c9e0adcd7db93"></a>
-
-**General: unverified** — `preview_review-36adab1c9e0adcd7db93`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-entry-slip:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-entry-slip:connection-overview</summary>
-
-<a id="case-preview_review-1e4c041af0e59716c2cf"></a>
-
-**General: unverified** — `preview_review-1e4c041af0e59716c2cf`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-entry-slip:connection-overview.
 
 No observation recorded.
 

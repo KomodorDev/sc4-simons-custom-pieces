@@ -20,7 +20,8 @@ from .dbpf import entries, decompress, exemplar, encode_exemplar, tgi_string, re
 from .menu import validate_menu_resources, MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from .models import parse_s3d, validate_s3d, valid_frame, positions
 from .adaptive_network import (RUL1, bindings as adaptive_bindings,
-    resource_keys as adaptive_resource_keys, validate_active_resources, verify_rul1, CURSOR_BASE)
+    resource_keys as adaptive_resource_keys, validate_active_resources, CURSOR_BASE)
+from .native_approaches import verify_rul1, approaches as native_approaches
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -483,10 +484,15 @@ def check_emitted_runtime_addresses(fields, piece):
     intended = dict(zip(declared_cells, intended_ids))
     actual_cells = [(x-column_anchors[0], y-row_anchors[0]) for x, y in built]
     adaptive = adaptive_bindings(piece)
+    native_helpers = native_approaches(piece)
+    if adaptive or native_helpers:
+        allowed_optional = {tuple(row['cell']) for row in (*adaptive, *native_helpers)}
+        require(set(optional_cells) == allowed_optional,
+                'Optional construction cells differ from declared adaptive and native helper bindings'
+                if native_helpers else
+                'Adaptive optional construction cells differ from their declared real-network bindings')
     if adaptive:
         adaptive_cells = {tuple(row['cell']) for row in adaptive}
-        require(set(optional_cells) == adaptive_cells,
-                'Adaptive optional construction cells differ from their declared real-network bindings')
         intended = {cell: tile for cell, tile in intended.items() if cell not in adaptive_cells}
         if not intended:
             from .adaptive_network import construction_helper
@@ -751,7 +757,8 @@ def verify_build(output, write_report=True):
     donors, donor_report = load_local_donors(output, manifest)
     construction = check_construction(resources, pieces, manifest, donors)
     base_menu = donors.get((*MENU_EXEMPLAR, 0x6A47C200), menu_baseline())
-    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if any(adaptive_bindings(piece) for piece in pieces) else set())
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if any(
+        adaptive_bindings(piece) or native_approaches(piece) for piece in pieces) else set())
     expected_resources = set(expected_controller)
     model_textures, piece_reports = set(), []
     for piece in pieces:
@@ -868,7 +875,7 @@ def verify_build(output, write_report=True):
     require(set(resources) == expected_resources, 'Unexpected or missing package resource')
     require(all(owners[key] == owners[RUL0] for key in expected_controller)
             and set(by_file[owners[RUL0]]) == expected_controller,
-            'Shared controller DAT must contain exactly its declared RUL0, NetworkINI, and optional adaptive RUL1 overlays')
+            'Shared controller DAT must contain exactly its declared RUL0, NetworkINI, and optional RUL1 overlays')
     menu_keys = {(*prefix, number(piece['menu']['id'])) for piece in pieces
                  for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
     require(set(by_file[f'{folder}/10_SCP_Menu.dat']) == menu_keys and

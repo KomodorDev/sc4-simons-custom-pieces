@@ -286,6 +286,8 @@ For physical joins, compare the complete pavement, 1 m underside, Jersey profile
 
 ## 4. Game checks
 
+Test the new outside native approach separately from the fixed piece: place a fresh copy with clear space beyond its highway ends, inspect the native DD tile, and extend an already working NAM DD highway to that outside tile with the RealHighway drawing tool. Repeat all four placement orientations, compare both deck directions, and check Route Query, actual travel, occupied neighbours, demolition, and save/reload separately. The [network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) defines the exact helper coordinates and limits. These native-joining observations remain unverified.
+
 Place this component in the complete matching assembly. Inspect the placed result after clicking, including rotations, barriers, pavement, supports, and shadows; the construction preview is a separate observation. Use Route Query on every required movement, watch a car complete it, confirm the opposite-carriageway ramp movements remain unavailable, save the city, close it, and reload it. Test the lower ramps through both intrinsic fragments and their stamp-owned middle tile.
 
 For the stamp and Avenue terminals, extend an ordinary Avenue, develop nearby zoning, and inspect whether pedestrian pavement appears and rotates with the road. Check both pedestrian directions separately. Record only the exact service, direction, pose, and environment actually observed, following the [shared testing procedure](../../../../docs/TESTING.md).
@@ -378,6 +380,65 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:canonical-southeast | <a href="#case-preview_review-9bb3c44c2f5041b266ff">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:canonical-top | <a href="#case-preview_review-6c920606f065b904cb40">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:connection-overview | <a href="#case-preview_review-2c859da8ec79008b8a8c">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:canonical-southeast</summary>
+
+<a id="case-preview_review-9bb3c44c2f5041b266ff"></a>
+
+**General: unverified** — `preview_review-9bb3c44c2f5041b266ff`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-highway-stamp:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:canonical-top</summary>
+
+<a id="case-preview_review-6c920606f065b904cb40"></a>
+
+**General: unverified** — `preview_review-6c920606f065b904cb40`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-highway-stamp:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:connection-overview</summary>
+
+<a id="case-preview_review-2c859da8ec79008b8a8c"></a>
+
+**General: unverified** — `preview_review-2c859da8ec79008b8a8c`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-highway-stamp:connection-overview.
 
 No observation recorded.
 
@@ -10626,65 +10687,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 2-S-in-4; to port: 2-E-out-3; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:canonical-southeast | <a href="#case-preview_review-9bb3c44c2f5041b266ff">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:canonical-top | <a href="#case-preview_review-6c920606f065b904cb40">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-modular-highway-stamp:connection-overview | <a href="#case-preview_review-2c859da8ec79008b8a8c">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:canonical-southeast</summary>
-
-<a id="case-preview_review-9bb3c44c2f5041b266ff"></a>
-
-**General: unverified** — `preview_review-9bb3c44c2f5041b266ff`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-highway-stamp:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:canonical-top</summary>
-
-<a id="case-preview_review-6c920606f065b904cb40"></a>
-
-**General: unverified** — `preview_review-6c920606f065b904cb40`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-highway-stamp:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-highway-stamp:connection-overview</summary>
-
-<a id="case-preview_review-2c859da8ec79008b8a8c"></a>
-
-**General: unverified** — `preview_review-2c859da8ec79008b8a8c`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-highway-stamp:connection-overview.
 
 No observation recorded.
 

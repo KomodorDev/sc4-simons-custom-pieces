@@ -145,6 +145,8 @@ From the repository root, build the selected component with `python3 -B custom-p
 
 ## 4. Game checks
 
+Test the new outside native approach separately from the fixed piece: place a fresh copy with clear space beyond its highway end, inspect the native DD tile, and extend an already working NAM DD highway to that outside tile with the RealHighway drawing tool. Repeat all four placement orientations, compare both deck directions, and check Route Query, actual travel, occupied neighbours, demolition, and save/reload separately. The [network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment) defines the exact helper coordinates and limits. These native-joining observations remain unverified.
+
 Place this component as part of the complete assembly in each of its four rotations. Check its roads, barriers, and neighbouring seams; use Route Query and visible traffic to observe each listed movement independently. Check avenue pedestrians where present. For ramp or junction components, confirm that each permitted right turn works, each cross-avenue left turn stays unavailable, and the opposite upper-deck barrier remains closed. Demolish and replace it, save the city, reload it, and inspect shadows at several game times. Use the [shared observation procedure](../../../../docs/TESTING.md) to record only matching human observations.
 
 ## 5. Results and known issues
@@ -235,6 +237,65 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast | <a href="#case-preview_review-11004322b7ae9415cef0">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top | <a href="#case-preview_review-c03d8bbead86720db7e9">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview | <a href="#case-preview_review-025640782dffdff11837">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast</summary>
+
+<a id="case-preview_review-11004322b7ae9415cef0"></a>
+
+**General: unverified** — `preview_review-11004322b7ae9415cef0`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top</summary>
+
+<a id="case-preview_review-c03d8bbead86720db7e9"></a>
+
+**General: unverified** — `preview_review-c03d8bbead86720db7e9`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview</summary>
+
+<a id="case-preview_review-025640782dffdff11837"></a>
+
+**General: unverified** — `preview_review-025640782dffdff11837`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview.
 
 No observation recorded.
 
@@ -4286,65 +4347,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 1-N-in-15; to port: 1-E-out-17; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast | <a href="#case-preview_review-11004322b7ae9415cef0">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top | <a href="#case-preview_review-c03d8bbead86720db7e9">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview | <a href="#case-preview_review-025640782dffdff11837">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast</summary>
-
-<a id="case-preview_review-11004322b7ae9415cef0"></a>
-
-**General: unverified** — `preview_review-11004322b7ae9415cef0`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top</summary>
-
-<a id="case-preview_review-c03d8bbead86720db7e9"></a>
-
-**General: unverified** — `preview_review-c03d8bbead86720db7e9`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview</summary>
-
-<a id="case-preview_review-025640782dffdff11837"></a>
-
-**General: unverified** — `preview_review-025640782dffdff11837`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview.
 
 No observation recorded.
 

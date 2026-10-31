@@ -508,6 +508,8 @@ def check_pier_shell(triangles, corners):
 
 def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_models=True):
     pieces = {piece['id']: piece for piece in manifest['pieces']}
+    from .ddrhw_connections import check_selected_helper_collisions
+    helper_report = check_selected_helper_collisions(pieces, scene)
     owners, poses = check_owned_cells(pieces, scene)
     routes = shared.decode_placed_routes(owners, piece_resources)
     paths, seams = check_saved_routes(routes)
@@ -518,6 +520,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     rows = [(pieces[p['piece_id']], p, piece_resources[p['piece_id']]) for p in scene['placements']]
     union = check_union_traffic(rows, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': scene.get('id', SUBJECT),
+            **({'native_dd_outside_approaches': helper_report} if helper_report else {}),
             'saved_resource_checks_passed': bool(inspect_models), 'saved_path_and_construction_checks_passed': True,
             'construction': {'unique_owned_cells': len(owners), 'placements': 7, 'distinct_component_types': 7,
                              'bounding_rectangle_tiles': [10, 10], 'physical_projection_is_separate': True},
@@ -577,6 +580,8 @@ def check_compact_owned_cells(pieces, scene):
 
 def verify_compact_alternative_resources(manifest, scene, piece_resources, *, inspect_models=True):
     pieces = {piece['id']: piece for piece in manifest['pieces']}
+    from .ddrhw_connections import check_selected_helper_collisions
+    helper_report = check_selected_helper_collisions(pieces, scene)
     owners = check_compact_owned_cells(pieces, scene)
     routes = shared.decode_placed_routes(owners, piece_resources)
     expected = shared.native_external_contract()
@@ -590,6 +595,7 @@ def verify_compact_alternative_resources(manifest, scene, piece_resources, *, in
     rows = [(pieces[p['piece_id']], p, piece_resources[p['piece_id']]) for p in scene['placements']]
     union = check_union_traffic(rows, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': scene.get('id', SUBJECT), 'alternative': 'compact',
+            **({'native_dd_outside_approaches': helper_report} if helper_report else {}),
             'saved_resource_checks_passed': bool(inspect_models), 'saved_path_and_construction_checks_passed': True,
             'construction': {'unique_owned_cells': 53, 'placements': 7, 'distinct_component_types': 7,
                              'bounding_rectangle_tiles': [10, 10]},

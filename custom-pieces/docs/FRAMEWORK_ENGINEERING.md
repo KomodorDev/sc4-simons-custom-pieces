@@ -81,6 +81,7 @@ The [official NAM compatibility FAQ](https://www.sc4nam.com/docs/getting-started
 | --- | --- |
 | RUL0 construction rules | `0A5BCF4B-AA5BCF57-10000000` |
 | NetworkINI | `00000000-8A5971C5-8A5993B9` |
+| RUL1, only when adaptive ground or native approaches require it | `0A5BCF4B-AA5BCF57-10000001` |
 
 Keep each piece's additions as separate source data, and compose all selected pieces against one clean, audited base. Emit one combined controller overlay; asset DATs can remain separate when their TGIs are distinct. Two complete RUL0 replacements do not merge when installed: one can hide the other's rules. Renaming files with additional `z` characters cannot combine their additions.
 
@@ -99,6 +100,14 @@ An owned resource is a model, traffic path, texture, or other record assigned to
 Rotation controls, placement, and traffic remain separate game observations; follow [TESTING.md](TESTING.md). The manifest and native-byte restoration establish file identity and composition, not those observations.
 
 The documented NAM DLL RUL2 engine and Resource Loading Hooks exemplar patches do not establish additive RUL0 or NetworkINI merging; their documented scopes differ. A future runtime merger requires its own implementation review and tests before changing this architecture. See the [NAM DLL guide](https://www.sc4nam.com/docs/feature-guides/nam-dll/#new-rul2-engine) and the [Resource Loading Hooks author's documentation](https://community.simtropolis.com/files/file/36242-resource-loading-hooks-dll-for-simcity-4/).
+
+### 3.1 Independent native approach and adaptive-ground insertions
+
+The optional `native_dd_approaches` piece field delegates exact exterior-cell declarations to the owning domain. The shared `scp.native_approaches` module composes its Monorail/DirtRoad RUL1 solutions after the existing adaptive Street/Avenue insertion, without changing the latter's metadata or ownership. A selection with native approaches but no adaptive ground still needs RUL1. A source or saved manifest without the field retains the earlier controller contract. The [highway specification](../domains/highway/NETWORK_SPEC.md#12-native-highway-approach-experiment) owns the supported end identities, native measurements, flags, and experimental game limits.
+
+Verification checks the selected declarations, four deduplicated proper-rotation solutions, target resource hashes, literal network-exemplar model reference, insertion boundaries, and exact recovery of the original native RUL1. It removes the native-approach insertion before invoking the existing adaptive-ground verifier. Menu transformations preserve both proofs, and final controller closure includes RUL1 when either mechanism requires it. Native dependency collection reads audited donor labels; compiler caches can contain strings and other values and are not donor maps.
+
+Check-only exterior cells must retain `ConsLayout=.` and the original construction anchors. The generic optional-cell check expects the exact union of declared adaptive cells and declared native approaches. The domain checker removes only reviewed helper cells and their padding before applying the existing strict construction verifier. Assembly checks reject helpers over any retained custom-owned cell. An optional check can request network construction and can be blocked by a protected occupant; a software collision check does not establish the game's placement or demolition behavior.
 
 <a id="coordinate-frames-and-boundary-edges"></a>
 
