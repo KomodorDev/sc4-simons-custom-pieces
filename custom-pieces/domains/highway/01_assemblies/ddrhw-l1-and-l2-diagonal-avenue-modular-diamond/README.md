@@ -48,7 +48,7 @@ The four physical ramp openings are flat at the native highway edge: 7.5 m on th
 
 The stamp and terminals use adaptive native Avenue artwork. Nearby development can change visible pedestrian pavement. Sidewalk appearance, pedestrian routes, Avenue redraw, and car travel remain separate game checks in [TESTING.md](TESTING.md#4-game-checks).
 
-The [further atomization review](TESTING.md#31-further-atomization-proposal) proposes a smaller crossing, four separate three-tile slip-lane sections, reused ordinary highway halves, and separate straight landing sections in P04 and P05. Its line drawing records the unchanged diamond extent, model overhang, measured slopes, and remaining construction-code work. The current implemented blueprint below still uses seven placements.
+The [close parallel ramp proposal](TESTING.md#32-close-parallel-ramps-and-perpendicular-avenue-approaches) revises the next layout toward minimum occupied plots: ramps run alongside the straight highway and approach the Avenue at 90°, with compact right-turn-only terminals. It retains the [earlier modular split study](TESTING.md#31-further-atomization-proposal) as its starting point while allowing the ramp positions and footprint to change. Both are source proposals; the current implemented blueprint below still uses seven placements.
 
 ## 2. Pieces
 

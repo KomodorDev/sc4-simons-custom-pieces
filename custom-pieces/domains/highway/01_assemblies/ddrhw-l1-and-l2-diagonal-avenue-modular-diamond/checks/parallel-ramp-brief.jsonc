@@ -1,0 +1,58 @@
+// title: "Close parallel ramp layout brief"
+// summary: "Record the revised compact diamond requirements and link the source-only geometry study."
+//
+// Used when: Contributors reshape the modular diamond around close parallel ramps and perpendicular Avenue approaches.
+// Read by: Human and coding-agent reviewers checking the revised layout and its implementation limits.
+// Updated by: Contributors after an explicit layout change and the owning geometric review.
+// Affects: The proposed layout direction and linked analysis; not existing game resources or manual observations.
+{
+  "schema_version": 1,
+  "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+  "reviewed_source_commit": "e76928889d1b1f2445804dc19e25548156afb9d1",
+  "status": "Source-only layout proposal; not compiled, installed, or game-tested.",
+  "requested_change": "Bring the on-ramps and off-ramps close and parallel to the straight highway, minimize occupied construction tiles, and approach the Avenue at 90 degrees.",
+  "requirements": {
+    "highway_alignment": "Completely straight, on its existing diagonal axis.",
+    "avenue_alignment": "Straight on the perpendicular diagonal axis.",
+    "ramp_approach_angle_to_avenue_degrees": 90,
+    "ramp_running_alignment": "Parallel to the highway between the necessary lateral connection transition and the ground terminal.",
+    "terminal_traffic": "Finite-radius right turns into or out of the adjacent Avenue carriageway only; no ramp traffic crossing the Avenue.",
+    "retained_levels_m": {
+      "avenue": 0,
+      "lower_highway": 7.5,
+      "upper_highway": 15
+    },
+    "maximum_experimental_route_grade": 0.3,
+    "grade_scope": "Project authoring bound, not a real expressway design standard.",
+    "ramp_width_m": 6,
+    "module_functions": [
+      "Crossing",
+      "Slip-lane highway sections",
+      "Ordinary highway continuations",
+      "Separate graded ramp sections",
+      "Adjacent-carriageway Avenue terminals"
+    ],
+    "footprint_policy": "Minimize actual occupied cells and lateral corridor width; report the enclosing rectangle separately. The previous fixed-position and fixed-extent requirement is superseded for this layout study.",
+    "retained_features": [
+      "Both highway decks",
+      "Both Avenue car directions",
+      "Both pedestrian through channels",
+      "Adaptive native Avenue pavement"
+    ]
+  },
+  "geometry_owner": "../../../implementation/scp_highway/parallel_ramp_review.py",
+  "drawing": "../previews/parallel-ramp-review.png",
+  "editable_drawing": "../previews/parallel-ramp-review.svg",
+  "measured_results": "../evidence/parallel-ramp-review.json",
+  "previous_review": "atomization.jsonc",
+  "implementation_limits": [
+    "The previous unchanged-layout atomization remains evidence for that saved design, not proof of this reshaped proposal.",
+    "Changed high ramp transitions need matching slip-lane geometry, markings, barrier cuts, and physical interfaces.",
+    "Actual model clipping, construction ownership and addresses, supports, materials, connector exports, and encoded game resources require a later matching compiled implementation.",
+    "New ramp mouths, native Avenue pavement, adaptive sidewalk artwork, and both pedestrian PATH channels require coordinated terminal verification; retaining the old adaptive mechanism does not by itself establish those new interfaces.",
+    "Minimum adaptive crossing placement bounds and ordinary Avenue continuation handling retain their separate implementation and game checks.",
+    "Software geometry analysis cannot establish game placement, sidewalk appearance, or traffic observations."
+  ],
+  "selected_candidate_id": "parallel-inward-upper",
+  "selection_reason": "The smaller inward-upper candidate keeps the close parallel alignment and perpendicular Avenue approaches; a 12 m centre offset leaves a 1 m edge gap with the same 31-cell source union as the tighter 11.5 m trial."
+}

@@ -223,6 +223,8 @@ Inspect and promote the six staged pictures using the [shared documentation work
 
 ### 3.1 Further atomization proposal
 
+This unchanged-layout study precedes the [close parallel ramp proposal](#32-close-parallel-ramps-and-perpendicular-avenue-approaches). Its saved measurements remain valid for the reviewed resources, but its fixed road positions and fixed overall extent are no longer requirements for the next layout.
+
 This is a measured proposal against source commit `9d4c94c27c679d5d53693411aa61547ce962063b` and saved normal manifest `8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1`. It does not change the current game pieces, their seven-placement blueprint, or their installed state. See the [coordinate-labelled line drawing](previews/further-atomization-review.png), [editable drawing](previews/further-atomization-review.svg), [authoritative decisions](checks/atomization.jsonc), [saved route extraction](evidence/further-atomization-paths.json), and [drawing measurements](evidence/further-atomization-review.json).
 
 The proposed decomposition accounts for every one of the stamp's existing 21 construction tiles. The complete R40 diamond keeps its 62 owned tiles and 10 × 10-tile rectangle, and the compact alternative keeps its 53 owned tiles and the same rectangle. Every traffic position stays fixed; this review introduces no route snapping or road-surface redesign.
@@ -243,6 +245,33 @@ The existing five-cell pure crossing has matching saved geometry and decoded rou
 P04 has a complete 16 m straight-in-plan cell at (X5, Y2), and P05 has its traffic counterpart at (X7, Y4). Each can split into a five-cell body and a one-cell landing by retaining whole saved cell models and PATHs. At the high joining edge, the path is 3.060945 m high with approximately 27.8268% grade; at the ground edge, it is 0 m high with 0% grade. The roadway changes height and eases its grade within the tile. It is a fixed straight grade-to-ground transition, not an ordinary flat straight or an indefinitely repeatable slope. Its support pier remains inside the landing tile. Retain the body’s real model-only wing tile even though that tile has no driving PATH.
 
 The complete straight alignment is longer: 29.423930 m. The other 13.423930 m shares a city tile with 2.576070 m of curve. A more thorough visual split can give the complete straight model to the one-cell landing owner, with 13.423930 m of model overhang into the curved body's tile. Keep that shared tile's entire PATH with the body, just as the current full ramps can draw over stamp-owned traffic cells. The physical model join would then be approximately 6.796392 m high, while the actual ownership-edge traffic port remains 3.060945 m high. Preserve the actual saved across-road miter, measured approximately 0.088128° oblique to the perpendicular; an invented square cut would change the accepted geometry. This alternative needs an independent saved-face repartition and full physical-interface check before being called implemented. Both options keep the whole diamond’s size and road positions unchanged.
+
+### 3.2 Close parallel ramps and perpendicular Avenue approaches
+
+The revised [layout brief](checks/parallel-ramp-brief.jsonc) supersedes the preceding study’s fixed road positions and fixed extent for the next design. Ramps should remain close and parallel to the completely straight highway, approach the diagonal Avenue at 90°, and use only the near carriageway. The [proposal drawing](previews/parallel-ramp-review.png), [editable SVG](previews/parallel-ramp-review.svg), and [measured source evidence](evidence/parallel-ramp-review.json) describe new geometry from [the owning generator](../../implementation/scp_highway/parallel_ramp_review.py). This is a source-only proposal, not a new compiled, installed, or game-tested assembly. The current seven-placement blueprint and its canonical six model views continue to describe the existing resources.
+
+![Close parallel ramp layout proposal](previews/parallel-ramp-review.png)
+
+The highway follows northeast–southwest, and the Avenue follows northwest–southeast. Each ramp first makes a smooth sideways transition at its highway level, then follows a straight diagonal descent beside the highway. Its ground approach is therefore perpendicular to the Avenue. Vehicles make a finite-radius quarter-turn into or out of the adjacent Avenue lane; “90°” describes the approach axes, not an instantaneous kink in the driving path. The four right-turn movements remain lower highway northeast → Avenue northwest, Avenue northwest → lower highway southwest, upper highway southwest → Avenue southeast, and Avenue southeast → upper highway northeast. No ramp path crosses the Avenue centre.
+
+| Layout | Occupied or reserved cells | Enclosing rectangle | Nominal parallel road-edge gap | Evidence scope |
+| --- | ---: | --- | ---: | --- |
+| Current R40 layout | 62 | 10 × 10 tiles / 160 × 160 m | Variable, with outward curves | Existing compiled layout |
+| Current compact alternative | 53 | 10 × 10 tiles / 160 × 160 m | Variable, with outward curves | Existing compiled layout |
+| Parallel ramps, retaining high sockets | 40 | 10 × 10 tiles / 160 × 160 m | 2 m | Source geometric union |
+| Selected parallel ramps, upper sockets moved inward | 31 | 8 × 8 tiles / 128 × 128 m | 1 m | Source geometric union |
+
+The selected candidate places each ramp centre 12 m from the highway axis. The highway’s measured 8 m half-width and the ramp’s 3 m half-width leave a 1 m road-edge gap. A tested 11.5 m offset gives a 0.5 m gap but reserves the same 31 cells, so reducing that gap saves no plot in these candidates. The complete parallel cross-section spans 30 m across the highway and the two ramp sides, excluding the local terminal turns. These are actual source measurements of the intended profiles, not proof of encoded barriers or every vehicle’s swept turning body.
+
+The upper high ports move from (−72, −83.2, 15) to (−56, −67.2, 15) m for the exit, and from (83.2, 72, 15) to (67.2, 56, 15) m for the entrance. Each move is one diagonal grid step, or 22.627417 m along the highway. The lower high ports stay at their existing native positions. The source stamp shrinks from 21 to 17 cells by removing the four outer upper-socket cells. On the established drawing grid, the selected envelope occupies X1–X8 and Y1–Y8 inside the earlier X0–X9 and Y0–Y9 frame; the coordinate origin is not reset.
+
+Each high departure changes lateral position smoothly over 17 m along the highway while staying at its full native deck height. Its smallest sampled horizontal radius is approximately 6.202767 m. Descent begins only after the complete 6 m ramp width is outside the native deck. The straight parallel descent is 44.872251 m on each lower ramp and 56.185959 m on each upper ramp. Two 2 m grade changes and a 1 m flat ground collar produce maximum source grades of approximately 17.911624% lower and 28.202932% upper, within the existing 30% experimental bound. A grade of 28.2% means a height change of 2.82 m over 10 m of horizontal run. It is compressed game geometry, not a real expressway design standard.
+
+The ground terminals use a 6 m traffic-centre radius, followed by a straight native Avenue-lane collar. The wider retained-socket comparison uses an 8 m radius. These are new custom tight terminal curves, not measured NAM R24 or R40 pieces. The proposal carries four explicit 0.8 × 0.8 m ramp-pier footprints inside the swept ramp envelopes; their encoded geometry, load capacity, and integrated support spacing remain outside this source study.
+
+The 31-cell figure is the conservative union of proposed native-service cells, traffic cells, full-width clipped ramp ribbons, and the included source support footprints. It is not an allocation of 31 independently placeable pieces, nor a proof of the final minimum construction ownership. Model overhang can share a neighbouring cell, while each cell’s real traffic still needs one coordinated owner. The atomized crossing, slip-lane, ordinary highway, graded-ramp, and ground-terminal functions remain separate design goals. The old P04/P05 29.423930 m outward straights do not supply this reshaped geometry.
+
+The independent [source tests](../../tests/test_parallel_ramp_review.py) check actual route samples, directed near-carriageway turns, perpendicular approaches, complete-width clearance, native Avenue and pedestrian cell coverage, grade profiles, and encoded PATH roundtrips. A PATH roundtrip checks the resource’s numeric encoding and decoding; it is not a complete DAT build or a construction test. New slip-lane markings, barrier cuts, native high seams, adaptive Avenue mouths, pedestrian conflict geometry, cell ownership, construction addresses, four-rotation resources, materials, and saved models still require a matching compiled implementation. In particular, the old adaptive-sidewalk mechanism does not automatically establish the new pavement openings or pedestrian interfaces. Manual game observations remain unchanged.
 
 ## 4. Game checks
 
@@ -278,7 +307,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Human game checks are required only at 0° CCW. Supported construction orientations and software rotation checks retain their separate scope; these human cases do not establish observations at the other orientations.
 
-Current totals: unverified: 128, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 129, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -2447,7 +2476,7 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Preview review — Images — 8 cases; unverified: 8</summary>
+<summary>Preview review — Images — 9 cases; unverified: 9</summary>
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
@@ -2458,6 +2487,7 @@ No observation recorded.
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest | <a href="#case-preview_review-161e794a9838084929e5">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast | <a href="#case-preview_review-0ea5a2b252247ca41d0d">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top | <a href="#case-preview_review-3010860368091d1d9b13">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review | <a href="#case-preview_review-08f5879b5c6966a6df6e">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership | <a href="#case-preview_review-3725a0c081f16fb33cc7">[ ] unverified</a> | — |
 
 
@@ -2567,6 +2597,22 @@ No observation recorded.
 Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review</summary>
+
+<a id="case-preview_review-08f5879b5c6966a6df6e"></a>
+
+**General: unverified** — `preview_review-08f5879b5c6966a6df6e`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review.
 
 No observation recorded.
 
