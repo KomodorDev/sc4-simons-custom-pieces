@@ -33,6 +33,10 @@ CARD_GAP = 40
 INK = "#17314a"
 LABEL_INK = "#455d72"
 PAPER = "#f7f9fb"
+MARKER_SIDE_PIXELS = 62
+MARKER_UP_PIXELS = 38
+MARKER_STACK_PIXELS = 58
+MARKER_CLEARANCE_PIXELS = 24
 SERVICE_COLOURS = {
     "hsr": "#007b84", "road": "#9a4e17", "street": "#9a4e17",
     "pedestrian": "#7750a4",
@@ -289,6 +293,59 @@ def marker_label(index):
     return result
 
 
+def viewport_marker(point, group_index, scene_width):
+    """Return the existing badge geometry in scene-relative pixels."""
+    side = -1 if point[0] < scene_width / 2 else 1
+    return [point[0] + side * MARKER_SIDE_PIXELS,
+            point[1] - MARKER_UP_PIXELS - group_index * MARKER_STACK_PIXELS]
+
+
+def make_overview_camera(vertices, records, local, *, width=PAGE_WIDTH - 2 * PAGE_MARGIN, height=1000):
+    """Frame actual models, all required service endpoints, and their badges.
+
+    Traffic ownership can include native elevated routes absent from this
+    functional module's visible model. Those endpoints still need readable
+    markers. Keep the owned ground grid unchanged, and reserve additional
+    pixels only when its actual stacked boundary badges need them.
+    """
+    from .city_grid import make_camera, world_to_s3d
+    vertices = list(vertices)
+    endpoints = [member['endpoint_m'] for record in records for member in record['members']]
+    anchors = [record.get('marker_enh_m', record['anchor_enh_m']) for record in records]
+    if not anchors or any(point is None for point in anchors):
+        raise ValueError('Overview framing requires every measured display anchor')
+    fit = vertices + [world_to_s3d(*point) for point in endpoints + anchors]
+    cards = make_boundary_cards(deepcopy(records))
+    maximum_groups = max(len(card['groups']) for card in cards)
+    required_margin = (MARKER_CLEARANCE_PIXELS + MARKER_UP_PIXELS
+                       + MARKER_STACK_PIXELS * (maximum_groups - 1))
+    def camera_for(padding):
+        return make_camera(fit, 45., 31., width, height,
+                           bounds_world_m=local['bounds_world_m'], padding=padding)
+    def badges_fit(camera):
+        for card in cards:
+            for index, record in enumerate(card['groups']):
+                point = camera.project_world(*record.get('marker_enh_m', record['anchor_enh_m']))
+                badge = viewport_marker(point, index, camera.width)
+                if not (MARKER_CLEARANCE_PIXELS <= badge[0] + PAGE_MARGIN
+                        <= width + 2 * PAGE_MARGIN - MARKER_CLEARANCE_PIXELS
+                        and MARKER_CLEARANCE_PIXELS <= badge[1]
+                        <= height + 28 - MARKER_CLEARANCE_PIXELS):
+                    return False
+        return True
+    camera = camera_for(90)
+    increased = not badges_fit(camera)
+    if increased:
+        camera = camera_for(max(90, required_margin))
+    if not badges_fit(camera):
+        raise ValueError('Measured boundary badges do not fit their derived overview frame')
+    return camera, {'basis': 'Actual model vertices, all required member endpoints, display anchors, and owned ground-grid corners',
+        'model_vertices': len(vertices), 'required_member_endpoints': len(endpoints),
+        'display_anchors': len(anchors), 'maximum_service_groups_per_boundary': maximum_groups,
+        'required_stack_margin_pixels': required_margin, 'selected_padding_pixels': camera.padding,
+        'additional_stack_reserve_applied': increased, 'numeric_connection_tolerances_changed': False}
+
+
 def render_boundary_card(card, width, font_factory):
     """Keep one edge card, with clearly bounded, jointly required service panels."""
     padding, line_height = 32, 36
@@ -518,8 +575,8 @@ def compose_figure(piece, records, scene, camera, local, font_factory):
     for card in cards:
         for index, record in enumerate(card["groups"]):
             px, py = [record["viewport_pixel"][axis] + (PAGE_MARGIN, viewport_top)[axis] for axis in (0, 1)]
-            side = -1 if record["viewport_pixel"][0] < scene.width / 2 else 1
-            badge = [px + side * 62, py - 38 - index * 58]
+            badge_local = viewport_marker(record['viewport_pixel'], index, scene.width)
+            badge = [badge_local[0] + PAGE_MARGIN, badge_local[1] + viewport_top]
             if not (24 <= badge[0] <= canvas.width - 24 and viewport_top + 24 <= badge[1] <= legend_y - 24):
                 raise ValueError("A boundary marker exceeds the reserved scene; increase camera padding")
             colour = record["colour"]
@@ -652,7 +709,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
     This callable reads an existing build; it never builds or installs resources.
     """
     from .connector_metadata import load_library
-    from .city_grid import make_camera, make_city_grid
+    from .city_grid import make_city_grid
     from .content import resource_fingerprints
     from .dbpf import decompress, entries
     from .export import compiled_manifest_sha256
@@ -712,15 +769,15 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
         textures, texture_sources = library.for_model(model)
         local = local_piece_grid(piece["piece"])
         vertices = [point for block in model["vertices"] for point in positions(block)]
-        camera = make_camera(vertices, 45., 31., PAGE_WIDTH - 2 * PAGE_MARGIN, 1000,
-                             bounds_world_m=local["bounds_world_m"], padding=90)
+        records = build_records(piece)
+        camera, camera_frame = make_overview_camera(vertices, records, local)
         grid, grid_data = make_city_grid(camera, local["bounds_world_m"], origin_world_m=local["origin_world_m"],
                                          font=font(21), bold_font=font(23, True), scale_caption_visible=False)
         scene = render_fast_view(model, textures, 45., 31., camera.width, camera.height,
                                  camera=camera, background_image=grid)
         if sha256(pack_s3d(model)) != before_model:
             raise ValueError("Overview rendering modified the parsed source model")
-        image, evidence = compose_figure(piece, build_records(piece), scene, camera, local, font)
+        image, evidence = compose_figure(piece, records, scene, camera, local, font)
         buffer = io.BytesIO()
         image.save(buffer, format="PNG")
         image_bytes = buffer.getvalue()
@@ -752,7 +809,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
             "source_dat_sha256": sha256(raw_dat), "source_model_sha256": sha256(raw_model),
             "render_model_sha256": before_model, "model_validation": validation,
             "saved_resource_fingerprints_checked": compared, "textures": texture_sources,
-            "renderer": renderer_settings(), "grid": grid_data,
+            "renderer": renderer_settings(), "grid": grid_data, "camera_frame": camera_frame,
             "figure_typography": {
                 "body_pixels": BODY_SIZE, "card_title_pixels": 36, "piece_title_pixels": 44,
                 "bold_usage": "Piece and card titles, and section headings only",

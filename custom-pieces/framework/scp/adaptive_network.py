@@ -36,7 +36,8 @@ def bindings(piece):
     if 'adaptive_ground' not in piece:
         return []
     metadata = piece['adaptive_ground']
-    require(isinstance(metadata, dict) and set(metadata) == {'schema_version', 'cells'}
+    require(isinstance(metadata, dict) and {'schema_version', 'cells'} <= set(metadata)
+            and set(metadata) <= {'schema_version', 'cells', 'construction_helper'}
             and type(metadata['schema_version']) is int and metadata['schema_version'] == 1,
             'Unsupported adaptive-ground metadata')
     rows = metadata['cells']
@@ -70,7 +71,38 @@ def bindings(piece):
         item.update(canonical_tile_id=f'{tile:08x}', prop_id=f'{tile:08x}',
                     prop_model_id=f'{tile + 5:08x}', t21_id=f'{resolved:08x}')
         result.append(item)
+    if 'construction_helper' in metadata:
+        helper = metadata['construction_helper']
+        require(isinstance(helper, list) and len(helper) == 2
+                and all(type(value) is int for value in helper),
+                'Adaptive construction helper must contain two integer coordinates')
+        require(len(result) == len(canonical),
+                'An explicit adaptive construction helper requires an entirely adaptive piece')
+        require(0 <= helper[0] <= width and 0 <= helper[1] < depth,
+                'Adaptive construction helper must fit the non-anchor construction grid')
+        require(tuple(helper) not in canonical,
+                'Adaptive construction helper must not overlap an owned cell')
     return result
+
+
+def construction_helper(piece):
+    """Return the sole removable Road cell, separately from permanent ownership.
+
+    Existing definitions retain the external right-edge handle. A smaller
+    entirely adaptive piece may explicitly select a vacant internal corner or
+    another available cell in its existing construction grid. Native FLEX
+    removes every check at the handle coordinate, so overlap is forbidden.
+    This declaration does not prove the game's placement or collision bounds.
+    """
+    rows = bindings(piece)
+    width, depth = piece['footprint']
+    cells = piece.get('cells', [[x, y] for y in range(depth) for x in range(width)])
+    if not rows or len(rows) != len(cells):
+        return None
+    helper = tuple(piece['adaptive_ground'].get('construction_helper', [width, 0]))
+    require(helper not in {tuple(cell) for cell in cells},
+            'Adaptive construction helper must not overlap an owned cell')
+    return helper
 
 
 def fixed_cells(piece):

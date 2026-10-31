@@ -213,6 +213,7 @@ class AdaptiveNetworkTests(unittest.TestCase):
 
     def test_pure_adaptive_construction_requires_the_native_removable_handle(self):
         spec = piece(); spec['cells'] = [[0, 0]]; spec['tile_ids'] = spec['tile_ids'][:1]
+        spec['footprint'] = [3, 1]
         fields = {'CellLayout': ['a..Z<', '^....'], 'CheckType': [
             'a - street: 0x02020404 avenue: 0x01000003, 0xFFFFFFFF optional',
             'Z - road: 0x02000200'], 'AutoTileBase': ['0x55387000']}

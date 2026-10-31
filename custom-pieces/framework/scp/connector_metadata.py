@@ -572,6 +572,16 @@ def _source_files(root, domain_id, piece_id, compiled):
     # Contract providers can import reviewed tangent/geometry helpers. Bind the
     # complete owning implementation, rather than only its thin adapter module.
     files += list((domain/"implementation").rglob("*.py"))
+    # Reviewed measurements may live in maintained JSONC rather than Python.
+    # Bind the adapter's explicit dependencies without scanning unrelated
+    # evidence or creating another authoring format.
+    dependencies = getattr(_registered_adapter(root, domain_id), "connector_source_files", None)
+    if dependencies is not None:
+        _need(callable(dependencies), "connector_source_files must be callable")
+        names = dependencies(piece_id)
+        _need(isinstance(names, (list, tuple)) and all(isinstance(name, str) for name in names),
+              "Connector source dependencies must be relative path strings")
+        files += [_safe_relative(root, name) for name in names]
     files += list((root/"framework/scp").glob("*.py"))
     files += list((root/"schemas").glob("*.schema.jsonc"))
     for path in files:

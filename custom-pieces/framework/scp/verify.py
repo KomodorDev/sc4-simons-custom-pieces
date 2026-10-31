@@ -489,11 +489,13 @@ def check_emitted_runtime_addresses(fields, piece):
                 'Adaptive optional construction cells differ from their declared real-network bindings')
         intended = {cell: tile for cell, tile in intended.items() if cell not in adaptive_cells}
         if not intended:
-            require(actual_cells == [(3, 0)] and
+            from .adaptive_network import construction_helper
+            helper = construction_helper(piece)
+            require(actual_cells == [helper] and
                     any(compact(value) == 'z-road:0x02000200' for value in fields['CheckType']) and
-                    rows[row_anchors[0]][column_anchors[0]+3] == 'Z',
+                    rows[row_anchors[0]+helper[1]][column_anchors[0]+helper[0]] == 'Z',
                     'Fully adaptive construction requires its single native removable Road handle')
-            intended = {(3, 0): CURSOR_BASE}
+            intended = {helper: CURSOR_BASE}
     require(set(actual_cells) == set(intended),
             f'{piece["id"]}: emitted modeled cells differ from the allocated physical cells')
     origin_x, origin_y = min(x for x, _ in built), min(y for _, y in built)

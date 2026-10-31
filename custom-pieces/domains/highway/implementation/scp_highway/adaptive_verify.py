@@ -15,7 +15,7 @@ import math
 from pathlib import Path
 import re
 
-from scp.adaptive_network import bindings, fixed_cells, validate_active_resources
+from scp.adaptive_network import bindings, construction_helper, fixed_cells, validate_active_resources
 from scp.dbpf import exemplar, require
 from scp.models import parse_s3d, positions, validate_s3d
 from scp.track_paths import PATH, S3D
@@ -29,7 +29,9 @@ GROUND_MATERIALS = {0x0400020E, 0x0400380E}
 # Independently reviewed world construction origins, not layout generation.
 ORIGINS = {'access-core': (-1, -1), 'northwest-junction': (-2, -2),
            'southeast-junction': (1, 1), 'modular-stamp': (-4, -4),
-           'northwest-terminal-r40': (-3, -3), 'southeast-terminal-r40': (1, 1)}
+           'northwest-terminal-r40': (-3, -3), 'southeast-terminal-r40': (1, 1),
+           'parallel-crossing': (0, 0), 'parallel-northwest-terminal': (-1, -1),
+           'parallel-southeast-terminal': (1, 1)}
 CAPTURE_SHA256 = '6ed51e2a9188826f188516fc0be7004069b2eb11f02ad0a62d271672194af839'
 
 
@@ -197,9 +199,13 @@ def check_construction_fields(fields, piece, resources):
             road = saved
         checks.append(f'{letter} - dirtroad: 0x{_road_word(road):08X}')
         cons[cell[1]][cell[0]] = '+'
-    if not fixed_cells(piece):
-        expected[0][width] = 'Z'
-        cons[0][width] = '+'
+    helper = construction_helper(piece)
+    if helper is not None:
+        x, y = helper
+        require(expected[y][x] == '.' and all(not line.startswith('Z - ') for line in checks),
+                'Adaptive construction helper overlaps an owned cell or palette symbol')
+        expected[y][x] = 'Z'
+        cons[y][x] = '+'
         checks.append('Z - road: 0x02000200')
     # Hex case is immaterial, but symbol case and every field remain exact.
     normalize = lambda line: re.sub(r'0x[0-9a-fA-F]+', lambda match: match[0].upper(), line)

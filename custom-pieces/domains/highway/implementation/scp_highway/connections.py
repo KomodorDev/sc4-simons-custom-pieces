@@ -25,6 +25,14 @@ from scp.verify import parse_rules,strict_dbpf,verify_build
 CORE = 'highway_ddrhw_diagonal_avenue_crossing'
 
 
+def connector_source_files(piece_id):
+    """Bind accepted numeric measurement sources used by this piece's adapter."""
+    if piece_id.startswith('ddrhw-parallel-'):
+        from .parallel_connector_contracts import REFERENCE
+        return [REFERENCE]
+    return []
+
+
 @lru_cache(maxsize=1)
 def _core_contract():
     # These independently transcribed route measurements belong to the native
@@ -115,6 +123,9 @@ def _reviewed_facts(piece):
     from .connector_contracts import CONTRACTS
     from .modular_connector_contracts import CONTRACTS as MODULAR_CONTRACTS
     facts = CONTRACTS.get(piece['recipe']) or MODULAR_CONTRACTS.get(piece['recipe'])
+    if facts is None and piece['recipe'].startswith('highway_ddrhw_parallel_'):
+        from .parallel_connector_contracts import CONTRACTS as PARALLEL_CONTRACTS
+        facts = PARALLEL_CONTRACTS.get(piece['recipe'])
     if facts is not None:
         require(piece['footprint'] == facts['footprint']
                 and sorted(map(tuple,piece['cells'])) == sorted(map(tuple,facts['cells'])),

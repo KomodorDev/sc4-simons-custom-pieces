@@ -19,8 +19,8 @@ The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground d
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 25 menu types](00_pieces/INVENTORY.md).
-- [Assembly blueprints: 2 designs](01_assemblies/INVENTORY.md).
+- [Individual pieces: 40 menu types](00_pieces/INVENTORY.md).
+- [Assembly blueprints: 3 designs](01_assemblies/INVENTORY.md).
 
 <details>
 <summary>Named build collections</summary>
@@ -30,6 +30,7 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `ddrhw-diagonal-avenue-crossing`: 1 piece types.
 - `ddrhw-compact-diagonal-diamond`: 13 piece types.
 - `ddrhw-modular-ramp-kit`: 13 piece types.
+- `ddrhw-parallel-diamond`: 15 piece types.
 
 </details>
 
@@ -45,3 +46,6 @@ The [compact diagonal avenue diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-ave
 
 
 The [modular diagonal diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md) places a completely straight highway stamp with barrier openings, then attaches four full ramps and two separate Avenue terminals. All curved ramp pavement and barriers belong to the ramp pieces, including their overhang above highway-owned tiles. The R40 reference has seven types, seven placements, and 62 owned cells; R40 describes its new circular sections, while the retained high throats contain tighter curves. The compact alternative uses four new full compact ramps and the two retained compact Avenue junctions, with 53 owned cells. Construction views distinguish occupied-tile boundaries from the actual model outlines. Shared connector cards record every traffic boundary, including slope, heading, and pedestrian services. Both arrangements remain experimental and require their own human game tests.
+
+
+The [tight parallel diagonal diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/README.md) uses fifteen separately placed components and 31 occupied tiles inside an 8 × 8-tile square. Its ramp running sections stay 12 m from the highway centreline, leaving a 1 m pavement-edge gap. The visible highway remains straight, and separate ramp components approach the Avenue at 90°, with adjacent-carriageway right turns only. The complete assembly, its single menu cycle, actual model overhang, and the first adaptive-sidewalk test order are documented in its own README and TESTING reference. Its new game observations remain unverified.

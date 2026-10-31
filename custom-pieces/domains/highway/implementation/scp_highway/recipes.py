@@ -99,6 +99,9 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
+    if spec['recipe'].startswith('highway_ddrhw_parallel_'):
+        from .parallel_modules import build_piece as build_parallel
+        return build_parallel(spec, context)
     if spec['recipe'] == 'highway_ddrhw_modular_stamp':
         from .modular_stamp import build_piece as build_stamp
         return build_stamp(spec, context)

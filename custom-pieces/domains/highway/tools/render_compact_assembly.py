@@ -109,7 +109,8 @@ def render(build, destination, *, root=ROOT, plugins=None,
         raise ValueError('Choose an exact registered highway assembly identifier')
     scene_path = root / 'domains/highway/01_assemblies' / assembly / 'assembly.jsonc'
     scene = jsonc.load(scene_path)
-    if scene['id'] != assembly:
+    scene_id = scene.get('id', scene_path.parent.name)
+    if scene_id != assembly:
         raise ValueError('Selected highway assembly folder and definition identity differ')
     manifest_raw = (build / 'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
@@ -122,7 +123,7 @@ def render(build, destination, *, root=ROOT, plugins=None,
         raise ValueError(f'Unexpected saved flat car-path heights for the highway caption: {levels}')
     plugins = plugins or jsonc.load(local_settings(root))['plugins']
     provenance.update({
-        'assembly_id': scene['id'], 'assembly_sha256': sha(scene_path.read_bytes()),
+        'assembly_id': scene_id, 'assembly_sha256': sha(scene_path.read_bytes()),
         'source_manifest_sha256': sha(manifest_raw), 'piece_sources': sources,
         'saved_flat_car_path_heights_m': levels,
         'combined_model_sha256': model_hash,

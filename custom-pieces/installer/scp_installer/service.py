@@ -225,7 +225,7 @@ def implemented_recipes_by_domain():
     """Report exact provider declarations without accepting recipe prefixes."""
     from scp_hsr import crossings, directional_t, directional_diagonal_t
     from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
-    from scp_highway import native, ramp_paths, modular_ramps, modular_stamp
+    from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout
     hsr_recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
     for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
                    interchange_layouts, rail_features, rail_repairs):
@@ -237,6 +237,7 @@ def implemented_recipes_by_domain():
     highway_recipes.update(item["recipe"] for item in ramp_paths.module_catalog()["types"])
     highway_recipes.add(modular_stamp.RECIPE)
     highway_recipes.update(item["recipe"] for item in modular_ramps.module_catalog()["types"])
+    highway_recipes.update(item["recipe"] for item in parallel_layout.module_catalog()["types"])
     return {"high-speed-rail": frozenset(hsr_recipes),
             "highway": frozenset(highway_recipes)}
 

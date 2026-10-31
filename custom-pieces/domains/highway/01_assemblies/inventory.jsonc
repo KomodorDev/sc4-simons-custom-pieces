@@ -15,7 +15,7 @@
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
   "version": "0.6.0.dev1",
   "domain": "highway",
-  "count": 2,
+  "count": 3,
   "assemblies": {
     "ddrhw-l1-and-l2-diagonal-avenue-diamond": {
       "record_present": true,
@@ -241,6 +241,131 @@
       "journeys": 14,
       "manual_record": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/checks/manual-tests.json",
       "preview": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/previews/preview.png",
+      "connection_matrix": {
+        "available": true,
+        "metrics": {
+          "saved_path": {
+            "confirmed": 0,
+            "failed": 0,
+            "not_established": 100
+          },
+          "route_query": {
+            "confirmed": 0,
+            "failed": 0,
+            "not_established": 14
+          },
+          "visible_travel": {
+            "confirmed": 0,
+            "failed": 0,
+            "not_established": 14
+          },
+          "forbidden": {
+            "confirmed": 0,
+            "failed": 0,
+            "not_established": 86
+          }
+        }
+      }
+    },
+    "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond": {
+      "record_present": true,
+      "summary": {
+        "total": 127,
+        "states": {
+          "unverified": 127,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 86,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 14,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 14,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 7,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 28,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "path": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/README.md",
+      "placements": 15,
+      "unique_piece_types": 15,
+      "journeys": 14,
+      "manual_record": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/manual-tests.json",
+      "preview": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/previews/preview.png",
       "connection_matrix": {
         "available": true,
         "metrics": {

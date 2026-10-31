@@ -158,6 +158,7 @@ def main():
     observations_cmd.add_argument('--all', action='store_true', help='Apply this observation maintenance operation to every registered subject')
     icons_cmd = sub.add_parser('assembly-icons', help='Refresh canonical assembly icons without building or installing game resources')
     icons_cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.jsonc')
+    icons_cmd.add_argument('--assembly', action='append', dest='icon_assemblies', help='Exact registered assembly ID; repeat to select more; defaults to the complete domain')
     for command in ('assembly-menu', 'menu-test'):
         menu_cmd = sub.add_parser(command, help=('Prepare one assembly button with Tab/Shift+Tab component cycling'
             if command == 'assembly-menu' else 'Compatibility command for assembly menu preparation'))
@@ -176,7 +177,7 @@ def main():
         return 0 if result['all_passed'] else 1
     if args.command == 'assembly-icons':
         from scp.menu_experiment import write_assembly_icons
-        result = write_assembly_icons(ROOT, domain_id=args.domain)
+        result = write_assembly_icons(ROOT, domain_id=args.domain, assembly_ids=args.icon_assemblies)
         print(json.dumps(result, indent=2))
         return 0
     if args.command in ('assembly-menu', 'menu-test'):

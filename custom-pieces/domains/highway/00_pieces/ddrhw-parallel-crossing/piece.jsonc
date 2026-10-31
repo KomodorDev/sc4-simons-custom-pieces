@@ -1,0 +1,177 @@
+// title: "Piece definition: DD RHW-4 — L1/L2 over Avenue L0 — Diagonal 90° — Parallel"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel.",
+  "schema_version": 1,
+  "id": "ddrhw-parallel-crossing",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel",
+  "description": "Place one dd rhw / avenue crossing for the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+  "recipe": "highway_ddrhw_parallel_crossing",
+  "geometry_key": "parallel-crossing",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f847",
+  "tile_ids": [
+    "7f5ab000",
+    "7f5ab100",
+    "7f5ab010"
+  ],
+  "preview_id": "7f5abff5",
+  "effect_name": "preview_scp_hw_f847_____001",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis",
+    "adaptive_avenue"
+  ],
+  "menu": {
+    "id": "6a47f847",
+    "order": "ffffff47",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [],
+    "path_ownership": "Every full native and ramp fragment in each owned city cell",
+    "physical_model_function": "crossing",
+    "model_overhang": true,
+    "authored_model_overhang": false,
+    "pure_ramp_model": false,
+    "native_model_transfers": [],
+    "native_avenue_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "native_highway_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted"
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f5ab000",
+      "source": "7f5ab000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5ab100",
+      "source": "7f5ab100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5ab010",
+      "source": "7f5ab010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.",
+    "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "adaptive_ground": {
+    "schema_version": 1,
+    "construction_helper": [
+      1,
+      1
+    ],
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "00020400",
+        "avenue_flags": "01030103",
+        "prop": true,
+        "resolved_tile_id": "7f5ac000"
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "02040200",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f5ac100"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "02040200",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f5ac200"
+      }
+    ]
+  }
+}

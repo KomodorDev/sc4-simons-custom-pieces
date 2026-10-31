@@ -1,0 +1,117 @@
+// title: "Piece definition: DD RHW-4 — L2 Entry Slip Lanes — Parallel"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel.",
+  "schema_version": 1,
+  "id": "ddrhw-parallel-upper-entry-slip",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel",
+  "description": "Place one l2 entry slip lanes for the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+  "recipe": "highway_ddrhw_parallel_upper_entry_slip",
+  "geometry_key": "parallel-upper-entry-slip",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f861",
+  "tile_ids": [
+    "7f5b4100",
+    "7f5b4010"
+  ],
+  "preview_id": "7f5b4ff5",
+  "effect_name": "preview_scp_hw_f861_____001",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f861",
+    "order": "ffffff61",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [],
+    "path_ownership": "Every full native and ramp fragment in each owned city cell",
+    "physical_model_function": "slip",
+    "model_overhang": true,
+    "authored_model_overhang": true,
+    "pure_ramp_model": false,
+    "native_model_transfers": [
+      {
+        "source_city_cell": [
+          2,
+          -1
+        ],
+        "model_host_city_cell": [
+          3,
+          -2
+        ],
+        "native_path_owner": "upper-entry-grade",
+        "native_model_owner": "upper-entry-slip"
+      }
+    ],
+    "native_avenue_cells": [],
+    "native_highway_cells": [
+      [
+        4,
+        -3
+      ],
+      [
+        3,
+        -2
+      ]
+    ],
+    "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted"
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f5b4100",
+      "source": "7f5b4100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5b4010",
+      "source": "7f5b4010",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.",
+    "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

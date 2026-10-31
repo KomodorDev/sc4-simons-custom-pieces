@@ -35,7 +35,10 @@ def bindings(spec):
     rows = adaptive_network.bindings(spec)
     if not rows:
         return []
-    from .ramp_paths import module_declaration
+    if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
+        from .parallel_modules import declaration as module_declaration
+    else:
+        from .ramp_paths import module_declaration
     declaration = module_declaration(spec)
     require(declaration is not None, 'Adaptive ground requires a known compact highway module')
     origin = declaration['world_origin_cell']
@@ -55,7 +58,10 @@ def bindings(spec):
         require(int(row['avenue_flags'], 16) == flags
                 and int(row['texture_donor_id'], 16) == donor and row['rotation'] == rotation,
                 'Adaptive Avenue flags, donor, or half-tile pose differs from native measurements')
-        if spec.get('geometry_key') == 'modular-stamp':
+        if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
+            # All nine frozen adaptive cells retain an actual deck or terminal overlay.
+            expected_prop = True
+        elif spec.get('geometry_key') == 'modular-stamp':
             expected_prop = sum(world) in (0, 1)
         elif spec.get('recipe', '').startswith('highway_ddrhw_modular_'):
             from .modular_ramps import procedural_geometry
@@ -221,7 +227,11 @@ def _native_states(raw):
 def build_construction(spec, compiled, native_rul0, native_rul1):
     """Return RUL0/RUL1 deltas for a measured mixed static/FLEX component."""
     from .recipes import construction
-    from .ramp_paths import construction_fields, construction_symbol
+    from .ramp_paths import construction_symbol
+    if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
+        from .parallel_modules import construction_fields
+    else:
+        from .ramp_paths import construction_fields
     rows = bindings(spec)
     require(rows, 'Adaptive construction requires adaptive cell declarations')
     solutions = adaptive_network.expected_solutions([spec])
@@ -249,10 +259,13 @@ def build_construction(spec, compiled, native_rul0, native_rul1):
         checks[index] = (f'{symbol} - street: 0x{row["street_flags"]} '
                          f'avenue: 0x{row["avenue_flags"]}, 0xFFFFFFFF optional')
         constraints[cell[1]][cell[0]] = '.'
-    if not adaptive_network.fixed_cells(spec):
-        width = spec['footprint'][0]
-        require(layout[0][width] == '.', 'The temporary FLEX handle overlaps an owned cell')
-        layout[0][width], constraints[0][width] = 'Z', '+'
+    helper = adaptive_network.construction_helper(spec)
+    if helper is not None:
+        x, y = helper
+        require(layout[y][x] == '.', 'The temporary FLEX handle overlaps an owned cell')
+        require(all(not line.startswith('Z - ') for line in checks),
+                'The temporary FLEX handle symbol overlaps an owned-cell symbol')
+        layout[y][x], constraints[y][x] = 'Z', '+'
         checks.append('Z - road: 0x02000200')
     rul0 = construction(spec, [''.join(row) for row in layout], checks,
                         [''.join(row) for row in constraints])

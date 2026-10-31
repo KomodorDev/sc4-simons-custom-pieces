@@ -501,7 +501,7 @@ def _assembly_icon_network(assembly):
     return adapter.assembly_icon_network(assembly['id'])
 
 
-def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
+def write_assembly_icons(project_root, *, domain_id='high-speed-rail', assembly_ids=None):
     """Refresh canonical assembly icons and their source-schematic provenance."""
     from . import menu_experiment_resources
     from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
@@ -509,6 +509,13 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
     catalog = load_catalog(root)
     require(domain_id in catalog['domains'], 'Unknown assembly icon domain')
     assemblies = [assembly for assembly in catalog['_assemblies'] if assembly['domain'] == domain_id]
+    if assembly_ids is not None:
+        require(isinstance(assembly_ids, (list, tuple)) and assembly_ids
+                and all(isinstance(identifier, str) for identifier in assembly_ids)
+                and len(assembly_ids) == len(set(assembly_ids))
+                and set(assembly_ids) <= {assembly['id'] for assembly in assemblies},
+                'Assembly icon selection contains empty, duplicate, or unknown identifiers')
+        assemblies = [assembly for assembly in assemblies if assembly['id'] in assembly_ids]
     targets = [_assembly_icon_path(root, assembly) for assembly in assemblies]
     # Resolve every assembly before changing any icon; malformed source data
     # must not leave a partly refreshed selection behind.
