@@ -34,6 +34,7 @@ custom-pieces/
 │   ├── FRAMEWORK_ENGINEERING.md           Shared implementation contracts
 │   ├── TESTING.md                         Interpret and record exact observations
 │   ├── RELEASE.md                         Public distribution requirements
+│   ├── AGENT_TASK_CHECKLIST.md            Adaptable execution checklist and final handoff gate
 │   └── templates/                        Unregistered starter source, not catalogue content
 ├── domains/<domain>/
 │   ├── README.md                     Player guide and generated navigation
@@ -76,6 +77,7 @@ The **entry point** is the first document for a particular reader or task. A **w
 | Domain `README.md` and `INVENTORY.md` | Player placement/menu guidance and generated content catalogues. | Browse types, understand their use, or select existing assembly members. |
 | `AGENTS.md` at repository, library, and domain levels | Instructions and constraints for coding agents working in that directory. | Apply the relevant parent and domain instructions; do not restart task selection when a child file links to a parent already read. |
 | `skills/<skill-name>/SKILL.md` | Agent execution checklist: identify the task, gather its inputs, follow the human workflow, and report its verified outputs. | Use for piece and assembly design. Human authors can open the workflow directly. |
+| `docs/AGENT_TASK_CHECKLIST.md` | Shared execution template and final handoff gate; working copies stay in the task brief or ignored `local/task-checklists/`. | Adapt at task start, track actual evidence, and audit before handoff; it is separate from subject game-observation records. |
 | `docs/WORKFLOW_<TASK>.md` | The authoritative ordered procedure for that task. | Follow the selected workflow, opening linked references at the step that needs them. |
 | `STRUCTURE.md` | Document conventions, file locations, and ownership. | Find where information belongs or decide how to name a document. |
 | `docs/NAMING_CONVENTIONS.md` | Folder identifiers and readable names for pieces and assemblies. | Name a new subject or plan an explicitly scoped name migration. |

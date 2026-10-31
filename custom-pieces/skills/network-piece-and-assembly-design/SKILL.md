@@ -33,6 +33,8 @@ Use this skill as the agent's execution checklist. The linked workflows contain 
 
 Record these inputs in the task's working brief, reusing decisions and authorization already supplied by the user. For a new subject, choose its folder identifier and readable name through [naming conventions](../../docs/NAMING_CONVENTIONS.md) before registration. For an existing subject, preserve its registered identifiers unless their migration is explicitly in scope. Consult the domain's `NETWORK_SPEC.md` when a step needs measured network facts or implementation entry points.
 
+Adapt the [shared task checklist](../../docs/AGENT_TASK_CHECKLIST.md) in that brief or an ignored working copy. Map the actual requirements to concrete actions and evidence, mark non-applicable sections with reasons, and add checks required by this subject. Keep the checklist current when scope changes, delegated work returns, or evidence becomes stale; do not copy it into the subject as a second game-test record.
+
 <a id="preserve-sources-and-evidence"></a>
 
 <a id="2-preserve-sources-and-evidence"></a>
@@ -51,6 +53,8 @@ If required native inputs, an implementation adapter, or a matching verified bui
 <a id="3-generate-documentation-and-artwork"></a>
 
 ## 3. Verify and hand over
+
+Audit the adapted checklist through the [final handoff gate](../../docs/AGENT_TASK_CHECKLIST.md#9-final-handoff-gate). Close applicable work with current evidence and review every exclusion. Required human or external checks stay open in an explicitly incomplete test/dependency handoff; they cannot become completion ticks or inferred game passes.
 
 For the completed source candidate, run the [documentation check](../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#31-check-documentation-without-changing-it), the applicable domain and saved-resource checks, and the repository test command required by `AGENTS.md`. Report checks actually executed, their results, and explicit skips. Documentation checks establish structure and links; they do not establish game operation. Use [TESTING](../../docs/TESTING.md) only for matching human-confirmed observations, and preserve original observations when changed image-review cases need rebinding.
 

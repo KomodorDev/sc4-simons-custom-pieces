@@ -15,6 +15,8 @@ Use this process for Simon's Custom Pieces interchanges. It records the method d
 
 Chapters 1–9 describe the design, verification, review, and delivery sequence. Chapters 10–11 explain the required guide and show a worked example. Chapter 12 supplies concrete HSR authoring and registration commands for the implementation stage; chapters 13–19 provide supporting reference material. Choose the reading route for the task:
 
+Agents must adapt the [task execution checklist](AGENT_TASK_CHECKLIST.md) to the actual assembly, member types, requested design/revision stage, and delivery scope. Track member checks and whole-layout checks separately, integrate parallel work before final evidence, and audit every item through the [handoff gate](AGENT_TASK_CHECKLIST.md#9-final-handoff-gate).
+
 | Task | Reading route |
 | --- | --- |
 | Design a new junction | Read [terms and evidence](#1-terms-and-evidence), then start with [the brief and rough layout](#2-establish-the-brief-and-draw-a-rough-layout-in-chat) and follow the design sequence. |

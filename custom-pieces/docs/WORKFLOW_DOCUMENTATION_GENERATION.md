@@ -21,6 +21,8 @@ A **piece type** is one reusable component, selected through its own standalone 
 
 Start by identifying what changed. This determines which existing inputs can be reused and prevents an old measurement or picture from being relabelled as new evidence.
 
+Agents must adapt the [task execution checklist](AGENT_TASK_CHECKLIST.md) to that refresh scope, including the actual outputs and acceptance evidence, and audit its [final handoff gate](AGENT_TASK_CHECKLIST.md#9-final-handoff-gate). A prose-only refresh can exclude implementation, rendering, or installation with a scope-based reason; it must still complete the applicable documentation, validation, and handoff checks.
+
 | Change | Required sequence |
 | --- | --- |
 | Maintained prose outside generated blocks | Edit the selected README or TESTING document directly; no generation command is needed. Preserve the existing subject layout, valid measurements, images, and observations. |
@@ -645,6 +647,8 @@ python3 custom-pieces/scp.py inventory
 Repeat `--piece`, select an assembly with `--assembly EXACT-ASSEMBLY-ID`, or deliberately use `--all`. This operation updates only image-review cases for the selected subjects, including separate angled, top, and connector-overview images where present. It records exact PNG fingerprints, preserves all non-image cases and original observations, and never marks an image approved. A changed image makes its earlier approval stale; it does not inherit an approval from a different view. Missing final images remain missing rather than receiving an invented pass. Run inventory afterward because those summaries are a separate view refresh.
 
 4. Finish scoped software checks and run `python3 -B custom-pieces/scp.py docs-check` from the repository root for the read-only catalogue and shared-guide layout, required-file, and local-link checks. Repeated `--piece EXACT-ID` or `--assembly EXACT-ID` selectors check a subject selection; run the unselected command before handing over changes to shared guides. Report retained legacy coverage and real software skips accurately. A passing draft scaffold still needs its authored instructions and actual implementation evidence. Freeze image and documentation writes, then select the applicable packaging branch below.
+
+After the applicable packaging and authorized installation stages, audit the [adapted checklist's final gate](AGENT_TASK_CHECKLIST.md#9-final-handoff-gate) against the exact delivered artifacts. Keep a source-only or test handoff labelled with its actual stage; no checklist tick can supply missing human game evidence.
 
 For an **ordinary verified piece build**, replace `BUILD_NAME` with its existing build directory, and run:
 
