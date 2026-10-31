@@ -9,11 +9,13 @@ document_type: "guide"
 
 [1. Views](#1-views) · [2. Pieces](#2-pieces) · [3. Placements](#3-placements) · [4. Connection matrix](#4-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This modular blueprint crosses a diagonal ground Avenue with a completely straight NAM double-decker RHW-4 highway. The lower deck is 7.5 m above ground and carries traffic southwest; the upper deck is 15 m high and carries traffic northeast. Each deck retains its two through lanes. Four 6 m-wide ramps move sideways at deck height, run close and parallel to the highway, descend or climb, and meet the Avenue through separate 90° right-turn terminals.
+This modular blueprint crosses a diagonal ground Avenue with a completely straight NAM double-decker RHW-4 highway. The lower deck is 7.5 m above ground and carries traffic southwest; the upper deck is 15 m high and carries traffic northeast. Each deck retains its two through lanes. Four 6 m-wide elevated ramps move sideways at deck height, run close and parallel to the highway, descend or climb, and meet the Avenue through separate 90° right-turn terminals. Each ground terminal keeps the 6 m join to its grade, narrows smoothly to **3.5 m over 3 m**, and remains narrow through the turn into its Avenue carriageway.
 
 The kit uses **15 reusable types, 15 placements, and 31 occupied tiles inside an 8 × 8-tile rectangle**, or **128 × 128 m**. Each parallel ramp centre is 12 m from the highway axis, leaving a **1 m road-edge gap** between its 3 m half-width and the native highway's 8 m half-width. The drawing retains X0–X9 and Y0–Y9 from the earlier blueprint; this smaller layout occupies X1–X8 and Y1–Y8, without resetting the reference grid. Outside approach roads are additional to the 31 core tiles.
 
 One Highways-menu assembly button cycles through the components: **Tab** moves forward, **Shift+Tab** moves backward, and **each click places one component**. This is a fixed-height experimental kit; source compilation, installation, and observed game behaviour are separate stages recorded in [TESTING.md](TESTING.md).
+
+**Adaptive sidewalks are implemented on all nine Avenue tiles**, owned by P01, P02, and P03. The game can select its native pavement appearance in response to nearby development, while attached rotating models retain the highway and ramps above it. Connecting an Avenue alone does not force the developed sidewalk appearance. This assembly has no new confirmed game observations; its [resource mechanism and exact limits](TESTING.md#3-software-checks) are documented separately from the older successful adaptive probe.
 
 | Ramp | Traffic arrives from | Traffic leaves towards |
 | --- | --- | --- |
@@ -22,7 +24,7 @@ One Highways-menu assembly button cycles through the components: **Tab** moves f
 | Upper off-ramp | Southwest highway approach, upper deck | Southeast Avenue arm |
 | Upper on-ramp | Southeast Avenue arm | Northeast highway arm, upper deck |
 
-Ramp traffic uses only the adjacent Avenue carriageway, meaning the lanes carrying traffic in one direction. There is no turn across the opposing carriageway. The Avenue remains two-way, with its native pedestrian routes retained.
+Ramp traffic uses only the adjacent Avenue carriageway, meaning the lanes carrying traffic in one direction. There is no turn across the opposing carriageway. The Avenue remains two-way, with its native pedestrian routes retained. Each ramp driveway still crosses the pedestrian route beside its own carriageway; the narrower mouth exposes more native ground artwork beside that crossing, rather than drawing a fixed sidewalk over the ramp asphalt.
 
 ## 1. Views
 
@@ -68,6 +70,8 @@ Each visible thumbnail opens that type's full angled picture; **Top view** opens
 
 A **slip lane** is the auxiliary lane between a highway through lane and a ramp. A **lateral departure** is the flat curved section moving that ramp sideways. A **grade** is height change divided by horizontal distance: 20% means a 2 m change over 10 m horizontally. The grade modules are fixed transitions from 7.5 m or 15 m to ground, with approximately 17.91% lower and 28.20% upper peak slopes; they cannot be repeated indefinitely to choose arbitrary heights. Each R6 terminal turn has a 6 m horizontal centreline radius. These compressed experimental dimensions are not real-road design standards.
 
+Only P02 and P03 have the revised narrow ground mouths. Their asphalt changes from 6 m at the grade join to 3.5 m after 3 m, then remains 3.5 m through the turn and its Avenue joining collar. The checked car corridor is 2.5 m wide, leaving 0.5 m of asphalt on each side at the narrowest section. Where a ramp runs beside the Avenue pedestrian centreline, the asphalt edge remains approximately 1.149 m away. That is a route-centreline clearance, not a measured sidewalk width; the actual driveway crossings are separate.
+
 ## 3. Placements
 
 Prepare a flat disposable test area before following this reference plan. Choose an empty city square southwest of the junction as the picture’s **X0, Y0** square. Count city-tile steps right for X and up for Y; for example, P01’s X4, Y5 reference is four steps right and five steps up from that chosen square. These are blueprint coordinates, not coordinates displayed by the game. The 8 × 8 core uses the positions below; leave additional room outside its Avenue and highway ends for approach tests. All placements use the authored **0°** orientation. **Home** and **End** rotate the selected component, while **Tab** and **Shift+Tab** choose a different component. Match the actual occupied preview squares, especially where the construction reference lies in an empty corner. The software reference does not establish an observed mouse-click anchor for the new pieces.
@@ -96,7 +100,7 @@ Prepare a flat disposable test area before following this reference plan. Choose
 | P14 | RHW Ramp — L2 Exit Parallel Grade — Parallel | X3, Y3 | 0° | (X3, Y3), (X4, Y3), (X3, Y2) | Physical grade: 15 ↔ 0 m; saved tile-edge cuts have their measured intermediate heights |
 | P15 | RHW Ramp — L2 Entry Parallel Grade — Parallel | X6, Y6 | 0° | (X6, Y6), (X7, Y6), (X6, Y5) | Physical grade: 15 ↔ 0 m; saved tile-edge cuts have their measured intermediate heights |
 
-The three adaptive 2 × 2 components use their unused local **[1,1]** corner as a temporary Road placement handle. NAM's supported DLL removes that helper; it is not permanent construction ownership. The native Avenue texture can respond to surrounding development, while the retained models supply the highway and ramp geometry. Visible sidewalks, pedestrian routes, Avenue redraw, and moving cars are distinct checks; none is approved merely because another one works. See [the exact game test sequence](TESTING.md#4-game-checks).
+The three adaptive 2 × 2 components use their unused local **[1,1]** corner as a temporary Road placement handle. NAM's supported DLL removes that helper; it is not permanent construction ownership. All nine Avenue cells already contain the native texture variants, rules, pedestrian routes, and rotating model attachments needed for adaptive ground artwork. The native Avenue texture can respond to surrounding development, while the retained models supply the highway and ramp geometry. Visible sidewalks, pedestrian routes, Avenue redraw, and moving cars are distinct checks; none is approved merely because another one works. See [the exact game test sequence](TESTING.md#4-game-checks).
 
 <!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 

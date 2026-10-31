@@ -142,8 +142,12 @@ class ParallelConnectorContractTests(unittest.TestCase):
                     (16.530088424682617, 0.0, -11.802167892456055),
                     (19.774259567260742, 0.0, -6.5610551834106445),
                     (-23.020137786865234, 16.390625, 28.12371063232422)]
-        self.assertEqual(self.evidence['source']['manifest_sha256'],
-                         'e111dc910bc3bcfc913ed5f99bfa1b9521f4e0ad8511dfcf1eb37bc8727ff9ef')
+        # The fixture concerns this unchanged actual model, rather than a
+        # whole build whose unrelated terminal models may be revised.
+        preview = resolved['piece']['preview_id']
+        model_key = f'model:{identifier}:5ad0e817-badb57f1-{preview}'
+        self.assertEqual(resolved['connections']['source']['resource_fingerprints'][model_key],
+                         '3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b')
         old = make_camera(vertices, 45., 31., PAGE_WIDTH - 2 * PAGE_MARGIN, 1000,
                           bounds_world_m=local['bounds_world_m'], padding=90)
         def badges(camera):

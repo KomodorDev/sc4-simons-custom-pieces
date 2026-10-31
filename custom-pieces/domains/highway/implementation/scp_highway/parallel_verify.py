@@ -24,6 +24,7 @@ from scp.track_paths import PATH, S3D
 
 PREFIX = 'highway_ddrhw_parallel_'
 SUBJECT = 'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond'
+GROUND_MOUTH_PROFILE = 'taper-6m-to-3p5m-over-3m'
 ROOT = Path(__file__).resolve().parents[4]
 APPROVAL = ('domains/highway/01_assemblies/'
             'ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/'
@@ -149,6 +150,10 @@ def _source_origin(piece):
             and len(set(piece['tile_ids'])) == len(expected),
             'Parallel module ownership or sparse footprint differs from the reviewed partition')
     engineering = piece.get('engineering', {})
+    if 'ground_mouth_profile' in engineering:
+        require(key in ('northwest-terminal', 'southeast-terminal')
+                and engineering['ground_mouth_profile'] == GROUND_MOUTH_PROFILE,
+                'Parallel terminal declares an unknown or misplaced ground-mouth profile')
     require(engineering.get('max_grade_percent') == 30.
             and engineering.get('pavement_path_offset_m') == 0.
             and engineering.get('car_corridor_half_width_m') == 1.25
@@ -716,7 +721,7 @@ def _near_surface(point, index, *, concrete=False, tolerance=.002, desired_norma
                for face in index.nearby(point, margin=tolerance))
 
 
-def _continuous_support(first, last, faces, precision):
+def _continuous_support(first, last, faces, precision, *, ground_mouth_profile=None):
     """Preserve strict support plus source-pinned two-micrometre certificates.
 
     Very thin remap triangles can leave a long parameter interval beside one
@@ -749,7 +754,8 @@ def _continuous_support(first, last, faces, precision):
         # preserving Avenue UVs. DD wear changes UVs only after the separate
         # whole-field proof above; its source geometry/material still pins.
         matched = (_native_avenue_fragment(face) if texture in (0x0400020E, 0x0400380E) else
-                   _approved_ramp_encoding_fragment(face) if texture == 0x5712000E else
+                   _approved_ramp_encoding_fragment(face, ground_mouth_profile=ground_mouth_profile)
+                   if texture == 0x5712000E else
                    _native_dd_fragment(face))
         if not matched:
             continue
@@ -804,10 +810,14 @@ def _approved_ramp_surface_index():
     return _FaceIndex(faces)
 
 
-def _approved_ramp_encoding_fragment(face):
+def _approved_ramp_encoding_fragment(face, *, ground_mouth_profile=None):
     """A saved MIS triangle must remain on one literal approved road triangle."""
     from .modular_assembly_verify import _triangle_distance
-    candidates = _approved_ramp_surface_index().nearby(face['points'][0], margin=4e-6)
+    require(ground_mouth_profile in (None, GROUND_MOUTH_PROFILE), 'Unknown parallel ground-mouth profile')
+    flat_revised = ground_mouth_profile == GROUND_MOUTH_PROFILE and all(
+        abs(point[2]) <= 1e-8 for point in face['points'])
+    reference = _ground_reference(ground_mouth_profile) if flat_revised else _approved_ramp_surface_index()
+    candidates = reference.nearby(face['points'][0], margin=4e-6)
     return any(all(_triangle_distance(point, source['points']) <= 4e-6 for point in face['points'])
                for source in candidates)
 
@@ -931,8 +941,149 @@ def check_projection(faces):
             'scope': 'Positive-area actual indexed projections distinguish model drawing from whole-cell traffic ownership. Native end overhangs retain audited donor geometry/material, and non-DD donor UVs; complete road support is checked separately.'}
 
 
-def check_model_union(faces, routes):
-    """Check actual continuous car corridors and full six-metre ramp ribbons."""
+def _assembly_ground_mouth_profile(pieces, scene):
+    """Select the explicit revision without relabelling retained old builds."""
+    terminals = [pieces[row['piece_id']] for row in scene['placements']
+                 if pieces[row['piece_id']]['geometry_key'] in
+                 ('parallel-northwest-terminal', 'parallel-southeast-terminal')]
+    require(len(terminals) == 2, 'Parallel assembly needs its two ground terminals')
+    profiles = {piece.get('engineering', {}).get('ground_mouth_profile') for piece in terminals}
+    require(profiles in ({None}, {GROUND_MOUTH_PROFILE}),
+            'Parallel Avenue terminals must declare one consistent ground-mouth revision')
+    return next(iter(profiles))
+
+
+def _ground_widths(ramp, profile):
+    """Independent literal widths at the frozen PATH samples, in travel order.
+
+    Outward means from the six-metre grade cut towards the Avenue. Entries
+    reverse that station direction; all elevated and graded points stay six
+    metres wide. Only the flat right turn and its native-lane collar taper.
+    """
+    require(profile in (None, GROUND_MOUTH_PROFILE), 'Unknown parallel ground-mouth profile')
+    result = [6.] * len(ramp['points'])
+    if profile is None:
+        return result
+    turn = next(row for row in ramp['segments'] if row['kind'] == 'ground-right-quarter-turn')
+    cut = turn['start_index'] if ramp['direction'] == 'off' else turn['end_index']
+    outward = range(cut, len(result)) if ramp['direction'] == 'off' else range(cut, -1, -1)
+    previous, distance = None, 0.
+    for at in outward:
+        point = ramp['points'][at]
+        require(abs(point[2]) <= 1e-8, 'Ground-mouth taper extends onto a graded or elevated surface')
+        if previous is not None:
+            distance += math.dist(ramp['points'][previous][:2], point[:2])
+        fraction = min(1., distance / 3.)
+        smooth = fraction * fraction * (3. - 2. * fraction)
+        result[at] = 6. - 2.5 * smooth
+        previous = at
+    return result
+
+
+@lru_cache(maxsize=2)
+def _ground_reference(profile):
+    """Independent flat-ribbon triangles; no model writer is imported."""
+    faces = []
+    for ramp in approved_candidate()['routes']:
+        points, normals, widths = ramp['points'], _frames(ramp['points']), _ground_widths(ramp, profile)
+        for at, (a, b) in enumerate(zip(points, points[1:])):
+            if abs(a[2]) > 1e-8 or abs(b[2]) > 1e-8:
+                continue
+            for low, high in ((-1., 0.), (0., 1.)):
+                quad = [(p[0] + side * half * n[0], p[1] + side * half * n[1], 0.)
+                        for p, n, half, side in
+                        ((a, normals[at], widths[at] / 2., low),
+                         (a, normals[at], widths[at] / 2., high),
+                         (b, normals[at + 1], widths[at + 1] / 2., high),
+                         (b, normals[at + 1], widths[at + 1] / 2., low))]
+                faces.extend({'points': tuple(triangle)} for triangle in
+                             ((quad[0], quad[1], quad[2]), (quad[0], quad[2], quad[3])))
+    return _FaceIndex(faces)
+
+
+def check_ground_mouths(faces, *, profile=GROUND_MOUTH_PROFILE):
+    """Check affirmative tapered pavement and exposed sidewalk-line collars.
+
+    Actual flat MIS surfaces must stay within the independently reconstructed
+    envelope, and seven continuous longitudinal witnesses plus both exact
+    edge samples require real saved pavement. Native Avenue faces cannot
+    conceal a missing authored ramp. Each driveway's unavoidable sidewalk
+    crossing is retained; only its Avenue-parallel collar must leave the
+    measured pedestrian centreline outside the static asphalt.
+    """
+    require(profile == GROUND_MOUTH_PROFILE, 'Narrow-mouth checks need the explicit revised profile')
+    from .modular_assembly_verify import _triangle_distance
+    from .ramp_verify import _interval
+    ground = [face for face in faces if face['texture'] == 0x5712000E and face['upward']
+              and all(abs(point[2]) <= 1e-8 for point in face['points'])]
+    require(ground, 'Parallel ground mouths contain no actual saved MIS pavement')
+    index, reference = _FaceIndex(ground), _ground_reference(profile)
+    maximum, samples, edges, spans = 0., 0, 0, 0
+    precision = {'admitted_road_encoding_spans': 0, 'maximum_admitted_along_route_span_m': 0.,
+                 'maximum_sampled_actual_face_distance_m': 0.}
+    for face in ground:
+        points = face['points']
+        witnesses = [*points, tuple(sum(p[a] for p in points) / 3. for a in range(3))]
+        witnesses += [tuple((a[k] + b[k]) / 2. for k in range(3))
+                      for a, b in zip(points, points[1:] + points[:1])]
+        for point in witnesses:
+            nearby = reference.nearby(point, margin=4e-6)
+            distance = min((_triangle_distance(point, other['points']) for other in nearby), default=math.inf)
+            require(distance <= 4e-6,
+                    f'Parallel ground asphalt exceeds its independently approved tapered mouth: {point}')
+            maximum, samples = max(maximum, distance), samples + 1
+    collars = []
+    for ramp in approved_candidate()['routes']:
+        points, normals, widths = ramp['points'], _frames(ramp['points']), _ground_widths(ramp, profile)
+        for fraction in (-2.9 / 3., -2.17 / 3., -1.25 / 3., 0., 1.25 / 3., 2.17 / 3., 2.9 / 3.):
+            spine = [(p[0] + fraction * width / 2. * normal[0],
+                      p[1] + fraction * width / 2. * normal[1], p[2])
+                     for p, normal, width in zip(points, normals, widths)]
+            for a, b in zip(spine, spine[1:]):
+                if abs(a[2]) > 1e-8 or abs(b[2]) > 1e-8:
+                    continue
+                require(_continuous_support(a, b, index.nearby(a, b), precision,
+                                            ground_mouth_profile=profile),
+                        f'Parallel tapered ground mouth lacks continuous authored pavement: {ramp["id"]} {a}->{b}')
+                spans += 1
+        for point, normal, width in zip(points, normals, widths):
+            if abs(point[2]) > 1e-8:
+                continue
+            for sign in (-1., 1.):
+                edge = point[0] + sign * width / 2. * normal[0], point[1] + sign * width / 2. * normal[1], 0.
+                require(_near_surface(edge, index, tolerance=.002, desired_normal=(0., 0., 1.)),
+                        f'Parallel tapered ground mouth lacks its exact width edge: {ramp["id"]} {edge}')
+                edges += 1
+        collar = next(row for row in ramp['segments'] if row['kind'] == 'native-avenue-lane-collar')
+        first, last = points[collar['start_index']], points[collar['end_index']]
+        u = math.copysign(15.3 / math.sqrt(2.), _uv(first)[0])
+        a, b = [(4. + (u - _uv(p)[1]) / math.sqrt(2.),
+                 -4. + (u + _uv(p)[1]) / math.sqrt(2.), 0.) for p in (first, last)]
+        length = math.dist(a, b)
+        intervals = [interval for face in index.nearby(a, b) if
+                     (interval := _interval(a, b, face['points'])) is not None]
+        covered, reached = 0., 0.
+        for low, high in sorted(intervals):
+            covered += max(0., high - max(low, reached))
+            reached = max(reached, high)
+        require(covered * length <= 2e-6,
+                f'Parallel static Avenue-parallel collar covers its pedestrian centreline: {ramp["id"]}')
+        collars.append({'ramp_id': ramp['id'], 'pedestrian_axis_u_m': u,
+                        'static_asphalt_overlap_m': covered * length,
+                        'car_to_pedestrian_centre_distance_m': 4.1 / math.sqrt(2.),
+                        'nominal_asphalt_edge_to_pedestrian_centre_m': 4.1 / math.sqrt(2.) - 1.75})
+    return {'passed': True, 'profile': profile, 'grade_cut_width_m': 6., 'Avenue_mouth_width_m': 3.5,
+            'taper_plan_length_m': 3., 'taper': 'cubic smoothstep; travel order reversed for entries',
+            'continuous_flat_pavement_width_witnesses': spans, 'exact_width_edge_samples': edges,
+            'actual_ground_envelope_samples': samples, 'maximum_envelope_distance_m': maximum,
+            'envelope_encoding_distance_bound_m': 4e-6, 'edge_sample_distance_bound_m': .002,
+            'pedestrian_parallel_collars': collars,
+            'unavoidable_driveway_crossings_removed': False,
+            'scope': 'Actual saved flat MIS triangles, finite continuous width lines, exact nominal-edge samples, and no static asphalt along the four Avenue-parallel pedestrian collars. Complete sidewalk surface width and game texture selection are not established.'}
+
+
+def check_model_union(faces, routes, *, ground_mouth_profile=None):
+    """Check continuous car corridors and each explicitly declared road width."""
     from .ramp_verify import _intrudes
     index = _FaceIndex(faces)
     field = check_wheeltrack_vertices(faces)
@@ -944,7 +1095,8 @@ def check_model_union(faces, routes):
             continue
         for first, last in zip(route['points'], route['points'][1:]):
             candidates = index.nearby(first, last, 1.25)
-            require(_continuous_support(first, last, candidates, precision),
+            require(_continuous_support(first, last, candidates, precision,
+                                        ground_mouth_profile=ground_mouth_profile),
                     f'Parallel saved model union lacks continuous car pavement: {first}->{last}')
             require(not any(_intrudes(first, last, face['points'], 1.25, 3.8) for face in candidates),
                     f'Parallel saved solid face intrudes into actual car corridor: {first}->{last}')
@@ -957,9 +1109,10 @@ def check_model_union(faces, routes):
     for ramp in approved_candidate()['routes']:
         points = ramp['points']
         normals = _frames(points)
+        widths = _ground_widths(ramp, ground_mouth_profile)
         for lateral in (-2.9, -2.17, -1.25, 0., 1.25, 2.17, 2.9):
-            spine = [(p[0] + lateral * n[0], p[1] + lateral * n[1], p[2])
-                     for p, n in zip(points, normals)]
+            spine = [(p[0] + lateral * width / 6. * n[0], p[1] + lateral * width / 6. * n[1], p[2])
+                     for p, n, width in zip(points, normals, widths)]
             for first, last in zip(spine, spine[1:]):
                 for cell, fragments in _split_points([first, last]).items():
                     for fragment in fragments:
@@ -973,8 +1126,9 @@ def check_model_union(faces, routes):
                             # overhang is excused here.
                             native_boundary_spans += 1
                             continue
-                        require(_continuous_support(a, b, index.nearby(a, b), precision),
-                                f'Parallel saved six-metre road has a continuous width gap on {ramp["id"]}: {a}->{b}')
+                        require(_continuous_support(a, b, index.nearby(a, b), precision,
+                                                    ground_mouth_profile=ground_mouth_profile),
+                                f'Parallel saved declared-width road has a continuous width gap on {ramp["id"]}: {a}->{b}')
                         ribbon_segments += 1
         # Sample every metre, including both functional physical boundaries.
         # Continuous spine/width checks above are distinct from these bounded
@@ -1009,7 +1163,10 @@ def check_model_union(faces, routes):
                     barrier += 1
     return {'passed': True, 'continuous_car_segments_checked': segments,
             'car_corridor_half_width_m': 1.25, 'car_corridor_height_m': 3.8,
-            'continuous_ramp_width_segments_checked': ribbon_segments, 'ramp_width_m': 6.,
+            'continuous_ramp_width_segments_checked': ribbon_segments,
+            'ramp_width_m': 6. if ground_mouth_profile is None else None,
+            'elevated_and_grade_ramp_width_m': 6.,
+            'ground_mouth_width_profile': ground_mouth_profile or 'retained-six-metre-ground-mouth',
             'native_external_boundary_width_spans_requiring_highway_neighbour': native_boundary_spans,
             'maximum_saved_grade_percent': 100. * grade,
             'road_support_encoding_precision': precision, 'wheeltrack_field': field,
@@ -1224,6 +1381,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     require(scene.get('id', SUBJECT) == SUBJECT, 'Parallel verification received another assembly identity')
     pieces = {piece['id']: piece for piece in manifest['pieces']}
     owners, shift = check_owned_cells(pieces, scene)
+    ground_profile = _assembly_ground_mouth_profile(pieces, scene)
     for identifier in {owner['piece_id'] for owner in owners.values()}:
         check_paths(piece_resources[identifier], pieces[identifier])
     routes = decode_placed_routes(owners, piece_resources)
@@ -1247,12 +1405,16 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
             raw = piece_resources[owner['piece_id']][*S3D, owner['tile'] + 4]
             faces.extend({**face, 'geometry_key': owner['geometry_key']} for face in
                          _decode_faces(raw, owner['local_cell'], origin=owner['origin']))
-        models, supports, cuts = check_model_union(faces, routes), check_supports(faces), check_physical_cuts(faces)
+        models = check_model_union(faces, routes, ground_mouth_profile=ground_profile)
+        supports, cuts = check_supports(faces), check_physical_cuts(faces)
+        ground_mouths = (check_ground_mouths(faces, profile=ground_profile) if ground_profile else
+                        {'passed': True, 'profile': 'retained-six-metre-ground-mouth',
+                         'narrowed_sidewalk_collar_claimed': False})
         native = check_straight_native_decks_and_mouths(faces)
         projection = check_projection(faces)
         uv_seams = check_highway_ramp_uv_seams(faces)
     else:
-        models = supports = cuts = native = projection = uv_seams = {'passed': False, 'status': 'not-run'}
+        models = supports = cuts = native = projection = uv_seams = ground_mouths = {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT,
             'saved_resource_checks_passed': bool(inspect_models),
             'saved_path_checks_passed': True,
@@ -1263,6 +1425,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
                              'bounding_rectangle_tiles': [8, 8], 'translation_east_north_m': list(shift)},
             'paths': paths, 'proper_rotation_paths': rotations, 'model_union': models, 'supports': supports,
             'physical_functional_cuts': cuts,
+            'ground_mouths': ground_mouths,
             'straight_native_decks_and_mouths': native,
             'actual_model_projection': projection,
             'native_wheeltrack_seam_uv': uv_seams,

@@ -20,6 +20,8 @@ from .ramp_materials import NativeRoadPainter
 from .slip_lanes import WHITE
 
 ROOT_TWO = math.sqrt(2.0)
+GROUND_MOUTH_WIDTH_M = 3.5
+GROUND_MOUTH_TAPER_M = 3.0
 
 
 def _require(condition, message):
@@ -180,6 +182,40 @@ def slip_paint(route):
     return faces
 
 
+def terminal_pavement(route):
+    """Narrow only the grounded right turn, preserving its full-width join.
+
+    The grade/terminal interface stays six metres wide. Moving away from
+    that cut, a three-metre smoothstep taper reaches the earlier compact
+    design's 3.5 m ground lane. Its Avenue-parallel collar keeps that width,
+    exposing the native adaptive sidewalk beside the adjacent car lane.
+    No fixed sidewalk geometry or paint is added across the driveway.
+    """
+    points = route['points']
+    lengths, normals = geometry.route_frames(points)
+    turn = _section(route, 'ground-right-quarter-turn')
+    off = route['direction'] == 'off'
+    cut = turn['start_index'] if off else turn['end_index']
+    indices = range(cut, len(points)) if off else range(cut + 1)
+    rows = []
+    for index in indices:
+        _require(abs(points[index][2]) < 1e-8, 'A narrowed terminal must be wholly grounded')
+        distance = abs(lengths[index] - lengths[cut])
+        t = min(1.0, distance / GROUND_MOUTH_TAPER_M)
+        smooth = t * t * (3.0 - 2.0 * t)
+        half = 3.0 + (GROUND_MOUTH_WIDTH_M / 2.0 - 3.0) * smooth
+        rows.append((points[index], normals[index], half))
+    faces = []
+    for first, last in zip(rows, rows[1:]):
+        # Retain the traffic spine as an explicit triangulation boundary.
+        for left, right in ((-1.0, 0.0), (0.0, 1.0)):
+            polygon = [geometry._vertex(point, lateral * half, normal, 'asphalt')
+                       for (point, normal, half), lateral in
+                       ((first, left), (first, right), (last, right), (last, left))]
+            faces.extend(geometry._triangulate(polygon, (0.0, 1.0, 0.0)))
+    return faces
+
+
 @lru_cache(maxsize=1)
 def _procedural():
     models = {key: [] for key in GROUPS}
@@ -192,7 +228,13 @@ def _procedural():
             centre = (sum(p[0] for p in face) / 3.0, -sum(p[2] for p in face) / 3.0,
                       sum(p[1] for p in face) / 3.0)
             role = _role_for_station(route, _station(centre, route, lengths), lengths)
+            if (role == 'terminal' and all(abs(p[1]) < 1e-8
+                    and abs(p[3] - geometry.ATLAS_UV['asphalt'][0]) < 1e-8 for p in face)):
+                # Replace the old six-metre flat apron instead of overlaying
+                # a narrow lane on top of pavement that still masks sidewalks.
+                continue
             models[_model_key(route, role)].append(face)
+        models[_model_key(route, 'terminal')].extend(terminal_pavement(route))
         for support in route['supports']:
             models[_stem(route) + '-grade'].extend(_supported_pier(support))
         paint.extend(slip_paint(route))

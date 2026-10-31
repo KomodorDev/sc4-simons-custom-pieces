@@ -62,6 +62,8 @@ def _catalog():
                             'car_corridor_height_m': 3.8, 'pavement_path_offset_m': 0.0,
                             'model_only_cells': [], 'path_ownership': 'Every full native and ramp fragment in each owned city cell',
                             'physical_model_function': function,
+                            **({'ground_mouth_profile': 'taper-6m-to-3p5m-over-3m'}
+                               if function == 'terminal' else {}),
                             'model_overhang': True,
                             'authored_model_overhang': function != 'crossing',
                             'pure_ramp_model': function in ('departure', 'grade'),

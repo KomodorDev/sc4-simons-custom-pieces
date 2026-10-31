@@ -4,14 +4,14 @@
   "piece_id": "ddrhw-parallel-upper-exit-departure",
   "domain_id": "highway",
   "source_binding": {
-    "compiled_build": "dist/ddrhw-parallel-diamond-parts-01",
-    "compiled_manifest_sha256": "7aff2b18f1561baeb26bb974463f1b0f2359d1db41ffbab8c6eca26c97a211b8",
+    "compiled_build": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01",
+    "compiled_manifest_sha256": "e6abff46fb9ebd614c882207c4809dcb5002c11948ba28083c5cc7a1a4e914ed",
     "files": {
-      "dist/ddrhw-parallel-diamond-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
+      "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
       "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connections.json": "79c4efbe424c7420fbf5ca7c19425be78d882ae204a04590e57804236a8cc4c7",
       "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connector-groups.jsonc": "6101009e03fd2b94d802dcfaa550249144aa75c2d1756074d1e8858f412a30cc",
       "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc": "adc7183372f6c22ebebd958191014c77a8834431a5d36ee07883081f39de4754",
-      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "5541fb7b9f691fd3d4308c55a4be5d8ad2fd7d05685abc58cb8568c991e47c9c",
+      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "eef47f29367485dce9a0f830328d74b16b34f27db7fc05007ab9083f369cdd0c",
       "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
       "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
       "domains/highway/implementation/scp_highway/adaptive_ground.py": "049feb134ea074ab48b545666f45e6cc62e3ab6c6692d6e0293e7ca6d33ef0c0",
@@ -33,11 +33,11 @@
       "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
       "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
       "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
-      "domains/highway/implementation/scp_highway/parallel_geometry.py": "69c813b557b122d3a7c99318ae082f80296454b322c6660f92af68b4289e498d",
-      "domains/highway/implementation/scp_highway/parallel_layout.py": "31934b816576c313e7e97292e591391cbca9200548629d7c7c02a51b52198ad2",
+      "domains/highway/implementation/scp_highway/parallel_geometry.py": "e779d7d0266dece416026552481ac3d581495e884ef212ead867a4eb49947e60",
+      "domains/highway/implementation/scp_highway/parallel_layout.py": "882c5da5125fd7ffea8370ab01588f5f34031868942fb3b26604650c51c07dd8",
       "domains/highway/implementation/scp_highway/parallel_modules.py": "2bacc9cd2832403d679b378edf41712dde9a6a6e1c6af057f9f905b7d96fdba3",
       "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
-      "domains/highway/implementation/scp_highway/parallel_verify.py": "17c1f8354998415ba6f2b79ff0a5fd4e2e81f2c6028dfcaea1e917263951a6af",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "c7d9c95f766c1dbb8500add44bf6381aff02026705403eccda010b3c0d1665a8",
       "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
       "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
       "domains/highway/implementation/scp_highway/ramp_paths.py": "fb5333bd8f3e72e23ec133403c217579600a518e6a4d1ee34aebbbb6194b4413",
@@ -1273,7 +1273,7 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/ddrhw-parallel-diamond-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
+      "dat_path": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
       "dat_sha256": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
       "model_sha256": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
       "resource_fingerprints_checked": 15,
@@ -1292,5 +1292,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "ff131764700787c63d1a98b98772c45848a8231092f14d1ebe22692a0f7028f2"
+  "content_sha256": "7b07f58c3c9d448571a7e8cfb980175ba1a111324dac2e9f32595c0b68d1f56a"
 }
