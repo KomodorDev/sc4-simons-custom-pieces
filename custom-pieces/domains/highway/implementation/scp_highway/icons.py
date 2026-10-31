@@ -58,9 +58,10 @@ def assembly_icon_routes(scene, pieces):
             # into this component's local frame before applying its placement.
             from .parallel_verify import expected_cell_routes, _source_origin, PARTITIONS
             ox, oy = _source_origin(piece)
+            cell_routes = expected_cell_routes(piece.get('engineering', {}).get('highway_slip_profile'))
             source = [[(x - 16. * ox, y + 16. * oy, h) for x, y, h in route['points']]
                       for cell in PARTITIONS[piece['geometry_key'].removeprefix('parallel-')]
-                      for route in expected_cell_routes()[cell]]
+                      for route in cell_routes[cell]]
         else:
             source = ramp_paths.component_routes(piece)
         channels = source.values() if isinstance(source, dict) else source

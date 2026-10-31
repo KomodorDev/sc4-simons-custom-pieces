@@ -2744,33 +2744,33 @@
   "schema_version": 1,
   "piece_id": "ddrhw-parallel-lower-exit-departure",
   "file": "previews/connection-overview.png",
-  "output_sha256": "c0fe50467c3e8258da20030929f4a497dc15ed4c1e9cb1df65b761d397210ca8",
+  "output_sha256": "61abf4d8d04a1984cde3fa92918b750296b5a5f73e88aa86eabe133321ae04dc",
   "source_inputs": {
-    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/piece.jsonc": "0fa22b07bef76cc733e03e63f2aed26a9dbfad3605e2b01550dfda5641e2f38f",
-    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/connections.json": "d3c8809d60549edf655d59ed80dec397da233610fc4e2acb7447245b2436f54d",
-    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/connector-groups.jsonc": "8ff83d6f98a934b5f40c967094394432747c069ad4f42628cb3bd1beeb1bc7d6",
+    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/piece.jsonc": "97d480d82582c650148d77a57b43596b55ff9984ab783c95af645b1d614225ec",
+    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/connections.json": "ab13c472e27cdee52479c54352abdc3879570975d065aa0b11a6abc733545bc1",
+    "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/connector-groups.jsonc": "4ae2b10816750fc4d98bc97d061189ab02aa9409a0704e540df28368d0d9505d",
     "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
     "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
     "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
   },
   "generator_sha256": "df5fd866220cafb7493628c6662a173800094fae42a19d2870ec5365cb041a6e",
   "metadata_resolver_sha256": "630c667ef8a2229cfa244a17be9c8096d953a18fff42e2a089e3845122d485cc",
-  "manifest_sha256": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-  "compiled_manifest_sha256": "e6abff46fb9ebd614c882207c4809dcb5002c11948ba28083c5cc7a1a4e914ed",
-  "source_manifest": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/manifest.json",
-  "source_dat": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat",
+  "manifest_sha256": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+  "compiled_manifest_sha256": "a222a24ada086f5616a9b4e376b293880bf2dd4ee9569754adb66dbdcfc23fc7",
+  "source_manifest": "dist/ddrhw-parallel-diamond-slip-lanes-02/manifest.json",
+  "source_dat": "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat",
   "source_preview_id": "7f5b5ff5",
-  "source_dat_sha256": "0a6d2453e323c125f5cdfa109ccb9cb088d3fde5d5683efdf4b38b9bb9c14ef6",
-  "source_model_sha256": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-  "render_model_sha256": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
+  "source_dat_sha256": "20dbe47bb59516c6be06d632f9ceefe1ae9cff4e684a4b5439956c4b755347f6",
+  "source_model_sha256": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+  "render_model_sha256": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
   "model_validation": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 3020,
-    "mesh_count": 10,
+    "triangles": 3015,
+    "mesh_count": 9,
     "bounds_xyz_m": [
       [
         [
@@ -2897,20 +2897,6 @@
           -0.6422775387763977,
           4.064133644104004
         ]
-      ],
-      [
-        [
-          7.915136337280273,
-          8.0
-        ],
-        [
-          7.510000228881836,
-          7.510000228881836
-        ],
-        [
-          4.686290740966797,
-          4.856019020080566
-        ]
       ]
     ],
     "textures": [
@@ -2919,39 +2905,30 @@
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
-      "5eb4bee9",
-      "5713000e"
+      "5eb4bee9"
     ]
   },
   "saved_resource_fingerprints_checked": {
     "effect:ddrhw-parallel-lower-exit-departure:ea5118b0-ea5118b1-7f5b5ff5": "a65e0f7abe669c94b5e455c3777ca1887a4238cee1b3d307393c39345bf1e63b",
     "exemplar:ddrhw-parallel-lower-exit-departure:6534284a-a8434037-7f5b5000": "7fd6f8980b6d4835f80f3466ad129bd814067c788b30d82afb71bf9e911d9cef",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5000": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5001": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5002": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5003": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5004": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
-    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5ff5": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5000": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5001": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5002": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5003": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5004": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "model:ddrhw-parallel-lower-exit-departure:5ad0e817-badb57f1-7f5b5ff5": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
     "path:ddrhw-parallel-lower-exit-departure:296678f7-a966883f-7f5b5000": "e5a7b8247bd3bc47d324640ab0c06e583d032c0659fceb10908743a6976545ee",
     "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5000": "dcfc899ab7823dd3e79c45f66a452d65ad0a1da16b442078a7892b8536495980",
     "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5001": "4475f4410eeb0abebed80d1cb0c7c06a45a9b3cd3062a7f787dad7da790958e7",
-    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5002": "378728f8f08eee4acb6933be74d1515a0982c00229970f71b7efdbdfbf3fa76f",
-    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5003": "856ffbb34e07a09935f10063ae8e7e7445ce241e7917ff2dd5a2603a7b066aad",
-    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5004": "bf3981760c18c53ab8b9a89f5ab2de0bf6f60a165889d2ea90051fe97ad2797c",
+    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5002": "f4299f2d0cfce223ab38106c3d6ac16aa425978597d310adceb165304dd23ec1",
+    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5003": "d059715f42260d4092cc7abe6d9cf0652682e58cb33bf3b2703e3ef26b6ac6bc",
+    "shadow:ddrhw-parallel-lower-exit-departure:7ab50e44-2bc2759a-7f5b5004": "1ac9c9ba3e44a018db10b6c05bf35b2b7e883909f0b77e80e4be1b18184c2718",
     "text:ddrhw-parallel-lower-exit-departure:2026960b-2a592fd1-7f5b5000": "dde9546d9c28e32f79cfd32889f5285662ea6092d1effd791cda32796ed67c0b"
   },
   "textures": [
     {
       "instance": "5712000e",
       "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
-      "size": [
-        128,
-        128
-      ]
-    },
-    {
-      "instance": "5713000e",
-      "fsh_sha256": "6539c7d6d5a33e157c842724799a326f9f392a8282b0bbe27f74a2fe96ec6e7d",
       "size": [
         128,
         128
@@ -3209,7 +3186,7 @@
   },
   "camera_frame": {
     "basis": "Actual model vertices, all required member endpoints, display anchors, and owned ground-grid corners",
-    "model_vertices": 2574,
+    "model_vertices": 2567,
     "required_member_endpoints": 2,
     "display_anchors": 2,
     "maximum_service_groups_per_boundary": 1,
@@ -3297,7 +3274,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/highway/00_pieces/ddrhw-parallel-lower-exit-departure/evidence/preview.json",
-    "sha256": "4da729cac404ddabd8b7ff5526f1734a46b5d4bd9d7cc3e28568f01d5272dc83",
+    "sha256": "ad2ecc26cb4a65d152adfd1ebd0321e67c709f83d91d2a0ba5441013bcfa1d74",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,

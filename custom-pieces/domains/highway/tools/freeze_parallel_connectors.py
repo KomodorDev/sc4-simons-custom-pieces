@@ -32,10 +32,15 @@ from scp.subject_sources import source_path
 from scp.verify import parse_paths, strict_dbpf, verify_build
 from scp_highway.connections import service_classifier
 from scp_highway.parallel_connector_contracts import PREFIX, REFERENCE
-from scp_highway.parallel_verify import (APPROVAL_SHA256, PARTITIONS, _source_origin,
+from scp_highway.parallel_verify import (APPROVAL_SHA256, HIGHWAY_SLIP_PROFILE, PARTITIONS, _source_origin,
     expected_cell_routes, reviewed_contract, verify_assembly)
 
 ASSEMBLY = 'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond'
+# Literal reviewed counts: the lower access now crosses one extra existing
+# owner on either end. Those two joins add four intrinsic boundary ports,
+# without changing any external native channel or complete assembly journey.
+REVIEWED_COUNTS = {None: (176, 92, 20, 14, 78),
+                   HIGHWAY_SLIP_PROFILE: (180, 94, 20, 14, 80)}
 PORT_FIELDS = ('id', 'direction', 'engine_transport', 'edge', 'endpoint_m',
                'sampled_tangent', 'tangent', 'grade', 'service_network',
                'service_family', 'variant', 'role', 'channel_kind', 'traffic_modes')
@@ -153,7 +158,7 @@ def _channel_associations(piece, resources, measured):
     one-route-per-piece assumption.
     """
     origin = _source_origin(piece)
-    expected = expected_cell_routes()
+    expected = expected_cell_routes(piece.get('engineering', {}).get('highway_slip_profile'))
     route_channels, descriptions = {}, {}
     for route in _routes(piece, resources):
         source = route['cell'][0] + origin[0], route['cell'][1] + origin[1]
@@ -224,6 +229,11 @@ def freeze(root, build, *, reuse_accepted_resource_checks=False):
     catalog = load_catalog(root)
     pieces = {p['id']: p for p in catalog['pieces'] if p['recipe'].startswith(PREFIX)}
     require(len(pieces) == len(PARTITIONS) == 15, 'Freeze requires all fifteen registered parallel types')
+    profiles = {piece.get('engineering', {}).get('highway_slip_profile') for piece in pieces.values()}
+    require(len(profiles) == 1, 'Freeze requires one coordinated highway slip profile')
+    highway_slip_profile = next(iter(profiles))
+    require(highway_slip_profile in REVIEWED_COUNTS, 'Freeze requires a reviewed highway slip profile')
+    intrinsic_ports, intrinsic_journeys, outer_ports, complete_journeys, piece_joins = REVIEWED_COUNTS[highway_slip_profile]
     manifest_raw = (build / 'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
     built = {p['id']: p for p in manifest['pieces']}
@@ -294,14 +304,19 @@ def freeze(root, build, *, reuse_accepted_resource_checks=False):
                         'journeys': len(facts['movements'])})
     composed = assembly_connectivity(ASSEMBLY, scene, measured_records, pieces)
     outer_variants = {port['variant'] for port in composed['ports']}
+    require((sum(len(record['ports']) for record in measured_records.values()),
+             sum(len(record['journeys']) for record in measured_records.values()))
+            == (intrinsic_ports, intrinsic_journeys),
+            'Parallel intrinsic graph differs from the independently reviewed profile counts')
     require((len(composed['ports']), len(composed['journeys']), len(composed['encoded_route_joins']))
-            == (20, 14, 78) and outer_variants == {
+            == (outer_ports, complete_journeys, piece_joins) and outer_variants == {
                 'dd-rhw-l1', 'dd-rhw-l2', 'avenue-ground', 'avenue-sidewalk'},
-            'Shared parallel assembly graph must have twenty outer ports, fourteen complete journeys, and seventy-eight joins')
+            'Shared parallel assembly graph differs from its independently reviewed profile counts')
     evidence = {'schema_version': 1, 'subject_id': ASSEMBLY,
         'state': 'accepted-independently-checked-saved-resources',
         'purpose': 'Authoritative reviewed numeric connector measurements for the exact compiled parallel diamond; no game-resource payload is retained.',
         'source': {'manifest_sha256': _hash(manifest_raw), 'asset_sha256': asset_hashes,
+            'highway_slip_profile': highway_slip_profile,
             'approval_sha256': APPROVAL_SHA256, 'assembly_source_sha256': _hash(scene_path.read_bytes()),
             'measurement_engine': 'scp.connectivity.piece_connectivity',
             'independent_contract': 'scp_highway.parallel_verify.reviewed_contract',
@@ -315,8 +330,8 @@ def freeze(root, build, *, reuse_accepted_resource_checks=False):
             'assembly_resource_invocation': 'verify_assembly(..., verify_package=False), after a separate fresh verify_build() checked actual saved controller rules.',
             'assembly_resources_only_package_construction_status': assembly_report['package_construction_checks'],
             'native_wheeltrack_seam_uv': deepcopy(assembly_report['native_wheeltrack_seam_uv']),
-            'shared_assembly_graph': {'passed': True, 'external_ports': 20,
-                'complete_journeys': 14, 'directed_piece_joins': 78,
+            'shared_assembly_graph': {'passed': True, 'external_ports': outer_ports,
+                'complete_journeys': complete_journeys, 'directed_piece_joins': piece_joins,
                 'external_service_variants': sorted(outer_variants),
                 'internal_access_cut_ports_exposed': 0,
                 'basis': 'Unchanged scp.connectivity.assembly_connectivity with independently reviewed chord tangents and actual sampled tangents retained separately'},

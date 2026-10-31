@@ -10,22 +10,30 @@
   "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
   "piece_id": "ddrhw-parallel-upper-entry-slip",
   "source_binding": {
-    "piece_sha256": "1e2a36bd9b00c2fd2a0633810a4a5455274d78b7757e08924bf93793f06423be",
-    "connections_sha256": "8ab2da4e984cec47da379cdc5e9c5965d6269b1949dfe6d6eb0ec1e7c2353219"
+    "piece_sha256": "0b69e7fbad2a86830385fc776914063d5dba0f4d75d86a3f5fd57df23e4c183a",
+    "connections_sha256": "14c609473264d93e51749035030df543171455b823dd3abd8ae2120d78d65ccf"
   },
   "components": [
     {
-      "id": "upper-mainline",
+      "id": "lower-mainline",
       "network": "road",
       "construction_network": "dirtroad"
     },
     {
-      "id": "lower-mainline",
+      "id": "upper-mainline",
       "network": "road",
       "construction_network": "dirtroad"
     }
   ],
   "channels": [
+    {
+      "id": "access-lower-off",
+      "component_id": "lower-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
     {
       "id": "access-upper-on",
       "component_id": "upper-mainline",
@@ -191,6 +199,13 @@
           "direction": "out",
           "channel_id": "lower-mainline-axis-plus-2-26274-negative",
           "cut_id": "cut-channel-17-out"
+        },
+        {
+          "id": "member-channel-18-out",
+          "source_port_id": "channel-18-out",
+          "direction": "out",
+          "channel_id": "access-lower-off",
+          "cut_id": "cut-channel-18-out"
         }
       ]
     },
@@ -239,18 +254,18 @@
       "component_id": "upper-mainline",
       "members": [
         {
-          "id": "member-channel-18-out",
-          "source_port_id": "channel-18-out",
-          "direction": "out",
-          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-          "cut_id": "cut-channel-18-out"
-        },
-        {
           "id": "member-channel-19-out",
           "source_port_id": "channel-19-out",
           "direction": "out",
-          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
           "cut_id": "cut-channel-19-out"
+        },
+        {
+          "id": "member-channel-20-out",
+          "source_port_id": "channel-20-out",
+          "direction": "out",
+          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+          "cut_id": "cut-channel-20-out"
         }
       ]
     },

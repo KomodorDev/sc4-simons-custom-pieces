@@ -7,8 +7,8 @@
     {
       "id": "P01",
       "piece_id": "ddrhw-parallel-crossing",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
       "source_dat_sha256": "9d206635162e7c68916f5e96d8fae5e9b146d3c66f574dd90ecc13b4036c0105",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-crossing.dat",
       "preview_id": "7f5abff5",
@@ -83,9 +83,9 @@
     {
       "id": "P02",
       "piece_id": "ddrhw-parallel-northwest-terminal",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "c5910e22c5c198a9b15ca4c04583ac7278d930619f813e0d799e351e94c419cb",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "57f704b36929ae76993e23771956099ee6a25cbc02f64d20a2fa4313518cf428",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-northwest-terminal.dat",
       "preview_id": "7f5adff5",
       "origin_m": [
@@ -152,7 +152,7 @@
         49,
         50
       ],
-      "model_sha256": "8a2e0effb8a85147f6c77041ca8361db180723c07d792c42d8c998a78ee8cd38",
+      "model_sha256": "88529f53adf3fd2bcaa219f48b4abc6197a700fa7409ac487e4c6e34726678bd",
       "render_budget": {
         "authored_frames_checked": 28,
         "max_authored_vertices": 424,
@@ -164,9 +164,9 @@
     {
       "id": "P03",
       "piece_id": "ddrhw-parallel-southeast-terminal",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "07af5ad782d448a2a23bb4b0b111caec710589f39f33a9a3c797948b32c684c2",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "6a3d9f19f7a50781f64057fbd1df176799596e5a84da47066433a832d8ddf81d",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-southeast-terminal.dat",
       "preview_id": "7f5afff5",
       "origin_m": [
@@ -227,7 +227,7 @@
         71,
         72
       ],
-      "model_sha256": "f89fb3b236a887628380cb9a031faee1d2008196b8c2ebe535a1668e8e98c82e",
+      "model_sha256": "a52238383727b6e86ab63e605b6ffc33a76571c5f6ea4f005853a62a7119b839",
       "render_budget": {
         "authored_frames_checked": 22,
         "max_authored_vertices": 409,
@@ -239,9 +239,9 @@
     {
       "id": "P04",
       "piece_id": "ddrhw-parallel-lower-exit-slip",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "cfc03ce80a6c71fd0d9c710a02466e2115f2ee5786e61a73b173a4f652962b6d",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "ac6f4e8613e86fc4efed2e3b0c344209f2c64f90f9007bd05f310fd124667bb1",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-slip.dat",
       "preview_id": "7f5b1ff5",
       "origin_m": [
@@ -351,12 +351,33 @@
         146,
         147,
         148,
-        149
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170
       ],
-      "model_sha256": "687fe1933c10865bb8a9aa9413459f601e627c6ca11c70a850f3e3e6a5cd4ed4",
+      "model_sha256": "83fa6d5f0d104e51414449d3616ceaf596e49eb812ea2c8997231f3fce2856c1",
       "render_budget": {
-        "authored_frames_checked": 65,
-        "max_authored_vertices": 510,
+        "authored_frames_checked": 86,
+        "max_authored_vertices": 427,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
         "triangle_budget": 512
@@ -365,9 +386,9 @@
     {
       "id": "P05",
       "piece_id": "ddrhw-parallel-lower-entry-slip",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "4081e4a11057d85d056b539a6ee9a0b1f4ed48c38d64a75cb10bf49fb6b8b211",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "759f9876c39de54448a561cca4480c2e5ffe8565726d164c203807a92b1efb99",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-slip.dat",
       "preview_id": "7f5b2ff5",
       "origin_m": [
@@ -401,27 +422,6 @@
         ]
       ],
       "render_mesh_indices": [
-        150,
-        151,
-        152,
-        153,
-        154,
-        155,
-        156,
-        157,
-        158,
-        159,
-        160,
-        161,
-        162,
-        163,
-        164,
-        165,
-        166,
-        167,
-        168,
-        169,
-        170,
         171,
         172,
         173,
@@ -466,56 +466,7 @@
         212,
         213,
         214,
-        215
-      ],
-      "model_sha256": "aa433b42f9d1fe34fabf2780a23dc6f6c25e3e8267c6b19bd7e3e07c3a19adca",
-      "render_budget": {
-        "authored_frames_checked": 54,
-        "max_authored_vertices": 512,
-        "max_authored_triangles": 512,
-        "vertex_budget": 512,
-        "triangle_budget": 512
-      }
-    },
-    {
-      "id": "P06",
-      "piece_id": "ddrhw-parallel-upper-exit-slip",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "f08d356d7c190be7db2733f152b41717b7bb4f724b3e01d080ecd08c4b58e834",
-      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
-      "preview_id": "7f5b3ff5",
-      "origin_m": [
-        16.0,
-        -112.0
-      ],
-      "rotation_ccw_degrees": 0,
-      "label": "P06",
-      "menu_name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel",
-      "display_origin_tiles_en": [
-        1.0,
-        2.0
-      ],
-      "display_origin_m": [
-        16.0,
-        32.0
-      ],
-      "label_anchor_world_m": [
-        25.07128143310547,
-        -121.07128143310547,
-        15.0
-      ],
-      "occupied_world_cells": [
-        [
-          32.0,
-          -112.0
-        ],
-        [
-          16.0,
-          -128.0
-        ]
-      ],
-      "render_mesh_indices": [
+        215,
         216,
         217,
         218,
@@ -565,7 +516,56 @@
         262,
         263,
         264,
-        265,
+        265
+      ],
+      "model_sha256": "625ee95631a899e940765b6cbf4c3a4cb096d727aa6b2631db24ac3517954e82",
+      "render_budget": {
+        "authored_frames_checked": 83,
+        "max_authored_vertices": 416,
+        "max_authored_triangles": 512,
+        "vertex_budget": 512,
+        "triangle_budget": 512
+      }
+    },
+    {
+      "id": "P06",
+      "piece_id": "ddrhw-parallel-upper-exit-slip",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
+      "preview_id": "7f5b3ff5",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_ccw_degrees": 0,
+      "label": "P06",
+      "menu_name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel",
+      "display_origin_tiles_en": [
+        1.0,
+        2.0
+      ],
+      "display_origin_m": [
+        16.0,
+        32.0
+      ],
+      "label_anchor_world_m": [
+        25.07128143310547,
+        -121.07128143310547,
+        15.0
+      ],
+      "occupied_world_cells": [
+        [
+          32.0,
+          -112.0
+        ],
+        [
+          16.0,
+          -128.0
+        ]
+      ],
+      "render_mesh_indices": [
         266,
         267,
         268,
@@ -592,56 +592,7 @@
         289,
         290,
         291,
-        292
-      ],
-      "model_sha256": "ca538c687e8fd05728eb904c58ed6473e3f2761851c91e8f8a25966fe020953c",
-      "render_budget": {
-        "authored_frames_checked": 65,
-        "max_authored_vertices": 510,
-        "max_authored_triangles": 512,
-        "vertex_budget": 512,
-        "triangle_budget": 512
-      }
-    },
-    {
-      "id": "P07",
-      "piece_id": "ddrhw-parallel-upper-entry-slip",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "28be50180363003ad44d8e89c1246fcdcd0452caf5b1689c1d3f358e19f31eb8",
-      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat",
-      "preview_id": "7f5b4ff5",
-      "origin_m": [
-        112.0,
-        -16.0
-      ],
-      "rotation_ccw_degrees": 0,
-      "label": "P07",
-      "menu_name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel",
-      "display_origin_tiles_en": [
-        7.0,
-        8.0
-      ],
-      "display_origin_m": [
-        112.0,
-        128.0
-      ],
-      "label_anchor_world_m": [
-        121.07128143310547,
-        -25.07128143310547,
-        15.0
-      ],
-      "occupied_world_cells": [
-        [
-          128.0,
-          -16.0
-        ],
-        [
-          112.0,
-          -32.0
-        ]
-      ],
-      "render_mesh_indices": [
+        292,
         293,
         294,
         295,
@@ -685,7 +636,56 @@
         333,
         334,
         335,
-        336,
+        336
+      ],
+      "model_sha256": "0d332caf9471a7172fe2b5e7431bb45a16773acb282ebd10d203b046d0166e33",
+      "render_budget": {
+        "authored_frames_checked": 59,
+        "max_authored_vertices": 461,
+        "max_authored_triangles": 512,
+        "vertex_budget": 512,
+        "triangle_budget": 512
+      }
+    },
+    {
+      "id": "P07",
+      "piece_id": "ddrhw-parallel-upper-entry-slip",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "1441e18d313b00ece4e3575d253baa58fc036c8b8496fc61cc042b80cedd43c2",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat",
+      "preview_id": "7f5b4ff5",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_ccw_degrees": 0,
+      "label": "P07",
+      "menu_name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel",
+      "display_origin_tiles_en": [
+        7.0,
+        8.0
+      ],
+      "display_origin_m": [
+        112.0,
+        128.0
+      ],
+      "label_anchor_world_m": [
+        121.07128143310547,
+        -25.07128143310547,
+        15.0
+      ],
+      "occupied_world_cells": [
+        [
+          128.0,
+          -16.0
+        ],
+        [
+          112.0,
+          -32.0
+        ]
+      ],
+      "render_mesh_indices": [
         337,
         338,
         339,
@@ -707,12 +707,59 @@
         355,
         356,
         357,
-        358
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405
       ],
-      "model_sha256": "ba1c507a331e920fb4573116c58136add8bde8ac6813ca8a0bd10d57dcb13342",
+      "model_sha256": "3725a317731150bf712e63964be39b3a4eee2f848ae4ff7a7fbd30e643738c6e",
       "render_budget": {
-        "authored_frames_checked": 54,
-        "max_authored_vertices": 512,
+        "authored_frames_checked": 57,
+        "max_authored_vertices": 461,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
         "triangle_budget": 512
@@ -721,9 +768,9 @@
     {
       "id": "P08",
       "piece_id": "ddrhw-parallel-lower-exit-departure",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "0a6d2453e323c125f5cdfa109ccb9cb088d3fde5d5683efdf4b38b9bb9c14ef6",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "20dbe47bb59516c6be06d632f9ceefe1ae9cff4e684a4b5439956c4b755347f6",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat",
       "preview_id": "7f5b5ff5",
       "origin_m": [
@@ -742,8 +789,8 @@
         128.0
       ],
       "label_anchor_world_m": [
-        106.318603515625,
-        -17.584596633911133,
+        106.06688690185547,
+        -15.427330017089844,
         7.5
       ],
       "occupied_world_cells": [
@@ -753,20 +800,19 @@
         ]
       ],
       "render_mesh_indices": [
-        359,
-        360,
-        361,
-        362,
-        363,
-        364,
-        365,
-        366,
-        367,
-        368
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414
       ],
-      "model_sha256": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
+      "model_sha256": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
       "render_budget": {
-        "authored_frames_checked": 10,
+        "authored_frames_checked": 9,
         "max_authored_vertices": 434,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
@@ -776,9 +822,9 @@
     {
       "id": "P09",
       "piece_id": "ddrhw-parallel-lower-entry-departure",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "7d155b51dc34d2771f6f41893583d28d6718e41de8b80887cccd1ccf7372f494",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "8dd0d80e6e6ec74ad1b21826bc7c04be0e95b95e62919bbe351db3a645319cba",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-departure.dat",
       "preview_id": "7f5b6ff5",
       "origin_m": [
@@ -797,8 +843,8 @@
         48.0
       ],
       "label_anchor_world_m": [
-        17.584596633911133,
-        -106.318603515625,
+        15.427330017089844,
+        -106.06688690185547,
         7.5
       ],
       "occupied_world_cells": [
@@ -808,20 +854,19 @@
         ]
       ],
       "render_mesh_indices": [
-        369,
-        370,
-        371,
-        372,
-        373,
-        374,
-        375,
-        376,
-        377,
-        378
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423
       ],
-      "model_sha256": "ec9af6064ad8ec903c789e917f4393ceb3e4cff056a35995ef5089c0fce6e999",
+      "model_sha256": "50fdf5f30b644d077618c4b0379112ddc74f17df697953f61711d2408d6e0882",
       "render_budget": {
-        "authored_frames_checked": 10,
+        "authored_frames_checked": 9,
         "max_authored_vertices": 431,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
@@ -831,9 +876,9 @@
     {
       "id": "P10",
       "piece_id": "ddrhw-parallel-upper-exit-departure",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
       "preview_id": "7f5b7ff5",
       "origin_m": [
@@ -852,8 +897,8 @@
         16.0
       ],
       "label_anchor_world_m": [
-        21.681396484375,
-        -126.4154052734375,
+        21.9331111907959,
+        -128.5726776123047,
         15.0
       ],
       "occupied_world_cells": [
@@ -863,20 +908,19 @@
         ]
       ],
       "render_mesh_indices": [
-        379,
-        380,
-        381,
-        382,
-        383,
-        384,
-        385,
-        386,
-        387,
-        388
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432
       ],
-      "model_sha256": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
+      "model_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
       "render_budget": {
-        "authored_frames_checked": 10,
+        "authored_frames_checked": 9,
         "max_authored_vertices": 434,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
@@ -886,9 +930,9 @@
     {
       "id": "P11",
       "piece_id": "ddrhw-parallel-upper-entry-departure",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "a20db63ae0b353d4576ec6d094252c48b2d45c5902c566dc900c6576e39f2b16",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "d7d45c1d47c57896742493d3cf3c6f6464e2a0a7533b8f23fca46d14b08ba42f",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-departure.dat",
       "preview_id": "7f5b8ff5",
       "origin_m": [
@@ -907,8 +951,8 @@
         112.0
       ],
       "label_anchor_world_m": [
-        126.4154052734375,
-        -21.681396484375,
+        128.5726776123047,
+        -21.9331111907959,
         15.0
       ],
       "occupied_world_cells": [
@@ -918,20 +962,19 @@
         ]
       ],
       "render_mesh_indices": [
-        389,
-        390,
-        391,
-        392,
-        393,
-        394,
-        395,
-        396,
-        397,
-        398
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441
       ],
-      "model_sha256": "2e1b0819f5e08b85974acd2acec0b2b3dbd4c524f7e91a09a41d96c8dd15befa",
+      "model_sha256": "93201bbd3c95ddb685da967a8b6f3381ec3023927ef0839275afa145916c7364",
       "render_budget": {
-        "authored_frames_checked": 10,
+        "authored_frames_checked": 9,
         "max_authored_vertices": 431,
         "max_authored_triangles": 512,
         "vertex_budget": 512,
@@ -941,9 +984,9 @@
     {
       "id": "P12",
       "piece_id": "ddrhw-parallel-lower-exit-grade",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "a5f6e4073e523e33d6d6a7b597ff7562ce968bb3dd93004c1a3f6fec809b930d",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat",
       "preview_id": "7f5b9ff5",
       "origin_m": [
@@ -977,30 +1020,30 @@
         ]
       ],
       "render_mesh_indices": [
-        399,
-        400,
-        401,
-        402,
-        403,
-        404,
-        405,
-        406,
-        407,
-        408,
-        409,
-        410,
-        411,
-        412,
-        413,
-        414,
-        415,
-        416,
-        417,
-        418,
-        419,
-        420
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463
       ],
-      "model_sha256": "0ca86825ff3e58f5f1675b8b0cfe67a6d0a657fe3d70af78c1969e7aa83c8807",
+      "model_sha256": "40111e1ec2ac0ebf86cdbbe2e850d433582985ff89a70a1c88cc813ea0811745",
       "render_budget": {
         "authored_frames_checked": 22,
         "max_authored_vertices": 388,
@@ -1012,8 +1055,8 @@
     {
       "id": "P13",
       "piece_id": "ddrhw-parallel-lower-entry-grade",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
       "source_dat_sha256": "283a324a47fe0b9539e0f2370b0d1ac26867e2fe4cb7e3dd6f94d181334928bf",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-grade.dat",
       "preview_id": "7f5baff5",
@@ -1048,28 +1091,28 @@
         ]
       ],
       "render_mesh_indices": [
-        421,
-        422,
-        423,
-        424,
-        425,
-        426,
-        427,
-        428,
-        429,
-        430,
-        431,
-        432,
-        433,
-        434,
-        435,
-        436,
-        437,
-        438,
-        439,
-        440,
-        441,
-        442
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485
       ],
       "model_sha256": "afb0d21b8bc7b98af59735428a765d41e98198f315694bab09c0cc82d4fbcf40",
       "render_budget": {
@@ -1083,9 +1126,9 @@
     {
       "id": "P14",
       "piece_id": "ddrhw-parallel-upper-exit-grade",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-      "source_dat_sha256": "44311a0c2b5356af4d8a3f710ed3e8dcdd4a7db197d2dc573f43b861d7fc099f",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+      "source_dat_sha256": "d62818493bbf76713d1f6adad1c711aaf872b6ec41d99aebd862de55349b97db",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-grade.dat",
       "preview_id": "7f5bbff5",
       "origin_m": [
@@ -1123,36 +1166,36 @@
         ]
       ],
       "render_mesh_indices": [
-        443,
-        444,
-        445,
-        446,
-        447,
-        448,
-        449,
-        450,
-        451,
-        452,
-        453,
-        454,
-        455,
-        456,
-        457,
-        458,
-        459,
-        460,
-        461,
-        462,
-        463,
-        464,
-        465,
-        466,
-        467,
-        468,
-        469,
-        470
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513
       ],
-      "model_sha256": "3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b",
+      "model_sha256": "31a9fbfd2a9dc5ce06d358f0a7deb0ca205e3ca6ab99ab4a782d9c73ae1c9fd0",
       "render_budget": {
         "authored_frames_checked": 28,
         "max_authored_vertices": 388,
@@ -1164,8 +1207,8 @@
     {
       "id": "P15",
       "piece_id": "ddrhw-parallel-upper-entry-grade",
-      "build": "ddrhw-parallel-diamond-pedestrian-mouths-01",
-      "manifest_sha256_at_render_time": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
+      "build": "ddrhw-parallel-diamond-slip-lanes-02",
+      "manifest_sha256_at_render_time": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
       "source_dat_sha256": "8ca115f58a10b4bc1615da082bac4714fc425410715cd9407a226b12e077bf07",
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-grade.dat",
       "preview_id": "7f5bcff5",
@@ -1204,34 +1247,34 @@
         ]
       ],
       "render_mesh_indices": [
-        471,
-        472,
-        473,
-        474,
-        475,
-        476,
-        477,
-        478,
-        479,
-        480,
-        481,
-        482,
-        483,
-        484,
-        485,
-        486,
-        487,
-        488,
-        489,
-        490,
-        491,
-        492,
-        493,
-        494,
-        495,
-        496,
-        497,
-        498
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541
       ],
       "model_sha256": "66c6e7bd751bd374a7ef9aa6b3bb76dfb7beb959699897a853407554a0a61172",
       "render_budget": {
@@ -1267,7 +1310,7 @@
   },
   "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond",
   "assembly_sha256": "2cba5c534e36d9bf036f80f37dbeea5e9647f28aab93f2f00ec963d53399a00c",
-  "source_manifest_sha256": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
+  "source_manifest_sha256": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
   "piece_sources": {
     "ddrhw-parallel-crossing": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-crossing.dat",
@@ -1518,8 +1561,8 @@
     },
     "ddrhw-parallel-lower-entry-departure": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-departure.dat",
-      "dat_sha256": "7d155b51dc34d2771f6f41893583d28d6718e41de8b80887cccd1ccf7372f494",
-      "preview_sha256": "ec9af6064ad8ec903c789e917f4393ceb3e4cff056a35995ef5089c0fce6e999",
+      "dat_sha256": "8dd0d80e6e6ec74ad1b21826bc7c04be0e95b95e62919bbe351db3a645319cba",
+      "preview_sha256": "50fdf5f30b644d077618c4b0379112ddc74f17df697953f61711d2408d6e0882",
       "owned_textures": []
     },
     "ddrhw-parallel-lower-entry-grade": {
@@ -1530,32 +1573,32 @@
     },
     "ddrhw-parallel-lower-entry-slip": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-slip.dat",
-      "dat_sha256": "4081e4a11057d85d056b539a6ee9a0b1f4ed48c38d64a75cb10bf49fb6b8b211",
-      "preview_sha256": "aa433b42f9d1fe34fabf2780a23dc6f6c25e3e8267c6b19bd7e3e07c3a19adca",
+      "dat_sha256": "759f9876c39de54448a561cca4480c2e5ffe8565726d164c203807a92b1efb99",
+      "preview_sha256": "625ee95631a899e940765b6cbf4c3a4cb096d727aa6b2631db24ac3517954e82",
       "owned_textures": []
     },
     "ddrhw-parallel-lower-exit-departure": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat",
-      "dat_sha256": "0a6d2453e323c125f5cdfa109ccb9cb088d3fde5d5683efdf4b38b9bb9c14ef6",
-      "preview_sha256": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
+      "dat_sha256": "20dbe47bb59516c6be06d632f9ceefe1ae9cff4e684a4b5439956c4b755347f6",
+      "preview_sha256": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
       "owned_textures": []
     },
     "ddrhw-parallel-lower-exit-grade": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat",
-      "dat_sha256": "a5f6e4073e523e33d6d6a7b597ff7562ce968bb3dd93004c1a3f6fec809b930d",
-      "preview_sha256": "0ca86825ff3e58f5f1675b8b0cfe67a6d0a657fe3d70af78c1969e7aa83c8807",
+      "dat_sha256": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4",
+      "preview_sha256": "40111e1ec2ac0ebf86cdbbe2e850d433582985ff89a70a1c88cc813ea0811745",
       "owned_textures": []
     },
     "ddrhw-parallel-lower-exit-slip": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-slip.dat",
-      "dat_sha256": "cfc03ce80a6c71fd0d9c710a02466e2115f2ee5786e61a73b173a4f652962b6d",
-      "preview_sha256": "687fe1933c10865bb8a9aa9413459f601e627c6ca11c70a850f3e3e6a5cd4ed4",
+      "dat_sha256": "ac6f4e8613e86fc4efed2e3b0c344209f2c64f90f9007bd05f310fd124667bb1",
+      "preview_sha256": "83fa6d5f0d104e51414449d3616ceaf596e49eb812ea2c8997231f3fce2856c1",
       "owned_textures": []
     },
     "ddrhw-parallel-northwest-terminal": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-northwest-terminal.dat",
-      "dat_sha256": "c5910e22c5c198a9b15ca4c04583ac7278d930619f813e0d799e351e94c419cb",
-      "preview_sha256": "8a2e0effb8a85147f6c77041ca8361db180723c07d792c42d8c998a78ee8cd38",
+      "dat_sha256": "57f704b36929ae76993e23771956099ee6a25cbc02f64d20a2fa4313518cf428",
+      "preview_sha256": "88529f53adf3fd2bcaa219f48b4abc6197a700fa7409ac487e4c6e34726678bd",
       "owned_textures": [
         {
           "instance": "7f5ae000",
@@ -1801,8 +1844,8 @@
     },
     "ddrhw-parallel-southeast-terminal": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-southeast-terminal.dat",
-      "dat_sha256": "07af5ad782d448a2a23bb4b0b111caec710589f39f33a9a3c797948b32c684c2",
-      "preview_sha256": "f89fb3b236a887628380cb9a031faee1d2008196b8c2ebe535a1668e8e98c82e",
+      "dat_sha256": "6a3d9f19f7a50781f64057fbd1df176799596e5a84da47066433a832d8ddf81d",
+      "preview_sha256": "a52238383727b6e86ab63e605b6ffc33a76571c5f6ea4f005853a62a7119b839",
       "owned_textures": [
         {
           "instance": "7f5b0000",
@@ -2048,8 +2091,8 @@
     },
     "ddrhw-parallel-upper-entry-departure": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-departure.dat",
-      "dat_sha256": "a20db63ae0b353d4576ec6d094252c48b2d45c5902c566dc900c6576e39f2b16",
-      "preview_sha256": "2e1b0819f5e08b85974acd2acec0b2b3dbd4c524f7e91a09a41d96c8dd15befa",
+      "dat_sha256": "d7d45c1d47c57896742493d3cf3c6f6464e2a0a7533b8f23fca46d14b08ba42f",
+      "preview_sha256": "93201bbd3c95ddb685da967a8b6f3381ec3023927ef0839275afa145916c7364",
       "owned_textures": []
     },
     "ddrhw-parallel-upper-entry-grade": {
@@ -2060,26 +2103,26 @@
     },
     "ddrhw-parallel-upper-entry-slip": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat",
-      "dat_sha256": "28be50180363003ad44d8e89c1246fcdcd0452caf5b1689c1d3f358e19f31eb8",
-      "preview_sha256": "ba1c507a331e920fb4573116c58136add8bde8ac6813ca8a0bd10d57dcb13342",
+      "dat_sha256": "1441e18d313b00ece4e3575d253baa58fc036c8b8496fc61cc042b80cedd43c2",
+      "preview_sha256": "3725a317731150bf712e63964be39b3a4eee2f848ae4ff7a7fbd30e643738c6e",
       "owned_textures": []
     },
     "ddrhw-parallel-upper-exit-departure": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
-      "dat_sha256": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
-      "preview_sha256": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
+      "dat_sha256": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
+      "preview_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
       "owned_textures": []
     },
     "ddrhw-parallel-upper-exit-grade": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-grade.dat",
-      "dat_sha256": "44311a0c2b5356af4d8a3f710ed3e8dcdd4a7db197d2dc573f43b861d7fc099f",
-      "preview_sha256": "3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b",
+      "dat_sha256": "d62818493bbf76713d1f6adad1c711aaf872b6ec41d99aebd862de55349b97db",
+      "preview_sha256": "31a9fbfd2a9dc5ce06d358f0a7deb0ca205e3ca6ab99ab4a782d9c73ae1c9fd0",
       "owned_textures": []
     },
     "ddrhw-parallel-upper-exit-slip": {
       "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
-      "dat_sha256": "f08d356d7c190be7db2733f152b41717b7bb4f724b3e01d080ecd08c4b58e834",
-      "preview_sha256": "ca538c687e8fd05728eb904c58ed6473e3f2761851c91e8f8a25966fe020953c",
+      "dat_sha256": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add",
+      "preview_sha256": "0d332caf9471a7172fe2b5e7431bb45a16773acb282ebd10d203b046d0166e33",
       "owned_textures": []
     }
   },
@@ -2088,7 +2131,7 @@
     7.5,
     15.0
   ],
-  "combined_model_sha256": "88f0ac2efa82c6471e693d524aac6d9178612423f4b3301a500bfc2086b13753",
+  "combined_model_sha256": "00cd1d1ab35ed1a01e7873c205ecfdf3646dd532991d69247f784ed27965be8a",
   "renderer_sha256": "a9560dea46495375873e548fe252523d93fce73a23e93df5921500dffed014a7",
   "presentation_reference": {
     "assembly_id": "hsr-trumpet-straight-stem",
@@ -2129,14 +2172,14 @@
     "visual_comparison": "Inspect every staged PNG beside its corresponding reference before promotion."
   },
   "source_kind": "actual compiled S3D geometry",
-  "render_model_sha256": "88f0ac2efa82c6471e693d524aac6d9178612423f4b3301a500bfc2086b13753",
+  "render_model_sha256": "00cd1d1ab35ed1a01e7873c205ecfdf3646dd532991d69247f784ed27965be8a",
   "geometry_invented_by_renderer": false,
   "geometry_simplified": false,
   "geometry_hidden": false,
   "in_game_evidence": false,
   "model": {
-    "triangles": 178090,
-    "mesh_count": 499,
+    "triangles": 203171,
+    "mesh_count": 542,
     "bounds_s3d_xyz_m": [
       [
         6.343145370483398,
@@ -2152,8 +2195,8 @@
       ]
     ],
     "render_budget": {
-      "authored_frames_checked": 444,
-      "max_authored_vertices": 512,
+      "authored_frames_checked": 487,
+      "max_authored_vertices": 461,
       "max_authored_triangles": 512,
       "vertex_budget": 512,
       "triangle_budget": 512
@@ -2262,7 +2305,7 @@
   "images": [
     {
       "file": "parallel-diamond-southeast-xy.png",
-      "sha256": "2ca6cb29dae598017fc166e1a9469cab6cc5db8dcf355e0540909ec7ec004665",
+      "sha256": "f30f21c25aad7e0dcbcc84764ec07caaef0561be243ca1c431366f627038b67e",
       "size": [
         2800,
         2600
@@ -3411,14 +3454,14 @@
               1548.4285714285716
             ],
             "badge_bbox": [
-              851.5,
-              1238.4048689376145,
-              910.5,
-              1275.4048689376145
+              870.8309524416878,
+              1191.7358213793025,
+              929.8309524416878,
+              1228.7358213793025
             ],
             "badge_center_pixel": [
-              881.0,
-              1256.9048689376145
+              900.3309524416878,
+              1210.2358213793025
             ],
             "leader_points": [
               [
@@ -3430,15 +3473,15 @@
                 1476.9285714285716
               ],
               [
-                881.0,
-                1256.9048689376145
+                900.3309524416878,
+                1210.2358213793025
               ],
               [
                 947.0,
                 1256.9048689376145
               ]
             ],
-            "badge_displacement_pixels": 66.0,
+            "badge_displacement_pixels": 65.99999999999997,
             "position_label": "Position X1, Y2 tiles"
           },
           {
@@ -3476,14 +3519,14 @@
               1396.5
             ],
             "badge_bbox": [
-              1889.5,
-              1238.4048689376145,
-              1948.5,
-              1275.4048689376145
+              1870.169047558312,
+              1191.7358213793025,
+              1929.169047558312,
+              1228.7358213793025
             ],
             "badge_center_pixel": [
-              1919.0,
-              1256.9048689376145
+              1899.669047558312,
+              1210.2358213793025
             ],
             "leader_points": [
               [
@@ -3495,15 +3538,15 @@
                 1325.0
               ],
               [
-                1919.0,
-                1256.9048689376145
+                1899.669047558312,
+                1210.2358213793025
               ],
               [
                 1853.0,
                 1256.9048689376145
               ]
             ],
-            "badge_displacement_pixels": 66.0,
+            "badge_displacement_pixels": 65.99999999999989,
             "position_label": "Position X7, Y8 tiles"
           },
           {
@@ -3521,13 +3564,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              106.318603515625,
-              -17.584596633911133,
+              106.06688690185547,
+              -15.427330017089844,
               7.5
             ],
             "source_anchor_pixel": [
-              1818.7135949730873,
-              1245.7568862529263
+              1827.7054090499878,
+              1239.9022477866233
             ],
             "colour": "#cc2424",
             "name_lines": [
@@ -3537,36 +3580,36 @@
             "side": "right",
             "card_bbox": [
               2264.0,
-              899.0,
+              544.5,
               2776.0,
-              1072.0
+              717.5
             ],
             "badge_bbox": [
-              1814.669439095803,
-              1252.712730375642,
-              1873.669439095803,
-              1289.712730375642
+              1823.6612531727035,
+              1246.858091909339,
+              1882.6612531727035,
+              1283.858091909339
             ],
             "badge_center_pixel": [
-              1844.169439095803,
-              1271.212730375642
+              1853.1612531727035,
+              1265.358091909339
             ],
             "leader_points": [
               [
                 2264.0,
-                985.5
+                631.0
               ],
               [
                 2250.0,
-                985.5
+                631.0
               ],
               [
-                1844.169439095803,
-                1271.212730375642
+                1853.1612531727035,
+                1265.358091909339
               ],
               [
-                1818.7135949730873,
-                1245.7568862529263
+                1827.7054090499878,
+                1239.9022477866233
               ]
             ],
             "badge_displacement_pixels": 35.99999999999997,
@@ -3587,13 +3630,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              17.584596633911133,
-              -106.318603515625,
+              15.427330017089844,
+              -106.06688690185547,
               7.5
             ],
             "source_anchor_pixel": [
-              981.2864050269127,
-              1245.7568862529263
+              972.2945909500123,
+              1239.9022477866233
             ],
             "colour": "#c20505",
             "name_lines": [
@@ -3603,36 +3646,36 @@
             "side": "left",
             "card_bbox": [
               24,
-              797.7142857142858,
+              493.8571428571429,
               536.0,
-              970.7142857142858
+              666.8571428571429
             ],
             "badge_bbox": [
-              926.330560904197,
-              1252.712730375642,
-              985.330560904197,
-              1289.712730375642
+              917.3387468272966,
+              1246.858091909339,
+              976.3387468272966,
+              1283.858091909339
             ],
             "badge_center_pixel": [
-              955.830560904197,
-              1271.212730375642
+              946.8387468272966,
+              1265.358091909339
             ],
             "leader_points": [
               [
                 536.0,
-                884.2142857142858
+                580.3571428571429
               ],
               [
                 550.0,
-                884.2142857142858
+                580.3571428571429
               ],
               [
-                955.830560904197,
-                1271.212730375642
+                946.8387468272966,
+                1265.358091909339
               ],
               [
-                981.2864050269127,
-                1245.7568862529263
+                972.2945909500123,
+                1239.9022477866233
               ]
             ],
             "badge_displacement_pixels": 35.99999999999997,
@@ -3653,13 +3696,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              21.681396484375,
-              -126.4154052734375,
+              21.9331111907959,
+              -128.5726776123047,
               15.0
             ],
             "source_anchor_pixel": [
-              905.7863960266113,
-              1261.6543259042824
+              896.7945459485054,
+              1267.508973641581
             ],
             "colour": "#04689a",
             "name_lines": [
@@ -3674,14 +3717,14 @@
               2156.1428571428573
             ],
             "badge_bbox": [
-              829.6173484682992,
-              1289.8233734625944,
-              888.6173484682992,
-              1326.8233734625944
+              831.2945459485054,
+              1249.008973641581,
+              890.2945459485054,
+              1286.008973641581
             ],
             "badge_center_pixel": [
-              859.1173484682992,
-              1308.3233734625944
+              860.7945459485054,
+              1267.508973641581
             ],
             "leader_points": [
               [
@@ -3693,15 +3736,15 @@
                 2069.6428571428573
               ],
               [
-                859.1173484682992,
-                1308.3233734625944
+                860.7945459485054,
+                1267.508973641581
               ],
               [
-                905.7863960266113,
-                1261.6543259042824
+                896.7945459485054,
+                1267.508973641581
               ]
             ],
-            "badge_displacement_pixels": 65.99999999999997,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X2, Y1 tiles"
           },
           {
@@ -3719,13 +3762,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              126.4154052734375,
-              -21.681396484375,
+              128.5726776123047,
+              -21.9331111907959,
               15.0
             ],
             "source_anchor_pixel": [
-              1894.2136039733887,
-              1261.6543259042824
+              1903.2054540514946,
+              1267.508973641581
             ],
             "colour": "#c205c2",
             "name_lines": [
@@ -3740,14 +3783,14 @@
               1751.0
             ],
             "badge_bbox": [
-              1911.8826515317007,
-              1289.8233734625944,
-              1969.8826515317007,
-              1326.8233734625944
+              1910.2054540514946,
+              1249.008973641581,
+              1968.2054540514946,
+              1286.008973641581
             ],
             "badge_center_pixel": [
-              1940.8826515317007,
-              1308.3233734625944
+              1939.2054540514946,
+              1267.508973641581
             ],
             "leader_points": [
               [
@@ -3759,15 +3802,15 @@
                 1664.5
               ],
               [
-                1940.8826515317007,
-                1308.3233734625944
+                1939.2054540514946,
+                1267.508973641581
               ],
               [
-                1894.2136039733887,
-                1261.6543259042824
+                1903.2054540514946,
+                1267.508973641581
               ]
             ],
-            "badge_displacement_pixels": 65.99999999999989,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X8, Y7 tiles"
           },
           {
@@ -3801,9 +3844,9 @@
             "side": "right",
             "card_bbox": [
               2264.0,
-              544.5,
+              899.0,
               2776.0,
-              717.5
+              1072.0
             ],
             "badge_bbox": [
               1731.065045732804,
@@ -3818,11 +3861,11 @@
             "leader_points": [
               [
                 2264.0,
-                631.0
+                985.5
               ],
               [
                 2250.0,
-                631.0
+                985.5
               ],
               [
                 1760.565045732804,
@@ -3867,9 +3910,9 @@
             "side": "left",
             "card_bbox": [
               24,
-              493.8571428571429,
+              797.7142857142858,
               536.0,
-              666.8571428571429
+              970.7142857142858
             ],
             "badge_bbox": [
               1009.934954267196,
@@ -3884,11 +3927,11 @@
             "leader_points": [
               [
                 536.0,
-                580.3571428571429
+                884.2142857142858
               ],
               [
                 550.0,
-                580.3571428571429
+                884.2142857142858
               ],
               [
                 1039.434954267196,
@@ -4551,7 +4594,7 @@
     },
     {
       "file": "parallel-diamond-southeast-clean-xy.png",
-      "sha256": "8199a5cfc690ddda873139a49a0e416e1533782a1545ddf46756c60f203e80e3",
+      "sha256": "3eb5aff57334a2b9d15bb887ff7e18df2e35cb5898a8b65399f1bc3fddc2983f",
       "size": [
         2800,
         2600
@@ -5338,7 +5381,7 @@
     },
     {
       "file": "parallel-diamond-northwest-xy.png",
-      "sha256": "7219df4383686ddfdf66055c8581f6b20089857f0968fe73787fa149331c513a",
+      "sha256": "f3cae41ab6505efe8f031b6b6efe3ce6d322de453c5554707ccf1e4e39f85122",
       "size": [
         2800,
         2600
@@ -6597,13 +6640,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              106.318603515625,
-              -17.584596633911133,
+              106.06688690185547,
+              -15.427330017089844,
               7.5
             ],
             "source_anchor_pixel": [
-              981.2864050269127,
-              1343.440835198687
+              972.2945909500123,
+              1349.2954736649897
             ],
             "colour": "#cc2424",
             "name_lines": [
@@ -6618,14 +6661,14 @@
               1852.2857142857144
             ],
             "badge_bbox": [
-              915.7864050269127,
-              1324.940835198687,
-              974.7864050269127,
-              1361.940835198687
+              906.7945909500123,
+              1330.7954736649897,
+              965.7945909500123,
+              1367.7954736649897
             ],
             "badge_center_pixel": [
-              945.2864050269127,
-              1343.440835198687
+              936.2945909500123,
+              1349.2954736649897
             ],
             "leader_points": [
               [
@@ -6637,12 +6680,12 @@
                 1765.7857142857144
               ],
               [
-                945.2864050269127,
-                1343.440835198687
+                936.2945909500123,
+                1349.2954736649897
               ],
               [
-                981.2864050269127,
-                1343.440835198687
+                972.2945909500123,
+                1349.2954736649897
               ]
             ],
             "badge_displacement_pixels": 36.0,
@@ -6663,13 +6706,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              17.584596633911133,
-              -106.318603515625,
+              15.427330017089844,
+              -106.06688690185547,
               7.5
             ],
             "source_anchor_pixel": [
-              1818.7135949730873,
-              1343.440835198687
+              1827.7054090499878,
+              1349.2954736649897
             ],
             "colour": "#c20505",
             "name_lines": [
@@ -6684,14 +6727,14 @@
               2105.5
             ],
             "badge_bbox": [
-              1825.2135949730873,
-              1324.940835198687,
-              1884.2135949730873,
-              1361.940835198687
+              1834.2054090499878,
+              1330.7954736649897,
+              1893.2054090499878,
+              1367.7954736649897
             ],
             "badge_center_pixel": [
-              1854.7135949730873,
-              1343.440835198687
+              1863.7054090499878,
+              1349.2954736649897
             ],
             "leader_points": [
               [
@@ -6703,12 +6746,12 @@
                 2019.0
               ],
               [
-                1854.7135949730873,
-                1343.440835198687
+                1863.7054090499878,
+                1349.2954736649897
               ],
               [
-                1818.7135949730873,
-                1343.440835198687
+                1827.7054090499878,
+                1349.2954736649897
               ]
             ],
             "badge_displacement_pixels": 36.0,
@@ -6729,13 +6772,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              21.681396484375,
-              -126.4154052734375,
+              21.9331111907959,
+              -128.5726776123047,
               15.0
             ],
             "source_anchor_pixel": [
-              1894.2136039733887,
-              1241.7411169989439
+              1903.2054540514946,
+              1235.8864692616453
             ],
             "colour": "#04689a",
             "name_lines": [
@@ -6745,39 +6788,39 @@
             "side": "right",
             "card_bbox": [
               2264.0,
-              574.5,
+              220.0,
               2776.0,
-              747.5
+              393.0
             ],
             "badge_bbox": [
-              1930.7136039733887,
-              1223.2411169989439,
-              1989.7136039733887,
-              1260.2411169989439
+              1909.7054540514946,
+              1217.3864692616453,
+              1968.7054540514946,
+              1254.3864692616453
             ],
             "badge_center_pixel": [
-              1960.2136039733887,
-              1241.7411169989439
+              1939.2054540514946,
+              1235.8864692616453
             ],
             "leader_points": [
               [
                 2264.0,
-                661.0
+                306.5
               ],
               [
                 2250.0,
-                661.0
+                306.5
               ],
               [
-                1960.2136039733887,
-                1241.7411169989439
+                1939.2054540514946,
+                1235.8864692616453
               ],
               [
-                1894.2136039733887,
-                1241.7411169989439
+                1903.2054540514946,
+                1235.8864692616453
               ]
             ],
-            "badge_displacement_pixels": 66.0,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X2, Y1 tiles"
           },
           {
@@ -6795,13 +6838,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              126.4154052734375,
-              -21.681396484375,
+              128.5726776123047,
+              -21.9331111907959,
               15.0
             ],
             "source_anchor_pixel": [
-              905.7863960266113,
-              1241.7411169989439
+              896.7945459485054,
+              1235.8864692616453
             ],
             "colour": "#c205c2",
             "name_lines": [
@@ -6811,39 +6854,39 @@
             "side": "left",
             "card_bbox": [
               24,
-              523.8571428571429,
+              220.0,
               536.0,
-              696.8571428571429
+              393.0
             ],
             "badge_bbox": [
-              810.7863960266113,
-              1223.2411169989439,
-              868.7863960266113,
-              1260.2411169989439
+              831.7945459485054,
+              1217.3864692616453,
+              889.7945459485054,
+              1254.3864692616453
             ],
             "badge_center_pixel": [
-              839.7863960266113,
-              1241.7411169989439
+              860.7945459485054,
+              1235.8864692616453
             ],
             "leader_points": [
               [
                 536.0,
-                610.3571428571429
+                306.5
               ],
               [
                 550.0,
-                610.3571428571429
+                306.5
               ],
               [
-                839.7863960266113,
-                1241.7411169989439
+                860.7945459485054,
+                1235.8864692616453
               ],
               [
-                905.7863960266113,
-                1241.7411169989439
+                896.7945459485054,
+                1235.8864692616453
               ]
             ],
-            "badge_displacement_pixels": 66.0,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X8, Y7 tiles"
           },
           {
@@ -7009,9 +7052,9 @@
             "side": "right",
             "card_bbox": [
               2264.0,
-              220.0,
+              574.5,
               2776.0,
-              393.0
+              747.5
             ],
             "badge_bbox": [
               1836.975566804409,
@@ -7026,11 +7069,11 @@
             "leader_points": [
               [
                 2264.0,
-                306.5
+                661.0
               ],
               [
                 2250.0,
-                306.5
+                661.0
               ],
               [
                 1866.475566804409,
@@ -7075,9 +7118,9 @@
             "side": "left",
             "card_bbox": [
               24,
-              220.0,
+              523.8571428571429,
               536.0,
-              393.0
+              696.8571428571429
             ],
             "badge_bbox": [
               904.024433195591,
@@ -7092,11 +7135,11 @@
             "leader_points": [
               [
                 536.0,
-                306.5
+                610.3571428571429
               ],
               [
                 550.0,
-                306.5
+                610.3571428571429
               ],
               [
                 933.524433195591,
@@ -7627,7 +7670,7 @@
     },
     {
       "file": "parallel-diamond-top-xy.png",
-      "sha256": "12c35fd6c87466a95a2733e8e7acef96921628e8873878ce63f0c1c2bdeb79da",
+      "sha256": "1d00ebaaf0aee3d15ca5143e0fd6f0d41d058365c512ab16b3250fb645e2b1e0",
       "size": [
         2800,
         2600
@@ -8841,14 +8884,14 @@
               1751.0
             ],
             "badge_bbox": [
-              1859.0660626476486,
-              901.5660626476486,
-              1918.0660626476486,
-              938.5660626476486
+              1869.6102185249329,
+              876.1102185249329,
+              1928.6102185249329,
+              913.1102185249329
             ],
             "badge_center_pixel": [
-              1888.5660626476486,
-              920.0660626476486
+              1899.1102185249329,
+              894.6102185249329
             ],
             "leader_points": [
               [
@@ -8860,15 +8903,15 @@
                 1679.5
               ],
               [
-                1888.5660626476486,
-                920.0660626476486
+                1899.1102185249329,
+                894.6102185249329
               ],
               [
                 1863.1102185249329,
                 894.6102185249329
               ]
             ],
-            "badge_displacement_pixels": 35.99999999999997,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X7, Y8 tiles"
           },
           {
@@ -8886,13 +8929,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              106.318603515625,
-              -17.584596633911133,
+              106.06688690185547,
+              -15.427330017089844,
               7.5
             ],
             "source_anchor_pixel": [
-              1723.881820678711,
-              823.9546307325363
+              1721.506245136261,
+              803.5954270362854
             ],
             "colour": "#cc2424",
             "name_lines": [
@@ -8907,14 +8950,14 @@
               393.0
             ],
             "badge_bbox": [
-              1730.381820678711,
-              805.4546307325363,
-              1789.381820678711,
-              842.4546307325363
+              1728.006245136261,
+              785.0954270362854,
+              1787.006245136261,
+              822.0954270362854
             ],
             "badge_center_pixel": [
-              1759.881820678711,
-              823.9546307325363
+              1757.506245136261,
+              803.5954270362854
             ],
             "leader_points": [
               [
@@ -8926,12 +8969,12 @@
                 306.5
               ],
               [
-                1759.881820678711,
-                823.9546307325363
+                1757.506245136261,
+                803.5954270362854
               ],
               [
-                1723.881820678711,
-                823.9546307325363
+                1721.506245136261,
+                803.5954270362854
               ]
             ],
             "badge_displacement_pixels": 36.0,
@@ -8952,13 +8995,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              17.584596633911133,
-              -106.318603515625,
+              15.427330017089844,
+              -106.06688690185547,
               7.5
             ],
             "source_anchor_pixel": [
-              886.4546307325363,
-              1661.381820678711
+              866.0954270362854,
+              1659.006245136261
             ],
             "colour": "#c20505",
             "name_lines": [
@@ -8973,14 +9016,14 @@
               1578.4285714285716
             ],
             "badge_bbox": [
-              831.4987866098206,
-              1668.3376648014266,
-              890.4987866098206,
-              1705.3376648014266
+              800.5954270362854,
+              1640.506245136261,
+              859.5954270362854,
+              1677.506245136261
             ],
             "badge_center_pixel": [
-              860.9987866098206,
-              1686.8376648014266
+              830.0954270362854,
+              1659.006245136261
             ],
             "leader_points": [
               [
@@ -8992,15 +9035,15 @@
                 1491.9285714285716
               ],
               [
-                860.9987866098206,
-                1686.8376648014266
+                830.0954270362854,
+                1659.006245136261
               ],
               [
-                886.4546307325363,
-                1661.381820678711
+                866.0954270362854,
+                1659.006245136261
               ]
             ],
-            "badge_displacement_pixels": 35.99999999999997,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X1, Y3 tiles"
           },
           {
@@ -9018,13 +9061,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              21.681396484375,
-              -126.4154052734375,
+              21.9331111907959,
+              -128.5726776123047,
               15.0
             ],
             "source_anchor_pixel": [
-              925.1181793212891,
-              1851.0453872680664
+              927.4937368631363,
+              1871.4046449661255
             ],
             "colour": "#04689a",
             "name_lines": [
@@ -9039,14 +9082,14 @@
               2460.0
             ],
             "badge_bbox": [
-              859.6181793212891,
-              1832.5453872680664,
-              918.6181793212891,
-              1869.5453872680664
+              861.9937368631363,
+              1852.9046449661255,
+              920.9937368631363,
+              1889.9046449661255
             ],
             "badge_center_pixel": [
-              889.1181793212891,
-              1851.0453872680664
+              891.4937368631363,
+              1871.4046449661255
             ],
             "leader_points": [
               [
@@ -9058,12 +9101,12 @@
                 2373.5
               ],
               [
-                889.1181793212891,
-                1851.0453872680664
+                891.4937368631363,
+                1871.4046449661255
               ],
               [
-                925.1181793212891,
-                1851.0453872680664
+                927.4937368631363,
+                1871.4046449661255
               ]
             ],
             "badge_displacement_pixels": 36.0,
@@ -9084,13 +9127,13 @@
             "display_origin_basis": "explicit display_origin_tiles_en from source",
             "rotation_ccw_degrees": 0.0,
             "anchor_world_m": [
-              126.4154052734375,
-              -21.681396484375,
+              128.5726776123047,
+              -21.9331111907959,
               15.0
             ],
             "source_anchor_pixel": [
-              1913.5453872680664,
-              862.6181793212891
+              1933.9046449661255,
+              864.9937368631363
             ],
             "colour": "#c205c2",
             "name_lines": [
@@ -9105,14 +9148,14 @@
               747.5
             ],
             "badge_bbox": [
-              1920.5453872680664,
-              844.1181793212891,
-              1978.5453872680664,
-              881.1181793212891
+              1940.9046449661255,
+              846.4937368631363,
+              1998.9046449661255,
+              883.4937368631363
             ],
             "badge_center_pixel": [
-              1949.5453872680664,
-              862.6181793212891
+              1969.9046449661255,
+              864.9937368631363
             ],
             "leader_points": [
               [
@@ -9124,12 +9167,12 @@
                 661.0
               ],
               [
-                1949.5453872680664,
-                862.6181793212891
+                1969.9046449661255,
+                864.9937368631363
               ],
               [
-                1913.5453872680664,
-                862.6181793212891
+                1933.9046449661255,
+                864.9937368631363
               ]
             ],
             "badge_displacement_pixels": 36.0,
@@ -9369,14 +9412,14 @@
               2105.5
             ],
             "badge_bbox": [
-              1868.761259276219,
-              956.310125667401,
-              1927.761259276219,
-              993.310125667401
+              1879.3054151535034,
+              930.8542815446854,
+              1938.3054151535034,
+              967.8542815446854
             ],
             "badge_center_pixel": [
-              1898.261259276219,
-              974.810125667401
+              1908.8054151535034,
+              949.3542815446854
             ],
             "leader_points": [
               [
@@ -9388,15 +9431,15 @@
                 2019.0
               ],
               [
-                1898.261259276219,
-                974.810125667401
+                1908.8054151535034,
+                949.3542815446854
               ],
               [
                 1872.8054151535034,
                 949.3542815446854
               ]
             ],
-            "badge_displacement_pixels": 35.99999999999997,
+            "badge_displacement_pixels": 36.0,
             "position_label": "Position X6, Y6 tiles"
           }
         ],
@@ -9916,7 +9959,7 @@
     },
     {
       "file": "parallel-diamond-top-clean-xy.png",
-      "sha256": "f77e8b34fa3a93f6f59cd7a8a69848a34d94fa3b6152f3cffc751ce3013eb834",
+      "sha256": "d0081e8a52e38e0e8a3d0c2c9ed9e92345898fbd50ab02f8c61d1d2c628ccfcf",
       "size": [
         2800,
         2600
@@ -10703,7 +10746,7 @@
     },
     {
       "file": "parallel-diamond-placement-plan-xy.png",
-      "sha256": "6a400ee99f261e6962b40653bdf58bdf179ea418c98acb3b43dc7c2a3a45caa1",
+      "sha256": "39ab768c32ca8cbff2f6bf60a1aca61d71fbe750e5dcc1516692e2f5b5eafe96",
       "size": [
         2800,
         2600
@@ -13664,15 +13707,7 @@
               146,
               147,
               148,
-              149
-            ],
-            "indexed_triangles_projected": 30221,
-            "projection_pixels": 49399,
-            "projection_pixels_outside_owned_tiles": 17472
-          },
-          {
-            "label": "P05",
-            "render_mesh_indices": [
+              149,
               150,
               151,
               152,
@@ -13693,7 +13728,15 @@
               167,
               168,
               169,
-              170,
+              170
+            ],
+            "indexed_triangles_projected": 41353,
+            "projection_pixels": 49398,
+            "projection_pixels_outside_owned_tiles": 17471
+          },
+          {
+            "label": "P05",
+            "render_mesh_indices": [
               171,
               172,
               173,
@@ -13738,15 +13781,7 @@
               212,
               213,
               214,
-              215
-            ],
-            "indexed_triangles_projected": 24781,
-            "projection_pixels": 49397,
-            "projection_pixels_outside_owned_tiles": 17470
-          },
-          {
-            "label": "P06",
-            "render_mesh_indices": [
+              215,
               216,
               217,
               218,
@@ -13796,7 +13831,15 @@
               262,
               263,
               264,
-              265,
+              265
+            ],
+            "indexed_triangles_projected": 39473,
+            "projection_pixels": 49405,
+            "projection_pixels_outside_owned_tiles": 17478
+          },
+          {
+            "label": "P06",
+            "render_mesh_indices": [
               266,
               267,
               268,
@@ -13823,15 +13866,7 @@
               289,
               290,
               291,
-              292
-            ],
-            "indexed_triangles_projected": 30221,
-            "projection_pixels": 48947,
-            "projection_pixels_outside_owned_tiles": 17258
-          },
-          {
-            "label": "P07",
-            "render_mesh_indices": [
+              292,
               293,
               294,
               295,
@@ -13875,7 +13910,15 @@
               333,
               334,
               335,
-              336,
+              336
+            ],
+            "indexed_triangles_projected": 27806,
+            "projection_pixels": 48946,
+            "projection_pixels_outside_owned_tiles": 17258
+          },
+          {
+            "label": "P07",
+            "render_mesh_indices": [
               337,
               338,
               339,
@@ -13897,15 +13940,7 @@
               355,
               356,
               357,
-              358
-            ],
-            "indexed_triangles_projected": 24781,
-            "projection_pixels": 48944,
-            "projection_pixels_outside_owned_tiles": 17256
-          },
-          {
-            "label": "P08",
-            "render_mesh_indices": [
+              358,
               359,
               360,
               361,
@@ -13915,15 +13950,7 @@
               365,
               366,
               367,
-              368
-            ],
-            "indexed_triangles_projected": 3020,
-            "projection_pixels": 5162,
-            "projection_pixels_outside_owned_tiles": 3126
-          },
-          {
-            "label": "P09",
-            "render_mesh_indices": [
+              368,
               369,
               370,
               371,
@@ -13933,15 +13960,7 @@
               375,
               376,
               377,
-              378
-            ],
-            "indexed_triangles_projected": 3002,
-            "projection_pixels": 5142,
-            "projection_pixels_outside_owned_tiles": 3148
-          },
-          {
-            "label": "P10",
-            "render_mesh_indices": [
+              378,
               379,
               380,
               381,
@@ -13951,15 +13970,7 @@
               385,
               386,
               387,
-              388
-            ],
-            "indexed_triangles_projected": 3020,
-            "projection_pixels": 5160,
-            "projection_pixels_outside_owned_tiles": 3180
-          },
-          {
-            "label": "P11",
-            "render_mesh_indices": [
+              388,
               389,
               390,
               391,
@@ -13969,22 +13980,22 @@
               395,
               396,
               397,
-              398
-            ],
-            "indexed_triangles_projected": 3002,
-            "projection_pixels": 5139,
-            "projection_pixels_outside_owned_tiles": 3149
-          },
-          {
-            "label": "P12",
-            "render_mesh_indices": [
+              398,
               399,
               400,
               401,
               402,
               403,
               404,
-              405,
+              405
+            ],
+            "indexed_triangles_projected": 26473,
+            "projection_pixels": 48943,
+            "projection_pixels_outside_owned_tiles": 17256
+          },
+          {
+            "label": "P08",
+            "render_mesh_indices": [
               406,
               407,
               408,
@@ -13993,24 +14004,32 @@
               411,
               412,
               413,
-              414,
+              414
+            ],
+            "indexed_triangles_projected": 3015,
+            "projection_pixels": 5158,
+            "projection_pixels_outside_owned_tiles": 3126
+          },
+          {
+            "label": "P09",
+            "render_mesh_indices": [
               415,
               416,
               417,
               418,
               419,
-              420
-            ],
-            "indexed_triangles_projected": 8026,
-            "projection_pixels": 24340,
-            "projection_pixels_outside_owned_tiles": 12001
-          },
-          {
-            "label": "P13",
-            "render_mesh_indices": [
+              420,
               421,
               422,
-              423,
+              423
+            ],
+            "indexed_triangles_projected": 2997,
+            "projection_pixels": 5138,
+            "projection_pixels_outside_owned_tiles": 3148
+          },
+          {
+            "label": "P10",
+            "render_mesh_indices": [
               424,
               425,
               426,
@@ -14019,7 +14038,15 @@
               429,
               430,
               431,
-              432,
+              432
+            ],
+            "indexed_triangles_projected": 3015,
+            "projection_pixels": 5158,
+            "projection_pixels_outside_owned_tiles": 3180
+          },
+          {
+            "label": "P11",
+            "render_mesh_indices": [
               433,
               434,
               435,
@@ -14028,16 +14055,16 @@
               438,
               439,
               440,
-              441,
-              442
+              441
             ],
-            "indexed_triangles_projected": 8042,
-            "projection_pixels": 24395,
-            "projection_pixels_outside_owned_tiles": 12049
+            "indexed_triangles_projected": 2997,
+            "projection_pixels": 5135,
+            "projection_pixels_outside_owned_tiles": 3149
           },
           {
-            "label": "P14",
+            "label": "P12",
             "render_mesh_indices": [
+              442,
               443,
               444,
               445,
@@ -14058,22 +14085,22 @@
               460,
               461,
               462,
-              463,
+              463
+            ],
+            "indexed_triangles_projected": 8026,
+            "projection_pixels": 24340,
+            "projection_pixels_outside_owned_tiles": 12001
+          },
+          {
+            "label": "P13",
+            "render_mesh_indices": [
               464,
               465,
               466,
               467,
               468,
               469,
-              470
-            ],
-            "indexed_triangles_projected": 9929,
-            "projection_pixels": 30495,
-            "projection_pixels_outside_owned_tiles": 11333
-          },
-          {
-            "label": "P15",
-            "render_mesh_indices": [
+              470,
               471,
               472,
               473,
@@ -14088,7 +14115,15 @@
               482,
               483,
               484,
-              485,
+              485
+            ],
+            "indexed_triangles_projected": 8042,
+            "projection_pixels": 24395,
+            "projection_pixels_outside_owned_tiles": 12049
+          },
+          {
+            "label": "P14",
+            "render_mesh_indices": [
               486,
               487,
               488,
@@ -14101,7 +14136,58 @@
               495,
               496,
               497,
-              498
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504,
+              505,
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513
+            ],
+            "indexed_triangles_projected": 9929,
+            "projection_pixels": 30495,
+            "projection_pixels_outside_owned_tiles": 11333
+          },
+          {
+            "label": "P15",
+            "render_mesh_indices": [
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520,
+              521,
+              522,
+              523,
+              524,
+              525,
+              526,
+              527,
+              528,
+              529,
+              530,
+              531,
+              532,
+              533,
+              534,
+              535,
+              536,
+              537,
+              538,
+              539,
+              540,
+              541
             ],
             "indexed_triangles_projected": 9957,
             "projection_pixels": 30502,

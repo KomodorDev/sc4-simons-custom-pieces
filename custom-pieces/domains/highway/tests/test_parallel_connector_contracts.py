@@ -1,10 +1,12 @@
 """Replay accepted numeric connector facts without private builds or inputs."""
 from copy import deepcopy
+import importlib.util
 import json
 import math
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import call, patch
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/highway/implementation')]
@@ -14,13 +16,67 @@ from scp.connectivity import assembly_connectivity
 from scp.connector_metadata import load_library
 from scp_highway.connections import reviewed_contract, reviewed_path_ports, validate_connection_record
 from scp_highway.parallel_connector_contracts import CONTRACTS, REFERENCE, load_contracts
-from scp_highway.parallel_verify import expected_ports, reviewed_contract as independent_contract
+from scp_highway.parallel_verify import (HIGHWAY_SLIP_PROFILE, expected_ports,
+    reviewed_contract as independent_contract)
+
+REVIEWED_COUNTS = {None: (176, 92, 78), HIGHWAY_SLIP_PROFILE: (180, 94, 80)}
+
+
+class ParallelProfileDispatchTests(unittest.TestCase):
+    def test_assembly_icon_uses_each_declared_profile_before_placing_its_complete_routes(self):
+        from scp_highway.icons import assembly_icon_routes
+        pieces = [{'id': 'revised', 'domain': 'highway',
+                   'recipe': 'highway_ddrhw_parallel_crossing', 'geometry_key': 'parallel-crossing',
+                   'engineering': {'highway_slip_profile': HIGHWAY_SLIP_PROFILE}},
+                  {'id': 'retained', 'domain': 'highway',
+                   'recipe': 'highway_ddrhw_parallel_crossing', 'geometry_key': 'parallel-crossing'}]
+        scene = {'placements': [{'piece_id': 'revised', 'origin_m': [32., -48.],
+                                 'rotation_ccw_degrees': 90},
+                                {'piece_id': 'retained', 'origin_m': [0., 0.]}]}
+        sources = {HIGHWAY_SLIP_PROFILE: {(2, -3): [{'points': [(34., 49., 15.), (36., 51., 15.)]}]},
+                   None: {(2, -3): [{'points': [(32., 48., 7.5), (34., 50., 7.5)]}]}}
+        original = deepcopy((pieces, scene, sources))
+        with patch('scp_highway.parallel_verify.expected_cell_routes', side_effect=sources.__getitem__) as provider, \
+             patch('scp_highway.parallel_verify._source_origin', return_value=(2, -3)), \
+             patch('scp_highway.parallel_verify.PARTITIONS', {'crossing': ((2, -3),)}):
+            routes = assembly_icon_routes(scene, pieces)
+        self.assertEqual(provider.call_args_list, [call(HIGHWAY_SLIP_PROFILE), call(None)])
+        self.assertEqual(routes, [[(31., -46., 15.), (29., -44., 15.)],
+                                  [(0., 0., 7.5), (2., 2., 7.5)]])
+        self.assertEqual((pieces, scene, sources), original)
+
+    def test_freezer_associates_actual_routes_with_the_selected_independent_profile(self):
+        path = ROOT / 'domains/highway/tools/freeze_parallel_connectors.py'
+        spec = importlib.util.spec_from_file_location('_profile_dispatch_freezer', path)
+        freezer = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(freezer)
+        route = {'id': 'actual-route', 'cell': [0, 0], 'engine_transport': 1,
+                 'points': [(0., 0., 7.5), (1., 1., 7.5)]}
+        expected = {(0, 0): [{'transport': 1, 'points': deepcopy(route['points']),
+                              'approved_ramp': 'lower-off'}]}
+        piece = {'engineering': {'highway_slip_profile': HIGHWAY_SLIP_PROFILE}}
+        measured = {'ports': [{'id': name, 'source_route_ids': ['actual-route'], 'engine_transport': 1}
+                              for name in ('entry', 'exit')],
+                    'journeys': [{'entry_port': 'entry', 'exit_port': 'exit'}]}
+        original = deepcopy((piece, route, expected, measured))
+        with patch.object(freezer, 'expected_cell_routes', return_value=expected) as provider, \
+             patch.object(freezer, '_source_origin', return_value=(0, 0)), \
+             patch.object(freezer, '_routes', return_value=[route]):
+            ports, components, channels, sources = freezer._channel_associations(piece, {}, measured)
+        provider.assert_called_once_with(HIGHWAY_SLIP_PROFILE)
+        self.assertEqual(ports, {'entry': 'access-lower-off', 'exit': 'access-lower-off'})
+        self.assertEqual(channels[0]['ports'], ['entry', 'exit'])
+        self.assertEqual(sources[0]['approved_ramp_id'], 'lower-off')
+        self.assertEqual(len(components), 1)
+        self.assertEqual((piece, route, expected, measured), original)
 
 
 class ParallelConnectorContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.evidence = jsonc.load(ROOT / REFERENCE)
+        cls.profile = cls.evidence['source'].get('highway_slip_profile')
+        cls.reviewed_counts = REVIEWED_COUNTS[cls.profile]
         cls.pieces, cls.records = {}, {}
         for recipe, facts in CONTRACTS.items():
             directory = ROOT / 'domains/highway/00_pieces' / facts['reference_piece_id']
@@ -38,6 +94,8 @@ class ParallelConnectorContractTests(unittest.TestCase):
         self.assertTrue(verification['native_wheeltrack_seam_uv']['passed'])
         self.assertEqual(verification['native_wheeltrack_seam_uv']['actual_saved_dd_mis_seam_pairs_checked'], 20)
         self.assertEqual(sum(len(facts['cells']) for facts in CONTRACTS.values()), 31)
+        self.assertTrue(all(piece.get('engineering', {}).get('highway_slip_profile') == self.profile
+                            for piece in self.pieces.values()))
         self.assertEqual(load_contracts(), CONTRACTS)
         # Resource identities and hashes are public numeric evidence; native
         # binary/text payloads remain in ignored local inputs and saved builds.
@@ -56,7 +114,7 @@ class ParallelConnectorContractTests(unittest.TestCase):
                 self.assertEqual(record['software_status']['in_game'], 'unverified')
                 self.assertEqual(len(reviewed_path_ports(piece)), len(facts['ports']))
                 self.assertEqual(facts['physical_ownership']['model_owner'], piece['geometry_key'])
-        self.assertEqual(totals[:2], [176, 92])
+        self.assertEqual(totals[:2], list(self.reviewed_counts[:2]))
         self.assertGreater(totals[2], 15)
 
     def test_complete_boundary_graph_agrees_with_independent_approved_source(self):
@@ -115,7 +173,7 @@ class ParallelConnectorContractTests(unittest.TestCase):
         saved = jsonc.load(directory / 'connections.json')
         for record in (measured, saved):
             self.assertEqual((len(record['ports']), len(record['journeys']),
-                              len(record['encoded_route_joins'])), (20, 14, 78))
+                              len(record['encoded_route_joins'])), (20, 14, self.reviewed_counts[2]))
             self.assertEqual({port['variant'] for port in record['ports']},
                              {'dd-rhw-l1', 'dd-rhw-l2', 'avenue-ground', 'avenue-sidewalk'})
         self.assertTrue(any(math.dist(port['tangent'], port['sampled_tangent']) > 2e-5
@@ -136,8 +194,8 @@ class ParallelConnectorContractTests(unittest.TestCase):
         local = local_piece_grid(resolved['piece'])
         # Exact actual saved preview vertices at the four camera-axis extrema.
         # These reproduce its old model/grid camera without retaining a native
-        # model payload. Source: accepted parts-01 manifest e111dc91..., whose
-        # raw model fingerprints remain in this type's connections.json.
+        # payload. The current saved slip revision retains all four physical
+        # vertices while its route-field UV phase changes the model hash.
         vertices = [(-18.965721130371094, 15.0, 32.178924560546875),
                     (16.530088424682617, 0.0, -11.802167892456055),
                     (19.774259567260742, 0.0, -6.5610551834106445),
@@ -146,8 +204,11 @@ class ParallelConnectorContractTests(unittest.TestCase):
         # whole build whose unrelated terminal models may be revised.
         preview = resolved['piece']['preview_id']
         model_key = f'model:{identifier}:5ad0e817-badb57f1-{preview}'
+        expected_model = {
+            None: '3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b',
+            HIGHWAY_SLIP_PROFILE: '31a9fbfd2a9dc5ce06d358f0a7deb0ca205e3ca6ab99ab4a782d9c73ae1c9fd0'}
         self.assertEqual(resolved['connections']['source']['resource_fingerprints'][model_key],
-                         '3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b')
+                         expected_model[self.profile])
         old = make_camera(vertices, 45., 31., PAGE_WIDTH - 2 * PAGE_MARGIN, 1000,
                           bounds_world_m=local['bounds_world_m'], padding=90)
         def badges(camera):

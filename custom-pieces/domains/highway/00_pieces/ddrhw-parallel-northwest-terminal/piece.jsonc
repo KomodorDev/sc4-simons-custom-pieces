@@ -83,7 +83,8 @@
     ],
     "native_highway_cells": [],
     "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
-    "ground_mouth_profile": "taper-6m-to-3p5m-over-3m"
+    "ground_mouth_profile": "taper-6m-to-3p5m-over-3m",
+    "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
   },
   "shadow_mode": "generated",
   "shadow_mappings": [
@@ -104,7 +105,7 @@
     }
   ],
   "provenance": {
-    "geometry": "Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.",
+    "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
     "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
     "redistribution": "permission-pending"
   },

@@ -4,14 +4,14 @@
   "piece_id": "ddrhw-parallel-upper-exit-slip",
   "domain_id": "highway",
   "source_binding": {
-    "compiled_build": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01",
-    "compiled_manifest_sha256": "e6abff46fb9ebd614c882207c4809dcb5002c11948ba28083c5cc7a1a4e914ed",
+    "compiled_build": "dist/ddrhw-parallel-diamond-slip-lanes-02",
+    "compiled_manifest_sha256": "a222a24ada086f5616a9b4e376b293880bf2dd4ee9569754adb66dbdcfc23fc7",
     "files": {
-      "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat": "f08d356d7c190be7db2733f152b41717b7bb4f724b3e01d080ecd08c4b58e834",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/connections.json": "3bc9b6e279a74d596cd69cfbeeb1219bc0efd06383d297e7ae5202234e8b4a21",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/connector-groups.jsonc": "0501ed6e789ce032ee1f5b21cf4c5568ef9cfd12bb36355912353b780d901052",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/piece.jsonc": "ca25e4197bd91b24bed76142b24da1753a999fdd139171f729eb53b15299bdaf",
-      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "eef47f29367485dce9a0f830328d74b16b34f27db7fc05007ab9083f369cdd0c",
+      "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/connections.json": "fd16e2eb50ac835fb973b314b1642ee9a2cbcf85ed5b59d2339a77b16d8169ea",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/connector-groups.jsonc": "3a4fd5e084141f95286a8994ad1d90f38b7db7ed6f72a38050307036efb00367",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-slip/piece.jsonc": "c61bb66d58c4326d8d0956f59f50bd8dcd711794d595dfecb7f8bf824ac10d4e",
+      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "94d807cc8f778209323429c7c1d9d68ff4562e03a7f2e849fd6875792e81c1df",
       "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
       "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
       "domains/highway/implementation/scp_highway/adaptive_ground.py": "049feb134ea074ab48b545666f45e6cc62e3ab6c6692d6e0293e7ca6d33ef0c0",
@@ -20,7 +20,7 @@
       "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
       "domains/highway/implementation/scp_highway/connections.py": "5b770ae4e5b39664e644e069b3bbe26a03f35ec98e3443371295e19e42bf715c",
       "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
-      "domains/highway/implementation/scp_highway/icons.py": "2b024c0fd5d4a5d6780bd3cf5cff8971ac8f8b23d1e056bec4e23a5aeb0027b9",
+      "domains/highway/implementation/scp_highway/icons.py": "709ce2d4ef8a02d80fde87a94df53907fe189353135120ce50231ae0574c5a7b",
       "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
       "domains/highway/implementation/scp_highway/menu.py": "5955668a10922cd09ad06002bd7793055da03226e3b8b186190428fb36699514",
       "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "092ad0734b669c7c28e4ba5284013f4b13d2aa6eb120a8db7d7d574aa8f818b6",
@@ -33,22 +33,23 @@
       "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
       "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
       "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
-      "domains/highway/implementation/scp_highway/parallel_geometry.py": "e779d7d0266dece416026552481ac3d581495e884ef212ead867a4eb49947e60",
-      "domains/highway/implementation/scp_highway/parallel_layout.py": "882c5da5125fd7ffea8370ab01588f5f34031868942fb3b26604650c51c07dd8",
-      "domains/highway/implementation/scp_highway/parallel_modules.py": "2bacc9cd2832403d679b378edf41712dde9a6a6e1c6af057f9f905b7d96fdba3",
+      "domains/highway/implementation/scp_highway/parallel_geometry.py": "30fe2eefb87f82994d55742353d24d8f28f8457e1933d09b9242d1d470ace59a",
+      "domains/highway/implementation/scp_highway/parallel_layout.py": "ac80ecdf7d9f56db0a50619b315516dcd9f50b8796b4e21cc3413041f023641f",
+      "domains/highway/implementation/scp_highway/parallel_modules.py": "3b9f8fa9b5f78b24bf1d27125400b3d207e6aa5c05bc3f209bd4cb33e686c2c1",
       "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
-      "domains/highway/implementation/scp_highway/parallel_verify.py": "c7d9c95f766c1dbb8500add44bf6381aff02026705403eccda010b3c0d1665a8",
-      "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+      "domains/highway/implementation/scp_highway/parallel_slip_lanes.py": "1d217570bb59a6633c0d3cec054410349d3df3471aed4d2e389fc230bf9fae48",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "66b59dd7a5ab0366a86451140a1ed84c646d5f9031316142ed059f3361e92863",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "0a0bc5ddcaf63546386956c5f2213efba02d3245bcc9d1375d59e43a13068bca",
       "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
       "domains/highway/implementation/scp_highway/ramp_paths.py": "fb5333bd8f3e72e23ec133403c217579600a518e6a4d1ee34aebbbb6194b4413",
       "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
       "domains/highway/implementation/scp_highway/recipes.py": "c3f8f13fe06c795d682849d8beef92a3a4cf80a2051ed98e89e9371b89a6e899",
       "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
-      "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "cf07e354386195b3ec7078ec0d1ddf4609afdf2ea426bd1f9469e48c369bfbfb",
       "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "c5af74ba32237efcd8b646c6005129419d70f7f5ac71f427ffcc9df0f690df8c",
       "domains/highway/implementation/scp_highway/verify.py": "71f1b9150aa36fd101e395f2cbfe8c8c1108fe6b7174762e08aa82706176344d",
       "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
-      "domains/highway/implementation/scp_highway/wheeltracks.py": "b65baee151fd7b643b1dd53d92226d96e5e977b4b665830ae50d779718931b61",
+      "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
       "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
       "framework/scp/adaptive_network.py": "22b9580f9e179fa76c402dcaa0c9525567198d00fe7b198167c79db51a281206",
       "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
@@ -193,7 +194,8 @@
             4
           ]
         ],
-        "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted"
+        "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
       },
       "shadow_mode": "generated",
       "shadow_mappings": [
@@ -209,7 +211,7 @@
         }
       ],
       "provenance": {
-        "geometry": "Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.",
+        "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
         "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
         "redistribution": "permission-pending"
       },
@@ -234,18 +236,18 @@
           "effect:ddrhw-parallel-upper-exit-slip:ea5118b0-ea5118b1-7f5b3ff5": "bf11a851392103da46c29d251d37b5609e1f8263c63717ba9dfbe997829e834c",
           "exemplar:ddrhw-parallel-upper-exit-slip:6534284a-a8434037-7f5b3010": "33261b2593d477dfa589b05aa031196ac44099d551681dac430da45d6e1aa923",
           "exemplar:ddrhw-parallel-upper-exit-slip:6534284a-a8434037-7f5b3100": "e1fe1d3abb1571257ca51db8b81fb39a086bafc85579c7f2b9cf7bf7c4d46e70",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3010": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3011": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3012": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3013": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3014": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3010": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3011": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3012": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3013": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3014": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
           "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3100": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
           "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3101": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
           "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3102": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
           "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3103": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
           "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3104": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
-          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3ff5": "ca538c687e8fd05728eb904c58ed6473e3f2761851c91e8f8a25966fe020953c",
-          "path:ddrhw-parallel-upper-exit-slip:296678f7-a966883f-7f5b3010": "1fcd03c0d044ad753c8c0180c9876decf388f68140c383b7e02e5b9dd28f5fc0",
+          "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3ff5": "0d332caf9471a7172fe2b5e7431bb45a16773acb282ebd10d203b046d0166e33",
+          "path:ddrhw-parallel-upper-exit-slip:296678f7-a966883f-7f5b3010": "c37db8f710504f4cdd82b2536ec71b3347f524f8648b8dc330fd8f5276a7f843",
           "path:ddrhw-parallel-upper-exit-slip:296678f7-a966883f-7f5b3100": "094b267d43117022dd4a20c2d4535d3b3120597c5fb885cd992165380a482d61",
           "shadow:ddrhw-parallel-upper-exit-slip:7ab50e44-2bc2759a-7f5b3010": "d3d9f322c9b0db9950d20a31f611ae3a09923ff826a04925e79b87fae0f2d163",
           "shadow:ddrhw-parallel-upper-exit-slip:7ab50e44-2bc2759a-7f5b3011": "332046b2d9446f467d4fa65f9fc20c0c94b8ce9794f85117e2914af7056291f5",
@@ -268,7 +270,7 @@
       "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
       "ports": [
         {
-          "id": "channel-10-out",
+          "id": "channel-11-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -368,7 +370,7 @@
           ],
           "source_route_ids": [
             "path-7f5b3010-route-000",
-            "path-7f5b3010-route-004"
+            "path-7f5b3010-route-005"
           ],
           "boundary_sources": [
             {
@@ -383,7 +385,7 @@
           "connection_class": "path-interface-3ed34d9a11bb64d98604"
         },
         {
-          "id": "channel-11-out",
+          "id": "channel-12-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -425,7 +427,8 @@
             "construction:ddrhw-parallel-upper-exit-slip"
           ],
           "source_route_ids": [
-            "path-7f5b3010-route-003"
+            "path-7f5b3010-route-003",
+            "path-7f5b3010-route-004"
           ],
           "boundary_sources": [
             {
@@ -511,6 +514,63 @@
           "engine_transport": 1,
           "edge": 1,
           "endpoint_m": [
+            -6.194881,
+            -8.0,
+            7.5
+          ],
+          "tangent": [
+            -0.16428872102218395,
+            -0.9864122952117411
+          ],
+          "sampled_tangent": [
+            -0.16428884979952776,
+            -0.9864122737636369
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3010",
+            "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3011",
+            "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3012",
+            "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3013",
+            "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3014",
+            "path:ddrhw-parallel-upper-exit-slip:296678f7-a966883f-7f5b3010",
+            "construction:ddrhw-parallel-upper-exit-slip"
+          ],
+          "source_route_ids": [
+            "path-7f5b3010-route-004"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 1,
+              "tile_id": "7f5b3010"
+            }
+          ],
+          "connection_class": "path-interface-321f3c2125b6bde219f3"
+        },
+        {
+          "id": "channel-04-in",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 1,
+          "endpoint_m": [
             -3.2,
             -8.0,
             7.5
@@ -554,7 +614,7 @@
           "connection_class": "path-interface-aad60a85e4675eaba5de"
         },
         {
-          "id": "channel-12-out",
+          "id": "channel-13-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -611,7 +671,7 @@
           "connection_class": "path-interface-50bfaaffb0d43ee83a9b"
         },
         {
-          "id": "channel-04-in",
+          "id": "channel-05-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -668,7 +728,7 @@
           "connection_class": "path-interface-3ecbd7f665c425929ca6"
         },
         {
-          "id": "channel-13-out",
+          "id": "channel-14-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -725,7 +785,7 @@
           "connection_class": "path-interface-55ad67244a3a7bbd6c4b"
         },
         {
-          "id": "channel-14-out",
+          "id": "channel-15-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -767,7 +827,7 @@
             "construction:ddrhw-parallel-upper-exit-slip"
           ],
           "source_route_ids": [
-            "path-7f5b3010-route-004"
+            "path-7f5b3010-route-005"
           ],
           "boundary_sources": [
             {
@@ -782,7 +842,7 @@
           "connection_class": "path-interface-53fdf60e4bef5b46033e"
         },
         {
-          "id": "channel-15-out",
+          "id": "channel-16-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -839,7 +899,7 @@
           "connection_class": "path-interface-f9c18bdf77622a5e27b2"
         },
         {
-          "id": "channel-05-in",
+          "id": "channel-06-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -896,7 +956,7 @@
           "connection_class": "path-interface-3ed34d9a11bb64d98604"
         },
         {
-          "id": "channel-16-out",
+          "id": "channel-17-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -953,7 +1013,7 @@
           "connection_class": "path-interface-207fc37bf71ddd9e9cc7"
         },
         {
-          "id": "channel-06-in",
+          "id": "channel-07-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -1010,7 +1070,7 @@
           "connection_class": "path-interface-3e8c9380dd7fc6c63cb8"
         },
         {
-          "id": "channel-07-in",
+          "id": "channel-08-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -1067,7 +1127,7 @@
           "connection_class": "path-interface-aad60a85e4675eaba5de"
         },
         {
-          "id": "channel-17-out",
+          "id": "channel-18-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -1124,7 +1184,7 @@
           "connection_class": "path-interface-50bfaaffb0d43ee83a9b"
         },
         {
-          "id": "channel-08-in",
+          "id": "channel-09-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -1181,7 +1241,7 @@
           "connection_class": "path-interface-8f6f5a8624b510f03427"
         },
         {
-          "id": "channel-09-in",
+          "id": "channel-10-in",
           "direction": "in",
           "service_network": "road",
           "service_family": "road",
@@ -1238,7 +1298,7 @@
           "connection_class": "path-interface-3ecbd7f665c425929ca6"
         },
         {
-          "id": "channel-18-out",
+          "id": "channel-19-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -1295,7 +1355,7 @@
           "connection_class": "path-interface-55ad67244a3a7bbd6c4b"
         },
         {
-          "id": "channel-19-out",
+          "id": "channel-20-out",
           "direction": "out",
           "service_network": "road",
           "service_family": "road",
@@ -1354,6 +1414,21 @@
       ],
       "journeys": [
         {
+          "id": "1:channel-01-in>channel-15-out",
+          "entry_port": "channel-01-in",
+          "exit_port": "channel-15-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l2",
+            "dd-rhw-l2"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
           "id": "1:channel-01-in>channel-14-out",
           "entry_port": "channel-01-in",
           "exit_port": "channel-14-out",
@@ -1369,8 +1444,8 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-01-in>channel-13-out",
-          "entry_port": "channel-01-in",
+          "id": "1:channel-02-in>channel-13-out",
+          "entry_port": "channel-02-in",
           "exit_port": "channel-13-out",
           "service_network": "road",
           "role": "primary",
@@ -1384,8 +1459,8 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-02-in>channel-12-out",
-          "entry_port": "channel-02-in",
+          "id": "1:channel-03-in>channel-12-out",
+          "entry_port": "channel-03-in",
           "exit_port": "channel-12-out",
           "service_network": "road",
           "role": "primary",
@@ -1393,14 +1468,29 @@
             1
           ],
           "endpoint_variants": [
-            "dd-rhw-l2",
-            "dd-rhw-l2"
+            "dd-rhw-l1",
+            "dd-rhw-l1"
           ],
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-03-in>channel-11-out",
-          "entry_port": "channel-03-in",
+          "id": "1:channel-04-in>channel-12-out",
+          "entry_port": "channel-04-in",
+          "exit_port": "channel-12-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l1",
+            "dd-rhw-l1"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "1:channel-05-in>channel-11-out",
+          "entry_port": "channel-05-in",
           "exit_port": "channel-11-out",
           "service_network": "road",
           "role": "primary",
@@ -1414,23 +1504,23 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-04-in>channel-10-out",
-          "entry_port": "channel-04-in",
-          "exit_port": "channel-10-out",
+          "id": "1:channel-06-in>channel-19-out",
+          "entry_port": "channel-06-in",
+          "exit_port": "channel-19-out",
           "service_network": "road",
           "role": "primary",
           "engine_transport_classes": [
             1
           ],
           "endpoint_variants": [
-            "dd-rhw-l1",
-            "dd-rhw-l1"
+            "dd-rhw-l2",
+            "dd-rhw-l2"
           ],
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-05-in>channel-18-out",
-          "entry_port": "channel-05-in",
+          "id": "1:channel-07-in>channel-18-out",
+          "entry_port": "channel-07-in",
           "exit_port": "channel-18-out",
           "service_network": "road",
           "role": "primary",
@@ -1444,24 +1534,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-06-in>channel-17-out",
-          "entry_port": "channel-06-in",
+          "id": "1:channel-08-in>channel-17-out",
+          "entry_port": "channel-08-in",
           "exit_port": "channel-17-out",
-          "service_network": "road",
-          "role": "primary",
-          "engine_transport_classes": [
-            1
-          ],
-          "endpoint_variants": [
-            "dd-rhw-l2",
-            "dd-rhw-l2"
-          ],
-          "basis": "reachability_in_actual_saved_PATH_graph"
-        },
-        {
-          "id": "1:channel-07-in>channel-16-out",
-          "entry_port": "channel-07-in",
-          "exit_port": "channel-16-out",
           "service_network": "road",
           "role": "primary",
           "engine_transport_classes": [
@@ -1474,9 +1549,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-08-in>channel-19-out",
-          "entry_port": "channel-08-in",
-          "exit_port": "channel-19-out",
+          "id": "1:channel-09-in>channel-20-out",
+          "entry_port": "channel-09-in",
+          "exit_port": "channel-20-out",
           "service_network": "road",
           "role": "primary",
           "engine_transport_classes": [
@@ -1489,9 +1564,9 @@
           "basis": "reachability_in_actual_saved_PATH_graph"
         },
         {
-          "id": "1:channel-09-in>channel-15-out",
-          "entry_port": "channel-09-in",
-          "exit_port": "channel-15-out",
+          "id": "1:channel-10-in>channel-16-out",
+          "entry_port": "channel-10-in",
+          "exit_port": "channel-16-out",
           "service_network": "road",
           "role": "primary",
           "engine_transport_classes": [
@@ -1507,13 +1582,6 @@
       "forbidden_transfers": [
         {
           "from_port": "channel-01-in",
-          "to_port": "channel-10-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-01-in",
           "to_port": "channel-11-out",
           "from_service": "road",
           "to_service": "road",
@@ -1528,7 +1596,7 @@
         },
         {
           "from_port": "channel-01-in",
-          "to_port": "channel-15-out",
+          "to_port": "channel-13-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1562,8 +1630,8 @@
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-02-in",
-          "to_port": "channel-10-out",
+          "from_port": "channel-01-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1577,68 +1645,68 @@
         },
         {
           "from_port": "channel-02-in",
-          "to_port": "channel-13-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-14-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-15-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-16-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-17-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-18-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-02-in",
-          "to_port": "channel-19-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-03-in",
-          "to_port": "channel-10-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-03-in",
           "to_port": "channel-12-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
         },
         {
+          "from_port": "channel-02-in",
+          "to_port": "channel-14-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-15-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-16-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-17-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-18-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-19-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-02-in",
+          "to_port": "channel-20-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-03-in",
+          "to_port": "channel-11-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
           "from_port": "channel-03-in",
           "to_port": "channel-13-out",
           "from_service": "road",
@@ -1688,15 +1756,15 @@
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-04-in",
-          "to_port": "channel-11-out",
+          "from_port": "channel-03-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
         },
         {
           "from_port": "channel-04-in",
-          "to_port": "channel-12-out",
+          "to_port": "channel-11-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1751,15 +1819,8 @@
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-05-in",
-          "to_port": "channel-10-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-05-in",
-          "to_port": "channel-11-out",
+          "from_port": "channel-04-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1808,14 +1869,21 @@
         },
         {
           "from_port": "channel-05-in",
+          "to_port": "channel-18-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-05-in",
           "to_port": "channel-19-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-06-in",
-          "to_port": "channel-10-out",
+          "from_port": "channel-05-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1864,6 +1932,13 @@
         },
         {
           "from_port": "channel-06-in",
+          "to_port": "channel-17-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-06-in",
           "to_port": "channel-18-out",
           "from_service": "road",
           "to_service": "road",
@@ -1871,14 +1946,7 @@
         },
         {
           "from_port": "channel-06-in",
-          "to_port": "channel-19-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-07-in",
-          "to_port": "channel-10-out",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1920,14 +1988,14 @@
         },
         {
           "from_port": "channel-07-in",
-          "to_port": "channel-17-out",
+          "to_port": "channel-16-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
         },
         {
           "from_port": "channel-07-in",
-          "to_port": "channel-18-out",
+          "to_port": "channel-17-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1940,8 +2008,8 @@
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-08-in",
-          "to_port": "channel-10-out",
+          "from_port": "channel-07-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -1990,21 +2058,21 @@
         },
         {
           "from_port": "channel-08-in",
-          "to_port": "channel-17-out",
-          "from_service": "road",
-          "to_service": "road",
-          "basis": "not reachable in actual saved PATH graph"
-        },
-        {
-          "from_port": "channel-08-in",
           "to_port": "channel-18-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
         },
         {
-          "from_port": "channel-09-in",
-          "to_port": "channel-10-out",
+          "from_port": "channel-08-in",
+          "to_port": "channel-19-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-08-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -2039,6 +2107,13 @@
         },
         {
           "from_port": "channel-09-in",
+          "to_port": "channel-15-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-09-in",
           "to_port": "channel-16-out",
           "from_service": "road",
           "to_service": "road",
@@ -2061,6 +2136,69 @@
         {
           "from_port": "channel-09-in",
           "to_port": "channel-19-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-11-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-12-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-13-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-14-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-15-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-17-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-18-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-19-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "channel-10-in",
+          "to_port": "channel-20-out",
           "from_service": "road",
           "to_service": "road",
           "basis": "not reachable in actual saved PATH graph"
@@ -2117,22 +2255,30 @@
       "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
       "piece_id": "ddrhw-parallel-upper-exit-slip",
       "source_binding": {
-        "piece_sha256": "ca25e4197bd91b24bed76142b24da1753a999fdd139171f729eb53b15299bdaf",
-        "connections_sha256": "3bc9b6e279a74d596cd69cfbeeb1219bc0efd06383d297e7ae5202234e8b4a21"
+        "piece_sha256": "c61bb66d58c4326d8d0956f59f50bd8dcd711794d595dfecb7f8bf824ac10d4e",
+        "connections_sha256": "fd16e2eb50ac835fb973b314b1642ee9a2cbcf85ed5b59d2339a77b16d8169ea"
       },
       "components": [
         {
-          "id": "upper-mainline",
+          "id": "lower-mainline",
           "network": "road",
           "construction_network": "dirtroad"
         },
         {
-          "id": "lower-mainline",
+          "id": "upper-mainline",
           "network": "road",
           "construction_network": "dirtroad"
         }
       ],
       "channels": [
+        {
+          "id": "access-lower-on",
+          "component_id": "lower-mainline",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        },
         {
           "id": "access-upper-off",
           "component_id": "upper-mainline",
@@ -2180,18 +2326,18 @@
           "component_id": "lower-mainline",
           "members": [
             {
-              "id": "member-channel-10-out",
-              "source_port_id": "channel-10-out",
-              "direction": "out",
-              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-              "cut_id": "cut-channel-10-out"
-            },
-            {
               "id": "member-channel-11-out",
               "source_port_id": "channel-11-out",
               "direction": "out",
-              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
+              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
               "cut_id": "cut-channel-11-out"
+            },
+            {
+              "id": "member-channel-12-out",
+              "source_port_id": "channel-12-out",
+              "direction": "out",
+              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
+              "cut_id": "cut-channel-12-out"
             }
           ]
         },
@@ -2223,15 +2369,22 @@
               "id": "member-channel-03-in",
               "source_port_id": "channel-03-in",
               "direction": "in",
-              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
+              "channel_id": "access-lower-on",
               "cut_id": "cut-channel-03-in"
             },
             {
               "id": "member-channel-04-in",
               "source_port_id": "channel-04-in",
               "direction": "in",
-              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
               "cut_id": "cut-channel-04-in"
+            },
+            {
+              "id": "member-channel-05-in",
+              "source_port_id": "channel-05-in",
+              "direction": "in",
+              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+              "cut_id": "cut-channel-05-in"
             }
           ]
         },
@@ -2240,18 +2393,18 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-12-out",
-              "source_port_id": "channel-12-out",
-              "direction": "out",
-              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-              "cut_id": "cut-channel-12-out"
-            },
-            {
               "id": "member-channel-13-out",
               "source_port_id": "channel-13-out",
               "direction": "out",
-              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
               "cut_id": "cut-channel-13-out"
+            },
+            {
+              "id": "member-channel-14-out",
+              "source_port_id": "channel-14-out",
+              "direction": "out",
+              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+              "cut_id": "cut-channel-14-out"
             }
           ]
         },
@@ -2260,11 +2413,11 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-14-out",
-              "source_port_id": "channel-14-out",
+              "id": "member-channel-15-out",
+              "source_port_id": "channel-15-out",
               "direction": "out",
               "channel_id": "access-upper-off",
-              "cut_id": "cut-channel-14-out"
+              "cut_id": "cut-channel-15-out"
             }
           ]
         },
@@ -2273,18 +2426,18 @@
           "component_id": "lower-mainline",
           "members": [
             {
-              "id": "member-channel-15-out",
-              "source_port_id": "channel-15-out",
-              "direction": "out",
-              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-              "cut_id": "cut-channel-15-out"
-            },
-            {
               "id": "member-channel-16-out",
               "source_port_id": "channel-16-out",
               "direction": "out",
-              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
+              "channel_id": "lower-mainline-axis-minus-2-26274-negative",
               "cut_id": "cut-channel-16-out"
+            },
+            {
+              "id": "member-channel-17-out",
+              "source_port_id": "channel-17-out",
+              "direction": "out",
+              "channel_id": "lower-mainline-axis-plus-2-26274-negative",
+              "cut_id": "cut-channel-17-out"
             }
           ]
         },
@@ -2293,18 +2446,18 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-05-in",
-              "source_port_id": "channel-05-in",
-              "direction": "in",
-              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-              "cut_id": "cut-channel-05-in"
-            },
-            {
               "id": "member-channel-06-in",
               "source_port_id": "channel-06-in",
               "direction": "in",
-              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
               "cut_id": "cut-channel-06-in"
+            },
+            {
+              "id": "member-channel-07-in",
+              "source_port_id": "channel-07-in",
+              "direction": "in",
+              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+              "cut_id": "cut-channel-07-in"
             }
           ]
         },
@@ -2313,18 +2466,18 @@
           "component_id": "lower-mainline",
           "members": [
             {
-              "id": "member-channel-07-in",
-              "source_port_id": "channel-07-in",
+              "id": "member-channel-08-in",
+              "source_port_id": "channel-08-in",
               "direction": "in",
               "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-              "cut_id": "cut-channel-07-in"
+              "cut_id": "cut-channel-08-in"
             },
             {
-              "id": "member-channel-09-in",
-              "source_port_id": "channel-09-in",
+              "id": "member-channel-10-in",
+              "source_port_id": "channel-10-in",
               "direction": "in",
               "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-              "cut_id": "cut-channel-09-in"
+              "cut_id": "cut-channel-10-in"
             }
           ]
         },
@@ -2333,18 +2486,18 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-17-out",
-              "source_port_id": "channel-17-out",
-              "direction": "out",
-              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-              "cut_id": "cut-channel-17-out"
-            },
-            {
               "id": "member-channel-18-out",
               "source_port_id": "channel-18-out",
               "direction": "out",
-              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+              "channel_id": "upper-mainline-axis-plus-2-26274-positive",
               "cut_id": "cut-channel-18-out"
+            },
+            {
+              "id": "member-channel-19-out",
+              "source_port_id": "channel-19-out",
+              "direction": "out",
+              "channel_id": "upper-mainline-axis-minus-2-26274-positive",
+              "cut_id": "cut-channel-19-out"
             }
           ]
         },
@@ -2353,11 +2506,11 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-19-out",
-              "source_port_id": "channel-19-out",
+              "id": "member-channel-20-out",
+              "source_port_id": "channel-20-out",
               "direction": "out",
               "channel_id": "access-upper-off",
-              "cut_id": "cut-channel-19-out"
+              "cut_id": "cut-channel-20-out"
             }
           ]
         },
@@ -2366,11 +2519,11 @@
           "component_id": "upper-mainline",
           "members": [
             {
-              "id": "member-channel-08-in",
-              "source_port_id": "channel-08-in",
+              "id": "member-channel-09-in",
+              "source_port_id": "channel-09-in",
               "direction": "in",
               "channel_id": "access-upper-off",
-              "cut_id": "cut-channel-08-in"
+              "cut_id": "cut-channel-09-in"
             }
           ]
         }
@@ -2475,7 +2628,7 @@
         "component_id": "lower-mainline",
         "members": [
           {
-            "id": "member-channel-10-out",
+            "id": "member-channel-11-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -2530,9 +2683,9 @@
               }
             ],
             "connection_class": "path-interface-f9c18bdf77622a5e27b2",
-            "source_port_id": "channel-10-out",
+            "source_port_id": "channel-11-out",
             "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-            "cut_id": "cut-channel-10-out",
+            "cut_id": "cut-channel-11-out",
             "outward_tangent": [
               -0.7071067811865476,
               -0.7071067811865476
@@ -2542,7 +2695,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-11-out",
+            "id": "member-channel-12-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -2584,7 +2737,8 @@
               "construction:ddrhw-parallel-upper-exit-slip"
             ],
             "source_route_ids": [
-              "path-7f5b3010-route-003"
+              "path-7f5b3010-route-003",
+              "path-7f5b3010-route-004"
             ],
             "boundary_sources": [
               {
@@ -2597,9 +2751,9 @@
               }
             ],
             "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
-            "source_port_id": "channel-11-out",
+            "source_port_id": "channel-12-out",
             "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-            "cut_id": "cut-channel-11-out",
+            "cut_id": "cut-channel-12-out",
             "outward_tangent": [
               -0.7071067811865476,
               -0.7071067811865476
@@ -2639,9 +2793,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-10-out",
+                "id": "cut-channel-11-out",
                 "member_ids": [
-                  "member-channel-10-out"
+                  "member-channel-11-out"
                 ],
                 "endpoint_m": [
                   -8.0,
@@ -2666,9 +2820,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-11-out",
+                "id": "cut-channel-12-out",
                 "member_ids": [
-                  "member-channel-11-out"
+                  "member-channel-12-out"
                 ],
                 "endpoint_m": [
                   -8.0,
@@ -2740,7 +2894,7 @@
             ],
             "source_route_ids": [
               "path-7f5b3010-route-000",
-              "path-7f5b3010-route-004"
+              "path-7f5b3010-route-005"
             ],
             "boundary_sources": [
               {
@@ -2934,6 +3088,73 @@
             "engine_transport": 1,
             "edge": 1,
             "endpoint_m": [
+              -6.194881,
+              -8.0,
+              7.5
+            ],
+            "tangent": [
+              -0.16428872102218395,
+              -0.9864122952117411
+            ],
+            "sampled_tangent": [
+              -0.16428884979952776,
+              -0.9864122737636369
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3010",
+              "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3011",
+              "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3012",
+              "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3013",
+              "model:ddrhw-parallel-upper-exit-slip:5ad0e817-badb57f1-7f5b3014",
+              "path:ddrhw-parallel-upper-exit-slip:296678f7-a966883f-7f5b3010",
+              "construction:ddrhw-parallel-upper-exit-slip"
+            ],
+            "source_route_ids": [
+              "path-7f5b3010-route-004"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 1,
+                "tile_id": "7f5b3010"
+              }
+            ],
+            "connection_class": "path-interface-321f3c2125b6bde219f3",
+            "source_port_id": "channel-03-in",
+            "channel_id": "access-lower-on",
+            "cut_id": "cut-channel-03-in",
+            "outward_tangent": [
+              0.16428872102218395,
+              0.9864122952117411
+            ],
+            "heading_outward_degrees": 9.455917328944377,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-channel-04-in",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 1,
+            "endpoint_m": [
               -3.2,
               -8.0,
               7.5
@@ -2975,9 +3196,9 @@
               }
             ],
             "connection_class": "path-interface-aad60a85e4675eaba5de",
-            "source_port_id": "channel-03-in",
+            "source_port_id": "channel-04-in",
             "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-            "cut_id": "cut-channel-03-in",
+            "cut_id": "cut-channel-04-in",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -2987,7 +3208,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-04-in",
+            "id": "member-channel-05-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -3042,9 +3263,9 @@
               }
             ],
             "connection_class": "path-interface-3ecbd7f665c425929ca6",
-            "source_port_id": "channel-04-in",
+            "source_port_id": "channel-05-in",
             "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-            "cut_id": "cut-channel-04-in",
+            "cut_id": "cut-channel-05-in",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -3076,7 +3297,7 @@
         "anchor_m": null,
         "channels": [
           {
-            "id": "lower-mainline-axis-plus-2-26274-negative",
+            "id": "access-lower-on",
             "component_id": "lower-mainline",
             "kind": "road-lane",
             "traffic_modes": [
@@ -3087,6 +3308,33 @@
                 "id": "cut-channel-03-in",
                 "member_ids": [
                   "member-channel-03-in"
+                ],
+                "endpoint_m": [
+                  -6.194881,
+                  -8.0,
+                  7.5
+                ],
+                "outward_tangent": [
+                  0.16428872102218395,
+                  0.9864122952117411
+                ],
+                "heading_outward_degrees": 9.455917328944377,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "lower-mainline-axis-plus-2-26274-negative",
+            "component_id": "lower-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-channel-04-in",
+                "member_ids": [
+                  "member-channel-04-in"
                 ],
                 "endpoint_m": [
                   -3.2,
@@ -3111,9 +3359,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-04-in",
+                "id": "cut-channel-05-in",
                 "member_ids": [
-                  "member-channel-04-in"
+                  "member-channel-05-in"
                 ],
                 "endpoint_m": [
                   3.2,
@@ -3142,7 +3390,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-12-out",
+            "id": "member-channel-13-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -3197,9 +3445,9 @@
               }
             ],
             "connection_class": "path-interface-50bfaaffb0d43ee83a9b",
-            "source_port_id": "channel-12-out",
+            "source_port_id": "channel-13-out",
             "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-            "cut_id": "cut-channel-12-out",
+            "cut_id": "cut-channel-13-out",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -3209,7 +3457,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-13-out",
+            "id": "member-channel-14-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -3264,9 +3512,9 @@
               }
             ],
             "connection_class": "path-interface-55ad67244a3a7bbd6c4b",
-            "source_port_id": "channel-13-out",
+            "source_port_id": "channel-14-out",
             "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-            "cut_id": "cut-channel-13-out",
+            "cut_id": "cut-channel-14-out",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -3306,9 +3554,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-12-out",
+                "id": "cut-channel-13-out",
                 "member_ids": [
-                  "member-channel-12-out"
+                  "member-channel-13-out"
                 ],
                 "endpoint_m": [
                   -3.2,
@@ -3333,9 +3581,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-13-out",
+                "id": "cut-channel-14-out",
                 "member_ids": [
-                  "member-channel-13-out"
+                  "member-channel-14-out"
                 ],
                 "endpoint_m": [
                   3.2,
@@ -3364,7 +3612,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-14-out",
+            "id": "member-channel-15-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -3406,7 +3654,7 @@
               "construction:ddrhw-parallel-upper-exit-slip"
             ],
             "source_route_ids": [
-              "path-7f5b3010-route-004"
+              "path-7f5b3010-route-005"
             ],
             "boundary_sources": [
               {
@@ -3419,9 +3667,9 @@
               }
             ],
             "connection_class": "path-interface-53fdf60e4bef5b46033e",
-            "source_port_id": "channel-14-out",
+            "source_port_id": "channel-15-out",
             "channel_id": "access-upper-off",
-            "cut_id": "cut-channel-14-out",
+            "cut_id": "cut-channel-15-out",
             "outward_tangent": [
               0.9404586044447987,
               0.3399082425092716
@@ -3461,9 +3709,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-14-out",
+                "id": "cut-channel-15-out",
                 "member_ids": [
-                  "member-channel-14-out"
+                  "member-channel-15-out"
                 ],
                 "endpoint_m": [
                   8.0,
@@ -3492,7 +3740,7 @@
         "component_id": "lower-mainline",
         "members": [
           {
-            "id": "member-channel-15-out",
+            "id": "member-channel-16-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -3547,9 +3795,9 @@
               }
             ],
             "connection_class": "path-interface-f9c18bdf77622a5e27b2",
-            "source_port_id": "channel-15-out",
+            "source_port_id": "channel-16-out",
             "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-            "cut_id": "cut-channel-15-out",
+            "cut_id": "cut-channel-16-out",
             "outward_tangent": [
               -0.7071067811865475,
               -0.7071067811865477
@@ -3559,7 +3807,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-16-out",
+            "id": "member-channel-17-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -3614,9 +3862,9 @@
               }
             ],
             "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
-            "source_port_id": "channel-16-out",
+            "source_port_id": "channel-17-out",
             "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-            "cut_id": "cut-channel-16-out",
+            "cut_id": "cut-channel-17-out",
             "outward_tangent": [
               -0.7071067811865476,
               -0.7071067811865476
@@ -3656,9 +3904,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-15-out",
+                "id": "cut-channel-16-out",
                 "member_ids": [
-                  "member-channel-15-out"
+                  "member-channel-16-out"
                 ],
                 "endpoint_m": [
                   8.0,
@@ -3683,9 +3931,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-16-out",
+                "id": "cut-channel-17-out",
                 "member_ids": [
-                  "member-channel-16-out"
+                  "member-channel-17-out"
                 ],
                 "endpoint_m": [
                   8.0,
@@ -3714,7 +3962,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-05-in",
+            "id": "member-channel-06-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -3769,9 +4017,9 @@
               }
             ],
             "connection_class": "path-interface-3ed34d9a11bb64d98604",
-            "source_port_id": "channel-05-in",
+            "source_port_id": "channel-06-in",
             "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-            "cut_id": "cut-channel-05-in",
+            "cut_id": "cut-channel-06-in",
             "outward_tangent": [
               -0.7071067811865475,
               -0.7071067811865477
@@ -3781,7 +4029,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-06-in",
+            "id": "member-channel-07-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -3836,9 +4084,9 @@
               }
             ],
             "connection_class": "path-interface-3e8c9380dd7fc6c63cb8",
-            "source_port_id": "channel-06-in",
+            "source_port_id": "channel-07-in",
             "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-            "cut_id": "cut-channel-06-in",
+            "cut_id": "cut-channel-07-in",
             "outward_tangent": [
               -0.7071067811865476,
               -0.7071067811865476
@@ -3878,9 +4126,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-05-in",
+                "id": "cut-channel-06-in",
                 "member_ids": [
-                  "member-channel-05-in"
+                  "member-channel-06-in"
                 ],
                 "endpoint_m": [
                   8.0,
@@ -3905,9 +4153,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-06-in",
+                "id": "cut-channel-07-in",
                 "member_ids": [
-                  "member-channel-06-in"
+                  "member-channel-07-in"
                 ],
                 "endpoint_m": [
                   8.0,
@@ -3936,7 +4184,7 @@
         "component_id": "lower-mainline",
         "members": [
           {
-            "id": "member-channel-07-in",
+            "id": "member-channel-08-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -3991,9 +4239,9 @@
               }
             ],
             "connection_class": "path-interface-aad60a85e4675eaba5de",
-            "source_port_id": "channel-07-in",
+            "source_port_id": "channel-08-in",
             "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-            "cut_id": "cut-channel-07-in",
+            "cut_id": "cut-channel-08-in",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -4003,7 +4251,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-09-in",
+            "id": "member-channel-10-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -4058,9 +4306,9 @@
               }
             ],
             "connection_class": "path-interface-3ecbd7f665c425929ca6",
-            "source_port_id": "channel-09-in",
+            "source_port_id": "channel-10-in",
             "channel_id": "lower-mainline-axis-minus-2-26274-negative",
-            "cut_id": "cut-channel-09-in",
+            "cut_id": "cut-channel-10-in",
             "outward_tangent": [
               0.7071067811865475,
               0.7071067811865477
@@ -4100,9 +4348,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-07-in",
+                "id": "cut-channel-08-in",
                 "member_ids": [
-                  "member-channel-07-in"
+                  "member-channel-08-in"
                 ],
                 "endpoint_m": [
                   12.8,
@@ -4127,9 +4375,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-09-in",
+                "id": "cut-channel-10-in",
                 "member_ids": [
-                  "member-channel-09-in"
+                  "member-channel-10-in"
                 ],
                 "endpoint_m": [
                   19.2,
@@ -4158,7 +4406,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-17-out",
+            "id": "member-channel-18-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -4213,9 +4461,9 @@
               }
             ],
             "connection_class": "path-interface-50bfaaffb0d43ee83a9b",
-            "source_port_id": "channel-17-out",
+            "source_port_id": "channel-18-out",
             "channel_id": "upper-mainline-axis-plus-2-26274-positive",
-            "cut_id": "cut-channel-17-out",
+            "cut_id": "cut-channel-18-out",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -4225,7 +4473,7 @@
             "section_offset_m": null
           },
           {
-            "id": "member-channel-18-out",
+            "id": "member-channel-19-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -4280,9 +4528,9 @@
               }
             ],
             "connection_class": "path-interface-55ad67244a3a7bbd6c4b",
-            "source_port_id": "channel-18-out",
+            "source_port_id": "channel-19-out",
             "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-            "cut_id": "cut-channel-18-out",
+            "cut_id": "cut-channel-19-out",
             "outward_tangent": [
               0.7071067811865475,
               0.7071067811865477
@@ -4322,9 +4570,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-17-out",
+                "id": "cut-channel-18-out",
                 "member_ids": [
-                  "member-channel-17-out"
+                  "member-channel-18-out"
                 ],
                 "endpoint_m": [
                   12.8,
@@ -4349,9 +4597,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-18-out",
+                "id": "cut-channel-19-out",
                 "member_ids": [
-                  "member-channel-18-out"
+                  "member-channel-19-out"
                 ],
                 "endpoint_m": [
                   19.2,
@@ -4380,7 +4628,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-19-out",
+            "id": "member-channel-20-out",
             "direction": "out",
             "service_network": "road",
             "service_family": "road",
@@ -4435,9 +4683,9 @@
               }
             ],
             "connection_class": "path-interface-18bc8998b3c8e8765f76",
-            "source_port_id": "channel-19-out",
+            "source_port_id": "channel-20-out",
             "channel_id": "access-upper-off",
-            "cut_id": "cut-channel-19-out",
+            "cut_id": "cut-channel-20-out",
             "outward_tangent": [
               0.7071067811865476,
               0.7071067811865476
@@ -4477,9 +4725,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-19-out",
+                "id": "cut-channel-20-out",
                 "member_ids": [
-                  "member-channel-19-out"
+                  "member-channel-20-out"
                 ],
                 "endpoint_m": [
                   24.0,
@@ -4508,7 +4756,7 @@
         "component_id": "upper-mainline",
         "members": [
           {
-            "id": "member-channel-08-in",
+            "id": "member-channel-09-in",
             "direction": "in",
             "service_network": "road",
             "service_family": "road",
@@ -4563,9 +4811,9 @@
               }
             ],
             "connection_class": "path-interface-8f6f5a8624b510f03427",
-            "source_port_id": "channel-08-in",
+            "source_port_id": "channel-09-in",
             "channel_id": "access-upper-off",
-            "cut_id": "cut-channel-08-in",
+            "cut_id": "cut-channel-09-in",
             "outward_tangent": [
               -0.7071067811865476,
               -0.7071067811865476
@@ -4605,9 +4853,9 @@
             ],
             "cuts": [
               {
-                "id": "cut-channel-08-in",
+                "id": "cut-channel-09-in",
                 "member_ids": [
-                  "member-channel-08-in"
+                  "member-channel-09-in"
                 ],
                 "endpoint_m": [
                   16.970563,
@@ -4717,6 +4965,14 @@
     ],
     "channels": [
       {
+        "id": "access-lower-on",
+        "component_id": "lower-mainline",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      },
+      {
         "id": "access-upper-off",
         "component_id": "upper-mainline",
         "kind": "road-lane",
@@ -4759,6 +5015,24 @@
     ],
     "journeys": [
       {
+        "id": "member-channel-01-in>member-channel-15-out",
+        "entry_port": "member-channel-01-in",
+        "exit_port": "member-channel-15-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l2",
+          "dd-rhw-l2"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:channel-01-in>channel-15-out",
+        "source_entry_port": "channel-01-in",
+        "source_exit_port": "channel-15-out"
+      },
+      {
         "id": "member-channel-01-in>member-channel-14-out",
         "entry_port": "member-channel-01-in",
         "exit_port": "member-channel-14-out",
@@ -4777,8 +5051,8 @@
         "source_exit_port": "channel-14-out"
       },
       {
-        "id": "member-channel-01-in>member-channel-13-out",
-        "entry_port": "member-channel-01-in",
+        "id": "member-channel-02-in>member-channel-13-out",
+        "entry_port": "member-channel-02-in",
         "exit_port": "member-channel-13-out",
         "service_network": "road",
         "role": "primary",
@@ -4790,13 +5064,13 @@
           "dd-rhw-l2"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-01-in>channel-13-out",
-        "source_entry_port": "channel-01-in",
+        "source_id": "1:channel-02-in>channel-13-out",
+        "source_entry_port": "channel-02-in",
         "source_exit_port": "channel-13-out"
       },
       {
-        "id": "member-channel-02-in>member-channel-12-out",
-        "entry_port": "member-channel-02-in",
+        "id": "member-channel-03-in>member-channel-12-out",
+        "entry_port": "member-channel-03-in",
         "exit_port": "member-channel-12-out",
         "service_network": "road",
         "role": "primary",
@@ -4804,17 +5078,35 @@
           1
         ],
         "endpoint_variants": [
-          "dd-rhw-l2",
-          "dd-rhw-l2"
+          "dd-rhw-l1",
+          "dd-rhw-l1"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-02-in>channel-12-out",
-        "source_entry_port": "channel-02-in",
+        "source_id": "1:channel-03-in>channel-12-out",
+        "source_entry_port": "channel-03-in",
         "source_exit_port": "channel-12-out"
       },
       {
-        "id": "member-channel-03-in>member-channel-11-out",
-        "entry_port": "member-channel-03-in",
+        "id": "member-channel-04-in>member-channel-12-out",
+        "entry_port": "member-channel-04-in",
+        "exit_port": "member-channel-12-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l1",
+          "dd-rhw-l1"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:channel-04-in>channel-12-out",
+        "source_entry_port": "channel-04-in",
+        "source_exit_port": "channel-12-out"
+      },
+      {
+        "id": "member-channel-05-in>member-channel-11-out",
+        "entry_port": "member-channel-05-in",
         "exit_port": "member-channel-11-out",
         "service_network": "road",
         "role": "primary",
@@ -4826,31 +5118,31 @@
           "dd-rhw-l1"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-03-in>channel-11-out",
-        "source_entry_port": "channel-03-in",
+        "source_id": "1:channel-05-in>channel-11-out",
+        "source_entry_port": "channel-05-in",
         "source_exit_port": "channel-11-out"
       },
       {
-        "id": "member-channel-04-in>member-channel-10-out",
-        "entry_port": "member-channel-04-in",
-        "exit_port": "member-channel-10-out",
+        "id": "member-channel-06-in>member-channel-19-out",
+        "entry_port": "member-channel-06-in",
+        "exit_port": "member-channel-19-out",
         "service_network": "road",
         "role": "primary",
         "engine_transport_classes": [
           1
         ],
         "endpoint_variants": [
-          "dd-rhw-l1",
-          "dd-rhw-l1"
+          "dd-rhw-l2",
+          "dd-rhw-l2"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-04-in>channel-10-out",
-        "source_entry_port": "channel-04-in",
-        "source_exit_port": "channel-10-out"
+        "source_id": "1:channel-06-in>channel-19-out",
+        "source_entry_port": "channel-06-in",
+        "source_exit_port": "channel-19-out"
       },
       {
-        "id": "member-channel-05-in>member-channel-18-out",
-        "entry_port": "member-channel-05-in",
+        "id": "member-channel-07-in>member-channel-18-out",
+        "entry_port": "member-channel-07-in",
         "exit_port": "member-channel-18-out",
         "service_network": "road",
         "role": "primary",
@@ -4862,13 +5154,13 @@
           "dd-rhw-l2"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-05-in>channel-18-out",
-        "source_entry_port": "channel-05-in",
+        "source_id": "1:channel-07-in>channel-18-out",
+        "source_entry_port": "channel-07-in",
         "source_exit_port": "channel-18-out"
       },
       {
-        "id": "member-channel-06-in>member-channel-17-out",
-        "entry_port": "member-channel-06-in",
+        "id": "member-channel-08-in>member-channel-17-out",
+        "entry_port": "member-channel-08-in",
         "exit_port": "member-channel-17-out",
         "service_network": "road",
         "role": "primary",
@@ -4876,17 +5168,35 @@
           1
         ],
         "endpoint_variants": [
-          "dd-rhw-l2",
-          "dd-rhw-l2"
+          "dd-rhw-l1",
+          "dd-rhw-l1"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-06-in>channel-17-out",
-        "source_entry_port": "channel-06-in",
+        "source_id": "1:channel-08-in>channel-17-out",
+        "source_entry_port": "channel-08-in",
         "source_exit_port": "channel-17-out"
       },
       {
-        "id": "member-channel-07-in>member-channel-16-out",
-        "entry_port": "member-channel-07-in",
+        "id": "member-channel-09-in>member-channel-20-out",
+        "entry_port": "member-channel-09-in",
+        "exit_port": "member-channel-20-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "access-ramp",
+          "access-ramp"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:channel-09-in>channel-20-out",
+        "source_entry_port": "channel-09-in",
+        "source_exit_port": "channel-20-out"
+      },
+      {
+        "id": "member-channel-10-in>member-channel-16-out",
+        "entry_port": "member-channel-10-in",
         "exit_port": "member-channel-16-out",
         "service_network": "road",
         "role": "primary",
@@ -4898,59 +5208,14 @@
           "dd-rhw-l1"
         ],
         "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-07-in>channel-16-out",
-        "source_entry_port": "channel-07-in",
+        "source_id": "1:channel-10-in>channel-16-out",
+        "source_entry_port": "channel-10-in",
         "source_exit_port": "channel-16-out"
-      },
-      {
-        "id": "member-channel-08-in>member-channel-19-out",
-        "entry_port": "member-channel-08-in",
-        "exit_port": "member-channel-19-out",
-        "service_network": "road",
-        "role": "primary",
-        "engine_transport_classes": [
-          1
-        ],
-        "endpoint_variants": [
-          "access-ramp",
-          "access-ramp"
-        ],
-        "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-08-in>channel-19-out",
-        "source_entry_port": "channel-08-in",
-        "source_exit_port": "channel-19-out"
-      },
-      {
-        "id": "member-channel-09-in>member-channel-15-out",
-        "entry_port": "member-channel-09-in",
-        "exit_port": "member-channel-15-out",
-        "service_network": "road",
-        "role": "primary",
-        "engine_transport_classes": [
-          1
-        ],
-        "endpoint_variants": [
-          "dd-rhw-l1",
-          "dd-rhw-l1"
-        ],
-        "basis": "reachability_in_actual_saved_PATH_graph",
-        "source_id": "1:channel-09-in>channel-15-out",
-        "source_entry_port": "channel-09-in",
-        "source_exit_port": "channel-15-out"
       }
     ],
     "forbidden_transfers": [
       {
         "from_port": "member-channel-01-in",
-        "to_port": "member-channel-10-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-01-in",
-        "source_to_port": "channel-10-out"
-      },
-      {
-        "from_port": "member-channel-01-in",
         "to_port": "member-channel-11-out",
         "from_service": "road",
         "to_service": "road",
@@ -4969,12 +5234,12 @@
       },
       {
         "from_port": "member-channel-01-in",
-        "to_port": "member-channel-15-out",
+        "to_port": "member-channel-13-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
         "source_from_port": "channel-01-in",
-        "source_to_port": "channel-15-out"
+        "source_to_port": "channel-13-out"
       },
       {
         "from_port": "member-channel-01-in",
@@ -5013,13 +5278,13 @@
         "source_to_port": "channel-19-out"
       },
       {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-10-out",
+        "from_port": "member-channel-01-in",
+        "to_port": "member-channel-20-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-10-out"
+        "source_from_port": "channel-01-in",
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-02-in",
@@ -5032,84 +5297,84 @@
       },
       {
         "from_port": "member-channel-02-in",
-        "to_port": "member-channel-13-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-13-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-14-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-14-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-15-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-15-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-16-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-16-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-17-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-17-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-18-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-18-out"
-      },
-      {
-        "from_port": "member-channel-02-in",
-        "to_port": "member-channel-19-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-02-in",
-        "source_to_port": "channel-19-out"
-      },
-      {
-        "from_port": "member-channel-03-in",
-        "to_port": "member-channel-10-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-03-in",
-        "source_to_port": "channel-10-out"
-      },
-      {
-        "from_port": "member-channel-03-in",
         "to_port": "member-channel-12-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-03-in",
+        "source_from_port": "channel-02-in",
         "source_to_port": "channel-12-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-14-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-14-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-15-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-15-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-16-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-16-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-17-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-17-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-18-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-18-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-19-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-19-out"
+      },
+      {
+        "from_port": "member-channel-02-in",
+        "to_port": "member-channel-20-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-02-in",
+        "source_to_port": "channel-20-out"
+      },
+      {
+        "from_port": "member-channel-03-in",
+        "to_port": "member-channel-11-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-03-in",
+        "source_to_port": "channel-11-out"
       },
       {
         "from_port": "member-channel-03-in",
@@ -5175,6 +5440,15 @@
         "source_to_port": "channel-19-out"
       },
       {
+        "from_port": "member-channel-03-in",
+        "to_port": "member-channel-20-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-03-in",
+        "source_to_port": "channel-20-out"
+      },
+      {
         "from_port": "member-channel-04-in",
         "to_port": "member-channel-11-out",
         "from_service": "road",
@@ -5182,15 +5456,6 @@
         "basis": "not reachable in actual saved PATH graph",
         "source_from_port": "channel-04-in",
         "source_to_port": "channel-11-out"
-      },
-      {
-        "from_port": "member-channel-04-in",
-        "to_port": "member-channel-12-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-04-in",
-        "source_to_port": "channel-12-out"
       },
       {
         "from_port": "member-channel-04-in",
@@ -5256,22 +5521,13 @@
         "source_to_port": "channel-19-out"
       },
       {
-        "from_port": "member-channel-05-in",
-        "to_port": "member-channel-10-out",
+        "from_port": "member-channel-04-in",
+        "to_port": "member-channel-20-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-05-in",
-        "source_to_port": "channel-10-out"
-      },
-      {
-        "from_port": "member-channel-05-in",
-        "to_port": "member-channel-11-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-05-in",
-        "source_to_port": "channel-11-out"
+        "source_from_port": "channel-04-in",
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-05-in",
@@ -5329,6 +5585,15 @@
       },
       {
         "from_port": "member-channel-05-in",
+        "to_port": "member-channel-18-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-05-in",
+        "source_to_port": "channel-18-out"
+      },
+      {
+        "from_port": "member-channel-05-in",
         "to_port": "member-channel-19-out",
         "from_service": "road",
         "to_service": "road",
@@ -5337,13 +5602,13 @@
         "source_to_port": "channel-19-out"
       },
       {
-        "from_port": "member-channel-06-in",
-        "to_port": "member-channel-10-out",
+        "from_port": "member-channel-05-in",
+        "to_port": "member-channel-20-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-06-in",
-        "source_to_port": "channel-10-out"
+        "source_from_port": "channel-05-in",
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-06-in",
@@ -5401,6 +5666,15 @@
       },
       {
         "from_port": "member-channel-06-in",
+        "to_port": "member-channel-17-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-06-in",
+        "source_to_port": "channel-17-out"
+      },
+      {
+        "from_port": "member-channel-06-in",
         "to_port": "member-channel-18-out",
         "from_service": "road",
         "to_service": "road",
@@ -5410,21 +5684,12 @@
       },
       {
         "from_port": "member-channel-06-in",
-        "to_port": "member-channel-19-out",
+        "to_port": "member-channel-20-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
         "source_from_port": "channel-06-in",
-        "source_to_port": "channel-19-out"
-      },
-      {
-        "from_port": "member-channel-07-in",
-        "to_port": "member-channel-10-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-07-in",
-        "source_to_port": "channel-10-out"
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-07-in",
@@ -5473,21 +5738,21 @@
       },
       {
         "from_port": "member-channel-07-in",
+        "to_port": "member-channel-16-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-07-in",
+        "source_to_port": "channel-16-out"
+      },
+      {
+        "from_port": "member-channel-07-in",
         "to_port": "member-channel-17-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
         "source_from_port": "channel-07-in",
         "source_to_port": "channel-17-out"
-      },
-      {
-        "from_port": "member-channel-07-in",
-        "to_port": "member-channel-18-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-07-in",
-        "source_to_port": "channel-18-out"
       },
       {
         "from_port": "member-channel-07-in",
@@ -5499,13 +5764,13 @@
         "source_to_port": "channel-19-out"
       },
       {
-        "from_port": "member-channel-08-in",
-        "to_port": "member-channel-10-out",
+        "from_port": "member-channel-07-in",
+        "to_port": "member-channel-20-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-08-in",
-        "source_to_port": "channel-10-out"
+        "source_from_port": "channel-07-in",
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-08-in",
@@ -5563,15 +5828,6 @@
       },
       {
         "from_port": "member-channel-08-in",
-        "to_port": "member-channel-17-out",
-        "from_service": "road",
-        "to_service": "road",
-        "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-08-in",
-        "source_to_port": "channel-17-out"
-      },
-      {
-        "from_port": "member-channel-08-in",
         "to_port": "member-channel-18-out",
         "from_service": "road",
         "to_service": "road",
@@ -5580,13 +5836,22 @@
         "source_to_port": "channel-18-out"
       },
       {
-        "from_port": "member-channel-09-in",
-        "to_port": "member-channel-10-out",
+        "from_port": "member-channel-08-in",
+        "to_port": "member-channel-19-out",
         "from_service": "road",
         "to_service": "road",
         "basis": "not reachable in actual saved PATH graph",
-        "source_from_port": "channel-09-in",
-        "source_to_port": "channel-10-out"
+        "source_from_port": "channel-08-in",
+        "source_to_port": "channel-19-out"
+      },
+      {
+        "from_port": "member-channel-08-in",
+        "to_port": "member-channel-20-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-08-in",
+        "source_to_port": "channel-20-out"
       },
       {
         "from_port": "member-channel-09-in",
@@ -5626,6 +5891,15 @@
       },
       {
         "from_port": "member-channel-09-in",
+        "to_port": "member-channel-15-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-09-in",
+        "source_to_port": "channel-15-out"
+      },
+      {
+        "from_port": "member-channel-09-in",
         "to_port": "member-channel-16-out",
         "from_service": "road",
         "to_service": "road",
@@ -5659,6 +5933,87 @@
         "basis": "not reachable in actual saved PATH graph",
         "source_from_port": "channel-09-in",
         "source_to_port": "channel-19-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-11-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-11-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-12-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-12-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-13-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-13-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-14-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-14-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-15-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-15-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-17-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-17-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-18-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-18-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-19-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-19-out"
+      },
+      {
+        "from_port": "member-channel-10-in",
+        "to_port": "member-channel-20-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "channel-10-in",
+        "source_to_port": "channel-20-out"
       }
     ],
     "supported_orientations": [
@@ -6169,7 +6524,7 @@
       "id": "path-7f5b3010-route-003",
       "source_route_index": 3,
       "source_class": 0,
-      "compatibility": 0,
+      "compatibility": 1,
       "engine_transport": 1,
       "cell": [
         0,
@@ -6194,6 +6549,222 @@
     {
       "id": "path-7f5b3010-route-004",
       "source_route_index": 4,
+      "source_class": 2,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5b3010",
+      "points": [
+        [
+          -6.194880744,
+          -8.0,
+          7.5
+        ],
+        [
+          -6.204072671,
+          -8.055189602999999,
+          7.5
+        ],
+        [
+          -6.228034353,
+          -8.208004617,
+          7.5
+        ],
+        [
+          -6.250965058,
+          -8.361850606,
+          7.5
+        ],
+        [
+          -6.273117159,
+          -8.516475201,
+          7.5
+        ],
+        [
+          -6.294747632,
+          -8.671621423000001,
+          7.5
+        ],
+        [
+          -6.316116524,
+          -8.827029227,
+          7.5
+        ],
+        [
+          -6.337485415,
+          -8.982437031,
+          7.5
+        ],
+        [
+          -6.359115888,
+          -9.137583252999999,
+          7.5
+        ],
+        [
+          -6.381267989,
+          -9.292207848,
+          7.5
+        ],
+        [
+          -6.404198694,
+          -9.446053837000001,
+          7.5
+        ],
+        [
+          -6.428160376,
+          -9.598868850999999,
+          7.5
+        ],
+        [
+          -6.453399267,
+          -9.750406654999999,
+          7.5
+        ],
+        [
+          -6.480153924,
+          -9.900428694,
+          7.5
+        ],
+        [
+          -6.508653693,
+          -10.04870562,
+          7.5
+        ],
+        [
+          -6.539117179,
+          -10.195018829,
+          7.5
+        ],
+        [
+          -6.571750704,
+          -10.339161999,
+          7.5
+        ],
+        [
+          -6.606746777,
+          -10.480942622,
+          7.5
+        ],
+        [
+          -6.644282557,
+          -10.620183536999999,
+          7.5
+        ],
+        [
+          -6.684518319,
+          -10.75672447,
+          7.5
+        ],
+        [
+          -6.727595918,
+          -10.890423567,
+          7.5
+        ],
+        [
+          -6.773637254,
+          -11.021158926,
+          7.5
+        ],
+        [
+          -6.82274274,
+          -11.148830135,
+          7.5
+        ],
+        [
+          -6.874989762,
+          -11.273359808999999,
+          7.5
+        ],
+        [
+          -6.930431148,
+          -11.394695118,
+          7.5
+        ],
+        [
+          -6.989093633,
+          -11.512809328,
+          7.5
+        ],
+        [
+          -7.05097632,
+          -11.627703336,
+          7.5
+        ],
+        [
+          -7.116049151,
+          -11.739407200999999,
+          7.5
+        ],
+        [
+          -7.184251366,
+          -11.847981681,
+          7.5
+        ],
+        [
+          -7.255489973,
+          -11.953519769,
+          7.5
+        ],
+        [
+          -7.329638211,
+          -12.056148226,
+          7.5
+        ],
+        [
+          -7.406534015,
+          -12.156029118,
+          7.5
+        ],
+        [
+          -7.485978479,
+          -12.253361349,
+          7.5
+        ],
+        [
+          -7.567734326,
+          -12.348382197,
+          7.5
+        ],
+        [
+          -7.651524369,
+          -12.44136885,
+          7.5
+        ],
+        [
+          -7.737029978,
+          -12.532639935999999,
+          7.5
+        ],
+        [
+          -7.823889542,
+          -12.622557066999999,
+          7.5
+        ],
+        [
+          -7.91169694,
+          -12.711526364000001,
+          7.5
+        ],
+        [
+          -7.992928932,
+          -12.792928932,
+          7.5
+        ],
+        [
+          -8.0,
+          -12.8,
+          7.5
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f5b3010-route-005",
+      "source_route_index": 5,
       "source_class": 1,
       "compatibility": 1,
       "engine_transport": 1,
@@ -6214,468 +6785,378 @@
           15.0
         ],
         [
-          -7.922204363,
-          -19.122232144999998,
+          -7.911267261,
+          -19.111956044,
           15.0
         ],
         [
-          -7.85139743,
-          -19.051617722,
+          -7.820572255,
+          -19.025874354,
           15.0
         ],
         [
-          -7.780428454,
-          -18.981165342,
+          -7.7262317,
+          -18.943438214,
           15.0
         ],
         [
-          -7.709220655,
-          -18.910951783999998,
+          -7.626852022,
+          -18.866041197,
           15.0
         ],
         [
-          -7.637700116,
-          -18.841050967,
+          -7.521313269,
+          -18.794803254,
           15.0
         ],
         [
-          -7.565795747,
-          -18.77153398,
+          -7.408753009,
+          -18.730586819,
           15.0
         ],
         [
-          -7.493439251,
-          -18.70246912,
+          -7.288550238,
+          -18.674012895,
           15.0
         ],
         [
-          -7.420565091,
-          -18.633921924,
+          -7.160309283,
+          -18.625477155,
           15.0
         ],
         [
-          -7.347110452,
-          -18.565955205999998,
+          -7.023843708,
+          -18.585166034,
           15.0
         ],
         [
-          -7.273015208,
-          -18.498629094,
+          -6.879160221,
+          -18.553072826,
           15.0
         ],
         [
-          -7.198221886,
-          -18.43200106,
+          -6.726442574,
+          -18.529013777,
           15.0
         ],
         [
-          -7.122675632,
-          -18.366125958,
+          -6.566035472,
+          -18.512644185,
           15.0
         ],
         [
-          -7.046324176,
-          -18.301056058,
+          -6.398428475,
+          -18.503474487,
           15.0
         ],
         [
-          -6.969117796,
-          -18.236841081,
+          -6.224239904,
+          -18.500886362,
           15.0
         ],
         [
-          -6.891009284,
-          -18.173528236,
+          -6.044200748,
+          -18.504148822,
           15.0
         ],
         [
-          -6.811953913,
-          -18.111162252,
+          -5.859138566,
+          -18.512434309,
           15.0
         ],
         [
-          -6.731909396,
-          -18.049785413,
+          -5.669961392,
+          -18.524834788,
           15.0
         ],
         [
-          -6.650835858,
-          -17.989437594,
+          -5.477641641,
+          -18.540377843999998,
           15.0
         ],
         [
-          -6.568695798,
-          -17.930156298,
+          -5.283200013,
+          -18.558042777,
           15.0
         ],
         [
-          -6.485454054,
-          -17.871976685,
+          -5.087689399,
+          -18.576776695,
           15.0
         ],
         [
-          -6.401077769,
-          -17.814931615,
+          -4.892178785,
+          -18.595510614,
           15.0
         ],
         [
-          -6.315536353,
-          -17.759051674,
+          -4.697737157,
+          -18.613175547,
           15.0
         ],
         [
-          -6.228801453,
-          -17.704365218,
+          -4.505417406,
+          -18.628718603,
           15.0
         ],
         [
-          -6.140846915,
-          -17.6508984,
+          -4.316240231,
+          -18.641119082,
           15.0
         ],
         [
-          -6.051648749,
-          -17.598675209,
+          -4.131178049,
+          -18.649404568,
           15.0
         ],
         [
-          -5.961185097,
-          -17.547717505,
+          -3.951138893,
+          -18.652667029,
           15.0
         ],
         [
-          -5.869436193,
-          -17.498045053,
+          -3.776950323,
+          -18.650078904,
           15.0
         ],
         [
-          -5.776384332,
-          -17.449675558,
+          -3.609343326,
+          -18.640909206,
           15.0
         ],
         [
-          -5.682013836,
-          -17.402624698,
+          -3.448936223,
+          -18.624539613,
           15.0
         ],
         [
-          -5.586311014,
-          -17.356906164,
+          -3.296218576,
+          -18.600480564999998,
           15.0
         ],
         [
-          -5.489264132,
-          -17.312531689,
+          -3.151535089,
+          -18.568387357,
           15.0
         ],
         [
-          -5.390863376,
-          -17.269511089,
+          -3.015069515,
+          -18.528076236,
           15.0
         ],
         [
-          -5.291100818,
-          -17.227852291,
+          -2.88682856,
+          -18.479540495000002,
           15.0
         ],
         [
-          -5.189970379,
-          -17.187561373,
+          -2.766625788,
+          -18.422966571,
           15.0
         ],
         [
-          -5.087467797,
-          -17.148642599,
+          -2.654065528,
+          -18.358750136,
           15.0
         ],
         [
-          -4.983590591,
-          -17.111098449,
+          -2.548526775,
+          -18.287512194,
           15.0
         ],
         [
-          -4.878338023,
-          -17.07492966,
+          -2.449147098,
+          -18.210115176,
           15.0
         ],
         [
-          -4.77171107,
-          -17.040135258,
+          -2.354806542,
+          -18.127679037,
           15.0
         ],
         [
-          -4.66371238,
-          -17.006712591,
+          -2.264111537,
+          -18.041597347,
           15.0
         ],
         [
-          -4.554346247,
-          -16.974657368,
+          -2.175378798,
+          -17.953553391,
           15.0
         ],
         [
-          -4.443618567,
-          -16.943963691,
+          -2.08699045,
+          -17.865165043,
           15.0
         ],
         [
-          -4.33153681,
-          -16.914624092,
+          -1.998602102,
+          -17.776776695,
           15.0
         ],
         [
-          -4.21810998,
-          -16.886629566,
+          -1.910213755,
+          -17.688388348,
           15.0
         ],
         [
-          -4.103348585,
-          -16.859969605,
+          -1.821825407,
+          -17.6,
           15.0
         ],
         [
-          -3.987264596,
-          -16.834632237,
+          -1.733437059,
+          -17.511611652,
           15.0
         ],
         [
-          -3.869871419,
-          -16.810604058,
+          -1.645048712,
+          -17.423223305,
           15.0
         ],
         [
-          -3.751183854,
-          -16.787870267,
+          -1.556660364,
+          -17.334834956999998,
           15.0
         ],
         [
-          -3.631218064,
-          -16.766414701,
+          -1.468272016,
+          -17.246446609,
           15.0
         ],
         [
-          -3.509991538,
-          -16.746219871,
+          -1.378419406,
+          -17.164068211,
           15.0
         ],
         [
-          -3.387523058,
-          -16.727266994,
+          -1.281300058,
+          -17.08895655,
           15.0
         ],
         [
-          -3.263832662,
-          -16.709536035,
+          -1.177225189,
+          -17.02080041,
           15.0
         ],
         [
-          -3.138941609,
-          -16.693005731,
+          -1.066506011,
+          -16.959288579,
           15.0
         ],
         [
-          -3.012872348,
-          -16.677653636,
+          -0.949453739,
+          -16.904109842,
           15.0
         ],
         [
-          -2.885648478,
-          -16.663456150000002,
+          -0.826379588,
+          -16.854952985,
           15.0
         ],
         [
-          -2.757294715,
-          -16.650388556,
+          -0.697594771,
+          -16.811506793,
           15.0
         ],
         [
-          -2.627836859,
-          -16.638425056,
+          -0.563410502,
+          -16.773460053,
           15.0
         ],
         [
-          -2.497301756,
-          -16.627538803,
+          -0.424137996,
+          -16.74050155,
           15.0
         ],
         [
-          -2.365717265,
-          -16.617701937,
+          -0.280088467,
+          -16.71232007,
           15.0
         ],
         [
-          -2.233112224,
-          -16.608885623,
+          -0.131573129,
+          -16.6886044,
           15.0
         ],
         [
-          -2.099516411,
-          -16.601060079,
+          0.021096804,
+          -16.669043324,
           15.0
         ],
         [
-          -1.964960513,
-          -16.59419462,
+          0.177610118,
+          -16.653325628,
           15.0
         ],
         [
-          -1.829476092,
-          -16.588257686,
+          0.337655597,
+          -16.641140099,
           15.0
         ],
         [
-          -1.693095544,
-          -16.583216877,
+          0.50092203,
+          -16.632175523,
           15.0
         ],
         [
-          -1.555852071,
-          -16.579038994,
+          0.6670982,
+          -16.626120684,
           15.0
         ],
         [
-          -1.417779642,
-          -16.575690067,
+          0.835872894,
+          -16.622664369,
           15.0
         ],
         [
-          -1.27891296,
-          -16.573135393,
+          1.006934898,
+          -16.621495364,
           15.0
         ],
         [
-          -1.139287425,
-          -16.571339572,
+          1.179972997,
+          -16.622302455,
           15.0
         ],
         [
-          -0.998939101,
-          -16.57026654,
+          1.354675978,
+          -16.624774427,
           15.0
         ],
         [
-          -0.85790468,
-          -16.569879604,
+          1.530732627,
+          -16.628600067,
           15.0
         ],
         [
-          -0.71622145,
-          -16.570141478,
+          1.707831728,
+          -16.633468159,
           15.0
         ],
         [
-          -0.573927254,
-          -16.571014317,
+          1.885662068,
+          -16.63906749,
           15.0
         ],
         [
-          -0.431060462,
-          -16.572459754,
+          2.063912433,
+          -16.645086846,
           15.0
         ],
         [
-          -0.287659929,
-          -16.57443893,
+          2.242271608,
+          -16.651215013,
           15.0
         ],
         [
-          -0.143764968,
-          -16.576912534999998,
+          2.42042838,
+          -16.657140775,
           15.0
         ],
         [
-          0.000584691,
-          -16.579840838,
-          15.0
-        ],
-        [
-          0.145348934,
-          -16.583183725,
-          15.0
-        ],
-        [
-          0.290487299,
-          -16.586900733,
-          15.0
-        ],
-        [
-          0.435959006,
-          -16.590951084,
-          15.0
-        ],
-        [
-          0.581723,
-          -16.595293722,
-          15.0
-        ],
-        [
-          0.727737979,
-          -16.599887344,
-          15.0
-        ],
-        [
-          0.873962432,
-          -16.604690441,
-          15.0
-        ],
-        [
-          1.020354674,
-          -16.609661327,
-          15.0
-        ],
-        [
-          1.16687288,
-          -16.614758177,
-          15.0
-        ],
-        [
-          1.31347512,
-          -16.619939061,
-          15.0
-        ],
-        [
-          1.460119395,
-          -16.625161979,
-          15.0
-        ],
-        [
-          1.60676367,
-          -16.630384898,
-          15.0
-        ],
-        [
-          1.75336591,
-          -16.635565781,
-          15.0
-        ],
-        [
-          1.899884116,
-          -16.640662631,
-          15.0
-        ],
-        [
-          2.046276358,
-          -16.645633517,
-          15.0
-        ],
-        [
-          2.192500811,
-          -16.650436614,
-          15.0
-        ],
-        [
-          2.33851579,
-          -16.655030237,
-          15.0
-        ],
-        [
-          2.484279784,
-          -16.659372874,
-          15.0
-        ],
-        [
-          2.629751491,
-          -16.663423226,
+          2.598071534,
+          -16.662552921,
           15.0
         ],
         [
@@ -6894,62 +7375,66 @@
     }
   ],
   "endpoint_route_refs": {
-    "member-channel-10-out": [
+    "member-channel-11-out": [
       "path-7f5b3010-route-002"
     ],
-    "member-channel-11-out": [
-      "path-7f5b3010-route-003"
+    "member-channel-12-out": [
+      "path-7f5b3010-route-003",
+      "path-7f5b3010-route-004"
     ],
     "member-channel-01-in": [
       "path-7f5b3010-route-000",
-      "path-7f5b3010-route-004"
+      "path-7f5b3010-route-005"
     ],
     "member-channel-02-in": [
       "path-7f5b3010-route-001"
     ],
     "member-channel-03-in": [
-      "path-7f5b3010-route-003"
-    ],
-    "member-channel-04-in": [
-      "path-7f5b3010-route-002"
-    ],
-    "member-channel-12-out": [
-      "path-7f5b3010-route-001"
-    ],
-    "member-channel-13-out": [
-      "path-7f5b3010-route-000"
-    ],
-    "member-channel-14-out": [
       "path-7f5b3010-route-004"
     ],
-    "member-channel-15-out": [
-      "path-7f5b3100-route-002"
-    ],
-    "member-channel-16-out": [
-      "path-7f5b3100-route-003"
+    "member-channel-04-in": [
+      "path-7f5b3010-route-003"
     ],
     "member-channel-05-in": [
-      "path-7f5b3100-route-000"
+      "path-7f5b3010-route-002"
     ],
-    "member-channel-06-in": [
-      "path-7f5b3100-route-001"
+    "member-channel-13-out": [
+      "path-7f5b3010-route-001"
     ],
-    "member-channel-07-in": [
-      "path-7f5b3100-route-003"
+    "member-channel-14-out": [
+      "path-7f5b3010-route-000"
     ],
-    "member-channel-09-in": [
+    "member-channel-15-out": [
+      "path-7f5b3010-route-005"
+    ],
+    "member-channel-16-out": [
       "path-7f5b3100-route-002"
     ],
     "member-channel-17-out": [
-      "path-7f5b3100-route-001"
+      "path-7f5b3100-route-003"
     ],
-    "member-channel-18-out": [
+    "member-channel-06-in": [
       "path-7f5b3100-route-000"
     ],
-    "member-channel-19-out": [
-      "path-7f5b3100-route-004"
+    "member-channel-07-in": [
+      "path-7f5b3100-route-001"
     ],
     "member-channel-08-in": [
+      "path-7f5b3100-route-003"
+    ],
+    "member-channel-10-in": [
+      "path-7f5b3100-route-002"
+    ],
+    "member-channel-18-out": [
+      "path-7f5b3100-route-001"
+    ],
+    "member-channel-19-out": [
+      "path-7f5b3100-route-000"
+    ],
+    "member-channel-20-out": [
+      "path-7f5b3100-route-004"
+    ],
+    "member-channel-09-in": [
       "path-7f5b3100-route-004"
     ]
   },
@@ -6957,12 +7442,12 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
-      "dat_sha256": "f08d356d7c190be7db2733f152b41717b7bb4f724b3e01d080ecd08c4b58e834",
-      "model_sha256": "ca538c687e8fd05728eb904c58ed6473e3f2761851c91e8f8a25966fe020953c",
+      "dat_path": "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
+      "dat_sha256": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add",
+      "model_sha256": "0d332caf9471a7172fe2b5e7431bb45a16773acb282ebd10d203b046d0166e33",
       "resource_fingerprints_checked": 28,
-      "directional_ports_reextracted": 19,
-      "directed_journeys_reextracted": 10,
+      "directional_ports_reextracted": 20,
+      "directed_journeys_reextracted": 11,
       "compiled_definition": "passed",
       "manifest_payload": "passed",
       "saved_resource_fingerprints": "passed",
@@ -6976,5 +7461,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "8705e2c8368e740aba0f01e1c6cdeb64e84544a505aff57dfa2e3797811019a2"
+  "content_sha256": "4a97ac11e05b35e83b6bb843c42668760ea1f109cb9c1d93a429b5439680924a"
 }

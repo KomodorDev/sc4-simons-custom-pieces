@@ -2761,33 +2761,33 @@
   "schema_version": 1,
   "piece_id": "ddrhw-parallel-upper-exit-departure",
   "file": "previews/connection-overview.png",
-  "output_sha256": "f610794bcd2c979abb1192ebf4a1fa1bb3e39403c36645f71da5ee02f08c0670",
+  "output_sha256": "e686e9c3773dce5aa1b6a4560a875690157bac1fb4b31a843fd4da302fcb0156",
   "source_inputs": {
-    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc": "adc7183372f6c22ebebd958191014c77a8834431a5d36ee07883081f39de4754",
-    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connections.json": "79c4efbe424c7420fbf5ca7c19425be78d882ae204a04590e57804236a8cc4c7",
-    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connector-groups.jsonc": "6101009e03fd2b94d802dcfaa550249144aa75c2d1756074d1e8858f412a30cc",
+    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc": "2ada5cede960b31b697e1fcc98fa6dd1bd86f542e61e2a139f11f0ec04c4970f",
+    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connections.json": "7e67c5395c86189152606c7a8f7f7ad6e1cacbb2187b2d4eb5ca3af731434676",
+    "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connector-groups.jsonc": "1b520468ca11a1a060692c037ccd2e31847d2a2a56a324518d597bc391ae8a63",
     "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
     "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
     "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
   },
   "generator_sha256": "df5fd866220cafb7493628c6662a173800094fae42a19d2870ec5365cb041a6e",
   "metadata_resolver_sha256": "630c667ef8a2229cfa244a17be9c8096d953a18fff42e2a089e3845122d485cc",
-  "manifest_sha256": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
-  "compiled_manifest_sha256": "e6abff46fb9ebd614c882207c4809dcb5002c11948ba28083c5cc7a1a4e914ed",
-  "source_manifest": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/manifest.json",
-  "source_dat": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
+  "manifest_sha256": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+  "compiled_manifest_sha256": "a222a24ada086f5616a9b4e376b293880bf2dd4ee9569754adb66dbdcfc23fc7",
+  "source_manifest": "dist/ddrhw-parallel-diamond-slip-lanes-02/manifest.json",
+  "source_dat": "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
   "source_preview_id": "7f5b7ff5",
-  "source_dat_sha256": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
-  "source_model_sha256": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-  "render_model_sha256": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
+  "source_dat_sha256": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
+  "source_model_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+  "render_model_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
   "model_validation": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 3020,
-    "mesh_count": 10,
+    "triangles": 3015,
+    "mesh_count": 9,
     "bounds_xyz_m": [
       [
         [
@@ -2914,20 +2914,6 @@
           -4.064133644104004,
           0.6422775387763977
         ]
-      ],
-      [
-        [
-          -8.0,
-          -7.915136337280273
-        ],
-        [
-          15.010000228881836,
-          15.010000228881836
-        ],
-        [
-          -4.856019020080566,
-          -4.686290740966797
-        ]
       ]
     ],
     "textures": [
@@ -2936,39 +2922,30 @@
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
-      "5eb4bee9",
-      "5713000e"
+      "5eb4bee9"
     ]
   },
   "saved_resource_fingerprints_checked": {
     "effect:ddrhw-parallel-upper-exit-departure:ea5118b0-ea5118b1-7f5b7ff5": "d804daecaf1a9337f6066a17f6ef17c9cc8517dbb4ef9a9ca4ab26cdeba9501c",
     "exemplar:ddrhw-parallel-upper-exit-departure:6534284a-a8434037-7f5b7000": "e749136ca18246a9f07ca81c56dd6c2f60d7c96041c5958a95a3f22999d1f2f7",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
-    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7ff5": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7ff5": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
     "path:ddrhw-parallel-upper-exit-departure:296678f7-a966883f-7f5b7000": "92861ce332217d5be43265ec5aaf6d5a9fb424a5d906948a1fad134c9563d6aa",
     "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7000": "ccc729da4732cc4a20788b77bf8f04dd15d41dd12f6e61ce01fd52cf5b289f54",
     "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7001": "2934927333ec2c5cd4411cccdcfe18cb41623daea700136599fc57648aad417f",
-    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7002": "d8f1918077d37dcfbf674ce6cbcb0df3722895f1b7ebf46d0e4d98323b7f472e",
-    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7003": "33db638b6ca48563896ed948dee77443d89c1616b27f161005a81668442f7230",
-    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7004": "f020cca2115c3547ac3c6d9ea5f95b9aded9eea36a74909c0f59ab8b7e963cc7",
+    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7002": "4ca7cdd6ea80a6713276ae866dc8efbebd00a3b4eb0f6be8143ecb61a46813f0",
+    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7003": "b3667d8496d66ec98d367d064dfa11533225b50d68a3942f352556704083b36d",
+    "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7004": "a034f4519cf92e73a6e2ff670d528a27bea04d9be32e9a0eed80063e0c5e1894",
     "text:ddrhw-parallel-upper-exit-departure:2026960b-2a592fd1-7f5b7000": "b8a3cf9e9f14c7db0b89e36c5b4fe91041c5f2c35db2058423884ef42e0d8d32"
   },
   "textures": [
     {
       "instance": "5712000e",
       "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
-      "size": [
-        128,
-        128
-      ]
-    },
-    {
-      "instance": "5713000e",
-      "fsh_sha256": "6539c7d6d5a33e157c842724799a326f9f392a8282b0bbe27f74a2fe96ec6e7d",
       "size": [
         128,
         128
@@ -3226,7 +3203,7 @@
   },
   "camera_frame": {
     "basis": "Actual model vertices, all required member endpoints, display anchors, and owned ground-grid corners",
-    "model_vertices": 2574,
+    "model_vertices": 2567,
     "required_member_endpoints": 2,
     "display_anchors": 2,
     "maximum_service_groups_per_boundary": 1,
@@ -3314,7 +3291,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/evidence/preview.json",
-    "sha256": "72c80f80392952f5139d7b90aa250f743cd6aa69c4de98a929edefa181c85196",
+    "sha256": "03da1a5c2bad77bd89ad407e406c576ab9d6f7b048d477d20ebd6836cdde0996",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,

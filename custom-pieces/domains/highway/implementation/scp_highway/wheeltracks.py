@@ -71,8 +71,9 @@ class NativeWheeltrackField:
     The two solutions meet in the same native dark trough after the ease.
     """
 
-    def __init__(self, ramps, painter):
+    def __init__(self, ramps, painter, *, retain_nonzero_top_fragments=False):
         self.painter = painter
+        self.retain_nonzero_top_fragments = retain_nonzero_top_fragments
         self.regions = []
         self.buckets = defaultdict(list)
         self.stations = {
@@ -141,7 +142,8 @@ class NativeWheeltrackField:
         return (*point[:3], (column + 0.5) / 128.0, distance / 16.0)
 
     def _sample(self, polygon, region):
-        for face in _triangulate(polygon):
+        for face in _triangulate(polygon, minimum_normal_squared=(
+                0.0 if self.retain_nonzero_top_fragments else 1e-16)):
             pending = [face]
             while pending:
                 triangle = pending.pop()

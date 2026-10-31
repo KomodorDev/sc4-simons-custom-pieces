@@ -10,10 +10,15 @@
   "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
   "piece_id": "ddrhw-parallel-lower-exit-slip",
   "source_binding": {
-    "piece_sha256": "4ef2cae7505cf7337313aa18c4b044c9d612f15da0b776c276df870d688556cf",
-    "connections_sha256": "f2a18e30e7b60bff23bd823ace4a127e4c253f7b1973f9bed7c11bf401344276"
+    "piece_sha256": "8ea3b6a5637776d4953475d608948062b1700c401fc4f3ef1e462f32f14bf4b7",
+    "connections_sha256": "48c53bbd89feb697a09a166916b30e69c26ce3494a2b4c4919c8bf0d8d79758c"
   },
   "components": [
+    {
+      "id": "access-network-lower-off",
+      "network": "road",
+      "construction_network": "dirtroad"
+    },
     {
       "id": "lower-mainline",
       "network": "road",
@@ -28,7 +33,7 @@
   "channels": [
     {
       "id": "access-lower-off",
-      "component_id": "lower-mainline",
+      "component_id": "access-network-lower-off",
       "kind": "road-lane",
       "traffic_modes": [
         "car"
@@ -69,21 +74,21 @@
   ],
   "groups": [
     {
-      "id": "boundary-01-lower-mainline-01",
-      "component_id": "lower-mainline",
+      "id": "boundary-01-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
       "members": [
         {
-          "id": "member-channel-10-out",
-          "source_port_id": "channel-10-out",
+          "id": "member-channel-11-out",
+          "source_port_id": "channel-11-out",
           "direction": "out",
           "channel_id": "access-lower-off",
-          "cut_id": "cut-channel-10-out"
+          "cut_id": "cut-channel-11-out"
         }
       ]
     },
     {
-      "id": "boundary-02-lower-mainline-01",
-      "component_id": "lower-mainline",
+      "id": "boundary-02-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
       "members": [
         {
           "id": "member-channel-02-in",
@@ -119,18 +124,18 @@
       "component_id": "upper-mainline",
       "members": [
         {
-          "id": "member-channel-13-out",
-          "source_port_id": "channel-13-out",
-          "direction": "out",
-          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-          "cut_id": "cut-channel-13-out"
-        },
-        {
           "id": "member-channel-14-out",
           "source_port_id": "channel-14-out",
           "direction": "out",
-          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
           "cut_id": "cut-channel-14-out"
+        },
+        {
+          "id": "member-channel-15-out",
+          "source_port_id": "channel-15-out",
+          "direction": "out",
+          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+          "cut_id": "cut-channel-15-out"
         }
       ]
     },
@@ -139,18 +144,18 @@
       "component_id": "lower-mainline",
       "members": [
         {
-          "id": "member-channel-11-out",
-          "source_port_id": "channel-11-out",
-          "direction": "out",
-          "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-          "cut_id": "cut-channel-11-out"
-        },
-        {
           "id": "member-channel-12-out",
           "source_port_id": "channel-12-out",
           "direction": "out",
-          "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+          "channel_id": "lower-mainline-axis-plus-2-26274-negative",
           "cut_id": "cut-channel-12-out"
+        },
+        {
+          "id": "member-channel-13-out",
+          "source_port_id": "channel-13-out",
+          "direction": "out",
+          "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+          "cut_id": "cut-channel-13-out"
         }
       ]
     },
@@ -175,20 +180,33 @@
       ]
     },
     {
-      "id": "boundary-05-lower-mainline-01",
-      "component_id": "lower-mainline",
+      "id": "boundary-05-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
       "members": [
         {
-          "id": "member-channel-15-out",
-          "source_port_id": "channel-15-out",
+          "id": "member-channel-16-out",
+          "source_port_id": "channel-16-out",
           "direction": "out",
           "channel_id": "access-lower-off",
-          "cut_id": "cut-channel-15-out"
+          "cut_id": "cut-channel-16-out"
         }
       ]
     },
     {
-      "id": "boundary-06-lower-mainline-01",
+      "id": "boundary-06-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
+      "members": [
+        {
+          "id": "member-channel-10-in",
+          "source_port_id": "channel-10-in",
+          "direction": "in",
+          "channel_id": "access-lower-off",
+          "cut_id": "cut-channel-10-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-06-lower-mainline-02",
       "component_id": "lower-mainline",
       "members": [
         {
@@ -208,22 +226,22 @@
       ]
     },
     {
-      "id": "boundary-06-upper-mainline-02",
+      "id": "boundary-06-upper-mainline-03",
       "component_id": "upper-mainline",
       "members": [
-        {
-          "id": "member-channel-18-out",
-          "source_port_id": "channel-18-out",
-          "direction": "out",
-          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
-          "cut_id": "cut-channel-18-out"
-        },
         {
           "id": "member-channel-19-out",
           "source_port_id": "channel-19-out",
           "direction": "out",
-          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+          "channel_id": "upper-mainline-axis-minus-2-26274-positive",
           "cut_id": "cut-channel-19-out"
+        },
+        {
+          "id": "member-channel-20-out",
+          "source_port_id": "channel-20-out",
+          "direction": "out",
+          "channel_id": "upper-mainline-axis-plus-2-26274-positive",
+          "cut_id": "cut-channel-20-out"
         }
       ]
     },
@@ -232,18 +250,18 @@
       "component_id": "lower-mainline",
       "members": [
         {
-          "id": "member-channel-16-out",
-          "source_port_id": "channel-16-out",
-          "direction": "out",
-          "channel_id": "lower-mainline-axis-plus-2-26274-negative",
-          "cut_id": "cut-channel-16-out"
-        },
-        {
           "id": "member-channel-17-out",
           "source_port_id": "channel-17-out",
           "direction": "out",
-          "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+          "channel_id": "lower-mainline-axis-plus-2-26274-negative",
           "cut_id": "cut-channel-17-out"
+        },
+        {
+          "id": "member-channel-18-out",
+          "source_port_id": "channel-18-out",
+          "direction": "out",
+          "channel_id": "lower-mainline-axis-minus-2-26274-negative",
+          "cut_id": "cut-channel-18-out"
         }
       ]
     },
@@ -277,7 +295,7 @@
       ],
       "edge": "west",
       "connector_ids": [
-        "boundary-01-lower-mainline-01"
+        "boundary-01-access-network-lower-off-01"
       ]
     },
     {
@@ -288,7 +306,7 @@
       ],
       "edge": "north",
       "connector_ids": [
-        "boundary-02-lower-mainline-01"
+        "boundary-02-access-network-lower-off-01"
       ]
     },
     {
@@ -323,7 +341,7 @@
       ],
       "edge": "west",
       "connector_ids": [
-        "boundary-05-lower-mainline-01"
+        "boundary-05-access-network-lower-off-01"
       ]
     },
     {
@@ -334,8 +352,9 @@
       ],
       "edge": "east",
       "connector_ids": [
-        "boundary-06-lower-mainline-01",
-        "boundary-06-upper-mainline-02"
+        "boundary-06-access-network-lower-off-01",
+        "boundary-06-lower-mainline-02",
+        "boundary-06-upper-mainline-03"
       ]
     },
     {

@@ -35,8 +35,9 @@ def _source():
 
 
 def routes():
-    """Return the exact four approved, directed source routes without editing."""
-    return deepcopy(_source()['routes'])
+    """Add shoulder auxiliary lanes while retaining physical ramp geometry."""
+    from .parallel_slip_lanes import apply
+    return [apply(route) for route in _source()['routes']]
 
 
 def _stem(route):
@@ -120,6 +121,9 @@ def slip_paint(route):
     where the inner ramp stripe leaves that edge. All hatch cores are parallel
     45-degree strips and clipped inside the actual two gore boundaries.
     """
+    if route.get('highway_slip_profile'):
+        from .parallel_slip_lanes import surfaces
+        return surfaces(route)
     points = route['points'] if route['direction'] == 'off' else list(reversed(route['points']))
     _lengths, normals = geometry.route_frames(points)
     height, side = route['height_m'], route['side']
@@ -222,12 +226,14 @@ def _procedural():
     paint = []
     ramps = routes()
     for route in ramps:
-        lengths, _normals = geometry.route_frames(route['points'])
+        physical = {**route, 'points': route.get('mesh_points', route['points']),
+                    'segments': route.get('mesh_segments', route['segments'])}
+        lengths, _normals = geometry.route_frames(physical['points'])
         faces = geometry.compact_ramp_triangles(route)
         for face in faces:
             centre = (sum(p[0] for p in face) / 3.0, -sum(p[2] for p in face) / 3.0,
                       sum(p[1] for p in face) / 3.0)
-            role = _role_for_station(route, _station(centre, route, lengths), lengths)
+            role = _role_for_station(physical, _station(centre, physical, lengths), lengths)
             if (role == 'terminal' and all(abs(p[1]) < 1e-8
                     and abs(p[3] - geometry.ATLAS_UV['asphalt'][0]) < 1e-8 for p in face)):
                 # Replace the old six-metre flat apron instead of overlaying

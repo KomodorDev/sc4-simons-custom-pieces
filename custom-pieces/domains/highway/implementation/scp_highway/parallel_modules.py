@@ -14,6 +14,7 @@ from . import ramp_paths as paths
 from .native import channels, material_template, parse_paths
 from .parallel_layout import GROUPS, STRAIGHT_MODEL_HOSTS, module_catalog, owner
 from .parallel_geometry import ParallelRoadPainter, procedural_geometry, cut_sections
+from .parallel_slip_lanes import PROFILE as HIGHWAY_SLIP_PROFILE
 from .wheeltracks import NativeWheeltrackField
 
 
@@ -35,7 +36,7 @@ def _build_world(context):
     """Generate one coordinated native+authored city before selecting owners."""
     revision = hashlib.sha256(b''.join(
         Path(__file__).with_name(name + '.py').read_bytes()
-        for name in ('parallel_geometry', 'parallel_layout', 'parallel_modules',
+        for name in ('parallel_geometry', 'parallel_slip_lanes', 'parallel_layout', 'parallel_modules',
                      'parallel_ramp_review', 'ramp_geometry', 'ramp_materials', 'wheeltracks', 'slip_lanes')
     )).hexdigest()
     cached = context.get('_parallel_compiled_world')
@@ -43,7 +44,9 @@ def _build_world(context):
         return cached
     ramps, model_faces = procedural_geometry()
     painter = ParallelRoadPainter(context, ramps)
-    wheeltracks = NativeWheeltrackField(ramps, painter)
+    wheeltracks = NativeWheeltrackField(ramps, painter,
+        retain_nonzero_top_fragments=bool(ramps) and all(
+            ramp.get('highway_slip_profile') == HIGHWAY_SLIP_PROFILE for ramp in ramps))
     base, _routes = channels(context['dd_rhw'], 0x5753A380, False, 0)
     material = material_template(context)
     cells = set(map(tuple, module_catalog()['occupied_cells']))

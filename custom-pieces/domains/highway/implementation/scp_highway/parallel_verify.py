@@ -7,6 +7,7 @@ support and the full assembled physical joins.  Game behavior is unverified.
 """
 from __future__ import annotations
 
+from bisect import bisect_right
 from collections import Counter, defaultdict, deque, OrderedDict
 from copy import deepcopy
 from functools import lru_cache
@@ -25,6 +26,7 @@ from scp.track_paths import PATH, S3D
 PREFIX = 'highway_ddrhw_parallel_'
 SUBJECT = 'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond'
 GROUND_MOUTH_PROFILE = 'taper-6m-to-3p5m-over-3m'
+HIGHWAY_SLIP_PROFILE = 'shoulder-auxiliary-lower-8m-4m-upper-5m-1m'
 ROOT = Path(__file__).resolve().parents[4]
 APPROVAL = ('domains/highway/01_assemblies/'
             'ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/'
@@ -102,14 +104,89 @@ def _split_points(points):
     return result
 
 
-@lru_cache(maxsize=1)
-def expected_cell_routes():
+@lru_cache(maxsize=2)
+def revised_routes(profile=None):
+    """Independently reconstruct the explicit PATH-only shoulder revision.
+
+    The immutable approval still owns every physical mesh point and cut.
+    These literal taper/parallel dimensions alter only traffic before the
+    first retained sample at or beyond the actual eight-metre deck edge.
+    """
+    require(profile in (None, HIGHWAY_SLIP_PROFILE), 'Unknown parallel highway-slip profile')
+    original = approved_candidate()['routes']
+    if profile is None:
+        return deepcopy(original)
+    result = []
+    for ramp in original:
+        outward = ramp['points'] if ramp['direction'] == 'off' else list(reversed(ramp['points']))
+        old_u, _old_v = _uv(outward[0])
+        direction = 1. if _uv(outward[1])[0] > old_u else -1.
+        first = tuple(outward[0])
+        if ramp['deck'] == 'lower':
+            first = (60.8, 56., 7.5) if ramp['direction'] == 'off' else (-56., -60.8, 7.5)
+        u0, v0 = _uv(first)
+        side, height = ramp['side'], ramp['height_m']
+        taper, parallel = (8., 4.) if ramp['deck'] == 'lower' else (5., 1.)
+        join = next(at for at, point in enumerate(outward) if side * _uv(point)[1] >= 8.)
+        endpoint, following = _uv(outward[join]), _uv(outward[join + 1])
+        joining_station = direction * (endpoint[0] - u0)
+        joining_q = side * endpoint[1]
+        slope = side * (following[1] - endpoint[1]) / (direction * (following[0] - endpoint[0]))
+        span = joining_station - taper - parallel
+        require(span > 0., 'Parallel highway shoulder lacks a finite retained joining span')
+
+        def world(station, lateral):
+            u, v = u0 + direction * station, side * lateral
+            return (4. + (u - v) / math.sqrt(2.), -4. + (u + v) / math.sqrt(2.), height)
+
+        prefix = [first, (first[0] + direction * .01 / math.sqrt(2.),
+                          first[1] + direction * .01 / math.sqrt(2.), height)]
+        for at in range(1, int(taper * 8.) + 1):
+            station = at / 8.
+            t = station / taper
+            ease = 10. * t ** 3 - 15. * t ** 4 + 6. * t ** 5
+            prefix.append(world(station, abs(v0) + (5.5 - abs(v0)) * ease))
+        prefix.extend(world(taper + at / 8., 5.5) for at in range(1, int(parallel * 8.) + 1))
+        steps = max(8, math.ceil(span * 8.))
+        for at in range(1, steps):
+            t = at / steps
+            lateral = (5.5 * (2. * t ** 3 - 3. * t ** 2 + 1.)
+                       + joining_q * (-2. * t ** 3 + 3. * t ** 2)
+                       + span * slope * (t ** 3 - t ** 2))
+            prefix.append(world(taper + parallel + t * span, lateral))
+        require(all(side * _uv(point)[1] < 8. for point in prefix),
+                'A revised shoulder sample alters the retained outside-deck route')
+        revised = prefix + [tuple(point) for point in outward[join:]]
+        points = revised if ramp['direction'] == 'off' else list(reversed(revised))
+        delta, old_last = len(points) - len(ramp['points']), len(ramp['points']) - 1
+        segments = deepcopy(ramp['segments'])
+        for segment in segments:
+            for key in ('start_index', 'end_index'):
+                if (segment[key] >= join if ramp['direction'] == 'off' else segment[key] > old_last - join):
+                    segment[key] += delta
+        record = {**deepcopy(ramp), 'mesh_points': deepcopy(ramp['points']),
+                       'points': points, 'segments': segments,
+                       'points_uvh': [[*_uv(point), point[2]] for point in points],
+                       'native_high_port': list(first),
+                       'path_cells': [list(cell) for cell in sorted(_split_points(points), key=lambda c: (c[1], c[0]))],
+                       'highway_slip_profile': profile,
+                       'independent_auxiliary_lane': {'taper_m': taper, 'parallel_m': parallel,
+                           'auxiliary_q_m': 5.5, 'joining_station_m': joining_station,
+                           'bridge_axis_length_m': span, 'retained_first_outside_sample': list(outward[join]),
+                           'retained_outward_joining_slope': slope}}
+        record['profile']['length_total_plan_m'] = sum(math.dist(a[:2], b[:2]) for a, b in zip(points, points[1:]))
+        result.append(record)
+    return result
+
+
+@lru_cache(maxsize=2)
+def expected_cell_routes(profile=None):
     """All unchanged native channels plus the exact four approved transfers."""
     from .assembly_verify import _native_routes
     result = {cell: [{**route, 'points': [(p[0] + 16. * cell[0], p[1] - 16. * cell[1], p[2])
                                         for p in route['points']]}
                      for route in _native_routes(*cell)] for cell in OWNED_CELLS}
-    for ramp in approved_candidate()['routes']:
+    for ramp in revised_routes(profile):
         for cell, fragments in _split_points(ramp['points']).items():
             require(cell in result, 'An approved ramp leaves the literal 31-cell union')
             result[cell].extend({'transport': 1, 'points': points, 'approved_ramp': ramp['id']}
@@ -150,6 +227,8 @@ def _source_origin(piece):
             and len(set(piece['tile_ids'])) == len(expected),
             'Parallel module ownership or sparse footprint differs from the reviewed partition')
     engineering = piece.get('engineering', {})
+    require(engineering.get('highway_slip_profile') in (None, HIGHWAY_SLIP_PROFILE),
+            'Parallel piece declares an unknown highway-slip profile')
     if 'ground_mouth_profile' in engineering:
         require(key in ('northwest-terminal', 'southeast-terminal')
                 and engineering['ground_mouth_profile'] == GROUND_MOUTH_PROFILE,
@@ -186,7 +265,8 @@ PARTITIONS = {
 def check_paths(resources, piece):
     from .ramp_verify import _paths
     origin = _source_origin(piece)
-    expected = expected_cell_routes()
+    profile = piece.get('engineering', {}).get('highway_slip_profile')
+    expected = expected_cell_routes(profile)
     routes = []
     maximum = 0.
     for cell, tile in zip(piece['cells'], piece['tile_ids']):
@@ -204,6 +284,7 @@ def check_paths(resources, piece):
     require(maximum <= .30001, 'Saved parallel ramp exceeds 30 percent grade')
     return {'passed': True, 'approved_route_points_and_native_channels_checked': True,
             'route_fragments_checked': len(routes), 'maximum_grade_percent': maximum * 100.,
+            'highway_slip_profile': profile or 'retained-approved-departure',
             'approval_sha256': APPROVAL_SHA256, 'game_operation_tested': False}
 
 
@@ -223,7 +304,7 @@ def expected_ports(piece):
     for local in map(tuple, piece['cells']):
         source = local[0] + origin[0], local[1] + origin[1]
         records = []
-        for expected in expected_cell_routes()[source]:
+        for expected in expected_cell_routes(piece.get('engineering', {}).get('highway_slip_profile'))[source]:
             city_local = [(p[0] - 16. * source[0], p[1] + 16. * source[1], p[2])
                           for p in expected['points']]
             records.append({'transport': expected['transport'],
@@ -263,7 +344,7 @@ def reviewed_contract(piece):
         result['port_directions'][name] = port['direction']
     graph = defaultdict(set)
     for cell in PARTITIONS[piece['geometry_key'].removeprefix('parallel-')]:
-        for route in expected_cell_routes()[cell]:
+        for route in expected_cell_routes(piece.get('engineering', {}).get('highway_slip_profile'))[cell]:
             graph[route['transport'], _point_key(route['points'][0])].add(
                 (route['transport'], _point_key(route['points'][-1])))
     for first in ports:
@@ -373,7 +454,8 @@ def _check_models_uncached(resources, piece, donors=None):
     # their complete independent field check authorizes that exception.
     world_faces = [{**face, 'points': tuple((p[0] + 16. * origin[0], p[1] - 16. * origin[1], p[2])
                                           for p in face['points'])} for face in faces]
-    field = check_wheeltrack_vertices(world_faces)
+    field = check_wheeltrack_vertices(world_faces,
+                                     highway_slip_profile=piece.get('engineering', {}).get('highway_slip_profile'))
     appearance = _native_appearance(faces, neutral_field_controls=field)
     check_preview(resources, piece)
     report = {'passed': True, 'model_resources_checked': 5 * len(piece['cells']) + 1,
@@ -391,10 +473,10 @@ def _check_models_uncached(resources, piece, donors=None):
     return report
 
 
-@lru_cache(maxsize=1)
-def _approved_texture_segments():
+@lru_cache(maxsize=2)
+def _approved_texture_segments(profile=None):
     result = []
-    for route in approved_candidate()['routes']:
+    for route in revised_routes(profile):
         distance = 0.
         segments = []
         for a, b in zip(route['points'], route['points'][1:]):
@@ -407,7 +489,8 @@ def _approved_texture_segments():
             for x in range(math.floor((min(a[0], b[0]) - 4.) / 2.), math.floor((max(a[0], b[0]) + 4.) / 2.) + 1):
                 for y in range(math.floor((min(a[1], b[1]) - 4.) / 2.), math.floor((max(a[1], b[1]) + 4.) / 2.) + 1):
                     buckets[x, y].append(segment)
-        result.append((route, {'segments': segments, 'buckets': buckets}))
+        result.append((route, {'segments': segments, 'buckets': buckets,
+                               'stations': [segment[2] for segment in segments]}))
     return result
 
 
@@ -438,7 +521,20 @@ def _texture_frames(point, segments, *, encoding_ties=False):
     return [frame for frame in frames if math.sqrt(frame[0]) - distance <= 2. * position_radius + 1e-12]
 
 
-def check_wheeltrack_vertices(faces):
+def _phase_tangent(distance, segments, profile):
+    """The revised field uses the following chord at an exact phase vertex.
+
+    Lateral distance still belongs to the nearest finite chord. At its
+    clamped end that chord and the phase-selected chord need not be the
+    same. This literal field rule preserves the existing UV and position
+    bounds; it does not admit an arbitrary alternative tangent.
+    """
+    require(profile == HIGHWAY_SLIP_PROFILE, 'Following phase tangents need the revised slip profile')
+    at = max(0, bisect_right(segments['stations'], distance) - 1)
+    return segments['segments'][at][4:6]
+
+
+def check_wheeltrack_vertices(faces, *, highway_slip_profile=None):
     """Bound the neutral exception by the complete independent saved UV field.
 
     Every newly mapped DD field vertex must follow the approved route's
@@ -455,7 +551,7 @@ def check_wheeltrack_vertices(faces):
         if max(heights) - min(heights) > 1e-5 or min(abs(heights[0] - 7.5), abs(heights[0] - 15.)) > 1e-5:
             continue
         centre = tuple(sum(p[a] for p in face['points']) / 3. for a in range(3))
-        candidates = [(route, segments) for route, segments in _approved_texture_segments()
+        candidates = [(route, segments) for route, segments in _approved_texture_segments(highway_slip_profile)
                       if abs(route['height_m'] - centre[2]) <= 1e-5]
         route, segments = min(candidates, key=lambda pair: _nearest_texture_frame(centre, pair[1])[0])
         side = route['side']
@@ -467,6 +563,8 @@ def check_wheeltrack_vertices(faces):
             for point, actual in zip(face['points'], face['uv']):
                 variants = []
                 for _score, distance, lateral, tx, ty in _texture_frames(point, segments, encoding_ties=True):
+                    if highway_slip_profile == HIGHWAY_SLIP_PROFILE:
+                        tx, ty = _phase_tangent(distance, segments, highway_slip_profile)
                     q = side * _uv(point)[1]
                     centre_q = q - lateral * side * (tx + ty) / math.sqrt(2.)
                     ease = lambda value: (lambda t: t * t * (3. - 2. * t))(min(1., max(0., value)))
@@ -486,10 +584,55 @@ def check_wheeltrack_vertices(faces):
         maximum_u, maximum_v = max(maximum_u, error_u), max(maximum_v, error_v)
         count += 1
     return {'passed': True, 'mapped_native_dd_triangles_checked': count,
+            'highway_slip_profile': highway_slip_profile or 'retained-approved-departure',
             'maximum_vertex_u_error': maximum_u, 'maximum_vertex_v_error': maximum_v,
             'vertex_uv_tolerance': 5e-6, 'source': 'Pinned approved routes and independently reconstructed native asphalt field',
             'nearest_finite_segment_position_tie_radius_m': math.sqrt(2.) * 4e-6,
             'game_filtering_or_colour_observed': False}
+
+
+def check_highway_slip_lanes(faces, *, profile):
+    """Affirmatively sample saved tyre-wear phase on every real parallel run."""
+    require(profile == HIGHWAY_SLIP_PROFILE, 'Revised slip checks need the explicit highway-slip profile')
+    from .ramp_verify import _barycentric
+    index = _FaceIndex(faces)
+    controls = []
+    for route, segments in _approved_texture_segments(profile):
+        data = route['independent_auxiliary_lane']
+        outward = route['points'] if route['direction'] == 'off' else list(reversed(route['points']))
+        u0, _v0 = _uv(outward[0])
+        direction = 1. if _uv(outward[1])[0] > u0 else -1.
+        samples = math.ceil(data['parallel_m'] / .5)
+        for at in range(samples):
+            station = data['taper_m'] + data['parallel_m'] * (at + .5) / samples
+            u, q = u0 + direction * station, route['side'] * 5.5
+            point = 4. + (u - q) / math.sqrt(2.), -4. + (u + q) / math.sqrt(2.), route['height_m']
+            _score, distance, lateral, _tx, _ty = _nearest_texture_frame(point, segments)
+            require(abs(lateral) < 1e-8, 'Independent auxiliary control leaves its literal parallel centreline')
+            expected = 80. / 128., distance / 16.
+            found = []
+            for face in index.nearby(point, margin=2e-5):
+                if face['texture'] != 0x5713000E or not face['upward']:
+                    continue
+                weights = _barycentric(point, face['points'])
+                if weights is None or min(weights) < -1e-7:
+                    continue
+                height = sum(w * p[2] for w, p in zip(weights, face['points']))
+                if abs(height - point[2]) > 2e-6:
+                    continue
+                actual = tuple(sum(w * uv[axis] for w, uv in zip(weights, face['uv'])) for axis in (0, 1))
+                found.append(max(abs(a - b) for a, b in zip(actual, expected)))
+            require(found and min(found) <= 5e-6,
+                    f'Parallel auxiliary lane lacks its actual saved native wear field: {route["id"]} {station}')
+        controls.append({'ramp_id': route['id'], 'taper_axis_m': data['taper_m'],
+                         'parallel_axis_m': data['parallel_m'], 'auxiliary_axis_q_m': 5.5,
+                         'continuous_sampled_parallel_chords': int(data['parallel_m'] * 8.),
+                         'saved_wear_controls': samples,
+                         'outside_mesh_and_route_reference': 'immutable approved candidate'})
+    return {'passed': True, 'profile': profile, 'ramps': controls,
+            'actual_saved_parallel_wear_controls': sum(row['saved_wear_controls'] for row in controls),
+            'vertex_and_sample_uv_tolerance': 5e-6,
+            'scope': 'Exact independently reconstructed saved PATHs establish real taper and parallel lengths; actual indexed DD UV controls affirm native tyre wear on all four parallel runs. Physical road-width checks remain on the immutable original mesh, and actual car-corridor checks remain separate. No game observation.'}
 
 
 def check_construction_fields(fields, piece, resources):
@@ -953,6 +1096,15 @@ def _assembly_ground_mouth_profile(pieces, scene):
     return next(iter(profiles))
 
 
+def _assembly_highway_slip_profile(pieces, scene):
+    """Every whole-cell owner must dispatch the same explicit traffic revision."""
+    profiles = {pieces[row['piece_id']].get('engineering', {}).get('highway_slip_profile')
+                for row in scene['placements']}
+    require(profiles in ({None}, {HIGHWAY_SLIP_PROFILE}),
+            'Parallel assembly must declare one consistent highway-slip revision')
+    return next(iter(profiles))
+
+
 def _ground_widths(ramp, profile):
     """Independent literal widths at the frozen PATH samples, in travel order.
 
@@ -1082,11 +1234,11 @@ def check_ground_mouths(faces, *, profile=GROUND_MOUTH_PROFILE):
             'scope': 'Actual saved flat MIS triangles, finite continuous width lines, exact nominal-edge samples, and no static asphalt along the four Avenue-parallel pedestrian collars. Complete sidewalk surface width and game texture selection are not established.'}
 
 
-def check_model_union(faces, routes, *, ground_mouth_profile=None):
+def check_model_union(faces, routes, *, ground_mouth_profile=None, highway_slip_profile=None):
     """Check continuous car corridors and each explicitly declared road width."""
     from .ramp_verify import _intrudes
     index = _FaceIndex(faces)
-    field = check_wheeltrack_vertices(faces)
+    field = check_wheeltrack_vertices(faces, highway_slip_profile=highway_slip_profile)
     precision = {'euclidean_distance_limit_m': 2e-6, 'admitted_road_encoding_spans': 0,
                  'maximum_admitted_along_route_span_m': 0., 'maximum_sampled_actual_face_distance_m': 0.}
     segments, grade = 0, 0.
@@ -1382,6 +1534,7 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     pieces = {piece['id']: piece for piece in manifest['pieces']}
     owners, shift = check_owned_cells(pieces, scene)
     ground_profile = _assembly_ground_mouth_profile(pieces, scene)
+    slip_profile = _assembly_highway_slip_profile(pieces, scene)
     for identifier in {owner['piece_id'] for owner in owners.values()}:
         check_paths(piece_resources[identifier], pieces[identifier])
     routes = decode_placed_routes(owners, piece_resources)
@@ -1405,7 +1558,8 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
             raw = piece_resources[owner['piece_id']][*S3D, owner['tile'] + 4]
             faces.extend({**face, 'geometry_key': owner['geometry_key']} for face in
                          _decode_faces(raw, owner['local_cell'], origin=owner['origin']))
-        models = check_model_union(faces, routes, ground_mouth_profile=ground_profile)
+        models = check_model_union(faces, routes, ground_mouth_profile=ground_profile,
+                                   highway_slip_profile=slip_profile)
         supports, cuts = check_supports(faces), check_physical_cuts(faces)
         ground_mouths = (check_ground_mouths(faces, profile=ground_profile) if ground_profile else
                         {'passed': True, 'profile': 'retained-six-metre-ground-mouth',
@@ -1413,8 +1567,11 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
         native = check_straight_native_decks_and_mouths(faces)
         projection = check_projection(faces)
         uv_seams = check_highway_ramp_uv_seams(faces)
+        slip_lanes = (check_highway_slip_lanes(faces, profile=slip_profile) if slip_profile else
+                      {'passed': True, 'profile': 'retained-approved-departure',
+                       'revised_auxiliary_lane_claimed': False})
     else:
-        models = supports = cuts = native = projection = uv_seams = ground_mouths = {'passed': False, 'status': 'not-run'}
+        models = supports = cuts = native = projection = uv_seams = ground_mouths = slip_lanes = {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': SUBJECT,
             'saved_resource_checks_passed': bool(inspect_models),
             'saved_path_checks_passed': True,
@@ -1424,6 +1581,8 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
             'construction': {'unique_owned_cells': 31, 'placements': 15,
                              'bounding_rectangle_tiles': [8, 8], 'translation_east_north_m': list(shift)},
             'paths': paths, 'proper_rotation_paths': rotations, 'model_union': models, 'supports': supports,
+            'highway_slip_profile': slip_profile or 'retained-approved-departure',
+            'highway_slip_lanes': slip_lanes,
             'physical_functional_cuts': cuts,
             'ground_mouths': ground_mouths,
             'straight_native_decks_and_mouths': native,

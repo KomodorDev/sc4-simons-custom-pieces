@@ -58,6 +58,7 @@ def _catalog():
                                                      max(c[1] for c in local) + 1],
                         'authors_surface_atlas': False,
                         'engineering': {
+                            'highway_slip_profile': 'shoulder-auxiliary-lower-8m-4m-upper-5m-1m',
                             'max_grade_percent': 30.0, 'car_corridor_half_width_m': 1.25,
                             'car_corridor_height_m': 3.8, 'pavement_path_offset_m': 0.0,
                             'model_only_cells': [], 'path_ownership': 'Every full native and ramp fragment in each owned city cell',

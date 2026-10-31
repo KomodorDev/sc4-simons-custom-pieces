@@ -78,7 +78,10 @@ def native_seam_services(ramps):
     from .ramp_geometry import _branch_footprints
     services = []
     for ramp in ramps:
-        data = profile(ramp)
+        # White-edge erasure can start upstream of the physical departure.
+        # The binary deck-edge repair remains bounded by the retained mesh.
+        physical = {key: value for key, value in ramp.items() if key != 'shoulder_points'}
+        data = profile(physical)
         stations = [data['u0'], data['u0']+data['direction']*data['join_s']]
         stations.extend((x-z)/math.sqrt(2.)
                         for footprint in _branch_footprints(ramp) for x,z in footprint)
@@ -101,7 +104,7 @@ def canonical_native_seam_vertex(point, cell, services):
 def profile(ramp):
     """Describe one native-anchored flat auxiliary lane, looking outwards."""
     from .ramp_geometry import highway_coordinates
-    points = ramp.get('mesh_points', ramp['points'])
+    points = ramp.get('shoulder_points', ramp.get('mesh_points', ramp['points']))
     outward = points if ramp['direction'] == 'off' else list(reversed(points))
     u0, v0 = highway_coordinates(outward[0])
     direction = 1 if highway_coordinates(outward[1])[0] > u0 else -1

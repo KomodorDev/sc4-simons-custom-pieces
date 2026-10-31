@@ -4,14 +4,14 @@
   "piece_id": "ddrhw-parallel-lower-exit-grade",
   "domain_id": "highway",
   "source_binding": {
-    "compiled_build": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01",
-    "compiled_manifest_sha256": "e6abff46fb9ebd614c882207c4809dcb5002c11948ba28083c5cc7a1a4e914ed",
+    "compiled_build": "dist/ddrhw-parallel-diamond-slip-lanes-02",
+    "compiled_manifest_sha256": "a222a24ada086f5616a9b4e376b293880bf2dd4ee9569754adb66dbdcfc23fc7",
     "files": {
-      "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat": "a5f6e4073e523e33d6d6a7b597ff7562ce968bb3dd93004c1a3f6fec809b930d",
-      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/connections.json": "a06e42c2d6996918fbc598d021bfdca8cc75871e8a6b2008430b3fb7fbb62cc6",
-      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/connector-groups.jsonc": "3174435357c9b03c28d255c8eeb44492ad723270656f3dc01de978949f9cfaf4",
-      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/piece.jsonc": "71cabd682a1bb5671689264c943bfe360af382c720bfb7ac184ef502b2878ee6",
-      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "eef47f29367485dce9a0f830328d74b16b34f27db7fc05007ab9083f369cdd0c",
+      "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4",
+      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/connections.json": "cc972f56900179e5238a2f02ba307af6752308b24981e35ca6634637aa07187d",
+      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/connector-groups.jsonc": "55ebcf8e3b4a88190347b19d0b67afe2f3c232be88d8ef34e11323b2406031f3",
+      "domains/highway/00_pieces/ddrhw-parallel-lower-exit-grade/piece.jsonc": "2d3721e31b32223f4edc08a56b67c9b622f2c677d136d7a5f3f723aa88efe582",
+      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "94d807cc8f778209323429c7c1d9d68ff4562e03a7f2e849fd6875792e81c1df",
       "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
       "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
       "domains/highway/implementation/scp_highway/adaptive_ground.py": "049feb134ea074ab48b545666f45e6cc62e3ab6c6692d6e0293e7ca6d33ef0c0",
@@ -20,7 +20,7 @@
       "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
       "domains/highway/implementation/scp_highway/connections.py": "5b770ae4e5b39664e644e069b3bbe26a03f35ec98e3443371295e19e42bf715c",
       "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
-      "domains/highway/implementation/scp_highway/icons.py": "2b024c0fd5d4a5d6780bd3cf5cff8971ac8f8b23d1e056bec4e23a5aeb0027b9",
+      "domains/highway/implementation/scp_highway/icons.py": "709ce2d4ef8a02d80fde87a94df53907fe189353135120ce50231ae0574c5a7b",
       "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
       "domains/highway/implementation/scp_highway/menu.py": "5955668a10922cd09ad06002bd7793055da03226e3b8b186190428fb36699514",
       "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "092ad0734b669c7c28e4ba5284013f4b13d2aa6eb120a8db7d7d574aa8f818b6",
@@ -33,22 +33,23 @@
       "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
       "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
       "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
-      "domains/highway/implementation/scp_highway/parallel_geometry.py": "e779d7d0266dece416026552481ac3d581495e884ef212ead867a4eb49947e60",
-      "domains/highway/implementation/scp_highway/parallel_layout.py": "882c5da5125fd7ffea8370ab01588f5f34031868942fb3b26604650c51c07dd8",
-      "domains/highway/implementation/scp_highway/parallel_modules.py": "2bacc9cd2832403d679b378edf41712dde9a6a6e1c6af057f9f905b7d96fdba3",
+      "domains/highway/implementation/scp_highway/parallel_geometry.py": "30fe2eefb87f82994d55742353d24d8f28f8457e1933d09b9242d1d470ace59a",
+      "domains/highway/implementation/scp_highway/parallel_layout.py": "ac80ecdf7d9f56db0a50619b315516dcd9f50b8796b4e21cc3413041f023641f",
+      "domains/highway/implementation/scp_highway/parallel_modules.py": "3b9f8fa9b5f78b24bf1d27125400b3d207e6aa5c05bc3f209bd4cb33e686c2c1",
       "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
-      "domains/highway/implementation/scp_highway/parallel_verify.py": "c7d9c95f766c1dbb8500add44bf6381aff02026705403eccda010b3c0d1665a8",
-      "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+      "domains/highway/implementation/scp_highway/parallel_slip_lanes.py": "1d217570bb59a6633c0d3cec054410349d3df3471aed4d2e389fc230bf9fae48",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "66b59dd7a5ab0366a86451140a1ed84c646d5f9031316142ed059f3361e92863",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "0a0bc5ddcaf63546386956c5f2213efba02d3245bcc9d1375d59e43a13068bca",
       "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
       "domains/highway/implementation/scp_highway/ramp_paths.py": "fb5333bd8f3e72e23ec133403c217579600a518e6a4d1ee34aebbbb6194b4413",
       "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
       "domains/highway/implementation/scp_highway/recipes.py": "c3f8f13fe06c795d682849d8beef92a3a4cf80a2051ed98e89e9371b89a6e899",
       "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
-      "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "cf07e354386195b3ec7078ec0d1ddf4609afdf2ea426bd1f9469e48c369bfbfb",
       "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "c5af74ba32237efcd8b646c6005129419d70f7f5ac71f427ffcc9df0f690df8c",
       "domains/highway/implementation/scp_highway/verify.py": "71f1b9150aa36fd101e395f2cbfe8c8c1108fe6b7174762e08aa82706176344d",
       "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
-      "domains/highway/implementation/scp_highway/wheeltracks.py": "b65baee151fd7b643b1dd53d92226d96e5e977b4b665830ae50d779718931b61",
+      "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
       "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
       "framework/scp/adaptive_network.py": "22b9580f9e179fa76c402dcaa0c9525567198d00fe7b198167c79db51a281206",
       "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
@@ -189,7 +190,8 @@
             -1
           ]
         ],
-        "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted"
+        "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
       },
       "shadow_mode": "generated",
       "shadow_mappings": [
@@ -205,7 +207,7 @@
         }
       ],
       "provenance": {
-        "geometry": "Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.",
+        "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
         "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
         "redistribution": "permission-pending"
       },
@@ -230,17 +232,17 @@
           "effect:ddrhw-parallel-lower-exit-grade:ea5118b0-ea5118b1-7f5b9ff5": "71a517725ffb9208bbbd02279ebff29505c57a21d32e748e1672b7e9e5f071db",
           "exemplar:ddrhw-parallel-lower-exit-grade:6534284a-a8434037-7f5b9000": "5010043f19b6b7cb2b6408935f7bd8afa64a5426cf54057282a7ddc6d6a2c350",
           "exemplar:ddrhw-parallel-lower-exit-grade:6534284a-a8434037-7f5b9010": "fb538bc6dfbe09a3532607a530b50a290364f2af6f4564ec90b833d17066ee65",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9000": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9001": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9002": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9003": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9004": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9010": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9011": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9012": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9013": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9014": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
-          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9ff5": "0ca86825ff3e58f5f1675b8b0cfe67a6d0a657fe3d70af78c1969e7aa83c8807",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9000": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9001": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9002": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9003": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9004": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9010": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9011": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9012": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9013": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9014": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+          "model:ddrhw-parallel-lower-exit-grade:5ad0e817-badb57f1-7f5b9ff5": "40111e1ec2ac0ebf86cdbbe2e850d433582985ff89a70a1c88cc813ea0811745",
           "path:ddrhw-parallel-lower-exit-grade:296678f7-a966883f-7f5b9000": "4f872a7686a7ba9aca8ff768737a1fbaa3fe97a49ac062c59700cdc79cb2964a",
           "path:ddrhw-parallel-lower-exit-grade:296678f7-a966883f-7f5b9010": "8b5c71f2d139e4e40b3a69bcb0d98b1c88944c08a78f423a4136d2b54117df75",
           "shadow:ddrhw-parallel-lower-exit-grade:7ab50e44-2bc2759a-7f5b9000": "e5a45dae79b1a90db44b1ba6be2d0d61d985b2fdaa92c97e4b81ed6fb3be51ed",
@@ -1104,8 +1106,8 @@
       "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
       "piece_id": "ddrhw-parallel-lower-exit-grade",
       "source_binding": {
-        "piece_sha256": "71cabd682a1bb5671689264c943bfe360af382c720bfb7ac184ef502b2878ee6",
-        "connections_sha256": "a06e42c2d6996918fbc598d021bfdca8cc75871e8a6b2008430b3fb7fbb62cc6"
+        "piece_sha256": "2d3721e31b32223f4edc08a56b67c9b622f2c677d136d7a5f3f723aa88efe582",
+        "connections_sha256": "cc972f56900179e5238a2f02ba307af6752308b24981e35ca6634637aa07187d"
       },
       "components": [
         {
@@ -3652,9 +3654,9 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/ddrhw-parallel-diamond-pedestrian-mouths-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat",
-      "dat_sha256": "a5f6e4073e523e33d6d6a7b597ff7562ce968bb3dd93004c1a3f6fec809b930d",
-      "model_sha256": "0ca86825ff3e58f5f1675b8b0cfe67a6d0a657fe3d70af78c1969e7aa83c8807",
+      "dat_path": "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat",
+      "dat_sha256": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4",
+      "model_sha256": "40111e1ec2ac0ebf86cdbbe2e850d433582985ff89a70a1c88cc813ea0811745",
       "resource_fingerprints_checked": 28,
       "directional_ports_reextracted": 10,
       "directed_journeys_reextracted": 5,
@@ -3671,5 +3673,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "2a7fefb6c5b01e1dbb3c4cbb771bc3c262ad7fd3cfcbbba1316a25676be22be0"
+  "content_sha256": "5fc964dc1f18e0d176d783ff127bcb19e513ebb9fb0f756013a4c9b4a530540f"
 }

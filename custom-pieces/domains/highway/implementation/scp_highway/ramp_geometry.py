@@ -68,12 +68,14 @@ def _normal(triangle):
     return (u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0])
 
 
-def _triangulate(polygon, desired=None):
+def _triangulate(polygon, desired=None, *, minimum_normal_squared=1e-16):
+    """Keep the established cutoff unless an owner requests nonzero slivers."""
     result = []
     for index in range(1, len(polygon) - 1):
         triangle = polygon[0], polygon[index], polygon[index + 1]
         normal = _normal(triangle)
-        if sum(value * value for value in normal) < 1e-16:
+        normal_squared = sum(value * value for value in normal)
+        if normal_squared == 0.0 or normal_squared < minimum_normal_squared:
             continue
         if desired is not None and sum(a * b for a, b in zip(normal, desired)) < 0.0:
             triangle = triangle[0], triangle[2], triangle[1]
@@ -820,7 +822,15 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=(), wheeltra
                 revised = [part for polygon in pieces for part in wheeltracks.remap_polygon(polygon)]
                 wheeltrack_processed = revised != pieces
                 pieces = revised
-            fragments = [triangle for polygon in pieces for triangle in _triangulate(polygon)]
+            # The explicitly opted-in parallel field can create genuine
+            # submillimetre slivers. Preserve their nonzero top coverage;
+            # the established exact encoded-zero filter below still removes
+            # faces that collapse after float32 packing. Every other caller
+            # retains the original triangulation threshold.
+            retain_nonzero = (wheeltrack_processed
+                              and getattr(wheeltracks, 'retain_nonzero_top_fragments', False))
+            fragments = [triangle for polygon in pieces for triangle in _triangulate(
+                polygon, minimum_normal_squared=0.0 if retain_nonzero else 1e-16)]
             fragments = [tuple((local[0]+16.*cell[0],local[1],local[2]+16.*cell[1],*local[3:])
                                for point in triangle
                                for local in (canonical_native_seam_vertex(
@@ -837,7 +847,12 @@ def cut_native_branch_openings(raw, cell, ramps, *, ground_pavement=(), wheeltra
                     encoded = [struct.unpack('<5f', struct.pack('<5f',
                                p[0] - 16.0 * cell[0], p[1], p[2] - 16.0 * cell[1], *p[3:]))
                                for p in triangle]
-                    return any(value != 0.0 for value in _normal(encoded))
+                    normal = _normal(encoded)
+                    # A newly retained top sliver must also remain strictly
+                    # upward after encoding. A collapsed or reversed sliver
+                    # cannot establish coverage; the independent saved-face
+                    # support audit still decides whether omission is safe.
+                    return normal[1] > 0.0 if retain_nonzero else any(value != 0.0 for value in normal)
                 fragments = [triangle for triangle in fragments if encoded_area(triangle)]
             before_bytes = b"".join(struct.pack("<5f", *p) for p in world)
             after_bytes = b"".join(struct.pack("<5f", *p) for part in fragments for p in part)
