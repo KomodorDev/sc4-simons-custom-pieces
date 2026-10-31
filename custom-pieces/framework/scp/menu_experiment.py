@@ -380,6 +380,9 @@ def verify_menu_experiment(output, write_report=True):
     require(not any(path.is_symlink() for path in output.rglob('*')), 'Menu experiment contains a symlink')
     manifest = _read_json(output / 'manifest.json')
     experiment = manifest.get('menu_experiment')
+    from .multi_assembly_menu import KIND as MULTI_KIND, verify as verify_multiple
+    if isinstance(experiment, dict) and experiment.get('kind') == MULTI_KIND:
+        return verify_multiple(output, write_report=write_report)
     require(isinstance(experiment, dict) and experiment.get('kind') in (KIND, ASSEMBLY_MENU_KIND)
             and experiment.get('schema_version') == 1, 'Unsupported menu experiment')
     proof = experiment.get('source_inputs')
@@ -677,3 +680,11 @@ def build_assembly_menu(project_root, source, output, *, layout_id='trumpet',
     return build_menu_experiment(project_root, source, output, layout_id=layout_id,
                                 domain_id=domain_id, plugins=plugins, extra_roots=extra_roots,
                                 single_button_only=True)
+
+
+def build_assembly_menus(project_root, source, output, *, layout_ids,
+                         domain_id='high-speed-rail', plugins=None, extra_roots=None):
+    """Prepare disjoint assembly buttons together from one normal source build."""
+    from .multi_assembly_menu import build
+    return build(project_root, source, output, layout_ids=layout_ids, domain_id=domain_id,
+                 plugins=plugins, extra_roots=extra_roots)

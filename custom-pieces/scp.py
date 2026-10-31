@@ -164,7 +164,9 @@ def main():
             if command == 'assembly-menu' else 'Compatibility command for assembly menu preparation'))
         menu_cmd.add_argument('--source', type=Path, default=ROOT / 'dist/current', help='Existing normal verified build; all selected piece assets are preserved')
         menu_cmd.add_argument('--output', type=Path, default=ROOT / ('dist/trumpet-assembly-menu' if command == 'assembly-menu' else 'dist/trumpet-menu-test'))
-        menu_cmd.add_argument('--layout', default='trumpet', help='Exact entry in the owning domain menu-layout.jsonc')
+        menu_cmd.add_argument('--layout', action='append' if command == 'assembly-menu' else 'store',
+                              default=None if command == 'assembly-menu' else 'trumpet',
+                              help='Exact domain menu-layout.jsonc entry; repeat for disjoint assembly menus')
         menu_cmd.add_argument('--domain', default='high-speed-rail')
         menu_cmd.add_argument('--plugins', type=Path)
         menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
@@ -181,9 +183,13 @@ def main():
         print(json.dumps(result, indent=2))
         return 0
     if args.command in ('assembly-menu', 'menu-test'):
-        from scp.menu_experiment import build_assembly_menu, build_menu_experiment
+        from scp.menu_experiment import build_assembly_menu, build_assembly_menus, build_menu_experiment
         operation = build_assembly_menu if args.command == 'assembly-menu' else build_menu_experiment
-        result = operation(ROOT, args.source, args.output, layout_id=args.layout,
+        layouts = (args.layout or ['trumpet']) if args.command == 'assembly-menu' else [args.layout]
+        options = {'layout_ids': layouts} if len(layouts) > 1 else {'layout_id': layouts[0]}
+        if len(layouts) > 1:
+            operation = build_assembly_menus
+        result = operation(ROOT, args.source, args.output, **options,
             domain_id=args.domain, plugins=args.plugins or configured_plugins(), extra_roots=args.extra_plugins)
         print(json.dumps(result, indent=2))
         return 0
