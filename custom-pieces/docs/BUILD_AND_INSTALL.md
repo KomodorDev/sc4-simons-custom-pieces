@@ -303,6 +303,19 @@ python custom-pieces/scp.py uninstall --backup-root '/absolute/path/to/SCP Backu
 
 Removal checks its ownership receipt and saves a snapshot first. The tools do not edit city files or NAM's original archives.
 
+### 7.1 Decide whether an update needs fresh placement
+
+**Fresh placement** means selecting a component in the game and placing a new copy, which executes its construction rules. **Restart and reload** means quitting SimCity 4 completely, installing the checked update while the game is closed, starting the game again, and opening the saved city. Rebuilding compiled DAT files and rebuilding a placed assembly are different actions. State which game action a revision requires in its test handoff, using an actual comparison of the old and new saved resources.
+
+| Verified change | First game test and its reason |
+| --- | --- |
+| Only PATH data changes; resource IDs, placed network configurations, construction rules, and T21 bindings remain unchanged | Restart and reload the existing placement first. The game is expected to load the replacement PATH bytes under the same IDs; confirm the result with Route Query and visible travel. The [adaptive highway height correction](../domains/highway/NETWORK_SPEC.md#13-adaptive-path-runtime-elevation) is this bounded example, and its existing-placement result remains unverified until observed. A shared ID alone does not establish that an arbitrary update applies to an old placement. |
+| Construction rules, helper seeds, or owned cells change | Test freshly placed copies of the affected components. Reloading a city does not execute their new construction requests or create a newly added helper. The [native highway approach experiment](../domains/highway/NETWORK_SPEC.md#12-native-highway-approach-experiment) demonstrates this distinction. Preserve the original city before replacing components. |
+| T21 prop bindings or selector conditions change | Test fresh control instances under the [adaptive-ground procedure](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models). An older cached prop's appearance does not establish how the revised T21 attaches during placement. |
+| Resource IDs change | Do not expect the old placement to become the new type automatically. Preserve IDs for retained types; a deliberately new type requires its own placement or an explicitly implemented migration. |
+
+For a PATH-only correction, keep the reported layout and all of its ramps connected during the first retest. Run the simulation until new traffic enters, inspect each affected direction and level, and record Route Query separately from actual moving vehicles. If the failure persists, preserve that result before testing a fresh copy in a disposable city. Distinguish loaded existing placements, fresh placements, and their save/reload results; success in one state does not establish the others. Resource comparison and software regressions establish the repair's scope, while the [observation workflow](TESTING.md#4-record-one-observation) records its actual game outcome.
+
 <a id="prepare-the-assembly-menu"></a>
 
 ## 8. Prepare the assembly menu

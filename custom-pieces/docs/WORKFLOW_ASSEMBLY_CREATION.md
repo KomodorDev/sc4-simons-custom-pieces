@@ -122,6 +122,8 @@ Each new functional module needs:
 
 Use the existing piece-authoring guide for the commands and allocation rules. Test a small changed selection first. Reuse already verified results only when every relevant specification and binary input is identical.
 
+For a module combining adaptive ground with elevated traffic, complete the [active PATH height-retention step](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models) before extending it across the assembly. A saved-coordinate journey graph and a correct elevated prop do not establish the selected paths' runtime heights. Include direct through travel with the ramps still connected in the first routed test, and state the [restart or fresh-placement requirement](BUILD_AND_INSTALL.md#71-decide-whether-an-update-needs-fresh-placement) for each revision.
+
 **Rotation is required for every independently placeable module:** check 0°, 90°, 180°, and 270° for its emitted construction rules, occupied cells, actual model, PATH entry/exit directions, ports, preview, and shadows. A **proper rotation** turns a piece without reflecting it. Do not mirror a one-way route to create extra states; repeat the four rotations if the menu needs eight states. A diagonal variant is a separately authored 45-degree layout with native diagonal ports, not an extra 45-degree rotation of a straight piece. Record file-check evidence separately from all-four-rotation placement and traffic tests in the game.
 
 Useful wider variants remain separate current pieces. Add a clearly named compact variant when its geometry is different; do not silently change an existing useful piece or retain rejected prototype versions as compatibility artifacts.

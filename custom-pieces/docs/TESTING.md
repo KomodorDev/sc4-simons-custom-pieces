@@ -25,6 +25,8 @@ New subjects and guides deliberately migrated to the split layout follow the sha
 
 Developer tests verify generators and source-validation rules, while focused in-game observations investigate new behavior, changed game assumptions, or reported problems. Existing rendering, placement, journey, demolition, and save/reload records retain their particular scope. Public-release evidence remains governed by [RELEASE.md](RELEASE.md). The split piece TESTING document contains the subject’s plan and results; do not add another test-plan helper or an automatic all-pairs manual checklist.
 
+Before retesting an installed revision, follow the [restart or fresh-placement policy](BUILD_AND_INSTALL.md#71-decide-whether-an-update-needs-fresh-placement), and record which placement state was actually tested. For an elevated-traffic failure, inspect the selected PATH's runtime height transform under the [routing-verification contract](FRAMEWORK_ENGINEERING.md#6-geometry-and-routing-verification); a connected graph of saved endpoints alone cannot establish the placed route. Retain the reported ramp configuration in the first traffic retest, and keep any fresh-copy diagnostic and its outcome separate from the existing-city result.
+
 <a id="investigate-single-tile-demolition-and-connected-survivors"></a>
 
 ## 2. Investigate single-tile demolition and connected survivors
