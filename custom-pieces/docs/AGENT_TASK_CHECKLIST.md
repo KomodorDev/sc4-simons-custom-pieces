@@ -36,6 +36,7 @@ Replace the following fields in the working copy. An **acceptance condition** is
 | Subjects and scope | Exact IDs, files, domains, affected shared consumers, and exclusions. |
 | Source baseline and current candidate | Branch, commit or source fingerprint, and build/package identity when applicable. |
 | Preserved constraints | Accepted geometry, IDs, observations, artifacts, and user preferences. |
+| Assembly modularity goals, when applicable | Useful module boundaries, extension points, intended future uses, and the evidence needed for each compatibility claim. |
 | Existing authorization | Actions already authorized; any action whose authorization is genuinely missing. |
 | Required delivery stage | Analysis, source change, verified build, installed candidate, game-tested result, or publication. |
 | Working record and evidence locations | Task plan/checklist location and actual reports; keep private paths private. |
@@ -47,7 +48,7 @@ Map every user requirement to concrete checklist items. Split a broad requiremen
 | --- | --- | --- | --- |
 | R1: replace with the actual requirement | Replace with a measurable result. | Replace with actual IDs. | Fill during work. |
 
-Use chapters 2, 7, and 9 for every task. Select the other chapters according to the actual change: prose uses the relevant documentation rows; artwork adds image review; piece implementation adds source and saved-resource checks; assemblies add member and whole-layout checks; a reported bug adds reproduction and regression work; packaging, installation, and publication each apply only within their own scope and authorization. A prose-only task does not need geometry generation or a game installation merely to fill this template. Keep an explicit applicability record for omitted chapters or item ranges, with a scope-based reason; do not silently delete inconvenient requirements.
+Use chapters 2, 7, and 9 for every task. Select the other chapters according to the actual change: prose uses the relevant documentation rows; artwork adds image review; piece implementation adds source and saved-resource checks; assembly design or substantial revision adds atomization, expandability, future usefulness, member, and whole-layout checks under [the assembly reuse procedure](WORKFLOW_ASSEMBLY_CREATION.md#162-check-expandability-and-future-reuse); a reported bug adds reproduction and regression work; packaging, installation, and publication each apply only within their own scope and authorization. A prose-only task does not need geometry generation or a game installation merely to fill this template. Keep an explicit applicability record for omitted chapters or item ranges, with a scope-based reason; do not silently delete inconvenient requirements.
 
 ### 1.3 Track state and evidence honestly
 
@@ -88,6 +89,9 @@ Apply the [piece workflow](WORKFLOW_PIECE_CREATION.md) or [assembly workflow](WO
 - [ ] B06 — For requested atomization, provide the required coordinate-labelled line drawing, candidate cuts, measured obstacles, and persisted decisions.
 - [ ] B07 — Preserve the accepted design in exact-layout work; record any authorized redesign bound and its actual measured effect separately.
 - [ ] B08 — Choose the smallest useful experiment or regression that distinguishes the suspected cause; state which game or engine behavior it cannot establish.
+- [ ] B09 — For assembly design or substantial revision, review atomization into independently useful modules; justify retained coordinated blocks, compare distinct types, placements, owned cells, overhangs, and support reservations, and preserve any required drawing and cut decisions through [the atomization workflow](WORKFLOW_ASSEMBLY_CREATION.md#16-atomize-to-the-smallest-useful-reusable-module).
+- [ ] B10 — Establish future usefulness for each proposed reusable type with concrete alternate uses, existing candidates, or explicitly missing adapters; explain its independent function and benefit beyond one placement label under [the reuse procedure](WORKFLOW_ASSEMBLY_CREATION.md#162-check-expandability-and-future-reuse).
+- [ ] B11 — Define the assembly's intended extension or replacement points, complete required interfaces, source-backed geometry standards, construction method, and usable surrounding space; separate verified options, conditional proposals, and unknowns without expanding the authorized design.
 
 ## 4. Implementation and source data
 
@@ -115,6 +119,7 @@ Use [framework engineering](FRAMEWORK_ENGINEERING.md), the owning `NETWORK_SPEC.
 - [ ] D08 — Verify actual T21/prop selection and rotation requirements; keep sidewalk artwork, pedestrian routing, decorative geometry, and elevated traffic as separate mechanisms.
 - [ ] D09 — Check the whole assembly's ownership, physical seams, supports, and end-to-end journeys after checking its members; individual piece passes cannot close this item.
 - [ ] D10 — Compare affected and protected saved resources against the baseline; establish the claimed change and preservation scope from their actual bytes or measured geometry.
+- [ ] D11 — For an implemented or claimed compatible extension or rearrangement, independently check the selected placed example's complete boundaries, traffic permissions, geometry, ownership, supports, keep-clear space, and construction in its claimed poses; preserve the base assembly's required journeys and restrictions, and keep hypothetical uses unverified.
 
 ## 6. Documentation, artwork, and generated outputs
 
@@ -130,6 +135,7 @@ Follow [documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md), includi
 - [ ] E08 — Check metadata, numbered headings, navigation, one-line prose paragraphs, portable public paths, Oxford commas, and local links.
 - [ ] E09 — Preserve all unknown, failed, and stale human observations; obtain explicit matching confirmation before recording a manual pass.
 - [ ] E10 — Freeze the required documentation and artwork before the final candidate or packaging step; account for any later change through the owning freshness procedure.
+- [ ] E11 — Record decisions about module usefulness, extension instructions, exact compatible types where established, missing adapters, and evidence limits in the existing subject documentation and atomization records; show which future assembly uses are proposals, combinations checked by software, or human-confirmed results.
 
 ## 7. Tests, evidence, and integrated review
 
@@ -172,6 +178,7 @@ Re-read the user's current request and the adapted checklist immediately before 
 - [ ] H07 — Review pending external/human checks individually; identify the responsible actor, missing input or action, exact candidate, and observable completion condition.
 - [ ] H08 — Save the current working checklist and put durable findings and authoritative game observations in their existing owners; reference that evidence here without creating a competing observation record.
 - [ ] H09 — Prepare a self-contained handoff stating the outcome, changed outputs, checks and limits, delivery stage, and any exact next actions required.
+- [ ] H11 — For assembly design or substantial revision, audit atomization, expandability, and future usefulness explicitly: every retained block or new type has a reason, intended extensions have usable interfaces and space, and every reuse/compatibility claim has current evidence or an honest proposal label. This review does not authorize redesigning unchanged accepted subjects.
 - [ ] H10 — Record the final gate decision below after the preceding audit, and close this audit row together with that record; do not mark the task complete while other applicable requirements remain open.
 
 ### 9.2 Record the gate decision
