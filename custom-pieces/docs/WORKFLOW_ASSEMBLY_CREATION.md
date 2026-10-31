@@ -157,7 +157,7 @@ If a module is missing or wrong, return to **chapter 5**, then rebuild and reche
 
 Generate the accepted layout's actual compiled-model pictures using [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md#7-assembly-picture-set-and-in-picture-identification). Start each render's first row with `Assembly - ` and the assembly name; start its second row with `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Apply the fixed [coordinate contract](WORKFLOW_DOCUMENTATION_GENERATION.md#5-coordinate-contract-for-charts-and-renders), six-image set, exact menu-name callouts, and ownership colours. Use the current machine-readable placement plan and verified builds; check the documented renderer scope before running a command. Add a close-up where a join, crossing, or support needs discussion.
 
-Match the [trumpet presentation reference](WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including its exact six-picture README order, header and camera wording, full-name side-card legends, coloured placement badges and leader lines, and filled ownership plan. Compare each staged PNG with the corresponding trumpet PNG before promotion; six output filenames or P-labels alone do not establish the required presentation. Adapt the measured subject facts and necessary canvas size through the shared contract.
+Match the [trumpet presentation reference](WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including its exact six-picture README order, header and camera wording, full-name side-card legends, coloured placement badges, and leader lines. Every assembly construction overview must follow the [required layered construction-view standard](WORKFLOW_DOCUMENTATION_GENERATION.md#73-required-assembly-construction-overviews): the actual compiled top model beneath ownership colours at 30% opacity, with solid grid lines, boundaries, labels, diamonds, and legend cards. Compare each staged PNG with the corresponding trumpet PNG before promotion; six output filenames or P-labels alone do not establish the required presentation. Adapt the measured subject facts and necessary canvas size through the shared contract.
 
 Review the shape, symmetry, route clarity, joins, supports, and space use with the user on that same fixed grid. Geometry feedback returns to **chapter 5**; layout feedback returns to **chapter 3**. Do not change approved geometry solely to improve a camera view. Keep software preview approval separate from game-test evidence.
 
@@ -357,10 +357,19 @@ Open the new assembly's generated `README.md` and `TESTING.md`, plus `connection
 
 ### 12.6 Complete the views, authored instructions, and checks
 
-Stage the actual-model review pictures from that verified build:
+Stage the actual-model review pictures from that verified build using the [current assembly-rendering example](WORKFLOW_DOCUMENTATION_GENERATION.md#render-required-assembly-construction-overviews). Save its script as instructed, retain `construction_model_background=True` and `construction_fill_opacity=0.30`, replace the Plugins placeholder with the actual texture directory, and set these four variables:
+
+| Variable | Exact starter value |
+| --- | --- |
+| `scene` | `library / "domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.jsonc"` |
+| `build` | `library / "dist/two-tile-hsr-parts-review-01"` |
+| `destination` | `library / "local/two-tile-hsr-review"` |
+| `prefix` | `"reviewed-two-tile"` |
+
+Run the saved script from the repository root:
 
 ```sh
-python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.jsonc --build custom-pieces/dist/two-tile-hsr-parts-review-01 --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/two-tile-hsr-review --prefix reviewed-two-tile
+python3 custom-pieces/local/render-assembly-review.py
 ```
 
 Follow the shared [six-image review and canonical filename mapping](WORKFLOW_DOCUMENTATION_GENERATION.md#81-promote-the-staged-assembly-pictures). The renderer stages images and their real report under `local/`; it does not install canonical source images automatically. Inspect the pictures, retain their actual source and output fingerprints, and deliberately integrate the accepted images under the assembly's `previews/` and the render report under `evidence/`. Complete README chapters 1–3 with links, the one-type/two-placement quantities, P01/P02 positions, 0° rotations, 15.5 m connections, and the Tab/component instructions. Complete TESTING with real preparation, the checks actually performed, the remaining physical/game limitations, and design history. Add a link to this assembly from the owning domain's human README. Keep authored text outside generated blocks, and record no game pass without a matching human observation.

@@ -203,7 +203,7 @@ The first row of every assembly render always reads **`Assembly - `**, followed 
 
 - **Clean view:** one north-up top view and one oblique view without part names, instance IDs, leader lines, or part-name side keys. Keep the coordinate grid, X/Y labels, compass, scale, and view-direction caption. These show the overall shape without the rebuilding annotations.
 - **Component guide:** the top and both opposite oblique model views with component names, placement labels, and the side legend. Identify every placed module inside each image using the rules below.
-- **Construction view:** the occupied-tile plan with placement positions, ownership colours, and boundaries. Keep the exact component names and placement labels in its side legend.
+- **Construction view:** the actual compiled-model top view beneath construction-tile colours at 30% opacity, with placement positions, solid boundaries, and readable labels. Every new or refreshed assembly construction overview follows the [required construction-view standard](#73-required-assembly-construction-overviews). Keep the exact component names and placement labels in its side legend.
 
 For example, the trumpet's first row is `Assembly - HSR — Trumpet — Straight Stem`; its second row is `Component guide | Southeast view | looking northwest` in the named southeast picture, or `Construction view | Top view | north up` in the tile plan. The purpose belongs on the second row rather than being appended to the assembly name.
 
@@ -227,24 +227,24 @@ Discuss the rendered shape, symmetry, route clarity, joins, supports, and space 
 
 Colour ownership by placed module. Every pair sharing a tile side or corner must have clearly different fill and outline colours; non-neighbours may reuse colours. Use the same assignment in named model views and the tile plan, with readable text contrast. Draw thick outer/inter-piece boundaries (6 px with a 10 px white halo in the current renderer) and thin internal city tile lines (1 px). A seam between two placements of the same type still needs a thick boundary and distinct neighbouring colours. Record palette, adjacency, contrast, and boundary strokes in render evidence and inspect the actual PNG.
 
-When a selected construction view uses translucent fills over a model, keep boundaries, placement labels, side cards, and leaders opaque and readable. Record the fill opacity and the palette-audit scope: contrast measured for the original solid fill against white does not establish contrast over textured pavement. Inspect the actual composite, including dark surfaces and white markings, and give placement text a clear opaque halo or backing where needed.
+Every assembly construction overview uses the [required translucent model overlay](#73-required-assembly-construction-overviews). Keep boundaries, placement labels, reference diamonds, side cards, and leaders opaque and readable. Record the fill opacity and the palette-audit scope: contrast measured for the original solid fill against white does not establish contrast over textured pavement. Inspect the actual composite, including dark surfaces and white markings, and give placement text a clear opaque halo or backing where needed.
 
 <a id="trumpet-presentation-reference"></a>
 
 ### 7.2 Match the trumpet presentation
 
-Use the [HSR trumpet's current six canonical pictures](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md#1-views) as the required visual template when creating or refreshing assembly artwork in any domain. Match their view sequence, camera directions, header hierarchy, framing, legends, placement badges, leader lines, grid, compass, and ownership-plan style. Open the actual reference PNGs before preparing the new set. Use the current subject's registered name, exact component names, measured heights, geometry, textures, positions, and rotations; older wording retained inside a reference PNG is not a naming authority. Apply this contract within the requested artwork scope, preserving existing images until their refresh is requested.
+Use the [HSR trumpet's current six canonical pictures](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md#1-views) as the required visual template when creating or refreshing assembly artwork in any domain. Match their view sequence, camera directions, header hierarchy, framing, legends, placement badges, leader lines, grid, compass, and ownership layout. The [required construction-view standard](#73-required-assembly-construction-overviews) governs the model underlay and translucent fills for every assembly, including HSR; the trumpet's retained solid-colour construction picture remains a historical layout reference. Use the [diagonal diamond's construction overview](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/tile-ownership.png) as the visual reference for those layers. Open the actual reference PNGs before preparing the new set. Use the current subject's registered name, exact component names, measured heights, geometry, textures, positions, and rotations; older wording retained inside a reference PNG is not a naming authority. Apply this contract within the requested artwork scope, preserving existing images until their refresh is requested.
 
 Display the six pictures in README chapter 1 in this exact order, regardless of the order in which a renderer writes files. Additional close-ups follow the complete six-picture set.
 
-| Order | Canonical filename | Purpose and camera caption | Corresponding trumpet reference |
+| Order | Canonical filename | Purpose and camera caption | Presentation reference |
 | ---: | --- | --- | --- |
 | 1 | `previews/overview-top.png` | `Clean view \| Top view \| north up` | [Clean top](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/overview-top.png) |
 | 2 | `previews/preview.png` | `Clean view \| Southeast view \| looking northwest` | [Clean southeast](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/preview.png) |
 | 3 | `previews/named-top.png` | `Component guide \| Top view \| north up` | [Named top](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/named-top.png) |
 | 4 | `previews/named-southeast.png` | `Component guide \| Southeast view \| looking northwest` | [Named southeast](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/named-southeast.png) |
 | 5 | `previews/named-northwest.png` | `Component guide \| Northwest view \| looking southeast` | [Named northwest](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/named-northwest.png) |
-| 6 | `previews/tile-ownership.png` | `Construction view \| Top view \| north up` | [Tile ownership](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/tile-ownership.png) |
+| 6 | `previews/tile-ownership.png` | `Construction view \| Top view \| north up` | [Translucent construction overview](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/tile-ownership.png), with the [trumpet ownership layout](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/tile-ownership.png) |
 
 Use these presentation rules for the corresponding pictures:
 
@@ -252,12 +252,26 @@ Use these presentation rules for the corresponding pictures:
 2. **Named-view legends:** every placement has a bordered side card containing its coloured P-label, full exact component menu name, `Position Xn, Yn tiles`, and `Rotation n° counterclockwise`. Show the same P-label as a coloured badge on the model, with a white border and a matching coloured leader line to that placement's actual geometry. Use the reference's light leader halo, readable wrapped names, and separated cards. Bare P-labels on the model and a pointer to the README do not supply this in-picture legend. Preserve at least the reference annotation helper's 18-pixel component-name font; increase the canvas when cards cannot fit.
 3. **Legend placement and consistency:** use the reference helper's deterministic arrangement: balance placements between the left and right panels by projected horizontal position, then order each panel from top to bottom by projected vertical position, using the stable P-label to break ties. Cards may move between camera views; placement identities, names, positions, rotations, and assigned colours remain consistent. Repeated uses of one component receive separate placement cards and badges.
 4. **Ownership colours:** use the reference's adjacency-aware palette and contrast rules for the new assembly's actual neighbours. Reuse each placement's assigned colour in its badge, leader, side card, and filled ownership cells throughout the set. Follow [ownership colours](#71-ownership-colours) for boundaries and readable adjacent placements; avoid an unchecked repeating colour cycle.
-5. **Construction plan:** draw a separate north-up plan of filled occupied tiles, with thin internal city-grid lines, thick outer and inter-placement boundaries, placement labels, and the same full-name side cards and leaders. Leave unoccupied ownership cells unfilled. Draw the reference-position diamonds and explain that they identify software construction references, which may lie in empty cells; they do not establish mouse-click anchors. An explicitly selected refresh may show the actual compiled-model top view beneath translucent ownership fills. Render that model with the construction plan's exact camera, viewport, city-grid origin, and placements; do not resize an independently framed top-view PNG to fit. Blend only the occupied-cell fill layer, retaining the actual model and unfilled-cell pixels underneath, and record the opacity, layer order, model and texture fingerprints, and camera alignment. An opacity of `0.30` means 30% ownership colour and 70% underlying model or background. Keep the unchanged reference pictures and other view roles outside that refresh's scope. A textured model with coloured tile outlines alone does not provide the reference ownership plan.
+5. **Construction plan:** apply the [required construction-view standard](#73-required-assembly-construction-overviews): render the actual compiled-model top view below occupied-tile colours at 30% opacity, using the same camera, grid, and placements. Keep thin internal city-grid lines, thick outer and inter-placement boundaries, placement labels, and the full-name side cards and leaders solid. Leave unoccupied ownership cells unfilled, retaining any actual model overhang underneath. Draw reference-position diamonds and explain that they identify software construction references, which may lie in empty cells; they do not establish mouse-click anchors.
 6. **Coordinates and facts:** keep the same southwest tile-centre reference, X/Y numbering, compass, tile scale, and camera captions across the set. Clean pictures omit placement cards, badges, and leaders. In model views, keep all actual model geometry visible, and use the owning domain's measured facts in source, height, and footer text. Preserve the separate standalone-piece caption and local-grid contract from chapter 6.
 
 The existing implementation references are the [HSR assembly renderer](../domains/high-speed-rail/tools/render_hsr_assembly.py) and its [assembly annotation helper](../domains/high-speed-rail/tools/assembly_annotations.py). Reuse their presentation behaviour where supported, or make a domain renderer reproduce it using that domain's own inputs. Their existence does not establish a generic renderer for every network.
 
 Before promoting staged pictures, open each one beside its corresponding trumpet reference and compare the actual visible output at a readable size. Check all six roles and their README order; compare headers, camera direction, grid, compass, full-name cards, badge/leader colours, ownership fills, boundaries, diamonds, and clipping. Record the reference paths and image hashes, actual canvas/camera settings, legend fields, colour assignment, and any necessary sizing adaptation in the render evidence. A successful render command or documentation link check does not establish this visual match; correct presentation differences before promoting the new artwork.
+
+<a id="required-assembly-construction-overviews"></a>
+
+### 7.3 Required assembly construction overviews
+
+Every newly generated or refreshed assembly construction overview, in every network domain, must use the same layered presentation. This is the required style for `previews/tile-ownership.png`, rather than an optional per-assembly choice. An **underlay** is the rendered model image below the coloured construction cells. **Opacity** is how much a layer contributes to the visible result: use `0.30`, or 30% ownership colour and approximately 70% underlying model or background, for the cell fills.
+
+1. Render the assembly's actual approved compiled models and resolved textures as a north-up top view. Use the construction plan's exact camera, viewport, world-grid origin, tile scale, and registered placements. A separately framed clean-top PNG must not be resized or stretched into alignment.
+2. Draw colour only in occupied construction cells, using each placement's established ownership colour at 30% opacity. Leave unowned cells unfilled so the model and background remain visible there; visible overhang does not assign construction ownership.
+3. Draw internal grid lines, outer and inter-placement boundaries, per-cell labels, reference diamonds, placement badges, leader lines, and full-name legend cards above the fills. These annotations remain fully opaque, meaning solid. Use a readable text halo or backing over dark model surfaces.
+4. Inspect the actual composite for clear model geometry, distinguishable neighbouring owners, complete labels, and unclipped cards. Record the model and texture fingerprints, shared camera and grid, ownership colours, fill opacity, layer order, and output PNG hash in the new render evidence. The base-palette contrast audit does not replace inspection over textured geometry.
+5. Preserve the six-view README order and all other view roles. Retain previous PNGs and their frozen evidence when refreshing a construction picture. Existing pictures are not regenerated solely because this rule changed; every subsequent creation or requested refresh must meet it. Missing approved models or textures leave the construction overview pending.
+
+The shared `render_assembly` API supports this mode through `construction_model_background=True` and `construction_fill_opacity=0.30`; current generation calls must set both explicitly. Its retained default values and the HSR command-line entry point reproduce the historical solid-colour plan. Use the [current assembly-rendering example](#render-required-assembly-construction-overviews) to produce the required construction view, or an owning domain adapter that supplies the same settings and its own correct facts and textures. The highway assembly wrapper already supplies both settings. A current construction overview must satisfy this standard before promotion.
 
 <a id="current-renderer-support-and-the-top-view-gap"></a>
 
@@ -270,8 +284,8 @@ The requirements above describe the delivered artwork. Existing tools have diffe
 | Existing tool | Current executable support | Limit |
 | --- | --- | --- |
 | `framework/scp/preview.py --catalog` | Canonical angled and north-up actual-model views, portable view-specific evidence, independent caches, and explicit selected-piece/view coverage. | Defaults to the angled view for compatibility; request `--views angled top` for both, or `--views top` to preserve an existing angled image and thumbnail. |
-| `domains/high-speed-rail/tools/render_hsr_assembly.py` | Actual compiled assembly models, the fixed 16 m X/Y grid, clean top/oblique companions, named top/opposite oblique views, and an occupied-tile placement plan for the current HSR scene workflow. | This is the existing domain helper, not a registered generic assembly renderer for every future network. A raw model alone lacks the placement metadata needed for named views and ownership plans. |
-| `domains/highway/tools/render_compact_assembly.py` | Stages the compact diagonal diamond’s six actual-model views by reusing the trumpet renderer’s cameras, headers, full-name side cards, placement badges, leaders, adjacency-aware colours, and filled construction plan with reference diamonds. | Requires that exact registered assembly and its matching verified build. Reads current component names, positions, rotations, and occupied cells; supplies highway pavement heights and native NAM textures to the existing HSR presentation helper. Starts at 2800 × 2600 pixels, records the six trumpet reference hashes and complete annotation evidence, and stages the canonical filenames in the required README order. Preserve the earlier schematic evidence. |
+| `domains/high-speed-rail/tools/render_hsr_assembly.py` | Actual compiled assembly models, the fixed 16 m X/Y grid, clean top/oblique companions, named top/opposite oblique views, and an occupied-tile placement plan for the current HSR scene workflow. | This is the existing domain helper, not a registered generic assembly renderer for every future network. A raw model alone lacks the placement metadata needed for named views and ownership plans. The CLI retains historical opaque construction fills; use the shared API with the required underlay and opacity settings for current construction overviews. |
+| `domains/highway/tools/render_compact_assembly.py` | Stages the compact diagonal diamond’s six actual-model views by reusing the trumpet renderer’s cameras, headers, full-name side cards, placement badges, leaders, adjacency-aware colours, and translucent construction colours above the actual top model, with solid reference diamonds. | Requires that exact registered assembly and its matching verified build. Reads current component names, positions, rotations, and occupied cells; supplies highway pavement heights and native NAM textures to the existing HSR presentation helper. Starts at 2800 × 2600 pixels, records the six trumpet reference hashes and complete annotation evidence, and stages the canonical filenames in the required README order. Preserve the earlier schematic evidence. |
 | `domains/high-speed-rail/tools/render_hsr_assembly_parts.py` | Uses the shared standalone renderer and header for each unique type in an audited assembly scene; repeated `--top-piece-id EXACT-ID` adds north-up views. | Retains its scene restriction and stages filenames plus a combined evidence report under `--output-dir`; use the generic catalogue command for canonical piece-local files. |
 | `framework/scp/connector_overview.py`, through `scp.py connectors` | An actual compiled-model connection overview, complete boundary cards, provenance, a resolved export, and the marked piece README section for supported declarations. | A connection overview supplements canonical angled/top previews; it does not create those separate catalogue views. Current connector coverage is the [trumpet’s fourteen reusable types](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md#2-pieces), the paired rising quarter-turn, and the parallel HSR/Road stack: sixteen types within the larger catalogue. The card renderer requires one measured height per service group. |
 
@@ -293,17 +307,45 @@ python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly_parts.py
 
 This helper also renders an angled image for every unique type in that scene. It produces `<piece-id>-southeast-local-xy.png`, its `-thumb.png`, selected `<piece-id>-top-local-xy.png` files, and `reviewed-parts-preview-evidence.json`. The report maps staged files to exact types, images, cameras, local grids, source DAT/model hashes, and assembly placements. The `canonical_filename: preview-top.png` field describes the intended basename and role; it does not copy the file into the piece's `previews/` directory. The current helper supplies no automatic command to promote this staged set and its combined report into canonical piece-local top-view evidence. Review that handoff explicitly, preserve the provenance of any deliberately integrated artifact, and do not call the generic catalogue complete on the strength of this staged run.
 
-For the current HSR assembly's six-image set, use its audited scene and matching verified build. This existing example also stages its output without overwriting maintained pictures:
+<a id="render-required-assembly-construction-overviews"></a>
+
+For the current HSR assembly's six-image set, use its audited scene and matching verified build through the shared API. From the repository root, save the following Python code as `custom-pieces/local/render-assembly-review.py`. Replace the `plugins` placeholder with the actual existing texture directory. For another supported HSR assembly, replace `scene`, `build`, `destination`, and `prefix` with its exact accepted inputs and staging paths. Other domains use their owning adapter to supply their own measured captions and any piece-owned textures.
+
+```python
+from pathlib import Path
+import sys
+
+library = Path("custom-pieces").resolve()
+sys.path.insert(0, str(library / "framework"))
+from scp.check_bootstrap import SourcePackages
+sys.meta_path.insert(0, SourcePackages(library))
+from scp_hsr_tools.render_hsr_assembly import load_scene, render_assembly
+
+scene = library / "domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/assembly.json"
+build = library / "dist/hsr-trumpet-straight-stem"
+plugins = Path("/path/to/SimCity 4/Plugins")
+destination = library / "local/documentation-generation/assembly"
+prefix = "reviewed-assembly"
+model, provenance = load_scene(scene, default_build=str(build))
+render_assembly(
+    model, plugins, destination, provenance=provenance,
+    width=2800, height=2600, prefix=prefix,
+    construction_model_background=True,
+    construction_fill_opacity=0.30,
+)
+```
+
+Run that saved script from the repository root:
 
 ```sh
-python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/assembly.json --build custom-pieces/dist/hsr-trumpet-straight-stem --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/documentation-generation/assembly --prefix reviewed-assembly
+python3 custom-pieces/local/render-assembly-review.py
 ```
 
 The helper writes named `reviewed-assembly-{top,southeast,northwest}-xy.png`, clean `reviewed-assembly-{top,southeast}-clean-xy.png`, `reviewed-assembly-placement-plan-xy.png`, and `reviewed-assembly-preview-evidence.json`. Inspect the images and their actual report before updating an assembly's maintained `previews/`, links, and evidence. Use the owning assembly's exact plan, current input build, checked dimensions, and documented command when rendering another accepted layout. A catalogue preview does not replace coordinate-based assembly review.
 
 ### 8.1 Promote the staged assembly pictures
 
-The renderer stages review outputs; it does not install them into an assembly's canonical folders. After checking the six images against the [trumpet presentation reference](#trumpet-presentation-reference) and reviewing their report, copy their unchanged PNG bytes into the owning `01_assemblies/<assembly-id>/previews/` directory using this mapping. For the command above, the staging folder is `custom-pieces/local/documentation-generation/assembly/` and the prefix is `reviewed-assembly`; replace that prefix with the one supplied to your actual command.
+The renderer stages review outputs; it does not install them into an assembly's canonical folders. After checking the six images against the [trumpet presentation reference](#trumpet-presentation-reference), confirming that the construction overview meets the [mandatory layered standard](#73-required-assembly-construction-overviews), and reviewing their report, copy their unchanged PNG bytes into the owning `01_assemblies/<assembly-id>/previews/` directory using this mapping. For the command above, the staging folder is `custom-pieces/local/documentation-generation/assembly/` and the prefix is `reviewed-assembly`; replace that prefix with the one supplied to your actual command.
 
 | Staged filename | Canonical destination inside the assembly | Purpose |
 | --- | --- | --- |
