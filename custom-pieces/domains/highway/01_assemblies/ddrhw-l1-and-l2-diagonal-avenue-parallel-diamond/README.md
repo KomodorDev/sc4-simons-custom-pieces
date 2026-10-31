@@ -17,7 +17,9 @@ The highway shoulders now provide longer traffic slip lanes and matching white m
 
 One Highways-menu assembly button cycles through the components: **Tab** moves forward, **Shift+Tab** moves backward, and **each click places one component**. This is a fixed-height experimental kit; source compilation, installation, and observed game behaviour are separate stages recorded in [TESTING.md](TESTING.md).
 
-**Adaptive sidewalks are implemented on all nine Avenue tiles**, owned by P01, P02, and P03. The game can select its native pavement appearance in response to nearby development, while attached rotating models retain the highway and ramps above it. Connecting an Avenue alone does not force the developed sidewalk appearance. This assembly has no new confirmed game observations; its [resource mechanism and exact limits](TESTING.md#3-software-checks) are documented separately from the older successful adaptive probe.
+**Adaptive sidewalks are implemented on all nine Avenue tiles**, owned by P01, P02, and P03. The game can select its native pavement appearance in response to nearby development, while attached rotating models retain the highway and ramps above it. Connecting an Avenue alone does not force the developed sidewalk appearance. Its [resource mechanism and exact limits](TESTING.md#3-software-checks) are documented separately from the older successful adaptive probe.
+
+**No-ramp control reported on 2026-11-01:** the user confirms that the through-highway path across the bridge works when the on- and off-ramps are not placed. This is a limited control result, not confirmation of the complete diamond with ramps. The reported scope and remaining unknowns are retained in [Results and known issues](TESTING.md#5-results-and-known-issues).
 
 | Ramp | Traffic arrives from | Traffic leaves towards |
 | --- | --- | --- |
