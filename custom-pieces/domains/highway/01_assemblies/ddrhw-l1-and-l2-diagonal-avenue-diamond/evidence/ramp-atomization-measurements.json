@@ -1,0 +1,773 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only exploratory current-partition and saved PATH boundary measurements; no new piece or compatibility certification.",
+  "build_logical_name": "ddrhw-wheeltrack-transition-final",
+  "build_manifest_sha256": "98f8c67c9f0a45d5562dd9693f2941a476dfb7514ec8ca59e77cd11df205c107",
+  "source_coordinates": "city cell (column,row) has centre(east=16*column,north=-16*row); construction edges at centre\u00b18m",
+  "display_conversion": "X=column+4;Y=5-row",
+  "modules": [
+    {
+      "key": "lower-exit-branch",
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "world_origin_cell": [
+        2,
+        -3
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          2,
+          -3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          2,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "lower-entry-branch",
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "world_origin_cell": [
+        -3,
+        2
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -3,
+          2
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -3,
+          3
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "lower-exit-grade",
+      "piece_id": "ddrhw-diagonal-lower-exit-grade",
+      "world_origin_cell": [
+        1,
+        -3
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          1,
+          -3
+        ],
+        [
+          1,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "key": "lower-entry-grade",
+      "piece_id": "ddrhw-diagonal-lower-entry-grade",
+      "world_origin_cell": [
+        -3,
+        1
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -3,
+          1
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "key": "upper-exit-branch",
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "world_origin_cell": [
+        -4,
+        3
+      ],
+      "local_owned_cells": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -2,
+          3
+        ],
+        [
+          -4,
+          4
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -4,
+          5
+        ],
+        [
+          -3,
+          5
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "key": "upper-entry-branch",
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "world_origin_cell": [
+        3,
+        -4
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          4,
+          -4
+        ],
+        [
+          5,
+          -4
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          5,
+          -3
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          4,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "key": "upper-exit-grade",
+      "piece_id": "ddrhw-diagonal-upper-exit-grade",
+      "world_origin_cell": [
+        -1,
+        2
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          0,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          -1,
+          4
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "upper-entry-grade",
+      "piece_id": "ddrhw-diagonal-upper-entry-grade",
+      "world_origin_cell": [
+        2,
+        -1
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          4,
+          -1
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "model_only_local_cells": []
+    }
+  ],
+  "current_branch_grade_seams": [
+    {
+      "ramp": "lower-exit",
+      "branch_cell": [
+        2,
+        -2
+      ],
+      "grade_cell": [
+        1,
+        -2
+      ],
+      "source_world_east_north_height_m": [
+        24.0,
+        37.79255579,
+        6.745131504
+      ],
+      "outward_from_highway_tangent_EN": [
+        -0.9793496305107028,
+        -0.2021739380299798
+      ],
+      "outward_from_highway_grade": -0.22675579133104765
+    },
+    {
+      "ramp": "lower-entry",
+      "branch_cell": [
+        -2,
+        2
+      ],
+      "grade_cell": [
+        -2,
+        1
+      ],
+      "source_world_east_north_height_m": [
+        -37.79255579,
+        -24.0,
+        6.745131504
+      ],
+      "outward_from_highway_tangent_EN": [
+        0.2021739380299798,
+        0.9793496305107028
+      ],
+      "outward_from_highway_grade": -0.22675579133104765
+    },
+    {
+      "ramp": "upper-exit",
+      "branch_cell": [
+        -2,
+        4
+      ],
+      "grade_cell": [
+        -1,
+        4
+      ],
+      "source_world_east_north_height_m": [
+        -24.0,
+        -56.142764726,
+        12.258240085
+      ],
+      "outward_from_highway_tangent_EN": [
+        0.9273179722016791,
+        0.37427446938278575
+      ],
+      "outward_from_highway_grade": -0.2960959519085323
+    },
+    {
+      "ramp": "upper-entry",
+      "branch_cell": [
+        4,
+        -2
+      ],
+      "grade_cell": [
+        4,
+        -1
+      ],
+      "source_world_east_north_height_m": [
+        56.142764726,
+        24.0,
+        12.258240085
+      ],
+      "outward_from_highway_tangent_EN": [
+        -0.37427446938278575,
+        -0.9273179722016791
+      ],
+      "outward_from_highway_grade": -0.2960959519085323
+    }
+  ],
+  "limitations": [
+    "No allocation, model rewrite, construction-rule rewrite, build, or installation.",
+    "Current native/mainline and road profiles are coupled across sparse whole-cell owners.",
+    "Candidate partitions require complete saved boundary, texture phase, support, four-rotation, and construction checks.",
+    "No native MIS neighbour compatibility or game-operation claim."
+  ],
+  "source_sha256": {
+    "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc": "80562abbc4913f2ca95ff0a580a0b851465d52f3a305ef417b548f657f487b50",
+    "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+    "domains/highway/implementation/scp_highway/ramp_paths.py": "c4302863e48bea4d2e62adc06e6b8de90ec32ae290a81fb1fb3e85e295a55575",
+    "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154"
+  },
+  "reviewed_source_commit": "1618e5ec4e50b326f7e11cba3c5a6990cc8feb8c",
+  "additional_saved_pavement_sections": [
+    {
+      "candidate": "B1",
+      "source_cut": {
+        "axis": "north",
+        "metres": 40
+      },
+      "display_cut": {
+        "axis": "Y",
+        "tiles": 7.5
+      },
+      "source_east_range_m": [
+        19.894670248,
+        36.686290741
+      ],
+      "pavement_height_range_m": [
+        5.939028263,
+        7.5
+      ],
+      "scope": "Actual saved MIS pavement across all four intersected owned cells; not merely the flat centreline."
+    },
+    {
+      "candidate": "B-current",
+      "source_cut": {
+        "axis": "east",
+        "metres": 24
+      },
+      "display_cut": {
+        "axis": "X",
+        "tiles": 5.5
+      },
+      "source_north_range_m": [
+        34.729222059,
+        40.855803967
+      ],
+      "pavement_height_range_m": [
+        6.604485035,
+        6.885587215
+      ],
+      "scope": "Actual saved MIS pavement across the current lower branch/grade join."
+    },
+    {
+      "candidate": "C2",
+      "source_cut": {
+        "axis": "east",
+        "metres": -40
+      },
+      "display_cut": {
+        "axis": "X",
+        "tiles": 1.5
+      },
+      "source_north_range_m": [
+        -65.943837881,
+        -59.403940678
+      ],
+      "pavement_height_range_m": [
+        15,
+        15
+      ],
+      "path_heading_degrees_from_east": 23.44564,
+      "scope": "Actual saved MIS pavement; flat but no longer a native 45-degree straight interface."
+    },
+    {
+      "candidate": "C-current",
+      "source_cut": {
+        "axis": "east",
+        "metres": -24
+      },
+      "display_cut": {
+        "axis": "X",
+        "tiles": 2.5
+      },
+      "source_north_range_m": [
+        -59.376702309,
+        -52.906201839
+      ],
+      "pavement_height_range_m": [
+        11.897529602,
+        12.615083694
+      ],
+      "scope": "Actual saved MIS pavement across the current upper branch/grade join."
+    }
+  ],
+  "source_only_physical_obstacles": [
+    {
+      "ramp": "lower-off",
+      "source_cell": [
+        2,
+        -2
+      ],
+      "display_cell_XY": [
+        6,
+        7
+      ],
+      "pavement_height_range_m": [
+        6.604485,
+        7.5
+      ]
+    },
+    {
+      "ramp": "lower-on",
+      "source_cell": [
+        -2,
+        2
+      ],
+      "display_cell_XY": [
+        2,
+        3
+      ],
+      "pavement_height_range_m": [
+        6.604485,
+        7.5
+      ]
+    },
+    {
+      "ramp": "upper-off",
+      "source_cell": [
+        -2,
+        3
+      ],
+      "display_cell_XY": [
+        2,
+        2
+      ],
+      "pavement_height_range_m": [
+        11.89753,
+        14.36334
+      ]
+    },
+    {
+      "ramp": "upper-on",
+      "source_cell": [
+        3,
+        -2
+      ],
+      "display_cell_XY": [
+        7,
+        7
+      ],
+      "pavement_height_range_m": [
+        11.89753,
+        14.36334
+      ]
+    }
+  ],
+  "source_only_physical_obstacles_scope": "Current source pavement faces clipped into native-through highway cells, not a new saved whole-model clearance audit.",
+  "drawing": {
+    "png": "../previews/ramp-atomization-review.png",
+    "png_sha256": "5ff8cc189e2b0ef7c821674ef0580376080d7bb1808bcf8b8ebbe385cd7ad066",
+    "svg": "../previews/ramp-atomization-review.svg",
+    "svg_sha256": "576a8a2888b079837963ae47e3350f39cd81f2145c24759168f5880675aef4ec",
+    "authority": "Editable SVG is retained; it is a review picture, not construction or compatibility certification.",
+    "plot_inputs": "Saved PATH polylines for top route lines; current source sweep for pale width ribbons and height profiles; saved pavement sections and source physical obstacles are distinguished above.",
+    "sampled_heading_test": "Adjacent unit chord cross-product magnitude greater than 1e-6 is drawn solid; collinear sampled runs are dashed. This classifies saved polyline samples, not an analytic curvature proof.",
+    "profile_join_station_method": "Project the actual saved join onto the nearest current source-curve segment, require plan residual below 1 micrometre, and interpolate cumulative plan length along that segment. Heights use the actual saved join."
+  },
+  "preserved_canonical_artwork_sha256": {
+    "preview.png": "f5d3b755090eed2317582efaeb89240027c479a0626272f949fae7d42264d1e2",
+    "tile-ownership.png": "75d665912b534e184b0452aa8239a5180b27396ed9376605634150b041194776",
+    "named-southeast.png": "ebed105ee199f6060044380bf71065a1abbc612d7c7443456290b4adea857e0a",
+    "named-top.png": "937f59526cbbe9c0405347a4747aae355d3878c03778d769b3b884e91de9da97",
+    "overview-top.png": "97cb614ee89aed1886f5a9b48b9062d1a081c7ba45f614a6756cb5a24b7aa5fe",
+    "named-northwest.png": "1cf62a52c49b20c2c4722ca4467a13a9c13d7215a544066453b86ebd5da28b7b"
+  }
+}

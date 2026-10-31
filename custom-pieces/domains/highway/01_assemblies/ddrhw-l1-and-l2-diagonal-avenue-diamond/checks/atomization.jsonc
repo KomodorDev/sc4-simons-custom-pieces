@@ -1,0 +1,702 @@
+// title: "Compact DD highway modular-ramp decisions"
+// summary: "Record the current analysis of separating interchangeable ramps from the highway and slip-lane core."
+//
+// Used when: Contributors evaluate this assembly's modular-ramp proposal.
+// Read by: Human and coding-agent reviewers; no runtime or build reader is declared.
+// Updated by: Contributors following WORKFLOW_ASSEMBLY_CREATION.md section 16; update measurements before revising a decision.
+// Affects: The analysis recommendation and review drawing; no game resources or construction rules.
+{
+  "schema_version": 1,
+  "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "scope": "Analysis-only modular ramp feasibility review; current geometry and construction remain unchanged.",
+  "implementation_status": "proposal",
+  "reviewed_source_commit": "1618e5ec4e50b326f7e11cba3c5a6990cc8feb8c",
+  "inputs": {
+    "saved_paths": "../evidence/ramp-atomization-saved-paths.json",
+    "saved_paths_sha256": "fe64234b55ceecc4c8e20aa3d86805bb928e7b4c717cb44fd0f3e0f15cd9ded0",
+    "measurements": "../evidence/ramp-atomization-measurements.json",
+    "measurements_sha256": "394ba517ea0528b3619d21c36e527098c42efedb7b970b4ce881e5022a6ce76d",
+    "source_sha256": {
+      "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc": "80562abbc4913f2ca95ff0a580a0b851465d52f3a305ef417b548f657f487b50",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+      "domains/highway/implementation/scp_highway/ramp_paths.py": "c4302863e48bea4d2e62adc06e6b8de90ec32ae290a81fb1fb3e85e295a55575",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154"
+    }
+  },
+  "coordinate_system": {
+    "display": "Fixed assembly X/Y tile centres; half-integer tile edges; 16 metres per tile.",
+    "source_to_display": "X=east/16+4; Y=north/16+5.",
+    "local_cells": "Exact normalized owned cells per reviewed source type are listed in the measurements record."
+  },
+  "reviewed_modules": [
+    {
+      "key": "lower-exit-branch",
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "world_origin_cell": [
+        2,
+        -3
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          2,
+          -3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          2,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "lower-entry-branch",
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "world_origin_cell": [
+        -3,
+        2
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -3,
+          2
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -3,
+          3
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "lower-exit-grade",
+      "piece_id": "ddrhw-diagonal-lower-exit-grade",
+      "world_origin_cell": [
+        1,
+        -3
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          1,
+          -3
+        ],
+        [
+          1,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "key": "lower-entry-grade",
+      "piece_id": "ddrhw-diagonal-lower-entry-grade",
+      "world_origin_cell": [
+        -3,
+        1
+      ],
+      "local_owned_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -3,
+          1
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "key": "upper-exit-branch",
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "world_origin_cell": [
+        -4,
+        3
+      ],
+      "local_owned_cells": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          -2,
+          3
+        ],
+        [
+          -4,
+          4
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -4,
+          5
+        ],
+        [
+          -3,
+          5
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "key": "upper-entry-branch",
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "world_origin_cell": [
+        3,
+        -4
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          4,
+          -4
+        ],
+        [
+          5,
+          -4
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          5,
+          -3
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          4,
+          -2
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "model_only_local_cells": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "key": "upper-exit-grade",
+      "piece_id": "ddrhw-diagonal-upper-exit-grade",
+      "world_origin_cell": [
+        -1,
+        2
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          0,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          -1,
+          4
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "model_only_local_cells": []
+    },
+    {
+      "key": "upper-entry-grade",
+      "piece_id": "ddrhw-diagonal-upper-entry-grade",
+      "world_origin_cell": [
+        2,
+        -1
+      ],
+      "local_owned_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "source_owned_cells": [
+        [
+          4,
+          -1
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "display_owned_cells_XY": [
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "model_only_local_cells": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "current-branch-grade-interfaces",
+      "placements": [
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11"
+      ],
+      "decision": "Retain",
+      "original_measurement": {
+        "lower_join_height_m": 6.745131504,
+        "upper_join_height_m": 12.258240085,
+        "outward_lower_grade_percent": -22.6755791331,
+        "outward_upper_grade_percent": -29.6095951909
+      },
+      "reason": "The existing pieces join inside curved and sloped roadway. They remain valid assembly-specific joins, but do not form interchangeable level ramp ports.",
+      "physical_requirements": [
+        "Full pavement and barrier cross-section",
+        "Both native highway decks in every shared tile",
+        "Underside, support, and shadow ownership",
+        "Texture phase and existing paint continuity"
+      ],
+      "replacement_type": null,
+      "replacement_rotation": null
+    },
+    {
+      "id": "B1-lower-earlier-flat-centre",
+      "source_type": "ddrhw-diagonal-lower-exit-branch",
+      "placement": "P04",
+      "counterpart_placement": "P05",
+      "display_boundary": {
+        "Y": 7.5
+      },
+      "decision": "Retain",
+      "original_measurement": {
+        "centre_height_m": 7.5,
+        "complete_saved_pavement_height_range_m": [
+          5.939028263,
+          7.5
+        ]
+      },
+      "reason": "The earlier flat centre sample hides the curved road width and descent in shared highway cells. Detaching an outboard cell does not make one clean ramp-only interface.",
+      "replacement_type": null,
+      "replacement_rotation": null
+    },
+    {
+      "id": "C1-upper-flat-45-degree-boundary",
+      "source_type": "ddrhw-diagonal-upper-exit-branch",
+      "placement": "P08",
+      "counterpart_placement": "P09",
+      "display_boundary": {
+        "Y": 0.5
+      },
+      "decision": "Retain",
+      "original_measurement": {
+        "height_m": 15,
+        "heading_degrees_from_east": 45
+      },
+      "source_takeoff_cells": [
+        [
+          -4,
+          5
+        ],
+        [
+          -3,
+          5
+        ]
+      ],
+      "display_takeoff_cells_XY": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reason": "This flat native-direction cut is a hybrid highway/slip-lane boundary. It includes the mainline and both decks, rather than a freely separate single-lane ramp. A different partition could include those services, but is unverified.",
+      "replacement_type": null,
+      "replacement_rotation": null
+    },
+    {
+      "id": "C2-upper-next-flat-cut",
+      "source_type": "ddrhw-diagonal-upper-exit-branch",
+      "placement": "P08",
+      "counterpart_placement": "P09",
+      "display_boundary": {
+        "X": 1.5
+      },
+      "decision": "Retain",
+      "original_measurement": {
+        "height_m": 15,
+        "path_heading_degrees_from_east": 23.44564,
+        "native_heading_degrees_from_east": 45
+      },
+      "reason": "The pavement is level, but the route already bends. It cannot be labelled or replaced as an unchanged standard straight ramp socket.",
+      "replacement_type": null,
+      "replacement_rotation": null
+    },
+    {
+      "id": "standardized-custom-kit",
+      "decision": "Requires bounded redesign",
+      "recommended": true,
+      "smallest_changed_region": "Not selected; redesign would cover the affected highway branch cells and adjoining ramp start, with coordinated through-deck ownership.",
+      "actual_maximum_route_movement_m": null,
+      "independent_acceptance_bound_m": null,
+      "authorization": "Feasibility review only; no implementation or numerical redesign bound authorized by this question.",
+      "proposal": [
+        "Retain highway, slip lane, and all shared construction services in a coordinated core.",
+        "Design a complete level one-way joining edge outside the shared highway region at 7.5 m or 15 m.",
+        "Provide compatible level straight/curve pieces, grade pieces, and right-turn Avenue terminals."
+      ],
+      "interface_contract": [
+        "Exact endpoint position and construction edge",
+        "Height and zero joining slope",
+        "Travel heading and direction",
+        "Pavement width, barriers, underside, and support envelope",
+        "Matching saved traffic paths, paint, and texture phase"
+      ],
+      "current_custom_width_m": 6,
+      "native_MIS_compatibility": "Unverified; current custom width and native-texture use do not establish a native MIS port.",
+      "implementation_first_stage": "Individually click-to-place modules; FLEX/draggable rules are additional work.",
+      "replacement_type": null,
+      "replacement_rotation": null,
+      "alternative": "Specialized variants could preserve and match the current curved/sloped interfaces exactly. Level interfaces are recommended for wider reuse; flatness is not a requirement for modularity."
+    },
+    {
+      "id": "new-port-location-and-footprint",
+      "decision": "Unverified",
+      "reason": "No new port position, module extent, clearance bound, or construction rules have been designed or compiled. A tight footprint and arbitrary combinations of slope and curve are not established.",
+      "required_checks": [
+        "Complete saved boundary geometry and PATH alignment",
+        "Construction ownership and both-deck through continuity",
+        "Full-width traffic and structure clearance",
+        "All four rotations",
+        "Neighbouring module and native network compatibility",
+        "Human construction, Route Query, visible traffic, and appearance observations"
+      ],
+      "replacement_type": null,
+      "replacement_rotation": null
+    }
+  ],
+  "retained_remainder": "P01–P03 and P12–P15 are retained. The saved PATH record accounts for all 15 placements, 53 owned cells, and all six zero-route structural cells; none are omitted or released for independent construction.",
+  "actions_performed": [
+    "Read saved accepted game traffic paths",
+    "Review source physical envelopes and saved pavement slices",
+    "Create explanatory PNG and editable SVG",
+    "Document analysis"
+  ],
+  "actions_not_performed": [
+    "New type allocation",
+    "Geometry or construction-rule change",
+    "New game-resource build",
+    "Installation",
+    "New human game observation"
+  ],
+  "references": [
+    {
+      "title": "NAM RealHighway feature guide",
+      "url": "https://www.sc4nam.com/docs/feature-guides/realhighway/",
+      "scope": "General MIS, FLEXRamp, and draggable ramp concepts; not compatibility of these custom ports."
+    }
+  ]
+}
