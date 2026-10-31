@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen, portable numeric evidence for a reported parallel slip-lane placement crash and the identified placed-network vertex-format incompatibility.",
+  "frozen": true,
+  "record_date": "2026-10-31",
+  "status": "historical candidate failed placement; corrective candidate awaiting human retest",
+  "affected_candidate": {
+    "build_name": "ddrhw-three-diamonds-menu-01",
+    "manifest_sha256": "4681b86560ebec47c7466d5906392511df1b6dcd5e399408916dde8ec858f477",
+    "installed_receipt_sha256": "167b6a7a7ed5d1525c7c00a247e1a5642a31da761bc87257265ffc984fdf1c9a",
+    "piece_id": "ddrhw-parallel-lower-exit-slip",
+    "piece_archive_sha256": "ac6f4e8613e86fc4efed2e3b0c344209f2c64f90f9007bd05f310fd124667bb1",
+    "display_name": "DD RHW-4 — L1 Exit Slip Lanes — Parallel",
+    "puzzle_id": "f84a",
+    "owned_local_cells": [[1, 0], [0, 1]],
+    "owned_tile_ids": ["7f5b1100", "7f5b1010"],
+    "fault_context_model_id": "7f5b1100"
+  },
+  "environment": {
+    "game_executable": "Windows SimCity 4",
+    "game_version": "1.1.641.0",
+    "game_binary_sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7",
+    "game_binary_bytes": 7524352,
+    "compatibility_runtime": "Wine",
+    "NAM_version": "50",
+    "traffic_side": "right-hand"
+  },
+  "human_report": {
+    "action": "Place the parallel L1 exit slip-lane component.",
+    "result": "Game crashes.",
+    "reported_locations": ["clear ground", "beside the Avenue at the intended location"],
+    "location_independence": "The user explicitly reported the failure in both conditions.",
+    "construction_orientation": null,
+    "camera_orientation": null,
+    "report_to_location_mapping": "unknown",
+    "scope": "This is one orientation-unspecified placement failure. It does not assign a result to any individual rotation case, another component, or the complete assembly."
+  },
+  "preserved_private_artifacts": [
+    {
+      "reported_local_time_label": "19:36:35",
+      "report": {"bytes": 13621, "sha256": "98bb8b571d66731975ee27b3aa180af81db86f771f9826ea328b5a18d7b52e6a"},
+      "minidump": {"bytes": 71440, "sha256": "0f7941efc8ba41818f9fd870b5d392bf1bdcc9c6fcf81a9bf275c80a430f4aaf"}
+    },
+    {
+      "reported_local_time_label": "19:49:00",
+      "report": {"bytes": 13621, "sha256": "0dda329a155815139c0b482da36b10b2e5975ea5fb4d716029cc6318e2ab9304"},
+      "minidump": {"bytes": 48412, "sha256": "fd99aab9d8c713ea5fad974991412303fec57b4811f3072a09c1a6ebbf0fd364"}
+    }
+  ],
+  "matching_fault_in_both_reports": {
+    "exception_code": "0xC0000005",
+    "exception_kind": "ACCESS_VIOLATION",
+    "instruction_address": "0x00803E2E",
+    "ECX": "0x00000000",
+    "EBP": "0x00000003",
+    "function_containing_instruction": "cS3DModelProcessor::LightModel",
+    "function_start_address": "0x00803E10"
+  },
+  "saved_model_measurement": {
+    "model_id": "7f5b1100",
+    "resource_sha256": "02abe7a0e4271bae1e5bb7a85dc589fce87114b2ebce98e689a771b022fb9357",
+    "animation_meshes": 85,
+    "vertex_blocks": 85,
+    "index_blocks": 85,
+    "primitive_blocks": 85,
+    "material_slots": 4,
+    "vertex_formats": {"0x80004001": 84, "0x00000002": 1},
+    "standard_2_block_role": "SCP NAM highway white marking mesh",
+    "position_UV_stride_bytes_for_both_encodings": 20,
+    "animation_header_hex": "0100000003000000000000000000",
+    "animation_frame_count": 1,
+    "primitive_type": "0, triangle list",
+    "geometry_or_traffic_changed_for_this_record": false
+  },
+  "engine_format_investigation": {
+    "basis": "Read-only inspection of the fingerprinted Windows 1.1.641 executable, cross-checked against the pinned independent reverse-engineering specification.",
+    "new_format_read_address": "0x0080721C",
+    "unchanged_format_store_address": "0x00807221",
+    "frame_builder": {
+      "name": "GetModelFrame",
+      "address": "0x00806C40",
+      "vertex_pointer_load_address": "0x00806E74",
+      "reference_count_increment_address": "0x00806E80",
+      "same_pointer_store_address": "0x00806E86",
+      "normalizes_vertex_format": false
+    },
+    "placed_network_setup": {
+      "name": "cS3DModelProcessor::SetModel",
+      "address": "0x008038D0",
+      "vertex_format_read_address": "0x00803AD6",
+      "vertex_format_comparison_address": "0x00803AE4",
+      "required_packed_position_UV_format": "0x80004001",
+      "required_format_derivation": "PackStandardVertexFormat(2), function at 0x008D01F0",
+      "rejects_stored_standard_number_2": true,
+      "failure_effect": "Clears the retained instance and mesh-container references."
+    },
+    "identified_defect": "The authored marking block stores standard number 2. Equal position/UV stride does not satisfy the placed-network processor's exact packed-format eligibility check. The frame builder retains that stored format, and the later LightModel call reaches the null-reference fault recorded in both reports.",
+    "preview_scope": "A software render or construction preview does not exercise this placed-network binding and lighting path."
+  },
+  "pinned_primary_reverse_engineering_sources": [
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/model-instances.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/graphics-formats.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/network-occupants.md"
+  ],
+  "corrective_scope": {
+    "serialization_change": "Emit packed 0x80004001 for authored position/UV blocks that enter the placed-network processor.",
+    "preserve": ["vertex and UV bytes", "triangle order", "indices", "materials", "PATHs", "resource identifiers", "construction rules", "placements", "menu cycles"],
+    "human_placement_retest": "pending",
+    "traffic_and_performance": "unverified",
+    "global_game_or_rotation_pass_claimed": false
+  },
+  "public_redaction": "Only numeric findings and artifact fingerprints are published. Private paths, raw reports, minidump payloads, and executable instruction bytes remain private."
+}

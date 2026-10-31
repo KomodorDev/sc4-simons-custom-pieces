@@ -329,7 +329,10 @@ def pack_road_model(triangles, texture_id, *, material_template=None, model_temp
 
         def finish():
             group = len(model["meshes"])
-            model["vertices"].append({"flags": 0, "format": 2, "stride": 20, "data": bytes(data)})
+            # The game retains this serialized word and compares it with
+            # its XYZ/one-UV processor descriptor. Legacy format 2 has the
+            # same 20-byte payload, but fails that runtime comparison.
+            model["vertices"].append({"flags": 0, "format": 0x80004001, "stride": 20, "data": bytes(data)})
             model["indices"].append({"flags": 0, "stride": 2, "values": tuple(indices)})
             model["primitives"].append([(0, 0, len(indices))])
             name = b"SCP highway road\0" if role == "legacy" else ("SCP NAM "+role+"\0").encode("ascii")
