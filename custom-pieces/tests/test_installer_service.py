@@ -188,12 +188,13 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
 
     def test_capabilities_use_finite_provider_recipes_for_both_domains(self):
-        from scp_highway import native, ramp_paths
+        from scp_highway import native, ramp_paths, modular_ramps, modular_stamp
         capabilities = service.implemented_recipes_by_domain()
         self.assertEqual(set(capabilities), {"high-speed-rail", "highway"})
         self.assertIsInstance(capabilities["highway"], frozenset)
-        self.assertEqual(capabilities["highway"], {native.RECIPE} | {
-            item["recipe"] for item in ramp_paths.module_catalog()["types"]})
+        self.assertEqual(capabilities["highway"], {native.RECIPE, modular_stamp.RECIPE} | {
+            item["recipe"] for provider in (ramp_paths, modular_ramps)
+            for item in provider.module_catalog()["types"]})
         self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
 
     def test_non_draft_record_with_no_implementation_blocks_complete_selection(self):
@@ -208,7 +209,7 @@ class InstallerSelectionTests(unittest.TestCase):
         highway = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
         hsr_recipe = next(piece["recipe"] for piece in catalog["pieces"]
                           if piece["domain"] == "high-speed-rail")
-        for recipe in ("highway_ddrhw_compact_unimplemented", hsr_recipe):
+        for recipe in ("highway_ddrhw_compact_unimplemented", "highway_ddrhw_modular_unimplemented", hsr_recipe):
             with self.subTest(recipe=recipe):
                 changed = deepcopy(catalog)
                 next(piece for piece in changed["pieces"] if piece["id"] == highway["id"])["recipe"] = recipe

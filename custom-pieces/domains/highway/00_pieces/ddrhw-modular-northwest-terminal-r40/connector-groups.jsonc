@@ -1,0 +1,325 @@
+// title: "Reviewed highway connector channels"
+// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."
+//
+// Used when: Contributors export this highway component or inspect its complete boundary cards.
+// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.
+// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.
+// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.
+{
+  "schema_version": 3,
+  "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+  "piece_id": "ddrhw-modular-northwest-terminal-r40",
+  "source_binding": {
+    "piece_sha256": "bed12bb765cdd8df495b28239793e688bf2629b280fa5fd664a62fcc58aeccc4",
+    "connections_sha256": "920f0135288e7f167ffc0e510904eeb4fe08c03dbdedc5bc372ef34c4c94b484"
+  },
+  "components": [
+    {
+      "id": "avenue-mainline",
+      "network": "road"
+    },
+    {
+      "id": "avenue-walkways",
+      "network": "pedestrian",
+      "construction_network": "avenue"
+    }
+  ],
+  "channels": [
+    {
+      "id": "avenue-lane-01",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "avenue-lane-02",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "avenue-walkway-01",
+      "component_id": "avenue-walkways",
+      "kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "avenue-lane-03",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "avenue-lane-04",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "avenue-walkway-02",
+      "component_id": "avenue-walkways",
+      "kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "avenue-ramp-01",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "avenue-ramp-02",
+      "component_id": "avenue-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "boundary-01-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-w-in-1",
+          "source_port_id": "1-W-in-1",
+          "direction": "in",
+          "channel_id": "avenue-lane-04",
+          "cut_id": "cut-1-w-in-1"
+        },
+        {
+          "id": "member-1-w-in-2",
+          "source_port_id": "1-W-in-2",
+          "direction": "in",
+          "channel_id": "avenue-lane-03",
+          "cut_id": "cut-1-w-in-2"
+        }
+      ]
+    },
+    {
+      "id": "boundary-01-avenue-walkways-02",
+      "component_id": "avenue-walkways",
+      "members": [
+        {
+          "id": "member-2-w-in-1",
+          "source_port_id": "2-W-in-1",
+          "direction": "in",
+          "channel_id": "avenue-walkway-02",
+          "cut_id": "cut-2-w-in-1"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-n-out-3",
+          "source_port_id": "1-N-out-3",
+          "direction": "out",
+          "channel_id": "avenue-lane-02",
+          "cut_id": "cut-1-n-out-3"
+        },
+        {
+          "id": "member-1-n-out-4",
+          "source_port_id": "1-N-out-4",
+          "direction": "out",
+          "channel_id": "avenue-lane-01",
+          "cut_id": "cut-1-n-out-4"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-avenue-walkways-02",
+      "component_id": "avenue-walkways",
+      "members": [
+        {
+          "id": "member-2-n-out-2",
+          "source_port_id": "2-N-out-2",
+          "direction": "out",
+          "channel_id": "avenue-walkway-01",
+          "cut_id": "cut-2-n-out-2"
+        }
+      ]
+    },
+    {
+      "id": "boundary-03-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-s-out-5",
+          "source_port_id": "1-S-out-5",
+          "direction": "out",
+          "channel_id": "avenue-ramp-02",
+          "cut_id": "cut-1-s-out-5"
+        }
+      ]
+    },
+    {
+      "id": "boundary-04-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-e-in-10",
+          "source_port_id": "1-E-in-10",
+          "direction": "in",
+          "channel_id": "avenue-ramp-01",
+          "cut_id": "cut-1-e-in-10"
+        }
+      ]
+    },
+    {
+      "id": "boundary-05-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-e-in-8",
+          "source_port_id": "1-E-in-8",
+          "direction": "in",
+          "channel_id": "avenue-lane-02",
+          "cut_id": "cut-1-e-in-8"
+        },
+        {
+          "id": "member-1-e-in-9",
+          "source_port_id": "1-E-in-9",
+          "direction": "in",
+          "channel_id": "avenue-lane-01",
+          "cut_id": "cut-1-e-in-9"
+        }
+      ]
+    },
+    {
+      "id": "boundary-05-avenue-walkways-02",
+      "component_id": "avenue-walkways",
+      "members": [
+        {
+          "id": "member-2-e-in-4",
+          "source_port_id": "2-E-in-4",
+          "direction": "in",
+          "channel_id": "avenue-walkway-01",
+          "cut_id": "cut-2-e-in-4"
+        }
+      ]
+    },
+    {
+      "id": "boundary-06-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-s-out-6",
+          "source_port_id": "1-S-out-6",
+          "direction": "out",
+          "channel_id": "avenue-lane-04",
+          "cut_id": "cut-1-s-out-6"
+        },
+        {
+          "id": "member-1-s-out-7",
+          "source_port_id": "1-S-out-7",
+          "direction": "out",
+          "channel_id": "avenue-lane-03",
+          "cut_id": "cut-1-s-out-7"
+        }
+      ]
+    },
+    {
+      "id": "boundary-06-avenue-walkways-02",
+      "component_id": "avenue-walkways",
+      "members": [
+        {
+          "id": "member-2-s-out-3",
+          "source_port_id": "2-S-out-3",
+          "direction": "out",
+          "channel_id": "avenue-walkway-02",
+          "cut_id": "cut-2-s-out-3"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "boundary-01",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "boundary-01-avenue-mainline-01",
+        "boundary-01-avenue-walkways-02"
+      ]
+    },
+    {
+      "id": "boundary-02",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-02-avenue-mainline-01",
+        "boundary-02-avenue-walkways-02"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "source_cell": [
+        1,
+        2
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-03-avenue-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-04",
+      "source_cell": [
+        2,
+        1
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "boundary-04-avenue-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-05",
+      "source_cell": [
+        2,
+        2
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "boundary-05-avenue-mainline-01",
+        "boundary-05-avenue-walkways-02"
+      ]
+    },
+    {
+      "id": "boundary-06",
+      "source_cell": [
+        2,
+        2
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-06-avenue-mainline-01",
+        "boundary-06-avenue-walkways-02"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+// title: "Piece definition: RHW Ramp — Lower Entry Ramp — R40"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 Lower Entry Ramp \u2014 R40.",
+  "schema_version": 1,
+  "id": "ddrhw-modular-lower-entry-r40",
+  "domain": "highway",
+  "name": "RHW Ramp \u2014 Lower Entry Ramp \u2014 R40",
+  "description": "Independently placed lower entry ramp \u2014 r40. Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.",
+  "recipe": "highway_ddrhw_modular_lower_entry_r40",
+  "geometry_key": "lower-entry-r40",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f83e",
+  "tile_ids": [
+    "7f59f100",
+    "7f59f010",
+    "7f59f110"
+  ],
+  "preview_id": "7f59fff5",
+  "effect_name": "preview_scp_hw_f83e_____001",
+  "footprint": [
+    2,
+    2
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f83e",
+    "order": "ffffff3e",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "pavement_path_offset_m": 0.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "model_only_cells": [
+      [
+        0,
+        1
+      ]
+    ],
+    "minimum_new_curve_radius_m": 40.0,
+    "retained_high_collar_m": 2.0
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f59f100",
+      "source": "7f59f100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59f010",
+      "source": "7f59f010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59f110",
+      "source": "7f59f110",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
+    "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

@@ -73,4 +73,286 @@ Source: [connections.json](connections.json).
 
 <!-- BEGIN CONNECTOR OVERVIEW -->
 
+### Connection overview
+
+Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.
+
+![Complete connection overview](previews/connection-overview.png)
+
+[Rendering sources and verification scope](evidence/connection-overview.json).
+
+Headings: 0° = North, 90° = East, 180° = South, and 270° = West; clockwise in plan view, pointing out of the piece.
+
+Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.
+
+Display grid: X = source column − (0); Y = 2 − source row.
+
+Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and − right facing out of the tile edge.
+
+Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.
+
+Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.
+
+Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.
+
+#### Boundary A: `boundary-02`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-02-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,0]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 315° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-n-out-3` / `1-N-out-3` | `avenue-lane-03` / `cut-1-n-out-3` / car | Outgoing | `[-3.2,8,0]` | Not declared | 315° | 0 |
+| `member-1-n-out-5` / `1-N-out-5` | `avenue-lane-04` / `cut-1-n-out-5` / car | Outgoing | `[3.2,8,0]` | Not declared | 315° | 0 |
+
+##### Service group 2 / 2: PEDESTRIAN — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-02-avenue-walkways-02` / `avenue-walkways` |
+| Network / game class / role | pedestrian / Engine class (2); primary |
+| Source cell / edge | `[0,0]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 315° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 0 incoming; 1 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | walkway |
+| Traffic modes | pedestrian |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-2-n-out-2` / `2-N-out-2` | `avenue-walkway-02` / `cut-2-n-out-2` / pedestrian | Outgoing | `[7.3,8,0]` | Not declared | 315° | 0 |
+
+#### Boundary B: `boundary-01`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-01-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,0]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 315° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-in-1` / `1-W-in-1` | `avenue-lane-01` / `cut-1-w-in-1` / car | Incoming | `[-8,-3.2,0]` | Not declared | 315° | 0 |
+| `member-1-w-in-2` / `1-W-in-2` | `avenue-lane-02` / `cut-1-w-in-2` / car | Incoming | `[-8,3.2,0]` | Not declared | 315° | 0 |
+
+##### Service group 2 / 2: PEDESTRIAN — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-01-avenue-walkways-02` / `avenue-walkways` |
+| Network / game class / role | pedestrian / Engine class (2); primary |
+| Source cell / edge | `[0,0]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 315° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 1 incoming; 0 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | walkway |
+| Traffic modes | pedestrian |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-2-w-in-1` / `2-W-in-1` | `avenue-walkway-01` / `cut-2-w-in-1` / pedestrian | Incoming | `[-8,-7.3,0]` | Not declared | 315° | 0 |
+
+#### Boundary C: `boundary-03`
+
+This service group is required at this edge.
+
+##### Service group 1 / 1: ROAD — Custom (3.00044 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-03-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / South |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (3.00044 m); no nominal level |
+| Outward heading | 199.221° |
+| Slope at joining edge | 22.6756% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 0 incoming; 1 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-s-out-4` / `1-S-out-4` | `avenue-ramp-01` / `cut-1-s-out-4` / car | Outgoing | `[-1.75443,-40,3.00044]` | Not declared | 199.221° | 22.6756 |
+
+#### Boundary D: `boundary-05`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-05-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,1]` / South |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 135° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-s-out-6` / `1-S-out-6` | `avenue-lane-01` / `cut-1-s-out-6` / car | Outgoing | `[12.8,-24,0]` | Not declared | 135° | 0 |
+| `member-1-s-out-7` / `1-S-out-7` | `avenue-lane-02` / `cut-1-s-out-7` / car | Outgoing | `[19.2,-24,0]` | Not declared | 135° | 0 |
+
+##### Service group 2 / 2: PEDESTRIAN — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-05-avenue-walkways-02` / `avenue-walkways` |
+| Network / game class / role | pedestrian / Engine class (2); primary |
+| Source cell / edge | `[1,1]` / South |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 135° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 0 incoming; 1 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | walkway |
+| Traffic modes | pedestrian |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-2-s-out-3` / `2-S-out-3` | `avenue-walkway-01` / `cut-2-s-out-3` / pedestrian | Outgoing | `[8.7,-24,0]` | Not declared | 135° | 0 |
+
+#### Boundary E: `boundary-04`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-04-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,1]` / East |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 135° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-e-in-8` / `1-E-in-8` | `avenue-lane-03` / `cut-1-e-in-8` / car | Incoming | `[24,-19.2,0]` | Not declared | 135° | 0 |
+| `member-1-e-in-9` / `1-E-in-9` | `avenue-lane-04` / `cut-1-e-in-9` / car | Incoming | `[24,-12.8,0]` | Not declared | 135° | 0 |
+
+##### Service group 2 / 2: PEDESTRIAN — Custom (0 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-04-avenue-walkways-02` / `avenue-walkways` |
+| Network / game class / role | pedestrian / Engine class (2); primary |
+| Source cell / edge | `[1,1]` / East |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (0 m); no nominal level |
+| Outward heading | 135° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 1 incoming; 0 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | walkway |
+| Traffic modes | pedestrian |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-2-e-in-4` / `2-E-in-4` | `avenue-walkway-02` / `cut-2-e-in-4` / pedestrian | Incoming | `[24,-8.7,0]` | Not declared | 135° | 0 |
+
+#### Boundary F: `boundary-06`
+
+This service group is required at this edge.
+
+##### Service group 1 / 1: ROAD — Custom (3.00044 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-06-avenue-mainline-01` / `avenue-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[2,0]` / East |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (3.00044 m); no nominal level |
+| Outward heading | 70.7789° |
+| Slope at joining edge | 22.6756% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 1 incoming; 0 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-e-in-10` / `1-E-in-10` | `avenue-ramp-02` / `cut-1-e-in-10` / car | Incoming | `[40,1.75443,3.00044]` | Not declared | 70.7789° | 22.6756 |
+
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
+
 <!-- END CONNECTOR OVERVIEW -->

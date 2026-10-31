@@ -253,7 +253,8 @@
     "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a431": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
     "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a432": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
     "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a433": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
-    "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a434": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8"
+    "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a434": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+    "image:ddrhw-diagonal-access-core:connection-overview": "df69a4c22894668b133ef984e9f2634066fc5a4ea3a7fb45eec7da2b1e8f06f2"
   },
   "cases": [
     {
@@ -279,32 +280,6 @@
       "observations": [],
       "dependency_snapshot": "442773f6c02148e1b5e146b266b93de8af6528587ed007b3892069d24e030197",
       "dependency_ref": "26abe5723abf125a4db4fc8b8ad335a6e3d7cbf0598610c9fae5746001d473a9"
-    },
-    {
-      "id": "preview_review-f171c5fb3e196d1d1198",
-      "kind": "preview_review",
-      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
-      "scope": {
-        "subject_id": "ddrhw-diagonal-access-core",
-        "image_key": "image:ddrhw-diagonal-access-core:canonical-southeast"
-      },
-      "applicability": "applicable",
-      "observations": [],
-      "dependency_snapshot": "b7bbfd056f49ff664b469f5b52089952b246b32c71d0bc9686a2afa8c6f2bbd2",
-      "dependency_ref": "3f0773094d2ad52c72840137d796635a5823cd0d16799c2bdde30acd3dd3ca50"
-    },
-    {
-      "id": "preview_review-a7ba8c8eb8ed1691e6dd",
-      "kind": "preview_review",
-      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
-      "scope": {
-        "subject_id": "ddrhw-diagonal-access-core",
-        "image_key": "image:ddrhw-diagonal-access-core:canonical-top"
-      },
-      "applicability": "applicable",
-      "observations": [],
-      "dependency_snapshot": "568b1cf9f0c0f079d2dd8b4f14392648efffc05ba649f5d12e3e342c9e952d37",
-      "dependency_ref": "6374255a635d72509cd7556ead11d9d194cd6e1b59ee9854ce7cb329667f9ac1"
     },
     {
       "id": "in_game_render-9089693028482b301540",
@@ -9153,6 +9128,45 @@
       "observations": [],
       "dependency_snapshot": "bb9359984f0ac0807c0ed6d99a19c0949f75b0f08c01dea304661d1e6ad1e3c2",
       "dependency_ref": "26abe5723abf125a4db4fc8b8ad335a6e3d7cbf0598610c9fae5746001d473a9"
+    },
+    {
+      "id": "preview_review-f171c5fb3e196d1d1198",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-access-core",
+        "image_key": "image:ddrhw-diagonal-access-core:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b7bbfd056f49ff664b469f5b52089952b246b32c71d0bc9686a2afa8c6f2bbd2",
+      "dependency_ref": "3f0773094d2ad52c72840137d796635a5823cd0d16799c2bdde30acd3dd3ca50"
+    },
+    {
+      "id": "preview_review-a7ba8c8eb8ed1691e6dd",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-access-core",
+        "image_key": "image:ddrhw-diagonal-access-core:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "568b1cf9f0c0f079d2dd8b4f14392648efffc05ba649f5d12e3e342c9e952d37",
+      "dependency_ref": "6374255a635d72509cd7556ead11d9d194cd6e1b59ee9854ce7cb329667f9ac1"
+    },
+    {
+      "id": "preview_review-d0bb86b2495e2bb1120f",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-access-core",
+        "image_key": "image:ddrhw-diagonal-access-core:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "be9ed79c0a5e1b293d1ee92627e65355707040e07c38a374e0e21ef977295155",
+      "dependency_ref": "b8ef8fedac3401de19d35ea62b0a648dbe3b82eba236aaaa73b8a9265c5d6164"
     }
   ],
   "dependency_sets": {
@@ -9544,6 +9558,9 @@
       "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a432": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
       "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a433": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
       "texture:ddrhw-diagonal-access-core:7ab50e44-1abe787d-7f59a434": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8"
+    },
+    "b8ef8fedac3401de19d35ea62b0a648dbe3b82eba236aaaa73b8a9265c5d6164": {
+      "image:ddrhw-diagonal-access-core:connection-overview": "df69a4c22894668b133ef984e9f2634066fc5a4ea3a7fb45eec7da2b1e8f06f2"
     }
   }
 }

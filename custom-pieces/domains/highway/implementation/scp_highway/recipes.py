@@ -99,6 +99,12 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
+    if spec['recipe'] == 'highway_ddrhw_modular_stamp':
+        from .modular_stamp import build_piece as build_stamp
+        return build_stamp(spec, context)
+    if spec['recipe'].startswith('highway_ddrhw_modular_'):
+        from .modular_ramps import build_piece as build_modular
+        return build_modular(spec, context)
     if spec['recipe'] == RECIPE:
         require(spec['footprint'] == [3, 3] and [tuple(cell) for cell in spec['cells']] == list(CELLS),
                 'Native highway crossing requires its measured five-cell cross')

@@ -7,7 +7,7 @@
 // Affects: The component cycling order and one assembly menu button; geometry and game observations are separate.
 {
   "schema_version": 1,
-  "purpose": "One Highways button cycles through the compact diamond component types.",
+  "purpose": "One Highways button per assembly cycles through its separately placed component types.",
   "layouts": {
     "compact-diagonal-diamond": {
       "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
@@ -17,6 +17,16 @@
         "order": "fffffee0",
         "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Diagonal Avenue Diamond",
         "description": "Tab and Shift+Tab select one reusable component; Home and End rotate it. Each click places one component. Follow the assembly placement table."
+      }
+    },
+    "modular-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee1",
+        "order": "fffffee1",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Modular Diagonal Avenue Diamond",
+        "description": "Start with the highway stamp. Tab and Shift+Tab select four separate ramps and two separate Avenue terminals; Home and End rotate each part. Each click places one component. Retained compact alternatives have separate icons."
       }
     }
   }

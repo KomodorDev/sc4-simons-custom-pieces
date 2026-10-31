@@ -306,7 +306,8 @@
     "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c531": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
     "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c532": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
     "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c533": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
-    "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c534": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8"
+    "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c534": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+    "image:ddrhw-diagonal-southeast-junction:connection-overview": "76e3f48b5faff66c09339f05f2a089ad2d733068a9c70d5be34774ed1f0d3fcd"
   },
   "cases": [
     {
@@ -332,32 +333,6 @@
       "observations": [],
       "dependency_snapshot": "e51fa29623f9afd24a6907c8ac9b85fbb13a1374ead5c7be8a8f49d5c62a1927",
       "dependency_ref": "7ef46a8e4376ce903ee6c7e485bd9962c83c8d933b093c3d4e7f6ae6e6de829b"
-    },
-    {
-      "id": "preview_review-920a9ef4286a6a634588",
-      "kind": "preview_review",
-      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
-      "scope": {
-        "subject_id": "ddrhw-diagonal-southeast-junction",
-        "image_key": "image:ddrhw-diagonal-southeast-junction:canonical-southeast"
-      },
-      "applicability": "applicable",
-      "observations": [],
-      "dependency_snapshot": "2746e169548bdb26124ced68e4f61d7d02fdb5952bb963e984ad8adfd80768de",
-      "dependency_ref": "4407b8f266fb659584a2132b9a82fe2f5cf8b7c6ecbf4dd10d1b05c34e52e014"
-    },
-    {
-      "id": "preview_review-a16ab91d8095502e2516",
-      "kind": "preview_review",
-      "description": "Inspect this exact preview for tracks, walls, piers, seams, and shadows.",
-      "scope": {
-        "subject_id": "ddrhw-diagonal-southeast-junction",
-        "image_key": "image:ddrhw-diagonal-southeast-junction:canonical-top"
-      },
-      "applicability": "applicable",
-      "observations": [],
-      "dependency_snapshot": "6b25ca4358c0689517da98175c979cf271479220554bf9f39647b7d924c8122d",
-      "dependency_ref": "52ab1543fec9aa2471f864213c8964e6b8a6a7bd137cab777c0125a68fd991cb"
     },
     {
       "id": "in_game_render-1971e5729b46d8d832a3",
@@ -4998,6 +4973,45 @@
       "observations": [],
       "dependency_snapshot": "adbb4c4af28efa80a0ef8f11c7144a8c284b334cbff247aa81f5a35c146b031f",
       "dependency_ref": "7ef46a8e4376ce903ee6c7e485bd9962c83c8d933b093c3d4e7f6ae6e6de829b"
+    },
+    {
+      "id": "preview_review-920a9ef4286a6a634588",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-southeast-junction",
+        "image_key": "image:ddrhw-diagonal-southeast-junction:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2746e169548bdb26124ced68e4f61d7d02fdb5952bb963e984ad8adfd80768de",
+      "dependency_ref": "4407b8f266fb659584a2132b9a82fe2f5cf8b7c6ecbf4dd10d1b05c34e52e014"
+    },
+    {
+      "id": "preview_review-a16ab91d8095502e2516",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-southeast-junction",
+        "image_key": "image:ddrhw-diagonal-southeast-junction:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b25ca4358c0689517da98175c979cf271479220554bf9f39647b7d924c8122d",
+      "dependency_ref": "52ab1543fec9aa2471f864213c8964e6b8a6a7bd137cab777c0125a68fd991cb"
+    },
+    {
+      "id": "preview_review-89cd2603a79c65e6760d",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-diagonal-southeast-junction",
+        "image_key": "image:ddrhw-diagonal-southeast-junction:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a790b1af269dd310db0276d24c07284fa94554cfce6e07252c660e4e6d08640d",
+      "dependency_ref": "e534e5f216f53089a23038c4c3271de14d84429983f2d712d02f300468e496a6"
     }
   ],
   "dependency_sets": {
@@ -5495,6 +5509,9 @@
       "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c532": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
       "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c533": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
       "texture:ddrhw-diagonal-southeast-junction:7ab50e44-1abe787d-7f59c534": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8"
+    },
+    "e534e5f216f53089a23038c4c3271de14d84429983f2d712d02f300468e496a6": {
+      "image:ddrhw-diagonal-southeast-junction:connection-overview": "76e3f48b5faff66c09339f05f2a089ad2d733068a9c70d5be34774ed1f0d3fcd"
     }
   }
 }

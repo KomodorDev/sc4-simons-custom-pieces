@@ -131,7 +131,7 @@ The adaptive-ground integration retains the complete saved car, pedestrian, and 
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 0/2 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/32 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/32 applicable cases passed; 0 failed, 0 stale.
@@ -150,7 +150,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 248, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 249, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -209,48 +209,6 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 2 cases; unverified: 2</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast | <a href="#case-preview_review-dc931912ba40eb1296fc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-top | <a href="#case-preview_review-dca9a6ac16d9e1df4047">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast</summary>
-
-<a id="case-preview_review-dc931912ba40eb1296fc"></a>
-
-**General: unverified** — `preview_review-dc931912ba40eb1296fc`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-top</summary>
-
-<a id="case-preview_review-dca9a6ac16d9e1df4047"></a>
-
-**General: unverified** — `preview_review-dca9a6ac16d9e1df4047`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-top.
 
 No observation recorded.
 
@@ -3214,6 +3172,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 2-E-in-4; to port: 2-S-out-3; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast | <a href="#case-preview_review-dc931912ba40eb1296fc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-top | <a href="#case-preview_review-dca9a6ac16d9e1df4047">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:connection-overview | <a href="#case-preview_review-114d78931935c8958537">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast</summary>
+
+<a id="case-preview_review-dc931912ba40eb1296fc"></a>
+
+**General: unverified** — `preview_review-dc931912ba40eb1296fc`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-top</summary>
+
+<a id="case-preview_review-dca9a6ac16d9e1df4047"></a>
+
+**General: unverified** — `preview_review-dca9a6ac16d9e1df4047`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:connection-overview</summary>
+
+<a id="case-preview_review-114d78931935c8958537"></a>
+
+**General: unverified** — `preview_review-114d78931935c8958537`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:connection-overview.
 
 No observation recorded.
 

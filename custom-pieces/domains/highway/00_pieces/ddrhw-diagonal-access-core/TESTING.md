@@ -188,7 +188,7 @@ The adaptive-ground integration retains the complete saved car, pedestrian, and 
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 0/2 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/40 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/40 applicable cases passed; 0 failed, 0 stale.
@@ -207,7 +207,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 460, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 461, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -266,48 +266,6 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 2 cases; unverified: 2</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-access-core:canonical-southeast | <a href="#case-preview_review-f171c5fb3e196d1d1198">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-access-core:canonical-top | <a href="#case-preview_review-a7ba8c8eb8ed1691e6dd">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-access-core:canonical-southeast</summary>
-
-<a id="case-preview_review-f171c5fb3e196d1d1198"></a>
-
-**General: unverified** — `preview_review-f171c5fb3e196d1d1198`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-access-core:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-access-core:canonical-top</summary>
-
-<a id="case-preview_review-a7ba8c8eb8ed1691e6dd"></a>
-
-**General: unverified** — `preview_review-a7ba8c8eb8ed1691e6dd`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-access-core:canonical-top.
 
 No observation recorded.
 
@@ -5762,6 +5720,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 2-S-in-4; to port: 2-E-out-3; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-access-core:canonical-southeast | <a href="#case-preview_review-f171c5fb3e196d1d1198">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-access-core:canonical-top | <a href="#case-preview_review-a7ba8c8eb8ed1691e6dd">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-access-core:connection-overview | <a href="#case-preview_review-d0bb86b2495e2bb1120f">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-access-core:canonical-southeast</summary>
+
+<a id="case-preview_review-f171c5fb3e196d1d1198"></a>
+
+**General: unverified** — `preview_review-f171c5fb3e196d1d1198`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-access-core:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-access-core:canonical-top</summary>
+
+<a id="case-preview_review-a7ba8c8eb8ed1691e6dd"></a>
+
+**General: unverified** — `preview_review-a7ba8c8eb8ed1691e6dd`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-access-core:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-access-core:connection-overview</summary>
+
+<a id="case-preview_review-d0bb86b2495e2bb1120f"></a>
+
+**General: unverified** — `preview_review-d0bb86b2495e2bb1120f`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-access-core:connection-overview.
 
 No observation recorded.
 

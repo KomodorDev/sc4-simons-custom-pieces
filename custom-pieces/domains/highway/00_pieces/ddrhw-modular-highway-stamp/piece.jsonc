@@ -1,0 +1,411 @@
+// title: "Piece definition: DD RHW-4 — Diagonal Highway and Slip-Lane Stamp"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Highway and Slip-Lane Stamp.",
+  "schema_version": 1,
+  "id": "ddrhw-modular-highway-stamp",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Diagonal Highway and Slip-Lane Stamp",
+  "description": "Place the complete double-decker highway and four slip-lane openings in one click. On-ramps, off-ramps, and Avenue terminals are separate pieces attached at measured sloped boundaries.",
+  "recipe": "highway_ddrhw_modular_stamp",
+  "geometry_key": "modular-stamp",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f83c",
+  "tile_ids": [
+    "7f59d800",
+    "7f59d900",
+    "7f59d610",
+    "7f59d710",
+    "7f59d810",
+    "7f59d910",
+    "7f59d620",
+    "7f59d720",
+    "7f59d820",
+    "7f59d430",
+    "7f59d530",
+    "7f59d630",
+    "7f59d340",
+    "7f59d440",
+    "7f59d540",
+    "7f59d350",
+    "7f59d450",
+    "7f59d160",
+    "7f59d260",
+    "7f59d360",
+    "7f59d170",
+    "7f59d270",
+    "7f59d080",
+    "7f59d180",
+    "7f59d280",
+    "7f59d090",
+    "7f59d190"
+  ],
+  "preview_id": "7f59dff5",
+  "effect_name": "preview_scp_hw_f83c_____001",
+  "footprint": [
+    10,
+    10
+  ],
+  "cells": [
+    [
+      8,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      9,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      0,
+      9
+    ],
+    [
+      1,
+      9
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis",
+    "adaptive_avenue"
+  ],
+  "menu": {
+    "id": "6a47f83c",
+    "order": "ffffff3c",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [
+      [
+        9,
+        1
+      ],
+      [
+        1,
+        9
+      ]
+    ]
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f59d800",
+      "source": "7f59d800",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d900",
+      "source": "7f59d900",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d610",
+      "source": "7f59d610",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d710",
+      "source": "7f59d710",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d810",
+      "source": "7f59d810",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d910",
+      "source": "7f59d910",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d620",
+      "source": "7f59d620",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d720",
+      "source": "7f59d720",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d820",
+      "source": "7f59d820",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d430",
+      "source": "7f59d430",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d530",
+      "source": "7f59d530",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d630",
+      "source": "7f59d630",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d340",
+      "source": "7f59d340",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d440",
+      "source": "7f59d440",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d540",
+      "source": "7f59d540",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d350",
+      "source": "7f59d350",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d450",
+      "source": "7f59d450",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d160",
+      "source": "7f59d160",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d260",
+      "source": "7f59d260",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d360",
+      "source": "7f59d360",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d170",
+      "source": "7f59d170",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d270",
+      "source": "7f59d270",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d080",
+      "source": "7f59d080",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d180",
+      "source": "7f59d180",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d280",
+      "source": "7f59d280",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d090",
+      "source": "7f59d090",
+      "rotation": 0
+    },
+    {
+      "tile": "7f59d190",
+      "source": "7f59d190",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
+    "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "adaptive_ground": {
+    "schema_version": 1,
+    "cells": [
+      {
+        "cell": [
+          4,
+          3
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020402",
+        "avenue_flags": "01000003",
+        "prop": false,
+        "resolved_tile_id": "7f59e000"
+      },
+      {
+        "cell": [
+          3,
+          4
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020204",
+        "avenue_flags": "00030100",
+        "prop": false,
+        "resolved_tile_id": "7f59e100"
+      },
+      {
+        "cell": [
+          4,
+          4
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "04040204",
+        "avenue_flags": "01030103",
+        "prop": true,
+        "resolved_tile_id": "7f59e200"
+      },
+      {
+        "cell": [
+          5,
+          4
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "04040204",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f59e300"
+      },
+      {
+        "cell": [
+          4,
+          5
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "04040204",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f59e400"
+      }
+    ]
+  }
+}

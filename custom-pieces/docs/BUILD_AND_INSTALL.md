@@ -116,7 +116,7 @@ For native builds, use the settings-copy command in the next section. Keep real 
 
 ### 3.3 Prepare adaptive Avenue inputs for source builds
 
-The compact highway diamond's three adaptive components require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
+The compact highway diamond's three adaptive components and the modular highway stamp and two R40 terminals require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
 
 ```sh
 python -B custom-pieces/domains/highway/tools/prepare_adaptive_avenue_inputs.py --plugins "<user Plugins folder>" --extra-plugins "<additional Plugins folder>" --game-dir "<folder containing SimCity_4.dat>" --output custom-pieces/local/captures/adaptive-avenue

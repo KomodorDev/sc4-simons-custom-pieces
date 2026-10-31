@@ -523,11 +523,29 @@ def compile_module(spec, context):
     return compiled
 
 
+def module_declaration(spec):
+    """Resolve an explicitly implemented family without altering retained cuts."""
+    key = spec.get('geometry_key')
+    if key == 'modular-stamp':
+        from .modular_stamp import declaration
+        return declaration()
+    if spec.get('recipe', '').startswith('highway_ddrhw_modular_'):
+        from .modular_ramps import module_catalog as modular_catalog
+        return next(row for row in modular_catalog()['types'] if row['key'] == key)
+    return next(row for row in module_catalog()['types'] if row['key'] == key)
+
+
+def construction_symbol(index):
+    symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    _require(0 <= index < len(symbols), 'Highway construction supports at most 52 distinct cells')
+    return symbols[index]
+
+
 def construction_fields(spec, compiled):
     """Derive construction ownership and road flags from actual saved routes."""
     from .native import parse_paths
     key = spec["geometry_key"]
-    record = next(item for item in module_catalog()["types"] if item["key"] == key)
+    record = module_declaration(spec)
     origin = record["world_origin_cell"]
     width, depth = spec["footprint"]
     rows = [["."] * (width + 2) for _ in range(depth + 1)]
@@ -536,7 +554,7 @@ def construction_fields(spec, compiled):
     rows[-1][0] = cons[-1][0] = "^"
     palette = []
     for index, (local, _model, raw) in enumerate(compiled):
-        symbol = chr(ord("a") + index)
+        symbol = construction_symbol(index)
         rows[local[1]][local[0]] = symbol
         world = local[0] + origin[0], local[1] + origin[1]
         native_avenue = world[0] - world[1] in (-1, 0, 1)

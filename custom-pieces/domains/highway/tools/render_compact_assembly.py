@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import sys
 
@@ -59,9 +60,10 @@ def saved_resources(build, manifest, piece_ids):
         resources = {key: decompress(raw) for key, raw in entries(dat).items()}
         preview = resources[0x5AD0E817, 0xBADB57F1, int(piece['preview_id'], 16)]
         texture_sources = []
-        for identifier in piece.get('authored_texture_ids', []):
-            iid = int(identifier, 16)
-            raw = resources[0x7AB50E44, 0x1ABE787D, iid]
+        for key, raw in sorted(resources.items()):
+            if key[:2] != (0x7AB50E44, 0x1ABE787D):
+                continue
+            iid = key[2]
             if iid in owned and owned[iid] != raw:
                 raise ValueError(f'Saved texture {iid:08x} differs between component DATs')
             owned[iid] = raw
@@ -98,13 +100,17 @@ def canonical_images(report, destination, prefix):
 
 
 def render(build, destination, *, root=ROOT, plugins=None,
-           width=2800, height=2600, prefix='reviewed-compact-assembly'):
+           width=2800, height=2600, prefix='reviewed-compact-assembly', assembly=ASSEMBLY_ID):
     root, build, destination = map(lambda value: Path(value).resolve(), (root, build, destination))
     if destination.is_relative_to(build):
         raise ValueError('Render staging must stay outside the verified build')
     verify_build(build, write_report=False)
-    scene_path = root / 'domains/highway/01_assemblies' / ASSEMBLY_ID / 'assembly.jsonc'
+    if not isinstance(assembly, str) or not re.fullmatch(r'[a-z][a-z0-9-]+', assembly):
+        raise ValueError('Choose an exact registered highway assembly identifier')
+    scene_path = root / 'domains/highway/01_assemblies' / assembly / 'assembly.jsonc'
     scene = jsonc.load(scene_path)
+    if scene['id'] != assembly:
+        raise ValueError('Selected highway assembly folder and definition identity differ')
     manifest_raw = (build / 'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
     model, provenance = load_scene(scene_path, default_build=str(build))
@@ -160,6 +166,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--build', type=Path, required=True)
+    parser.add_argument('--assembly', default=ASSEMBLY_ID,
+                        help='Exact highway assembly identifier; defaults to the retained compact diamond')
     parser.add_argument('--output-dir', type=Path, required=True)
     parser.add_argument('--plugins', type=Path)
     parser.add_argument('--width', type=int, default=2800)
@@ -167,7 +175,8 @@ def main():
     parser.add_argument('--prefix', default='reviewed-compact-assembly')
     args = parser.parse_args()
     print(json.dumps(render(args.build, args.output_dir, root=args.root, plugins=args.plugins,
-                            width=args.width, height=args.height, prefix=args.prefix), indent=2))
+                            width=args.width, height=args.height, prefix=args.prefix,
+                            assembly=args.assembly), indent=2))
 
 
 if __name__ == '__main__':

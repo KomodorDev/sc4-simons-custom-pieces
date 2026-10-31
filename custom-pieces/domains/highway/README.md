@@ -1,6 +1,6 @@
 ---
 title: "Highway"
-summary: "Find the experimental DD RHW-4 and Avenue pieces, their compact assembly, and the separate game-testing requirements."
+summary: "Find the experimental DD RHW-4 and Avenue pieces, their compact and modular assemblies, and the separate game-testing requirements."
 audience: "Highway authors and players"
 document_type: "guide"
 ---
@@ -19,8 +19,8 @@ The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground d
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 14 menu types](00_pieces/INVENTORY.md).
-- [Assembly blueprints: 1 design](01_assemblies/INVENTORY.md).
+- [Individual pieces: 21 menu types](00_pieces/INVENTORY.md).
+- [Assembly blueprints: 2 designs](01_assemblies/INVENTORY.md).
 
 <details>
 <summary>Named build collections</summary>
@@ -29,6 +29,7 @@ A collection selects existing piece types; it is not an additional piece or a on
 
 - `ddrhw-diagonal-avenue-crossing`: 1 piece types.
 - `ddrhw-compact-diagonal-diamond`: 13 piece types.
+- `ddrhw-modular-ramp-kit`: 13 piece types.
 
 </details>
 
@@ -41,3 +42,6 @@ Use the [piece and assembly design skill](../../skills/network-piece-and-assembl
 ## 2. Design prototypes
 
 The [compact diagonal avenue diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) uses 13 reusable component types and 15 placements, owning 53 construction tiles inside a 10 × 10-tile rectangle. All four highway joins now have actual shoulder-lane driving paths, progressive tapers, short parallel sections, and native-material markings. Both through lanes on each deck remain available. Ramp access permits only adjacent-carriageway right turns. Complete driving curves are approximately 70.33 m lower and 102.21 m upper, including their new flat approaches; active height transitions remain approximately 35.08 m lower and 52.66 m upper. The 30% software grade limit is an experimental bound for this compact layout. The assembly guide explains the intended external Avenue joins, the adaptive-ground implementation, and the separate game checks that remain unverified. The [network specification](NETWORK_SPEC.md) separates measured native facts, authored geometry, and verification limits.
+
+
+The [modular diagonal diamond](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md) places the highway and slip lanes as one stamp, then attaches four separate ramps and two separate Avenue terminals. The R40 reference has seven types, seven placements, and 62 owned cells. Its new curves use 40 m circular sections while retaining the original sloped highway openings. The same stamp also accepts the complete retained compact attachment set, with 53 owned cells. The shared connector cards record every boundary, including slope, heading, and pedestrian services. Both arrangements remain experimental and require their own human game tests.

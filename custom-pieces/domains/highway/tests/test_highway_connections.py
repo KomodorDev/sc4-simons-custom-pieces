@@ -75,7 +75,7 @@ class HighwayConnectionTests(unittest.TestCase):
             piece_connectivity(self.piece,self.resources,contract=contract,service_classifier=service_classifier)
 
     def test_unreviewed_ramp_boundary_uses_measured_ports_without_a_native_contract_claim(self):
-        piece = {**self.piece,'recipe':'highway_ddrhw_compact_lower_exit_grade'}
+        piece = {**self.piece,'recipe':'highway_future_unreviewed_ramp'}
         self.assertIsNone(reviewed_contract(piece))
         record = piece_connectivity(piece,self.resources,contract=None,service_classifier=service_classifier)
         self.assertFalse(record['source']['reviewed_contract_available'])

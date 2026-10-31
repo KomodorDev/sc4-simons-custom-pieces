@@ -36,7 +36,7 @@
       "text:ddrhw-diagonal-lower-entry-grade:2026960b-2a592fd1-7f592100": "785352cab061d98377afd729a58ab11f14b87e7d5cb9102591d01c6ad5d7b22c",
       "construction:ddrhw-diagonal-lower-entry-grade": "23f516b297f22411877b68c220eda0f07e9c21b9a60e8130e801ac5246045592"
     },
-    "reviewed_contract_available": false,
+    "reviewed_contract_available": true,
     "scope": "one piece only; no counterpart catalogue is consulted",
     "construction_basis": "Actual emitted per-piece rule sections from the independently verified saved build"
   },
@@ -74,7 +74,7 @@
       "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
       "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
       "endpoint_basis": "actual_saved_PATH",
-      "tangent_basis": "actual_saved_PATH_sample",
+      "tangent_basis": "reviewed_contract",
       "resource_keys": [
         "model:ddrhw-diagonal-lower-entry-grade:5ad0e817-badb57f1-7f592100",
         "model:ddrhw-diagonal-lower-entry-grade:5ad0e817-badb57f1-7f592101",
@@ -131,7 +131,7 @@
       "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
       "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
       "endpoint_basis": "actual_saved_PATH",
-      "tangent_basis": "actual_saved_PATH_sample",
+      "tangent_basis": "reviewed_contract",
       "resource_keys": [
         "model:ddrhw-diagonal-lower-entry-grade:5ad0e817-badb57f1-7f592100",
         "model:ddrhw-diagonal-lower-entry-grade:5ad0e817-badb57f1-7f592101",
@@ -178,7 +178,7 @@
   "compatibility_policy": "Intrinsic encoded-route facts only; complete shared-boundary agreement, physical seams, and game operation are not evaluated.",
   "software_status": {
     "path_extraction": "passed",
-    "contract_consistency": "unverified",
+    "contract_consistency": "passed",
     "physical_seams": "unverified",
     "in_game": "unverified"
   },

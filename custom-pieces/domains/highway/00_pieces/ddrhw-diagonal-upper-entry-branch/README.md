@@ -75,4 +75,263 @@ Source: [connections.json](connections.json).
 
 <!-- BEGIN CONNECTOR OVERVIEW -->
 
+### Connection overview
+
+Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.
+
+![Complete connection overview](previews/connection-overview.png)
+
+[Rendering sources and verification scope](evidence/connection-overview.json).
+
+Headings: 0° = North, 90° = East, 180° = South, and 270° = West; clockwise in plan view, pointing out of the piece.
+
+Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.
+
+Display grid: X = source column − (0); Y = 2 − source row.
+
+Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and − right facing out of the tile edge.
+
+Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.
+
+Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.
+
+Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.
+
+#### Boundary A: `boundary-02`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (7.5 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-02-lower-mainline-01` / `lower-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (7.5 m); no nominal level |
+| Outward heading | 45° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-n-in-5` / `1-N-in-5` | `lower-lane-01` / `cut-1-n-in-5` / car | Incoming | `[-3.2,-24,7.5]` | Not declared | 45° | 0 |
+| `member-1-n-in-7` / `1-N-in-7` | `lower-lane-02` / `cut-1-n-in-7` / car | Incoming | `[3.2,-24,7.5]` | Not declared | 45° | 0 |
+
+##### Service group 2 / 2: ROAD — Custom (15 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-02-upper-mainline-02` / `upper-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (15 m); no nominal level |
+| Outward heading | 45° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-n-out-6` / `1-N-out-6` | `upper-lane-02` / `cut-1-n-out-6` / car | Outgoing | `[-3.2,-24,15]` | Not declared | 45° | 0 |
+| `member-1-n-out-8` / `1-N-out-8` | `upper-lane-01` / `cut-1-n-out-8` / car | Outgoing | `[3.2,-24,15]` | Not declared | 45° | 0 |
+
+#### Boundary B: `boundary-01`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (7.5 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-01-lower-mainline-01` / `lower-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (7.5 m); no nominal level |
+| Outward heading | 225° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-out-1` / `1-W-out-1` | `lower-lane-02` / `cut-1-w-out-1` / car | Outgoing | `[-8,-35.2,7.5]` | Not declared | 225° | 0 |
+| `member-1-w-out-3` / `1-W-out-3` | `lower-lane-01` / `cut-1-w-out-3` / car | Outgoing | `[-8,-28.8,7.5]` | Not declared | 225° | 0 |
+
+##### Service group 2 / 2: ROAD — Custom (15 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-01-upper-mainline-02` / `upper-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (15 m); no nominal level |
+| Outward heading | 225° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-in-2` / `1-W-in-2` | `upper-lane-01` / `cut-1-w-in-2` / car | Incoming | `[-8,-35.2,15]` | Not declared | 225° | 0 |
+| `member-1-w-in-4` / `1-W-in-4` | `upper-lane-02` / `cut-1-w-in-4` / car | Incoming | `[-8,-28.8,15]` | Not declared | 225° | 0 |
+
+#### Boundary C: `boundary-03`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (7.5 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-03-lower-mainline-01` / `lower-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,1]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (7.5 m); no nominal level |
+| Outward heading | 225° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-out-11` / `1-W-out-11` | `lower-lane-03` / `cut-1-w-out-11` / car | Outgoing | `[8,-12.8,7.5]` | Not declared | 225° | 0 |
+| `member-1-w-out-9` / `1-W-out-9` | `lower-lane-04` / `cut-1-w-out-9` / car | Outgoing | `[8,-19.2,7.5]` | Not declared | 225° | 0 |
+
+##### Service group 2 / 2: ROAD — Custom (15 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-03-upper-mainline-02` / `upper-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,1]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (15 m); no nominal level |
+| Outward heading | 225° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-in-10` / `1-W-in-10` | `upper-lane-03` / `cut-1-w-in-10` / car | Incoming | `[8,-19.2,15]` | Not declared | 225° | 0 |
+| `member-1-w-in-12` / `1-W-in-12` | `upper-lane-04` / `cut-1-w-in-12` / car | Incoming | `[8,-12.8,15]` | Not declared | 225° | 0 |
+
+#### Boundary D: `boundary-04`
+
+This service group is required at this edge.
+
+##### Service group 1 / 1: ROAD — Custom (12.2582 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-04-upper-mainline-01` / `upper-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,2]` / South |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (12.2582 m); no nominal level |
+| Outward heading | 201.979° |
+| Slope at joining edge | -29.6095% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 1 incoming; 0 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-s-in-13` / `1-S-in-13` | `upper-ramp-01` / `cut-1-s-in-13` / car | Incoming | `[8.14277,-40,12.2582]` | Not declared | 201.979° | -29.6095 |
+
+#### Boundary E: `boundary-05`
+
+All 2 service groups are required together at this edge.
+
+##### Service group 1 / 2: ROAD — Custom (7.5 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-05-lower-mainline-01` / `lower-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[2,0]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (7.5 m); no nominal level |
+| Outward heading | 45° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 2 incoming; 0 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-n-in-14` / `1-N-in-14` | `lower-lane-03` / `cut-1-n-in-14` / car | Incoming | `[28.8,8,7.5]` | Not declared | 45° | 0 |
+| `member-1-n-in-16` / `1-N-in-16` | `lower-lane-04` / `cut-1-n-in-16` / car | Incoming | `[35.2,8,7.5]` | Not declared | 45° | 0 |
+
+##### Service group 2 / 2: ROAD — Custom (15 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-05-upper-mainline-02` / `upper-mainline` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[2,0]` / North |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (15 m); no nominal level |
+| Outward heading | 45° |
+| Slope at joining edge | 0% outward |
+| Channels / edge cuts / directed members | 2 / 2 / 2 |
+| Traffic arrangement / running | 0 incoming; 2 outgoing; See member directions |
+| Channel spacing | 4.52548 m |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-n-out-15` / `1-N-out-15` | `upper-lane-04` / `cut-1-n-out-15` / car | Outgoing | `[28.8,8,15]` | Not declared | 45° | 0 |
+| `member-1-n-out-17` / `1-N-out-17` | `upper-lane-03` / `cut-1-n-out-17` / car | Outgoing | `[35.2,8,15]` | Not declared | 45° | 0 |
+
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
+
 <!-- END CONNECTOR OVERVIEW -->

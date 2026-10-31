@@ -68,7 +68,7 @@ The assembly’s executed checks, their source version, and remaining limitation
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 0/2 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/4 applicable cases passed; 0 failed, 0 stale.
@@ -87,7 +87,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 28, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 29, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -146,48 +146,6 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 2 cases; unverified: 2</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast | <a href="#case-preview_review-4064275534ba5ae3fcce">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top | <a href="#case-preview_review-c9d64ddb1db337284458">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast</summary>
-
-<a id="case-preview_review-4064275534ba5ae3fcce"></a>
-
-**General: unverified** — `preview_review-4064275534ba5ae3fcce`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top</summary>
-
-<a id="case-preview_review-c9d64ddb1db337284458"></a>
-
-**General: unverified** — `preview_review-c9d64ddb1db337284458`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top.
 
 No observation recorded.
 
@@ -518,6 +476,65 @@ No observation recorded.
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:1-W-in-1>1-E-out-2; entry: 1-W-in-1; exit: 1-E-out-2.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast | <a href="#case-preview_review-4064275534ba5ae3fcce">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top | <a href="#case-preview_review-c9d64ddb1db337284458">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-grade:connection-overview | <a href="#case-preview_review-6b5b27a05c6bca7bb2bc">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast</summary>
+
+<a id="case-preview_review-4064275534ba5ae3fcce"></a>
+
+**General: unverified** — `preview_review-4064275534ba5ae3fcce`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-grade:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top</summary>
+
+<a id="case-preview_review-c9d64ddb1db337284458"></a>
+
+**General: unverified** — `preview_review-c9d64ddb1db337284458`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-grade:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-grade:connection-overview</summary>
+
+<a id="case-preview_review-6b5b27a05c6bca7bb2bc"></a>
+
+**General: unverified** — `preview_review-6b5b27a05c6bca7bb2bc`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-grade:connection-overview.
 
 No observation recorded.
 

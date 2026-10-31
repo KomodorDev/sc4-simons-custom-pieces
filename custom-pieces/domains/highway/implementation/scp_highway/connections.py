@@ -2,8 +2,8 @@
 
 Car and pedestrian engine classes are explicit. Heights annotate the audited
 DD RHW-4 and Avenue variants; they do not change engine transport or establish
-neighbour compatibility. Only the pure crossing currently has an independently
-reviewed complete literal port/movement contract.
+neighbour compatibility. Frozen accepted-resource contracts cover the native
+crossing, compact components, and separately placed modular highway stamp.
 """
 from __future__ import annotations
 
@@ -81,13 +81,73 @@ def _core_contract():
 
 
 def reviewed_contract(piece):
-    """Return independent literal crossing facts, never generated ramp poses."""
+    """Return reviewed intrinsic facts, never candidate-generated ramp poses."""
     if piece['recipe'] == CORE:
         from copy import deepcopy
         return deepcopy(_core_contract())
-    # Sampled ramp endpoints are measured by extraction. Their complete native
-    # boundary/channel contract remains explicitly unreviewed at this stage.
-    return None
+    facts = _reviewed_facts(piece)
+    if facts is None:
+        return None
+    return {'ports':{p['id']:list(p['endpoint_m']) for p in facts['ports']},
+            'port_vectors':{p['id']:list(p.get('tangent',p['sampled_tangent'])) for p in facts['ports']},
+            'port_transports':{p['id']:p['engine_transport'] for p in facts['ports']},
+            'port_directions':{p['id']:p['direction'] for p in facts['ports']},
+            'movements':[list(pair) for pair in facts['movements']]}
+
+
+def _reviewed_facts(piece):
+    from .connector_contracts import CONTRACTS
+    from .modular_connector_contracts import CONTRACTS as MODULAR_CONTRACTS
+    facts = CONTRACTS.get(piece['recipe']) or MODULAR_CONTRACTS.get(piece['recipe'])
+    if facts is not None:
+        require(piece['footprint'] == facts['footprint']
+                and sorted(map(tuple,piece['cells'])) == sorted(map(tuple,facts['cells'])),
+                piece['id']+': owned cells differ from the reviewed highway contract')
+    return facts
+
+
+def validate_connection_record(piece,record):
+    """Check saved routing, service, boundary, and nonzero travel-grade facts.
+
+    Endpoint contracts intentionally do not establish physical seam fit. Raw
+    canonical PATH hashes bind the complete reviewed source graph, including
+    model-only cells, while runtime Avenue aliases remain separate dependencies.
+    """
+    facts = _reviewed_facts(piece)
+    require(facts is not None,piece['id']+': no complete reviewed highway boundary contract')
+    require(record['subject_id'] == piece['id'] and record['subject_kind'] == 'piece',
+            'Highway connector record belongs to another subject')
+    actual = {p['id']:p for p in record['ports']}
+    require(len(actual) == len(record['ports']) and set(actual) == {p['id'] for p in facts['ports']},
+            'Highway measured ports differ from the complete reviewed contract')
+    tiles = {tuple(cell):tile for cell,tile in zip(piece['cells'],piece['tile_ids'])}
+    fingerprints = record['source']['resource_fingerprints']
+    for cell,expected in facts['path_hashes_by_cell']:
+        key = f'path:{piece["id"]}:296678f7-a966883f-{tiles[tuple(cell)]}'
+        require(fingerprints.get(key) == expected,'Highway canonical PATH bytes differ from reviewed saved evidence')
+    for expected in facts['ports']:
+        port = actual[expected['id']]
+        for key in ('direction','engine_transport','edge','service_network','service_family',
+                    'variant','role','channel_kind','traffic_modes'):
+            require(port.get(key) == expected[key],'Highway measured '+key+' differs from reviewed boundary')
+        require(math.dist(port['endpoint_m'],expected['endpoint_m']) <= 1e-6,
+                'Highway endpoint differs from reviewed saved evidence')
+        require(math.dist(port['sampled_tangent'],expected['sampled_tangent']) <= 1e-9
+                and math.dist(port['tangent'],expected.get('tangent',expected['sampled_tangent'])) <= 1e-9,
+                'Highway travel tangent differs from reviewed saved evidence')
+        require(abs(port['grade']-expected['grade']) <= 1e-9,
+                'Highway signed travel grade differs from reviewed saved evidence')
+        require(port['boundary_sources'] == [{'cell':expected['source_cell'],
+                    'edge':expected['edge'],'tile_id':tiles[tuple(expected['source_cell'])]}],
+                'Highway source boundary differs from reviewed saved evidence')
+    require(len(record['journeys']) == len(facts['movements'])
+            and {(j['entry_port'],j['exit_port']) for j in record['journeys']} == set(facts['movements']),
+            'Highway directed journeys differ from reviewed saved evidence')
+    require(len(record['forbidden_transfers']) == len(facts['forbidden_transfers'])
+            and {(p['from_port'],p['to_port']) for p in record['forbidden_transfers']}
+                == set(facts['forbidden_transfers']),
+            'Highway forbidden transfers differ from reviewed saved evidence')
+    return facts
 
 
 def service_classifier(piece,engine_transport,height):
@@ -165,11 +225,100 @@ def materialize(root,*,build,piece_ids=None,include_assemblies=False):
         for port in record['ports']:
             port['resource_keys'].append(key)
             port['resource_keys'].extend(name for name in runtime_keys if name not in port['resource_keys'])
+        if _reviewed_facts(piece) is not None:
+            validate_connection_record(piece,record)
         records[identifier] = record
     result = refresh_catalog_content(root,records=records,changed_piece_ids=frozenset(records),
                                      scope_to_changed=not include_assemblies)
     return {**result,'extracted_piece_ids':selected,'saved_build_verified':True,
             'counterpart_matching_performed':False,'manual_game_results_changed':False}
+
+
+def connector_groups_value(piece,connections,*,piece_sha256,connections_sha256):
+    """Author existing shared-schema groups from independently frozen channels.
+
+    A boundary bundle is one occupied tile side. Multiple services or endpoint
+    heights on that side remain separate cards; a shared component establishes
+    intrinsic journey membership, never a new traffic movement.
+    """
+    from copy import deepcopy
+    from scp.connector_metadata import validate_piece
+    facts = validate_connection_record(piece,connections)
+    channels = {c['id']:c for c in facts['channels']}
+    boundaries = defaultdict(lambda:defaultdict(list))
+    for port in facts['ports']:
+        channel = channels[port['channel_id']]
+        boundaries[tuple(port['source_cell']),port['edge']][
+            channel['component_id'],port['endpoint_m'][2]].append(port)
+    groups,bundles = [],[]
+    for number,((cell,edge),services) in enumerate(sorted(boundaries.items()),1):
+        bundle = {'id':f'boundary-{number:02d}','source_cell':list(cell),
+                  'edge':('west','north','east','south')[edge],'connector_ids':[]}
+        for service_number,((component,_height),ports) in enumerate(sorted(services.items()),1):
+            group = {'id':f'boundary-{number:02d}-{component}-{service_number:02d}',
+                     'component_id':component,'members':[]}
+            for port in sorted(ports,key=lambda p:p['id']):
+                identifier = port['id'].lower()
+                group['members'].append({'id':'member-'+identifier,'source_port_id':port['id'],
+                    'direction':port['direction'],'channel_id':port['channel_id'],
+                    'cut_id':'cut-'+identifier})
+            groups.append(group)
+            bundle['connector_ids'].append(group['id'])
+        bundles.append(bundle)
+    value = {'schema_version':3,
+             'purpose':'Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.',
+             'piece_id':piece['id'],'source_binding':{'piece_sha256':piece_sha256,
+                'connections_sha256':connections_sha256},
+             'components':deepcopy(facts['components']),
+             'channels':[{key:deepcopy(value) for key,value in channel.items() if key != 'ports'}
+                         for channel in facts['channels']],
+             'groups':groups,'boundary_bundles':bundles}
+    validate_piece(piece,connections,value,{})
+    return value
+
+
+def write_connector_groups(root,piece_ids):
+    """Write only selected source-owned connector declarations after extraction.
+
+    This does not re-extract resources, refresh prose, render cards, build DATs,
+    discover compatible neighbours, or change human observations. Run it again
+    after an extraction changes a selected connections.json fingerprint.
+    """
+    root = Path(root).resolve()
+    require(not isinstance(piece_ids,(str,bytes)),'Connector IDs must be an iterable of exact identifiers')
+    identifiers = list(piece_ids)
+    require(identifiers and len(identifiers) == len(set(identifiers)),
+            'Connector IDs must be nonempty and unique')
+    catalog = load_catalog(root)
+    known = {p['id']:p for p in catalog['pieces'] if p['domain'] == 'highway'}
+    require(set(identifiers) <= known.keys(),'Unknown selected highway connector subject')
+    pending,results = [],[]
+    for identifier in identifiers:
+        piece = known[identifier]
+        require(_reviewed_facts(piece) is not None,'No complete reviewed highway connector contract')
+        directory = root/catalog['domains']['highway']['path']/'00_pieces'/identifier
+        connections_path = directory/'connections.json'
+        connections_bytes = connections_path.read_bytes()
+        value = connector_groups_value(piece,jsonc.loads(connections_bytes.decode('utf-8')),
+            piece_sha256=hashlib.sha256(source_path(directory,'piece').read_bytes()).hexdigest(),
+            connections_sha256=hashlib.sha256(connections_bytes).hexdigest())
+        path = directory/'connector-groups.jsonc'
+        header = ('// title: "Reviewed highway connector channels"\n'
+                  '// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."\n//\n'
+                  '// Used when: Contributors export this highway component or inspect its complete boundary cards.\n'
+                  '// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.\n'
+                  '// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.\n'
+                  '// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.\n')
+        source = path.read_text(encoding='utf-8') if path.is_file() else header+'{}\n'
+        pending.append((path,jsonc.document(value,source=source)))
+        results.append({'piece_id':identifier,'physical_channels':len(value['channels']),
+                        'directional_members':sum(len(group['members']) for group in value['groups']),
+                        'service_groups':len(value['groups']),
+                        'boundary_bundles':len(value['boundary_bundles']),
+                        'path':path.relative_to(root).as_posix()})
+    for path,text in pending:
+        path.write_text(text,encoding='utf-8')
+    return {'pieces':results,'resource_extraction':False,'manual_game_results_changed':False}
 
 
 def write_core_groups(root,piece_id):

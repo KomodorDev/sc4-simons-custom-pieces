@@ -157,7 +157,7 @@ The assembly’s executed checks, their source version, and remaining limitation
 
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
-- [ ] Preview review: 0/2 applicable cases passed; 0 failed, 0 stale.
+- [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
 - [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
 - [ ] Route Query: 0/36 applicable cases passed; 0 failed, 0 stale.
 - [ ] Visible travel: 0/36 applicable cases passed; 0 failed, 0 stale.
@@ -176,7 +176,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 344, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 345, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -4294,12 +4294,13 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Preview review — Images — 2 cases; unverified: 2</summary>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
 | **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-southeast | <a href="#case-preview_review-11004322b7ae9415cef0">[ ] unverified</a> | — | — | — | — |
 | **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top | <a href="#case-preview_review-c03d8bbead86720db7e9">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview | <a href="#case-preview_review-025640782dffdff11837">[ ] unverified</a> | — | — | — | — |
 
 
 <details>
@@ -4328,6 +4329,22 @@ No observation recorded.
 Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:ddrhw-diagonal-upper-exit-branch:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview</summary>
+
+<a id="case-preview_review-025640782dffdff11837"></a>
+
+**General: unverified** — `preview_review-025640782dffdff11837`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-diagonal-upper-exit-branch:connection-overview.
 
 No observation recorded.
 

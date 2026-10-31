@@ -28,7 +28,8 @@ GROUND_NAMES = {b'Avenue', b'SCP opened Avenue'}
 GROUND_MATERIALS = {0x0400020E, 0x0400380E}
 # Independently reviewed world construction origins, not layout generation.
 ORIGINS = {'access-core': (-1, -1), 'northwest-junction': (-2, -2),
-           'southeast-junction': (1, 1)}
+           'southeast-junction': (1, 1), 'modular-stamp': (-4, -4),
+           'northwest-terminal-r40': (-3, -3), 'southeast-terminal-r40': (1, 1)}
 CAPTURE_SHA256 = '6ed51e2a9188826f188516fc0be7004069b2eb11f02ad0a62d271672194af839'
 
 
@@ -181,7 +182,7 @@ def check_construction_fields(fields, piece, resources):
     from .ramp_verify import _road_word
     origin = ORIGINS[key]
     for index, (cell, identifier) in enumerate(zip(piece['cells'], piece['tile_ids'])):
-        letter = chr(ord('a') + index)
+        letter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'[index]
         expected[cell[1]][cell[0]] = letter
         if tuple(cell) in by_cell:
             row = by_cell[tuple(cell)]

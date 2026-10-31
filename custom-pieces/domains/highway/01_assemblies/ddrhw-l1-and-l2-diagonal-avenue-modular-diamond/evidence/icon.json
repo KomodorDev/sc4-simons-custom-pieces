@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "purpose": "Reproduce this assembly menu schematic from its seven independently placed source components.",
+  "basis": "Authored routes transformed by the registered assembly placements; no compiled-model rendering.",
+  "generator": "scp_highway.icons.assembly_icon_routes and scp.menu_experiment_resources.make_assembly_icon",
+  "generation_scope": "Only this new assembly was generated; retained assembly artwork was not refreshed.",
+  "reproduction_command": "python3 -B custom-pieces/scp.py assembly-icons --domain highway",
+  "reproduction_command_scope": "The shared command regenerates all registered highway assembly icons.",
+  "generator_sha256": {
+    "scp_highway.icons": "3808301d9bdcf97885846fbce34eb4cd06e69f18eeaa1395e94769a47c3b34d0",
+    "scp.menu_experiment_resources": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b"
+  },
+  "assembly_source_sha256": "52c83a96ba7997b955743b0eafc5075b10fb786563e7614eaa1a814351a15a9a",
+  "placed_routes_sha256": "41bb56932cb71949832a1777c685f58367b20b8a8fbcf17c3934e164fa8e6fb3",
+  "piece_definitions_sha256": {
+    "ddrhw-modular-highway-stamp": "84d9d872370beecf8b07bbd768945aebc70e728b8f0df392e7273dba6875638c",
+    "ddrhw-modular-lower-exit-r40": "20eb0d0695ae35516f900cc33015e1a64c0f8aa8d04d98f9553eae3ac3afa615",
+    "ddrhw-modular-lower-entry-r40": "556726e21ad5e8e3a232cc27d827eae48ae2b8296e6c08cc62b5b050e7009d96",
+    "ddrhw-modular-upper-exit-r40": "21b032bbb0045988533d2e9b806b04117b2a90f6160b264fca2f42e9d0dc5543",
+    "ddrhw-modular-upper-entry-r40": "add467888b128ff8acaededa7d76f6af6e13c1fb363a78b5e5cfe419862fe4d5",
+    "ddrhw-modular-northwest-terminal-r40": "67a3b0f7197252cc4eabf9843eafe02326e2e819174d2188844f9ddfaef58628",
+    "ddrhw-modular-southeast-terminal-r40": "86303750c41ebced080a4aa388a1fb648078690ffdbe8ceb82087495d0629a20"
+  },
+  "labels": {
+    "brand": "SCP",
+    "category": "ASM",
+    "network": "HWY",
+    "footer_position": "bottom-centre"
+  },
+  "footer_ink_rows_px": [
+    33,
+    37
+  ],
+  "output": {
+    "path": "icon.png",
+    "sha256": "847044bd416cc9f7293ace18a14b02aef7f335ce528d78ba0f977a6f1c2dd8ba",
+    "dimensions_px": [
+      176,
+      44
+    ],
+    "frame_order": [
+      "locked",
+      "normal",
+      "selected",
+      "highlighted"
+    ],
+    "frame_size_px": [
+      44,
+      44
+    ]
+  },
+  "compiled_resource_verification": "separate",
+  "in_game_appearance": "unverified"
+}

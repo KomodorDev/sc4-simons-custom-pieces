@@ -35,9 +35,8 @@ def bindings(spec):
     rows = adaptive_network.bindings(spec)
     if not rows:
         return []
-    from .ramp_paths import module_catalog
-    declaration = next((row for row in module_catalog()['types']
-                        if row['key'] == spec.get('geometry_key')), None)
+    from .ramp_paths import module_declaration
+    declaration = module_declaration(spec)
     require(declaration is not None, 'Adaptive ground requires a known compact highway module')
     origin = declaration['world_origin_cell']
     expected = {}
@@ -56,8 +55,15 @@ def bindings(spec):
         require(int(row['avenue_flags'], 16) == flags
                 and int(row['texture_donor_id'], 16) == donor and row['rotation'] == rotation,
                 'Adaptive Avenue flags, donor, or half-tile pose differs from native measurements')
-        require(row['prop'] == (world != (1, 1)),
-                'Adaptive prop declaration differs from the retained compact geometry')
+        if spec.get('geometry_key') == 'modular-stamp':
+            expected_prop = sum(world) in (0, 1)
+        elif spec.get('recipe', '').startswith('highway_ddrhw_modular_'):
+            from .modular_ramps import procedural_geometry
+            expected_prop = bool(procedural_geometry()[1].get(world))
+        else:
+            expected_prop = world != (1, 1)
+        require(row['prop'] == expected_prop,
+                'Adaptive prop declaration differs from the retained road geometry')
     return rows
 
 
@@ -215,7 +221,7 @@ def _native_states(raw):
 def build_construction(spec, compiled, native_rul0, native_rul1):
     """Return RUL0/RUL1 deltas for a measured mixed static/FLEX component."""
     from .recipes import construction
-    from .ramp_paths import construction_fields
+    from .ramp_paths import construction_fields, construction_symbol
     rows = bindings(spec)
     require(rows, 'Adaptive construction requires adaptive cell declarations')
     solutions = adaptive_network.expected_solutions([spec])
@@ -239,7 +245,7 @@ def build_construction(spec, compiled, native_rul0, native_rul1):
         row = by_cell.get(tuple(cell))
         if row is None:
             continue
-        symbol = chr(ord('a') + index)
+        symbol = construction_symbol(index)
         checks[index] = (f'{symbol} - street: 0x{row["street_flags"]} '
                          f'avenue: 0x{row["avenue_flags"]}, 0xFFFFFFFF optional')
         constraints[cell[1]][cell[0]] = '.'

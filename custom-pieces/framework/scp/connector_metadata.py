@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 
 from . import jsonc
+from .adaptive_network import PATH as ADAPTIVE_PATH, bindings as adaptive_bindings
 from .subject_sources import registered_source_path, source_path
 from importlib import resources
 
@@ -215,6 +216,11 @@ def validate_piece(piece, connections, groups, profiles):
     tiles = piece.get("tile_ids", [])
     _need(len(tiles) == len(cells) and len(set(tiles)) == len(tiles), "Tile/cell mapping is invalid")
     tile_cells = {int(tile, 16): tuple(cell) for tile, cell in zip(tiles, cells)}
+    # Adaptive PATHs are saved runtime dependencies for the whole piece. They
+    # do not replace the canonical PATH that identifies a member's source cell.
+    adaptive_paths = {f"path:{identifier}:{ADAPTIVE_PATH[0]:08x}-{ADAPTIVE_PATH[1]:08x}-"
+                      f"{int(row['resolved_tile_id'], 16):08x}" for row in adaptive_bindings(piece)}
+    fingerprints = connections.get("source", {}).get("resource_fingerprints", {})
     ports = {p["id"]: p for p in connections.get("ports", [])}
     _need(ports and len(ports) == len(connections["ports"]), "Missing or duplicate measured ports")
     components = groups.get("components", [])
@@ -302,8 +308,18 @@ def validate_piece(piece, connections, groups, profiles):
             _need(abs(sum(delta[i]*normal[i] for i in (0, 1))) <= EPS and abs(offset) <= 8.+EPS, "Port is outside its source tile seam")
             source_cells = set()
             for key in port.get("resource_keys", []):
-                if key.startswith("path:" + identifier + ":"):
-                    tile = int(key.rsplit("-", 1)[-1], 16)
+                if key.startswith("path:"):
+                    prefix = "path:" + identifier + ":"
+                    _need(key.startswith(prefix), "PATH resource belongs to another piece")
+                    match = re.fullmatch(r"296678f7-([0-9a-f]{8})-([0-9a-f]{8})", key[len(prefix):])
+                    _need(match is not None, "Malformed PATH resource identity")
+                    group, tile = int(match[1], 16), int(match[2], 16)
+                    if group != 0xa966883f:
+                        _need(key in adaptive_paths, "PATH dependency is not a declared adaptive binding")
+                        _need(isinstance(fingerprints.get(key), str) and
+                              re.fullmatch(r"[0-9a-f]{64}", fingerprints[key]) is not None,
+                              "Adaptive PATH dependency lacks a saved resource fingerprint")
+                        continue
                     _need(tile in tile_cells, "PATH resource is not owned by this piece")
                     source_cells.add(tile_cells[tile])
             _need(source_cells == {tuple(cell)}, "PATH resource source cell differs from boundary")

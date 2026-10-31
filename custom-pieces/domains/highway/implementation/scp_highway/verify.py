@@ -130,6 +130,9 @@ def _journeys(parsed, cells, angle):
 
 
 def check_paths(resources, piece):
+    if piece['recipe'].startswith('highway_ddrhw_modular_'):
+        from .modular_verify import check_paths as check_modular
+        return check_modular(resources, piece)
     if piece['recipe'] != CORE:
         from .ramp_paths import check_paths as check_ramp
         return check_ramp(resources, piece)
@@ -151,6 +154,9 @@ def check_paths(resources, piece):
 
 
 def check_models(resources, piece, donors):
+    if piece['recipe'].startswith('highway_ddrhw_modular_'):
+        from .modular_verify import check_models as check_modular
+        return check_modular(resources, piece, donors)
     if piece['recipe'] != CORE:
         from .ramp_paths import check_models as check_ramp
         report = check_ramp(resources, piece, donors)
@@ -192,6 +198,9 @@ def check_models(resources, piece, donors):
 
 
 def check_construction_fields(fields, piece, resources):
+    if piece['recipe'].startswith('highway_ddrhw_modular_'):
+        from .modular_verify import check_construction_fields as check_modular
+        return check_modular(fields, piece, resources)
     if piece['recipe'] != CORE:
         from .ramp_paths import check_construction_fields as check_ramp
         return check_ramp(fields, piece, resources)

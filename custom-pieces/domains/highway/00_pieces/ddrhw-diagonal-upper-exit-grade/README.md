@@ -65,4 +65,82 @@ Source: [connections.json](connections.json).
 
 <!-- BEGIN CONNECTOR OVERVIEW -->
 
+### Connection overview
+
+Generated from this piece's source-bound connector metadata and the current compiled model; marker letters refer to the boundary cards below.
+
+![Complete connection overview](previews/connection-overview.png)
+
+[Rendering sources and verification scope](evidence/connection-overview.json).
+
+Headings: 0° = North, 90° = East, 180° = South, and 270° = West; clockwise in plan view, pointing out of the piece.
+
+Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.
+
+Display grid: X = source column − (0); Y = 2 − source row.
+
+Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and − right facing out of the tile edge.
+
+Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.
+
+Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.
+
+Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative.
+
+#### Boundary A: `boundary-01`
+
+This service group is required at this edge.
+
+##### Service group 1 / 1: ROAD — Custom (12.2582 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-01-access-ramp-01` / `access-ramp` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[0,2]` / West |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (12.2582 m); no nominal level |
+| Outward heading | 248.02° |
+| Slope at joining edge | 29.6096% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 1 incoming; 0 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-w-in-1` / `1-W-in-1` | `access-ramp-01` / `cut-1-w-in-1` / car | Incoming | `[-8,-24.1428,12.2582]` | Not declared | 248.02° | 29.6096 |
+
+#### Boundary B: `boundary-02`
+
+This service group is required at this edge.
+
+##### Service group 1 / 1: ROAD — Custom (1.4877 m)
+
+| Field | Value |
+| --- | --- |
+| End / component | `boundary-02-access-ramp-01` / `access-ramp` |
+| Network / game class / role | road / Engine class (1); primary |
+| Source cell / edge | `[1,0]` / East |
+| Section origin [E,N] (m) | Not declared; see member endpoints |
+| Centring / section offset | Not declared |
+| Level (path height) | Custom (1.4877 m); no nominal level |
+| Outward heading | 52.2377° |
+| Slope at joining edge | -29.6094% outward |
+| Channels / edge cuts / directed members | 1 / 1 / 1 |
+| Traffic arrangement / running | 0 incoming; 1 outgoing; See member directions |
+| Channel spacing | See individual measured intersections |
+| Channel kinds | road-lane |
+| Traffic modes | car |
+| Profile | No profile reference |
+
+| Member / measured source | Channel / cut / modes | Flow | Endpoint [E,N,H] (m) | Offset (m) | Outward heading | Edge slope (%) |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| `member-1-e-out-2` / `1-E-out-2` | `access-ramp-01` / `cut-1-e-out-2` / car | Outgoing | `[24,-7.10993,1.4877]` | Not declared | 52.2377° | -29.6094 |
+
+The overview uses source metadata, current compiled resource identities, and the saved model. Current placement, connection, and traffic results belong to the generated connection matrix and linked testing records.
+
 <!-- END CONNECTOR OVERVIEW -->
