@@ -8,7 +8,7 @@
 {
   "schema_version": 1,
   "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
-  "scope": "Analysis-only modular ramp feasibility review; current geometry and construction remain unchanged.",
+  "scope": "Current modular-ramp design proposal: retain existing sloped sockets, reuse shared connector cards, and define a small future angle/radius/grade family; no geometry or construction changes.",
   "implementation_status": "proposal",
   "reviewed_source_commit": "1618e5ec4e50b326f7e11cba3c5a6990cc8feb8c",
   "inputs": {
@@ -543,14 +543,14 @@
         "P10",
         "P11"
       ],
-      "decision": "Retain",
+      "decision": "Unverified",
       "original_measurement": {
         "lower_join_height_m": 6.745131504,
         "upper_join_height_m": 12.258240085,
         "outward_lower_grade_percent": -22.6755791331,
         "outward_upper_grade_percent": -29.6095951909
       },
-      "reason": "The existing pieces join inside curved and sloped roadway. They remain valid assembly-specific joins, but do not form interchangeable level ramp ports.",
+      "reason": "Retain these exact sloped and oblique interfaces as the first reuse targets. Complete saved profiles, native services, authored connector groups, and replacement-module compatibility must be reviewed; nonzero slope is not a reason to reject the split.",
       "physical_requirements": [
         "Full pavement and barrier cross-section",
         "Both native highway decks in every shared tile",
@@ -578,7 +578,8 @@
       },
       "reason": "The earlier flat centre sample hides the curved road width and descent in shared highway cells. Detaching an outboard cell does not make one clean ramp-only interface.",
       "replacement_type": null,
-      "replacement_rotation": null
+      "replacement_rotation": null,
+      "review_scope": "Earlier flat-port or standard-straight extraction alternative; this decision is not a ban on fully declared sloped or oblique connections."
     },
     {
       "id": "C1-upper-flat-45-degree-boundary",
@@ -615,7 +616,8 @@
       ],
       "reason": "This flat native-direction cut is a hybrid highway/slip-lane boundary. It includes the mainline and both decks, rather than a freely separate single-lane ramp. A different partition could include those services, but is unverified.",
       "replacement_type": null,
-      "replacement_rotation": null
+      "replacement_rotation": null,
+      "review_scope": "Earlier flat-port or standard-straight extraction alternative; this decision is not a ban on fully declared sloped or oblique connections."
     },
     {
       "id": "C2-upper-next-flat-cut",
@@ -633,24 +635,26 @@
       },
       "reason": "The pavement is level, but the route already bends. It cannot be labelled or replaced as an unchanged standard straight ramp socket.",
       "replacement_type": null,
-      "replacement_rotation": null
+      "replacement_rotation": null,
+      "review_scope": "Earlier flat-port or standard-straight extraction alternative; this decision is not a ban on fully declared sloped or oblique connections."
     },
     {
-      "id": "standardized-custom-kit",
-      "decision": "Requires bounded redesign",
+      "id": "retained-sloped-socket-kit",
+      "decision": "Unverified",
       "recommended": true,
-      "smallest_changed_region": "Not selected; redesign would cover the affected highway branch cells and adjoining ramp start, with coordinated through-deck ownership.",
+      "smallest_changed_region": "No current geometry changes selected. First declare all complete existing boundaries, then author compatible alternatives.",
       "actual_maximum_route_movement_m": null,
       "independent_acceptance_bound_m": null,
-      "authorization": "Feasibility review only; no implementation or numerical redesign bound authorized by this question.",
+      "authorization": "User selected shared slope/angle connection cards and requested an isolated experiment branch and proposed standards. Current stage is standards and interface design.",
       "proposal": [
-        "Retain highway, slip lane, and all shared construction services in a coordinated core.",
-        "Design a complete level one-way joining edge outside the shared highway region at 7.5 m or 15 m.",
-        "Provide compatible level straight/curve pieces, grade pieces, and right-turn Avenue terminals."
+        "Preserve the existing branch sockets and all through services.",
+        "Use the established connector declarations, exports, and cards for matching sloped and oblique complete boundaries.",
+        "Add one alternative continuation per lower/upper and on/off interface class before broader expansion.",
+        "Use proposed new direction/radius/grade families from the owning NETWORK_SPEC; connect through explicit compatible adapters where needed."
       ],
       "interface_contract": [
         "Exact endpoint position and construction edge",
-        "Height and zero joining slope",
+        "Exact height and measured joining slope; flatness is optional",
         "Travel heading and direction",
         "Pavement width, barriers, underside, and support envelope",
         "Matching saved traffic paths, paint, and texture phase"
@@ -660,12 +664,12 @@
       "implementation_first_stage": "Individually click-to-place modules; FLEX/draggable rules are additional work.",
       "replacement_type": null,
       "replacement_rotation": null,
-      "alternative": "Specialized variants could preserve and match the current curved/sloped interfaces exactly. Level interfaces are recommended for wider reuse; flatness is not a requirement for modularity."
+      "alternative": "Level ends remain optional for selected future pieces; no flat-ended highway-core redesign is required just to apply connection cards."
     },
     {
-      "id": "new-port-location-and-footprint",
+      "id": "alternative-continuation-footprints",
       "decision": "Unverified",
-      "reason": "No new port position, module extent, clearance bound, or construction rules have been designed or compiled. A tight footprint and arbitrary combinations of slope and curve are not established.",
+      "reason": "Retained branch ports are measured; new alternative geometry, downstream joins, full profiles, and footprints are not yet designed or compiled.",
       "required_checks": [
         "Complete saved boundary geometry and PATH alignment",
         "Construction ownership and both-deck through continuity",
@@ -698,5 +702,19 @@
       "url": "https://www.sc4nam.com/docs/feature-guides/realhighway/",
       "scope": "General MIS, FLEXRamp, and draggable ramp concepts; not compatibility of these custom ports."
     }
-  ]
+  ],
+  "baseline_branch": "codex/double-decker-diagonal-highway",
+  "experiment_branch": "codex/ddrhw-modular-ramp-kit",
+  "branch_point_commit": "06d3d430d515df230f20802872b14eb836f31a69",
+  "standards_authority": "../../../NETWORK_SPEC.md#10-proposed-modular-ramp-standards",
+  "current_review": {
+    "drawing": "../previews/modular-ramp-standards.png",
+    "provenance": "../evidence/modular-ramp-standards-review.json",
+    "research": "../evidence/modular-ramp-primary-research.json"
+  },
+  "historical_proposal": {
+    "source_commit": "06d3d430d515df230f20802872b14eb836f31a69",
+    "drawing": "../previews/ramp-atomization-review.png",
+    "decision": "The previous level-port-first preference is superseded; its actual saved measurements are retained with their original scope."
+  }
 }

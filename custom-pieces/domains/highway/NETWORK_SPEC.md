@@ -1,6 +1,6 @@
 ---
 title: "Highway network specification"
-summary: "Record the DD RHW-4 provider, measured native donors, compact module geometry, and verification limits."
+summary: "Record the DD RHW-4 provider, measured native donors, compact module geometry, proposed modular ramp standards, and verification limits."
 audience: "Highway authors and reviewers"
 document_type: "reference"
 ---
@@ -8,7 +8,7 @@ document_type: "reference"
 # Highway network specification
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Implementation status](#1-implementation-status) · [2. Measured native inputs](#2-measured-native-inputs) · [3. Prototype geometry](#3-prototype-geometry) · [4. Compiled geometry and verification](#4-compiled-geometry-and-verification) · [5. Adaptive-sidewalk rendering experiment](#5-adaptive-sidewalk-rendering-experiment) · [6. Adaptive ground in the compact diamond](#6-adaptive-ground-in-the-compact-diamond) · [7. Highway and ramp barrier joints](#7-highway-and-ramp-barrier-joints) · [8. Slip-lane marking geometry](#8-slip-lane-marking-geometry) · [9. Native wheel-track transition](#9-native-wheel-track-transition)
+[1. Implementation status](#1-implementation-status) · [2. Measured native inputs](#2-measured-native-inputs) · [3. Prototype geometry](#3-prototype-geometry) · [4. Compiled geometry and verification](#4-compiled-geometry-and-verification) · [5. Adaptive-sidewalk rendering experiment](#5-adaptive-sidewalk-rendering-experiment) · [6. Adaptive ground in the compact diamond](#6-adaptive-ground-in-the-compact-diamond) · [7. Highway and ramp barrier joints](#7-highway-and-ramp-barrier-joints) · [8. Slip-lane marking geometry](#8-slip-lane-marking-geometry) · [9. Native wheel-track transition](#9-native-wheel-track-transition) · [10. Proposed modular ramp standards](#10-proposed-modular-ramp-standards)
 <!-- END DOCUMENT NAVIGATION -->
 
 ## 1. Implementation status
@@ -148,3 +148,75 @@ The [native texture-provider audit](01_assemblies/ddrhw-l1-and-l2-diagonal-avenu
 Every branch component retains native geometry for both decks. The preservation mask therefore projects every independently reconstructed world corridor into each branch's actual position and rotation, then matches the saved deck height. A mask assigned only to the component's named ramp can omit legitimate wheel-track geometry on its other deck. The corrected export retains the same 1,520 world polygons and supplies their transforms for all four branch poses; it expands no polygon.
 
 The [field-edge encoding proof](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/native-wheeltrack-field-encoding.json) separates two kinds of microscopic residual. A new wheel-track fragment must fit entirely within 5 micrometres of one finite edge of an original, unexpanded corridor polygon; its measured maximum is approximately 2.212455 micrometres. A fragment retaining an old UV field must match one actual baseline triangle's affine UV mapping within the unchanged 3 × 10⁻⁶ tolerance and fit within that triangle or a 1 micrometre edge allowance; its measured maximum is approximately 0.674350 micrometres. An affine mapping changes linearly across a flat face. Both certificates require the same pinned DD material and actual deck height. A capsule is a line segment thickened by a fixed radius, with round ends. Every vertex of one convex fragment must lie in the same capsule, which certifies the complete fragment. Convex means the fragment has no inward notch. The new-field bound accounts for two saved float32 rounding stages and the already bounded donor-edge correction; the evidence records their measured coordinate envelope. Native ramp seams may retain their intended nonneutral dark sample, so a universal neutral-colour endpoint rule is inappropriate there. These texture-boundary certificates change neither the UV tolerance nor the separate 2 micrometre physical road-support allowance.
+
+## 10. Proposed modular ramp standards
+
+This chapter is the design proposal for the modular-ramp experiment branched from the retained compact diamond at source `06d3d430d515df230f20802872b14eb836f31a69`. The retained branch is `codex/double-decker-diagonal-highway`; the experiment is `codex/ddrhw-modular-ramp-kit`. These are proposed authoring conventions, not implemented new types, native NAM compatibility, or game observations. Current models, routes, identifiers, installed files, and the six canonical assembly pictures are unchanged. The [source research](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/modular-ramp-primary-research.json), [coordinate drawing](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/modular-ramp-standards.png), and [assembly decisions](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/checks/atomization.jsonc) retain the evidence and scope.
+
+### 10.1 Reuse measured connection cards, including sloped ends
+
+Use the existing [connector system](../../docs/CONNECTOR_METADATA.md), its source-bound declarations, its exports, and its boundary cards. A **port** records one directed traffic endpoint at a tile edge; a usable module connection includes every required boundary service and the complete physical profile. Sloped, oblique, off-centre, and custom-height ports are supported; a level end is optional. Match exact positions, heights, outward tangents, complementary outward grades, physical cross-sections, required services, and traffic permissions under one common placement. **Outward** means pointing away from the component: the matching neighbour has the opposite outward direction and grade sign. Headings on cards are clockwise from north, where north is 0° and east is 90°. Compare actual vectors and unrounded grades, not rounded labels.
+
+The highway domain already registers `scp_highway.connections`. The shared loader, exporter, and card renderer work for its reviewed pure crossing. The thirteen compact modules still need independently reviewed complete port contracts, authored connector groups, and generated exports/cards. An upper deck, a lower deck, and an Avenue service on one shared boundary need separate service groups in one complete boundary bundle; a single ramp centreline cannot replace that bundle. Do not inherit HSR's optional zero-grade profile or its rail-only native-heading snapping for an oblique highway port. Radius and interior curvature are piece engineering facts, rather than extra fields to invent in the current connector-profile schema.
+
+Retain these current branch-side interfaces as the first compatibility targets. Numbers below are rounded descriptions of the [saved measurements](01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/ramp-atomization-measurements.json), not replacement source values. Their matching ramp-side headings differ by 180°, and their outward grades reverse sign.
+
+| Current branch | Placement | Assembly X/Y tile coordinates | Path height | Branch outward heading | Branch outward grade |
+| --- | --- | --- | ---: | ---: | ---: |
+| Lower exit | P04 | (5.500000, 7.362035) | 6.745132 m | 258.335886° | −22.675579% |
+| Lower entry | P05 | (1.637965, 3.500000) | 6.745132 m | 11.664114° | −22.675579% |
+| Upper exit | P08 | (2.500000, 1.491077) | 12.258240 m | 68.020522° | −29.609595% |
+| Upper entry | P09 | (7.508923, 6.500000) | 12.258240 m | 201.979478° | −29.609595% |
+
+The current grade components also finish above ground: approximately 3.000444 m lower and 1.487699 m upper. The remaining descent and turn belong to the Avenue junctions. A replacement must match those downstream interfaces exactly, or include a coordinated replacement terminal. A sloped join is valid; full-width physical and construction checks still apply.
+
+### 10.2 Standard direction and turn families
+
+A **heading** describes the direction at one endpoint. A **turn angle** describes how much the route changes direction through a piece; they are different quantities. Start new general-purpose ends on cardinal and 45° diagonal directions, while retaining the four measured existing interface angles above. Use 45° and 90° left and right turns first; form longer turns from proven compatible modules before adding a separate 135° family. An adapter can connect an existing oblique socket to a new standard end without moving the retained branch.
+
+| Proposed family | Primitive grid displacement | Direction relative to an orthogonal axis | Straight repeat distance | Initial scope |
+| --- | --- | ---: | ---: | --- |
+| Orthogonal | (1, 0) tiles | 0° | 16 m | Initial |
+| Diagonal | (1, 1) tiles | 45° | 22.627417 m | Initial |
+| NAM-inspired FA-3 | (3, 1) tiles | 18.434949° | 50.596443 m | Later explicit adapters |
+| Complementary FA-3 turn | Not a new straight direction | 26.565051° between FA-3 and 45° | Not applicable | Later explicit adapters |
+
+The [NAM guide](https://www.sc4nam.com/docs/feature-guides/realhighway/#fractional-angle-realhighways-farhw) describes FARHW as an 18.4°/71.6° family. The exact 3:1 values above are the proposed mathematical grid convention, not a measurement of every native PATH. Do not substitute 22.5°, confuse the 26.565051° turn with a separate 2:1 direction, or infer native compatibility from a family name. A true 22.5° straight has an irrational slope and no finite repeating translation on the square tile grid; it can be a special fixed piece, but is not the initial repeatable straight standard. Whole pieces rotate by 90° construction steps; a diagonal version needs an authored orientation rather than an arbitrary 45° placement rotation.
+
+### 10.3 Radius families and smooth curves
+
+**Radius** measures how tightly a curve bends; a smaller radius makes a tighter curve. Measure horizontal radius at the road centreline. Start with three custom minimum-radius tiers: **Compact R24**, at least 24 m; **Standard R40**, at least 40 m; and **Wide R56**, at least 56 m. These are proposed metre values for this kit, not NAM's R1/R2/R3 names. Preserve the existing compact geometry as its own measured interface family; do not move it merely to make its radius equal one of these targets.
+
+For a circular 90° reference with centred orthogonal tile-edge ports, `R = 8 + 16n` metres provides convenient phases: start at `(east,north)=(-8,0)` heading east, and end at `(R−8,R)` heading north. Radii 24 m, 40 m, and 56 m produce centreline reference grids of 2 × 2, 3 × 3, and 4 × 4 tiles. Those are geometric examples, not established construction footprints for a finished piece. Full pavement, barriers, supports, shadows, neighbouring through services, and tile ownership need separate checks.
+
+An eased 45° curve generally cannot retain both prescribed endpoint phases and be an exact circle of the advertised radius. Fix real grid-edge anchors, shape a gradual bend, and independently measure its actual minimum radius after endpoint collars and encoded sampling. If the minimum-radius tier does not fit the desired footprint, enlarge the module, select another declared endpoint phase, or use an explicitly labelled tighter variant; do not retain an inaccurate radius label. Borrow the railway practice of gradual transitions in curvature, and the existing HSR Compact/Wide family and independent-radius checks. Do not copy HSR's dimensions, pavement datum, native collars, or 25% authoring bound into the highway provider. The [NEXCO explanation](https://www.w-nexco.co.jp/faq/13/) also describes roads as combinations of straights, circular arcs, and gradual transition curves.
+
+### 10.4 Standard joining grades and separate interior limits
+
+**Grade** is vertical change divided by horizontal distance along the route; 10% means 1 m of height change over 10 m of horizontal travel. Standardize new exact endpoint grades as **0%, ±7.8125%, ±15.625%, and ±23.4375%**. Call the three nonzero magnitudes Gentle, Standard, and Compact. Preserve the existing ±22.675579% and ±29.609595% joins as measured existing-interface classes, and use adapters where a new standard is wanted. Uphill and downhill are distinct directed cases; matching outward card grades have opposite signs.
+
+| Proposed endpoint-grade magnitude | Constant-grade run for 7.5 m change | Constant-grade run for 15 m change | Orthogonal flat-to-flat example for 7.5 m change |
+| --- | ---: | ---: | ---: |
+| Gentle: 7.8125% | 96 m / 6 tile lengths | 192 m / 12 tile lengths | 112 m / 7 tile lengths |
+| Standard: 15.625% | 48 m / 3 tile lengths | 96 m / 6 tile lengths | 64 m / 4 tile lengths |
+| Compact: 23.4375% | 32 m / 2 tile lengths | 64 m / 4 tile lengths | 48 m / 3 tile lengths |
+
+The last column assumes a 16 m linear change from flat to the stated grade, another 16 m change back to flat, and a constant-grade middle. Those transitions contribute half their length at full grade, so the total is one 16 m step longer than the constant-grade example. They are analytic design examples without extra flat collars, not compiled modules or required minimum dimensions for every future profile. A diagonal grid step is 16√2 m, so the same tile count does not imply the same grade. Always measure run along the actual route.
+
+Keep **endpoint grade**, **maximum interior grade**, and **average grade** separate. Retain the highway's existing **30% experimental maximum on every encoded route segment**. It is neither a target for all pieces nor a real highway standard. A curve can change grade between two standard ends while meeting exact heights; its middle need not equal a standard endpoint value. Solve that vertical profile, check its actual maximum, and reject a shape that exceeds the bound. Nonzero connection grades avoid forcing flat transitions at every component boundary.
+
+For example, a proposed circular R24 quarter-turn has a 37.699112 m horizontal run. With 8 m linear grade changes at both ends, a 7.5 m descent can join −23.4375% to 0% using a −22.096620% middle grade, staying within 23.4375%. The same curve with flat ends needs a 25.253280% middle grade. A 15 m descent over that R24 shape would require 50.506561% with flat ends and fails the 30% bound; an R40 quarter-turn instead requires approximately 27.356362%. These are analytic profile examples, not combined-deck clearance, construction, or game evidence.
+
+### 10.5 Fixed heights, profiles, and finite combinations
+
+Native destination levels remain ground 0 m, lower deck 7.5 m, and upper deck 15 m. Intermediate connection heights may be custom measured values; connection cards preserve them exactly. The current construction system cannot freely translate a piece vertically. A descending tile cannot be repeated at arbitrary heights merely because its slope matches: each useful sequence needs compatible height-specific variants. Begin with variants needed by demonstrated chains, rather than generating every angle, radius, slope, height, and direction combination.
+
+Retain the current custom 6 m ramp profile, native barrier geometry, materials, marking scale, and texture phase at unchanged joins. The road's barriers are part of its complete measured cross-section; do not add their width outside the authored pavement by assumption. A native MIS adapter is a separate measurement and construction task. Matching native materials does not establish a native network connection. Keep the ground terminal's adjacent-carriageway right-turn restriction and the coordinated adaptive-Avenue ownership.
+
+### 10.6 Real-world inspiration and first implementation milestone
+
+The [Hanshin Expressway Minatomachi engineering paper](https://www.hanshin-exp.co.jp/company/skill/data/paper/file/020/paper11.pdf), table 1, gives a compact historical Osaka example at a 30 km/h design speed: minimum radii of 35 m at the entrance and 30 m at the exit, with a 9% maximum grade. Its 3.25 m lane and 1.75 m/0.75 m shoulders total 5.75 m. This is useful dense Japanese-city inspiration, not a universal Tokyo standard. The [MLIT ramp example](https://www.mlit.go.jp/common/001293306.pdf#page=23) illustrates a 35 km/h case with a 40 m standard minimum radius and a 30 m exceptional value justified by terrain. The proposed R24 tier is deliberately tighter game geometry; R40 offers a useful larger comparison.
+
+At a constant 9% grade, losing 7.5 m requires at least 83.33 m of horizontal route, and losing 15 m requires at least 166.67 m, before adding flat ends or grade transitions. The compact game grades therefore compress the vertical geometry. Label them accordingly rather than describing 23.4375% or 30% as realistic expressway design.
+
+The first implementation milestone is to declare, verify, export, and draw cards for every complete boundary of the retained branch, grade, and ground-terminal components. Then provide the retained compact continuation plus one longer or differently curved continuation for each lower/upper and on/off interface class, keeping current branch sockets fixed. Each alternative must match its upstream and downstream complete boundaries, preserve both highway decks where present, and pass saved-path, full-profile, ownership, clearance, and four-rotation checks. Only then freeze another standard endpoint profile and expand the family. Reuse the existing source library and card pipeline; do not create a parallel connector workflow. Builds, installation, and human game tests remain later separate stages.
