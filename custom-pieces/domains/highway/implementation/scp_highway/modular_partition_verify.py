@@ -50,6 +50,7 @@ def reviewed_models():
 
 def validate_reviewed_models(resources, piece):
     """Portable exact output identity, independent of ignored checkpoint DATs."""
+    from .straight_stamp_geometry import matches_frozen_model
     contract = reviewed_models()
     expected = contract['pieces'].get(piece['id'])
     require(expected is not None and expected['recipe'] == piece['recipe']
@@ -57,21 +58,30 @@ def validate_reviewed_models(resources, piece):
             and expected['cells'] == piece['cells'] and expected['footprint'] == piece['footprint'],
             'The modular model contract has no exact matching piece and ownership declaration')
     require(len(expected['cell_resources']) == len(piece['cells']), 'Incomplete reviewed model cell contract')
-    textures = set()
+    textures, corrected = set(), []
     for cell, tile, row in zip(piece['cells'], piece['tile_ids'], expected['cell_resources']):
         require(row['cell'] == cell, 'Reviewed modular resource cells changed order')
         for zoom in range(5):
             raw = resources[*S3D, int(tile, 16)+zoom]
-            require(hashlib.sha256(raw).hexdigest() == row['model_sha256'],
+            require(matches_frozen_model(raw, row['model_sha256']),
                     'Saved modular model differs from the independently audited straight partition')
+            digest = hashlib.sha256(raw).hexdigest()
+            if digest != row['model_sha256']:
+                corrected.append({'model_instance': f'{int(tile, 16)+zoom:08x}',
+                    'model_sha256': digest, 'frozen_model_sha256': row['model_sha256'],
+                    'descriptor_only_match': True})
             model = parse_s3d(raw)
             validate_s3d(model)
             textures.update(t for material in model['materials'] for t in material['textures'])
         require(hashlib.sha256(resources[*PATH, int(tile, 16)]).hexdigest() == row['path_sha256'],
                 'Saved modular PATH differs from the independently audited ownership partition')
     raw = resources[*S3D, int(piece['preview_id'], 16)]
-    require(hashlib.sha256(raw).hexdigest() == expected['preview_sha256'],
+    require(matches_frozen_model(raw, expected['preview_sha256']),
             'Saved modular preview differs from the independently audited complete model')
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != expected['preview_sha256']:
+        corrected.append({'model_instance': piece['preview_id'], 'model_sha256': digest,
+            'frozen_model_sha256': expected['preview_sha256'], 'descriptor_only_match': True})
     preview = parse_s3d(raw)
     validate_s3d(preview)
     textures.update(t for material in preview['materials'] for t in material['textures'])
@@ -79,10 +89,11 @@ def validate_reviewed_models(resources, piece):
     return {'passed': True, 'independent_partition_model_hashes_checked': True,
             'model_resources_checked': 5*len(piece['cells'])+1,
             'cell_paths_checked': len(piece['cells']),
+            'authored_vertex_format_corrected_resources': corrected,
             'texture_ids': sorted(textures),
             'contract_sha256': hashlib.sha256((ROOT/CONTRACT).read_bytes()).hexdigest(),
             'game_rendering_tested': False,
-            'scope': 'Frozen outputs after independent checkpoint triangle/UV/material/winding and ownership comparison. Whole-assembly pavement support remains a separate required check.'}
+            'scope': 'Frozen outputs after independent checkpoint triangle/UV/material/winding and ownership comparison; only the authored XYZ/one-UV VERT descriptor may be corrected from 2 to 0x80004001, with all remaining bytes bound to the historical hash. Whole-assembly pavement support remains a separate required check.'}
 
 
 def check_preview(resources, piece):

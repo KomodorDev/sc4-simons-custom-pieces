@@ -275,6 +275,7 @@ def check_paths(resources, piece):
 def _stamp_models(resources, piece):
     """Retained checkpoint-model helper; current outputs use the split contract."""
     from scp.verify import mesh_data, translated
+    from .straight_stamp_geometry import matches_frozen_model
     for identifier, row in zip(piece['tile_ids'], reference()['cells']):
         require(hashlib.sha256(resources[*PATH, int(identifier, 16)]).hexdigest() == row['path_sha256'],
                 'Saved stamp PATH differs from the frozen checkpoint contract')
@@ -282,7 +283,7 @@ def _stamp_models(resources, piece):
     for cell, identifier, row in zip(piece['cells'], piece['tile_ids'], reference()['cells']):
         for zoom in range(5):
             raw = resources[*S3D, int(identifier, 16)+zoom]
-            require(hashlib.sha256(raw).hexdigest() == row['model_sha256'],
+            require(matches_frozen_model(raw, row['model_sha256']),
                     'Saved stamp model differs from its independently frozen cell contract')
             model = parse_s3d(raw)
             validate_s3d(model)
@@ -302,7 +303,7 @@ def _stamp_models(resources, piece):
             'model_resources_checked': 136, 'preview_matches_all_cells': True,
             'pristine_native_avenue_cells_restored': restored,
             'texture_ids': sorted(textures), 'game_rendering_tested': False,
-            'scope': 'Exact frozen canonical cells and preview composition; retained cells reuse preceding geometry evidence, and adaptive active resources are checked separately.'}
+            'scope': 'Frozen canonical byte identity after restoring only the authored VERT descriptor for historical hash comparison, plus exact preview composition; retained cells reuse preceding geometry evidence, and adaptive active resources are checked separately.'}
 
 
 def check_models(resources, piece, donors=None):

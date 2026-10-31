@@ -11,6 +11,7 @@ from collections import defaultdict
 from copy import deepcopy
 import hashlib
 import math
+import re
 import struct
 
 from scp.models import pack_s3d, parse_s3d, validate_s3d
@@ -25,11 +26,49 @@ WING_CELLS = {
 CENTRE_PIER_CELLS = frozenset(((-1, 1), (-1, 2), (1, -1), (2, -1), (-4, 4), (4, -4)))
 NATIVE_HALF_WIDTH_M = 8.0
 ENCODING_TOLERANCE_M = 2.0 ** -18
+_AUTHORED_MESH = re.compile(
+    rb'(?:SCP moved -?\d+,-?\d+ )?SCP NAM (?:highway|ramp|concrete|barrier)\x00'
+    rb'|SCP highway road\x00')
 
 
 def _require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def matches_frozen_model(raw, expected_sha256):
+    """Match frozen bytes, permitting only the authored VERT-word repair.
+
+    Frozen records retain their historical SHA-256. The corrected runtime
+    word 0x80004001 has the same XYZ/one-UV bytes as historical format 2.
+    Reconstruct only those four-byte words in exclusively authored buffers;
+    every other byte, including native-buffer descriptors, must still hash
+    to the original record. The live model is never changed or repacked.
+    """
+    if hashlib.sha256(raw).hexdigest() == expected_sha256:
+        return True
+    try:
+        model = parse_s3d(raw)
+        validate_s3d(model)
+    except (ValueError, struct.error):
+        return False
+    owners = defaultdict(list)
+    for mesh in model['meshes']:
+        for vi, _ii, _pi, _mi in mesh['frames']:
+            owners[vi].append(mesh['name'])
+    # parse_s3d has already validated the ordered HEAD and VERT chunks.
+    vert = 8 + struct.unpack_from('<I', raw, 12)[0]
+    offset = vert + 12
+    restored = bytearray(raw)
+    changed = False
+    for vi, block in enumerate(model['vertices']):
+        if (block['format'] == 0x80004001 and block['stride'] == 20
+                and block['flags'] == 0 and owners[vi]
+                and all(_AUTHORED_MESH.fullmatch(name) for name in owners[vi])):
+            struct.pack_into('<I', restored, offset + 4, 2)
+            changed = True
+        offset += 8 + len(block['data'])
+    return changed and hashlib.sha256(restored).hexdigest() == expected_sha256
 
 
 def stamp_cells():
@@ -174,12 +213,12 @@ def source_cells(context):
             compiled[identifier] = {tuple(cell): (model, path) for cell, model, path in compile_source(spec, context)}
         model, path = compiled[identifier][tuple(record['source_local_cell'])]
         if 'inherited_model_sha256' in record:
-            _require(hashlib.sha256(model).hexdigest() == record['inherited_model_sha256'],
+            _require(matches_frozen_model(model, record['inherited_model_sha256']),
                      'The accepted old Avenue apron changed before straight partition')
             if pristine is None:
                 pristine = {tuple(cell): model for cell, model, _ in build_crossing_channels(context)}
             model = pristine[tuple(record['source_local_cell'])]
-        _require(hashlib.sha256(model).hexdigest() == record['model_sha256'] and
+        _require(matches_frozen_model(model, record['model_sha256']) and
                  hashlib.sha256(path).hexdigest() == record['path_sha256'],
                  'The accepted source changed before straight-stamp face partition')
         result[tuple(record['source_world_cell'])] = model, path

@@ -258,6 +258,7 @@ def _indexed_faces(owners, resources):
 
 def _frozen_stamp_provenance(owners, resources):
     from .modular_partition_verify import reviewed_models
+    from .straight_stamp_geometry import matches_frozen_model
     expected = reviewed_models()['pieces']
     records = []
     for cell, owner in owners.items():
@@ -266,10 +267,12 @@ def _frozen_stamp_provenance(owners, resources):
         raw = resources[owner['piece_id']][*S3D, owner['tile']+4]
         digest = hashlib.sha256(raw).hexdigest()
         rows = {tuple(r['cell']): r['model_sha256'] for r in expected[owner['piece_id']]['cell_resources']}
-        require(digest == rows.get(owner['local_cell']),
+        require(matches_frozen_model(raw, rows.get(owner['local_cell'])),
                 'A stamp projection no longer has its independently frozen native model provenance')
         records.append({'cell': list(cell), 'model_tgi': [f'{v:08x}' for v in (*S3D, owner['tile']+4)],
-                        'model_sha256': digest})
+                        'model_sha256': digest,
+                        'frozen_model_sha256': rows[owner['local_cell']],
+                        'descriptor_only_match': digest != rows[owner['local_cell']]})
     return records
 
 
@@ -291,19 +294,27 @@ def check_projection(owners, resources, physical, allowed):
     # These exact reviewed models deliberately draw curved pavement into
     # stamp-owned cells. Such projection does not allocate traffic ownership.
     from .modular_partition_verify import reviewed_models
+    from .straight_stamp_geometry import matches_frozen_model
     contracts = reviewed_models()['pieces']
     attachments = []
     for identifier in sorted({o['piece_id'] for o in owners.values() if o.get('geometry_key') in WORLD_CELLS}):
         subset = {cell: o for cell, o in owners.items() if o['piece_id'] == identifier}
         expected = {tuple(r['cell']): r['model_sha256'] for r in contracts[identifier]['cell_resources']}
+        model_records = []
         for owner in subset.values():
-            require(hashlib.sha256(resources[identifier][*S3D, owner['tile']+4]).hexdigest() == expected[owner['local_cell']],
+            raw = resources[identifier][*S3D, owner['tile']+4]
+            require(matches_frozen_model(raw, expected[owner['local_cell']]),
                     'An attachment overhang is not an exact independently reviewed output model')
+            digest = hashlib.sha256(raw).hexdigest()
+            model_records.append({'cell': list(owner['local_cell']), 'model_sha256': digest,
+                'frozen_model_sha256': expected[owner['local_cell']],
+                'descriptor_only_match': digest != expected[owner['local_cell']]})
         _faces, projected, _points = shared._model_faces(subset, resources)
         attachments.append({'piece_id': identifier, 'owned_cells': [list(c) for c in sorted(subset)],
             'physical_projection_cells': [list(c) for c in sorted(projected)],
             'render_only_projection_into_other_cells': [list(c) for c in sorted(projected-set(subset))],
-            'exact_reviewed_model_hashes_checked': True})
+            'model_provenance': model_records,
+            'frozen_model_bytes_checked_with_authored_vertex_format_correction': True})
     unowned = STAMP_INTERIOR_OVERHANG_CELLS-set(owners)
     require(not unowned or unowned == STAMP_INTERIOR_OVERHANG_CELLS,
             'Only the reviewed pair of empty interior stamp-overhang cells may be unowned')
@@ -328,7 +339,7 @@ def check_projection(owners, resources, physical, allowed):
                 'source_owner_cells': [list(c) for c in sorted(record['source_owner_cells'])]})
     return {'passed': True, 'frozen_stamp_models': provenance, 'new_attachment_projections': attachments,
             'interior_native_overhangs_without_construction_ownership': projection,
-            'scope': 'Projection is rendering geometry, not construction ownership. Complete attachment overhangs are authorized only by exact independently audited output hashes; whole-union traffic support is mandatory. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area.'}
+            'scope': 'Projection is rendering geometry, not construction ownership. Complete attachment overhangs require frozen output-byte identity after restoring only the authored VERT descriptor for historical hash comparison; actual and frozen hashes are recorded separately. Whole-union traffic support is mandatory. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area.'}
 
 
 def check_model_seams(owners, resources, routes, seams, *, allowed_cells=None):
