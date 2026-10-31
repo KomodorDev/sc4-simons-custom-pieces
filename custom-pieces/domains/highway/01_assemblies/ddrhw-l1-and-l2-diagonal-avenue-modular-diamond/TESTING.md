@@ -221,6 +221,29 @@ python3 -B custom-pieces/domains/highway/tools/render_compact_assembly.py --asse
 
 Inspect and promote the six staged pictures using the [shared documentation workflow](../../../../docs/WORKFLOW_DOCUMENTATION_GENERATION.md#81-promote-the-staged-assembly-pictures). Rendering cannot approve a manual preview or game case. Keep native MIS joins, arbitrary height offsets, and draggable/FLEX overrides outside this fixed static kit's claims.
 
+### 3.1 Further atomization proposal
+
+This is a measured proposal against source commit `9d4c94c27c679d5d53693411aa61547ce962063b` and saved normal manifest `8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1`. It does not change the current game pieces, their seven-placement blueprint, or their installed state. See the [coordinate-labelled line drawing](previews/further-atomization-review.png), [editable drawing](previews/further-atomization-review.svg), [authoritative decisions](checks/atomization.jsonc), [saved route extraction](evidence/further-atomization-paths.json), and [drawing measurements](evidence/further-atomization-review.json).
+
+The proposed decomposition accounts for every one of the stamp's existing 21 construction tiles. The complete R40 diamond keeps its 62 owned tiles and 10 × 10-tile rectangle, and the compact alternative keeps its 53 owned tiles and the same rectangle. Every traffic position stays fixed; this review introduces no route snapping or road-surface redesign.
+
+| Proposed function | Placements within the current stamp | Owned tiles per placement | Geometric bounding rectangle |
+| --- | ---: | ---: | --- |
+| Mixed DD highway/Avenue crossing core | 1 | 3 | 2 × 2, with one empty corner |
+| Native Avenue half | 2 | 1 | 1 × 1; custom placement handling remains conditional |
+| Existing DD diagonal half A or B | 4 | 1 | 1 × 1 |
+| Complete straight highway slip-lane section | 4 | 3 | 2 × 2, with one empty corner |
+
+The three core tiles are the cells containing both networks, displayed at (X4, Y5), (X5, Y5), and (X4, Y4). The two Avenue-only cells at (X3, Y5) and (X4, Y6) stay present as separate native ground ownership. One future native Avenue-half type can supply both using a proper 180° rotation; ordinary Avenue construction is preferable if its actual placement and retained routes are established. These cells cannot disappear merely because the crossing becomes smaller.
+
+The four ordinary highway cells match the saved attributed triangles, materials, UVs, winding, and raw PATHs of `ddrhw-diagonal-diagonal-half-a` and `ddrhw-diagonal-diagonal-half-b`. Each existing type is needed twice at the reviewed 0° orientation. Reuse these types rather than creating four new P-label-specific straights. The lower slip-lane sections also retain the 19-triangle white-marking tails at source cells (3, −2) and (−2, 3); those cells have ordinary through PATHs but different road artwork, so a PATH-only comparison would incorrectly classify them as ordinary highway halves.
+
+The existing five-cell pure crossing has matching saved geometry and decoded routes, but it lacks the current adaptive-ground declaration. It is therefore not a complete replacement for the new core's sidewalk behavior. The current writer also inserts a removable Road construction handle at local `(width, 0)` for an entirely adaptive component, while the shared runtime checker accepts only the historical `(3, 0)` position. The sparse 2 × 2 core can instead propose its unused `(1, 1)` corner for that handle. The writer and both relevant independent construction checks need coordinated changes, followed by actual placement tests in all four rotations and beside occupied neighbours. A one-cell custom Avenue half has no unused internal corner. The [pinned NAM DLL source](https://github.com/NAMTeam/nam-dll/blob/0ea65a74090ed8d376ca8ed87024b755d3059507/src/FlexPieces.cpp) supports removing the handle and its checks, but does not recalculate the stored rule bounds; it does not establish the new cursor behavior by itself.
+
+P04 has a complete 16 m straight-in-plan cell at (X5, Y2), and P05 has its traffic counterpart at (X7, Y4). Each can split into a five-cell body and a one-cell landing by retaining whole saved cell models and PATHs. At the high joining edge, the path is 3.060945 m high with approximately 27.8268% grade; at the ground edge, it is 0 m high with 0% grade. The roadway changes height and eases its grade within the tile. It is a fixed straight grade-to-ground transition, not an ordinary flat straight or an indefinitely repeatable slope. Its support pier remains inside the landing tile. Retain the body’s real model-only wing tile even though that tile has no driving PATH.
+
+The complete straight alignment is longer: 29.423930 m. The other 13.423930 m shares a city tile with 2.576070 m of curve. A more thorough visual split can give the complete straight model to the one-cell landing owner, with 13.423930 m of model overhang into the curved body's tile. Keep that shared tile's entire PATH with the body, just as the current full ramps can draw over stamp-owned traffic cells. The physical model join would then be approximately 6.796392 m high, while the actual ownership-edge traffic port remains 3.060945 m high. Preserve the actual saved across-road miter, measured approximately 0.088128° oblique to the perpendicular; an invented square cut would change the accepted geometry. This alternative needs an independent saved-face repartition and full physical-interface check before being called implemented. Both options keep the whole diamond’s size and road positions unchanged.
+
 ## 4. Game checks
 
 1. Open **Transportation → Highways**, find **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**, and cycle all seven default types with **Tab**, then backward with **Shift+Tab**. Check the six compact-alternative buttons separately.
@@ -255,7 +278,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Human game checks are required only at 0° CCW. Supported construction orientations and software rotation checks retain their separate scope; these human cases do not establish observations at the other orientations.
 
-Current totals: unverified: 127, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 128, passed: 0, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -2424,12 +2447,13 @@ No observation recorded.
 </details>
 
 <details>
-<summary>Preview review — Images — 7 cases; unverified: 7</summary>
+<summary>Preview review — Images — 8 cases; unverified: 8</summary>
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast | <a href="#case-preview_review-c428bc761d4e735487c3">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top | <a href="#case-preview_review-f18eb39925a9e4eb9afb">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review | <a href="#case-preview_review-47ae8e811e794a43446b">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization | <a href="#case-preview_review-8cdfaec82f2a1b3edb64">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest | <a href="#case-preview_review-161e794a9838084929e5">[ ] unverified</a> | — |
 | **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast | <a href="#case-preview_review-0ea5a2b252247ca41d0d">[ ] unverified</a> | — |
@@ -2463,6 +2487,22 @@ No observation recorded.
 Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
 
 Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review</summary>
+
+<a id="case-preview_review-47ae8e811e794a43446b"></a>
+
+**General: unverified** — `preview_review-47ae8e811e794a43446b`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review.
 
 No observation recorded.
 

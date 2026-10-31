@@ -6,106 +6,510 @@
 // Updated by: Contributors after changing the declared split and rerunning the actual saved-resource checks.
 // Affects: The split decision, documented ownership, retained interfaces, and linked evidence; not runtime game observations.
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
-  "implementation_status": "first bounded modular family implemented; human game tests unverified",
-  "decision": "One highway-and-slip-lane stamp; four separately placed ramps; two separately placed Avenue terminals.",
-  "source_baseline": {
-    "branch": "codex/double-decker-diagonal-highway",
-    "commit": "06d3d430d515df230f20802872b14eb836f31a69",
-    "current_branch": "codex/ddrhw-modular-ramp-kit"
+  "current_implementation": {
+    "source_commit": "9d4c94c27c679d5d53693411aa61547ce962063b",
+    "status": "Implemented and saved-resource checked; game behavior remains unverified.",
+    "decision": "One completely straight 21-cell highway stamp, four separately placed full curved ramps, and two separately placed matching Avenue terminals.",
+    "stamp_owned_tiles": 21,
+    "complete_curved_ramps_separate": true,
+    "reference_arrangements": {
+      "r40": {
+        "placements": 7,
+        "owned_tiles": 62,
+        "bounding_rectangle_tiles": [
+          10,
+          10
+        ]
+      },
+      "compact": {
+        "placements": 7,
+        "owned_tiles": 53,
+        "bounding_rectangle_tiles": [
+          10,
+          10
+        ]
+      }
+    }
   },
-  "retained": {
-    "old_resource_ids": true,
-    "six_compact_attachment_dat_files_byte_identical": true,
-    "old_canonical_views_unchanged": true,
-    "stamp_paths_byte_identical": 27,
-    "stamp_models_byte_identical": 25,
-    "pristine_native_avenue_models_restored_under_new_ids": 2
-  },
-  "reference_arrangements": {
-    "r40": {
-      "placements": 7,
-      "types": 7,
-      "owned_cells": 62,
+  "review": {
+    "status": "Measured proposal only; not implemented, installed, or game-tested.",
+    "source_manifest_sha256": "8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1",
+    "purpose": "Separate the crossing, complete slip lanes, ordinary highway cells, and useful straight ramp sections while keeping every road position and the whole diamond extent fixed.",
+    "coordinates": "Source world cells [column,row] have centres [16 × column, −16 × row] metres. Assembly display X=column+4 and Y=5-row. One tile is 16 × 16 metres.",
+    "retained_layout": {
       "bounding_rectangle_tiles": [
         10,
         10
-      ]
+      ],
+      "bounding_rectangle_metres": [
+        160,
+        160
+      ],
+      "r40_owned_tiles": 62,
+      "compact_owned_tiles": 53,
+      "maximum_proposed_route_movement_m": 0,
+      "maximum_proposed_model_surface_redesign_m": 0,
+      "stamp_partition_union_tiles": 21,
+      "exact_original_construction_cell_union_required": true
     },
-    "compact": {
-      "placements": 7,
-      "types": 7,
-      "owned_cells": 53,
-      "bounding_rectangle_tiles": [
-        10,
-        10
-      ]
+    "proposed_stamp_partition": [
+      {
+        "label": "crossing-core",
+        "source_world_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "occupied_tiles": 3,
+        "bounding_rectangle_tiles": [
+          2,
+          2
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "Requires construction-code changes; all three mixed-network cells remain together.",
+        "ports": 20,
+        "intrinsic_journeys": 10,
+        "car_path_fragments": 20,
+        "pedestrian_path_fragments": 4,
+        "physical_model_overhang_beyond_bounding_rectangle_m": 1.65685463,
+        "construction_plan": "Three permanent adaptive cells in a sparse 2 × 2 envelope; put the removable Road handle in unused local corner(1,1). Update the writer and independent address checkers together, then test all four rotations and occupied neighbours.",
+        "existing_crossing_limit": "The registered five-cell pure crossing has equal geometry and decoded routes but no adaptive_ground declaration; it is not a complete behavior substitute."
+      },
+      {
+        "label": "avenue-half-west",
+        "source_world_cells": [
+          [
+            -1,
+            0
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            3,
+            5
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "Geometry candidate; no registered standalone Avenue-half type currently exists.",
+        "reuse_plan": "One future native Avenue-half type can serve both cells with a proper 180-degree rotation. Prefer ordinary native Avenue if placement and exact retained routes are established.",
+        "construction_limit": "An all-adaptive one-cell custom type currently introduces an external Road handle; minimum placement bounds and neighbour interaction need construction changes and game testing."
+      },
+      {
+        "label": "avenue-half-north",
+        "source_world_cells": [
+          [
+            0,
+            -1
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            4,
+            6
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "Geometry candidate; no registered standalone Avenue-half type currently exists.",
+        "reuse_plan": "One future native Avenue-half type can serve both cells with a proper 180-degree rotation. Prefer ordinary native Avenue if placement and exact retained routes are established.",
+        "construction_limit": "An all-adaptive one-cell custom type currently introduces an external Road handle; minimum placement bounds and neighbour interaction need construction changes and game testing."
+      },
+      {
+        "label": "highway-half-a-southwest",
+        "source_world_cells": [
+          [
+            -1,
+            1
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            3,
+            4
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": "ddrhw-diagonal-diagonal-half-a",
+        "rotation_degrees_ccw": 0,
+        "measured_basis": "Complete attributed indexed triangles, UVs, materials, winding, and PATH bytes match the existing type; model packing alone differs.",
+        "decision": "Reusable as is at the measured pose; retain its centre pier."
+      },
+      {
+        "label": "highway-half-a-northeast",
+        "source_world_cells": [
+          [
+            1,
+            -1
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            5,
+            6
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": "ddrhw-diagonal-diagonal-half-a",
+        "rotation_degrees_ccw": 0,
+        "measured_basis": "Complete attributed indexed triangles, UVs, materials, winding, and PATH bytes match the existing type; model packing alone differs.",
+        "decision": "Reusable as is at the measured pose; retain its centre pier."
+      },
+      {
+        "label": "highway-half-b-southwest",
+        "source_world_cells": [
+          [
+            -1,
+            2
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            3,
+            3
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": "ddrhw-diagonal-diagonal-half-b",
+        "rotation_degrees_ccw": 0,
+        "measured_basis": "Complete attributed indexed triangles, UVs, materials, winding, and PATH bytes match the existing type; model packing alone differs.",
+        "decision": "Reusable as is at the measured pose; retain its centre pier."
+      },
+      {
+        "label": "highway-half-b-northeast",
+        "source_world_cells": [
+          [
+            2,
+            -1
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            6,
+            6
+          ]
+        ],
+        "occupied_tiles": 1,
+        "bounding_rectangle_tiles": [
+          1,
+          1
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": "ddrhw-diagonal-diagonal-half-b",
+        "rotation_degrees_ccw": 0,
+        "measured_basis": "Complete attributed indexed triangles, UVs, materials, winding, and PATH bytes match the existing type; model packing alone differs.",
+        "decision": "Reusable as is at the measured pose; retain its centre pier."
+      },
+      {
+        "label": "lower-exit-slip",
+        "source_world_cells": [
+          [
+            2,
+            -2
+          ],
+          [
+            3,
+            -3
+          ],
+          [
+            3,
+            -2
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            7,
+            7
+          ]
+        ],
+        "occupied_tiles": 3,
+        "bounding_rectangle_tiles": [
+          2,
+          2
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "New three-cell slip-lane type proposed; preserve both native decks, all markers, barrier openings, and retained supports.",
+        "ports": 11,
+        "intrinsic_journeys": 6,
+        "geometry_limit": "A straight-looking cell can still contain required taper paint; the lower three-cell groups include the 19-triangle marking tails in source(3,-2) and(-2,3)."
+      },
+      {
+        "label": "lower-entry-slip",
+        "source_world_cells": [
+          [
+            -2,
+            2
+          ],
+          [
+            -3,
+            3
+          ],
+          [
+            -2,
+            3
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            2,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "occupied_tiles": 3,
+        "bounding_rectangle_tiles": [
+          2,
+          2
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "New three-cell slip-lane type proposed; preserve both native decks, all markers, barrier openings, and retained supports.",
+        "ports": 11,
+        "intrinsic_journeys": 6,
+        "geometry_limit": "A straight-looking cell can still contain required taper paint; the lower three-cell groups include the 19-triangle marking tails in source(3,-2) and(-2,3)."
+      },
+      {
+        "label": "upper-exit-slip",
+        "source_world_cells": [
+          [
+            -4,
+            4
+          ],
+          [
+            -3,
+            4
+          ],
+          [
+            -4,
+            5
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "occupied_tiles": 3,
+        "bounding_rectangle_tiles": [
+          2,
+          2
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "New three-cell slip-lane type proposed; preserve both native decks, all markers, barrier openings, and retained supports.",
+        "ports": 9,
+        "intrinsic_journeys": 5,
+        "geometry_limit": "A straight-looking cell can still contain required taper paint; the lower three-cell groups include the 19-triangle marking tails in source(3,-2) and(-2,3)."
+      },
+      {
+        "label": "upper-entry-slip",
+        "source_world_cells": [
+          [
+            4,
+            -4
+          ],
+          [
+            5,
+            -4
+          ],
+          [
+            4,
+            -3
+          ]
+        ],
+        "assembly_XY_tiles": [
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "occupied_tiles": 3,
+        "bounding_rectangle_tiles": [
+          2,
+          2
+        ],
+        "implementation_status": "proposed; no new game resource allocated or compiled",
+        "reuse_type": null,
+        "decision": "New three-cell slip-lane type proposed; preserve both native decks, all markers, barrier openings, and retained supports.",
+        "ports": 9,
+        "intrinsic_journeys": 5,
+        "geometry_limit": "A straight-looking cell can still contain required taper paint; the lower three-cell groups include the 19-triangle marking tails in source(3,-2) and(-2,3)."
+      }
+    ],
+    "minimum_scope": "Three tiles are the smallest coherent crossing retaining all mixed DD/Avenue cells together. Four three-cell slip sections retain complete tapers; this is a functional partition, not a proof that every independent game cursor rectangle is already implemented at that size.",
+    "proposed_upper_ramp_splits": [
+      {
+        "placement": "P04",
+        "source_world_landing_cell": [
+          1,
+          3
+        ],
+        "assembly_XY_landing_tile": [
+          5,
+          2
+        ],
+        "body_owned_tiles": 5,
+        "landing_owned_tiles": 1,
+        "whole_cell_straight_plan_length_m": 16,
+        "whole_cell_high_path_height_m": 3.060945143,
+        "ground_path_height_m": 0,
+        "maximum_saved_grade_percent": 27.82677419,
+        "description": "Fixed straight grade-to-ground transition: horizontal alignment is straight, but height and grade ease down to the ground. Entry has the reverse travel profile; neither type repeats at arbitrary height.",
+        "whole_cell_model_section": {
+          "pavement_height_m": 3.060945034,
+          "underside_height_m": 2.060945034,
+          "barrier_crown_height_m": 4.451570034,
+          "nominal_road_width_m": 6
+        },
+        "structural_ownership": "Keep the pier in the landing cell; keep the real model-only wing cell in the five-cell body.",
+        "optional_complete_visual_straight": {
+          "status": "Conditional alternative; requires saved-face repartition and complete physical-seam checks.",
+          "plan_length_m": 29.423929627,
+          "model_overhang_into_body_m": 13.423929627,
+          "physical_cut_path_height_m": 6.796391707,
+          "path_ownership": "The shared city cell remains body-owned, including its whole original PATH. The one-cell landing owner draws the longer straight model over that cell. Traffic ports therefore remain at a different point from the physical cut.",
+          "measured_exit_miter_obliquity_degrees": 0.0881276,
+          "measured_exit_seam_width_m": 6.000006919,
+          "preservation_rule": "Retain the actual oblique saved miter; do not invent a perpendicular cross-section or straighten the 2.576070373 metres of curve that shares the neighbouring cell."
+        }
+      },
+      {
+        "placement": "P05",
+        "source_world_landing_cell": [
+          3,
+          1
+        ],
+        "assembly_XY_landing_tile": [
+          7,
+          4
+        ],
+        "body_owned_tiles": 5,
+        "landing_owned_tiles": 1,
+        "whole_cell_straight_plan_length_m": 16,
+        "whole_cell_high_path_height_m": 3.060945143,
+        "ground_path_height_m": 0,
+        "maximum_saved_grade_percent": 27.82677419,
+        "description": "Fixed straight grade-to-ground transition: horizontal alignment is straight, but height and grade ease down to the ground. Entry has the reverse travel profile; neither type repeats at arbitrary height.",
+        "whole_cell_model_section": {
+          "pavement_height_m": 3.060945034,
+          "underside_height_m": 2.060945034,
+          "barrier_crown_height_m": 4.451570034,
+          "nominal_road_width_m": 6
+        },
+        "structural_ownership": "Keep the pier in the landing cell; keep the real model-only wing cell in the five-cell body.",
+        "optional_complete_visual_straight": {
+          "status": "Conditional alternative; requires saved-face repartition and complete physical-seam checks.",
+          "plan_length_m": 29.423929627,
+          "model_overhang_into_body_m": 13.423929627,
+          "physical_cut_path_height_m": 6.796391707,
+          "path_ownership": "The shared city cell remains body-owned, including its whole original PATH. The one-cell landing owner draws the longer straight model over that cell. Traffic ports therefore remain at a different point from the physical cut.",
+          "measured_exit_miter_obliquity_degrees": 0.0881276,
+          "measured_exit_seam_width_m": 6.000006919,
+          "preservation_rule": "Retain the actual oblique saved miter; do not invent a perpendicular cross-section or straighten the 2.576070373 metres of curve that shares the neighbouring cell."
+        }
+      }
+    ],
+    "construction_caveat": {
+      "writer": "adaptive_ground.build_construction currently puts the Road handle at(width,0) for an all-adaptive piece.",
+      "verifier": "The shared runtime-address checker currently permits only the historical(3,0)handle coordinate; width-2 and width-1 candidates need coordinated changes.",
+      "candidate": "A sparse 2 × 2 core can use its unused(1,1)corner. A one-cell custom Avenue half has no spare internal corner; native Avenue or an externally handled seed must be checked separately.",
+      "native_source": "https://github.com/NAMTeam/nam-dll/blob/0ea65a74090ed8d376ca8ed87024b755d3059507/src/FlexPieces.cpp",
+      "uncertainty": "The source removes the handle and checks, but does not recalculate original rule bounds. Actual all-four-rotation placement, occupied-neighbour interaction, and adaptive pavement need game tests."
     }
   },
-  "cuts": [
-    {
-      "boundary": "highway to ramp",
-      "count": 4,
-      "decision": "implemented",
-      "profile": "Exact retained nonzero slope, oblique tangent, complete pavement, and barriers."
-    },
-    {
-      "boundary": "ramp to Avenue terminal",
-      "count": 4,
-      "decision": "implemented",
-      "profile": "R40 grades have a flat 1 m ground chord; retained compact grades preserve their original sloped junction ends."
-    },
-    {
-      "boundary": "inside highway taper and merge",
-      "decision": "deferred",
-      "reason": "The highway/slip-lane body is deliberately one stamp; splitting it would create a different placement product."
-    },
-    {
-      "boundary": "inside graded ramp",
-      "decision": "deferred",
-      "reason": "The first family provides complete compatible continuations; arbitrary fixed-height graded building blocks need another finite interface and clearance review."
-    }
-  ],
-  "geometry_constraints": [
-    "Absolute fixed heights; no terrain-following or arbitrary vertical translation.",
-    "R40 applies to new circular sections, not the retained upper collar near R29.50.",
-    "Use matched ramp/terminal sets; matching flat heights alone is insufficient.",
-    "Barriers, support shells, road widths, all traffic services, and construction owners require separate physical validation."
-  ],
   "evidence": {
-    "actual_route_drawing": "../previews/modular-atomization.png",
-    "vector_drawing": "../previews/modular-atomization.svg",
-    "saved_numeric_source": "../evidence/modular-atomization.json",
-    "r40_saved_check": "../evidence/saved-assembly-check.json",
-    "compact_saved_check": "../evidence/saved-compact-alternative-check.json",
-    "retained_assets": "../evidence/compact-asset-preservation.json"
+    "proposal_drawing": "../previews/further-atomization-review.png",
+    "editable_drawing": "../previews/further-atomization-review.svg",
+    "drawing_measurements": "../evidence/further-atomization-review.json",
+    "saved_paths": "../evidence/further-atomization-paths.json",
+    "saved_upper_profiles": "../evidence/further-atomization-upper-profiles.json",
+    "previous_decision_source": "../evidence/history/before-further-atomization-review/atomization.jsonc"
   },
+  "game_resources_changed": false,
   "manual_game_results_changed": false,
-  "installed_files_changed": false,
-  "native_overhang": {
-    "source_world_cells": [
-      [
-        0,
-        2
-      ],
-      [
-        2,
-        0
-      ]
-    ],
-    "assembly_cells_column_row": [
-      [
-        4,
-        6
-      ],
-      [
-        6,
-        4
-      ]
-    ],
-    "cause": "Frozen native DD pavement and concrete in the retained stamp project into these otherwise unowned cells. The old compact grades owned them; the R40 layout keeps them unoccupied.",
-    "verification": "Bind actual projected faces to exact frozen stamp models. New authored ramp and terminal faces receive no external ownership allowance.",
-    "construction_ownership_changed": false
-  }
+  "installed_files_changed": false
 }
