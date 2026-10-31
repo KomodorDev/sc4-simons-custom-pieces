@@ -14,10 +14,16 @@ from scp import adaptive_network
 from scp.dbpf import encode_exemplar, exemplar, pack_dbpf
 from scp.models import pack_s3d, parse_s3d
 from scp.track_paths import PATH, S3D
-from scp.verify import strict_dbpf
+from scp.verify import parse_paths as saved_paths, strict_dbpf
 from scp_highway import adaptive_ground as writer, adaptive_verify as verify
-from scp_highway.native import encode_paths, parse_paths
+from scp_highway.native import encode_paths
 import test_adaptive_ground as fixture
+
+
+def parse_paths(raw):
+    # Runtime aliases may opt into header 1; the native donor parser is
+    # intentionally restricted to the original header-0 donor resources.
+    return saved_paths(raw)['routes']
 
 
 def literal_routes():
@@ -31,6 +37,12 @@ def quarter_turn(point, turns):
     east, north, height = point
     east, north = ((east, north), (north, -east), (-east, -north), (-north, east))[turns % 4]
     return east, north, height
+
+
+def encode_active_routes(routes):
+    # Mutate route content without accidentally testing the separate header
+    # guard instead. The selected current fixture explicitly opts into 1.
+    return encode_paths(routes).replace(b'\r\n0\r\n0\r\n', b'\r\n0\r\n1\r\n', 1)
 
 
 def saved_fixture(piece):
@@ -142,7 +154,7 @@ class AdaptiveGroundVerifierTests(unittest.TestCase):
         original = parse_paths(self.resources[key])
         for index, label in enumerate(('upper', 'lower', 'pedestrian', 'ground junction')):
             changed = dict(self.resources)
-            changed[key] = encode_paths(original[:index] + original[index + 1:])
+            changed[key] = encode_active_routes(original[:index] + original[index + 1:])
             with self.subTest(route=label), self.assertRaisesRegex(ValueError, 'every posed ground, highway, and ramp route'):
                 self.check(changed)
 
@@ -156,7 +168,7 @@ class AdaptiveGroundVerifierTests(unittest.TestCase):
                 else:
                     east, north, height = routes[index]['points'][1]
                     routes[index]['points'][1] = (east + .125, north, height)
-                changed[key] = encode_paths(routes)
+                changed[key] = encode_active_routes(routes)
                 with self.subTest(route=index, junction_bit=junction_bit), self.assertRaisesRegex(ValueError, 'every posed'):
                     self.check(changed)
 
@@ -226,13 +238,28 @@ class AdaptiveGroundVerifierTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'every and only the module Avenue cells'):
             self.check(piece=changed)
 
+    def test_saved_elevation_flag_is_checked_for_current_and_legacy_specs(self):
+        key = (*verify.AVENUE_PATH, int(self.row['resolved_tile_id'], 16))
+        changed = dict(self.resources)
+        changed[key] = changed[key].replace(b'\r\n0\r\n1\r\n', b'\r\n0\r\n0\r\n', 1)
+        with self.assertRaisesRegex(ValueError, 'PATH elevation flag'):
+            self.check(changed)
+        for setting in (None, False):
+            piece = deepcopy(self.piece)
+            piece['adaptive_ground'].pop('use_path_elevation')
+            if setting is False:
+                piece['adaptive_ground']['use_path_elevation'] = False
+            resources, hashes = saved_fixture(piece)
+            self.assertTrue(self.check(resources, piece, hashes)['canonical_geometry_and_traffic_preserved'])
+
     def test_self_consistent_wrong_half_tile_pose_and_donor_are_rejected(self):
         changed_piece, changed = deepcopy(self.piece), dict(self.resources)
         row = next(row for row in changed_piece['adaptive_ground']['cells'] if row['rotation'] == 2)
         binding = next(binding for binding in self.rows if binding['cell'] == row['cell'])
         row['rotation'] = 0
         target, tile = int(row['resolved_tile_id'], 16), int(binding['canonical_tile_id'], 16)
-        changed[*verify.AVENUE_PATH, target] = changed[*PATH, tile]
+        changed[*verify.AVENUE_PATH, target] = changed[*PATH, tile].replace(
+            b'\r\n0\r\n0\r\n', b'\r\n0\r\n1\r\n', 1)
         change_property(changed, (*adaptive_network.T21, target), 0x88EDC900,
                         lambda prop: prop['values'].__setitem__(2, 0))
         with self.assertRaisesRegex(ValueError, 'donor, pose, or Avenue flags'):

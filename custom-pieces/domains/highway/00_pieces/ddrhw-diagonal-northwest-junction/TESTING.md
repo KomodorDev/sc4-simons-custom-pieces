@@ -217,6 +217,65 @@ No observation recorded.
 </details>
 
 <details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast | <a href="#case-preview_review-dc931912ba40eb1296fc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-top | <a href="#case-preview_review-dca9a6ac16d9e1df4047">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:connection-overview | <a href="#case-preview_review-114d78931935c8958537">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast</summary>
+
+<a id="case-preview_review-dc931912ba40eb1296fc"></a>
+
+**General: unverified** — `preview_review-dc931912ba40eb1296fc`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-top</summary>
+
+<a id="case-preview_review-dca9a6ac16d9e1df4047"></a>
+
+**General: unverified** — `preview_review-dca9a6ac16d9e1df4047`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:connection-overview</summary>
+
+<a id="case-preview_review-114d78931935c8958537"></a>
+
+**General: unverified** — `preview_review-114d78931935c8958537`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-diagonal-northwest-junction:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -3172,65 +3231,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 2-E-in-4; to port: 2-S-out-3; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast | <a href="#case-preview_review-dc931912ba40eb1296fc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:canonical-top | <a href="#case-preview_review-dca9a6ac16d9e1df4047">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-diagonal-northwest-junction:connection-overview | <a href="#case-preview_review-114d78931935c8958537">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast</summary>
-
-<a id="case-preview_review-dc931912ba40eb1296fc"></a>
-
-**General: unverified** — `preview_review-dc931912ba40eb1296fc`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:canonical-top</summary>
-
-<a id="case-preview_review-dca9a6ac16d9e1df4047"></a>
-
-**General: unverified** — `preview_review-dca9a6ac16d9e1df4047`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-northwest-junction:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-diagonal-northwest-junction:connection-overview</summary>
-
-<a id="case-preview_review-114d78931935c8958537"></a>
-
-**General: unverified** — `preview_review-114d78931935c8958537`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-diagonal-northwest-junction:connection-overview.
 
 No observation recorded.
 

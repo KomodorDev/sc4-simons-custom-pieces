@@ -37,9 +37,11 @@ def bindings(piece):
         return []
     metadata = piece['adaptive_ground']
     require(isinstance(metadata, dict) and {'schema_version', 'cells'} <= set(metadata)
-            and set(metadata) <= {'schema_version', 'cells', 'construction_helper'}
+            and set(metadata) <= {'schema_version', 'cells', 'construction_helper', 'use_path_elevation'}
             and type(metadata['schema_version']) is int and metadata['schema_version'] == 1,
             'Unsupported adaptive-ground metadata')
+    require(type(metadata.get('use_path_elevation', False)) is bool,
+            'Adaptive PATH elevation setting must be a boolean')
     rows = metadata['cells']
     require(isinstance(rows, list) and rows, 'Adaptive-ground cells must be a nonempty list')
     width, depth = piece['footprint']
@@ -165,11 +167,16 @@ def _properties(raw, kind):
 
 def validate_active_resources(resources, piece):
     """Check encoded bindings; domain checks establish geometry and PATH poses."""
+    from .verify import parse_paths
+
     rows = bindings(piece)
     require(resource_keys(piece) <= resources.keys(),
             'Adaptive cell is missing a texture, PATH, prop, or T21 resource')
     for row in rows:
         resolved, tile = int(row['resolved_tile_id'], 16), int(row['canonical_tile_id'], 16)
+        require(parse_paths(resources[*PATH, resolved])['terrain'] ==
+                int(piece['adaptive_ground'].get('use_path_elevation', False)),
+                'Adaptive active PATH elevation flag differs from its declaration')
         require((*NETWORK_EXEMPLAR, tile) not in resources and
                 (*NETWORK_EXEMPLAR, resolved) not in resources,
                 'Adaptive cells must not select a fixed network model exemplar')

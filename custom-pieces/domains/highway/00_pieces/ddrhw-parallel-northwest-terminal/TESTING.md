@@ -240,6 +240,65 @@ No observation recorded.
 </details>
 
 <details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast | <a href="#case-preview_review-96631e8c439579739011">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:canonical-top | <a href="#case-preview_review-b481ef73a82599e009d8">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:connection-overview | <a href="#case-preview_review-a84dbe53513473b904a1">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast</summary>
+
+<a id="case-preview_review-96631e8c439579739011"></a>
+
+**General: unverified** — `preview_review-96631e8c439579739011`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:canonical-top</summary>
+
+<a id="case-preview_review-b481ef73a82599e009d8"></a>
+
+**General: unverified** — `preview_review-b481ef73a82599e009d8`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-northwest-terminal:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:connection-overview</summary>
+
+<a id="case-preview_review-a84dbe53513473b904a1"></a>
+
+**General: unverified** — `preview_review-a84dbe53513473b904a1`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-northwest-terminal:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -3195,65 +3254,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: channel-12-in; to port: channel-14-out; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast | <a href="#case-preview_review-96631e8c439579739011">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:canonical-top | <a href="#case-preview_review-b481ef73a82599e009d8">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-northwest-terminal:connection-overview | <a href="#case-preview_review-a84dbe53513473b904a1">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast</summary>
-
-<a id="case-preview_review-96631e8c439579739011"></a>
-
-**General: unverified** — `preview_review-96631e8c439579739011`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-northwest-terminal:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:canonical-top</summary>
-
-<a id="case-preview_review-b481ef73a82599e009d8"></a>
-
-**General: unverified** — `preview_review-b481ef73a82599e009d8`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-northwest-terminal:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-northwest-terminal:connection-overview</summary>
-
-<a id="case-preview_review-a84dbe53513473b904a1"></a>
-
-**General: unverified** — `preview_review-a84dbe53513473b904a1`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-northwest-terminal:connection-overview.
 
 No observation recorded.
 

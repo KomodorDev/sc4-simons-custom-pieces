@@ -101,13 +101,31 @@ def filter_overlay_model(raw):
     return pack_s3d(filtered)
 
 
-def posed_path_alias(raw, rotation):
-    """Cancel the resolved tile pose while preserving every merged route."""
+def posed_path_alias(raw, rotation, *, use_path_elevation=False):
+    """Cancel the tile pose and explicitly retain authored runtime heights.
+
+    Normal texture-network PATHs do not receive the automatic elevation flag
+    promotion used by fixed network-model overrides. The opt-in header keeps
+    their authored heights through the game's surface-copy transform. Its
+    absence retains the legacy resource bytes and transform behavior.
+    """
     require(type(rotation) is int and rotation in range(4), 'Invalid resolved PATH pose')
+    require(type(use_path_elevation) is bool, 'Adaptive PATH elevation setting must be a boolean')
     if rotation == 0:
-        return raw
+        if not use_path_elevation:
+            return raw
+        # Change only the header token, leaving every comment, coordinate,
+        # route field, whitespace character, and line ending untouched.
+        parse_paths(raw)
+        lines = raw.splitlines(keepends=True)
+        data = [index for index, line in enumerate(lines)
+                if line.strip() and not line.lstrip().startswith(b'--')]
+        index = data[4]
+        lines[index], count = re.subn(rb'(?<!\S)0(?!\S)', b'1', lines[index], count=1)
+        require(count == 1, 'Canonical adaptive PATH must have a zero elevation header')
+        return b''.join(lines)
     routes = [rotate_route(route, (-rotation) % 4) for route in parse_paths(raw)]
-    lines = ['SC4PATHS', '1.2', str(len(routes)), '0', '0']
+    lines = ['SC4PATHS', '1.2', str(len(routes)), '0', str(int(use_path_elevation))]
     for index, route in enumerate(routes):
         lines += [f'-- SCP inverse-posed adaptive channel {index + 1}',
                   str(route['transport']), str(route['lane']), str(route['entry']),
@@ -192,7 +210,8 @@ def build_resources(spec, context, compiled):
         require(cell in canonical, 'Missing compiled adaptive cell')
         model, path = canonical[cell]
         resolved, donor = int(row['resolved_tile_id'], 16), int(row['texture_donor_id'], 16)
-        resources[*AVENUE_PATH, resolved] = posed_path_alias(path, row['rotation'])
+        resources[*AVENUE_PATH, resolved] = posed_path_alias(
+            path, row['rotation'], use_path_elevation=spec['adaptive_ground'].get('use_path_elevation', False))
         for appearance in APPEARANCES:
             for zoom in ZOOMS:
                 key = (*TEXTURE, donor + appearance + zoom)

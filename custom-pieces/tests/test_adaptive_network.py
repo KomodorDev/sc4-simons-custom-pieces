@@ -35,6 +35,8 @@ def prop(pid, values, kind=0x300, array=False):
 def assets(spec):
     resources = {key: b'fixture' for key in resource_keys(spec)}
     for row in bindings(spec):
+        flag = int(spec['adaptive_ground'].get('use_path_elevation', False))
+        resources[*PATH, int(row['resolved_tile_id'], 16)] = f'SC4PATHS\r\n1.2\r\n0\r\n0\r\n{flag}\r\n'.encode('ascii')
         if not row['prop']:
             continue
         tile, resolved = int(row['canonical_tile_id'], 16), int(row['resolved_tile_id'], 16)
@@ -96,6 +98,28 @@ class AdaptiveNetworkTests(unittest.TestCase):
                 spec = piece(); spec['adaptive_ground']['cells'][0][field] = value
                 with self.assertRaises(ValueError):
                     bindings(spec)
+
+    def test_optional_path_elevation_is_a_strict_boolean(self):
+        for value in (True, False):
+            spec = piece(); spec['adaptive_ground']['use_path_elevation'] = value
+            self.assertEqual(len(bindings(spec)), 1)
+        for value in (0, 1, None, 'true', [], {}):
+            with self.subTest(value=value):
+                spec = piece(); spec['adaptive_ground']['use_path_elevation'] = value
+                with self.assertRaisesRegex(ValueError, 'elevation setting must be a boolean'):
+                    bindings(spec)
+
+    def test_active_path_header_must_match_opt_in_or_legacy_declaration(self):
+        for setting in (None, False, True):
+            spec = piece()
+            if setting is not None:
+                spec['adaptive_ground']['use_path_elevation'] = setting
+            resources = assets(spec)
+            self.assertTrue(validate_active_resources(resources, spec)['active_bindings_checked'])
+            resources[*PATH, 0x7f5a0000] = (
+                f'SC4PATHS\r\n1.2\r\n0\r\n0\r\n{int(not bool(setting))}\r\n'.encode('ascii'))
+            with self.subTest(setting=setting), self.assertRaisesRegex(ValueError, 'active PATH elevation flag'):
+                validate_active_resources(resources, spec)
 
     def test_duplicate_cells_or_appearance_families_are_rejected(self):
         for duplicate_cell in (True, False):

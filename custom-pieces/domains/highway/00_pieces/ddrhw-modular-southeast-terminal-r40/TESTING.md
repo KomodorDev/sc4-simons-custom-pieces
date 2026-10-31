@@ -225,6 +225,65 @@ No observation recorded.
 </details>
 
 <details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast | <a href="#case-preview_review-f7cc7407cf67eb63e0bd">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top | <a href="#case-preview_review-fe67b6607533f0b9ff2a">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview | <a href="#case-preview_review-c74f09c2d195a3e4ed86">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast</summary>
+
+<a id="case-preview_review-f7cc7407cf67eb63e0bd"></a>
+
+**General: unverified** — `preview_review-f7cc7407cf67eb63e0bd`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top</summary>
+
+<a id="case-preview_review-fe67b6607533f0b9ff2a"></a>
+
+**General: unverified** — `preview_review-fe67b6607533f0b9ff2a`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview</summary>
+
+<a id="case-preview_review-c74f09c2d195a3e4ed86"></a>
+
+**General: unverified** — `preview_review-c74f09c2d195a3e4ed86`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -3180,65 +3239,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: 2-E-in-4; to port: 2-S-out-3; from service: pedestrian; to service: pedestrian; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast | <a href="#case-preview_review-f7cc7407cf67eb63e0bd">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top | <a href="#case-preview_review-fe67b6607533f0b9ff2a">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview | <a href="#case-preview_review-c74f09c2d195a3e4ed86">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast</summary>
-
-<a id="case-preview_review-f7cc7407cf67eb63e0bd"></a>
-
-**General: unverified** — `preview_review-f7cc7407cf67eb63e0bd`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-southeast-terminal-r40:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top</summary>
-
-<a id="case-preview_review-fe67b6607533f0b9ff2a"></a>
-
-**General: unverified** — `preview_review-fe67b6607533f0b9ff2a`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-southeast-terminal-r40:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview</summary>
-
-<a id="case-preview_review-c74f09c2d195a3e4ed86"></a>
-
-**General: unverified** — `preview_review-c74f09c2d195a3e4ed86`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-modular-southeast-terminal-r40:connection-overview.
 
 No observation recorded.
 

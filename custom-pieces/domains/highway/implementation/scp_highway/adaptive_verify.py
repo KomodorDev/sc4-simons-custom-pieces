@@ -124,7 +124,9 @@ def check_resources(resources, piece):
                         'Adaptive ground texture differs from its audited appearance and zoom donor')
         canonical = parse_paths(resources[*PATH, tile])
         active = parse_paths(resources[*AVENUE_PATH, resolved])
-        require(canonical['version'] == active['version'] and canonical['terrain'] == active['terrain']
+        require(active['terrain'] == int(piece['adaptive_ground'].get('use_path_elevation', False)),
+                'Resolved Avenue PATH elevation flag differs from its declaration')
+        require(canonical['version'] == active['version'] and canonical['terrain'] == 0
                 and Counter(_route_signature(route) for route in canonical['routes']) ==
                 Counter(_route_signature(route, rotation) for route in active['routes']),
                 'Resolved Avenue PATH does not preserve every posed ground, highway, and ramp route')

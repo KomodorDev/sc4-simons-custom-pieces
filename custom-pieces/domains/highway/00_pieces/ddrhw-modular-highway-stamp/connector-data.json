@@ -4,17 +4,17 @@
   "piece_id": "ddrhw-modular-highway-stamp",
   "domain_id": "highway",
   "source_binding": {
-    "compiled_build": "dist/ddrhw-native-approaches-connector-refresh-parts-03",
-    "compiled_manifest_sha256": "bae3cb5155d833d3d07be1131d438fd69ac7781648be02887f3bf940aa660cda",
+    "compiled_build": "dist/ddrhw-three-diamonds-elevation-source-parts-04",
+    "compiled_manifest_sha256": "28bb2929f595632f1316e96e092807f54a03e1886138b0bb2b7020a078e647c0",
     "files": {
-      "dist/ddrhw-native-approaches-connector-refresh-parts-03/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat": "07cf8e95fca2d99feba02cd95d40528d6a65dc9a4e04dbaa7ef6b9c6ed4ab9d3",
-      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/connections.json": "7b50e51fd84ba927638f8df12d37b1696c42da7d96a9eaad93ed7cd4d3e43e28",
-      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/connector-groups.jsonc": "140bf373e8584fbbf664b8bdfc774d1a52caf2abcfc41a3e7af4c40e10d49dcb",
-      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/piece.jsonc": "189d14a7078ed6501339f6a589ebe80a9f14e8b5bf5422748b8d73873af1187a",
+      "dist/ddrhw-three-diamonds-elevation-source-parts-04/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat": "4fd9ff86019d85488bad6880771908f2b773ebeb1d62ea730dd73539ef95fb15",
+      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/connections.json": "470939b3113f605d9b2aedc9274a2f61b3a3b680519764f721bb5f94f7193630",
+      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/connector-groups.jsonc": "dfd6942e7e3d1d1634a0cdcdc685ab6d4a6accbd94114e27a7b998a61f6aa73b",
+      "domains/highway/00_pieces/ddrhw-modular-highway-stamp/piece.jsonc": "2d7dd28dd64da360a4a7aadc701786494434e9d840b0f3713a1139a74f465ca4",
       "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
       "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
-      "domains/highway/implementation/scp_highway/adaptive_ground.py": "049feb134ea074ab48b545666f45e6cc62e3ab6c6692d6e0293e7ca6d33ef0c0",
-      "domains/highway/implementation/scp_highway/adaptive_verify.py": "0d322f9ba6ecd778cf1dc64680e3f13ee9d96349c5ffec8f612cf5a261e765d3",
+      "domains/highway/implementation/scp_highway/adaptive_ground.py": "a326b3cfc80d7e1b543ed6fbb009b88f813e38c17830b8a017489c6702cd0138",
+      "domains/highway/implementation/scp_highway/adaptive_verify.py": "ca90e45de21ef4af0ea994fceb1fe094356ad5128940dd55915a72feaa1e7969",
       "domains/highway/implementation/scp_highway/assembly_verify.py": "cc48835b808f24b575fd480a81284f251accccf163c4ad401a613235dd3eaed4",
       "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
       "domains/highway/implementation/scp_highway/connections.py": "5b770ae4e5b39664e644e069b3bbe26a03f35ec98e3443371295e19e42bf715c",
@@ -51,7 +51,7 @@
       "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
       "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
       "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
-      "framework/scp/adaptive_network.py": "22b9580f9e179fa76c402dcaa0c9525567198d00fe7b198167c79db51a281206",
+      "framework/scp/adaptive_network.py": "601a7d70fbe0505427fc5a847ac64b6d92b1c36ef66547f41ae260b1759c73fa",
       "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
       "framework/scp/autotile.py": "3bf7aec47fefc83efd89836128cc606adf49b128cecf71e328c4493cd918b6cd",
       "framework/scp/build.py": "b5dfdb4bf95226a9b25e6ba09cd9b80bd7b8bf298de264cea0d34ee7f598f561",
@@ -389,6 +389,7 @@
       },
       "adaptive_ground": {
         "schema_version": 1,
+        "use_path_elevation": true,
         "cells": [
           {
             "cell": [
@@ -593,11 +594,11 @@
           "model:ddrhw-modular-highway-stamp:5ad0e817-badb57f1-7f59d903": "851f03cc1d72c51779e0df0c0f772dd0dcb4f6f6c797bc3cd0800b9374c657a9",
           "model:ddrhw-modular-highway-stamp:5ad0e817-badb57f1-7f59d904": "851f03cc1d72c51779e0df0c0f772dd0dcb4f6f6c797bc3cd0800b9374c657a9",
           "model:ddrhw-modular-highway-stamp:5ad0e817-badb57f1-7f59dff5": "bbe6e88cd7965622c69a640e4ed5db123d6b59ffcaa0fe1459b109efb64ac67f",
-          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e000": "bf9294bd3646b16ebc2d2176d0c73e7b4fe5e358b170b26b1cb5bcaf18bcc93b",
-          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e100": "5b53e2b7e406f019c9ffa09ee7ad48c6dbf21053647e1aa1cc501e9231d6ce10",
-          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e200": "16daea529a42ce14980b1856f228543ace9ab2ee391e6f985f82678e57940920",
-          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e300": "2dbd75130c1715f410e969494cb569aa80e0a639a05650bba1ce4a32e76e0ccc",
-          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e400": "fc9f353752d5bf421bbdab0c14ad2cf4c9db144c8ba330a400dd9f561fdae674",
+          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e000": "a8ff9662fc26af0629d69af93e77afe3e18086918195ec49c367dbe2834c60f9",
+          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e100": "18d5112f6adbc8f4d17e0eaddb553ff089b810ba7a33cabfe1963142f6fc2fb3",
+          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e200": "d9124a0fffd5c1acef29b69106dc61c564c5928f314e723422ff6b0770dbe22c",
+          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e300": "1003132031539019cb4f32654e6ab548715c4dec24784d6b5cc340826768ee18",
+          "path:ddrhw-modular-highway-stamp:296678f7-69668828-7f59e400": "65e211f3037e258fa2fa751fcee35a15d424a5c20860f6ad8f008949f867569a",
           "path:ddrhw-modular-highway-stamp:296678f7-a966883f-7f59d080": "ca778555d463410658d025d163aa62ab0f1058b5004985e469858d511628d616",
           "path:ddrhw-modular-highway-stamp:296678f7-a966883f-7f59d090": "4a31db9781d9031d8e2775dea32e14050c85e03b22882989c6c981cf8df75629",
           "path:ddrhw-modular-highway-stamp:296678f7-a966883f-7f59d170": "5cbaa6d065dd83a904f59a42d65fdbae314c365905da23da27b5735e0339c8d2",
@@ -845,7 +846,7 @@
           "texture:ddrhw-modular-highway-stamp:7ab50e44-1abe787d-7f59e432": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
           "texture:ddrhw-modular-highway-stamp:7ab50e44-1abe787d-7f59e433": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
           "texture:ddrhw-modular-highway-stamp:7ab50e44-1abe787d-7f59e434": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
-          "construction:ddrhw-modular-highway-stamp": "697aabda851846eb1a12187e7cefe64824b34fcc8440395177f927d15f5f2223"
+          "construction:ddrhw-modular-highway-stamp": "793e23aae079adfe26574910f00351820d1b4c9af1c2561d502d58d9e5177938"
         },
         "reviewed_contract_available": true,
         "scope": "one piece only; no counterpart catalogue is consulted",
@@ -4399,8 +4400,8 @@
       "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
       "piece_id": "ddrhw-modular-highway-stamp",
       "source_binding": {
-        "piece_sha256": "189d14a7078ed6501339f6a589ebe80a9f14e8b5bf5422748b8d73873af1187a",
-        "connections_sha256": "7b50e51fd84ba927638f8df12d37b1696c42da7d96a9eaad93ed7cd4d3e43e28"
+        "piece_sha256": "2d7dd28dd64da360a4a7aadc701786494434e9d840b0f3713a1139a74f465ca4",
+        "connections_sha256": "470939b3113f605d9b2aedc9274a2f61b3a3b680519764f721bb5f94f7193630"
       },
       "components": [
         {
@@ -18644,8 +18645,8 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/ddrhw-native-approaches-connector-refresh-parts-03/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat",
-      "dat_sha256": "07cf8e95fca2d99feba02cd95d40528d6a65dc9a4e04dbaa7ef6b9c6ed4ab9d3",
+      "dat_path": "dist/ddrhw-three-diamonds-elevation-source-parts-04/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat",
+      "dat_sha256": "4fd9ff86019d85488bad6880771908f2b773ebeb1d62ea730dd73539ef95fb15",
       "model_sha256": "bbe6e88cd7965622c69a640e4ed5db123d6b59ffcaa0fe1459b109efb64ac67f",
       "resource_fingerprints_checked": 384,
       "directional_ports_reextracted": 28,
@@ -18663,5 +18664,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "1085a94528d48a482a470d9ca8cdeec38168baf3e1648fc3db23638257d428cd"
+  "content_sha256": "4d08cfbc536171e55e2c8854edd458dc7119b12d584257f8a051bc3a74294efb"
 }

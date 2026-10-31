@@ -234,6 +234,8 @@ Use this conditional procedure when a ground road must retain the game's changin
 6. Record pedestrian pavement, all four placement orientations, city-camera rotation, density and wealth variants, ordinary-network redraw, save/reload, and visible car and pedestrian travel as separate game checks. Confirmed pavement and rotation do not establish the other cases. Preserve failed versions and their observations when a later revision passes.
 7. Integrate real elevated routes into one independently testable module before extending the mechanism across an assembly. For an interchange, include one ramp landing in that first routed test. Independently verify complete boundaries, permitted journeys, tile ownership, and physical clearance again. Integrating the approach into another piece or adding routes creates new acceptance cases; the decorative rendering probe does not supply their game passes.
 
+When a reported traffic failure affects an elevated route over adaptive ground, first inspect the actual selected PATH resource and its runtime height transform under the [shared routing-verification contract](FRAMEWORK_ENGINEERING.md#6-geometry-and-routing-verification). Correct saved heights alone are insufficient: normal texture-backed aliases can lose those heights during placement. Preserve the failed build and human report, add a regression that reproduces the identified transform branch, and check both direct through directions with the original ramps still present. The [highway diagnosis](../domains/highway/NETWORK_SPEC.md#13-adaptive-path-runtime-elevation) is a concrete example; its synthetic checks do not replace the new subject's game observations.
+
 <a id="5-build-and-check-only-the-new-piece"></a>
 
 ## 6. Build and check only the new piece

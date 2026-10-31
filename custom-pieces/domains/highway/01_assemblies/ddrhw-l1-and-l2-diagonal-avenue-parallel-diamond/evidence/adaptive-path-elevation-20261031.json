@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen, portable numeric evidence for reported two-deck highway detours, the identified adaptive PATH runtime-height defect, and its bounded source repair.",
+  "frozen": true,
+  "record_date": "2026-10-31",
+  "status": "historical installed candidate failed; repaired candidate awaits matching human retest",
+  "affected_candidate": {
+    "build_name": "ddrhw-three-diamonds-native-approaches-menu-03",
+    "manifest_sha256": "188e395251c1899fb667eb0c35d6cc83284e2e2087a5c5700ad62fe0ed5fb3e9",
+    "installed_receipt_sha256": "6cbce7b85453648734cb1c0cc9718de5acbe27d217ae281de8060938d19494e0",
+    "piece_id": "ddrhw-parallel-crossing",
+    "canonical_tile_ids": [
+      "7f5ab000",
+      "7f5ab100",
+      "7f5ab010"
+    ],
+    "resolved_tile_ids": [
+      "7f5ac000",
+      "7f5ac100",
+      "7f5ac200"
+    ]
+  },
+  "environment": {
+    "game_executable": "Windows SimCity 4",
+    "game_version": "1.1.641.0",
+    "game_binary_sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7",
+    "game_binary_bytes": 7524352,
+    "compatibility_runtime": "Wine",
+    "NAM_version": "50",
+    "traffic_side": "right-hand",
+    "NAM_controller_sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161",
+    "native_DD_archive_name": "RealHighway_DD_RHW-4.dat",
+    "native_DD_archive_sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb"
+  },
+  "human_report": {
+    "record_type": "paraphrase of the reported behavior, not a verbatim quotation",
+    "result": "Through traffic exits the highway, follows the Avenue, makes a U-turn, and re-enters the same-direction highway instead of crossing the elevated bridge.",
+    "reported_decks": [
+      "L1 at 7.5 m",
+      "L2 at 15 m"
+    ],
+    "construction_orientation": null,
+    "camera_orientation": null,
+    "observation_method": null,
+    "ramp_removal_control": "not reported as performed",
+    "scope": "Failure is confirmed only for the reported parallel assembly situation. No individual rotation, Route Query case, visible-car case, or other assembly outcome is inferred."
+  },
+  "saved_resource_measurements": {
+    "active_PATH_type_group": "296678f7-69668828",
+    "canonical_PATH_type_group": "296678f7-a966883f",
+    "active_aliases": [
+      {
+        "instance": "7f5ac000",
+        "resolved_rotation": 0,
+        "routes": 10,
+        "elevated_through_routes": 4,
+        "header_use_elevation": 0,
+        "decompressed_sha256": "16daea529a42ce14980b1856f228543ace9ab2ee391e6f985f82678e57940920"
+      },
+      {
+        "instance": "7f5ac100",
+        "resolved_rotation": 2,
+        "routes": 8,
+        "elevated_through_routes": 4,
+        "header_use_elevation": 0,
+        "decompressed_sha256": "5b0a4aa89d04225f752a5efc32c18811c8ed0cdc11e76201560b8541dfc60f3a"
+      },
+      {
+        "instance": "7f5ac200",
+        "resolved_rotation": 0,
+        "routes": 8,
+        "elevated_through_routes": 4,
+        "header_use_elevation": 0,
+        "decompressed_sha256": "6ad84f249e22f62c516858d925e6dc33ed793beed6b44b454f1227e9a448cf2d"
+      }
+    ],
+    "elevated_route_key_collisions": 0,
+    "elevated_junction_flags": 0,
+    "native_elevated_junction_flags": 0,
+    "complete_saved_directed_highway_through_journeys": 4,
+    "saved_through_journeys_scope": "Two native lanes per opposing deck. Saved graph agreement precedes the game runtime transform and does not establish game pathfinding."
+  },
+  "engine_branch_proof": {
+    "basis": "Read-only inspection of the fingerprinted local Windows 1.1.641 executable, cross-checked against the pinned primary reverse-engineering contract.",
+    "text_header_parser": {
+      "function_address": "0x00542900",
+      "fifth_header_integer_read_call_address": "0x00542B12",
+      "fifth_integer_load_address": "0x00542B1B",
+      "nonzero_to_boolean_address": "0x00542B27",
+      "set_elevation_call_address": "0x00542B2B",
+      "SetUseElevationFlag_vtable_offset": "0x44",
+      "meaning": "Zero disables UseElevation; a nonzero header integer enables it."
+    },
+    "UseElevation": {
+      "function_address": "0x005403A0",
+      "flag_byte_offset": "0x30",
+      "flag_mask": "0x01"
+    },
+    "GetPathInfo": {
+      "function_address": "0x0061B510",
+      "path_override_field_offset": "0x164",
+      "normal_group_selection_address": "0x0061B545",
+      "normal_group": "0x69668828",
+      "override_group_selection_address": "0x0061B54F",
+      "override_group": "0xA966883F",
+      "no_override_skips_promotion_address": "0x0061B5A3",
+      "override_elevation_query_address": "0x0061B5A7",
+      "override_enable_push_address": "0x0061B5BF",
+      "override_enable_call_address": "0x0061B5C3",
+      "CreateTransformedCopy_call_address": "0x0061B5DE"
+    },
+    "CreateTransformedCopy": {
+      "function_address": "0x00540AC0",
+      "UseElevation_query_address": "0x005410A1",
+      "false_branch_GetAltitude_call_address": "0x005410B6",
+      "output_height_overwrite_address": "0x005410BC",
+      "reverse_order_equivalent_addresses": [
+        "0x00540F17",
+        "0x00540F31",
+        "0x00540F37"
+      ],
+      "identified_defect": "Normal-group adaptive aliases retain UseElevation=false and therefore replace saved elevated route heights with the surface occupant altitude. The native override pipeline enables elevation first."
+    },
+    "lane_continuity": {
+      "function_name": "RemoveBadElevatedPaths",
+      "function_address": "0x00715940",
+      "endpoint_distance_radius_m": 4.0,
+      "scope": "The primary engine contract uses three-dimensional endpoint distance. The source regression replays only this bounded endpoint consequence on flat terrain, not the complete traffic simulator."
+    }
+  },
+  "pinned_primary_sources": [
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/network-rules.md#111-the-paths-of-a-piece-what-the-simulation-reads-nr1",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/traffic-network.md#44-lane-continuity-removebadelevatedpaths-0x00715940"
+  ],
+  "bounded_repair": {
+    "metadata": "adaptive_ground.use_path_elevation",
+    "accepted_type": "strict Boolean; integer lookalikes are rejected",
+    "true": "Emit header 1 in active aliases only.",
+    "absent_or_false": "Retain legacy header 0 and its existing bytes.",
+    "owners_opted_in": 9,
+    "active_aliases_opted_in": 46,
+    "preserve": [
+      "canonical PATH bytes",
+      "every route coordinate and metadata field",
+      "models",
+      "textures",
+      "props and T21 bindings",
+      "resource identifiers",
+      "Street/Avenue construction markers",
+      "all construction rules",
+      "traffic-simulator settings"
+    ],
+    "human_retest_status": "unverified"
+  },
+  "software_evidence": {
+    "portable_regression_scope": "Confirmed surface-copy height branch on flat terrain, both native deck heights, ground height, proper rotations, declared active-header validation, and legacy resource preservation. This is a synthetic replay, not a game observation.",
+    "focused_author_tests": {
+      "tests_run": 78,
+      "skipped": 0,
+      "result": "passed"
+    },
+    "independent_focused_tests": {
+      "tests_run": 115,
+      "skipped": 0,
+      "result": "passed",
+      "scope": "Adaptive schema, writer, verifier, construction, connector alias handling, single and multiple menus, and a separate review of the decoded runtime-branch regression."
+    },
+    "old_resource_regeneration": {
+      "input_build_manifest_sha256": "188e395251c1899fb667eb0c35d6cc83284e2e2087a5c5700ad62fe0ed5fb3e9",
+      "native_capture_sha256": "6ed51e2a9188826f188516fc0be7004069b2eb11f02ad0a62d271672194af839",
+      "old_manifest_owners_checked": 9,
+      "header_only_active_PATH_changes": 46,
+      "other_active_resources_byte_identical": 1034,
+      "scope": "Read-only regeneration of extra active resources from the unchanged accepted canonical model/PATH inputs. It is not a fresh native build, an installed update, or a game test."
+    }
+  },
+  "acceptance_limits": {
+    "full_native_build_status": "separate subsequent verification stage",
+    "repaired_Route_Query_status": "unverified",
+    "repaired_visible_car_status": "unverified",
+    "four_placement_orientations_status": "unverified",
+    "save_reload_status": "unverified",
+    "adaptive_sidewalk_status": "unverified",
+    "global_game_pass_claimed": false
+  },
+  "public_redaction": "Only numeric findings, source identities, and fingerprints are published. Private paths, executable instruction bytes, native model buffers, saved-city data, and proprietary texture pixels remain private."
+}

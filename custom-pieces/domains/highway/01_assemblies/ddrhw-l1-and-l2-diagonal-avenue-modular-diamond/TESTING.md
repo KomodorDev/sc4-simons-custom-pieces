@@ -306,6 +306,21 @@ Record the exact case, direction, pose, layout, and environment using the [share
 python3 -m scp.content record --record custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/checks/manual-tests.json --observation custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/checks/observation.json
 ```
 
+### 4.3 Adaptive crossing: direct traffic on both decks
+
+This focused regression checks the runtime-height requirement in [highway specification chapter 13](../../NETWORK_SPEC.md#13-adaptive-path-runtime-elevation). A **regression test** repeats a previously failing situation after a repair. The earlier parallel report does not establish a result for this assembly or for a specific rotation; every repaired-candidate game result below remains unverified.
+
+1. Use a disposable copy of the test city, and record the exact installed build and manifest hash. Quit the game completely before changing Plugins. After installing the verified candidate, start SimCity 4, open the copy, and place a fresh complete assembly using its README's placement order. Loading an older placed copy is not this fresh-placement check.
+2. Connect both outside highway ends to correctly directed native DDRHW-4, and connect both outside Avenue ends. Keep all four ramps in place, including their ground turns. Leave the Avenue's normal turning opportunities available: removing ramps or blocking the detour would change the reported test situation.
+3. Use established homes and jobs beyond the opposite highway ends so the highway has real car demand in both deck directions. At the documented 0° placement, L2 at 15 m travels southwest → northeast, and L1 at 7.5 m travels northeast → southwest. Use the corresponding rotated directions in another orientation. If no cars need either journey, record that case as inconclusive rather than passed.
+4. Select **Route Query**, and click the incoming highway outside the assembly, before traffic reaches the first exit ramp. Follow its route arrows through the central crossing to the opposite highway end. Repeat from the other incoming deck. Record each deck separately. The expected direct route stays on its elevated deck; an exit onto the Avenue followed by a U-turn and re-entry is the reported failure, even if the car eventually reaches its destination.
+5. Separately observe an actual moving car cross the central bridge on L2, and then observe one on L1. Pause if necessary to identify the deck, resume to follow the car, and record which direction completed the crossing. A Route Query arrow alone does not verify visible movement; a car using a ramp does not verify direct through traffic.
+6. Repeat fresh placement and steps 2–5 at 90°, 180°, and 270°, using **Home** or **End** to turn the selected construction before placing it. Keep a separate result for each deck and placement orientation. Turning the city camera changes the view and does not count as a new placement orientation.
+7. Save the test city, quit the game completely, reopen that city, and repeat Route Query and moving-car observations on both decks for each tested orientation. Record the before-save and after-reload results separately so cached paths do not hide a persistence problem.
+8. Inspect the adaptive Avenue pavement beneath the highway before and after nearby development changes the adjoining ordinary Avenue's pavement. Check that the highway remains at the right angle, compare the sidewalk artwork with the adjoining ordinary Avenue, and test the ground pedestrian routes. Record pavement appearance, pedestrian Route Query, and an actual walking pedestrian separately; the traffic-height repair supplies none of those game passes.
+
+Record the build, placement orientation, deck, observation method, ramp configuration, and save/reload stage using [the shared observation procedure](../../../../docs/TESTING.md#4-record-one-observation). Preserve any repeated detour, wrong-level car, or missing sidewalk as a failure with that exact scope. Do not mark the complete assembly passed from one successful deck or orientation.
+
 ## 5. Results and known issues
 
 The independent source-partition audit passed. Saved-resource reports, renderer provenance, and human observations retain their separate scopes; no game result is inherited from the earlier adaptive sidewalk probe, compact assembly, or rejected 27-cell stamp. The corrected layout remains experimental until explicit matching observations establish placement, native outside-network joining, visible traffic, adaptive pavement, demolition, and save/reload.
@@ -383,6 +398,167 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 9 cases; unverified: 9</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast | <a href="#case-preview_review-c428bc761d4e735487c3">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top | <a href="#case-preview_review-f18eb39925a9e4eb9afb">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review | <a href="#case-preview_review-47ae8e811e794a43446b">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization | <a href="#case-preview_review-8cdfaec82f2a1b3edb64">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest | <a href="#case-preview_review-161e794a9838084929e5">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast | <a href="#case-preview_review-0ea5a2b252247ca41d0d">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top | <a href="#case-preview_review-3010860368091d1d9b13">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review | <a href="#case-preview_review-08f5879b5c6966a6df6e">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership | <a href="#case-preview_review-3725a0c081f16fb33cc7">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast</summary>
+
+<a id="case-preview_review-c428bc761d4e735487c3"></a>
+
+**General: unverified** — `preview_review-c428bc761d4e735487c3`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top</summary>
+
+<a id="case-preview_review-f18eb39925a9e4eb9afb"></a>
+
+**General: unverified** — `preview_review-f18eb39925a9e4eb9afb`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review</summary>
+
+<a id="case-preview_review-47ae8e811e794a43446b"></a>
+
+**General: unverified** — `preview_review-47ae8e811e794a43446b`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization</summary>
+
+<a id="case-preview_review-8cdfaec82f2a1b3edb64"></a>
+
+**General: unverified** — `preview_review-8cdfaec82f2a1b3edb64`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest</summary>
+
+<a id="case-preview_review-161e794a9838084929e5"></a>
+
+**General: unverified** — `preview_review-161e794a9838084929e5`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast</summary>
+
+<a id="case-preview_review-0ea5a2b252247ca41d0d"></a>
+
+**General: unverified** — `preview_review-0ea5a2b252247ca41d0d`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top</summary>
+
+<a id="case-preview_review-3010860368091d1d9b13"></a>
+
+**General: unverified** — `preview_review-3010860368091d1d9b13`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review</summary>
+
+<a id="case-preview_review-08f5879b5c6966a6df6e"></a>
+
+**General: unverified** — `preview_review-08f5879b5c6966a6df6e`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership</summary>
+
+<a id="case-preview_review-3725a0c081f16fb33cc7"></a>
+
+**General: unverified** — `preview_review-3725a0c081f16fb33cc7`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership.
 
 No observation recorded.
 
@@ -2485,167 +2661,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: external-20; to port: external-19; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 9 cases; unverified: 9</summary>
-
-| Check / exact scope | General | 0° |
-| --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast | <a href="#case-preview_review-c428bc761d4e735487c3">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top | <a href="#case-preview_review-f18eb39925a9e4eb9afb">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review | <a href="#case-preview_review-47ae8e811e794a43446b">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization | <a href="#case-preview_review-8cdfaec82f2a1b3edb64">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest | <a href="#case-preview_review-161e794a9838084929e5">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast | <a href="#case-preview_review-0ea5a2b252247ca41d0d">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top | <a href="#case-preview_review-3010860368091d1d9b13">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review | <a href="#case-preview_review-08f5879b5c6966a6df6e">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership | <a href="#case-preview_review-3725a0c081f16fb33cc7">[ ] unverified</a> | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast</summary>
-
-<a id="case-preview_review-c428bc761d4e735487c3"></a>
-
-**General: unverified** — `preview_review-c428bc761d4e735487c3`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top</summary>
-
-<a id="case-preview_review-f18eb39925a9e4eb9afb"></a>
-
-**General: unverified** — `preview_review-f18eb39925a9e4eb9afb`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:clean-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review</summary>
-
-<a id="case-preview_review-47ae8e811e794a43446b"></a>
-
-**General: unverified** — `preview_review-47ae8e811e794a43446b`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:further-atomization-review.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization</summary>
-
-<a id="case-preview_review-8cdfaec82f2a1b3edb64"></a>
-
-**General: unverified** — `preview_review-8cdfaec82f2a1b3edb64`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:modular-atomization.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest</summary>
-
-<a id="case-preview_review-161e794a9838084929e5"></a>
-
-**General: unverified** — `preview_review-161e794a9838084929e5`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast</summary>
-
-<a id="case-preview_review-0ea5a2b252247ca41d0d"></a>
-
-**General: unverified** — `preview_review-0ea5a2b252247ca41d0d`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top</summary>
-
-<a id="case-preview_review-3010860368091d1d9b13"></a>
-
-**General: unverified** — `preview_review-3010860368091d1d9b13`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:named-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review</summary>
-
-<a id="case-preview_review-08f5879b5c6966a6df6e"></a>
-
-**General: unverified** — `preview_review-08f5879b5c6966a6df6e`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:parallel-ramp-review.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership</summary>
-
-<a id="case-preview_review-3725a0c081f16fb33cc7"></a>
-
-**General: unverified** — `preview_review-3725a0c081f16fb33cc7`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-modular-diamond:tile-ownership.
 
 No observation recorded.
 
