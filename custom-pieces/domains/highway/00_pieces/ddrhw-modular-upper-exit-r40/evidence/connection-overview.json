@@ -1,5 +1,5 @@
 {
-  "display_title": "Piece - RHW Ramp \u2014 Upper Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (12.2582 m)",
+  "display_title": "Piece - RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
   "size": [
     2000,
     3636
@@ -28,15 +28,15 @@
       0.6061088109378322
     ],
     "projected_center_m": [
-      5.656854249492383,
-      -5.433969290864964
+      11.313708498984763,
+      -16.741758849471143
     ],
-    "pixels_per_metre": 22.93835481137546,
+    "pixels_per_metre": 17.0498193074174,
     "padding_pixels": 90.0,
     "bounds_world_m": [
       -8.0,
-      -24.0,
-      40.0,
+      -40.0,
+      72.0,
       8.0
     ],
     "world_coordinates": "(east, north, height)",
@@ -48,12 +48,12 @@
     "displayed_rotation_ccw_degrees": 0.0,
     "origin_world_m": [
       0.0,
-      -16.0
+      -32.0
     ],
     "bounds_world_m": [
       -8.0,
-      -24.0,
-      40.0,
+      -40.0,
+      72.0,
       8.0
     ],
     "display_axis_labels": {
@@ -63,11 +63,11 @@
     "display_index_ranges": {
       "X": [
         0,
-        2
+        4
       ],
       "Y": [
         0,
-        1
+        2
       ]
     },
     "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
@@ -78,16 +78,24 @@
         0
       ],
       [
-        0,
-        1
-      ],
-      [
         1,
         1
       ],
       [
         2,
         1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
       ]
     ],
     "construction_reference": {
@@ -97,12 +105,12 @@
       ],
       "local_tiles_en": [
         0,
-        1
+        2
       ],
       "inside_displayed_grid": true,
       "caption_visible": true,
       "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
-      "reference_cell_occupied": true
+      "reference_cell_occupied": false
     },
     "model_coordinates_changed": false,
     "origin_marker_visible": false
@@ -120,13 +128,13 @@
   "body_font_pixels": 28,
   "header": {
     "captions": [
-      "Piece - RHW Ramp \u2014 Upper Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (12.2582 m)",
+      "Piece - RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
       "Connection overview | Southeast view | Authored orientation: 0\u00b0",
-      "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
+      "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - RHW Ramp \u2014 Upper Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (12.2582 m)",
+        "text": "Piece - RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
         "colour": "#172b42",
         "font_pixels": 44,
         "bold": true,
@@ -137,7 +145,7 @@
         "bounds": [
           48,
           32,
-          1816,
+          1796,
           73
         ]
       },
@@ -158,7 +166,7 @@
         ]
       },
       {
-        "text": "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+        "text": "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres",
         "colour": "#586a7e",
         "font_pixels": 27,
         "bold": false,
@@ -195,19 +203,19 @@
   "conventions": [
     "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
     "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
-    "Display grid: X = source column \u2212 (0); Y = 1 \u2212 source row.",
+    "Display grid: X = source column \u2212 (0); Y = 2 \u2212 source row.",
     "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
     "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
     "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
     "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative."
   ],
   "figure_text": [
-    "Piece - RHW Ramp \u2014 Upper Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (12.2582 m)",
+    "Piece - RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
     "Connection overview | Southeast view | Authored orientation: 0\u00b0",
-    "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+    "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres",
     "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
     "Coordinates [E,N,H] = [east,north,height] in metres. Source cells [column,row] increase east and south.",
-    "Display grid: X = source column \u2212 (0); Y = 1 \u2212 source row.",
+    "Display grid: X = source column \u2212 (0); Y = 2 \u2212 source row.",
     "Slope is measured outward at the joining edge; the interior may differ. Offsets are + left and \u2212 right facing out of the tile edge.",
     "Member offsets use the section origin. Counts distinguish physical channels / edge cuts / directed members; modes do not multiply channels.",
     "Incoming flow enters this piece; outgoing flow leaves it. Letters identify boundary cards; source IDs remain the stable identities.",
@@ -220,13 +228,13 @@
       "id": "boundary-01",
       "marker": "A",
       "source_cell": [
-        0,
+        1,
         1
       ],
       "boundary": "West",
       "text_runs": [
         {
-          "text": "West edge \u00b7 cell [0,1]",
+          "text": "West edge \u00b7 cell [1,1]",
           "position": [
             90,
             32
@@ -260,7 +268,7 @@
           ]
         },
         {
-          "text": "1 / 1   ROAD \u2014 Custom (12.2582 m)",
+          "text": "1 / 1   ROAD \u2014 Custom (15 m)",
           "position": [
             32,
             168
@@ -272,7 +280,7 @@
           "bounds": [
             32,
             174,
-            500,
+            430,
             200
           ]
         },
@@ -447,7 +455,7 @@
           ]
         },
         {
-          "text": "[0,1] / West",
+          "text": "[1,1] / West",
           "position": [
             382,
             554
@@ -566,7 +574,7 @@
           ]
         },
         {
-          "text": "Custom (12.2582 m); no nominal level",
+          "text": "Custom (15 m); no nominal level",
           "position": [
             382,
             716
@@ -578,7 +586,7 @@
           "bounds": [
             382,
             721,
-            855,
+            785,
             748
           ]
         },
@@ -600,7 +608,7 @@
           ]
         },
         {
-          "text": "248.02\u00b0",
+          "text": "246.554\u00b0",
           "position": [
             382,
             758
@@ -612,7 +620,7 @@
           "bounds": [
             382,
             764,
-            479,
+            494,
             784
           ]
         },
@@ -634,7 +642,7 @@
           ]
         },
         {
-          "text": "29.6096% (outward)",
+          "text": "0% (outward)",
           "position": [
             382,
             800
@@ -646,7 +654,7 @@
           "bounds": [
             382,
             805,
-            634,
+            549,
             832
           ]
         },
@@ -1059,7 +1067,7 @@
           ]
         },
         {
-          "text": "[-8,-8.14277,12.",
+          "text": "[8,-14.6697,15]",
           "position": [
             162,
             1462
@@ -1071,25 +1079,8 @@
           "bounds": [
             162,
             1465,
-            432,
+            415,
             1493
-          ]
-        },
-        {
-          "text": "2582]",
-          "position": [
-            162,
-            1498
-          ],
-          "kind": "member_value",
-          "bold": false,
-          "font_size": 28,
-          "monospace": true,
-          "bounds": [
-            162,
-            1501,
-            246,
-            1526
           ]
         },
         {
@@ -1127,7 +1118,7 @@
           ]
         },
         {
-          "text": "248.02\u00b0",
+          "text": "246.554\u00b0",
           "position": [
             587,
             1462
@@ -1138,13 +1129,13 @@
           "monospace": true,
           "bounds": [
             587,
-            1467,
-            705,
+            1468,
+            722,
             1488
           ]
         },
         {
-          "text": "29.6096%",
+          "text": "0%",
           "position": [
             727,
             1462
@@ -1156,7 +1147,7 @@
           "bounds": [
             727,
             1467,
-            862,
+            761,
             1488
           ]
         },
@@ -1264,7 +1255,7 @@
         },
         {
           "label": "Source cell / edge",
-          "value": "[0,1] / West",
+          "value": "[1,1] / West",
           "top": 554
         },
         {
@@ -1279,17 +1270,17 @@
         },
         {
           "label": "Level (path height)",
-          "value": "Custom (12.2582 m); no nominal level",
+          "value": "Custom (15 m); no nominal level",
           "top": 716
         },
         {
           "label": "Outward heading",
-          "value": "248.02\u00b0",
+          "value": "246.554\u00b0",
           "top": 758
         },
         {
           "label": "Slope at joining edge",
-          "value": "29.6096% (outward)",
+          "value": "0% (outward)",
           "top": 800
         },
         {
@@ -1335,7 +1326,7 @@
           "ordinal": 1,
           "total": 1,
           "required_together": true,
-          "title": "1 / 1   ROAD \u2014 Custom (12.2582 m)",
+          "title": "1 / 1   ROAD \u2014 Custom (15 m)",
           "colour": "#9a4e17",
           "bounds": [
             16,
@@ -1370,13 +1361,13 @@
       "id": "boundary-02",
       "marker": "B",
       "source_cell": [
-        2,
+        4,
         0
       ],
       "boundary": "East",
       "text_runs": [
         {
-          "text": "East edge \u00b7 cell [2,0]",
+          "text": "East edge \u00b7 cell [4,0]",
           "position": [
             90,
             32
@@ -1597,7 +1588,7 @@
           ]
         },
         {
-          "text": "[2,0] / East",
+          "text": "[4,0] / East",
           "position": [
             382,
             554
@@ -2209,7 +2200,7 @@
           ]
         },
         {
-          "text": "[40,-3.76854,0]",
+          "text": "[72,-3.76854,0]",
           "position": [
             162,
             1462
@@ -2397,7 +2388,7 @@
         },
         {
           "label": "Source cell / edge",
-          "value": "[2,0] / East",
+          "value": "[4,0] / East",
           "top": 554
         },
         {
@@ -2508,17 +2499,17 @@
       "resolved_profile": {
         "network": "road",
         "nominal_level": null,
-        "path_height_m": 12.25824,
+        "path_height_m": 15.0,
         "engine_transport": 1,
         "role": "primary",
         "alignment": "angled"
       },
       "network": "road",
       "nominal_level": null,
-      "path_height_m": 12.25824,
+      "path_height_m": 15.0,
       "boundary_bundle_id": "boundary-01",
       "source_cell": [
-        0,
+        1,
         1
       ],
       "boundary": "West",
@@ -2543,16 +2534,16 @@
                 "member-1-w-in-1"
               ],
               "endpoint_m": [
-                -8.0,
-                -8.142765,
-                12.25824
+                8.0,
+                -14.669671,
+                15.0
               ],
               "outward_tangent": [
-                -0.927316971396647,
-                -0.37427694900935327
+                -0.9174352085386687,
+                -0.3978852072314444
               ],
-              "heading_outward_degrees": 248.02036907481795,
-              "grade_outward": 0.296096203
+              "heading_outward_degrees": 246.5539610277989,
+              "grade_outward": -0.0
             }
           ]
         }
@@ -2560,8 +2551,8 @@
       "traffic_modes": [
         "car"
       ],
-      "common_outward_heading_degrees": 248.02036907481795,
-      "common_outward_grade_at_edge": 0.296096203,
+      "common_outward_heading_degrees": 246.5539610277989,
+      "common_outward_grade_at_edge": 0.0,
       "colour": "#9a4e17",
       "members": [
         {
@@ -2569,15 +2560,15 @@
           "source_port_id": "1-W-in-1",
           "direction": "in",
           "endpoint_m": [
-            -8.0,
-            -8.142765,
-            12.25824
+            8.0,
+            -14.669671,
+            15.0
           ],
           "tangent": [
-            0.927316971396647,
-            0.37427694900935327
+            0.9174352085386687,
+            0.3978852072314444
           ],
-          "grade": -0.296096203,
+          "grade": 0.0,
           "edge": 0,
           "engine_transport": 1,
           "role": "primary",
@@ -2588,41 +2579,41 @@
             "car"
           ],
           "outward_horizontal_unit_en": [
-            -0.927316971396647,
-            -0.37427694900935327
+            -0.9174352085386687,
+            -0.3978852072314444
           ],
-          "outward_heading_degrees": 248.02036907481795,
-          "outward_grade_at_edge": 0.296096203,
-          "outward_slope_at_edge_percent": 29.6096203,
+          "outward_heading_degrees": 246.5539610277989,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
           "section_frame_offset_m": null
         }
       ],
       "marker_enh_m": [
-        -8.0,
-        -8.142765,
-        12.25824
+        8.0,
+        -14.669671,
+        15.0
       ],
       "viewport_pixel": [
-        560.4075811234824,
-        135.52471260218846
+        678.6934750222463,
+        136.1010893150937
       ],
       "marker": "A",
       "output_pixel": [
-        608.4075811234824,
-        317.52471260218846
+        726.6934750222463,
+        318.1010893150937
       ],
       "marker_output_pixel": [
-        546.4075811234824,
-        279.52471260218846
+        664.6934750222463,
+        280.1010893150937
       ],
       "marker_leader_output_pixels": [
         [
-          608.4075811234824,
-          317.52471260218846
+          726.6934750222463,
+          318.1010893150937
         ],
         [
-          546.4075811234824,
-          279.52471260218846
+          664.6934750222463,
+          280.1010893150937
         ]
       ]
     },
@@ -2643,7 +2634,7 @@
       "path_height_m": 0.0,
       "boundary_bundle_id": "boundary-02",
       "source_cell": [
-        2,
+        4,
         0
       ],
       "boundary": "East",
@@ -2668,7 +2659,7 @@
                 "member-1-e-out-2"
               ],
               "endpoint_m": [
-                40.0,
+                72.0,
                 -3.768542,
                 0.0
               ],
@@ -2694,7 +2685,7 @@
           "source_port_id": "1-E-out-2",
           "direction": "out",
           "endpoint_m": [
-            40.0,
+            72.0,
             -3.768542,
             0.0
           ],
@@ -2723,31 +2714,31 @@
         }
       ],
       "marker_enh_m": [
-        40.0,
+        72.0,
         -3.768542,
         0.0
       ],
       "viewport_pixel": [
-        1409.910472418168,
-        740.9894612580906
+        1581.7046957806087,
+        685.0272433335965
       ],
       "marker": "B",
       "output_pixel": [
-        1457.910472418168,
-        922.9894612580906
+        1629.7046957806087,
+        867.0272433335965
       ],
       "marker_output_pixel": [
-        1519.910472418168,
-        884.9894612580906
+        1691.7046957806087,
+        829.0272433335965
       ],
       "marker_leader_output_pixels": [
         [
-          1457.910472418168,
-          922.9894612580906
+          1629.7046957806087,
+          867.0272433335965
         ],
         [
-          1519.910472418168,
-          884.9894612580906
+          1691.7046957806087,
+          829.0272433335965
         ]
       ]
     }
@@ -2756,38 +2747,38 @@
   "schema_version": 1,
   "piece_id": "ddrhw-modular-upper-exit-r40",
   "file": "previews/connection-overview.png",
-  "output_sha256": "f74c5a3532ec8e19fee246c8cc18f9d7ecb5f97ddb62ae1ca28dd0656c609fd0",
+  "output_sha256": "1cdae2ad5b819ee9f57e713203893e4c3372c39e308a7b0e4e1d34b4d1c70947",
   "source_inputs": {
-    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/piece.jsonc": "d3ee53f230d50d1560c3227fb8d8abf9c85de9739eceb8bbbaec2d965285512d",
-    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connections.json": "7bb3f5368f870480495d934f3d9b12377e81836861e93c1fe30249c823088473",
-    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connector-groups.jsonc": "cb9737d20a1f57a10c02caa0a72fe8761459aa805f4f4700bc22462be25bd7a8",
-    "domains/highway/domain.jsonc": "9882d9841d4dfc9430955c6fdf3b36676a6bd14f896ee8cda316438fabdb4ee4",
+    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/piece.jsonc": "cd5b097bbf77d04d6eeb745999cc3aba70edeb683fa94f4b569e54982b34d7f6",
+    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connections.json": "057f165341b3b40dd60e60493dd0fa8fe332c90a32b85b5046e6f2c493d19751",
+    "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connector-groups.jsonc": "0fa3db1edb670bb80bbdba022af9ca7f25b3d92f9988b54fe2ef58add55bc6ac",
+    "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0",
     "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
     "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
   },
   "generator_sha256": "23a6fb505bb13e981dfa6e363cede1445a6f9ee91404b62189dd041ea03886de",
   "metadata_resolver_sha256": "1ee63694f82e64b61a25634d6ef56db093af0403780021b14731c7f8ecb41e1b",
-  "manifest_sha256": "99d984feb1899a4c9de39e504997451b94dd6a4f2066fd1860525fd52d3e6144",
-  "compiled_manifest_sha256": "44ed3d43409b835dbe3e9f5b63de248891e950d2ff801bdb471ef1ee17c2677f",
-  "source_manifest": "dist/ddrhw-modular-ramp-kit-parts-01/manifest.json",
-  "source_dat": "dist/ddrhw-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat",
+  "manifest_sha256": "8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1",
+  "compiled_manifest_sha256": "fc48bddc9bde2000a12c40ec0c0eb70e1051b4a586a87fea2715c50065e418ea",
+  "source_manifest": "dist/ddrhw-straight-modular-ramp-kit-parts-01/manifest.json",
+  "source_dat": "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat",
   "source_preview_id": "7f5a0ff5",
-  "source_dat_sha256": "7fdb3288883b5a0d4fa3f144e99f27536a89f9e5e2e0d6531aad03144a57c12a",
-  "source_model_sha256": "29f2853abb9a2331a5824e6942a355ae4567119945fbb86392ca2763a3951c2f",
-  "render_model_sha256": "29f2853abb9a2331a5824e6942a355ae4567119945fbb86392ca2763a3951c2f",
+  "source_dat_sha256": "b222fb72dcba4a142ced0fddf6a78cb28a3b1c669dc4d28243a7938b28c6c7c0",
+  "source_model_sha256": "5c786f44ac6d7abed5e9efb844da58d7e88408aa73a2bbe0566517c3a4d2d3e7",
+  "render_model_sha256": "5c786f44ac6d7abed5e9efb844da58d7e88408aa73a2bbe0566517c3a4d2d3e7",
   "model_validation": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 6709,
-    "mesh_count": 19,
+    "triangles": 10856,
+    "mesh_count": 35,
     "bounds_xyz_m": [
       [
         [
-          -8.0,
-          8.0
+          24.0,
+          40.0
         ],
         [
           7.46361780166626,
@@ -2800,8 +2791,8 @@
       ],
       [
         [
-          -8.0,
-          8.0
+          24.0,
+          40.0
         ],
         [
           6.46361780166626,
@@ -2814,8 +2805,8 @@
       ],
       [
         [
-          -8.0,
-          2.225802421569824
+          24.0,
+          34.22580337524414
         ],
         [
           9.330227851867676,
@@ -2828,8 +2819,8 @@
       ],
       [
         [
-          0.664827823638916,
-          8.0
+          32.66482925415039,
+          40.0
         ],
         [
           7.571980953216553,
@@ -2842,8 +2833,8 @@
       ],
       [
         [
-          7.404240608215332,
-          8.0
+          39.404239654541016,
+          40.0
         ],
         [
           7.46361780166626,
@@ -2856,8 +2847,8 @@
       ],
       [
         [
-          8.0,
-          24.0
+          40.0,
+          56.0
         ],
         [
           3.0609450340270996,
@@ -2870,8 +2861,8 @@
       ],
       [
         [
-          8.0,
-          24.0
+          40.0,
+          56.0
         ],
         [
           2.0609450340270996,
@@ -2884,8 +2875,8 @@
       ],
       [
         [
-          8.0,
-          14.316400527954102
+          40.0,
+          46.31639862060547
         ],
         [
           5.755578517913818,
@@ -2898,8 +2889,8 @@
       ],
       [
         [
-          14.067045211791992,
-          20.550283432006836
+          46.06704330444336,
+          52.55028533935547
         ],
         [
           4.020889759063721,
@@ -2912,8 +2903,8 @@
       ],
       [
         [
-          20.300928115844727,
-          24.0
+          52.30093002319336,
+          56.0
         ],
         [
           3.0609450340270996,
@@ -2926,8 +2917,8 @@
       ],
       [
         [
-          24.0,
-          40.0
+          56.0,
+          72.0
         ],
         [
           0.0,
@@ -2940,8 +2931,8 @@
       ],
       [
         [
-          39.0,
-          40.0
+          71.0,
+          72.0
         ],
         [
           0.0,
@@ -2954,8 +2945,8 @@
       ],
       [
         [
-          24.0,
-          39.00257873535156
+          56.0,
+          71.00257873535156
         ],
         [
           0.0,
@@ -2968,8 +2959,8 @@
       ],
       [
         [
-          24.0,
-          30.275142669677734
+          56.0,
+          62.275142669677734
         ],
         [
           1.3147755861282349,
@@ -2982,8 +2973,8 @@
       ],
       [
         [
-          30.025787353515625,
-          36.50902557373047
+          62.025787353515625,
+          68.50902557373047
         ],
         [
           0.10791492462158203,
@@ -2996,8 +2987,8 @@
       ],
       [
         [
-          36.25967025756836,
-          38.005157470703125
+          68.2596664428711,
+          70.00515747070312
         ],
         [
           0.020978108048439026,
@@ -3010,8 +3001,176 @@
       ],
       [
         [
-          -8.0,
-          1.1099294424057007
+          16.284151077270508,
+          24.0
+        ],
+        [
+          11.897529602050781,
+          14.363340377807617
+        ],
+        [
+          4.90620231628418,
+          8.0
+        ]
+      ],
+      [
+        [
+          16.284151077270508,
+          24.0
+        ],
+        [
+          10.897529602050781,
+          14.363340377807617
+        ],
+        [
+          4.90620231628418,
+          8.0
+        ]
+      ],
+      [
+        [
+          16.284151077270508,
+          24.0
+        ],
+        [
+          11.897529602050781,
+          15.557904243469238
+        ],
+        [
+          4.90620231628418,
+          8.0
+        ]
+      ],
+      [
+        [
+          -4.686290740966797,
+          8.0
+        ],
+        [
+          15.0,
+          15.0
+        ],
+        [
+          11.403940200805664,
+          24.0
+        ]
+      ],
+      [
+        [
+          -4.686290740966797,
+          8.0
+        ],
+        [
+          14.0,
+          15.010221481323242
+        ],
+        [
+          11.403940200805664,
+          24.0
+        ]
+      ],
+      [
+        [
+          -5.838134765625,
+          6.143463134765625
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          18.122512817382812,
+          24.0
+        ]
+      ],
+      [
+        [
+          4.136543273925781,
+          8.0
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          11.403940200805664,
+          18.774747848510742
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          12.242410659790039,
+          15.0
+        ],
+        [
+          8.0,
+          17.943838119506836
+        ]
+      ],
+      [
+        [
+          8.0,
+          24.0
+        ],
+        [
+          11.242300033569336,
+          15.0
+        ],
+        [
+          8.0,
+          17.943838119506836
+        ]
+      ],
+      [
+        [
+          8.0,
+          14.695812225341797
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          9.558481216430664,
+          17.943838119506836
+        ]
+      ],
+      [
+        [
+          12.40860366821289,
+          21.329113006591797
+        ],
+        [
+          13.465091705322266,
+          16.390625
+        ],
+        [
+          8.0,
+          15.112691879272461
+        ]
+      ],
+      [
+        [
+          20.792293548583984,
+          24.0
+        ],
+        [
+          12.516877174377441,
+          14.928946495056152
+        ],
+        [
+          10.484230041503906,
+          12.44540023803711
+        ]
+      ],
+      [
+        [
+          24.0,
+          33.109928131103516
         ],
         [
           9.67777156829834,
@@ -3024,8 +3183,8 @@
       ],
       [
         [
-          -8.0,
-          1.1099294424057007
+          24.0,
+          33.109928131103516
         ],
         [
           8.67777156829834,
@@ -3038,8 +3197,8 @@
       ],
       [
         [
-          -8.0,
-          1.1099294424057007
+          24.0,
+          33.109928131103516
         ],
         [
           9.67777156829834,
@@ -3048,6 +3207,62 @@
         [
           8.0,
           11.376702308654785
+        ]
+      ],
+      [
+        [
+          -8.402236938476562,
+          -8.0
+        ],
+        [
+          15.0,
+          15.16755199432373
+        ],
+        [
+          26.142562866210938,
+          26.5447998046875
+        ]
+      ],
+      [
+        [
+          -5.374000549316406,
+          -4.185297012329102
+        ],
+        [
+          15.0,
+          15.0
+        ],
+        [
+          24.0,
+          24.68770980834961
+        ]
+      ],
+      [
+        [
+          -5.374000549316406,
+          -4.185297012329102
+        ],
+        [
+          14.0,
+          15.0
+        ],
+        [
+          24.0,
+          24.68770980834961
+        ]
+      ],
+      [
+        [
+          -8.0,
+          -4.185297012329102
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          24.0,
+          26.289249420166016
         ]
       ]
     ],
@@ -3063,64 +3278,106 @@
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
       "5eb4bee9"
     ]
   },
   "saved_resource_fingerprints_checked": {
     "effect:ddrhw-modular-upper-exit-r40:ea5118b0-ea5118b1-7f5a0ff5": "e389a084a3970e412a133ccfecff121a09caaf19e706d1397ccef58c471a10a3",
-    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0000": "eb892e019187093f89f930858072089636df68c8ba3d627ee7725e153022db7b",
-    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0010": "628805b9f3a805117e2c0d064af8c24f33880d5bbd765bf9c8a221657ebcc3ed",
-    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0100": "1e34334301c1fc457eb3493ad84a522994287bac15be81e8ba114bb104334b10",
-    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0200": "88efea6814645e603f6fcd02b5c0b02890dfd540f7788f90770685659e82f4c9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0000": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0001": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0002": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0003": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0004": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0010": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0011": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0012": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0013": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0014": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0100": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0101": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0102": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0103": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0104": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0200": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0201": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0202": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0203": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0204": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
-    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0ff5": "29f2853abb9a2331a5824e6942a355ae4567119945fbb86392ca2763a3951c2f",
-    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0000": "91c924e3ade9c577a96570404fc665d92ab45bd58e20bf71e568a7bd978e5428",
-    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0010": "f16e4c9738174264bd7ae33beb265fe3399130279b9a6a9cf37703f506bcd986",
-    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0100": "bbf8df4c494bacee64fbb54aed2ab2262dbc5e784db1dedf9025369d95f1c5bf",
-    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0200": "10ffc66b0fce66c7ee9a9d1a4fbf0cb088da6630a721b51f25224d6a9255ce9a",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0000": "85a6705a94da8fc99f309c28f2cb8972153974539effd17c9f936229b15ad3ab",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0001": "4c2599f9e50c688988f9c99a22741f384b37628f7575a3d4e7ef6e809d5d0fcd",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0002": "09f6661a0f7a6d01821e374d99b3156512b44b44d3cb461f4d425b6efc63289a",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0003": "7bcd5fb88137b004b662912249a75464ebdd611555d67469e1c72794da66af71",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0004": "bca13eebedf348dafa825368942191c11ebda2563637f57afe52c615c29b7e9f",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0010": "9d2c6243daf468e5b931db3366648567d4a178ac83f348e64132563f18ec2bfe",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0011": "689b755ea475ca9c30f461f094a10320e60d856ec140328b6dbe50688dcf1001",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0012": "c802b4efbf1af4bb8044270f9f84511ee47e6765c3ecb1febac905a433e9a785",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0013": "c47cb1bcea9f9369a8f994921f40d93c9649b0c489682464ab62c24061444f58",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0014": "5e9a4e309fdd837776c76e75030a1aafc1e3eed0df518e350bb9f5dc0ab53968",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0100": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0101": "ba1ba536b095f7f655dcd905f55d66e6a5dc32b596abb14b9a0d911b8e8facd9",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0102": "da2af2a9b5f223c65476e262f9e2263389763f126d4ed025864950d5e5604d97",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0103": "8ee8700de94e58a6787e784dbddf32443b89fb7e459704e176e2c8343e44c935",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0104": "84d396a23c60175b4d4f30be4e8eb4f76cc570c6913fa273ccaa6778a3398a47",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0200": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0201": "a1ac673fea6289fcefb12b1568d0e1daec76af2e7159327d9dc9c636de682e0e",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0202": "9b6e9333610aec7f600d1db4a05fc0e92cb274fd188c9ec0151992c53b103003",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0203": "d2c03503aea92992885e5c4d0b6bda624576b6c12a3f38ceedb9bb740f504648",
-    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0204": "58783a15cdb8ca161ada5a0730b907b49883bde5575923ad1d8d61bffcba2807",
-    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0000": "ac955719531c83ade286a3ae47203e90b395dcb72a5af024f1731d04265bc267",
-    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0010": "ac955719531c83ade286a3ae47203e90b395dcb72a5af024f1731d04265bc267",
-    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0100": "ac955719531c83ade286a3ae47203e90b395dcb72a5af024f1731d04265bc267",
-    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0200": "ac955719531c83ade286a3ae47203e90b395dcb72a5af024f1731d04265bc267"
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0020": "fb1b24c61af1ab95cedd65fce06d33d8f0c253b9adfe2595201be5d886e346c1",
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0110": "c6e38b170a9b38e0a43f9a7aef2fbde197c9fff030199bd2457a6994f02d7f17",
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0200": "88ec369c4e3d7023f1d7331c0199aab32ce6edd669c5c1df768ab53851346bd0",
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0210": "e2f22068b008e0e1c8d0d7fc82ade5bd105a45b0f03fc1fdf584625da291d2cc",
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0300": "4f404443c9331bc25fc4ba929a77c03956168314e9b5d6ae70b17d2074b7c585",
+    "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0400": "d2e71c4ed659d3b1c67f7ede988550a1f01dee1bb3a4a99b21b9b433931f9f38",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0020": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0021": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0022": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0023": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0024": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0110": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0111": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0112": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0113": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0114": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0200": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0201": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0202": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0203": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0204": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0210": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0211": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0212": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0213": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0214": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0300": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0301": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0302": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0303": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0304": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0400": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0401": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0402": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0403": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0404": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+    "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0ff5": "5c786f44ac6d7abed5e9efb844da58d7e88408aa73a2bbe0566517c3a4d2d3e7",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0020": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0110": "dca0b5aa2dda899b0454dcfcd56ed8f0bb859a88787536b368dc9341b03f3295",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0200": "91c924e3ade9c577a96570404fc665d92ab45bd58e20bf71e568a7bd978e5428",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0210": "f16e4c9738174264bd7ae33beb265fe3399130279b9a6a9cf37703f506bcd986",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0300": "bbf8df4c494bacee64fbb54aed2ab2262dbc5e784db1dedf9025369d95f1c5bf",
+    "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0400": "10ffc66b0fce66c7ee9a9d1a4fbf0cb088da6630a721b51f25224d6a9255ce9a",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0020": "86f715baf91946495916742ff60f219f49e72db711c0bcab3f49d4a278abdc1f",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0021": "43b2a4d3451fbc943a79f48d4cfaf0b271fe4941f575d5e02a7d51b68eac0312",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0022": "ad5a65153a98f2a92ea152b5ba7a66044a4f9cacf7df180d977f759d1cb7b07e",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0023": "c693c6ef1a7a69aa3faec485cdca077fc485134b493b6fa1e5ca166877181634",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0024": "bc7e486fde727fa8fbf0b2098df17b2f6c7b3b5133139d3df210fb193a6d41af",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0110": "0d1cef3c63b54d8dcc9dd391de5f2c9c034126f4cf94755b2136b60ee7a3728a",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0111": "45ea9a89310abad856674fff2c37afa8fdb4140acb49bdf3451d4e2ab4834d1f",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0112": "80d80b0de4e62c3e3743ca3cf08d03544fc05e1aa8190c3192afaf6cce28c1c8",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0113": "634e490d20c8a016cbbe8efad2ef01c70b3277f1933b21f30a6b029f16a8d534",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0114": "9ffe63d01c8a6964420cfc4c692dfd2a98ecde40c81b17202fa4cec21c0af695",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0200": "85a6705a94da8fc99f309c28f2cb8972153974539effd17c9f936229b15ad3ab",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0201": "4c2599f9e50c688988f9c99a22741f384b37628f7575a3d4e7ef6e809d5d0fcd",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0202": "09f6661a0f7a6d01821e374d99b3156512b44b44d3cb461f4d425b6efc63289a",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0203": "7bcd5fb88137b004b662912249a75464ebdd611555d67469e1c72794da66af71",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0204": "bca13eebedf348dafa825368942191c11ebda2563637f57afe52c615c29b7e9f",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0210": "9d2c6243daf468e5b931db3366648567d4a178ac83f348e64132563f18ec2bfe",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0211": "689b755ea475ca9c30f461f094a10320e60d856ec140328b6dbe50688dcf1001",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0212": "c802b4efbf1af4bb8044270f9f84511ee47e6765c3ecb1febac905a433e9a785",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0213": "c47cb1bcea9f9369a8f994921f40d93c9649b0c489682464ab62c24061444f58",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0214": "5e9a4e309fdd837776c76e75030a1aafc1e3eed0df518e350bb9f5dc0ab53968",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0300": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0301": "ba1ba536b095f7f655dcd905f55d66e6a5dc32b596abb14b9a0d911b8e8facd9",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0302": "da2af2a9b5f223c65476e262f9e2263389763f126d4ed025864950d5e5604d97",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0303": "8ee8700de94e58a6787e784dbddf32443b89fb7e459704e176e2c8343e44c935",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0304": "84d396a23c60175b4d4f30be4e8eb4f76cc570c6913fa273ccaa6778a3398a47",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0400": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0401": "a1ac673fea6289fcefb12b1568d0e1daec76af2e7159327d9dc9c636de682e0e",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0402": "9b6e9333610aec7f600d1db4a05fc0e92cb274fd188c9ec0151992c53b103003",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0403": "d2c03503aea92992885e5c4d0b6bda624576b6c12a3f38ceedb9bb740f504648",
+    "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0404": "58783a15cdb8ca161ada5a0730b907b49883bde5575923ad1d8d61bffcba2807",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0020": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0110": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0200": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0210": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0300": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+    "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0400": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb"
   },
   "textures": [
     {
@@ -3177,13 +3434,13 @@
     "ground_height_m": 0,
     "bounds_world_m": [
       -8.0,
-      -24.0,
-      40.0,
+      -40.0,
+      72.0,
       8.0
     ],
     "origin_world_m": [
       0.0,
-      -16.0
+      -32.0
     ],
     "display_axis_labels": {
       "east": "X",
@@ -3199,27 +3456,30 @@
       "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
       "east_index_range": [
         0,
-        2
+        4
       ],
       "north_index_range": [
         0,
-        1
+        2
       ],
       "nonnegative_labels_omit_plus_sign": true,
       "authoring_world_coordinates_changed": false
     },
     "origin_pixel": [
-      562.7232103267202,
-      509.01526327901587
+      373.3099431865518,
+      413.2543119486863
     ],
     "boundary_offset_from_centre_m": 8,
     "east_boundaries_m": [
       -8.0,
       8.0,
       24.0,
-      40.0
+      40.0,
+      56.0,
+      72.0
     ],
     "north_boundaries_m": [
+      -40.0,
       -24.0,
       -8.0,
       8.0
@@ -3230,12 +3490,12 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            303.20535054453364,
-            509.01526327901587
+            180.41325758206926,
+            413.2543119486863
           ],
           [
-            822.2410701089067,
-            241.69210546502643
+            759.1033143955173,
+            115.20689911789805
           ]
         ],
         "major": false
@@ -3245,12 +3505,12 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            562.7232103267202,
-            642.6768421860106
+            373.3099431865518,
+            512.603449558949
           ],
           [
-            1081.7589298910932,
-            375.3536843720211
+            951.9999999999999,
+            214.5560367281608
           ]
         ],
         "major": true
@@ -3260,12 +3520,12 @@
         "coordinate_m": 24.0,
         "pixels": [
           [
-            822.2410701089068,
-            776.3384210930053
+            566.2066287910346,
+            611.9525871692117
           ],
           [
-            1341.2767896732798,
-            509.01526327901587
+            1144.8966856044826,
+            313.9051743384235
           ]
         ],
         "major": false
@@ -3275,12 +3535,57 @@
         "coordinate_m": 40.0,
         "pixels": [
           [
-            1081.7589298910932,
+            759.1033143955174,
+            711.3017247794744
+          ],
+          [
+            1337.7933712089655,
+            413.2543119486862
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 56.0,
+        "pixels": [
+          [
+            952.0,
+            810.6508623897372
+          ],
+          [
+            1530.6900568134479,
+            512.6034495589489
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 72.0,
+        "pixels": [
+          [
+            1144.8966856044829,
             910.0
           ],
           [
-            1600.7946494554662,
-            642.6768421860105
+            1723.5867424179307,
+            611.9525871692117
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -40.0,
+        "pixels": [
+          [
+            180.41325758206926,
+            413.2543119486863
+          ],
+          [
+            1144.8966856044829,
+            910.0
           ]
         ],
         "major": false
@@ -3290,42 +3595,42 @@
         "coordinate_m": -24.0,
         "pixels": [
           [
-            303.20535054453364,
-            509.01526327901587
+            373.3099431865518,
+            313.90517433842354
           ],
           [
-            1081.7589298910932,
-            910.0
-          ]
-        ],
-        "major": false
-      },
-      {
-        "axis": "north",
-        "coordinate_m": -8.0,
-        "pixels": [
-          [
-            562.7232103267202,
-            375.3536843720212
-          ],
-          [
-            1341.2767896732798,
-            776.3384210930053
+            1337.7933712089655,
+            810.6508623897372
           ]
         ],
         "major": true
       },
       {
         "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            566.2066287910345,
+            214.5560367281608
+          ],
+          [
+            1530.6900568134483,
+            711.3017247794744
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
         "coordinate_m": 8.0,
         "pixels": [
           [
-            822.2410701089067,
-            241.69210546502643
+            759.1033143955173,
+            115.20689911789805
           ],
           [
-            1600.7946494554662,
-            642.6768421860105
+            1723.5867424179307,
+            611.9525871692117
           ]
         ],
         "major": false
@@ -3338,11 +3643,11 @@
         "tile_index": 0,
         "world_m": [
           0.0,
-          -24.0
+          -40.0
         ],
         "pixel": [
-          417.85101506335263,
-          583.6299598354542
+          261.74833501203614,
+          470.71278785675855
         ]
       },
       {
@@ -3351,11 +3656,11 @@
         "tile_index": 1,
         "world_m": [
           16.0,
-          -24.0
+          -40.0
         ],
         "pixel": [
-          677.3688748455392,
-          717.2915387424489
+          454.64502061651893,
+          570.0619254670213
         ]
       },
       {
@@ -3364,11 +3669,37 @@
         "tile_index": 2,
         "world_m": [
           32.0,
-          -24.0
+          -40.0
         ],
         "pixel": [
-          936.8867346277257,
-          850.9531176494436
+          647.5417062210016,
+          669.411063077284
+        ]
+      },
+      {
+        "text": "X3",
+        "axis": "X",
+        "tile_index": 3,
+        "world_m": [
+          48.0,
+          -40.0
+        ],
+        "pixel": [
+          840.4383918254844,
+          768.7602006875468
+        ]
+      },
+      {
+        "text": "X4",
+        "axis": "X",
+        "tile_index": 4,
+        "world_m": [
+          64.0,
+          -40.0
+        ],
+        "pixel": [
+          1033.335077429967,
+          868.1093382978095
         ]
       },
       {
@@ -3377,11 +3708,11 @@
         "tile_index": 0,
         "world_m": [
           -8.0,
-          -16.0
+          -32.0
         ],
         "pixel": [
-          417.85101506335263,
-          434.4005667225776
+          261.74833501203614,
+          355.79583604061395
         ]
       },
       {
@@ -3390,11 +3721,24 @@
         "tile_index": 1,
         "world_m": [
           -8.0,
+          -16.0
+        ],
+        "pixel": [
+          454.6450206165189,
+          256.44669843035126
+        ]
+      },
+      {
+        "text": "Y2",
+        "axis": "Y",
+        "tile_index": 2,
+        "world_m": [
+          -8.0,
           0.0
         ],
         "pixel": [
-          677.368874845539,
-          300.73898781558285
+          647.5417062210015,
+          157.09756082008846
         ]
       }
     ],
@@ -3407,7 +3751,7 @@
         ],
         "end_pixel": [
           1846.6727492864215,
-          121.97809064359797
+          121.97809064359794
         ]
       },
       {
@@ -3418,14 +3762,14 @@
         ],
         "end_pixel": [
           1846.6727492864215,
-          78.02190935640203
+          78.02190935640205
         ]
       }
     ],
     "tile_scale": {
       "metres": 16,
-      "east_pixels": 291.91597630454794,
-      "north_pixels": 291.91597630454794,
+      "east_pixels": 216.97783864048796,
+      "north_pixels": 216.97783864048785,
       "caption": "1 tile = 16 m",
       "caption_visible": false
     },
@@ -3453,15 +3797,15 @@
         0.6061088109378322
       ],
       "projected_center_m": [
-        5.656854249492383,
-        -5.433969290864964
+        11.313708498984763,
+        -16.741758849471143
       ],
-      "pixels_per_metre": 22.93835481137546,
+      "pixels_per_metre": 17.0498193074174,
       "padding_pixels": 90.0,
       "bounds_world_m": [
         -8.0,
-        -24.0,
-        40.0,
+        -40.0,
+        72.0,
         8.0
       ],
       "world_coordinates": "(east, north, height)",
@@ -3524,6 +3868,7 @@
     "menu_experiment.py": "8c742da684b015d66184944e8e4dd5e2c69c69ad335646db817d73e46d20ea6d",
     "menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
     "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+    "model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
     "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
@@ -3546,7 +3891,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/evidence/preview.json",
-    "sha256": "369985ca69b3c348a82c9ca24340921b35fff9bfc029f04f51ff6644a51dffb8",
+    "sha256": "f778fb144b34a661e6e9531a5483dc6fa6368ad3da862ec1895cd71289c129fb",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,
@@ -3575,5 +3920,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "67f1a178373a31d2abdf5daadfda8463f24727a5773b47a77a08316e84237818"
+  "selectable_markdown_sha256": "056333b735cbdd820d6e8813d656e3828f749d8e39efe3d1b8092fdb5c3df61a"
 }

@@ -151,6 +151,7 @@ def load_scene(path, *, default_build=None):
                      'rotation_ccw_degrees': instance.get('rotation_ccw_degrees',
                          instance.get('rotation_degrees_ccw', 0.))}
         transformed = transform_model(model, **placement)
+        first_mesh = sum(len(item[1]) for item in sources)
         sources.append((transformed, transformed['meshes'], (0., 0., 0.)))
         label = instance.get('label', f'P{number:02}')
         if not isinstance(label, str) or not label or label in labels:
@@ -182,6 +183,7 @@ def load_scene(path, *, default_build=None):
                          'display_origin_m': display_metres,
                          'label_anchor_world_m': [anchor[0], -anchor[2], anchor[1]],
                          'occupied_world_cells': cells,
+                         'render_mesh_indices': list(range(first_mesh, first_mesh + len(transformed['meshes']))),
                          'model_sha256': sha256(raw), 'render_budget': budget})
     combined = combine_meshes(sources)
     provenance = {'scene_file': path.name, 'scene_sha256': sha256(raw_scene),
@@ -244,13 +246,15 @@ def _grid_bounds(vertices, sources):
 
 def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top, *, title=None,
                     colour_assignment=None, minimum_display_index=None,
-                    model=None, textures=None, fill_opacity=1.0):
+                    model=None, textures=None, fill_opacity=1.0, model_outlines=False):
     """Draw exact occupied city cells, optionally over the aligned compiled model."""
     fill_opacity = _finite(fill_opacity, 'Construction fill opacity')
     if not 0. <= fill_opacity <= 1.:
         raise ValueError('Construction fill opacity must be between 0 and 1')
     if (model is None) != (textures is None):
         raise ValueError('Construction model and textures must be supplied together')
+    if model_outlines and model is None:
+        raise ValueError('Actual component outlines require the compiled construction model')
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
     header_rows = assembly_caption_rows(title or 'HSR interchange', 'Construction view', 'Top view | north up')
@@ -259,6 +263,9 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     label_prefix = 'Piece labels'
     _caption(draw, f'{label_prefix} match the model views and guide | diamonds mark piece reference positions, not cursor anchors',
              108, 21, width, color='#586a7e')
+    if model_outlines:
+        _caption(draw, 'Thick dark outline: occupied tiles | Thin coloured outline: actual model, including overhang',
+                 143, 21, width, color='#586a7e')
     view_width, view_height = width-2*panel, height-top-115
     camera = make_camera(vertices, 0., 90., view_width, view_height,
                          bounds_world_m=bounds, padding=85)
@@ -309,6 +316,11 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                 first, last = segment['world_endpoints_m']
                 vd.line([tuple(camera.project_world(*first)), tuple(camera.project_world(*last))],
                         fill=colour, width=stroke)
+    model_outline_report = {'enabled': False}
+    if model_outlines:
+        from scp.model_outlines import draw_component_outlines
+        view, model_outline_report = draw_component_outlines(view, model, sources, camera, colours)
+        vd = ImageDraw.Draw(view)
     for source in sources:
         label = source['label']
         for east, north in source.get('occupied_world_cells', []):
@@ -347,6 +359,7 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                         'cell_label_white_stroke_pixels': 2 if model is not None else 0,
                         'palette_contrast_scope': 'Original opaque palette; composite readability reviewed separately.',
                     },
+                    'actual_model_outlines': model_outline_report,
                     'ownership_boundaries': {
                         'internal_grid_width_pixels': INTERNAL_GRID_WIDTH,
                         'outer_and_inter_owner_width_pixels': OWNER_BOUNDARY_WIDTH,
@@ -363,6 +376,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                     minimum_display_index=None,
                     construction_model_background=False,
                     construction_fill_opacity=1.0,
+                    construction_model_outlines=False,
                     source_caption='Actual compiled S3D track, decks, and supports | software preview',
                     height_caption=None,
                     footer_caption='All model geometry shown; no simulated trains, terrain, or game lighting.'):
@@ -492,7 +506,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                                          minimum_display_index=minimum_display_index,
                                          model=model if construction_model_background else None,
                                          textures=textures if construction_model_background else None,
-                                         fill_opacity=construction_fill_opacity)
+                                         fill_opacity=construction_fill_opacity,
+                                         model_outlines=construction_model_outlines)
         target = destination/f'{prefix}-placement-plan-xy.png'
         plan.save(target)
         images.append({'file': target.name, 'sha256': sha256(target.read_bytes()),

@@ -36,17 +36,27 @@ class ModularRampGeometryTests(unittest.TestCase):
         cls.ramps = {row['id']: row for row in modular.variant_ramps()}
         cls.procedural = modular.procedural_geometry()
 
-    def test_literal_six_part_counts_and_ownership_exclude_the_highway_stamp(self):
+    def test_literal_default_and_compact_ownership_exclude_the_straight_highway_stamp(self):
         self.assertEqual([(row['key'], len(row['cells'])) for row in self.catalog['types']], [
-            ('lower-exit-r40', 3), ('lower-entry-r40', 3),
-            ('upper-exit-r40', 4), ('upper-entry-r40', 4),
-            ('northwest-terminal-r40', 9), ('southeast-terminal-r40', 12)])
-        owned = [tuple(cell) for row in self.catalog['types'] for cell in row['world_cells']]
-        self.assertEqual(len(owned), 35)
-        self.assertEqual(len(set(owned)), 35)
-        self.assertEqual(len(modular.stamp_cells()), 27)
+            ('lower-exit-r40', 4), ('lower-entry-r40', 4),
+            ('upper-exit-r40', 6), ('upper-entry-r40', 6),
+            ('northwest-terminal-r40', 9), ('southeast-terminal-r40', 12),
+            ('lower-exit-compact', 3), ('lower-entry-compact', 3),
+            ('upper-exit-compact', 6), ('upper-entry-compact', 6)])
+        owned = [tuple(cell) for row in self.catalog['types'] if not row['key'].endswith('-compact')
+                 for cell in row['world_cells']]
+        self.assertEqual(len(owned), 41)
+        self.assertEqual(len(set(owned)), 41)
+        self.assertEqual(len(modular.stamp_cells()), 21)
         self.assertFalse(set(owned) & modular.stamp_cells())
         self.assertEqual(len(set(owned) | modular.stamp_cells()), 62)
+        compact = [tuple(cell) for row in self.catalog['types'] if row['key'].endswith('-compact')
+                   for cell in row['world_cells']]
+        junctions = {cell for key in ('northwest-junction', 'southeast-junction') for cell in paths.MODULES[key][1]}
+        self.assertEqual(len(compact), 18)
+        self.assertEqual(len(set(compact)), 18)
+        self.assertFalse(set(compact) & (modular.stamp_cells() | junctions))
+        self.assertEqual(len(set(compact) | modular.stamp_cells() | junctions), 53)
         for row in self.catalog['types']:
             origin = row['world_origin_cell']
             reconstructed = {(c[0] + origin[0], c[1] + origin[1]) for c in row['cells']}
@@ -121,30 +131,48 @@ class ModularRampGeometryTests(unittest.TestCase):
                 end = tuple(round(value, 8) for value in _world(cell, route['points'][-1]))
                 starts[start] += 1
                 ends[end] += 1
-        # Four stamp sockets and four real native Avenue lane intersections.
+        # Eight stamp intersections and four native Avenue intersections.
+        # A lower ramp's two owned PATH fragments use a stamp-owned middle
+        # tile; its continuous physical model overhangs that highway tile.
         external = {point for point in starts.keys() | ends.keys() if starts[point] != ends[point]}
-        self.assertEqual(len(external), 8)
+        self.assertEqual(len(external), 12)
         self.assertEqual(sum(starts[point] - ends[point] for point in external), 0)
 
     def test_encoded_grade_chords_stay_below_30_percent_and_match_retained_bounds(self):
+        from scp_highway.straight_stamp_geometry import WING_CELLS
         for name, ramp in self.ramps.items():
             key = ramp['deck'] + ('-exit-r40' if ramp['direction'] == 'off' else '-entry-r40')
             cells = {tuple(c) for row in self.catalog['types'] if row['key'] == key for c in row['world_cells']}
-            points = []
+            grades, radii = [], []
             for cell, source in paths.polyline_fragments(ramp['points']):
                 if cell not in cells:
                     continue
                 routes = paths.slice_routes([{'points': [_world(cell, p) for p in source]}])[cell]
                 saved = parse_paths(paths.encode_paths(routes))[0]['points']
-                points.extend([_world(cell, p) for p in saved] if not points
-                              else [_world(cell, p) for p in saved][1:])
-            grades = [abs(b[2] - a[2]) / math.dist(a[:2], b[:2]) * 100 for a, b in zip(points, points[1:])]
+                # Do not invent a straight chord over a stamp-owned PATH
+                # interval between two fragments of the same ramp owner.
+                points = [_world(cell, p) for p in saved]
+                grades.extend(abs(b[2] - a[2]) / math.dist(a[:2], b[:2]) * 100
+                              for a, b in zip(points, points[1:]))
+                if cell not in WING_CELLS[name]:
+                    radii.append(_minimum_radius(points))
             self.assertLessEqual(max(grades), 30.0)
             expected = 25.43142572971316 if name.startswith('lower') else 29.60959566966601
             self.assertAlmostEqual(max(grades), expected, places=5, msg=name)
-            # The upper retained high collar is intentionally tighter than
-            # the new R40 arc and remains a measured legacy interface.
-            self.assertGreaterEqual(_minimum_radius(points), 29.49, name)
+            # This radius bound applies to the former grade body, including
+            # its retained upper collar, rather than the transferred throat.
+            self.assertGreaterEqual(min(radii), 29.49, name)
+
+    def test_inherited_high_transition_minima_are_reported_separately_from_new_r40_arcs(self):
+        # These tight sampled transitions already existed inside/near the
+        # auxiliary-lane handoff. Moving their owner must not silently turn
+        # an R40 new-arc label into a whole-ramp minimum-radius claim.
+        expected = {'lower-off': 1.7352766989404218, 'lower-on': 1.7352766989404165,
+                    'upper-off': 3.4998096013736864, 'upper-on': 3.499809601354062}
+        original = {ramp['id']: ramp for ramp in geometry.compact_ramps()}
+        for name, ramp in self.ramps.items():
+            self.assertAlmostEqual(_minimum_radius(ramp['points']), expected[name], places=6)
+            self.assertAlmostEqual(_minimum_radius(original[name]['points']), expected[name], places=6)
 
     def test_new_circular_bends_really_measure_r40_and_ground_turns_remain_same_side(self):
         for name, ramp in self.ramps.items():

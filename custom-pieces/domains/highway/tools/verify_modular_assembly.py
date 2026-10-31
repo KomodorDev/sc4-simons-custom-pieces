@@ -19,7 +19,7 @@ def main():
     parser.add_argument('--build', type=Path, required=True)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--compact-alternative', action='store_true',
-                        help='Check the same stamp with the six retained compact attachments')
+                        help='Check the same stamp with four full compact ramps and two retained junctions')
     args = parser.parse_args()
     scene = jsonc.load(ROOT/'domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/assembly.jsonc')
     verify = verify_compact_alternative if args.compact_alternative else verify_assembly

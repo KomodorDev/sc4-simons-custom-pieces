@@ -11,7 +11,7 @@
   "id": "ddrhw-modular-southeast-terminal-r40",
   "domain": "highway",
   "name": "RHW Ramp \u2014 Southeast Avenue Ramp Terminal \u2014 R40",
-  "description": "Independently placed southeast avenue ramp terminal \u2014 r40. Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.",
+  "description": "Separately placed Southeast Avenue Ramp Terminal \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
   "recipe": "highway_ddrhw_modular_southeast_terminal_r40",
   "geometry_key": "southeast-terminal-r40",
   "enabled_by_default": false,
@@ -184,7 +184,8 @@
   "provenance": {
     "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
     "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
-    "redistribution": "permission-pending"
+    "redistribution": "permission-pending",
+    "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
   },
   "game_tests": {
     "placement": "unverified",

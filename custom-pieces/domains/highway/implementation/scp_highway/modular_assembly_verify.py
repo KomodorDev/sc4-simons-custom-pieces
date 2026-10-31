@@ -17,7 +17,7 @@ from scp.models import parse_s3d, positions, validate_s3d
 from scp.verify import S3D, strict_dbpf
 from . import assembly_verify as shared
 from .modular_verify import (STAMP, WORLD_CELLS, ORIGINS, reference, validate_specification,
-                             custom_ports, _distance_to_segment)
+                             custom_ports, _distance_to_segment, stamp_reference_cells)
 
 TOLERANCE = 4e-5
 SUBJECT = 'ddrhw-modular-ramp-kit'
@@ -34,19 +34,25 @@ PIERS = ((6., 35.76854249492381, 1.2888283156742073, .2543142572971316, 0.),
          (-35.76854249492381, -6., 1.2888283156742073, 0., -.2543142572971316),
          (10., -51.76854249492381, 1.504409662843726, -.2782677403159753, 0.),
          (51.76854249492381, -10., 1.504409662843726, 0., .2782677403159753))
+NATIVE_EDGE_MOUTHS = (
+    ((37.721540977224436, 41.03524947620919, 7.5), (-.9628365631700477, -.2700847137897495)),
+    ((-41.03524947620919, -37.721540977224436, 7.5), (-.2700847137897495, -.9628365631700477)),
+    ((-46.15090114498518, -65.46460964396994, 15.), (.9149972396884953, .4034600988479954)),
+    ((65.46460964396994, 46.15090114498518, 15.), (.4034600988479954, .9149972396884953)),
+)
 COMPACT_CELLS = {
-    'lower-exit-grade': ((1, -3), (1, -2)),
-    'lower-entry-grade': ((-3, 1), (-2, 1)),
-    'upper-exit-grade': ((0, 2), (-1, 3), (0, 3), (-1, 4)),
-    'upper-entry-grade': ((4, -1), (3, -1), (2, 0), (3, 0)),
+    'lower-exit-compact': WORLD_CELLS['lower-exit-compact'],
+    'lower-entry-compact': WORLD_CELLS['lower-entry-compact'],
+    'upper-exit-compact': WORLD_CELLS['upper-exit-compact'],
+    'upper-entry-compact': WORLD_CELLS['upper-entry-compact'],
     'northwest-junction': ((-2, -2), (-1, -2), (0, -2), (-2, -1), (-1, -1), (-2, 0)),
     'southeast-junction': ((1, 1), (2, 1), (3, 1), (1, 2), (2, 2), (3, 2), (1, 3), (2, 3)),
 }
 
 
 def construction_cells():
-    source = {tuple(row['source_world_cell']) for row in reference()['cells']}
-    source.update(cell for cells in WORLD_CELLS.values() for cell in cells)
+    source = {tuple(row['source_world_cell']) for row in stamp_reference_cells()}
+    source.update(cell for key, cells in WORLD_CELLS.items() if not key.endswith('-compact') for cell in cells)
     require(len(source) == 62, 'The independent modular partition must own exactly 62 cells')
     return frozenset((x+4, y+4) for x, y in source)
 
@@ -78,7 +84,8 @@ def check_owned_cells(pieces, scene):
                            'local_cell': tuple(local), 'geometry_key': key,
                            'angle': 0, 'origin': tuple(origin)}
         poses.append({'piece_id': identifier, 'geometry_key': key, 'origin': tuple(origin), 'angle': 0})
-    require(used == {STAMP, *WORLD_CELLS} and set(owners) == construction_cells(),
+    require(used == {STAMP, *(k for k in WORLD_CELLS if not k.endswith('-compact'))}
+            and set(owners) == construction_cells(),
             'The modular assembly differs from its literal seven-type, 62-cell partition')
     return owners, poses
 
@@ -250,14 +257,16 @@ def _indexed_faces(owners, resources):
 
 
 def _frozen_stamp_provenance(owners, resources):
-    expected = {tuple(row['cell']): row['model_sha256'] for row in reference()['cells']}
+    from .modular_partition_verify import reviewed_models
+    expected = reviewed_models()['pieces']
     records = []
     for cell, owner in owners.items():
         if owner.get('geometry_key') != STAMP:
             continue
         raw = resources[owner['piece_id']][*S3D, owner['tile']+4]
         digest = hashlib.sha256(raw).hexdigest()
-        require(digest == expected.get(owner['local_cell']),
+        rows = {tuple(r['cell']): r['model_sha256'] for r in expected[owner['piece_id']]['cell_resources']}
+        require(digest == rows.get(owner['local_cell']),
                 'A stamp projection no longer has its independently frozen native model provenance')
         records.append({'cell': list(cell), 'model_tgi': [f'{v:08x}' for v in (*S3D, owner['tile']+4)],
                         'model_sha256': digest})
@@ -279,7 +288,22 @@ def check_projection(owners, resources, physical, allowed):
     require(physical <= allowed | shared.NATIVE_OVERHANG_CELLS | STAMP_INTERIOR_OVERHANG_CELLS,
             'A modular saved model projects beyond its cells and measured native overhangs')
     provenance = _frozen_stamp_provenance(owners, resources)
-    attachments = _new_component_projection(owners, resources)
+    # These exact reviewed models deliberately draw curved pavement into
+    # stamp-owned cells. Such projection does not allocate traffic ownership.
+    from .modular_partition_verify import reviewed_models
+    contracts = reviewed_models()['pieces']
+    attachments = []
+    for identifier in sorted({o['piece_id'] for o in owners.values() if o.get('geometry_key') in WORLD_CELLS}):
+        subset = {cell: o for cell, o in owners.items() if o['piece_id'] == identifier}
+        expected = {tuple(r['cell']): r['model_sha256'] for r in contracts[identifier]['cell_resources']}
+        for owner in subset.values():
+            require(hashlib.sha256(resources[identifier][*S3D, owner['tile']+4]).hexdigest() == expected[owner['local_cell']],
+                    'An attachment overhang is not an exact independently reviewed output model')
+        _faces, projected, _points = shared._model_faces(subset, resources)
+        attachments.append({'piece_id': identifier, 'owned_cells': [list(c) for c in sorted(subset)],
+            'physical_projection_cells': [list(c) for c in sorted(projected)],
+            'render_only_projection_into_other_cells': [list(c) for c in sorted(projected-set(subset))],
+            'exact_reviewed_model_hashes_checked': True})
     unowned = STAMP_INTERIOR_OVERHANG_CELLS-set(owners)
     require(not unowned or unowned == STAMP_INTERIOR_OVERHANG_CELLS,
             'Only the reviewed pair of empty interior stamp-overhang cells may be unowned')
@@ -304,11 +328,21 @@ def check_projection(owners, resources, physical, allowed):
                 'source_owner_cells': [list(c) for c in sorted(record['source_owner_cells'])]})
     return {'passed': True, 'frozen_stamp_models': provenance, 'new_attachment_projections': attachments,
             'interior_native_overhangs_without_construction_ownership': projection,
-            'scope': 'Projection is rendering geometry, not construction ownership. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area.'}
+            'scope': 'Projection is rendering geometry, not construction ownership. Complete attachment overhangs are authorized only by exact independently audited output hashes; whole-union traffic support is mandatory. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area.'}
 
 
 def check_model_seams(owners, resources, routes, seams, *, allowed_cells=None):
     faces, physical, points = shared._model_faces(owners, resources)
+    # The old helper indexes each face near its construction owner. Complete
+    # ramp drawings now deliberately overhang that owner, so lookup must use
+    # the triangle's actual projected bounds instead of the owner position.
+    actual = defaultdict(list)
+    for face in {id(f): f for group in faces.values() for f in group}.values():
+        low, high = face['bounds']
+        for x in range(math.floor((low[0]+8)/16), math.floor((high[0]+8)/16)+1):
+            for y in range(math.floor((-high[1]+8)/16), math.floor((-low[1]+8)/16)+1):
+                actual[x, y].append(face)
+    faces = actual
     allowed = construction_cells() if allowed_cells is None else frozenset(allowed_cells)
     projection = check_projection(owners, resources, physical, allowed)
     checked, maximum_height, maximum_grade = 0, 0., 0.
@@ -344,6 +378,17 @@ def check_model_seams(owners, resources, routes, seams, *, allowed_cells=None):
             maximum_height, maximum_grade = max(maximum_height, height), max(maximum_grade, gradient)
             checked += 1
     require(checked, 'No modular inter-component pavement collars were checked')
+    mouth_checked = 0
+    for point, tangent in NATIVE_EDGE_MOUTHS:
+        normal = -tangent[1], tangent[0]
+        for step in (-.25, -.002, .002, .25):
+            for lateral in (-2.9, -2.25, -1.25, -.625, 0., .625, 1.25, 2.25, 2.9):
+                sample = (point[0]+64+step*tangent[0]+lateral*normal[0],
+                          point[1]-64+step*tangent[1]+lateral*normal[1], point[2])
+                cell = math.floor((sample[0]+8)/16), math.floor((-sample[1]+8)/16)
+                require(shared._support(sample, tangent, faces.get(cell, [])) is not None,
+                        'A full-width native-edge physical ramp mouth lacks actual assembled pavement')
+                mouth_checked += 1
     profile_points = []
     profile = ((0., 0.), (.21875, .328125), (.265625, 1.390625),
                (.5625, 1.390625), (.625, .328125), (.828125, 0.))
@@ -374,6 +419,9 @@ def check_model_seams(owners, resources, routes, seams, *, allowed_cells=None):
     return {'passed': True, 'pavement_collar_samples': checked, 'custom_ramp_pavement_half_width_m': 2.9,
             'native_car_lane_collar_half_width_m': 1.25,
             'high_join_profile_samples': len(profile_points), 'surface_tolerance_m': .04,
+            'straight_native_edge_mouth_samples': mouth_checked,
+            'physical_mouth_native_abs_lateral_m': 8.,
+            'physical_mouth_and_owned_traffic_tile_boundary_are_distinct': True,
             'maximum_sampled_height_difference_m': maximum_height,
             'maximum_sampled_grade_difference': maximum_grade,
             'projection_provenance': projection,
@@ -455,11 +503,15 @@ def verify_assembly_resources(manifest, scene, piece_resources, *, inspect_model
     rotations = [paths]+[check_saved_routes(_rotate_routes(routes, q), turns=q)[0] for q in (1, 2, 3)]
     models = check_model_seams(owners, piece_resources, routes, seams) if inspect_models else {'passed': False, 'status': 'not-run'}
     supports = check_saved_supports(owners, piece_resources, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
+    from .modular_partition_verify import check_union_traffic
+    rows = [(pieces[p['piece_id']], p, piece_resources[p['piece_id']]) for p in scene['placements']]
+    union = check_union_traffic(rows, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': scene.get('id', SUBJECT),
             'saved_resource_checks_passed': bool(inspect_models), 'saved_path_and_construction_checks_passed': True,
             'construction': {'unique_owned_cells': len(owners), 'placements': 7, 'distinct_component_types': 7,
                              'bounding_rectangle_tiles': [10, 10], 'physical_projection_is_separate': True},
             'paths': paths, 'proper_rotation_paths': rotations, 'model_seams': models, 'supports': supports,
+            'complete_model_union_traffic': union,
             'game_operation': 'unverified',
             'limits': ['This checks the literal seven-placement R40 reference layout, not all possible custom combinations.',
                        'Saved geometry and traffic checks do not establish native MIS compatibility or game placement, traffic, shadows, demolition, or save/reload.']}
@@ -482,6 +534,9 @@ def check_compact_owned_cells(pieces, scene):
         if key == STAMP:
             validate_specification(piece)
             origin = (-4, -4)
+        elif key.endswith('-compact'):
+            validate_specification(piece)
+            origin = ORIGINS[key]
         else:
             require(key in COMPACT_CELLS and piece['recipe'] == 'highway_ddrhw_compact_'+key.replace('-', '_'),
                     'The compact alternative contains an unexpected counterpart')
@@ -499,7 +554,7 @@ def check_compact_owned_cells(pieces, scene):
             require(world not in owners, 'The compact alternative has overlapping construction ownership')
             owners[world] = {'placement': index, 'piece_id': identifier, 'tile': int(identifier_raw, 16),
                              'local_cell': tuple(cell), 'geometry_key': key, 'angle': 0, 'origin': pose}
-    expected_source = {tuple(row['source_world_cell']) for row in reference()['cells']}
+    expected_source = {tuple(row['source_world_cell']) for row in stamp_reference_cells()}
     expected_source.update(c for cells in COMPACT_CELLS.values() for c in cells)
     expected_cells = {(x+4, y+4) for x, y in expected_source}
     require(used == {STAMP, *COMPACT_CELLS} and len(owners) == 53 and set(owners) == expected_cells,
@@ -520,12 +575,16 @@ def verify_compact_alternative_resources(manifest, scene, piece_resources, *, in
     models = check_model_seams(owners, piece_resources, routes, seams,
                               allowed_cells=set(owners)) if inspect_models else {'passed': False, 'status': 'not-run'}
     supports = shared.check_saved_supports(owners, piece_resources, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
+    from .modular_partition_verify import check_union_traffic
+    rows = [(pieces[p['piece_id']], p, piece_resources[p['piece_id']]) for p in scene['placements']]
+    union = check_union_traffic(rows, routes) if inspect_models else {'passed': False, 'status': 'not-run'}
     return {'schema_version': 1, 'subject_id': scene.get('id', SUBJECT), 'alternative': 'compact',
             'saved_resource_checks_passed': bool(inspect_models), 'saved_path_and_construction_checks_passed': True,
             'construction': {'unique_owned_cells': 53, 'placements': 7, 'distinct_component_types': 7,
                              'bounding_rectangle_tiles': [10, 10]},
             'paths': paths, 'proper_rotation_paths': rotations, 'model_seams': models, 'supports': supports,
-            'same_stamp_combined_with_retained_compact_counterparts': True,
+            'complete_model_union_traffic': union,
+            'same_straight_stamp_combined_with_separately_owned_complete_compact_ramps': True,
             'game_operation': 'unverified',
             'limits': ['This is the literal compact alternative, not a promise about arbitrary module combinations.',
                        'Saved geometry and traffic checks do not establish native MIS compatibility or game behavior.']}

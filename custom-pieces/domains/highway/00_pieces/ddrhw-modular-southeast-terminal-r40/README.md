@@ -1,6 +1,6 @@
 # RHW Ramp — Southeast Avenue Ramp Terminal — R40
 
-Purpose: join separate ramp ends to the adjacent Avenue carriageway while retaining its car and pedestrian services.
+Purpose: Join the two matching upper R40 ramps to the adjacent southeast Avenue carriageway, while preserving Avenue through traffic and pedestrian routes.
 
 <!-- PIECE README LAYOUT: 2 -->
 
@@ -8,7 +8,7 @@ Purpose: join separate ramp ends to the adjacent Avenue carriageway while retain
 
 ## 1. Views
 
-The angled and north-up views render the actual saved game models and their referenced textures. The connection overview uses the shared complete-boundary cards, including nonzero endpoint slopes.
+The angled and north-up pictures show the actual saved model in its authored 0° orientation. The connection overview records complete measured traffic boundaries, including their signed slopes. A software picture does not establish appearance or vehicle travel in the game.
 
 <!-- BEGIN PIECE VIEWS -->
 
@@ -20,21 +20,25 @@ The angled and north-up views render the actual saved game models and their refe
 
 ## 2. Piece and placement
 
-This ground-level terminal joins two separately placed ramp ends to the adjacent Avenue carriageway. R40 means the new circular road centreline has a 40 m radius. The Avenue, its native car lanes, and both pedestrian paths continue through the component. Ramp traffic makes right turns only; it cannot cross the opposing Avenue carriageway.
+This ground terminal joins the upper R40 exit and entry ramps to the southeast Avenue arm. Its two ramp connections are flat, at 0 m, and its circular turning sections have a 40 m centreline radius. Each ramp reaches only the adjacent Avenue carriageway: cars cannot cross the opposing carriageway. The ordinary Avenue and both pedestrian directions continue through the terminal.
 
-A **construction tile** is a 16 × 16 m city square occupied by this piece. This piece owns 12 tiles inside a 4 × 4-tile bounding rectangle. Model artwork can extend beyond an owned tile; the assembly plan keeps the construction ownership separate.
+Use this terminal with its matching R40 ramp pair. The compact full ramps use the retained compact Avenue junction instead; changing only the terminal does not preserve the joining positions, heights, and profiles.
+
+The terminal uses adaptive native Avenue artwork. Nearby development can change visible pedestrian pavement; that artwork does not itself establish a pedestrian-route test. Avenue dragging, sidewalk redraw, and traffic each require the separate game checks.
+
+A **construction tile** is a 16 × 16 m city square occupied by one piece. This type owns 12 tiles inside a 4 × 4-tile construction rectangle. Visible model overhang does not grant overlapping construction ownership. The assembly construction picture distinguishes the actual model outline from the owned tiles.
 
 1. Prepare Windows SimCity 4 with the exact NAM 50 right-hand-traffic inputs in the [build guide](../../../../docs/BUILD_AND_INSTALL.md), including the adaptive Avenue capture for the stamp and terminals.
-2. Open a disposable city and flatten the full 10 × 10-tile placement area.
-3. Open **Transportation → Highways**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Press **Tab** or **Shift+Tab** until **RHW Ramp — Southeast Avenue Ramp Terminal — R40** appears. Each click places just this component.
-4. Follow the [assembly placement table](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md#3-placements) for the reference tile and rotation. Press **Home** or **End** to rotate, then click once at the specified reference position.
-5. After the seven parts are placed, extend ordinary diagonal Avenue approaches from the two outer Avenue ends. Placing over an existing Avenue or dragging through occupied pieces remains a separate unverified game test.
+2. Open a disposable city, and flatten the full 10 × 10-tile assembly area.
+3. Open **Transportation → Highways**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Press **Tab** or **Shift+Tab** until **RHW Ramp — Southeast Avenue Ramp Terminal — R40** appears. Each click places this component only.
+4. Follow the [assembly placement table](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md#3-placements) for this family's reference position. Use 0° for the reference layout; **Home** and **End** rotate the selected component. Align its occupied preview cells, including sparse shapes whose construction reference cell is empty.
+5. Complete the matching seven-part layout, and connect native DD RHW-4 highway approaches and ordinary diagonal Avenue approaches at the outside ends. Placement over an existing Avenue and dragging through occupied pieces remain separate game tests.
 
-These are fixed-height click-to-place components. Their geometry does not follow sloping terrain. Eight selection states repeat four rotations; they do not reflect the traffic directions. Custom attachments must match the whole connector card, including position, height, heading, slope, direction, and all services. A matching card alone does not prove that barriers and road surfaces fit; see [TESTING.md](TESTING.md).
+These are fixed-height click-to-place components. They do not follow sloping terrain, acquire arbitrary height offsets, or establish draggable/FLEX compatibility. Four proper rotations repeat across eight selection states; none reflects traffic handedness. Match every required traffic boundary, and check the physical joining profiles separately in [TESTING.md](TESTING.md).
 
 <!-- BEGIN PIECE OVERVIEW -->
 
-Independently placed southeast avenue ramp terminal — r40. Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.
+Separately placed Southeast Avenue Ramp Terminal — R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.
 
 Exact reusable identifier: `ddrhw-modular-southeast-terminal-r40`.
 
@@ -44,7 +48,7 @@ Footprint: **4 × 4 tiles**. Exact menu name: **RHW Ramp — Southeast Avenue Ra
 
 ## 3. Connection matrix
 
-The generated matrix describes movements within this piece. A connector overview, when supplied, describes its exposed boundaries; neither establishes compatibility with an untested neighbour.
+The generated matrix describes movements within this piece. For the lower full ramps, its two fragments become one highway-to-Avenue journey only through the stamp-owned middle tile. Boundary cards describe saved traffic cuts; the physical native-edge opening is checked separately.
 
 <!-- BEGIN PIECE CONNECTION MATRIX -->
 

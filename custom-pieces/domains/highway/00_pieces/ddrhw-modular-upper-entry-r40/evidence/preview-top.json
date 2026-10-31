@@ -1,18 +1,18 @@
 {
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "ddrhw-modular-upper-entry-r40",
-  "menu_name": "RHW Ramp \u2014 Upper Entry Ramp \u2014 R40",
-  "display_title": "Piece - RHW Ramp \u2014 Upper Entry Ramp \u2014 R40",
+  "menu_name": "RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40",
+  "display_title": "Piece - RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
     "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-entry-r40.dat",
     "preview_id": "7f5a2ff5",
-    "source_dat_sha256": "95a5b659dc666300cc333922fc3eb4ff4f8dffdf10ba103fd9b11ce3e4e99ea9",
-    "model_sha256": "70dc4ed5bb5513839110eee81c937c9bd1cf2d1e3407b4ea02f6bf45245062ac"
+    "source_dat_sha256": "01302e6ce774849f7864c15f16a220f435228e871af6af99132959010cee0979",
+    "model_sha256": "474b8a03fc56e509cb958a1cd5da432e3bc86fb5bc5694ca68a4abcff16fb80a"
   },
   "file": "previews/preview-top.png",
-  "sha256": "fbd59e4faa6148495864a22aed552dfe1e655c498f576b722e716457faa260e3",
+  "sha256": "19d1f0b72769e219a263eed4ddca4893b186232b1957184c8b15b4386b9b8f5d",
   "size": [
     1600,
     1200
@@ -26,12 +26,12 @@
     "displayed_rotation_ccw_degrees": 0.0,
     "origin_world_m": [
       0.0,
-      -32.0
+      -64.0
     ],
     "bounds_world_m": [
       -8.0,
-      -40.0,
-      24.0,
+      -72.0,
+      40.0,
       8.0
     ],
     "display_axis_labels": {
@@ -41,11 +41,11 @@
     "display_index_ranges": {
       "X": [
         0,
-        1
+        2
       ],
       "Y": [
         0,
-        2
+        4
       ]
     },
     "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
@@ -66,6 +66,14 @@
       [
         1,
         2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
       ]
     ],
     "construction_reference": {
@@ -75,12 +83,12 @@
       ],
       "local_tiles_en": [
         0,
-        2
+        4
       ],
       "inside_displayed_grid": true,
       "caption_visible": true,
       "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
-      "reference_cell_occupied": true
+      "reference_cell_occupied": false
     },
     "model_coordinates_changed": false,
     "origin_marker_visible": false
@@ -109,15 +117,15 @@
       6.123233995736766e-17
     ],
     "projected_center_m": [
-      8.0,
-      -16.0
+      16.0,
+      -31.79888153076172
     ],
-    "pixels_per_metre": 16.458333333333332,
+    "pixels_per_metre": 9.825597272927922,
     "padding_pixels": 90.0,
     "bounds_world_m": [
       -8.0,
-      -40.0,
-      24.0,
+      -72.0,
+      40.0,
       8.0
     ],
     "world_coordinates": "(east, north, height)",
@@ -128,13 +136,13 @@
     "ground_height_m": 0,
     "bounds_world_m": [
       -8.0,
-      -40.0,
-      24.0,
+      -72.0,
+      40.0,
       8.0
     ],
     "origin_world_m": [
       0.0,
-      -32.0
+      -64.0
     ],
     "display_axis_labels": {
       "east": "X",
@@ -150,26 +158,29 @@
       "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
       "east_index_range": [
         0,
-        1
+        2
       ],
       "north_index_range": [
         0,
-        2
+        4
       ],
       "nonnegative_labels_omit_plus_sign": true,
       "authoring_world_coordinates_changed": false
     },
     "origin_pixel": [
-      668.3333333333334,
-      748.3333333333333
+      642.7904436331532,
+      801.3952218165766
     ],
     "boundary_offset_from_centre_m": 8,
     "east_boundaries_m": [
       -8.0,
       8.0,
-      24.0
+      24.0,
+      40.0
     ],
     "north_boundaries_m": [
+      -72.0,
+      -56.0,
       -40.0,
       -24.0,
       -8.0,
@@ -181,12 +192,12 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            536.6666666666667,
+            564.1856654497299,
             880.0
           ],
           [
-            536.6666666666667,
-            90.0
+            564.1856654497299,
+            93.95221816576623
           ]
         ],
         "major": false
@@ -196,12 +207,12 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            800.0,
+            721.3952218165766,
             880.0
           ],
           [
-            800.0,
-            90.0
+            721.3952218165766,
+            93.95221816576623
           ]
         ],
         "major": true
@@ -211,27 +222,72 @@
         "coordinate_m": 24.0,
         "pixels": [
           [
-            1063.3333333333333,
+            878.6047781834234,
             880.0
           ],
           [
-            1063.3333333333333,
-            90.0
+            878.6047781834234,
+            93.95221816576623
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            1035.8143345502701,
+            880.0
+          ],
+          [
+            1035.8143345502701,
+            93.95221816576623
           ]
         ],
         "major": false
       },
       {
         "axis": "north",
-        "coordinate_m": -40.0,
+        "coordinate_m": -72.0,
         "pixels": [
           [
-            536.6666666666667,
+            564.1856654497299,
             880.0
           ],
           [
-            1063.3333333333333,
+            1035.8143345502701,
             880.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -56.0,
+        "pixels": [
+          [
+            564.1856654497299,
+            722.7904436331532
+          ],
+          [
+            1035.8143345502701,
+            722.7904436331532
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -40.0,
+        "pixels": [
+          [
+            564.1856654497299,
+            565.5808872663065
+          ],
+          [
+            1035.8143345502701,
+            565.5808872663065
           ]
         ],
         "major": false
@@ -241,27 +297,27 @@
         "coordinate_m": -24.0,
         "pixels": [
           [
-            536.6666666666667,
-            616.6666666666666
+            564.1856654497299,
+            408.37133089945974
           ],
           [
-            1063.3333333333333,
-            616.6666666666666
+            1035.8143345502701,
+            408.37133089945974
           ]
         ],
-        "major": true
+        "major": false
       },
       {
         "axis": "north",
         "coordinate_m": -8.0,
         "pixels": [
           [
-            536.6666666666667,
-            353.33333333333337
+            564.1856654497299,
+            251.16177453261295
           ],
           [
-            1063.3333333333333,
-            353.33333333333337
+            1035.8143345502701,
+            251.16177453261295
           ]
         ],
         "major": false
@@ -271,12 +327,12 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            536.6666666666667,
-            90.0
+            564.1856654497299,
+            93.95221816576623
           ],
           [
-            1063.3333333333333,
-            90.0
+            1035.8143345502701,
+            93.95221816576623
           ]
         ],
         "major": false
@@ -289,10 +345,10 @@
         "tile_index": 0,
         "world_m": [
           0.0,
-          -40.0
+          -72.0
         ],
         "pixel": [
-          668.3333333333334,
+          642.7904436331532,
           897.0
         ]
       },
@@ -302,10 +358,23 @@
         "tile_index": 1,
         "world_m": [
           16.0,
-          -40.0
+          -72.0
         ],
         "pixel": [
-          931.6666666666666,
+          800.0,
+          897.0
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -72.0
+        ],
+        "pixel": [
+          957.2095563668468,
           897.0
         ]
       },
@@ -315,11 +384,11 @@
         "tile_index": 0,
         "world_m": [
           -8.0,
-          -32.0
+          -64.0
         ],
         "pixel": [
-          519.6666666666667,
-          748.3333333333333
+          547.1856654497299,
+          801.3952218165766
         ]
       },
       {
@@ -328,11 +397,11 @@
         "tile_index": 1,
         "world_m": [
           -8.0,
-          -16.0
+          -48.0
         ],
         "pixel": [
-          519.6666666666667,
-          485.0
+          547.1856654497299,
+          644.1856654497299
         ]
       },
       {
@@ -341,11 +410,37 @@
         "tile_index": 2,
         "world_m": [
           -8.0,
+          -32.0
+        ],
+        "pixel": [
+          547.1856654497299,
+          486.9761090828831
+        ]
+      },
+      {
+        "text": "Y3",
+        "axis": "Y",
+        "tile_index": 3,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          547.1856654497299,
+          329.76655271603636
+        ]
+      },
+      {
+        "text": "Y4",
+        "axis": "Y",
+        "tile_index": 4,
+        "world_m": [
+          -8.0,
           0.0
         ],
         "pixel": [
-          519.6666666666667,
-          221.66666666666669
+          547.1856654497299,
+          172.5569963491896
         ]
       }
     ],
@@ -375,8 +470,8 @@
     ],
     "tile_scale": {
       "metres": 16,
-      "east_pixels": 263.33333333333326,
-      "north_pixels": 263.33333333333326,
+      "east_pixels": 157.20955636684675,
+      "north_pixels": 157.20955636684675,
       "caption": "1 tile = 16 m",
       "caption_visible": false
     },
@@ -404,15 +499,15 @@
         6.123233995736766e-17
       ],
       "projected_center_m": [
-        8.0,
-        -16.0
+        16.0,
+        -31.79888153076172
       ],
-      "pixels_per_metre": 16.458333333333332,
+      "pixels_per_metre": 9.825597272927922,
       "padding_pixels": 90.0,
       "bounds_world_m": [
         -8.0,
-        -40.0,
-        24.0,
+        -72.0,
+        40.0,
         8.0
       ],
       "world_coordinates": "(east, north, height)",
@@ -427,13 +522,13 @@
   },
   "header": {
     "captions": [
-      "Piece - RHW Ramp \u2014 Upper Entry Ramp \u2014 R40",
+      "Piece - RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
-      "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres"
+      "Independent local X/Y grid / Piece reference: X0, Y4 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - RHW Ramp \u2014 Upper Entry Ramp \u2014 R40",
+        "text": "Piece - RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
         "colour": "#172b42",
         "font_pixels": 35,
         "bold": true,
@@ -444,7 +539,7 @@
         "bounds": [
           30,
           27,
-          824,
+          1446,
           59
         ]
       },
@@ -465,7 +560,7 @@
         ]
       },
       {
-        "text": "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres",
+        "text": "Independent local X/Y grid / Piece reference: X0, Y4 / 1 tile = 16 m / Labels mark tile centres",
         "colour": "#586a7e",
         "font_pixels": 22,
         "bold": false,
@@ -495,9 +590,233 @@
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 6403,
-    "mesh_count": 18,
+    "triangles": 10574,
+    "mesh_count": 34,
     "bounds_xyz_m": [
+      [
+        [
+          26.142562866210938,
+          26.5447998046875
+        ],
+        [
+          15.0,
+          15.167457580566406
+        ],
+        [
+          -8.402236938476562,
+          -8.0
+        ]
+      ],
+      [
+        [
+          11.403940200805664,
+          24.0
+        ],
+        [
+          15.0,
+          15.0
+        ],
+        [
+          -4.686290740966797,
+          8.0
+        ]
+      ],
+      [
+        [
+          11.403940200805664,
+          24.0
+        ],
+        [
+          14.0,
+          15.013118743896484
+        ],
+        [
+          -4.686290740966797,
+          8.0
+        ]
+      ],
+      [
+        [
+          11.403940200805664,
+          21.743711471557617
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          -0.39159566164016724,
+          8.0
+        ]
+      ],
+      [
+        [
+          11.480480194091797,
+          24.0
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          -5.838133811950684,
+          7.820858955383301
+        ]
+      ],
+      [
+        [
+          24.0,
+          24.68770980834961
+        ],
+        [
+          15.0,
+          15.0
+        ],
+        [
+          -5.37399959564209,
+          -4.185297012329102
+        ]
+      ],
+      [
+        [
+          24.0,
+          24.69501495361328
+        ],
+        [
+          14.0,
+          15.005416870117188
+        ],
+        [
+          -5.386412143707275,
+          -4.185297012329102
+        ]
+      ],
+      [
+        [
+          24.0,
+          26.289165496826172
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          -8.0,
+          -4.185297012329102
+        ]
+      ],
+      [
+        [
+          4.90620231628418,
+          8.0
+        ],
+        [
+          11.897529602050781,
+          14.363340377807617
+        ],
+        [
+          16.284151077270508,
+          24.0
+        ]
+      ],
+      [
+        [
+          4.90620231628418,
+          8.0
+        ],
+        [
+          10.897529602050781,
+          14.363340377807617
+        ],
+        [
+          16.284151077270508,
+          24.0
+        ]
+      ],
+      [
+        [
+          4.90620231628418,
+          8.0
+        ],
+        [
+          11.897529602050781,
+          15.557904243469238
+        ],
+        [
+          16.284151077270508,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          17.943838119506836
+        ],
+        [
+          12.242426872253418,
+          15.0
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          17.943838119506836
+        ],
+        [
+          11.242522239685059,
+          15.0
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          14.46472454071045
+        ],
+        [
+          12.516877174377441,
+          16.349842071533203
+        ],
+        [
+          14.041090965270996,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.902263641357422,
+          16.90519905090332
+        ],
+        [
+          14.927498817443848,
+          16.390625
+        ],
+        [
+          8.271549224853516,
+          16.290321350097656
+        ]
+      ],
+      [
+        [
+          11.288195610046387,
+          17.943838119506836
+        ],
+        [
+          15.0,
+          16.390625
+        ],
+        [
+          8.0,
+          10.40037727355957
+        ]
+      ],
       [
         [
           0.8459177017211914,
@@ -508,8 +827,8 @@
           12.242426872253418
         ],
         [
-          -8.0,
-          8.0
+          24.0,
+          40.0
         ]
       ],
       [
@@ -522,8 +841,8 @@
           12.014328956604004
         ],
         [
-          -8.0,
-          8.0
+          24.0,
+          40.0
         ]
       ],
       [
@@ -536,8 +855,8 @@
           10.65237045288086
         ],
         [
-          1.3878875970840454,
-          8.0
+          33.38788604736328,
+          40.0
         ]
       ],
       [
@@ -550,8 +869,8 @@
           13.024545669555664
         ],
         [
-          -7.180261135101318,
-          2.623222827911377
+          24.819738388061523,
+          34.62322235107422
         ]
       ],
       [
@@ -564,8 +883,8 @@
           13.356154441833496
         ],
         [
-          -8.0,
-          -6.729265213012695
+          24.0,
+          25.270734786987305
         ]
       ],
       [
@@ -578,8 +897,8 @@
           12.615083694458008
         ],
         [
-          -8.0,
-          1.1099294424057007
+          24.0,
+          33.109928131103516
         ]
       ],
       [
@@ -592,8 +911,8 @@
           12.615083694458008
         ],
         [
-          -8.0,
-          1.1099294424057007
+          24.0,
+          33.109928131103516
         ]
       ],
       [
@@ -606,8 +925,8 @@
           13.974228858947754
         ],
         [
-          -8.0,
-          1.1099294424057007
+          24.0,
+          33.109928131103516
         ]
       ],
       [
@@ -620,8 +939,8 @@
           7.571980953216553
         ],
         [
-          8.0,
-          24.0
+          40.0,
+          56.0
         ]
       ],
       [
@@ -634,8 +953,8 @@
           7.571980953216553
         ],
         [
-          8.0,
-          24.0
+          40.0,
+          56.0
         ]
       ],
       [
@@ -648,8 +967,8 @@
           6.174777984619141
         ],
         [
-          17.558019638061523,
-          24.0
+          49.558021545410156,
+          56.0
         ]
       ],
       [
@@ -662,8 +981,8 @@
           7.978854179382324
         ],
         [
-          11.324136734008789,
-          17.807374954223633
+          43.324134826660156,
+          49.807376861572266
         ]
       ],
       [
@@ -676,8 +995,8 @@
           8.95706844329834
         ],
         [
-          8.0,
-          11.573492050170898
+          40.0,
+          43.573490142822266
         ]
       ],
       [
@@ -690,8 +1009,8 @@
           3.0609450340270996
         ],
         [
-          24.0,
-          40.0
+          56.0,
+          72.0
         ]
       ],
       [
@@ -704,8 +1023,8 @@
           3.0609450340270996
         ],
         [
-          24.0,
-          39.00257873535156
+          56.0,
+          71.00257873535156
         ]
       ],
       [
@@ -718,8 +1037,8 @@
           2.1325533390045166
         ],
         [
-          31.023208618164062,
-          38.005157470703125
+          63.02320861816406,
+          70.00515747070312
         ]
       ],
       [
@@ -732,8 +1051,8 @@
           4.301314353942871
         ],
         [
-          24.539968490600586,
-          31.272563934326172
+          56.53997039794922,
+          63.27256393432617
         ]
       ],
       [
@@ -746,12 +1065,28 @@
           4.4515700340271
         ],
         [
-          24.0,
-          24.789323806762695
+          56.0,
+          56.78932571411133
         ]
       ]
     ],
     "textures": [
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5eb4bee9",
       "5712000e",
       "5eb4beee",
       "5eb4bee9",
@@ -766,7 +1101,7 @@
       "5eb4bee9"
     ]
   },
-  "render_model_sha256": "70dc4ed5bb5513839110eee81c937c9bd1cf2d1e3407b4ea02f6bf45245062ac",
+  "render_model_sha256": "474b8a03fc56e509cb958a1cd5da432e3bc86fb5bc5694ca68a4abcff16fb80a",
   "textures": [
     {
       "instance": "5712000e",
@@ -794,9 +1129,9 @@
     }
   ],
   "captions": [
-    "Piece - RHW Ramp \u2014 Upper Entry Ramp \u2014 R40",
+    "Piece - RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (15 m)",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
-    "Independent local X/Y grid / Piece reference: X0, Y2 / 1 tile = 16 m / Labels mark tile centres",
+    "Independent local X/Y grid / Piece reference: X0, Y4 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
     "Software model preview."
   ],
@@ -869,5 +1204,12 @@
       "drawn_above_model": true
     },
     "duplicate_grid_footer_visible": false
-  }
+  },
+  "title_source_inputs": {
+    "domains/highway/00_pieces/ddrhw-modular-upper-entry-r40/piece.jsonc": "1cba9a226e046934e25c22a3445edfd5694d07517fadf5868b1fadce449682ab",
+    "domains/highway/00_pieces/ddrhw-modular-upper-entry-r40/connections.json": "d3bdb3fe1960c69aa6f1b18b2f6ec21eddcc9ee4d154ec1948ab6068d329a40c",
+    "domains/highway/00_pieces/ddrhw-modular-upper-entry-r40/connector-groups.jsonc": "98a1f782cd973a55b00b6d546deef1259e6e95c3fe910d07968c68d9d8fd9bf5",
+    "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0"
+  },
+  "input_fingerprint": "8d5562e0b21263f126d1c5131dd7926fccc12b31a205e959eebef1710b3605e3"
 }

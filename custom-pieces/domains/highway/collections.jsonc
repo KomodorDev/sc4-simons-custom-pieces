@@ -1,7 +1,7 @@
 // title: "Highway build collections"
-// summary: "Reserve named selections for future implemented highway types without importing rail assumptions."
+// summary: "Select the implemented native crossing, compact diamond, or modular ramp kit without importing rail assumptions."
 //
-// Used when: The library loads highway build selections and a contributor explicitly selects a named collection with --set for doctor, build, or release-check; no highway collection is currently defined.
+// Used when: The library loads highway build selections, and a contributor explicitly selects a named collection with --set for doctor, build, or release-check.
 //
 // Read by: custom-pieces/framework/scp/catalog.py load_catalog() follows the collections field in the highway domain registry and merges these named member lists into piece_sets; custom-pieces/scp.py selection() resolves an explicitly requested set to existing piece IDs.
 //
@@ -40,10 +40,10 @@
       "ddrhw-modular-upper-entry-r40",
       "ddrhw-modular-northwest-terminal-r40",
       "ddrhw-modular-southeast-terminal-r40",
-      "ddrhw-diagonal-lower-exit-grade",
-      "ddrhw-diagonal-lower-entry-grade",
-      "ddrhw-diagonal-upper-exit-grade",
-      "ddrhw-diagonal-upper-entry-grade",
+      "ddrhw-modular-lower-exit-compact",
+      "ddrhw-modular-lower-entry-compact",
+      "ddrhw-modular-upper-exit-compact",
+      "ddrhw-modular-upper-entry-compact",
       "ddrhw-diagonal-northwest-junction",
       "ddrhw-diagonal-southeast-junction"
     ]

@@ -95,6 +95,22 @@ def reviewed_contract(piece):
             'movements':[list(pair) for pair in facts['movements']]}
 
 
+def reviewed_path_ports(piece):
+    """Return the complete reviewed saved-PATH boundary for model/path checks.
+
+    These are traffic cuts at owned city-tile edges, rather than physical
+    pavement sockets. In particular, a lower full visual ramp has four cuts
+    and two intrinsic route fragments. Use the measured first/last chord here;
+    an independently declared analytic card tangent remains a separate fact.
+    """
+    facts = _reviewed_facts(piece)
+    require(facts is not None,piece['id']+': no complete reviewed highway boundary contract')
+    return [{'direction':p['direction'],'transport':p['engine_transport'],
+             'point_m':list(p['endpoint_m']),'tangent':list(p['sampled_tangent']),
+             'grade':p['grade'],'source_cell':list(p['source_cell']),'edge':p['edge']}
+            for p in facts['ports']]
+
+
 def _reviewed_facts(piece):
     from .connector_contracts import CONTRACTS
     from .modular_connector_contracts import CONTRACTS as MODULAR_CONTRACTS

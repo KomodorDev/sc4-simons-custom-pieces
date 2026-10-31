@@ -29,18 +29,25 @@ def assembly_icon_routes(scene, pieces):
         east, north = placement['origin_m']
         if piece.get('recipe') == 'highway_ddrhw_modular_stamp':
             from .modular_stamp import reference
+            from .straight_stamp_geometry import stamp_cells
+            from .ramp_geometry import world_coordinates
             source = []
-            groups = {}
-            stamp = reference()
-            stamp_origin = stamp['source_layout_origin_cell']
-            for row in stamp['cells']:
-                origin = tuple(row['source_world_cell'][axis] - row['source_local_cell'][axis]
-                               for axis in (0, 1))
-                groups[row['source_piece_id'], origin] = by_id[row['source_piece_id']]
-            for (_identifier, origin), inherited in groups.items():
-                offset = (16 * (origin[0] - stamp_origin[0]), -16 * (origin[1] - stamp_origin[1]))
-                source.extend([[(point[0] + offset[0], point[1] + offset[1], point[2]) for point in route]
-                               for route in ramp_paths.component_routes(inherited)])
+            stamp_origin = reference()['source_layout_origin_cell']
+            # Slice the retained traffic sources to the21 actual owners.
+            # Replaying an old branch type would reintroduce its wing cells.
+            lines = [route['points'] for route in ramp_paths.compact_access_routes()]
+            import math
+            for lateral in (-3.2 / math.sqrt(2), 3.2 / math.sqrt(2)):
+                lines.extend(([world_coordinates(-200., lateral, 15.), world_coordinates(200., lateral, 15.)],
+                              [world_coordinates(200., lateral, 7.5), world_coordinates(-200., lateral, 7.5)]))
+            for lateral in (4.8 / math.sqrt(2), 11.2 / math.sqrt(2)):
+                lines.extend(([world_coordinates(lateral, -200.), world_coordinates(lateral, 200.)],
+                              [world_coordinates(-lateral, 200.), world_coordinates(-lateral, -200.)]))
+            for line in lines:
+                for cell, points in ramp_paths.polyline_fragments(line):
+                    if cell in stamp_cells():
+                        source.append([(p[0] + 16 * (cell[0] - stamp_origin[0]),
+                                        p[1] - 16 * (cell[1] - stamp_origin[1]), p[2]) for p in points])
         elif piece.get('recipe', '').startswith('highway_ddrhw_modular_'):
             from .modular_ramps import component_routes
             source = component_routes(piece)

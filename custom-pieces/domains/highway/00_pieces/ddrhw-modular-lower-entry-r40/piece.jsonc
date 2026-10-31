@@ -10,8 +10,8 @@
   "schema_version": 1,
   "id": "ddrhw-modular-lower-entry-r40",
   "domain": "highway",
-  "name": "RHW Ramp \u2014 Lower Entry Ramp \u2014 R40",
-  "description": "Independently placed lower entry ramp \u2014 r40. Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.",
+  "name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 R40",
+  "description": "Separately placed Lower Entry Ramp \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
   "recipe": "highway_ddrhw_modular_lower_entry_r40",
   "geometry_key": "lower-entry-r40",
   "enabled_by_default": false,
@@ -20,13 +20,14 @@
   "tile_ids": [
     "7f59f100",
     "7f59f010",
-    "7f59f110"
+    "7f59f110",
+    "7f59f020"
   ],
   "preview_id": "7f59fff5",
   "effect_name": "preview_scp_hw_f83e_____001",
   "footprint": [
     2,
-    2
+    3
   ],
   "cells": [
     [
@@ -40,6 +41,10 @@
     [
       1,
       1
+    ],
+    [
+      0,
+      2
     ]
   ],
   "orientation_count": 8,
@@ -84,12 +89,18 @@
       "tile": "7f59f110",
       "source": "7f59f110",
       "rotation": 0
+    },
+    {
+      "tile": "7f59f020",
+      "source": "7f59f020",
+      "rotation": 0
     }
   ],
   "provenance": {
     "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
     "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
-    "redistribution": "permission-pending"
+    "redistribution": "permission-pending",
+    "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
   },
   "game_tests": {
     "placement": "unverified",
@@ -99,5 +110,16 @@
     "shadows": "unverified",
     "demolition": "unverified",
     "save_reload": "unverified"
-  }
+  },
+  "model_overhang_source_cells": [
+    [
+      -2,
+      2
+    ],
+    [
+      -3,
+      3
+    ]
+  ],
+  "model_overhang_contract": "Retained indexed high-throat faces; construction and PATH ownership do not overlap."
 }

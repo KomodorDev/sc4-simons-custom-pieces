@@ -26,15 +26,15 @@ def fixture(*, compact=False):
     No native game input is needed. These fixture models are not offered as
     visual/native evidence; actual native models receive the separate build.
     """
-    rows = ([row for row in ramp_paths.module_catalog()['types'] if row['key'] in assembly_audit.COMPACT_CELLS]
+    rows = ([row for row in fixture_writer.module_catalog()['types'] if row['key'].endswith('-compact')]
+            +[row for row in ramp_paths.module_catalog()['types'] if row['key'] in ('northwest-junction', 'southeast-junction')]
             if compact else [fixture_writer.module_catalog()['types'][i] for i in range(6)])
     stamp_reference = piece_audit.reference()
     stamp = {'geometry_key': piece_audit.STAMP, 'recipe': 'highway_ddrhw_modular_stamp',
-             'cells': [r['cell'] for r in stamp_reference['cells']], 'footprint': [10, 10],
+             'cells': [r['cell'] for r in piece_audit.stamp_reference_cells()], 'footprint': [10, 10],
              'engineering': {'max_grade_percent': 30., 'pavement_path_offset_m': 0.,
                  'car_corridor_half_width_m': 1.25, 'car_corridor_height_m': 3.8,
-                 'model_only_cells': [r['cell'] for r in stamp_reference['cells']
-                                     if r['source_world_cell'] in ([-3, 5], [5, -3])]}}
+                 'model_only_cells': []}}
     rows = [stamp]+rows
     pieces, scene, resources = {}, {'placements': []}, {}
     for index, row in enumerate(rows):
@@ -249,8 +249,8 @@ class ModularSavedContractTests(unittest.TestCase):
                                              (0., 0., -1., .1, .1))], 0x5713000E)
         owner = {'piece_id': 'stamp', 'geometry_key': piece_audit.STAMP, 'tile': 0x100,
                  'local_cell': (0, 0), 'angle': 0, 'origin': (0., 0.)}
-        expected = {'cells': [{'cell': [0, 0], 'model_sha256': hashlib.sha256(raw).hexdigest()}]}
-        with patch.object(assembly_audit, 'reference', return_value=expected):
+        expected = {'pieces': {'stamp': {'cell_resources': [{'cell': [0, 0], 'model_sha256': hashlib.sha256(raw).hexdigest()}]}}}
+        with patch('scp_highway.modular_partition_verify.reviewed_models', return_value=expected):
             records = assembly_audit._frozen_stamp_provenance({(0, 0): owner}, {'stamp': {(*S3D, 0x104): raw}})
             self.assertEqual(len(records), 1)
             changed = parse_s3d(raw)

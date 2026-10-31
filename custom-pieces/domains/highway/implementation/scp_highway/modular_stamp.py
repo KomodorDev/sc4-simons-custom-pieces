@@ -1,13 +1,11 @@
-"""One placeable highway/slip-lane stamp with independently attached ramps.
+"""One straight highway stamp with openings for independently placed ramps.
 
-Twenty-five inherited models and all 27 PATHs are retained byte for byte.
-Two Avenue-only cells restore the independently pinned pristine pavement.
-No grade or Avenue terminal is included. The frozen independent reference is
-also used by the saved-resource verifier, rather than regenerated expectations.
+The frozen 27-cell source remains an immutable input. Its curved branch faces
+and six wing construction cells move to the separately placed ramp owners;
+native decks, inside-corridor slip-lane paint, and centre piers remain here.
 """
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 from scp import jsonc
@@ -24,8 +22,10 @@ def reference():
 
 
 def declaration():
+    from .straight_stamp_geometry import stamp_cells
     data = reference()
-    cells = [row['cell'] for row in data['cells']]
+    retained = stamp_cells()
+    cells = [row['cell'] for row in data['cells'] if tuple(row['source_world_cell']) in retained]
     return {'key': KEY, 'geometry_key': KEY, 'recipe': RECIPE,
             'name': 'DD RHW-4 Highway and Slip-Lane Stamp',
             'world_origin_cell': data['source_layout_origin_cell'],
@@ -34,36 +34,22 @@ def declaration():
                             'car_corridor_half_width_m': 1.25,
                             'car_corridor_height_m': 3.8,
                             'pavement_path_offset_m': 0.0,
-                            'model_only_cells': [row['cell'] for row in data['cells']
-                              if row['source_world_cell'] in ([-3,5], [5,-3])]},
+                            'model_only_cells': []},
             'authors_surface_atlas': False}
 
 
 def compile_module(spec, context):
-    from .ramp_paths import compile_module as compile_source
+    from .straight_stamp_geometry import partition, source_cells
     declared = declaration()
     require(spec['cells'] == declared['cells'] and spec['footprint'] == declared['footprint'],
-            'Highway stamp differs from its independent 27-cell reference')
-    compiled = {}
-    for record in reference()['cells']:
-        identifier = record['source_piece_id']
-        if identifier not in compiled:
-            source = jsonc.load(ROOT / 'domains/highway/00_pieces' / identifier / 'piece.jsonc')
-            compiled[identifier] = {tuple(cell): (model, path)
-                                   for cell, model, path in compile_source(source, context)}
-    from .native import build_crossing_channels
-    pristine = {tuple(cell): model for cell, model, _path in build_crossing_channels(context)}
+            'Highway stamp differs from its straight 21-cell declaration')
+    separated = partition(context)
+    original = source_cells(context)
     result = []
     for record in reference()['cells']:
-        model, path = compiled[record['source_piece_id']][tuple(record['source_local_cell'])]
-        if 'inherited_model_sha256' in record:
-            require(hashlib.sha256(model).hexdigest() == record['inherited_model_sha256'],
-                    'The scoped old Avenue apron reference changed')
-            model = pristine[tuple(record['source_local_cell'])]
-        require(hashlib.sha256(model).hexdigest() == record['model_sha256'] and
-                hashlib.sha256(path).hexdigest() == record['path_sha256'],
-                'Retained highway/slip-lane source geometry differs from the accepted reference')
-        result.append((tuple(record['cell']), model, path))
+        world = tuple(record['source_world_cell'])
+        if world in separated['stamp_models']:
+            result.append((tuple(record['cell']), separated['stamp_models'][world], original[world][1]))
     return result
 
 

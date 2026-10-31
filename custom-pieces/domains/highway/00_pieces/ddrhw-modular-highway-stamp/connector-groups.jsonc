@@ -10,13 +10,14 @@
   "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
   "piece_id": "ddrhw-modular-highway-stamp",
   "source_binding": {
-    "piece_sha256": "a7a2cb29b48e154881ec57912b88dede4e934040a60f98d30804a8dd599a404e",
-    "connections_sha256": "709f19e4af5e8d58cf26bfe0c044d597ed3c377cf6656a18947bc1d54d15af51"
+    "piece_sha256": "389e4a2a0484fe0265956181f5aed7ee3375da3e94a77978713892313ef9fb6f",
+    "connections_sha256": "9f320a4b0e0ed043885aa5e19cecb944cf95be3e2f085807eadc19cb4887ea71"
   },
   "components": [
     {
       "id": "avenue-mainline",
-      "network": "road"
+      "network": "road",
+      "construction_network": "avenue"
     },
     {
       "id": "avenue-walkways",
@@ -116,15 +117,7 @@
       ]
     },
     {
-      "id": "upper-ramp-01",
-      "component_id": "upper-mainline",
-      "kind": "road-lane",
-      "traffic_modes": [
-        "car"
-      ]
-    },
-    {
-      "id": "lower-ramp-01",
+      "id": "lower-ramp-exit",
       "component_id": "lower-mainline",
       "kind": "road-lane",
       "traffic_modes": [
@@ -132,7 +125,15 @@
       ]
     },
     {
-      "id": "upper-ramp-02",
+      "id": "lower-ramp-entry",
+      "component_id": "lower-mainline",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "upper-ramp-exit",
       "component_id": "upper-mainline",
       "kind": "road-lane",
       "traffic_modes": [
@@ -140,8 +141,8 @@
       ]
     },
     {
-      "id": "lower-ramp-02",
-      "component_id": "lower-mainline",
+      "id": "upper-ramp-entry",
+      "component_id": "upper-mainline",
       "kind": "road-lane",
       "traffic_modes": [
         "car"
@@ -197,7 +198,7 @@
           "id": "member-1-n-in-5",
           "source_port_id": "1-N-in-5",
           "direction": "in",
-          "channel_id": "lower-ramp-01",
+          "channel_id": "lower-ramp-entry",
           "cut_id": "cut-1-n-in-5"
         }
       ]
@@ -210,33 +211,59 @@
           "id": "member-1-e-out-6",
           "source_port_id": "1-E-out-6",
           "direction": "out",
-          "channel_id": "upper-ramp-01",
+          "channel_id": "upper-ramp-exit",
           "cut_id": "cut-1-e-out-6"
         }
       ]
     },
     {
-      "id": "boundary-04-avenue-mainline-01",
-      "component_id": "avenue-mainline",
+      "id": "boundary-04-lower-mainline-01",
+      "component_id": "lower-mainline",
       "members": [
         {
-          "id": "member-1-n-in-7",
-          "source_port_id": "1-N-in-7",
-          "direction": "in",
-          "channel_id": "avenue-lane-01",
-          "cut_id": "cut-1-n-in-7"
-        },
+          "id": "member-1-w-out-7",
+          "source_port_id": "1-W-out-7",
+          "direction": "out",
+          "channel_id": "lower-ramp-entry",
+          "cut_id": "cut-1-w-out-7"
+        }
+      ]
+    },
+    {
+      "id": "boundary-05-lower-mainline-01",
+      "component_id": "lower-mainline",
+      "members": [
         {
           "id": "member-1-n-in-8",
           "source_port_id": "1-N-in-8",
           "direction": "in",
-          "channel_id": "avenue-lane-02",
+          "channel_id": "lower-ramp-entry",
           "cut_id": "cut-1-n-in-8"
         }
       ]
     },
     {
-      "id": "boundary-04-avenue-walkways-02",
+      "id": "boundary-06-avenue-mainline-01",
+      "component_id": "avenue-mainline",
+      "members": [
+        {
+          "id": "member-1-n-in-10",
+          "source_port_id": "1-N-in-10",
+          "direction": "in",
+          "channel_id": "avenue-lane-02",
+          "cut_id": "cut-1-n-in-10"
+        },
+        {
+          "id": "member-1-n-in-9",
+          "source_port_id": "1-N-in-9",
+          "direction": "in",
+          "channel_id": "avenue-lane-01",
+          "cut_id": "cut-1-n-in-9"
+        }
+      ]
+    },
+    {
+      "id": "boundary-06-avenue-walkways-02",
       "component_id": "avenue-walkways",
       "members": [
         {
@@ -249,27 +276,27 @@
       ]
     },
     {
-      "id": "boundary-05-avenue-mainline-01",
+      "id": "boundary-07-avenue-mainline-01",
       "component_id": "avenue-mainline",
       "members": [
         {
-          "id": "member-1-w-out-10",
-          "source_port_id": "1-W-out-10",
-          "direction": "out",
-          "channel_id": "avenue-lane-04",
-          "cut_id": "cut-1-w-out-10"
-        },
-        {
-          "id": "member-1-w-out-9",
-          "source_port_id": "1-W-out-9",
+          "id": "member-1-w-out-11",
+          "source_port_id": "1-W-out-11",
           "direction": "out",
           "channel_id": "avenue-lane-03",
-          "cut_id": "cut-1-w-out-9"
+          "cut_id": "cut-1-w-out-11"
+        },
+        {
+          "id": "member-1-w-out-12",
+          "source_port_id": "1-W-out-12",
+          "direction": "out",
+          "channel_id": "avenue-lane-04",
+          "cut_id": "cut-1-w-out-12"
         }
       ]
     },
     {
-      "id": "boundary-05-avenue-walkways-02",
+      "id": "boundary-07-avenue-walkways-02",
       "component_id": "avenue-walkways",
       "members": [
         {
@@ -282,27 +309,27 @@
       ]
     },
     {
-      "id": "boundary-06-avenue-mainline-01",
+      "id": "boundary-08-avenue-mainline-01",
       "component_id": "avenue-mainline",
       "members": [
         {
-          "id": "member-1-e-out-11",
-          "source_port_id": "1-E-out-11",
+          "id": "member-1-e-out-13",
+          "source_port_id": "1-E-out-13",
           "direction": "out",
           "channel_id": "avenue-lane-01",
-          "cut_id": "cut-1-e-out-11"
+          "cut_id": "cut-1-e-out-13"
         },
         {
-          "id": "member-1-e-out-12",
-          "source_port_id": "1-E-out-12",
+          "id": "member-1-e-out-14",
+          "source_port_id": "1-E-out-14",
           "direction": "out",
           "channel_id": "avenue-lane-02",
-          "cut_id": "cut-1-e-out-12"
+          "cut_id": "cut-1-e-out-14"
         }
       ]
     },
     {
-      "id": "boundary-06-avenue-walkways-02",
+      "id": "boundary-08-avenue-walkways-02",
       "component_id": "avenue-walkways",
       "members": [
         {
@@ -315,27 +342,27 @@
       ]
     },
     {
-      "id": "boundary-07-avenue-mainline-01",
+      "id": "boundary-09-avenue-mainline-01",
       "component_id": "avenue-mainline",
       "members": [
         {
-          "id": "member-1-s-in-13",
-          "source_port_id": "1-S-in-13",
+          "id": "member-1-s-in-15",
+          "source_port_id": "1-S-in-15",
           "direction": "in",
           "channel_id": "avenue-lane-03",
-          "cut_id": "cut-1-s-in-13"
+          "cut_id": "cut-1-s-in-15"
         },
         {
-          "id": "member-1-s-in-14",
-          "source_port_id": "1-S-in-14",
+          "id": "member-1-s-in-16",
+          "source_port_id": "1-S-in-16",
           "direction": "in",
           "channel_id": "avenue-lane-04",
-          "cut_id": "cut-1-s-in-14"
+          "cut_id": "cut-1-s-in-16"
         }
       ]
     },
     {
-      "id": "boundary-07-avenue-walkways-02",
+      "id": "boundary-09-avenue-walkways-02",
       "component_id": "avenue-walkways",
       "members": [
         {
@@ -348,68 +375,94 @@
       ]
     },
     {
-      "id": "boundary-08-lower-mainline-01",
-      "component_id": "lower-mainline",
-      "members": [
-        {
-          "id": "member-1-w-out-15",
-          "source_port_id": "1-W-out-15",
-          "direction": "out",
-          "channel_id": "lower-ramp-02",
-          "cut_id": "cut-1-w-out-15"
-        }
-      ]
-    },
-    {
-      "id": "boundary-09-upper-mainline-01",
-      "component_id": "upper-mainline",
-      "members": [
-        {
-          "id": "member-1-s-in-16",
-          "source_port_id": "1-S-in-16",
-          "direction": "in",
-          "channel_id": "upper-ramp-02",
-          "cut_id": "cut-1-s-in-16"
-        }
-      ]
-    },
-    {
       "id": "boundary-10-lower-mainline-01",
       "component_id": "lower-mainline",
       "members": [
         {
-          "id": "member-1-n-in-17",
-          "source_port_id": "1-N-in-17",
-          "direction": "in",
-          "channel_id": "lower-lane-01",
-          "cut_id": "cut-1-n-in-17"
-        },
-        {
-          "id": "member-1-n-in-19",
-          "source_port_id": "1-N-in-19",
-          "direction": "in",
-          "channel_id": "lower-lane-02",
-          "cut_id": "cut-1-n-in-19"
+          "id": "member-1-w-out-17",
+          "source_port_id": "1-W-out-17",
+          "direction": "out",
+          "channel_id": "lower-ramp-exit",
+          "cut_id": "cut-1-w-out-17"
         }
       ]
     },
     {
-      "id": "boundary-10-upper-mainline-02",
+      "id": "boundary-11-lower-mainline-01",
+      "component_id": "lower-mainline",
+      "members": [
+        {
+          "id": "member-1-n-in-18",
+          "source_port_id": "1-N-in-18",
+          "direction": "in",
+          "channel_id": "lower-ramp-exit",
+          "cut_id": "cut-1-n-in-18"
+        }
+      ]
+    },
+    {
+      "id": "boundary-12-lower-mainline-01",
+      "component_id": "lower-mainline",
+      "members": [
+        {
+          "id": "member-1-w-out-19",
+          "source_port_id": "1-W-out-19",
+          "direction": "out",
+          "channel_id": "lower-ramp-exit",
+          "cut_id": "cut-1-w-out-19"
+        }
+      ]
+    },
+    {
+      "id": "boundary-13-upper-mainline-01",
       "component_id": "upper-mainline",
       "members": [
         {
-          "id": "member-1-n-out-18",
-          "source_port_id": "1-N-out-18",
-          "direction": "out",
-          "channel_id": "upper-lane-02",
-          "cut_id": "cut-1-n-out-18"
+          "id": "member-1-s-in-20",
+          "source_port_id": "1-S-in-20",
+          "direction": "in",
+          "channel_id": "upper-ramp-entry",
+          "cut_id": "cut-1-s-in-20"
+        }
+      ]
+    },
+    {
+      "id": "boundary-14-lower-mainline-01",
+      "component_id": "lower-mainline",
+      "members": [
+        {
+          "id": "member-1-n-in-21",
+          "source_port_id": "1-N-in-21",
+          "direction": "in",
+          "channel_id": "lower-lane-01",
+          "cut_id": "cut-1-n-in-21"
         },
         {
-          "id": "member-1-n-out-20",
-          "source_port_id": "1-N-out-20",
+          "id": "member-1-n-in-23",
+          "source_port_id": "1-N-in-23",
+          "direction": "in",
+          "channel_id": "lower-lane-02",
+          "cut_id": "cut-1-n-in-23"
+        }
+      ]
+    },
+    {
+      "id": "boundary-14-upper-mainline-02",
+      "component_id": "upper-mainline",
+      "members": [
+        {
+          "id": "member-1-n-out-22",
+          "source_port_id": "1-N-out-22",
+          "direction": "out",
+          "channel_id": "upper-lane-02",
+          "cut_id": "cut-1-n-out-22"
+        },
+        {
+          "id": "member-1-n-out-24",
+          "source_port_id": "1-N-out-24",
           "direction": "out",
           "channel_id": "upper-lane-01",
-          "cut_id": "cut-1-n-out-20"
+          "cut_id": "cut-1-n-out-24"
         }
       ]
     }
@@ -430,8 +483,8 @@
     {
       "id": "boundary-02",
       "source_cell": [
-        2,
-        6
+        1,
+        7
       ],
       "edge": "north",
       "connector_ids": [
@@ -441,7 +494,7 @@
     {
       "id": "boundary-03",
       "source_cell": [
-        2,
+        1,
         8
       ],
       "edge": "east",
@@ -452,34 +505,32 @@
     {
       "id": "boundary-04",
       "source_cell": [
-        3,
-        4
+        2,
+        6
       ],
-      "edge": "north",
+      "edge": "west",
       "connector_ids": [
-        "boundary-04-avenue-mainline-01",
-        "boundary-04-avenue-walkways-02"
+        "boundary-04-lower-mainline-01"
       ]
     },
     {
       "id": "boundary-05",
       "source_cell": [
-        4,
-        3
+        2,
+        6
       ],
-      "edge": "west",
+      "edge": "north",
       "connector_ids": [
-        "boundary-05-avenue-mainline-01",
-        "boundary-05-avenue-walkways-02"
+        "boundary-05-lower-mainline-01"
       ]
     },
     {
       "id": "boundary-06",
       "source_cell": [
-        4,
-        5
+        3,
+        4
       ],
-      "edge": "east",
+      "edge": "north",
       "connector_ids": [
         "boundary-06-avenue-mainline-01",
         "boundary-06-avenue-walkways-02"
@@ -488,10 +539,10 @@
     {
       "id": "boundary-07",
       "source_cell": [
-        5,
-        4
+        4,
+        3
       ],
-      "edge": "south",
+      "edge": "west",
       "connector_ids": [
         "boundary-07-avenue-mainline-01",
         "boundary-07-avenue-walkways-02"
@@ -500,35 +551,81 @@
     {
       "id": "boundary-08",
       "source_cell": [
-        6,
-        2
+        4,
+        5
       ],
-      "edge": "west",
+      "edge": "east",
       "connector_ids": [
-        "boundary-08-lower-mainline-01"
+        "boundary-08-avenue-mainline-01",
+        "boundary-08-avenue-walkways-02"
       ]
     },
     {
       "id": "boundary-09",
       "source_cell": [
-        8,
-        2
+        5,
+        4
       ],
       "edge": "south",
       "connector_ids": [
-        "boundary-09-upper-mainline-01"
+        "boundary-09-avenue-mainline-01",
+        "boundary-09-avenue-walkways-02"
       ]
     },
     {
       "id": "boundary-10",
+      "source_cell": [
+        6,
+        2
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "boundary-10-lower-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-11",
+      "source_cell": [
+        6,
+        2
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-11-lower-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-12",
+      "source_cell": [
+        7,
+        1
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "boundary-12-lower-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-13",
+      "source_cell": [
+        8,
+        1
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-13-upper-mainline-01"
+      ]
+    },
+    {
+      "id": "boundary-14",
       "source_cell": [
         9,
         0
       ],
       "edge": "north",
       "connector_ids": [
-        "boundary-10-lower-mainline-01",
-        "boundary-10-upper-mainline-02"
+        "boundary-14-lower-mainline-01",
+        "boundary-14-upper-mainline-02"
       ]
     }
   ]

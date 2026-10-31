@@ -10650,13 +10650,10 @@
       "tile_ids": [
         "7f59d800",
         "7f59d900",
-        "7f59d610",
         "7f59d710",
         "7f59d810",
-        "7f59d910",
         "7f59d620",
         "7f59d720",
-        "7f59d820",
         "7f59d430",
         "7f59d530",
         "7f59d630",
@@ -10665,16 +10662,13 @@
         "7f59d540",
         "7f59d350",
         "7f59d450",
-        "7f59d160",
         "7f59d260",
         "7f59d360",
         "7f59d170",
         "7f59d270",
         "7f59d080",
         "7f59d180",
-        "7f59d280",
-        "7f59d090",
-        "7f59d190"
+        "7f59d090"
       ],
       "preview_id": "7f59dff5",
       "menu_id": "6a47f83c",
@@ -10689,10 +10683,6 @@
           0
         ],
         [
-          6,
-          1
-        ],
-        [
           7,
           1
         ],
@@ -10701,19 +10691,11 @@
           1
         ],
         [
-          9,
-          1
-        ],
-        [
           6,
           2
         ],
         [
           7,
-          2
-        ],
-        [
-          8,
           2
         ],
         [
@@ -10749,10 +10731,6 @@
           5
         ],
         [
-          1,
-          6
-        ],
-        [
           2,
           6
         ],
@@ -10777,15 +10755,7 @@
           8
         ],
         [
-          2,
-          8
-        ],
-        [
           0,
-          9
-        ],
-        [
-          1,
           9
         ]
       ],
@@ -10811,6 +10781,7 @@
       "puzzle_id": "f83d",
       "tile_ids": [
         "7f599100",
+        "7f599200",
         "7f599010",
         "7f599110"
       ],
@@ -10820,6 +10791,10 @@
       "cells": [
         [
           1,
+          0
+        ],
+        [
+          2,
           0
         ],
         [
@@ -10841,7 +10816,8 @@
       "tile_ids": [
         "7f59f100",
         "7f59f010",
-        "7f59f110"
+        "7f59f110",
+        "7f59f020"
       ],
       "preview_id": "7f59fff5",
       "menu_id": "6a47f83e",
@@ -10858,6 +10834,10 @@
         [
           1,
           1
+        ],
+        [
+          0,
+          2
         ]
       ],
       "tile_base": "7f59f000",
@@ -10868,30 +10848,40 @@
     "ddrhw-modular-upper-exit-r40": {
       "puzzle_id": "f83f",
       "tile_ids": [
-        "7f5a0000",
-        "7f5a0100",
         "7f5a0200",
-        "7f5a0010"
+        "7f5a0300",
+        "7f5a0400",
+        "7f5a0110",
+        "7f5a0210",
+        "7f5a0020"
       ],
       "preview_id": "7f5a0ff5",
       "menu_id": "6a47f83f",
       "state": "reserved-locally",
       "cells": [
         [
-          0,
-          0
-        ],
-        [
-          1,
-          0
-        ],
-        [
           2,
           0
         ],
         [
-          0,
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          1,
           1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
         ]
       ],
       "tile_base": "7f5a0000",
@@ -10902,30 +10892,40 @@
     "ddrhw-modular-upper-entry-r40": {
       "puzzle_id": "f840",
       "tile_ids": [
-        "7f5a2000",
-        "7f5a2100",
-        "7f5a2010",
-        "7f5a2020"
+        "7f5a2200",
+        "7f5a2110",
+        "7f5a2020",
+        "7f5a2120",
+        "7f5a2030",
+        "7f5a2040"
       ],
       "preview_id": "7f5a2ff5",
       "menu_id": "6a47f840",
       "state": "reserved-locally",
       "cells": [
         [
-          0,
+          2,
           0
         ],
         [
           1,
-          0
-        ],
-        [
-          0,
           1
         ],
         [
           0,
           2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
         ]
       ],
       "tile_base": "7f5a2000",
@@ -11103,6 +11103,152 @@
         "7f5a5325",
         "7f5a5235",
         "7f5a5335"
+      ]
+    },
+    "ddrhw-modular-lower-exit-compact": {
+      "puzzle_id": "f843",
+      "preview_id": "7f5a7ff5",
+      "menu_id": "6a47f843",
+      "state": "reserved-locally",
+      "tile_base": "7f5a7000",
+      "resource_blocks": [
+        "7f5a7000"
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "tile_ids": [
+        "7f5a7000",
+        "7f5a7100",
+        "7f5a7010"
+      ]
+    },
+    "ddrhw-modular-lower-entry-compact": {
+      "puzzle_id": "f844",
+      "preview_id": "7f5a8ff5",
+      "menu_id": "6a47f844",
+      "state": "reserved-locally",
+      "tile_base": "7f5a8000",
+      "resource_blocks": [
+        "7f5a8000"
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "tile_ids": [
+        "7f5a8000",
+        "7f5a8100",
+        "7f5a8010"
+      ]
+    },
+    "ddrhw-modular-upper-exit-compact": {
+      "puzzle_id": "f845",
+      "preview_id": "7f5a9ff5",
+      "menu_id": "6a47f845",
+      "state": "reserved-locally",
+      "tile_base": "7f5a9000",
+      "resource_blocks": [
+        "7f5a9000"
+      ],
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "tile_ids": [
+        "7f5a9300",
+        "7f5a9210",
+        "7f5a9310",
+        "7f5a9120",
+        "7f5a9220",
+        "7f5a9030"
+      ]
+    },
+    "ddrhw-modular-upper-entry-compact": {
+      "puzzle_id": "f846",
+      "preview_id": "7f5aaff5",
+      "menu_id": "6a47f846",
+      "state": "reserved-locally",
+      "tile_base": "7f5aa000",
+      "resource_blocks": [
+        "7f5aa000"
+      ],
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "tile_ids": [
+        "7f5aa300",
+        "7f5aa210",
+        "7f5aa120",
+        "7f5aa220",
+        "7f5aa030",
+        "7f5aa130"
       ]
     }
   }

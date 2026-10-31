@@ -1,0 +1,2381 @@
+{
+  "schema_version": 1,
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+  "alternative": "compact",
+  "saved_resource_checks_passed": true,
+  "saved_path_and_construction_checks_passed": true,
+  "construction": {
+    "unique_owned_cells": 53,
+    "placements": 7,
+    "distinct_component_types": 7,
+    "bounding_rectangle_tiles": [
+      10,
+      10
+    ]
+  },
+  "paths": {
+    "passed": true,
+    "route_fragments": 172,
+    "proper_rotation_ccw_degrees": 0,
+    "matched_directed_lane_seams": 164,
+    "external_native_channels": 20,
+    "native_through_lane_and_sidewalk_journeys": 10,
+    "required_arm_movements": 8,
+    "forbidden_avenue_crossing_movements": 4,
+    "maximum_saved_car_grade_percent": 29.609599494824746,
+    "reachable_arm_pairs": [
+      [
+        "AVE_NW",
+        "AVE_SE"
+      ],
+      [
+        "AVE_NW",
+        "HW_SW"
+      ],
+      [
+        "AVE_SE",
+        "AVE_NW"
+      ],
+      [
+        "AVE_SE",
+        "HW_NE"
+      ],
+      [
+        "HW_NE",
+        "AVE_NW"
+      ],
+      [
+        "HW_NE",
+        "HW_SW"
+      ],
+      [
+        "HW_SW",
+        "AVE_SE"
+      ],
+      [
+        "HW_SW",
+        "HW_NE"
+      ]
+    ],
+    "movement_witnesses": [
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          24,
+          27,
+          52,
+          57,
+          81,
+          88,
+          108,
+          111,
+          133,
+          136
+        ]
+      },
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          25,
+          30,
+          56,
+          31,
+          32,
+          33,
+          38,
+          10,
+          15,
+          19,
+          2,
+          8
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          151,
+          132,
+          126,
+          107,
+          102,
+          80,
+          71,
+          51,
+          44,
+          23
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          152,
+          131,
+          129,
+          125,
+          150,
+          149,
+          166,
+          165,
+          164,
+          159,
+          171
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          170,
+          157,
+          163,
+          144,
+          115,
+          120,
+          93,
+          70,
+          47,
+          55,
+          48,
+          22
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          169,
+          158,
+          162,
+          143,
+          147,
+          119,
+          123,
+          97,
+          100,
+          77,
+          86,
+          63,
+          66,
+          37,
+          41,
+          14,
+          18,
+          3,
+          7
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          9,
+          4,
+          20,
+          43,
+          69,
+          68,
+          92,
+          91,
+          114,
+          134,
+          137
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          5,
+          0,
+          16,
+          11,
+          39,
+          34,
+          64,
+          60,
+          84,
+          74,
+          98,
+          94,
+          121,
+          116,
+          145,
+          140,
+          160,
+          155,
+          167
+        ]
+      }
+    ],
+    "game_operation_tested": false
+  },
+  "proper_rotation_paths": [
+    {
+      "passed": true,
+      "route_fragments": 172,
+      "proper_rotation_ccw_degrees": 0,
+      "matched_directed_lane_seams": 164,
+      "external_native_channels": 20,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "required_arm_movements": 8,
+      "forbidden_avenue_crossing_movements": 4,
+      "maximum_saved_car_grade_percent": 29.609599494824746,
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ],
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            24,
+            27,
+            52,
+            57,
+            81,
+            88,
+            108,
+            111,
+            133,
+            136
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            25,
+            30,
+            56,
+            31,
+            32,
+            33,
+            38,
+            10,
+            15,
+            19,
+            2,
+            8
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            151,
+            132,
+            126,
+            107,
+            102,
+            80,
+            71,
+            51,
+            44,
+            23
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            152,
+            131,
+            129,
+            125,
+            150,
+            149,
+            166,
+            165,
+            164,
+            159,
+            171
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            170,
+            157,
+            163,
+            144,
+            115,
+            120,
+            93,
+            70,
+            47,
+            55,
+            48,
+            22
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            169,
+            158,
+            162,
+            143,
+            147,
+            119,
+            123,
+            97,
+            100,
+            77,
+            86,
+            63,
+            66,
+            37,
+            41,
+            14,
+            18,
+            3,
+            7
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            9,
+            4,
+            20,
+            43,
+            69,
+            68,
+            92,
+            91,
+            114,
+            134,
+            137
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            5,
+            0,
+            16,
+            11,
+            39,
+            34,
+            64,
+            60,
+            84,
+            74,
+            98,
+            94,
+            121,
+            116,
+            145,
+            140,
+            160,
+            155,
+            167
+          ]
+        }
+      ],
+      "game_operation_tested": false
+    },
+    {
+      "passed": true,
+      "route_fragments": 172,
+      "proper_rotation_ccw_degrees": 90,
+      "matched_directed_lane_seams": 164,
+      "external_native_channels": 20,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "required_arm_movements": 8,
+      "forbidden_avenue_crossing_movements": 4,
+      "maximum_saved_car_grade_percent": 29.609599494824746,
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ],
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            24,
+            27,
+            52,
+            57,
+            81,
+            88,
+            108,
+            111,
+            133,
+            136
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            25,
+            30,
+            56,
+            31,
+            32,
+            33,
+            38,
+            10,
+            15,
+            19,
+            2,
+            8
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            151,
+            132,
+            126,
+            107,
+            102,
+            80,
+            71,
+            51,
+            44,
+            23
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            152,
+            131,
+            129,
+            125,
+            150,
+            149,
+            166,
+            165,
+            164,
+            159,
+            171
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            170,
+            157,
+            163,
+            144,
+            115,
+            120,
+            93,
+            70,
+            47,
+            55,
+            48,
+            22
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            169,
+            158,
+            162,
+            143,
+            147,
+            119,
+            123,
+            97,
+            100,
+            77,
+            86,
+            63,
+            66,
+            37,
+            41,
+            14,
+            18,
+            3,
+            7
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            9,
+            4,
+            20,
+            43,
+            69,
+            68,
+            92,
+            91,
+            114,
+            134,
+            137
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            5,
+            0,
+            16,
+            11,
+            39,
+            34,
+            64,
+            60,
+            84,
+            74,
+            98,
+            94,
+            121,
+            116,
+            145,
+            140,
+            160,
+            155,
+            167
+          ]
+        }
+      ],
+      "game_operation_tested": false
+    },
+    {
+      "passed": true,
+      "route_fragments": 172,
+      "proper_rotation_ccw_degrees": 180,
+      "matched_directed_lane_seams": 164,
+      "external_native_channels": 20,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "required_arm_movements": 8,
+      "forbidden_avenue_crossing_movements": 4,
+      "maximum_saved_car_grade_percent": 29.609599494824746,
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ],
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            24,
+            27,
+            52,
+            57,
+            81,
+            88,
+            108,
+            111,
+            133,
+            136
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            25,
+            30,
+            56,
+            31,
+            32,
+            33,
+            38,
+            10,
+            15,
+            19,
+            2,
+            8
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            151,
+            132,
+            126,
+            107,
+            102,
+            80,
+            71,
+            51,
+            44,
+            23
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            152,
+            131,
+            129,
+            125,
+            150,
+            149,
+            166,
+            165,
+            164,
+            159,
+            171
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            170,
+            157,
+            163,
+            144,
+            115,
+            120,
+            93,
+            70,
+            47,
+            55,
+            48,
+            22
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            169,
+            158,
+            162,
+            143,
+            147,
+            119,
+            123,
+            97,
+            100,
+            77,
+            86,
+            63,
+            66,
+            37,
+            41,
+            14,
+            18,
+            3,
+            7
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            9,
+            4,
+            20,
+            43,
+            69,
+            68,
+            92,
+            91,
+            114,
+            134,
+            137
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            5,
+            0,
+            16,
+            11,
+            39,
+            34,
+            64,
+            60,
+            84,
+            74,
+            98,
+            94,
+            121,
+            116,
+            145,
+            140,
+            160,
+            155,
+            167
+          ]
+        }
+      ],
+      "game_operation_tested": false
+    },
+    {
+      "passed": true,
+      "route_fragments": 172,
+      "proper_rotation_ccw_degrees": 270,
+      "matched_directed_lane_seams": 164,
+      "external_native_channels": 20,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "required_arm_movements": 8,
+      "forbidden_avenue_crossing_movements": 4,
+      "maximum_saved_car_grade_percent": 29.609599494824746,
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ],
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            24,
+            27,
+            52,
+            57,
+            81,
+            88,
+            108,
+            111,
+            133,
+            136
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            25,
+            30,
+            56,
+            31,
+            32,
+            33,
+            38,
+            10,
+            15,
+            19,
+            2,
+            8
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            151,
+            132,
+            126,
+            107,
+            102,
+            80,
+            71,
+            51,
+            44,
+            23
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            152,
+            131,
+            129,
+            125,
+            150,
+            149,
+            166,
+            165,
+            164,
+            159,
+            171
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            170,
+            157,
+            163,
+            144,
+            115,
+            120,
+            93,
+            70,
+            47,
+            55,
+            48,
+            22
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            169,
+            158,
+            162,
+            143,
+            147,
+            119,
+            123,
+            97,
+            100,
+            77,
+            86,
+            63,
+            66,
+            37,
+            41,
+            14,
+            18,
+            3,
+            7
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            9,
+            4,
+            20,
+            43,
+            69,
+            68,
+            92,
+            91,
+            114,
+            134,
+            137
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            5,
+            0,
+            16,
+            11,
+            39,
+            34,
+            64,
+            60,
+            84,
+            74,
+            98,
+            94,
+            121,
+            116,
+            145,
+            140,
+            160,
+            155,
+            167
+          ]
+        }
+      ],
+      "game_operation_tested": false
+    }
+  ],
+  "model_seams": {
+    "passed": true,
+    "pavement_collar_samples": 112,
+    "custom_ramp_pavement_half_width_m": 2.9,
+    "native_car_lane_collar_half_width_m": 1.25,
+    "high_join_profile_samples": 80,
+    "surface_tolerance_m": 0.04,
+    "maximum_sampled_height_difference_m": 0.001229031872274522,
+    "maximum_sampled_grade_difference": 5.316471242966525e-06,
+    "projection_provenance": {
+      "passed": true,
+      "frozen_stamp_models": [
+        {
+          "cell": [
+            8,
+            0
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d804"
+          ],
+          "model_sha256": "875840c1912b351c2c23de910cb340e8e4a3dcb287eff7ecd03a69ccaf2ef33c"
+        },
+        {
+          "cell": [
+            9,
+            0
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d904"
+          ],
+          "model_sha256": "3d64d5f8549936a70f560f91c2ca80a47cede13ff641a1a50196d603f0c50de1"
+        },
+        {
+          "cell": [
+            6,
+            1
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d614"
+          ],
+          "model_sha256": "5c29b0b959e01f93097ec7976f621fdfc27b33eaf6827a7839be1f53a0e0fef5"
+        },
+        {
+          "cell": [
+            7,
+            1
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d714"
+          ],
+          "model_sha256": "c7a897f30961167a66b5d61af9faf0d12696b9c430a9a8ace81b367be6447585"
+        },
+        {
+          "cell": [
+            8,
+            1
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d814"
+          ],
+          "model_sha256": "1102b4d5844a48f826dc544822632c258f3163e7b06c2a7e626ce0f576c12bdc"
+        },
+        {
+          "cell": [
+            9,
+            1
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d914"
+          ],
+          "model_sha256": "dd476118a8a008e3746c023cebe99ec2bb1d439f70118309d39771ed9bac0d83"
+        },
+        {
+          "cell": [
+            6,
+            2
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d624"
+          ],
+          "model_sha256": "42906a98f75265e11361174df5d92f1b2f192d4c51c29ecf520c62051eac26fd"
+        },
+        {
+          "cell": [
+            7,
+            2
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d724"
+          ],
+          "model_sha256": "64bb21dc50dbeaae7366ffb9da7f6f720f25fabdf76dd911f0e9313146b65b46"
+        },
+        {
+          "cell": [
+            8,
+            2
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d824"
+          ],
+          "model_sha256": "efb8b2a1d7710647629600cb9d1ecd628eee7b3b99143e5c6e34fb3edddc43f2"
+        },
+        {
+          "cell": [
+            4,
+            3
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d434"
+          ],
+          "model_sha256": "e166ee3fe408f6f9f3a38ff9393cadda81cc5c7ea8b1b997eed73947b8fce911"
+        },
+        {
+          "cell": [
+            5,
+            3
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d534"
+          ],
+          "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3"
+        },
+        {
+          "cell": [
+            6,
+            3
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d634"
+          ],
+          "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586"
+        },
+        {
+          "cell": [
+            3,
+            4
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d344"
+          ],
+          "model_sha256": "fa49cb4d40b8890ae23cc993ac31ae89191ff15a7daa3bf48ca657ddca2aa06b"
+        },
+        {
+          "cell": [
+            4,
+            4
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d444"
+          ],
+          "model_sha256": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a"
+        },
+        {
+          "cell": [
+            5,
+            4
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d544"
+          ],
+          "model_sha256": "5c36e47942a024f5c9e165c520829430895c922f380cbf4278951f8ceb8f5d75"
+        },
+        {
+          "cell": [
+            3,
+            5
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d354"
+          ],
+          "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3"
+        },
+        {
+          "cell": [
+            4,
+            5
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d454"
+          ],
+          "model_sha256": "c039d989e33fe40b1fb4aeacce4fb03159c7be9ca8f2e5a1a1168ec96920b861"
+        },
+        {
+          "cell": [
+            1,
+            6
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d164"
+          ],
+          "model_sha256": "e356789c937fcce016b9a65b4df52bf01e1be4b0a804ff395b3631b3266b0f44"
+        },
+        {
+          "cell": [
+            2,
+            6
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d264"
+          ],
+          "model_sha256": "4ff334bc8edbf7d9ac1dfdcb1721e6ff661ff87f9838dea1753e4b59a88c1ca4"
+        },
+        {
+          "cell": [
+            3,
+            6
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d364"
+          ],
+          "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586"
+        },
+        {
+          "cell": [
+            1,
+            7
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d174"
+          ],
+          "model_sha256": "bdc707dba2556d1c271ab36e37c3e74b609860a91d95f973c5734becb9d0c50a"
+        },
+        {
+          "cell": [
+            2,
+            7
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d274"
+          ],
+          "model_sha256": "73641c42c7a4536f69d3030d83574af1fac557ffa6a8e6e55eb0d1b9b4b73637"
+        },
+        {
+          "cell": [
+            0,
+            8
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d084"
+          ],
+          "model_sha256": "c1930da3fe7dc978eae2aeec070c9fa9f9f9b3e29ed831fbb7672a4675f14acc"
+        },
+        {
+          "cell": [
+            1,
+            8
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d184"
+          ],
+          "model_sha256": "cf1832488e2e44c2cd310f5bd8392326515f857ad6018f52382e2becb6c227bd"
+        },
+        {
+          "cell": [
+            2,
+            8
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d284"
+          ],
+          "model_sha256": "6a4be67c4ebdd8d196f5b723524fee318ae7950f114cf341b5974739f29db7c0"
+        },
+        {
+          "cell": [
+            0,
+            9
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d094"
+          ],
+          "model_sha256": "2b4b3cdc44e663576e458a73d797739187cb0d19873bfbcbb02c2d9f6e6e9b94"
+        },
+        {
+          "cell": [
+            1,
+            9
+          ],
+          "model_tgi": [
+            "5ad0e817",
+            "badb57f1",
+            "7f59d194"
+          ],
+          "model_sha256": "7745d206d4493a89f4521bfff343ab047cceb32fd9c6ecf75193ac9e29893613"
+        }
+      ],
+      "new_attachment_projections": [],
+      "interior_native_overhangs_without_construction_ownership": [],
+      "scope": "Projection is rendering geometry, not construction ownership. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area."
+    },
+    "physical_projection_cells": [
+      [
+        -1,
+        8
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        9
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        -1
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        3
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "actual_saved_model_bounds_east_north_height_m": [
+      [
+        -9.656854629516602,
+        153.6568546295166
+      ],
+      [
+        -153.6568546295166,
+        9.656854629516602
+      ],
+      [
+        0.0,
+        16.390625
+      ]
+    ],
+    "scope": "Saved full-width pavement and barrier-profile samples; continuous car corridors are checked per piece. This is not structural engineering or a complete vehicle-body proof."
+  },
+  "supports": {
+    "passed": true,
+    "actual_columns": 6,
+    "actual_vertical_triangles": 48,
+    "column_width_m": 0.8,
+    "height_interval_m": [
+      0.0,
+      15.0
+    ],
+    "actual_deck_contact_corner_samples": 48,
+    "deck_contact_samples": [
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -128.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -127.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -128.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -127.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -128.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          -0.4,
+          -127.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -128.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "point_m": [
+          0.4,
+          -127.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          47.6,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "point_m": [
+          48.4,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          47.6,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "point_m": [
+          48.4,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          79.6,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "point_m": [
+          80.4,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -48.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -47.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          95.6,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -48.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "point_m": [
+          96.4,
+          -47.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          127.6,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "point_m": [
+          128.4,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      }
+    ],
+    "car_segments_checked_against_columns": 10560,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "minimum_conservative_planar_clearance_m": 1.578427124746185,
+    "column_cells": [
+      [
+        0,
+        8
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "saved_model_instances": [
+      {
+        "cell": [
+          0,
+          8
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d084"
+        ]
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d354"
+        ]
+      },
+      {
+        "cell": [
+          3,
+          6
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d364"
+        ]
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d534"
+        ]
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d634"
+        ]
+      },
+      {
+        "cell": [
+          8,
+          0
+        ],
+        "piece_id": "ddrhw-modular-highway-stamp",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f59d804"
+        ]
+      }
+    ],
+    "scope": "Saved vertical faces, indexed road-plane contacts, and conservative saved-PATH car corridors; structural load capacity and in-game collision behaviour are unverified."
+  },
+  "same_stamp_combined_with_retained_compact_counterparts": true,
+  "game_operation": "unverified",
+  "limits": [
+    "This is the literal compact alternative, not a promise about arbitrary module combinations.",
+    "Saved geometry and traffic checks do not establish native MIS compatibility or game behavior."
+  ],
+  "source": {
+    "manifest_sha256": "99d984feb1899a4c9de39e504997451b94dd6a4f2066fd1860525fd52d3e6144",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat": "da65c15c6cb301eccb1f678f7cf96f15c207e7c3f9c5dcd1c74e8bc5991fafc5",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-r40.dat": "475b33fb88fad00083712b7e51669ff5bf9269e6d97a8027f01b8d3ef26d6201",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-entry-r40.dat": "caed9d71476bbbe7302dd9eee3abfe763eb8d4ddd30394e9de0f3aa44ae0a11b",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat": "7fdb3288883b5a0d4fa3f144e99f27536a89f9e5e2e0d6531aad03144a57c12a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-entry-r40.dat": "95a5b659dc666300cc333922fc3eb4ff4f8dffdf10ba103fd9b11ce3e4e99ea9",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-northwest-terminal-r40.dat": "609c93b52ddfe7644beb13b008f41d331823d1ad9580ab37e9fc83a9f649bf06",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-southeast-terminal-r40.dat": "c078000649930b369cbc1efd87eaef0fc301d0162877921eea1b87f54358b9c8",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "3c14374e37f04d667c521fd921682d2fa74dd7c593c06b8f5b6bf665186fbf2f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "3a7dc123cae4674f80de8e5ae2b44b135708234787c4486b54f9e7980246fd21",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "fff121a7e3fce0365e1f2a86342e655bdccc9274291026034e48cf35eb2fd46e",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "8072f3f0755552d50fcaeb252f4e837f2a8f3d6d4ac27202a409566acdb626c1",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "8f58561a709a6a1c9cafed83b3ad73183161847895bf0333610edcdcb5db4c82",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "fa982499b932ac6c0afb3f84510e4b7f311e6b20178e9f548787951f53ebc785"
+    },
+    "actual_saved_dat_resources": true,
+    "scene_sha256": "f5116dfa4772c05c1ac48b84cf5f4914e26306818790ab39049fa910bf30b46b"
+  }
+}

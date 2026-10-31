@@ -1,10 +1,9 @@
-"""Independently placed R40 continuations for the retained DD slip-lane stamp.
+"""Independently placed full ramps for the straight DD slip-lane stamp.
 
-The first two metres beyond each existing sloped boundary retain the original
-sampled pavement, barriers, and PATH. New straight/circular/straight grades end
-at flat orthogonal tile edges. Separate ground terminals complete the remaining
-45-degree turns into the adjacent Avenue carriageways. The highway stamp is
-never a cell owner in this module's six declarations.
+Each ramp includes its complete curved high throat, including model-only
+overhang above highway-owned cells. R40 grades end at flat orthogonal tile
+edges; compact full ramps retain the original grades. Neither family owns
+highway cells, and their downstream terminals remain separately placed.
 """
 from __future__ import annotations
 
@@ -25,15 +24,19 @@ MAX_GRADE = 0.30
 ROOT_TWO = math.sqrt(2.0)
 
 MODULES = {
-    'lower-exit-r40': ('Lower Exit Ramp — R40', ((0, -2), (1, -3), (1, -2))),
-    'lower-entry-r40': ('Lower Entry Ramp — R40', ((-3, 1), (-2, 0), (-2, 1))),
-    'upper-exit-r40': ('Upper Exit Ramp — R40', ((-1, 3), (-1, 4), (0, 3), (1, 3))),
-    'upper-entry-r40': ('Upper Entry Ramp — R40', ((3, -1), (4, -1), (3, 0), (3, 1))),
+    'lower-exit-r40': ('Lower Exit Ramp — R40', ((0, -2), (1, -3), (1, -2), (2, -3))),
+    'lower-entry-r40': ('Lower Entry Ramp — R40', ((-3, 1), (-2, 0), (-2, 1), (-3, 2))),
+    'upper-exit-r40': ('Upper Exit Ramp — R40', ((-1, 3), (-1, 4), (0, 3), (1, 3), (-2, 4), (-3, 5))),
+    'upper-entry-r40': ('Upper Entry Ramp — R40', ((3, -1), (4, -1), (3, 0), (3, 1), (4, -2), (5, -3))),
     'northwest-terminal-r40': ('Northwest Avenue Ramp Terminal — R40', (
         (-3, -3), (-3, -2), (-3, -1), (-2, -3), (-2, -2), (-2, -1), (-1, -3), (-1, -2), (-1, -1))),
     'southeast-terminal-r40': ('Southeast Avenue Ramp Terminal — R40', (
         (1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (2, 4),
         (3, 2), (3, 3), (3, 4), (4, 2), (4, 3), (4, 4))),
+    'lower-exit-compact': ('Lower Exit Ramp — Compact', ((1, -3), (1, -2), (2, -3))),
+    'lower-entry-compact': ('Lower Entry Ramp — Compact', ((-3, 1), (-2, 1), (-3, 2))),
+    'upper-exit-compact': ('Upper Exit Ramp — Compact', ((0, 2), (-1, 3), (0, 3), (-1, 4), (-2, 4), (-3, 5))),
+    'upper-entry-compact': ('Upper Entry Ramp — Compact', ((4, -1), (3, -1), (2, 0), (3, 0), (4, -2), (5, -3))),
 }
 
 
@@ -43,13 +46,8 @@ def _require(condition, message):
 
 
 def stamp_cells():
-    """Return retained highway-owned cells, without authoring another stamp."""
-    selected = {cell for key, (_name, cells) in paths.MODULES.items()
-                if key == 'access-core' or key.endswith('-branch') or key.startswith('diagonal-half-')
-                for cell in cells}
-    selected.update(cell for _key, cell in paths.EXTRA_PLACEMENTS)
-    _require(len(selected) == 27, 'The retained stamp must contain exactly 27 coordinated cells')
-    return frozenset(selected)
+    from .straight_stamp_geometry import stamp_cells as retained
+    return retained()
 
 
 def _lengths(points):
@@ -275,15 +273,19 @@ def access_routes():
 
 
 def module_catalog():
-    """Describe six separately placed parts, excluding every highway-stamp cell."""
+    """Describe six default R40 parts and four alternative full compact ramps."""
     routes = paths.slice_routes(access_routes())
-    types, placements, owners = [], [], {}
+    compact_routes = paths.slice_routes(paths.compact_access_routes())
+    from .straight_stamp_geometry import WING_CELLS
+    types, placements, compact_placements, owners, compact_owners = [], [], [], {}, {}
     for key, (name, world_cells) in MODULES.items():
         origin = min(c[0] for c in world_cells), min(c[1] for c in world_cells)
         cells = sorted(((c[0] - origin[0], c[1] - origin[1]) for c in world_cells),
                        key=lambda c: (c[1], c[0]))
+        compact = key.endswith('-compact')
+        selected_routes = compact_routes if compact else routes
         model_only = [list((c[0] - origin[0], c[1] - origin[1])) for c in world_cells
-                      if c not in routes and c[0] - c[1] not in (-1, 0, 1)]
+                      if c not in selected_routes and c[0] - c[1] not in (-1, 0, 1)]
         row = {'key': key, 'name': name, 'recipe': RECIPE_PREFIX + key.replace('-', '_'),
                'geometry_key': key, 'cells': [list(c) for c in cells],
                'footprint': [max(c[0] for c in cells) + 1, max(c[1] for c in cells) + 1],
@@ -291,22 +293,33 @@ def module_catalog():
                'authors_surface_atlas': False,
                'engineering': {'max_grade_percent': 30.0, 'pavement_path_offset_m': 0.0,
                                'car_corridor_half_width_m': 1.25, 'car_corridor_height_m': 3.8,
-                               'model_only_cells': model_only,
-                               'minimum_new_curve_radius_m': RADIUS_M,
-                               'retained_high_collar_m': RETAINED_COLLAR_M}}
+                               'model_only_cells': model_only}}
+        if not compact:
+            row['engineering'].update({'minimum_new_curve_radius_m': RADIUS_M,
+                                       'retained_high_collar_m': RETAINED_COLLAR_M})
+        if '-terminal-' not in key:
+            ramp_id = key.split('-')[0] + ('-off' if '-exit-' in key else '-on')
+            branch = key.split('-')[0] + ('-exit-branch' if '-exit-' in key else '-entry-branch')
+            row['model_overhang_source_cells'] = [list(c) for c in paths.MODULES[branch][1]
+                                                  if c not in WING_CELLS[ramp_id]]
+            row['model_overhang_contract'] = 'Retained indexed high-throat faces; construction and PATH ownership do not overlap.'
         types.append(row)
-        placements.append({'key': key, 'geometry_key': key,
-                           'origin': [origin[axis] - paths.WORLD_GRID_ORIGIN[axis] for axis in (0, 1)],
-                           'rotation': 0})
+        (compact_placements if compact else placements).append({
+            'key': key, 'geometry_key': key,
+            'origin': [origin[axis] - paths.WORLD_GRID_ORIGIN[axis] for axis in (0, 1)], 'rotation': 0})
+        selected_owners = compact_owners if compact else owners
         for cell in world_cells:
-            _require(cell not in owners and cell not in stamp_cells(),
+            _require(cell not in selected_owners and cell not in stamp_cells(),
                      f'A separately placed ramp or terminal overlaps another owner at {cell}')
-            owners[cell] = key
-    return {'types': types, 'placements': placements,
+            selected_owners[cell] = key
+    return {'types': types, 'placements': placements, 'compact_placements': compact_placements,
             'world_grid_origin': list(paths.WORLD_GRID_ORIGIN), 'footprint': [10, 10],
             'occupied_cells': [list(c) for c in sorted(owners, key=lambda c: (c[1], c[0]))],
             'cell_owners': [{'cell': list(c), 'key': owners[c]}
                             for c in sorted(owners, key=lambda c: (c[1], c[0]))],
+            'compact_occupied_cells': [list(c) for c in sorted(compact_owners, key=lambda c: (c[1], c[0]))],
+            'compact_cell_owners': [{'cell': list(c), 'key': compact_owners[c]}
+                                    for c in sorted(compact_owners, key=lambda c: (c[1], c[0]))],
             'excluded_highway_stamp_cells': [list(c) for c in sorted(stamp_cells())]}
 
 
@@ -347,7 +360,7 @@ def procedural_geometry():
     faces += [face for ramp in ramps for face in _pier_faces(ramp)]
     tiles = geometry.partition_triangles(geometry.union_ground_pavement(faces))
     routes = paths.deduplicate_routes(paths.slice_routes(access_routes()))
-    owners = {cell for _name, cells in MODULES.values() for cell in cells}
+    owners = {cell for key, (_name, cells) in MODULES.items() if not key.endswith('-compact') for cell in cells}
     _require(set(tiles) <= owners | stamp_cells(),
              f'Actual R40 pavement/barrier/support faces exceed declared cells: {set(tiles) - owners - stamp_cells()}')
     _require(owners <= set(tiles) | {c for c in owners if c[0] - c[1] in (-1, 0, 1)},
@@ -361,7 +374,7 @@ def component_routes(piece):
     declaration = next(row for row in module_catalog()['types'] if row['key'] == key)
     origin, owned = declaration['world_origin_cell'], set(MODULES[key][1])
     result = []
-    for route in access_routes():
+    for route in paths.compact_access_routes() if key.endswith('-compact') else access_routes():
         for cell, points in paths.polyline_fragments(route['points']):
             if cell in owned:
                 result.append([(p[0] + 16 * (cell[0] - origin[0]),
@@ -414,16 +427,31 @@ def compile_module(spec, context):
     _require(declaration is not None, 'Unknown modular highway recipe or geometry key')
     _require(spec['cells'] == declaration['cells'] and spec['footprint'] == declaration['footprint'],
              'Allocated modular cells differ from the full physical ownership declaration')
+    if spec['geometry_key'].endswith('-compact'):
+        return _compile_compact(spec, context, declaration)
     origin = declaration['world_origin_cell']
     ramps, procedural_tiles, additional_paths = procedural_geometry()
     painter = _phase_matched_painter(context, ramps)
     base, _ = channels(context['dd_rhw'], 0x5753A380, False, 0)
     material = material_template(context)
     texture = int(spec['tile_ids'][0], 16)
+    from .straight_stamp_geometry import partition, WING_CELLS
+    key = spec['geometry_key']
+    ramp_id = None if '-terminal-' in key else key.split('-')[0] + ('-off' if '-exit-' in key else '-on')
+    transferred = partition(context) if ramp_id else None
     compiled = []
     for local in map(tuple, spec['cells']):
         cell = local[0] + origin[0], local[1] + origin[1]
         _require(cell not in stamp_cells(), 'A modular ramp may not compile a highway-stamp cell')
+        if ramp_id and cell in WING_CELLS[ramp_id]:
+            model = transferred['ramp_models'][ramp_id][cell]
+            raw_path = transferred['wing_paths'][cell]
+            from .native import parse_paths
+            expected_empty = list(local) in declaration['engineering']['model_only_cells']
+            _require(bool(parse_paths(raw_path)) != expected_empty,
+                     f'Transferred high-wing PATH declaration differs in {cell}')
+            compiled.append((local, model, raw_path))
+            continue
         native_models, highway_routes, avenue_routes = paths._native_cell(context, cell)
         _require(not highway_routes, 'A separately placed ramp unexpectedly owns a highway through service')
         parts = []
@@ -449,6 +477,32 @@ def compile_module(spec, context):
         _require(bool(routes) != empty, f'R40 model-only PATH declaration differs in {cell}')
         compiled.append((local, pack_s3d(combine_meshes(parts)), paths.encode_paths(routes, allow_empty=empty)))
     return compiled
+
+
+def _compile_compact(spec, context, declaration):
+    """Attach retained high throats to unchanged original compact grade models."""
+    from scp import jsonc
+    from .modular_stamp import ROOT
+    from .straight_stamp_geometry import partition, WING_CELLS
+    key = spec['geometry_key']
+    stem = key.removesuffix('-compact')
+    ramp_id = stem.split('-')[0] + ('-off' if '-exit' in stem else '-on')
+    source = jsonc.load(ROOT / 'domains/highway/00_pieces' / f'ddrhw-diagonal-{stem}-grade' / 'piece.jsonc')
+    grade_record = next(row for row in paths.module_catalog()['types'] if row['key'] == stem + '-grade')
+    grade_origin = grade_record['world_origin_cell']
+    original = {(cell[0] + grade_origin[0], cell[1] + grade_origin[1]): (model, path)
+                for cell, model, path in paths.compile_module(source, context)}
+    transferred = partition(context)
+    origin = declaration['world_origin_cell']
+    result = []
+    for local in map(tuple, spec['cells']):
+        world = local[0] + origin[0], local[1] + origin[1]
+        if world in WING_CELLS[ramp_id]:
+            model, path = transferred['ramp_models'][ramp_id][world], transferred['wing_paths'][world]
+        else:
+            model, path = original[world]
+        result.append((local, model, path))
+    return result
 
 
 def construction_fields(spec, compiled):

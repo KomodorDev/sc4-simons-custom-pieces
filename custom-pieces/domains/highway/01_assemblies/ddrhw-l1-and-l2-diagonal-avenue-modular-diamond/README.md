@@ -1,6 +1,6 @@
 ---
 title: "DD RHW-4 — Modular Diagonal Avenue Diamond"
-summary: "Place one double-decker highway stamp, attach four separate ramps, and choose their matching Avenue terminals."
+summary: "Place one straight double-decker highway stamp, four complete curved ramps, and two matching Avenue terminals separately."
 audience: "players"
 document_type: "guide"
 ---
@@ -9,11 +9,11 @@ document_type: "guide"
 
 [1. Views](#1-views) · [2. Pieces](#2-pieces) · [3. Placements](#3-placements) · [4. Connection matrix](#4-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
 
-This modular blueprint crosses a diagonal ground Avenue with NAM's double-decker RHW-4 highway. The lower highway deck is 7.5 m above the pavement datum, and the upper deck is 15 m above it. The decks carry opposing traffic. Place the highway and its four slip-lane openings together in one click, then attach the four ramps and two Avenue terminals separately. A **slip lane** is the lane beside the through lanes that leads into or out of a ramp. The highway stamp contains the slip lanes and their beginnings; it does not contain the independently attached ramp pieces.
+This modular blueprint crosses a diagonal ground Avenue with NAM's double-decker RHW-4 highway. The lower deck is 7.5 m above the pavement datum, and the upper deck is 15 m above it; their traffic travels in opposite directions. One click places the completely straight highway stamp, including both decks, their supports, inside-deck slip lanes, and four barrier cutouts. Every curved ramp surface, underside, barrier, and joining bridge belongs to one of the four separately placed full ramps. Two separately placed Avenue terminals complete the layout. A **slip lane** is the lane beside the through lanes that leads into or out of a ramp.
 
-The default layout uses seven component types, seven placements, and 62 occupied tiles within a 10 × 10-tile rectangle (160 × 160 m). Its assembly button cycles forward with **Tab** and backward with **Shift+Tab**; each click places only the selected component. Six retained compact components are available separately as an alternative to the new ramp-and-terminal families.
+The default layout uses seven types, seven placements, and 62 occupied tiles in a 10 × 10-tile construction rectangle (160 × 160 m). The stamp owns 21 tiles; the four full ramps own 4, 4, 6, and 6 tiles, and the terminals own 9 and 12. The assembly button cycles forward with **Tab** and backward with **Shift+Tab**; each click places only the selected component. Four full compact ramps and two retained compact Avenue junctions are separately available outside that cycle.
 
-Each ramp connects only to the adjacent Avenue **carriageway**, meaning the part of the Avenue carrying traffic in one direction. Ramp traffic cannot cross the opposing carriageway. The Avenue remains two-way, both highway decks retain their two through lanes, and the four ramp movements remain:
+Each ramp connects only to the adjacent Avenue **carriageway**, meaning the part carrying traffic in one direction. Ramp traffic cannot cross the opposing carriageway. The Avenue stays two-way, and both highway decks retain their two through lanes.
 
 | Ramp | Traffic arrives from | Traffic leaves towards |
 | --- | --- | --- |
@@ -24,92 +24,93 @@ Each ramp connects only to the adjacent Avenue **carriageway**, meaning the part
 
 ## 1. Views
 
-These views show the saved component models in the default seven-placement layout. They follow the HSR trumpet's exact presentation order: clean top, clean southeast, named top, named southeast, named northwest, and construction overview. P01–P07 identify the same placements in every named picture. X increases eastward, Y increases northward, and one tile is 16 × 16 m.
+These pictures show the saved models in the default seven-placement layout, in the HSR trumpet's exact order: clean top, clean southeast, named top, named southeast, named northwest, and construction overview. P01–P07 mean the same placements in every named picture. X increases eastward, Y increases northward, and one tile is 16 × 16 m.
 
-![Clean north-up top view of the highway stamp and six independently attached components](previews/overview-top.png)
+![Clean north-up top view of the straight highway stamp, four full ramps, and two Avenue terminals](previews/overview-top.png)
 
-![Clean southeast view showing both highway decks, separate ramps, and Avenue terminals](previews/preview.png)
+![Clean southeast view of both straight highway decks and their separately attached complete curved ramps](previews/preview.png)
 
 ![Named north-up top view identifying all seven default placements](previews/named-top.png)
 
-![Named southeast view showing the highway stamp, four ramps, and two ground terminals](previews/named-southeast.png)
+![Named southeast view identifying the straight stamp, full ramps, and terminals](previews/named-southeast.png)
 
-![Named northwest view showing the same seven components from the opposite side](previews/named-northwest.png)
+![Named northwest view showing the same seven placements from the opposite side](previews/named-northwest.png)
 
-![Construction overview with translucent ownership colours over the aligned actual top-view model](previews/tile-ownership.png)
+![Construction overview with translucent ownership colours and distinct actual-model outlines over the aligned top view](previews/tile-ownership.png)
 
-The construction overview places the actual top-view model beneath ownership colours at 30% opacity. Boundaries, placement labels, reference diamonds, and the complete component-name legend remain opaque. Unfilled cells are outside the selected component's ownership; visible native model overhang does not grant another independently placed component the same construction tile.
+The construction overview keeps the actual model below a 30% ownership overlay. Thick dark boundaries show construction ownership; thin placement-coloured outlines follow each component's actual indexed model silhouette. The curved high throats belong to the full ramp pieces even where their models draw above stamp-owned tiles. This model overhang adds no second construction owner or traffic tile. Plan-view outlines do not alone establish vertical clearance.
 
-Two interior cells, (X4, Y3) and (X6, Y5), deliberately have no construction owner in this R40 layout. Small parts of the retained native highway pavement and barrier models remain visible over them. The saved-resource check identifies those faces through the exact retained stamp-model fingerprints; every new R40 ramp and terminal stays within its own owned cells. This specific native overhang does not make the two cells a supported place to stack another traffic piece.
+Two interior cells, (X4, Y3) and (X6, Y5), have no construction owner in the R40 layout. Retained native highway pavement and barrier faces remain visible over them. The saved model contract binds that specific native overhang; it does not make either cell a supported place to stack another traffic piece.
 
-The pictures show a fixed native Avenue ground appearance. In the game, the stamp and terminals use adaptive Avenue artwork: the surrounding development can change visible pedestrian pavement. Pedestrian routes, visible sidewalks, Avenue redraw, and actual travel remain separate checks in [TESTING.md](TESTING.md#4-game-checks).
+The four physical ramp openings are flat at the native highway edge: 7.5 m on the lower deck and 15 m on the upper deck. The generated connection cards describe traffic crossings at city-tile edges, which can be at a different position and grade. Physical opening profiles and traffic boundaries require their own matching checks.
 
-**R40** identifies the new circular sections' 40 m horizontal centreline radius. The ramps preserve at least 2 m of their original high-end geometry, so the upper ramp's retained collar still contains a tighter measured radius of approximately 29.50 m. The lower descent is approximately 32.18 m long from the stamp boundary to its ground port; the upper descent is approximately 48.66 m. A **port** is the complete measured connection through a tile edge. Both new ground ports are flat and point along a city-grid axis; the separate terminals complete the remaining 45° ground turns into the Avenue.
+**R40** means the new circular sections have a 40 m horizontal centreline radius. The complete ramps also retain earlier high-throat transitions. Their sampled traffic centre-lines contain much tighter inherited kinks, approximately 1.735 m on the lower routes and 3.500 m on the upper routes; R40 is not a minimum-radius claim for the whole ramp. A **grade** is height change divided by horizontal distance: 20% means a 2 m change over 10 m horizontally. The experimental bound is 30%; see [the measured limits](TESTING.md#5-results-and-known-issues).
 
-The retained highway ports are sloped and oblique. Their measured height, direction, grade, and traffic services appear on each component's generated connection cards. The [saved assembly checks](TESTING.md#3-software-checks) separately compare the complete pavement and barrier profiles at the stamp joins. A **grade** is height change divided by horizontal route distance; 20% means a 2 m height change over 10 m horizontally. The new lower ramps reach approximately 25.43%, and the upper ramps retain approximately 29.61%. These are compact game dimensions within the experiment's 30% bound.
+The stamp and terminals use adaptive native Avenue artwork. Nearby development can change visible pedestrian pavement. Sidewalk appearance, pedestrian routes, Avenue redraw, and car travel remain separate game checks in [TESTING.md](TESTING.md#4-game-checks).
 
 ## 2. Pieces
 
-Use the exact component names below. Each thumbnail opens the component's full angled preview; **Top view** opens its north-up picture. Standalone component pictures show their authored 0° orientation. The placement table in chapter 3 supplies the assembly position and rotation.
+Each thumbnail opens its component's full angled preview; **Top view** opens its north-up picture. Standalone pictures show the authored 0° orientation. Chapter 3 supplies the exact construction reference for the complete layout.
 
 ### 2.1 Default seven-component layout
 
-| Standalone angled picture | Component name and permanent piece ID | Placement | Quantity | Occupied tiles per click |
+| Standalone angled picture | Component name and permanent piece ID | Placement | Quantity | Occupied tiles |
 | --- | --- | --- | ---: | ---: |
-| [![Diagonal Highway and Slip-Lane Stamp: canonical angled view](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview-top.png) | **[DD RHW-4 — Diagonal Highway and Slip-Lane Stamp](../../00_pieces/ddrhw-modular-highway-stamp/README.md)**<br>`ddrhw-modular-highway-stamp` | P01 | 1 | 27 |
-| [![Lower Exit Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview-top.png) | **[RHW Ramp — Lower Exit Ramp — R40](../../00_pieces/ddrhw-modular-lower-exit-r40/README.md)**<br>`ddrhw-modular-lower-exit-r40` | P02 | 1 | 3 |
-| [![Lower Entry Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview-top.png) | **[RHW Ramp — Lower Entry Ramp — R40](../../00_pieces/ddrhw-modular-lower-entry-r40/README.md)**<br>`ddrhw-modular-lower-entry-r40` | P03 | 1 | 3 |
-| [![Upper Exit Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview-top.png) | **[RHW Ramp — Upper Exit Ramp — R40](../../00_pieces/ddrhw-modular-upper-exit-r40/README.md)**<br>`ddrhw-modular-upper-exit-r40` | P04 | 1 | 4 |
-| [![Upper Entry Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview-top.png) | **[RHW Ramp — Upper Entry Ramp — R40](../../00_pieces/ddrhw-modular-upper-entry-r40/README.md)**<br>`ddrhw-modular-upper-entry-r40` | P05 | 1 | 4 |
-| [![Northwest Avenue Ramp Terminal — R40: canonical angled view](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview-top.png) | **[RHW Ramp — Northwest Avenue Ramp Terminal — R40](../../00_pieces/ddrhw-modular-northwest-terminal-r40/README.md)**<br>`ddrhw-modular-northwest-terminal-r40` | P06 | 1 | 9 |
-| [![Southeast Avenue Ramp Terminal — R40: canonical angled view](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview-top.png) | **[RHW Ramp — Southeast Avenue Ramp Terminal — R40](../../00_pieces/ddrhw-modular-southeast-terminal-r40/README.md)**<br>`ddrhw-modular-southeast-terminal-r40` | P07 | 1 | 12 |
+| [![DD RHW-4 — Straight Diagonal Highway Stamp: canonical angled view](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-highway-stamp/previews/preview-top.png) | **[DD RHW-4 — Straight Diagonal Highway Stamp](../../00_pieces/ddrhw-modular-highway-stamp/README.md)**<br>`ddrhw-modular-highway-stamp` | P01 | 1 | 21 |
+| [![RHW Ramp — Lower Full Exit Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-exit-r40/previews/preview-top.png) | **[RHW Ramp — Lower Full Exit Ramp — R40](../../00_pieces/ddrhw-modular-lower-exit-r40/README.md)**<br>`ddrhw-modular-lower-exit-r40` | P02 | 1 | 4 |
+| [![RHW Ramp — Lower Full Entry Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-entry-r40/previews/preview-top.png) | **[RHW Ramp — Lower Full Entry Ramp — R40](../../00_pieces/ddrhw-modular-lower-entry-r40/README.md)**<br>`ddrhw-modular-lower-entry-r40` | P03 | 1 | 4 |
+| [![RHW Ramp — Upper Full Exit Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-exit-r40/previews/preview-top.png) | **[RHW Ramp — Upper Full Exit Ramp — R40](../../00_pieces/ddrhw-modular-upper-exit-r40/README.md)**<br>`ddrhw-modular-upper-exit-r40` | P04 | 1 | 6 |
+| [![RHW Ramp — Upper Full Entry Ramp — R40: canonical angled view](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-entry-r40/previews/preview-top.png) | **[RHW Ramp — Upper Full Entry Ramp — R40](../../00_pieces/ddrhw-modular-upper-entry-r40/README.md)**<br>`ddrhw-modular-upper-entry-r40` | P05 | 1 | 6 |
+| [![RHW Ramp — Northwest Avenue Ramp Terminal — R40: canonical angled view](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-northwest-terminal-r40/previews/preview-top.png) | **[RHW Ramp — Northwest Avenue Ramp Terminal — R40](../../00_pieces/ddrhw-modular-northwest-terminal-r40/README.md)**<br>`ddrhw-modular-northwest-terminal-r40` | P06 | 1 | 9 |
+| [![RHW Ramp — Southeast Avenue Ramp Terminal — R40: canonical angled view](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-southeast-terminal-r40/previews/preview-top.png) | **[RHW Ramp — Southeast Avenue Ramp Terminal — R40](../../00_pieces/ddrhw-modular-southeast-terminal-r40/README.md)**<br>`ddrhw-modular-southeast-terminal-r40` | P07 | 1 | 12 |
 
-### 2.2 Retained compact alternatives
+### 2.2 Full compact alternatives
 
-These six types keep their individual menu buttons in the modular-kit selection. They are outside the default assembly's seven-component Tab cycle. Keep P01, and replace the matching ramp pair and its terminal together: the two lower compact grades use the compact northwest junction, and the two upper compact grades use the compact southeast junction. The R40 terminal and compact terminal have different joining positions and profiles; do not interchange a terminal alone.
+Keep the same straight stamp, C01. Replace the two matching R40 ramps and their terminal together with the corresponding full compact ramps and compact Avenue junction. These six alternative types have individual buttons outside the seven-type R40 cycle. The four old grade-only pieces omit the transferred high throats and are not substitutes for the full compact ramps listed here.
 
-| Standalone angled picture | Component name and permanent piece ID | Replaces in the default layout | Quantity | Occupied tiles per click |
+| Standalone angled picture | Component name and permanent piece ID | Placement | Quantity | Occupied tiles |
 | --- | --- | --- | ---: | ---: |
-| [![Compact Lower Diagonal Exit Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-exit-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Lower Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-lower-exit-grade/README.md)**<br>`ddrhw-diagonal-lower-exit-grade` | P02, with its matching family | 1 | 2 |
-| [![Compact Lower Diagonal Entry Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-lower-entry-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Lower Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-lower-entry-grade/README.md)**<br>`ddrhw-diagonal-lower-entry-grade` | P03, with its matching family | 1 | 2 |
-| [![Compact Upper Diagonal Exit Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-exit-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Upper Diagonal Exit Grade](../../00_pieces/ddrhw-diagonal-upper-exit-grade/README.md)**<br>`ddrhw-diagonal-upper-exit-grade` | P04, with its matching family | 1 | 4 |
-| [![Compact Upper Diagonal Entry Grade: canonical angled view](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-upper-entry-grade/previews/preview-top.png) | **[DD RHW-4 — Compact Upper Diagonal Entry Grade](../../00_pieces/ddrhw-diagonal-upper-entry-grade/README.md)**<br>`ddrhw-diagonal-upper-entry-grade` | P05, with its matching family | 1 | 4 |
-| [![Avenue Northwest Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Northwest Ramp Junction](../../00_pieces/ddrhw-diagonal-northwest-junction/README.md)**<br>`ddrhw-diagonal-northwest-junction` | P06, with both compact lower grades | 1 | 6 |
-| [![Avenue Southeast Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Southeast Ramp Junction](../../00_pieces/ddrhw-diagonal-southeast-junction/README.md)**<br>`ddrhw-diagonal-southeast-junction` | P07, with both compact upper grades | 1 | 8 |
+| [![RHW Ramp — Lower Full Exit Ramp — Compact: canonical angled view](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview-top.png) | **[RHW Ramp — Lower Full Exit Ramp — Compact](../../00_pieces/ddrhw-modular-lower-exit-compact/README.md)**<br>`ddrhw-modular-lower-exit-compact` | C02 | 1 | 3 |
+| [![RHW Ramp — Lower Full Entry Ramp — Compact: canonical angled view](../../00_pieces/ddrhw-modular-lower-entry-compact/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-entry-compact/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-entry-compact/previews/preview-top.png) | **[RHW Ramp — Lower Full Entry Ramp — Compact](../../00_pieces/ddrhw-modular-lower-entry-compact/README.md)**<br>`ddrhw-modular-lower-entry-compact` | C03 | 1 | 3 |
+| [![RHW Ramp — Upper Full Exit Ramp — Compact: canonical angled view](../../00_pieces/ddrhw-modular-upper-exit-compact/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-exit-compact/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-exit-compact/previews/preview-top.png) | **[RHW Ramp — Upper Full Exit Ramp — Compact](../../00_pieces/ddrhw-modular-upper-exit-compact/README.md)**<br>`ddrhw-modular-upper-exit-compact` | C04 | 1 | 6 |
+| [![RHW Ramp — Upper Full Entry Ramp — Compact: canonical angled view](../../00_pieces/ddrhw-modular-upper-entry-compact/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-upper-entry-compact/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-upper-entry-compact/previews/preview-top.png) | **[RHW Ramp — Upper Full Entry Ramp — Compact](../../00_pieces/ddrhw-modular-upper-entry-compact/README.md)**<br>`ddrhw-modular-upper-entry-compact` | C05 | 1 | 6 |
+| [![DD RHW-4 — Avenue Northwest Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-northwest-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Northwest Ramp Junction](../../00_pieces/ddrhw-diagonal-northwest-junction/README.md)**<br>`ddrhw-diagonal-northwest-junction` | C06 | 1 | 6 |
+| [![DD RHW-4 — Avenue Southeast Ramp Junction: canonical angled view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-thumb.png)](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-diagonal-southeast-junction/previews/preview-top.png) | **[DD RHW-4 — Avenue Southeast Ramp Junction](../../00_pieces/ddrhw-diagonal-southeast-junction/README.md)**<br>`ddrhw-diagonal-southeast-junction` | C07 | 1 | 8 |
 
 ## 3. Placements
 
-1. Prepare a clear, flat 10 × 10-tile area. Read the pictures with X increasing eastward and Y increasing northward; the southwest tile centre is (X0, Y0). Keep that same reference for every component.
+1. Prepare a clear, flat 10 × 10-tile area. Read X eastward and Y northward; the southwest tile centre is (X0, Y0). Keep this reference fixed for every component.
 2. Install an explicitly selected, verified experimental build through the [shared installation procedure](../../../../docs/BUILD_AND_INSTALL.md). Building and rendering do not install game files.
-3. Open **Transportation → Highways**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**.
-4. Select P01 first. Press **Tab** to move forward through the seven default types, or **Shift+Tab** to move backward. Press **Home** or **End** to rotate the selected component. Use 0° for every row below.
-5. Align P01 with the construction overview, and click once to place the highway stamp. Then select and place P02–P07 separately, using the table. Each listed position is the component's local (column 0, row 0) construction reference. A sparse component can have an empty reference cell: align all occupied cells in the preview, rather than treating an empty reference as a confirmed mouse-click position.
-6. Connect matching native diagonal DD RHW-4 approaches at the northeast and southwest highway ends. For the Avenue, open **Transportation → Roads → Avenue**, and drag an ordinary diagonal ground Avenue up to the northwest and southeast outer terminal boundaries. Native approach joining, dragging through occupied cells, and placement over a prebuilt Avenue are distinct game checks.
+3. Open **Transportation → Highways**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Select **DD RHW-4 — Straight Diagonal Highway Stamp**, P01, first.
+4. Press **Tab** forward or **Shift+Tab** backward through the seven default types. **Home** and **End** rotate the selected piece. Use 0° for every row in the reference layout below.
+5. Place P01 once, then P02–P07 separately. Each listed position is the local (column 0, row 0) construction reference. Some sparse pieces have an empty reference cell: align the occupied preview cells rather than treating that empty position as a confirmed mouse-click anchor.
+6. Connect native diagonal DD RHW-4 approaches at the northeast and southwest highway ends. Open **Transportation → Roads → Avenue**, and drag an ordinary diagonal Avenue up to each outer terminal boundary. Joining the outside approaches, placing over a prebuilt Avenue, and dragging through occupied tiles are separate game checks.
 
 | Placement | Exact component name | Reference tile | Rotation |
 | --- | --- | --- | ---: |
-| P01 | DD RHW-4 — Diagonal Highway and Slip-Lane Stamp | (X0, Y9) | 0° |
-| P02 | RHW Ramp — Lower Exit Ramp — R40 | (X4, Y8) | 0° |
-| P03 | RHW Ramp — Lower Entry Ramp — R40 | (X1, Y5) | 0° |
-| P04 | RHW Ramp — Upper Exit Ramp — R40 | (X3, Y2) | 0° |
-| P05 | RHW Ramp — Upper Entry Ramp — R40 | (X7, Y6) | 0° |
+| P01 | DD RHW-4 — Straight Diagonal Highway Stamp | (X0, Y9) | 0° |
+| P02 | RHW Ramp — Lower Full Exit Ramp — R40 | (X4, Y8) | 0° |
+| P03 | RHW Ramp — Lower Full Entry Ramp — R40 | (X1, Y5) | 0° |
+| P04 | RHW Ramp — Upper Full Exit Ramp — R40 | (X1, Y2) | 0° |
+| P05 | RHW Ramp — Upper Full Entry Ramp — R40 | (X7, Y8) | 0° |
 | P06 | RHW Ramp — Northwest Avenue Ramp Terminal — R40 | (X1, Y8) | 0° |
 | P07 | RHW Ramp — Southeast Avenue Ramp Terminal — R40 | (X5, Y4) | 0° |
 
-These positions come from [assembly.jsonc](assembly.jsonc). The highway stamp's exact sloped cuts are fixed; the separate ramp pieces match them without moving the highway. Matching only height is insufficient: use each piece's measured connection cards to check position, direction, slope, and required traffic services, and use the saved assembly checks for the pavement and barrier profiles.
+Each lower full ramp has four traffic ports and two **intrinsic route fragments**, meaning two route portions stored inside that piece. A highway-owned middle tile connects those portions. The physical ramp is continuous, but cars require the correctly placed stamp and complete matching layout. Each upper full ramp has two traffic ports and one intrinsic journey. The cards retain all these boundaries; do not discard a middle connection because the visible ramp looks like one road.
 
-To use the compact alternative, select the individual component buttons named in chapter 2.2, retain P01, and place the following matching groups instead of their R40 counterparts. Every row still uses rotation 0° and the same global X/Y reference. Remove the group being replaced before placing the alternative; two components cannot own the same construction tile.
+To use the compact layout, keep C01 in the same position, select each named **SCP | [HW]** component button, and use this complete alternative table. Remove the group being replaced first; two components cannot own the same tile. The compact layout uses seven placements and 53 owned tiles: 21 + 3 + 3 + 6 + 6 + 6 + 8.
 
-| Compact alternative component | Reference tile | Matching group |
-| --- | --- | --- |
-| DD RHW-4 — Compact Lower Diagonal Exit Grade | (X5, Y8) | Lower grades and northwest junction |
-| DD RHW-4 — Compact Lower Diagonal Entry Grade | (X1, Y4) | Lower grades and northwest junction |
-| DD RHW-4 — Avenue Northwest Ramp Junction | (X2, Y7) | Lower grades and northwest junction |
-| DD RHW-4 — Compact Upper Diagonal Exit Grade | (X3, Y3) | Upper grades and southeast junction |
-| DD RHW-4 — Compact Upper Diagonal Entry Grade | (X6, Y6) | Upper grades and southeast junction |
-| DD RHW-4 — Avenue Southeast Ramp Junction | (X5, Y4) | Upper grades and southeast junction |
+| Placement | Exact component name | Reference tile | Rotation |
+| --- | --- | --- | ---: |
+| C01 | DD RHW-4 — Straight Diagonal Highway Stamp | (X0, Y9) | 0° |
+| C02 | RHW Ramp — Lower Full Exit Ramp — Compact | (X5, Y8) | 0° |
+| C03 | RHW Ramp — Lower Full Entry Ramp — Compact | (X1, Y4) | 0° |
+| C04 | RHW Ramp — Upper Full Exit Ramp — Compact | (X1, Y3) | 0° |
+| C05 | RHW Ramp — Upper Full Entry Ramp — Compact | (X6, Y8) | 0° |
+| C06 | DD RHW-4 — Avenue Northwest Ramp Junction | (X2, Y7) | 0° |
+| C07 | DD RHW-4 — Avenue Southeast Ramp Junction | (X5, Y4) | 0° |
 
-The six main pictures depict the default R40 layout. The retained [compact assembly](../ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) shows the compact ramp geometry. Adaptive pavement, traffic, and placement observations for one layout do not establish results for the other; see [TESTING.md](TESTING.md).
+The exact plans are in [assembly.jsonc](assembly.jsonc), including its `alternatives.compact` section. The six main pictures show the default R40 layout. The older [compact assembly](../ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) retains its original component partition; use the C01–C07 table above when combining compact geometry with the new straight stamp. Adaptive-pavement and traffic observations for one layout do not approve the other.
 
 <!-- BEGIN ASSEMBLY CONNECTION MATRIX -->
 

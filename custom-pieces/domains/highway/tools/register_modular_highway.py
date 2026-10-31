@@ -62,10 +62,10 @@ def register(root=ROOT):
         has_adaptive=any(c[0]+origin[0]-c[1]-origin[1] in (-1,0,1) for c in d['cells'])
         block=_free_block(ledger,2 if has_adaptive else 1)
         tile_ids=[f'{block+x*0x100+y*0x10:08x}' for x,y in d['cells']]
-        name=('DD RHW-4 — Diagonal Highway and Slip-Lane Stamp' if key=='modular-stamp'
-              else 'RHW Ramp — '+d['name'])
-        description=('Place the complete double-decker highway and four slip-lane openings in one click. '
-          'On-ramps, off-ramps, and Avenue terminals are separate pieces attached at measured sloped boundaries.'
+        name=('DD RHW-4 — Straight Diagonal Highway Stamp' if key=='modular-stamp'
+              else 'RHW Ramp — '+d['name'].replace('Exit Ramp','Full Exit Ramp').replace('Entry Ramp','Full Entry Ramp'))
+        description=('Place the straight double-decker highway with slip lanes and barrier cutouts in one click. '
+          'All curved ramp pavement, undersides, and barriers belong to the separately placed full ramps.'
           if key=='modular-stamp' else 'Independently placed '+d['name'].lower()+'. '
           'Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.')
         piece={'schema_version':1,'id':identifier,'domain':'highway','name':name,'description':description,
@@ -81,6 +81,9 @@ def register(root=ROOT):
                           'construction':'Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.',
                           'redistribution':'permission-pending'},
             'game_tests':{key:'unverified' for key in GAME_KEYS}}
+        if 'model_overhang_source_cells' in d:
+            piece['model_overhang_source_cells']=deepcopy(d['model_overhang_source_cells'])
+            piece['model_overhang_contract']=d['model_overhang_contract']
         record={'puzzle_id':piece['puzzle_id'],'tile_ids':tile_ids,'preview_id':piece['preview_id'],
           'menu_id':piece['menu']['id'],'state':'reserved-locally','cells':piece['cells'],
           'tile_base':f'{block:08x}','resource_blocks':[f'{block:08x}']}
@@ -102,7 +105,7 @@ def register(root=ROOT):
             piece['dependencies'].append('adaptive_avenue')
             record.update(allocation_fields(piece))
         additions.append(piece)
-    old=['ddrhw-diagonal-'+key for key in ['lower-exit-grade','lower-entry-grade','upper-exit-grade','upper-entry-grade','northwest-junction','southeast-junction']]
+    old=['ddrhw-diagonal-'+key for key in ['northwest-junction','southeast-junction']]
     selections={'ddrhw-modular-ramp-kit':members+old}
     if additions:
         apply_registration(root,additions,ledger,selections,
@@ -111,13 +114,13 @@ def register(root=ROOT):
     placements=[{'instance_id':'P01','label':'P01','piece_id':STAMP,'origin_m':[0.,0.],
       'rotation_degrees_ccw':0,'rotation_degrees':0,'display_origin_tiles_en':[0,9],
       'menu_name':all_pieces[STAMP]['name'],'name':all_pieces[STAMP]['name']+' at P01','recipe':all_pieces[STAMP]['recipe']}]
-    for n,d in enumerate(module_catalog()['types'],2):
+    for n,d in enumerate((d for d in module_catalog()['types'] if not d['key'].endswith('-compact')),2):
         identifier=identities[d['key']];p=all_pieces[identifier];x,y=[v+4 for v in d['world_origin_cell']]
         placements.append({'instance_id':f'P{n:02d}','label':f'P{n:02d}','piece_id':identifier,
           'origin_m':[16.*x,-16.*y],'rotation_degrees_ccw':0,'rotation_degrees':0,
           'display_origin_tiles_en':[x,9-y],'name':p['name']+f' at P{n:02d}','menu_name':p['name'],'recipe':p['recipe']})
     scene={'id':ASSEMBLY,'title':'DD RHW-4 — Modular Diagonal Avenue Diamond',
-      'purpose':'One highway/slip-lane stamp with four separately attached ramps and two independently placed Avenue terminals.',
+      'purpose':'One completely straight highway stamp with barrier cutouts, four separately attached full ramps, and two independently placed Avenue terminals.',
       'geometry_status':'Compiled experimental modules; see TESTING.md for exact software and game evidence.',
       'coordinate_units':'metres east,north,height; rotations counterclockwise',
       'coordinate_system':{'origin_world_m':[0.,-144.],'origin_name':'southwest tile-centre reference',
@@ -127,7 +130,8 @@ def register(root=ROOT):
       'traffic_policy':{'ramp_access':'adjacent-carriageway right turns only',
         'required_movements':['SW->NE','NE->SW','NW->SE','SE->NW','NE->NW','NW->SW','SW->SE','SE->NE'],
         'forbidden_cross_avenue_turns':['NE->SE','SE->SW','SW->NW','NW->NE']},
-      'placements':placements,'game_tests':{key:'unverified' for key in GAME_KEYS}}
+      'placements':placements,'alternatives':{'compact':{}},
+      'game_tests':{key:'unverified' for key in GAME_KEYS}}
     target=root/'domains/highway/01_assemblies'/ASSEMBLY;target.mkdir(parents=True,exist_ok=True)
     if not (target/'assembly.jsonc').exists():
         (target/'assembly.jsonc').write_text(new_subject_document(scene,'assembly'))
@@ -137,6 +141,10 @@ def register(root=ROOT):
     reg_path=root/'domains/highway/domain.jsonc';registry=jsonc.load(reg_path);rel=f'01_assemblies/{ASSEMBLY}/assembly.jsonc'
     if rel not in registry['assemblies']:
         registry['assemblies'].append(rel);reg_path.write_text(jsonc.document(registry,source=reg_path.read_text()))
+    # Keep the initial-registration path and the explicit revision path on the
+    # same current ownership/placement contract, including the compact layout.
+    from revise_straight_modular_highway import revise
+    revise(root)
     return {'new_types':len(additions),'default_placements':len(placements),'kit_members':members+old,'assembly':ASSEMBLY}
 
 if __name__=='__main__':

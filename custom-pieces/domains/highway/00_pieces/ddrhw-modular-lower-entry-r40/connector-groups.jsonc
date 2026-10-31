@@ -10,8 +10,8 @@
   "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
   "piece_id": "ddrhw-modular-lower-entry-r40",
   "source_binding": {
-    "piece_sha256": "5089e87fff49a22b3c85155395012ed2d08a344b5ff8b2b0bd4c709b0ad9d8f7",
-    "connections_sha256": "3522f9e7a8f20357d315e3b2ecb210477c41c26cd4815fe67f1dc441efdd1f61"
+    "piece_sha256": "8914020ed9ac69d29602971c7c9943e49998797cb50bea5b1b25df683bf7e5a0",
+    "connections_sha256": "784d683f8d56b1964b062ebff10eef856bb2b90bba2e3c85047b8e54cd7e13b0"
   },
   "components": [
     {
@@ -36,11 +36,11 @@
       "component_id": "access-ramp",
       "members": [
         {
-          "id": "member-1-n-in-2",
-          "source_port_id": "1-N-in-2",
+          "id": "member-1-e-in-2",
+          "source_port_id": "1-E-in-2",
           "direction": "in",
           "channel_id": "access-ramp-01",
-          "cut_id": "cut-1-n-in-2"
+          "cut_id": "cut-1-e-in-2"
         }
       ]
     },
@@ -56,16 +56,42 @@
           "cut_id": "cut-1-s-out-1"
         }
       ]
+    },
+    {
+      "id": "boundary-03-access-ramp-01",
+      "component_id": "access-ramp",
+      "members": [
+        {
+          "id": "member-1-n-in-4",
+          "source_port_id": "1-N-in-4",
+          "direction": "in",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-n-in-4"
+        }
+      ]
+    },
+    {
+      "id": "boundary-04-access-ramp-01",
+      "component_id": "access-ramp",
+      "members": [
+        {
+          "id": "member-1-s-out-3",
+          "source_port_id": "1-S-out-3",
+          "direction": "out",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-s-out-3"
+        }
+      ]
     }
   ],
   "boundary_bundles": [
     {
       "id": "boundary-01",
       "source_cell": [
-        1,
-        0
+        0,
+        2
       ],
-      "edge": "north",
+      "edge": "east",
       "connector_ids": [
         "boundary-01-access-ramp-01"
       ]
@@ -73,12 +99,34 @@
     {
       "id": "boundary-02",
       "source_cell": [
+        0,
+        2
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-02-access-ramp-01"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "source_cell": [
+        1,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-03-access-ramp-01"
+      ]
+    },
+    {
+      "id": "boundary-04",
+      "source_cell": [
         1,
         1
       ],
       "edge": "south",
       "connector_ids": [
-        "boundary-02-access-ramp-01"
+        "boundary-04-access-ramp-01"
       ]
     }
   ]

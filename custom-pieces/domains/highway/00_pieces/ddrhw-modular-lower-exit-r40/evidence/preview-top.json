@@ -1,18 +1,18 @@
 {
   "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
   "piece_id": "ddrhw-modular-lower-exit-r40",
-  "menu_name": "RHW Ramp \u2014 Lower Exit Ramp \u2014 R40",
-  "display_title": "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40",
+  "menu_name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40",
+  "display_title": "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
   "view_role": "top-down",
   "canonical_filename": "preview-top.png",
   "source": {
     "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-r40.dat",
     "preview_id": "7f599ff5",
-    "source_dat_sha256": "475b33fb88fad00083712b7e51669ff5bf9269e6d97a8027f01b8d3ef26d6201",
-    "model_sha256": "1dcd27c28f0146983b56b96af4d3d53fe9d26f27451ac84a127b3f819ce9b046"
+    "source_dat_sha256": "0cbe4bc3dba96d11daa812b51083c664af49879d1d73d8a71f21b0c36b70970b",
+    "model_sha256": "196f1f8b686bc89f28bd6662630b5904094b5e801f8f8e4c5ad4c713d5a32227"
   },
   "file": "previews/preview-top.png",
-  "sha256": "3edbfdc3cdd891190531886380dc948c1ee2a1680c09efa810cf5cfee72cd74b",
+  "sha256": "8fd7bfcf00dbe0fc27a678e8ccb0853837b47c93249a350a34948aeefe4f7867",
   "size": [
     1600,
     1200
@@ -31,7 +31,7 @@
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "display_axis_labels": {
@@ -41,7 +41,7 @@
     "display_index_ranges": {
       "X": [
         0,
-        1
+        2
       ],
       "Y": [
         0,
@@ -61,6 +61,10 @@
       ],
       [
         1,
+        1
+      ],
+      [
+        2,
         1
       ]
     ],
@@ -105,7 +109,7 @@
       6.123233995736766e-17
     ],
     "projected_center_m": [
-      8.0,
+      18.40602684020996,
       -8.0
     ],
     "pixels_per_metre": 24.6875,
@@ -113,7 +117,7 @@
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "world_coordinates": "(east, north, height)",
@@ -125,7 +129,7 @@
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "origin_world_m": [
@@ -146,7 +150,7 @@
       "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
       "east_index_range": [
         0,
-        1
+        2
       ],
       "north_index_range": [
         0,
@@ -156,14 +160,15 @@
       "authoring_world_coordinates_changed": false
     },
     "origin_pixel": [
-      602.5,
+      345.6012123823166,
       682.5
     ],
     "boundary_offset_from_centre_m": 8,
     "east_boundaries_m": [
       -8.0,
       8.0,
-      24.0
+      24.0,
+      40.0
     ],
     "north_boundaries_m": [
       -24.0,
@@ -176,11 +181,11 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            405.0,
+            148.1012123823166,
             880.0
           ],
           [
-            405.0,
+            148.1012123823166,
             90.0
           ]
         ],
@@ -191,11 +196,11 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            800.0,
+            543.1012123823166,
             880.0
           ],
           [
-            800.0,
+            543.1012123823166,
             90.0
           ]
         ],
@@ -206,11 +211,26 @@
         "coordinate_m": 24.0,
         "pixels": [
           [
-            1195.0,
+            938.1012123823166,
             880.0
           ],
           [
-            1195.0,
+            938.1012123823166,
+            90.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            1333.1012123823166,
+            880.0
+          ],
+          [
+            1333.1012123823166,
             90.0
           ]
         ],
@@ -221,11 +241,11 @@
         "coordinate_m": -24.0,
         "pixels": [
           [
-            405.0,
+            148.1012123823166,
             880.0
           ],
           [
-            1195.0,
+            1333.1012123823166,
             880.0
           ]
         ],
@@ -236,11 +256,11 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            405.0,
+            148.1012123823166,
             485.0
           ],
           [
-            1195.0,
+            1333.1012123823166,
             485.0
           ]
         ],
@@ -251,11 +271,11 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            405.0,
+            148.1012123823166,
             90.0
           ],
           [
-            1195.0,
+            1333.1012123823166,
             90.0
           ]
         ],
@@ -272,7 +292,7 @@
           -24.0
         ],
         "pixel": [
-          602.5,
+          345.6012123823166,
           897.0
         ]
       },
@@ -285,7 +305,20 @@
           -24.0
         ],
         "pixel": [
-          997.5,
+          740.6012123823166,
+          897.0
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -24.0
+        ],
+        "pixel": [
+          1135.6012123823166,
           897.0
         ]
       },
@@ -298,7 +331,7 @@
           -16.0
         ],
         "pixel": [
-          388.0,
+          131.1012123823166,
           682.5
         ]
       },
@@ -311,7 +344,7 @@
           0.0
         ],
         "pixel": [
-          388.0,
+          131.1012123823166,
           287.5
         ]
       }
@@ -371,7 +404,7 @@
         6.123233995736766e-17
       ],
       "projected_center_m": [
-        8.0,
+        18.40602684020996,
         -8.0
       ],
       "pixels_per_metre": 24.6875,
@@ -379,7 +412,7 @@
       "bounds_world_m": [
         -8.0,
         -24.0,
-        24.0,
+        40.0,
         8.0
       ],
       "world_coordinates": "(east, north, height)",
@@ -394,15 +427,15 @@
   },
   "header": {
     "captions": [
-      "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40",
+      "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
       "Clean view | Top view, north up | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40",
+        "text": "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
         "colour": "#172b42",
-        "font_pixels": 35,
+        "font_pixels": 30,
         "bold": true,
         "position": [
           30,
@@ -410,9 +443,9 @@
         ],
         "bounds": [
           30,
-          27,
-          800,
-          59
+          26,
+          1540,
+          54
         ]
       },
       {
@@ -462,8 +495,8 @@
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 4635,
-    "mesh_count": 14,
+    "triangles": 8439,
+    "mesh_count": 26,
     "bounds_xyz_m": [
       [
         [
@@ -505,6 +538,174 @@
         [
           7.144196033477783,
           8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          6.8463263511657715,
+          7.5
+        ],
+        [
+          3.0589792728424072,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          5.881835460662842,
+          7.5
+        ],
+        [
+          3.0589792728424072,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          24.159820556640625
+        ],
+        [
+          5.8463263511657715,
+          5.978767395019531
+        ],
+        [
+          7.1116743087768555,
+          8.0
+        ]
+      ],
+      [
+        [
+          31.678194046020508,
+          40.0
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          3.0589792728424072,
+          6.237580299377441
+        ]
+      ],
+      [
+        [
+          24.0,
+          32.03938293457031
+        ],
+        [
+          6.846794128417969,
+          8.890625
+        ],
+        [
+          5.4324541091918945,
+          7.989783763885498
+        ]
+      ],
+      [
+        [
+          40.0,
+          42.66468048095703
+        ],
+        [
+          7.5,
+          7.5
+        ],
+        [
+          2.0216121673583984,
+          4.686290740966797
+        ]
+      ],
+      [
+        [
+          40.0,
+          42.66468048095703
+        ],
+        [
+          6.5,
+          7.5
+        ],
+        [
+          2.0216121673583984,
+          4.686290740966797
+        ]
+      ],
+      [
+        [
+          40.0,
+          44.81205368041992
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          1.0453835725784302,
+          3.9378814697265625
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.6862907409668
+        ],
+        [
+          6.604485034942627,
+          7.5
+        ],
+        [
+          8.0,
+          13.270777702331543
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.6862907409668
+        ],
+        [
+          5.604485034942627,
+          7.508581638336182
+        ],
+        [
+          8.0,
+          13.270777702331543
+        ]
+      ],
+      [
+        [
+          26.53769302368164,
+          36.182708740234375
+        ],
+        [
+          7.203884601593018,
+          8.890625
+        ],
+        [
+          9.662090301513672,
+          12.734879493713379
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.182708740234375
+        ],
+        [
+          6.604485034942627,
+          8.890625
+        ],
+        [
+          9.667217254638672,
+          13.270777702331543
         ]
       ],
       [
@@ -668,13 +869,25 @@
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
       "5eb4bee9"
     ]
   },
-  "render_model_sha256": "1dcd27c28f0146983b56b96af4d3d53fe9d26f27451ac84a127b3f819ce9b046",
+  "render_model_sha256": "196f1f8b686bc89f28bd6662630b5904094b5e801f8f8e4c5ad4c713d5a32227",
   "textures": [
     {
       "instance": "5712000e",
@@ -702,7 +915,7 @@
     }
   ],
   "captions": [
-    "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40",
+    "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
     "Clean view | Top view, north up | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
     "Complete reusable piece shown at its authored orientation.",
@@ -777,5 +990,12 @@
       "drawn_above_model": true
     },
     "duplicate_grid_footer_visible": false
-  }
+  },
+  "title_source_inputs": {
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/piece.jsonc": "2dcab22f6492f50966694380248166a040d9448562bf8aec30f50cf60e246d2b",
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connections.json": "441546dac9eccfa06013dcb3d60afc2ca47cb3db89aeb03723d13b94a121a89b",
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connector-groups.jsonc": "93c59ca3be1f275d74e366762631b93fbf1654fa665c6344e7058c3d99e26c3a",
+    "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0"
+  },
+  "input_fingerprint": "fd9d30f91dd93dcc54577e0fd2b9df906024372a5a9187a6611a88789de3b2c7"
 }

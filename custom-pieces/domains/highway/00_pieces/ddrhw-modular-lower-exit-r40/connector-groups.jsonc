@@ -10,8 +10,8 @@
   "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
   "piece_id": "ddrhw-modular-lower-exit-r40",
   "source_binding": {
-    "piece_sha256": "fbd1f9a529ab0f02315a73a5fa4f4971fefc12032cb4444ceb8ec28bb162dc48",
-    "connections_sha256": "5d4c2e6d4da5e46d2e87e509ba4bde44c69ddcec0bebccb381f669aa8a42b224"
+    "piece_sha256": "2dcab22f6492f50966694380248166a040d9448562bf8aec30f50cf60e246d2b",
+    "connections_sha256": "441546dac9eccfa06013dcb3d60afc2ca47cb3db89aeb03723d13b94a121a89b"
   },
   "components": [
     {
@@ -56,6 +56,32 @@
           "cut_id": "cut-1-e-in-2"
         }
       ]
+    },
+    {
+      "id": "boundary-03-access-ramp-01",
+      "component_id": "access-ramp",
+      "members": [
+        {
+          "id": "member-1-e-in-4",
+          "source_port_id": "1-E-in-4",
+          "direction": "in",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-e-in-4"
+        }
+      ]
+    },
+    {
+      "id": "boundary-04-access-ramp-01",
+      "component_id": "access-ramp",
+      "members": [
+        {
+          "id": "member-1-s-out-3",
+          "source_port_id": "1-S-out-3",
+          "direction": "out",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-s-out-3"
+        }
+      ]
     }
   ],
   "boundary_bundles": [
@@ -79,6 +105,28 @@
       "edge": "east",
       "connector_ids": [
         "boundary-02-access-ramp-01"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "source_cell": [
+        2,
+        0
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "boundary-03-access-ramp-01"
+      ]
+    },
+    {
+      "id": "boundary-04",
+      "source_cell": [
+        2,
+        0
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-04-access-ramp-01"
       ]
     }
   ]

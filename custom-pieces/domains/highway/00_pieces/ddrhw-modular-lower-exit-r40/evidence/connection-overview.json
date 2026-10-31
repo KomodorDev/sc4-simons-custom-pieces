@@ -1,8 +1,8 @@
 {
-  "display_title": "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m)",
+  "display_title": "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
   "size": [
     2000,
-    3636
+    5524
   ],
   "camera": {
     "projection": "orthographic",
@@ -28,15 +28,15 @@
       0.6061088109378322
     ],
     "projected_center_m": [
-      1.7763568394002505e-15,
-      -5.826990645410629
+      5.656854249492383,
+      -8.740485968115944
     ],
-    "pixels_per_metre": 35.181110194755355,
+    "pixels_per_metre": 28.14488815580429,
     "padding_pixels": 90.0,
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "world_coordinates": "(east, north, height)",
@@ -53,7 +53,7 @@
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "display_axis_labels": {
@@ -63,7 +63,7 @@
     "display_index_ranges": {
       "X": [
         0,
-        1
+        2
       ],
       "Y": [
         0,
@@ -83,6 +83,10 @@
       ],
       [
         1,
+        1
+      ],
+      [
+        2,
         1
       ]
     ],
@@ -116,15 +120,15 @@
   "body_font_pixels": 28,
   "header": {
     "captions": [
-      "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m)",
+      "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
       "Connection overview | Southeast view | Authored orientation: 0\u00b0",
       "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
     ],
     "rows": [
       {
-        "text": "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m)",
+        "text": "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
         "colour": "#172b42",
-        "font_pixels": 44,
+        "font_pixels": 37,
         "bold": true,
         "position": [
           48,
@@ -132,9 +136,9 @@
         ],
         "bounds": [
           48,
-          32,
-          1818,
-          73
+          31,
+          1911,
+          65
         ]
       },
       {
@@ -198,7 +202,7 @@
     "Not declared means no section origin or offset was authored. Its marker uses an actual member endpoint; the measured intersections remain authoritative."
   ],
   "figure_text": [
-    "Piece - RHW Ramp \u2014 Lower Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m)",
+    "Piece - RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 \u2014 Custom (0 m) / Custom (6.74513 m) / Custom (7.5 m)",
     "Connection overview | Southeast view | Authored orientation: 0\u00b0",
     "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
     "Headings: 0\u00b0 = North, 90\u00b0 = East, 180\u00b0 = South, and 270\u00b0 = West; clockwise in plan view, pointing out of the piece.",
@@ -2494,6 +2498,2289 @@
       "group_ids": [
         "boundary-02-access-ramp-01"
       ]
+    },
+    {
+      "id": "boundary-04",
+      "marker": "C",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "South",
+      "text_runs": [
+        {
+          "text": "South edge \u00b7 cell [2,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            462,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   ROAD \u2014 Custom (7.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            438,
+            200
+          ]
+        },
+        {
+          "text": "boundary-04-access-ramp-01",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            470,
+            242
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "ROAD",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            463,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "access-ramp",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            400,
+            567,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Engine class (1); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            692,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[2,0] / South",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            533,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "Not declared; see member",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            601,
+            787,
+            626
+          ]
+        },
+        {
+          "text": "endpoints",
+          "position": [
+            382,
+            632
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            637,
+            534,
+            664
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            674
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            679,
+            326,
+            706
+          ]
+        },
+        {
+          "text": "Not declared",
+          "position": [
+            382,
+            674
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            679,
+            541,
+            700
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            716
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            721,
+            264,
+            748
+          ]
+        },
+        {
+          "text": "Custom (7.5 m); no nominal level",
+          "position": [
+            382,
+            716
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            721,
+            793,
+            748
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            758
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            763,
+            245,
+            790
+          ]
+        },
+        {
+          "text": "255.736\u00b0",
+          "position": [
+            382,
+            758
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            764,
+            494,
+            784
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            800
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            805,
+            294,
+            832
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            800
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            805,
+            549,
+            832
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            874
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            880,
+            301,
+            900
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            927,
+            241,
+            948
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            958
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            964,
+            149,
+            984
+          ]
+        },
+        {
+          "text": "1 / 1 / 1",
+          "position": [
+            382,
+            922
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            928,
+            475,
+            948
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            1000
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1005,
+            275,
+            1032
+          ]
+        },
+        {
+          "text": "0 incoming; 1 outgoing",
+          "position": [
+            382,
+            1000
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1005,
+            664,
+            1032
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1042
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1047,
+            280,
+            1074
+          ]
+        },
+        {
+          "text": "See member directions",
+          "position": [
+            382,
+            1042
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1047,
+            670,
+            1068
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1084
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1090,
+            241,
+            1116
+          ]
+        },
+        {
+          "text": "See individual measured intersections",
+          "position": [
+            382,
+            1084
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1089,
+            854,
+            1110
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1126
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1132,
+            209,
+            1152
+          ]
+        },
+        {
+          "text": "road-lane",
+          "position": [
+            382,
+            1126
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1132,
+            500,
+            1152
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1168
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1174,
+            200,
+            1194
+          ]
+        },
+        {
+          "text": "car",
+          "position": [
+            382,
+            1168
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1179,
+            422,
+            1194
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1242
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1248,
+            276,
+            1268
+          ]
+        },
+        {
+          "text": "member-1-s-out-3   source: 1-S-out-3",
+          "position": [
+            32,
+            1290
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1295,
+            639,
+            1316
+          ]
+        },
+        {
+          "text": "Channel: access-ramp-01 | Cut: cut-1-s-out-3",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            774,
+            1371
+          ]
+        },
+        {
+          "text": "Modes: car",
+          "position": [
+            32,
+            1382
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1388,
+            171,
+            1408
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1432,
+            91,
+            1452
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1432,
+            302,
+            1458
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1431,
+            566,
+            1458
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1432,
+            691,
+            1458
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1432,
+            867,
+            1458
+          ]
+        },
+        {
+          "text": "Outgoing",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1467,
+            146,
+            1494
+          ]
+        },
+        {
+          "text": "[33.9606,-8,7.5]",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1465,
+            432,
+            1493
+          ]
+        },
+        {
+          "text": "Not decl",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1467,
+            577,
+            1488
+          ]
+        },
+        {
+          "text": "ared",
+          "position": [
+            442,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1503,
+            509,
+            1524
+          ]
+        },
+        {
+          "text": "255.736\u00b0",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1468,
+            722,
+            1488
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1467,
+            761,
+            1488
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1576
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1582,
+            276,
+            1602
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1624
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1630,
+            188,
+            1656
+          ]
+        },
+        {
+          "text": "boundary-04",
+          "position": [
+            382,
+            1624
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1629,
+            567,
+            1656
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1686,
+            111,
+            1706
+          ]
+        },
+        {
+          "text": "No profile reference",
+          "position": [
+            32,
+            1720
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1725,
+            369,
+            1752
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "ROAD",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "access-ramp",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Engine class (1); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[2,0] / South",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "Not declared; see member endpoints",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Not declared",
+          "top": 674
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Custom (7.5 m); no nominal level",
+          "top": 716
+        },
+        {
+          "label": "Outward heading",
+          "value": "255.736\u00b0",
+          "top": 758
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 800
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "1 / 1 / 1",
+          "top": 922
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "0 incoming; 1 outgoing",
+          "top": 1000
+        },
+        {
+          "label": "Running convention",
+          "value": "See member directions",
+          "top": 1042
+        },
+        {
+          "label": "Channel spacing",
+          "value": "See individual measured intersections",
+          "top": 1084
+        },
+        {
+          "label": "Channel kinds",
+          "value": "road-lane",
+          "top": 1126
+        },
+        {
+          "label": "Traffic modes",
+          "value": "car",
+          "top": 1168
+        },
+        {
+          "label": "Boundary ID",
+          "value": "boundary-04",
+          "top": 1624
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "boundary-04-access-ramp-01",
+          "network": "road",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   ROAD \u2014 Custom (7.5 m)",
+          "colour": "#9a4e17",
+          "bounds": [
+            16,
+            152,
+            915,
+            1784
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        1848
+      ],
+      "output_box": [
+        48,
+        3472,
+        980,
+        5320
+      ],
+      "group_ids": [
+        "boundary-04-access-ramp-01"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "marker": "D",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "East",
+      "text_runs": [
+        {
+          "text": "East edge \u00b7 cell [2,0]",
+          "position": [
+            90,
+            32
+          ],
+          "kind": "card_heading",
+          "bold": true,
+          "font_size": 36,
+          "monospace": false,
+          "bounds": [
+            90,
+            39,
+            436,
+            72
+          ]
+        },
+        {
+          "text": "This service group is required at this edge.",
+          "position": [
+            32,
+            88
+          ],
+          "kind": "boundary_requirement",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            94,
+            603,
+            120
+          ]
+        },
+        {
+          "text": "1 / 1   ROAD \u2014 Custom (7.5 m)",
+          "position": [
+            32,
+            168
+          ],
+          "kind": "service_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            174,
+            438,
+            200
+          ]
+        },
+        {
+          "text": "boundary-03-access-ramp-01",
+          "position": [
+            32,
+            210
+          ],
+          "kind": "service_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            215,
+            470,
+            242
+          ]
+        },
+        {
+          "text": "Identity",
+          "position": [
+            32,
+            300
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            306,
+            132,
+            332
+          ]
+        },
+        {
+          "text": "Network",
+          "position": [
+            32,
+            348
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            353,
+            135,
+            374
+          ]
+        },
+        {
+          "text": "ROAD",
+          "position": [
+            382,
+            348
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            354,
+            463,
+            374
+          ]
+        },
+        {
+          "text": "Component",
+          "position": [
+            32,
+            390
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            395,
+            177,
+            422
+          ]
+        },
+        {
+          "text": "access-ramp",
+          "position": [
+            382,
+            390
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            400,
+            567,
+            422
+          ]
+        },
+        {
+          "text": "Game class / role",
+          "position": [
+            32,
+            432
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            438,
+            250,
+            458
+          ]
+        },
+        {
+          "text": "Engine class (1); primary",
+          "position": [
+            382,
+            432
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            438,
+            692,
+            464
+          ]
+        },
+        {
+          "text": "Boundary and alignment",
+          "position": [
+            32,
+            506
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            512,
+            360,
+            538
+          ]
+        },
+        {
+          "text": "Source cell / edge",
+          "position": [
+            32,
+            554
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            560,
+            256,
+            586
+          ]
+        },
+        {
+          "text": "[2,0] / East",
+          "position": [
+            382,
+            554
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            559,
+            516,
+            586
+          ]
+        },
+        {
+          "text": "Section origin [E,N] (m)",
+          "position": [
+            32,
+            596
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            601,
+            321,
+            628
+          ]
+        },
+        {
+          "text": "Not declared; see member",
+          "position": [
+            382,
+            596
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            601,
+            787,
+            626
+          ]
+        },
+        {
+          "text": "endpoints",
+          "position": [
+            382,
+            632
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            637,
+            534,
+            664
+          ]
+        },
+        {
+          "text": "Centring / section offset",
+          "position": [
+            32,
+            674
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            679,
+            326,
+            706
+          ]
+        },
+        {
+          "text": "Not declared",
+          "position": [
+            382,
+            674
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            679,
+            541,
+            700
+          ]
+        },
+        {
+          "text": "Level (path height)",
+          "position": [
+            32,
+            716
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            721,
+            264,
+            748
+          ]
+        },
+        {
+          "text": "Custom (7.5 m); no nominal level",
+          "position": [
+            382,
+            716
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            721,
+            793,
+            748
+          ]
+        },
+        {
+          "text": "Outward heading",
+          "position": [
+            32,
+            758
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            763,
+            245,
+            790
+          ]
+        },
+        {
+          "text": "83.4871\u00b0",
+          "position": [
+            382,
+            758
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            764,
+            494,
+            784
+          ]
+        },
+        {
+          "text": "Slope at joining edge",
+          "position": [
+            32,
+            800
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            805,
+            294,
+            832
+          ]
+        },
+        {
+          "text": "0% (outward)",
+          "position": [
+            382,
+            800
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            805,
+            549,
+            832
+          ]
+        },
+        {
+          "text": "Channels and traffic",
+          "position": [
+            32,
+            874
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            880,
+            301,
+            900
+          ]
+        },
+        {
+          "text": "Channels / cuts /",
+          "position": [
+            32,
+            922
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            927,
+            241,
+            948
+          ]
+        },
+        {
+          "text": "members",
+          "position": [
+            32,
+            958
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            964,
+            149,
+            984
+          ]
+        },
+        {
+          "text": "1 / 1 / 1",
+          "position": [
+            382,
+            922
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            928,
+            475,
+            948
+          ]
+        },
+        {
+          "text": "Traffic arrangement",
+          "position": [
+            32,
+            1000
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1005,
+            275,
+            1032
+          ]
+        },
+        {
+          "text": "1 incoming; 0 outgoing",
+          "position": [
+            382,
+            1000
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1005,
+            664,
+            1032
+          ]
+        },
+        {
+          "text": "Running convention",
+          "position": [
+            32,
+            1042
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1047,
+            280,
+            1074
+          ]
+        },
+        {
+          "text": "See member directions",
+          "position": [
+            382,
+            1042
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1047,
+            670,
+            1068
+          ]
+        },
+        {
+          "text": "Channel spacing",
+          "position": [
+            32,
+            1084
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1090,
+            241,
+            1116
+          ]
+        },
+        {
+          "text": "See individual measured intersections",
+          "position": [
+            382,
+            1084
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1089,
+            854,
+            1110
+          ]
+        },
+        {
+          "text": "Channel kinds",
+          "position": [
+            32,
+            1126
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1132,
+            209,
+            1152
+          ]
+        },
+        {
+          "text": "road-lane",
+          "position": [
+            382,
+            1126
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1132,
+            500,
+            1152
+          ]
+        },
+        {
+          "text": "Traffic modes",
+          "position": [
+            32,
+            1168
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1174,
+            200,
+            1194
+          ]
+        },
+        {
+          "text": "car",
+          "position": [
+            382,
+            1168
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            382,
+            1179,
+            422,
+            1194
+          ]
+        },
+        {
+          "text": "Directed members",
+          "position": [
+            32,
+            1242
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1248,
+            276,
+            1268
+          ]
+        },
+        {
+          "text": "member-1-e-in-4   source: 1-E-in-4",
+          "position": [
+            32,
+            1290
+          ],
+          "kind": "member_identity",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1295,
+            605,
+            1316
+          ]
+        },
+        {
+          "text": "Channel: access-ramp-01 | Cut: cut-1-e-in-4",
+          "position": [
+            32,
+            1338
+          ],
+          "kind": "member_association",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1343,
+            757,
+            1371
+          ]
+        },
+        {
+          "text": "Modes: car",
+          "position": [
+            32,
+            1382
+          ],
+          "kind": "member_modes",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1388,
+            171,
+            1408
+          ]
+        },
+        {
+          "text": "Flow",
+          "position": [
+            32,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1432,
+            91,
+            1452
+          ]
+        },
+        {
+          "text": "[E,N,H] (m)",
+          "position": [
+            162,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            162,
+            1432,
+            302,
+            1458
+          ]
+        },
+        {
+          "text": "Offset (m)",
+          "position": [
+            442,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            442,
+            1431,
+            566,
+            1458
+          ]
+        },
+        {
+          "text": "Heading",
+          "position": [
+            587,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            587,
+            1432,
+            691,
+            1458
+          ]
+        },
+        {
+          "text": "Edge slope",
+          "position": [
+            727,
+            1426
+          ],
+          "kind": "member_column",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            727,
+            1432,
+            867,
+            1458
+          ]
+        },
+        {
+          "text": "Incoming",
+          "position": [
+            32,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1468,
+            146,
+            1494
+          ]
+        },
+        {
+          "text": "[40,-6.63407,7.5",
+          "position": [
+            162,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1465,
+            432,
+            1493
+          ]
+        },
+        {
+          "text": "]",
+          "position": [
+            162,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            162,
+            1501,
+            179,
+            1526
+          ]
+        },
+        {
+          "text": "Not decl",
+          "position": [
+            442,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1467,
+            577,
+            1488
+          ]
+        },
+        {
+          "text": "ared",
+          "position": [
+            442,
+            1498
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            442,
+            1503,
+            509,
+            1524
+          ]
+        },
+        {
+          "text": "83.4871\u00b0",
+          "position": [
+            587,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            587,
+            1468,
+            722,
+            1488
+          ]
+        },
+        {
+          "text": "0%",
+          "position": [
+            727,
+            1462
+          ],
+          "kind": "member_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            727,
+            1467,
+            761,
+            1488
+          ]
+        },
+        {
+          "text": "Source references",
+          "position": [
+            32,
+            1576
+          ],
+          "kind": "section_heading",
+          "bold": true,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1582,
+            276,
+            1602
+          ]
+        },
+        {
+          "text": "Boundary ID",
+          "position": [
+            32,
+            1624
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1630,
+            188,
+            1656
+          ]
+        },
+        {
+          "text": "boundary-03",
+          "position": [
+            382,
+            1624
+          ],
+          "kind": "field_value",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            382,
+            1629,
+            567,
+            1656
+          ]
+        },
+        {
+          "text": "Profile",
+          "position": [
+            32,
+            1680
+          ],
+          "kind": "field_label",
+          "bold": false,
+          "font_size": 28,
+          "monospace": false,
+          "bounds": [
+            32,
+            1686,
+            111,
+            1706
+          ]
+        },
+        {
+          "text": "No profile reference",
+          "position": [
+            32,
+            1720
+          ],
+          "kind": "profile_reference",
+          "bold": false,
+          "font_size": 28,
+          "monospace": true,
+          "bounds": [
+            32,
+            1725,
+            369,
+            1752
+          ]
+        }
+      ],
+      "field_rows": [
+        {
+          "label": "Network",
+          "value": "ROAD",
+          "top": 348
+        },
+        {
+          "label": "Component",
+          "value": "access-ramp",
+          "top": 390
+        },
+        {
+          "label": "Game class / role",
+          "value": "Engine class (1); primary",
+          "top": 432
+        },
+        {
+          "label": "Source cell / edge",
+          "value": "[2,0] / East",
+          "top": 554
+        },
+        {
+          "label": "Section origin [E,N] (m)",
+          "value": "Not declared; see member endpoints",
+          "top": 596
+        },
+        {
+          "label": "Centring / section offset",
+          "value": "Not declared",
+          "top": 674
+        },
+        {
+          "label": "Level (path height)",
+          "value": "Custom (7.5 m); no nominal level",
+          "top": 716
+        },
+        {
+          "label": "Outward heading",
+          "value": "83.4871\u00b0",
+          "top": 758
+        },
+        {
+          "label": "Slope at joining edge",
+          "value": "0% (outward)",
+          "top": 800
+        },
+        {
+          "label": "Channels / cuts / members",
+          "value": "1 / 1 / 1",
+          "top": 922
+        },
+        {
+          "label": "Traffic arrangement",
+          "value": "1 incoming; 0 outgoing",
+          "top": 1000
+        },
+        {
+          "label": "Running convention",
+          "value": "See member directions",
+          "top": 1042
+        },
+        {
+          "label": "Channel spacing",
+          "value": "See individual measured intersections",
+          "top": 1084
+        },
+        {
+          "label": "Channel kinds",
+          "value": "road-lane",
+          "top": 1126
+        },
+        {
+          "label": "Traffic modes",
+          "value": "car",
+          "top": 1168
+        },
+        {
+          "label": "Boundary ID",
+          "value": "boundary-03",
+          "top": 1624
+        }
+      ],
+      "service_sections": [
+        {
+          "group_id": "boundary-03-access-ramp-01",
+          "network": "road",
+          "ordinal": 1,
+          "total": 1,
+          "required_together": true,
+          "title": "1 / 1   ROAD \u2014 Custom (7.5 m)",
+          "colour": "#9a4e17",
+          "bounds": [
+            16,
+            152,
+            915,
+            1784
+          ],
+          "header_bounds": [
+            16,
+            152,
+            915,
+            266
+          ]
+        }
+      ],
+      "requirement": "This service group is required at this edge.",
+      "size": [
+        932,
+        1848
+      ],
+      "output_box": [
+        1020,
+        3472,
+        1952,
+        5320
+      ],
+      "group_ids": [
+        "boundary-03-access-ramp-01"
+      ]
     }
   ],
   "groups": [
@@ -2599,26 +4886,26 @@
         0.0
       ],
       "viewport_pixel": [
-        448.7060334903023,
-        349.21555562500004
+        390.15329662659246,
+        297.37244450000003
       ],
       "marker": "A",
       "output_pixel": [
-        496.7060334903023,
-        531.215555625
+        438.15329662659246,
+        479.37244450000003
       ],
       "marker_output_pixel": [
-        434.7060334903023,
-        493.215555625
+        376.15329662659246,
+        441.37244450000003
       ],
       "marker_leader_output_pixels": [
         [
-          496.7060334903023,
-          531.215555625
+          438.15329662659246,
+          479.37244450000003
         ],
         [
-          434.7060334903023,
-          493.215555625
+          376.15329662659246,
+          441.37244450000003
         ]
       ]
     },
@@ -2724,26 +5011,276 @@
         6.745132
       ],
       "viewport_pixel": [
-        1295.1146790086573,
-        529.8760196174096
+        1067.2802130412765,
+        441.9008156939277
       ],
       "marker": "B",
       "output_pixel": [
-        1343.1146790086573,
-        711.8760196174096
+        1115.2802130412765,
+        623.9008156939277
       ],
       "marker_output_pixel": [
-        1405.1146790086573,
-        673.8760196174096
+        1177.2802130412765,
+        585.9008156939277
       ],
       "marker_leader_output_pixels": [
         [
-          1343.1146790086573,
-          711.8760196174096
+          1115.2802130412765,
+          623.9008156939277
         ],
         [
-          1405.1146790086573,
-          673.8760196174096
+          1177.2802130412765,
+          585.9008156939277
+        ]
+      ]
+    },
+    {
+      "id": "boundary-03-access-ramp-01",
+      "component_id": "access-ramp",
+      "profile_id": null,
+      "resolved_profile": {
+        "network": "road",
+        "nominal_level": null,
+        "path_height_m": 7.5,
+        "engine_transport": 1,
+        "role": "primary",
+        "alignment": "angled"
+      },
+      "network": "road",
+      "nominal_level": null,
+      "path_height_m": 7.5,
+      "boundary_bundle_id": "boundary-03",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "East",
+      "anchor_enh_m": null,
+      "section_offset_m": null,
+      "centred_on_tile_boundary": null,
+      "physical_channel_count": 1,
+      "edge_cut_count": 1,
+      "channel_spacing_m": null,
+      "channels": [
+        {
+          "id": "access-ramp-01",
+          "component_id": "access-ramp",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "cuts": [
+            {
+              "id": "cut-1-e-in-4",
+              "member_ids": [
+                "member-1-e-in-4"
+              ],
+              "endpoint_m": [
+                40.0,
+                -6.634072,
+                7.5
+              ],
+              "outward_tangent": [
+                0.9935463584813209,
+                0.11342677615319352
+              ],
+              "heading_outward_degrees": 83.48710778152049,
+              "grade_outward": -0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "car"
+      ],
+      "common_outward_heading_degrees": 83.48710778152049,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "member-1-e-in-4",
+          "source_port_id": "1-E-in-4",
+          "direction": "in",
+          "endpoint_m": [
+            40.0,
+            -6.634072,
+            7.5
+          ],
+          "tangent": [
+            -0.9935463584813209,
+            -0.11342677615319352
+          ],
+          "grade": 0.0,
+          "edge": 2,
+          "engine_transport": 1,
+          "role": "primary",
+          "service_network": "road",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-e-in-4",
+          "traffic_modes": [
+            "car"
+          ],
+          "outward_horizontal_unit_en": [
+            0.9935463584813209,
+            0.11342677615319352
+          ],
+          "outward_heading_degrees": 83.48710778152049,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": null
+        }
+      ],
+      "marker_enh_m": [
+        40.0,
+        -6.634072,
+        7.5
+      ],
+      "viewport_pixel": [
+        1456.8185263689609,
+        551.0626544319479
+      ],
+      "marker": "D",
+      "output_pixel": [
+        1504.8185263689609,
+        733.0626544319479
+      ],
+      "marker_output_pixel": [
+        1566.8185263689609,
+        695.0626544319479
+      ],
+      "marker_leader_output_pixels": [
+        [
+          1504.8185263689609,
+          733.0626544319479
+        ],
+        [
+          1566.8185263689609,
+          695.0626544319479
+        ]
+      ]
+    },
+    {
+      "id": "boundary-04-access-ramp-01",
+      "component_id": "access-ramp",
+      "profile_id": null,
+      "resolved_profile": {
+        "network": "road",
+        "nominal_level": null,
+        "path_height_m": 7.5,
+        "engine_transport": 1,
+        "role": "primary",
+        "alignment": "angled"
+      },
+      "network": "road",
+      "nominal_level": null,
+      "path_height_m": 7.5,
+      "boundary_bundle_id": "boundary-04",
+      "source_cell": [
+        2,
+        0
+      ],
+      "boundary": "South",
+      "anchor_enh_m": null,
+      "section_offset_m": null,
+      "centred_on_tile_boundary": null,
+      "physical_channel_count": 1,
+      "edge_cut_count": 1,
+      "channel_spacing_m": null,
+      "channels": [
+        {
+          "id": "access-ramp-01",
+          "component_id": "access-ramp",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "cuts": [
+            {
+              "id": "cut-1-s-out-3",
+              "member_ids": [
+                "member-1-s-out-3"
+              ],
+              "endpoint_m": [
+                33.960601,
+                -8.0,
+                7.5
+              ],
+              "outward_tangent": [
+                -0.9691702085915177,
+                -0.2463921808391532
+              ],
+              "heading_outward_degrees": 255.73587778029963,
+              "grade_outward": 0.0
+            }
+          ]
+        }
+      ],
+      "traffic_modes": [
+        "car"
+      ],
+      "common_outward_heading_degrees": 255.73587778029963,
+      "common_outward_grade_at_edge": 0.0,
+      "colour": "#9a4e17",
+      "members": [
+        {
+          "id": "member-1-s-out-3",
+          "source_port_id": "1-S-out-3",
+          "direction": "out",
+          "endpoint_m": [
+            33.960601,
+            -8.0,
+            7.5
+          ],
+          "tangent": [
+            -0.9691702085915177,
+            -0.2463921808391532
+          ],
+          "grade": 0.0,
+          "edge": 3,
+          "engine_transport": 1,
+          "role": "primary",
+          "service_network": "road",
+          "channel_id": "access-ramp-01",
+          "cut_id": "cut-1-s-out-3",
+          "traffic_modes": [
+            "car"
+          ],
+          "outward_horizontal_unit_en": [
+            -0.9691702085915177,
+            -0.2463921808391532
+          ],
+          "outward_heading_degrees": 255.73587778029963,
+          "outward_grade_at_edge": 0.0,
+          "outward_slope_at_edge_percent": 0.0,
+          "section_frame_offset_m": null
+        }
+      ],
+      "marker_enh_m": [
+        33.960601,
+        -8.0,
+        7.5
+      ],
+      "viewport_pixel": [
+        1309.4418459880862,
+        503.1595766819479
+      ],
+      "marker": "C",
+      "output_pixel": [
+        1357.4418459880862,
+        685.1595766819479
+      ],
+      "marker_output_pixel": [
+        1419.4418459880862,
+        647.1595766819479
+      ],
+      "marker_leader_output_pixels": [
+        [
+          1357.4418459880862,
+          685.1595766819479
+        ],
+        [
+          1419.4418459880862,
+          647.1595766819479
         ]
       ]
     }
@@ -2752,33 +5289,33 @@
   "schema_version": 1,
   "piece_id": "ddrhw-modular-lower-exit-r40",
   "file": "previews/connection-overview.png",
-  "output_sha256": "b90e50780ad5a845deb93f0867b92cb93a4ce5e69dae286c5285c69343df52ba",
+  "output_sha256": "06ed1797abb085fbf268ed96c88cf548825d4355fda3b15601df70118a704b34",
   "source_inputs": {
-    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/piece.jsonc": "fbd1f9a529ab0f02315a73a5fa4f4971fefc12032cb4444ceb8ec28bb162dc48",
-    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connections.json": "5d4c2e6d4da5e46d2e87e509ba4bde44c69ddcec0bebccb381f669aa8a42b224",
-    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connector-groups.jsonc": "96abd33fb4fcc55c1b91436d19dc911fd38ea5209f9ee8c8e78da3ea5d4dc19f",
-    "domains/highway/domain.jsonc": "9882d9841d4dfc9430955c6fdf3b36676a6bd14f896ee8cda316438fabdb4ee4",
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/piece.jsonc": "2dcab22f6492f50966694380248166a040d9448562bf8aec30f50cf60e246d2b",
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connections.json": "441546dac9eccfa06013dcb3d60afc2ca47cb3db89aeb03723d13b94a121a89b",
+    "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/connector-groups.jsonc": "93c59ca3be1f275d74e366762631b93fbf1654fa665c6344e7058c3d99e26c3a",
+    "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0",
     "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
     "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
   },
   "generator_sha256": "23a6fb505bb13e981dfa6e363cede1445a6f9ee91404b62189dd041ea03886de",
   "metadata_resolver_sha256": "1ee63694f82e64b61a25634d6ef56db093af0403780021b14731c7f8ecb41e1b",
-  "manifest_sha256": "99d984feb1899a4c9de39e504997451b94dd6a4f2066fd1860525fd52d3e6144",
-  "compiled_manifest_sha256": "44ed3d43409b835dbe3e9f5b63de248891e950d2ff801bdb471ef1ee17c2677f",
-  "source_manifest": "dist/ddrhw-modular-ramp-kit-parts-01/manifest.json",
-  "source_dat": "dist/ddrhw-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-r40.dat",
+  "manifest_sha256": "8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1",
+  "compiled_manifest_sha256": "fc48bddc9bde2000a12c40ec0c0eb70e1051b4a586a87fea2715c50065e418ea",
+  "source_manifest": "dist/ddrhw-straight-modular-ramp-kit-parts-01/manifest.json",
+  "source_dat": "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-r40.dat",
   "source_preview_id": "7f599ff5",
-  "source_dat_sha256": "475b33fb88fad00083712b7e51669ff5bf9269e6d97a8027f01b8d3ef26d6201",
-  "source_model_sha256": "1dcd27c28f0146983b56b96af4d3d53fe9d26f27451ac84a127b3f819ce9b046",
-  "render_model_sha256": "1dcd27c28f0146983b56b96af4d3d53fe9d26f27451ac84a127b3f819ce9b046",
+  "source_dat_sha256": "0cbe4bc3dba96d11daa812b51083c664af49879d1d73d8a71f21b0c36b70970b",
+  "source_model_sha256": "196f1f8b686bc89f28bd6662630b5904094b5e801f8f8e4c5ad4c713d5a32227",
+  "render_model_sha256": "196f1f8b686bc89f28bd6662630b5904094b5e801f8f8e4c5ad4c713d5a32227",
   "model_validation": {
     "all_animation_references_valid": true,
     "all_vertex_indices_valid": true,
     "all_primitive_ranges_valid": true,
     "all_output_buffers_used": true,
     "all_vertex_positions_finite": true,
-    "triangles": 4635,
-    "mesh_count": 14,
+    "triangles": 8439,
+    "mesh_count": 26,
     "bounds_xyz_m": [
       [
         [
@@ -2820,6 +5357,174 @@
         [
           7.144196033477783,
           8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          6.8463263511657715,
+          7.5
+        ],
+        [
+          3.0589792728424072,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          40.0
+        ],
+        [
+          5.881835460662842,
+          7.5
+        ],
+        [
+          3.0589792728424072,
+          8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          24.159820556640625
+        ],
+        [
+          5.8463263511657715,
+          5.978767395019531
+        ],
+        [
+          7.1116743087768555,
+          8.0
+        ]
+      ],
+      [
+        [
+          31.678194046020508,
+          40.0
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          3.0589792728424072,
+          6.237580299377441
+        ]
+      ],
+      [
+        [
+          24.0,
+          32.03938293457031
+        ],
+        [
+          6.846794128417969,
+          8.890625
+        ],
+        [
+          5.4324541091918945,
+          7.989783763885498
+        ]
+      ],
+      [
+        [
+          40.0,
+          42.66468048095703
+        ],
+        [
+          7.5,
+          7.5
+        ],
+        [
+          2.0216121673583984,
+          4.686290740966797
+        ]
+      ],
+      [
+        [
+          40.0,
+          42.66468048095703
+        ],
+        [
+          6.5,
+          7.5
+        ],
+        [
+          2.0216121673583984,
+          4.686290740966797
+        ]
+      ],
+      [
+        [
+          40.0,
+          44.81205368041992
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          1.0453835725784302,
+          3.9378814697265625
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.6862907409668
+        ],
+        [
+          6.604485034942627,
+          7.5
+        ],
+        [
+          8.0,
+          13.270777702331543
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.6862907409668
+        ],
+        [
+          5.604485034942627,
+          7.508581638336182
+        ],
+        [
+          8.0,
+          13.270777702331543
+        ]
+      ],
+      [
+        [
+          26.53769302368164,
+          36.182708740234375
+        ],
+        [
+          7.203884601593018,
+          8.890625
+        ],
+        [
+          9.662090301513672,
+          12.734879493713379
+        ]
+      ],
+      [
+        [
+          24.0,
+          36.182708740234375
+        ],
+        [
+          6.604485034942627,
+          8.890625
+        ],
+        [
+          9.667217254638672,
+          13.270777702331543
         ]
       ],
       [
@@ -2983,6 +5688,18 @@
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
       "5eb4bee9",
       "5712000e",
       "5eb4beee",
@@ -2991,9 +5708,10 @@
   },
   "saved_resource_fingerprints_checked": {
     "effect:ddrhw-modular-lower-exit-r40:ea5118b0-ea5118b1-7f599ff5": "217123aa5e8a5c99b22440ec15522c6fe22506b46504386043a850ff049e434d",
-    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599010": "dec90f79e8cd7b5a4e8a525896dfaea51614660d0d54a834034c6b11194403ca",
-    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599100": "c3edb665e9a3fd270646cd0d80342d91bb877433e11d75756b5d22f2775d9676",
-    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599110": "159f6be41af0f827ac8cbe38066005ac6f694998874f1fbe4c9984c28bf7a262",
+    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599010": "dcc0f3ace1887fc6b74b2f8956d82aaee507d05948c81f869857e52117df0c74",
+    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599100": "1eb9be5e7f4729c1c85ae6b7a1742fe27f061e1b0714bb034a158de6e5c61e48",
+    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599110": "44deffdf7910ea625cc151003603bc73c962c743f3b44cb713272f63a0f30687",
+    "exemplar:ddrhw-modular-lower-exit-r40:6534284a-a8434037-7f599200": "b6b41f75c67c25b213529108c7be2bcc438ddb474c1ccc24f31b5cc88ca2bf96",
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599010": "d110a894b39c2f42f3dfdf810d71652e7a97db195af73277d32886508b8bf5d7",
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599011": "d110a894b39c2f42f3dfdf810d71652e7a97db195af73277d32886508b8bf5d7",
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599012": "d110a894b39c2f42f3dfdf810d71652e7a97db195af73277d32886508b8bf5d7",
@@ -3009,10 +5727,16 @@
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599112": "c596751a3ba7bca05e648bf57edd92df08f892748f40da3236e696a18538a5a7",
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599113": "c596751a3ba7bca05e648bf57edd92df08f892748f40da3236e696a18538a5a7",
     "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599114": "c596751a3ba7bca05e648bf57edd92df08f892748f40da3236e696a18538a5a7",
-    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599ff5": "1dcd27c28f0146983b56b96af4d3d53fe9d26f27451ac84a127b3f819ce9b046",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599200": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599201": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599202": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599203": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599204": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+    "model:ddrhw-modular-lower-exit-r40:5ad0e817-badb57f1-7f599ff5": "196f1f8b686bc89f28bd6662630b5904094b5e801f8f8e4c5ad4c713d5a32227",
     "path:ddrhw-modular-lower-exit-r40:296678f7-a966883f-7f599010": "0355dfce500d54fa9d0f0bcf0d7b1d8d246ed1f55f4c3ba950b37c81ba0421ef",
     "path:ddrhw-modular-lower-exit-r40:296678f7-a966883f-7f599100": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
     "path:ddrhw-modular-lower-exit-r40:296678f7-a966883f-7f599110": "ac2e5d31dcca01d7d078fddf25887419f90168a5844e78111cb0b6450db11954",
+    "path:ddrhw-modular-lower-exit-r40:296678f7-a966883f-7f599200": "4f1eb2f32e198e328bde23035c6892c308424cbeb02e70180afa46acf7d17d2d",
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599010": "de4c92f477b3d314dbdb96e40d61cfa94fba8269391bde3a04dedf458bdce5ba",
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599011": "f8dbcba3aa00eaeeb1ccff0a2b05d98f8a3c8f20ea47a7f3dd057b1d09445101",
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599012": "bac674c185c90647418358dada2c978c47931f9e47dd269b59eedac505a91ee9",
@@ -3028,9 +5752,15 @@
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599112": "343d78fc154bb032cc28b768847e1679590e86c0e051390ed87ae8bf4ddd93ab",
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599113": "327722b71d3873f98f34bc8da641ee52c1154b93331c5653f21df11a51b57fd3",
     "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599114": "fdb63482ee1671f8fae6e71a09f523eacb37ecc7e9cfa4ce2d09ddad6712d11c",
-    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599010": "e57586b373ce5d40f7f0996bb5a2d16ede8998c9476f58ba62e423fb871febe8",
-    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599100": "e57586b373ce5d40f7f0996bb5a2d16ede8998c9476f58ba62e423fb871febe8",
-    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599110": "e57586b373ce5d40f7f0996bb5a2d16ede8998c9476f58ba62e423fb871febe8"
+    "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599200": "e935cf6d3cb800181622c220df70c5130759acaa7cfdcbd6202e94cd539c3db4",
+    "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599201": "6479c009b882b783d130cc7e2334af2b9cf070271f95584da5a3ed66aeac7d0b",
+    "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599202": "29483ba3db7506aebd59d8ac4140273d1dc51fa62a4469a84e0fbdd622400eac",
+    "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599203": "3b30afbe2777f25e48da14964ee3c14f091fd159d67c1a6e7652bf5601f7bd51",
+    "shadow:ddrhw-modular-lower-exit-r40:7ab50e44-2bc2759a-7f599204": "9a54de8661fc7ceff2f001b732e745f9870ae4fd24409e698a2a35a128280507",
+    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599010": "d9a2779572870e4ffcb52fb6de3959c52f6d891b289ce20c8e773ba635f44643",
+    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599100": "d9a2779572870e4ffcb52fb6de3959c52f6d891b289ce20c8e773ba635f44643",
+    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599110": "d9a2779572870e4ffcb52fb6de3959c52f6d891b289ce20c8e773ba635f44643",
+    "text:ddrhw-modular-lower-exit-r40:2026960b-2a592fd1-7f599200": "d9a2779572870e4ffcb52fb6de3959c52f6d891b289ce20c8e773ba635f44643"
   },
   "textures": [
     {
@@ -3088,7 +5818,7 @@
     "bounds_world_m": [
       -8.0,
       -24.0,
-      24.0,
+      40.0,
       8.0
     ],
     "origin_world_m": [
@@ -3109,7 +5839,7 @@
       "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
       "east_index_range": [
         0,
-        1
+        2
       ],
       "north_index_range": [
         0,
@@ -3119,14 +5849,15 @@
       "authoring_world_coordinates_changed": false
     },
     "origin_pixel": [
-      553.971174585877,
-      500.00000000000006
+      474.3654095030522,
+      418.0
     ],
     "boundary_offset_from_centre_m": 8,
     "east_boundaries_m": [
       -8.0,
       8.0,
-      24.0
+      24.0,
+      40.0
     ],
     "north_boundaries_m": [
       -24.0,
@@ -3139,12 +5870,12 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            155.9423491717539,
-            500.00000000000006
+            155.94234917175368,
+            418.0
           ],
           [
-            951.9999999999999,
-            90.0
+            792.7884698343506,
+            89.99999999999994
           ]
         ],
         "major": false
@@ -3154,12 +5885,12 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            553.971174585877,
-            705.0
+            474.3654095030522,
+            582.0
           ],
           [
-            1350.028825414123,
-            295.0
+            1111.211530165649,
+            253.99999999999997
           ]
         ],
         "major": true
@@ -3169,12 +5900,27 @@
         "coordinate_m": 24.0,
         "pixels": [
           [
-            952.0000000000001,
+            792.7884698343507,
+            746.0
+          ],
+          [
+            1429.6345904969476,
+            418.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 40.0,
+        "pixels": [
+          [
+            1111.2115301656493,
             910.0
           ],
           [
-            1748.057650828246,
-            500.0
+            1748.0576508282463,
+            582.0
           ]
         ],
         "major": false
@@ -3184,11 +5930,11 @@
         "coordinate_m": -24.0,
         "pixels": [
           [
-            155.9423491717539,
-            500.00000000000006
+            155.94234917175368,
+            418.0
           ],
           [
-            952.0000000000001,
+            1111.2115301656493,
             910.0
           ]
         ],
@@ -3199,12 +5945,12 @@
         "coordinate_m": -8.0,
         "pixels": [
           [
-            553.971174585877,
-            295.00000000000006
+            474.3654095030522,
+            253.99999999999997
           ],
           [
-            1350.028825414123,
-            705.0
+            1429.6345904969476,
+            746.0
           ]
         ],
         "major": true
@@ -3214,12 +5960,12 @@
         "coordinate_m": 8.0,
         "pixels": [
           [
-            951.9999999999999,
-            90.0
+            792.7884698343506,
+            89.99999999999994
           ],
           [
-            1748.057650828246,
-            500.0
+            1748.0576508282463,
+            582.0
           ]
         ],
         "major": false
@@ -3235,8 +5981,8 @@
           -24.0
         ],
         "pixel": [
-          339.843496506541,
-          610.2839071029409
+          300.0406139651286,
+          507.78390710294093
         ]
       },
       {
@@ -3248,8 +5994,21 @@
           -24.0
         ],
         "pixel": [
-          737.8723219206641,
-          815.2839071029409
+          618.4636742964271,
+          671.7839071029409
+        ]
+      },
+      {
+        "text": "X2",
+        "axis": "X",
+        "tile_index": 2,
+        "world_m": [
+          32.0,
+          -24.0
+        ],
+        "pixel": [
+          936.8867346277257,
+          835.7839071029409
         ]
       },
       {
@@ -3261,8 +6020,8 @@
           -16.0
         ],
         "pixel": [
-          339.843496506541,
-          389.7160928970591
+          300.0406139651286,
+          328.21609289705907
         ]
       },
       {
@@ -3274,8 +6033,8 @@
           0.0
         ],
         "pixel": [
-          737.872321920664,
-          184.71609289705907
+          618.4636742964271,
+          164.21609289705907
         ]
       }
     ],
@@ -3288,7 +6047,7 @@
         ],
         "end_pixel": [
           1846.6727492864215,
-          121.97809064359795
+          121.97809064359794
         ]
       },
       {
@@ -3299,14 +6058,14 @@
         ],
         "end_pixel": [
           1846.6727492864215,
-          78.02190935640203
+          78.02190935640205
         ]
       }
     ],
     "tile_scale": {
       "metres": 16,
-      "east_pixels": 447.718601200069,
-      "north_pixels": 447.7186012000689,
+      "east_pixels": 358.1748809600553,
+      "north_pixels": 358.1748809600553,
       "caption": "1 tile = 16 m",
       "caption_visible": false
     },
@@ -3334,15 +6093,15 @@
         0.6061088109378322
       ],
       "projected_center_m": [
-        1.7763568394002505e-15,
-        -5.826990645410629
+        5.656854249492383,
+        -8.740485968115944
       ],
-      "pixels_per_metre": 35.181110194755355,
+      "pixels_per_metre": 28.14488815580429,
       "padding_pixels": 90.0,
       "bounds_world_m": [
         -8.0,
         -24.0,
-        24.0,
+        40.0,
         8.0
       ],
       "world_coordinates": "(east, north, height)",
@@ -3405,6 +6164,7 @@
     "menu_experiment.py": "8c742da684b015d66184944e8e4dd5e2c69c69ad335646db817d73e46d20ea6d",
     "menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
     "model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+    "model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
     "models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
     "paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
     "piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
@@ -3427,7 +6187,7 @@
   },
   "previous_preview_evidence": {
     "file": "domains/highway/00_pieces/ddrhw-modular-lower-exit-r40/evidence/preview.json",
-    "sha256": "ca4914a72697b25398986e9990ca1e72de5a3b8a677f12f0ef9501e598117c45",
+    "sha256": "7e70478f4e84b5c8356a6d6e7cf6a20dceca3ad73993124f9c5d1c31198959ae",
     "mandatory_current_build_truth": false
   },
   "source_preview_png_used_as_input": false,
@@ -3456,5 +6216,5 @@
     "member_offset": "Measured endpoint minus declared section origin, dotted with tile-edge outward-left direction; null when the section origin is undeclared",
     "display_anchor": "Declared section origin, or one actual measured endpoint when no origin was authored, projected with the actual model camera; a display marker does not declare a section origin"
   },
-  "selectable_markdown_sha256": "00f9723a0cc284032bb878f496c5042d89a1e563832db9a861ac4a2b7afb6a3f"
+  "selectable_markdown_sha256": "a1d0be11d411ee7ebe47bb0ecb43e157c981f38c9722fa803302d7aea7218698"
 }

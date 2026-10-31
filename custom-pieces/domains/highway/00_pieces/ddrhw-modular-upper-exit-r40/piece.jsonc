@@ -10,41 +10,51 @@
   "schema_version": 1,
   "id": "ddrhw-modular-upper-exit-r40",
   "domain": "highway",
-  "name": "RHW Ramp \u2014 Upper Exit Ramp \u2014 R40",
-  "description": "Independently placed upper exit ramp \u2014 r40. Use its complete connection cards; it attaches outside the highway stamp and owns no highway tiles.",
+  "name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40",
+  "description": "Separately placed Upper Exit Ramp \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
   "recipe": "highway_ddrhw_modular_upper_exit_r40",
   "geometry_key": "upper-exit-r40",
   "enabled_by_default": false,
   "status": "experimental",
   "puzzle_id": "f83f",
   "tile_ids": [
-    "7f5a0000",
-    "7f5a0100",
     "7f5a0200",
-    "7f5a0010"
+    "7f5a0300",
+    "7f5a0400",
+    "7f5a0110",
+    "7f5a0210",
+    "7f5a0020"
   ],
   "preview_id": "7f5a0ff5",
   "effect_name": "preview_scp_hw_f83f_____001",
   "footprint": [
-    3,
-    2
+    5,
+    3
   ],
   "cells": [
-    [
-      0,
-      0
-    ],
-    [
-      1,
-      0
-    ],
     [
       2,
       0
     ],
     [
-      0,
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      1,
       1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
     ]
   ],
   "orientation_count": 8,
@@ -64,37 +74,53 @@
     "pavement_path_offset_m": 0.0,
     "car_corridor_half_width_m": 1.25,
     "car_corridor_height_m": 3.8,
-    "model_only_cells": [],
+    "model_only_cells": [
+      [
+        0,
+        2
+      ]
+    ],
     "minimum_new_curve_radius_m": 40.0,
     "retained_high_collar_m": 2.0
   },
   "shadow_mode": "generated",
   "shadow_mappings": [
     {
-      "tile": "7f5a0000",
-      "source": "7f5a0000",
-      "rotation": 0
-    },
-    {
-      "tile": "7f5a0100",
-      "source": "7f5a0100",
-      "rotation": 0
-    },
-    {
       "tile": "7f5a0200",
       "source": "7f5a0200",
       "rotation": 0
     },
     {
-      "tile": "7f5a0010",
-      "source": "7f5a0010",
+      "tile": "7f5a0300",
+      "source": "7f5a0300",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a0400",
+      "source": "7f5a0400",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a0110",
+      "source": "7f5a0110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a0210",
+      "source": "7f5a0210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a0020",
+      "source": "7f5a0020",
       "rotation": 0
     }
   ],
   "provenance": {
     "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
     "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
-    "redistribution": "permission-pending"
+    "redistribution": "permission-pending",
+    "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
   },
   "game_tests": {
     "placement": "unverified",
@@ -104,5 +130,24 @@
     "shadows": "unverified",
     "demolition": "unverified",
     "save_reload": "unverified"
-  }
+  },
+  "model_overhang_source_cells": [
+    [
+      -2,
+      3
+    ],
+    [
+      -4,
+      4
+    ],
+    [
+      -3,
+      4
+    ],
+    [
+      -4,
+      5
+    ]
+  ],
+  "model_overhang_contract": "Retained indexed high-throat faces; construction and PATH ownership do not overlap."
 }

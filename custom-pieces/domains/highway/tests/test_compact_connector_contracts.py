@@ -56,19 +56,8 @@ class CompactConnectorContractTests(unittest.TestCase):
         cls.saved = saved_cells()
         cls.pieces,cls.records = {},{}
         for recipe,facts in CONTRACTS.items():
-            if recipe == 'highway_ddrhw_modular_stamp':
-                reference = jsonc.load(ASSEMBLY/'checks/stamp-reference.jsonc')
-                cells = sorted(facts['cells'])
-                piece = {'schema_version':1,'id':'independent-saved-stamp-fixture','domain':'highway','recipe':recipe,
-                         'cells':cells,'footprint':facts['footprint'],
-                         'tile_ids':[f'{0x71000000+x*0x100+y*0x10:08x}' for x,y in cells]}
-                lookup = {tuple(row['cell']):cls.saved[row['source_piece_id'],row['source_tile_id']]
-                          for row in reference['cells']}
-                resources = {(*PATH,int(tile,16)):lookup[tuple(cell)]
-                             for cell,tile in zip(cells,piece['tile_ids'])}
-            else:
-                piece = jsonc.load(ROOT/'domains/highway/00_pieces'/facts['reference_piece_id']/'piece.jsonc')
-                resources = {(*PATH,int(tile,16)):cls.saved[piece['id'],tile] for tile in piece['tile_ids']}
+            piece = jsonc.load(ROOT/'domains/highway/00_pieces'/facts['reference_piece_id']/'piece.jsonc')
+            resources = {(*PATH,int(tile,16)):cls.saved[piece['id'],tile] for tile in piece['tile_ids']}
             record = piece_connectivity(piece,resources,contract=reviewed_contract(piece),
                                         service_classifier=service_classifier)
             cls.pieces[recipe],cls.records[recipe] = piece,record
@@ -90,25 +79,9 @@ class CompactConnectorContractTests(unittest.TestCase):
                 self.assertEqual(record['software_status']['in_game'],'unverified')
                 self.assertEqual({p['id'] for p in record['ports']},
                                  {m['source_port_id'] for g in groups['groups'] for m in g['members']})
-                if recipe != 'highway_ddrhw_modular_stamp':
-                    totals = [a+b for a,b in zip(totals,(len(record['ports']),len(groups['channels']),
-                                                       len(groups['groups']),len(groups['boundary_bundles'])))]
+                totals = [a+b for a,b in zip(totals,(len(record['ports']),len(groups['channels']),
+                                                   len(groups['groups']),len(groups['boundary_bundles'])))]
         self.assertEqual(totals,[140,74,84,50])
-
-    def test_stamp_has_four_sloped_sockets_and_complete_native_services(self):
-        recipe = 'highway_ddrhw_modular_stamp'
-        piece,record = self.pieces[recipe],self.records[recipe]
-        groups = self.groups(recipe)
-        self.assertEqual((len(piece['cells']),len(record['ports']),len(record['journeys']),
-                          len(record['forbidden_transfers'])),(27,24,14,130))
-        self.assertEqual((len(groups['channels']),len(groups['groups']),len(groups['boundary_bundles'])),
-                         (14,16,10))
-        sockets = sorted((p['direction'],p['endpoint_m'][2],p['grade'])
-                         for p in record['ports'] if p['grade'])
-        self.assertEqual(sockets,[('in',6.745132,.226756787),('in',12.25824,.296094955),
-                                  ('out',6.745132,-.226756787),('out',12.25824,-.296094955)])
-        resolved = validate_piece(piece,record,groups,{})
-        self.assertEqual(sum(bool(m['grade_outward']) for g in resolved['groups'] for m in g['members']),4)
 
     def test_signed_grades_and_actual_tangents_are_affirmative_contracts(self):
         recipe = 'highway_ddrhw_compact_lower_exit_grade'

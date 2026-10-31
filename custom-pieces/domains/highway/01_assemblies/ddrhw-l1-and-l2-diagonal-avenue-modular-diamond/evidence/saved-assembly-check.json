@@ -1077,13 +1077,16 @@
   ],
   "model_seams": {
     "passed": true,
-    "pavement_collar_samples": 112,
+    "pavement_collar_samples": 124,
     "custom_ramp_pavement_half_width_m": 2.9,
     "native_car_lane_collar_half_width_m": 1.25,
     "high_join_profile_samples": 80,
     "surface_tolerance_m": 0.04,
-    "maximum_sampled_height_difference_m": 0.0011903089636096098,
-    "maximum_sampled_grade_difference": 5.316471242966525e-06,
+    "straight_native_edge_mouth_samples": 144,
+    "physical_mouth_native_abs_lateral_m": 8.0,
+    "physical_mouth_and_owned_traffic_tile_boundary_are_distinct": true,
+    "maximum_sampled_height_difference_m": 0.0009076799860059381,
+    "maximum_sampled_grade_difference": 8.526496375338422e-07,
     "projection_provenance": {
       "passed": true,
       "frozen_stamp_models": [
@@ -1097,7 +1100,7 @@
             "badb57f1",
             "7f59d804"
           ],
-          "model_sha256": "875840c1912b351c2c23de910cb340e8e4a3dcb287eff7ecd03a69ccaf2ef33c"
+          "model_sha256": "4e65667b41a9aa6604cc8555634e9fbdc04ac5a66c589e0ae8c64892231eb83c"
         },
         {
           "cell": [
@@ -1109,19 +1112,7 @@
             "badb57f1",
             "7f59d904"
           ],
-          "model_sha256": "3d64d5f8549936a70f560f91c2ca80a47cede13ff641a1a50196d603f0c50de1"
-        },
-        {
-          "cell": [
-            6,
-            1
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d614"
-          ],
-          "model_sha256": "5c29b0b959e01f93097ec7976f621fdfc27b33eaf6827a7839be1f53a0e0fef5"
+          "model_sha256": "690f2314a2b2942721de837ba06e33b3234908975c66d8bede87d969b5bad74d"
         },
         {
           "cell": [
@@ -1133,7 +1124,7 @@
             "badb57f1",
             "7f59d714"
           ],
-          "model_sha256": "c7a897f30961167a66b5d61af9faf0d12696b9c430a9a8ace81b367be6447585"
+          "model_sha256": "68802aa2bb36cd717b1eb6038b4bdb74dbb52bc716468cc4ace1772b5ae0cb1d"
         },
         {
           "cell": [
@@ -1145,19 +1136,7 @@
             "badb57f1",
             "7f59d814"
           ],
-          "model_sha256": "1102b4d5844a48f826dc544822632c258f3163e7b06c2a7e626ce0f576c12bdc"
-        },
-        {
-          "cell": [
-            9,
-            1
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d914"
-          ],
-          "model_sha256": "dd476118a8a008e3746c023cebe99ec2bb1d439f70118309d39771ed9bac0d83"
+          "model_sha256": "278a55e21fd05515ba12d3e361585870bb0179d523475fd2cc30a5d3fa85307b"
         },
         {
           "cell": [
@@ -1169,7 +1148,7 @@
             "badb57f1",
             "7f59d624"
           ],
-          "model_sha256": "42906a98f75265e11361174df5d92f1b2f192d4c51c29ecf520c62051eac26fd"
+          "model_sha256": "ce476689f078fe40ff4ded7237606ebb925ea06628498b0d5031897b7bf42f4f"
         },
         {
           "cell": [
@@ -1181,19 +1160,7 @@
             "badb57f1",
             "7f59d724"
           ],
-          "model_sha256": "64bb21dc50dbeaae7366ffb9da7f6f720f25fabdf76dd911f0e9313146b65b46"
-        },
-        {
-          "cell": [
-            8,
-            2
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d824"
-          ],
-          "model_sha256": "efb8b2a1d7710647629600cb9d1ecd628eee7b3b99143e5c6e34fb3edddc43f2"
+          "model_sha256": "8111447ecb12f968bb1e82b1e39872a15dbc749b3484c8ffa6bdb2573f2a45ac"
         },
         {
           "cell": [
@@ -1205,7 +1172,7 @@
             "badb57f1",
             "7f59d434"
           ],
-          "model_sha256": "e166ee3fe408f6f9f3a38ff9393cadda81cc5c7ea8b1b997eed73947b8fce911"
+          "model_sha256": "9b87f6ca3fd5e8efd27476cf817fc5c0417d1f2acc652ff339861bb52d214cd7"
         },
         {
           "cell": [
@@ -1217,7 +1184,7 @@
             "badb57f1",
             "7f59d534"
           ],
-          "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3"
+          "model_sha256": "65c0819195749d35e541bab09afcd0718304fe45ad4528984f05989eeca3b4d9"
         },
         {
           "cell": [
@@ -1229,7 +1196,7 @@
             "badb57f1",
             "7f59d634"
           ],
-          "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586"
+          "model_sha256": "dbada09c03aecfc14ef1eee22d32f46a0de18e02190f6d2abcf5b06ddfcd2381"
         },
         {
           "cell": [
@@ -1241,7 +1208,7 @@
             "badb57f1",
             "7f59d344"
           ],
-          "model_sha256": "fa49cb4d40b8890ae23cc993ac31ae89191ff15a7daa3bf48ca657ddca2aa06b"
+          "model_sha256": "76d81e72ccf4e0c2798e3eb1d319112cde4cb520392780be6f1674027171befd"
         },
         {
           "cell": [
@@ -1253,7 +1220,7 @@
             "badb57f1",
             "7f59d444"
           ],
-          "model_sha256": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a"
+          "model_sha256": "d41e562d0adbfff6c10b108a68097dbf7bf17c86bfc98f6145a9357d07918ae4"
         },
         {
           "cell": [
@@ -1265,7 +1232,7 @@
             "badb57f1",
             "7f59d544"
           ],
-          "model_sha256": "5c36e47942a024f5c9e165c520829430895c922f380cbf4278951f8ceb8f5d75"
+          "model_sha256": "33f407cf01b2fe528fd63512adc4ec40bc7e21d4ad334e5c642b3b9c27af9c51"
         },
         {
           "cell": [
@@ -1277,7 +1244,7 @@
             "badb57f1",
             "7f59d354"
           ],
-          "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3"
+          "model_sha256": "65c0819195749d35e541bab09afcd0718304fe45ad4528984f05989eeca3b4d9"
         },
         {
           "cell": [
@@ -1289,19 +1256,7 @@
             "badb57f1",
             "7f59d454"
           ],
-          "model_sha256": "c039d989e33fe40b1fb4aeacce4fb03159c7be9ca8f2e5a1a1168ec96920b861"
-        },
-        {
-          "cell": [
-            1,
-            6
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d164"
-          ],
-          "model_sha256": "e356789c937fcce016b9a65b4df52bf01e1be4b0a804ff395b3631b3266b0f44"
+          "model_sha256": "89323206c9b45a6ce7efd06558cc51b93da3e2d8930138e6212abc7acf104dd0"
         },
         {
           "cell": [
@@ -1313,7 +1268,7 @@
             "badb57f1",
             "7f59d264"
           ],
-          "model_sha256": "4ff334bc8edbf7d9ac1dfdcb1721e6ff661ff87f9838dea1753e4b59a88c1ca4"
+          "model_sha256": "a958e5f1d1d825184e0cb0b64fb3df80ed5fc6621d357dcda4f279bca4a4d3c7"
         },
         {
           "cell": [
@@ -1325,7 +1280,7 @@
             "badb57f1",
             "7f59d364"
           ],
-          "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586"
+          "model_sha256": "dbada09c03aecfc14ef1eee22d32f46a0de18e02190f6d2abcf5b06ddfcd2381"
         },
         {
           "cell": [
@@ -1337,7 +1292,7 @@
             "badb57f1",
             "7f59d174"
           ],
-          "model_sha256": "bdc707dba2556d1c271ab36e37c3e74b609860a91d95f973c5734becb9d0c50a"
+          "model_sha256": "3dcfceff6afedf8b3e33ee7bb9b6c9454d72c165e2394ff7349e6fdc2403e566"
         },
         {
           "cell": [
@@ -1349,7 +1304,7 @@
             "badb57f1",
             "7f59d274"
           ],
-          "model_sha256": "73641c42c7a4536f69d3030d83574af1fac557ffa6a8e6e55eb0d1b9b4b73637"
+          "model_sha256": "56160fea40bf67dd0b371f783a3399768e15bb4308bc704626491d6ecde3cbaf"
         },
         {
           "cell": [
@@ -1361,7 +1316,7 @@
             "badb57f1",
             "7f59d084"
           ],
-          "model_sha256": "c1930da3fe7dc978eae2aeec070c9fa9f9f9b3e29ed831fbb7672a4675f14acc"
+          "model_sha256": "fcaf99cee10776d31a39292a7cb3620e8335f43ddbdb49d57e40837663156a29"
         },
         {
           "cell": [
@@ -1373,19 +1328,7 @@
             "badb57f1",
             "7f59d184"
           ],
-          "model_sha256": "cf1832488e2e44c2cd310f5bd8392326515f857ad6018f52382e2becb6c227bd"
-        },
-        {
-          "cell": [
-            2,
-            8
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d284"
-          ],
-          "model_sha256": "6a4be67c4ebdd8d196f5b723524fee318ae7950f114cf341b5974739f29db7c0"
+          "model_sha256": "83690109a1291d4c34e68b5793d2c60c3941318ac35699b1d7f486ba51b4acb8"
         },
         {
           "cell": [
@@ -1397,19 +1340,7 @@
             "badb57f1",
             "7f59d094"
           ],
-          "model_sha256": "2b4b3cdc44e663576e458a73d797739187cb0d19873bfbcbb02c2d9f6e6e9b94"
-        },
-        {
-          "cell": [
-            1,
-            9
-          ],
-          "model_tgi": [
-            "5ad0e817",
-            "badb57f1",
-            "7f59d194"
-          ],
-          "model_sha256": "7745d206d4493a89f4521bfff343ab047cceb32fd9c6ecf75193ac9e29893613"
+          "model_sha256": "8687260268c1507c2681cd1116fd6c68b1e902205d8b833b7138859aa48d4ae8"
         }
       ],
       "new_attachment_projections": [
@@ -1419,6 +1350,10 @@
             [
               1,
               5
+            ],
+            [
+              1,
+              6
             ],
             [
               2,
@@ -1435,14 +1370,37 @@
               5
             ],
             [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
               2,
               4
             ],
             [
               2,
               5
+            ],
+            [
+              2,
+              6
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              6
+            ]
+          ],
+          "exact_reviewed_model_hashes_checked": true
         },
         {
           "piece_id": "ddrhw-modular-lower-exit-r40",
@@ -1458,6 +1416,10 @@
             [
               5,
               2
+            ],
+            [
+              6,
+              1
             ]
           ],
           "physical_projection_cells": [
@@ -1472,8 +1434,31 @@
             [
               5,
               2
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              7,
+              1
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [
+            [
+              6,
+              2
+            ],
+            [
+              7,
+              1
+            ]
+          ],
+          "exact_reviewed_model_hashes_checked": true
         },
         {
           "piece_id": "ddrhw-modular-northwest-terminal-r40",
@@ -1552,7 +1537,9 @@
               3,
               3
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [],
+          "exact_reviewed_model_hashes_checked": true
         },
         {
           "piece_id": "ddrhw-modular-southeast-terminal-r40",
@@ -1655,7 +1642,9 @@
               8,
               8
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [],
+          "exact_reviewed_model_hashes_checked": true
         },
         {
           "piece_id": "ddrhw-modular-upper-entry-r40",
@@ -1674,10 +1663,22 @@
             ],
             [
               8,
+              2
+            ],
+            [
+              8,
               3
+            ],
+            [
+              9,
+              1
             ]
           ],
           "physical_projection_cells": [
+            [
+              7,
+              2
+            ],
             [
               7,
               3
@@ -1692,13 +1693,52 @@
             ],
             [
               8,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              8,
               3
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              1
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [
+            [
+              7,
+              2
+            ],
+            [
+              8,
+              1
+            ],
+            [
+              9,
+              0
+            ]
+          ],
+          "exact_reviewed_model_hashes_checked": true
         },
         {
           "piece_id": "ddrhw-modular-upper-exit-r40",
           "owned_cells": [
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              8
+            ],
             [
               3,
               7
@@ -1718,6 +1758,26 @@
           ],
           "physical_projection_cells": [
             [
+              0,
+              9
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
               3,
               7
             ],
@@ -1733,7 +1793,22 @@
               5,
               7
             ]
-          ]
+          ],
+          "render_only_projection_into_other_cells": [
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "exact_reviewed_model_hashes_checked": true
         }
       ],
       "interior_native_overhangs_without_construction_ownership": [
@@ -1782,7 +1857,7 @@
           ]
         }
       ],
-      "scope": "Projection is rendering geometry, not construction ownership. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area."
+      "scope": "Projection is rendering geometry, not construction ownership. Complete attachment overhangs are authorized only by exact independently audited output hashes; whole-union traffic support is mandatory. Areas sum indexed projected triangles, including overlapping decks and barrier bands; they are not a planar union area."
     },
     "physical_projection_cells": [
       [
@@ -2833,29 +2908,1431 @@
     "minimum_conservative_planar_clearance_m": 1.3783652239999924,
     "scope": "Saved pier shell, road contact, and conservative traffic clearance; load capacity and game collision behavior remain unverified."
   },
+  "complete_model_union_traffic": {
+    "passed": true,
+    "continuous_saved_car_segments": 2592,
+    "proper_rotations_checked": 4,
+    "indexed_triangles": 518910,
+    "pavement_path_offset_m": 0.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "continuous_support_with_reported_encoding_precision": true,
+    "strict_barycentric_and_height_tests_unchanged": true,
+    "inherited_dd_encoding_precision": {
+      "euclidean_limit_m": 2e-06,
+      "admitted_spans": 28,
+      "spans": [
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              0.255105412,
+              -142.020076569,
+              15.0
+            ],
+            [
+              0.374514644,
+              -141.962709106,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.6878069775417135,
+            0.6878081591906736
+          ],
+          "along_path_span_m": 1.5653878932921704e-07,
+          "distance_sample_points_m": [
+            [
+              0.3372359149524973,
+              -141.98061882766473,
+              15.0
+            ],
+            [
+              0.33723598550239464,
+              -141.98061879377065,
+              15.0
+            ],
+            [
+              0.33723605605229207,
+              -141.98061875987653,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.8670363156544693e-08,
+            2.8157454864709047e-08,
+            3.4345050692065974e-09
+          ],
+          "maximum_sampled_distance_m": 2.8157454864709047e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -142.020076569,
+              -0.255105412,
+              15.0
+            ],
+            [
+              -141.962709106,
+              -0.374514644,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.6878069775417135,
+            0.6878081591906736
+          ],
+          "along_path_span_m": 1.5653878932921704e-07,
+          "distance_sample_points_m": [
+            [
+              -141.98061882766473,
+              -0.3372359149524973,
+              15.0
+            ],
+            [
+              -141.98061879377065,
+              -0.33723598550239464,
+              15.0
+            ],
+            [
+              -141.98061875987653,
+              -0.33723605605229207,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.8670363156544693e-08,
+            2.8157454864709047e-08,
+            3.4345050692065974e-09
+          ],
+          "maximum_sampled_distance_m": 2.8157454864709047e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -0.255105412,
+              142.020076569,
+              15.0
+            ],
+            [
+              -0.374514644,
+              141.962709106,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.6878069775417135,
+            0.6878081591906736
+          ],
+          "along_path_span_m": 1.5653878932921704e-07,
+          "distance_sample_points_m": [
+            [
+              -0.3372359149524973,
+              141.98061882766473,
+              15.0
+            ],
+            [
+              -0.33723598550239464,
+              141.98061879377065,
+              15.0
+            ],
+            [
+              -0.33723605605229207,
+              141.98061875987653,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.8670363156544693e-08,
+            2.8157454864709047e-08,
+            3.4345050692065974e-09
+          ],
+          "maximum_sampled_distance_m": 2.8157454864709047e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              142.020076569,
+              0.255105412,
+              15.0
+            ],
+            [
+              141.962709106,
+              0.374514644,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.6878069775417135,
+            0.6878081591906736
+          ],
+          "along_path_span_m": 1.5653878932921704e-07,
+          "distance_sample_points_m": [
+            [
+              141.98061882766473,
+              0.3372359149524973,
+              15.0
+            ],
+            [
+              141.98061879377065,
+              0.33723598550239464,
+              15.0
+            ],
+            [
+              141.98061875987653,
+              0.33723605605229207,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.8670363156544693e-08,
+            2.8157454864709047e-08,
+            3.4345050692065974e-09
+          ],
+          "maximum_sampled_distance_m": 2.8157454864709047e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              0.374514644,
+              -141.962709106,
+              15.0
+            ],
+            [
+              0.493515798,
+              -141.904933565,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.43670047224869335,
+            0.43670199152589656
+          ],
+          "along_path_span_m": 2.0097739283486045e-07,
+          "distance_sample_points_m": [
+            [
+              0.4264825041499395,
+              -141.9374784999609,
+              15.0
+            ],
+            [
+              0.4264825945478097,
+              -141.93747845607234,
+              15.0
+            ],
+            [
+              0.4264826849456799,
+              -141.93747841218382,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.9651399016696934e-09,
+            3.5325747782915475e-08,
+            2.438673533926838e-09
+          ],
+          "maximum_sampled_distance_m": 3.5325747782915475e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -141.962709106,
+              -0.374514644,
+              15.0
+            ],
+            [
+              -141.904933565,
+              -0.493515798,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.43670047224869335,
+            0.43670199152589656
+          ],
+          "along_path_span_m": 2.0097739283486045e-07,
+          "distance_sample_points_m": [
+            [
+              -141.9374784999609,
+              -0.4264825041499395,
+              15.0
+            ],
+            [
+              -141.93747845607234,
+              -0.4264825945478097,
+              15.0
+            ],
+            [
+              -141.93747841218382,
+              -0.4264826849456799,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.9651399016696934e-09,
+            3.5325747782915475e-08,
+            2.438673533926838e-09
+          ],
+          "maximum_sampled_distance_m": 3.5325747782915475e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -0.374514644,
+              141.962709106,
+              15.0
+            ],
+            [
+              -0.493515798,
+              141.904933565,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.43670047224869335,
+            0.43670199152589656
+          ],
+          "along_path_span_m": 2.0097739283486045e-07,
+          "distance_sample_points_m": [
+            [
+              -0.4264825041499395,
+              141.9374784999609,
+              15.0
+            ],
+            [
+              -0.4264825945478097,
+              141.93747845607234,
+              15.0
+            ],
+            [
+              -0.4264826849456799,
+              141.93747841218382,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.9651399016696934e-09,
+            3.5325747782915475e-08,
+            2.438673533926838e-09
+          ],
+          "maximum_sampled_distance_m": 3.5325747782915475e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -4,
+            5
+          ],
+          "inherited_source_region": "upper-exit-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              141.962709106,
+              0.374514644,
+              15.0
+            ],
+            [
+              141.904933565,
+              0.493515798,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.43670047224869335,
+            0.43670199152589656
+          ],
+          "along_path_span_m": 2.0097739283486045e-07,
+          "distance_sample_points_m": [
+            [
+              141.9374784999609,
+              0.4264825041499395,
+              15.0
+            ],
+            [
+              141.93747845607234,
+              0.4264825945478097,
+              15.0
+            ],
+            [
+              141.93747841218382,
+              0.4264826849456799,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.9651399016696934e-09,
+            3.5325747782915475e-08,
+            2.438673533926838e-09
+          ],
+          "maximum_sampled_distance_m": 3.5325747782915475e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -3,
+            3
+          ],
+          "inherited_source_region": "lower-entry-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              16.208263247,
+              -113.685545005,
+              7.5
+            ],
+            [
+              16.162955905,
+              -113.817014359,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.08583511134158897,
+            0.08583655392478289
+          ],
+          "along_path_span_m": 2.006017944987988e-07,
+          "distance_sample_points_m": [
+            [
+              16.20437428625484,
+              -113.6968296916386,
+              7.5
+            ],
+            [
+              16.204374253575036,
+              -113.69682978646634,
+              7.5
+            ],
+            [
+              16.20437422089523,
+              -113.69682988129408,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.8750003947235373e-08,
+            4.889680662246821e-08,
+            4.9515817458421544e-09
+          ],
+          "maximum_sampled_distance_m": 4.889680662246821e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -3,
+            3
+          ],
+          "inherited_source_region": "lower-entry-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -113.685545005,
+              -16.208263247,
+              7.5
+            ],
+            [
+              -113.817014359,
+              -16.162955905,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.08583511134158897,
+            0.08583655392478289
+          ],
+          "along_path_span_m": 2.006017944987988e-07,
+          "distance_sample_points_m": [
+            [
+              -113.6968296916386,
+              -16.20437428625484,
+              7.5
+            ],
+            [
+              -113.69682978646634,
+              -16.204374253575036,
+              7.5
+            ],
+            [
+              -113.69682988129408,
+              -16.20437422089523,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.8750003947235373e-08,
+            4.889680662246821e-08,
+            4.9515817458421544e-09
+          ],
+          "maximum_sampled_distance_m": 4.889680662246821e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -3,
+            3
+          ],
+          "inherited_source_region": "lower-entry-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -16.208263247,
+              113.685545005,
+              7.5
+            ],
+            [
+              -16.162955905,
+              113.817014359,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.08583511134158897,
+            0.08583655392478289
+          ],
+          "along_path_span_m": 2.006017944987988e-07,
+          "distance_sample_points_m": [
+            [
+              -16.20437428625484,
+              113.6968296916386,
+              7.5
+            ],
+            [
+              -16.204374253575036,
+              113.69682978646634,
+              7.5
+            ],
+            [
+              -16.20437422089523,
+              113.69682988129408,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.8750003947235373e-08,
+            4.889680662246821e-08,
+            4.9515817458421544e-09
+          ],
+          "maximum_sampled_distance_m": 4.889680662246821e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            -3,
+            3
+          ],
+          "inherited_source_region": "lower-entry-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              113.685545005,
+              16.208263247,
+              7.5
+            ],
+            [
+              113.817014359,
+              16.162955905,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.08583511134158897,
+            0.08583655392478289
+          ],
+          "along_path_span_m": 2.006017944987988e-07,
+          "distance_sample_points_m": [
+            [
+              113.6968296916386,
+              16.20437428625484,
+              7.5
+            ],
+            [
+              113.69682978646634,
+              16.204374253575036,
+              7.5
+            ],
+            [
+              113.69682988129408,
+              16.20437422089523,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.8750003947235373e-08,
+            4.889680662246821e-08,
+            4.9515817458421544e-09
+          ],
+          "maximum_sampled_distance_m": 4.889680662246821e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              113.424273194,
+              -16.300544825,
+              7.5
+            ],
+            [
+              113.294612936,
+              -16.347661264,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9345467628714436,
+            0.9345475471652049
+          ],
+          "along_path_span_m": 1.0819769868221496e-07,
+          "distance_sample_points_m": [
+            [
+              113.30309961961302,
+              -16.344577340545477,
+              7.5
+            ],
+            [
+              113.30309956876715,
+              -16.344577359022043,
+              7.5
+            ],
+            [
+              113.30309951792128,
+              -16.34457737749861,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.88867162181437e-08,
+            2.2853351936673894e-08,
+            1.1848985744844995e-09
+          ],
+          "maximum_sampled_distance_m": 2.2853351936673894e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -16.300544825,
+              -113.424273194,
+              7.5
+            ],
+            [
+              -16.347661264,
+              -113.294612936,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9345467628714436,
+            0.9345475471652049
+          ],
+          "along_path_span_m": 1.0819769868221496e-07,
+          "distance_sample_points_m": [
+            [
+              -16.344577340545477,
+              -113.30309961961302,
+              7.5
+            ],
+            [
+              -16.344577359022043,
+              -113.30309956876715,
+              7.5
+            ],
+            [
+              -16.34457737749861,
+              -113.30309951792128,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.88867162181437e-08,
+            2.2853351936673894e-08,
+            1.1848985744844995e-09
+          ],
+          "maximum_sampled_distance_m": 2.2853351936673894e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -113.424273194,
+              16.300544825,
+              7.5
+            ],
+            [
+              -113.294612936,
+              16.347661264,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9345467628714436,
+            0.9345475471652049
+          ],
+          "along_path_span_m": 1.0819769868221496e-07,
+          "distance_sample_points_m": [
+            [
+              -113.30309961961302,
+              16.344577340545477,
+              7.5
+            ],
+            [
+              -113.30309956876715,
+              16.344577359022043,
+              7.5
+            ],
+            [
+              -113.30309951792128,
+              16.34457737749861,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.88867162181437e-08,
+            2.2853351936673894e-08,
+            1.1848985744844995e-09
+          ],
+          "maximum_sampled_distance_m": 2.2853351936673894e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              16.300544825,
+              113.424273194,
+              7.5
+            ],
+            [
+              16.347661264,
+              113.294612936,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9345467628714436,
+            0.9345475471652049
+          ],
+          "along_path_span_m": 1.0819769868221496e-07,
+          "distance_sample_points_m": [
+            [
+              16.344577340545477,
+              113.30309961961302,
+              7.5
+            ],
+            [
+              16.344577359022043,
+              113.30309956876715,
+              7.5
+            ],
+            [
+              16.34457737749861,
+              113.30309951792128,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            1.88867162181437e-08,
+            2.2853351936673894e-08,
+            1.1848985744844995e-09
+          ],
+          "maximum_sampled_distance_m": 2.2853351936673894e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              113.294612936,
+              -16.347661264,
+              7.5
+            ],
+            [
+              113.165695015,
+              -16.395520038,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.07692138649871753,
+            0.07692170052220752
+          ],
+          "along_path_span_m": 4.3182845890514865e-08,
+          "distance_sample_points_m": [
+            [
+              113.28469639077214,
+              -16.351342627252208,
+              7.5
+            ],
+            [
+              113.28469637053051,
+              -16.3513426347666,
+              7.5
+            ],
+            [
+              113.28469635028888,
+              -16.351342642280986,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            4.2895428400827513e-10,
+            9.428470530242686e-09,
+            2.6454148696403777e-09
+          ],
+          "maximum_sampled_distance_m": 9.428470530242686e-09,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -16.347661264,
+              -113.294612936,
+              7.5
+            ],
+            [
+              -16.395520038,
+              -113.165695015,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.07692138649871753,
+            0.07692170052220752
+          ],
+          "along_path_span_m": 4.3182845890514865e-08,
+          "distance_sample_points_m": [
+            [
+              -16.351342627252208,
+              -113.28469639077214,
+              7.5
+            ],
+            [
+              -16.3513426347666,
+              -113.28469637053051,
+              7.5
+            ],
+            [
+              -16.351342642280986,
+              -113.28469635028888,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            4.2895428400827513e-10,
+            9.428470530242686e-09,
+            2.6454148696403777e-09
+          ],
+          "maximum_sampled_distance_m": 9.428470530242686e-09,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -113.294612936,
+              16.347661264,
+              7.5
+            ],
+            [
+              -113.165695015,
+              16.395520038,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.07692138649871753,
+            0.07692170052220752
+          ],
+          "along_path_span_m": 4.3182845890514865e-08,
+          "distance_sample_points_m": [
+            [
+              -113.28469639077214,
+              16.351342627252208,
+              7.5
+            ],
+            [
+              -113.28469637053051,
+              16.3513426347666,
+              7.5
+            ],
+            [
+              -113.28469635028888,
+              16.351342642280986,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            4.2895428400827513e-10,
+            9.428470530242686e-09,
+            2.6454148696403777e-09
+          ],
+          "maximum_sampled_distance_m": 9.428470530242686e-09,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            3,
+            -3
+          ],
+          "inherited_source_region": "lower-exit-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              16.347661264,
+              113.294612936,
+              7.5
+            ],
+            [
+              16.395520038,
+              113.165695015,
+              7.5
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.07692138649871753,
+            0.07692170052220752
+          ],
+          "along_path_span_m": 4.3182845890514865e-08,
+          "distance_sample_points_m": [
+            [
+              16.351342627252208,
+              113.28469639077214,
+              7.5
+            ],
+            [
+              16.3513426347666,
+              113.28469637053051,
+              7.5
+            ],
+            [
+              16.351342642280986,
+              113.28469635028888,
+              7.5
+            ]
+          ],
+          "distance_samples_m": [
+            4.2895428400827513e-10,
+            9.428470530242686e-09,
+            2.6454148696403777e-09
+          ],
+          "maximum_sampled_distance_m": 9.428470530242686e-09,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              141.904933565,
+              -0.493515798,
+              15.0
+            ],
+            [
+              141.962709106,
+              -0.374514644,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9268338535962354,
+            1.0
+          ],
+          "along_path_span_m": 0.009678774430980336,
+          "distance_sample_points_m": [
+            [
+              141.95848189230864,
+              -0.38322149985578097,
+              15.0
+            ],
+            [
+              141.96059549915432,
+              -0.3788680719278905,
+              15.0
+            ],
+            [
+              141.962709106,
+              -0.374514644,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.578854384340044e-09,
+            9.05148390600884e-09,
+            1.552408785998612e-08
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -0.493515798,
+              -141.904933565,
+              15.0
+            ],
+            [
+              -0.374514644,
+              -141.962709106,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9268338535962354,
+            1.0
+          ],
+          "along_path_span_m": 0.009678774430980336,
+          "distance_sample_points_m": [
+            [
+              -0.38322149985578097,
+              -141.95848189230864,
+              15.0
+            ],
+            [
+              -0.3788680719278905,
+              -141.96059549915432,
+              15.0
+            ],
+            [
+              -0.374514644,
+              -141.962709106,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.578854384340044e-09,
+            9.05148390600884e-09,
+            1.552408785998612e-08
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -141.904933565,
+              0.493515798,
+              15.0
+            ],
+            [
+              -141.962709106,
+              0.374514644,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9268338535962354,
+            1.0
+          ],
+          "along_path_span_m": 0.009678774430980336,
+          "distance_sample_points_m": [
+            [
+              -141.95848189230864,
+              0.38322149985578097,
+              15.0
+            ],
+            [
+              -141.96059549915432,
+              0.3788680719278905,
+              15.0
+            ],
+            [
+              -141.962709106,
+              0.374514644,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.578854384340044e-09,
+            9.05148390600884e-09,
+            1.552408785998612e-08
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              0.493515798,
+              141.904933565,
+              15.0
+            ],
+            [
+              0.374514644,
+              141.962709106,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.9268338535962354,
+            1.0
+          ],
+          "along_path_span_m": 0.009678774430980336,
+          "distance_sample_points_m": [
+            [
+              0.38322149985578097,
+              141.95848189230864,
+              15.0
+            ],
+            [
+              0.3788680719278905,
+              141.96059549915432,
+              15.0
+            ],
+            [
+              0.374514644,
+              141.962709106,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            2.578854384340044e-09,
+            9.05148390600884e-09,
+            1.552408785998612e-08
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 0,
+          "path_segment_m": [
+            [
+              141.962709106,
+              -0.374514644,
+              15.0
+            ],
+            [
+              142.020076569,
+              -0.255105412,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.0,
+            2.374614040856069e-05
+          ],
+          "along_path_span_m": 3.1457668023552825e-06,
+          "distance_sample_points_m": [
+            [
+              141.962709106,
+              -0.374514644,
+              15.0
+            ],
+            [
+              141.96270978712792,
+              -0.3745132262458054,
+              15.0
+            ],
+            [
+              141.96271046825584,
+              -0.37451180849161086,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.552408785998612e-08,
+            9.05148393025329e-09,
+            2.578854432829015e-09
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 1,
+          "path_segment_m": [
+            [
+              -0.374514644,
+              -141.962709106,
+              15.0
+            ],
+            [
+              -0.255105412,
+              -142.020076569,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.0,
+            2.374614040856069e-05
+          ],
+          "along_path_span_m": 3.1457668023552825e-06,
+          "distance_sample_points_m": [
+            [
+              -0.374514644,
+              -141.962709106,
+              15.0
+            ],
+            [
+              -0.3745132262458054,
+              -141.96270978712792,
+              15.0
+            ],
+            [
+              -0.37451180849161086,
+              -141.96271046825584,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.552408785998612e-08,
+            9.05148393025329e-09,
+            2.578854432829015e-09
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 2,
+          "path_segment_m": [
+            [
+              -141.962709106,
+              0.374514644,
+              15.0
+            ],
+            [
+              -142.020076569,
+              0.255105412,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.0,
+            2.374614040856069e-05
+          ],
+          "along_path_span_m": 3.1457668023552825e-06,
+          "distance_sample_points_m": [
+            [
+              -141.962709106,
+              0.374514644,
+              15.0
+            ],
+            [
+              -141.96270978712792,
+              0.3745132262458054,
+              15.0
+            ],
+            [
+              -141.96271046825584,
+              0.37451180849161086,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.552408785998612e-08,
+            9.05148393025329e-09,
+            2.578854432829015e-09
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        },
+        {
+          "source_world_cell": [
+            5,
+            -4
+          ],
+          "inherited_source_region": "upper-entry-branch",
+          "proper_rotation_clockwise_quarters": 3,
+          "path_segment_m": [
+            [
+              0.374514644,
+              141.962709106,
+              15.0
+            ],
+            [
+              0.255105412,
+              142.020076569,
+              15.0
+            ]
+          ],
+          "uncovered_fraction_interval": [
+            0.0,
+            2.374614040856069e-05
+          ],
+          "along_path_span_m": 3.1457668023552825e-06,
+          "distance_sample_points_m": [
+            [
+              0.374514644,
+              141.962709106,
+              15.0
+            ],
+            [
+              0.3745132262458054,
+              141.96270978712792,
+              15.0
+            ],
+            [
+              0.37451180849161086,
+              141.96271046825584,
+              15.0
+            ]
+          ],
+          "distance_samples_m": [
+            1.552408785998612e-08,
+            9.05148393025329e-09,
+            2.578854432829015e-09
+          ],
+          "maximum_sampled_distance_m": 1.552408785998612e-08,
+          "complete_interval_capsule_proof_passed": true
+        }
+      ],
+      "maximum_sampled_distance_m": 4.889680662246821e-08,
+      "scope": "The unchanged finite-edge rectangle/endpoint-disc proof applies only to exact frozen inherited branch cells and affirmative flat DD faces. Every admitted interval is recorded; outside those cells strict support is mandatory."
+    },
+    "scope": "Actual complete indexed-model union supports every saved car PATH segment and clears its declared narrow solid prism. This is not game operation or a complete swept vehicle body."
+  },
   "game_operation": "unverified",
   "limits": [
     "This checks the literal seven-placement R40 reference layout, not all possible custom combinations.",
     "Saved geometry and traffic checks do not establish native MIS compatibility or game placement, traffic, shadows, demolition, or save/reload."
   ],
   "source": {
-    "manifest_sha256": "99d984feb1899a4c9de39e504997451b94dd6a4f2066fd1860525fd52d3e6144",
+    "manifest_sha256": "7ade7532c6f5cbc62a7dec66db22692ac87121624015954d7655de366fbe8378",
     "asset_files": {
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-highway-stamp.dat": "da65c15c6cb301eccb1f678f7cf96f15c207e7c3f9c5dcd1c74e8bc5991fafc5",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-r40.dat": "475b33fb88fad00083712b7e51669ff5bf9269e6d97a8027f01b8d3ef26d6201",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-entry-r40.dat": "caed9d71476bbbe7302dd9eee3abfe763eb8d4ddd30394e9de0f3aa44ae0a11b",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat": "7fdb3288883b5a0d4fa3f144e99f27536a89f9e5e2e0d6531aad03144a57c12a",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-entry-r40.dat": "95a5b659dc666300cc333922fc3eb4ff4f8dffdf10ba103fd9b11ce3e4e99ea9",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-northwest-terminal-r40.dat": "609c93b52ddfe7644beb13b008f41d331823d1ad9580ab37e9fc83a9f649bf06",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-southeast-terminal-r40.dat": "c078000649930b369cbc1efd87eaef0fc301d0162877921eea1b87f54358b9c8",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "3c14374e37f04d667c521fd921682d2fa74dd7c593c06b8f5b6bf665186fbf2f",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "3a7dc123cae4674f80de8e5ae2b44b135708234787c4486b54f9e7980246fd21",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "fff121a7e3fce0365e1f2a86342e655bdccc9274291026034e48cf35eb2fd46e",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "8072f3f0755552d50fcaeb252f4e837f2a8f3d6d4ac27202a409566acdb626c1",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "8f58561a709a6a1c9cafed83b3ad73183161847895bf0333610edcdcb5db4c82",
-      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "fa982499b932ac6c0afb3f84510e4b7f311e6b20178e9f548787951f53ebc785"
+      "pieces/ddrhw-modular-highway-stamp.dat": "d0824845015b53a75e38b802a012eea6966b0080af6ed187523c1b53aa05825e",
+      "pieces/ddrhw-modular-lower-exit-r40.dat": "0cbe4bc3dba96d11daa812b51083c664af49879d1d73d8a71f21b0c36b70970b",
+      "pieces/ddrhw-modular-lower-entry-r40.dat": "0140b4e56c1a6fc688ad562beab406bbf156a1a22d5501901458cb7e29b4fc96",
+      "pieces/ddrhw-modular-upper-exit-r40.dat": "b222fb72dcba4a142ced0fddf6a78cb28a3b1c669dc4d28243a7938b28c6c7c0",
+      "pieces/ddrhw-modular-upper-entry-r40.dat": "01302e6ce774849f7864c15f16a220f435228e871af6af99132959010cee0979",
+      "pieces/ddrhw-modular-northwest-terminal-r40.dat": "609c93b52ddfe7644beb13b008f41d331823d1ad9580ab37e9fc83a9f649bf06",
+      "pieces/ddrhw-modular-southeast-terminal-r40.dat": "c078000649930b369cbc1efd87eaef0fc301d0162877921eea1b87f54358b9c8",
+      "pieces/ddrhw-modular-lower-exit-compact.dat": "eeae5e6466488bb408d2e500d94a9097fd7989158b8d8fc115e0086536cb7df7",
+      "pieces/ddrhw-modular-lower-entry-compact.dat": "99dc1998a4ae06dec12855d7da26c8d3b73a00125b45d65fdd74104230673143",
+      "pieces/ddrhw-modular-upper-exit-compact.dat": "fb5dcd5e06226669bb71acdd235d4ba72b47c346ff620eaa823a4f35b321e7e7",
+      "pieces/ddrhw-modular-upper-entry-compact.dat": "32e757a37d7c50c8fad60099763b769364a66fed4facc87684516d4818964eef",
+      "pieces/ddrhw-diagonal-northwest-junction.dat": "8f58561a709a6a1c9cafed83b3ad73183161847895bf0333610edcdcb5db4c82",
+      "pieces/ddrhw-diagonal-southeast-junction.dat": "fa982499b932ac6c0afb3f84510e4b7f311e6b20178e9f548787951f53ebc785"
     },
     "actual_saved_dat_resources": true,
-    "scene_sha256": "429db7274871be1fc7b76e76aaa051feb8875e79550b5f04425c8cf26875e54c"
+    "scene_sha256": "2bdf53be258b1d514760e213d961cd267caee0e047bb81afae66d767c22e9b66"
+  },
+  "normal_native_build_binding": {
+    "passed": true,
+    "normal_manifest_sha256": "8daecd166f6acc19c981f3654be9c0ece4b9005be3c29acb5746c7bdc1d8e8e1",
+    "binding_evidence": "straight-partition-native-binding.json",
+    "binding_evidence_sha256": "c1790bb787035593304a1c92171ec264dbcdd79b4c51cbbaed99dd9c116f591b",
+    "all13_actual_asset_DAT_bytes_equal": true,
+    "scene_file_bytes_equal": true,
+    "measurement_was_rerun": false,
+    "measurement_source_manifest_sha256": "7ade7532c6f5cbc62a7dec66db22692ac87121624015954d7655de366fbe8378"
   }
 }

@@ -1,13 +1,15 @@
-"""Independent saved-resource contracts for the stamp and R40 ramp kit.
+"""Independent traffic ownership and reviewed straight-partition outputs.
 
-The retained stamp uses reviewed hashes, rather than regenerated writer output.
-The six new owners use literal cells and ports plus the existing indexed-face
-and traffic-corridor audit. No function imports either modular builder.
+Rendering may deliberately overhang another component's traffic cells. Exact
+audited output hashes bind that split; complete pavement and solid-corridor
+checks therefore run on the assembled model union. Old compact verification
+is unchanged. No function imports either modular builder.
 """
 from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
+import json
 import math
 from pathlib import Path
 import re
@@ -21,18 +23,24 @@ REFERENCE = ('domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diam
              'checks/stamp-reference.jsonc')
 STAMP = 'modular-stamp'
 WORLD_CELLS = {
-    'lower-exit-r40': ((0, -2), (1, -3), (1, -2)),
-    'lower-entry-r40': ((-3, 1), (-2, 0), (-2, 1)),
-    'upper-exit-r40': ((-1, 3), (-1, 4), (0, 3), (1, 3)),
-    'upper-entry-r40': ((3, -1), (4, -1), (3, 0), (3, 1)),
+    'lower-exit-r40': ((0, -2), (1, -3), (1, -2), (2, -3)),
+    'lower-entry-r40': ((-3, 1), (-2, 0), (-2, 1), (-3, 2)),
+    'upper-exit-r40': ((-1, 3), (-1, 4), (0, 3), (1, 3), (-2, 4), (-3, 5)),
+    'upper-entry-r40': ((3, -1), (4, -1), (3, 0), (3, 1), (4, -2), (5, -3)),
     'northwest-terminal-r40': tuple((x, y) for x in (-3, -2, -1) for y in (-3, -2, -1)),
     'southeast-terminal-r40': ((1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (2, 4),
                                (3, 2), (3, 3), (3, 4), (4, 2), (4, 3), (4, 4)),
+    'lower-exit-compact': ((1, -3), (1, -2), (2, -3)),
+    'lower-entry-compact': ((-3, 1), (-2, 1), (-3, 2)),
+    'upper-exit-compact': ((0, 2), (-1, 3), (0, 3), (-1, 4), (-2, 4), (-3, 5)),
+    'upper-entry-compact': ((4, -1), (3, -1), (2, 0), (3, 0), (4, -2), (5, -3)),
 }
 EMPTY = {'lower-exit-r40': ((1, 0),), 'lower-entry-r40': ((0, 1),),
-         'upper-exit-r40': (), 'upper-entry-r40': (),
+         'upper-exit-r40': ((0, 2),), 'upper-entry-r40': ((2, 0),),
          'northwest-terminal-r40': ((0, 2), (2, 0)),
-         'southeast-terminal-r40': ((1, 3), (3, 1))}
+         'southeast-terminal-r40': ((1, 3), (3, 1)),
+         'lower-exit-compact': ((0, 0),), 'lower-entry-compact': ((0, 0),),
+         'upper-exit-compact': ((0, 3),), 'upper-entry-compact': ((3, 0),)}
 ORIGINS = {key: (min(c[0] for c in cells), min(c[1] for c in cells))
            for key, cells in WORLD_CELLS.items()}
 ORIGINS[STAMP] = (-4, -4)
@@ -64,6 +72,14 @@ def reference():
     return jsonc.load(Path(__file__).resolve().parents[4] / REFERENCE)
 
 
+def stamp_reference_cells():
+    """Retain only the 19 native DD and two pure Avenue traffic cells."""
+    rows = [r for r in reference()['cells'] if sum(r['source_world_cell']) in (0, 1)
+            or r['source_world_cell'][0]-r['source_world_cell'][1] in (-1, 0, 1)]
+    require(len(rows) == 21, 'The straight stamp must retain exactly twenty-one native traffic cells')
+    return rows
+
+
 def geometry_key(piece):
     key = piece.get('geometry_key')
     require(key == STAMP or key in WORLD_CELLS, 'Unknown independent modular highway contract')
@@ -77,10 +93,10 @@ def validate_specification(piece):
     key = geometry_key(piece)
     if key == STAMP:
         data = reference()
-        cells, footprint = data['cells'], data['footprint']
+        cells, footprint = stamp_reference_cells(), data['footprint']
         expected = [row['cell'] for row in cells]
-        empty = [row['cell'] for row in cells if row['source_world_cell'] in ([-3, 5], [5, -3])]
-        require(len(expected) == 27 and data['source_layout_origin_cell'] == [-4, -4],
+        empty = []
+        require(len(expected) == 21 and data['source_layout_origin_cell'] == [-4, -4],
                 'Frozen stamp reference has the wrong measured scope')
     else:
         origin = ORIGINS[key]
@@ -127,37 +143,20 @@ def custom_ports(key):
 
 
 def expected_ports(piece):
-    """Native Avenue edges plus custom sockets, in piece-local coordinates."""
-    from .assembly_verify import _native_routes, _direction, NEIGHBOURS
-    key = geometry_key(piece)
-    require(key != STAMP, 'Stamp ports are bound by all 27 immutable PATH resources')
-    origin, cells = ORIGINS[key], set(WORLD_CELLS[key])
-    ports = custom_ports(key)
-    for x, y in cells:
-        for route in _native_routes(x, y):
-            for direction, point, side in (('in', route['points'][0], route['entry']),
-                                            ('out', route['points'][-1], route['exit'])):
-                dx, dy = NEIGHBOURS[side]
-                if (x+dx, y+dy) not in cells:
-                    tangent, grade = _direction(route['points'], direction == 'in')
-                    ports.append({'direction': direction, 'transport': route['transport'],
-                                  'point_m': (point[0]+16*x, point[1]-16*y, point[2]),
-                                  'tangent': tangent, 'grade': grade})
-    return [{**port, 'point_m': (port['point_m'][0]-16*origin[0],
-                               port['point_m'][1]+16*origin[1], port['point_m'][2])}
-            for port in ports]
+    """Use complete independent checkpoint ports, including split fragments."""
+    from .connections import reviewed_path_ports
+    return reviewed_path_ports(piece)
 
 
 def _stamp_paths(resources, piece):
-    for identifier, row in zip(piece['tile_ids'], reference()['cells']):
+    for identifier, row in zip(piece['tile_ids'], stamp_reference_cells()):
         require(hashlib.sha256(resources[*PATH, int(identifier, 16)]).hexdigest() == row['path_sha256'],
                 'Saved stamp PATH differs from the frozen retained native/slip-lane contract')
 
 
 def _audited_piece(piece):
     result = deepcopy(piece)
-    if geometry_key(piece) != STAMP:
-        result['engineering']['external_ports'] = expected_ports(piece)
+    result['engineering']['external_ports'] = expected_ports(piece)
     return result
 
 
@@ -208,7 +207,11 @@ def check_profile_routes(routes, key):
     high = _reflect(LOW_HIGH if lower else UP_HIGH) if entry else (LOW_HIGH if lower else UP_HIGH)
     start = ground if entry else high
     remaining, points = list(cars), []
-    while remaining:
+    finish = high if entry else ground
+    # The complete attachment now also owns the old wing fragments. Measure
+    # the independently fixed R40 continuation between its retained internal
+    # datum and flat end; the complete ownership graph is checked separately.
+    while math.dist(start, finish) >= 4e-5:
         choices = [r for r in remaining if math.dist(r['points'][0], start) < 4e-5]
         require(len(choices) == 1, 'Saved R40 ramp has a missing, reversed, or ambiguous directed continuation')
         route = choices[0]
@@ -262,16 +265,19 @@ def check_paths(resources, piece):
     if key == STAMP:
         _stamp_paths(resources, piece)
     result = inspect(resources, _audited_piece(piece))
-    if key != STAMP:
+    if key.endswith('-r40'):
         result['r40_profile'] = check_profile_routes(_source_routes(resources, piece), key)
     return {**result, 'independent_modular_partition_checked': True,
-            'frozen_stamp_paths_checked': 27 if key == STAMP else 0,
-            'literal_modular_ports_checked': key != STAMP}
+            'frozen_stamp_paths_checked': 21 if key == STAMP else 0,
+            'literal_modular_ports_checked': True}
 
 
 def _stamp_models(resources, piece):
+    """Retained checkpoint-model helper; current outputs use the split contract."""
     from scp.verify import mesh_data, translated
-    _stamp_paths(resources, piece)
+    for identifier, row in zip(piece['tile_ids'], reference()['cells']):
+        require(hashlib.sha256(resources[*PATH, int(identifier, 16)]).hexdigest() == row['path_sha256'],
+                'Saved stamp PATH differs from the frozen checkpoint contract')
     expected, textures = [], set()
     for cell, identifier, row in zip(piece['cells'], piece['tile_ids'], reference()['cells']):
         for zoom in range(5):
@@ -300,9 +306,9 @@ def _stamp_models(resources, piece):
 
 
 def check_models(resources, piece, donors=None):
-    from .ramp_verify import check_models as inspect
-    key = validate_specification(piece)
-    result = _stamp_models(resources, piece) if key == STAMP else inspect(resources, _audited_piece(piece), donors)
+    from .modular_partition_verify import validate_reviewed_models
+    validate_specification(piece)
+    result = validate_reviewed_models(resources, piece)
     if piece.get('adaptive_ground'):
         from .adaptive_verify import check_resources
         result['adaptive_ground'] = check_resources(resources, piece)
@@ -332,3 +338,35 @@ def check_construction_fields(fields, piece, resources):
             'Modular construction changes cell ownership, anchors, or actual saved-route flags')
     return {'independent_modular_partition_checked': True, 'occupied_cells_checked': len(piece['cells']),
             'actual_saved_route_flags_checked': True, 'game_behavior_tested': False}
+
+
+def saved_path_evidence(output):
+    """Decode current modular canonical PATHs, without claiming a game test."""
+    from scp.verify import strict_dbpf
+    from .ramp_verify import _paths
+    output = Path(output)
+    raw = (output/'manifest.json').read_bytes()
+    manifest = json.loads(raw)
+    files = {r['path']: r for r in manifest['files']}
+    pieces = []
+    for piece in manifest['pieces']:
+        if not piece['recipe'].startswith('highway_ddrhw_modular_'):
+            continue
+        archive = (output/piece['asset_file']).read_bytes()
+        require(len(archive) == files[piece['asset_file']]['bytes'] and
+                hashlib.sha256(archive).hexdigest() == files[piece['asset_file']]['sha256'],
+                'Saved modular PATH evidence DAT differs from its native manifest')
+        resources = strict_dbpf(archive)
+        measured = check_paths(resources, piece)
+        cells = []
+        for cell, tile in zip(piece['cells'], piece['tile_ids']):
+            data = resources[*PATH, int(tile, 16)]
+            cells.append({'cell': cell, 'path_tgi': [f'{v:08x}' for v in (*PATH, int(tile, 16))],
+                          'path_sha256': hashlib.sha256(data).hexdigest(), 'routes': _paths(data)})
+        pieces.append({'piece_id': piece['id'], 'geometry_key': piece['geometry_key'],
+            'source_world_origin_cell': list(ORIGINS[piece['geometry_key']]),
+            'cells': cells, 'independent_path_checks': measured})
+    return {'schema_version': 1, 'build_manifest_sha256': hashlib.sha256(raw).hexdigest(),
+            'modular_types': len(pieces), 'canonical_cells': sum(len(p['cells']) for p in pieces),
+            'straight_stamp_owned_cells': 21, 'pieces': pieces, 'game_operation': 'unverified',
+            'scope': 'Canonical PATHs from eleven separately selectable modular types. R40 and compact alternatives reuse world positions and must not all be placed together. Render projection and physical q=8 mouths do not allocate PATH ownership.'}
