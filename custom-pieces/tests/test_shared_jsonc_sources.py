@@ -81,7 +81,7 @@ class SharedJsoncSourceTests(unittest.TestCase):
     def test_real_library_source_roster_has_readable_metadata_and_valid_payloads(self):
         sources = {relative: path for relative, path in shared_files() if path.suffix == '.jsonc'}
         self.assertEqual(set(sources), LIBRARY_SOURCES)
-        self.assertEqual(len(sources), 28)
+        self.assertEqual(len(sources), 29)
         for relative, path in sources.items():
             with self.subTest(source=relative):
                 self.assert_document(path)
