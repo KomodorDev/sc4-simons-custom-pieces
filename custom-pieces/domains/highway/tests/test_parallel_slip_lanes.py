@@ -50,6 +50,15 @@ def fixture(profile=None):
 
 
 class IndependentSlipProfileTests(unittest.TestCase):
+    def _assert_retained_physical_profile(self, actual, expected):
+        length = 'length_total_plan_m'
+        self.assertEqual(set(actual), set(expected))
+        self.assertEqual({key: value for key, value in actual.items() if key != length},
+                         {key: value for key, value in expected.items() if key != length})
+        # Accumulated segment lengths can differ by one binary rounding step
+        # across platforms. Only this aggregate gets an absolute metre bound.
+        self.assertAlmostEqual(actual[length], expected[length], delta=1e-12)
+
     def test_actual_tiny_native_top_fragment_is_retained_only_with_explicit_opt_in(self):
         from scp_highway import ramp_geometry as geometry
         from scp_highway.ramp_verify import _covered
@@ -138,7 +147,8 @@ class IndependentSlipProfileTests(unittest.TestCase):
         independent = verify.revised_routes(verify.HIGHWAY_SLIP_PROFILE)
         for old, expected, actual in zip(original, independent, routes()):
             with self.subTest(ramp=actual['id']):
-                self.assertEqual(actual['physical_profile'], old['profile'])
+                self._assert_retained_physical_profile(actual['physical_profile'], old['profile'])
+                retained_profile = deepcopy(actual['physical_profile'])
                 self.assertIsNot(actual['physical_profile'], actual['profile'])
                 self.assertIn('Revised traffic', actual['profile']['reference'])
                 segment = next(row for row in expected['segments'] if row['kind'] == 'flat-high-departure')
@@ -162,7 +172,31 @@ class IndependentSlipProfileTests(unittest.TestCase):
                 # Updating the traffic measurements must not mutate the
                 # retained model profile or the immutable source approval.
                 profile['departure_station_u_m'] += 1.
-                self.assertEqual(actual['physical_profile'], old['profile'])
+                self.assertEqual(actual['physical_profile'], retained_profile)
+
+    def test_retained_profile_comparison_allows_only_aggregate_length_roundoff(self):
+        frozen = next(route['profile'] for route in verify.approved_candidate()['routes']
+                      if route['id'] == 'upper-off')
+        roundoff = deepcopy(frozen)
+        roundoff['length_total_plan_m'] = math.nextafter(frozen['length_total_plan_m'], math.inf)
+        self._assert_retained_physical_profile(roundoff, frozen)
+        for drift in (-1e-8, 1e-8):
+            with self.subTest(length_drift_m=drift):
+                changed = deepcopy(frozen)
+                changed['length_total_plan_m'] += drift
+                with self.assertRaises(AssertionError):
+                    self._assert_retained_physical_profile(changed, frozen)
+        for field, value in (('parallel_offset_m', math.nextafter(frozen['parallel_offset_m'], math.inf)),
+                             ('reference', 'Changed physical profile'), ('unexpected_field', True)):
+            with self.subTest(changed_field=field):
+                changed = {**frozen, field: value}
+                with self.assertRaises(AssertionError):
+                    self._assert_retained_physical_profile(changed, frozen)
+        for field in ('length_total_plan_m', 'turn_radius_m'):
+            with self.subTest(missing_field=field):
+                changed = {key: value for key, value in frozen.items() if key != field}
+                with self.assertRaises(AssertionError):
+                    self._assert_retained_physical_profile(changed, frozen)
 
     def test_explicit_uniform_marker_rejects_unknown_and_mixed_revisions(self):
         manifest, scene, _ = fixture()
