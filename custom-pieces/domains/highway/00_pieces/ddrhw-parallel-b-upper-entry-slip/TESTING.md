@@ -83,201 +83,201 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | From service / port | To service / port | Reason |
 | --- | --- | --- |
-| road / `channel-01-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-01-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-02-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-03-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-04-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-05-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-06-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-07-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-08-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-09-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-10-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-11-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-12-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-13-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-14-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `channel-15-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `channel-01-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-01-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-02-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-03-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-04-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-05-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-06-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-07-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-08-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-09-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-10-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-11-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-12-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-13-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-26-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-14-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-16-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-17-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-18-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-19-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-20-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-21-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-22-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-23-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-24-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-25-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-27-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-28-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `channel-15-in` | road / `channel-29-out` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
 
 Review the test checklist for the exact tested cases and environments.
 

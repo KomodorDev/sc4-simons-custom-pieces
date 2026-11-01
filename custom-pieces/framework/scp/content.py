@@ -788,8 +788,8 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
         lines += ['| From service / port | To service / port | Reason |', '| --- | --- | --- |']
         ports={port['id']:port for port in connections.get('ports',[])}
         reasons={
-            'not reachable in actual saved PATH graph': 'No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified.',
-            'not reachable in actual saved assembly graph': 'No directed route exists between these ports in the saved assembly transport paths. In-game confirmation remains unverified.',
+            'not reachable in actual saved PATH graph': 'No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist.',
+            'not reachable in actual saved assembly graph': 'No directed route exists between these ports in the saved assembly transport paths. In-game outcomes are recorded separately in the test checklist.',
         }
         for transfer in transfers:
             ends=[]

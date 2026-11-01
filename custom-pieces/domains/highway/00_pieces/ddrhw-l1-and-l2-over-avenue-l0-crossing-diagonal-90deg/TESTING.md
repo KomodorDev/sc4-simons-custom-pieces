@@ -69,96 +69,96 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | From service / port | To service / port | Reason |
 | --- | --- | --- |
-| road / `avenue-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `upper-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-03-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `avenue-lane-04-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `lower-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| pedestrian / `avenue-walkway-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `avenue-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `upper-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-03-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-01-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `avenue-lane-04-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `lower-lane-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-01-a` | pedestrian / `avenue-walkway-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `lower-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `lower-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-03-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-04-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `avenue-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `upper-lane-02-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | road / `upper-lane-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| pedestrian / `avenue-walkway-02-a` | pedestrian / `avenue-walkway-01-b` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
 
 Review the test checklist for the exact tested cases and environments.
 

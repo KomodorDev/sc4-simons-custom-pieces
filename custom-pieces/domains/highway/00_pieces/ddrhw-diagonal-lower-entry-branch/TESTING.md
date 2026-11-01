@@ -67,69 +67,69 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | From service / port | To service / port | Reason |
 | --- | --- | --- |
-| road / `1-S-in-2` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-2` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-4` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-5` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-7` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-N-in-9` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-11` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-S-in-13` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-14` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
-| road / `1-E-in-16` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified. |
+| road / `1-S-in-2` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-2` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-4` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-5` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-7` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-N-in-9` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-11` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-S-in-13` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-S-out-10` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-14` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-S-out-1` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-S-out-3` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-E-out-6` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-E-out-8` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-S-out-12` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-E-out-15` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
+| road / `1-E-in-16` | road / `1-E-out-17` | No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist. |
 
 Review the test checklist for the exact tested cases and environments.
 

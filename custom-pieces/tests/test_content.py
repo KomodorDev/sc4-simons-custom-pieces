@@ -605,14 +605,50 @@ class ManualContentTests(unittest.TestCase):
         from scp.content import render_connections
         connections=deepcopy(self.connections)
         connections['forbidden_transfers']=[{'from_port':'Sin','to_port':'Nout',
-            'basis':'not reachable in actual saved PATH graph'},{}]
+            'basis':'not reachable in actual saved PATH graph'},
+            {'from_port':'Sin','to_port':'Nout',
+             'basis':'not reachable in actual saved assembly graph'},{}]
         text=render_connections(connections)
         self.assertIn('| From service / port | To service / port | Reason |',text)
         self.assertIn('| hsr / `Sin` | hsr / `Nout` | No directed route exists',text)
-        self.assertIn('In-game confirmation remains unverified.',text)
+        self.assertIn('saved piece transport paths.',text)
+        self.assertIn('saved assembly transport paths.',text)
+        self.assertIn('In-game outcomes are recorded separately in the test checklist.',text)
+        self.assertNotIn('In-game confirmation remains unverified.',text)
         self.assertIn('Unresolved service / Unspecified port',text)
         self.assertIn('No reason has been established',text)
         self.assertNotIn("{'from_port':",text)
+
+    def test_forbidden_transfer_view_preserves_recorded_game_results(self):
+        for kind, state in product(('piece', 'assembly'), ('passed', 'failed')):
+            with self.subTest(kind=kind, state=state), tempfile.TemporaryDirectory() as temporary:
+                directory=Path(temporary)
+                subject={'id':'fixture','kind':kind,'name':'Fixture'}
+                connections=deepcopy(self.connections)
+                connections['forbidden_transfers']=[{'from_port':'Nout','to_port':'Sin',
+                    'basis':('not reachable in actual saved PATH graph' if kind=='piece' else
+                             'not reachable in actual saved assembly graph')}]
+                write_subject_content(directory,subject,connections,self.hashes,preview_hashes=self.images)
+                record_path=directory/'checks/manual-tests.json'
+                record=json.loads(record_path.read_text())
+                case=next(case for case in record['cases'] if case['kind']=='in_game_forbidden_transfer')
+                record=record_user_result(record,case['id'],state,explicit_user_confirmation=True,
+                    reviewer='User Simon',confirmed_at='2026-10-19T12:00:00+02:00',
+                    evidence=['User explicitly observed this exact forbidden-transfer test.'],
+                    environment=self.environment)
+                record_path.write_text(json.dumps(compact_manual_record(record))+'\n')
+                original=record_path.read_bytes()
+
+                write_subject_content(directory,subject,connections,self.hashes,refresh_metadata=False)
+
+                self.assertEqual(record_path.read_bytes(),original)
+                saved=json.loads(record_path.read_text())
+                observed=next(item for item in saved['cases'] if item['id']==case['id'])
+                self.assertEqual(case_state(observed),state)
+                text=(directory/'TESTING.md').read_text()
+                self.assertIn(f'**0° CCW: {state}** — `{case["id"]}`.',text)
+                self.assertIn('In-game outcomes are recorded separately in the test checklist.',text)
+                self.assertNotIn('In-game confirmation remains unverified.',text)
 
     def test_manual_workflow_uses_exact_portable_subject_command(self):
         with tempfile.TemporaryDirectory() as directory:
