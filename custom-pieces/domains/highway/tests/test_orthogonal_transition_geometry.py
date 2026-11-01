@@ -178,6 +178,107 @@ class OrthogonalTransitionGeometryTests(unittest.TestCase):
                    (8.0 + 1.4e-9, 1.0, 0.25, 1.0, 1.0, 0.0)]
         self.assertEqual(writer._clip_plane(polygon, 0, 8.0, -1.0), [])
 
+    def test_mirrored_decks_keep_native_heights_and_opposite_direction_sockets(self):
+        routes = {route["id"]: route for route in geometry.traffic_routes(variant="mirrored")}
+        self.assertEqual(routes["upper-lane-0"]["points"][0], (18.5, -88.0, 0.0))
+        self.assertEqual(routes["upper-lane-0"]["points"][-1], (2.5, 8.0, 15.0))
+        self.assertEqual(routes["lower-lane-0"]["points"][0], (-2.5, 8.0, 7.5))
+        self.assertEqual(routes["lower-lane-0"]["points"][-1], (-2.5, -88.0, 0.0))
+        self.assertEqual({route["lane"] for route in routes.values()}, {0, 1})
+
+    def test_mirrored_paths_reflect_and_reverse_all_four_complete_lanes(self):
+        original = geometry.traffic_routes()
+        mirrored = geometry.traffic_routes(variant="mirrored")
+        for first, second in zip(original, mirrored):
+            self.assertEqual({k: v for k, v in first.items() if k != "points"},
+                             {k: v for k, v in second.items() if k != "points"})
+            for a, b in zip(reversed(first["points"]), second["points"]):
+                self.assertAlmostEqual(b[0], 16.0 - a[0], places=12)
+                self.assertEqual(b[1:], a[1:])
+        sliced = ramp_paths.slice_routes(mirrored)
+        self.assertEqual(set(geometry.CELLS) - set(sliced), {(1, 0)})
+        self.assertEqual(geometry.model_only_cells(variant="mirrored"), ((1, 0),))
+        self.assertTrue(set(sliced) <= set(geometry.CELLS))
+
+    def test_mirrored_sections_reflect_the_entire_width_with_unchanged_grades(self):
+        for deck in ("upper", "lower"):
+            for station in (0., 12., 36., 52., 69., 96.):
+                for lateral in (-8., -2.5, 2.5, 8.):
+                    original = geometry.model_point(deck, station, lateral)
+                    mirrored = geometry.model_point(deck, station, lateral, variant="mirrored")
+                    self.assertAlmostEqual(mirrored[0], 16. - original[0], places=12)
+                    self.assertEqual(mirrored[1:], original[1:])
+        for station in (0., 12., 36., 52., 96.):
+            x, first, second = geometry.upper_plan(station)
+            self.assertEqual(geometry.upper_plan(station, variant="mirrored"), (16.-x, -first, -second))
+
+    def test_reflected_faces_reverse_winding_and_keep_their_material_role(self):
+        triangle = ((0., 3., 0., .1, .2, 4.), (0., 3., 2., .3, .4, 4.),
+                    (2., 3., 0., .5, .6, 4.))
+        reflected, = writer.reflect_triangles([triangle])
+        self.assertGreater(ramp_geometry._normal(triangle)[1], 0.)
+        self.assertGreater(ramp_geometry._normal(reflected)[1], 0.)
+        for original, actual in zip((triangle[0], triangle[2], triangle[1]), reflected):
+            self.assertEqual(actual, (16.-original[0], *original[1:]))
+        self.assertEqual(writer.reflect_triangles([reflected]), [triangle])
+
+    def test_reflected_complete_support_solids_remain_closed_and_outward(self):
+        records = writer.support_specifications()
+        painter = type("Roles", (), {"roles": tuple(r["id"] for r in records)})()
+        for record in records:
+            source = writer._support_box(record, painter)
+            reflected = writer.reflect_triangles(source)
+            center = tuple(sum(p[i] for triangle in reflected for p in triangle) / 36. for i in range(3))
+            edges = Counter()
+            for triangle in reflected:
+                points = [tuple(round(v, 10) for v in p[:3]) for p in triangle]
+                outward = tuple(sum(p[i] for p in points) / 3. - center[i] for i in range(3))
+                normal = ramp_geometry._normal(points)
+                self.assertGreater(sum(a*b for a, b in zip(normal, outward)), 0.)
+                for first, last in zip(points, points[1:] + points[:1]):
+                    edges[tuple(sorted((first, last)))] += 1
+            self.assertEqual(set(edges.values()), {2}, record["id"])
+
+    def test_mirrored_native_asphalt_phases_match_actual_rotated_donor_frames(self):
+        for station in (0., 1., 3., 69., 93., 96.):
+            for deck in ("upper", "lower"):
+                for native_dd in (False, True):
+                    u, v = writer._source_uv(deck, station, -2.5, native_dd=native_dd,
+                                             variant="mirrored")
+                    if native_dd:
+                        expected_u = (-2.5 - writer.DD_MIN) / writer.DD_WIDTH
+                        expected_v = (16. - station - writer.DD_OFFSET) / writer.DD_WIDTH
+                    else:
+                        expected_u, expected_v = 5.5 / 16., (16. - station) / 16.
+                    if deck == "lower":
+                        expected_u, expected_v = 1.-expected_u, 1.-expected_v
+                    self.assertEqual((u, v), (expected_u, expected_v))
+        original = writer._source_uv("upper", 0., 0., native_dd=True)
+        reflected = writer._source_uv("upper", 0., 0., native_dd=True, variant="mirrored")
+        self.assertEqual(original[0], reflected[0])
+        self.assertGreater(abs(reflected[1] - (1.-original[1])), 1e-5)
+
+    def test_mirrored_metadata_is_explicit_and_default_original_calls_are_unchanged(self):
+        self.assertEqual(geometry.traffic_routes(), geometry.traffic_routes(variant="original"))
+        self.assertEqual(writer.engineering_metadata(), writer.engineering_metadata(variant="original"))
+        original, mirrored = writer.engineering_metadata(), writer.engineering_metadata(variant="mirrored")
+        self.assertNotIn("transition_variant", original)
+        self.assertEqual(mirrored["transition_variant"], "mirrored")
+        self.assertEqual(mirrored["model_only_cells"], [[1, 0]])
+        self.assertEqual(mirrored["native_dd_pose"], 2)
+        self.assertEqual((mirrored["native_ground_upper_pose"], mirrored["native_ground_lower_pose"]), (2, 0))
+        self.assertEqual(mirrored["upper_normalized_grade"], original["upper_normalized_grade"])
+        self.assertEqual(mirrored["shadow_policy"], "disabled")
+
+    def test_unknown_variants_fail_before_build_inputs_are_read(self):
+        for variant in (None, True, False, "standard", "", "reflected"):
+            for action in (lambda: geometry.traffic_routes(variant=variant),
+                           lambda: geometry.engineering_metadata(variant=variant),
+                           lambda: writer.build_channels({}, texture_id=1, variant=variant),
+                           lambda: writer.build_textures({}, 1, variant=variant)):
+                with self.subTest(variant=variant), self.assertRaisesRegex(ValueError, "variant"):
+                    action()
+
 
 if __name__ == "__main__":
     unittest.main()

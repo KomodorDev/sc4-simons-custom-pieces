@@ -130,7 +130,8 @@ def _journeys(parsed, cells, angle):
 
 
 def check_paths(resources, piece):
-    if piece['recipe'] == 'highway_ddrhw_orthogonal_l0_transition':
+    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
+                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
         from .orthogonal_transition_verify import check_paths as check_transition
         return check_transition(resources, piece)
     if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
@@ -167,7 +168,8 @@ def check_paths(resources, piece):
 
 
 def check_models(resources, piece, donors):
-    if piece['recipe'] == 'highway_ddrhw_orthogonal_l0_transition':
+    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
+                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
         from .orthogonal_transition_verify import check_models as check_transition
         return check_transition(resources, piece, donors)
     if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
@@ -224,7 +226,8 @@ def check_models(resources, piece, donors):
 
 
 def check_construction_fields(fields, piece, resources):
-    if piece['recipe'] == 'highway_ddrhw_orthogonal_l0_transition':
+    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
+                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
         from .orthogonal_transition_verify import check_construction_fields as check_transition
         from .orthogonal_approaches import check_construction_approaches, approaches
         core = check_construction_approaches(fields, piece)

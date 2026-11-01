@@ -66,7 +66,13 @@ def pavement_bounds(deck, station):
             8.0 + factor * (DD_MAX - 8.0))
 
 
-def _source_uv(deck, station, lateral, *, native_dd):
+def _native_station(station, variant):
+    """Native pose 2 reverses longitudinal sampling within the city tile."""
+    return 16.0 - station if geometry.is_mirrored(variant) else station
+
+
+def _source_uv(deck, station, lateral, *, native_dd, variant="original"):
+    station = _native_station(station, variant)
     if native_dd:
         u, v = (lateral - DD_MIN) / DD_WIDTH, (station - DD_OFFSET) / DD_WIDTH
     else:
@@ -74,9 +80,10 @@ def _source_uv(deck, station, lateral, *, native_dd):
     return (u, v) if deck == "upper" else (1.0 - u, 1.0 - v)
 
 
-def _pavement_uv(deck, station, lateral, role):
+def _pavement_uv(deck, station, lateral, role, *, variant="original"):
+    geometry.is_mirrored(variant)
     if role in ("native-dd", "native-ground"):
-        return _source_uv(deck, station, lateral, native_dd=role == "native-dd")
+        return _source_uv(deck, station, lateral, native_dd=role == "native-dd", variant=variant)
     low, high = pavement_bounds(deck, station)
     u = (lateral - low) / (high - low)
     if deck == "lower":
@@ -131,7 +138,7 @@ def _quad(points, normal=None):
     return ramp_geometry._triangulate(points, normal, minimum_normal_squared=1e-22)
 
 
-def _pavement_and_body(deck, painter):
+def _pavement_and_body(deck, painter, *, variant="original"):
     faces = []
     for first, last in zip(geometry.STATIONS, geometry.STATIONS[1:]):
         role = _role(deck, first, last)
@@ -141,7 +148,7 @@ def _pavement_and_body(deck, painter):
             low, high = pavement_bounds(deck, station)
             offsets = (low, -3.75, -2.5, -1.25, 0.0, 1.25, 2.5, 3.75, high)
             rings.append([_point(deck, station, u, pavement_datum(deck, station),
-                                  _pavement_uv(deck, station, u, role), code) for u in offsets])
+                                  _pavement_uv(deck, station, u, role, variant=variant), code) for u in offsets])
         for index in range(len(rings[0]) - 1):
             faces += _quad([rings[0][index], rings[1][index], rings[1][index + 1],
                             rings[0][index + 1]], (0.0, 1.0, 0.0))
@@ -206,7 +213,7 @@ def _barrier_sections(dd, deck):
     return strips
 
 
-def _barriers(dd, deck, painter):
+def _barriers(dd, deck, painter, *, variant="original"):
     code = painter.roles.index(f"{deck}-barrier")
     baseline = 15.0 if deck == "upper" else 7.5
     faces = []
@@ -218,7 +225,7 @@ def _barriers(dd, deck, painter):
             points = []
             for station, source in ((first, 0), (first, 1), (last, 1), (last, 0)):
                 a, b = starts[source], ends[source]
-                fraction = (station - DD_OFFSET) / DD_WIDTH
+                fraction = (_native_station(station, variant) - DD_OFFSET) / DD_WIDTH
                 uv = (a[3] + fraction * (b[3] - a[3]), a[4])
                 # The source's sub-millimetre origin offset fades with the deck datum.
                 canonical = (a[0] - (DD_MIN + DD_MAX) / 2.0) * 16.0 / DD_WIDTH
@@ -371,8 +378,15 @@ def partition_triangles(triangles):
     return {cell: faces for cell, faces in output.items() if faces}
 
 
-def build_channels(context, *, texture_id=None):
+def reflect_triangles(triangles):
+    """Reflect complete world geometry and reverse winding, retaining attributes."""
+    return [tuple((16.0 - p[0], *p[1:]) for p in (triangle[0], triangle[2], triangle[1]))
+            for triangle in triangles]
+
+
+def build_channels(context, *, texture_id=None, variant="original"):
     """Compile the twelve owned cells using one allocated private-build atlas."""
+    mirrored = geometry.is_mirrored(variant)
     texture_id = texture_id if texture_id is not None else context.get("orthogonal_transition_texture_id")
     _require(type(texture_id) is int and 0 < texture_id <= 0xFFFFFFFF,
              "Orthogonal transition requires its allocated authored texture ID")
@@ -380,23 +394,25 @@ def build_channels(context, *, texture_id=None):
     painter = _Painter(dd, ground, texture_id)
     faces = []
     for deck in ("upper", "lower"):
-        faces += _pavement_and_body(deck, painter)
-        faces += _barriers(dd, deck, painter)
+        faces += _pavement_and_body(deck, painter, variant=variant)
+        faces += _barriers(dd, deck, painter, variant=variant)
     for support in support_specifications():
         faces += _support_box(support, painter)
+    if mirrored:
+        faces = reflect_triangles(faces)
     partition = partition_triangles(faces)
     # The native DD donor's measured +1 mm origin offset is physical overhang,
     # not an extra construction cell. Preserve it in its nearest owned host.
     owned = defaultdict(list)
     for cell, triangles in partition.items():
         host = min(1, max(0, cell[0])), min(5, max(0, cell[1]))
-        _require(cell == host or (cell[0] == 2 and 0 <= cell[1] < 6),
+        _require(cell == host or (cell[0] == (-1 if mirrored else 2) and 0 <= cell[1] < 6),
                  f"Unexpected transition model projection beyond the owned rectangle: {cell}")
         dx, dz = 16.0 * (cell[0] - host[0]), 16.0 * (cell[1] - host[1])
         owned[host].extend(tuple((p[0] + dx, p[1], p[2] + dz, *p[3:]) for p in tri)
                            for tri in triangles)
-    routes = ramp_paths.slice_routes(geometry.traffic_routes())
-    _require(set(geometry.CELLS) - set(routes) == set(geometry.MODEL_ONLY_CELLS),
+    routes = ramp_paths.slice_routes(geometry.traffic_routes(variant=variant))
+    _require(set(geometry.CELLS) - set(routes) == set(geometry.model_only_cells(variant=variant)),
              "Transition model-only declaration differs from actual complete lane cuts")
     result = []
     for cell in geometry.CELLS:
@@ -418,8 +434,9 @@ def _encode_fsh(image):
             + struct.pack("<I6H", (block_size << 8) | 0x7D, width, height, 0, 0, 0, 0) + pixels)
 
 
-def build_textures(context, texture_id):
+def build_textures(context, texture_id, *, variant="original"):
     """Blend measured native asphalt in a generated atlas with isolated gutters."""
+    geometry.is_mirrored(variant)
     from PIL import Image
     from scp.preview import decode_fsh
     _require(type(texture_id) is int and texture_id > 0, "Authored atlas requires an allocated ID")
@@ -446,8 +463,9 @@ def build_textures(context, texture_id):
         base = ATLAS_COLUMN[deck]
         for row in range(ATLAS_SIZE[1]):
             station = (row - ATLAS_ROW + 0.5) / 8.0
-            phase = (station - DD_OFFSET) / DD_WIDTH
-            ground_phase = station / 16.0
+            native_station = _native_station(station, variant)
+            phase = (native_station - DD_OFFSET) / DD_WIDTH
+            ground_phase = native_station / 16.0
             if deck == "lower":
                 phase, ground_phase = 1.0 - phase, 1.0 - ground_phase
             blend, alpha_blend = appearance_blend(deck, station)
@@ -461,8 +479,8 @@ def build_textures(context, texture_id):
     return {(*TEXTURE, texture_id): _encode_fsh(atlas)}
 
 
-def engineering_metadata():
-    result = geometry.engineering_metadata()
+def engineering_metadata(*, variant="original"):
+    result = geometry.engineering_metadata(variant=variant)
     result.update({"native_dd_model_sha256": DD_MODEL_SHA256,
                    "native_ground_model_sha256": GROUND_MODEL_SHA256,
                    "native_texture_sha256": {f"{iid:08X}": value for iid, value in TEXTURE_SHA256.items()},
@@ -477,4 +495,10 @@ def engineering_metadata():
                    "support_solids": deepcopy(list(support_specifications())),
                    "support_geometry_scope": "Closed oriented rectangular piers and caps; structural capacity unverified",
                    "shadow_policy": "disabled", "pedestrian_routes": 0})
+    if geometry.is_mirrored(variant):
+        result.update({"native_dd_pose": 2, "native_ground_upper_pose": 2, "native_ground_lower_pose": 0,
+                       "native_longitudinal_sample_station_m": "16 minus authored station s, before each deck's native UV orientation",
+                       "native_uv_reflection_policy": "Retain lateral U under geometry reflection; reverse native longitudinal sample phase for asphalt and barriers",
+                       "support_coordinate_policy": "Retain canonical source roles and lateral dimensions; reflect every complete solid by east x becoming 16 minus x",
+                       "model_winding_policy": "Reverse each reflected triangle's winding to preserve its outward face"})
     return result

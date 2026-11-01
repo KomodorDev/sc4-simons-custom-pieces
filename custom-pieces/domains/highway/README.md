@@ -19,7 +19,7 @@ The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground d
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 58 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 59 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 4 designs](01_assemblies/INVENTORY.md).
 
 <details>
@@ -35,7 +35,9 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `ddrhw-diagonal-ghsr-crossing-alignment-b`: 1 piece types.
 - `ddrhw-diagonal-ghsr-crossing-alignments`: 2 piece types.
 - `ddrhw-parallel-diamond-alignment-b`: 15 piece types.
-- `ddrhw-orthogonal-ground-transition`: 1 piece types.
+- `ddrhw-orthogonal-ground-transition`: 2 piece types.
+- `ddrhw-orthogonal-ground-transition-original`: 1 piece types.
+- `ddrhw-orthogonal-ground-transition-mirrored`: 1 piece types.
 
 </details>
 

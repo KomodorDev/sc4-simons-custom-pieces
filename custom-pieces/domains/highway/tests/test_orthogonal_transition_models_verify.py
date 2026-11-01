@@ -183,5 +183,61 @@ class SavedTransitionCorridorTests(unittest.TestCase):
                 check.check_deck_clearance(pair(*args))
 
 
+class MirroredTransitionSurfaceTests(unittest.TestCase):
+    def test_inverse_reflection_corrects_winding_and_preserves_vertex_uvs(self):
+        source = next(deepcopy(f) for f in check._surface_contract(True)
+                      if f['role'] == 'upper-pavement-native-dd')
+        actual = {**source, 'points': tuple((16.-source['points'][i][0], *source['points'][i][1:])
+                                          for i in (0, 2, 1)),
+                  'uv': tuple(source['uv'][i] for i in (0, 2, 1)), 'material': {}, 'texture': 0}
+        canonical = check.canonical_surface_frame([actual], mirrored=True)
+        self.assertEqual(canonical[0]['points'], source['points'])
+        self.assertEqual(canonical[0]['uv'], source['uv'])
+        with patch.object(check, '_surface_contract', return_value=(source,)), patch.object(check, '_material'):
+            self.assertTrue(check.check_complete_surfaces(canonical, 0x7f700000, mirrored=True)['passed'])
+
+    def test_reflection_without_corrected_saved_index_winding_is_rejected(self):
+        source = next(deepcopy(f) for f in check._surface_contract(True)
+                      if f['role'] == 'upper-pavement-native-dd')
+        actual = {**source, 'points': tuple((16.-x, y, h) for x, y, h in source['points']),
+                  'material': {}, 'texture': 0}
+        canonical = check.canonical_surface_frame([actual], mirrored=True)
+        with patch.object(check, '_surface_contract', return_value=(source,)), patch.object(check, '_material'):
+            with self.assertRaisesRegex(ValueError, 'independent surface, winding, or UV'):
+                check.check_complete_surfaces(canonical, 0x7f700000, mirrored=True)
+
+    def test_mirrored_native_dd_phase_uses_measured_offset_and_not_one_minus_original(self):
+        old = check._uv('upper', 0., 2.5, 'native-dd')
+        mirrored = check._uv('upper', 0., 2.5, 'native-dd', mirrored=True)
+        self.assertAlmostEqual(mirrored[1], (16.-check.DD_OFFSET)/check.DD_WIDTH, places=14)
+        self.assertGreater(abs(mirrored[1]-(1.-old[1])), .0001)
+        self.assertEqual(mirrored[0], old[0])
+        self.assertEqual(check._uv('lower', 80., -2.5, 'native-ground', mirrored=True)[1], 5.)
+
+    def test_retaining_original_native_surface_uvs_on_mirrored_geometry_is_rejected(self):
+        for role in ('upper-pavement-native-dd', 'upper-pavement-native-ground', 'upper-barrier'):
+            expected = next(deepcopy(f) for f in check._surface_contract(True) if f['role'] == role)
+            original = next(f for f in check._surface_contract(False)
+                            if f['role'] == role and f['points'] == expected['points'])
+            corrupted = {**deepcopy(expected), 'uv': original['uv'], 'material': {}, 'texture': 0}
+            with self.subTest(role=role), patch.object(check, '_surface_contract', return_value=(expected,)), patch.object(check, '_material'):
+                with self.assertRaisesRegex(ValueError, 'independent surface, winding, or UV'):
+                    check.check_complete_surfaces([corrupted], 0x7f700000, mirrored=True)
+
+    def test_authored_concrete_uvs_and_original_geometry_contract_are_preserved(self):
+        first, second = check._surface_contract(False), check._surface_contract(True)
+        self.assertEqual([f['points'] for f in first], [f['points'] for f in second])
+        self.assertEqual([(f['role'], f['uv']) for f in first if '-pavement-' not in f['role'] and not f['role'].endswith('-barrier')],
+                         [(f['role'], f['uv']) for f in second if '-pavement-' not in f['role'] and not f['role'].endswith('-barrier')])
+        self.assertNotEqual(check.ATLAS_RGBA_SHA256, check.MIRRORED_ATLAS_RGBA_SHA256)
+
+    def test_reflected_native_ground_edge_contact_keeps_the_same_bounded_exception(self):
+        original = [{'role': role, 'points': ((8., 0., 0.), (8.00001, 0., 0.), (8., 1., 0.)),
+                     'uv': ((0., 0.), (1., 0.), (0., 1.))}
+                    for role in ('upper-body', 'lower-pavement-native-ground')]
+        reflected = check.canonical_surface_frame(original, mirrored=True)
+        self.assertTrue(check.check_deck_clearance(check.canonical_surface_frame(reflected, mirrored=True))['passed'])
+
+
 if __name__ == '__main__':
     unittest.main()

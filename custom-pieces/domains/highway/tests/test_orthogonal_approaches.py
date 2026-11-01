@@ -17,13 +17,17 @@ from scp.verify import parse_paths
 from scp_highway import orthogonal_approaches as approaches
 
 
-def specification():
+def specification(variant='original'):
     cells = [[column, row] for row in range(6) for column in range(2)]
-    return {'id': 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile',
+    piece = {'id': 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile',
             'recipe': 'highway_ddrhw_orthogonal_l0_transition', 'domain': 'highway',
             'footprint': [2, 6], 'cells': cells,
             'tile_ids': [f'{0x7F600000 + 0x100 * column + 0x10 * row:08x}' for column, row in cells],
             'native_orthogonal_approaches': True}
+    if variant == 'mirrored':
+        piece.update(id=piece['id'] + '-mirrored', recipe=piece['recipe'] + '_mirrored',
+                     transition_variant='mirrored')
+    return piece
 
 
 def core_fields():
@@ -34,11 +38,48 @@ def core_fields():
             'Costs': ['1000'], 'ReplacementIntersection': ['0, 0']}
 
 
-def padded_fields():
+def padded_fields(piece=None):
     old = core_fields()
-    rows, checks, cons = approaches.add_approaches(specification(), old['CellLayout'],
+    rows, checks, cons = approaches.add_approaches(piece or specification(), old['CellLayout'],
                                                  old['CheckType'], old['ConsLayout'])
     return {**old, 'CellLayout': rows, 'CheckType': checks, 'ConsLayout': cons}
+
+
+def encoded_routes(routes):
+    lines = ['SC4PATHS', '1.2', str(len(routes)), '0', '1']
+    for route in routes:
+        lines.extend(str(route[key]) for key in ('transport', 'lane', 'entry', 'exit', 'compatibility'))
+        lines.append(str(len(route['points'])))
+        lines.extend(','.join(str(value) for value in point) for point in route['points'])
+    return ('\n'.join(lines) + '\n').encode('ascii')
+
+
+def socket_fixture(piece):
+    """Only independent flat outer collars; it cannot prove full connectivity."""
+    def route(lane, entry, exit_, *points):
+        return {'transport': 1, 'lane': lane, 'entry': entry, 'exit': exit_,
+                'compatibility': 0, 'points': list(points)}
+    lower = [route(1, 1, 3, (-2.5, -5.0, 0.0), (-2.5, -8.0, 0.0)),
+             route(2, 1, 3, (2.5, -5.0, 0.0), (2.5, -8.0, 0.0))]
+    upper = [route(1, 3, 1, (2.5, -8.0, 0.0), (2.5, -5.0, 0.0)),
+             route(2, 3, 1, (-2.5, -8.0, 0.0), (-2.5, -5.0, 0.0))]
+    if piece.get('transition_variant') == 'mirrored':
+        north = (0, 0)
+        dd = [route(0, 3, 1, (2.5, 5.0, 15.0), (2.5, 8.0, 15.0)),
+              route(1, 3, 1, (-2.5, 5.0, 15.0), (-2.5, 8.0, 15.0)),
+              route(0, 1, 3, (-2.5, 8.0, 7.5), (-2.5, 5.0, 7.5)),
+              route(1, 1, 3, (2.5, 8.0, 7.5), (2.5, 5.0, 7.5))]
+    else:
+        north = (1, 0)
+        dd = [route(0, 1, 3, (-2.5, 8.0, 15.0), (-2.5, 5.0, 15.0)),
+              route(1, 1, 3, (2.5, 8.0, 15.0), (2.5, 5.0, 15.0)),
+              route(0, 3, 1, (2.5, 5.0, 7.5), (2.5, 8.0, 7.5)),
+              route(1, 3, 1, (-2.5, 5.0, 7.5), (-2.5, 8.0, 7.5))]
+    by_cell = {tuple(cell): [] for cell in piece['cells']}
+    by_cell.update({north: dd, (0, 5): lower, (1, 5): upper})
+    resources = {(0x296678F7, 0xA966883F, int(tile, 16)): encoded_routes(by_cell[tuple(cell)])
+                 for cell, tile in zip(piece['cells'], piece['tile_ids'])}
+    return resources, by_cell
 
 
 class OrthogonalApproachTests(unittest.TestCase):
@@ -75,7 +116,7 @@ class OrthogonalApproachTests(unittest.TestCase):
         self.assertGreaterEqual(len(files), 38)
         for path in files:
             piece = jsonc.load(path)
-            if piece['id'] != specification()['id']:
+            if piece['id'] not in (approaches.PIECE_ID, approaches.MIRRORED_PIECE_ID):
                 with self.subTest(piece=piece['id']):
                     self.assertEqual(approaches.approaches(piece), [])
                     self.assertEqual(approaches.rul1_sections(piece), {})
@@ -198,6 +239,107 @@ class OrthogonalApproachTests(unittest.TestCase):
                 approaches.check_native_continuation(controller)
 
 
+class MirroredOrthogonalApproachTests(unittest.TestCase):
+    def test_exact_mirrored_owner_sockets_and_existing_rows(self):
+        piece = specification('mirrored')
+        rows = approaches.approaches(piece)
+        self.assertEqual([(row['cell'], row['end_cell'], row['end_tile_id'], row['native_rotation'])
+                          for row in rows], [([0, -1], [0, 0], '7f600000', 2),
+                                            ([0, 6], [0, 5], '7f600050', 0),
+                                            ([1, 6], [1, 5], '7f600150', 2)])
+        self.assertEqual(rows[0]['networks'], [{'name': 'monorail', 'flags': '04000100'},
+                                              {'name': 'dirtroad', 'flags': '02000200'}])
+        self.assertEqual(approaches.rul1_sections(piece), approaches.rul1_sections(specification()))
+        self.assertEqual(approaches.existing_rul1_sections(piece), approaches.rul1_sections(specification()))
+
+    def test_variant_is_finite_and_cannot_change_an_existing_identity(self):
+        for original, value in [(specification(), 'mirrored'), (specification('mirrored'), 'original'),
+                                (specification('mirrored'), None), (specification(), False),
+                                (specification(), 'other'), (specification(), '')]:
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'owner or variant'):
+                approaches.approaches({**original, 'transition_variant': value})
+        missing = specification('mirrored'); missing.pop('transition_variant')
+        with self.assertRaisesRegex(ValueError, 'owner or variant'):
+            approaches.approaches(missing)
+        self.assertEqual(approaches.variant(specification()), 'original')
+        self.assertEqual(approaches.variant(specification('mirrored')), 'mirrored')
+        for piece, recipe in ((specification(), approaches.MIRRORED_RECIPE),
+                              (specification('mirrored'), approaches.RECIPE)):
+            with self.subTest(recipe=recipe), self.assertRaisesRegex(ValueError, 'owner or variant'):
+                approaches.approaches({**piece, 'recipe': recipe})
+
+    def test_mirrored_padding_changes_only_north_helper_and_exact_marker(self):
+        piece = specification('mirrored')
+        new = padded_fields(piece)
+        self.assertEqual(new['CellLayout'], ['Z...', 'ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', 'YX..', '^...'])
+        self.assertEqual(new['CheckType'][-3], 'Z - monorail: 0x04000100 dirtroad: 0x02000200, 0xFFFFFFFF optional')
+        self.assertEqual(approaches.check_construction_approaches(new, piece), core_fields())
+        wrong = deepcopy(new); wrong['CheckType'][-3] = wrong['CheckType'][-3].replace('04000100', '01000400')
+        with self.assertRaises(ValueError):
+            approaches.check_construction_approaches(wrong, piece)
+        with self.assertRaises(ValueError):
+            approaches.check_construction_approaches(padded_fields(), piece)
+
+    def test_actual_saved_outer_lanes_match_all_rotations_and_both_drag_orientations(self):
+        for value in ('original', 'mirrored'):
+            piece = specification(value)
+            resources, _ = socket_fixture(piece)
+            report = approaches.check_native_boundary_paths(None, piece, resources)
+            self.assertEqual(report['transition_variant'], value)
+            self.assertEqual(report['boundary_members_checked'], 8)
+            self.assertEqual(report['rotated_boundary_member_checks'], 32)
+            self.assertEqual(report['native_rul2_oriented_propagation_checks'], 24)
+            self.assertEqual(report['native_input_scope'], 'pinned-public-numeric-measurements')
+            self.assertFalse(report['native_controller_reread'])
+            self.assertFalse(report['in_game_dragging_tested'] or report['in_game_travel_tested'])
+            self.assertEqual([(row['original_rotation'], row['mirrored_rotation'], row['shared_native_dd_pose'])
+                              for row in report['paired_facing_dd_phases']], [(0, 2, 0), (1, 3, 1), (2, 0, 2), (3, 1, 3)])
+            self.assertEqual({row['basic_rhw_pose'] for row in report['oriented_propagation']}, {0, 1, 2, 3})
+            self.assertEqual({tuple(row['outward_step_en']) for row in report['oriented_propagation']},
+                             {(0, 1), (0, -1), (1, 0), (-1, 0)})
+
+    def test_changed_lane_direction_compatibility_point_height_or_tangent_rejects(self):
+        for value in ('original', 'mirrored'):
+            piece = specification(value)
+            resources, by_cell = socket_fixture(piece)
+            for cell in ((0, 5), (1, 5), (0, 0) if value == 'mirrored' else (1, 0)):
+                tile = int(piece['tile_ids'][piece['cells'].index(list(cell))], 16)
+                original = by_cell[cell]
+                changes = []
+                changed = deepcopy(original); changed[0]['lane'] += 9; changes.append(changed)
+                changed = deepcopy(original); changed[0]['compatibility'] = 1; changes.append(changed)
+                changed = deepcopy(original); changed.pop(); changes.append(changed)
+                changed = deepcopy(original); changed.append(deepcopy(changed[0])); changes.append(changed)
+                changed = deepcopy(original); changed[0]['entry'], changed[0]['exit'] = changed[0]['exit'], changed[0]['entry']; changes.append(changed)
+                for axis, delta in ((0, .1), (1, .1), (2, .1)):
+                    changed = deepcopy(original)
+                    changed[0]['points'] = [tuple(point[i] + (delta if i == axis else 0) for i in range(3)) for point in changed[0]['points']]
+                    changes.append(changed)
+                changed = deepcopy(original); point = changed[0]['points'][1]; changed[0]['points'][1] = (point[0], point[1], point[2] + .1); changes.append(changed)
+                for index, changed in enumerate(changes):
+                    with self.subTest(variant=value, cell=cell, mutation=index), self.assertRaises(ValueError):
+                        approaches.check_native_boundary_paths(None, piece, {**resources, (0x296678F7, 0xA966883F, tile): encoded_routes(changed)})
+
+    def test_missing_owner_path_or_partial_donor_context_rejects(self):
+        piece = specification('mirrored')
+        resources, _ = socket_fixture(piece)
+        with self.assertRaises(ValueError):
+            approaches.check_native_boundary_paths(None, piece, {})
+        with self.assertRaises(ValueError):
+            approaches.check_native_boundary_paths({'dd_rhw': {}}, piece, resources)
+
+    def test_construction_derives_mirrored_model_only_owner_from_saved_paths(self):
+        from scp_highway.orthogonal_transition_construction import core_construction_data
+        piece = specification('mirrored'); resources, _ = socket_fixture(piece)
+        compiled = [(tuple(cell), b'model', resources[0x296678F7, 0xA966883F, int(tile, 16)])
+                    for cell, tile in zip(piece['cells'], piece['tile_ids'])]
+        rows, checks, cons = core_construction_data(compiled)
+        self.assertEqual(rows[0], 'ab.<')
+        self.assertEqual(checks[0], 'a - dirtroad: 0x02000200')
+        self.assertEqual(checks[1], 'b - dirtroad: 0x00000000')
+        self.assertEqual(sum(row.count('+') for row in cons), 12)
+
+
 class ActualNativeOrthogonalContracts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -233,6 +375,21 @@ class ActualNativeOrthogonalContracts(unittest.TestCase):
             self.archives['dd_rhw'][1][0x6534284A, 0x6BE08658, 0x57530000])['properties']}
         self.assertEqual(props[0x10], [11])
         self.assertEqual(props[0x27812820], [0x5AD0E817, 0xBADB57F1, 0x57530000])
+
+    def test_actual_native_saved_boundary_inputs_accept_both_variants_and_flat_or_nested_donors(self):
+        nested = {label: resources for label, (_raw, resources) in self.archives.items()}
+        flat = {key: value for resources in nested.values() for key, value in resources.items()}
+        for value in ('original', 'mirrored'):
+            piece = specification(value); resources, _ = socket_fixture(piece)
+            for donors in (nested, flat):
+                report = approaches.check_native_boundary_paths(donors, piece, resources)
+                self.assertEqual(report['native_input_scope'], 'reread-pinned-native-resources')
+                self.assertTrue(report['native_controller_reread'])
+                self.assertEqual(report['native_continuation']['native_continuation_rows_checked'], 8)
+                self.assertEqual(report['native_rul2_oriented_propagation_checks'], 24)
+        changed = dict(flat); changed[0x296678F7, 0xA966883F, 0x57530000] += b'changed'
+        with self.assertRaisesRegex(ValueError, 'Native boundary PATH identity'):
+            approaches.check_native_boundary_paths(changed, specification('mirrored'), socket_fixture(specification('mirrored'))[0])
 
     def test_actual_path_directions_and_heights_match_all_three_socket_poses(self):
         from scp_highway.native import rotate_route

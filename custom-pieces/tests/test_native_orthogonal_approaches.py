@@ -33,12 +33,16 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def specification():
+def specification(variant='original'):
     cells = [[x, y] for y in range(6) for x in range(2)]
-    return {'id': 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile', 'domain': 'highway',
+    piece = {'id': 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile', 'domain': 'highway',
             'recipe': 'highway_ddrhw_orthogonal_l0_transition', 'footprint': [2, 6], 'cells': cells,
             'tile_ids': [f'{0x7f600000 + 0x100 * x + 0x10 * y:08x}' for x, y in cells],
             'native_orthogonal_approaches': True}
+    if variant == 'mirrored':
+        piece.update(id=piece['id'] + '-mirrored', recipe=piece['recipe'] + '_mirrored',
+                     transition_variant='mirrored')
+    return piece
 
 
 # Exact literal original starter rows, kept independent of provider generation.
@@ -211,6 +215,42 @@ class NativeOrthogonalProofTests(unittest.TestCase):
         self.assertFalse(report['native_dd_game_behavior_tested'])
         self.assertEqual(self.spec, before)
 
+    def test_paired_variants_reuse_exactly_eight_rows_and_five_dependencies_without_insertion(self):
+        pieces = [self.spec, specification('mirrored')]
+        raw, proof = self.compose(pieces)
+        self.assertEqual(raw, self.baseline)
+        self.assertEqual(proof['sections'], [])
+        self.assertEqual(len(proof['selected_declarations']), 2)
+        self.assertEqual(len(proof['native_dependencies']), 5)
+        self.assertEqual(sum(len(row['native_solutions']) for row in proof['existing_native_solutions']), 8)
+        mirrored = proof['selected_declarations'][1]['approaches'][0]
+        self.assertEqual((mirrored['cell'], mirrored['native_rotation'], mirrored['networks'][0]['flags']),
+                         ([0, -1], 2, '04000100'))
+        report = self.verify(raw, proof, pieces)
+        self.assertEqual(report['native_approach_cells_checked'], 6)
+        self.assertEqual(report['native_dd_approach_cells_checked'], 2)
+        self.assertEqual(report['native_ground_rhw_approach_cells_checked'], 4)
+        self.assertEqual(report['native_approach_dependencies_checked'], 5)
+        self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+        changed = deepcopy(proof)
+        changed['selected_declarations'][1]['approaches'][0]['native_rotation'] = 0
+        with self.assertRaises(ValueError):
+            self.verify(raw, changed, pieces)
+
+    def test_mirrored_only_and_mixed_legacy_pair_preserve_native_and_legacy_insertions(self):
+        mirrored = specification('mirrored')
+        raw, proof = self.compose([mirrored])
+        self.assertEqual(raw, self.baseline)
+        self.assertEqual(self.verify(raw, proof, [mirrored])['native_approach_cells_checked'], 3)
+        old_raw, old_proof = self.compose([self.legacy_spec])
+        raw, proof = self.compose([self.legacy_spec, self.spec, mirrored])
+        self.assertEqual(raw, old_raw)
+        self.assertEqual(proof['sections'], [{key: old_proof[key] for key in
+            ('section', 'native_solutions', 'insertion_offset', 'insertion')}])
+        report = self.verify(raw, proof, [self.legacy_spec, self.spec, mirrored])
+        self.assertEqual(report['native_rul1_solutions_checked'], 12)
+        self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+
     def test_reused_native_rows_must_exist_once_with_exact_target_pose_and_no_reflection(self):
         row = b'TYPE1=0x01000400,0x02000200,0x57530000,0,0\r\n'
         for replacement in (b'', row + row, row + row.replace(b'TYPE1=', b'OTHER='),
@@ -347,9 +387,22 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
         self.assertEqual(native.required_controller_resources([specification()]), {
             orthogonal.RUL0: orthogonal.NATIVE_RUL0_SHA256, orthogonal.RUL2: orthogonal.NATIVE_RUL2_SHA256})
 
+    def test_actual_native_paired_variants_keep_rul1_byte_identity_and_shared_dependency_roster(self):
+        pieces = [specification(), specification('mirrored')]
+        raw, proof = native.compose_rul1(self.baseline, pieces, self.donors)
+        self.assertEqual(raw, self.baseline)
+        self.assertEqual(proof['sections'], [])
+        self.assertEqual(len(proof['selected_declarations']), 2)
+        self.assertEqual(len(proof['native_dependencies']), 5)
+        report = native.verify_rul1({native.RUL1: raw}, pieces, {native.OVERLAY: proof}, self.donors)
+        self.assertEqual(report['native_approach_cells_checked'], 6)
+        self.assertEqual(report['native_approach_dependencies_checked'], 5)
+        self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+        self.assertFalse(report['native_dd_game_behavior_tested'])
+
     def test_all_registered_legacy_highway_helpers_keep_native_bytes_and_schema_when_disabled(self):
         pieces = [jsonc.load(path) for path in sorted((ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'))]
-        pieces = [piece for piece in pieces if piece['id'] != specification()['id']]
+        pieces = [piece for piece in pieces if piece['id'] not in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID)]
         original = deepcopy(pieces)
         old_raw, old_proof = native.compose_rul1(self.baseline, pieces, self.donors)
         self.assertEqual(old_proof['schema_version'], 2)
@@ -364,7 +417,7 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
 
     def test_transition_and_all_registered_legacy_helpers_preserve_every_old_insertion(self):
         pieces = [jsonc.load(path) for path in sorted((ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'))]
-        pieces = [piece for piece in pieces if piece['id'] != specification()['id']]
+        pieces = [piece for piece in pieces if piece['id'] not in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID)]
         expected_ground = adaptive.expected_solutions(pieces)
         delta = '\r\n'.join([f'TYPE{i}=0x{a:08x},0x{b:08x},0x{c:08x},{d},{e}'
             for i, ((a, b), (c, d, e)) in enumerate(expected_ground.items())] + [''])
@@ -413,6 +466,53 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
         report = native.verify_rul1({**saved, native.RUL1: current}, [*pieces, specification()],
             {**frozen['overlay'], native.OVERLAY: proof}, self.donors)
         self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+
+
+class RegisteredOrthogonalVariantMenuTests(unittest.TestCase):
+    def test_each_registered_variant_has_one_unambiguous_recipe_owner_name_and_directory(self):
+        from scp.subject_sources import piece_id_for_recipe, piece_name_for_recipe, piece_directory
+        for recipe, identifier, name_fragment in ((orthogonal.RECIPE, orthogonal.PIECE_ID, 'Orthogonal Combined Transition'),
+                                                  (orthogonal.MIRRORED_RECIPE, orthogonal.MIRRORED_PIECE_ID, 'Mirrored Orthogonal Transition')):
+            with self.subTest(recipe=recipe):
+                self.assertEqual(piece_id_for_recipe(recipe, ROOT), identifier)
+                self.assertIn(name_fragment, piece_name_for_recipe(recipe, 'unused fallback', ROOT))
+                self.assertEqual(piece_directory(recipe, ROOT), ROOT / 'domains/highway/00_pieces' / identifier)
+
+    def test_registered_pair_uses_one_original_button_and_sixteen_unmodified_rotation_states(self):
+        from scp.catalog import load_catalog
+        from scp import piece_menu_families as families
+        from scp.rul0 import compose_rul0
+        import test_piece_menu_families as fixture
+        catalog = load_catalog(ROOT)
+        by_id = {piece['id']: piece for piece in catalog['pieces']}
+        original, mirrored = (by_id[name] for name in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID))
+        self.assertNotIn('family_anchor', original['menu'])
+        self.assertEqual(mirrored['menu']['family_anchor'], original['id'])
+        self.assertEqual(catalog['piece_sets']['ddrhw-orthogonal-ground-transition'], [original['id'], mirrored['id']])
+        for selected in ([original, mirrored], [mirrored, original]):
+            raw, metadata = compose_rul0(fixture.NATIVE, [fixture.fragment(int(piece['puzzle_id'], 16)) for piece in selected])
+            menus = {key: value for piece in selected for key, value in fixture.menu_fixture.menu_resource(piece).items()}
+            changed, proof, presentations, record = families.apply(raw, metadata, menus, selected, available=catalog['pieces'])
+            rows = fixture.rows(proof['ordering_insertion'])
+            self.assertEqual([(kind, states[0]) for kind, states in rows],
+                             [('rotationring', int(original['puzzle_id'], 16)), ('addtypes', int(mirrored['puzzle_id'], 16))])
+            self.assertEqual([states for _kind, states in rows],
+                             [[int(piece['puzzle_id'], 16) + turn * 0x10000 for turn in range(8)] for piece in (original, mirrored)])
+            self.assertEqual(len({state for _kind, states in rows for state in states}), 16)
+            self.assertEqual(changed[-len(metadata['suffix']):], raw[-len(metadata['suffix']):])
+            for prefix in families.PREFIXES:
+                original_key = (*prefix, int(original['menu']['id'], 16))
+                self.assertEqual(presentations[original_key], menus[original_key])
+                self.assertNotIn((*prefix, int(mirrored['menu']['id'], 16)), presentations)
+            restored, original_metadata, checked = families.verify(changed, proof, selected, record)
+            self.assertEqual((restored, original_metadata), (raw, metadata))
+            self.assertEqual(checked['hidden_member_buttons'], 1)
+            self.assertFalse(checked['in_game_menu_tested'])
+        for selected in ([original], [mirrored]):
+            raw, metadata = compose_rul0(fixture.NATIVE, [fixture.fragment(int(selected[0]['puzzle_id'], 16))])
+            menus = fixture.menu_fixture.menu_resource(selected[0])
+            self.assertEqual(families.apply(raw, metadata, menus, selected, available=catalog['pieces']),
+                             (raw, metadata, menus, None))
 
 
 if __name__ == '__main__':

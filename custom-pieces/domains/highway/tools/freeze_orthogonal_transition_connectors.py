@@ -17,8 +17,7 @@ from scp.connectivity import piece_connectivity
 from scp.dbpf import require
 from scp.verify import strict_dbpf, verify_build
 from scp_highway.connections import service_classifier
-from scp_highway.orthogonal_approaches import PIECE_ID
-from scp_highway.orthogonal_transition_contracts import REFERENCE
+from scp_highway.orthogonal_approaches import PIECE_ID, MIRRORED_PIECE_ID, variant
 from scp_highway.orthogonal_transition_verify import reviewed_contract, reviewed_facts
 
 HEADER = '''// title: "Accepted six-tile DD-to-ground connector measurements"
@@ -31,13 +30,15 @@ HEADER = '''// title: "Accepted six-tile DD-to-ground connector measurements"
 '''
 
 
-def freeze(build, root=ROOT):
+def freeze(build, root=ROOT, *, piece_id=PIECE_ID):
     root, build = Path(root).resolve(), Path(build).resolve()
     require(build.is_relative_to(root), 'Connector freeze build must be inside the library')
     manifest_raw = (build / 'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
-    piece = next(p for p in load_catalog(root)['pieces'] if p['id'] == PIECE_ID)
-    built = next(p for p in manifest['pieces'] if p['id'] == PIECE_ID)
+    require(piece_id in (PIECE_ID, MIRRORED_PIECE_ID), 'Connector freeze requires one reviewed transition identity')
+    piece = next(p for p in load_catalog(root)['pieces'] if p['id'] == piece_id)
+    built = next(p for p in manifest['pieces'] if p['id'] == piece_id)
+    variant(piece)
     require(all(piece[k] == built[k] for k in piece if k not in {'asset_file', 'purpose', 'design_review'}),
             'Saved transition definition differs from current authoritative source')
     verify_build(build, write_report=False)
@@ -69,14 +70,18 @@ def freeze(build, root=ROOT):
         'source': {'build': build.relative_to(root).as_posix(),
                    'manifest_sha256': hashlib.sha256(manifest_raw).hexdigest(),
                    'verification_passed': True}, 'contract': facts}
-    destination = root / REFERENCE
+    reference = f'domains/highway/00_pieces/{piece_id}/checks/accepted-connector-contract.jsonc'
+    destination = root / reference
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(HEADER + json.dumps(evidence, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    return {'piece_id': PIECE_ID, 'source': REFERENCE, 'ports': 8, 'journeys': 4,
+    return {'piece_id': piece_id, 'source': reference, 'ports': 8, 'journeys': 4,
             'forbidden_transfers': 12, 'canonical_path_hashes': 12, 'game_operation': 'unverified'}
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('build', type=Path)
-    print(json.dumps(freeze(parser.parse_args().build), indent=2))
+    parser.add_argument('--piece', choices=(PIECE_ID, MIRRORED_PIECE_ID), default=PIECE_ID,
+                        help='Select the original or mirrored owner in a checked paired build')
+    args = parser.parse_args()
+    print(json.dumps(freeze(args.build, piece_id=args.piece), indent=2))

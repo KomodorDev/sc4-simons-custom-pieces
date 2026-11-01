@@ -21,6 +21,17 @@ STATIONS = tuple(index * STEP for index in range(int(LENGTH / STEP) + 1))
 BREAKS = (0.0, 3.0, 15.0, 36.0, 69.0, 81.0, 93.0, 96.0)
 
 
+def is_mirrored(variant):
+    """Require an explicit supported source variant; rotations are separate."""
+    if variant not in ("original", "mirrored") or not isinstance(variant, str):
+        raise ValueError("Orthogonal transition variant must be 'original' or 'mirrored'")
+    return variant == "mirrored"
+
+
+def model_only_cells(*, variant="original"):
+    return ((1, 0),) if is_mirrored(variant) else MODEL_ONLY_CELLS
+
+
 def _unit(value):
     return min(1.0, max(0.0, value))
 
@@ -30,16 +41,16 @@ def cubic(value):
     return t * t * (3.0 - 2.0 * t)
 
 
-def upper_plan(station):
+def upper_plan(station, *, variant="original"):
     """Return centre x, dx/ds, and d²x/ds² in the approved fixed frame."""
     t = _unit((station - COLLAR) / (ACTIVE_END - COLLAR))
     x = 16.0 * (1.0 - t ** 3 * (10.0 - 15.0 * t + 6.0 * t * t))
     if station <= COLLAR or station >= ACTIVE_END:
-        return x, 0.0, 0.0
+        return (16.0 - x, 0.0, 0.0) if is_mirrored(variant) else (x, 0.0, 0.0)
     run = ACTIVE_END - COLLAR
     first = -16.0 * 30.0 * t * t * (1.0 - t) ** 2 / run
     second = -16.0 * 60.0 * t * (1.0 - t) * (1.0 - 2.0 * t) / run ** 2
-    return x, first, second
+    return (16.0 - x, -first, -second) if is_mirrored(variant) else (x, first, second)
 
 
 def upper_weight(station):
@@ -97,8 +108,8 @@ def height(deck, station):
     return 15.0 - normalized_upper_grade() * weight_integral(float(station))
 
 
-def frame(deck, station):
-    """Return the horizontal centre and eastward normal, retaining level cross-sections."""
+def frame(deck, station, *, variant="original"):
+    """Return the centre and reflected canonical normal for level sections."""
     if deck == "upper":
         east, derivative, _second = upper_plan(station)
     elif deck == "lower":
@@ -106,41 +117,43 @@ def frame(deck, station):
     else:
         raise ValueError("Unknown transition deck")
     speed = math.hypot(1.0, derivative)
+    if is_mirrored(variant):
+        return (16.0 - east, station - 8.0), (-1.0 / speed, -derivative / speed)
     return (east, station - 8.0), (1.0 / speed, -derivative / speed)
 
 
-def model_point(deck, station, lateral, vertical=0.0):
-    (east, south), normal = frame(deck, station)
+def model_point(deck, station, lateral, vertical=0.0, *, variant="original"):
+    (east, south), normal = frame(deck, station, variant=variant)
     return (east + lateral * normal[0], height(deck, station) + vertical,
             south + lateral * normal[1])
 
 
-def lane_point(deck, lane, station):
+def lane_point(deck, lane, station, *, variant="original"):
     """Return the exact native-class lane centre as a PATH-space point."""
     if lane not in (0, 1):
         raise ValueError("Each transition carriageway has exactly two lanes")
     lateral = (-2.5, 2.5)[lane] if deck == "upper" else (2.5, -2.5)[lane]
-    east, altitude, south = model_point(deck, station, lateral)
+    east, altitude, south = model_point(deck, station, lateral, variant=variant)
     return east, -south, altitude
 
 
-def traffic_routes():
+def traffic_routes(*, variant="original"):
     """Four complete sampled routes, before the single city-lattice cut."""
     routes = []
     for deck in ("upper", "lower"):
-        stations = STATIONS if deck == "upper" else reversed(STATIONS)
+        stations = STATIONS if (deck == "upper") != is_mirrored(variant) else reversed(STATIONS)
         ordered = tuple(stations)
         for lane in (0, 1):
             routes.append({"id": f"{deck}-lane-{lane}", "transport": 1, "lane": lane,
                            "junction": False,
-                           "points": [lane_point(deck, lane, s) for s in ordered]})
+                           "points": [lane_point(deck, lane, s, variant=variant) for s in ordered]})
     return routes
 
 
-def engineering_metadata():
+def engineering_metadata(*, variant="original"):
     """Authored parameters and calculated facts; no saved-resource or game claims."""
-    return {"length_m": LENGTH, "width_m": 32.0, "footprint_tiles": [2, 6],
-            "cells": [list(c) for c in CELLS], "model_only_cells": [list(c) for c in MODEL_ONLY_CELLS],
+    result = {"length_m": LENGTH, "width_m": 32.0, "footprint_tiles": [2, 6],
+            "cells": [list(c) for c in CELLS], "model_only_cells": [list(c) for c in model_only_cells(variant=variant)],
             "entry_station_model_z_m": -8.0, "exit_station_model_z_m": 88.0,
             "native_collar_m": COLLAR, "lateral_and_lower_active_m": [COLLAR, ACTIVE_END],
             "upper_grade_easing_m": EASE, "path_station_step_m": STEP,
@@ -151,3 +164,11 @@ def engineering_metadata():
             "path_runtime_use_elevation": True,
             "software_resource_verification": "not supplied by the generator",
             "in_game_status": "unverified"}
+    if is_mirrored(variant):
+        result.update({"transition_variant": "mirrored", "reflection_axis_east_m": 8.0,
+                       "geometry_transform": "East x becomes 16 minus x; height and north coordinates unchanged",
+                       "directed_path_transform": "Reflect each complete lane and reverse its directed point sequence; retain native lane classes",
+                       "dd_axis_east_m": 0.0, "ground_upper_axis_east_m": 16.0,
+                       "ground_lower_axis_east_m": 0.0,
+                       "upper_travel_direction": "northbound", "lower_travel_direction": "southbound"})
+    return result

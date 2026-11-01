@@ -18,7 +18,9 @@ from scp.track_paths import PATH
 from scp.verify import parse_paths
 
 PIECE_ID = 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile'
+MIRRORED_PIECE_ID = PIECE_ID + '-mirrored'
 RECIPE = 'highway_ddrhw_orthogonal_l0_transition'
+MIRRORED_RECIPE = RECIPE + '_mirrored'
 CELLS = tuple((column, row) for row in range(6) for column in range(2))
 LENGTH = 96.0
 STATION_STEP = 0.25
@@ -33,10 +35,21 @@ NEIGHBOURS = ((-1, 0), (0, -1), (1, 0), (0, 1))
 CORE_ROAD_WORDS = (0x00000000, 0x02000200, 0x03010000, 0x02000201,
                    0x03010300, 0x02000201, 0x03000300, 0x02000200,
                    0x02000300, 0x02000200, 0x02000200, 0x02000200)
+MIRRORED_CORE_ROAD_WORDS = (0x02000200, 0x00000000, 0x02030200, 0x01000003,
+                           0x02030200, 0x01000103, 0x02000200, 0x01000100,
+                           0x02000200, 0x02000100, 0x02000200, 0x02000200)
 
 
 def _number(value):
     return int(value, 16) if isinstance(value, str) else value
+
+
+def _mirrored(piece):
+    """Independently bind each exact identity to its authored traffic variant."""
+    original = piece.get('id') == PIECE_ID and piece.get('transition_variant', 'original') == 'original'
+    reflected = piece.get('id') == MIRRORED_PIECE_ID and piece.get('transition_variant') == 'mirrored'
+    require(original or reflected, 'Transition identity and explicit mirrored variant do not agree')
+    return reflected
 
 
 def _point(point):
@@ -124,9 +137,12 @@ def lower_height(s):
     return 7.5 * (1.0 - _cubic((s - 3.0) / 66.0))
 
 
-def lane_point(component, source_class, s):
+def lane_point(component, source_class, s, *, mirrored=False):
     """Return one measured native lane in world east/north/height metres."""
     require(component in ('upper', 'lower') and source_class in (0, 1), 'Unknown transition lane')
+    if mirrored:
+        east, north, height = lane_point(component, source_class, s)
+        return 16.0-east, north, height
     if component == 'lower':
         return (18.5 if source_class == 0 else 13.5), 8.0 - s, lower_height(s)
     displacement, derivative, _curvature = lateral(s)
@@ -179,33 +195,35 @@ def _slice(points, component, source_class):
     return result
 
 
-@lru_cache(maxsize=1)
-def _expected_routes():
+@lru_cache(maxsize=2)
+def _expected_routes(mirrored=False):
     result = {cell: [] for cell in CELLS}
     stations = [index * STATION_STEP for index in range(round(LENGTH / STATION_STEP) + 1)]
     for component in ('upper', 'lower'):
         for source_class in (0, 1):
-            points = [lane_point(component, source_class, s) for s in stations]
-            if component == 'lower':
+            points = [lane_point(component, source_class, s, mirrored=mirrored) for s in stations]
+            if (component == 'lower') != mirrored:
                 points.reverse()
             for fragment in _slice(points, component, source_class):
                 result[fragment['cell']].append(fragment)
     return result
 
 
-def expected_cell_routes():
-    return deepcopy(_expected_routes())
+def expected_cell_routes(*, mirrored=False):
+    return deepcopy(_expected_routes(mirrored))
 
 
 def _spec(piece):
-    require(piece.get('id') == PIECE_ID and piece.get('recipe') == RECIPE and piece.get('domain') == 'highway',
+    mirrored = _mirrored(piece)
+    expected_recipe = MIRRORED_RECIPE if mirrored else RECIPE
+    require(piece.get('recipe') == expected_recipe and piece.get('domain') == 'highway',
             'Wrong registered orthogonal DD transition owner or recipe')
     require(piece.get('footprint') == [2, 6] and tuple(map(tuple, piece.get('cells', ()))) == CELLS,
             'Orthogonal DD transition must retain all twelve row-major owned cells')
     tiles = tuple(map(_number, piece.get('tile_ids', ())))
     require(len(tiles) == len(set(tiles)) == 12, 'Orthogonal transition needs twelve distinct canonical cells')
     engineering = piece.get('engineering', {})
-    empty = {cell for cell, records in _expected_routes().items() if not records}
+    empty = {cell for cell, records in _expected_routes(mirrored).items() if not records}
     require(set(map(tuple, engineering.get('model_only_cells', ()))) == empty,
             'Transition model-only cells differ from the independently reconstructed lanes')
     require(type(engineering.get('max_grade_percent')) in (float, int)
@@ -219,7 +237,7 @@ def _spec(piece):
     return tiles
 
 
-def external_ports():
+def external_ports(*, mirrored=False):
     result = []
     for component in ('upper', 'lower'):
         for source_class in (0, 1):
@@ -227,18 +245,25 @@ def external_ports():
             for direction in ('in', 'out'):
                 s = (0.0 if direction == 'in' else LENGTH) if component == 'upper' else (
                     LENGTH if direction == 'in' else 0.0)
+                if mirrored:
+                    s = LENGTH-s
                 cell = (1, 0) if s == 0.0 else ((0, 5) if component == 'upper' else (1, 5))
+                if mirrored:
+                    cell = 1-cell[0], cell[1]
+                tangent = -1.0 if component == 'upper' else 1.0
+                if mirrored:
+                    tangent = -tangent
                 result.append({'id': lane + '-' + direction, 'channel_id': lane, 'component': component,
                     'source_class': source_class, 'direction': direction, 'transport': 1,
-                    'point_m': lane_point(component, source_class, s), 'source_cell': list(cell),
+                    'point_m': lane_point(component, source_class, s, mirrored=mirrored), 'source_cell': list(cell),
                     'edge': 1 if s == 0.0 else 3,
-                    'tangent': (0.0, -1.0 if component == 'upper' else 1.0), 'grade': 0.0})
+                    'tangent': (0.0, tangent), 'grade': 0.0})
     return result
 
 
 def reviewed_contract(piece):
     _spec(piece)
-    ports = external_ports()
+    ports = external_ports(mirrored=_mirrored(piece))
     return {'boundary_measurement_precision': 'saved-path',
         'ports': {p['id']: list(p['point_m']) for p in ports},
         'port_vectors': {p['id']: list(p['tangent']) for p in ports},
@@ -248,12 +273,39 @@ def reviewed_contract(piece):
                       for component in ('upper', 'lower') for lane in (1, 2)]}
 
 
+def check_opposite_end_direction_pair():
+    """A at 0 degrees and B at 180 degrees preserve the same DD flow.
+
+    Translate the rotated B by (16,16) metres solely to compare the adjoining
+    DD boundary planes. This is a lane-direction proof, not a claim that the
+    two optional construction helpers permit direct touching placement.
+    """
+    original = [p for p in external_ports() if p['point_m'][2] > 0.]
+    mirrored = [p for p in external_ports(mirrored=True) if p['point_m'][2] > 0.]
+    checked = []
+    for port in original:
+        target = next(p for p in mirrored if p['channel_id'] == port['channel_id'])
+        posed = _rotate(target['point_m'], 2)
+        posed = posed[0]+16., posed[1]+16., posed[2]
+        tangent = _rotate((*target['tangent'], 0.), 2)[:2]
+        require(math.dist(posed, port['point_m']) <= 1e-12 and tangent == port['tangent']
+                and target['direction'] != port['direction'] and target['source_class'] == port['source_class']
+                and (target['edge']+2) % 4 == (port['edge']+2) % 4,
+                'Facing original/mirrored transitions do not preserve the same directed native DD lane')
+        checked.append({'original_port': port['id'], 'mirrored_port': target['id'],
+                        'point_m': list(posed), 'travel_tangent': list(tangent)})
+    return {'passed': True, 'native_dd_lanes_checked': len(checked),
+            'original_quarter_turns': 0, 'mirrored_quarter_turns': 2,
+            'translation_for_boundary_comparison_m': [16., 16.], 'lanes': checked,
+            'construction_or_game_connection_tested': False}
+
+
 def reviewed_facts(piece):
     """Independent intrinsic semantics; actual byte hashes need a later freeze."""
     contract = reviewed_contract(piece)
     ports = []
     channels = []
-    for p in external_ports():
+    for p in external_ports(mirrored=_mirrored(piece)):
         height = p['point_m'][2]
         ports.append({'id': p['id'], 'direction': p['direction'], 'engine_transport': 1,
             'edge': p['edge'], 'endpoint_m': list(p['point_m']),
@@ -271,7 +323,7 @@ def reviewed_facts(piece):
     forbidden = [(a['id'], b['id']) for a in ports for b in ports
                  if a['direction'] == 'in' and b['direction'] == 'out'
                  and (a['id'], b['id']) not in movements]
-    return {'reference_piece_id': PIECE_ID, 'footprint': [2, 6], 'cells': [list(cell) for cell in CELLS],
+    return {'reference_piece_id': piece['id'], 'footprint': [2, 6], 'cells': [list(cell) for cell in CELLS],
             'path_hashes_by_cell': [], 'raw_path_fingerprint_status': 'requires-checked-saved-build-freeze',
             'ports': ports, 'movements': movements, 'forbidden_transfers': forbidden,
             'components': [{'id': c + '-carriageway', 'network': 'road', 'construction_network': 'dirtroad'}
@@ -285,7 +337,7 @@ def _same_route(actual, expected):
         math.dist(a, b) <= POSITION_TOLERANCE for a, b in zip(actual['points'], expected['points']))
 
 
-def _journeys(routes, turns):
+def _journeys(routes, turns, *, mirrored=False):
     starts, ends = defaultdict(list), defaultdict(list)
     for index, route in enumerate(routes):
         starts[_point(_rotate(route['points'][0], turns))].append(index)
@@ -293,7 +345,7 @@ def _journeys(routes, turns):
     require(all(len(indices) == 1 for indices in (*starts.values(), *ends.values())),
             'Transition has an ambiguous lane/deck connection')
     incoming, outgoing = starts.keys() - ends.keys(), ends.keys() - starts.keys()
-    literal = external_ports()
+    literal = external_ports(mirrored=mirrored)
     expected_in = {_point(_rotate(p['point_m'], turns)) for p in literal if p['direction'] == 'in'}
     expected_out = {_point(_rotate(p['point_m'], turns)) for p in literal if p['direction'] == 'out'}
     require(incoming == expected_in and outgoing == expected_out,
@@ -324,7 +376,8 @@ def _journeys(routes, turns):
 
 def check_paths(resources, piece):
     tiles = _spec(piece)
-    expected = _expected_routes()
+    mirrored = _mirrored(piece)
+    expected = _expected_routes(mirrored)
     routes, maximum = [], 0.0
     maximum_coordinate_error = 0.0
     for cell, tile in zip(CELLS, tiles):
@@ -353,7 +406,7 @@ def check_paths(resources, piece):
                         'Saved transition PATH exceeds its declared lane-grade ceiling')
             routes.append({**actual, 'cell': cell, 'points': world})
         require(not remaining, 'Saved transition PATH omits a lane fragment')
-    rotations = [_journeys(routes, turns) for turns in range(4)]
+    rotations = [_journeys(routes, turns, mirrored=mirrored) for turns in range(4)]
     return {'passed': True, 'tile_count': 12, 'model_only_cells': [list(cell) for cell, records in expected.items() if not records],
             'complete_directed_journeys': 4, 'complete_native_boundary_members_checked': 8,
             'route_fragments_checked': len(routes), 'maximum_grade_percent': maximum,
@@ -382,8 +435,10 @@ def _construction_word(records):
 def check_construction_fields(fields, piece, resources):
     """Inspect the restored twelve-cell core separately from native helpers."""
     tiles = _spec(piece)
-    expected = _expected_routes()
-    require(tuple(_construction_word(expected[cell]) for cell in CELLS) == CORE_ROAD_WORDS,
+    mirrored = _mirrored(piece)
+    expected = _expected_routes(mirrored)
+    words = MIRRORED_CORE_ROAD_WORDS if mirrored else CORE_ROAD_WORDS
+    require(tuple(_construction_word(expected[cell]) for cell in CELLS) == words,
             'Independent transition tangent flags disagree with the reviewed native construction words')
     layouts = ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...']
     constraints = ['++.<', '++..', '++..', '++..', '++..', '++..', '^...']
@@ -392,7 +447,7 @@ def check_construction_fields(fields, piece, resources):
     require(fields.get('Costs') == ['1000'], 'Unexpected orthogonal transition construction cost')
     checks = fields.get('CheckType', [])
     require(len(checks) == 12, 'Transition construction needs exactly twelve core palette entries')
-    for index, (cell, tile, word) in enumerate(zip(CELLS, tiles, CORE_ROAD_WORDS)):
+    for index, (cell, tile, word) in enumerate(zip(CELLS, tiles, words)):
         match = re.fullmatch(chr(ord('a') + index) + r'\s*-\s*dirtroad:\s*0x([0-9a-fA-F]{8})', checks[index])
         require(match is not None and int(match[1], 16) == word,
                 'Transition core construction network or endpoint-tangent flags differ')

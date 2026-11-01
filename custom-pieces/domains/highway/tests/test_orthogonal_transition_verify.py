@@ -1,5 +1,6 @@
 """Reject saved-route corruptions of the reviewed six-tile DD transition."""
 from copy import deepcopy
+import math
 from pathlib import Path
 import sys
 import unittest
@@ -21,14 +22,19 @@ def encode(routes, *, elevation=1):
     return ('\n'.join(lines) + '\n').encode('ascii')
 
 
-def fixture():
+def fixture(*, mirrored=False):
     piece = {'id': check.PIECE_ID, 'recipe': check.RECIPE, 'domain': 'highway',
         'footprint': [2, 6], 'cells': [list(cell) for cell in check.CELLS],
         'tile_ids': [f'{0x7f700000 + x * 0x100 + y * 0x10:08x}' for x, y in check.CELLS],
         'shadow_mappings': [], 'model_shadows': {'enabled': False},
         'engineering': {'model_only_cells': [[0, 0]], 'max_grade_percent': 30.,
                         'car_corridor_half_width_m': 1.25, 'car_corridor_height_m': 3.8}}
-    resources = {(*PATH, int(tile, 16)): encode(check.expected_cell_routes()[cell])
+    if mirrored:
+        piece['id'] = check.MIRRORED_PIECE_ID
+        piece['recipe'] = check.MIRRORED_RECIPE
+        piece['transition_variant'] = 'mirrored'
+        piece['engineering']['model_only_cells'] = [[1, 0]]
+    resources = {(*PATH, int(tile, 16)): encode(check.expected_cell_routes(mirrored=mirrored)[cell])
                  for cell, tile in zip(check.CELLS, piece['tile_ids'])}
     return piece, resources
 
@@ -55,6 +61,7 @@ class OrthogonalTransitionPathTests(unittest.TestCase):
         self.assertFalse(report['game_operation_tested'])
         self.assertGreater(report['maximum_grade_percent'], 19.)
         self.assertLess(report['maximum_grade_percent'], 20.)
+
 
     def test_missing_lane_or_entire_traffic_cell_is_rejected(self):
         for remove_all in (False, True):
@@ -185,6 +192,127 @@ class OrthogonalTransitionPathTests(unittest.TestCase):
                 damaged['CellLayout'][-1] = '.^..'
             with self.subTest(kind=kind), self.assertRaises(ValueError):
                 check.check_construction_fields(damaged, piece, resources)
+
+
+class MirroredOrthogonalTransitionPathTests(unittest.TestCase):
+    def test_reflected_reversed_saved_lanes_preserve_four_journeys_and_all_rotations(self):
+        piece, resources = fixture(mirrored=True)
+        report = check.check_paths(resources, piece)
+        self.assertTrue(report['passed'])
+        self.assertEqual(report['route_fragments_checked'], 26)
+        self.assertEqual(report['complete_native_boundary_members_checked'], 8)
+        self.assertEqual(report['model_only_cells'], [[1, 0]])
+        self.assertEqual([r['quarter_turns'] for r in report['proper_rotations']], [0, 1, 2, 3])
+        self.assertTrue(report['no_lane_or_carriageway_transfers'])
+
+    def test_every_mirrored_fragment_is_the_independent_reflection_and_reversal(self):
+        original, mirrored = check.expected_cell_routes(), check.expected_cell_routes(mirrored=True)
+        for (column, row), routes in mirrored.items():
+            source = original[1-column, row]
+            self.assertEqual(len(routes), len(source))
+            for route in routes:
+                match = next(p for p in source if p['component'] == route['component']
+                             and p['source_class'] == route['source_class'])
+                points = [(-x, north, height) for x, north, height in reversed(match['points'])]
+                self.assertEqual(route['lane'], match['lane'])
+                self.assertEqual(len(points), len(route['points']))
+                self.assertTrue(all(math.dist(a, b) < 1e-10 for a, b in zip(points, route['points'])))
+
+    def test_exact_native_ports_preserve_dd_pose_two_and_ground_opposing_poses(self):
+        actual = {(p['component'], p['source_class'], p['direction']): p
+                  for p in check.external_ports(mirrored=True)}
+        for source_class, upper_x, lower_x in ((0, 2.5, -2.5), (1, -2.5, 2.5)):
+            upper = actual['upper', source_class, 'out']
+            lower = actual['lower', source_class, 'in']
+            self.assertEqual(upper['point_m'], (upper_x, 8., 15.))
+            self.assertEqual(lower['point_m'], (lower_x, 8., 7.5))
+            self.assertEqual(upper['tangent'], (0., 1.))
+            self.assertEqual(lower['tangent'], (0., -1.))
+            self.assertEqual(actual['upper', source_class, 'in']['point_m'], (16.+upper_x, -88., 0.))
+            self.assertEqual(actual['lower', source_class, 'out']['point_m'], (lower_x, -88., 0.))
+
+    def test_wrong_identity_variant_pair_is_rejected(self):
+        for identity, variant in ((check.PIECE_ID, 'mirrored'), (check.MIRRORED_PIECE_ID, None),
+                                  (check.MIRRORED_PIECE_ID, 'original'), (check.MIRRORED_PIECE_ID, True)):
+            piece, resources = fixture(mirrored=True)
+            piece['id'] = identity
+            if variant is None:
+                piece.pop('transition_variant')
+            else:
+                piece['transition_variant'] = variant
+            with self.subTest(identity=identity, variant=variant), self.assertRaisesRegex(ValueError, 'identity.*variant'):
+                check.check_paths(resources, piece)
+
+    def test_each_owner_requires_its_distinct_recipe_even_with_correct_variant_and_geometry(self):
+        for mirrored in (False, True):
+            piece, resources = fixture(mirrored=mirrored)
+            piece['recipe'] = check.RECIPE if mirrored else check.MIRRORED_RECIPE
+            with self.subTest(mirrored=mirrored), self.assertRaisesRegex(ValueError, 'owner or recipe'):
+                check.check_paths(resources, piece)
+
+    def test_original_payload_cannot_be_relabelled_as_mirrored(self):
+        original, resources = fixture()
+        piece, _ = fixture(mirrored=True)
+        self.assertEqual(original['tile_ids'], piece['tile_ids'])
+        with self.assertRaisesRegex(ValueError, 'differs from independent|omits a lane fragment'):
+            check.check_paths(resources, piece)
+
+    def test_mirrored_shape_without_reversed_travel_is_rejected(self):
+        piece, resources = fixture(mirrored=True)
+        def corrupt(parsed):
+            route = parsed['routes'][0]
+            route['points'].reverse()
+            route['entry'], route['exit'] = route['exit'], route['entry']
+        replace_cell(resources, piece, (0, 0), corrupt)
+        with self.assertRaisesRegex(ValueError, 'differs from independent'):
+            check.check_paths(resources, piece)
+
+    def test_mirrored_height_class_missing_channel_and_false_empty_cell_are_rejected(self):
+        for mutation in ('height', 'class', 'missing', 'empty'):
+            piece, resources = fixture(mirrored=True)
+            if mutation == 'empty':
+                piece['engineering']['model_only_cells'] = [[0, 0]]
+            else:
+                def corrupt(parsed):
+                    if mutation == 'missing':
+                        parsed['routes'].pop()
+                    elif mutation == 'class':
+                        parsed['routes'][0]['lane'] += 2
+                    else:
+                        p = parsed['routes'][0]['points'][0]
+                        parsed['routes'][0]['points'][0] = (*p[:2], p[2]-7.5)
+                replace_cell(resources, piece, (0, 0), corrupt)
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                check.check_paths(resources, piece)
+
+    def test_mirrored_core_flags_retain_the_reflected_empty_shoulder_and_tangents(self):
+        piece, resources = fixture(mirrored=True)
+        fields = {'CellLayout': ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...'],
+                  'ConsLayout': ['++.<', '++..', '++..', '++..', '++..', '++..', '^...'],
+                  'Costs': ['1000'], 'CheckType': [f'{chr(97+i)} - dirtroad: 0x{word:08X}'
+                      for i, word in enumerate(check.MIRRORED_CORE_ROAD_WORDS)]}
+        self.assertEqual(check.check_construction_fields(fields, piece, resources)['occupied_cells_checked'], 12)
+        fields['CheckType'][1] = 'b - dirtroad: 0x02000200'
+        with self.assertRaisesRegex(ValueError, 'endpoint-tangent flags'):
+            check.check_construction_fields(fields, piece, resources)
+
+    def test_facing_original_and_mirrored_keep_the_same_four_directed_dd_lanes(self):
+        report = check.check_opposite_end_direction_pair()
+        self.assertTrue(report['passed'])
+        self.assertEqual(report['native_dd_lanes_checked'], 4)
+        self.assertEqual(report['mirrored_quarter_turns'], 2)
+        self.assertFalse(report['construction_or_game_connection_tested'])
+
+    def test_default_original_expectations_and_accepted_connector_semantics_stay_exact(self):
+        self.assertEqual(check.expected_cell_routes(), check.expected_cell_routes(mirrored=False))
+        self.assertEqual(check.external_ports(), check.external_ports(mirrored=False))
+        from scp import jsonc
+        from scp_highway import orthogonal_transition_contracts
+        piece = jsonc.load(ROOT/'domains/highway/00_pieces'/check.PIECE_ID/'piece.jsonc')
+        accepted = orthogonal_transition_contracts.load_contract(piece, ROOT)
+        self.assertEqual(accepted['reference_piece_id'], check.PIECE_ID)
+        mirrored, _ = fixture(mirrored=True)
+        self.assertNotEqual(orthogonal_transition_contracts.reference(piece), orthogonal_transition_contracts.reference(mirrored))
 
 
 if __name__ == '__main__':

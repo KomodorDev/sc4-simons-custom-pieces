@@ -9,10 +9,16 @@ from .orthogonal_approaches import PIECE_ID
 
 ROOT = Path(__file__).resolve().parents[4]
 REFERENCE = f'domains/highway/00_pieces/{PIECE_ID}/checks/accepted-connector-contract.jsonc'
+MIRRORED_REFERENCE = f'domains/highway/00_pieces/{PIECE_ID}-mirrored/checks/accepted-connector-contract.jsonc'
+
+
+def reference(piece):
+    from .orthogonal_transition_verify import _mirrored
+    return MIRRORED_REFERENCE if _mirrored(piece) else REFERENCE
 
 
 def load_contract(piece, root=ROOT):
-    path = Path(root) / REFERENCE
+    path = Path(root) / reference(piece)
     if not path.is_file():
         return None
     evidence = jsonc.load(path)

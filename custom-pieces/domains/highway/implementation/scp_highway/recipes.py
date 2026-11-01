@@ -102,16 +102,18 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
-    if spec['recipe'] == 'highway_ddrhw_orthogonal_l0_transition':
+    if spec['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
+                          'highway_ddrhw_orthogonal_l0_transition_mirrored'):
         from .orthogonal_transition import build_channels, build_textures
-        from .orthogonal_approaches import add_approaches, check_native_continuation
+        from .orthogonal_approaches import add_approaches, check_native_continuation, variant
         from .orthogonal_transition_construction import core_construction_data
         from .model_shadows import add_shadows
         check_native_continuation(context['controller'])
         texture_id = int(spec['authored_texture_ids'][0], 16)
-        compiled = build_channels(context, texture_id=texture_id)
+        variant_options = {'variant': 'mirrored'} if variant(spec) == 'mirrored' else {}
+        compiled = build_channels(context, texture_id=texture_id, **variant_options)
         assets = finish_piece(spec, context, compiled)
-        extra = build_textures(context, texture_id)
+        extra = build_textures(context, texture_id, **variant_options)
         require(not assets.keys() & extra.keys(), 'Transition texture allocation overlaps another resource')
         assets.update(extra)
         rows, checks, cons = add_approaches(spec, *core_construction_data(compiled))

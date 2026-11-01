@@ -30,8 +30,9 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def source_piece():
-    return jsonc.load(ROOT / 'domains/highway/00_pieces' / independent.PIECE_ID / 'piece.jsonc')
+def source_piece(*, mirrored=False):
+    identity = independent.MIRRORED_PIECE_ID if mirrored else independent.PIECE_ID
+    return jsonc.load(ROOT / 'domains/highway/00_pieces' / identity / 'piece.jsonc')
 
 
 def fixture_evidence(piece):
@@ -58,12 +59,14 @@ def connection_record(piece, facts):
 
 
 class OrthogonalContractLoaderTests(unittest.TestCase):
+    mirrored = False
+
     def setUp(self):
-        self.piece = source_piece()
+        self.piece = source_piece(mirrored=self.mirrored)
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.destination = self.root / contracts.REFERENCE
+        self.destination = self.root / contracts.reference(self.piece)
         self.evidence = fixture_evidence(self.piece)
 
     def write(self, evidence=None):
@@ -203,6 +206,8 @@ class OrthogonalContractLoaderTests(unittest.TestCase):
 
 
 class OrthogonalConnectorFreezeTests(unittest.TestCase):
+    mirrored = False
+
     @classmethod
     def setUpClass(cls):
         path = ROOT / 'domains/highway/tools/freeze_orthogonal_transition_connectors.py'
@@ -216,7 +221,7 @@ class OrthogonalConnectorFreezeTests(unittest.TestCase):
         self.root = Path(temporary.name).resolve()
         self.build = self.root / 'dist/synthetic-fixture'
         self.build.mkdir(parents=True)
-        self.piece = source_piece()
+        self.piece = source_piece(mirrored=self.mirrored)
         self.asset = 'managed/synthetic.dat'
         self.manifest = {'pieces': [{**self.piece, 'asset_file': self.asset}]}
         (self.build / 'manifest.json').write_text(json.dumps(self.manifest))
@@ -227,7 +232,7 @@ class OrthogonalConnectorFreezeTests(unittest.TestCase):
         destination.write_bytes(pack_dbpf(self.resources))
         self.facts = independent.reviewed_facts(self.piece)
         self.record = connection_record(self.piece, self.facts)
-        self.destination = self.root / contracts.REFERENCE
+        self.destination = self.root / contracts.reference(self.piece)
         self.catalog_patcher = patch.object(self.freezer, 'load_catalog', return_value={'pieces': [self.piece]})
         self.catalog_patcher.start(); self.addCleanup(self.catalog_patcher.stop)
         self.verify_patcher = patch.object(self.freezer, 'verify_build', return_value={'static_checks_passed': True})
@@ -236,7 +241,7 @@ class OrthogonalConnectorFreezeTests(unittest.TestCase):
         self.graph = self.graph_patcher.start(); self.addCleanup(self.graph_patcher.stop)
 
     def freeze(self):
-        return self.freezer.freeze(self.build, root=self.root)
+        return self.freezer.freeze(self.build, root=self.root, piece_id=self.piece['id'])
 
     def test_successful_synthetic_gate_binds_all_actual_fixture_bytes_and_writes_no_game_pass(self):
         result = self.freeze()
@@ -308,6 +313,33 @@ class OrthogonalConnectorFreezeTests(unittest.TestCase):
                 self.freezer.freeze(Path(outside), root=self.root)
         self.verify.assert_not_called(); self.graph.assert_not_called()
         self.assertFalse(self.destination.exists())
+
+
+class MirroredOrthogonalContractLoaderTests(OrthogonalContractLoaderTests):
+    mirrored = True
+
+    def test_missing_mirrored_evidence_cannot_fall_back_to_the_original_contract(self):
+        original = self.root / contracts.REFERENCE
+        original.parent.mkdir(parents=True)
+        original.write_text(json.dumps(fixture_evidence(source_piece())))
+        self.assertIsNone(contracts.load_contract(self.piece, self.root))
+        self.assertNotEqual(contracts.REFERENCE, contracts.MIRRORED_REFERENCE)
+        self.assertEqual(contracts.reference(self.piece), contracts.MIRRORED_REFERENCE)
+
+    def test_original_frozen_semantics_cannot_be_copied_into_the_mirrored_reference(self):
+        self.write(fixture_evidence(source_piece()))
+        with self.assertRaisesRegex(ValueError, 'independent review'):
+            contracts.load_contract(self.piece, self.root)
+
+    def test_reference_selection_rejects_an_identity_variant_mismatch(self):
+        changed = deepcopy(self.piece)
+        changed.pop('transition_variant')
+        with self.assertRaisesRegex(ValueError, 'identity.*variant'):
+            contracts.reference(changed)
+
+
+class MirroredOrthogonalConnectorFreezeTests(OrthogonalConnectorFreezeTests):
+    mirrored = True
 
 
 if __name__ == '__main__':
