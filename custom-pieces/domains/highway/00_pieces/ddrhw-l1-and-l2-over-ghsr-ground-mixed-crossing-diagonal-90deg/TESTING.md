@@ -161,9 +161,11 @@ Use [the shared observation workflow](../../../../docs/TESTING.md) to record the
 
 ## 5. Results and known issues
 
-This is a new experimental piece. All human game checks remain open until an explicit matching observation is recorded. The native source measurements, encoded journeys, model preservation, and current shadow-resource removal have their own software checks. Historical projected-shadow results remain bound to their earlier resources. Neither scope establishes live placement, draggable continuation, moving cars, moving trains, absence of unwanted shadows, terrain behaviour, demolition, or save/reload.
+This crossing retains its experimental source status. The native source measurements, encoded journeys, model preservation, and current shadow-resource removal have their own software checks. Historical projected-shadow results remain bound to their earlier resources. The user’s current game confirmation below is separate evidence against this Alignment A crossing’s own cases and resources.
 
 The native GHSR track bed extends approximately 0.989332 m below the ground datum and 1.989332 m above it. The isolated software view can expose below-ground side faces, while the track's long horizontal projection can also look steep in the angled camera. Its saved vertices do not contain a tall vertical track curtain. Actual terrain occlusion and train appearance remain part of the game rendering check. The exact 0.5 m geometric roof margin is also not a promise that every custom train model fits.
+
+On 1 November 2026, the user explicitly reported: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”. This is recorded as aggregate acceptance of the declared game checks for both diagonal DD RHW-over-GHSR alignment variants in installed candidate `dist/all-pieces-hsr-highway-menu-02`, manifest SHA-256 `cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0`. This subject’s 184 current game cases cover its four declared proper placement rotations and retain their individual directions, services, and dependency fingerprints. The tested setup is Windows SimCity 4 Deluxe 1.1.641 with NAM 50 and right-hand traffic through Wine/CrossOver on macOS; this confirmation does not distinguish the compatibility layer further. No individual case narrative, screenshot, city name, or old-instance cleanup result was supplied. Preview-image reviews and software-case observations are outside this human game confirmation and retain their previous states. The authoritative [observation record](checks/manual-tests.json) preserves the exact statement and build binding for every recorded case.
 
 <!-- BEGIN MANUAL SUMMARY -->
 
@@ -172,9 +174,9 @@ The native GHSR track bed extends approximately 0.989332 m below the ground datu
 Generated from [the exact test cases](#test-checklist) and [authoritative observations](checks/manual-tests.json).
 
 - [ ] Preview review: 0/3 applicable cases passed; 0 failed, 0 stale.
-- [ ] In-game rendering: 0/4 applicable cases passed; 0 failed, 0 stale.
-- [ ] Route Query: 0/24 applicable cases passed; 0 failed, 0 stale.
-- [ ] Visible travel: 0/24 applicable cases passed; 0 failed, 0 stale.
+- [x] In-game rendering: 4/4 applicable cases passed; 0 failed, 0 stale.
+- [x] Route Query: 24/24 applicable cases passed; 0 failed, 0 stale.
+- [x] Visible travel: 24/24 applicable cases passed; 0 failed, 0 stale.
 
 These observations cover only the named services, directions, poses, rotations, and recorded platforms.
 
@@ -190,7 +192,7 @@ Generated from [the authoritative record](checks/manual-tests.json). Only explic
 
 Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.
 
-Current totals: unverified: 189, passed: 0, failed: 0, stale: 0, not_applicable: 0.
+Current totals: unverified: 5, passed: 184, failed: 0, stale: 0, not_applicable: 0.
 
 #### Record an observation
 
@@ -316,11 +318,11 @@ No observation recorded.
 </details>
 
 <details>
-<summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
+<summary>In-game rendering — Whole subject — 4 cases; passed: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-e798ee95402b3e1c87d5">[ ] unverified</a> | <a href="#case-in_game_render-f2cd8ab81d8361391f87">[ ] unverified</a> | <a href="#case-in_game_render-7853aa4c7d1f09d6262f">[ ] unverified</a> | <a href="#case-in_game_render-0ddb499d50d481730c32">[ ] unverified</a> |
+| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-e798ee95402b3e1c87d5">[x] passed</a> | <a href="#case-in_game_render-f2cd8ab81d8361391f87">[x] passed</a> | <a href="#case-in_game_render-7853aa4c7d1f09d6262f">[x] passed</a> | <a href="#case-in_game_render-0ddb499d50d481730c32">[x] passed</a> |
 
 
 <details>
@@ -328,54 +330,62 @@ No observation recorded.
 
 <a id="case-in_game_render-e798ee95402b3e1c87d5"></a>
 
-**0° CCW: unverified** — `in_game_render-e798ee95402b3e1c87d5`.
+**0° CCW: passed** — `in_game_render-e798ee95402b3e1c87d5`.
 
 Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_render-f2cd8ab81d8361391f87"></a>
 
-**90° CCW: unverified** — `in_game_render-f2cd8ab81d8361391f87`.
+**90° CCW: passed** — `in_game_render-f2cd8ab81d8361391f87`.
 
 Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_render-7853aa4c7d1f09d6262f"></a>
 
-**180° CCW: unverified** — `in_game_render-7853aa4c7d1f09d6262f`.
+**180° CCW: passed** — `in_game_render-7853aa4c7d1f09d6262f`.
 
 Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_render-0ddb499d50d481730c32"></a>
 
-**270° CCW: unverified** — `in_game_render-0ddb499d50d481730c32`.
+**270° CCW: passed** — `in_game_render-0ddb499d50d481730c32`.
 
 Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Placement — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Placement — Whole subject — 4 cases; passed: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-e798ee95402b3e1c87d5">[ ] unverified</a> | <a href="#case-in_game_placement-f2cd8ab81d8361391f87">[ ] unverified</a> | <a href="#case-in_game_placement-7853aa4c7d1f09d6262f">[ ] unverified</a> | <a href="#case-in_game_placement-0ddb499d50d481730c32">[ ] unverified</a> |
+| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-e798ee95402b3e1c87d5">[x] passed</a> | <a href="#case-in_game_placement-f2cd8ab81d8361391f87">[x] passed</a> | <a href="#case-in_game_placement-7853aa4c7d1f09d6262f">[x] passed</a> | <a href="#case-in_game_placement-0ddb499d50d481730c32">[x] passed</a> |
 
 
 <details>
@@ -383,54 +393,62 @@ No observation recorded.
 
 <a id="case-in_game_placement-e798ee95402b3e1c87d5"></a>
 
-**0° CCW: unverified** — `in_game_placement-e798ee95402b3e1c87d5`.
+**0° CCW: passed** — `in_game_placement-e798ee95402b3e1c87d5`.
 
 Place this piece or complete blueprint and inspect every occupied tile.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_placement-f2cd8ab81d8361391f87"></a>
 
-**90° CCW: unverified** — `in_game_placement-f2cd8ab81d8361391f87`.
+**90° CCW: passed** — `in_game_placement-f2cd8ab81d8361391f87`.
 
 Place this piece or complete blueprint and inspect every occupied tile.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_placement-7853aa4c7d1f09d6262f"></a>
 
-**180° CCW: unverified** — `in_game_placement-7853aa4c7d1f09d6262f`.
+**180° CCW: passed** — `in_game_placement-7853aa4c7d1f09d6262f`.
 
 Place this piece or complete blueprint and inspect every occupied tile.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_placement-0ddb499d50d481730c32"></a>
 
-**270° CCW: unverified** — `in_game_placement-0ddb499d50d481730c32`.
+**270° CCW: passed** — `in_game_placement-0ddb499d50d481730c32`.
 
 Place this piece or complete blueprint and inspect every occupied tile.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Demolition — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Demolition — Whole subject — 4 cases; passed: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-e798ee95402b3e1c87d5">[ ] unverified</a> | <a href="#case-in_game_demolition-f2cd8ab81d8361391f87">[ ] unverified</a> | <a href="#case-in_game_demolition-7853aa4c7d1f09d6262f">[ ] unverified</a> | <a href="#case-in_game_demolition-0ddb499d50d481730c32">[ ] unverified</a> |
+| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-e798ee95402b3e1c87d5">[x] passed</a> | <a href="#case-in_game_demolition-f2cd8ab81d8361391f87">[x] passed</a> | <a href="#case-in_game_demolition-7853aa4c7d1f09d6262f">[x] passed</a> | <a href="#case-in_game_demolition-0ddb499d50d481730c32">[x] passed</a> |
 
 
 <details>
@@ -438,54 +456,62 @@ No observation recorded.
 
 <a id="case-in_game_demolition-e798ee95402b3e1c87d5"></a>
 
-**0° CCW: unverified** — `in_game_demolition-e798ee95402b3e1c87d5`.
+**0° CCW: passed** — `in_game_demolition-e798ee95402b3e1c87d5`.
 
 Bulldoze the complete placement and inspect the cleared area.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_demolition-f2cd8ab81d8361391f87"></a>
 
-**90° CCW: unverified** — `in_game_demolition-f2cd8ab81d8361391f87`.
+**90° CCW: passed** — `in_game_demolition-f2cd8ab81d8361391f87`.
 
 Bulldoze the complete placement and inspect the cleared area.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_demolition-7853aa4c7d1f09d6262f"></a>
 
-**180° CCW: unverified** — `in_game_demolition-7853aa4c7d1f09d6262f`.
+**180° CCW: passed** — `in_game_demolition-7853aa4c7d1f09d6262f`.
 
 Bulldoze the complete placement and inspect the cleared area.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_demolition-0ddb499d50d481730c32"></a>
 
-**270° CCW: unverified** — `in_game_demolition-0ddb499d50d481730c32`.
+**270° CCW: passed** — `in_game_demolition-0ddb499d50d481730c32`.
 
 Bulldoze the complete placement and inspect the cleared area.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Save and reload — Whole subject — 4 cases; unverified: 4</summary>
+<summary>Save and reload — Whole subject — 4 cases; passed: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-e798ee95402b3e1c87d5">[ ] unverified</a> | <a href="#case-in_game_save_reload-f2cd8ab81d8361391f87">[ ] unverified</a> | <a href="#case-in_game_save_reload-7853aa4c7d1f09d6262f">[ ] unverified</a> | <a href="#case-in_game_save_reload-0ddb499d50d481730c32">[ ] unverified</a> |
+| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-e798ee95402b3e1c87d5">[x] passed</a> | <a href="#case-in_game_save_reload-f2cd8ab81d8361391f87">[x] passed</a> | <a href="#case-in_game_save_reload-7853aa4c7d1f09d6262f">[x] passed</a> | <a href="#case-in_game_save_reload-0ddb499d50d481730c32">[x] passed</a> |
 
 
 <details>
@@ -493,57 +519,65 @@ No observation recorded.
 
 <a id="case-in_game_save_reload-e798ee95402b3e1c87d5"></a>
 
-**0° CCW: unverified** — `in_game_save_reload-e798ee95402b3e1c87d5`.
+**0° CCW: passed** — `in_game_save_reload-e798ee95402b3e1c87d5`.
 
 Save, quit, reload, and inspect the placement and its paths.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_save_reload-f2cd8ab81d8361391f87"></a>
 
-**90° CCW: unverified** — `in_game_save_reload-f2cd8ab81d8361391f87`.
+**90° CCW: passed** — `in_game_save_reload-f2cd8ab81d8361391f87`.
 
 Save, quit, reload, and inspect the placement and its paths.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_save_reload-7853aa4c7d1f09d6262f"></a>
 
-**180° CCW: unverified** — `in_game_save_reload-7853aa4c7d1f09d6262f`.
+**180° CCW: passed** — `in_game_save_reload-7853aa4c7d1f09d6262f`.
 
 Save, quit, reload, and inspect the placement and its paths.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_save_reload-0ddb499d50d481730c32"></a>
 
-**270° CCW: unverified** — `in_game_save_reload-0ddb499d50d481730c32`.
+**270° CCW: passed** — `in_game_save_reload-0ddb499d50d481730c32`.
 
 Save, quit, reload, and inspect the placement and its paths.
 
 Scope: Whole subject.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Route Query — road — 16 cases; unverified: 16</summary>
+<summary>Route Query — road — 16 cases; passed: 16</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Route Query**<br>Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out | — | <a href="#case-in_game_route_query-50007a8a544067632df8">[ ] unverified</a> | <a href="#case-in_game_route_query-aa996420a65ef96043cb">[ ] unverified</a> | <a href="#case-in_game_route_query-b0eaf8dec5b0fd80952b">[ ] unverified</a> | <a href="#case-in_game_route_query-1211672a95d2d4362be6">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out | — | <a href="#case-in_game_route_query-44b900d2419028db3d9c">[ ] unverified</a> | <a href="#case-in_game_route_query-29c1afbd6a548d090e9e">[ ] unverified</a> | <a href="#case-in_game_route_query-8ccc987288ddc2a079b8">[ ] unverified</a> | <a href="#case-in_game_route_query-34ea0fcc80492f29af5a">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out | — | <a href="#case-in_game_route_query-7347234933817d8bc777">[ ] unverified</a> | <a href="#case-in_game_route_query-88ccccc6a1fed2bf7844">[ ] unverified</a> | <a href="#case-in_game_route_query-524b89e91556ac4aa8a7">[ ] unverified</a> | <a href="#case-in_game_route_query-f1c3d5903b118f13b235">[ ] unverified</a> |
-| **Route Query**<br>Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out | — | <a href="#case-in_game_route_query-1c93d9ac8ff075b3ae9f">[ ] unverified</a> | <a href="#case-in_game_route_query-a0a6268e972c5f5f9205">[ ] unverified</a> | <a href="#case-in_game_route_query-23338840e03f48985a5b">[ ] unverified</a> | <a href="#case-in_game_route_query-8ebc71043d02be97846b">[ ] unverified</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out | — | <a href="#case-in_game_route_query-50007a8a544067632df8">[x] passed</a> | <a href="#case-in_game_route_query-aa996420a65ef96043cb">[x] passed</a> | <a href="#case-in_game_route_query-b0eaf8dec5b0fd80952b">[x] passed</a> | <a href="#case-in_game_route_query-1211672a95d2d4362be6">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out | — | <a href="#case-in_game_route_query-44b900d2419028db3d9c">[x] passed</a> | <a href="#case-in_game_route_query-29c1afbd6a548d090e9e">[x] passed</a> | <a href="#case-in_game_route_query-8ccc987288ddc2a079b8">[x] passed</a> | <a href="#case-in_game_route_query-34ea0fcc80492f29af5a">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out | — | <a href="#case-in_game_route_query-7347234933817d8bc777">[x] passed</a> | <a href="#case-in_game_route_query-88ccccc6a1fed2bf7844">[x] passed</a> | <a href="#case-in_game_route_query-524b89e91556ac4aa8a7">[x] passed</a> | <a href="#case-in_game_route_query-f1c3d5903b118f13b235">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out | — | <a href="#case-in_game_route_query-1c93d9ac8ff075b3ae9f">[x] passed</a> | <a href="#case-in_game_route_query-a0a6268e972c5f5f9205">[x] passed</a> | <a href="#case-in_game_route_query-23338840e03f48985a5b">[x] passed</a> | <a href="#case-in_game_route_query-8ebc71043d02be97846b">[x] passed</a> |
 
 
 <details>
@@ -551,43 +585,51 @@ No observation recorded.
 
 <a id="case-in_game_route_query-50007a8a544067632df8"></a>
 
-**0° CCW: unverified** — `in_game_route_query-50007a8a544067632df8`.
+**0° CCW: passed** — `in_game_route_query-50007a8a544067632df8`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-aa996420a65ef96043cb"></a>
 
-**90° CCW: unverified** — `in_game_route_query-aa996420a65ef96043cb`.
+**90° CCW: passed** — `in_game_route_query-aa996420a65ef96043cb`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-b0eaf8dec5b0fd80952b"></a>
 
-**180° CCW: unverified** — `in_game_route_query-b0eaf8dec5b0fd80952b`.
+**180° CCW: passed** — `in_game_route_query-b0eaf8dec5b0fd80952b`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-1211672a95d2d4362be6"></a>
 
-**270° CCW: unverified** — `in_game_route_query-1211672a95d2d4362be6`.
+**270° CCW: passed** — `in_game_route_query-1211672a95d2d4362be6`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -597,43 +639,51 @@ No observation recorded.
 
 <a id="case-in_game_route_query-44b900d2419028db3d9c"></a>
 
-**0° CCW: unverified** — `in_game_route_query-44b900d2419028db3d9c`.
+**0° CCW: passed** — `in_game_route_query-44b900d2419028db3d9c`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-29c1afbd6a548d090e9e"></a>
 
-**90° CCW: unverified** — `in_game_route_query-29c1afbd6a548d090e9e`.
+**90° CCW: passed** — `in_game_route_query-29c1afbd6a548d090e9e`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-8ccc987288ddc2a079b8"></a>
 
-**180° CCW: unverified** — `in_game_route_query-8ccc987288ddc2a079b8`.
+**180° CCW: passed** — `in_game_route_query-8ccc987288ddc2a079b8`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-34ea0fcc80492f29af5a"></a>
 
-**270° CCW: unverified** — `in_game_route_query-34ea0fcc80492f29af5a`.
+**270° CCW: passed** — `in_game_route_query-34ea0fcc80492f29af5a`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -643,43 +693,51 @@ No observation recorded.
 
 <a id="case-in_game_route_query-7347234933817d8bc777"></a>
 
-**0° CCW: unverified** — `in_game_route_query-7347234933817d8bc777`.
+**0° CCW: passed** — `in_game_route_query-7347234933817d8bc777`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-88ccccc6a1fed2bf7844"></a>
 
-**90° CCW: unverified** — `in_game_route_query-88ccccc6a1fed2bf7844`.
+**90° CCW: passed** — `in_game_route_query-88ccccc6a1fed2bf7844`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-524b89e91556ac4aa8a7"></a>
 
-**180° CCW: unverified** — `in_game_route_query-524b89e91556ac4aa8a7`.
+**180° CCW: passed** — `in_game_route_query-524b89e91556ac4aa8a7`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-f1c3d5903b118f13b235"></a>
 
-**270° CCW: unverified** — `in_game_route_query-f1c3d5903b118f13b235`.
+**270° CCW: passed** — `in_game_route_query-f1c3d5903b118f13b235`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -689,57 +747,65 @@ No observation recorded.
 
 <a id="case-in_game_route_query-1c93d9ac8ff075b3ae9f"></a>
 
-**0° CCW: unverified** — `in_game_route_query-1c93d9ac8ff075b3ae9f`.
+**0° CCW: passed** — `in_game_route_query-1c93d9ac8ff075b3ae9f`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-a0a6268e972c5f5f9205"></a>
 
-**90° CCW: unverified** — `in_game_route_query-a0a6268e972c5f5f9205`.
+**90° CCW: passed** — `in_game_route_query-a0a6268e972c5f5f9205`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-23338840e03f48985a5b"></a>
 
-**180° CCW: unverified** — `in_game_route_query-23338840e03f48985a5b`.
+**180° CCW: passed** — `in_game_route_query-23338840e03f48985a5b`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-8ebc71043d02be97846b"></a>
 
-**270° CCW: unverified** — `in_game_route_query-8ebc71043d02be97846b`.
+**270° CCW: passed** — `in_game_route_query-8ebc71043d02be97846b`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Visible travel — road — 16 cases; unverified: 16</summary>
+<summary>Visible travel — road — 16 cases; passed: 16</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out | — | <a href="#case-in_game_visible_travel-50007a8a544067632df8">[ ] unverified</a> | <a href="#case-in_game_visible_travel-aa996420a65ef96043cb">[ ] unverified</a> | <a href="#case-in_game_visible_travel-b0eaf8dec5b0fd80952b">[ ] unverified</a> | <a href="#case-in_game_visible_travel-1211672a95d2d4362be6">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out | — | <a href="#case-in_game_visible_travel-44b900d2419028db3d9c">[ ] unverified</a> | <a href="#case-in_game_visible_travel-29c1afbd6a548d090e9e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-8ccc987288ddc2a079b8">[ ] unverified</a> | <a href="#case-in_game_visible_travel-34ea0fcc80492f29af5a">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out | — | <a href="#case-in_game_visible_travel-7347234933817d8bc777">[ ] unverified</a> | <a href="#case-in_game_visible_travel-88ccccc6a1fed2bf7844">[ ] unverified</a> | <a href="#case-in_game_visible_travel-524b89e91556ac4aa8a7">[ ] unverified</a> | <a href="#case-in_game_visible_travel-f1c3d5903b118f13b235">[ ] unverified</a> |
-| **Visible travel**<br>Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out | — | <a href="#case-in_game_visible_travel-1c93d9ac8ff075b3ae9f">[ ] unverified</a> | <a href="#case-in_game_visible_travel-a0a6268e972c5f5f9205">[ ] unverified</a> | <a href="#case-in_game_visible_travel-23338840e03f48985a5b">[ ] unverified</a> | <a href="#case-in_game_visible_travel-8ebc71043d02be97846b">[ ] unverified</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out | — | <a href="#case-in_game_visible_travel-50007a8a544067632df8">[x] passed</a> | <a href="#case-in_game_visible_travel-aa996420a65ef96043cb">[x] passed</a> | <a href="#case-in_game_visible_travel-b0eaf8dec5b0fd80952b">[x] passed</a> | <a href="#case-in_game_visible_travel-1211672a95d2d4362be6">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out | — | <a href="#case-in_game_visible_travel-44b900d2419028db3d9c">[x] passed</a> | <a href="#case-in_game_visible_travel-29c1afbd6a548d090e9e">[x] passed</a> | <a href="#case-in_game_visible_travel-8ccc987288ddc2a079b8">[x] passed</a> | <a href="#case-in_game_visible_travel-34ea0fcc80492f29af5a">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out | — | <a href="#case-in_game_visible_travel-7347234933817d8bc777">[x] passed</a> | <a href="#case-in_game_visible_travel-88ccccc6a1fed2bf7844">[x] passed</a> | <a href="#case-in_game_visible_travel-524b89e91556ac4aa8a7">[x] passed</a> | <a href="#case-in_game_visible_travel-f1c3d5903b118f13b235">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out | — | <a href="#case-in_game_visible_travel-1c93d9ac8ff075b3ae9f">[x] passed</a> | <a href="#case-in_game_visible_travel-a0a6268e972c5f5f9205">[x] passed</a> | <a href="#case-in_game_visible_travel-23338840e03f48985a5b">[x] passed</a> | <a href="#case-in_game_visible_travel-8ebc71043d02be97846b">[x] passed</a> |
 
 
 <details>
@@ -747,43 +813,51 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-50007a8a544067632df8"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-50007a8a544067632df8`.
+**0° CCW: passed** — `in_game_visible_travel-50007a8a544067632df8`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-aa996420a65ef96043cb"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-aa996420a65ef96043cb`.
+**90° CCW: passed** — `in_game_visible_travel-aa996420a65ef96043cb`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-b0eaf8dec5b0fd80952b"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-b0eaf8dec5b0fd80952b`.
+**180° CCW: passed** — `in_game_visible_travel-b0eaf8dec5b0fd80952b`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-1211672a95d2d4362be6"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-1211672a95d2d4362be6`.
+**270° CCW: passed** — `in_game_visible_travel-1211672a95d2d4362be6`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-01-in>lower-lane-01-out; entry: lower-lane-01-in; exit: lower-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -793,43 +867,51 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-44b900d2419028db3d9c"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-44b900d2419028db3d9c`.
+**0° CCW: passed** — `in_game_visible_travel-44b900d2419028db3d9c`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-29c1afbd6a548d090e9e"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-29c1afbd6a548d090e9e`.
+**90° CCW: passed** — `in_game_visible_travel-29c1afbd6a548d090e9e`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-8ccc987288ddc2a079b8"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-8ccc987288ddc2a079b8`.
+**180° CCW: passed** — `in_game_visible_travel-8ccc987288ddc2a079b8`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-34ea0fcc80492f29af5a"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-34ea0fcc80492f29af5a`.
+**270° CCW: passed** — `in_game_visible_travel-34ea0fcc80492f29af5a`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:lower-lane-02-in>lower-lane-02-out; entry: lower-lane-02-in; exit: lower-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -839,43 +921,51 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-7347234933817d8bc777"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-7347234933817d8bc777`.
+**0° CCW: passed** — `in_game_visible_travel-7347234933817d8bc777`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-88ccccc6a1fed2bf7844"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-88ccccc6a1fed2bf7844`.
+**90° CCW: passed** — `in_game_visible_travel-88ccccc6a1fed2bf7844`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-524b89e91556ac4aa8a7"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-524b89e91556ac4aa8a7`.
+**180° CCW: passed** — `in_game_visible_travel-524b89e91556ac4aa8a7`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-f1c3d5903b118f13b235"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-f1c3d5903b118f13b235`.
+**270° CCW: passed** — `in_game_visible_travel-f1c3d5903b118f13b235`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-01-in>upper-lane-01-out; entry: upper-lane-01-in; exit: upper-lane-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -885,55 +975,63 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-1c93d9ac8ff075b3ae9f"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-1c93d9ac8ff075b3ae9f`.
+**0° CCW: passed** — `in_game_visible_travel-1c93d9ac8ff075b3ae9f`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-a0a6268e972c5f5f9205"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-a0a6268e972c5f5f9205`.
+**90° CCW: passed** — `in_game_visible_travel-a0a6268e972c5f5f9205`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-23338840e03f48985a5b"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-23338840e03f48985a5b`.
+**180° CCW: passed** — `in_game_visible_travel-23338840e03f48985a5b`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-8ebc71043d02be97846b"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-8ebc71043d02be97846b`.
+**270° CCW: passed** — `in_game_visible_travel-8ebc71043d02be97846b`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:upper-lane-02-in>upper-lane-02-out; entry: upper-lane-02-in; exit: upper-lane-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Route Query — ghsr — 8 cases; unverified: 8</summary>
+<summary>Route Query — ghsr — 8 cases; passed: 8</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Route Query**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out | — | <a href="#case-in_game_route_query-f580ac96a57572891d18">[ ] unverified</a> | <a href="#case-in_game_route_query-79997a65b678eaacb23f">[ ] unverified</a> | <a href="#case-in_game_route_query-10353b452c29ea4c591a">[ ] unverified</a> | <a href="#case-in_game_route_query-d16d43c7f29ccf160a19">[ ] unverified</a> |
-| **Route Query**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out | — | <a href="#case-in_game_route_query-49a14201b3d53a972e04">[ ] unverified</a> | <a href="#case-in_game_route_query-7ede89e0b72733ff5b51">[ ] unverified</a> | <a href="#case-in_game_route_query-83f76b1e9c918db4845e">[ ] unverified</a> | <a href="#case-in_game_route_query-e0333fb0e7a4097e76d7">[ ] unverified</a> |
+| **Route Query**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out | — | <a href="#case-in_game_route_query-f580ac96a57572891d18">[x] passed</a> | <a href="#case-in_game_route_query-79997a65b678eaacb23f">[x] passed</a> | <a href="#case-in_game_route_query-10353b452c29ea4c591a">[x] passed</a> | <a href="#case-in_game_route_query-d16d43c7f29ccf160a19">[x] passed</a> |
+| **Route Query**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out | — | <a href="#case-in_game_route_query-49a14201b3d53a972e04">[x] passed</a> | <a href="#case-in_game_route_query-7ede89e0b72733ff5b51">[x] passed</a> | <a href="#case-in_game_route_query-83f76b1e9c918db4845e">[x] passed</a> | <a href="#case-in_game_route_query-e0333fb0e7a4097e76d7">[x] passed</a> |
 
 
 <details>
@@ -941,43 +1039,51 @@ No observation recorded.
 
 <a id="case-in_game_route_query-f580ac96a57572891d18"></a>
 
-**0° CCW: unverified** — `in_game_route_query-f580ac96a57572891d18`.
+**0° CCW: passed** — `in_game_route_query-f580ac96a57572891d18`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-79997a65b678eaacb23f"></a>
 
-**90° CCW: unverified** — `in_game_route_query-79997a65b678eaacb23f`.
+**90° CCW: passed** — `in_game_route_query-79997a65b678eaacb23f`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-10353b452c29ea4c591a"></a>
 
-**180° CCW: unverified** — `in_game_route_query-10353b452c29ea4c591a`.
+**180° CCW: passed** — `in_game_route_query-10353b452c29ea4c591a`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-d16d43c7f29ccf160a19"></a>
 
-**270° CCW: unverified** — `in_game_route_query-d16d43c7f29ccf160a19`.
+**270° CCW: passed** — `in_game_route_query-d16d43c7f29ccf160a19`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -987,55 +1093,63 @@ No observation recorded.
 
 <a id="case-in_game_route_query-49a14201b3d53a972e04"></a>
 
-**0° CCW: unverified** — `in_game_route_query-49a14201b3d53a972e04`.
+**0° CCW: passed** — `in_game_route_query-49a14201b3d53a972e04`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-7ede89e0b72733ff5b51"></a>
 
-**90° CCW: unverified** — `in_game_route_query-7ede89e0b72733ff5b51`.
+**90° CCW: passed** — `in_game_route_query-7ede89e0b72733ff5b51`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-83f76b1e9c918db4845e"></a>
 
-**180° CCW: unverified** — `in_game_route_query-83f76b1e9c918db4845e`.
+**180° CCW: passed** — `in_game_route_query-83f76b1e9c918db4845e`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_route_query-e0333fb0e7a4097e76d7"></a>
 
-**270° CCW: unverified** — `in_game_route_query-e0333fb0e7a4097e76d7`.
+**270° CCW: passed** — `in_game_route_query-e0333fb0e7a4097e76d7`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Visible travel — ghsr — 8 cases; unverified: 8</summary>
+<summary>Visible travel — ghsr — 8 cases; passed: 8</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Visible travel**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out | — | <a href="#case-in_game_visible_travel-f580ac96a57572891d18">[ ] unverified</a> | <a href="#case-in_game_visible_travel-79997a65b678eaacb23f">[ ] unverified</a> | <a href="#case-in_game_visible_travel-10353b452c29ea4c591a">[ ] unverified</a> | <a href="#case-in_game_visible_travel-d16d43c7f29ccf160a19">[ ] unverified</a> |
-| **Visible travel**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out | — | <a href="#case-in_game_visible_travel-49a14201b3d53a972e04">[ ] unverified</a> | <a href="#case-in_game_visible_travel-7ede89e0b72733ff5b51">[ ] unverified</a> | <a href="#case-in_game_visible_travel-83f76b1e9c918db4845e">[ ] unverified</a> | <a href="#case-in_game_visible_travel-e0333fb0e7a4097e76d7">[ ] unverified</a> |
+| **Visible travel**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out | — | <a href="#case-in_game_visible_travel-f580ac96a57572891d18">[x] passed</a> | <a href="#case-in_game_visible_travel-79997a65b678eaacb23f">[x] passed</a> | <a href="#case-in_game_visible_travel-10353b452c29ea4c591a">[x] passed</a> | <a href="#case-in_game_visible_travel-d16d43c7f29ccf160a19">[x] passed</a> |
+| **Visible travel**<br>Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out | — | <a href="#case-in_game_visible_travel-49a14201b3d53a972e04">[x] passed</a> | <a href="#case-in_game_visible_travel-7ede89e0b72733ff5b51">[x] passed</a> | <a href="#case-in_game_visible_travel-83f76b1e9c918db4845e">[x] passed</a> | <a href="#case-in_game_visible_travel-e0333fb0e7a4097e76d7">[x] passed</a> |
 
 
 <details>
@@ -1043,43 +1157,51 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-f580ac96a57572891d18"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-f580ac96a57572891d18`.
+**0° CCW: passed** — `in_game_visible_travel-f580ac96a57572891d18`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-79997a65b678eaacb23f"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-79997a65b678eaacb23f`.
+**90° CCW: passed** — `in_game_visible_travel-79997a65b678eaacb23f`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-10353b452c29ea4c591a"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-10353b452c29ea4c591a`.
+**180° CCW: passed** — `in_game_visible_travel-10353b452c29ea4c591a`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-d16d43c7f29ccf160a19"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-d16d43c7f29ccf160a19`.
+**270° CCW: passed** — `in_game_visible_travel-d16d43c7f29ccf160a19`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-01-in>ghsr-track-01-out; entry: ghsr-track-01-in; exit: ghsr-track-01-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1089,65 +1211,73 @@ No observation recorded.
 
 <a id="case-in_game_visible_travel-49a14201b3d53a972e04"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-49a14201b3d53a972e04`.
+**0° CCW: passed** — `in_game_visible_travel-49a14201b3d53a972e04`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-7ede89e0b72733ff5b51"></a>
 
-**90° CCW: unverified** — `in_game_visible_travel-7ede89e0b72733ff5b51`.
+**90° CCW: passed** — `in_game_visible_travel-7ede89e0b72733ff5b51`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-83f76b1e9c918db4845e"></a>
 
-**180° CCW: unverified** — `in_game_visible_travel-83f76b1e9c918db4845e`.
+**180° CCW: passed** — `in_game_visible_travel-83f76b1e9c918db4845e`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_visible_travel-e0333fb0e7a4097e76d7"></a>
 
-**270° CCW: unverified** — `in_game_visible_travel-e0333fb0e7a4097e76d7`.
+**270° CCW: passed** — `in_game_visible_travel-e0333fb0e7a4097e76d7`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: ghsr; role: primary; journey: 7:ghsr-track-02-in>ghsr-track-02-out; entry: ghsr-track-02-in; exit: ghsr-track-02-out.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Forbidden transfer — road → road — 48 cases; unverified: 48</summary>
+<summary>Forbidden transfer — road → road — 48 cases; passed: 48</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-45f059bf181db717a926">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7fb8ecc5b0ad06e442ba">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-783447a3a76074de68f3">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4f8b46f0ac73a41b0b8f">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a7de1380b7962e8558f5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-23a33549ddff6eda1825">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d8265a53c01a23733390">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0ad673d8e71f1b395e76">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f42df378907f4c211abe">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-07b241c3b20c7d037744">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-37328acf6c1794fbe632">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-417922daa94de5f026fe">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-2724a235ab3f02da74bf">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a315e677f61922e9275a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7edb56b850239344232c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fc192aa9bb320963573a">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c7ee9e0084c4a78c3b17">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f1f9d7ce08b7811e54e0">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-36f49d4920ccf8865ae8">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9bfb299e928add8e7732">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-508ac88655ecfebf0cce">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ad7b46450168a251c7ab">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5086adfe3d3ed943dcb1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a3f647a780c155e45279">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-be6b0868d6028c04575b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-94b13b7ea64a26348f59">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-55563cafe0169857f354">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ecd4ef23c52be71a4ed3">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e85de43b6232aced084c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6087b8a46ed255506a1d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f648479b0b205e2e2e6f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e29df64fd67040f9698c">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-b3b2fa4fc3cbbe7025ac">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-581fccf9f9c6cd812f00">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6925fa65e746058f9f40">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0c70dddb10bc4b14d8ae">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-cc56eece15cb2745efa7">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5666eb7c1739c552e8d4">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-732bf43f0dcce8278e13">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6e68f7bc992ff4687c8e">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-374795d2fe615b8a8fb7">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-165fae4dd392f8650c44">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-96a1a3544db88848a31d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a49a36ae5892cb416527">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-65a8b8ce22622a926fee">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-206f314788dbb3caa300">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4c4cb84ac4c35c995f61">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c1f8647f343e5c1a2a32">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-45f059bf181db717a926">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-7fb8ecc5b0ad06e442ba">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-783447a3a76074de68f3">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4f8b46f0ac73a41b0b8f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a7de1380b7962e8558f5">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-23a33549ddff6eda1825">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-d8265a53c01a23733390">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-0ad673d8e71f1b395e76">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f42df378907f4c211abe">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-07b241c3b20c7d037744">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-37328acf6c1794fbe632">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-417922daa94de5f026fe">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-2724a235ab3f02da74bf">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-a315e677f61922e9275a">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-7edb56b850239344232c">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-fc192aa9bb320963573a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-c7ee9e0084c4a78c3b17">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-f1f9d7ce08b7811e54e0">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-36f49d4920ccf8865ae8">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-9bfb299e928add8e7732">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-508ac88655ecfebf0cce">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-ad7b46450168a251c7ab">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5086adfe3d3ed943dcb1">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-a3f647a780c155e45279">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-be6b0868d6028c04575b">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-94b13b7ea64a26348f59">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-55563cafe0169857f354">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-ecd4ef23c52be71a4ed3">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e85de43b6232aced084c">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6087b8a46ed255506a1d">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-f648479b0b205e2e2e6f">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-e29df64fd67040f9698c">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-b3b2fa4fc3cbbe7025ac">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-581fccf9f9c6cd812f00">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6925fa65e746058f9f40">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-0c70dddb10bc4b14d8ae">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-cc56eece15cb2745efa7">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5666eb7c1739c552e8d4">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-732bf43f0dcce8278e13">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6e68f7bc992ff4687c8e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-374795d2fe615b8a8fb7">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-165fae4dd392f8650c44">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-96a1a3544db88848a31d">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-a49a36ae5892cb416527">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-65a8b8ce22622a926fee">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-206f314788dbb3caa300">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4c4cb84ac4c35c995f61">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-c1f8647f343e5c1a2a32">[x] passed</a> |
 
 
 <details>
@@ -1155,43 +1285,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-45f059bf181db717a926"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-45f059bf181db717a926`.
+**0° CCW: passed** — `in_game_forbidden_transfer-45f059bf181db717a926`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-7fb8ecc5b0ad06e442ba"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-7fb8ecc5b0ad06e442ba`.
+**90° CCW: passed** — `in_game_forbidden_transfer-7fb8ecc5b0ad06e442ba`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-783447a3a76074de68f3"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-783447a3a76074de68f3`.
+**180° CCW: passed** — `in_game_forbidden_transfer-783447a3a76074de68f3`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4f8b46f0ac73a41b0b8f"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-4f8b46f0ac73a41b0b8f`.
+**270° CCW: passed** — `in_game_forbidden_transfer-4f8b46f0ac73a41b0b8f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1201,43 +1339,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-a7de1380b7962e8558f5"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-a7de1380b7962e8558f5`.
+**0° CCW: passed** — `in_game_forbidden_transfer-a7de1380b7962e8558f5`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-23a33549ddff6eda1825"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-23a33549ddff6eda1825`.
+**90° CCW: passed** — `in_game_forbidden_transfer-23a33549ddff6eda1825`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-d8265a53c01a23733390"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-d8265a53c01a23733390`.
+**180° CCW: passed** — `in_game_forbidden_transfer-d8265a53c01a23733390`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-0ad673d8e71f1b395e76"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-0ad673d8e71f1b395e76`.
+**270° CCW: passed** — `in_game_forbidden_transfer-0ad673d8e71f1b395e76`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1247,43 +1393,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-f42df378907f4c211abe"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-f42df378907f4c211abe`.
+**0° CCW: passed** — `in_game_forbidden_transfer-f42df378907f4c211abe`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-07b241c3b20c7d037744"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-07b241c3b20c7d037744`.
+**90° CCW: passed** — `in_game_forbidden_transfer-07b241c3b20c7d037744`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-37328acf6c1794fbe632"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-37328acf6c1794fbe632`.
+**180° CCW: passed** — `in_game_forbidden_transfer-37328acf6c1794fbe632`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-417922daa94de5f026fe"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-417922daa94de5f026fe`.
+**270° CCW: passed** — `in_game_forbidden_transfer-417922daa94de5f026fe`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1293,43 +1447,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-2724a235ab3f02da74bf"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-2724a235ab3f02da74bf`.
+**0° CCW: passed** — `in_game_forbidden_transfer-2724a235ab3f02da74bf`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-a315e677f61922e9275a"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-a315e677f61922e9275a`.
+**90° CCW: passed** — `in_game_forbidden_transfer-a315e677f61922e9275a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-7edb56b850239344232c"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-7edb56b850239344232c`.
+**180° CCW: passed** — `in_game_forbidden_transfer-7edb56b850239344232c`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-fc192aa9bb320963573a"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-fc192aa9bb320963573a`.
+**270° CCW: passed** — `in_game_forbidden_transfer-fc192aa9bb320963573a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1339,43 +1501,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-c7ee9e0084c4a78c3b17"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-c7ee9e0084c4a78c3b17`.
+**0° CCW: passed** — `in_game_forbidden_transfer-c7ee9e0084c4a78c3b17`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-f1f9d7ce08b7811e54e0"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-f1f9d7ce08b7811e54e0`.
+**90° CCW: passed** — `in_game_forbidden_transfer-f1f9d7ce08b7811e54e0`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-36f49d4920ccf8865ae8"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-36f49d4920ccf8865ae8`.
+**180° CCW: passed** — `in_game_forbidden_transfer-36f49d4920ccf8865ae8`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-9bfb299e928add8e7732"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-9bfb299e928add8e7732`.
+**270° CCW: passed** — `in_game_forbidden_transfer-9bfb299e928add8e7732`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1385,43 +1555,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-508ac88655ecfebf0cce"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-508ac88655ecfebf0cce`.
+**0° CCW: passed** — `in_game_forbidden_transfer-508ac88655ecfebf0cce`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-ad7b46450168a251c7ab"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-ad7b46450168a251c7ab`.
+**90° CCW: passed** — `in_game_forbidden_transfer-ad7b46450168a251c7ab`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5086adfe3d3ed943dcb1"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-5086adfe3d3ed943dcb1`.
+**180° CCW: passed** — `in_game_forbidden_transfer-5086adfe3d3ed943dcb1`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-a3f647a780c155e45279"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-a3f647a780c155e45279`.
+**270° CCW: passed** — `in_game_forbidden_transfer-a3f647a780c155e45279`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1431,43 +1609,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-be6b0868d6028c04575b"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-be6b0868d6028c04575b`.
+**0° CCW: passed** — `in_game_forbidden_transfer-be6b0868d6028c04575b`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-94b13b7ea64a26348f59"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-94b13b7ea64a26348f59`.
+**90° CCW: passed** — `in_game_forbidden_transfer-94b13b7ea64a26348f59`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-55563cafe0169857f354"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-55563cafe0169857f354`.
+**180° CCW: passed** — `in_game_forbidden_transfer-55563cafe0169857f354`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-ecd4ef23c52be71a4ed3"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-ecd4ef23c52be71a4ed3`.
+**270° CCW: passed** — `in_game_forbidden_transfer-ecd4ef23c52be71a4ed3`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: upper-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1477,43 +1663,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-e85de43b6232aced084c"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-e85de43b6232aced084c`.
+**0° CCW: passed** — `in_game_forbidden_transfer-e85de43b6232aced084c`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6087b8a46ed255506a1d"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-6087b8a46ed255506a1d`.
+**90° CCW: passed** — `in_game_forbidden_transfer-6087b8a46ed255506a1d`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-f648479b0b205e2e2e6f"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-f648479b0b205e2e2e6f`.
+**180° CCW: passed** — `in_game_forbidden_transfer-f648479b0b205e2e2e6f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-e29df64fd67040f9698c"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-e29df64fd67040f9698c`.
+**270° CCW: passed** — `in_game_forbidden_transfer-e29df64fd67040f9698c`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1523,43 +1717,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-b3b2fa4fc3cbbe7025ac"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-b3b2fa4fc3cbbe7025ac`.
+**0° CCW: passed** — `in_game_forbidden_transfer-b3b2fa4fc3cbbe7025ac`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-581fccf9f9c6cd812f00"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-581fccf9f9c6cd812f00`.
+**90° CCW: passed** — `in_game_forbidden_transfer-581fccf9f9c6cd812f00`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6925fa65e746058f9f40"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-6925fa65e746058f9f40`.
+**180° CCW: passed** — `in_game_forbidden_transfer-6925fa65e746058f9f40`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-0c70dddb10bc4b14d8ae"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-0c70dddb10bc4b14d8ae`.
+**270° CCW: passed** — `in_game_forbidden_transfer-0c70dddb10bc4b14d8ae`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1569,43 +1771,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-cc56eece15cb2745efa7"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-cc56eece15cb2745efa7`.
+**0° CCW: passed** — `in_game_forbidden_transfer-cc56eece15cb2745efa7`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5666eb7c1739c552e8d4"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-5666eb7c1739c552e8d4`.
+**90° CCW: passed** — `in_game_forbidden_transfer-5666eb7c1739c552e8d4`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-732bf43f0dcce8278e13"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-732bf43f0dcce8278e13`.
+**180° CCW: passed** — `in_game_forbidden_transfer-732bf43f0dcce8278e13`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6e68f7bc992ff4687c8e"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-6e68f7bc992ff4687c8e`.
+**270° CCW: passed** — `in_game_forbidden_transfer-6e68f7bc992ff4687c8e`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: upper-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1615,43 +1825,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-374795d2fe615b8a8fb7"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-374795d2fe615b8a8fb7`.
+**0° CCW: passed** — `in_game_forbidden_transfer-374795d2fe615b8a8fb7`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-165fae4dd392f8650c44"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-165fae4dd392f8650c44`.
+**90° CCW: passed** — `in_game_forbidden_transfer-165fae4dd392f8650c44`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-96a1a3544db88848a31d"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-96a1a3544db88848a31d`.
+**180° CCW: passed** — `in_game_forbidden_transfer-96a1a3544db88848a31d`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-a49a36ae5892cb416527"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-a49a36ae5892cb416527`.
+**270° CCW: passed** — `in_game_forbidden_transfer-a49a36ae5892cb416527`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-01-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1661,61 +1879,69 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-65a8b8ce22622a926fee"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-65a8b8ce22622a926fee`.
+**0° CCW: passed** — `in_game_forbidden_transfer-65a8b8ce22622a926fee`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-206f314788dbb3caa300"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-206f314788dbb3caa300`.
+**90° CCW: passed** — `in_game_forbidden_transfer-206f314788dbb3caa300`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4c4cb84ac4c35c995f61"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-4c4cb84ac4c35c995f61`.
+**180° CCW: passed** — `in_game_forbidden_transfer-4c4cb84ac4c35c995f61`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-c1f8647f343e5c1a2a32"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-c1f8647f343e5c1a2a32`.
+**270° CCW: passed** — `in_game_forbidden_transfer-c1f8647f343e5c1a2a32`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: lower-lane-02-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Forbidden transfer — road → ghsr — 32 cases; unverified: 32</summary>
+<summary>Forbidden transfer — road → ghsr — 32 cases; passed: 32</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a969ca3320f93626d158">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-0e89008180679e53b1cc">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6041133f0745544a48da">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-24952a295a2cf00404c9">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e2fc0e6bcc8302bc0d7e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-524e735ebbdb387ab120">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-27fc2a1c88b8bbe44d84">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9016e9e6a5a0bbf1b2da">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-170853adb921b007819f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9597ff76dfb08b705c40">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-9a32551aa774fc3a85c4">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-e0a1519a5441fbc8a4e8">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-bd07f2a9933a850f1cda">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6e856ee54aa4351cf7ef">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7053132fcabf7df3b9a6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4b2e36e444b8f0455155">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-605614f264283571e5c1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1a6e2e2f651713543496">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-82cb4210d68c55e73afd">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6cac06d6ad98d35bb021">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-51e1f870858af73e35d9">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-63d34fa507244441ac5c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5b49f10fe35059f7e7b2">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-618e2b513213f44be0e2">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-ea45fba00ba56901ac65">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5b3daa9001d94627b653">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-3a2cd675bee71a620bfc">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5e3d053ffab4b45771b6">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-3979105d31e892d07ba0">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5b101280e5c73caed147">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-452c33d18f83a2716818">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fe5107da0ae0642a81ef">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a969ca3320f93626d158">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-0e89008180679e53b1cc">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6041133f0745544a48da">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-24952a295a2cf00404c9">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-e2fc0e6bcc8302bc0d7e">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-524e735ebbdb387ab120">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-27fc2a1c88b8bbe44d84">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-9016e9e6a5a0bbf1b2da">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-170853adb921b007819f">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-9597ff76dfb08b705c40">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-9a32551aa774fc3a85c4">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-e0a1519a5441fbc8a4e8">[x] passed</a> |
+| **Forbidden transfer**<br>from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-bd07f2a9933a850f1cda">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6e856ee54aa4351cf7ef">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-7053132fcabf7df3b9a6">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4b2e36e444b8f0455155">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-605614f264283571e5c1">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-1a6e2e2f651713543496">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-82cb4210d68c55e73afd">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6cac06d6ad98d35bb021">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-51e1f870858af73e35d9">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-63d34fa507244441ac5c">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5b49f10fe35059f7e7b2">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-618e2b513213f44be0e2">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-ea45fba00ba56901ac65">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5b3daa9001d94627b653">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-3a2cd675bee71a620bfc">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5e3d053ffab4b45771b6">[x] passed</a> |
+| **Forbidden transfer**<br>from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-3979105d31e892d07ba0">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5b101280e5c73caed147">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-452c33d18f83a2716818">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-fe5107da0ae0642a81ef">[x] passed</a> |
 
 
 <details>
@@ -1723,43 +1949,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-a969ca3320f93626d158"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-a969ca3320f93626d158`.
+**0° CCW: passed** — `in_game_forbidden_transfer-a969ca3320f93626d158`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-0e89008180679e53b1cc"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-0e89008180679e53b1cc`.
+**90° CCW: passed** — `in_game_forbidden_transfer-0e89008180679e53b1cc`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6041133f0745544a48da"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-6041133f0745544a48da`.
+**180° CCW: passed** — `in_game_forbidden_transfer-6041133f0745544a48da`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-24952a295a2cf00404c9"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-24952a295a2cf00404c9`.
+**270° CCW: passed** — `in_game_forbidden_transfer-24952a295a2cf00404c9`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1769,43 +2003,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-e2fc0e6bcc8302bc0d7e"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-e2fc0e6bcc8302bc0d7e`.
+**0° CCW: passed** — `in_game_forbidden_transfer-e2fc0e6bcc8302bc0d7e`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-524e735ebbdb387ab120"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-524e735ebbdb387ab120`.
+**90° CCW: passed** — `in_game_forbidden_transfer-524e735ebbdb387ab120`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-27fc2a1c88b8bbe44d84"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-27fc2a1c88b8bbe44d84`.
+**180° CCW: passed** — `in_game_forbidden_transfer-27fc2a1c88b8bbe44d84`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-9016e9e6a5a0bbf1b2da"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-9016e9e6a5a0bbf1b2da`.
+**270° CCW: passed** — `in_game_forbidden_transfer-9016e9e6a5a0bbf1b2da`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1815,43 +2057,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-170853adb921b007819f"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-170853adb921b007819f`.
+**0° CCW: passed** — `in_game_forbidden_transfer-170853adb921b007819f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-9597ff76dfb08b705c40"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-9597ff76dfb08b705c40`.
+**90° CCW: passed** — `in_game_forbidden_transfer-9597ff76dfb08b705c40`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-9a32551aa774fc3a85c4"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-9a32551aa774fc3a85c4`.
+**180° CCW: passed** — `in_game_forbidden_transfer-9a32551aa774fc3a85c4`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-e0a1519a5441fbc8a4e8"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-e0a1519a5441fbc8a4e8`.
+**270° CCW: passed** — `in_game_forbidden_transfer-e0a1519a5441fbc8a4e8`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1861,43 +2111,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-bd07f2a9933a850f1cda"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-bd07f2a9933a850f1cda`.
+**0° CCW: passed** — `in_game_forbidden_transfer-bd07f2a9933a850f1cda`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6e856ee54aa4351cf7ef"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-6e856ee54aa4351cf7ef`.
+**90° CCW: passed** — `in_game_forbidden_transfer-6e856ee54aa4351cf7ef`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-7053132fcabf7df3b9a6"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-7053132fcabf7df3b9a6`.
+**180° CCW: passed** — `in_game_forbidden_transfer-7053132fcabf7df3b9a6`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4b2e36e444b8f0455155"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-4b2e36e444b8f0455155`.
+**270° CCW: passed** — `in_game_forbidden_transfer-4b2e36e444b8f0455155`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: lower-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1907,43 +2165,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-605614f264283571e5c1"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-605614f264283571e5c1`.
+**0° CCW: passed** — `in_game_forbidden_transfer-605614f264283571e5c1`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-1a6e2e2f651713543496"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-1a6e2e2f651713543496`.
+**90° CCW: passed** — `in_game_forbidden_transfer-1a6e2e2f651713543496`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-82cb4210d68c55e73afd"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-82cb4210d68c55e73afd`.
+**180° CCW: passed** — `in_game_forbidden_transfer-82cb4210d68c55e73afd`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6cac06d6ad98d35bb021"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-6cac06d6ad98d35bb021`.
+**270° CCW: passed** — `in_game_forbidden_transfer-6cac06d6ad98d35bb021`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1953,43 +2219,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-51e1f870858af73e35d9"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-51e1f870858af73e35d9`.
+**0° CCW: passed** — `in_game_forbidden_transfer-51e1f870858af73e35d9`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-63d34fa507244441ac5c"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-63d34fa507244441ac5c`.
+**90° CCW: passed** — `in_game_forbidden_transfer-63d34fa507244441ac5c`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5b49f10fe35059f7e7b2"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-5b49f10fe35059f7e7b2`.
+**180° CCW: passed** — `in_game_forbidden_transfer-5b49f10fe35059f7e7b2`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-618e2b513213f44be0e2"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-618e2b513213f44be0e2`.
+**270° CCW: passed** — `in_game_forbidden_transfer-618e2b513213f44be0e2`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-01-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -1999,43 +2273,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-ea45fba00ba56901ac65"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-ea45fba00ba56901ac65`.
+**0° CCW: passed** — `in_game_forbidden_transfer-ea45fba00ba56901ac65`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5b3daa9001d94627b653"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-5b3daa9001d94627b653`.
+**90° CCW: passed** — `in_game_forbidden_transfer-5b3daa9001d94627b653`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-3a2cd675bee71a620bfc"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-3a2cd675bee71a620bfc`.
+**180° CCW: passed** — `in_game_forbidden_transfer-3a2cd675bee71a620bfc`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5e3d053ffab4b45771b6"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-5e3d053ffab4b45771b6`.
+**270° CCW: passed** — `in_game_forbidden_transfer-5e3d053ffab4b45771b6`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-02-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2045,61 +2327,69 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-3979105d31e892d07ba0"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-3979105d31e892d07ba0`.
+**0° CCW: passed** — `in_game_forbidden_transfer-3979105d31e892d07ba0`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5b101280e5c73caed147"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-5b101280e5c73caed147`.
+**90° CCW: passed** — `in_game_forbidden_transfer-5b101280e5c73caed147`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-452c33d18f83a2716818"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-452c33d18f83a2716818`.
+**180° CCW: passed** — `in_game_forbidden_transfer-452c33d18f83a2716818`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-fe5107da0ae0642a81ef"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-fe5107da0ae0642a81ef`.
+**270° CCW: passed** — `in_game_forbidden_transfer-fe5107da0ae0642a81ef`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: upper-lane-02-in; to port: ghsr-track-01-out; from service: road; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Forbidden transfer — ghsr → road — 32 cases; unverified: 32</summary>
+<summary>Forbidden transfer — ghsr → road — 32 cases; passed: 32</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-bab76ce828cd6135a04b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-7b3e1401a2fee057e86f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d1600339c98f54a7bcd6">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-68591a60fa55ad06aef2">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-6a41ada2f45097aae57b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d2865b90b33b5181948c">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f0035791e45adb748913">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-b9fde6172340bada223e">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-18a048ff1c8870a9063e">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-17dbe555605dcdcc4045">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-c2818b836391cd7aa88a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-67d4bef201937528f654">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a890c4828d37837e9d8b">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-46eac06798a1a0de34d1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-6beae0e5c35d3a652fb1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-74f616326ae5d89c656f">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-282438b99d4e8781b47d">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d55925da988b8fdb7b63">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-5c9ad66fde37b820db65">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-f0ae929f071701ab4fb6">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f2339573871c905bc194">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-557b00304de48ed1192a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4d30e014c93483369609">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4ddb02c13e7d0777b29b">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-1ec5a0e2b6a5ead1a3d1">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-eff2042b5d4275473f52">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ce2d357c1118df8a91ad">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-64a86fc6d645a1b9b0e9">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-daf6c3f8e24f5b2ac783">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-ab6000fbe64458940edc">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-d7240ef566ca443a8899">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-862c5089ae67d6767304">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-bab76ce828cd6135a04b">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-7b3e1401a2fee057e86f">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-d1600339c98f54a7bcd6">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-68591a60fa55ad06aef2">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-6a41ada2f45097aae57b">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-d2865b90b33b5181948c">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-f0035791e45adb748913">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-b9fde6172340bada223e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-18a048ff1c8870a9063e">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-17dbe555605dcdcc4045">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-c2818b836391cd7aa88a">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-67d4bef201937528f654">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-a890c4828d37837e9d8b">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-46eac06798a1a0de34d1">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-6beae0e5c35d3a652fb1">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-74f616326ae5d89c656f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-282438b99d4e8781b47d">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-d55925da988b8fdb7b63">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-5c9ad66fde37b820db65">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-f0ae929f071701ab4fb6">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-f2339573871c905bc194">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-557b00304de48ed1192a">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4d30e014c93483369609">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4ddb02c13e7d0777b29b">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-1ec5a0e2b6a5ead1a3d1">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-eff2042b5d4275473f52">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-ce2d357c1118df8a91ad">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-64a86fc6d645a1b9b0e9">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-daf6c3f8e24f5b2ac783">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-ab6000fbe64458940edc">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-d7240ef566ca443a8899">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-862c5089ae67d6767304">[x] passed</a> |
 
 
 <details>
@@ -2107,43 +2397,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-bab76ce828cd6135a04b"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-bab76ce828cd6135a04b`.
+**0° CCW: passed** — `in_game_forbidden_transfer-bab76ce828cd6135a04b`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-7b3e1401a2fee057e86f"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-7b3e1401a2fee057e86f`.
+**90° CCW: passed** — `in_game_forbidden_transfer-7b3e1401a2fee057e86f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-d1600339c98f54a7bcd6"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-d1600339c98f54a7bcd6`.
+**180° CCW: passed** — `in_game_forbidden_transfer-d1600339c98f54a7bcd6`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-68591a60fa55ad06aef2"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-68591a60fa55ad06aef2`.
+**270° CCW: passed** — `in_game_forbidden_transfer-68591a60fa55ad06aef2`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2153,43 +2451,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-6a41ada2f45097aae57b"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-6a41ada2f45097aae57b`.
+**0° CCW: passed** — `in_game_forbidden_transfer-6a41ada2f45097aae57b`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-d2865b90b33b5181948c"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-d2865b90b33b5181948c`.
+**90° CCW: passed** — `in_game_forbidden_transfer-d2865b90b33b5181948c`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-f0035791e45adb748913"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-f0035791e45adb748913`.
+**180° CCW: passed** — `in_game_forbidden_transfer-f0035791e45adb748913`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-b9fde6172340bada223e"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-b9fde6172340bada223e`.
+**270° CCW: passed** — `in_game_forbidden_transfer-b9fde6172340bada223e`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2199,43 +2505,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-18a048ff1c8870a9063e"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-18a048ff1c8870a9063e`.
+**0° CCW: passed** — `in_game_forbidden_transfer-18a048ff1c8870a9063e`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-17dbe555605dcdcc4045"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-17dbe555605dcdcc4045`.
+**90° CCW: passed** — `in_game_forbidden_transfer-17dbe555605dcdcc4045`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-c2818b836391cd7aa88a"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-c2818b836391cd7aa88a`.
+**180° CCW: passed** — `in_game_forbidden_transfer-c2818b836391cd7aa88a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-67d4bef201937528f654"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-67d4bef201937528f654`.
+**270° CCW: passed** — `in_game_forbidden_transfer-67d4bef201937528f654`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2245,43 +2559,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-a890c4828d37837e9d8b"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-a890c4828d37837e9d8b`.
+**0° CCW: passed** — `in_game_forbidden_transfer-a890c4828d37837e9d8b`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-46eac06798a1a0de34d1"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-46eac06798a1a0de34d1`.
+**90° CCW: passed** — `in_game_forbidden_transfer-46eac06798a1a0de34d1`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-6beae0e5c35d3a652fb1"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-6beae0e5c35d3a652fb1`.
+**180° CCW: passed** — `in_game_forbidden_transfer-6beae0e5c35d3a652fb1`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-74f616326ae5d89c656f"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-74f616326ae5d89c656f`.
+**270° CCW: passed** — `in_game_forbidden_transfer-74f616326ae5d89c656f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2291,43 +2613,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-282438b99d4e8781b47d"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-282438b99d4e8781b47d`.
+**0° CCW: passed** — `in_game_forbidden_transfer-282438b99d4e8781b47d`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-d55925da988b8fdb7b63"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-d55925da988b8fdb7b63`.
+**90° CCW: passed** — `in_game_forbidden_transfer-d55925da988b8fdb7b63`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-5c9ad66fde37b820db65"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-5c9ad66fde37b820db65`.
+**180° CCW: passed** — `in_game_forbidden_transfer-5c9ad66fde37b820db65`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-f0ae929f071701ab4fb6"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-f0ae929f071701ab4fb6`.
+**270° CCW: passed** — `in_game_forbidden_transfer-f0ae929f071701ab4fb6`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2337,43 +2667,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-f2339573871c905bc194"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-f2339573871c905bc194`.
+**0° CCW: passed** — `in_game_forbidden_transfer-f2339573871c905bc194`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-557b00304de48ed1192a"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-557b00304de48ed1192a`.
+**90° CCW: passed** — `in_game_forbidden_transfer-557b00304de48ed1192a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4d30e014c93483369609"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-4d30e014c93483369609`.
+**180° CCW: passed** — `in_game_forbidden_transfer-4d30e014c93483369609`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4ddb02c13e7d0777b29b"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-4ddb02c13e7d0777b29b`.
+**270° CCW: passed** — `in_game_forbidden_transfer-4ddb02c13e7d0777b29b`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: upper-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2383,43 +2721,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-1ec5a0e2b6a5ead1a3d1"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-1ec5a0e2b6a5ead1a3d1`.
+**0° CCW: passed** — `in_game_forbidden_transfer-1ec5a0e2b6a5ead1a3d1`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-eff2042b5d4275473f52"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-eff2042b5d4275473f52`.
+**90° CCW: passed** — `in_game_forbidden_transfer-eff2042b5d4275473f52`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-ce2d357c1118df8a91ad"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-ce2d357c1118df8a91ad`.
+**180° CCW: passed** — `in_game_forbidden_transfer-ce2d357c1118df8a91ad`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-64a86fc6d645a1b9b0e9"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-64a86fc6d645a1b9b0e9`.
+**270° CCW: passed** — `in_game_forbidden_transfer-64a86fc6d645a1b9b0e9`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-01-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2429,55 +2775,63 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-daf6c3f8e24f5b2ac783"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-daf6c3f8e24f5b2ac783`.
+**0° CCW: passed** — `in_game_forbidden_transfer-daf6c3f8e24f5b2ac783`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-ab6000fbe64458940edc"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-ab6000fbe64458940edc`.
+**90° CCW: passed** — `in_game_forbidden_transfer-ab6000fbe64458940edc`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-d7240ef566ca443a8899"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-d7240ef566ca443a8899`.
+**180° CCW: passed** — `in_game_forbidden_transfer-d7240ef566ca443a8899`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-862c5089ae67d6767304"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-862c5089ae67d6767304`.
+**270° CCW: passed** — `in_game_forbidden_transfer-862c5089ae67d6767304`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: lower-lane-02-out; from service: ghsr; to service: road; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
 </details>
 
 <details>
-<summary>Forbidden transfer — ghsr → ghsr — 8 cases; unverified: 8</summary>
+<summary>Forbidden transfer — ghsr → ghsr — 8 cases; passed: 8</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
 | --- | --- | --- | --- | --- | --- |
-| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-12783c955f2e740100bd">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-4f223f9b824f251f72f5">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-a2bfc5715ea7b7eba90a">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-627aa33501c7ed8f8b7a">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-97d70eccf46a65c2ce4f">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-1b0f713c2c429ef04189">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-fbbbc97e401b2b57f0eb">[ ] unverified</a> | <a href="#case-in_game_forbidden_transfer-696c986e3efd5a341288">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-12783c955f2e740100bd">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-4f223f9b824f251f72f5">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-a2bfc5715ea7b7eba90a">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-627aa33501c7ed8f8b7a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph | — | <a href="#case-in_game_forbidden_transfer-97d70eccf46a65c2ce4f">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-1b0f713c2c429ef04189">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-fbbbc97e401b2b57f0eb">[x] passed</a> | <a href="#case-in_game_forbidden_transfer-696c986e3efd5a341288">[x] passed</a> |
 
 
 <details>
@@ -2485,43 +2839,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-12783c955f2e740100bd"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-12783c955f2e740100bd`.
+**0° CCW: passed** — `in_game_forbidden_transfer-12783c955f2e740100bd`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-4f223f9b824f251f72f5"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-4f223f9b824f251f72f5`.
+**90° CCW: passed** — `in_game_forbidden_transfer-4f223f9b824f251f72f5`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-a2bfc5715ea7b7eba90a"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-a2bfc5715ea7b7eba90a`.
+**180° CCW: passed** — `in_game_forbidden_transfer-a2bfc5715ea7b7eba90a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-627aa33501c7ed8f8b7a"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-627aa33501c7ed8f8b7a`.
+**270° CCW: passed** — `in_game_forbidden_transfer-627aa33501c7ed8f8b7a`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-01-in; to port: ghsr-track-02-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
@@ -2531,43 +2893,51 @@ No observation recorded.
 
 <a id="case-in_game_forbidden_transfer-97d70eccf46a65c2ce4f"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-97d70eccf46a65c2ce4f`.
+**0° CCW: passed** — `in_game_forbidden_transfer-97d70eccf46a65c2ce4f`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-1b0f713c2c429ef04189"></a>
 
-**90° CCW: unverified** — `in_game_forbidden_transfer-1b0f713c2c429ef04189`.
+**90° CCW: passed** — `in_game_forbidden_transfer-1b0f713c2c429ef04189`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-fbbbc97e401b2b57f0eb"></a>
 
-**180° CCW: unverified** — `in_game_forbidden_transfer-fbbbc97e401b2b57f0eb`.
+**180° CCW: passed** — `in_game_forbidden_transfer-fbbbc97e401b2b57f0eb`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 <a id="case-in_game_forbidden_transfer-696c986e3efd5a341288"></a>
 
-**270° CCW: unverified** — `in_game_forbidden_transfer-696c986e3efd5a341288`.
+**270° CCW: passed** — `in_game_forbidden_transfer-696c986e3efd5a341288`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
 
-No observation recorded.
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: Simon (user); confirmed at: 2026-11-01; evidence: [Explicit user report on 1 November 2026: “for the DD RHW to l0 RHW all checks pass as well. same for diagonal DD RHW over GHSR”., Installed candidate manifest SHA-256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0. Its saved piece resources and canonical construction fingerprints match this current case record.]; environment: platform: Windows SimCity 4 through Wine/CrossOver on macOS; existing installed test setup; compatibility layer not further distinguished in this confirmation; game version: SimCity 4 Deluxe 1.1.641 (Windows); nam profile: NAM 50; right-hand traffic; installed manifest sha256: cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0; note: Aggregate all-checks confirmation for this requested subject and its delivered variants, applied to the declared game case. No individual case narrative, screenshot, city name, or more specific compatibility-layer identification was supplied. This observation does not approve preview images, software cases, other game environments, or cleanup of older saved instances.
 
 </details>
 
