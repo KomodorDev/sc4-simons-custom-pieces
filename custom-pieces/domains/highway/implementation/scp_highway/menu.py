@@ -42,12 +42,19 @@ def verification_donor(donors):
 
 
 def make_icon(style):
-    require(style in {'ddrhw-crossing', 'ddrhw-ramp'}, 'Unsupported highway icon style')
+    require(style in {'ddrhw-crossing', 'ddrhw-ramp', 'ddrhw-ghsr-crossing'}, 'Unsupported highway icon style')
     strip = Image.new('RGBA', (176, 44))
     for n in range(4):
         im = Image.new('RGBA', (44, 44), ('#253a4c', '#344f66', '#182a38', '#77818a')[n])
         draw = ImageDraw.Draw(im)
         draw.line((3, 8, 37, 35), fill='#bcc5c9', width=7)
+        if style == 'ddrhw-ghsr-crossing':
+            draw.line((3, 8, 37, 35), fill='#445a62', width=9)
+            for along in range(5, 36, 4):
+                y = 8 + (along - 3) * 27 / 34
+                draw.line((along - 3, y + 3, along + 3, y - 3), fill='#8d999e', width=2)
+            draw.line((2, 9, 36, 36), fill='#f0eeee', width=1)
+            draw.line((5, 6, 39, 33), fill='#f0eeee', width=1)
         draw.line((4, 35, 35, 4), fill='#16202c', width=13)
         draw.line((4, 35, 35, 4), fill='#94a9ba', width=9)
         draw.line((4, 32, 32, 4), fill='#263747', width=5)

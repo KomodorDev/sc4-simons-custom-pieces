@@ -1,9 +1,9 @@
 """Highway service roles and intrinsic extraction through the shared engine.
 
-Car and pedestrian engine classes are explicit. Heights annotate the audited
-DD RHW-4 and Avenue variants; they do not change engine transport or establish
-neighbour compatibility. Frozen accepted-resource contracts cover the native
-crossing, compact components, and separately placed modular highway stamp.
+Car, pedestrian, and reviewed GHSR engine classes are explicit. Heights
+annotate the audited variants; they do not change engine transport or establish
+neighbour compatibility. Frozen accepted-resource contracts cover native
+crossings, compact components, and separately placed highway modules.
 """
 from __future__ import annotations
 
@@ -27,6 +27,9 @@ CORE = 'highway_ddrhw_diagonal_avenue_crossing'
 
 def connector_source_files(piece_id):
     """Bind accepted numeric measurement sources used by this piece's adapter."""
+    if piece_id == 'ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg':
+        from .ghsr_crossing_verify import connector_source_files as sources
+        return sources(piece_id)
     if piece_id.startswith('ddrhw-parallel-'):
         from .parallel_connector_contracts import REFERENCE
         return [REFERENCE]
@@ -90,6 +93,9 @@ def _core_contract():
 
 def reviewed_contract(piece):
     """Return reviewed intrinsic facts, never candidate-generated ramp poses."""
+    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+        from .ghsr_crossing_verify import reviewed_contract as crossing_contract
+        return crossing_contract(piece)
     if piece['recipe'] == CORE:
         from copy import deepcopy
         return deepcopy(_core_contract())
@@ -120,6 +126,9 @@ def reviewed_path_ports(piece):
 
 
 def _reviewed_facts(piece):
+    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+        from .ghsr_crossing_verify import reviewed_facts
+        return reviewed_facts(piece)
     from .connector_contracts import CONTRACTS
     from .modular_connector_contracts import CONTRACTS as MODULAR_CONTRACTS
     facts = CONTRACTS.get(piece['recipe']) or MODULAR_CONTRACTS.get(piece['recipe'])
@@ -178,6 +187,11 @@ def validate_connection_record(piece,record):
 
 
 def service_classifier(piece,engine_transport,height):
+    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing' and engine_transport == 7:
+        require(abs(height - 1.) <= 2e-5, 'Reviewed crossing GHSR service must remain at 1 m')
+        return {'service_network':'ghsr','service_family':'high-speed-rail','variant':'ghsr',
+                'role':'primary','channel_kind':'rail-track','traffic_modes':['monorail'],
+                'classification_status':'Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.'}
     if engine_transport == 1:
         if abs(height) <= 2e-5:
             variant = 'avenue-ground'

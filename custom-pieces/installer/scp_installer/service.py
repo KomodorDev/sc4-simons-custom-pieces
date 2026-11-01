@@ -225,7 +225,7 @@ def implemented_recipes_by_domain():
     """Report exact provider declarations without accepting recipe prefixes."""
     from scp_hsr import crossings, directional_t, directional_diagonal_t
     from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
-    from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout
+    from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout, ghsr_crossing
     hsr_recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
     for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
                    interchange_layouts, rail_features, rail_repairs):
@@ -233,7 +233,7 @@ def implemented_recipes_by_domain():
         hsr_recipes.update(getattr(module, "INFO", {}))
     # The module catalogue declares a finite recipe for each MODULES entry;
     # its provider remains responsible for the recipe naming convention.
-    highway_recipes = {native.RECIPE}
+    highway_recipes = {native.RECIPE, ghsr_crossing.RECIPE}
     highway_recipes.update(item["recipe"] for item in ramp_paths.module_catalog()["types"])
     highway_recipes.add(modular_stamp.RECIPE)
     highway_recipes.update(item["recipe"] for item in modular_ramps.module_catalog()["types"])

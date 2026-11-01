@@ -1,0 +1,137 @@
+// title: "Piece definition: DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) — Mixed Crossing — Both Diagonal 90°"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) \u2014 Mixed Crossing \u2014 Both Diagonal 90\u00b0.",
+  "schema_version": 1,
+  "id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+  "domain": "highway",
+  "name": "DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) \u2014 Mixed Crossing \u2014 Both Diagonal 90\u00b0",
+  "description": "Two fixed tiles carry both directions of diagonal ground high-speed rail beneath the two diagonal DD RHW-4 decks. Four unowned native approach tiles seed actual NAM draggable continuation. Rail and highway have independent through routes.",
+  "recipe": "highway_ddrhw_diagonal_ghsr_crossing",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f86e",
+  "tile_ids": [
+    "7f5bd000",
+    "7f5bd010"
+  ],
+  "preview_id": "7f5bdff5",
+  "effect_name": "preview_scp_hw_f86e_____001",
+  "footprint": [
+    1,
+    2
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "hsr",
+    "model_shadow_lighting"
+  ],
+  "menu": {
+    "id": "6a47f86e",
+    "order": "ffffff6e",
+    "style": "ddrhw-ghsr-crossing"
+  },
+  "native_ghsr_approaches": true,
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5bd800"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5bd900"
+      }
+    ]
+  },
+  "engineering": {
+    "ghsr_path_height_m": 1.0,
+    "ddrhw_path_heights_m": [
+      7.5,
+      15.0
+    ],
+    "minimum_ddrhw_underside_m": 6.5,
+    "reviewed_train_envelope_height_m": 5.0,
+    "reviewed_train_envelope_width_m": 5.0,
+    "minimum_train_roof_clearance_m": 0.5,
+    "rail_path_transition": {
+      "kind": "authored-internal-ghsr-path-seam",
+      "external_native_chord_collar_m": 3.0,
+      "external_chord_reference": "complementary ordinary native GHSR helper",
+      "internal_diagonal_collar_m": 1.0,
+      "internal_collar_absolute_east_north_components_equal": true,
+      "external_native_path_coordinates_preserved": true,
+      "external_native_helper_path_tangents_preserved": true,
+      "visible_native_mesh_attributes_preserved": true,
+      "changes": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "source_route_index": 0,
+          "endpoint": "exit",
+          "axis": "east",
+          "original_m": -2.8,
+          "authored_m": -2.9
+        },
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "source_route_index": 0,
+          "endpoint": "exit",
+          "axis": "east",
+          "original_m": 2.8,
+          "authored_m": 2.9
+        }
+      ],
+      "game_operation_verified": false
+    }
+  },
+  "provenance": {
+    "geometry": "Pinned NAM 50 native six-mesh DD halves and ordinary GHSR valid track mesh.",
+    "construction": "Two protected DirtRoad/Monorail cells; four disjoint dynamic native helpers; four proper rotations repeated.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

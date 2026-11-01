@@ -75,11 +75,15 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
     native = next(Path(x['path']) for x in audit if x['filename'] == 'NetworkAddonMod_Controller.dat')
     shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) or native_approaches.approaches(piece)
                                               for piece in pieces) else (RUL0, NETWORK_INI)
-    for key in shared:
+    required_controller = native_approaches.required_controller_resources(pieces)
+    for key in dict.fromkeys((*shared, *required_controller)):
         require(installed.get(key) == [native],
                 f'Conflicting shared NAM overlay {tgi_string(key)} in '
                 + ', '.join(str(path) for path in installed.get(key, []))
                 + '. Move the old standalone prototype out of Plugins, or merge the other custom controller first.')
+    for key, fingerprint in required_controller.items():
+        require(key in context['controller'] and sha(context['controller'][key]) == fingerprint,
+                'Native approach controller dependency changed: ' + tgi_string(key))
     native_approaches.audit_dependencies(pieces, context, installed, dependency_paths)
     model_shadows.audit_lighting_dependency(context, installed, pieces)
     return context, installed, audit, roots

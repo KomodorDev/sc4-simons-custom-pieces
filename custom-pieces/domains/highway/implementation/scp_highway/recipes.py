@@ -102,6 +102,15 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
+    if spec['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+        from .ghsr_crossing import build_channels, core_construction_data
+        from .ghsr_approaches import add_approaches, check_native_continuation
+        from .model_shadows import add_shadows
+        check_native_continuation(context['controller'])
+        compiled = build_channels(context)
+        assets = finish_piece(spec, context, compiled)
+        rows, checks, cons = add_approaches(spec, *core_construction_data())
+        return add_shadows(spec, context, compiled, assets), construction(spec, rows, checks, cons)
     if spec['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_modules import build_piece as build_parallel
         return build_parallel(spec, context)

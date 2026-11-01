@@ -292,16 +292,75 @@ def register_native_crossing(root=ROOT):
             'source': f'domains/highway/00_pieces/{CORE_ID}/piece.jsonc'}
 
 
+def register_ghsr_crossing(root=ROOT):
+    """Allocate one reusable crossing; preserve every existing game identity."""
+    from scp.model_shadows import allocation_fields
+    from scp_highway.ghsr_approaches import PIECE_ID
+    from scp_highway.ghsr_crossing import RECIPE as recipe, CELLS as cells, TRANSITION_METADATA
+    root = Path(root).resolve()
+    catalog = load_catalog(root)
+    existing = next((piece for piece in catalog['pieces'] if piece['id'] == PIECE_ID), None)
+    if existing:
+        if existing['recipe'] != recipe or existing['cells'] != [list(cell) for cell in cells]:
+            raise ValueError('Existing DD/GHSR crossing identity has different geometry')
+        return {'registered': False, 'reason': 'already registered; identities preserved', 'piece': PIECE_ID}
+    ledger = deepcopy(catalog['_allocations'])
+    puzzle, block, tiles = _allocation(ledger, cells)
+    name = ('DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m)'
+            ' — Mixed Crossing — Both Diagonal 90°')
+    piece = {
+        'schema_version': 1, 'id': PIECE_ID, 'domain': 'highway', 'name': name,
+        'description': ('Two fixed tiles carry both directions of diagonal ground high-speed rail beneath '
+                        'the two diagonal DD RHW-4 decks. Four unowned native approach tiles seed actual '
+                        'NAM draggable continuation. Rail and highway have independent through routes.'),
+        'recipe': recipe, 'enabled_by_default': False, 'status': 'experimental',
+        'puzzle_id': f'{puzzle:04x}', 'tile_ids': tiles, 'preview_id': f'{block + 0xFF5:08x}',
+        'effect_name': f'preview_scp_hw_{puzzle:04x}'.ljust(24, '_') + '001',
+        'footprint': [1, 2], 'cells': [list(cell) for cell in cells], 'orientation_count': 8,
+        'dependencies': ['controller', 'dd_rhw', 'rhw_core', 'hsr', 'model_shadow_lighting'],
+        'menu': {'id': f'{0x6A470000 | puzzle:08x}', 'order': f'{0xFFFFFF00 | (puzzle & 0xFF):08x}',
+                 'style': 'ddrhw-ghsr-crossing'},
+        'native_ghsr_approaches': True,
+        'shadow_mode': 'model-carrier', 'shadow_mappings': [],
+        'model_shadows': {'schema_version': 1, 'sun_profile': 'sc4-default-67p5-45',
+                          'cells': [{'cell': list(cell), 'cast_shadow': True,
+                                     'resource_base': f'{block + 0x800 + index * 0x100:08x}'}
+                                    for index, cell in enumerate(cells)]},
+        'engineering': {'ghsr_path_height_m': 1., 'ddrhw_path_heights_m': [7.5, 15.],
+                        'minimum_ddrhw_underside_m': 6.5,
+                        'reviewed_train_envelope_height_m': 5.,
+                        'reviewed_train_envelope_width_m': 5.,
+                        'minimum_train_roof_clearance_m': .5,
+                        'rail_path_transition': deepcopy(TRANSITION_METADATA)},
+        'provenance': {'geometry': 'Pinned NAM 50 native six-mesh DD halves and ordinary GHSR valid track mesh.',
+                       'construction': 'Two protected DirtRoad/Monorail cells; four disjoint dynamic native helpers; four proper rotations repeated.',
+                       'redistribution': 'permission-pending'},
+        'game_tests': {key: 'unverified' for key in GAME_KEYS},
+    }
+    ledger['pieces'][PIECE_ID] = {'puzzle_id': piece['puzzle_id'], 'tile_ids': tiles,
+        'preview_id': piece['preview_id'], 'menu_id': piece['menu']['id'], 'state': 'reserved-locally',
+        'cells': piece['cells'], 'tile_base': f'{block:08x}', 'resource_blocks': [f'{block:08x}'],
+        **allocation_fields(piece)}
+    apply_registration(root, [piece], ledger, {'ddrhw-diagonal-ghsr-crossing': [PIECE_ID]},
+                       icons={PIECE_ID: make_icon(piece['menu']['style'])}, domain='highway')
+    return {'registered': True, 'piece': PIECE_ID, 'puzzle_id': piece['puzzle_id']}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--compact-modules', action='store_true')
+    parser.add_argument('--ghsr-crossing', action='store_true',
+                        help='Register the independently checked two-cell diagonal DD/GHSR crossing')
     parser.add_argument('--review-partition', action='store_true',
                         help='Apply the independently reviewed subset cut while preserving remaining resource identities')
     parser.add_argument('--review-ramp-extension', action='store_true',
                         help='Apply the reviewed locally reserved 53-cell ramp extension and native MIS materials')
     args = parser.parse_args()
-    print(register_native_crossing(args.root))
+    if args.ghsr_crossing:
+        print(register_ghsr_crossing(args.root))
+    else:
+        print(register_native_crossing(args.root))
     if args.compact_modules:
         print(register_compact_modules(args.root, review_partition=args.review_partition,
                                        review_ramp_extension=args.review_ramp_extension))

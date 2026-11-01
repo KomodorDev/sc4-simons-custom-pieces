@@ -1,0 +1,3877 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+  "domain_id": "highway",
+  "source_binding": {
+    "compiled_build": "dist/ghsr-under-ddrhw-diagonal-source-01",
+    "compiled_manifest_sha256": "b3ee1794cabe9614c9daae8e50e7c58124e131970c11c1955ae22e512a696480",
+    "files": {
+      "dist/ghsr-under-ddrhw-diagonal-source-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg.dat": "f2b3296a49fc3d21983a3f78d8fc1748043328ccd07026f4988e85a07f9d5f73",
+      "domains/highway/00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/connections.json": "96c7cf7c8f125929b7a42039bb5825637ee9abecf7bc2797a7e442611e742600",
+      "domains/highway/00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/connector-groups.jsonc": "64696bb42b530d0f86fd7041521f0796505ae85506fe3bd08bb85014b0c799a7",
+      "domains/highway/00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/evidence/native-contract.jsonc": "fe2c2d92c203842aec9b05633403633571917314f9c91c2d2963690f4fd4ca25",
+      "domains/highway/00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/piece.jsonc": "74b281921cbfb396dfc9e29e8176d8a4154ea1bb8f5e7e9ff40b9d35f5a59bc8",
+      "domains/highway/domain.jsonc": "f051b8e97bd8975cc42c2244ef52fd4e8f6b7ccd469c79d0ed0cf05a9147f5c6",
+      "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
+      "domains/highway/implementation/scp_highway/adaptive_ground.py": "a326b3cfc80d7e1b543ed6fbb009b88f813e38c17830b8a017489c6702cd0138",
+      "domains/highway/implementation/scp_highway/adaptive_verify.py": "ca90e45de21ef4af0ea994fceb1fe094356ad5128940dd55915a72feaa1e7969",
+      "domains/highway/implementation/scp_highway/assembly_verify.py": "cc48835b808f24b575fd480a81284f251accccf163c4ad401a613235dd3eaed4",
+      "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
+      "domains/highway/implementation/scp_highway/connections.py": "13bfed7dc271f5fa61379670d888c98f905c57128610246cdb35d6bf159fad10",
+      "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
+      "domains/highway/implementation/scp_highway/ddrhw_connections.py": "eada10387b4587a207522ec35740321a06f852d240ec7fbef07bae0ab9fcd1d0",
+      "domains/highway/implementation/scp_highway/ghsr_approaches.py": "7cda3011d8f4243727260df94e1d2eb417b2dc1e57ddb63412fd3667ae22f4c0",
+      "domains/highway/implementation/scp_highway/ghsr_crossing.py": "ff7c9adf2b4425e6073878fca8fa61ed92842f9f6796623a07a1450e79e8f523",
+      "domains/highway/implementation/scp_highway/ghsr_crossing_verify.py": "91ceeec77bb18dcc8a56791adb29ef029b6762c1a5643b1f5a434c1619980dac",
+      "domains/highway/implementation/scp_highway/icons.py": "709ce2d4ef8a02d80fde87a94df53907fe189353135120ce50231ae0574c5a7b",
+      "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
+      "domains/highway/implementation/scp_highway/menu.py": "06f3b52d62350c93c2a7fcedb54ce9b92b4b909fb9603a640d4dfc8dafd05814",
+      "domains/highway/implementation/scp_highway/model_shadows.py": "33561af53fa97dc3e9997d103ba6c40f31a0e3797fa90f47b36947691bfdf0a9",
+      "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "a8aa8ae7f9a92ec6482a33bfd75cf0f23865721a1e16bd633c192b87cc5f4a91",
+      "domains/highway/implementation/scp_highway/modular_connector_contracts.py": "ce8e765284ce2a625b979af3d5b4399ab946b5827c64a2485603dbe753c2d9da",
+      "domains/highway/implementation/scp_highway/modular_partition_verify.py": "803d4b0354e63eaea51332d71ced1d1879090d70c261f89bb428d9b20844bad3",
+      "domains/highway/implementation/scp_highway/modular_ramps.py": "b3dc8d3a1680326802e29c07dd2ea125fb5e2624cf71377082c5812a5aa4433e",
+      "domains/highway/implementation/scp_highway/modular_stamp.py": "332aa5898a7a9616e8f569ea5aa01fef92d71705109b6137496584f8709cc307",
+      "domains/highway/implementation/scp_highway/modular_verify.py": "0eebb3a85f477c9a637c41bb5795d9262a3683b33b442aa8cbd7b8dee1287ee0",
+      "domains/highway/implementation/scp_highway/native.py": "89b16ac53e7d5426a637dd917c085a6cd768db679fcc70b74eda05b98e7fe6a3",
+      "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
+      "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
+      "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
+      "domains/highway/implementation/scp_highway/parallel_geometry.py": "30fe2eefb87f82994d55742353d24d8f28f8457e1933d09b9242d1d470ace59a",
+      "domains/highway/implementation/scp_highway/parallel_layout.py": "ac80ecdf7d9f56db0a50619b315516dcd9f50b8796b4e21cc3413041f023641f",
+      "domains/highway/implementation/scp_highway/parallel_modules.py": "ae6a1dbfa6262dad5ce01630dde090fbe2bb18018665256639dbb12714dc4853",
+      "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
+      "domains/highway/implementation/scp_highway/parallel_slip_lanes.py": "1d217570bb59a6633c0d3cec054410349d3df3471aed4d2e389fc230bf9fae48",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "29bc9e103fc8e97b895818c76bdf0ccda267b381648bf18860d5d3841ffc9e5e",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "fa30dd148e295e79e3ae25678d8b6e783f42d0a91e2e789cc08d475b38cece7b",
+      "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
+      "domains/highway/implementation/scp_highway/ramp_paths.py": "5a13647e74c535aaba2579efd84d1a69251136f1b7160f81c3188ba2fd584c82",
+      "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
+      "domains/highway/implementation/scp_highway/recipes.py": "8a5b432aea2f51657b3bbe0a6b4b5f592e922dd6025eca44fb1595ef767ea1ba",
+      "domains/highway/implementation/scp_highway/shadow_verify.py": "f9686cf27cb36daa007bf090fdc8a5acff2807903069105476801bf5162548f2",
+      "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "cf07e354386195b3ec7078ec0d1ddf4609afdf2ea426bd1f9469e48c369bfbfb",
+      "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "7306656ab4d6c1497816f9cf95409a99accd46300ec7d5068287b0b35659f4d1",
+      "domains/highway/implementation/scp_highway/verify.py": "8f3766a590006d6b9198b14aad9362eface14a3e392446b650f6024c15eb42e6",
+      "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
+      "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/adaptive_network.py": "601a7d70fbe0505427fc5a847ac64b6d92b1c36ef66547f41ae260b1759c73fa",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "3bf7aec47fefc83efd89836128cc606adf49b128cecf71e328c4493cd918b6cd",
+      "framework/scp/build.py": "88d96a0b127fb585d198ee8097cd152372bcef3b5044aa4284b8811adfb96657",
+      "framework/scp/catalog.py": "f1f3b6aaca769a2f66c444297b6704bed19a8f35a3aa38849aa80aa347e5a4f1",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+      "framework/scp/connectivity.py": "9709f5d80440c28e666d06e6413fc3cb697e6454aa66229eb9b562489ecc76f2",
+      "framework/scp/connector_metadata.py": "630c667ef8a2229cfa244a17be9c8096d953a18fff42e2a089e3845122d485cc",
+      "framework/scp/connector_overview.py": "df5fd866220cafb7493628c6662a173800094fae42a19d2870ec5365cb041a6e",
+      "framework/scp/content.py": "975bafa4a5137cc7b6e3e7c08efc7950dd82eb3c47b84fcd2a962ed12c749100",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "0a3034e22d5852495ed9b6c8edb628f7152100ee0e7b8e75e5ba43694080842d",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "c3bed215d764154f47c9d3e0285f7dc51737eb230c07c48ba8aa610182766df1",
+      "framework/scp/inventory.py": "838ef5bd9b5233813cf0c06c094e03b8fc568149e6bade501d1017612d31277c",
+      "framework/scp/jsonc.py": "5ca803292230dcbcb6ea752548743b0e2abb7ca63a0b3bfb843c2500696be95a",
+      "framework/scp/markdown_navigation.py": "7410f90ef85aca23d5ffe018b915d901e5ccd2c647ecb136df540c3bb8bb1d78",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "1111587e3ea60d50ca326d4f9469f64f4e249632ccf6f17b1b5067b9651c7f37",
+      "framework/scp/menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
+      "framework/scp/model_shadow_geometry.py": "22709ab390618a00eaa874b1525b4fb2706ef6091665898fd2acd7a48c14aa57",
+      "framework/scp/model_shadows.py": "ef90a802ff485b1371636595cb6a629e3eb59f8397de6c8851c042ba64ed9dc9",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/multi_assembly_menu.py": "8e6c9687f3cad2bf0b3f6830f9d843c34dc71078ac162a4b86213210539a70bc",
+      "framework/scp/native_approaches.py": "cc739652d3b3b6d5a7c30e198b97ec8a80acef99072b34bac4bbfae2ce0b0a46",
+      "framework/scp/paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112",
+      "framework/scp/providers.py": "22791a2d9760fa01be1ef07e72cff682147fdddaa8f3b61df248be9748e5a250",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0968b701036f47ac2b3375819f5ce4c0e58a5a13a75a8985193617010448af6f",
+      "framework/scp/release.py": "ccadc4069625be5317281fd4d482acb835b6b3ea687f17d886dc42c4d4d473d1",
+      "framework/scp/render_headers.py": "9f514a58400ed38c12d804ba407039824344ec097f3d1c34c398951b0c0af44e",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "a0dac854453c6fe06ca87635e7f6646df6bd748b0f3354c23cdfff965b4e3f40",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/subject_sources.py": "228a178f954b399b0046002fc734fd4710dd272040653569c281e5c42a59042d",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "0febc2b8c46b88b40dd40fec13c5dee6cf6a767639fd7040bc0ddf82001f4ecd",
+      "framework/scp/verify.py": "cceffc368085e6ffde63348784d305412eb1e6748373e97623bb72487d42f903",
+      "schemas/connector-data.schema.jsonc": "4e5ee07557da887a543a2292d3f9e7c103d81c15e95d6f677b7fc79fa2e11fd6",
+      "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
+      "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) \u2014 Mixed Crossing \u2014 Both Diagonal 90\u00b0.",
+      "schema_version": 1,
+      "id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+      "domain": "highway",
+      "name": "DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) \u2014 Mixed Crossing \u2014 Both Diagonal 90\u00b0",
+      "description": "Two fixed tiles carry both directions of diagonal ground high-speed rail beneath the two diagonal DD RHW-4 decks. Four unowned native approach tiles seed actual NAM draggable continuation. Rail and highway have independent through routes.",
+      "recipe": "highway_ddrhw_diagonal_ghsr_crossing",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f86e",
+      "tile_ids": [
+        "7f5bd000",
+        "7f5bd010"
+      ],
+      "preview_id": "7f5bdff5",
+      "effect_name": "preview_scp_hw_f86e_____001",
+      "footprint": [
+        1,
+        2
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "hsr",
+        "model_shadow_lighting"
+      ],
+      "menu": {
+        "id": "6a47f86e",
+        "order": "ffffff6e",
+        "style": "ddrhw-ghsr-crossing"
+      },
+      "native_ghsr_approaches": true,
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5bd800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5bd900"
+          }
+        ]
+      },
+      "engineering": {
+        "ghsr_path_height_m": 1.0,
+        "ddrhw_path_heights_m": [
+          7.5,
+          15.0
+        ],
+        "minimum_ddrhw_underside_m": 6.5,
+        "reviewed_train_envelope_height_m": 5.0,
+        "reviewed_train_envelope_width_m": 5.0,
+        "minimum_train_roof_clearance_m": 0.5,
+        "rail_path_transition": {
+          "kind": "authored-internal-ghsr-path-seam",
+          "external_native_chord_collar_m": 3.0,
+          "external_chord_reference": "complementary ordinary native GHSR helper",
+          "internal_diagonal_collar_m": 1.0,
+          "internal_collar_absolute_east_north_components_equal": true,
+          "external_native_path_coordinates_preserved": true,
+          "external_native_helper_path_tangents_preserved": true,
+          "visible_native_mesh_attributes_preserved": true,
+          "changes": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "source_route_index": 0,
+              "endpoint": "exit",
+              "axis": "east",
+              "original_m": -2.8,
+              "authored_m": -2.9
+            },
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "source_route_index": 0,
+              "endpoint": "exit",
+              "axis": "east",
+              "original_m": 2.8,
+              "authored_m": 2.9
+            }
+          ],
+          "game_operation_verified": false
+        }
+      },
+      "provenance": {
+        "geometry": "Pinned NAM 50 native six-mesh DD halves and ordinary GHSR valid track mesh.",
+        "construction": "Two protected DirtRoad/Monorail cells; four disjoint dynamic native helpers; four proper rotations repeated.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:ea5118b0-ea5118b1-7f5bdff5": "e164ce43a80273a936a8fbe71873562b6a93bbae48856509e3ec41b20b45a8ed",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-89ac5643-7f5bd000": "3a1c682fbc6a86944cde55120b4d77d31ce16cd7e85f22b42e05a1e7252ba066",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-89ac5643-7f5bd010": "b9feb034ab0601e8ee3f6d038ecf27203cdbc6849de0a5fc54b3ebf2e50f88db",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-a8434037-7f5bd000": "5d40cefe46ba69df63084785ee3c61f9b10edd53fd538a962b5d4494d428d97d",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-a8434037-7f5bd010": "dcec3b1ca29aa365b5aff7aac5dbee5cce099146db90ee07849d745eafe8f682",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-c977c536-7f5bd804": "8ca183086fc09af7871f830d38264669b22d6767cc904d4ce29a79bd7da3deeb",
+          "exemplar:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:6534284a-c977c536-7f5bd904": "2332ba43f78533362f7df33fb37fb4ff46294c495390a8b724a0f40d2384764e",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd800": "8ee3ab5b7a27b7658fb6d54cffbc11906025a7c1b500d2139da40dd0907f0851",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd801": "8decd9d48f89c0ed4766411e2c9b4bc64a742d438d3f832b24d780c80c84f6f8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd802": "9be24b79b837bef914a04e28587d61366031204da3d1444439ed50eae571ca72",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd803": "da48f8342efea03c8c15d25790b6555860a54033c7dc43c2f22e83343e60c6bd",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd900": "44d96be8977351c97d1baabeaf7f334f77dc0dfabffbaacd8e204eea517f1151",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd901": "10fe24488f752b1c4c5d20f6f00a267b696f40874daf3da0b18b228d447407d9",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd902": "caa0a50f484214605a3bf240dfd017b42c25e3dcb76ba6aaaa0960056a7698d3",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd903": "7a5c1f3b42792c13b0cbe7312ba958c5e19ac522e8fb07891fbbfe28e4b2e4b8",
+          "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bdff5": "c9b0604041e09747b5feda192a450650d2ba7e1c215e3f8203c66de52c842cbc",
+          "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000": "c0647202666bf828612a49fd1576276379d848a4fa3a0fb5028cf1bb995f6db3",
+          "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010": "c053ea61baa8481a327223a057bddfb94f2fee25ed2b5137ee21d9851876422a",
+          "text:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:2026960b-2a592fd1-7f5bd000": "c1629b090ac1f4ce3d808c3ba9c89e7bb578aefe45b326c10e23e4399d3c8ea3",
+          "text:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:2026960b-2a592fd1-7f5bd010": "c1629b090ac1f4ce3d808c3ba9c89e7bb578aefe45b326c10e23e4399d3c8ea3",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd810": "26c0769ce3df59ec9ccf603034cf89f17c94a8e50f719aa5c1316889c0f2b8ac",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd811": "091097a3e817c18d080911f6f309a34612a894462d0d45ec5051b210f9655e13",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd812": "82540cd27de54b373fc4e9bd3a50ded47f213f5b1ba850ef02232dd56d02c2fe",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd813": "ebdc339f13ea778a0fabd0cd8823b7118478d0a974d0b5cdd383b4396b014a00",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd910": "82540cd27de54b373fc4e9bd3a50ded47f213f5b1ba850ef02232dd56d02c2fe",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd911": "ebdc339f13ea778a0fabd0cd8823b7118478d0a974d0b5cdd383b4396b014a00",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd912": "26c0769ce3df59ec9ccf603034cf89f17c94a8e50f719aa5c1316889c0f2b8ac",
+          "texture:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:7ab50e44-1abe787d-7f5bd913": "091097a3e817c18d080911f6f309a34612a894462d0d45ec5051b210f9655e13",
+          "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg": "2d101f2a10d5436f0c7f95b92f0d8fefcefabc9a87acb579eab6632e2a45cd7c"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the independently verified saved build"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "lower-lane-01-in",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -19.2,
+            7.5
+          ],
+          "tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "sampled_tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-207fc37bf71ddd9e9cc7"
+        },
+        {
+          "id": "upper-lane-01-out",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l2",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -19.2,
+            15.0
+          ],
+          "tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "sampled_tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-3e8c9380dd7fc6c63cb8"
+        },
+        {
+          "id": "lower-lane-02-in",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -12.8,
+            7.5
+          ],
+          "tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "sampled_tangent": [
+            0.7071067811865475,
+            0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-003"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-f9c18bdf77622a5e27b2"
+        },
+        {
+          "id": "upper-lane-02-out",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l2",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -12.8,
+            15.0
+          ],
+          "tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "sampled_tangent": [
+            -0.7071067811865475,
+            -0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-3ed34d9a11bb64d98604"
+        },
+        {
+          "id": "lower-lane-01-out",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            -3.2,
+            7.5
+          ],
+          "tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "sampled_tangent": [
+            0.7071067811865475,
+            0.7071067811865475
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-003"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-207fc37bf71ddd9e9cc7"
+        },
+        {
+          "id": "upper-lane-01-in",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l2",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            -3.2,
+            15.0
+          ],
+          "tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "sampled_tangent": [
+            -0.7071067811865475,
+            -0.7071067811865475
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-001"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-3e8c9380dd7fc6c63cb8"
+        },
+        {
+          "id": "lower-lane-02-out",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            3.2,
+            7.5
+          ],
+          "tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "sampled_tangent": [
+            0.7071067811865476,
+            0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-002"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-f9c18bdf77622a5e27b2"
+        },
+        {
+          "id": "upper-lane-02-in",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l2",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            3.2,
+            15.0
+          ],
+          "tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "sampled_tangent": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-3ed34d9a11bb64d98604"
+        },
+        {
+          "id": "ghsr-track-01-in",
+          "direction": "in",
+          "service_network": "ghsr",
+          "service_family": "high-speed-rail",
+          "variant": "ghsr",
+          "role": "primary",
+          "channel_kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+          "engine_transport": 7,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -2.9,
+            1.0
+          ],
+          "tangent": [
+            0.7071067811865475,
+            -0.7071067811865476
+          ],
+          "sampled_tangent": [
+            0.7071067811865475,
+            -0.7071067811865476
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.101219,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-004"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-d13580a5f8b596919466"
+        },
+        {
+          "id": "ghsr-track-02-out",
+          "direction": "out",
+          "service_network": "ghsr",
+          "service_family": "high-speed-rail",
+          "variant": "ghsr",
+          "role": "primary",
+          "channel_kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+          "engine_transport": 7,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            2.9,
+            1.0
+          ],
+          "tangent": [
+            -0.7139382485962432,
+            0.7002086668924692
+          ],
+          "sampled_tangent": [
+            -0.7139382902550518,
+            0.7002086244168186
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.140842,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd000-route-005"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                0
+              ],
+              "edge": 0,
+              "tile_id": "7f5bd000"
+            }
+          ],
+          "connection_class": "path-interface-8d80a0a7d571f164837f"
+        },
+        {
+          "id": "ghsr-track-01-out",
+          "direction": "out",
+          "service_network": "ghsr",
+          "service_family": "high-speed-rail",
+          "variant": "ghsr",
+          "role": "primary",
+          "channel_kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            -18.9,
+            1.0
+          ],
+          "tangent": [
+            0.7139382485962432,
+            -0.7002086668924692
+          ],
+          "sampled_tangent": [
+            0.7139382902550522,
+            -0.7002086244168183
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.140842,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-005"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-8d80a0a7d571f164837f"
+        },
+        {
+          "id": "ghsr-track-02-in",
+          "direction": "in",
+          "service_network": "ghsr",
+          "service_family": "high-speed-rail",
+          "variant": "ghsr",
+          "role": "primary",
+          "channel_kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ],
+          "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+          "engine_transport": 7,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            -13.1,
+            1.0
+          ],
+          "tangent": [
+            -0.7071067811865475,
+            0.7071067811865476
+          ],
+          "sampled_tangent": [
+            -0.7071067811865477,
+            0.7071067811865474
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": 4.101219,
+          "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+            "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+            "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+            "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+          ],
+          "source_route_ids": [
+            "path-7f5bd010-route-004"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 2,
+              "tile_id": "7f5bd010"
+            }
+          ],
+          "connection_class": "path-interface-d13580a5f8b596919466"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "1:lower-lane-01-in>lower-lane-01-out",
+          "entry_port": "lower-lane-01-in",
+          "exit_port": "lower-lane-01-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l1",
+            "dd-rhw-l1"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "1:lower-lane-02-in>lower-lane-02-out",
+          "entry_port": "lower-lane-02-in",
+          "exit_port": "lower-lane-02-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l1",
+            "dd-rhw-l1"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "1:upper-lane-01-in>upper-lane-01-out",
+          "entry_port": "upper-lane-01-in",
+          "exit_port": "upper-lane-01-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l2",
+            "dd-rhw-l2"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "1:upper-lane-02-in>upper-lane-02-out",
+          "entry_port": "upper-lane-02-in",
+          "exit_port": "upper-lane-02-out",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l2",
+            "dd-rhw-l2"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:ghsr-track-01-in>ghsr-track-01-out",
+          "entry_port": "ghsr-track-01-in",
+          "exit_port": "ghsr-track-01-out",
+          "service_network": "ghsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "ghsr",
+            "ghsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "7:ghsr-track-02-in>ghsr-track-02-out",
+          "entry_port": "ghsr-track-02-in",
+          "exit_port": "ghsr-track-02-out",
+          "service_network": "ghsr",
+          "role": "primary",
+          "engine_transport_classes": [
+            7
+          ],
+          "endpoint_variants": [
+            "ghsr",
+            "ghsr"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "lower-lane-01-in",
+          "to_port": "upper-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-01-in",
+          "to_port": "upper-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-01-in",
+          "to_port": "lower-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-01-in",
+          "to_port": "ghsr-track-02-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-01-in",
+          "to_port": "ghsr-track-01-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-02-in",
+          "to_port": "upper-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-02-in",
+          "to_port": "upper-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-02-in",
+          "to_port": "lower-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-02-in",
+          "to_port": "ghsr-track-02-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "lower-lane-02-in",
+          "to_port": "ghsr-track-01-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-01-in",
+          "to_port": "upper-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-01-in",
+          "to_port": "lower-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-01-in",
+          "to_port": "lower-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-01-in",
+          "to_port": "ghsr-track-02-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-01-in",
+          "to_port": "ghsr-track-01-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-02-in",
+          "to_port": "upper-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-02-in",
+          "to_port": "lower-lane-01-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-02-in",
+          "to_port": "lower-lane-02-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-02-in",
+          "to_port": "ghsr-track-02-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "upper-lane-02-in",
+          "to_port": "ghsr-track-01-out",
+          "from_service": "road",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-01-in",
+          "to_port": "upper-lane-01-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-01-in",
+          "to_port": "upper-lane-02-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-01-in",
+          "to_port": "lower-lane-01-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-01-in",
+          "to_port": "lower-lane-02-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-01-in",
+          "to_port": "ghsr-track-02-out",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-02-in",
+          "to_port": "upper-lane-01-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-02-in",
+          "to_port": "upper-lane-02-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-02-in",
+          "to_port": "lower-lane-01-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-02-in",
+          "to_port": "lower-lane-02-out",
+          "from_service": "ghsr",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "ghsr-track-02-in",
+          "to_port": "ghsr-track-01-out",
+          "from_service": "ghsr",
+          "to_service": "ghsr",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f86e",
+            "0004f86e"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f86e",
+            "0007f86e"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f86e",
+            "0006f86e"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f86e",
+            "0005f86e"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+      "piece_id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+      "source_binding": {
+        "piece_sha256": "74b281921cbfb396dfc9e29e8176d8a4154ea1bb8f5e7e9ff40b9d35f5a59bc8",
+        "connections_sha256": "96c7cf7c8f125929b7a42039bb5825637ee9abecf7bc2797a7e442611e742600"
+      },
+      "components": [
+        {
+          "id": "upper-mainline",
+          "network": "road",
+          "construction_network": "dirtroad"
+        },
+        {
+          "id": "lower-mainline",
+          "network": "road",
+          "construction_network": "dirtroad"
+        },
+        {
+          "id": "ghsr-mainline",
+          "network": "ghsr",
+          "construction_network": "monorail"
+        }
+      ],
+      "channels": [
+        {
+          "id": "lower-lane-01",
+          "component_id": "lower-mainline",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        },
+        {
+          "id": "lower-lane-02",
+          "component_id": "lower-mainline",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        },
+        {
+          "id": "upper-lane-01",
+          "component_id": "upper-mainline",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        },
+        {
+          "id": "upper-lane-02",
+          "component_id": "upper-mainline",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        },
+        {
+          "id": "ghsr-track-01",
+          "component_id": "ghsr-mainline",
+          "kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ]
+        },
+        {
+          "id": "ghsr-track-02",
+          "component_id": "ghsr-mainline",
+          "kind": "rail-track",
+          "traffic_modes": [
+            "monorail"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "boundary-01-ghsr-mainline-01",
+          "component_id": "ghsr-mainline",
+          "members": [
+            {
+              "id": "member-ghsr-track-01-in",
+              "source_port_id": "ghsr-track-01-in",
+              "direction": "in",
+              "channel_id": "ghsr-track-01",
+              "cut_id": "cut-ghsr-track-01-in"
+            },
+            {
+              "id": "member-ghsr-track-02-out",
+              "source_port_id": "ghsr-track-02-out",
+              "direction": "out",
+              "channel_id": "ghsr-track-02",
+              "cut_id": "cut-ghsr-track-02-out"
+            }
+          ]
+        },
+        {
+          "id": "boundary-02-lower-mainline-01",
+          "component_id": "lower-mainline",
+          "members": [
+            {
+              "id": "member-lower-lane-01-out",
+              "source_port_id": "lower-lane-01-out",
+              "direction": "out",
+              "channel_id": "lower-lane-01",
+              "cut_id": "cut-lower-lane-01-out"
+            },
+            {
+              "id": "member-lower-lane-02-out",
+              "source_port_id": "lower-lane-02-out",
+              "direction": "out",
+              "channel_id": "lower-lane-02",
+              "cut_id": "cut-lower-lane-02-out"
+            }
+          ]
+        },
+        {
+          "id": "boundary-02-upper-mainline-02",
+          "component_id": "upper-mainline",
+          "members": [
+            {
+              "id": "member-upper-lane-01-in",
+              "source_port_id": "upper-lane-01-in",
+              "direction": "in",
+              "channel_id": "upper-lane-01",
+              "cut_id": "cut-upper-lane-01-in"
+            },
+            {
+              "id": "member-upper-lane-02-in",
+              "source_port_id": "upper-lane-02-in",
+              "direction": "in",
+              "channel_id": "upper-lane-02",
+              "cut_id": "cut-upper-lane-02-in"
+            }
+          ]
+        },
+        {
+          "id": "boundary-03-lower-mainline-01",
+          "component_id": "lower-mainline",
+          "members": [
+            {
+              "id": "member-lower-lane-01-in",
+              "source_port_id": "lower-lane-01-in",
+              "direction": "in",
+              "channel_id": "lower-lane-01",
+              "cut_id": "cut-lower-lane-01-in"
+            },
+            {
+              "id": "member-lower-lane-02-in",
+              "source_port_id": "lower-lane-02-in",
+              "direction": "in",
+              "channel_id": "lower-lane-02",
+              "cut_id": "cut-lower-lane-02-in"
+            }
+          ]
+        },
+        {
+          "id": "boundary-03-upper-mainline-02",
+          "component_id": "upper-mainline",
+          "members": [
+            {
+              "id": "member-upper-lane-01-out",
+              "source_port_id": "upper-lane-01-out",
+              "direction": "out",
+              "channel_id": "upper-lane-01",
+              "cut_id": "cut-upper-lane-01-out"
+            },
+            {
+              "id": "member-upper-lane-02-out",
+              "source_port_id": "upper-lane-02-out",
+              "direction": "out",
+              "channel_id": "upper-lane-02",
+              "cut_id": "cut-upper-lane-02-out"
+            }
+          ]
+        },
+        {
+          "id": "boundary-04-ghsr-mainline-01",
+          "component_id": "ghsr-mainline",
+          "members": [
+            {
+              "id": "member-ghsr-track-01-out",
+              "source_port_id": "ghsr-track-01-out",
+              "direction": "out",
+              "channel_id": "ghsr-track-01",
+              "cut_id": "cut-ghsr-track-01-out"
+            },
+            {
+              "id": "member-ghsr-track-02-in",
+              "source_port_id": "ghsr-track-02-in",
+              "direction": "in",
+              "channel_id": "ghsr-track-02",
+              "cut_id": "cut-ghsr-track-02-in"
+            }
+          ]
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "boundary-01",
+          "source_cell": [
+            0,
+            0
+          ],
+          "edge": "west",
+          "connector_ids": [
+            "boundary-01-ghsr-mainline-01"
+          ]
+        },
+        {
+          "id": "boundary-02",
+          "source_cell": [
+            0,
+            0
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "boundary-02-lower-mainline-01",
+            "boundary-02-upper-mainline-02"
+          ]
+        },
+        {
+          "id": "boundary-03",
+          "source_cell": [
+            0,
+            1
+          ],
+          "edge": "west",
+          "connector_ids": [
+            "boundary-03-lower-mainline-01",
+            "boundary-03-upper-mainline-02"
+          ]
+        },
+        {
+          "id": "boundary-04",
+          "source_cell": [
+            0,
+            1
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "boundary-04-ghsr-mainline-01"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "groups": [
+      {
+        "id": "boundary-01-ghsr-mainline-01",
+        "component_id": "ghsr-mainline",
+        "members": [
+          {
+            "id": "member-ghsr-track-01-in",
+            "direction": "in",
+            "service_network": "ghsr",
+            "service_family": "high-speed-rail",
+            "variant": "ghsr",
+            "role": "primary",
+            "channel_kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+            "engine_transport": 7,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -2.9,
+              1.0
+            ],
+            "tangent": [
+              0.7071067811865475,
+              -0.7071067811865476
+            ],
+            "sampled_tangent": [
+              0.7071067811865475,
+              -0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.101219,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-004"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-d13580a5f8b596919466",
+            "source_port_id": "ghsr-track-01-in",
+            "channel_id": "ghsr-track-01",
+            "cut_id": "cut-ghsr-track-01-in",
+            "outward_tangent": [
+              -0.7071067811865475,
+              0.7071067811865476
+            ],
+            "heading_outward_degrees": 315.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-ghsr-track-02-out",
+            "direction": "out",
+            "service_network": "ghsr",
+            "service_family": "high-speed-rail",
+            "variant": "ghsr",
+            "role": "primary",
+            "channel_kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+            "engine_transport": 7,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              2.9,
+              1.0
+            ],
+            "tangent": [
+              -0.7139382485962432,
+              0.7002086668924692
+            ],
+            "sampled_tangent": [
+              -0.7139382902550518,
+              0.7002086244168186
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.140842,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-005"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-8d80a0a7d571f164837f",
+            "source_port_id": "ghsr-track-02-out",
+            "channel_id": "ghsr-track-02",
+            "cut_id": "cut-ghsr-track-02-out",
+            "outward_tangent": [
+              -0.7139382485962432,
+              0.7002086668924692
+            ],
+            "heading_outward_degrees": 314.4437477729193,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "ghsr",
+          "nominal_level": null,
+          "path_height_m": 1.0,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          -8.0,
+          0.0,
+          1.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "ghsr-track-01",
+            "component_id": "ghsr-mainline",
+            "kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "cut-ghsr-track-01-in",
+                "member_ids": [
+                  "member-ghsr-track-01-in"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -2.9,
+                  1.0
+                ],
+                "outward_tangent": [
+                  -0.7071067811865475,
+                  0.7071067811865476
+                ],
+                "heading_outward_degrees": 315.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "ghsr-track-02",
+            "component_id": "ghsr-mainline",
+            "kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "cut-ghsr-track-02-out",
+                "member_ids": [
+                  "member-ghsr-track-02-out"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  2.9,
+                  1.0
+                ],
+                "outward_tangent": [
+                  -0.7139382485962432,
+                  0.7002086668924692
+                ],
+                "heading_outward_degrees": 314.4437477729193,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-01"
+      },
+      {
+        "id": "boundary-02-lower-mainline-01",
+        "component_id": "lower-mainline",
+        "members": [
+          {
+            "id": "member-lower-lane-01-out",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              -3.2,
+              7.5
+            ],
+            "tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "sampled_tangent": [
+              0.7071067811865475,
+              0.7071067811865475
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-003"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
+            "source_port_id": "lower-lane-01-out",
+            "channel_id": "lower-lane-01",
+            "cut_id": "cut-lower-lane-01-out",
+            "outward_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "heading_outward_degrees": 45.0,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-lower-lane-02-out",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              3.2,
+              7.5
+            ],
+            "tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "sampled_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-f9c18bdf77622a5e27b2",
+            "source_port_id": "lower-lane-02-out",
+            "channel_id": "lower-lane-02",
+            "cut_id": "cut-lower-lane-02-out",
+            "outward_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "heading_outward_degrees": 45.0,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 7.5,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          8.0,
+          0.0,
+          7.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "lower-lane-01",
+            "component_id": "lower-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-lower-lane-01-out",
+                "member_ids": [
+                  "member-lower-lane-01-out"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -3.2,
+                  7.5
+                ],
+                "outward_tangent": [
+                  0.7071067811865476,
+                  0.7071067811865476
+                ],
+                "heading_outward_degrees": 45.0,
+                "grade_outward": 0.0
+              }
+            ]
+          },
+          {
+            "id": "lower-lane-02",
+            "component_id": "lower-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-lower-lane-02-out",
+                "member_ids": [
+                  "member-lower-lane-02-out"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  3.2,
+                  7.5
+                ],
+                "outward_tangent": [
+                  0.7071067811865476,
+                  0.7071067811865476
+                ],
+                "heading_outward_degrees": 45.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-02"
+      },
+      {
+        "id": "boundary-02-upper-mainline-02",
+        "component_id": "upper-mainline",
+        "members": [
+          {
+            "id": "member-upper-lane-01-in",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l2",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              -3.2,
+              15.0
+            ],
+            "tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "sampled_tangent": [
+              -0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-3e8c9380dd7fc6c63cb8",
+            "source_port_id": "upper-lane-01-in",
+            "channel_id": "upper-lane-01",
+            "cut_id": "cut-upper-lane-01-in",
+            "outward_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "heading_outward_degrees": 45.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-upper-lane-02-in",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l2",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              3.2,
+              15.0
+            ],
+            "tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "sampled_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd000",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd001",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd002",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd003",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd004",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd000",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd000-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd000"
+              }
+            ],
+            "connection_class": "path-interface-3ed34d9a11bb64d98604",
+            "source_port_id": "upper-lane-02-in",
+            "channel_id": "upper-lane-02",
+            "cut_id": "cut-upper-lane-02-in",
+            "outward_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "heading_outward_degrees": 45.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 15.0,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          8.0,
+          0.0,
+          15.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "upper-lane-01",
+            "component_id": "upper-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-upper-lane-01-in",
+                "member_ids": [
+                  "member-upper-lane-01-in"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                "outward_tangent": [
+                  0.7071067811865476,
+                  0.7071067811865476
+                ],
+                "heading_outward_degrees": 45.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "upper-lane-02",
+            "component_id": "upper-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-upper-lane-02-in",
+                "member_ids": [
+                  "member-upper-lane-02-in"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                "outward_tangent": [
+                  0.7071067811865476,
+                  0.7071067811865476
+                ],
+                "heading_outward_degrees": 45.0,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-02"
+      },
+      {
+        "id": "boundary-03-lower-mainline-01",
+        "component_id": "lower-mainline",
+        "members": [
+          {
+            "id": "member-lower-lane-01-in",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -19.2,
+              7.5
+            ],
+            "tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "sampled_tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-002"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
+            "source_port_id": "lower-lane-01-in",
+            "channel_id": "lower-lane-01",
+            "cut_id": "cut-lower-lane-01-in",
+            "outward_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "heading_outward_degrees": 225.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-lower-lane-02-in",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -12.8,
+              7.5
+            ],
+            "tangent": [
+              0.7071067811865476,
+              0.7071067811865476
+            ],
+            "sampled_tangent": [
+              0.7071067811865475,
+              0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-003"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-f9c18bdf77622a5e27b2",
+            "source_port_id": "lower-lane-02-in",
+            "channel_id": "lower-lane-02",
+            "cut_id": "cut-lower-lane-02-in",
+            "outward_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "heading_outward_degrees": 225.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 7.5,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          -8.0,
+          -16.0,
+          7.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "lower-lane-01",
+            "component_id": "lower-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-lower-lane-01-in",
+                "member_ids": [
+                  "member-lower-lane-01-in"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -19.2,
+                  7.5
+                ],
+                "outward_tangent": [
+                  -0.7071067811865476,
+                  -0.7071067811865476
+                ],
+                "heading_outward_degrees": 225.0,
+                "grade_outward": -0.0
+              }
+            ]
+          },
+          {
+            "id": "lower-lane-02",
+            "component_id": "lower-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-lower-lane-02-in",
+                "member_ids": [
+                  "member-lower-lane-02-in"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -12.8,
+                  7.5
+                ],
+                "outward_tangent": [
+                  -0.7071067811865476,
+                  -0.7071067811865476
+                ],
+                "heading_outward_degrees": 225.0,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-03"
+      },
+      {
+        "id": "boundary-03-upper-mainline-02",
+        "component_id": "upper-mainline",
+        "members": [
+          {
+            "id": "member-upper-lane-01-out",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l2",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -19.2,
+              15.0
+            ],
+            "tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "sampled_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-001"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-3e8c9380dd7fc6c63cb8",
+            "source_port_id": "upper-lane-01-out",
+            "channel_id": "upper-lane-01",
+            "cut_id": "cut-upper-lane-01-out",
+            "outward_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "heading_outward_degrees": 225.0,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-upper-lane-02-out",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l2",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -12.8,
+              15.0
+            ],
+            "tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "sampled_tangent": [
+              -0.7071067811865475,
+              -0.7071067811865476
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-3ed34d9a11bb64d98604",
+            "source_port_id": "upper-lane-02-out",
+            "channel_id": "upper-lane-02",
+            "cut_id": "cut-upper-lane-02-out",
+            "outward_tangent": [
+              -0.7071067811865476,
+              -0.7071067811865476
+            ],
+            "heading_outward_degrees": 225.0,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 15.0,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          -8.0,
+          -16.0,
+          15.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "upper-lane-01",
+            "component_id": "upper-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-upper-lane-01-out",
+                "member_ids": [
+                  "member-upper-lane-01-out"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -19.2,
+                  15.0
+                ],
+                "outward_tangent": [
+                  -0.7071067811865476,
+                  -0.7071067811865476
+                ],
+                "heading_outward_degrees": 225.0,
+                "grade_outward": 0.0
+              }
+            ]
+          },
+          {
+            "id": "upper-lane-02",
+            "component_id": "upper-mainline",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-upper-lane-02-out",
+                "member_ids": [
+                  "member-upper-lane-02-out"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -12.8,
+                  15.0
+                ],
+                "outward_tangent": [
+                  -0.7071067811865476,
+                  -0.7071067811865476
+                ],
+                "heading_outward_degrees": 225.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-03"
+      },
+      {
+        "id": "boundary-04-ghsr-mainline-01",
+        "component_id": "ghsr-mainline",
+        "members": [
+          {
+            "id": "member-ghsr-track-01-out",
+            "direction": "out",
+            "service_network": "ghsr",
+            "service_family": "high-speed-rail",
+            "variant": "ghsr",
+            "role": "primary",
+            "channel_kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              -18.9,
+              1.0
+            ],
+            "tangent": [
+              0.7139382485962432,
+              -0.7002086668924692
+            ],
+            "sampled_tangent": [
+              0.7139382902550522,
+              -0.7002086244168183
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.140842,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-005"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-8d80a0a7d571f164837f",
+            "source_port_id": "ghsr-track-01-out",
+            "channel_id": "ghsr-track-01",
+            "cut_id": "cut-ghsr-track-01-out",
+            "outward_tangent": [
+              0.7139382485962432,
+              -0.7002086668924692
+            ],
+            "heading_outward_degrees": 134.44374777291932,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          },
+          {
+            "id": "member-ghsr-track-02-in",
+            "direction": "in",
+            "service_network": "ghsr",
+            "service_family": "high-speed-rail",
+            "variant": "ghsr",
+            "role": "primary",
+            "channel_kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "classification_status": "Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.",
+            "engine_transport": 7,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              -13.1,
+              1.0
+            ],
+            "tangent": [
+              -0.7071067811865475,
+              0.7071067811865476
+            ],
+            "sampled_tangent": [
+              -0.7071067811865477,
+              0.7071067811865474
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": 4.101219,
+            "profile": "paired-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd010",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd011",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd012",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd013",
+              "model:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:5ad0e817-badb57f1-7f5bd014",
+              "path:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:296678f7-a966883f-7f5bd010",
+              "construction:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg"
+            ],
+            "source_route_ids": [
+              "path-7f5bd010-route-004"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 2,
+                "tile_id": "7f5bd010"
+              }
+            ],
+            "connection_class": "path-interface-d13580a5f8b596919466",
+            "source_port_id": "ghsr-track-02-in",
+            "channel_id": "ghsr-track-02",
+            "cut_id": "cut-ghsr-track-02-in",
+            "outward_tangent": [
+              0.7071067811865475,
+              -0.7071067811865476
+            ],
+            "heading_outward_degrees": 135.0,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "ghsr",
+          "nominal_level": null,
+          "path_height_m": 1.0,
+          "engine_transport": 7,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          8.0,
+          -16.0,
+          1.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "ghsr-track-01",
+            "component_id": "ghsr-mainline",
+            "kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "cut-ghsr-track-01-out",
+                "member_ids": [
+                  "member-ghsr-track-01-out"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -18.9,
+                  1.0
+                ],
+                "outward_tangent": [
+                  0.7139382485962432,
+                  -0.7002086668924692
+                ],
+                "heading_outward_degrees": 134.44374777291932,
+                "grade_outward": 0.0
+              }
+            ]
+          },
+          {
+            "id": "ghsr-track-02",
+            "component_id": "ghsr-mainline",
+            "kind": "rail-track",
+            "traffic_modes": [
+              "monorail"
+            ],
+            "cuts": [
+              {
+                "id": "cut-ghsr-track-02-in",
+                "member_ids": [
+                  "member-ghsr-track-02-in"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -13.1,
+                  1.0
+                ],
+                "outward_tangent": [
+                  0.7071067811865475,
+                  -0.7071067811865476
+                ],
+                "heading_outward_degrees": 135.0,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "monorail",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-04"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "boundary-01",
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "west",
+        "connector_ids": [
+          "boundary-01-ghsr-mainline-01"
+        ]
+      },
+      {
+        "id": "boundary-02",
+        "source_cell": [
+          0,
+          0
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "boundary-02-lower-mainline-01",
+          "boundary-02-upper-mainline-02"
+        ]
+      },
+      {
+        "id": "boundary-03",
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "west",
+        "connector_ids": [
+          "boundary-03-lower-mainline-01",
+          "boundary-03-upper-mainline-02"
+        ]
+      },
+      {
+        "id": "boundary-04",
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "boundary-04-ghsr-mainline-01"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "lower-lane-01",
+        "component_id": "lower-mainline",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      },
+      {
+        "id": "lower-lane-02",
+        "component_id": "lower-mainline",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      },
+      {
+        "id": "upper-lane-01",
+        "component_id": "upper-mainline",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      },
+      {
+        "id": "upper-lane-02",
+        "component_id": "upper-mainline",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      },
+      {
+        "id": "ghsr-track-01",
+        "component_id": "ghsr-mainline",
+        "kind": "rail-track",
+        "traffic_modes": [
+          "monorail"
+        ]
+      },
+      {
+        "id": "ghsr-track-02",
+        "component_id": "ghsr-mainline",
+        "kind": "rail-track",
+        "traffic_modes": [
+          "monorail"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "member-lower-lane-01-in>member-lower-lane-01-out",
+        "entry_port": "member-lower-lane-01-in",
+        "exit_port": "member-lower-lane-01-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l1",
+          "dd-rhw-l1"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:lower-lane-01-in>lower-lane-01-out",
+        "source_entry_port": "lower-lane-01-in",
+        "source_exit_port": "lower-lane-01-out"
+      },
+      {
+        "id": "member-lower-lane-02-in>member-lower-lane-02-out",
+        "entry_port": "member-lower-lane-02-in",
+        "exit_port": "member-lower-lane-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l1",
+          "dd-rhw-l1"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:lower-lane-02-in>lower-lane-02-out",
+        "source_entry_port": "lower-lane-02-in",
+        "source_exit_port": "lower-lane-02-out"
+      },
+      {
+        "id": "member-upper-lane-01-in>member-upper-lane-01-out",
+        "entry_port": "member-upper-lane-01-in",
+        "exit_port": "member-upper-lane-01-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l2",
+          "dd-rhw-l2"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:upper-lane-01-in>upper-lane-01-out",
+        "source_entry_port": "upper-lane-01-in",
+        "source_exit_port": "upper-lane-01-out"
+      },
+      {
+        "id": "member-upper-lane-02-in>member-upper-lane-02-out",
+        "entry_port": "member-upper-lane-02-in",
+        "exit_port": "member-upper-lane-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l2",
+          "dd-rhw-l2"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:upper-lane-02-in>upper-lane-02-out",
+        "source_entry_port": "upper-lane-02-in",
+        "source_exit_port": "upper-lane-02-out"
+      },
+      {
+        "id": "member-ghsr-track-01-in>member-ghsr-track-01-out",
+        "entry_port": "member-ghsr-track-01-in",
+        "exit_port": "member-ghsr-track-01-out",
+        "service_network": "ghsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "ghsr",
+          "ghsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:ghsr-track-01-in>ghsr-track-01-out",
+        "source_entry_port": "ghsr-track-01-in",
+        "source_exit_port": "ghsr-track-01-out"
+      },
+      {
+        "id": "member-ghsr-track-02-in>member-ghsr-track-02-out",
+        "entry_port": "member-ghsr-track-02-in",
+        "exit_port": "member-ghsr-track-02-out",
+        "service_network": "ghsr",
+        "role": "primary",
+        "engine_transport_classes": [
+          7
+        ],
+        "endpoint_variants": [
+          "ghsr",
+          "ghsr"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "7:ghsr-track-02-in>ghsr-track-02-out",
+        "source_entry_port": "ghsr-track-02-in",
+        "source_exit_port": "ghsr-track-02-out"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "member-lower-lane-01-in",
+        "to_port": "member-upper-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-01-in",
+        "source_to_port": "upper-lane-01-out"
+      },
+      {
+        "from_port": "member-lower-lane-01-in",
+        "to_port": "member-upper-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-01-in",
+        "source_to_port": "upper-lane-02-out"
+      },
+      {
+        "from_port": "member-lower-lane-01-in",
+        "to_port": "member-lower-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-01-in",
+        "source_to_port": "lower-lane-02-out"
+      },
+      {
+        "from_port": "member-lower-lane-01-in",
+        "to_port": "member-ghsr-track-02-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-01-in",
+        "source_to_port": "ghsr-track-02-out"
+      },
+      {
+        "from_port": "member-lower-lane-01-in",
+        "to_port": "member-ghsr-track-01-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-01-in",
+        "source_to_port": "ghsr-track-01-out"
+      },
+      {
+        "from_port": "member-lower-lane-02-in",
+        "to_port": "member-upper-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-02-in",
+        "source_to_port": "upper-lane-01-out"
+      },
+      {
+        "from_port": "member-lower-lane-02-in",
+        "to_port": "member-upper-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-02-in",
+        "source_to_port": "upper-lane-02-out"
+      },
+      {
+        "from_port": "member-lower-lane-02-in",
+        "to_port": "member-lower-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-02-in",
+        "source_to_port": "lower-lane-01-out"
+      },
+      {
+        "from_port": "member-lower-lane-02-in",
+        "to_port": "member-ghsr-track-02-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-02-in",
+        "source_to_port": "ghsr-track-02-out"
+      },
+      {
+        "from_port": "member-lower-lane-02-in",
+        "to_port": "member-ghsr-track-01-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "lower-lane-02-in",
+        "source_to_port": "ghsr-track-01-out"
+      },
+      {
+        "from_port": "member-upper-lane-01-in",
+        "to_port": "member-upper-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-01-in",
+        "source_to_port": "upper-lane-02-out"
+      },
+      {
+        "from_port": "member-upper-lane-01-in",
+        "to_port": "member-lower-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-01-in",
+        "source_to_port": "lower-lane-01-out"
+      },
+      {
+        "from_port": "member-upper-lane-01-in",
+        "to_port": "member-lower-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-01-in",
+        "source_to_port": "lower-lane-02-out"
+      },
+      {
+        "from_port": "member-upper-lane-01-in",
+        "to_port": "member-ghsr-track-02-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-01-in",
+        "source_to_port": "ghsr-track-02-out"
+      },
+      {
+        "from_port": "member-upper-lane-01-in",
+        "to_port": "member-ghsr-track-01-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-01-in",
+        "source_to_port": "ghsr-track-01-out"
+      },
+      {
+        "from_port": "member-upper-lane-02-in",
+        "to_port": "member-upper-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-02-in",
+        "source_to_port": "upper-lane-01-out"
+      },
+      {
+        "from_port": "member-upper-lane-02-in",
+        "to_port": "member-lower-lane-01-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-02-in",
+        "source_to_port": "lower-lane-01-out"
+      },
+      {
+        "from_port": "member-upper-lane-02-in",
+        "to_port": "member-lower-lane-02-out",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-02-in",
+        "source_to_port": "lower-lane-02-out"
+      },
+      {
+        "from_port": "member-upper-lane-02-in",
+        "to_port": "member-ghsr-track-02-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-02-in",
+        "source_to_port": "ghsr-track-02-out"
+      },
+      {
+        "from_port": "member-upper-lane-02-in",
+        "to_port": "member-ghsr-track-01-out",
+        "from_service": "road",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "upper-lane-02-in",
+        "source_to_port": "ghsr-track-01-out"
+      },
+      {
+        "from_port": "member-ghsr-track-01-in",
+        "to_port": "member-upper-lane-01-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-01-in",
+        "source_to_port": "upper-lane-01-out"
+      },
+      {
+        "from_port": "member-ghsr-track-01-in",
+        "to_port": "member-upper-lane-02-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-01-in",
+        "source_to_port": "upper-lane-02-out"
+      },
+      {
+        "from_port": "member-ghsr-track-01-in",
+        "to_port": "member-lower-lane-01-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-01-in",
+        "source_to_port": "lower-lane-01-out"
+      },
+      {
+        "from_port": "member-ghsr-track-01-in",
+        "to_port": "member-lower-lane-02-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-01-in",
+        "source_to_port": "lower-lane-02-out"
+      },
+      {
+        "from_port": "member-ghsr-track-01-in",
+        "to_port": "member-ghsr-track-02-out",
+        "from_service": "ghsr",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-01-in",
+        "source_to_port": "ghsr-track-02-out"
+      },
+      {
+        "from_port": "member-ghsr-track-02-in",
+        "to_port": "member-upper-lane-01-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-02-in",
+        "source_to_port": "upper-lane-01-out"
+      },
+      {
+        "from_port": "member-ghsr-track-02-in",
+        "to_port": "member-upper-lane-02-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-02-in",
+        "source_to_port": "upper-lane-02-out"
+      },
+      {
+        "from_port": "member-ghsr-track-02-in",
+        "to_port": "member-lower-lane-01-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-02-in",
+        "source_to_port": "lower-lane-01-out"
+      },
+      {
+        "from_port": "member-ghsr-track-02-in",
+        "to_port": "member-lower-lane-02-out",
+        "from_service": "ghsr",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-02-in",
+        "source_to_port": "lower-lane-02-out"
+      },
+      {
+        "from_port": "member-ghsr-track-02-in",
+        "to_port": "member-ghsr-track-01-out",
+        "from_service": "ghsr",
+        "to_service": "ghsr",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "ghsr-track-02-in",
+        "source_to_port": "ghsr-track-01-out"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f86e",
+          "0004f86e"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f86e",
+          "0007f86e"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f86e",
+          "0006f86e"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f86e",
+          "0005f86e"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f5bd000-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          8.0,
+          3.2,
+          15.0
+        ],
+        [
+          -3.2,
+          -8.0,
+          15.0
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f5bd000-route-001",
+      "source_route_index": 1,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          8.0,
+          -3.2,
+          15.0
+        ],
+        [
+          3.2,
+          -8.0,
+          15.0
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f5bd000-route-002",
+      "source_route_index": 2,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          -3.2,
+          -8.0,
+          7.5
+        ],
+        [
+          8.0,
+          3.2,
+          7.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5bd000-route-003",
+      "source_route_index": 3,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          3.2,
+          -8.0,
+          7.5
+        ],
+        [
+          8.0,
+          -3.2,
+          7.5
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5bd000-route-004",
+      "source_route_index": 4,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          -8.0,
+          -2.9,
+          1.0
+        ],
+        [
+          -5.87867965644,
+          -5.02132034356,
+          1.0
+        ],
+        [
+          -3.60710678119,
+          -7.29289321881,
+          1.0
+        ],
+        [
+          -2.9,
+          -8.0,
+          1.0
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f5bd000-route-005",
+      "source_route_index": 5,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        0
+      ],
+      "tile_id": "7f5bd000",
+      "points": [
+        [
+          2.9,
+          -8.0,
+          1.0
+        ],
+        [
+          2.19289321881,
+          -7.29289321881,
+          1.0
+        ],
+        [
+          -5.85818525421,
+          0.799373999323,
+          1.0
+        ],
+        [
+          -8.0,
+          2.9,
+          1.0
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f5bd010-route-000",
+      "source_route_index": 0,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          -3.2,
+          -8.0,
+          15.0
+        ],
+        [
+          -8.0,
+          -12.8,
+          15.0
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f5bd010-route-001",
+      "source_route_index": 1,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          3.2,
+          -8.0,
+          15.0
+        ],
+        [
+          -8.0,
+          -19.2,
+          15.0
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 0
+    },
+    {
+      "id": "path-7f5bd010-route-002",
+      "source_route_index": 2,
+      "source_class": 1,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          -8.0,
+          -19.2,
+          7.5
+        ],
+        [
+          3.2,
+          -8.0,
+          7.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f5bd010-route-003",
+      "source_route_index": 3,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          -8.0,
+          -12.8,
+          7.5
+        ],
+        [
+          -3.2,
+          -8.0,
+          7.5
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f5bd010-route-004",
+      "source_route_index": 4,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          8.0,
+          -13.1,
+          1.0
+        ],
+        [
+          5.87867965644,
+          -10.97867965644,
+          1.0
+        ],
+        [
+          3.60710678119,
+          -8.70710678119,
+          1.0
+        ],
+        [
+          2.9,
+          -8.0,
+          1.0
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 1
+    },
+    {
+      "id": "path-7f5bd010-route-005",
+      "source_route_index": 5,
+      "source_class": 0,
+      "compatibility": 0,
+      "engine_transport": 7,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5bd010",
+      "points": [
+        [
+          -2.9,
+          -8.0,
+          1.0
+        ],
+        [
+          -2.19289321881,
+          -8.70710678119,
+          1.0
+        ],
+        [
+          5.85818525421,
+          -16.799373999323,
+          1.0
+        ],
+        [
+          8.0,
+          -18.9,
+          1.0
+        ]
+      ],
+      "entry_edge": 1,
+      "exit_edge": 2
+    }
+  ],
+  "endpoint_route_refs": {
+    "member-ghsr-track-01-in": [
+      "path-7f5bd000-route-004"
+    ],
+    "member-ghsr-track-02-out": [
+      "path-7f5bd000-route-005"
+    ],
+    "member-lower-lane-01-out": [
+      "path-7f5bd000-route-003"
+    ],
+    "member-lower-lane-02-out": [
+      "path-7f5bd000-route-002"
+    ],
+    "member-upper-lane-01-in": [
+      "path-7f5bd000-route-001"
+    ],
+    "member-upper-lane-02-in": [
+      "path-7f5bd000-route-000"
+    ],
+    "member-lower-lane-01-in": [
+      "path-7f5bd010-route-002"
+    ],
+    "member-lower-lane-02-in": [
+      "path-7f5bd010-route-003"
+    ],
+    "member-upper-lane-01-out": [
+      "path-7f5bd010-route-001"
+    ],
+    "member-upper-lane-02-out": [
+      "path-7f5bd010-route-000"
+    ],
+    "member-ghsr-track-01-out": [
+      "path-7f5bd010-route-005"
+    ],
+    "member-ghsr-track-02-in": [
+      "path-7f5bd010-route-004"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/ghsr-under-ddrhw-diagonal-source-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg.dat",
+      "dat_sha256": "f2b3296a49fc3d21983a3f78d8fc1748043328ccd07026f4988e85a07f9d5f73",
+      "model_sha256": "c9b0604041e09747b5feda192a450650d2ba7e1c215e3f8203c66de52c842cbc",
+      "resource_fingerprints_checked": 38,
+      "directional_ports_reextracted": 12,
+      "directed_journeys_reextracted": 6,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "9fbc1b4802e036beaf8026ebc0ec24874860f9f2a5747d2d176d035d80817346"
+}
