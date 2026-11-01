@@ -699,6 +699,21 @@ def _within(root, relative):
     return path
 
 
+def _overview_textures(library, model, built, resources):
+    """Use declared FSH bytes from the checked piece DAT before native inputs."""
+    identifiers = built.get('authored_texture_ids', [])
+    if not identifiers:
+        return library.for_model(model)
+    owned = {}
+    for value in identifiers:
+        identifier = int(value, 16)
+        key = (0x7AB50E44, 0x1ABE787D, identifier)
+        if key not in resources:
+            raise ValueError(f'Declared piece-owned overview texture is missing: {identifier:08x}')
+        owned[identifier] = resources[key]
+    return library.for_model(model, owned_resources=owned)
+
+
 def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, plugins=None,
                      domain_id="high-speed-rail", resolved=None):
     """Render selected registered types; canonical output also refreshes their README blocks.
@@ -766,7 +781,7 @@ def render_overviews(custom_root, piece_ids, output_root=None, *, build=None, pl
         model = parse_s3d(raw_model)
         validation = validate_s3d(model)
         before_model = sha256(pack_s3d(model))
-        textures, texture_sources = library.for_model(model)
+        textures, texture_sources = _overview_textures(library, model, built, resources)
         local = local_piece_grid(piece["piece"])
         vertices = [point for block in model["vertices"] for point in positions(block)]
         records = build_records(piece)

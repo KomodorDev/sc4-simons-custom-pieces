@@ -754,7 +754,12 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     _need(plugins is not None, "Overview texture freshness needs --plugins or configured texture inputs; use --no-render for data-only checks")
     payload = entries(_safe_relative(root,evidence["source_dat"]).read_bytes())
     model = parse_s3d(decompress(payload[0x5ad0e817,0xbadb57f1,int(evidence["source_preview_id"],16)]))
-    _, textures = TextureLibrary(Path(plugins).expanduser()).for_model(model)
+    from .connector_overview import _overview_textures
+    manifest = jsonc.load(_safe_relative(root, evidence['source_manifest']))
+    matching = [piece for piece in manifest['pieces'] if piece['id'] == piece_id]
+    _need(len(matching) == 1, 'Overview manifest must own exactly one selected piece')
+    owned = {key: decompress(raw) for key, raw in payload.items() if key[:2] == (0x7AB50E44, 0x1ABE787D)}
+    _, textures = _overview_textures(TextureLibrary(Path(plugins).expanduser()), model, matching[0], owned)
     _need(textures == evidence["textures"], f"{piece_id}: stale overview texture inputs")
     current_fonts = [font_fingerprint(face)
                      for face in (font(BODY_SIZE),font(BODY_SIZE,True),mono_font(BODY_SIZE,font))]

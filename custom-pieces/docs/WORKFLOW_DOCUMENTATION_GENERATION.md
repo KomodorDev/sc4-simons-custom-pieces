@@ -486,6 +486,8 @@ python3 scp.py connectors refresh --piece EXACT-PIECE-ID --build dist/BUILD_NAME
 
 Rendering and artwork freshness checks also need the models' existing material textures. Use the configured project texture inputs, or append `--plugins '/absolute/path/to/Plugins'` to select an existing texture directory for refresh or check. Replace that placeholder with the directory's actual path and retain the single quotation marks if the path contains spaces. Texture inputs are read only; no connector command installs or alters Plugins files.
 
+For a piece declaring `authored_texture_ids`, load those FSH resources from its exact verified piece DAT before resolving external NAM textures. Apply this order to clean previews, connector overview rendering, and overview freshness checks. The shared `TextureLibrary.for_model(..., owned_resources=...)` checks cached texture identity and records `source: piece-dat` provenance. A missing declared resource fails even when an installed or cached texture has the same ID. Documentation rendering reads the saved atlas directly and requires no game installation.
+
 Now run the read-only freshness check with the same selection and build:
 
 ```sh

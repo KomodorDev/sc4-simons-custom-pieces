@@ -42,11 +42,25 @@ def verification_donor(donors):
 
 
 def make_icon(style):
-    require(style in {'ddrhw-crossing', 'ddrhw-ramp', 'ddrhw-ghsr-crossing'}, 'Unsupported highway icon style')
+    require(style in {'ddrhw-crossing', 'ddrhw-ramp', 'ddrhw-ghsr-crossing', 'ddrhw-transition'}, 'Unsupported highway icon style')
     strip = Image.new('RGBA', (176, 44))
     for n in range(4):
         im = Image.new('RGBA', (44, 44), ('#253a4c', '#344f66', '#182a38', '#77818a')[n])
         draw = ImageDraw.Draw(im)
+        if style == 'ddrhw-transition':
+            lower = [(28, 5), (28, 38)]
+            upper = [(28, 5), (27, 12), (23, 19), (17, 25), (15, 31), (15, 38)]
+            for route, colour in ((lower, '#bd9974'), (upper, '#94a9ba')):
+                draw.line(route, fill=colour, width=11, joint='curve')
+                draw.line(route, fill='#263747', width=7, joint='curve')
+            draw.line((28, 7, 28, 12), fill='#ffffff', width=1)
+            draw.line((28, 17, 28, 22), fill='#ffffff', width=1)
+            draw.line((28, 28, 28, 34), fill='#ffffff', width=1)
+            draw.line((15, 31, 15, 36), fill='#ffffff', width=1)
+            draw.rectangle((1, 1, 42, 42), outline='#70899c', width=1)
+            draw.text((4, 3), '6', fill='#efc773')
+            strip.paste(im, (44 * n, 0))
+            continue
         draw.line((3, 8, 37, 35), fill='#bcc5c9', width=7)
         if style == 'ddrhw-ghsr-crossing':
             draw.line((3, 8, 37, 35), fill='#445a62', width=9)

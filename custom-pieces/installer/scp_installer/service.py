@@ -255,6 +255,7 @@ def implemented_recipes_by_domain():
     # The module catalogue declares a finite recipe for each MODULES entry;
     # its provider remains responsible for the recipe naming convention.
     highway_recipes = {native.RECIPE, ghsr_crossing.RECIPE, ghsr_crossing.ALIGNMENT_B_RECIPE}
+    highway_recipes.add('highway_ddrhw_orthogonal_l0_transition')
     highway_recipes.update(item["recipe"] for item in ramp_paths.module_catalog()["types"])
     highway_recipes.add(modular_stamp.RECIPE)
     highway_recipes.update(item["recipe"] for item in modular_ramps.module_catalog()["types"])

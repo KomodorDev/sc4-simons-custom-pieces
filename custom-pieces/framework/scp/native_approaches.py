@@ -23,10 +23,13 @@ BEGIN = ';BEGIN SIMONS CUSTOM PIECES NATIVE DD APPROACHES'
 END = ';END SIMONS CUSTOM PIECES NATIVE DD APPROACHES'
 OVERLAY = 'native_dd_approaches'
 GHSR_OVERLAY = 'native_ghsr_approaches'
+ORTHOGONAL_OVERLAY = 'native_orthogonal_approaches'
 
 
 def _provider(piece):
-    return domain_module(piece, 'ghsr_approaches' if piece.get(GHSR_OVERLAY) else 'ddrhw_connections')
+    name = ('orthogonal_approaches' if piece.get(ORTHOGONAL_OVERLAY) else
+            'ghsr_approaches' if piece.get(GHSR_OVERLAY) else 'ddrhw_connections')
+    return domain_module(piece, name)
 
 
 def _pair(row):
@@ -34,7 +37,8 @@ def _pair(row):
     if 'networks' not in row:
         return SECTION, int(row['monorail_flags'], 16), int(row['dirtroad_flags'], 16)
     names = {'MonoRailDirtRoadIntersectionSolutions': ('monorail', 'dirtroad'),
-             'RailMonoRailIntersectionSolutions': ('rail', 'monorail')}
+             'RailMonoRailIntersectionSolutions': ('rail', 'monorail'),
+             'RoadDirtRoadIntersectionSolutions': ('road', 'dirtroad')}
     section, networks = row.get('section'), row['networks']
     require(section in names and isinstance(networks, list) and len(networks) == 2
             and all(isinstance(item, dict) and set(item) == {'name', 'flags'} for item in networks)
@@ -50,15 +54,16 @@ def _sha(raw):
 
 def approaches(piece):
     """Absent declarations never load a new domain implementation or schema."""
-    if OVERLAY not in piece and GHSR_OVERLAY not in piece:
+    modes = (OVERLAY, GHSR_OVERLAY, ORTHOGONAL_OVERLAY)
+    if not any(name in piece for name in modes):
         return []
-    for name in (OVERLAY, GHSR_OVERLAY):
+    for name in modes:
         if name in piece:
             require(type(piece[name]) is bool, name + ' must be a boolean')
-    if not piece.get(OVERLAY) and not piece.get(GHSR_OVERLAY):
+    if not any(piece.get(name) for name in modes):
         return []
-    require(not (piece.get(OVERLAY) and piece.get(GHSR_OVERLAY)),
-            'Mixed native approaches must not also request legacy DD helpers')
+    require(sum(bool(piece.get(name)) for name in modes) == 1,
+            'Mixed native approaches must not also request legacy DD helpers or another approach mode')
     result = _provider(piece).approaches(piece)
     require(isinstance(result, list) and result and all(isinstance(row, dict) for row in result),
             'Declared native DD approaches require nonempty domain bindings')
@@ -113,7 +118,7 @@ def expected_solution_sections(pieces):
                         'Conflicting declared native DD marker solutions')
                 expected[key] = value
         provider = _provider(piece)
-        sections = (provider.rul1_sections(piece) if piece.get(GHSR_OVERLAY)
+        sections = (provider.rul1_sections(piece) if piece.get(GHSR_OVERLAY) or piece.get(ORTHOGONAL_OVERLAY)
                     else {SECTION: provider.rul1_rows(piece)})
         require(isinstance(sections, dict) and sections and all(isinstance(section, str)
                 and isinstance(values, (list, tuple)) and values for section, values in sections.items()),
@@ -148,6 +153,42 @@ def expected_solution_sections(pieces):
     return result
 
 
+def _existing_solution_sections(pieces):
+    """Allow only explicitly reviewed orthogonal starters to reuse native rows."""
+    result = {}
+    for piece in pieces:
+        if not piece.get(ORTHOGONAL_OVERLAY):
+            continue
+        provider = _provider(piece)
+        declared = provider.existing_rul1_sections(piece)
+        expected = expected_solution_sections([piece])
+        require(isinstance(declared, dict) and declared,
+                'Orthogonal native approaches require exact existing solutions')
+        actual = {}
+        for section, rows in declared.items():
+            require(isinstance(rows, (tuple, list)) and rows,
+                    'Invalid existing native approach solution table')
+            table = {}
+            for row in rows:
+                require(isinstance(row, (tuple, list)) and len(row) == 5
+                        and all(type(value) is int for value in row)
+                        and all(0 <= value <= 0xffffffff for value in row[:3])
+                        and row[3] in range(4) and row[4] == 0,
+                        'Invalid existing native approach solution row')
+                a, b, c, d, e = row
+                require((a, b) not in table, 'Duplicate existing native approach marker pair')
+                table[a, b] = c, d, e
+            actual[section] = table
+        require(actual == expected, 'Existing native solutions differ from the reviewed socket declarations')
+        for section, table in actual.items():
+            target = result.setdefault(section, {})
+            for key, value in table.items():
+                require(key not in target or target[key] == value,
+                        'Conflicting reused native approach solutions')
+                target[key] = value
+    return result
+
+
 def expected_solutions(pieces):
     """Retain the legacy public DD-only table view."""
     return expected_solution_sections(pieces).get(SECTION, {})
@@ -160,7 +201,13 @@ def dependency_keys(pieces):
             target = int(row['native_tile_id'], 16)
             group = int(row.get('native_exemplar_group', f'{NETWORK_EXEMPLAR[1]:08x}'), 16)
             require(group in (NETWORK_EXEMPLAR[1], 0xEBE084C2), 'Unsupported native approach exemplar group')
-            result.update({(*S3D, target), (*PATH, target), (NETWORK_EXEMPLAR[0], group, target)})
+            reference = row.get('native_model_reference', 'rkt0')
+            require(reference in ('rkt0', 'rkt1', 'direct'), 'Unsupported native approach model reference')
+            require(reference != 'direct' or piece.get(ORTHOGONAL_OVERLAY),
+                    'Direct native lookup requires an explicit reviewed orthogonal approach')
+            result.update({(*S3D, target), (*PATH, target)})
+            if reference != 'direct':
+                result.add((NETWORK_EXEMPLAR[0], group, target))
     return result
 
 
@@ -201,7 +248,9 @@ def dependency_records(pieces, resources):
             target = int(row['native_tile_id'], 16)
             group = int(row.get('native_exemplar_group', f'{NETWORK_EXEMPLAR[1]:08x}'), 16)
             reference = row.get('native_model_reference', 'rkt0')
-            require(reference in ('rkt0', 'rkt1'), 'Unsupported native approach model reference')
+            require(reference in ('rkt0', 'rkt1', 'direct'), 'Unsupported native approach model reference')
+            if reference == 'direct':
+                continue
             key = NETWORK_EXEMPLAR[0], group, target
             require(key not in references or references[key] == reference,
                     'Conflicting native approach model references')
@@ -243,6 +292,16 @@ def dependency_records(pieces, resources):
 
 def audit_dependencies(pieces, context, installed, paths):
     """Reject foreign overrides of native targets, including helper-only builds."""
+    direct_targets = {int(row['native_tile_id'], 16) for piece in pieces
+                      if piece.get(ORTHOGONAL_OVERLAY) for row in approaches(piece)
+                      if row.get('native_model_reference') == 'direct'}
+    # An absent exemplar is part of a direct lookup's measured identity.
+    # Reject every exemplar group for that IID without fabricating a donor
+    # dependency or changing any legacy model-reference admission behavior.
+    direct_exemplars = sorted(key for key, providers in installed.items()
+                              if providers and key[0] == NETWORK_EXEMPLAR[0] and key[2] in direct_targets)
+    require(not direct_exemplars, 'Direct native lookup must not have a network exemplar: '
+            + ', '.join(tgi_string(key) for key in direct_exemplars))
     resources = {}
     for key in dependency_keys(pieces):
         labels = [label for label in paths if key in context[label]]
@@ -284,8 +343,22 @@ def _solution_rows(raw):
 
 def _compose(raw, pieces, dependencies):
     sections = expected_solution_sections(pieces)
+    reused = _existing_solution_sections(pieces)
     require(sections and BEGIN.encode() not in raw and END.encode() not in raw,
             'Native DD RUL1 baseline is empty or already contains helper additions')
+    reuse_records = []
+    for section, table in sorted(reused.items()):
+        start, end = _section_span(raw, section)
+        actual = _solution_rows(raw[start:end])
+        ordered = [(*key, *value) for key, value in sorted(table.items())]
+        for row in ordered:
+            require([value for value in actual if value[:2] == row[:2]] == [row],
+                    'Reviewed existing native approach solution is missing, changed, or ambiguous')
+        reuse_records.append({'section': section, 'native_solutions': [list(row) for row in ordered]})
+    sections = {section: {key: value for key, value in table.items()
+                          if key not in reused.get(section, {})}
+                for section, table in sections.items()}
+    sections = {section: table for section, table in sections.items() if table}
     current, entries = raw, []
     for section, rows in sorted(sections.items()):
         start, end = _section_span(current, section)
@@ -304,7 +377,12 @@ def _compose(raw, pieces, dependencies):
         entries.append({'section': section, 'native_solutions': [list(row) for row in ordered],
                         'insertion_offset': end, 'insertion': insertion})
         current = current[:end] + insertion.encode('ascii') + current[end:]
-    if len(entries) == 1:
+    if reuse_records:
+        record = {'schema_version': 3, 'sections': entries, 'base_sha256': _sha(raw),
+                  'selected_declarations': declarations(pieces),
+                  'native_dependencies': dependencies, 'existing_native_solutions': reuse_records,
+                  'game_behavior_tested': False}
+    elif len(entries) == 1:
         item = entries[0]
         record = {'schema_version': 1, 'section': item['section'], 'base_sha256': _sha(raw),
                   'selected_declarations': declarations(pieces),
@@ -333,11 +411,12 @@ def verify_rul1(resources, pieces, overlay, donors):
     require(OVERLAY in overlay and RUL1 in resources, 'Missing native DD approach RUL1 overlay')
     record = overlay[OVERLAY]
     require(isinstance(record, dict) and type(record.get('schema_version')) is int and
-            record['schema_version'] in (1, 2),
+            record['schema_version'] in (1, 2, 3),
             'Invalid native DD approach proof')
     raw = resources[RUL1]
     edits = [record] if record['schema_version'] == 1 else record.get('sections')
-    require(isinstance(edits, list) and edits and all(isinstance(edit, dict) for edit in edits),
+    require(isinstance(edits, list) and (edits or record['schema_version'] == 3)
+            and all(isinstance(edit, dict) for edit in edits),
             'Invalid native approach section proofs')
     restored = raw
     for edit in reversed(edits):
@@ -382,11 +461,12 @@ def verify_rul1(resources, pieces, overlay, donors):
             'native_dd_rul1_solutions_checked': len(expected_solutions(pieces)),
             'native_dd_dependencies_checked': len(dependencies), 'native_rul1_bytes_preserved': True,
             'native_dd_game_behavior_tested': False}
-    if any(piece.get(GHSR_OVERLAY) for piece in pieces):
+    if any(piece.get(GHSR_OVERLAY) or piece.get(ORTHOGONAL_OVERLAY) for piece in pieces):
         sections = expected_solution_sections(pieces)
         rows = [row for item in selected for row in item['approaches']]
         dd_rows = [row for row in rows if _pair(row)[0] == SECTION]
         rail_rows = [row for row in rows if _pair(row)[0] == 'RailMonoRailIntersectionSolutions']
+        ground_rows = [row for row in rows if _pair(row)[0] == 'RoadDirtRoadIntersectionSolutions']
         result.update(native_approach_cells_checked=len(rows),
                       native_dd_approach_cells_checked=len(dd_rows),
                       native_ghsr_approach_cells_checked=len(rail_rows),
@@ -396,4 +476,9 @@ def verify_rul1(resources, pieces, overlay, donors):
                       native_ghsr_dependencies_checked=3 * len({row['native_tile_id'] for row in rail_rows}),
                       native_rul1_solutions_checked=sum(len(table) for table in sections.values()),
                       native_ghsr_rul1_solutions_checked=len(sections.get('RailMonoRailIntersectionSolutions', {})))
+        if any(piece.get(ORTHOGONAL_OVERLAY) for piece in pieces):
+            result.update(native_ground_rhw_approach_cells_checked=len(ground_rows),
+                          existing_native_rul1_solutions_reused=sum(len(table) for table in
+                              _existing_solution_sections(pieces).values()),
+                          native_ground_rhw_dependencies_checked=2 * len({row['native_tile_id'] for row in ground_rows}))
     return result

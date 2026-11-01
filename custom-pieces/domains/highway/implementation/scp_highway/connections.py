@@ -26,10 +26,14 @@ from scp.verify import parse_rules,strict_dbpf,verify_build
 CORE = 'highway_ddrhw_diagonal_avenue_crossing'
 GHSR_RECIPES = ('highway_ddrhw_diagonal_ghsr_crossing',
                 'highway_ddrhw_diagonal_ghsr_crossing_alignment_b')
+ORTHOGONAL_TRANSITION = 'highway_ddrhw_orthogonal_l0_transition'
 
 
 def connector_source_files(piece_id):
     """Bind accepted numeric measurement sources used by this piece's adapter."""
+    if piece_id == 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile':
+        from .orthogonal_transition_contracts import REFERENCE
+        return [REFERENCE] if (Path(__file__).resolve().parents[4] / REFERENCE).is_file() else []
     if piece_id in ('ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg',
                     'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b'):
         from .ghsr_crossing_verify import connector_source_files as sources
@@ -100,6 +104,9 @@ def _core_contract():
 
 def reviewed_contract(piece):
     """Return reviewed intrinsic facts, never candidate-generated ramp poses."""
+    if piece['recipe'] == ORTHOGONAL_TRANSITION:
+        from .orthogonal_transition_verify import reviewed_contract as transition_contract
+        return transition_contract(piece)
     if piece['recipe'] in GHSR_RECIPES:
         from .ghsr_crossing_verify import reviewed_contract as crossing_contract
         return crossing_contract(piece)
@@ -135,6 +142,10 @@ def reviewed_path_ports(piece):
 
 
 def _reviewed_facts(piece):
+    if piece['recipe'] == ORTHOGONAL_TRANSITION:
+        from .orthogonal_transition_contracts import load_contract
+        from .orthogonal_transition_verify import reviewed_facts
+        return load_contract(piece) or reviewed_facts(piece)
     if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
         from .parallel_b_connector_contracts import load_contracts
         from .parallel_alignment_b_verify import reviewed_facts
@@ -168,11 +179,14 @@ def validate_connection_record(piece,record):
     """
     facts = _reviewed_facts(piece)
     require(facts is not None,piece['id']+': no complete reviewed highway boundary contract')
-    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+    if (piece['recipe'].startswith('highway_ddrhw_parallel_b_')
+            or piece['recipe'] == ORTHOGONAL_TRANSITION):
         require(len(facts.get('path_hashes_by_cell', [])) == len(piece['cells'])
                 and {tuple(cell) for cell, _digest in facts['path_hashes_by_cell']}
                     == set(map(tuple, piece['cells'])),
-                'Alignment B strict extraction requires independently checked saved PATH fingerprints; run freeze_parallel_b_connectors.py after native package and assembly verification')
+                ('Alignment B strict extraction requires independently checked saved PATH fingerprints; run freeze_parallel_b_connectors.py after native package and assembly verification'
+                 if piece['recipe'].startswith('highway_ddrhw_parallel_b_') else
+                 'Orthogonal transition strict extraction requires independently checked saved PATH fingerprints; run freeze_orthogonal_transition_connectors.py after native verification'))
     require(record['subject_id'] == piece['id'] and record['subject_kind'] == 'piece',
             'Highway connector record belongs to another subject')
     actual = {p['id']:p for p in record['ports']}
@@ -216,13 +230,13 @@ def service_classifier(piece,engine_transport,height):
                 'classification_status':'Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.'}
     if engine_transport == 1:
         if abs(height) <= 2e-5:
-            variant = 'avenue-ground'
+            variant = 'rhw-4-l0' if piece['recipe'] == ORTHOGONAL_TRANSITION else 'avenue-ground'
         elif abs(height-7.5) <= 2e-5:
             variant = 'dd-rhw-l1'
         elif abs(height-15.0) <= 2e-5:
             variant = 'dd-rhw-l2'
         else:
-            variant = 'access-ramp'
+            variant = 'dd-rhw-ground-transition' if piece['recipe'] == ORTHOGONAL_TRANSITION else 'access-ramp'
         return {'service_network':'road','service_family':'road','variant':variant,'role':'primary',
                 'channel_kind':'road-lane','traffic_modes':['car'],
                 'classification_status':'Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.'}

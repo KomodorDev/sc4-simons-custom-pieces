@@ -213,6 +213,7 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertIsInstance(capabilities["highway"], frozenset)
         self.assertEqual(capabilities["highway"], {native.RECIPE, modular_stamp.RECIPE,
                                                  "highway_ddrhw_diagonal_ghsr_crossing",
+                                                 "highway_ddrhw_orthogonal_l0_transition",
                                                  "highway_ddrhw_diagonal_ghsr_crossing_alignment_b"} | {
             item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout)
             for item in provider.module_catalog()["types"]} | PARALLEL_B_RECIPES)
