@@ -42,8 +42,8 @@ def registration_tool():
     return module
 
 
-def copy_registration_inputs(target):
-    """Copy only catalogue inputs and icons; omit the new crossing entirely."""
+def copy_registration_inputs(target, identifier=IDENTIFIER):
+    """Copy catalogue inputs and icons, removing the selected crossing everywhere."""
     project = jsonc.load(ROOT / 'project.jsonc')
     selected = {'project.jsonc', project['profile'], project['allocations']}
     for domain in project['domains'].values():
@@ -53,7 +53,7 @@ def copy_registration_inputs(target):
         registry = jsonc.load(ROOT / domain['registry'])
         selected.add(str(directory / registry['collections']))
         for relative in [*registry['pieces'], *registry.get('assemblies', [])]:
-            if IDENTIFIER in Path(relative).parts:
+            if identifier in Path(relative).parts:
                 continue
             selected.add(str(directory / relative))
             icon = directory / Path(relative).parent / 'icon.png'
@@ -65,18 +65,18 @@ def copy_registration_inputs(target):
         shutil.copyfile(ROOT / relative, destination)
     ledger_path = target / project['allocations']
     ledger = jsonc.load(ledger_path)
-    ledger['pieces'].pop(IDENTIFIER)
+    ledger['pieces'].pop(identifier)
     ledger_path.write_text(jsonc.document(ledger, source=ledger_path.read_text()), encoding='utf-8')
     domain = project['domains']['highway']
     registry_path = target / domain['registry']
     registry = jsonc.load(registry_path)
     registry['pieces'] = [relative for relative in registry['pieces']
-                          if IDENTIFIER not in Path(relative).parts]
+                          if identifier not in Path(relative).parts]
     registry_path.write_text(jsonc.document(registry, source=registry_path.read_text()), encoding='utf-8')
     collections_path = target / domain['path'] / registry['collections']
     collections = jsonc.load(collections_path)
-    collections['collections'] = {key: value for key, value in collections['collections'].items()
-                                  if value != [IDENTIFIER]}
+    collections['collections'] = {key: retained for key, value in collections['collections'].items()
+                                  if (retained := [item for item in value if item != identifier])}
     collections_path.write_text(jsonc.document(collections, source=collections_path.read_text()), encoding='utf-8')
 
 

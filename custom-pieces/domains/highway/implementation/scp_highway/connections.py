@@ -23,11 +23,14 @@ from scp.subject_sources import source_path
 from scp.verify import parse_rules,strict_dbpf,verify_build
 
 CORE = 'highway_ddrhw_diagonal_avenue_crossing'
+GHSR_RECIPES = ('highway_ddrhw_diagonal_ghsr_crossing',
+                'highway_ddrhw_diagonal_ghsr_crossing_alignment_b')
 
 
 def connector_source_files(piece_id):
     """Bind accepted numeric measurement sources used by this piece's adapter."""
-    if piece_id == 'ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg':
+    if piece_id in ('ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg',
+                    'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b'):
         from .ghsr_crossing_verify import connector_source_files as sources
         return sources(piece_id)
     if piece_id.startswith('ddrhw-parallel-'):
@@ -93,7 +96,7 @@ def _core_contract():
 
 def reviewed_contract(piece):
     """Return reviewed intrinsic facts, never candidate-generated ramp poses."""
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+    if piece['recipe'] in GHSR_RECIPES:
         from .ghsr_crossing_verify import reviewed_contract as crossing_contract
         return crossing_contract(piece)
     if piece['recipe'] == CORE:
@@ -126,7 +129,7 @@ def reviewed_path_ports(piece):
 
 
 def _reviewed_facts(piece):
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+    if piece['recipe'] in GHSR_RECIPES:
         from .ghsr_crossing_verify import reviewed_facts
         return reviewed_facts(piece)
     from .connector_contracts import CONTRACTS
@@ -187,7 +190,7 @@ def validate_connection_record(piece,record):
 
 
 def service_classifier(piece,engine_transport,height):
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing' and engine_transport == 7:
+    if piece['recipe'] in GHSR_RECIPES and engine_transport == 7:
         require(abs(height - 1.) <= 2e-5, 'Reviewed crossing GHSR service must remain at 1 m')
         return {'service_network':'ghsr','service_family':'high-speed-rail','variant':'ghsr',
                 'role':'primary','channel_kind':'rail-track','traffic_modes':['monorail'],

@@ -23,6 +23,7 @@ from .adaptive_network import (RUL1, bindings as adaptive_bindings,
     resource_keys as adaptive_resource_keys, validate_active_resources, CURSOR_BASE)
 from .native_approaches import verify_rul1, approaches as native_approaches
 from . import model_shadows
+from . import piece_menu_families
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -534,6 +535,11 @@ def check_emitted_runtime_addresses(fields, piece):
 
 def check_construction(resources, pieces, manifest, donors):
     overlay = manifest['overlay']
+    plain_controller, plain_composition, family_report = piece_menu_families.verify(
+        resources[RUL0], overlay['rul0'], pieces, manifest.get(piece_menu_families.KEY))
+    if family_report is not None:
+        resources = {**resources, RUL0: plain_controller}
+        overlay = {**overlay, 'rul0': plain_composition}
     rul = overlay['rul0']
     suffix = rul['suffix'].encode('latin1')
     require(suffix and resources[RUL0].endswith(suffix), 'RUL0 appendix differs from manifest')
@@ -677,6 +683,7 @@ def check_construction(resources, pieces, manifest, donors):
     return {'original_rul0_restored': True, 'original_network_ini_restored': True,
             'separate_piece_menu_roots': len(rings), 'states_per_root': 8,
             'runtime_tile_addresses_checked': sum(len(piece['tile_ids']) for piece in pieces),
+            **({piece_menu_families.KEY: family_report} if family_report is not None else {}),
             **ordering_report, **verify_rul1(resources, pieces, overlay, donors)}
 
 
@@ -765,6 +772,7 @@ def verify_build(output, write_report=True):
             resources.update(parsed); owners.update({key: item['path'] for key in parsed}); by_file[item['path']] = parsed
     donors, donor_report = load_local_donors(output, manifest)
     construction = check_construction(resources, pieces, manifest, donors)
+    hidden_menus = piece_menu_families.hidden_members(pieces)
     base_menu = donors.get((*MENU_EXEMPLAR, 0x6A47C200), menu_baseline())
     expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if any(
         adaptive_bindings(piece) or native_approaches(piece) for piece in pieces) else set())
@@ -813,13 +821,17 @@ def verify_build(output, write_report=True):
                 'Piece asset DAT contains missing, unexpected, or another piece resources')
         expected_resources.update(asset_keys)
         menu_id = number(piece['menu']['id'])
-        expected_resources.update({(*prefix, menu_id) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)})
+        if piece['id'] not in hidden_menus:
+            expected_resources.update({(*prefix, menu_id) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)})
         if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
             from .providers import domain_module
             piece_menu_donor = domain_module(piece, 'menu').verification_donor(donors)
         else:
             piece_menu_donor = base_menu
-        menu_report = validate_menu_resources(resources, piece_menu_donor, piece)
+        menu_report = ({'presentation': 'hidden-alternative-family-member',
+                        'family_anchor': piece['menu']['family_anchor'], 'in_game_menu_tested': False}
+                       if piece['id'] in hidden_menus else
+                       validate_menu_resources(resources, piece_menu_donor, piece))
         try:
             paths_report = check_piece_paths(resources, piece)
             model_resources = by_file[piece['asset_file']] if piece.get('domain') == 'highway' else resources
@@ -890,6 +902,7 @@ def verify_build(output, write_report=True):
             and set(by_file[owners[RUL0]]) == expected_controller,
             'Shared controller DAT must contain exactly its declared RUL0, NetworkINI, and optional RUL1 overlays')
     menu_keys = {(*prefix, number(piece['menu']['id'])) for piece in pieces
+                 if piece['id'] not in hidden_menus
                  for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
     require(set(by_file[f'{folder}/10_SCP_Menu.dat']) == menu_keys and
             owners[RUL0] == f'{folder}/00_SCP_Controller_NAM50.dat',

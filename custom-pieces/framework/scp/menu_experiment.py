@@ -21,6 +21,7 @@ import tempfile
 from .catalog import load_catalog, number, safe_relative
 from .dbpf import exemplar, pack_dbpf, require, tgi_string
 from .menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
+from .piece_menu_families import hidden_members
 
 
 KIND = 'assembly-parts-cycle-and-submenu-v1'
@@ -157,10 +158,14 @@ def _selected(base, scene):
 
 def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expected_cycle_icon=None):
     from .build import RUL0, NETWORK_INI
-    from .rul0 import with_feature_sequence
+    from .piece_menu_families import with_feature_sequence_preserving_families as with_feature_sequence
     from .menu_experiment_resources import build_menu_experiment_resources
     from .verify import strict_dbpf
     pieces = _selected(base, scene)
+    from .piece_menu_families import declarations
+    alternatives = {piece['id'] for family in declarations(base['pieces']) for piece in family}
+    require(not alternatives.intersection(piece['id'] for piece in pieces),
+            'An assembly cannot consume a member of an active alternative-piece menu family')
     resources = strict_dbpf(controller)
     from .adaptive_network import RUL1
     from .native_approaches import needs_rul1
@@ -299,6 +304,10 @@ def _expected_manifest(base, layout, scene, proof, controller, menu, composition
 
 def _check_actual_resources(base_controller, base_menu, controller, menu, base, layout, pieces):
     """Inspect actual encoded facts independently of the generation functions."""
+    from .piece_menu_families import declarations
+    alternatives = {piece['id'] for family in declarations(base['pieces']) for piece in family}
+    require(not alternatives.intersection(piece['id'] for piece in pieces),
+            'An assembly cannot consume a member of an active alternative-piece menu family')
     from .build import RUL0, NETWORK_INI
     from .rul0 import ordering_span, _ring
     from .verify import strict_dbpf
@@ -462,8 +471,8 @@ def verify_menu_experiment(output, write_report=True):
         'source_build_verified': True, 'all_piece_assets_preserved': True, 'piece_types_preserved': len(base['pieces']),
         'component_types_in_cycle': len(pieces), 'individual_submenu_buttons': len(pieces) if legacy else 0,
         'new_presentation_resources': 8 if legacy else 4, 'network_ini_preserved': True, 'construction_definitions_preserved': True,
-        'custom_type_families': len(base['pieces']) - len(pieces) + 1,
-        'grouped_type_rows': len(pieces), 'add_types_rows': len(pieces) - 1,
+        'custom_type_families': len(base['pieces']) - len(pieces) + 1 - len(hidden_members(base['pieces'])),
+        'grouped_type_rows': len(pieces), 'add_types_rows': len(pieces) - 1 + len(hidden_members(base['pieces'])),
         'shared_tab_family': True, 'alias_activation_and_visibility': 'unverified',
         'pending_game_cases': len(_game_checks(pieces, single_button=not legacy)['cases'])},
         'in_game_menu_tested': False,
@@ -471,7 +480,7 @@ def verify_menu_experiment(output, write_report=True):
             if legacy else 'Strict source-build validation and exact single-button menu/controller transformation; actual menu activation, Tab behavior, and game operation remain unverified.')}
     if not legacy:
         report['menu_experiment'].update(assembly_menu_buttons=1, member_buttons_hidden=len(pieces),
-                                         unrelated_piece_buttons_preserved=len(base['pieces']) - len(pieces),
+                                         unrelated_piece_buttons_preserved=len(base['pieces']) - len(pieces) - len(hidden_members(base['pieces'])),
                                          removed_member_presentation_resources=4 * len(pieces),
                                          submenus_dll_required=False)
     if write_report:

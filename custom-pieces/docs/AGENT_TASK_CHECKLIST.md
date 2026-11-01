@@ -92,6 +92,7 @@ Apply the [piece workflow](WORKFLOW_PIECE_CREATION.md) or [assembly workflow](WO
 - [ ] B09 — For assembly design or substantial revision, review atomization into independently useful modules; justify retained coordinated blocks, compare distinct types, placements, owned cells, overhangs, and support reservations, and preserve any required drawing and cut decisions through [the atomization workflow](WORKFLOW_ASSEMBLY_CREATION.md#16-atomize-to-the-smallest-useful-reusable-module).
 - [ ] B10 — Establish future usefulness for each proposed reusable type with concrete alternate uses, existing candidates, or explicitly missing adapters; explain its independent function and benefit beyond one placement label under [the reuse procedure](WORKFLOW_ASSEMBLY_CREATION.md#162-check-expandability-and-future-reuse).
 - [ ] B11 — Define the assembly's intended extension or replacement points, complete required interfaces, source-backed geometry standards, construction method, and usable surrounding space; separate verified options, conditional proposals, and unknowns without expanding the authorized design.
+- [ ] B12 — For diagonal crossings, measure the required grid alignments separately from rotation; compare both adjacent ground-line positions while preserving the existing upper network's axis, deck directions, and native half sequence under [the alignment procedure](WORKFLOW_PIECE_CREATION.md#56-cover-diagonal-grid-alignments).
 
 ## 4. Implementation and source data
 
@@ -120,6 +121,7 @@ Use [framework engineering](FRAMEWORK_ENGINEERING.md), the owning `NETWORK_SPEC.
 - [ ] D09 — Check the whole assembly's ownership, physical seams, supports, and end-to-end journeys after checking its members; individual piece passes cannot close this item.
 - [ ] D10 — Compare affected and protected saved resources against the baseline; establish the claimed change and preservation scope from their actual bytes or measured geometry.
 - [ ] D11 — For an implemented or claimed compatible extension or rearrangement, independently check the selected placed example's complete boundaries, traffic permissions, geometry, ownership, supports, keep-clear space, and construction in its claimed poses; preserve the base assembly's required journeys and restrictions, and keep hypothetical uses unverified.
+- [ ] D12 — Verify every required diagonal grid alignment in all four proper rotations, including models, active PATHs, tile cuts, owned cells, construction flags, native helpers, previews, shadows, and adaptive ground where present; prove the original alignment's claimed preservation scope. Repeated rotation states do not supply a missing alignment.
 
 ## 6. Documentation, artwork, and generated outputs
 
@@ -148,6 +150,7 @@ Follow [documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md), includi
 - [ ] F07 — Verify that every claimed result still matches the final source, resource bytes, artwork, pose, environment, and scope relevant to that claim; reopen stale rows.
 - [ ] F08 — Separate software results, image inspection, Route Query, actual moving traffic, placement, and save/reload observations; record only the evidence actually obtained.
 - [ ] F09 — For game retests, keep the reported configuration in the first comparison, test required directions/levels/rotations, and distinguish existing placements from fresh controls under the [update-placement policy](BUILD_AND_INSTALL.md#71-decide-whether-an-update-needs-fresh-placement).
+- [ ] F10 — For diagonal crossings, retain separate pending game cases for both adjacent grid alignments on prebuilt native approaches and for supported dragging outward; require actual moving traffic through every level and service, with alignment, rotation, construction order, Route Query, and visible travel recorded separately.
 
 ## 8. Packaging, installation, and publication
 

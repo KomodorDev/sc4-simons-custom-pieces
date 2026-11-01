@@ -37,7 +37,15 @@ A **tile** is one 16 × 16 m city square. The crossing owns two tiles in a **1 �
 
 The two fixed tiles must have one owner. The four approach tiles are separate native connection points and must not be covered by another fixed custom piece. Leave additional room outside this rectangle for the lines you will drag. The construction uses fixed heights, so begin on flat ground.
 
-### 2.2 Place a fresh crossing, and extend both networks
+### 2.2 Choose the matching diagonal alignment
+
+This original crossing is **Alignment A**. The [Alignment B crossing](../ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/README.md) fits the next adjacent diagonal railway position against the same directed DD highway. The two spatial alignments are different from rotating one piece. In a combined A/B build, the existing crossing button starts on A; press **Tab** for B, or **Shift+Tab** to return, and read **Alignment B** at the end of B's placement query. **Home** and **End** rotate the selected alignment. Use one matching variant for each crossing. Existing A placements retain their geometry and game identifiers.
+
+A uses the 1 × 2 core and 3 × 2 approach arrangement above; B uses a 2 × 1 core and a 2 × 3 approach arrangement. Keep the highway line and upper/lower travel directions fixed while choosing the variant that meets the railway. The [network specification](../../NETWORK_SPEC.md#155-two-diagonal-grid-alignments) explains why one alignment cannot cover every adjacent diagonal railway position.
+
+<a id="22-place-a-fresh-crossing-and-extend-both-networks"></a>
+
+### 2.3 Place a fresh crossing, and extend both networks
 
 1. Install a checked build containing this exact piece, and start SimCity 4 after installation. The [build and installation guide](../../../../docs/BUILD_AND_INSTALL.md) explains the separate build and installation steps. Use a disposable test city for the first placement.
 2. Prepare flat, empty land covering the six squares in the table and several extra squares beyond each approach. Keep the camera north-up while matching the reference arrangement.

@@ -102,14 +102,18 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
-    if spec['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
-        from .ghsr_crossing import build_channels, core_construction_data
+    if spec['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
+                          'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
+        from .ghsr_crossing import (build_channels, core_construction_data,
+                                    build_alignment_b_channels, alignment_b_core_construction_data)
         from .ghsr_approaches import add_approaches, check_native_continuation
         from .model_shadows import add_shadows
         check_native_continuation(context['controller'])
-        compiled = build_channels(context)
+        alignment_b = spec['recipe'].endswith('_alignment_b')
+        compiled = (build_alignment_b_channels if alignment_b else build_channels)(context)
         assets = finish_piece(spec, context, compiled)
-        rows, checks, cons = add_approaches(spec, *core_construction_data())
+        core_data = (alignment_b_core_construction_data if alignment_b else core_construction_data)()
+        rows, checks, cons = add_approaches(spec, *core_data)
         return add_shadows(spec, context, compiled, assets), construction(spec, rows, checks, cons)
     if spec['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_modules import build_piece as build_parallel

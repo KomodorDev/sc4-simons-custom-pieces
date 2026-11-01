@@ -13,6 +13,8 @@ from scp.dbpf import require
 
 PIECE_ID = 'ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg'
 RECIPE = 'highway_ddrhw_diagonal_ghsr_crossing'
+ALIGNMENT_B_PIECE_ID = 'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b'
+ALIGNMENT_B_RECIPE = 'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'
 OPT_IN = 'native_ghsr_approaches'
 NATIVE_RUL1_SHA256 = '4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998'
 NATIVE_RUL2_SHA256 = 'c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1'
@@ -57,9 +59,12 @@ def approaches(piece):
     require(type(piece[OPT_IN]) is bool, OPT_IN + ' must be an exact boolean')
     if not piece[OPT_IN]:
         return []
-    require(piece.get('id') == PIECE_ID and piece.get('recipe') == RECIPE
+    alignment_b = piece.get('id') == ALIGNMENT_B_PIECE_ID and piece.get('recipe') == ALIGNMENT_B_RECIPE
+    require(((piece.get('id') == PIECE_ID and piece.get('recipe') == RECIPE) or alignment_b)
             and piece.get('domain') == 'highway', 'Unreviewed native DD/GHSR approach owner')
-    require(piece.get('footprint') == [1, 2] and piece.get('cells') == [[0, 0], [0, 1]],
+    expected_cells = [[0, 0], [1, 0]] if alignment_b else [[0, 0], [0, 1]]
+    expected_footprint = [2, 1] if alignment_b else [1, 2]
+    require(piece.get('footprint') == expected_footprint and piece.get('cells') == expected_cells,
             'Native DD/GHSR approaches require the reviewed two-cell crossing')
     require(not piece.get('native_dd_approaches'), 'DD/GHSR helpers must not duplicate legacy DD helpers')
     tiles = piece.get('tile_ids', [])
@@ -77,9 +82,20 @@ def approaches(piece):
         ((1, 1), 1, 2, 0x5DC01A00, 3, GHSR_SECTION,
          'rail', 0x00000101, 'monorail', 0x01000003, 0xEBE084C2, 'rkt1'),
     )
+    if alignment_b:
+        bindings = (
+            ((0, 1), 0, 3, 0x57530900, 2, DD_SECTION,
+             'monorail', 0x04000100, 'dirtroad', 0x00000301, 0x6BE08658, 'rkt0'),
+            ((1, -1), 1, 1, 0x57530200, 0, DD_SECTION,
+             'monorail', 0x04000100, 'dirtroad', 0x03010000, 0x6BE08658, 'rkt0'),
+            ((0, -1), 0, 1, 0x5DC01A00, 3, GHSR_SECTION,
+             'rail', 0x00000101, 'monorail', 0x01000003, 0xEBE084C2, 'rkt1'),
+            ((1, 1), 1, 3, 0x5DC01A00, 1, GHSR_SECTION,
+             'rail', 0x01010000, 'monorail', 0x00030100, 0xEBE084C2, 'rkt1'),
+        )
     result = []
     for cell, end, edge, target, pose, section, first, a, second, b, group, reference in bindings:
-        result.append({'cell': list(cell), 'end_cell': [0, end], 'end_tile_id': tiles[end].lower(),
+        result.append({'cell': list(cell), 'end_cell': expected_cells[end], 'end_tile_id': tiles[end].lower(),
                        'outward_edge': edge, 'native_tile_id': f'{target:08x}', 'native_rotation': pose,
                        'section': section, 'networks': [{'name': first, 'flags': f'{a:08x}'},
                                                       {'name': second, 'flags': f'{b:08x}'}],
@@ -101,18 +117,26 @@ def rul1_sections(piece):
 
 
 def add_approaches(piece, layout, checks, constraints):
-    """Pad one column on each side; preserve the modeled origin and both IDs."""
+    """Pad only the helper side; preserve the modeled origin and both IDs."""
     declared = approaches(piece)
     if not declared:
         return list(layout), list(checks), list(constraints)
-    require(list(layout) == ['a.<', 'b..', '^..'] and list(constraints) == ['+.<', '+..', '^..'],
+    alignment_b = piece.get('id') == ALIGNMENT_B_PIECE_ID
+    expected_layout = ['ab<', '...', '^..'] if alignment_b else ['a.<', 'b..', '^..']
+    expected_constraints = ['++<', '...', '^..'] if alignment_b else ['+.<', '+..', '^..']
+    require(list(layout) == expected_layout and list(constraints) == expected_constraints,
             'DD/GHSR helpers require the exact two-cell construction grid')
-    rows, cons = [list('.' + row) for row in layout], [list('.' + row) for row in constraints]
+    if alignment_b:
+        rows = [list('...'), *map(list, layout)]
+        cons = [list('...'), *map(list, constraints)]
+    else:
+        rows, cons = [list('.' + row) for row in layout], [list('.' + row) for row in constraints]
     palette, used = list(checks), {char for row in rows for char in row if char.isalpha()}
     for row in declared:
         symbol = next(char for char in 'hijk' if char not in used)
         used.add(symbol)
-        x, y = row['cell'][0] + 1, row['cell'][1]
+        x, y = ((row['cell'][0], row['cell'][1] + 1) if alignment_b
+                else (row['cell'][0] + 1, row['cell'][1]))
         require(rows[y][x] == cons[y][x] == '.', 'A native helper collides with an owned construction cell')
         rows[y][x] = symbol
         flags = ' '.join(f"{item['name']}: 0x{item['flags'].upper()}" for item in row['networks'])

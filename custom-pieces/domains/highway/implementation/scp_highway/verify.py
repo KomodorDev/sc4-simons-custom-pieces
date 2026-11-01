@@ -130,7 +130,8 @@ def _journeys(parsed, cells, angle):
 
 
 def check_paths(resources, piece):
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+    if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
+                           'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_paths as check_crossing
         return check_crossing(resources, piece)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):
@@ -160,7 +161,8 @@ def check_paths(resources, piece):
 
 
 def check_models(resources, piece, donors):
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+    if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
+                           'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_models as check_crossing
         return check_crossing(resources, piece, donors)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):
@@ -210,7 +212,8 @@ def check_models(resources, piece, donors):
 
 
 def check_construction_fields(fields, piece, resources):
-    if piece['recipe'] == 'highway_ddrhw_diagonal_ghsr_crossing':
+    if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
+                           'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_construction_fields as check_crossing
         return check_crossing(piece, fields)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):

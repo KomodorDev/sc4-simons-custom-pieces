@@ -19,6 +19,7 @@ from .rul0 import MARKER, compose_rul0
 from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
 from . import native_approaches
 from . import model_shadows
+from . import piece_menu_families
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -155,6 +156,7 @@ def _prepare_output(output, project_root, roots):
 def build_project(project_root, plugins, output, include=None, extra_roots=None, progress=None):
     catalog = load_catalog(project_root); selected = select_pieces(catalog, include)
     require(selected, 'No pieces selected')
+    piece_menu_families.declarations(selected, available=catalog['pieces'])
     if progress:
         progress({'phase':'audit','pieces':len(selected)})
     context, installed, donor_audit, roots = audit_inputs(catalog, plugins, selected, extra_roots)
@@ -205,6 +207,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         records.append(record)
     require(not (set(all_resources) & set(installed)), 'Allocated resource identifiers collide with installed content')
     rul0, rul0_delta = compose_rul0(baseline[RUL0], rules)
+    rul0, rul0_delta, menu_resources, menu_families = piece_menu_families.apply(
+        rul0, rul0_delta, menu_resources, selected, available=catalog['pieces'])
     shadow_lines = []
     for piece in selected:
         for mapping in piece['shadow_mappings']:
@@ -286,6 +290,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
             manifest['overlay']['rul1'] = rul1_delta
         if native_approach_delta is not None:
             manifest['overlay'][native_approaches.OVERLAY] = native_approach_delta
+        if menu_families is not None:
+            manifest[piece_menu_families.KEY] = menu_families
         from .release import assess_build
         manifest['release'] = assess_build(Path(project_root), manifest)
         write_json(stage / 'manifest.json', manifest)
@@ -306,7 +312,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         if old is not None:
             shutil.rmtree(old)
         return {'output': str(output), 'pieces': [x['id'] for x in selected],
-                'separate_menu_buttons': len(selected), 'static_checks_passed': report['static_checks_passed'],
+                'separate_menu_buttons': len(selected) - len(piece_menu_families.hidden_members(selected)),
+                'static_checks_passed': report['static_checks_passed'],
                 'installed': False, 'public_release_ready': manifest['release']['public_release_ready']}
     finally:
         if stage.exists():

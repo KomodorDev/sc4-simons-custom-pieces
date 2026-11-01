@@ -15,6 +15,7 @@ import tempfile
 from .catalog import number, safe_relative
 from .dbpf import exemplar, pack_dbpf, require
 from .menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
+from .piece_menu_families import hidden_members
 from . import menu_experiment as single
 
 KIND = 'assembly-disjoint-button-cycles-v1'
@@ -62,7 +63,7 @@ def _groups(base, bundle):
 def _transform(base, controller, menu, bundle, icons):
     from .build import RUL0, NETWORK_INI
     from .adaptive_network import RUL1
-    from .rul0 import with_feature_sequence
+    from .piece_menu_families import with_feature_sequence_preserving_families as with_feature_sequence
     from .verify import strict_dbpf
     from .menu_experiment_resources import build_menu_experiment_resources
     groups = _groups(base, bundle)
@@ -293,8 +294,10 @@ def verify(output, write_report=True):
         'menu_experiment': {'kind': KIND, 'assembly_menu_buttons': len(groups), 'member_buttons_hidden': count,
             'piece_types_preserved': len(base['pieces']), 'all_piece_assets_preserved': True,
             'new_presentation_resources': 4 * len(groups), 'removed_member_presentation_resources': 4 * count,
-            'custom_type_families': len(base['pieces']) - count + len(groups), 'add_types_rows': count - len(groups),
-            'unrelated_piece_buttons_preserved': len(base['pieces']) - count, 'submenus_dll_required': False,
+            'custom_type_families': len(base['pieces']) - count + len(groups) - len(hidden_members(base['pieces'])),
+            'add_types_rows': count - len(groups) + len(hidden_members(base['pieces'])),
+            'unrelated_piece_buttons_preserved': len(base['pieces']) - count - len(hidden_members(base['pieces'])),
+            'submenus_dll_required': False,
             'construction_definitions_preserved': True, 'network_ini_preserved': True,
             'assemblies': manifest['menu_experiment']['assemblies']},
         'in_game_menu_tested': False,

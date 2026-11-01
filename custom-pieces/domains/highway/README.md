@@ -19,7 +19,7 @@ The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground d
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 41 menu types](00_pieces/INVENTORY.md).
+- [Individual pieces: 42 menu types](00_pieces/INVENTORY.md).
 - [Assembly blueprints: 3 designs](01_assemblies/INVENTORY.md).
 
 <details>
@@ -32,6 +32,8 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `ddrhw-modular-ramp-kit`: 13 piece types.
 - `ddrhw-parallel-diamond`: 15 piece types.
 - `ddrhw-diagonal-ghsr-crossing`: 1 piece types.
+- `ddrhw-diagonal-ghsr-crossing-alignment-b`: 1 piece types.
+- `ddrhw-diagonal-ghsr-crossing-alignments`: 2 piece types.
 
 </details>
 

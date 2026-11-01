@@ -130,6 +130,8 @@ The fifth PATH header line is `UseElevation`; this crossing explicitly writes `1
 
 ## 4. Game checks
 
+This original crossing is Alignment A. Also follow the [paired A/B alignment procedure](../ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/TESTING.md#41-test-both-adjacent-railway-positions) against the same directed DD highway. Alignment B fits the next adjacent diagonal railway position; rotations of A alone do not prove both positions. Record each variant against its own observation cases.
+
 ### 4.1 Crossing first, then draggable approaches
 
 1. Follow [README placement](README.md#22-place-a-fresh-crossing-and-extend-both-networks) on empty flat land. Place a fresh 0° crossing, and leave all four approach squares available. Record whether placement succeeds and whether the two fixed tiles and four native approaches match the reference table.
@@ -245,65 +247,6 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast | <a href="#case-preview_review-91a46f707ca45c1febca">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top | <a href="#case-preview_review-e762595d65419106b3cc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview | <a href="#case-preview_review-ec3d14e5b6f5c6cc8104">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast</summary>
-
-<a id="case-preview_review-91a46f707ca45c1febca"></a>
-
-**General: unverified** — `preview_review-91a46f707ca45c1febca`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top</summary>
-
-<a id="case-preview_review-e762595d65419106b3cc"></a>
-
-**General: unverified** — `preview_review-e762595d65419106b3cc`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview</summary>
-
-<a id="case-preview_review-ec3d14e5b6f5c6cc8104"></a>
-
-**General: unverified** — `preview_review-ec3d14e5b6f5c6cc8104`.
-
-Inspect this exact preview for tracks, walls, piers, seams, and shadows.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview.
 
 No observation recorded.
 
@@ -2562,6 +2505,65 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: ghsr-track-02-in; to port: ghsr-track-01-out; from service: ghsr; to service: ghsr; basis: not reachable in actual saved PATH graph.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast | <a href="#case-preview_review-91a46f707ca45c1febca">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top | <a href="#case-preview_review-e762595d65419106b3cc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview | <a href="#case-preview_review-ec3d14e5b6f5c6cc8104">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast</summary>
+
+<a id="case-preview_review-91a46f707ca45c1febca"></a>
+
+**General: unverified** — `preview_review-91a46f707ca45c1febca`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top</summary>
+
+<a id="case-preview_review-e762595d65419106b3cc"></a>
+
+**General: unverified** — `preview_review-e762595d65419106b3cc`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview</summary>
+
+<a id="case-preview_review-ec3d14e5b6f5c6cc8104"></a>
+
+**General: unverified** — `preview_review-ec3d14e5b6f5c6cc8104`.
+
+Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview.
 
 No observation recorded.
 
