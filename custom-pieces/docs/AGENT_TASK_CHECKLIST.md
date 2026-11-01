@@ -38,6 +38,7 @@ Replace the following fields in the working copy. An **acceptance condition** is
 | Preserved constraints | Accepted geometry, IDs, observations, artifacts, and user preferences. |
 | Assembly modularity goals, when applicable | Useful module boundaries, extension points, intended future uses, and the evidence needed for each compatibility claim. |
 | Existing authorization | Actions already authorized; any action whose authorization is genuinely missing. |
+| Alignment order and approval, when applicable | First alignment, exact review candidate, agreed delivery stage, matching user acceptance reference or `WAITING`, and deferred other alignment. |
 | Required delivery stage | Analysis, source change, verified build, installed candidate, game-tested result, or publication. |
 | Working record and evidence locations | Task plan/checklist location and actual reports; keep private paths private. |
 | Dependencies and pending decisions | Required input, responsible actor, next action, and the work that can proceed independently. |
@@ -76,6 +77,7 @@ Update the checklist at stage boundaries, after delegated work returns, and befo
 - [ ] A07 — Reuse existing user authorization and available context; identify genuinely missing decisions without asking again for authorized routine work.
 - [ ] A08 — Separate source work, building, installation, publication, external messages, and human-only merging; add only the stages requested or implied by the task.
 - [ ] A09 — Give parallel contributors clear source ownership, dependencies, expected evidence, and an integration point; plan to review the combined result.
+- [ ] A10 — When two alignment variants are needed, record [Alignment A first unless the user requests another order](WORKFLOW_PIECE_CREATION.md#alignment-production-order), the exact first candidate and agreed delivery stage, and the user's matching acceptance reference before producing the other alignment. Reuse existing matching acceptance; a general request for both variants, software checks, previews, and agent reviews do not supply it. Keep the other alignment `WAITING` until acceptance, including in delegated work.
 
 ## 3. Investigation and design
 
@@ -92,7 +94,7 @@ Apply the [piece workflow](WORKFLOW_PIECE_CREATION.md) or [assembly workflow](WO
 - [ ] B09 — For assembly design or substantial revision, review atomization into independently useful modules; justify retained coordinated blocks, compare distinct types, placements, owned cells, overhangs, and support reservations, and preserve any required drawing and cut decisions through [the atomization workflow](WORKFLOW_ASSEMBLY_CREATION.md#16-atomize-to-the-smallest-useful-reusable-module).
 - [ ] B10 — Establish future usefulness for each proposed reusable type with concrete alternate uses, existing candidates, or explicitly missing adapters; explain its independent function and benefit beyond one placement label under [the reuse procedure](WORKFLOW_ASSEMBLY_CREATION.md#162-check-expandability-and-future-reuse).
 - [ ] B11 — Define the assembly's intended extension or replacement points, complete required interfaces, source-backed geometry standards, construction method, and usable surrounding space; separate verified options, conditional proposals, and unknowns without expanding the authorized design.
-- [ ] B12 — For diagonal crossings, measure the required grid alignments separately from rotation; compare both adjacent ground-line positions while preserving the existing upper network's axis, deck directions, and native half sequence under [the alignment procedure](WORKFLOW_PIECE_CREATION.md#56-cover-diagonal-grid-alignments).
+- [ ] B12 — For diagonal crossings, measure the required grid alignments separately from rotation; compare both adjacent ground-line positions while preserving the existing upper network's axis, deck directions, and native half sequence under [the alignment procedure](WORKFLOW_PIECE_CREATION.md#56-cover-diagonal-grid-alignments). Record the staged production order under A10; measuring both positions does not authorize producing the second alignment before user acceptance of the first.
 
 ## 4. Implementation and source data
 
@@ -121,7 +123,7 @@ Use [framework engineering](FRAMEWORK_ENGINEERING.md), the owning `NETWORK_SPEC.
 - [ ] D09 — Check the whole assembly's ownership, physical seams, supports, and end-to-end journeys after checking its members; individual piece passes cannot close this item.
 - [ ] D10 — Compare affected and protected saved resources against the baseline; establish the claimed change and preservation scope from their actual bytes or measured geometry.
 - [ ] D11 — For an implemented or claimed compatible extension or rearrangement, independently check the selected placed example's complete boundaries, traffic permissions, geometry, ownership, supports, keep-clear space, and construction in its claimed poses; preserve the base assembly's required journeys and restrictions, and keep hypothetical uses unverified.
-- [ ] D12 — Verify every required diagonal grid alignment in all four proper rotations, including models, active PATHs, tile cuts, owned cells, construction flags, native helpers, previews, shadows, and adaptive ground where present; prove the original alignment's claimed preservation scope. Repeated rotation states do not supply a missing alignment.
+- [ ] D12 — Verify each currently authorized diagonal grid alignment in all four proper rotations, including models, active PATHs, tile cuts, owned cells, construction flags, native helpers, previews, shadows, and adaptive ground where present; prove the original alignment's claimed preservation scope. Keep the other alignment's verification deferred until A10's user acceptance is recorded and that variant is produced, then compare both implemented phases. Repeated rotation states do not supply a missing alignment.
 
 ## 6. Documentation, artwork, and generated outputs
 
@@ -150,7 +152,7 @@ Follow [documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md), includi
 - [ ] F07 — Verify that every claimed result still matches the final source, resource bytes, artwork, pose, environment, and scope relevant to that claim; reopen stale rows.
 - [ ] F08 — Separate software results, image inspection, Route Query, actual moving traffic, placement, and save/reload observations; record only the evidence actually obtained.
 - [ ] F09 — For game retests, keep the reported configuration in the first comparison, test required directions/levels/rotations, and distinguish existing placements from fresh controls under the [update-placement policy](BUILD_AND_INSTALL.md#71-decide-whether-an-update-needs-fresh-placement).
-- [ ] F10 — For diagonal crossings, retain separate pending game cases for both adjacent grid alignments on prebuilt native approaches and for supported dragging outward; require actual moving traffic through every level and service, with alignment, rotation, construction order, Route Query, and visible travel recorded separately.
+- [ ] F10 — For diagonal crossings, plan separate game cases for both adjacent grid alignments on prebuilt native approaches and for supported dragging outward, and execute only the currently authorized alignment's cases. Keep the other alignment's cases `WAITING` until A10's acceptance gate is met and that variant is produced; do not mark them `N/A` or passed. Require actual moving traffic through every level and service, with alignment, rotation, construction order, Route Query, and visible travel recorded separately. Candidate acceptance does not supply game observations.
 
 ## 8. Packaging, installation, and publication
 
@@ -197,3 +199,5 @@ Re-read the user's current request and the adapted checklist immediately before 
 | Final audit | Who reviewed the checklist, when, and where its current working copy is retained. |
 
 An incomplete handoff is a truthful exception report, not task completion. Use it only when remaining work actually depends on external input, human game observations, or an action outside current authorization; finish all independent authorized work first. For example, an installed experimental candidate can be ready for the user's traffic test while its game checks remain open. State that stage explicitly, retain those open items for continuation, and never relabel them `N/A` or infer a game pass to satisfy the gate. This template adds no new approval requirement for actions the user has already authorized.
+
+For the user-required [staged alignment gate](WORKFLOW_PIECE_CREATION.md#alignment-production-order), distinguish a completed first-alignment review candidate from completion of the full two-alignment family. Record the first candidate's finished stage and the other alignment's `WAITING` dependency on explicit user acceptance in the gate table. Do not claim the family is complete or produce the deferred alignment to close its rows. Reuse matching acceptance already recorded under A10, and preserve independent pending game checks.

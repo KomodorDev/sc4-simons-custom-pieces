@@ -34,13 +34,15 @@ Agents must adapt the [task execution checklist](AGENT_TASK_CHECKLIST.md) to tha
 
 A documentation reorganization alone does not authorize changing models, PATH traffic routes, construction cells, identifiers, saved placements, or human observations. Preserve original backups, imported documentation, and frozen evidence; update maintained source and current generated views.
 
+When creating two alignment variants, follow the [staged production rule](WORKFLOW_PIECE_CREATION.md#alignment-production-order): finish Alignment A's applicable checks, renders, and documentation first unless the user explicitly requests another order, present that exact candidate, and wait for the user's acceptance before producing the other alignment. Scope generation and parallel contributors to the current alignment; do not create the deferred variant's artwork or package in advance. State the deferred alignment and approval dependency in the current handoff, without presenting it as implemented, passed, or unnecessary. Preserve existing accepted resources and historical evidence.
+
 <a id="prepare-the-inputs-and-open-the-project"></a>
 
 ## 2. Prepare the inputs and open the project
 
 1. Identify the owning piece’s README, TESTING document where split, and its registered `piece.jsonc` or retained `piece.json`, or the assembly README, TESTING document, and machine-readable placement plan. Read the domain's network specification for actual transport facts. A layout plan must retain exact piece IDs, instance IDs, poses, owned cells, and the current compiled source fingerprints.
 2. For image, card, export, or actual-resource generation, confirm the intended build has passed its relevant independent saved-resource checks. A prose-only refresh reuses the existing portable records and does not need a compiled build. A **DAT** is the game's resource archive, **S3D** contains model triangles, **FSH** contains texture images, and **PATH** describes traffic routes. A missing built piece remains pending; an older or similar-looking model is not its replacement.
-3. Finish concurrent geometry work and the integrated checks before starting the final render pass. Render the accepted current result, rather than several competing intermediate copies.
+3. Finish concurrent geometry work and the integrated checks for the currently authorized alignment before starting its final render pass. Render the current checked candidate for user review. When two variants are needed, keep the other alignment deferred under the [production and acceptance sequence](WORKFLOW_PIECE_CREATION.md#alignment-production-order).
 4. Open a terminal. On macOS, press **Command + Space**, type **Terminal**, and press **Return**. A **checkout** is your local copy of the repository, and its **root** is the folder containing `custom-pieces/` and the repository README. Replace `/path/to/sc4-simons-custom-pieces` below with your checkout's full path, keep the quotation marks so spaces work, and press **Return** to select that root directory.
 
 ```sh

@@ -68,6 +68,7 @@ Write a short brief before creating detailed geometry:
 3. State which crossings must be separated vertically. Identify intended merges and splits, where routes are allowed to meet at the same height.
 4. Record the external connection heights, interface widths, and native network ends for each service. Name any intermediate custom height explicitly.
 5. Record the desired footprint, straight/diagonal orientation, symmetry, terrain assumptions, and modular placement method. Distinguish requirements from preferences and unresolved questions. Plan a dedicated rebuilding guide rather than an unimplemented complete-interchange button.
+6. Identify required grid-alignment variants and record their production order under the [staged alignment rule](WORKFLOW_PIECE_CREATION.md#alignment-production-order): Alignment A first unless the user explicitly requests another order, then user acceptance of that exact first candidate before producing the other. Measure both positions during investigation, and keep the second alignment deferred in the task checklist until that acceptance is recorded.
 
 Then present an editable in-chat chart using the available visualization tools. Show north, the city grid, labelled arms, direction arrows, a consistent colour per movement, and height labels wherever lines cross or change level. Include a legend and an explicit **schematic** label. Until dimensions are checked, state that sizes and radii are provisional.
 
@@ -84,6 +85,8 @@ Use the user's comments to revise the chart. Resolve the arrangement of loops, b
 Keep the movement colours, arm names, and coordinate origin stable between iterations. Explain what changed and why. If a requested shape conflicts with a height transition or matching network end, show the specific conflict and a small alternative.
 
 Once the intended shape is clear, carry out routine implementation decisions without repeatedly asking for confirmation. Return to this layout discussion when feasibility requires a material change to the agreed shape or movements.
+
+Routine implementation stays within the current alignment stage. Agreement on a schematic or a request for both alignments does not replace user acceptance of the completed first candidate under the [alignment production rule](WORKFLOW_PIECE_CREATION.md#alignment-production-order). Reuse matching acceptance already given for that candidate and scope.
 
 **Output:** the agreed current layout, with any remaining assumptions marked.
 
@@ -115,6 +118,8 @@ Check runtime addressing for each independently placed module. Keep the complete
 ## 5. Build and test the smallest missing reusable parts
 
 Implement only the missing modules needed for the agreed design. Start with the smallest useful crossing, split, merge, adapter, or curved ramp that tests an uncertain connection.
+
+For two required alignment variants, apply the [Alignment A first sequence and approval gate](WORKFLOW_PIECE_CREATION.md#alignment-production-order) to the assembly and its missing modules. Complete the current alignment's applicable build, whole-layout checks, renders, and documentation before presenting its candidate. Give parallel contributors the same stage boundary; do not produce modules or artwork for the deferred alignment while awaiting the user's acceptance.
 
 Each new functional module needs:
 
