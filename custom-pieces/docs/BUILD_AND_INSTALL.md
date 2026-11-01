@@ -425,6 +425,36 @@ python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/highway-pa
 
 This produces the compact and modular buttons directly under **Transportation → Highways**, plus **SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond**. Open that submenu, then choose the complete **Alignment A** or **Alignment B** assembly button. Selecting a button starts that assembly's component cycle; **Tab** and **Shift+Tab** stay within the selected alignment. All 50 piece DATs remain unchanged by menu preparation. If the normal build also contains the two GHSR/DD crossing alternatives, their existing shared button and cycle remain unchanged. The verifier checks every independent assembly cycle, the exact retained rotation states, submenu membership, construction definitions, adaptive rules, NetworkINI, and frozen normal-build proof. The combined candidate uses `docs/assembly-menus/README.md` and `docs/assembly-menus/game-checks.json`; its source proof is under `docs/assembly-menus-source/`. The Python API is `scp.menu_experiment.build_assembly_menus(..., layout_ids=[...], domain_id="highway", plugins=...)`. Building this candidate does not install it or approve its game behavior; verify and install the complete combined candidate through the same receipt-based procedure as a single assembly.
 
+To prepare assemblies from both domains in one candidate, use the Python API with explicit `selections` instead of `layout_ids` and `domain_id`. Each selection contains exactly `domain_id` and `layout_id`; the pair identifies the layout, so two domains may use the same layout name. The HSR `trumpet` layout belongs under **Transportation → Rail**. The four highway layouts belong under **Transportation → Highways**, with the parallel Alignment A and Alignment B buttons inside their shared submenu. All five cycles are prepared together from one verified normal build, with one controller and no intermediate assembly-menu candidate. Every group's members must belong to its declared domain, all groups must remain disjoint, and presentation identifiers are checked across both domains. The validator preserves the verified first member's native selector encoding and parent; NAM 50's measured Rail selector is property `0x4001` with value `0`, so a synthetic fixture's value must not replace that native measurement. Existing alternative-piece families and unrelated menu entries remain available. The new frozen proof uses schema 2 with an explicit domain on each group; the existing single-domain API and schema-1 proofs retain their previous behavior and bytes.
+
+Save the following code as `custom-pieces/local/prepare_combined_assembly_menus.py`, replace the three angle-bracket path values, and run `python3 -B custom-pieces/local/prepare_combined_assembly_menus.py` from the repository root after compiling all intended pieces into one verified normal build. The placeholders select that existing normal build, a new assembly-menu output directory, and the active player-data Plugins directory. Add any additional active Plugins or required capture directories to `extra_roots`.
+
+```python
+from pathlib import Path
+import sys
+
+root = Path("custom-pieces").resolve()
+sys.path.insert(0, str(root / "framework"))
+from scp.check_bootstrap import SourcePackages
+sys.meta_path.insert(0, SourcePackages(root))
+from scp.menu_experiment import build_assembly_menus
+
+build_assembly_menus(
+    root,
+    "<verified-normal-build>",
+    "<new-assembly-menu-output>",
+    selections=[
+        {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
+        {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "modular-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond-alignment-b"},
+    ],
+    plugins="<player-data-Plugins>",
+    extra_roots=[],
+)
+```
+
 To create a second layout, follow the [bounded HSR assembly starter](WORKFLOW_ASSEMBLY_CREATION.md#12-start-a-small-hsr-assembly-from-existing-pieces) for the ordered `assembly.json`, domain registration, `menu-layout.jsonc`, icon-adapter, and initial documentation steps. A new assembly using existing member types needs its own presentation identity, rather than copied trumpet IDs or another piece allocation.
 
 The assembly owns its canonical four-state `icon.png` beside `assembly.json`; its larger layout images stay in `previews/`. Assembly-menu preparation reads that icon and checks its expected artwork before packaging. If a registered assembly's icon is missing or intentionally needs regeneration, follow the [artwork-only command](WORKFLOW_DOCUMENTATION_GENERATION.md#10-menu-artwork-and-source-registration) before preparing a fresh candidate. The icon's fixed location requires no additional field in `assembly.json` or `menu-layout.jsonc`.

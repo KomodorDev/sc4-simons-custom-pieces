@@ -706,9 +706,10 @@ def build_assembly_menu(project_root, source, output, *, layout_id='trumpet',
                                 single_button_only=True)
 
 
-def build_assembly_menus(project_root, source, output, *, layout_ids,
-                         domain_id='high-speed-rail', plugins=None, extra_roots=None):
+def build_assembly_menus(project_root, source, output, *, layout_ids=None,
+                         domain_id=None, selections=None, plugins=None, extra_roots=None):
     """Prepare disjoint assembly buttons together from one normal source build."""
     from .multi_assembly_menu import build
     return build(project_root, source, output, layout_ids=layout_ids, domain_id=domain_id,
+                 selections=selections,
                  plugins=plugins, extra_roots=extra_roots)

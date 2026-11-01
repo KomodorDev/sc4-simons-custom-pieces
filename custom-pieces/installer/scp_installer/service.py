@@ -373,7 +373,7 @@ def prepare_captures(root, installation, work_root, piece_ids, *, progress=None,
         record = catalog["_profile"]["files"][label]
         if not record.get("audit"):
             continue
-        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
+        evidence = jsonc.load(safe_relative(root, record["audit"]))
         capture_kind = record.get("capture_kind")
         # Native archive audits also describe measurements; only actual
         # single-resource evidence or an explicit bundle declares a capture.

@@ -22,24 +22,34 @@ KIND = 'assembly-disjoint-button-cycles-v1'
 PROOF = 'docs/assembly-menus-source'
 GUIDE = 'docs/assembly-menus/README.md'
 CHECKS = 'docs/assembly-menus/game-checks.json'
+DOMAINS = ('highway', 'high-speed-rail')
 
 
 def _groups(base, bundle):
-    require(isinstance(bundle, dict) and set(bundle) == {'schema_version', 'domain_id', 'groups'}
-            and type(bundle['schema_version']) is int and bundle['schema_version'] == 1,
+    require(isinstance(bundle, dict) and type(bundle.get('schema_version')) is int
+            and bundle['schema_version'] in (1, 2)
+            and set(bundle) == ({'schema_version', 'domain_id', 'groups'}
+                                if bundle['schema_version'] == 1 else {'schema_version', 'groups'}),
             'Malformed disjoint assembly layout bundle')
-    domain = bundle['domain_id']
-    require(isinstance(domain, str) and domain in ('highway', 'high-speed-rail'), 'Unsupported assembly menu domain')
+    legacy = bundle['schema_version'] == 1
+    if legacy:
+        require(isinstance(bundle['domain_id'], str) and bundle['domain_id'] in DOMAINS,
+                'Unsupported assembly menu domain')
     rows = bundle['groups']
     require(isinstance(rows, list) and len(rows) >= 2, 'Multiple assembly menus need at least two layouts')
     result, identifiers, assemblies, buttons, members, menu_ids, states = [], set(), set(), set(), set(), set(), set()
     from .menu_experiment_resources import member_domain
     for row in rows:
-        require(isinstance(row, dict) and set(row) == {'layout_id', 'layout', 'scene'}
-                and isinstance(row['layout_id'], str) and row['layout_id'] and row['layout_id'] not in identifiers
+        require(isinstance(row, dict) and set(row) == ({'layout_id', 'layout', 'scene'}
+                if legacy else {'domain_id', 'layout_id', 'layout', 'scene'})
+                and isinstance(row['layout_id'], str) and row['layout_id']
                 and isinstance(row['scene'], dict),
                 'Invalid or repeated assembly menu layout')
-        identifiers.add(row['layout_id'])
+        domain = bundle['domain_id'] if legacy else row['domain_id']
+        require(isinstance(domain, str) and domain in DOMAINS, 'Unsupported assembly menu domain')
+        identity = row['layout_id'] if legacy else (domain, row['layout_id'])
+        require(identity not in identifiers, 'Invalid or repeated assembly menu layout')
+        identifiers.add(identity)
         layout = single._layout(row['layout'], domain)
         if 'variant_label' in layout['cycle_button']:
             from .assembly_presentation import validate_cycle_title
@@ -69,8 +79,9 @@ def _groups(base, bundle):
 
 def _submenus(groups):
     """Coalesce identical explicit parent definitions in first-use order."""
-    definitions, result = {}, []
-    for layout, _scene, _pieces in groups:
+    from .menu_experiment_resources import member_domain
+    definitions, domains, result = {}, {}, []
+    for layout, _scene, pieces in groups:
         if 'cycle_submenu' not in layout:
             continue
         definition = layout['cycle_submenu']
@@ -79,11 +90,22 @@ def _submenus(groups):
                       'order': f'{number(definition["order"]):08x}'}
         if iid not in definitions:
             definitions[iid] = {'definition': normalized, 'cycle_ids': []}
+            domains[iid] = member_domain(pieces)
             result.append(definitions[iid])
-        require(definitions[iid]['definition'] == normalized,
+        require(definitions[iid]['definition'] == normalized and domains[iid] == member_domain(pieces),
                 'Repeated assembly submenu identifier has conflicting definitions')
         definitions[iid]['cycle_ids'].append(layout['cycle_button']['id'])
     return result
+
+
+def _domain_submenus(groups):
+    """Keep native menu parents separate while checking identifiers globally."""
+    from .menu_experiment_resources import member_domain
+    _submenus(groups)
+    domains = list(dict.fromkeys(member_domain(pieces) for layout, _scene, pieces in groups
+                                 if 'cycle_submenu' in layout))
+    return [(domain, _submenus([group for group in groups if member_domain(group[2]) == domain]))
+            for domain in domains]
 
 
 def _transform(base, controller, menu, bundle, icons):
@@ -123,8 +145,13 @@ def _transform(base, controller, menu, bundle, icons):
         audits.append(audit)
     if submenus := _submenus(groups):
         from .assembly_submenus import build_resources
-        resources, audit = build_resources(resources, submenus, domain=bundle['domain_id'])
-        audits.append(audit)
+        if bundle['schema_version'] == 1:
+            resources, audit = build_resources(resources, submenus, domain=bundle['domain_id'])
+            audits.append(audit)
+        else:
+            for domain, domain_submenus in _domain_submenus(groups):
+                resources, audit = build_resources(resources, domain_submenus, domain=domain)
+                audits.append({'domain_id': domain, **audit})
     return pack_dbpf({**original, RUL0: changed}), pack_dbpf(resources), composition, audits
 
 
@@ -132,6 +159,9 @@ def _documents(groups):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
     network_menu = 'Highways' if member_domain(groups[0][2]) == 'highway' else 'Rail'
+    mixed = len({member_domain(pieces) for _layout, _scene, pieces in groups}) > 1
+    opening = ('1. Open **Transportation**, then choose **Rail** or **Highways** as listed for the assembly below.'
+               if mixed else f'1. Open **Transportation → {network_menu}**.')
     submenus = _submenus(groups)
     chapters = [('Placement', '1-placement')]
     chapters += [(layout['cycle_button']['title'], f'{index}-{layout["assembly_id"]}')
@@ -144,7 +174,7 @@ def _documents(groups):
         '<!-- BEGIN DOCUMENT NAVIGATION -->', navigation, '<!-- END DOCUMENT NAVIGATION -->', '',
         '<a id="1-placement"></a>', '', '## 1. Placement', '',
         'Each assembly has its own button. Each click places one reusable component. Use the owning assembly placement plan to choose its position and orientation. Actual game behavior remains unverified.', '',
-        f'1. Open **Transportation → {network_menu}**.',
+        opening,
         '2. Click one of the exact assembly buttons listed below. It starts on that assembly’s first component.',
         '3. Press **Tab** for the next component, or **Shift+Tab** for the previous component. Cycling stays within the selected assembly.',
         '4. Press **Home** or **End** to rotate the current component, then click clear terrain to place it.',
@@ -153,11 +183,14 @@ def _documents(groups):
         lines += ['Assemblies assigned to a submenu appear inside the named submenu below. Open that submenu, then choose its assembly button. The Submenus DLL, SC4ResourceLoadingHooks DLL, and `submenu-essentials.dat` must be installed and active for this nested presentation. Software verification does not establish runtime DLL loading.', '']
     cases = []
     for index, (layout, _scene, pieces) in enumerate(groups, 2):
+        network_menu = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
         lines += [f'<a id="{index}-{layout["assembly_id"]}"></a>', '',
                   f'## {index}. ' + layout['cycle_button']['title'], '',
                   'Assembly: `' + layout['assembly_id'] + '`. The cycle follows this component order:', '']
         if 'cycle_submenu' in layout:
             lines += [f'Open **Transportation → {network_menu} → {layout["cycle_submenu"]["title"]}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
+        elif mixed:
+            lines += [f'Open **Transportation → {network_menu}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
         lines += [f'{index}. {piece["name"]} (`{piece["id"]}`).' for index, piece in enumerate(pieces, 1)]
         lines += ['']
         for case in single._game_checks(pieces, single_button=True)['cases']:
@@ -166,6 +199,10 @@ def _documents(groups):
             cases.append({**case, 'id': layout['assembly_id'] + ':' + case['id'],
                           'assembly_id': layout['assembly_id']})
     for row in submenus:
+        domain = next(domain for domain, parents in _domain_submenus(groups)
+                      if any(number(parent['definition']['id']) == number(row['definition']['id'])
+                             for parent in parents))
+        network_menu = 'Highways' if domain == 'highway' else 'Rail'
         cases.append({'id': 'submenu:' + row['definition']['id'],
                       'description': f'Transportation > {network_menu} shows {row["definition"]["title"]}; it opens and contains exactly the selected {len(row["cycle_ids"])} assembly buttons, each starting its own isolated component cycle.',
                       'status': 'unverified', 'observations': []})
@@ -194,9 +231,11 @@ def _manifest(base, bundle, proof, controller, menu, composition, audits):
     result['files'] = [single._record(row['path'], changed[row['path']]) if row['path'] in changed else row
                        for row in deepcopy(base['files'])]
     groups = _groups(base, bundle)
-    selection = [{'assembly_id': layout['assembly_id'], 'member_ids': [piece['id'] for piece in pieces]}
+    from .menu_experiment_resources import member_domain
+    selection = [{**({'domain_id': member_domain(pieces)} if bundle['schema_version'] == 2 else {}),
+                  'assembly_id': layout['assembly_id'], 'member_ids': [piece['id'] for piece in pieces]}
                  for layout, _, pieces in groups]
-    result['menu_experiment'] = {'kind': KIND, 'schema_version': 1, 'assemblies': selection,
+    result['menu_experiment'] = {'kind': KIND, 'schema_version': bundle['schema_version'], 'assemblies': selection,
         'source_inputs': proof, 'construction_aliases_created': False, 'in_game_menu_tested': False}
     result['assembly_selections'] = deepcopy(selection)
     result['overlay']['rul0'] = composition
@@ -222,6 +261,7 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
     from .adaptive_network import RUL1
     from .verify import strict_dbpf
     from .rul0 import _ring
+    from .menu_experiment_resources import member_domain
     groups = _groups(base, bundle)
     old_c, new_c = strict_dbpf(old_controller), strict_dbpf(controller)
     require(set(old_c) == set(new_c) and all(old_c[key] == new_c[key] for key in old_c if key != RUL0),
@@ -262,8 +302,11 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
     require(all(before[key] == after[key] for key in set(before) - removed), 'An unrelated menu resource changed')
     for layout, _scene, pieces in groups:
         iid = number(layout['cycle_button']['id'])
+        record = exemplar(after[*MENU_EXEMPLAR, iid])
+        property_records = {number(prop['id'].removeprefix('0x')): prop
+                            for prop in record['properties']}
         properties = {number(prop['id'].removeprefix('0x')): prop['values']
-                      for prop in exemplar(after[*MENU_EXEMPLAR, iid])['properties']}
+                      for prop in record['properties']}
         require(properties[0x8A2602BB] == [number(pieces[0]['menu']['id'])]
                 and properties[0x8A2602B8] == [iid] and properties[0x8A2602B9] == [number(layout['cycle_button']['order'])],
                 'Assembly button has a wrong target, order, or submenu property')
@@ -274,8 +317,19 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
         else:
             require(0x8A2602CA not in properties and 0x8A2602CC not in properties,
                     'Ungrouped assembly button unexpectedly belongs to a submenu')
-        if bundle['domain_id'] == 'highway':
+        if member_domain(pieces) == 'highway':
             require(properties.get(0x4005) == [0] and 0x4001 not in properties, 'Assembly button left the Highways menu')
+        elif bundle['schema_version'] == 2:
+            # The actual NAM 50 Rail donor uses selector value 0; retained
+            # historical fixtures use 1. Preserve the verified source's full
+            # selector encoding and parent instead of inventing a new value.
+            original = exemplar(before[*MENU_EXEMPLAR, number(pieces[0]['menu']['id'])])
+            original_properties = {number(prop['id'].removeprefix('0x')): prop
+                                   for prop in original['properties']}
+            selector = original_properties.get(0x4001, {})
+            require(selector.get('values') in ([0], [1]) and 0x4005 not in original_properties
+                    and property_records.get(0x4001) == selector and 0x4005 not in properties
+                    and record['parent'] == original['parent'], 'Assembly button left the Rail menu')
     if submenus:
         # Strip only the inspected additions from actual bytes, then use the
         # separate saved-resource validator against that original cycle map.
@@ -291,7 +345,18 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
                 record['properties'] = [prop for prop in record['properties']
                                         if number(prop['id'].removeprefix('0x')) not in (0x8A2602CA, 0x8A2602CC)]
                 unnested[key] = encode_exemplar(record)
-        validate_resources(after, unnested, submenus, domain=bundle['domain_id'])
+        if bundle['schema_version'] == 1:
+            validate_resources(after, unnested, submenus, domain=bundle['domain_id'])
+        else:
+            for domain, domain_submenus in _domain_submenus(groups):
+                parents = {(*prefix, number(row['definition']['id']))
+                           for row in domain_submenus for prefix in prefixes}
+                source = {key: value for key, value in after.items() if key not in parents}
+                for row in domain_submenus:
+                    for child in row['cycle_ids']:
+                        key = (*MENU_EXEMPLAR, number(child))
+                        source[key] = unnested[key]
+                validate_resources(after, source, domain_submenus, domain=domain)
 
 
 def verify(output, write_report=True):
@@ -301,7 +366,7 @@ def verify(output, write_report=True):
     manifest = single._read_json(output / 'manifest.json')
     experiment = manifest.get('menu_experiment')
     require(isinstance(experiment, dict) and experiment.get('kind') == KIND
-            and type(experiment.get('schema_version')) is int and experiment['schema_version'] == 1,
+            and type(experiment.get('schema_version')) is int and experiment['schema_version'] in (1, 2),
             'Unsupported multiple assembly menu discriminator')
     proof = experiment.get('source_inputs')
     require(isinstance(proof, dict) and {'manifest', 'controller', 'menu', 'groups'} <= set(proof), 'Incomplete multiple assembly source proof')
@@ -319,6 +384,8 @@ def verify(output, write_report=True):
     base, bundle = json.loads(raw['manifest']), json.loads(raw['groups'])
     require('menu_experiment' not in base, 'Cannot nest multiple assembly candidates')
     groups = _groups(base, bundle)
+    require(experiment['schema_version'] == bundle['schema_version'],
+            'Multiple assembly schema differs from its frozen domain declarations')
     require(set(proof) == set(names) | {f'icon-{index:03d}' for index in range(len(groups))}, 'Missing or extra assembly icon proof')
     folder = base['plugin_folder']; controller_name = f'{folder}/{single.CONTROLLER}'; menu_name = f'{folder}/{single.MENU}'
     icons = [raw[f'icon-{index:03d}'] for index in range(len(groups))]
@@ -371,13 +438,23 @@ def verify(output, write_report=True):
         'in_game_menu_tested': False,
         'verification_limit': 'Strict frozen source-build validation and independent disjoint menu/Ordering checks; activation, Tab behavior, appearance, traffic, and save/reload remain unverified.'}
     if submenus:
-        report['menu_experiment']['assembly_submenus'] = audits[-1]['submenus']
+        if bundle['schema_version'] == 1:
+            report['menu_experiment']['assembly_submenus'] = audits[-1]['submenus']
+        else:
+            report['menu_experiment']['assembly_submenus'] = [
+                {'domain_id': audit['domain_id'], **row} for audit in audits if 'submenus' in audit
+                for row in audit['submenus']]
+    if bundle['schema_version'] == 2:
+        from .menu_experiment_resources import member_domain
+        report['menu_experiment']['domain_ids'] = list(dict.fromkeys(member_domain(pieces)
+            for _layout, _scene, pieces in groups))
     if write_report:
         (output / 'verification.json').write_bytes(single._json_bytes(report))
     return report
 
 
-def build(project_root, source, output, *, layout_ids, domain_id='high-speed-rail', plugins=None, extra_roots=None):
+def build(project_root, source, output, *, layout_ids=None, domain_id=None, selections=None,
+          plugins=None, extra_roots=None):
     from .build import roots_for, audit_inputs
     from .verify import verify_build
     from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
@@ -390,22 +467,45 @@ def build(project_root, source, output, *, layout_ids, domain_id='high-speed-rai
     require(plugins is not None, 'Assembly menus need Plugins roots for identifier collision checks')
     roots = roots_for(root, plugins, extra_roots)
     require(not any(output.is_relative_to(path) or path.is_relative_to(output) for path in roots), 'Assembly output must stay outside Plugins')
-    require(isinstance(layout_ids, (list, tuple)) and len(layout_ids) >= 2
-            and all(isinstance(value, str) and value for value in layout_ids)
-            and len(set(layout_ids)) == len(layout_ids), 'Need at least two distinct explicit assembly layouts')
+    if selections is None:
+        require(isinstance(layout_ids, (list, tuple)) and len(layout_ids) >= 2
+                and all(isinstance(value, str) and value for value in layout_ids)
+                and len(set(layout_ids)) == len(layout_ids), 'Need at least two distinct explicit assembly layouts')
+        domain_id = 'high-speed-rail' if domain_id is None else domain_id
+        selected = [(domain_id, identifier) for identifier in layout_ids]
+        bundle = {'schema_version': 1, 'domain_id': domain_id, 'groups': []}
+    else:
+        require(layout_ids is None and domain_id is None,
+                'Domain-qualified selections cannot be combined with layout_ids or domain_id')
+        require(isinstance(selections, (list, tuple)) and len(selections) >= 2,
+                'Need at least two explicit domain-qualified assembly selections')
+        selected = []
+        for row in selections:
+            require(isinstance(row, dict) and set(row) == {'domain_id', 'layout_id'}
+                    and isinstance(row['domain_id'], str) and row['domain_id'] in DOMAINS
+                    and isinstance(row['layout_id'], str) and row['layout_id'],
+                    'Malformed or unsupported domain-qualified assembly selection')
+            selected.append((row['domain_id'], row['layout_id']))
+        require(len(set(selected)) == len(selected), 'Repeated domain-qualified assembly selection')
+        bundle = {'schema_version': 2, 'groups': []}
     catalog = single.load_catalog(root)
-    require(domain_id in catalog['domains'], 'Unknown assembly menu domain')
-    config = single._read_json(safe_relative(root, catalog['domains'][domain_id]['path'] + '/menu-layout.jsonc'))
-    require(config.get('schema_version') == 1 and isinstance(config.get('layouts'), dict), 'Unsupported menu layout registry')
-    bundle = {'schema_version': 1, 'domain_id': domain_id, 'groups': []}
-    icons = []
-    for identifier in layout_ids:
+    icons, configurations = [], {}
+    for selected_domain, identifier in selected:
+        require(isinstance(selected_domain, str) and selected_domain in DOMAINS
+                and selected_domain in catalog['domains'], 'Unknown assembly menu domain')
+        if selected_domain not in configurations:
+            config = single._read_json(safe_relative(root, catalog['domains'][selected_domain]['path'] + '/menu-layout.jsonc'))
+            require(config.get('schema_version') == 1 and isinstance(config.get('layouts'), dict), 'Unsupported menu layout registry')
+            configurations[selected_domain] = config
+        config = configurations[selected_domain]
         require(identifier in config['layouts'], 'Unknown assembly menu layout')
-        layout = single._layout(config['layouts'][identifier], domain_id)
-        assemblies = [row for row in catalog['_assemblies'] if row['id'] == layout['assembly_id'] and row['domain'] == domain_id]
+        layout = single._layout(config['layouts'][identifier], selected_domain)
+        assemblies = [row for row in catalog['_assemblies']
+                      if row['id'] == layout['assembly_id'] and row['domain'] == selected_domain]
         require(len(assemblies) == 1, 'Layout must select one registered assembly')
         assembly = assemblies[0]
-        bundle['groups'].append({'layout_id': identifier, 'layout': layout, 'scene': assembly['scene']})
+        bundle['groups'].append({**({'domain_id': selected_domain} if bundle['schema_version'] == 2 else {}),
+                                 'layout_id': identifier, 'layout': layout, 'scene': assembly['scene']})
         path = single._assembly_icon_path(root, assembly)
         require(path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')
         raw = path.read_bytes()

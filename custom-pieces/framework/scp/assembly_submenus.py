@@ -21,8 +21,11 @@ def _native_cycle(record, iid, domain):
             and props.get(0x8A2602B8, {}).get('values') == [iid]
             and len(props.get(0x8A2602BB, {}).get('values', [])) == 1,
             'Assembly submenu requires an actual network cycle exemplar')
-    selector, other, value = (0x4005, 0x4001, 0) if domain == 'highway' else (0x4001, 0x4005, 1)
-    require(props.get(selector, {}).get('values') == [value] and other not in props,
+    selector, other, values = ((0x4005, 0x4001, ([0],)) if domain == 'highway'
+                               else (0x4001, 0x4005, ([0], [1])))
+    # NAM 50's measured Rail selector is 0; retained historical fixtures use
+    # 1. Validation below preserves the exact source encoding and parent.
+    require(props.get(selector, {}).get('values') in values and other not in props,
             'Assembly cycle differs from its native domain menu')
     require(ITEM_BUTTON_CLASS not in props and ITEM_SUBMENU_PARENT_ID not in props,
             'Assembly cycle already belongs to a submenu')

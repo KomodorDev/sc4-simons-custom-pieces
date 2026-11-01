@@ -399,6 +399,17 @@ class CaptureTests(unittest.TestCase):
             self.prepare()
         self.assertFalse((self.work / "local").exists())
 
+    def test_commented_audit_sources_preserve_capture_fingerprint_checks(self):
+        audit = (self.library / "audit.json").read_text()
+        (self.library / "audit.jsonc").write_text("// Migrated source audit.\n" + audit)
+        self.record["audit"] = "audit.jsonc"
+        roots, records = self.prepare()
+        self.assertEqual(next(roots[0].rglob(self.record["filename"])).read_bytes(), self.expected)
+        self.assertEqual(records[0]["sha256"], self.record["sha256"])
+        self.source.write_bytes(pack_dbpf({self.key: b"changed"}))
+        with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
+            self.prepare()
+
     def test_duplicate_source_archives_are_not_load_order_guessed(self):
         duplicate = self.plugins / "another" / self.source.name
         duplicate.parent.mkdir()
