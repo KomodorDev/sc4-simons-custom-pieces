@@ -154,5 +154,10 @@ def build_piece(spec, context):
         extra = build_resources(spec, context, compiled)
         _require(not assets.keys() & extra.keys(), 'Parallel adaptive and canonical resources overlap')
         assets.update(extra)
-        return assets, build_construction(spec, compiled, context['controller'][RUL0], context['controller'][RUL1])
-    return assets, construction(spec, *construction_fields(spec, compiled))
+        rules = build_construction(spec, compiled, context['controller'][RUL0], context['controller'][RUL1])
+    else:
+        rules = construction(spec, *construction_fields(spec, compiled))
+    if spec.get('shadow_mode') == 'model-carrier':
+        from .model_shadows import add_shadows
+        add_shadows(spec, context, compiled, assets)
+    return assets, rules

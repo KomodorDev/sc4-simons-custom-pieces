@@ -37,7 +37,8 @@
     "controller",
     "dd_rhw",
     "rhw_core",
-    "mis"
+    "mis",
+    "model_shadow_lighting"
   ],
   "menu": {
     "id": "6a47f868",
@@ -61,14 +62,8 @@
     "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
     "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
   },
-  "shadow_mode": "generated",
-  "shadow_mappings": [
-    {
-      "tile": "7f5b7000",
-      "source": "7f5b7000",
-      "rotation": 0
-    }
-  ],
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
   "provenance": {
     "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
     "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
@@ -82,5 +77,19 @@
     "shadows": "unverified",
     "demolition": "unverified",
     "save_reload": "unverified"
+  },
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5b7800"
+      }
+    ]
   }
 }

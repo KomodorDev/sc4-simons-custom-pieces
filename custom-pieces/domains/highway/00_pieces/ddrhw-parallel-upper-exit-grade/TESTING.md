@@ -212,6 +212,65 @@ No observation recorded.
 </details>
 
 <details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast | <a href="#case-preview_review-e41422cf7c62bd7bdc4c">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:canonical-top | <a href="#case-preview_review-1ff3943b2913fab8cac6">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:connection-overview | <a href="#case-preview_review-fed33c6076ab36d66c7c">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast</summary>
+
+<a id="case-preview_review-e41422cf7c62bd7bdc4c"></a>
+
+**General: unverified** — `preview_review-e41422cf7c62bd7bdc4c`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:canonical-top</summary>
+
+<a id="case-preview_review-1ff3943b2913fab8cac6"></a>
+
+**General: unverified** — `preview_review-1ff3943b2913fab8cac6`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-grade:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:connection-overview</summary>
+
+<a id="case-preview_review-fed33c6076ab36d66c7c"></a>
+
+**General: unverified** — `preview_review-fed33c6076ab36d66c7c`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-grade:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -1858,65 +1917,6 @@ No observation recorded.
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: channel-05-in; to port: channel-10-out; from service: road; to service: road; basis: not reachable in actual saved PATH graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast | <a href="#case-preview_review-e41422cf7c62bd7bdc4c">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:canonical-top | <a href="#case-preview_review-1ff3943b2913fab8cac6">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-grade:connection-overview | <a href="#case-preview_review-fed33c6076ab36d66c7c">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast</summary>
-
-<a id="case-preview_review-e41422cf7c62bd7bdc4c"></a>
-
-**General: unverified** — `preview_review-e41422cf7c62bd7bdc4c`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-grade:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:canonical-top</summary>
-
-<a id="case-preview_review-1ff3943b2913fab8cac6"></a>
-
-**General: unverified** — `preview_review-1ff3943b2913fab8cac6`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-grade:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-grade:connection-overview</summary>
-
-<a id="case-preview_review-fed33c6076ab36d66c7c"></a>
-
-**General: unverified** — `preview_review-fed33c6076ab36d66c7c`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-grade:connection-overview.
 
 No observation recorded.
 

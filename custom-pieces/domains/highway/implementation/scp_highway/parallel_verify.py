@@ -415,7 +415,8 @@ def check_models(resources, piece, donors=None):
     """Cache only exact inputs and live independent validator identities."""
     from .ramp_verify import _model_audit_context
     modules = ('scp_highway.parallel_verify', 'scp_highway.modular_partition_verify',
-               'scp_highway.modular_assembly_verify', 'scp_highway.adaptive_verify', 'scp.shadows')
+               'scp_highway.modular_assembly_verify', 'scp_highway.adaptive_verify', 'scp.shadows',
+               'scp.model_shadows', 'scp.model_shadow_geometry', 'scp_highway.shadow_verify')
     context = []
     for name in modules:
         module = importlib.import_module(name)
@@ -470,6 +471,9 @@ def _check_models_uncached(resources, piece, donors=None):
     if piece.get('shadow_mode') == 'generated':
         from scp.shadows import validate_piece_shadows
         report['shadows'] = validate_piece_shadows(resources, piece)
+    if piece.get('shadow_mode') == 'model-carrier':
+        from .shadow_verify import check_resources
+        report.update(check_resources(resources, piece))
     return report
 
 

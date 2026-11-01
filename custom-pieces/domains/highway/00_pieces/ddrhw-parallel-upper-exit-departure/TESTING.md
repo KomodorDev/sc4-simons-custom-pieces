@@ -179,6 +179,65 @@ No observation recorded.
 </details>
 
 <details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast | <a href="#case-preview_review-b0aaf0f95fd70e271a12">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:canonical-top | <a href="#case-preview_review-84c737c109bef0ae11ad">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:connection-overview | <a href="#case-preview_review-e9e40325760bd2b130b9">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast</summary>
+
+<a id="case-preview_review-b0aaf0f95fd70e271a12"></a>
+
+**General: unverified** — `preview_review-b0aaf0f95fd70e271a12`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:canonical-top</summary>
+
+<a id="case-preview_review-84c737c109bef0ae11ad"></a>
+
+**General: unverified** — `preview_review-84c737c109bef0ae11ad`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-departure:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:connection-overview</summary>
+
+<a id="case-preview_review-e9e40325760bd2b130b9"></a>
+
+**General: unverified** — `preview_review-e9e40325760bd2b130b9`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-parallel-upper-exit-departure:connection-overview.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
 <summary>In-game rendering — Whole subject — 4 cases; unverified: 4</summary>
 
 | Check / exact scope | General | 0° | 90° | 180° | 270° |
@@ -501,65 +560,6 @@ No observation recorded.
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
 Scope: Service: road; role: primary; journey: 1:channel-01-in>channel-02-out; entry: channel-01-in; exit: channel-02-out.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast | <a href="#case-preview_review-b0aaf0f95fd70e271a12">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:canonical-top | <a href="#case-preview_review-84c737c109bef0ae11ad">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-parallel-upper-exit-departure:connection-overview | <a href="#case-preview_review-e9e40325760bd2b130b9">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast</summary>
-
-<a id="case-preview_review-b0aaf0f95fd70e271a12"></a>
-
-**General: unverified** — `preview_review-b0aaf0f95fd70e271a12`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-departure:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:canonical-top</summary>
-
-<a id="case-preview_review-84c737c109bef0ae11ad"></a>
-
-**General: unverified** — `preview_review-84c737c109bef0ae11ad`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-departure:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-parallel-upper-exit-departure:connection-overview</summary>
-
-<a id="case-preview_review-e9e40325760bd2b130b9"></a>
-
-**General: unverified** — `preview_review-e9e40325760bd2b130b9`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-parallel-upper-exit-departure:connection-overview.
 
 No observation recorded.
 

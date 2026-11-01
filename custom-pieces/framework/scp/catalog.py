@@ -140,7 +140,8 @@ def validate_catalog(catalog):
                 require(not blocks or iid & 0xfffff000 in blocks,
                         'Resource lies outside its reserved families')
             from .adaptive_network import reservation_ids
-            for iid in reservation_ids(allocation):
+            from .model_shadows import reservation_ids as shadow_reservations
+            for iid in reservation_ids(allocation) + shadow_reservations(allocation):
                 require(iid not in reserved, 'Adaptive or extra-model resource reservation overlap')
                 reserved.add(iid)
                 allocated_resources.append((iid, slug))
@@ -205,6 +206,9 @@ def validate_catalog(catalog):
         from .adaptive_network import allocation_fields, reservation_ids
         adaptive_allocations = allocation_fields(piece)
         allocated.extend(reservation_ids(adaptive_allocations))
+        from .model_shadows import allocation_fields as shadow_allocations, reservation_ids as shadow_reservations
+        shadow_fields = shadow_allocations(piece)
+        allocated.extend(shadow_reservations(shadow_fields))
         for iid in allocated:
             require(iid not in resources, f'Resource identifier overlap: {iid:08x} ({slug})')
             resources[iid] = slug
@@ -236,6 +240,8 @@ def validate_catalog(catalog):
                         f'{slug}: saved-city construction coordinates changed')
             require(all(allocation.get(key, []) == values for key, values in adaptive_allocations.items()),
                     f'{slug}: adaptive or extra-model IDs differ from the permanent resource reservation')
+            require(all(allocation.get(key, []) == values for key, values in shadow_fields.items()),
+                    f'{slug}: shadow IDs differ from the permanent resource reservation')
     sets = catalog.get('piece_sets', {})
     require(isinstance(sets, dict), 'Piece sets must be a JSON object')
     for name, members in sets.items():

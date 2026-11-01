@@ -1,0 +1,263 @@
+{
+  "scope": "Read-only scalar native-contract audit of the owned Windows game executable and base lighting resource. No native code, model bytes, or personal filesystem paths are reproduced. These facts do not establish game execution or final candidate behavior.",
+  "executable": {
+    "version": "Windows SimCity 4 1.1.641.0",
+    "bytes": 7524352,
+    "sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7"
+  },
+  "lighting": {
+    "resource_tgi": "6534284a-a9189cf0-00000001",
+    "base_archive_name": "SimCity_1.dat",
+    "archive_sha256": "84d935c8a7a53b3261a1385f1897167445dd85c14fef76baf61f8b4beec79348",
+    "resource_decompressed_sha256": "14e29418b419fd89f4f06f697f8137f4ce933157be9b63d0260a743e19098ced",
+    "parent": [
+      0,
+      0,
+      0
+    ],
+    "sun_azimuth": {
+      "id": "0x085489ce",
+      "type": "0x0900",
+      "key_type": "0x0000",
+      "values": [
+        67.5
+      ],
+      "repetitions": null
+    },
+    "sun_elevation": {
+      "id": "0x085489cf",
+      "type": "0x0900",
+      "key_type": "0x0000",
+      "values": [
+        45.0
+      ],
+      "repetitions": null
+    },
+    "scope": "Base game archive only. Effective Plugins override/cohort resolution must be audited separately.",
+    "derived_native_store_approximation": {
+      "degree_factor": 0.01745329238474369,
+      "cos_elevation_float32": 0.7071067690849304,
+      "sun": [
+        0.6532814502716064,
+        -0.7071067690849304,
+        -0.27059805393218994
+      ],
+      "sun_float32_hex": [
+        "743d273f",
+        "f30435bf",
+        "d48b8abe"
+      ],
+      "local_sun": [
+        -0.27059805393218994,
+        -0.7071067690849304,
+        -0.6532814502716064
+      ],
+      "scope": "Python libm approximation of x87 trig; native final binary32 store boundaries retained."
+    }
+  },
+  "resource_contract": {
+    "carrier_model_type": "5ad0e817",
+    "carrier_model_group": "badb57f1",
+    "mask_type": "7ab50e44",
+    "mask_group": "1abe787d",
+    "mask_encoding": "SHPI/GIMX image0 BGRA8 code0x7D; alpha coverage; transparent border; square power-of-two",
+    "rkt_property": "27812822",
+    "rkt_type": "Uint32 array of22values: type,group, fourrelativeposemodels repeated for five zoom rows",
+    "helper_full_geometry_rotation_property": "E83A081D must be absent; retained visible props preserve their existing rotation setting",
+    "prop_bools": {
+      "8A5E5DB8": true,
+      "029244DB": false,
+      "69F14D33": false
+    },
+    "vertices": "four XYZ/UV vertices, packed80004001, stride20",
+    "primitives": "one existing PRIMblock with zero primitive entries; one existing INDXblock and valid ANIM references; removing all PRIMblocks drops the mesh",
+    "carrier_height_m": 64,
+    "supported_scope": "four proper piece rotations, four camera rotations, no mirrored placement support expansion"
+  },
+  "projection": {
+    "R1": "(x,y,z)->(-z,y,x)",
+    "saved_variant": "(object_rotation-camera_rotation-1)mod4",
+    "native_shadow_transform": "R_(camera_rotation+1) because helper omitsE83A081D",
+    "variant_source": "R_variant(original referenced clipped elevated triangles)",
+    "local_light": [
+      -0.27059805393218994,
+      -0.7071067690849304,
+      -0.6532814502716064
+    ],
+    "ground_intersection": "(x-y*sx/sy,z-y*sz/sy)",
+    "slanted_card_inverse": "source=(ground_x+y*sx/sy,y,ground_z+y*sz/sy), y=(0,64,64,0)",
+    "lighting_mod_limit": "The active lighting dependency must match the supported captured sunlight; overrides are rejected separately.",
+    "terrain_receiver": "Texture coordinates are invariant along the supported light rays; the native receiver projection remains responsible for terrain."
+  },
+  "native_checks": [
+    {
+      "function": "LoadPropModels",
+      "address": "00491A30",
+      "claim": "RKT0..4 stylegate allowsRKT2; RKT5only bypasses normal propmodel and shadow loading."
+    },
+    {
+      "function": "OccupantUsesBuildingStyleModels",
+      "address": "004965F0",
+      "claim": "ChecksRKT0..4, rejectsE9822D62; no previewmarker gate."
+    },
+    {
+      "function": "GetAllModelInstanceIDs",
+      "address": "00496C90",
+      "claim": "RKT2 uses22words, zoommajor4rotation rows; missing alternativeflipkey means mirrored placement is outside current scope."
+    },
+    {
+      "function": "CreateOccupantShadow",
+      "address": "00491230",
+      "claim": "Rejects029244DBonlywhenBooltrue; requiresIsGroundModeltrue for props, quality>=3; atquality3 requires1mesh; consumespositionsandUVs independent ofINDX/PRIM."
+    },
+    {
+      "function": "CreateOccupantShadow heightgate",
+      "address": "00491527..0049156B",
+      "claim": "Resourcebboxheight times camera pixelspermetre must meetshadowModelThreshold."
+    },
+    {
+      "function": "FindModelTransform",
+      "address": "0048FA40",
+      "claim": "AbsentE83A081D usesnegativecameraquarterangle, yieldingR_camera withcolumnvector convention; shadowaddsR_1."
+    },
+    {
+      "function": "Model bounds transform",
+      "address": "007F8170",
+      "claim": "M[row,column]timesposition[column], with scale andtranslation; notrowvector semantics."
+    },
+    {
+      "function": "Vertex bounds",
+      "address": "00801040",
+      "claim": "Bounds use every VERTposition regardlessindexedtriangles."
+    },
+    {
+      "function": "PRIM loading",
+      "address": "008074DA..0080758B",
+      "claim": "AllocatesPRIMblock and accepts0primitiveentries without reading data."
+    },
+    {
+      "function": "GetModelFrame",
+      "address": "00806F22..00806F46",
+      "claim": "AttachesvalidPRIMblock independentofcontainedprimitivecount."
+    },
+    {
+      "function": "RenderMesh",
+      "address": "007D4AB1..007D4B6C",
+      "claim": "ZeroPRIMcount bypasses DrawElements and DrawArrays."
+    },
+    {
+      "function": "IsStaticBuilding/staticbodyeligibility",
+      "address": "00583B10 and0058E260",
+      "claim": "Presence of029244DB bypassesstaticbodyinsertion regardlessBoolvalue."
+    },
+    {
+      "function": "T21CreateProp",
+      "address": "0060CF80",
+      "claim": "AddStreetProp Init/Insert normal lifecycle; no previewmarker blockinggate; helperposition stays atownercentre."
+    },
+    {
+      "function": "Host removal",
+      "address": "0060D8B0",
+      "claim": "Removesstreetpropsbyusage4 andpositionmappingtohostcell, despite largeoverhangbbox."
+    },
+    {
+      "function": "RemoveProp",
+      "address": "004A2690",
+      "claim": "Clearsmodelholder/overlays, removesoccupant, andShutsDown."
+    },
+    {
+      "function": "OccupantmanagerWrite",
+      "address": "0049ECF0",
+      "claim": "Serializesallindexedgridnodes withnopreviewmarkerfilter."
+    },
+    {
+      "function": "PropWrite",
+      "address": "005ECE90",
+      "claim": "Normalpropstate/exemplarholder persisted; no previewmarkertest."
+    },
+    {
+      "function": "ModelmakerRemoveModels",
+      "address": "00493340",
+      "claim": "Clearsmodelholderincludingownedoverlays; no previewmarkertest."
+    },
+    {
+      "function": "T21period",
+      "property": "CA81B8D4",
+      "claim": "4meanspositionpatternperiod, notnetworktype."
+    },
+    {
+      "function": "T21selection",
+      "property": "C9A5A1BE",
+      "claim": "ExactpieceID; fixedcanonicalDirtRoad andordinaryadaptiveAvenue each use their actualownertileID."
+    }
+  ],
+  "native_zoom_contract": {
+    "camera_cell_span_m": 20.90500831604004,
+    "cell_pixels_by_zoom": [
+      8,
+      16,
+      32,
+      73,
+      146
+    ],
+    "metres_per_pixel": [
+      2.613126039505005,
+      1.3065630197525024,
+      0.6532815098762512,
+      0.2863699793815613,
+      0.14318498969078064
+    ],
+    "pixels_per_metre": [
+      0.3826834261417389,
+      0.7653668522834778,
+      1.5307337045669556,
+      3.491986036300659,
+      6.983972072601318
+    ],
+    "required_height_m_high12": [
+      31.35751166698142,
+      15.67875583349071,
+      7.839377916745355,
+      3.4364398583656888,
+      1.7182199291828444
+    ],
+    "required_height_m_medium22": [
+      57.48877138946594,
+      28.74438569473297,
+      14.372192847366485,
+      6.300139740337096,
+      3.150069870168548
+    ],
+    "height_58m_projected_pixels": [
+      22.195638716220856,
+      44.39127743244171,
+      88.78255486488342,
+      202.53519010543823,
+      405.07038021087646
+    ],
+    "height_64m_projected_pixels": [
+      24.49173927307129,
+      48.98347854614258,
+      97.96695709228516,
+      223.4871063232422,
+      446.9742126464844
+    ]
+  },
+  "lifecycle_limit": "ExistingcompatibleT21lots are kept afterreload; newcarrierobjects mayrequirefreshplacementorredevelopment. Actualsave/reload/rotation/bulldoze testing remains open.",
+  "primary_specs": [
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/graphics-formats.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/model-maker.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/model-maker-utility.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/model-instances.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/lighting.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/camera.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/network-manager.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/prop-lotconfig.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/occupant-manager.md",
+    "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/prop-developer.md"
+  ],
+  "tested_in_game": false,
+  "recorded_utc": "2026-11-01",
+  "evidence_kind": "frozen-native-contract-audit",
+  "in_game_tested": false
+}

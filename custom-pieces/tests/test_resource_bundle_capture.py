@@ -220,5 +220,84 @@ class AdaptiveAvenueCaptureEvidenceTests(unittest.TestCase):
         self.assertNotIn(str(Path.home()), json.dumps(evidence))
 
 
+class ModelShadowLightingInstallerTests(unittest.TestCase):
+    """Exercise the existing generic capture route for the new base-game input."""
+
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        self.library, self.work = self.root / 'library', self.root / 'work'
+        self.plugins, self.game = self.root / 'Plugins', self.root / 'Game'
+        for path in (self.library, self.work, self.plugins, self.game):
+            path.mkdir()
+        self.key = (0x6534284A, 0xA9189CF0, 0x00000001)
+        self.stored = b'synthetic pinned native lighting exemplar'
+        self.source = self.game / 'SimCity_1.dat'
+        self.source.write_bytes(pack_dbpf({self.key: self.stored, UNRELATED: b'unrelated game content'}))
+        self.expected = pack_dbpf({self.key: self.stored})
+        row = source_row(self.source, 'game', {self.key: self.stored})
+        row.pop('archive')
+        evidence = {'schema_version': 1, 'capture_kind': 'resource-bundle', 'sources': [row],
+                    'capture': {'file': 'SCP_ModelShadow_Lighting_Capture.dat', 'sha256': sha(self.expected)}}
+        (self.library / 'lighting-audit.json').write_text(json.dumps(evidence))
+        self.record = {'filename': 'SCP_ModelShadow_Lighting_Capture.dat', 'sha256': sha(self.expected),
+                       'capture_kind': 'resource-bundle', 'audit': 'lighting-audit.json'}
+        self.plan = service.Installation(self.game, self.plugins, (), 'win32')
+        for patcher in (patch.object(service, 'load_catalog', return_value={
+                '_profile': {'files': {'model_shadow_lighting': self.record}}}),
+                patch.object(service, 'select_pieces', return_value=[{'dependencies': ['model_shadow_lighting']}])):
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def prepare(self):
+        return service.prepare_captures(self.library, self.plan, self.work, ['synthetic-carrier-piece'])
+
+    def test_lighting_is_captured_from_the_selected_game_without_copying_other_resources(self):
+        original = self.source.read_bytes()
+        roots, records = self.prepare()
+        self.assertEqual(records, [{'label': 'model_shadow_lighting', 'filename': self.record['filename'],
+                                    'sha256': self.record['sha256']}])
+        captured = next(roots[0].rglob(self.record['filename']))
+        self.assertEqual(captured.read_bytes(), self.expected)
+        self.assertEqual(entries(captured.read_bytes()), {self.key: self.stored})
+        self.assertTrue(captured.is_relative_to(self.work / 'local/captures'))
+        self.assertEqual(self.source.read_bytes(), original)
+        self.assertEqual(list(self.plugins.iterdir()), [])
+
+    def test_a_reused_lighting_capture_cannot_hide_a_different_game_archive(self):
+        existing = self.plugins / self.record['filename']
+        existing.write_bytes(self.expected)
+        self.source.write_bytes(pack_dbpf({self.key: self.stored, UNRELATED: b'a different game edition'}))
+        with self.assertRaisesRegex(ValueError, 'archive size differs|archive fingerprint differs'):
+            self.prepare()
+        self.assertEqual(existing.read_bytes(), self.expected)
+        self.assertFalse((self.work / 'local').exists())
+
+
+class ModelShadowLightingEvidenceTests(unittest.TestCase):
+    def test_carrier_dependencies_and_public_evidence_bind_the_exact_supported_light(self):
+        from scp.catalog import load_catalog, select_pieces
+        from scp.model_shadows import LIGHTING_EXEMPLAR, LIGHTING_SHA256
+        catalog = load_catalog(ROOT)
+        selected = select_pieces(catalog, service.all_implemented_ids(ROOT))
+        carriers = [piece for piece in selected if piece.get('shadow_mode') == 'model-carrier']
+        self.assertTrue(carriers)
+        self.assertTrue(all('model_shadow_lighting' in piece['dependencies'] for piece in carriers))
+        record = catalog['_profile']['files']['model_shadow_lighting']
+        evidence = json.loads((ROOT / record['audit']).read_text())
+        self.assertEqual(record['capture_kind'], 'resource-bundle')
+        self.assertEqual(record['sha256'], evidence['capture']['sha256'])
+        self.assertEqual(evidence['capture']['resource_count'], 1)
+        self.assertEqual(len(evidence['sources']), 1)
+        source = evidence['sources'][0]
+        self.assertEqual((source['filename'], source['location']), ('SimCity_1.dat', 'game'))
+        self.assertEqual(len(source['resources']), 1)
+        self.assertEqual(source['resources'][0]['tgi'], tgi_string(LIGHTING_EXEMPLAR))
+        self.assertEqual(source['resources'][0]['decompressed_resource_sha256'], LIGHTING_SHA256)
+        self.assertFalse(evidence['capture']['installed'])
+        self.assertNotIn(str(Path.home()), json.dumps(evidence))
+
+
 if __name__ == "__main__":
     unittest.main()

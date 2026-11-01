@@ -200,13 +200,16 @@ class ParallelConnectorContractTests(unittest.TestCase):
                     (16.530088424682617, 0.0, -11.802167892456055),
                     (19.774259567260742, 0.0, -6.5610551834106445),
                     (-23.020137786865234, 16.390625, 28.12371063232422)]
-        # The fixture concerns this unchanged actual model, rather than a
-        # whole build whose unrelated terminal models may be revised.
+        # The fixture concerns this actual model, rather than a whole build.
+        # The native packed-format correction (2 -> 0x80004001) preserves
+        # all four exact framing vertices above. Its preview bytes already
+        # match in elevation-menu-04 and shadows-menu-05; restoring format 2
+        # reproduces the previous 31a9fbfd... hash, which is no longer valid.
         preview = resolved['piece']['preview_id']
         model_key = f'model:{identifier}:5ad0e817-badb57f1-{preview}'
         expected_model = {
             None: '3741ff542917105a84838c703f7cdbcfa4da693cbc8bf36f90556e536c93492b',
-            HIGHWAY_SLIP_PROFILE: '31a9fbfd2a9dc5ce06d358f0a7deb0ca205e3ca6ab99ab4a782d9c73ae1c9fd0'}
+            HIGHWAY_SLIP_PROFILE: '414ac3869753f39917c0ea5f8ef1a28b686fb947f3505d7c2e97f65c0aff4a74'}
         self.assertEqual(resolved['connections']['source']['resource_fingerprints'][model_key],
                          expected_model[self.profile])
         old = make_camera(vertices, 45., 31., PAGE_WIDTH - 2 * PAGE_MARGIN, 1000,

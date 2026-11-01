@@ -18,6 +18,7 @@ from .recipes import build_piece
 from .rul0 import MARKER, compose_rul0
 from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
 from . import native_approaches
+from . import model_shadows
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -80,6 +81,7 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
                 + ', '.join(str(path) for path in installed.get(key, []))
                 + '. Move the old standalone prototype out of Plugins, or merge the other custom controller first.')
     native_approaches.audit_dependencies(pieces, context, installed, dependency_paths)
+    model_shadows.audit_lighting_dependency(context, installed, pieces)
     return context, installed, audit, roots
 
 
@@ -108,6 +110,7 @@ def preflight_allocations(context, installed, selected):
         planned.update({(0x7AB50E44, 0x1ABE787D, int(value, 16))
                         for value in piece.get('authored_texture_ids', [])})
         planned.update(adaptive_resource_keys(piece))
+        planned.update(model_shadows.resource_keys(piece))
     conflicts = planned & set(installed)
     require(not conflicts, 'Allocated resource identifiers collide with installed content: '
             + ', '.join(tgi_string(key) for key in sorted(conflicts)[:8]))

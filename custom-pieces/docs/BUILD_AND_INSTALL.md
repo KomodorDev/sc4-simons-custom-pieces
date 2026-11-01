@@ -11,7 +11,7 @@ document_type: "procedure"
 [1. Current pieces and assembly design](#1-current-pieces-and-assembly-design) · [2. Recognize SCP menu icons](#2-recognize-scp-menu-icons) · [3. Prepare local development inputs](#3-prepare-local-development-inputs) · [4. Build a selected collection](#4-build-a-selected-collection) · [5. Optional isolated native inputs](#5-optional-isolated-native-inputs) · [6. Rebuild generated development outputs](#6-rebuild-generated-development-outputs) · [7. Install, remove, or roll back a test build](#7-install-remove-or-roll-back-a-test-build) · [8. Prepare the assembly menu](#8-prepare-the-assembly-menu) · [9. Project files and future additions](#9-project-files-and-future-additions) · [10. Check and prepare distribution](#10-check-and-prepare-distribution)
 <!-- END DOCUMENT NAVIGATION -->
 
-For a graphical installation without Python or terminal commands, use the [self-contained installer](INSTALLER.md). Extract the Windows ZIP, open SCP Installer, select **Choose game folder…**, and select **Install**. It finds Plugins, builds the complete implemented catalogue, captures required Road inputs automatically from the user's existing game and NAM, prepares the assembly menu, and uses the same verified, receipt-based installation described below. The following sections document the contributor and source-command workflow.
+For a graphical installation without Python or terminal commands, use the [self-contained installer](INSTALLER.md). Extract the Windows ZIP, open SCP Installer, select **Choose game folder…**, and select **Install**. It finds Plugins, builds the complete implemented catalogue, captures required Road, adaptive Avenue, and default-lighting inputs automatically from the user's existing game and NAM, prepares the assembly menu, and uses the same verified, receipt-based installation described below. Road captures read `SimCity_3.dat`, adaptive Avenue captures read `SimCity_4.dat`, and the parallel highway's sunlight capture reads `SimCity_1.dat`. The following sections document the contributor and source-command workflow.
 
 An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in **Transportation → Rail**. Every assembly delivery then uses the [assembly-menu step](#8-prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#2-recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
 
@@ -102,7 +102,7 @@ All later Python commands in this guide assume that the environment remains acti
 
 The Python tools can run on macOS, Linux, and Windows. The audited game profile is **SimCity 4 Deluxe version 1.1.641 for Windows, with NAM 50 and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The profile does not establish support for the native macOS game port. See the [NAM Team's official installation instructions](https://www.sc4nam.com/docs/getting-started/installation/) for obtaining NAM and its installer, DLL, and game requirements.
 
-A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, `ordinary_sidewalk_texture`, and `adaptive_avenue`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
+A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, `ordinary_sidewalk_texture`, `adaptive_avenue`, and `model_shadow_lighting`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
 
 | Item | Provided in Git | Local use |
 | --- | --- | --- |
@@ -116,7 +116,7 @@ For native builds, use the settings-copy command in the next section. Keep real 
 
 ### 3.3 Prepare adaptive Avenue inputs for source builds
 
-The compact highway diamond's three adaptive components and the modular highway stamp and two R40 terminals require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
+The compact highway diamond's three adaptive components, the modular highway stamp and two R40 terminals, and the parallel diamond's crossing and two terminals require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
 
 ```sh
 python -B custom-pieces/domains/highway/tools/prepare_adaptive_avenue_inputs.py --plugins "<user Plugins folder>" --extra-plugins "<additional Plugins folder>" --game-dir "<folder containing SimCity_4.dat>" --output custom-pieces/local/captures/adaptive-avenue
@@ -125,6 +125,51 @@ python -B custom-pieces/domains/highway/tools/prepare_adaptive_avenue_inputs.py 
 Replace each angle-bracket placeholder with an existing directory. Omit `--extra-plugins` when there is no additional active Plugins directory, or repeat it for each additional directory. `--game-dir` selects the directory containing the original `SimCity_4.dat`, not its `Apps` or `Plugins` subfolder. Choose a new output directory below `custom-pieces/local/`; the command reads the game and NAM files without changing them. Its profile and [portable source audit](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/adaptive-avenue-capture-audit.json) require exactly forty ground textures and one native prop donor, with their recorded hashes.
 
 Add the resulting capture directory to `extra_plugins` in your ignored settings, or pass `--extra-plugins custom-pieces/local/captures/adaptive-avenue` alongside every actual Plugins root when running `doctor` and `build`. The capture remains outside the game's Plugins folder. A limited source scan of only the NAM subtree can build an isolated candidate while another experimental controller is installed, but it does not establish collision freedom across the omitted active Plugins roots. Installation still requires a complete active-root check and one coordinated controller.
+
+### 3.4 Prepare the parallel highway sunlight input for source builds
+
+The parallel diamond's shadow carriers additionally require `SCP_ModelShadow_Lighting_Capture.dat`, declared as `model_shadow_lighting` in the supported profile. The graphical installer prepares it automatically. The Avenue command above prepares only the Avenue bundle; it does not produce this lighting input. The [lighting source audit](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/evidence/model-shadow-lighting-capture-audit.json) identifies the single required resource in the original `SimCity_1.dat` and its exact fingerprints.
+
+For a source build, create a plain-text file named `capture_model_shadow_lighting.py` inside the ignored `custom-pieces/local/` directory, and paste the following Python code. Replace `<folder containing SimCity_1.dat>` with the original game-data directory, and replace `<actual Plugins folder>` with the Plugins directory recorded in your private settings. Use forward slashes in Windows paths, for example `C:/Games/SimCity 4 Deluxe`, and retain the quotation marks. The target below must be a new directory; change `model-shadow-lighting-01` to an unused suffix if it already exists. Run the script from the repository directory containing `custom-pieces/`.
+
+```python
+from pathlib import Path
+import json
+import sys
+
+root = Path("custom-pieces").resolve()
+game_root = Path("<folder containing SimCity_1.dat>").expanduser().resolve()
+plugins = Path("<actual Plugins folder>").expanduser().resolve()
+target = root / "local/captures/model-shadow-lighting-01"
+
+sys.path.insert(0, str(root / "framework"))
+from scp.check_bootstrap import SourcePackages
+sys.meta_path.insert(0, SourcePackages(root))
+from scp.catalog import load_catalog
+from scp.resource_audit import capture_resource_bundle
+
+record = load_catalog(root)["_profile"]["files"]["model_shadow_lighting"]
+audit = json.loads((root / record["audit"]).read_text(encoding="utf-8"))
+if (record.get("capture_kind") != "resource-bundle"
+        or audit.get("capture_kind") != "resource-bundle"
+        or audit["capture"]["file"] != record["filename"]
+        or audit["capture"]["sha256"] != record["sha256"]):
+    raise ValueError("Lighting capture evidence differs from the selected profile")
+if any(row["location"] != "game" for row in audit["sources"]):
+    raise ValueError("This lighting capture expects original game archives only")
+sources = [{**row, "archive": game_root / row["filename"]}
+           for row in audit["sources"]]
+report = capture_resource_bundle(
+    sources, target, filename=record["filename"],
+    expected_sha256=record["sha256"], root=root, plugins=plugins)
+print(json.dumps(report["capture"], indent=2))
+```
+
+```sh
+python -B custom-pieces/local/capture_model_shadow_lighting.py
+```
+
+A successful run creates exactly the capture DAT and its `resource-audit.json` in the selected private directory, without changing the game archive or installing anything. The captured DAT must have SHA-256 `0b98a1d08492773ffed27a0cab965a8cccec2998ff0b8df10cacfa841f2bd2ab`. Add `custom-pieces/local/captures/model-shadow-lighting-01` to `extra_plugins` in your private settings, or pass it as an additional `--extra-plugins` directory to `doctor` and `build`, while retaining every actual active Plugins root and the Avenue capture directory. Keep the capture outside the game's Plugins directory. Unsupported source fingerprints or active lighting overrides must be resolved rather than bypassed by changing the profile.
 
 <a id="build-a-selected-collection"></a>
 
@@ -311,7 +356,7 @@ Removal checks its ownership receipt and saves a snapshot first. The tools do no
 | --- | --- |
 | Only PATH data changes; resource IDs, placed network configurations, construction rules, and T21 bindings remain unchanged | Restart and reload the existing placement first. The game is expected to load the replacement PATH bytes under the same IDs; confirm the result with Route Query and visible travel. The [adaptive highway height correction](../domains/highway/NETWORK_SPEC.md#13-adaptive-path-runtime-elevation) is this bounded example, and its existing-placement result remains unverified until observed. A shared ID alone does not establish that an arbitrary update applies to an old placement. |
 | Construction rules, helper seeds, or owned cells change | Test freshly placed copies of the affected components. Reloading a city does not execute their new construction requests or create a newly added helper. The [native highway approach experiment](../domains/highway/NETWORK_SPEC.md#12-native-highway-approach-experiment) demonstrates this distinction. Preserve the original city before replacing components. |
-| T21 prop bindings or selector conditions change | Test fresh control instances under the [adaptive-ground procedure](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models). An older cached prop's appearance does not establish how the revised T21 attaches during placement. |
+| T21 prop bindings or selector conditions change | Test fresh control instances under the [adaptive-ground procedure](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models). Existing compatible prop lots may survive reload without creating a newly added object. Adding an invisible shadow carrier is a binding change even when the visible models and PATH IDs stay the same; the [parallel highway shadow repair](../domains/highway/NETWORK_SPEC.md#14-shadows-for-independent-elevated-modules) requires fresh affected placements. An older cached prop's appearance does not establish how the revised T21 attaches during placement. |
 | Resource IDs change | Do not expect the old placement to become the new type automatically. Preserve IDs for retained types; a deliberately new type requires its own placement or an explicitly implemented migration. |
 
 For a PATH-only correction, keep the reported layout and all of its ramps connected during the first retest. Run the simulation until new traffic enters, inspect each affected direction and level, and record Route Query separately from actual moving vehicles. If the failure persists, preserve that result before testing a fresh copy in a disposable city. Distinguish loaded existing placements, fresh placements, and their save/reload results; success in one state does not establish the others. Resource comparison and software regressions establish the repair's scope, while the [observation workflow](TESTING.md#4-record-one-observation) records its actual game outcome.

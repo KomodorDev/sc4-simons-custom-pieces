@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "scope": "Instruction-derived Windows engine contract for the invisible model-shadow carrier terrain exclusion. This record is frozen evidence, not an in-game outcome.",
+  "executable": {
+    "product": "Windows SimCity 4 Deluxe",
+    "version": "1.1.641.0",
+    "bytes": 7524352,
+    "sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7",
+    "source_path": "Owned local game executable; personal path omitted."
+  },
+  "defect": {
+    "trigger": "A shadow-only prop has a 64-metre slanted carrier and conservative enlarged OccupantSize bounds, but lacks property 0x29F013E6 with value true.",
+    "effect": "The native immovability filter includes the prop, allowing its artificial bounds to block terrain-height changes outside the visible highway geometry.",
+    "physics_marker_is_insufficient": "Property 0x029244DB with Bool false excludes the helper from static-body creation by property presence, but the immovability filter reads the separate 0x29F013E6 Bool value."
+  },
+  "required_helper_property": {
+    "property_id": "29f013e6",
+    "type": "Bool",
+    "type_id": "0b00",
+    "key_type": "scalar",
+    "key_type_id": "0000",
+    "value": true,
+    "applies_to": "Invisible shadow carrier props only; existing visible props remain unchanged."
+  },
+  "native_filter": {
+    "function": "cSC4OccupantImmovabilityFilter::IsOccupantIncluded",
+    "entry_address": "00466530",
+    "property_push_instruction": "00466567",
+    "bool_read_call": "00466577",
+    "default_value": false,
+    "result_inversion_addresses": [
+      "00466585",
+      "00466587"
+    ],
+    "behavior": "For prop, building, power-pole, and network occupant types, read property 0x29F013E6 with default false, and return the logical negation. A true value excludes the helper from immovability checks.",
+    "terrain_consumer": "ModifyTerrainHeight at 00467bb0 uses this filter before testing occupant bounds."
+  },
+  "complete_property_reference_scan": {
+    "method": "Search the owned executable for the little-endian four-byte property identifier, resolve file offsets to virtual addresses, and inspect each surrounding native instruction path. No executable bytes are reproduced.",
+    "reference_count": 4,
+    "references": [
+      {
+        "property_operand_address": "00466568",
+        "role": "Only native read: immovability Bool test."
+      },
+      {
+        "property_operand_address": "004c0874",
+        "role": "Preview creation writes the property true."
+      },
+      {
+        "property_operand_address": "004c0d85",
+        "role": "Preview creation writes the property true."
+      },
+      {
+        "property_operand_address": "004da53f",
+        "role": "Preview creation writes the property true."
+      }
+    ],
+    "additional_model_render_shadow_or_persistence_reads_found": false
+  },
+  "sources": [
+    {
+      "url": "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/demolition.md",
+      "section": "4.7: ModifyTerrainHeight"
+    },
+    {
+      "url": "https://github.com/tloriato/OpenSC4/blob/c6b1887782bfa457dc6211852887339ef5f7cd84/docs/specs/occupant-manager.md",
+      "section": "13.2.6: purpose filters"
+    }
+  ],
+  "limits": [
+    "Static instruction analysis and resource semantics establish the required helper property; no live terrain-tool execution was performed.",
+    "This does not authorize moving or removing the physical highway, its visible props, or its traffic paths.",
+    "Other placement, query, renderer, and lifecycle behavior require their own bounded checks."
+  ],
+  "tested_in_game": false
+}

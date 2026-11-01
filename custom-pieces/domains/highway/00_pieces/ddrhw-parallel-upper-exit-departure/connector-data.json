@@ -4,58 +4,61 @@
   "piece_id": "ddrhw-parallel-upper-exit-departure",
   "domain_id": "highway",
   "source_binding": {
-    "compiled_build": "dist/ddrhw-parallel-diamond-slip-lanes-02",
-    "compiled_manifest_sha256": "a222a24ada086f5616a9b4e376b293880bf2dd4ee9569754adb66dbdcfc23fc7",
+    "compiled_build": "dist/ddrhw-three-diamonds-shadows-source-parts-05",
+    "compiled_manifest_sha256": "213e71cf4c4c778eb1cf20c8bd85de1ae582a6c172ee6bc78f5ed3dd9e9d1ed3",
     "files": {
-      "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connections.json": "7e67c5395c86189152606c7a8f7f7ad6e1cacbb2187b2d4eb5ca3af731434676",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connector-groups.jsonc": "1b520468ca11a1a060692c037ccd2e31847d2a2a56a324518d597bc391ae8a63",
-      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc": "2ada5cede960b31b697e1fcc98fa6dd1bd86f542e61e2a139f11f0ec04c4970f",
+      "dist/ddrhw-three-diamonds-shadows-source-parts-05/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "f66c9d91e3a5e74a18102a0bdb411568f9ff989ad7558dc0819024361ae27c20",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connections.json": "6989353de7fe1122b15000c6b6b6578cf52459b6ba2cadb637f3446e1a6f7161",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/connector-groups.jsonc": "b55a0ffa6fe360b6e7deab9fa3381bed7b7e05a2238c4571d5aaf9f8c5b31bb6",
+      "domains/highway/00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc": "b53f5c25dd0294f2e9b7b0ed8fbcae5fbcbde6877f282d378616323f9429962e",
       "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/accepted-connector-contracts.jsonc": "94d807cc8f778209323429c7c1d9d68ff4562e03a7f2e849fd6875792e81c1df",
       "domains/highway/domain.jsonc": "75ed2f768dac100a74152f3b88c2405e17bd34fc9697cd9a507c428716ba1746",
       "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
-      "domains/highway/implementation/scp_highway/adaptive_ground.py": "049feb134ea074ab48b545666f45e6cc62e3ab6c6692d6e0293e7ca6d33ef0c0",
-      "domains/highway/implementation/scp_highway/adaptive_verify.py": "0d322f9ba6ecd778cf1dc64680e3f13ee9d96349c5ffec8f612cf5a261e765d3",
-      "domains/highway/implementation/scp_highway/assembly_verify.py": "36d2af65cbec8d1c6bae63e370977c97b7f231c8cb2efcee8968eb67e55af3ff",
+      "domains/highway/implementation/scp_highway/adaptive_ground.py": "a326b3cfc80d7e1b543ed6fbb009b88f813e38c17830b8a017489c6702cd0138",
+      "domains/highway/implementation/scp_highway/adaptive_verify.py": "ca90e45de21ef4af0ea994fceb1fe094356ad5128940dd55915a72feaa1e7969",
+      "domains/highway/implementation/scp_highway/assembly_verify.py": "cc48835b808f24b575fd480a81284f251accccf163c4ad401a613235dd3eaed4",
       "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
       "domains/highway/implementation/scp_highway/connections.py": "5b770ae4e5b39664e644e069b3bbe26a03f35ec98e3443371295e19e42bf715c",
       "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
+      "domains/highway/implementation/scp_highway/ddrhw_connections.py": "eada10387b4587a207522ec35740321a06f852d240ec7fbef07bae0ab9fcd1d0",
       "domains/highway/implementation/scp_highway/icons.py": "709ce2d4ef8a02d80fde87a94df53907fe189353135120ce50231ae0574c5a7b",
       "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
       "domains/highway/implementation/scp_highway/menu.py": "5955668a10922cd09ad06002bd7793055da03226e3b8b186190428fb36699514",
-      "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "092ad0734b669c7c28e4ba5284013f4b13d2aa6eb120a8db7d7d574aa8f818b6",
+      "domains/highway/implementation/scp_highway/model_shadows.py": "33561af53fa97dc3e9997d103ba6c40f31a0e3797fa90f47b36947691bfdf0a9",
+      "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "a8aa8ae7f9a92ec6482a33bfd75cf0f23865721a1e16bd633c192b87cc5f4a91",
       "domains/highway/implementation/scp_highway/modular_connector_contracts.py": "ce8e765284ce2a625b979af3d5b4399ab946b5827c64a2485603dbe753c2d9da",
-      "domains/highway/implementation/scp_highway/modular_partition_verify.py": "6c23b77f8cbd890ae44219c71636c5557018e7d5ceff6a6eab3c903fc4572924",
+      "domains/highway/implementation/scp_highway/modular_partition_verify.py": "803d4b0354e63eaea51332d71ced1d1879090d70c261f89bb428d9b20844bad3",
       "domains/highway/implementation/scp_highway/modular_ramps.py": "b3dc8d3a1680326802e29c07dd2ea125fb5e2624cf71377082c5812a5aa4433e",
       "domains/highway/implementation/scp_highway/modular_stamp.py": "332aa5898a7a9616e8f569ea5aa01fef92d71705109b6137496584f8709cc307",
-      "domains/highway/implementation/scp_highway/modular_verify.py": "83e297c9e799934a03894316feadf9e4124817845b8de460258b1cd14e2c890b",
+      "domains/highway/implementation/scp_highway/modular_verify.py": "0eebb3a85f477c9a637c41bb5795d9262a3683b33b442aa8cbd7b8dee1287ee0",
       "domains/highway/implementation/scp_highway/native.py": "89b16ac53e7d5426a637dd917c085a6cd768db679fcc70b74eda05b98e7fe6a3",
       "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
       "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
       "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
       "domains/highway/implementation/scp_highway/parallel_geometry.py": "30fe2eefb87f82994d55742353d24d8f28f8457e1933d09b9242d1d470ace59a",
       "domains/highway/implementation/scp_highway/parallel_layout.py": "ac80ecdf7d9f56db0a50619b315516dcd9f50b8796b4e21cc3413041f023641f",
-      "domains/highway/implementation/scp_highway/parallel_modules.py": "3b9f8fa9b5f78b24bf1d27125400b3d207e6aa5c05bc3f209bd4cb33e686c2c1",
+      "domains/highway/implementation/scp_highway/parallel_modules.py": "ae6a1dbfa6262dad5ce01630dde090fbe2bb18018665256639dbb12714dc4853",
       "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
       "domains/highway/implementation/scp_highway/parallel_slip_lanes.py": "1d217570bb59a6633c0d3cec054410349d3df3471aed4d2e389fc230bf9fae48",
-      "domains/highway/implementation/scp_highway/parallel_verify.py": "66b59dd7a5ab0366a86451140a1ed84c646d5f9031316142ed059f3361e92863",
-      "domains/highway/implementation/scp_highway/ramp_geometry.py": "0a0bc5ddcaf63546386956c5f2213efba02d3245bcc9d1375d59e43a13068bca",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "29bc9e103fc8e97b895818c76bdf0ccda267b381648bf18860d5d3841ffc9e5e",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "fa30dd148e295e79e3ae25678d8b6e783f42d0a91e2e789cc08d475b38cece7b",
       "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
-      "domains/highway/implementation/scp_highway/ramp_paths.py": "fb5333bd8f3e72e23ec133403c217579600a518e6a4d1ee34aebbbb6194b4413",
+      "domains/highway/implementation/scp_highway/ramp_paths.py": "5a13647e74c535aaba2579efd84d1a69251136f1b7160f81c3188ba2fd584c82",
       "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
-      "domains/highway/implementation/scp_highway/recipes.py": "c3f8f13fe06c795d682849d8beef92a3a4cf80a2051ed98e89e9371b89a6e899",
+      "domains/highway/implementation/scp_highway/recipes.py": "b41748c446a789e0abbe844f715f8af4288b3b34fe65efb2c8821c420503e612",
+      "domains/highway/implementation/scp_highway/shadow_verify.py": "f9686cf27cb36daa007bf090fdc8a5acff2807903069105476801bf5162548f2",
       "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
       "domains/highway/implementation/scp_highway/slip_lanes.py": "cf07e354386195b3ec7078ec0d1ddf4609afdf2ea426bd1f9469e48c369bfbfb",
-      "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "c5af74ba32237efcd8b646c6005129419d70f7f5ac71f427ffcc9df0f690df8c",
+      "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "7306656ab4d6c1497816f9cf95409a99accd46300ec7d5068287b0b35659f4d1",
       "domains/highway/implementation/scp_highway/verify.py": "71f1b9150aa36fd101e395f2cbfe8c8c1108fe6b7174762e08aa82706176344d",
       "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
       "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
       "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
-      "framework/scp/adaptive_network.py": "22b9580f9e179fa76c402dcaa0c9525567198d00fe7b198167c79db51a281206",
+      "framework/scp/adaptive_network.py": "601a7d70fbe0505427fc5a847ac64b6d92b1c36ef66547f41ae260b1759c73fa",
       "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
       "framework/scp/autotile.py": "3bf7aec47fefc83efd89836128cc606adf49b128cecf71e328c4493cd918b6cd",
-      "framework/scp/build.py": "a44100ffe680e87f3fbb3f8370334673d5090889c3c1a2c6d192d8bfa3315511",
-      "framework/scp/catalog.py": "811b16605ca0f7140dec6214811521a135d9d7cd7e75e4971db0a661736062da",
+      "framework/scp/build.py": "5fc7f46fae02f890938d830c3c8cec8260765ca53e4eec84ea0595a215755bd9",
+      "framework/scp/catalog.py": "f1f3b6aaca769a2f66c444297b6704bed19a8f35a3aa38849aa80aa347e5a4f1",
       "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
       "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
       "framework/scp/city_grid.py": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
@@ -73,11 +76,15 @@
       "framework/scp/jsonc.py": "5ca803292230dcbcb6ea752548743b0e2abb7ca63a0b3bfb843c2500696be95a",
       "framework/scp/markdown_navigation.py": "7410f90ef85aca23d5ffe018b915d901e5ccd2c647ecb136df540c3bb8bb1d78",
       "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
-      "framework/scp/menu_experiment.py": "def32e341de6a4ad6abcbe94a243c259601d04ed10e8007019ff65c18e216822",
+      "framework/scp/menu_experiment.py": "1111587e3ea60d50ca326d4f9469f64f4e249632ccf6f17b1b5067b9651c7f37",
       "framework/scp/menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
       "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
       "framework/scp/model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
+      "framework/scp/model_shadow_geometry.py": "22709ab390618a00eaa874b1525b4fb2706ef6091665898fd2acd7a48c14aa57",
+      "framework/scp/model_shadows.py": "ef90a802ff485b1371636595cb6a629e3eb59f8397de6c8851c042ba64ed9dc9",
       "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/multi_assembly_menu.py": "8e6c9687f3cad2bf0b3f6830f9d843c34dc71078ac162a4b86213210539a70bc",
+      "framework/scp/native_approaches.py": "6cede55b52cd264411f812d8a8a173445e12d2daf98f63fa71ff0ff046cba368",
       "framework/scp/paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
       "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
       "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
@@ -95,7 +102,7 @@
       "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
       "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
       "framework/scp/verification_fixtures.py": "0febc2b8c46b88b40dd40fec13c5dee6cf6a767639fd7040bc0ddf82001f4ecd",
-      "framework/scp/verify.py": "f7735fc4d9c2fd1fd51ad6553a814a5e92ded455d2c31e96150bb683dffe3cd8",
+      "framework/scp/verify.py": "cceffc368085e6ffde63348784d305412eb1e6748373e97623bb72487d42f903",
       "schemas/connector-data.schema.jsonc": "4e5ee07557da887a543a2292d3f9e7c103d81c15e95d6f677b7fc79fa2e11fd6",
       "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
       "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
@@ -146,7 +153,8 @@
         "controller",
         "dd_rhw",
         "rhw_core",
-        "mis"
+        "mis",
+        "model_shadow_lighting"
       ],
       "menu": {
         "id": "6a47f868",
@@ -170,14 +178,8 @@
         "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
         "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
       },
-      "shadow_mode": "generated",
-      "shadow_mappings": [
-        {
-          "tile": "7f5b7000",
-          "source": "7f5b7000",
-          "rotation": 0
-        }
-      ],
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
       "provenance": {
         "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
         "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
@@ -191,6 +193,20 @@
         "shadows": "unverified",
         "demolition": "unverified",
         "save_reload": "unverified"
+      },
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5b7800"
+          }
+        ]
       }
     },
     "connections": {
@@ -202,20 +218,25 @@
         "basis": "actual decompressed saved resources",
         "resource_fingerprints": {
           "effect:ddrhw-parallel-upper-exit-departure:ea5118b0-ea5118b1-7f5b7ff5": "d804daecaf1a9337f6066a17f6ef17c9cc8517dbb4ef9a9ca4ab26cdeba9501c",
+          "exemplar:ddrhw-parallel-upper-exit-departure:6534284a-89ac5643-7f5b7000": "5fb1dbe02585106c2856ce9bd6c2eecb9967760dd09232d44d1e5ebbc4baa2d4",
           "exemplar:ddrhw-parallel-upper-exit-departure:6534284a-a8434037-7f5b7000": "e749136ca18246a9f07ca81c56dd6c2f60d7c96041c5958a95a3f22999d1f2f7",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7ff5": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+          "exemplar:ddrhw-parallel-upper-exit-departure:6534284a-c977c536-7f5b7804": "a6d5344d6181d3747bd3d9a6439360c534df1665ae3594a430e4dd3f019a4aba",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7800": "836393dc5e5aaee0acd0451663ea5e94059626db6a3600d774c147dd6cb712aa",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7801": "850ba821c5f732ef281893aaaa0e437d05af2041354472344c4dfcd641a785c9",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7802": "d124f35780609815f6b904c44b9fc20308738d8e7f2c2d71af1340c02bba1e6f",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7803": "1527f0363ffa9801ebbdda019afbee19ce16065ca85f1eb128104e44b6a2a123",
+          "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7ff5": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
           "path:ddrhw-parallel-upper-exit-departure:296678f7-a966883f-7f5b7000": "92861ce332217d5be43265ec5aaf6d5a9fb424a5d906948a1fad134c9563d6aa",
-          "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7000": "ccc729da4732cc4a20788b77bf8f04dd15d41dd12f6e61ce01fd52cf5b289f54",
-          "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7001": "2934927333ec2c5cd4411cccdcfe18cb41623daea700136599fc57648aad417f",
-          "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7002": "4ca7cdd6ea80a6713276ae866dc8efbebd00a3b4eb0f6be8143ecb61a46813f0",
-          "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7003": "b3667d8496d66ec98d367d064dfa11533225b50d68a3942f352556704083b36d",
-          "shadow:ddrhw-parallel-upper-exit-departure:7ab50e44-2bc2759a-7f5b7004": "a034f4519cf92e73a6e2ff670d528a27bea04d9be32e9a0eed80063e0c5e1894",
           "text:ddrhw-parallel-upper-exit-departure:2026960b-2a592fd1-7f5b7000": "b8a3cf9e9f14c7db0b89e36c5b4fe91041c5f2c35db2058423884ef42e0d8d32",
+          "texture:ddrhw-parallel-upper-exit-departure:7ab50e44-1abe787d-7f5b7810": "c11b3978aade0fc0442cb181756f3e7399226f824d974ef3514a5762d7f82b57",
+          "texture:ddrhw-parallel-upper-exit-departure:7ab50e44-1abe787d-7f5b7811": "c9c267cf2c55c2d00b554ddea13f84ae6372671c08a7314c98417207783e8ea6",
+          "texture:ddrhw-parallel-upper-exit-departure:7ab50e44-1abe787d-7f5b7812": "7c2c9f810c089ba5be61fc21c42281da4007e5ac405a972e0d8f8587269be55d",
+          "texture:ddrhw-parallel-upper-exit-departure:7ab50e44-1abe787d-7f5b7813": "03b994309cbe511b05b9dfa9a0914a897490afa16d1a8a4ab06af2f3b510d1ab",
           "construction:ddrhw-parallel-upper-exit-departure": "64c8877d342d82b69d3ba2f432e7eced2bc2be34eae5baa3d852b39fa6e45a9b"
         },
         "reviewed_contract_available": true,
@@ -408,8 +429,8 @@
       "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
       "piece_id": "ddrhw-parallel-upper-exit-departure",
       "source_binding": {
-        "piece_sha256": "2ada5cede960b31b697e1fcc98fa6dd1bd86f542e61e2a139f11f0ec04c4970f",
-        "connections_sha256": "7e67c5395c86189152606c7a8f7f7ad6e1cacbb2187b2d4eb5ca3af731434676"
+        "piece_sha256": "b53f5c25dd0294f2e9b7b0ed8fbcae5fbcbde6877f282d378616323f9429962e",
+        "connections_sha256": "6989353de7fe1122b15000c6b6b6578cf52459b6ba2cadb637f3446e1a6f7161"
       },
       "components": [
         {
@@ -1275,10 +1296,10 @@
     "metadata": "passed",
     "compiled_paths": "passed",
     "compiled_resources": {
-      "dat_path": "dist/ddrhw-parallel-diamond-slip-lanes-02/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
-      "dat_sha256": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
-      "model_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
-      "resource_fingerprints_checked": 15,
+      "dat_path": "dist/ddrhw-three-diamonds-shadows-source-parts-05/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
+      "dat_sha256": "f66c9d91e3a5e74a18102a0bdb411568f9ff989ad7558dc0819024361ae27c20",
+      "model_sha256": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "resource_fingerprints_checked": 20,
       "directional_ports_reextracted": 2,
       "directed_journeys_reextracted": 1,
       "compiled_definition": "passed",
@@ -1294,5 +1315,5 @@
     "geometry_collisions": "unverified",
     "in_game": "unverified"
   },
-  "content_sha256": "30c96b8ec9594f24225c307047020c4df3939a29eb86751932e0683b55675892"
+  "content_sha256": "338ff6ec471e8bf2ecce48c593cdfa6aa5b7be0c4a63fcaf5b791139955517af"
 }

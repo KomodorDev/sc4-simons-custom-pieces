@@ -22,6 +22,7 @@ from .models import parse_s3d, validate_s3d, valid_frame, positions
 from .adaptive_network import (RUL1, bindings as adaptive_bindings,
     resource_keys as adaptive_resource_keys, validate_active_resources, CURSOR_BASE)
 from .native_approaches import verify_rul1, approaches as native_approaches
+from . import model_shadows
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -262,6 +263,10 @@ def check_piece_models(resources, piece, donors):
     if adaptive_bindings(piece):
         validate_active_resources(resources, piece)
     result = _check_piece_geometry(resources, piece, donors)
+    if piece.get('shadow_mode') == model_shadows.MODE:
+        shadow_report = model_shadows.validate_resources(resources, piece)
+        result['model_shadow_carriers'] = {key: value for key, value in shadow_report.items() if key != 'texture_ids'}
+        result['texture_ids'] = sorted(set(result['texture_ids']) | set(shadow_report['texture_ids']))
     if adaptive_bindings(piece):
         require(isinstance(result.get('adaptive_ground'), dict) and
                 result['adaptive_ground'].get('active_layer_verified') is True,
@@ -281,6 +286,7 @@ def check_piece_render_budget(resources, piece):
     keys.update((*S3D, number(tile) + zoom)
                 for tile in piece['tile_ids'] for zoom in range(5))
     keys.update(key for key in adaptive_resource_keys(piece) if key[:2] == S3D)
+    keys.update(key for key in model_shadows.resource_keys(piece) if key[:2] == S3D)
     payloads = dict.fromkeys(resources[key] for key in sorted(keys))
     reports = [assert_render_budget(parse_s3d(raw)) for raw in payloads]
     return {'all_authored_groups_within_budget': True,
@@ -646,6 +652,9 @@ def check_construction(resources, pieces, manifest, donors):
                 for piece in pieces for s in piece['shadow_mappings']}
     required = set()
     for piece in pieces:
+        if piece.get('shadow_mode') == model_shadows.MODE:
+            model_shadows.bindings(piece)
+            continue
         for index, tile in enumerate(map(number, piece['tile_ids'])):
             if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
                 source, rotation = tile, 0
@@ -780,6 +789,10 @@ def verify_build(output, write_report=True):
             require(piece['name'] in read_ltext(resources[*LTEXT, tile]), 'Piece query description mismatch')
         adaptive_keys = adaptive_resource_keys(piece)
         asset_keys.update(adaptive_keys)
+        carrier_keys = model_shadows.resource_keys(piece)
+        asset_keys.update(carrier_keys)
+        if carrier_keys:
+            shadow_report = model_shadows.validate_resources(resources, piece)
         if adaptive_rows:
             validate_active_resources(resources, piece)
             from .preview import decode_fsh

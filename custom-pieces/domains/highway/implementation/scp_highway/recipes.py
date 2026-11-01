@@ -90,7 +90,8 @@ def finish_piece(spec, context, compiled):
         if tile not in adaptive_tiles:
             assets[*EXEMPLAR, tile] = tile_exemplar(context, tile, title)
         assets[*LTEXT, tile] = label(title)
-        assets.update(build_shadows(model_raw, tile))
+        if spec.get('shadow_mode') != 'model-carrier':
+            assets.update(build_shadows(model_raw, tile))
         model = parse_s3d(model_raw)
         parts.append((model, model['meshes'], (cell[0] * 16., 0., cell[1] * 16.)))
     preview = int(spec['preview_id'], 16)

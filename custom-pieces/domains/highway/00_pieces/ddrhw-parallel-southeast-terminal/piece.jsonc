@@ -48,7 +48,8 @@
     "dd_rhw",
     "rhw_core",
     "mis",
-    "adaptive_avenue"
+    "adaptive_avenue",
+    "model_shadow_lighting"
   ],
   "menu": {
     "id": "6a47f849",
@@ -86,24 +87,8 @@
     "ground_mouth_profile": "taper-6m-to-3p5m-over-3m",
     "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
   },
-  "shadow_mode": "generated",
-  "shadow_mappings": [
-    {
-      "tile": "7f5af000",
-      "source": "7f5af000",
-      "rotation": 0
-    },
-    {
-      "tile": "7f5af100",
-      "source": "7f5af100",
-      "rotation": 0
-    },
-    {
-      "tile": "7f5af010",
-      "source": "7f5af010",
-      "rotation": 0
-    }
-  ],
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
   "provenance": {
     "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
     "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
@@ -161,6 +146,33 @@
         "avenue_flags": "00030100",
         "prop": true,
         "resolved_tile_id": "7f5b0200"
+      }
+    ]
+  },
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "cast_shadow": false
       }
     ]
   }
