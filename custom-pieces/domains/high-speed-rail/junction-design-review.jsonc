@@ -2,8 +2,8 @@
 // summary: "Retain the measured design-review findings and scoped layout recommendations for the current rail catalogue."
 //
 // Used when: A contributor investigates the saved rail-family design objections or reapplies those existing review findings to current piece flags and named selections; the recorded date, source build, scope, and limits identify the evidence.
-// Read by: custom-pieces/domains/high-speed-rail/tools/apply_junction_review.py apply_saved_review validates these records before updating piece design_review fields and review collections, then refreshing views; the rail guides also link this evidence. Existing piece references use its generated strict-JSON compatibility copy.
-// Updated by: A maintainer records an explicit, measured design review. The review tool applies the saved findings; it does not perform a new review or rewrite this evidence. scp.jsonc --sync-legacy-exports refreshes only its declared .json compatibility copy.
+// Read by: custom-pieces/domains/high-speed-rail/tools/apply_junction_review.py apply_saved_review validates these records before updating piece design_review fields and review collections, then refreshing views; the rail and piece guides link this JSONC evidence directly.
+// Updated by: A maintainer records an explicit, measured design review. The review tool applies the saved findings; it does not perform a new review or rewrite this evidence.
 // Affects: Applied design flags appear in inventories, documentation, previews, future menu titles/tooltips, and release assessment. The retained measurements do not establish new geometry approval, in-game rendering, or traffic observations.
 // Reference: custom-pieces/domains/high-speed-rail/NETWORK_SPEC.md#3-saved-rail-design-review.
 {

@@ -2,9 +2,9 @@
 // summary: "Index measured traffic interfaces by class; class membership alone does not establish physical fit or game compatibility."
 //
 // Used when: A contributor browses which measured piece ports share a route-interface class after a full connection-data extraction and catalogue refresh.
-// Read by: Contributors following the class-index link in generated piece documentation; scp.jsonc exports the declared strict-JSON compatibility view. Builds and connector validation read the registered piece records instead of treating this index as a matching rule.
-// Updated by: scp.content.refresh_catalog_content derives memberships from supplied extracted connection records during a full metadata refresh and exports connection-classes.json automatically. A view-only refresh does not regenerate classes, and a scoped refresh defers the global index; do not edit memberships by hand.
-// Affects: The browseable class-to-port index and its legacy .json view. Equal route-interface classes do not establish complete boundary agreement, physical fit, neighbour compatibility, or game operation.
+// Read by: Contributors following the class-index link in generated piece documentation. Builds and connector validation read the registered piece records instead of treating this index as a matching rule.
+// Updated by: scp.content.refresh_catalog_content derives memberships from supplied extracted connection records during a full metadata refresh. A view-only refresh does not regenerate classes, and a scoped refresh defers the global index; do not edit memberships by hand.
+// Affects: The browseable class-to-port index. Equal route-interface classes do not establish complete boundary agreement, physical fit, neighbour compatibility, or game operation.
 // Reference: custom-pieces/docs/WORKFLOW_DOCUMENTATION_GENERATION.md and custom-pieces/docs/CONNECTOR_METADATA.md.
 {
   "schema_version": 1,

@@ -27,7 +27,7 @@ Choose this exact name in Transportation → Rail. Press Home or End to rotate; 
 
 - Separate 1.3 m-square pillar foundations have centres less than 2.6 m apart near shared rail geometry. The foundations do not overlap, but the close pair should be reviewed and consolidated to address the reported duplicate-pillar appearance. The 2.6 m review cutoff is an authoring convention, not a structural or game collision threshold.
 
-[Design-review evidence](../../junction-design-review.json).
+[Design-review evidence](../../junction-design-review.jsonc).
 
 ![HSR Level 2 (15.5 m) — Two-Track Adjacent Crossover Left](previews/preview.png)
 

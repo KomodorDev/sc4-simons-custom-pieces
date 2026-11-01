@@ -565,9 +565,8 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(make_icon(piece['menu']['style']))
         print(target)
-    sheet = (args.output/'icon-contact-sheet.png' if args.output else
-             domain/'assets/figures/menu/icon-contact-sheet.png')
-    write_contact_sheet(sheet)
+    if args.output:
+        write_contact_sheet(args.output/'icon-contact-sheet.png')
 
 
 if __name__ == '__main__':

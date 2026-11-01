@@ -1,10 +1,14 @@
 """Category labels survive native size, greyscale, and binary menu encoding."""
 from copy import deepcopy
+from contextlib import redirect_stdout
 from io import BytesIO
+from io import StringIO
 import json
 from pathlib import Path
 import sys
+from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from PIL import Image
 
@@ -13,7 +17,7 @@ sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp.dbpf import encode_exemplar, exemplar
 from scp.catalog import load_catalog
-from scp_hsr.icons import icon_identity, make_icon, validate_icon
+from scp_hsr.icons import icon_identity, main as icons_main, make_icon, validate_icon
 from scp_hsr.menu import (DESCRIPTION, EDITED_PROPERTIES, ICON, MENU_EXEMPLAR,
                       TITLE, _read_ltext, build_menu_resources, validate_menu_resources)
 
@@ -40,6 +44,43 @@ def piece(style):
 
 
 class MenuIconCategoryTests(unittest.TestCase):
+    def test_artwork_command_writes_only_piece_icons_to_the_source_tree(self):
+        catalog = {'domains': {'high-speed-rail': {'path': 'domains/high-speed-rail'}},
+                   'pieces': [{'id': 'hsr-test', 'domain': 'high-speed-rail',
+                               'menu': {'style': 'cross-dd'}},
+                              {'id': 'other-test', 'domain': 'other',
+                               'menu': {'style': 'unsupported-other-network'}}]}
+        with TemporaryDirectory() as folder:
+            root = Path(folder)
+            with patch('scp.catalog.load_catalog', return_value=catalog), \
+                    patch('sys.argv', ['scp_hsr.icons', '--root', str(root)]), \
+                    redirect_stdout(StringIO()):
+                icons_main()
+            self.assertEqual({p.relative_to(root).as_posix() for p in root.rglob('*')
+                              if p.is_file()},
+                             {'domains/high-speed-rail/00_pieces/hsr-test/icon.png'})
+            icon = root/'domains/high-speed-rail/00_pieces/hsr-test/icon.png'
+            self.assertEqual(validate_icon(icon.read_bytes())['state_dimensions'], [44, 44])
+
+    def test_artwork_review_keeps_all_outputs_in_the_explicit_directory(self):
+        catalog = {'domains': {'high-speed-rail': {'path': 'domains/high-speed-rail'}},
+                   'pieces': [{'id': 'hsr-test', 'domain': 'high-speed-rail',
+                               'menu': {'style': 'cross-dd'}}]}
+        with TemporaryDirectory() as folder:
+            root = Path(folder)/'source'
+            output = Path(folder)/'review'
+            with patch('scp.catalog.load_catalog', return_value=catalog), \
+                    patch('sys.argv', ['scp_hsr.icons', '--root', str(root),
+                                       '--output', str(output)]), \
+                    redirect_stdout(StringIO()):
+                icons_main()
+            self.assertFalse(root.exists())
+            self.assertEqual({p.relative_to(output).as_posix() for p in output.rglob('*')
+                              if p.is_file()},
+                             {'hsr-test/icon.png', 'icon-contact-sheet.png'})
+            with Image.open(output/'icon-contact-sheet.png') as image:
+                self.assertGreater(image.height, 0)
+
     def test_only_the_two_registered_complete_ts_are_pnp(self):
         result = {}
         for spec in load_catalog(ROOT)['pieces']:

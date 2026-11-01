@@ -144,6 +144,11 @@ class ReviewRefreshTests(unittest.TestCase):
             self.assertIn('**REVIEW NEEDED**', flagged.read_text())
             self.assertIn('## Connections and journeys', flagged.read_text())
             self.assertIn('## Test checklist', flagged.read_text())
+            self.assertIn('[Design-review evidence](../../junction-design-review.jsonc)', flagged.read_text())
+            flagged_piece = json.loads((flagged.parent / 'piece.json').read_text())
+            self.assertEqual(flagged_piece['design_review']['evidence'],
+                             'domains/high-speed-rail/junction-design-review.jsonc')
+            self.assertFalse(review_path.with_suffix('.json').exists())
             cleared = json.loads((domain / '00_pieces/cleared/piece.json').read_text())
             later = json.loads((domain / '00_pieces/later/piece.json').read_text())
             self.assertNotIn('design_review', cleared)

@@ -363,6 +363,8 @@ python custom-pieces/scp.py uninstall --backup-root '/absolute/path/to/SCP Backu
 
 Removal checks its ownership receipt and saves a snapshot first. The tools do not edit city files or NAM's original archives.
 
+For ordinary removal or reversal, clear placed pieces while their old resources are still installed, and save the affected cities first. A [30 October 2026 experiment](TESTING.md#6-existing-saves-after-piece-removal) found that affected tiles could also be cleared after their resources had been removed, and the reported visual artifacts disappeared after bulldozing. That result covers one reported cleanup and does not replace region backups, restore the missing pieces, or establish traffic and save/reload behavior.
+
 ### 7.1 Decide whether an update needs fresh placement
 
 **Fresh placement** means selecting a component in the game and placing a new copy, which executes its construction rules. **Restart and reload** means quitting SimCity 4 completely, installing the checked update while the game is closed, starting the game again, and opening the saved city. Rebuilding compiled DAT files and rebuilding a placed assembly are different actions. State which game action a revision requires in its test handoff, using an actual comparison of the old and new saved resources.
